@@ -7140,7 +7140,7 @@ ul.stats_header
     font-size: 18px;
     color: #0064D2;
 }
-.product_list_widget a
+#product_desc .product_list_widget a
 {
     color: #333;
 }
@@ -7151,6 +7151,7 @@ ul.products li.product .price .amount
 .price_unit, .old_price
 {
     font-weight: bold;
+    font-size: 16px;
 }
 #product_desc #content
 {
@@ -7180,4 +7181,9 @@ ul.products li.product .price .amount
 .left-bottom-detail-head
 {
     height: 57px;
+}
+#product_desc .product_list_widget .old_price
+{
+    margin-bottom: 0;
+    font-size: 15px;
 }
