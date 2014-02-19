@@ -1,0 +1,1310 @@
+  <!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+<title>{$PageTitle} - {$COMPANY.name}</title>
+<base href="{$SiteUrl}">
+<meta name ="keywords" content="{$TAG_STRING}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{if $COMPANY.logo}<meta property="og:image" content="{$COMPANY.logo}"/>{/if}
+
+{if $banners.1}<meta property="og:image" content="{$banners.1}" />{/if}
+{if $banners.2}<meta property="og:image" content="{$banners.2}" />{/if}
+
+
+{if $fb_description}
+<meta property="og:description" content="{$fb_description}"/>
+<meta name ="description" content="{$fb_description}">
+{else}
+<meta name ="description" content="MarketOnline.vn là Thị trường Giới thiệu, Cung cấp uy tín mọi nhu cầu Cuộc sống và Công việc dành cho Cá nhân/Công ty/Tổ chức trong và ngoài nước.">
+<meta property="og:description" content="MarketOnline.vn là Thị trường Giới thiệu, Cung cấp uy tín mọi nhu cầu Cuộc sống và Công việc dành cho Cá nhân/Công ty/Tổ chức trong và ngoài nước."/>
+{/if}
+
+  <!--<script src="http://theme.crumina.net/onetouch/wp-content/themes/theme_v_1.tmp/assets/js/modernizr.foundation.js"></script>-->
+
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,200italic,300italic,400italic,600italic,700italic' rel='stylesheet' type='text/css'>
+
+  <link rel="icon" type="image/png" href="">
+
+  
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+  
+
+<link rel="stylesheet" href="{$theme_img_path}css/woocommerce.css?ver=3.5.1">
+<link rel="stylesheet" href="{$theme_img_path}css/aqpb-view.css?ver=1364883969">
+<link rel="stylesheet" href="{$theme_img_path}css/bootstrap.css?ver=3.4.12">
+<!--<link rel="stylesheet" href="{$theme_img_path}css/js_composer_front.css?ver=3.4.12">-->
+<link rel="stylesheet" href="{$theme_img_path}css/settings.css?ver=3.5.1">
+<link rel="stylesheet" href="{$theme_img_path}css/captions.css?ver=3.5.1">
+<link rel="stylesheet" href="{$theme_img_path}css/frontend.css">
+<link rel="stylesheet" href="{$theme_img_path}css/foundation.min.css">
+<link rel="stylesheet" href="{$theme_img_path}css/app.css">
+<link rel="stylesheet" href="{$theme_img_path}css/shortcodes.css">
+<!--<link rel="stylesheet" href="{$theme_img_path}css/responsive.css">-->
+<link rel="stylesheet" href="{$theme_img_path}css/colorbox.css">
+<link rel="stylesheet" href="{$theme_img_path}css/tooltip/tooltipster.css">
+<link rel="stylesheet" href="{$theme_img_path}css/jquery.mCustomScrollbar.css">
+<link rel="stylesheet" href="{$theme_img_path}css/pml.css">
+<link rel="stylesheet" href="{$WebRootUrl}templates/skins/default/css/custom_space.css">
+<script type='text/javascript' src='{$theme_img_path}js/jquery.js?ver=1.8.3'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.themepunch.plugins.min.js?ver=3.5.1'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.themepunch.revolution.min.js?ver=3.5.1'></script>
+<script type='text/javascript' src='{$theme_img_path}js/modernizr.foundation.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/foundation.min.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/app.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.number.js'></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+
+<link rel="stylesheet" href="{$theme_img_path}js/fancybox/jquery.fancybox.css">
+<script type='text/javascript' src='{$theme_img_path}js/fancybox/jquery.fancybox.js'></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCekN0iNOaac9Kla1TdA73q579qZhmVVRI&sensor=false"></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.mousewheel.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.mCustomScrollbar.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.resizecrop-1.0.3.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.jcookie.min.js'></script>
+<script type='text/javascript' src='{$theme_img_path}js/jquery.bxslider.js'></script>
+<link rel="stylesheet" href="{$theme_img_path}css/jquery.bxslider.css">
+
+<script src="{$WebRootUrl}data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+
+<script src="{$theme_img_path}js/jquery.qtip.min.js"></script>
+<link rel="stylesheet" href="{$theme_img_path}css/jquery.qtip.min.css">
+
+<script src="{$theme_img_path}js/custom.js"></script>
+
+<link rel="stylesheet" media="screen" type="text/css" href="{$theme_img_path}css/colorpicker.css" />
+
+<link rel="stylesheet" media="screen" type="text/css" href="{$theme_img_path}js/nivo/nivo-slider.css" />
+<link rel="stylesheet" media="screen" type="text/css" href="{$theme_img_path}js/nivo/themes/default/default.css" />
+
+
+<!--<script src="http://marketonline.vn/scripts/mudim-0.9-r162.js"></script>-->
+
+<!-- WooCommerce Version -->
+<meta name="generator" content="WooCommerce 1.6.6" />
+
+	
+
+   <!--[if IE]>
+    <script src="{$theme_img_path}js/html5.js"></script>
+    <link href='{$theme_img_path}css/ie.css' rel='stylesheet' type='text/css'>
+  <![endif]-->
+
+      
+        <link href='{$theme_img_path}css/options.css' rel='stylesheet' type='text/css'>
+
+	<!--{literal}-->
+<style>
+#body-wrapper {
+	background-attachment:fixed!important;
+	background-repeat:repeat;
+}
+</style>
+
+<script type="application/x-javascript">
+    
+    
+      function getAnnounce(ann_count)
+	{
+	   $.ajax({
+			       url: "index.php?do=product&action=getAnnounce",
+		       }).done(function ( data ) {
+			       if( console && console.log ) {
+				       //alert(data);
+				       $('#announce-frame').prepend(data);
+				       
+				       $('#announce-frame .announce-box').each(function(index){				    
+					   if (!$(this).hasClass("showed")) {
+					       $(this).addClass("ann"+ann_count);
+					       $(this).addClass("showed");
+					       setTimeout(function(){$(".ann"+ann_count).fadeOut()}, 60000);					
+					   }				    
+				       });
+			       }
+		       });
+	}
+    
+    function inserCustomBGFile(url, image) {
+		$('#uploadIVbutton').attr('disabled','');
+		//$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			//alert(url);
+			d = new Date();
+			$('#background_image').val("url('"+"<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"')");
+			$('#body-wrapper').css('backgroundImage', "url('<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime()+"')");
+			$('.custom_bg img').attr("src", "<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime());
+			$('#uploadIVbutton').removeAttr('disabled','');
+		}
+			
+	}
+ 
+function goclicky_custom(meh, url, images, title, summary)
+{
+    var x = screen.width/2 - 626/2;
+    var y = screen.height/2 - 436/2;
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?s=100&p[url]='+url+images+'&p[title]='+title+'&p[summary]='+summary, 
+      'facebook-share-dialog', 
+      'width=626,height=436,left='+x+',top='+y); 
+    return false;
+    //window.open(meh.href, 'sharegplus','height=485,width=700,left='+x+',top='+y);
+}
+
+function goclicky(meh, url)
+{
+    var x = screen.width/2 - 626/2;
+    var y = screen.height/2 - 436/2;
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url), 
+      'facebook-share-dialog', 
+      'width=626,height=436,left='+x+',top='+y); 
+    return false;
+    //window.open(meh.href, 'sharegplus','height=485,width=700,left='+x+',top='+y);
+}
+ 
+	function shareStreamFacebook(url) {
+	 //code
+	    FB.ui({
+	      method: 'stream.share',
+	      u: url
+	   }, function(response){});
+	}
+ 
+	function shareFeedFacebook(link, picture, name, caption, description) {
+	 //code
+	    FB.ui({
+	     method: 'feed',
+	     link: link,
+	     picture: picture,
+	     name: name,
+	     caption: caption,
+	     description: description
+	   }, function(response){});
+	}
+	
+	function loadAlbumDetail(a_id, u_id, item)
+	{
+	    item.parent().prepend("<div class='img-after'></div>");
+	    //alert(p_id);
+	    $.ajax({
+			url: "index.php?do=product&action=loadAlbumDetail&id="+a_id+"&user="+u_id,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				$('.img-after').remove();
+				//$('#album-detail-but').trigger('click');
+				//$('.staticon span').remove();
+				//$('.staticon div').remove();
+				//$('.staticon').append(data);
+				//$('#com_album li a img').removeClass("loading");
+				$('#showAlbumDetail').html(data);
+				$('#showAlbumDetail').css('display','block');
+				$('h1.other_album').css('display','block');
+				//$('#com_album').css('display','none');
+				$("html, body").animate({ scrollTop: 500 }, 500);
+				
+				$('.album_close').click(function(){
+						$('#showAlbumDetail').fadeOut();
+						$('h1.other_album').fadeOut();
+				});
+			}
+		});
+	}
+	
+	
+	function refreshClickedCompany(p_id)
+	{
+	    //alert(p_id);
+	    $.ajax({
+			url: "index.php?do=product&action=refreshNewClickedCompany&id="+p_id,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$('.staticon span').remove();
+				$('.staticon div').remove();
+				$('.staticon').append(data);
+			}
+		});
+	}
+	
+	function getNewClicked(p_id) {
+		$.ajax({
+			url: "index.php?do=product&action=getNewClickedCompany&id="+p_id,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$('.staticon').append(data);
+			}
+		});
+	}
+	
+	function getCart(p_id, amount, item) {
+		var param = "";
+		if(typeof(p_id)!='undefined')
+		{
+			param += "&id="+p_id;
+		}
+		if(typeof(amount)!='undefined') param += "&amount="+amount;
+		
+		//code
+		$.ajax({
+			url: "index.php?do=product&action=getTopCartAjax"+param,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$('#topCart').html(data);
+				$('a.cart_link').click(function(){$('.item_rows').toggle()});
+				$('.item_rows').hover(
+					function () {
+					    //$('#settingbox').fadeIn();
+					}
+					,
+					function () {
+					    $('.item_rows').fadeOut();
+					}
+				);
+				
+				//alert
+				if(typeof(p_id)!='undefined')
+				{
+					//alert("<!--{/literal}-->{lang added_to_cart}<!--{literal}-->");
+					//$('#box_alert')
+					$('#hiddenclicker').trigger('click');
+				}
+			}
+		});
+	}
+	
+	function removeCartItem(id, row, down) {
+		//code
+		//alert(down.replace(/\./g, ""));
+		//alert($.number($('#cart_total').html().replace(/\./g, "") - down.replace(/\./g, ""), 0, ',', '.'));
+		
+		$.ajax({
+			url: "index.php?do=product&action=add_cart&task=remove&cartitemid="+id,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$(row).parent().parent().fadeOut();
+				$('#cart_count').html($('#cart_count').html()-1);
+				
+				$('#cart_total').html($.number($('#cart_total').html().replace(/\./g, "") - down.replace(/\./g, ""), 0, ',', '.'));
+				
+			}
+		});
+	}
+	
+	function getInbox() {
+		//code
+		$.ajax({
+			url: "index.php?do=product&action=ajaxInbox",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				$("#inbox_out").html(data);
+			}
+		});
+	}
+	var pos_searchlist = 300;
+	var ichatbox = new Array();
+	var companylogo = '<!--{/literal}-->{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
+	$(document).ready(function() {
+		if (window.chrome) {
+			$("#f_language_bar").css("margin-top", "-1px");
+			$("#settingouter").css("margin-top", "0px");
+		}
+		
+		$('.thumbnails a').eq(4).css('margin-right', '0');
+		
+		getCart();
+		getInbox();
+		getTopChat();
+		//$('a.cart_link').click(function(){
+		//	$('.item_rows').toggle();
+		//});
+		
+		$("#hiddenclicker").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$("#album-detail-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$(".main_bannerz").fancybox({
+			
+		});
+		
+		$("#browser-info-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$(".no_ii a").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'height': 72,
+			'hideOnContentClick': false
+		});
+		
+		$("#edit_banner a").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$("#edit_logo a").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$('.scrollbarleft ul li img').click(function() {
+			$(this).parent().find('ul').toggle();
+			$(this).parent().find('ul li ul').css('display','none');
+		});
+		
+		//$(".scrollbarleft").mCustomScrollbar({
+		//			autoHideScrollbar:true,
+		//			theme:"light-thin"
+		//});
+		
+		
+		
+		$('.offers .imgout img').resizecrop({
+		   width:160,
+		   height:160		   
+		 });
+		
+		
+		
+		$('.offer_list .product img').css("display", "block");
+		
+		//$('.logoz img').css('display', 'block');
+		
+		$('#settingbox').css('margin-left', $('#settingouter').width()-205);
+		
+		$("#policy_but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			helpers: { 
+			      title: null
+			}
+		});
+		
+		if($('#content').height() > $('#left-sidebar').height())
+		{
+		      $('#left-sidebar').css('min-height',$('#content').height()+45+"px");
+				}
+		
+		
+		//setInterval(funcio);
+		
+		getNewClicked('<!--{/literal}-->{$pb_company.id}<!--{literal}-->');
+		
+		$('body').click(function(){if($('.clicked_note_box').css('display') == 'block') $('.clicked_note_box').fadeOut("slow", refreshClickedCompany('<!--{/literal}-->{$pb_company.id}<!--{literal}-->'))});	
+		$('.staticon').click(function(e){$('.over_air_box').css("display","none");$('.clicked_note_box').toggle();e.stopPropagation();});
+		
+		//$('.facebookOuter iframe').addClass();
+		$('.facebookOuter iframe').ready(function() {
+		    $('.facebookOuter iframe').contents().find(".link").hide();
+		});
+		
+		$('.top_tab_intro a').click(function(){
+		     $('.top_tab_intro a').removeClass('active');
+		     $('#intro_tab').css('display', 'none');
+		     $('#policy_tab').css('display', 'none');
+		     $('#album_tab').css('display', 'none');
+		     
+		     $(this).addClass('active');
+		     $('#'+$(this).attr('rel')).css('display', 'block');
+		});
+		
+		$('.top_images_offer .offer-thumbnails a img').resizecrop({
+		   width:94,
+		   height:94		   
+		 });
+		
+		$('.uload_banner p img').resizecrop({
+		   width:80,
+		   height:38		   
+		 });
+		
+		$('.top_images_offer a img').css("display", "block");
+		
+		$('#com_album li a img').resizecrop({
+		   width:434,
+		   height:280		   
+		 });
+		$('#album_tab').css('display','none');
+		
+		$("#com_album li a").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$("#share-info-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		
+		$('#topmenu img').css("display", "block");
+		
+		$('.pagination a, .pagination span').each(function( index ){
+		  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
+		  if($(this).html() == "2")
+		  {
+		     if (!$('.pagination span').length) {
+		       $(this).before('<span>1</span>');
+		     }
+		     else
+		     {
+		       $(this).before('<a href="'+$(location).attr('href').replace("pos=", "posz=")+'">1</a>');
+		     }
+		  }
+		});
+		
+		
+		$('#custom-style-box .custom-button').click(function(){
+		   if($('#custom-style-box').css("left") == "-275px")
+		     $('#custom-style-box').animate({left: "0"}, 500);
+		   else
+		     $('#custom-style-box').animate({left: "-275px"}, 500);
+		});
+		
+		
+		
+		//custom styles
+		$('#colorSelector').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles.backgroundColor}{$styles.backgroundColor}{else}#ffffff{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector div, #body-wrapper').css('backgroundColor', '#' + hex);
+				 $('#background_color').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles.backgroundColor}<!--{literal}-->
+		    $('#colorSelector div').css("background-color", "<!--{/literal}-->{$styles.backgroundColor}<!--{literal}-->");
+		    $('#background_color').val("<!--{/literal}-->{$styles.backgroundColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		 
+		$('#body-wrapper-padding').click(function(){if($('.pattern-select').css('display') == 'block') $('.pattern-select').fadeOut("slow")});	
+		$('#backgroundSelector img').eq(0).click(function(e){$('.pattern-select').toggle();e.stopPropagation();});
+		
+		$('#backgroundSelector .pattern-example img').click(function(){
+		    $('#background_image').val("url('"+$(this).attr("rel")+"')");
+		    $('#body-wrapper').css('backgroundImage', "url('"+$(this).attr("rel")+"')");
+		    if($(this).attr("rel") != "")
+			$('.custom_bg img').attr("src", $(this).attr("rel"));
+		    else
+			$('.custom_bg img').attr("src", $(this).attr("src"));
+		});
+		<!--{/literal}-->{if $styles.backgroundImage}<!--{literal}-->
+			var n="<!--{/literal}-->{$styles.backgroundImage}<!--{literal}-->";
+			var n=n.replace("url('","");
+			var n=n.replace("')","");
+			
+		    $('#background_image').val("url('"+n+"')");
+		    
+		    if("<!--{/literal}-->{$styles.backgroundImage}<!--{literal}-->" != "url('')")
+		    {
+			
+			//alert(n);		    
+			$('.custom_bg img').attr("src", n);
+		    }
+		    
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		$('#colorSelector2').ColorPicker({
+			    color: '<!--{/literal}-->{if $styles_all.textColor}{$styles_all.textColor}{else}#333333{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg2');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg2');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector2 div').css('backgroundColor', '#' + hex);
+				 $('#left-sidebar ul li.plevel3 a,.childcat,.nntype a,.top_tab_intro a,#body-wrapper-padding label,body,.mainhotnew .hotnewlist, #top-social a.open-soc,#top-social a.open-soc span, h6, .section-block .subtitle, #page-title .subtitle, .widget .subtitle, .scrollbarleft ul li a span').css('color', '#' + hex);
+				$('#text-color').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.textColor}<!--{literal}-->
+		    $('#colorSelector2 div').css("background-color", "<!--{/literal}-->{$styles_all.textColor}<!--{literal}-->");
+		    $('#text-color').val("<!--{/literal}-->{$styles_all.textColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		$('#colorSelector3').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.titleColor}{$styles_all.titleColor}{else}#1F9ED9{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg3');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg3');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector3 div').css('backgroundColor', '#' + hex);
+				 $('.nntype a.active,.nntype a:hover,.top_shop_name,#body-wrapper-padding h2,#body-wrapper-padding .widget h3').css('color', '#' + hex);
+				$('#title-color').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.titleColor}<!--{literal}-->
+		    $('#colorSelector3 div').css("background-color", "<!--{/literal}-->{$styles_all.titleColor}<!--{literal}-->");
+		    $('#title-color').val("<!--{/literal}-->{$styles_all.titleColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		$('#colorSelector4').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.linkColor}{$styles_all.linkColor}{else}#117FB2{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg4');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg4');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector4 div').css('backgroundColor', '#' + hex);
+				 $('#body-wrapper-padding .widget .product h3,.space_contact_box a,#policy_but,.mainhotnew .active,.mainhotnew a:hover,#left-sidebar li a').css('color', '#' + hex);
+				 $('.postitem a,a.button, button.button, input.button, #respond input#submit, #content input.button').css('background', '#' + hex);
+				$('#link-color').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.linkColor}<!--{literal}-->
+		    $('#colorSelector4 div').css("background-color", "<!--{/literal}-->{$styles_all.linkColor}<!--{literal}-->");
+		    $('#link-color').val("<!--{/literal}-->{$styles_all.linkColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		
+		$('#colorSelector5').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.menuBgColor}{$styles_all.menuBgColor}{else}#4BC14B{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg5');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg5');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector5 div').css('backgroundColor', '#' + hex);
+				 $('.table_th,.recent-tabs-widget .tabs dd a:hover, .recent-tabs-widget .tabs dd.active a,.recent-tabs-widget .tabs a').css('background', '#' + hex);
+				$('#menuBgColor').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.menuBgColor}<!--{literal}-->
+		    $('#colorSelector5 div').css("background-color", "<!--{/literal}-->{$styles_all.menuBgColor}<!--{literal}-->");
+		    $('#menuBgColor').val("<!--{/literal}-->{$styles_all.menuBgColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		$('#colorSelector6').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.footerColor}{$styles_all.footerColor}{else}#64A852{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg6');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg6');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector6 div').css('backgroundColor', '#' + hex);
+				 $('#darkf').css('background', '#' + hex);
+				$('#footerColor').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.footerColor}<!--{literal}-->
+		    $('#colorSelector6 div').css("background-color", "<!--{/literal}-->{$styles_all.footerColor}<!--{literal}-->");
+		    $('#footerColor').val("<!--{/literal}-->{$styles_all.footerColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		
+		$('#colorSelector7').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.menuTextColor}{$styles_all.menuTextColor}{else}#ffffff{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg7');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg7');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector7 div').css('backgroundColor', '#' + hex);
+				 $('.recent-tabs-widget .tabs a').css('color', '#' + hex);
+				$('#menuTextColor').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.menuTextColor}<!--{literal}-->
+		    $('#colorSelector7 div').css("background-color", "<!--{/literal}-->{$styles_all.menuTextColor}<!--{literal}-->");
+		    $('#menuTextColor').val("<!--{/literal}-->{$styles_all.menuTextColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		$('#colorSelector8').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.footerTextColor}{$styles_all.footerTextColor}{else}#ffffff{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg8');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg8');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector8 div').css('backgroundColor', '#' + hex);
+				 $('#darkf a,.user_footer h3,#darkf p').css('color', '#' + hex);
+				$('#footerTextColor').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.footerTextColor}<!--{literal}-->
+		    $('#colorSelector8 div').css("background-color", "<!--{/literal}-->{$styles_all.footerTextColor}<!--{literal}-->");
+		    $('#footerTextColor').val("<!--{/literal}-->{$styles_all.footerTextColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		
+		$('#colorSelector9').ColorPicker({
+			 color: '<!--{/literal}-->{if $styles_all.borderColor}{$styles_all.borderColor}{else}#aaaaaa{/if}<!--{literal}-->',
+			 onShow: function (colpkr) {
+				 $('.colorpicker').addClass('colorpicker_bg9');
+				 $(colpkr).fadeIn(10);				 
+				 return false;
+			 },
+			 onHide: function (colpkr) {
+				 $('.colorpicker').removeClass('colorpicker_bg9');
+				 $(colpkr).fadeOut(10);				 
+				 return false;
+			 },
+			 onChange: function (hsb, hex, rgb) {
+				 $('#colorSelector9 div').css('backgroundColor', '#' + hex);
+				 $('.fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img').css('border-color', '#' + hex);
+				 $('.pagination span,.pagination a:hover').css('background', '#' + hex);
+				 $('#darkf').css('border-top', 'solid 1px #' + hex);
+				$('#borderColor').val('#' + hex);
+			 }
+		 });
+		<!--{/literal}-->{if $styles_all.borderColor}<!--{literal}-->
+		    $('#colorSelector8 div').css("background-color", "<!--{/literal}-->{$styles_all.borderColor}<!--{literal}-->");
+		    $('#borderColor').val("<!--{/literal}-->{$styles_all.borderColor}<!--{literal}-->");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		
+		////slider
+		//for(var i=0; i<6; i++)
+		//{
+		//    $('.main_banner ul li').eq(i).css("display", "none");
+		//}
+		//
+		//var loadedcount = 0;
+		//$('#topmenu img').each(function(){
+		//   $(this).load(function(){
+		//	loadedcount++;
+		//    });	   
+		// });
+		
+		//refreshIntervalId1 = setInterval(function(){
+		//    if (loadedcount == $('#topmenu ul li').length) {
+		//	$('#topmenu img').resizecrop({
+		//	   width:907,
+		//	   height:339		   
+		//	});
+		//	clearInterval(refreshIntervalId1);
+		//    }
+		//}, 100);
+		//
+		//
+		//refreshIntervalId = setInterval(function(){
+		//    if ($('#topmenu ul li').length == $('#topmenu ul li span').length && loadedcount == $('#topmenu ul li').length) {
+		//	for(var i=0; i<6; i++)
+		//	{
+		//	    $('.main_banner ul li').eq(i).css("display", "block");
+		//	}
+		//	$('.newx').remove();
+		//	if ($('.main_banner ul li span').length) {
+		//	    $('.bxslider').bxSlider({
+		//		auto: true,
+		//		easing: 'linear',
+		//		controls: true,
+		//		mode: 'fade',
+		//	    });
+		//	}
+		//	clearInterval(refreshIntervalId);
+		//    }
+		//    //alert("not yet");
+		//},  1000);
+		
+		
+		//slider
+		//for(var i=0; i<6; i++)
+		//{
+		//    $('.main_banner ul li').eq(i).addClass("dnone");
+		//}
+		//
+		////setTimeout(function(){
+		////$('.newx').remove();
+		//        $('#topmenu img').resizecrop({
+		//	   width:907,
+		//	   height:339		   
+		//	});
+		//
+		////}, 2000);
+		//
+		//refreshIntervalId = setInterval(function(){
+		//    
+		//    if ($('#topmenu ul li').length == $('#topmenu ul li span').length) {
+		//	
+		//	
+		//	setTimeout(function(){
+		//	    $('.newx').remove();
+		//	    for(var i=0; i<6; i++)
+		//	    {
+		//		$('.main_banner ul li').eq(i).removeClass("dnone");
+		//	    }
+		//	    $('.bxslider').bxSlider({
+		//		    auto: true,
+		//		    easing: 'linear',
+		//		    controls: true,
+		//		    mode: 'fade',
+		//	    });
+		//	}, 1000);
+		//	
+		//	
+		//	
+		//	clearInterval(refreshIntervalId);
+		//	
+		//    }
+		//}, 100);
+		
+		$('ul.products li.product a img').resizecrop({
+		   width:290,
+		   height:290,
+		   vertical:"top"
+		});
+		
+		$('.bxslider').nivoSlider();
+		
+		//$('.link_item img').resizecrop({
+		//   width:99,
+		//   height:99
+		// });
+		//$('.link_item img').css("display","block");
+		
+		 $('body').click(function(){$('#quick_inbox_content').fadeOut();$('#quick_message_content').fadeOut()});
+		    $('#inboxhome a.but').click(function(event){$('#quick_inbox_content').toggle();event.stopPropagation();});
+		    
+		var ann_count = 0;
+		setInterval(function(){ getAnnounce(ann_count); ann_count++}, 15000);
+		
+		//chatbox get new arrival
+		//setInterval(function(){ updateChatbox(); }, 5000);
+		
+		//chatboxs
+		<!--{/literal}-->
+		    <!--{if $pb_username!=""}-->
+		    
+			<!--{literal}-->
+			    setInterval(function(){ updateChatbox(); }, 8000);
+			<!--{/literal}-->
+		    
+		    
+			<!--{loop $chatboxs item level key}-->
+			    
+			    {if $item != '' && $item != 0}
+				getChatbox({$item}, true);			    
+			    {/if}
+			    
+			<!--{/loop}-->
+			
+		    <!--{/if}-->
+		
+		<!--{literal}-->
+		
+		
+		$(".comment_but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		
+		<!--{/literal}-->{if $smarty.get.un}<!--{literal}-->
+		 	$("#share-info-but").trigger("click");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		$(".zoomz").fancybox();
+		
+		
+		
+		//for offer
+		$("#offerbox-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+		
+		$("#welcomnew-info-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+		//alert(<!--{/literal}-->{$smarty.get.welcome}<!--{literal}-->);
+		<!--{/literal}-->{if $smarty.get.welcome}<!--{literal}-->
+			$('#welcomnew-info-but').trigger("click");
+		<!--{/literal}-->{/if}<!--{literal}-->
+		
+		
+		if (window.location.hash == "#chinh-sach") {
+		    $('#policy_but').trigger("click");
+		}
+		
+		$("#guestbox-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		$('.products a,.products img').qtip({ // Grab some elements to apply the tooltip to
+                    content: {
+                        attr: 'title'                        
+                    },
+                    position: {
+                        target: 'mouse', // Track the mouse as the positioning target
+                        adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
+                    }
+                })
+		
+	});
+	
+	
+	$(window).scroll(function(){
+	 
+	 //$('#topmenu_outer').css('top', $(window).scrollTop()+'px');
+	 
+    $.each($('.connect_searchxz'),function(){
+        var eloffset = $(this).offset();
+	var windowpos;
+	if ($(window).scrollTop() >= pos_searchlist) {
+	  windowpos = $(window).scrollTop()+22;
+	}
+	else
+	{
+	  windowpos = $(window).scrollTop();
+	}
+        
+        if(windowpos<eloffset.top) {
+            $(this).css('position', 'absolute');
+	    $(this).css('top', pos_searchlist+'px');
+        } else {
+            $(this).css('position', 'fixed');
+	    $(this).css('top', '22px');    
+        }
+	//console.log(eloffset.top);
+	//console.log(windowpos);
+	//console.log($(this).css('top'));
+    });
+    
+    
+    
+});
+	
+$(window).scroll(function() {
+ 
+ if($('#left-sidebar').height() < $('#content').height()) $('#left-sidebar').height($('#content').height());
+ 
+ //$('#verytopmenu').css('padding-right', 1200 - $(window).width());
+ //  if ($(window).width() < 1200) {
+ //  $('#darkf').css('width', '1200px');
+ //}
+ //else
+ //{
+ //  $('#darkf').css('width', '100%');
+ //}
+ //
+ //if ($(window).width() < 1190) {
+ //  $('#top-social a.open-soc').css('right', 1194 - $(window).width());
+ //  $('#top-social .soc-wrap').css('margin-right', 1194 - $(window).width());
+ //}
+ //else
+ //{
+ // $('#top-social a.open-soc').css('right', '4px;');
+ // $('#top-social .soc-wrap').css('margin-right', '0');
+ //}
+ 
+});
+	
+</script>
+
+	<!--{/literal}-->
+	
+	{$styles_string}
+	
+
+</head>
+
+
+<body class="home page page-template page-template-page-no_top-php theme-onetouch wpb-js-composer js-comp-ver-3.4.12 vc_responsive">
+	
+	
+
+	
+<div id="loading" style="display: none">{lang loading}</div>
+
+<!--{literal}-->
+<script> var customStyleImgUrl = "http://theme.crumina.net/onetouch/wp-content/themes/theme_v_1.tmp/inc/custom_style/assets/img/";</script>
+<!--{/literal}-->
+
+
+
+
+
+<a id="hiddenclicker" href="#box_alert" style="display: none">Hidden Clicker</a>
+<div id="box_alert" style="display: none">
+	
+	<div style="padding: 20px;width: 300px">
+			<h4>{lang added_to_cart}</h4>
+<br />
+			<p>
+				<a id="add_paragraph" title="Add" class="button button-blue" href="index.php?do=product&action=add_cart">{lang go_to_cart}</a>
+				&nbsp;
+				<a href="javascript:$.fancybox.close();">{lang close}</a>
+			</p>
+			
+	</div>
+	
+   </div>
+
+   
+   
+   
+   <a id="browser-info-but" href="#browser-info" style="display: none">Hidden Clicker</a>
+   <div id="browser-info" style="display: none">
+	
+	<div style="padding: 20px 20px 20px 20px;width: 525px">
+			
+			 <div class="content_inner" style="padding-bottom:10px;">
+			 <h4>Kính chào Quý khách !<br><br>Hiện tại trang <a href="{$WebRootUrl}">MarketOnline.vn</a> xem tốt trên các trình duyệt sau:</h4>
+			  <p style="float:left">
+			   <a style="margin-left: 33px;display: block;float: left;text-align: center;padding-top: 10px;margin-right: 25px" href="http://www.mozilla.org/vi/firefox/new/">
+			    <img style="padding: 5px 0px 0 3px" src="http://marketonline.vn/templates/default/image/firefox.png" /><br>Tải về</a>
+			   <a style="display: block;float: left;text-align: center;padding-top: 10px;margin-right: 15px" href="http://www.google.com/intl/vi/chrome/">
+			    <img style="padding: 5px 0px 0 3px" src="http://marketonline.vn/templates/default/image/chrome.png" /><br>Tải về</a>
+			   <a style="display: block;float: left;text-align: center" href="http://support.apple.com/kb/dl1531">
+			    <img style="padding: 5px 10px 0 5px" src="http://marketonline.vn/templates/default/image/safari.png" /><br>Tải về</a>
+			  </p>
+			 </div>
+
+			
+			
+	</div>
+	
+</div>
+   
+<a id="album-detail-but" href="#album-detail" style="display: none">Hidden Clicker</a>
+<div id="album-detail" style="display: none">
+	
+	<div style="padding: 20px 20px 20px 20px;width: 1000px;max-height: 600px;">
+			
+			<div class="album-content"></div>
+			
+	</div>
+	
+</div>
+
+<a id="share-info-but" href="#share-info" style="display: none">Hidden Clicker</a>
+<div id="share-info" style="display: none">
+	
+	<div style="padding: 20px 20px 20px 20px;width: 1000px;max-height: 600px;overflow-x: hidden">
+			
+			{$share_info.message}
+			
+	</div>
+	
+</div>
+
+
+   <div id="login-box" style="display: none">
+	
+	<div style="padding: 20px 20px 0px 20px;width: 320px">
+			  
+			 <div class="content_inner" style="padding-bottom:10px;">
+			  
+			  
+			  
+			  
+			  
+			  
+			  <div class="wrapper">
+    <div class="content">
+        
+	<h1>{lang login}</h1>
+	
+        <div class="loadingcon">
+        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
+            <input type="hidden" name="action" value="logging">
+	    <input type="hidden" name="type" value="{$Type}">
+	    <input type="hidden" name="redirect" value="{$F_URL}">
+	    <!-- {formhash} -->
+	    <input type="hidden" name="forward" value="{$_G.forward}" />
+            <div class="loadingconleft">
+                
+				{if $LoginError}{$LoginError}{/if}
+				<br />
+{if $pb_username!=""}
+					<label class="loadingname">
+                        {lang user_name}
+                    </label>
+                    <label>
+                        {$pb_username|default:'`$_account_n_email_n_mobile`'}
+                    </label>
+                    <br clear="all" />
+					<label class="loadingname">
+                        {lang member_type}
+                    </label>
+                    <label>
+                        {$member_info.groupname}<img src="{$member_info.groupimage}" />
+                    </label>
+                    <br clear="all" />
+					<label class="loadingname">
+                        {lang your_last_login}{lang colon}
+                    </label>
+                    <label>
+                        {$member_info.last_login|date_format:"%Y-%m-%d %H:%M"}
+                    </label>
+                    <br clear="all" />
+{else}
+					<label class="loadingname">
+                        {lang user_name}
+                    </label>
+                    <label>
+                        <input type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">&nbsp;
+                    </label>
+                    <label class="loadingname">
+                    {lang password}
+                    </label>
+                    <label>
+                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}&nbsp;
+                    </label>
+                    <br clear="all" />
+                    
+                    <div class="clear"></div>
+                    <div class="login" id="btnLoginDiv">
+                       <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton" />
+		       <div class="info_but_login">
+		       	<a href="{$WebRootUrl}getpasswd.php">{lang forget_password}</a><br />
+		       	<a href="{$WebRootUrl}register.php">{lang register}</a>
+		       </div>
+                    </div>
+		    
+		   <div class="box-res-con">
+		     <div class="inner-boxx">
+    <h4>{lang not_register_annouce}</h4><br />
+    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='register.php?typename=Company'">{lang register}</button>
+</div>
+		    </div>
+{/if}
+                    
+            </div>
+            
+        </form>
+        </div>
+    </div>
+</div>
+<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
+<script language="javascript" src="scripts/validate.js" charset="{$charset}"></script>
+<script>
+var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
+</script>
+			 
+			 
+			 
+			  
+			 </div>
+	</div>
+	
+</div>
+
+<div id="announce-frame"></div>
+   
+      <div id="chat-frame">
+    
+   </div>
+      
+      
+         <div id="history-list-frame">    
+      <div class="content">
+       <div class="content-inner">
+	   <div class="toggle-button">{lang history_viewed}</div>
+	   <div class="history-list">
+	  
+	   </div>
+	   <span class="nav next">next</span>
+	   <span class="nav prev hide">prev</span>
+       </div>
+      </div>
+   </div>
+      
+      
+<a id="offerbox-but" href="#offerbox-fancy" style="display: none">Hidden Clicker</a>
+<div id="offerbox-fancy" style="display: none">
+	
+	<div style="padding: 0;width: 1070px;float: left" class="offerbox-outer">
+			
+		
+      </div>
+	
+</div>
+
+<a id="welcomnew-info-but" href="#welcomnew-info" style="display: none">Hidden Clicker</a>
+<div id="welcomnew-info" style="display: none">
+	
+	<div style="padding: 20px 20px 20px 20px;width: 600px;max-height: 600px;overflow-x: hidden">
+			
+			{$welcomnew_info.message}
+			
+	</div>
+	
+</div>
+
+<a id="guestbox-but" href="#guest-box" style="display: none">Hidden Clicker</a>
+<div id="guest-box" style="display: none">
+	
+	<div style="padding: 20px 20px 10px 20px;width: 320px">
+			
+			 <div class="content_inner" style="padding-bottom:10px;">
+                            <div class="login_pls">
+                                Vui lòng <a class="comment_but" href="#login-box">Đăng nhập/Đăng ký</a> để viết lời bình hoặc điền thông tin bên dưới:
+                            </div>
+                            <div class="guest_form">
+                                <label>Họ và Tên <span>*</span></label>
+                                <input name="box_guest_name" />
+                                <label>Email <span>*</span></label>
+                                <input name="box_guest_email" />
+                                <button>Gửi</button>
+                            </div>
+                            
+                         </div>
+        </div>
+</div>

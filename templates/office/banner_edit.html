@@ -1,0 +1,260 @@
+<!--{assign var="page_title" value="`$_ad_pic`"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<script>
+var allows_maximum_input = "{lang allows_maximum_input}";
+var can_also_enter = "{lang can_also_enter}";
+</script>
+<!--{editor type="tiny_mce"}-->
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem30').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem12').addClass('mActive');
+
+		$("#Frm1").validate({
+                    submitHandler: function(form) {
+                        
+                        var okk = true;
+                        if ($('#dataProductIndustryId1').val() == 0) {
+                                okk = false;
+                        }
+                        //alert(!$('input[name="ad[source_url]"]').val() && !$('input[name="attach"]').val());
+                        if (!$('input[name="ad[source_url]"]').val() && !$('input[name="attach"]').val()) {
+                            okk = false;
+                        }
+                           
+                        if (okk) {
+                                $(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
+                                document.GetDocumentByID('#save').click();
+                        }
+			
+                    }
+
+                })
+                
+                $('#save').click(function (){
+                        if ($('#dataProductIndustryId1').val() == 0)
+                        {
+                                $("html, body").animate({ scrollTop: $('#dataIndustry').offset().top - 100 }, 100);
+                                setTimeout(function(){
+                                        $('#dataIndustry select').removeClass('error');
+                                        $('#dataProductIndustryId1').addClass('error');			
+                                        $('#dataIndustry').append('<label for="dataIndustryName" generated="true" class="error">Chọn chuyên mục</label>');
+                                }, 200);			
+                        }
+                        
+                        if (!$('input[name="ad[source_url]"]').val() && !$('input[name="attach"]').val()) {
+                            $("html, body").animate({ scrollTop: $('#dataIndustry').offset().top - 100 }, 100);
+                                setTimeout(function(){
+                                        $('.ad_image').append('<label for="dataIndustryName" generated="true" class="error">Chọn hình ảnh Quảng cáo</label>');
+                                }, 200);
+                        }
+                });
+	});
+</script>
+<!--{/literal}-->
+
+
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>
+	{if $MEMBER.membergroup_id == 3}{lang ad_pic}{/if}
+	{if $MEMBER.membergroup_id == 1}{lang ad_pic}{/if}
+	{if $MEMBER.membergroup_id == 2}{lang ad_pic}{/if}
+     </h2></div>
+     <div class="hint">{lang must_input_with_star}</div>
+
+     
+     
+     <div id="product_edit_box">
+     
+     
+	  <form id="Frm1" method="post" action="banner.php" enctype="multipart/form-data" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="id" value="{$smarty.get.id}" />  
+    <table class="infoTable offer_info_content">
+      <tr>
+        <th class="paddingT15"> {lang ad_title}:<font class="red">*</font></th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2 required" name="ad[title]" value="{$item.title}" />                
+        </td>
+      </tr>
+      <tr>
+        <th class="paddingT15">{lang industry_product}:<font class="red">*</font></th>
+			<td colspan="2">
+
+				<div id="dataIndustry" class="ad_industry">
+								<select name="industry[id][1]" id="dataProductIndustryId1" class="level_1 required" ></select>
+								<select name="industry[id][2]" id="dataProductIndustryId2" class="level_2"></select>
+								<select name="industry[id][3]" id="dataProductIndustryId3" class="level_3" ></select>
+								<select name="industry[id][4]" id="dataProductIndustryId4" class="level_4" ></select>
+				</div>
+
+			</td>
+		</tr>
+      <tr>
+        <th class="paddingT15" valign="top">Mô tả nội dung quảng cáo</th>
+        <td class="paddingT15 wordSpacing5">
+            <textarea style="width:100%;height:400px;" name="ad[description]" id="dataTradeContent">{$item.description}</textarea></td>
+      </tr>
+      <tr style="display: none">
+        <th class="paddingT15"> {lang adzone}</th>
+        <td class="paddingT15 wordSpacing5">
+		<select name="ad[adzone_id]" id="ad_adzone_id">
+		<!--{foreach from=$Adzones item=z name=sel_adzone}-->
+		<option value="{$z.id}" {if $z.id eq $item.adzone_id or $z.id eq $smarty.get.adzone_id}selected{/if}>
+		{$z.name}
+		<!--{foreachelse}-->
+		<option value="0">{lang full_please}{lang adzone}
+		<!--{/foreach}-->
+		</select><label class="field_notice">{lang adzone_note}</label></td>
+      </tr>
+      <tr>
+        <th class="paddingT15">{lang ad_image}:</th>
+        <td class="paddingT15 wordSpacing5 ad_image"><label for="Sourcetype1">
+        <input type="radio" name="m_sourcetype" id="Sourcetype1" value="1"/> {lang local_upload}</label><label for="Sourcetype2"><input type="radio" name="m_sourcetype" id="Sourcetype2" value="2"/> {lang link_address}</label>
+          </td>
+      </tr>
+      <tbody id="divSourceType2" style="display:none">
+      <tr>
+        <th class="paddingT15"></th>
+        <td class="paddingT15 wordSpacing5">
+            <input placeholder="Dán đường dẫn tới hình ảnh Quảng tại đây" type="text" name="ad[source_url]" value="{$item.source_url}">
+        </td>
+      </tr>
+      </tbody>
+      <tbody id="divSourceType1">
+      <tr>
+        <th class="paddingT15"></th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" type="file" name="attach" /></td>
+      </tr>
+      </tbody>
+      
+      <tr style="display:none">
+        <th class="paddingT15">{lang date_start}</th>
+        <td class="paddingT15 wordSpacing5"> 
+		<input name="data[start_date]" value="{$item.start_date}" type="text" id="date2" /><span class="btn_calendar" id="calendar-date2"></span><label class="field_notice">{lang empty_that_never_expires}</label></td>
+      </tr>
+      <tr style="display:none">
+        <th class="paddingT15">{lang effective_period} {lang arrive_to}{lang colon}</th>
+        <td class="paddingT15 wordSpacing5"> 
+		<input name="data[end_date]" value="{$item.end_date}" type="text" id="date1" />
+                <span class="btn_calendar" id="calendar-date1"></span>
+                <label class="field_notice">{lang empty_that_never_expires}</label></td>
+      </tr>
+      {if $item.source_url}
+      <tr>
+        <th></th>
+        <td>
+            <img width="200px" style="padding-bottom: 7px;" src="{$item.image}" />
+        </td>
+      </tr>
+      {/if}
+      <tr>
+        <th class="paddingT15">{lang point_to_url}</th>
+        <td class="paddingT15 wordSpacing5">          
+		<!--<input placeholder="Nhập đường dẫn đến website/shop/gian hàng/sản phẩm/... mà bạn muốn quảng cáo" class="infoTableInput2 required" name="ad[target_url]" value="{$item.target_url}" />-->
+		<a href="{the_url module=space userid=`$pb_company.cache_spacename`}">{the_url module=space userid=`$pb_company.cache_spacename`}</a>
+	</td>
+      </tr>
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" id="save" type="submit" name="save" value="{lang save_and_pub}" />		</td>
+      </tr>
+    </table>
+  </form>
+
+	  
+     </div>
+	  
+	  
+	  
+	</div>
+  </div>
+
+
+<script>
+var ad_url = "{$item.source_url}";
+</script>
+<!--{literal}-->
+<script>
+//Calendar.setup({
+//	trigger    : "calendar-date1",
+//	animation  : false,
+//	inputField : "date1",
+//	onSelect   : function() { this.hide() }
+//});
+//Calendar.setup({
+//	trigger    : "calendar-date2",
+//	animation  : false,
+//	inputField : "date2",
+//	onSelect   : function() { this.hide() }
+//});
+jQuery(document).ready(function($) {
+	/* Using Name for selector */
+	$("#Sourcetype1").click(function() 
+	  {  
+		// hides matched elements if shown, shows if hidden 
+		$("#divSourceType1").show(); 
+		$("#divSourceType2").hide(); 
+	});
+	$("#Sourcetype2").click(function() 
+	  {  
+		// hides matched elements if shown, shows if hidden 
+		$("#divSourceType2").show(); 
+		$("#divSourceType1").hide(); 
+	});
+        //alert(ad_url);
+	if(ad_url!=""){
+		$("input[value='2']").trigger("click")
+	}else{
+            $("input[value='1']").trigger("click")
+        }
+})
+</script>
+<!--{/literal}-->
+
+
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+</script>
+<!-- {literal} -->
+<script>
+jQuery(document).ready(function($) {
+	$("#ProductpriceCategory").val("{$item.category_id|default:0}")
+})
+</script>
+<!-- {/literal} -->
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+
+<!--{include file="footer.html"}-->
+
+

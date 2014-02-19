@@ -1,0 +1,14 @@
+{if $Items}
+<ul class="chat-list">
+<!--{loop $Items item level key}-->
+                        <li {if $item.me}class="me"{/if} rel="{$item.created_or}" chat-id="{$item.id}" read="{$item.read}">
+                            <span class="datetimec">{$item.created}</span>
+                            <img width="40" height="40" src="{$item.company_logo}" class="avatar">
+                            {$item.content}</li>
+                    <!--{/loop}-->
+</ul>
+{/if}
+{if $chatitem}
+<div class="seen-id">{$chatitem.id}</div>
+<div class="seen-content">Đã xem</div>
+{/if}

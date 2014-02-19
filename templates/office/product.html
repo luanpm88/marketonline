@@ -1,0 +1,245 @@
+{if $getvar.type == 'service'}
+	<!--{assign var="page_title" value="`$_service_management`"}-->
+{else}
+	<!--{assign var="page_title" value="`$_product_management`"}-->
+{/if}
+
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem<!--{/literal}-->{if $getvar.type == 'service'}22{else}5{/if}<!--{literal}-->').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<!--{literal}-->
+<script>
+    
+    function submitForm() {
+	if ($('#cat_id').val() != '0') {
+	    $('#TypeFrm').submit();
+	}
+    }
+    
+    
+    jQuery(document).ready(function($) {
+	$('#dataIndustry select').change(function() {
+	    //alert($(this).prev().val());
+	    var value = $(this).val();
+	    if (value == '0') {
+		//value = $(this).prev().val();
+		if (typeof($(this).prev().val()) != 'undefined') {
+		    value = $(this).prev().val();
+		}
+	    }
+	    
+	    $('#cat_id').val(value);
+	});
+	
+	$('#sortType').val('<!--{/literal}-->{$sortType}<!--{literal}-->');
+	$('#sortOrder').val('<!--{/literal}-->{$sortOrder}<!--{literal}-->');
+	$('#sortType').change(function() {
+	    $('#OrderBy').val($(this).val()+' '+$('#sortOrder').val());
+	    $('#TypeFrm').submit();
+	});
+	
+	$('#sortOrder').change(function() {
+	    $('#OrderBy').val($('#sortType').val()+' '+$(this).val());
+	    $('#TypeFrm').submit();
+	});
+    });
+</script>
+<!--{/literal}-->
+
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>
+	{if $getvar.type == 'service'}
+		{lang service_management}
+	{else}
+		{lang product_management}
+	{/if}
+     </h2></div>
+     
+     
+     
+	 
+	 <div class="h30">
+	   
+	    <span class="btn_hint"><a href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}" class="btn_publish">{if $getvar.type == 'service'}{lang release_service}{else}{lang release_products}{/if}</a>
+	    </span>
+	    
+	    
+	 </div>
+		  <form name="typefrm" id="TypeFrm" method="get" action="">
+		    <input type="hidden" name="order_by" id="OrderBy" value="{$getvar.order_by}" />
+		    {if $getvar.type == 'service'}<input type="hidden" name="type" id="type" value="service" />{/if}
+		   <table class="product_sort">
+            <tr>
+              <td>
+		
+		<label style="float:left; margin-right: 10px;padding-top: 2px">{lang category}: </label>
+		    <div id="dataIndustry" class="searchbox_mleft">
+							<select name="level1" id="dataProductIndustryId1" class="level_1" ></select>
+							<select name="level2" id="dataProductIndustryId2" class="level_2"></select>
+							<select name="level3" id="dataProductIndustryId3" class="level_3" ></select>
+							<select name="level4" id="dataProductIndustryId4" class="level_4" ></select>
+		    </div>
+		    <input class="search_keyword" name="keyword" value="{$getvar.keyword}" placeholder="{if $getvar.type == 'service'}{lang service_name}{else}{lang product_name}{/if}/{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}" />
+		    <input type="button" value="{lang search}" onclick="submitForm();" /></td>
+
+            </tr>
+          </table>
+		  </form>
+
+	    <div class="sort_box">
+		<label>{lang sort}</label>
+		<select name="sort_type" id="sortType">
+		    <option value="created">{lang sort_created}</option>
+		    <option value="modified">{lang sort_modified}</option>		    
+		    <option value="name">{lang sort_name}</option>
+		    <option value="price">{lang sort_price}</option>
+		</select>
+		<select name="sort_order" id="sortOrder">
+		    <option value="DESC">{lang desc}</option>
+		    <option value="ASC">{lang asc}</option>		    
+		</select>
+	    </div>
+	    
+	    {if $smarty.get.success}<p class="notice" style="margin-bottom: -25px;">Sản phẩm được lưu thành công!</p>{/if}
+	    <div class="next_prev prev_page"><a href="{$plink}" title="{lang prev_page}">{lang prev_page}</a>&nbsp;&nbsp;&nbsp;<a href="{$nlink}" title="{lang next_page}">{lang next_page}</a></div>
+         <table class="bglist">
+              <!-- product -->
+                    <col width="75">
+                    <col width="260">
+                    <col width="60">
+			<col width="60">
+                    <col width="60">
+		    <col width="60">
+                    <col width="80">
+                <tr>
+                   <th width="9%">{lang sample_image}</th>
+                   <th style="text-align: left">{lang content}</th>
+		   <th>{lang spcode}</th>
+                   <th>{lang published}</th>
+		   
+		   <th style="text-align: left">{lang created_date}</th>
+                   <th style="text-align: left">{lang release}</th>		   
+                   <th width="15%" style="text-align: left">{lang operation}</th>
+                </tr> 
+              <!--{foreach item=item from=$Items}-->
+                <tr class="row{$item.row}">
+                <td><img class="iiimg" style="margin: 3px;" src="{$item.image}" width=75></td>
+                <td style='word-break: break-all' valign="top">
+                    <div style="text-align:left;">
+			<strong>
+			    <a title="{$item.name}" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">
+				{$item.name|truncate:100}
+			    </a>
+			</strong>
+			
+			<p>{$item.content|strip_tags|truncate:180}</p>
+			{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
+		    </div>
+                </td>
+		<td>{$item.product_code}</td>
+                <td>
+		    <!--{if $item.state eq 1}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
+			    <img src="{$office_theme_path}images/published.png">
+			</a>
+		    <!--{else}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}" title="{lang goods_on_shelves}">
+			    <img src="{$office_theme_path}images/unpublished.png">
+			</a>
+		    <!--{/if}-->
+		</td>
+		
+		<td style="text-align: left">{$item.created}</td>
+                <td style="text-align: left"><a title="{lang as_release_supply_title}" href="offer.php?do=pro2offer&productid={$item.id}">{lang as_release_supply}</a>
+		    
+		    <!--<br /><a href="price.php?do=edit&productid={$item.id}">{lang prices}</a>--></td>
+		
+                <td style="text-align: left">
+			<a href="product.php?do=refresh&id={$item.id}&{$current_uri}">{lang bump_to_top}</a><br />
+			<a href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a><br /><a href="{the_url id=`$item.id` module='product'}" target="_blank" title="{lang click_preview}">{lang click_preview}</a><br /><a onclick="return confirm('{lang delete_confirm}')" href="{$smarty.server.PHP_SELF}?act=del&id={$item.id}">{lang delete}</a></td>
+                </tr> 
+              <!--{/foreach}-->
+        </table> 
+         <!-- :~product  -->
+        <table class="room_pages">
+        <tr>
+          <td>{$pagenav}&nbsp;</td>
+        </tr>
+       </table>
+       <table class="trade_line">
+            <tr>
+          <td height="1" background="{$office_theme_path}images/index_trade_line.gif"></td>
+        </tr>
+        <tr>
+          <td align="center"></td>
+        </tr>
+      </table>
+    
+</div>
+</div>
+
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+</script>
+
+
+
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+
+<!-- {literal} -->
+<script>
+jQuery(document).ready(function($) {
+	setTimeout(function(){
+	    
+	    $("#dataProductIndustryId1").val("<!-- {/literal} -->{$getvar.level1|default:0}<!-- {literal} -->");
+	    $("#dataProductIndustryId1").trigger("change");
+	    
+	    setTimeout(function(){
+		$("#dataProductIndustryId2").val("<!-- {/literal} -->{$getvar.level2|default:0}<!-- {literal} -->");
+		$("#dataProductIndustryId2").trigger("change");
+		
+		setTimeout(function(){
+		    $("#dataProductIndustryId3").val("<!-- {/literal} -->{$getvar.level3|default:0}<!-- {literal} -->");
+		    $("#dataProductIndustryId3").trigger("change");
+		    
+		    setTimeout(function(){
+			$("#dataProductIndustryId4").val("<!-- {/literal} -->{$getvar.level4|default:0}<!-- {literal} -->");
+			$("#dataProductIndustryId4").trigger("change");
+		    }, 200);
+		    
+		}, 200);
+		
+	    }, 200);
+		   
+	}, 200);
+})
+</script>
+<!-- {/literal} -->
+
+<!--{include file="footer.html"}-->

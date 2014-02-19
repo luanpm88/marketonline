@@ -1,0 +1,114 @@
+<div class="h30"></div>
+</div>
+</div>
+<div id="footer_bkg">
+   <div id="base_page_footer">
+  <div class="footer_content">
+   <p>{$_G.site_name} - {lang have_problem_send_email}{mailto text="`$service_email`" address="`$service_email`" encode="javascript"}</p> 
+   <p>{lang customer_hotline}{$service_tel} - {lang phone}: {$sale_tel}</p>
+   <!-- {if $company_name} --><p>Copyright &copy; {$_G.site_name}. All rights reserved. {$_G.company_name|pl} {lang copyright}</p><!-- {/if} -->
+</div>
+</div>
+</div>
+
+<!--{literal}-->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-42562780-1', 'marketonline.vn');
+  ga('send', 'pageview');
+
+$(document).ready(function() {
+
+		
+
+	       $('#dataIndustry select').each(function( index ) {
+		  changeIndustry(this);
+		  //getCustomIndustriesByParent($(this).val(), $(this).attr("rel"));
+		//alert($(this).children().length);
+		if($(this).children().length == 1)
+		     {
+		       $(this).addClass('lock');
+		     }
+		     else
+		     {
+		      $(this).removeClass('lock');
+		     }
+		 });
+		 
+		 $('#dataIndustry select').change(function( index ) {
+			changeIndustry(this);
+			if ($(this).val() == 0 && $(this).attr("rel") != 1) {
+			   getCustomIndustriesByParent($(this).prev().val(), $(this).prev().attr("rel"));
+			}
+			else
+			{
+			   getCustomIndustriesByParent($(this).val(), $(this).attr("rel"));
+			}
+			   
+                        $('#dataIndustry select').each(function( index ) {
+                        //alert($(this).children().length);
+                           if($(this).children().length == 1)
+                           {
+                             $(this).addClass('lock');
+                           }
+                           else
+                           {
+                            $(this).removeClass('lock');
+                           }
+                       });
+		 });
+                 
+                 
+                 $('#dataArea select').each(function( index ) {
+		//alert($(this).children().length);
+		if($(this).children().length == 1)
+		     {
+		       $(this).addClass('lock');
+		     }
+		     else
+		     {
+		      $(this).removeClass('lock');
+		     }
+		 });
+		 
+		 $('#dataArea select').change(function( index ) {
+                        $('#dataArea select').each(function( index ) {
+                        //alert($(this).children().length);
+                           if($(this).children().length == 1)
+                           {
+                             $(this).addClass('lock');
+                           }
+                           else
+                           {
+                            $(this).removeClass('lock');
+                           }
+                       });
+		 });
+
+		$("#add_new_brand_but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+
+	});
+</script>
+
+<!--{/literal}-->
+
+<link rel="stylesheet" href="../templates/default/js/fancybox/jquery.fancybox.css">
+<script type='text/javascript' src='../templates/default/js/fancybox/jquery.fancybox.js'></script>
+
+
+
+</body>
+</html>

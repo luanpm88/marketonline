@@ -1,0 +1,138 @@
+<!--{assign var="page_title" value="`$_sms`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem15').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content link_manage">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     
+     <div class="offer_info_title">
+	
+	<h2>{lang link_manage}</h2></div>
+<div class="hint"><span class="btn_hint"><a href="pms.php?do=send" class="btn_publish">{lang send_message}</a></span>{lang sms_tips}</div>
+	  <form name="pmsfrm" method="post" action="{$smarty.server.PHP_SELF}">
+	  <!-- {formhash} -->
+	  <h1>{lang new_member}</h1>
+       <table class="bglist">
+            <tr align="center">
+
+              <th style="text-align: left">{lang username}</th>
+	      <th style="text-align: left">{lang name}</th>
+	      <th style="text-align: left">{lang email}</th>
+	      <th style="text-align: left">{lang phone}</th>
+              <th>{lang status_link}</th>
+	      <th>{lang checkout}</th>
+              <th>{lang created_link}</th>
+	      <th>{lang action_link}</th>
+            </tr>
+			<!--{foreach from=$Items item=item}-->
+			<!--{if $item.type_id == 1}-->
+            <tr align="center" class="bggray">
+
+              <td style="text-align: left">{$item.username}</td>
+	      <td style="text-align: left">{$item.info.first_name} {$item.info.last_name}</td>
+	      <td style="text-align: left">{$item.email}</td>
+	       <td style="text-align: left">{$item.mobile}</td>
+              <td>{if $item.company_status == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+	      <td>{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+              <td>{$item.senddate}</td>
+	      <td>		
+		{if $item.company_status == 1 && $item.checkout == 0 && $countAgent < 10}
+		    <a class="btn_agent" href="link.php?do=setAgent&id={$item.id}" title="{lang set_agent}">{lang set_agent}</a>
+		{/if}
+	      </td>
+            </tr>
+	    
+		    <!--{/if}-->
+			<!--{/foreach}-->
+            <tr align="center" class="bggray">
+              <td colspan="8">{$ByPages}</td>
+            </tr>
+        </table>  
+
+	  </form>
+	  
+	  
+	  <h1>{lang agent} ({$CountAgent}/10)</h1>
+	  <table class="bglist">
+            <tr align="center">
+
+              <th style="text-align: left">{lang username}</th>
+	      <th style="text-align: left">{lang name}</th>
+	      <th style="text-align: left">{lang email}</th>
+	      <th style="text-align: left">{lang phone}</th>
+              <th>{lang status_link}</th>
+	      <th>{lang checkout}</th>
+              <th>{lang created_link}</th>
+            </tr>
+			<!--{foreach from=$Items item=item}-->
+			<!--{if $item.type_id == 2}-->
+            <tr align="center" class="bggray">
+
+              <td style="text-align: left">{$item.username}</td>
+	      <td style="text-align: left">{$item.info.first_name} {$item.info.last_name}</td>
+	      <td style="text-align: left">{$item.email}</td>
+	       <td style="text-align: left">{$item.mobile}</td>
+              <td>{if $item.company_status == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+	      <td>{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+              <td>{$item.senddate}</td>
+
+            </tr>
+	     <!--{/if}-->
+			<!--{/foreach}-->
+            <tr align="center" class="bggray">
+              <td colspan="7">{$ByPages}</td>
+            </tr>
+        </table>  
+	  
+	  
+	  
+	  <h1>{lang customer}</h1>
+	  <table class="bglist">
+            <tr align="center">
+
+              <th style="text-align: left">{lang username}</th>
+	      <th style="text-align: left">{lang name}</th>
+	      <th style="text-align: left">{lang email}</th>
+	      <th style="text-align: left">{lang phone}</th>
+              <th>{lang status_link}</th>
+	      <th>{lang checkout}</th>
+              <th>{lang created_link}</th>
+
+            </tr>
+			<!--{foreach from=$Items item=item}-->
+			<!--{if $item.type_id == 3}-->
+            <tr align="center" class="bggray">
+
+              <td style="text-align: left">{$item.username}</td>
+	      <td style="text-align: left">{$item.info.first_name} {$item.info.last_name}</td>
+	      <td style="text-align: left">{$item.email}</td>
+	       <td style="text-align: left">{$item.mobile}</td>
+              <td>{if $item.company_status == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+	      <td>{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+              <td>{$item.senddate}</td>
+
+            </tr>
+	     <!--{/if}-->
+			<!--{/foreach}-->
+            <tr align="center" class="bggray">
+              <td colspan="7">{$ByPages}</td>
+            </tr>
+        </table>  
+	  
+   </div>
+   </div>
+<!--{include file="footer.html"}-->

@@ -1,0 +1,55 @@
+	<script language="javascript" src="{$WebRootUrl}scripts/jquery/jquery.form.js"></script>
+	<link href="{$WebRootUrl}scripts/jquery/smoothConfirm/smoothConfirm.css" media="screen" rel="stylesheet" type="text/css" />
+	<script src="{$WebRootUrl}scripts/jquery/smoothConfirm/jquery.smoothConfirm.js" type="text/javascript"></script>
+	<script>
+	var ok_btn = "{lang sure}";
+	var cancel_btn = "{lang cancel}";
+	</script>
+	<!-- {literal} -->
+	<script type="text/javascript">
+	$(document).ready( function() {
+		var options = { 
+			success:       function(html){ 
+				$("#AddToFriend").smoothConfirm(html, {
+					okVal: ok_btn,
+					cancelVal: cancel_btn
+				});
+			},  // post-submit callback 
+		}; 
+		$('#AddToFriend').click(function() { 
+			$("#AddFriendFrm").ajaxSubmit(options); 
+			return false; 
+		});
+	});
+	</script>
+	<!-- {/literal} -->
+	<div class="head">
+		<ul class="list1">
+			<li class="company"><a id="AddToFriend" href="javascript:;" title="{lang add_friend}">{lang add_friend}</a></li>
+			<li class="message"><a href="{$Menus.feedback}">{lang feed_back_to_company}</a></li>
+		</ul>
+		<div class="global_link">
+			<span title="{lang integrity_index}">({$MEMBER.credits|default:0})</span>
+			<ul class="list2">
+				<li id="space_index"><a href="{$Menus.index}">{lang home_page}</a></li>
+				<li id="space_intro"><a href="{$Menus.intro}">{lang space_intro}</a></li>
+				<li id="space_product"><a href="{$Menus.product}">{lang product_show}</a></li>
+				<li id="space_offer"><a href="{$Menus.offer}">{lang offer}</a></li>
+				<li id="space_news"><a href="{$Menus.news}">{lang space_news}</a></li>
+				<li id="space_album"><a href="{$Menus.album}">{lang space_album}</a></li>
+				<li id="space_hr"><a href="{$Menus.job}">{lang space_hr}</a></li>
+				<li id="space_contact"><a href="{$Menus.contact}">{lang contact_us}</a></li>
+			</ul>
+			<div class="clear"></div>
+		</div>
+		<div class="imgabsolute"><h1>{$COMPANY.name}{if $COMPANY.english_name}({$COMPANY.english_name}){/if}</h1></div>
+		<div class="imgabsolute2"><img src="{$GROUP.image}" alt="{$GROUP.name}" /></div>
+		<div id="tips">{lang current_position}<a href="{$WebRootUrl}">{$_G.site_name}</a>&raquo;<a href="{$Menus.index}">{$COMPANY.name}</a></div>
+	</div>
+	<form name="add_friend_frm" id="AddFriendFrm" action="{$WebRootUrl}virtual-office/link.php" method="post" target="_blank">
+	<!-- {formhash} -->
+	<input type="hidden" name="save" value="save">
+	<input type="hidden" name="is_ajax" value="1">
+	<input name="spacelink[title]" type="hidden" value="{$COMPANY.name}">
+	<input name="spacelink[url]" type="hidden" value="{$space_url}">
+	</form>

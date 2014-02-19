@@ -1,0 +1,77 @@
+<!--{assign var="page_title" value="`$_companynews`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem<!--{/literal}-->{if $typeid == 9}20{else}13{/if}<!--{literal}-->').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{if $typeid == 9}{lang comnote} {$membertype_name}{else}{$page_title}{/if}</h2></div>
+      <div class="hint"><span class="btn_hint"><a href="news.php?do=edit{if $typeid == 9}&typeid=9{/if}" class="btn_publish">{lang post_companynews}</a></span>{lang add_news_show}</div>  
+		<form name="newsfrm" action="{$smarty.server.PHP_SELF}{if $typeid == 9}?typeid=9{/if}" method="post">
+		    
+		<!-- {formhash} -->
+            <table class="bglist">
+                <tr>
+                  <th><input name="newsidAll" type="checkbox" id="check_all" title="{lang all_select}"></th>
+                  <th width="60%" style="text-align: left">{lang title}</th>
+                  <!--<th>{lang category}</th>
+                  <th>{lang state}</th>-->
+                  <th width="20%">{lang time}</th>
+                  <th width="20%">{lang operation}</th>
+                </tr>
+				<!--{foreach from=$Items item=item}-->
+                <tr align="center" class="bggray">
+                  <td><input name="newsid[]" type="checkbox" id="newsid[]" rel="checkk_item" value="{$item.CompanynewsId}"></td>
+                  <td style="text-align: left">
+		    <time>
+			<span class="day">{$item.created_d}/{$item.created_f}</span>
+			<span class="mounth">{$item.created_y}</span>
+			<span class="time">{$item.created_time}</span>
+		    </time>
+		    <a href="news.php?do=edit&id={$item.CompanynewsId}{if $typeid == 9}&typeid=9{/if}"><strong>{$item.CompanynewsTitle|truncate:120}</strong></a>
+		    <br />
+		    {$item.content|strip_tags|truncate:200}
+		  </td>
+                <!--<td>{$CompanynewsTypes[$item.type_id]}</td>
+                  <td>{$CheckStatus[$item.status]}</td>-->
+                  <td>{$item.pubdate}</td>
+                  <td><a href="news.php?do=edit&id={$item.CompanynewsId}{if $typeid == 9}&typeid=9{/if}">{lang modify}</a>
+		  <br />
+		  <a target="_blank" href="{$COMPANYINFO.space_url}/news/detail-{$item.CompanynewsId}.htmls{if $typeid == 9}?typeid=9{/if}">{lang preview}</a>
+		  </td>
+                </tr>
+				<!--{foreachelse}-->
+				<!--{/foreach}-->
+            </table>
+            <table class="room_pages">
+          <tr>
+            <td>{$ByPages}</td>
+          </tr>
+          </table>
+            <table class="trade_line">
+                <tr>
+                  <td height="1" background="{$office_theme_path}images/index_trade_line.gif"></td>
+                </tr>
+          
+          <tr align="center" valign="bottom">
+            <td height="40"><input name="del" type="submit" id="delete" value="{lang delete_select}"></td>
+          </tr>
+        </table>
+		</form>
+</div>
+</div>
+<!--{include file="footer.html"}-->
+

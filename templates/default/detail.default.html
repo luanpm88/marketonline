@@ -1,0 +1,132 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$item.title`"}-->
+
+
+
+<div id="body-wrapper" class="article_content">
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<div class="row">
+    <div class="fifteen columns" id="page-title">
+        <a class="back" href="javascript:history.back()"></a>
+        <div class="subtitle">            
+                        <p>{$item.typename}</p>
+        </div>
+        <h1 class="page-title">
+                        {$item.title}                   </h1>
+
+        
+
+    </div>
+    <div class="fifteen columns"><div class="line" style="margin-bottom: 10px;padding-top: 0"></div></div>
+</div>
+
+
+<div class="row">
+	<div id="job-content">
+		
+		
+		<!--<div class="tips"><span>{$position}</span></div>-->
+	    <div class="news_all clearfix">
+	      <div class="news_all_left">
+	       <div class="news_title">
+		<div class="title_bar_s4">
+		  <span class="title_top_s4"><span></span></span>
+		  <!--<h2><span>{$item.title}</span>
+		  <p>{lang source}<span class="gray">{$item.source|default:$_G.site_name}</span> {lang post_time}<span class="gray">({$item.pubdate})</span>{lang categories}<span class="gray link-underline">{$item.typename}</span>{lang font_size}{lang colon}&nbsp;<a href="javascript:void(false);" onclick="doZoom(16);">{lang large}</a>&nbsp;<a href="javascript:void(false);" onclick="doZoom(14)">{lang middle}</a>&nbsp;<a href="javascript:void(false);" onclick="doZoom(10)">{lang small}</a></p>
+		  </h2>-->
+	       </div>
+	       </div>
+		<div class="news_all_left_con">
+			  <div id="quoteFlash"></div>
+			  <div class="clear"></div>
+			  <!-- {if $item.picture} -->
+			  <p class="left1"><img src="{$item.image_url}" /></p>
+			  <!-- {/if} -->
+			  
+		    
+		    
+		    
+		  <div id="content">{$item.content}</div>
+			  <div class="clear"></div>
+			  
+			  <div id="news_info" style="display: none">
+			  <!-- {if $item.attach_hashid} -->[<a href="misc.php?do=download&aid={$item.attach_hashid}" target="_blank"><img src="{$theme_img_path}images/download.gif" border="0" />{lang download_attach}</a>] <!-- {/if} -->
+			  <!-- {if $item.tag} -->[{lang tags}{lang colon}{$item.tag_link}] <!-- {/if} -->
+			  <!-- {if $item.download_article} -->[<a href="index.php?do=standard&action=downloadtxt&id={$item.id}" target="_blank"><img src="{$theme_img_path}images/document.gif" border="0" />{lang download_article}</a>]<!-- {/if} -->
+			  <!--[<a href="javascript:window.close()">{lang close_widow}</a>]-->
+			  <a class="print_but" href="javascript: window.print();">{lang print_page}</a>
+			  <!-- {if $item.clicked} -->{lang views}{$item.clicked|number_format}<!-- {/if} -->
+		    </div>
+			  
+		    <div class="announce_navbar" style="display: none"><span><b>{lang prev_record}{lang colon}</b> {$item.prev_link}</a> </span><span><b>{lang next_record}{lang colon}</b> {$item.next_link} </span></div>
+		  
+		</div>
+	      </div>
+	      <!--<div class="all_right">
+	       <div class="title_bar_s4">
+		  <span class="title_top_s4"><span></span></span>
+		  <h3>{lang related_info}</h3>
+	       </div>
+		<div class="all_right_con">
+		  <ul class="news_list">
+		  {news row=10 titlelen=32 typeid=$item.type_id name="r"}
+		    <li> {$r.link}</li>
+		  {/news}
+		  </ul>
+		</div>
+	      </div>-->
+	      <div class="clear"></div>
+	    </div>
+		
+		<div class="fifteen columns" style="padding: 0"><div class="line" style="margin-bottom: 10px;"></div></div>
+		<section class="widget-1 widget-first widget widget_nav_menu job-left-section relate_announce" id="nav_menu-2"><div class="widget-inner">
+			<h3>Bài liên quan</h3><ul class="menu" id="menu-features-list">
+			
+			{announce row=10 typeid=$item.announcetype_id}
+				{if $announce.status}
+					<li{if !$announce.read} class="notread"{/if}><a href="{the_url module='announce' id=`$announce.id`}">{$announce.title}</a></li>
+				{/if}
+			{/announce}
+		    
+		    </ul></div>
+		</section>
+		
+		
+	</div>
+	<div id="job-sidebar">
+		
+		<!--{include file="`$theme_name`/job/rightbar.html"}-->	
+		
+	</div>
+</div>
+
+
+<div class="row">
+	
+	
+	<div class="wrapper">
+	  <div class="content">
+	    
+	  </div>
+	</div>
+
+</div>
+
+
+</div>
+  </div>
+
+
+
+
+
+
+<!--{include file="`$theme_name`/footer.html"}-->

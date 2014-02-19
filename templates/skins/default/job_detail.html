@@ -1,0 +1,248 @@
+<!--{include file="header.html" PageTitle="`$item.name`" cur="space_index"}-->
+<!-- {get_cache var="options" name="typeoption"} -->
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns" id="content">
+
+
+              
+              <div class="row" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0" class="">
+
+	<div id="container">
+	<div class="works-list" id="">
+	      <h6><a href="{$Menus.job}">{lang space_hr}</a></h6>
+	      <h3 style="padding-left: 0; margin-bottom: 15px;">{lang job_name}: {$item.name}</h3>
+	      
+	      
+	      
+	      
+	      
+
+ <table width="98%" class="TableInfo" style="border-color: #aaa">
+    
+				<tbody>
+
+				    <tr>
+					<th width="20%" align="left">{lang require_gender}</th>
+					<td>
+						<span class="JobName">{$options.gender[$item.require_gender_id]}</span>
+					</td>
+				</tr>
+				    <tr>
+					<th align="left">{lang education}</th>
+					<td>
+						{$options.education[$item.require_education_id]}																	
+																										</td>
+				</tr>
+				<tr>
+						<th align="left">{lang job_category}</th>
+						<td>
+							{$item.industry}						</td>
+					</tr>
+				
+				<tr>
+						<th align="left">{lang job_nature}</th>
+						<td>
+							{$options.work_type[$item.worktype_id]}						</td>
+				</tr>
+				    
+				 <tr>
+						<th align="left">{lang work_station}</th>
+						<td>{$item.area}</td>
+					</tr>
+				<tr>
+					<th align="left">{lang require_age}</th>
+					<td>
+					{$item.require_age}
+											</td>
+				</tr>
+				<tr>
+					<th align="left">{lang exper}</th>
+					<td>
+						{$item.exper}																	
+					</td>
+				</tr>
+				<tr>
+					<th align="left">{lang salary_scope}</th>
+					<td>{if $item.salary}{$item.salary} {$item.salary_currency}/tháng{else}Thương lượng{/if}</td>
+				</tr>
+				<tr>
+					<th align="left">{lang testtime}</th>
+					<td>{$item.testtime}					</td>
+				</tr>
+				<tr>
+					<th align="left">{lang job_number} ({lang peoples})</th>
+					<td>
+						{$item.peoples}					</td>
+				</tr>
+				<tr>
+					<th align="left">{lang publish_date_deadline}</th>
+					<td>{$item.expired_dates}</td>
+				</tr>
+				
+				
+				
+				
+				<tr>
+					<th align="left" valign="top">{lang job_description}</th>
+					<td>{$item.content}					</td>
+				</tr>
+				
+				<tr>
+					<th align="left">{lang skills}</th>
+					<td>{$item.skills}					</td>
+				</tr>
+				
+				
+				
+				<tr style="display: none">
+					<th align="left">{lang salary_scope}</th>
+					<td>
+					{$options.salary[$item.salary_id]}
+										<br>
+																																																										</td>
+				</tr>
+
+									
+				
+				<tr style="display: none">
+						<th align="left">{lang work_type}</th>
+						<td>
+							{$options.work_type[$item.worktype_id]}						</td>
+					</tr>
+									
+				<!--<tr>
+					<th align="left">{lang require_education}</th>
+					<td>
+						{$options.education[$item.require_education_id]}																	
+																										</td>
+				</tr>-->
+				
+				<tr>
+					<th align="left">{lang job_other}</th>
+					<td>
+						{$item.job_other}																	
+																										</td>
+				</tr>
+				
+				
+				<tr>
+					<th align="left">{lang rprofile}</th>
+					<td>
+					{$item.rprofile}
+											</td>
+				</tr>
+				
+				{if $item.contact_name}
+				    <tr>
+					    <th align="left" valign="top">Thông tin liên hệ nộp hồ sơ</th>
+					    <td>
+						<div class="text left_com_info job_contact_detail" style="">
+							<p>{if $item.contact_gender == 1}Mr.{elseif $item.contact_gender == 2}Mrs.{/if} {$item.contact_name}{if $item.contact_position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$item.contact_position}</p>{/if}
+							{if $item.contact_mobile}<p>{lang mobile_number}: {$item.contact_mobile}</p>{/if}
+							{if $item.contact_email}<p>{lang email}: {$item.contact_email}</p>{/if}							
+						</div>
+					    </td>
+				    </tr>
+				{/if}
+				
+				
+			</tbody>
+ </table>
+
+  
+  
+
+  
+
+	      
+	      
+	      
+	     
+	      
+						
+
+	      
+        </div>
+	
+	
+	
+	
+	
+	<div class="works-list" id="">
+	      
+	      <h3 style="padding-left: 0; margin-bottom: 15px;">{lang other_job}</h3>
+	      
+	      
+	      <table width="98%" cellspacing="1">
+	<tbody><tr class="table_th" style="color: #fff;">
+	  <th width="20%" align="left">{lang job_name}</th>
+	  <th width="34%" align="left">{lang company}</th>
+	  <th width="16%" align="left">{lang work_station}</th>
+	  <th width="15%" align="left">{lang salary_scope}</th>
+	  <th width="30%" align="left">{lang publish_date_deadline}</th>
+	</tr>
+		
+		<!--{job companyid="`$COMPANY.id`" row=10 status=1}-->
+			{if $item.id != $job.id}
+				
+				<tr>
+						<td>
+								{$job.link}
+						</td>
+						<td>{$job.companyname}</td>
+						<td>{$job.area}</td>
+						<td>{$job.salary}</td>
+						<td>{$job.expired_dates}</td>
+				</tr>
+				
+			{/if}
+		<!--{/job}-->	
+		
+	
+	
+	
+	
+      </tbody></table>
+	      
+						
+
+	      
+        </div>
+	<p><div class="pagination"><!-- {pager rowcount=`$paging.total`} --></div></p>
+	
+	
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+

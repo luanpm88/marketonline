@@ -1,0 +1,50 @@
+<div class="box-level2">
+		<!--{loop $IndustryList item0 level_0 key0}-->
+		  
+			<ul class="menu parent_{$item0.id}">
+			  {if $item0.sub}
+			  <!--{loop $item0.sub level1 level_1_industry key_level1}-->
+			    <li><a class="item menu_lvl2" rel="{$level1.id}" content="<a rel='{$item0.id}' content='{$item0.name}' href='javascript:void(0)'>{$item0.name}</a> / {$level1.name}" href="javascript:void(0)">{$level1.name}</a>
+			      
+			    </li>
+			  <!--{/loop}-->
+			  {/if}
+			  <li class=""><a class="mback bmenu_lvl2" href="javascript:void(0)">{lang back}</a></li>
+			</ul>
+		  
+		<!--{/loop}-->
+	      </div>
+	      
+	      <div class="box-level3">
+	      <!--{loop $IndustryList item0 level_0 key0}-->		  
+			<!--{loop $item0.sub level1 level_1_industry key_level1}-->			  
+			    
+			      <ul class="menu parent_{$level1.id}">
+				{if $level1.sub}
+				<!--{loop $level1.sub level2 level_2_industry key_level2}-->
+				  <li><a class="item menu_lvl3" rel="{$level2.id}" content="<a rel='{$item0.id}' href='javascript:void(0)' content='{$item0.name}'>{$item0.name}</a> / <a rel='{$level1.id}' content='<a rel=&quot;{$item0.id}&quot; href=&quot;javascript:void(0)&quot; content=&quot;{$item0.name}&quot;>{$item0.name}</a> / {$level1.name}' href='javascript:void(0)'>{$level1.name}</a> / {$level2.name}" href="javascript:void(0)">{$level2.name}</a></li>
+				<!--{/loop}-->
+				{/if}
+				<li><a class="mback bmenu_lvl3" href="javascript:void(0)">{lang back}</a></li>
+			      </ul>
+			    
+			<!--{/loop}-->	
+	      <!--{/loop}-->
+	      </div>
+	      
+	      <div class="box-level4">
+	      <!--{loop $IndustryList item0 level_0 key0}-->		  
+			<!--{loop $item0.sub level1 level_1_industry key_level1}-->			  
+			    <!--{loop $level1.sub level2 level_2_industry key_level2}-->
+			      <ul class="menu parent_{$level2.id}">
+				{if $level2.sub}
+				<!--{loop $level2.sub level3 level_3_industry key_level3}-->
+				  <li><a class="item menu_lvl3" rel="{$level3.id}" content="<a rel='{$item0.id}' href='javascript:void(0)' content='{$item0.name}'>{$item0.name}</a> / <a rel='{$level1.id}' content='<a rel=&quot;{$item0.id}&quot; href=&quot;javascript:void(0)&quot; content=&quot;{$item0.name}&quot;>{$item0.name}</a> / {$level1.name}' href='javascript:void(0)'>{$level1.name}</a> / <a href='javascript:void(0)' rel='{$level2.id}'>{$level2.name}</a> / {$level3.name}" href="javascript:void(0)">{$level3.name}</a></li>
+				<!--{/loop}-->
+				{/if}
+				<li><a class="mback bmenu_lvl4" href="javascript:void(0)">{lang back}</a></li>
+			      </ul>
+			    <!--{/loop}-->	
+			<!--{/loop}-->	
+	      <!--{/loop}-->
+	      </div>

@@ -1,0 +1,121 @@
+<!--{assign var="page_title" value="`$_ad_pic`"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<script>
+var allows_maximum_input = "{lang allows_maximum_input}";
+var can_also_enter = "{lang can_also_enter}";
+</script>
+<!--{editor type="tiny_mce"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem30').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>
+	{if $MEMBER.membergroup_id == 3}{lang ad_pic}{/if}
+	{if $MEMBER.membergroup_id == 1}{lang ad_pic}{/if}
+	{if $MEMBER.membergroup_id == 2}{lang ad_pic}{/if}
+     </h2></div>
+<div class="hint"><span class="btn_hint"><a href="banner.php?do=edit" class="btn_publish">{lang add_site_advertising}</a></span></div>
+
+
+
+
+<div class="tdare" style="clear:both">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable bglist" summary="{lang data_zone}">
+    <thead>
+		<tr>
+		  <!--<th class="firstCell" wid><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>-->
+		  <th width="10%">{lang screenshot}</th>
+		  <th style="text-align: left"><label for="idAll">{lang the_title}</label></th>
+		  <!--<th>{lang position}</th>-->
+		  <!--<th>{lang if_online}</th>-->
+		  <!--<th>{lang position}</th>-->
+		  <th>{lang published}</th>
+		  <th>{lang status}</th>
+		  
+		  <th>{lang clicks}</th>
+		  <th>{lang action}</th>
+		</tr>
+    </thead>
+    <tbody>
+		<!--{foreach from=$Items item=item}-->
+		<tr class="tatr2">
+		  <!--<td class="firstCell"><input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}"></td>-->
+		  <td>{if $item.is_image==1}<a href="{$item.src}" rel="lightbox"><img class="double-border" src="{$item.src}" width="150" /></a>{else}{$item.start_date|date_format:"%Y-%m-%d"}{lang arrive_to}{$item.end_date|date_format:"%Y-%m-%d"}{/if}</td>
+		  <td style="text-align: left;vertical-align: top"><label for="item_{$item.id}"><strong>{$item.title}</strong></label>
+		  <br />
+		  {lang position}: {$item.industry_names}
+		  
+		  </td>
+		  <!--<td><a title="{lang click_and_search}" href="ad.php?do=search&adzone_id={$item.adzone_id}">{$item.adzone}</a></td>-->
+		 <!-- <td>{$AdsStatus[$item.state]}</td>-->
+		<!-- <td>{$item.industry_names}</td>-->
+		<td>
+			{if $item.status}
+					<!--{if $item.state eq 1}-->
+					<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
+					    <img src="{$office_theme_path}images/published.png">
+					</a>
+				    <!--{else}-->
+					<a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}" title="{lang goods_on_shelves}">
+					    <img src="{$office_theme_path}images/unpublished.png">
+					</a>
+				    <!--{/if}-->
+			{/if}
+		</td>
+		  <td>{if $item.status}<span class="stt_valid">{lang checkouted}</span>{else}<span class="stt_invalid">{lang nocheckout}</span>{/if}</td>
+		  
+		  <td>{$item.clicked}</td>
+		  <td class="handler">
+          <ul id="handler_icon">
+            <li><a class="btn_delete" href="banner.php?id={$item.id}&adzone_id={$item.adzone_id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>
+            {if !$item.status}<li><a class="btn_edit" href="banner.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>{/if}
+          </ul>      
+          </td>
+		</tr>
+		<!--{foreachelse}-->
+		<tr class="no_data info">
+		  <td colspan="7">{lang no_datas}</td>
+		</tr>
+		<!--{/foreach}-->
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="{lang action_zone}">
+    <!--<div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
+      <input type="submit" name="down" value="{lang set_offline}" class="formbtn batchButton"/>
+      <input type="submit" name="up" value="{lang set_online}" class="formbtn batchButton"/>
+    </div>-->
+    <div class="pageLinks">{$ByPages}</div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+
+
+</div>
+  </div>
+
+
+
+
+<!--{include file="footer.html"}-->

@@ -1,0 +1,162 @@
+<!--{assign var="page_title" value="`$_company_information`"}-->
+<!--{include file="header.html"}-->
+<script type="text/javascript" src="../scripts/jquery/selectbox.js"></script>
+<script>
+var app_language = '{$AppLanguage}';
+</script>
+<script type="text/javascript" src="../data/cache/{$AppLanguage}/type.js"></script>
+<script>
+option_employee_amount = "{$item.option_employee_amount|default:0}";
+option_year_annual = "{$item.option_year_annual|default:0}";
+option_reg_fund = "{$item.option_reg_fund|default:0}";
+option_manage_type = "{$item.option_manage_type|default:0}";
+option_position = "{$item.option_position|default:0}";
+option_economic_type = "{$item.option_economic_type|default:0}";
+</script>
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem11').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<!--{literal}-->
+<script type="text/javascript">
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="../attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="../attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+	function checkUploadEditorInput() {
+		//code
+		if($('#uploadEditorFile').val() == '')
+		{
+			$('#uploadEditorFile').css('border', 'solid 1px red');
+			return false;
+		} else
+		{
+			$('#uploadEditorFile').css('border', 'none');
+			$('#uploadIVbutton').attr('disabled','disabled');
+			$('#uploadIVbutton').attr('value','Đang tải...');
+			return true;
+		}
+	}
+	
+	
+	
+	
+jQuery(document).ready(function($) {
+
+	$("#PolicyFrm").validate({
+	submitHandler: function(form) {
+		$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
+		form.submit();
+	}
+	});
+})
+</script>
+<!--{/literal}-->
+<!--{editor type="tiny_mce"}-->
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+	
+
+	
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{lang policy}</h2></div>
+     <div class="hint">{lang must_input_with_star}</div>
+	  {$Errors}
+	  <form name="policy_frm" id="PolicyFrm" action="{$smarty.server.PHP_SELF}" method="post">
+		 <input type="hidden" name="id" value="{$item.id}">        
+		 <input type="hidden" name="data[companyfield][company_id]" value="{$item.id}">        
+		 <!-- {formhash} -->        
+		 <input type="hidden" name="do" id="Do" value="save" />
+		 
+		 
+		 
+<div id="product_edit_box" style="margin-bottom: 10px;">
+		 
+
+		
+		
+		<h3>{lang policy}</h3>
+		 <p>
+                    <textarea name="data[company][policy]" rows="80" wrap="VIRTUAL" id="company_policy" style="width:100%;height: 600px">{$item.policy}</textarea>
+                </p>
+		 
+		 
+</div>
+		 
+       <input name="company_edit" type="submit" id="CompanyEdit" value="{lang confirm_submit}">
+		 
+          
+	</form>
+	  
+	  
+	  <div id="uploadImageVideo" style="margin-top: -594px;margin-left: 459px">
+		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+			<input type="hidden" name="do" value="product" />
+			<input type="hidden" name="action" value="uploadEditorFile" />
+			
+			
+			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+       onclick ="javascript:document.getElementById('imagefile').click();">
+      
+			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+			
+		</form>
+	</div>
+	  
+
+</div>
+</div>
+<script>
+var cache_path = "../";
+var area_id1 = {$item.area_id1|default:0};
+var area_id2 = {$item.area_id2|default:0};
+var area_id3 = {$item.area_id3|default:0};
+var industry_id1 = {$item.industry_id1|default:0};
+var industry_id2 = {$item.industry_id2|default:0};
+var industry_id3 = {$item.industry_id3|default:0};
+var industry_id4 = {$item.industry_id4|default:0};
+</script>
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+<!--{include file="footer.html"}-->

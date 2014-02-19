@@ -1,0 +1,93 @@
+<!--{assign var="page_title" value="Hồ sơ ứng viên"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem32').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{$page_title}</h2></div>
+     <div class="hint"><span class="btn_hint"><a href="employee.php?do=edit"  class="btn_publish">Tạo hồ sơ mới</a></span><h3>Danh sách hồ sơ</h3></div>
+        
+		<form name="TradeFrm" method="post" action="{$smarty.env.PHP_SELF}">
+		<!-- {formhash} -->
+	    <table class="bglist">
+              <tr>
+                <th width="32%" style="text-align: left">Tiêu đề</th>
+		<th>Trạng thái</th>
+		<th>Đăng tin</th>
+		<th>Tìm kiếm</th>
+                <th width="17%" align="center"><strong>{lang created_date}</strong></th>
+                
+                <th width="17%" align="center"><strong>{lang operation}</strong></th>
+                </tr>
+              <tr>
+		     
+			  <!--{foreach from=$Items item=item}-->
+			  <tr bgcolor="{cycle values="#F3F3F3,#ffffff"}">
+              <td height="25" style="text-align: left">
+		<a href="employee.php?do=step2&id={$item.id}" target="_self">{$item.expected_position}</a>
+	      </td>
+	      <td align="center" valign="middle">{if $item.status}<span class="finished">Đã hoàn tất</span>{else}<span class="notfinished">Đang soạn</span>{/if}</td>
+	      
+			<td>
+				{if $item.status}
+					<!--{if $item.showed eq 1}-->
+					    <a href="{$smarty.server.PHP_SELF}?do=setShowed&type=down&id={$item.id}" title="Hủy đăng tin">
+						<img src="{$office_theme_path}images/published.png">
+					    </a>
+					<!--{else}-->
+					    <a href="{$smarty.server.PHP_SELF}?do=setShowed&type=up&id={$item.id}" title="Đăng tin">
+						<img src="{$office_theme_path}images/unpublished.png">
+					    </a>
+					<!--{/if}-->
+				{/if}
+			</td>
+				  
+			<td>
+				{if $item.status && $item.showed}
+					<!--{if $item.searched eq 1}-->
+					    <a href="{$smarty.server.PHP_SELF}?do=setSearched&type=down&id={$item.id}" title="Không cho phép tìm kiếm">
+						<img src="{$office_theme_path}images/published.png">
+					    </a>
+					<!--{else}-->
+					    <a href="{$smarty.server.PHP_SELF}?do=setSearched&type=up&id={$item.id}" title="Cho phép tìm kiếm">
+						<img src="{$office_theme_path}images/unpublished.png">
+					    </a>
+					<!--{/if}-->
+				{/if}
+			</td>
+	      
+		      <td align="center" valign="middle">{$item.pubdate}</td>
+		      <td align="center" valign="bottom"><a href="employee.php?do=edit&id={$item.id}" target="_self">Chỉnh sửa</a>&nbsp;|&nbsp;<a onclick="return confirm('{lang delete_confirm}')" href="employee.php?do=del&id={$item.id}">{lang delete}</a></td>
+		      </tr>
+              <!--{foreachelse}-->
+              <tr><td colspan="6"><div align="center">{lang no_datas_now}</div></td></tr>
+			  <!--{/foreach}-->
+
+          </table>
+          <table>
+          <tr>
+            <td height="40" align="center">&nbsp;</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+          </tr>
+        </table>
+		</form>
+
+</div>
+</div>
+<!--{include file="footer.html"}-->

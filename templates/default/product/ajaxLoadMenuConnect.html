@@ -1,0 +1,16 @@
+<div id="mapp" style="display: none">{$Map}</div>
+<!--{if $Items}-->
+<ul class="menu" id="menu-features-list">
+		  <!--{loop $Items item0 level_0 key0}-->
+		  
+		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954" id="menu-item-954">
+			<a class="item menu_lvl1" rel="{$item0.id}" href="javascript:void(0)">
+			  {$item0.name} <span>{$item0.count}</span>
+			</a>
+		      </li>
+		  
+		  <!--{/loop}-->
+                  <li class="liback"><a class="mback" href="javascript:void(0)">{lang back}</a></li>
+		</ul>
+
+<!--{/if}-->

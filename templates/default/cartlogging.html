@@ -1,0 +1,167 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$_login`"}-->
+
+
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<div class="row">
+    <div class="fifteen columns" id="page-title">
+        <a class="back" href="javascript:history.back()"></a>
+        <div class="subtitle">
+            
+                        <p>{lang member}</p>
+        </div>
+        <h1 class="page-title">
+                        {lang login}                    </h1>
+
+        
+
+    </div>
+    <div class="fifteen columns"><div class="line" style="margin-bottom: 10px"></div></div>
+</div>
+
+
+<div class="row">
+
+    <div class="four columns logging">
+
+        <section id="woocommerce_login-2" class="widget-1 widget-first widget widget_login">
+	  
+	  
+	  
+	  <div class="widget-inner">
+	    
+	    
+	    
+	   <!--{literal}-->
+<style type="text/css">
+label.error {
+  font-weight: bold;
+  color: #b80000;
+}
+</style>
+<!--{/literal}-->
+<div class="wrapper">
+    <div class="content">
+        
+        <div class="loadingcon">
+        <form name="loggingfrm" id="LoggingFrm" method="post" action="cartlogging.php">
+        	<input type="hidden" name="action" value="logging">
+		  <input type="hidden" name="id" value="{$id}">
+			<!-- {formhash} -->
+			<input type="hidden" name="forward" value="{$_G.forward}" />
+            <div class="loadingconleft">
+                
+				{if $LoginError}{$LoginError}{/if}
+				<br />
+{if $pb_username!=""}
+					<label class="loadingname">
+                        {lang user_name}
+                    </label>
+                    <label>
+                        {$pb_username|default:'`$_account_n_email_n_mobile`'}
+                    </label>
+                    <br clear="all" />
+					<label class="loadingname">
+                        {lang member_type}
+                    </label>
+                    <label>
+                        {$member_info.groupname}<img src="{$member_info.groupimage}" />
+                    </label>
+                    <br clear="all" />
+					<label class="loadingname">
+                        {lang your_last_login}{lang colon}
+                    </label>
+                    <label>
+                        {$member_info.last_login|date_format:"%Y-%m-%d %H:%M"}
+                    </label>
+                    <br clear="all" />
+{else}
+					<label class="loadingname">
+                        {lang user_name}
+                    </label>
+                    <label>
+                        <input type="text" style="color: #333;" name="data[login_name]" id="LoginName" value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">&nbsp;
+                    </label>
+                    <label class="loadingname">
+                    {lang password}
+                    </label>
+                    <label>
+                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}&nbsp;
+                    </label>
+                    <br clear="all" />
+                    {if $ifcapt}
+                    <label class="loadingname">
+                        {lang code}
+                    </label>
+                    <label class="loadingcheck">
+                        <input name="data[capt_logging]" id="LoginAuth" type="text" value="" size="5" maxlength="5" tabindex="3"><a href="javascript:;" onclick="$('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());return false;"><img src="captcha.php" id="imgcaptcha" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" width="128"/></a>
+                    </label>
+                    <div class="clear"></div>
+                    <p class="loadingp1">{lang refresh_code}</p>
+                    {/if}
+                    <div class="clear"></div>
+                    <div class="login" id="btnLoginDiv">
+                       <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton" />&nbsp;&nbsp;&nbsp;<a href="getpasswd.php">{lang forget_password}</a>
+                    </div>
+		    
+{/if}
+                    
+            </div>
+            
+        </form>
+        </div>
+    </div>
+</div>
+<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
+<script language="javascript" src="scripts/validate.js" charset="{$charset}"></script>
+<script>
+var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
+</script>
+<!--{literal}-->
+<script>
+$(document).ready(function(){
+	//$("#LoginName").focus(function(){
+	//	if($("#LoginName").val()==account_n_email_n_mobile){
+	//		$("#LoginName").val('').css('color', '#000');
+	//	};
+	//}).blur(function(){
+	//	if($("#LoginName").val()==''){
+	//	$("#LoginName").val(account_n_email_n_mobile).css("color","#ccc")};
+	//});
+});
+</script>
+<!--{/literal}-->
+	  
+	  
+	  
+	  </div>
+	
+	
+	</section>
+			
+    </div>
+</div>
+
+
+
+</div>
+  </div>
+
+
+
+
+
+
+<!--{include file="`$theme_name`/footer.html"}-->
+

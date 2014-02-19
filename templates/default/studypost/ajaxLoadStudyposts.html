@@ -1,0 +1,47 @@
+<!--{if $List}-->
+    <!--{loop $List item level_0 key}-->
+        <div class="studypost_box" rel="{$item.id}">
+            {if $pb_userinfo.id == $item.member_id}
+                <div class="box_controls">
+                    <a onclick="return confirm('Bạn có chắc là muốn xóa bài viết này?')" class="box_delete_but" href="javascript:void(0)">Xóa</a>
+                    <a class="box_edit_but" href="javascript:void(0)">Chỉnh sửa</a>
+                </div>
+            {/if}
+            <div class="box_header">
+                <img src="{$item.member.photo}" />
+                <h2>{$item.member.first_name} {$item.member.last_name}</h2>
+                <div class="box_moreinfo">
+                    Ngày đăng: {$item.created}
+                </div>
+            </div>
+            <div class="box_content">
+                <div class="inner-content">{$item.content}</div>
+                <div class="editor">
+                    
+                </div>
+            </div>
+            <div class="stats">
+                <ul class="stats_header">
+                    <li>
+                        <a href="javascript:void(0)" rel="stats">Đánh giá</a>
+                    </li>
+                </ul>
+                <div id="stats_content">
+                    <div class="post_star">
+                        <span class="star" rel="1"></span>
+                        <span class="star" rel="2"></span>
+                        <span class="star" rel="3"></span>
+                        <span class="star" rel="4"></span>
+                        <span class="star" rel="5"></span>
+                        <span class="star" rel="6"></span>
+                        <span class="star" rel="7"></span>
+                        <span class="star" rel="8"></span>
+                        <span class="star" rel="9"></span>
+                        <span class="star" rel="10"></span>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--{/loop}-->
+<!--{/if}-->

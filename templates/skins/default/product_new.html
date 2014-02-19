@@ -1,0 +1,417 @@
+<!--{include file="header.html" PageTitle="`$_space_product`" cur="space_index"}-->
+<div id="body-wrapper" class="space_wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+
+
+<!--{literal}-->
+<script type="application/x-javascript">
+  
+	  function ajaxLoadMenu(id, level, item) {
+	    //code
+	    $('.box-level'+(level-1)+' ul li').removeClass('active');
+	    item.parent().addClass('active');
+	    $.ajax({
+			url: "index.php?do=product&action=ajaxLoadMenuConnect&industryid="+id,			
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			  
+				$('.product_list_title').html($(data).filter('#mapp').html());
+				
+				
+				$('.product_list_title a').eq(0).click(function() {
+				      ajaxLoadMenu($(this).attr("rel"), '2', $(this));
+				});
+				$('.product_list_title a').eq(1).click(function() {
+				      ajaxLoadMenu($(this).attr("rel"), '3', $(this));
+				});
+				$('.product_list_title a').eq(2).click(function() {
+				      ajaxLoadMenu($(this).attr("rel"), '4', $(this));
+				});
+				
+				$('.product_list_title a').click(function() {
+
+						  industryid = $(this).attr('rel');
+						  
+						  if (industryid) {
+						      var ff = "&orderby="+orderby;
+						      if($('#ProductName').val()) ff += "&q="+$('#ProductName').val();
+						      if(industryid != 0) ff += "&industryid="+industryid;
+						      
+						      ajaxListProduct(ff);
+						  }
+						 
+				});
+				
+				//alert(data);
+				if(typeof($(data).filter('ul').html()) != 'undefined')
+				{
+				  if (level == '2') {
+				    $('.s-scroll').animate({ marginLeft: '-240px' }, 500);
+				  }
+				  else if (level == '3') {
+				    $('.s-scroll').animate({ marginLeft: '-480px' }, 500);
+				  }
+				  else if (level == '4') {
+				    $('.s-scroll').animate({ marginLeft: '-720px' }, 500);
+				  }
+				    
+				    
+				    $('.box-level'+level+' ul').html(data);
+				    
+				    $('.box-level2 ul li a.mback').click(function() {
+				      $('.s-scroll').animate({ marginLeft: '0px' }, 500);
+				    });
+				    
+				    $('.box-level2 ul li a.item').click(function() {
+				      ajaxLoadMenu($(this).attr("rel"), '3', $(this));				      
+				    });
+				    
+				    $('.box-level3 ul li a.mback').click(function() {
+				      $('.s-scroll').animate({ marginLeft: '-240px' }, 500);
+				    });
+				    
+				    $('.box-level3 ul li a.item').click(function() {
+				      ajaxLoadMenu($(this).attr("rel"), '4', $(this));				      
+				    });
+				    
+				    $('.box-level4 ul li a.item').click(function() {
+				      ajaxLoadMenu($(this).attr("rel"), '5', $(this));
+				    });
+				    
+				    $('.box-level4 ul li a.mback').click(function() {
+				      $('.s-scroll').animate({ marginLeft: '-480px' }, 500);
+				    });
+				    
+				    $('.box-scroll ul.menu li a').click(function() {
+
+						  industryid = $(this).attr('rel');
+						  
+						  if (industryid) {
+						      var ff = "&orderby="+orderby;
+						      if($('#ProductName').val()) ff += "&q="+$('#ProductName').val();
+						      if(industryid != 0) ff += "&industryid="+industryid;
+						      
+						      ajaxListProduct(ff);
+						  }
+						 
+				    });
+				}
+			}
+		});
+	  }
+   
+	 function getMinHeight() {
+	    //code
+	    var min =  $('#list_product_ajax0').height();
+	    var it = 0;
+	    for (var j=1; j < 4; j++) {
+	       if ($('#list_product_ajax'+j).height() < min) {
+		  min = $('#list_product_ajax'+j).height();
+		  it = j;
+	       }				    
+	    }
+	    return it;
+	 }
+	 
+	function ajaxListProduct(filter) {
+	      if ($(window).scrollTop() > 385) $("html, body").animate({ scrollTop: 385 }, "slow");
+	  
+	      $('.product_list_loading').height($('.product_listing').height());
+		$('.product_list_loading').css("display", "block");
+		$.ajax({
+			url: "index.php?do=product&action=listAjax&connectid=<!--{/literal}-->{$pb_userid}<!--{literal}-->"+filter,
+			beforeSend: function ( xhr ) {
+				//xhr.overrideMimeType("text/plain; charset=x-user-defined");
+				$('#list_product_ajax').html('<div class="loading">'+$('#loading').html()+'</div>');
+			}
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//console.log("Sample of data:", data.slice(0, 100));
+				//alert($(data).filter(".products_0").html());
+				//$('#list_product_ajax').html(data);
+				//alert(data);
+				for (var j=0; j < 5; j++) {
+				    $('#list_product_ajax'+j+' ul').html("");
+				}
+				for (var i=0; i < 15; i++) {
+				    var pos = i%4;
+				    
+				    $('#list_product_ajax'+getMinHeight()+' ul').append($(data).filter(".products_"+i).html());
+				}
+				
+				pos_pg = 15;
+				$('.product_list_loading').css("display", "none");
+				
+				
+				
+				
+			}
+		});
+	}
+	
+	 function resetFilter(args) {
+	    $('#ProductName').val("");
+	    $('#dataProductIndustryId1').val(0);
+	    $('#dataProductIndustryId2').val(0);
+	    $('#dataProductIndustryId3').val(0);
+	    $('#dataProductIndustryId4').val(0);
+	 //    <div id="dataIndustry">
+	 //    <select class="level_3" id="dataProductIndustryId3" name="industry[id][3]"><option value="0">Chọn</option></select>	    
+	 //    <select class="level_2" id="dataProductIndustryId2" name="industry[id][2]"><option value="0">Chọn</option></select>
+	 //    <select class="level_1" id="dataProductIndustryId1" name="industry[id][1]" selectedindex="0"><option value="0">Chọn</option><option value="1">Thời trang</option><option value="2">Hàng tiêu dùng</option><option value="206">Mẹ và bé</option><option value="3">Thiết bị</option><option value="4">Vật liệu</option><option value="207">Bảo hiểm</option><option value="205">[:en-us]Virtual[:zh-cn]虚拟</option><option value="5">Khác</option></select>
+	 }
+	
+	function ajaxListProductScroll(filter) {
+	  
+		
+	  
+		$.ajax({
+			url: "index.php?do=product&action=listAjax&connectid=<!--{/literal}-->{$pb_userid}<!--{literal}-->"+filter,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//console.log("Sample of data:", data.slice(0, 100));
+				//alert(data);
+				//$('#list_product_ajax').append(data);
+				for (var i=0; i < 15; i++) {
+				    var pos = i%5;
+				    $('#list_product_ajax'+getMinHeight()+' ul').append($(data).filter(".products_"+i).html());
+				    //alert(getMinHeight());
+				}
+				startscroll = true;
+				pos_pg += 15;
+				
+			}
+		});
+	}
+	
+	var industryid = 0;
+	var orderby = 'favourite';
+	$(document).ready(function() {
+	       
+	 
+	       $(".hotnewlist").removeClass("active");
+	       $('#hot_product_but').addClass("active");
+	       
+	       ajaxListProduct("&orderby="+orderby);
+	 
+		$('#hot_product_but').click(function () {
+			resetFilter();
+			$(".hotnewlist").removeClass("active");
+			$(this).addClass("active");
+			orderby = 'favourite';
+			if(industryid != 0) orderby += "&industryid="+industryid;
+			
+			ajaxListProduct("&orderby="+orderby);
+		});
+		
+		$('#new_product_but').click(function () {
+			resetFilter();
+			$(".hotnewlist").removeClass("active");
+			$(this).addClass("active");
+			orderby = 'dateline';
+			if(industryid != 0) orderby += "&industryid="+industryid;
+			
+			ajaxListProduct("&orderby="+orderby);
+		});
+		
+		$('#recentbuy_product_but').click(function () {
+			resetFilter();
+			$(".hotnewlist").removeClass("active");
+			$(this).addClass("active");
+			
+			ajaxListProduct("");
+		});
+		
+		$('#search_list_but').click(function() {
+			
+			//get industry select
+			//if ($('#dataProductIndustryId3').val() != "0") {
+			//	//code
+			//	industryid = $('#dataProductIndustryId3').val();
+			//	//alert("dsds");
+			//} else if ($('#dataProductIndustryId2').val() != "0") {
+			////code
+			//	industryid = $('#dataProductIndustryId2').val();
+			//} else
+			//{
+			//	industryid = $('#dataProductIndustryId1').val();
+			//}
+			//
+			//alert(industryid);
+			var ff = "&orderby="+orderby;
+			if($('#ProductName').val()) ff += "&q="+$('#ProductName').val();
+			if(industryid != 0) ff += "&industryid="+industryid;
+			
+			ajaxListProduct(ff);
+		});
+		
+		$('.box-scroll ul.menu li a').click(function() {
+		  
+		  
+			
+			industryid = $(this).attr('rel');
+			
+			if (industryid) {
+			  
+			    
+			    var ff = "&orderby="+orderby;
+			    if($('#ProductName').val()) ff += "&q="+$('#ProductName').val();
+			    if(industryid != 0) ff += "&industryid="+industryid;
+			    
+			    ajaxListProduct(ff);
+			}
+			
+			
+		});
+		
+		$('a.all_p').click(function() {
+		    industryid = 0;
+		    
+		     $('.box-scroll ul li').removeClass('active');
+			
+		    $('span.product_list_title').html("");
+		    
+		    var ff = "&orderby="+orderby;
+		    if($('#ProductName').val()) ff += "&q="+$('#ProductName').val();
+		    if(industryid != 0) ff += "&industryid="+industryid;
+		    
+		    ajaxListProduct(ff);
+		    $('.s-scroll').animate({ marginLeft: '0px' }, 500);
+		});
+		
+		$('.box-level1 ul li a.item').click(function() {		
+		  ajaxLoadMenu($(this).attr("rel"), '2', $(this));	 
+		  
+		});
+		
+	});
+	
+	
+	var startscroll = true;
+	var pos_pg = 15;
+
+	$(document).scroll(function(){		
+		if(($(document).height()-$(window).height()-$(document).scrollTop()) < 1000){
+			if (startscroll) {
+				startscroll = false;
+				//code
+				console.log('Scrolled to bottom');
+				//ArticleList.loadMoreArticles();
+				//alert("end");
+				
+				var ff = "&pos_pg="+pos_pg+"&orderby="+orderby;
+				if($('#ProductName').val()) ff += "&q="+$('#ProductName').val();
+				if(industryid != 0) ff += "&industryid="+industryid;
+				ajaxListProductScroll(ff);		
+			}
+		
+		} else {
+		    //console.log('Scroll '+$(document).height()+' - '+$(window).height()+' - ' +$(document).scrollTop());
+		}
+	});	
+	
+</script>
+   
+
+<!--{/literal}-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns" id="content">
+
+
+              
+              <div class="row" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0; padding-right: 0" class="eleven columns">
+
+	<div id="container">
+	<div role="main" id="">
+{if $Cat.name}<h6><a href="{$Menus.product}">{lang product_show}</a></h6>{/if}
+<h3 style="padding: 0; margin: 0 0 0 0;height: 40px;">{if $Cat.name}{$Cat.name}{else}{lang products}{/if}</h3>
+		
+			
+			<ul class="products">
+				
+
+				<!-- {pb:product name="item" companyid="`$COMPANY.id`" industryid=`$aaa` row=20} -->
+						
+					
+				
+					<li class="product {$item.pos}">
+
+	
+	<a href="{the_url module=product id=`$item.id`}" title="{$item.name}">
+
+		<div class="imgout"><img alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"></div>
+		<h3>{$item.name|truncate:40}</h3>
+
+		
+	<span class="price"><span class="amount">{$item.price} VNĐ</span></span>
+
+	</a>
+
+	
+
+	<a onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
+
+</li>
+					
+					<!-- {/pb:product} -->
+				
+					
+				
+			</ul>
+
+			
+		
+		<div class="clear"></div>
+
+
+						<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+
+		</div>
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

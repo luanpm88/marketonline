@@ -1,0 +1,331 @@
+<!--{include file="`$theme_name`/header.html" page_title="Hồ sơ: `$item.expected_position`" nav_id=9}-->
+<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding" class="job_page">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+<!--{literal}-->
+    <script>
+	jQuery(document).ready(function($) {		
+	    if($('.works-list tr').length < 2)
+	    {
+		$('.works-list').remove();
+	    }
+	});
+    </script>
+<!--{/literal}-->
+
+<div class="row">
+  <div class="fifteen columns">
+
+    <div id="page-title">
+
+    <a class="back" href="javascript:history.back()"></a>
+    <div class="subtitle">
+        {lang job_head}
+    </div>
+   
+    
+	<h1 class="page-title">Hồ sơ: {$item.expected_position}</h1>
+
+	
+<!--{include file="`$theme_name`/job/postitem.html"}-->
+	
+	
+    
+  </div>
+
+  
+  </div>
+</div>
+
+
+
+<div class="row" style="margin-top: 5px;">
+	
+	<!--{include file="`$theme_name`/job/jobsearchbox.html"}-->
+	
+</div>
+
+<div class="row">
+	<div id="job-content">
+		
+		
+		
+		<div id="TopWorkCategory">
+			<h4>Cấp bậc</h4>
+		      <ul class="list-hot-cat">
+				<li rel="0" {if !$smarty.get.type}class="active"{/if}><a href="javascript:void(0)">Tất cả</a></li>
+
+				<!--{loop $JobProficiencies level1 level_1_industry key_level1}-->
+					<li {if $smarty.get.type == $key_level1}class="active"{/if} rel="{$key_level1}"><a href="javascript:void(0)">{$level1}</a></li>			 
+				<!--{/loop}-->
+			
+		      </ul>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--<h3 style="padding-left: 0; margin-bottom: 15px;">{lang job_name}: {$item.name}</h3>-->
+	      
+	      
+	      <h3>Hồ sơ: {$item.expected_position}</h3>
+	      
+	      
+
+ <table width="100%" class="TableInfo" style="border-color: #aaa; margin-top: 10px;padding: 5px;">
+    
+				<tbody>
+					
+					
+					<tr>
+					<td colspan="2" class="left_com_infotd" style="max-width: none;width: 835px">
+					    
+					    
+					    <div class="company-info">
+								
+								<div class="columns logo logoz">
+								    <a href="javascript:void(0)">
+									<img src="{$memberinfo.photo}"></a>
+								</div>
+		    
+		    <div class="text left_com_info">
+			    <h3>{$memberinfo.first_name} {$memberinfo.last_name}</h3>
+			   <!-- <p><label>Họ và Tên</label>: &nbsp;{$memberinfo.first_name} {$memberinfo.last_name}</p>-->
+			    <p><label>Giới tính</label>: &nbsp;{if $memberinfo.gender}Nam{else}Nữ{/if}</p>
+			    <p><label>Địa chỉ</label>: &nbsp;{$memberinfo.address}</p>
+			    <p><label>Điện thoại</label>: &nbsp;{$memberinfo.mobile}</p>
+			    <p><label>Email</label>: &nbsp;{$memberinfo.email}</p>
+		    </div>
+								
+								
+								
+								
+								
+								
+								<!--<span class="company-logo">
+						    <img height="100" width="200" border="0" src="http://images.vietnamworks.com/pictureofcompany/11/7984646.gif" class="logoEmployer" alt="Employer's logo - Công Ty TNHH Panasonic Appliances Việt Nam " style="float: left; margin: 20px;">&nbsp; </span>
+								      <h2 class="company-name" itemprop="name"><a href="http://www.vietnamworks.com/viec-lam-tai-cong-ty-tnhh-panasonic-appliances-viet-nam-e544254-vn" class="unlink">Công Ty TNHH Panasonic Appliances Việt Nam </a></h2>
+									  <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+						  <span class="company-address" itemprop="addressLocality">Lô B6 &ndash; KCN Thăng Long, Đông Anh, Hà Nội\Lô G2 &ndash; KCN Thăng Long II, Yên Mỹ, Hưng Yên</span>
+						  </span>
+				
+				
+						     
+									    
+									<p>Số điện thoại: 08 996 3433 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Số fax: 08 996 3433 <br>Qui mô công ty: 500-999                                            <br>
+						    Tên người liên hệ: <strong>Phòng Nhân sự</strong></p>
+				-->
+						
+						</div>					    
+					    
+					</td>
+				    </tr>
+					
+					
+				<tr>					
+					<td colspan="2" class="job-table-head" style="max-width: none;width: 835px">
+						<h3>Thông tin chi tiết</h3>
+					</td>
+				</tr>
+				
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Số năm kinh nghiệm</strong></p></th>
+					<td valign="top">
+						{if $item.newgrad}
+						    Tôi mới tốt nghiệp/chưa có kinh nghiệm làm việc
+						{else}
+						    {$item.years_experience} năm
+						{/if}
+					</td>
+				</tr>			
+				
+				{if $item.languages}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Trình độ ngoại ngữ</strong></p></th>
+					<td valign="top">
+						{$item.languages}
+					</td>
+				</tr>
+				{/if}
+				
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Cấp bậc mong muốn</strong></p></th>
+					<td valign="top">
+						<a class="joblevel_link" href="javascript:void(0)" rel="{$item.joblevel_id}">{$options.job_proficiency[$item.joblevel_id]}</a>
+					</td>
+				</tr>
+				
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Nơi làm việc</strong></p></th>
+					<td valign="top">
+						{$item.areas}
+					</td>
+				</tr>
+				
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Ngành nghề</strong></p></th>
+					<td valign="top">
+						{$item.jobindusts}
+					</td>
+				</tr>
+				
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Mức lương mong muốn</strong></p></th>
+					<td valign="top">
+						{if $item.salary}
+						    {$item.salary} {$item.salary_currency}/tháng
+						{else}
+						    Thương lượng
+						{/if}
+					</td>
+				</tr>
+				
+				{if $item.career_objective}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Mục tiêu nghề nghiệp</strong></p></th>
+					<td valign="top">
+						{$item.career_objective}
+					</td>
+				</tr>
+				{/if}
+				
+				{if $item.career_highlight}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Thành tích nổi bật</strong></p></th>
+					<td valign="top">
+						{$item.career_highlight}
+					</td>
+				</tr>
+				{/if}
+				
+				{if $item.employeeexperience}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Kinh nghiệm làm việc</strong></p></th>
+					<td valign="top">
+						{$item.employeeexperience}
+					</td>
+				</tr>
+				{/if}
+				
+				{if $item.employeeeducation}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Học vấn và bằng cấp</strong></p></th>
+					<td valign="top">
+						{$item.employeeeducation}
+					</td>
+				</tr>
+				{/if}
+				
+				{if $item.skills}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Kỹ năng nổi bật</strong></p></th>
+					<td valign="top">
+						{$item.skills}
+					</td>
+				</tr>
+				{/if}
+				    
+				{if $item.employeereference}
+				<tr>
+					<th width="190px" align="left" valign="top"><p><strong>Thông tin tham khảo</strong></p></th>
+					<td valign="top">
+						{$item.employeereference}
+					</td>
+				</tr>
+				{/if}
+				
+				
+				
+				
+			</tbody>
+ </table>
+
+		
+		
+		
+		
+		
+		<div class="works-list">
+			<h3>Hồ sơ liên quan</h3>
+			<table width="98%" style="">
+			  <tbody><tr class="job-table-list-head">
+			    <th width="40%" align="left">Vị trí mong muốn</th>
+			    <th width="35%" align="left">Cấp bậc</th>
+			    <th width="30%" align="left">Nơi làm việc</th>
+			    <!--<th width="15%" align="left">Mức lương</th>-->
+			    <!--<th width="15%" align="left">Hạn nộp</th>-->
+			  </tr>
+				
+			<!-- {employee row=10 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$item.jobindusts` type=`$item.jobtype_id` area=`$smarty.get.area`} -->
+				{if $job.id != $item.id}
+					<tr>
+					    <td><a href="{the_url module='employees' id=`$job.id`}">{$job.expected_position}</td>
+					    <td><a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)">{$job.joblevel}</a></td>
+					    <td>
+						{$job.areas}
+					    </td>
+					    <!--<td>{$job.salary}</td>-->
+					    <!--<td>{$job.expired_dates}</td>-->
+				    </tr>	
+				{/if}
+			<!-- {/employee} -->
+			  
+			</tbody></table>
+			
+			<div id="pagenav">
+				<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+			</div>
+			
+			  
+		      </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+	<div id="job-sidebar">
+		
+		
+		<!--{include file="`$theme_name`/job/rightbar.html"}-->		
+		
+		
+		
+	</div>
+</div>
+
+
+
+
+
+
+<script>
+var app_language = '{$AppLanguage}';
+var area_id1 = 0;
+var area_id2 = 0;
+var area_id3 = 0;
+</script>
+<script src="scripts/multi_select.js" charset="{$charset}"></script>
+<script src="scripts/script_area.js"></script>
+<!--{include file="`$theme_name`/footer.html"}-->

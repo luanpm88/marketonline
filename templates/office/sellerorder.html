@@ -1,0 +1,58 @@
+<!--{assign var="page_title" value="`$_sms`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem8').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{lang order_list}</h2></div>
+
+	  <form name="pmsfrm" method="post" action="{$smarty.server.PHP_SELF}">
+	  <!-- {formhash} -->
+       <table class="bglist">
+            <tr align="left">
+              
+              
+	      <th style="text-align: left" width="25%">{lang buyer}</th>
+	      <th style="text-align: left" width="40%">{lang message}</th>
+	      <th width="20%">{lang time}</th>
+	      <th width="15%" align="center"><strong>{lang operation}</strong></th>
+	      
+
+              
+            </tr>
+			<!--{foreach from=$Items item=item}-->
+            <tr class="bggray">
+              
+
+	      <td style="text-align: left" width=10%><a href="sellerorder.php?do=view&id={$item.id}">{$item.space_name}</a></td>
+	      <td style="text-align: left" align="left">{$item.message}</td>
+	      <td>{$item.created}</td>
+	      <td><a href="sellerorder.php?do=view&id={$item.id}">{lang preview} >></a></td>
+              
+              
+	      
+              
+            </tr>
+			<!--{/foreach}-->
+            <tr align="center" class="bggray">
+              <td colspan="5">{$ByPages}</td>
+            </tr>
+        </table>         
+	  </form>
+   </div>
+   </div>
+<!--{include file="footer.html"}-->

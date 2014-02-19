@@ -1,0 +1,23 @@
+
+<h3>{lang friend_links} : {$count_links}</h3>
+<div class="friendlink_box" style="margin-bottom: 20px;float: left; width: 100%">
+			
+			
+			{if $count_links}
+			    <!--{loop $links item0 level_0 key0}-->
+			    
+			      {if $item0.shop_name && key0 < 9}
+				  <a target="_blank" class="link_item" href="{$item0.link}">
+				    <img src="{$item0.image}" />
+				    <span class="bg">.</span>
+				    <title>{$item0.shop_name}</title>
+				  </a>
+			      {/if}
+			    <!--{/loop}-->
+			
+			{else}
+			  <div class="empty_links">{lang empty_links}</div>
+			{/if}
+			
+			
+		      </div>

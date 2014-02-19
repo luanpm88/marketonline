@@ -1,0 +1,133 @@
+<!--{assign var="page_title" value="`$_business_information`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem2').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{lang business_information} ({lang raovat})</h2></div>
+     
+     {if $notice}<p class="notice" style="margin-bottom: 0px;">{$notice}</p>{/if}
+     
+      <table class="offer_count">
+        <tr>
+          <td class="orange"></td>
+          <td></td>
+        </tr>
+         <tr>
+          <td class="nntype">
+		
+		<a href="offer.php" {if !$TypeID}class="active"{/if}>Tất cả</a>
+	    
+	    <a href="offer.php?typeid=16" {if $TypeID == 16}class="active"{/if}>{lang supply_corp}</a>
+	    <a href="offer.php?typeid=14" {if $TypeID == 14}class="active"{/if}>{lang buy_offer}</a>
+	    <a href="offer.php?typeid=9" {if $TypeID == 9}class="active"{/if}>{lang sell_offer}</a>
+	    <a href="offer.php?typeid=10" {if $TypeID == 10}class="active"{/if}>{lang supply_offer}</a>
+	    
+	    
+	  </td>
+          <td class="height35"><a title="{lang release}{$ActionName}" href="offer.php?do=edit" class="btn_publish">{lang release_supply}</a></td>
+        </tr>
+      </table>      
+      <form name="listfrm" action="{$smarty.server.PHP_SELF}" method="post">
+	  <!-- {formhash} -->
+      <table class="offer_publish_list">
+        <tr>
+          <td>
+          <table class="bglist">
+            <tr>
+              <th width="9%">{lang sample_image}</th>
+              <th width="40%" style="text-align: left">{lang content}</th>
+              <th>{lang due_date}</th>
+              <th width="7%">{lang published}</th>
+              <th width="17%">{lang operation}</th>
+              <th>{lang choose}</th>
+            </tr>
+			<!--{foreach from=$Items item=item}-->
+            <tr>
+              <td><img class="iiimg" style="margin: 3px;" src="{$item.image}" width=75></td>
+              <td style="text-align: left" valign="top">
+		<strong>
+			    <a title="{$item.name}" href="offer.php?do=edit&id={$item.id}">
+				{$item.title|pl|truncate:100}
+			    </a>
+			</strong>
+			
+			<p>{$item.content|pl|strip_tags|truncate:180}</p>
+			{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
+			
+	      
+	      
+	      </td>
+              <td><!--{if $item.expire_time<$TimeStamp}-->{lang has_expired}{else}{$item.expire_date}<!--{/if}--></td>
+              <td>
+		
+		    <!--{if $item.status eq 1}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
+			    <img src="{$office_theme_path}images/published.png">
+			</a>
+		    <!--{else}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}" title="{lang goods_on_shelves}">
+			    <img src="{$office_theme_path}images/unpublished.png">
+			</a>
+		    <!--{/if}-->
+	      
+	      </td>
+              <td><a href="offer.php?do=edit&id={$item.id}">{lang modify}</a><br />
+	      <!--{if $item.status==1}--><a href="offer.php?do=refresh&id={$item.id}" title="{lang extension_time}">{lang repeating}</a> /<!--{/if}--> <a href="offer.php?do=moderate&id={$item.id}"  onclick="return window.confirm('{lang you_should_pay_for_this}');">{lang bump_to_top}</a>
+	      <br /><a href="{$item.url}" target="_blank">{lang preview}</a></td>
+              <td><input name="tradeid[]" type="checkbox" id="id_{$item.id}" value="{$item.id}"></td>
+            </tr>
+			<!--{foreachelse}-->
+			<!--{/foreach}-->
+          </table></td>
+        </tr>
+        <tr>
+          <td>
+          <table class="offer_publish_submit">
+            <tr>
+              <td>
+				<div align="right">
+                <input type="submit" name="del" value="{lang delete_message}" onclick="return window.confirm('{lang ok_delete}');">&nbsp;
+				<input type="submit" name="refresh" value="{lang repeating_information}" onclick="return window.confirm{lang ok_repeating_information}">
+				</div>
+			  </td>
+              </tr>
+          </table>
+          </td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+          <table class="room_pages">
+              <tr>
+                <td>{$ByPages}</td>
+              </tr>
+          </table>
+          </td>
+        </tr>
+      </table>
+      </form>
+      <!--<table class="attentions" >     
+          <tr>
+            <td class="bottom">{lang offer_post_attention}</td>
+          </tr>
+    </table>-->
+    </div>
+</div>
+<!--{include file="footer.html"}-->

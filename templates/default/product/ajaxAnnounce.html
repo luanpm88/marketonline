@@ -1,0 +1,20 @@
+{if $Items}<!--{loop $Items item level key}-->
+<div class="announce-box">
+    <span class="ann_close">x</span>
+    <div class="announce-box-content">
+                    <img src="{$item.company_logo}" />
+                    <p class="content">{$item.content}</p>
+                    <!--<p class="timeinbox">"{$item.content|truncate:100}"</p>-->
+                    <p class="timeinbox">{$item.created}</p>
+                    
+    </div>
+
+</div><!--{/loop}-->
+<!--{literal}-->
+<script>
+    $('.announce-box .ann_close').click(function(){
+                        $(this).parent().fadeOut();
+    });
+</script>
+<!--{/literal}-->
+{/if}

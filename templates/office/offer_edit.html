@@ -1,0 +1,660 @@
+<!--{assign var="page_title" value="`$_business_information`"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="{$SiteUrl}scripts/jquery/jquery-ui.css" />
+<script src="{$SiteUrl}scripts/jquery/jquery-ui.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="{$SiteUrl}css/reset.css" />
+<script>
+var SiteUrl = "{$SiteUrl}";
+var enter_title = "{lang enter_title}";
+</script>
+{editor type="tiny_mce"}
+
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem1').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+
+<!--{literal}-->
+<script>
+	
+	
+	function checkHasImage() {
+		if ($('#uploadfile0').val() || $('#uploadlinkfile').val() ||
+			$('#uploadfile1').val() || $('#uploadlinkfile1').val() ||
+			$('#uploadfile2').val() || $('#uploadlinkfile2').val() ||
+			$('#uploadfile3').val() || $('#uploadlinkfile3').val() ||
+			$('#uploadfile4').val() || $('#uploadlinkfile4').val() ||
+			$('#p_image img').length
+		) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="../attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+	function checkUploadEditorInput() {
+		//code
+		if($('#uploadEditorFile').val() == '')
+		{
+			$('#uploadEditorFile').css('border', 'solid 1px red');
+			return false;
+		} else
+		{
+			$('#uploadEditorFile').css('border', 'none');
+			$('#uploadIVbutton').attr('disabled','disabled');
+			$('#uploadIVbutton').attr('value','Đang tải...');
+			return true;
+		}
+	}
+	
+	function deleteImage(id, pos) {
+		//code
+		if (parseInt($('.img_item input[type=radio]:checked').val())+1 == pos) {
+			//code
+			//alert(parseInt($('.img_item input[type=radio]:checked').val())-1);
+			
+			alert('Bạn không thể xóa hình chính. Vui lòng chọn hình khác làm hình chính trước khi xóa');
+			return;
+		}
+		
+		$('#thumbs .tim_'+pos).css('opacity', '0.2');
+		$.ajax({
+			url: "../index.php?do=offer&action=ajaxDeleteImage&pid="+id+"&pos="+pos,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				if(data == '1')
+				{
+					$('#thumbs .tim_'+pos).fadeOut();
+					$('.inputfile_'+pos).fadeIn();
+				}
+			}
+		});
+	}
+	
+	function changeDefaultImage(id, pos) {
+		//code
+		$('#thumbs .tim_'+pos).css('opacity', '0.2');
+		$.ajax({
+			url: "../index.php?do=offer&action=changeDefaultImage&pid="+id+"&pos="+pos,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data)
+				
+				$('#p_image img').attr('src', ($('#thumbs .tim_'+pos+' img').attr("src")));
+				$('#thumbs .tim_'+pos).css('opacity', '1');
+			}
+		});
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+jQuery(document).ready(function($) {
+	$( "#multi_lang_tabs" ).tabs();
+	$( "#tabs-ta" ).tabs();
+	$('a[rel*=lightbox]').colorbox({maxWidth:600,opacity:0.1});
+	$('#CountryId').change(function(){
+        $("#CountryImage").attr("src",$("#CountryId").find('option:selected').attr("title"));
+    });
+	
+	
+	
+	$("#Frm1").validate({
+	submitHandler: function(form) {
+		var okk = true;
+		if ($('#dataProductIndustryId1').val() == 0) {
+			okk = false;
+		}
+		
+		if ($('#DataTradeTypeId').val() == 0) {
+			okk = false;
+		}
+		
+		if(tinyMCE.activeEditor.getContent() == "")
+		{			
+			okk = false;
+		}
+		
+		if(!checkHasImage() && ($('#DataTradeTypeId').val() == 9 || $('#DataTradeTypeId').val() == 10))
+		{
+			okk = false;
+		}
+		else
+		{
+			okk = true;
+		}
+		
+		if ($('#DataTradePrice').val().length < 5 && $('#DataTradePrice').val() != "") {
+			okk = false;
+		}
+		
+		//alert(okk);
+		if (okk) {
+			$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
+			document.GetDocumentByID('#save').click();
+		}
+	}
+	});
+	
+	$('#save').click(function (){
+		if ($('#dataProductIndustryId1').val() == 0)
+		{
+			setTimeout('$("html, body").animate({ scrollTop: $("#dataIndustry").offset().top - 100 }, 100)', 100);
+			setTimeout(function(){
+				$('#dataIndustry select').removeClass('error');
+				$('#dataProductIndustryId1').addClass('error');			
+				$('#dataIndustry').append('<label for="dataIndustryName" generated="true" class="error">Chọn chuyên mục</label>');
+			}, 200);			
+		}
+		
+		if ($('#DataTradeTypeId').val() == 0) {
+			$('p.kktype').remove();
+			$('#DataTradeTypeId').after('<p for="" generated="true" class="error kktype">Chọn vị trí đăng</p>');
+			setTimeout('$("html, body").animate({ scrollTop: $("#dataIndustry").offset().top - 100 }, 100)',100);
+		}
+		else
+		{
+			$('#DataTradeTypeId').parent().find('.kktype').remove();
+		}
+		
+		if ($('#DataTradePrice').val().length < 5 && $('#DataTradePrice').val() != "") {
+			if(!$('#DataTradePrice').parent().find('label.err').length) $('#DataTradePrice').parent().append('<label for="" generated="true" class="err">Giá phải trên 1.000 VNĐ</label>');
+			$("html, body").animate({ scrollTop: $('#dataIndustry').offset().top + 600 }, 100);
+		}
+		else
+		{
+			$('#DataTradePrice').parent().find('label.err').remove();
+		}
+		
+		if(!checkHasImage() && !($('#DataTradeTypeId').val() != 9 && $('#DataTradeTypeId').val() != 10))
+		{
+			setTimeout('$("html, body").animate({ scrollTop: $("#dataIndustry").offset().top - 100 }, 100)', 100);
+				setTimeout(function(){					
+					$('#p_image').addClass('error');			
+					$('#p_image').append('<label for="dataPicture" generated="true" class="error"><!--{/literal}-->Chưa thêm hình ảnh sản phẩm<!--{literal}--></label>');
+				}, 200);
+		}
+		else
+		{
+			$('#p_image').removeClass('error');
+			$('#p_image').find('label').remove();
+		}
+		
+		var areaerror = false;
+		if(tinyMCE.activeEditor.getContent() == "")
+		{
+			$('#dataMultiTAvi-vn').parent().find('label').remove();
+			$('#dataMultiTAvi-vn').before('<label for="" class="errorz">Nội dung yêu cầu nhập</label>');
+			areaerror = true;
+			$("html, body").animate({ scrollTop: $('#dataIndustry').offset().top + 600 }, 100);
+		}
+		else
+		{
+			$('#dataMultiTAvi-vn').parent().find('label').remove();
+		}
+	});
+	
+	$('.img_item input[type=radio]').change(function() {
+		changeDefaultImage('<!--{/literal}-->{$item.id}<!--{literal}-->', parseInt($(this).val())+1);
+	});
+	
+	//main image
+	var cur_id = parseInt($('.img_item input[type=radio]:checked').val())+1;
+	$('#p_image img').attr('src', $('#thumbs .tim_'+cur_id+' img').attr("src"));
+	
+	if (!$('#thumbs').children().length) {
+		$('#image_size_note').addClass('noImage');
+	}
+	
+	$('#dataMultivi-vn').attr('class', 'required');
+	$('#tabs-vi-vn br').remove();
+	
+	$('#dataMultivi-vn').attr('placeholder','<!--{/literal}-->{lang words_length}<!--{literal}-->');
+})
+</script>
+<!--{/literal}-->
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{lang business_information} ({lang raovat})</h2></div>
+		<form name="TradeFrm" id="Frm1" enctype="multipart/form-data" method="post" action="{$smarty.server.PHP_SELF}">
+		<!-- {formhash} -->
+		<input type="hidden" name="id" value="{$item.id}">
+		<input type="hidden" name="do" value="save" />
+        <div class="hint">{lang must_input_with_star}</div>
+	
+	
+	
+	<div id="product_edit_box">
+	
+	
+	
+	<table id="product_formz" width="100%" cellpadding="10">
+		<tr>
+			<td colspan="2">
+				<label>{lang industry_product}:<font class="red">*</font></label>
+				<div id="dataIndustry">
+								<select name="industry[id][1]" id="dataProductIndustryId1" class="level_1 required" ></select>
+								<select name="industry[id][2]" id="dataProductIndustryId2" class="level_2"></select>
+								<select name="industry[id][3]" id="dataProductIndustryId3" class="level_3" ></select>
+								<select name="industry[id][4]" id="dataProductIndustryId4" class="level_4" ></select>
+				</div>
+				
+			</td>
+		</tr>
+		<!--{if !$item.id}-->
+			<tr>
+				<th style="padding-right: 15px;
+    text-align: right; font-size: 14px;
+    vertical-align: middle;
+    width: 125px;" valign="middle">{lang theme_n}<font class="red">*</font></th>
+				<td>
+							<div id="multi_lang_tabs">
+							<!-- {pl frm="input" values=$item.title} -->
+							
+				</td>
+			</tr>
+		<!--{else}-->
+			<tr>
+				<td><label>{lang theme_n}<font class="red">*</font></label><strong>{$item.title|pl}</strong></td>
+			</tr>
+		<!--{/if}-->
+	</table>
+	
+	
+	
+	<div style="padding: 0 5px;">
+	
+		<div id="product_formz" style="width: 300px;display: block;float:left; margin-top: 6px" valign="top">
+				<div id="p_image">
+				<!--{if $item.image1}--><img id="uploadpic" src="" alt="{$item.name}" width="200" /><!--{/if}-->
+			</div>
+			<div id="thumbs">
+				<!--{if $item.image1 != '../images/nopicture_small.gif' && $item.image1}-->
+				<div class="img_item tim_1">
+					<img id="uploadpic" src="{$item.image1}" alt="{$item.name1}" />					
+					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="0" {if $item.default_pic == 0}checked="checked"{/if} />
+					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '1');" ><img src="{$office_theme_path}images/delete-icon.png" /></a>
+				</div><!--{/if}-->
+				<!--{if $item.image2 != '../images/nopicture_small.gif' && $item.image2}-->
+				<div class="img_item tim_2">
+					<img id="uploadpic" src="{$item.image2}" alt="{$item.name2}" />					
+					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="1" {if $item.default_pic == 1}checked="checked"{/if} />
+					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '2');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
+				</div><!--{/if}-->
+				<!--{if $item.image3 != '../images/nopicture_small.gif' && $item.image3}-->
+				<div class="img_item tim_3">
+					<img id="uploadpic" src="{$item.image3}" alt="{$item.name3}" />					
+					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="2" {if $item.default_pic == 2}checked="checked"{/if} />
+					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '3');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
+				</div><!--{/if}-->
+				<!--{if $item.image4 != '../images/nopicture_small.gif' && $item.image4}-->
+				<div class="img_item tim_4">
+					<img id="uploadpic" src="{$item.image4}" alt="{$item.name4}" />					
+					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="3" {if $item.default_pic == 3}checked="checked"{/if} />
+					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '4');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
+				</div><!--{/if}-->
+				<!--{if $item.image5 != '../images/nopicture_small.gif' && $item.image5}-->
+				<div class="img_item tim_5">
+					<img id="uploadpic" src="{$item.image5}" alt="{$item.name5}" />					
+					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="4" {if $item.default_pic == 4}checked="checked"{/if} />
+					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '5');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
+				</div><!--{/if}-->
+			</div>
+			<table id="table_images">
+				<tr>
+				  <td colspan=2 style="padding-bottom: 10px"><span id="image_size_note"><strong>{lang upload_image}</strong> {lang image_size_format_provision}</span></td>
+				</tr>
+								
+				<tr class="inputfile_1" <!--{if $item.image1 != '../images/nopicture_small.gif' && $item.image1}-->style="display: none"<!--{/if}-->>
+				<td class="pic_title">H1</td>
+				<td>
+				    <a href="#loadpic" onclick="$('#uploadfile0').trigger('click')">{lang upload_picture}: <span class="picload0" style="color: #3B984C">......</span></a>
+				    <input onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
+				    <br><input title="{lang pic_note}" name="linkpic" placeholder="{lang link_picture}" class="linkpic" type="text" id="uploadlinkfile" />
+				</td>
+
+			      </tr>
+				
+				
+				
+				
+			      <tr class="inputfile_2" <!--{if $item.image2 != '../images/nopicture_small.gif' && $item.image2}-->style="display: none"<!--{/if}-->>
+				<td class="pic_title">H2</td>
+				<td>
+				    <a href="#loadpic" onclick="$('#uploadfile1').trigger('click')">{lang upload_picture}: <span class="picload1" style="color: #3B984C">......</span></a>
+				    <input onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
+				    <br><input title="{lang pic_note}" name="linkpic1" placeholder="{lang link_picture}" class="linkpic" type="text" id="uploadlinkfile1" />
+				</td>
+
+			      </tr>
+
+			      
+			      
+			      
+			      <tr class="inputfile_3" <!--{if $item.image3 != '../images/nopicture_small.gif' && $item.image3}-->style="display: none"<!--{/if}-->>
+				<td class="pic_title">H3</td>
+				<td>
+				    <a href="#loadpic" onclick="$('#uploadfile2').trigger('click')">{lang upload_picture}: <span class="picload2" style="color: #3B984C">......</span></a>
+				    <input onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
+				    <br><input title="{lang pic_note}" name="linkpic2" placeholder="{lang link_picture}" class="linkpic" type="text" id="uploadlinkfile2" />
+				     
+				    </td>
+
+			      </tr>
+			      
+			      
+			      
+			      <tr class="inputfile_4" <!--{if $item.image4 != '../images/nopicture_small.gif' && $item.image4}-->style="display: none"<!--{/if}-->>
+				<td class="pic_title">H4</td>
+				<td>
+				    <a href="#loadpic" onclick="$('#uploadfile3').trigger('click')">{lang upload_picture}: <span class="picload3" style="color: #3B984C">......</span></a>
+				    <input onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
+				    <br><input title="{lang pic_note}" placeholder="{lang link_picture}" name="linkpic3" class="linkpic" type="text" id="uploadlinkfile3" />
+				     
+				    </td>
+
+			      </tr>
+			      
+			      
+			      
+			      <tr class="inputfile_5" <!--{if $item.image5 != '../images/nopicture_small.gif' && $item.image5}-->style="display: none"<!--{/if}--> >
+				<td class="pic_title">H5</td>
+				<td>
+				    <a href="#loadpic" onclick="$('#uploadfile4').trigger('click')">{lang upload_picture}: <span class="picload4" style="color: #3B984C">......</span></a>
+				    <input onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
+				    <br><input title="{lang pic_note}" placeholder="{lang link_picture}" name="linkpic4" class="linkpic" type="text" id="uploadlinkfile4" />
+				     
+				    </td>
+
+			      </tr>
+			      
+			      
+			</table>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<table class="offer_info_content offer_leftbox" style="margin-top: 5px;">
+			
+			
+					  <!--{if $item.id}-->
+			      <tr>
+				<th class="circle_left">{lang direction}</th>
+				<td class="circle_right"><!--{if $item.if_urgent=="1"}-->{lang urgent}<!--{/if}-->{$TradeTypes[$item.type_id]}</td>
+			      </tr>
+			      
+			      <tr>
+				<th>{lang adwords}</th>
+				<td>{if $item.adwords}{$item.adwords}{else}<input name="data[trade][adwords]" id="trade_adwords" type="text" value="{$item.adwords}"/>{/if}</td>
+			      </tr>
+			      <tr>
+				<th>{lang duration}</th>
+				<td>{$item.expire_date}</td>
+			      </tr>
+					<!-- {else} -->
+					
+					
+					
+				
+					
+					
+			      <tr>
+				<th class="circle_left">{lang release}<font class="red">*</font></th>
+				<td class="circle_right">
+							<select name="data[trade][type_id]" id="DataTradeTypeId" class="required">
+								<option value="0">{lang select}</option>
+								<!-- {foreach from=$select_tradetypes name=f1 item=f1} -->
+								<!-- {if $f1.child} -->
+								<optgroup label="{$f1.name}">
+								<!-- {foreach from=$f1.child name=f2 item=f2} -->
+									<option value="{$f2.id}">{$f2.name}</option>
+								<!-- {/foreach} -->
+								</optgroup>
+								<!-- {else} -->
+								<option value="{$f1.id}">{$f1.name}</option>
+								<!-- {/if} -->
+								<!-- {/foreach} -->
+							</select>
+				
+				
+				</td>
+			      </tr>
+			      
+			      
+			      
+			      
+			      
+			      
+			      
+			      
+			      <!--<tr>
+				<th>{lang adwords}</th>
+				<td><input name="data[trade][adwords]" id="trade_adwords" type="text" value="{$item.adwords}"/></td>
+			      </tr>-->
+			      <tr>
+				<th>{lang duration}</th>
+				<td>{html_radios name="expire_days" options=$OfferExpires checked=$item.expire_days|default:10 separator=" "}</td>
+			      </tr>
+					<!--{/if}-->
+					
+					
+				<tr>
+					   <th>{lang market}</th>
+					   <td class="tdright"><font color="#666666">
+						<input placeholder="{lang market_note}" name="data[trade][market]" type="text" id="dataProductMarket" value="{$item.market}"></font>					   
+					   </td>
+				</tr>
+				
+				<tr style="display: none">
+					<th>{lang area_tt}{lang colon}</th>
+					<td>
+								<div id="dataArea">
+									<select name="area[id][1]" id="dataTradeAreaId1" class="level_1" ></select>
+									<select name="area[id][2]" id="dataTradeAreaId2" class="level_2" ></select>
+									<select name="area[id][3]" id="dataTradeAreaId3" class="level_3" ></select>
+								</div>
+		
+								</td>
+				</tr>
+					
+				<tr>
+					  <th>{lang product_brand}</th>
+					  <td class="tdright">
+						<select name="data[trade][brand_id]" id="brand_id_select">
+					      <option value="0">{lang select}</option>
+					      {html_options options=$UserBrands selected=$item.brand_id}
+					    </select> 
+						<a href="#new_brand_box" onclick="$('#new_brand_box').css('display', 'block')" id="add_new_brand_but">{lang add_brand}</a>
+					  </td>
+					</tr>
+					
+			      
+			      
+						  <!--{foreach from=$Forms name=form item=item1 key=key1}-->
+			      <tr>
+				<th> {$item1.label}{lang colon}</th>
+				<td><font color="#666666">
+				  <input name="data[formitem][{$key1}]" type="text" id="{$item1.id}" value="{$item1.value}"></font></td>
+			      </tr>
+						  <!--{/foreach}-->
+			      <tr style="display: none">
+				<th>{lang country}:</th>
+				<td><select name="data[trade][country_id]" id="CountryId">
+								<option>{lang please_select}</option>
+							<!--{foreach from=$Countries name=Countries item=country}-->
+								<option value="{$country.id}" title="../images/country/{$country.picture}" {if $country.id==$item.country_id}selected="selected"{/if}>{$country.name}</option>
+							<!--{/foreach}-->
+				</select>&nbsp;&nbsp;<img src="../images/country/{$item.country}" id="CountryImage"></td>
+			      </tr>
+			      
+			      
+			      <tr>
+				<th>{lang the_price_n}</th>
+				<td><input name="data[trade][price]" type="text" id="DataTradePrice" value="{$item.price}"/><strong> VNĐ / </strong><input placeholder="Đơn vị sản phẩm (Ví dụ: cái, m2,...)" name="data[trade][price_unit]" type="text" id="dataTradePriceUnit" value="{$item.price_unit}"></td>
+			      </tr>
+			      
+			      <tr>
+				<th>{lang tags_n}</th>
+				<td><input name="data[tag]" type="text" id="tag" value="{$item.tag}" title="{lang space_separate}" /><label class="field_notice">{lang space_separate}</label></td>
+			      </tr>
+			      
+			  <!--<tr>
+			      
+			       <td colspan="2" style="padding: 5px 15px;">{lang check_information}.
+				{lang need_click} <a target="_blank" href="company.php" target="_self" class="font14b_org"><strong>{lang modify_information}</strong></a></td>
+			   </tr>
+	
+			   <tr>
+				<th >{lang contact_people}</td>
+				<td>{$COMPANYINFO.link_man|default:$MemberInfo.last_name}<font color="#999999"> {lang full_name} </font> </td>
+			    </tr>-->
+						<!--{if $CompanyId!=""}-->
+			  <!--<tr>
+			    <th>{lang company_name_n}</th>
+			    <td>{$COMPANYINFO.name}<font color="#999999"> {lang company_full_name}</font></td>
+			  </tr>-->
+						<!--{/if}-->
+			      <!--<tr>
+				<th>{lang phone}</th>
+				<td>
+					{$COMPANYINFO.contact_mobile}
+				</td>
+			      </tr>
+			      <tr>
+				<th>{lang email}</th>
+				<td>
+					{$COMPANYINFO.contact_email}
+				</td>
+			      </tr>-->
+			      
+			      <!--<tr >
+				<th>{lang email_addr}</th>
+				<td>{$MemberInfo.email}</td>
+			      </tr>-->
+			      <!--<tr>
+			      <th class="circle_bottomleft"></th>
+				<td class="circle_bottomright">
+					<input type="hidden" name="edit_trade" id="EditTrade" value="y" />
+				</td>
+			      </tr>-->
+		</table>
+	</div>
+			 
+			 <br style="clear:both"><br />
+		<table>
+			<tr>
+                        
+                        <td class="">
+				<h3 style="font-size: 16px;margin-bottom: 5px;">{lang details_n}<font class="red">*</font></h3>
+							<div id="tabs-ta">
+							<!-- {pl frm="textarea" values=$item.content style="width:926px;height:550px" rows="8" wrap="VIRTUAL" class="required"} -->
+							</div>
+						<!--<br /><font color="#FF3300">{lang attention_explain}<br>-->
+                        </font></td>
+                      </tr>
+		</table>
+			 
+		</div>		 
+			 
+			 
+			 
+			 
+	<br />
+	<input type="submit" name="save" id="save" value="{lang finish_release}">
+						<!--{if $item.id}-->
+						&nbsp;<a style="float: right; margin-right: 20px;padding-top: 7px" href="../{the_url module=offer id=`$item.id`}" title="{lang preview}{$item.title}" target="_blank" style="text-decoration:underline;color:blue;">{lang preview}</a>
+						<!--{/if}-->
+			 
+		</form>
+		
+		
+		
+		<div id="uploadImageVideo" style="margin-top:-553px;margin-left: 454px">
+		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+			<input type="hidden" name="do" value="product" />
+			<input type="hidden" name="action" value="uploadEditorFile" />
+			
+			
+			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+       onclick ="javascript:document.getElementById('imagefile').click();">
+      
+			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+			
+		</form>
+	</div>
+
+     </div>
+</div>
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+var type_id = {$type_id|default:2} ;
+</script>
+<!-- {literal} -->
+<script>
+$(function(){
+  $('#DataTradeTypeId').attr('value', type_id);
+});
+</script>
+<!-- {/literal} -->
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+<!--{include file="footer.html"}-->

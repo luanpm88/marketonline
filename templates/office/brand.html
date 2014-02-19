@@ -1,0 +1,52 @@
+<!--{assign var="page_title" value="`$_brands`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem<!--{/literal}-->{if $getvar.type == 'service'}23{else}6{/if}<!--{literal}-->').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{$page_title}</h2></div>
+      <div class="hint"><span class="btn_hint"><a href="brand.php?do=edit{if $getvar.type == 'service'}&type=service{/if}" class="btn_publish">{lang add_brand}</a></span>{lang add_your_brands}</div>               
+     <table class="bglist" >
+	<tr>
+	    <th width="9%">{lang sample_image}</th>
+	    <th style="text-align: left">{lang content}</th>
+	</tr>
+          <!--{foreach from=$Items item=item}-->
+          <tr bgcolor="{cycle values="#F1F1F1,#ffffff"}">
+          <th width="10%" style="border-bottom: solid 1px #fff;background: #D8EADA"><a href="brand.php?do=edit&id={$item.id}" style="text-decoration: underline;"><img style="padding: 6px; border: 1px solid #CCC; background-color: #FFF;" src="{$item.image}" alt="" border="0" width="80" height="80" /></a></th>
+          <td style="border-bottom: solid 1px #fff">
+          <div id="certs" align="left">
+            <ul>
+            <li><strong>{$item.name}</strong></li>
+            <li>{lang description}{$item.description|nl2br|truncate:100}</li>
+            <li style="list-style:none"><a href="brand.php?do=edit&id={$item.id}" style="text-decoration: underline;">{lang modify}</a>&nbsp;<a href="brand.php?do=del&id={$item.id}" style="text-decoration: underline;">{lang delete}</a></li>
+            </ul>
+          </div>
+          </td>
+          </tr>
+          <!--{foreachelse}-->
+          <tr><td colspan="2"><div align="center">{lang no_datas_now}</div></td></tr>
+          <!--{/foreach}-->
+      </table>				
+     <table class="room_pages">
+          <tr>
+            <td>{$ByPages}</td>
+          </tr>
+     </table> 
+</div>
+</div>
+<!--{include file="footer.html"}-->

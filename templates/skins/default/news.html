@@ -1,0 +1,75 @@
+<!--{include file="header.html" PageTitle="`$_space_news`" cur="space_index"}-->
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns" id="content">
+
+
+              
+              <div class="row" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0" class="">
+
+	<div id="container">
+	<div class="" id="">
+	      
+	      <h3 style="padding-left: 0; margin-bottom: 15px;">{lang latest_news}</h3>
+	      
+	      
+		<!--{companynews companyid=`$COMPANY.id` row=10}-->
+						
+						<article class="mini">
+                    <time datetime="2012-11-23T10:15:44+00:00">
+             <span class="day">{$companynews.created_d}/{$companynews.created_f}</span>
+             <span class="mounth">{$companynews.created_y}</span>
+             <span class="time">{$companynews.created_time}</span>
+           </time>
+                    <div class="entry-content">
+            {$companynews.link}
+
+            <p>{$companynews.content|truncate:400}</p>
+          </div>
+        </article>
+
+	
+		<!--{/companynews}-->
+	      
+        </div>
+	<p><div class="pagination"><!-- {pager rowcount=`$paging.total`} --></div></p>
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+
+
+
+
+
+
+

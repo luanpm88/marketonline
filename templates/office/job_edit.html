@@ -1,0 +1,494 @@
+<!--{assign var="page_title" value="`$_company_job`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+        //alert("sdfsdfsdfs");
+	jQuery(document).ready(function($) {
+	        
+		$('.MenuItem14').addClass('mActive');
+		
+		
+	});
+
+</script>
+<!--{/literal}-->
+
+
+{fetch file="../scripts/date.js"}
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<!--{editor type="tiny_mce"}-->
+<script>
+var allows_maximum_input = "{lang allows_maximum_input}";
+var can_also_enter = "{lang can_also_enter}";
+</script>
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{$page_title}</h2></div>
+     <div class="hint">{lang must_input_with_star}</div>
+
+	  <form name="jobfrm" id="Frm1" action="job.php" method="post">
+	  <!-- {formhash} -->
+	  <input type="hidden" name="id" value="{$item.id}">
+		
+		<div class="tt_bound">
+		  <table class="offer_info_content job_edit_page">       
+
+                      <tr>
+                         <th class="circle_left">
+				{lang title} <font color="#FF6600">*</font></th>
+                         <td class="circle_right"><input placeholder="Tên công việc (tiêu đề hiển thị trong danh sách tuyển dụng)" name="job[name]" type="text" id="jobname" value="{$item.name}" class="required"></td>
+                      </tr>
+		      <tr>
+                        <th>{lang job_cat}<font color="#FF6600">*</font></th>
+                        <td class="tdright">
+				<select name="jobcats[]" id="JobcatId" class="required" multiple>
+					{$JobcatOptions}
+				</select>
+			</td>
+                      </tr>		      
+		      <tr>
+                        <th>{lang job_indust}<font color="#FF6600">*</font></th>
+                        <td class="tdright">
+				<select name="jobindusts[]" id="JobindustId" class="required" multiple>
+					{$JobindustOptions}
+				</select>
+			</td>
+                      </tr>
+		      <tr>
+			<th>{lang job_nature}<font color="#FF6600">*</font></th>
+                        <td class="tdright"><select name="job[worktype_id]">
+						{html_options options=$Worktype selected=$item.worktype_id}
+						</select></td>
+                      </tr>
+		      <tr>
+                        <th>{lang location_job}<font color="#FF6600">*</font></th>
+                        <td class="tdright">
+						<div id="dataArea">
+							<select name="area[id][1]" id="dataCompanyAreaId1" class="level_1"></select>
+							<select name="area[id][2]" id="dataCompanyAreaId2" class="level_2"></select>
+							<select name="area[id][3]" id="dataCompanyAreaId3" class="level_3"></select>
+						</div>
+						<input style="width:414px;margin-top:5px;" placeholder="Số Tên đường, Phường/Xã" name="job[work_address]" type="text" id="address" value="{$item.address}">
+						</td>
+                      </tr>
+		      
+			
+		      
+			</table>
+		</div>
+		
+		<div class="tt_bound">
+			<table class="offer_info_content job_edit_page">
+		      
+		      
+		      
+		      
+		      
+		      <tr>
+                        <th>{lang sex}</th>
+                        <td class="tdright">{html_radios name="job[require_gender_id]" options=$Genders checked=$item.require_gender_id|default:0 separator=" "}</td>
+                      </tr>
+		       <tr>
+                        <th>{lang age}</th>
+                        <td class="tdright"><input name="job[require_age]" type="text" id="require_age" value="{$item.require_age}"></td>
+                      </tr>
+		      <tr>
+                        <th>{lang job_type}</th>
+                        <td class="tdright">
+				<select name="job[jobtype_id]" id="JobtypeId">
+					<option value="0">Tất cả</option>
+					{$JobtypeOptions}
+				</select>
+			</td>
+                      </tr>
+		      <tr>
+                        <th>{lang education}</th>
+                        <td class="tdright"><select name="job[require_education_id]">
+                          {html_options options=$Educations selected=$item.require_education_id}
+                        </select></td>
+                      </tr>
+		      <tr>
+                        <th>{lang exper}</th>
+                        <td class="tdright"><input placeholder="Số năm kinh nghiệm" name="job[exper]" type="text" id="require_exper" value="{$item.exper}"></td>
+                      </tr>
+		      
+		      
+		  </table>
+		</div>
+		
+		
+		
+		
+		
+		<div class="tt_bound">
+		  <table class="offer_info_content job_edit_page">       
+		  
+		      <!--<tr>
+                        <th>{lang industry}<font color="#FF6600">*</font></th>
+                        <td class="tdright"><input class="required" name="job[industry]" type="text" id="industry" value="{$item.industry}"></td>
+                      </tr>-->
+		      
+		      
+			<tr>
+					<th>{lang salary}<font class="red">*</font></th>
+					<td>
+						<input type="radio" name="has_salary" value="1" {if $item.salary}checked="checked"{/if} />
+						<input type="text" name="job[salary]" value="{$item.salary}"  {if !$item.salary}disabled{/if} /> <span>
+						<input type="radio" name="job[salary_currency]" value="VNĐ" {if $item.salary_currency == "VNĐ"}checked="checked"{/if} /> VNĐ
+						<input type="radio" name="job[salary_currency]" value="USD" {if $item.salary_currency == "USD"}checked="checked"{/if} /> USD &nbsp;&nbsp;&nbsp;/ tháng</span> <br />
+						<input type="radio" name="has_salary" value="0" {if !$item.salary && $item.id}checked="checked"{/if} />
+						Thương lượng
+					</td>
+			</tr>
+		     
+		      
+		      <!--<tr>
+                        <th>{lang salary}<font color="#FF6600">*</font></th>
+                        <td class="tdright"><input class="required" name="job[salary]" type="text" id="salary" value="{$item.salary}"></td>
+                      </tr>-->
+		      <tr>
+                        <th>{lang testtime}</th>
+                        <td class="tdright"><input placeholder="Ví dụ: 1 tháng, 2 tháng,..." name="job[testtime]" type="text" id="require_testtime" value="{$item.testtime}"></td>
+                      </tr>
+		      <tr>
+                        <th>{lang job_number}<font color="#FF6600">*</font></th>
+                        <td class="tdright"><input placeholder="Số lượng ứng viên cần tuyển" name="job[peoples]" type="text" id="peoples" value="{$item.peoples}" size="2" maxlength="5" class="required number"> ({lang peoples})</td>
+                      </tr>
+		      <tr>
+                        <th>{lang publish_date_deadline}<font color="#FF6600">*</font></th>
+                        <td class="tdright"><input class="date_deadline required" placeholder="ngày/tháng/năm" type="text" name="job[expired_dates]" value='{$item.expired_dates}' id=""><!--<span class="btn_calendar" id="calendar-date1"></span>--> </td>
+                      
+                      </tr>
+		      
+		      
+		      
+		      
+		      
+		      
+		      
+		      
+		      
+		      
+		      
+		      
+                      
+                      
+                      
+                      
+                      
+                      
+		      
+		      <tr style="display: none">
+                        <th>{lang salary}</th>
+                        <td class="tdright"><select name="job[salary_id]">
+						{html_options options=$Salary selected=$item.salary_id}
+						</select></td>
+                      </tr>
+                      
+		      
+                      <tr style="display: none">
+                        <th>{lang industry}</th>
+                        <td class="tdright">
+						<div id="dataIndustry">
+							<select name="industry[id][1]" id="dataCompanyIndustryId1" class="level_1"></select>
+							<select name="industry[id][2]" id="dataCompanyIndustryId2" class="level_2"></select>
+							<select name="industry[id][3]" id="dataCompanyIndustryId3" class="level_3"></select>
+							<select name="industry[id][4]" id="dataCompanyIndustryId4" class="level_4"></select>
+						</div>
+						</td>
+                      </tr>
+                      
+                      <!--<tr>
+                        <th>{lang job_address}<font color="#FF6600">*</font></th>
+                        <td class="tdright"><input name="job[work_station]" type="text" id="work_station" value="{$item.work_station}" class="required"/></td>
+                      </tr>-->
+                      <!--<tr>
+                        <th>{lang category}{lang colon}<font color="#FF6600">*</font></th>
+                        <td class="tdright">
+						<select name="job[jobtype_id]" id="JobtypeId">
+        <option value="0">{lang select_category}</option>
+        {$JobtypeOptions}
+        </select>
+						</td>
+                      </tr>-->
+		      <tr style="display: none">
+		      <th>{lang job_category}{lang colon}<font color="#FF6600">*</font></th>
+                        <td class="tdright">
+			    <input type="text" name="job[jobtype]" id="JobType" />
+			</td>
+                      </tr>
+		      
+			
+                  </table>     
+		</div> 
+		      
+		      
+		      
+		      
+		      
+		<div class="tt_bound"> 
+			<table class="offer_info_content job_edit_page">
+					    
+			    <tr>
+			      <th>{lang job_description}<font color="#FF6600">*</font></th>
+			      <td class="tdright"><textarea name="job[content]" cols="35" rows="4" id="Content">{$item.content}</textarea><div id="txtTips"></div></td>
+			    </tr>
+			    
+			    
+			    <tr>
+			      <th>{lang skills}</th>
+			      <td class="tdright"><textarea name="job[skills]" cols="35" rows="4" id="Skills" class="">{$item.skills}</textarea><div id="txtTips"></div></td>
+			    </tr>
+			    
+			    <tr>
+			      <th>{lang job_other}</th>
+			      <td class="tdright"><textarea name="job[job_other]" cols="35" rows="4" id="job_other" class="">{$item.job_other}</textarea><div id="txtTips"></div></td>
+			    </tr>
+			    
+			    <tr>
+			      <th>{lang rprofile}
+				<br /><br />
+				<span style="font-weight: normal;font-size: 13px;">
+					(Yêu cầu giấy tờ/bằng cấp,<br> hình thức/địa điểm nộp hồ sơ,...)
+				</span>
+			      </th>
+			      <td class="tdright"><textarea name="job[rprofile]" cols="35" rows="4" id="Rprofile" class="">{$item.rprofile}</textarea><div id="txtTips"></div></td>
+			    </tr>
+			    
+				
+			    
+
+			</table>
+		</div>
+		
+		
+		<div class="tt_bound"> 
+			<table class="offer_info_content job_edit_page">
+					    
+			    <tr>
+			      <th>Thông tin liên hệ nộp hồ sơ<br><br><span style="font-weight: normal;font-size: 13px;">(Có thể thay đổi thông tin liên hệ cho phù hợp)</span></th>
+				<td class="tdright">
+					
+					{if $item.contact_name == ""}
+					
+						<div style="margin-bottom: 5px;">
+							<label style="width:70px;display:block;float:left">Họ và tên</label>
+									<input name="job[contact_name]" type="text" id="linkman" value="{$COMPANYINFO.link_man}" size="32" class="required">
+									{lang chucvu}
+									<input name="job[contact_position]" type="text" id="dataCompanyPosition" value="{$COMPANYINFO.position}" size="30">
+								  
+									<span class="gendercheck" style="margin-left: 10px">{html_radios name="job[contact_gender]" options=$Genders checked=$COMPANYINFO.link_man_gender separator=" "}</span>
+						</div>
+								
+						<div style="margin-bottom: 5px;">
+							<label style="width:70px;display:block;float:left">{lang mobile_number}</label>
+									<input name="job[contact_mobile]" type="text" id="contact_mobile" value="{$COMPANYINFO.contact_mobile}" size="32" class="required">
+						</div>
+										
+								
+						<div style="margin-bottom: 5px;">
+							<label style="width:70px;display:block;float:left">{lang email}</label>
+									<input name="job[contact_email]" type="text" id="contact_email" value="{$COMPANYINFO.contact_email}" size="32" class="required">
+						</div>
+					
+					{else}
+						<div style="margin-bottom: 5px;">
+							<label style="width:70px;display:block;float:left">Họ và tên</label>
+									<input name="job[contact_name]" type="text" id="linkman" value="{$item.contact_name}" size="32">
+									{lang chucvu}
+									<input name="job[contact_position]" type="text" id="dataCompanyPosition" value="{$item.contact_position}" size="30">
+								  
+									<span class="gendercheck" style="margin-left: 10px">{html_radios name="job[contact_gender]" options=$Genders checked=$item.contact_gender separator=" "}</span>
+						</div>
+								
+						<div style="margin-bottom: 5px;">
+							<label style="width:70px;display:block;float:left">{lang mobile_number}</label>
+									<input name="job[contact_mobile]" type="text" id="contact_mobile" value="{$item.contact_mobile}" size="32">
+						</div>
+										
+								
+						<div style="margin-bottom: 5px;">
+							<label style="width:70px;display:block;float:left">{lang email}</label>
+									<input name="job[contact_email]" type="text" id="contact_email" value="{$item.contact_email}" size="32">
+						</div>
+					{/if}
+								
+					
+				</td>
+			    </tr>
+			    
+			    <tr>
+			      <th class="circle_bottomleft"></th>
+			      <td class="circle_bottomright"><input name="save" type="submit" id="save" value="{lang save}"></td>
+			    </tr>
+			    
+			</table>
+		</div>
+	</form>
+</div>
+</div>
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+var jobtype_id = {$item.jobtype_id|default:0} ;
+</script>
+<!--{literal}-->
+<script>
+
+jQuery(document).ready(function($) {
+	$("#JobtypeId").val(jobtype_id);
+	$("#Content").textbox({
+		maxLength: 255,
+		onInput: function(event, status) {
+			$("#txtTips").html(allows_maximum_input+" <strong style='font-family:Arial;font-size:1.5em;'>" + status.maxLength + "</strong> "+can_also_enter+" <strong style='font-family:Arial;font-size:1.5em;'>" + status.leftLength + "</strong>");
+		}
+	});
+	$("#Frm1").validate({
+	submitHandler: function(form) {
+	    var result = true;
+		
+		if(tinyMCE.get('Content').getContent() == "")
+		{
+			result = false;
+		}
+		
+		if ($('#dataCompanyAreaId2').val() ==  '0') {			
+			result = false;
+		}
+		
+		if ($('input[name="has_salary"]:checked').val() == "1" && ($('input[name="job[salary]"]').val() == "" || !$('input[name="job[salary_currency]"]:checked').length)) {
+			result = false;
+		}
+		
+		if (!$('input[name="has_salary"]:checked').length) {
+			result = false;
+		}
+		
+		if (result) {
+			$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
+			document.GetDocumentByID('#save').click();
+		}   
+	    
+	}
+	});
+	
+	$('#save').click(function() {
+		var result = true;
+		
+		var areaerror = false;
+		if(tinyMCE.get('Content').getContent() == "")
+		{
+			$('#Content').parent().find('label').remove();
+			$('#Content').before('<label for="" class="errorz">Nội dung yêu cầu nhập</label>');
+			areaerror = true;
+		}
+		else
+		{
+			$('#Content').parent().find('label').remove();
+		}
+		
+		if ($('#dataCompanyAreaId2').val() ==  '0') {
+			
+			$('#dataCompanyAreaId3').parent().find('label').remove();
+			$('#dataCompanyAreaId3').parent().append('<label for="" class="errorz">Yêu cầu chọn cấp thấp nhất là cấp Tỉnh/Thành</label>');
+			result = false;
+		}
+		else
+		{
+		    $('#dataCompanyAreaId2').parent().find('label').remove();
+		}
+		$('#dataCompanyAreaId3, #dataCompanyAreaId2, #dataCompanyAreaId1').change(function(){
+			if ($('#dataCompanyAreaId2').val() !=  '0') {
+				$('#dataCompanyAreaId3').parent().find('label').remove();
+			}
+			else
+			{
+				$('#dataCompanyAreaId3').parent().find('label').remove();
+				$('#dataCompanyAreaId3').parent().append('<label for="" class="errorz">Yêu cầu chọn thấp nhất cấp Tỉnh/Thành</label>');
+			}
+		});
+		
+		
+		if ($('input[name="has_salary"]:checked').val() == "1" && ($('input[name="job[salary]"]').val() == "" || !$('input[name="job[salary_currency]"]:checked').length)) {
+			$('input[name="job[salary]"]').parent().find('label').remove();
+				if ($('input[name="job[salary]"]').val() == "") {
+					$('input[name="job[salary]"]').parent().find("br").after('<label for="" class="errorz">Nhập mức lương</label>');
+				}
+				else
+				{
+					$('input[name="job[salary]"]').parent().find("br").after('<label for="" class="errorz">Chọn đơn vị tiền tệ</label>');
+				}
+
+			
+			result = false;
+		}
+		else
+		{
+			$('input[name="job[salary]"]').parent().find('label.errorz').remove();
+		}
+		
+		if (!$('input[name="has_salary"]:checked').length) {
+			$('input[name="job[salary]"]').parent().find('label.errornull').remove();
+			$('input[name="job[salary]"]').parent().append('<label for="" class="errornull">Yêu cầu chọn</label>');
+			
+			result = false;
+		}
+		else
+		{
+			$('input[name="job[salary]"]').parent().find('label.errornull').remove();
+		}
+		
+		if (!result) {
+			$("html, body").animate({ scrollTop:100 }, 100);
+		}
+		else if (areaerror) {
+			setTimeout( function(){
+				if ($(window).scrollTop() > 600) {
+					$("html, body").animate({ scrollTop:600 }, 100);
+				}
+			}, 100);			
+		}
+
+		
+	});
+	
+	//$('input[name="employee[newgrad]"]').prop('checked')
+	$('input[name="has_salary"]').change(function() {		
+		if ($('input[name="has_salary"]:checked').val() == "1") {
+			$('input[name="job[salary]"]').val("");			
+			$('input[name="job[salary]"]').prop('disabled', false);
+			$('input[name="job[salary]"]').focus();
+		}
+		else
+		{
+			$('input[name="job[salary]"]').val('');
+			$('input[name="job[salary]"]').prop('disabled', true);
+		}
+	});
+	
+	$('input[name="job[salary]"]').keyup(function(){
+		$(this).parseNumber({format:"#,###", locale:"vn"});
+		$(this).formatNumber({format:"#,###", locale:"vn"});
+	});
+})
+</script>
+<!--{/literal}-->
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+<!--{include file="footer.html"}-->

@@ -1,0 +1,160 @@
+<!--{literal}-->
+<style>
+       table
+       {
+	      border: solid 0px #aaa;
+	      background: #aaa;
+       }
+       th, td
+       {
+	      background: #fff;
+       }
+</style>
+<!--{/literal}-->
+<div class="offer_info_title"><h2>{lang order_detail}</h2></div>
+     <div>
+     <div class="blockBStore" style="float: left; margin-right: 30px; width: 30%">
+            <h3>{lang buyer_information}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang fullname}:<b class="red-bold"></b>&nbsp;</span>
+			{$Info.fullname}
+		</p>
+		
+		<p>
+			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
+    <div class="blockBStore" style="float: left; margin-right: 30px; width: 30%">
+            <h3>{lang receiver_information}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang fullname}:<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_fullname}
+		</p>
+		
+		<p>
+			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
+    
+    <div class="blockBStore" style="float: left; width: 30%">
+            <h3>{lang seller}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang space_name}:<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.space_name}
+		</p>
+		
+		<p>
+			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
+    
+    </div>
+     <div class="blank"></div>
+     <br style="clear: both" />
+     <h3>{lang list_items}</h3>
+	  <table style="background: #aaaaaa" class="news" width="100%" border="0" cellspacing="1" cellpadding="5" cellspacing="0">
+					<tr style="background: #333; color: #fff">
+						<th style="width: 70px !important;background: #333; color: #fff">{lang picture}</th>
+						<th style="background: #333; color: #fff" width="37%">{lang product}</th>
+						
+						<th style="background: #333; color: #fff" width="14%">{lang quantity}</th>
+						<th style="background: #333; color: #fff" width="20%">{lang unit_price}</th>
+						<th style="background: #333; color: #fff" width="20%">{lang sum_price}</th>					
+						
+					</tr>
+					
+						
+													
+							<!--{foreach from=$StickyItems.items item=sticky}-->
+							<tr>
+							<td class="offer_img" style="line-height: 100%;background: #fff"><img width="78" src="{$sticky.image}" border=0 alt="{$sticky.title}"></td>
+							<td class="title_link" style="background: #fff">
+								<a target="_blank" href="{the_url module=product id=`$sticky.p_id`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
+								
+							</td>
+							
+							<td align=center style="background: #fff">{$sticky.quantity}
+								</td>
+							<td align=right style="background: #fff">{$sticky.p_price} VNĐ</td>
+							<td align=right style="background: #fff">{$sticky.p_total} VNĐ</td>
+							
+							</tr>
+							<!--{/foreach}-->
+							
+							<tr>
+								<td colspan=4 align=right style="background: #fff">{lang total}</td>
+								<td align=right style="background: #fff">{$StickyItems.total} VNĐ</td>
+							</tr>
+							
+						
+					
+				</table>

@@ -1,0 +1,167 @@
+<!--{assign var="page_title" value="`$_view_message`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem8').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{lang order_detail}</h2></div>
+     <div class="blockBStore">
+            <h3>{lang buyer_information}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang fullname}:<b class="red-bold"></b>&nbsp;</span>
+			{$Info.fullname}
+		</p>
+		
+		<p>
+			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
+    <div class="blockBStore">
+            <h3>{lang receiver_information}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang fullname}:<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_fullname}
+		</p>
+		
+		<p>
+			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			{$Info.receiver_address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
+    
+    <div class="blockBStore">
+            <h3>{lang seller}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang space_name}:<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.space_name}
+		</p>
+		
+		<p>
+			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
+     <div class="blank"></div>
+     <br />
+     <h3>{lang product_list}</h3>
+	  <table class="news">
+					<tr>
+						<th>{lang picture}</th>
+						<th>{lang product}</th>
+						
+						<th>{lang quantity}</th>
+						<th>{lang unit_price} (VNĐ)</th>
+						<th>{lang sum_price} (VNĐ)</th>					
+						
+					</tr>
+					
+						
+													
+							<!--{foreach from=$StickyItems.items item=sticky}-->
+							<tr>
+							<td class="offer_img"><img height="60" src="{$sticky.image}" border=0 alt="{$sticky.title}"></td>
+							<td class="title_link">
+								<a target="_blank" href="{the_url module=product id=`$sticky.p_id`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
+								
+							</td>
+							
+							<td align=center>{$sticky.quantity}
+								</td>
+							<td align=right>{$sticky.p_price}</td>
+							<td align=right>{$sticky.p_total}</td>
+							
+							</tr>
+							<!--{/foreach}-->
+							
+							<tr>
+								<td colspan=4 align=right>{lang total}</td>
+								<td align=right>{$StickyItems.total} (VNĐ)</td>
+							</tr>
+							
+						
+					
+				</table>
+   </div>
+   </div>
+<!--{include file="footer.html"}-->

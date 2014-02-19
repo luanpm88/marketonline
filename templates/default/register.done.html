@@ -1,0 +1,104 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$_register`"}-->
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<div class="row">
+    <div class="fifteen columns" id="page-title">
+        <a class="back" href="javascript:history.back()"></a>
+        <div class="subtitle">
+            
+                        <p>{lang member}</p>
+        </div>
+        <h1 class="page-title">
+                        {lang register}                </h1>
+
+
+    </div>
+</div>
+
+
+
+
+<div class="row res_box res_done_box">
+   <!-- <h2>{lang pls_click_the_link_to_active_first} '{$username}' {lang pls_click_the_link_to_active_last}</h2>-->
+   <h2>Xác nhận địa chỉ email của bạn</h2>
+<div class="success_box">
+<!-- {if $result===true} -->
+		 <h2 class="member_level">{lang welcome_join} {$_G.site_name}</h2>
+		 <!--<p>{lang ps_register_done}</p>-->
+		 <p class="member_room">{lang you_continue_next} <a href="virtual-office/" ><span>{lang into_office_room}</span></a> / <a href="{$SiteUrl}"><span>{lang back_index}</span></a></p>
+		 
+		 
+		 <div class="row">
+		    
+		    
+
+		    
+		    
+		    
+    <div class="steps">
+	<div>
+	    <h2><a href="virtual-office/personal.php">{lang complete_pro_date}</a></h2>
+	</div>
+	<div>
+	    <h2><a href="virtual-office/company.php">{lang added_comany_info}</a></h2>
+	</div>
+    </div>
+</div>
+		 
+		 <!--<p> <b>{lang complete_pro_date}</b></p>
+		 <p>{lang need_complete_pro_date} <a href="virtual-office/personal.php" style="text-decoration:underline" target="_blank">{lang click_here_add}</a></p>-->
+		 {if $is_company}
+		 
+		 
+		 <!--<p><b>{lang added_comany_info}</b></p>
+		 <p> {lang open_company_website} <a href="virtual-office/company.php" style="text-decoration:underline" target="_blank">{lang click_perfect}</a></p>-->
+		 
+		 
+		 {/if}
+		 {else}
+			<!--<h4>{$RegTips}</h4>-->
+			<h4>Chúng tôi đã gửi email kích hoạt tài khoản qua <strong>{$smarty.get.em}</strong>.
+			<br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email.
+			<br /><br />(Lưu ý: kiểm tra cả mục inbox và spam)</h4>
+
+			
+			
+			
+			
+		 <!-- {/if} -->
+</div>
+			<div class="reg_foot">
+			    <a class="resend" href="index.php?do=member&action=reactive&em={$smarty.get.em}">Gửi lại email xác nhận.</a>
+			    <a class="gomail" href="{$gomail}" target="_blank" rel="nofollow">Tới email của bạn</a>
+			<div>
+
+
+</div>
+
+
+
+</div>
+  </div>
+
+<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
+<script language="javascript" src="scripts/validate.js" charset="{$charset}"></script>
+<!--{literal}-->
+<script>
+$("#SeeAgreement").click(function() { 
+	$("#agreements").toggle();
+});
+</script>
+<!--{/literal}-->
+
+<!--{include file="`$theme_name`/footer.html"}-->
+

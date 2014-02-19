@@ -1,0 +1,66 @@
+<!--{assign var="page_title" value="`$_company_album`"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<!--{literal}-->
+<script>
+jQuery(document).ready(function($) {
+	$('a[rel*=lightbox]').colorbox({maxWidth:600,opacity:0.1});
+})
+</script>
+<!--{/literal}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem12').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>
+	{if $MEMBER.membergroup_id == 3}{lang album_company}{/if}
+	{if $MEMBER.membergroup_id == 1}{lang album_shop}{/if}
+	{if $MEMBER.membergroup_id == 2}{lang album_person}{/if}
+     </h2></div>
+      <div class="hint"><span class="btn_hint"><a href="album.php?do=edit" class="btn_publish">{lang update_album} {$membertype_name}</a></span></div>
+      <br />
+	<table cellspacing="0" id="dataTable" class="datas">
+		<thead>
+		<tr>
+			<td width="10%">{lang picture}</td>
+			<td>{lang details}</td>
+			<td width="11%">{lang operation}</td>
+		</tr>
+		</thead>
+		<tbody>
+          
+		    <!--{foreach from=$Items item=item}-->
+		    <tr>
+		    <td><a rel="lightbox" id="uploadpic_hover" href="{$item.image}" class="cboxElement"><img id="uploadpic" class="img_album" src="{$item.image}" alt="" border="0" width="160" style="padding: 6px; border: 1px solid #CCC; background-color: #FFF;"/></a></td>
+		    <td valign="top">
+			    <p><strong>{$item.title}</strong></p>
+		      <p>{$item.description|strip_tags|truncate:310}</p>
+		    </td>
+				  <td><a href="album.php?do=edit&id={$item.attachment_id}">{lang modify}</a><br /><a onClick="return window.confirm('{lang ok_image_delete}')" href="album.php?do=del&id={$item.id}">{lang delete}</a></td>
+		    </tr>
+		    <!--{foreachelse}-->
+		    <tr><td style="padding: 10px;" colspan="3"><div align="center">{lang no_image_now}</div></td></tr>
+		    <!--{/foreach}-->
+	  
+		</tbody>
+	</table>
+	<div id="footer" style="margin-top: 40px;">{$ByPages}</div>
+</div>
+</div>
+<!--{include file="footer.html"}-->

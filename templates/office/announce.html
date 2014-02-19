@@ -1,0 +1,41 @@
+<!--{assign var="page_title" value="`$_announce`"}-->
+<!--{include file="header.html"}-->
+
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+	
+	<div class="main_content_left">
+		<div class="blank"></div>
+		    <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+		<div class="offer_info_title"><h2>{lang announce}: {$item.subject}</h2></div>
+      
+		<div class="content-inner">
+			{$item.message}
+		</div>
+		
+		
+	</div>
+	
+	<div class="main_content_right">
+           <div class="notice">
+              <h2>{lang announce}</h2>
+              <ul>
+				{announce row=10 userid=$MEMBER.id typeid=1 membertypeid=$MEMBER.membertype_id}
+				{if $announce.status}
+					<li{if !$announce.read} class="notread"{/if}><a href="{$announce.url}">{$announce.title}</a></li>
+				{/if}
+				{/announce}
+              </ul>
+           </div>
+        </div>
+		
+</div>
+</div>
+<!--{include file="footer.html"}-->
+

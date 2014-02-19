@@ -1,0 +1,85 @@
+<!--{include file="header.html" PageTitle="`$_space_news`" cur="space_index"}-->
+<!-- {get_cache var="options" name="typeoption"} -->
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns" id="content">
+
+
+              
+              <div class="row" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0" class="">
+
+	<div id="container">
+	<div class="works-list" id="">
+	      
+	      <h3 style="padding-left: 0; margin-bottom: 15px;">{lang job}</h3>
+	      
+	      
+	      <table width="98%" cellspacing="1">
+	<tbody><tr class="table_th" style="color: #fff;">
+	  <th width="22%" align="left">{lang job_name}</th>
+	  <th width="34%" align="left">{lang company}</th>
+	  <th width="14%" align="left">{lang work_station}</th>
+	  <th width="15%" align="left">{lang salary_scope}</th>
+	  <th width="30%" align="left">{lang publish_date_deadline}</th>
+	</tr>
+		
+		<!--{job companyid="`$COMPANY.id`" row=10 status=1 start=`$smarty.get.pos`}-->
+				
+				
+				<tr>
+						<td>
+								{$job.link}
+						</td>
+						<td>{$job.companyname}</td>
+						<td>{$job.area}</td>
+						<td>{if $job.salary}{$job.salary} {$job.salary_currency}{else}Thương lượng{/if}</td>
+						<td>{$job.expired_dates}</td>
+				</tr>
+		<!--{/job}-->	
+		
+	
+	
+	
+	
+      </tbody></table>
+	      
+						
+
+	      
+        </div>
+	<p><div class="pagination"><!-- {pager rowcount=`$paging.total`} --></div></p>
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+
+

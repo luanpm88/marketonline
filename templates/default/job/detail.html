@@ -1,0 +1,403 @@
+<!--{include file="`$theme_name`/header.html" page_title="$_job_name: `$item.name`" nav_id=9}-->
+<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding" class="job_page">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<!--{literal}-->
+    <script>
+	jQuery(document).ready(function($) {		
+	    if($('.works-list tr').length < 2)
+	    {
+		$('.works-list').remove();
+	    }
+	});
+    </script>
+<!--{/literal}-->
+
+
+<div class="row">
+  <div class="fifteen columns">
+
+    <div id="page-title">
+
+    <a class="back" href="javascript:history.back()"></a>
+    <div class="subtitle">
+        {lang job_head}
+    </div>
+   
+    
+	<h1 class="page-title">{lang job_name}: {$item.name}</h1>
+
+	
+<!--{include file="`$theme_name`/job/postitem.html"}-->
+	
+	
+    
+  </div>
+
+  
+  </div>
+</div>
+
+
+
+<div class="row" style="margin-top: 5px;">
+	
+	<!--{include file="`$theme_name`/job/jobsearchbox.html"}-->
+	
+</div>
+
+<div class="row">
+	<div id="job-content">
+		
+		
+		
+		<div id="TopWorkCategory">
+			<h4>Đối tượng tuyển dụng</h4>
+		      <ul class="list-hot-cat">
+				<li rel="0" {if !$smarty.get.type}class="active"{/if}><a href="javascript:void(0)">Tất cả</a></li>
+				<!-- {get from="type" name="jobtype" var="Items"} -->
+				<!-- {if $Items|@count eq 0} -->
+				<!-- {get var="IndustryList" from="industry"} -->
+				<!-- {else} -->
+				<!-- {assign var="IndustryList" value=`$Items`} -->
+				<!-- {/if} -->
+				<!--{foreach from=$IndustryList item=industry_item name=IndustryList}-->
+					<li {if $smarty.get.type == $industry_item.id}class="active"{/if} rel="{$industry_item.id}"><a href="javascript:void(0)">{$industry_item.name}</a></li>			 
+				<!--{/foreach}-->
+			
+		      </ul>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--<h3 style="padding-left: 0; margin-bottom: 15px;">{lang job_name}: {$item.name}</h3>-->
+	      
+	      
+	      <h3>{lang job_name}: {$item.name}</h3>
+	      
+	      
+
+ <table width="100%" class="TableInfo" style="border-color: #aaa; margin-top: 10px;padding: 5px;">
+    
+				<tbody>
+					
+					
+					<tr>
+					<td colspan="2" class="left_com_infotd" style="max-width: none;width: 835px">
+					    
+					    
+					    <div class="company-info">
+								
+								<div class="columns logo logoz">
+								    {if $companyinfo.membertype_id == 5}
+									<img src="{$companyinfo.logosmall}">
+								    {else}
+									<a target="_blank" href="{the_url module=space userid=`$companyinfo.cache_spacename`}"><img src="{$companyinfo.logosmall}"></a>
+								    {/if}								    
+								</div>
+		    
+		    <div class="text left_com_info">
+			    <h3>
+				{if $companyinfo.membertype_id == 5}
+				    {$companyinfo.name}
+				{else}
+				    <a target="_blank" href="{the_url module=space userid=`$companyinfo.cache_spacename`}">{$companyinfo.name}</a>
+				{/if}
+			    </h3>
+			    <p><label>{lang address}</label> {$companyinfo.address}</p>
+			    {if $companyinfo.tel}<p><label>{lang phone}</label> {$companyinfo.tel}</p>{/if}
+			    {if $companyinfo.fax}<p><label>{lang fax}</label> {$companyinfo.fax}</p>{/if}
+			    {if $companyinfo.email}<p><label>{lang email}</label> {$companyinfo.email}</p>{/if}
+			    {if $companyinfo.site_url_name}<p><label>{lang company_home}</label> <a target="_blank" rel="nofollow" href="http://{$companyinfo.site_url_name}">{$companyinfo.site_url_name}</a></p>{/if}			
+		    </div>
+								
+								
+								
+								
+								
+								
+								<!--<span class="company-logo">
+						    <img height="100" width="200" border="0" src="http://images.vietnamworks.com/pictureofcompany/11/7984646.gif" class="logoEmployer" alt="Employer's logo - Công Ty TNHH Panasonic Appliances Việt Nam " style="float: left; margin: 20px;">&nbsp; </span>
+								      <h2 class="company-name" itemprop="name"><a href="http://www.vietnamworks.com/viec-lam-tai-cong-ty-tnhh-panasonic-appliances-viet-nam-e544254-vn" class="unlink">Công Ty TNHH Panasonic Appliances Việt Nam </a></h2>
+									  <span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress">
+						  <span class="company-address" itemprop="addressLocality">Lô B6 &ndash; KCN Thăng Long, Đông Anh, Hà Nội\Lô G2 &ndash; KCN Thăng Long II, Yên Mỹ, Hưng Yên</span>
+						  </span>
+				
+				
+						     
+									    
+									<p>Số điện thoại: 08 996 3433 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Số fax: 08 996 3433 <br>Qui mô công ty: 500-999                                            <br>
+						    Tên người liên hệ: <strong>Phòng Nhân sự</strong></p>
+				-->
+						
+						</div>					    
+					    
+					</td>
+				    </tr>
+					
+					
+				<tr>					
+					<td colspan="2" class="job-table-head" style="max-width: none;width: 835px">
+						<h3>Thông tin tuyển dụng</h3>
+					</td>
+				</tr>
+					
+				{if $item.require_gender_id}
+				<tr>
+					<th width="190px" align="left">{lang require_gender}</th>
+					<td>
+						<span class="JobName">{$options.gender[$item.require_gender_id]}</span>
+					</td>
+				</tr>
+				{/if}
+				    
+				{if $item.require_education_id}    
+				<tr>
+					<th align="left">{lang education}</th>
+					<td>
+						{$options.education[$item.require_education_id]}																	
+																										</td>
+				</tr>
+				{/if}
+				    
+				{if $item.industry}
+				<tr>
+						<th align="left">{lang job_category}</th>
+						<td>
+							{$item.industry}						</td>
+				</tr>
+				{/if}
+				
+				{if $item.worktype_id}
+				<tr>
+						<th align="left">{lang job_nature}</th>
+						<td>
+							{$options.work_type[$item.worktype_id]}						</td>
+				</tr>
+				{/if}
+				    
+				{if $item.area}
+				 <tr>
+						<th align="left">{lang work_station}</th>
+						<td>{if $item.work_address}{$item.work_address}, {/if}{$item.area}</td>
+				</tr>
+				{/if}
+				 
+				
+				{if $item.require_age}
+				<tr>
+					<th align="left">{lang require_age}</th>
+					<td>
+					{$item.require_age}
+											</td>
+				</tr>
+				{/if}
+				
+				{if $item.exper}
+				<tr>
+					<th align="left">{lang exper}</th>
+					<td>
+						{$item.exper}																	
+					</td>
+				</tr>
+				{/if}
+				
+				<tr>
+					<th align="left">{lang salary_scope}</th>
+					<td>{if $item.salary}{$item.salary} {$item.salary_currency}/tháng{else}Thương lượng{/if}</td>
+				</tr>
+				
+				{if $item.testtime}
+				<tr>
+					<th align="left">{lang testtime}</th>
+					<td>{$item.testtime}					</td>
+				</tr>
+				{/if}
+				
+				
+				{if $item.peoples}
+				<tr>
+					<th align="left">{lang job_number}</th>
+					<td>
+						{$item.peoples} {lang peoples}	</td>
+				</tr>
+				{/if}
+				
+				
+				{if $item.expired_dates}
+				<tr>
+					<th align="left">{lang publish_date_deadline}</th>
+					<td>{$item.expired_dates}</td>
+				</tr>
+				{/if}
+				
+				
+				{if $item.content}
+				<tr>
+					<th align="left" valign="top" width="18%">{lang job_description}</th>
+					<td>{$item.content}					</td>
+				</tr>
+				{/if}
+				
+				
+				{if $item.skills}
+				    <tr>
+					    <th align="left" valign="top">{lang skills}</th>
+					    <td>{$item.skills}					</td>
+				    </tr>
+				{/if}
+				
+				
+
+				
+				
+				<tr style="display: none">
+					<th align="left">{lang salary_scope}</th>
+					<td>
+					{$options.salary[$item.salary_id]}
+										<br>
+																																																										</td>
+				</tr>
+
+									
+				
+				<tr style="display: none">
+						<th align="left">{lang work_type}</th>
+						<td>
+							{$options.work_type[$item.worktype_id]}						</td>
+					</tr>
+									
+				<!--<tr>
+					<th align="left">{lang require_education}</th>
+					<td>
+						{$options.education[$item.require_education_id]}																	
+																										</td>
+				</tr>-->
+				
+				
+				{if $item.job_other}
+				<tr>
+					<th align="left" valign="top">{lang job_other}</th>
+					<td>
+						{$item.job_other}																	
+																										</td>
+				</tr>
+				{/if}
+				
+				{if $item.rprofile}
+				<tr>
+					<th align="left" valign="top">{lang rprofile}</th>
+					<td>
+					{$item.rprofile}
+											</td>
+				</tr>
+				{/if}
+				
+				{if $item.contact_name}
+				    <tr>
+					    <th align="left" valign="top">Thông tin liên hệ nộp hồ sơ</th>
+					    <td>
+						<div class="text left_com_info job_contact_detail" style="">
+							<p>{if $item.contact_gender == 1}Mr.{elseif $item.contact_gender == 2}Mrs.{/if} {$item.contact_name}{if $item.contact_position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$item.contact_position}</p>{/if}
+							{if $item.contact_mobile}<p>{lang mobile_number}: {$item.contact_mobile}</p>{/if}
+							{if $item.contact_email}<p>{lang email}: {$item.contact_email}</p>{/if}							
+						</div>
+					    </td>
+				    </tr>
+				{/if}
+				
+				
+			</tbody>
+ </table>
+
+		
+		
+		
+		
+		<div class="works-list">
+			<h3>Tuyển dụng liên quan</h3>
+			<table width="98%" style="">
+			  <tbody><tr class="job-table-list-head">
+			    <th width="40%" align="left">Tên công việc</th>
+			    <th width="35%" align="left">Nhà tuyển dụng</th>
+			    <th width="15%" align="left">Nơi làm việc</th>
+			    <!--<th width="15%" align="left">Mức lương</th>-->
+			    <th width="15%" align="left">Hạn nộp</th>
+			  </tr>
+				
+			<!-- {job row=10 status=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$item.jobindusts` type=`$item.jobtype_id` area=`$area_string`} -->
+				{if $job.id != $item.id}
+					<tr>
+						<td><a href="{the_url module='jobs' id=`$job.id`}">{$job.name}</td>
+						<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id`}{else}{$job.space_url}{/if}" target="_blank">{$job.companyname}</a></td>
+						<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
+						<!--<td>{$job.salary}</td>-->
+						<td>{$job.expired_dates}</td>
+					</tr>
+				{/if}
+			<!-- {/job} -->
+			  
+			</tbody></table>
+			
+			<div id="pagenav">
+				<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+			</div>
+			
+			  
+		      </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+	<div id="job-sidebar">
+		
+		
+		<!--{include file="`$theme_name`/job/rightbar.html"}-->		
+		
+		
+		
+	</div>
+</div>
+
+
+
+
+
+<script>
+var app_language = '{$AppLanguage}';
+var area_id1 = 0;
+var area_id2 = 0;
+var area_id3 = 0;
+</script>
+<script src="scripts/multi_select.js" charset="{$charset}"></script>
+<script src="scripts/script_area.js"></script>
+<!--{include file="`$theme_name`/footer.html"}-->

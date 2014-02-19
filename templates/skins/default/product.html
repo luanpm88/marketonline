@@ -1,0 +1,156 @@
+<!--{include file="header.html" PageTitle="`$_space_product`" cur="space_index"}-->
+<div id="body-wrapper" class="space_wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns  normal_page" id="content">
+
+
+              
+              <div class="row" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0; padding-right: 0" class="eleven columns">
+
+	<div id="container">
+	<div role="main" id="">
+	    
+	   
+	    
+ <div class="page-title">
+	    
+	    <div class="subtitle" style="margin-top: 7px;">
+        {lang product_list}/{lang services}    </div>
+	    {if $current_cat}<h2>{$current_cat.name}</h2>{/if}
+    <h1 style="font-size: 18px;margin: 0;padding-top: 7px;" class="page-title mainhotnew">
+	<a id="new_product_but" class="hotnewlist{if $smarty.get.order == 'new' || !$smarty.get.order || $smarty.get.order == ''} active{/if}" href="{the_url module=producttype typeid=`$smarty.get.typeid` member_id=`$smarty.get.memberid` userid=`$smarty.get.userid` order=new}">Mới nhất</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="hot_product_but" class="hotnewlist{if $smarty.get.order == 'popular'} active{/if}" href="{the_url module=producttype typeid=`$smarty.get.typeid` member_id=`$smarty.get.memberid` userid=`$smarty.get.userid` order=popular}">Nổi bật</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="new_service_but" class="hotnewlist{if $smarty.get.order == 'product'} active{/if}" href="{the_url module=producttype typeid=`$smarty.get.typeid` member_id=`$smarty.get.memberid` userid=`$smarty.get.userid` order=product}">{lang products}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="new_service_but" class="hotnewlist{if $smarty.get.order == 'service'} active{/if}" href="{the_url module=producttype typeid=`$smarty.get.typeid` member_id=`$smarty.get.memberid` userid=`$smarty.get.userid` order=service}">{lang services}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      
+      
+      <!--<a id="recentbuy_product_but" class="hotnewlist" href="#list">{lang recent_buy}</a>-->
+      
+      </h1>
+
+       <div id="space_search_box" <!--{if $pb_username==$MEMBER.username}-->style="margin-top:-13px;"<!--{/if}-->>
+		<form action="{$Menus.product}" method="POST">
+		    <input type="submit" value="Tìm" id="search_list_but">
+		    <input value="{$smarty.post.keyword}" type="text" name="keyword" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
+		</form>
+	    </div>
+
+<!--{if $pb_username==$MEMBER.username}-->
+  <div class="postitem kkkk"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
+  <a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a>
+  </div>
+<!--{/if}-->
+
+ </div>
+
+			
+			
+			<ul class="products new_products">
+				
+
+				<!-- {pb:product name="item" companyid="`$COMPANY.id`" industryid=`$indus_array` customid=`$custom_array` row=30 orderz=`$smarty.get.order`} -->
+						
+					
+				
+					<li class="product {$item.pos}">
+
+	
+	<a href="{the_url module=product id=`$item.id`}" title="Vào xem chi tiết {if !$item.service}sản phẩm{else}dịch vụ{/if} <br><strong>{$item.name}</strong>">
+
+		<div class="u_p_img_box"><div class="imgout"><img alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"></div></div>
+    <div class="price_title">
+		<h3>{$item.name|truncate:40}</h3>
+
+		
+	{if $item.new_price || $item.price}
+			{if $item.new_price != "" && $item.new_price != 0}
+						<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> {/if}<span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+			{else}
+						<span class="price"><span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span>
+			{/if}
+{/if}
+
+	</a>
+
+	
+    </div>
+	<a onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
+	
+	<div class="product_tools">
+		<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
+		<a class="comment_link comment_count_li" href="{the_url id=`$item.id` module='product'}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+		<!--{if $pb_username!=""}-->
+			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatbox({$item.member_id}, false)">{lang message}</a>
+		<!--{else}-->
+			<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
+		<!--{/if}-->
+		
+		
+	</div>
+
+</li>
+					
+					<!-- {/pb:product} -->
+				
+					
+				
+			</ul>
+
+			
+		
+		<div class="clear"></div>
+
+
+						<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=30} --></div></p>
+
+		</div>
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+<!--{include file="header.html" PageTitle="`$_home_page`" cur="space_index"}-->
+<div id="body-wrapper"  class="space_wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns" id="content" style="">
+
+<!--<div class="row" style="padding-left: 10px; padding-top: 0;">                
+                <div class="four columns logo logoz"><a href="#com"><img src="{$COMPANY.logo}"></a></div>
+                
+              <h3 style="padding-left: 0; margin-bottom: 15px;">{$COMPANY.name}</h3>
+              
+              <p>{$COMPANY.description}</p>
+              
+              <br>
+              <br style="clear: both">
+</div> -->             
+              
+              <div class="row">
+    <div style="width: 100%;padding-left: 0;" class="eleven columns">
+
+	<div id="container">
+	<div role="main" id="">
+
+        
+<h3 style="padding: 0; margin: 0 0 0 0;height: 40px;">Sản phẩm gần đây</h3>
+		
+			
+			<ul class="products phomes">
+
+				<!-- {pb:product name="item" companyid=$COMPANY.id memberid=$MEMBER.id row=10} -->
+						
+					
+				
+					<li class="product {$item.pos}">
+
+	
+	<a href="{the_url module=product id=`$item.id`}">
+
+		<div class="imgout"><img width="225" height="300" alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"></div>
+		<h3>{$item.name|truncate:40}</h3>
+
+		
+	<span class="price"><span class="amount">{$item.price} VNĐ</span></span>
+
+	</a>
+
+	
+
+	<a onclick="getCart({$item.id}, 1, $(this))" href="{$Menus.intro}" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
+
+</li>
+					
+					<!-- {/pb:product} -->
+				
+					
+				
+			</ul>
+
+			
+		
+		<div class="clear"></div>
+
+		
+
+		</div>
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->

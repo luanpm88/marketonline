@@ -1,0 +1,146 @@
+<!--{assign var="page_title" value="`$_companynews`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem<!--{/literal}-->{if $typeid == 9}20{else}13{/if}<!--{literal}-->').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+{editor type="tiny_mce"}
+<!--{literal}-->
+<script>
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="../attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+jQuery(document).ready(function($) {
+	$("#Frm1").validate({
+	submitHandler: function(form) {
+		var result = true;
+		
+		if(tinyMCE.activeEditor.getContent() == "")
+		{			
+			result = false;
+		}
+		
+		if (result) {
+			$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
+			form.submit();
+		}
+	}
+	});
+	
+	$('#save').click(function() {
+		var result = true;
+
+		
+		if(tinyMCE.activeEditor.getContent() == "")
+		{
+			$('#coon').parent().find('label').remove();
+			$('#coon').before('<label for="" class="errorz">Nội dung yêu cầu nhập</label>');
+			result = false;
+		}
+		else
+		{
+			$('#coon').parent().find('label').remove();
+		}
+		
+		if (!result) {
+			$("html, body").animate({ scrollTop:100 }, 100);
+		}
+		else if (areaerror) {
+			setTimeout( function(){
+				if ($(window).scrollTop() > 700) {
+					$("html, body").animate({ scrollTop:1200 }, 100);
+				}
+			}, 100);			
+		}
+	});
+})
+</script>
+<!--{/literal}-->
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{if $typeid == 9}{lang comnote} {$membertype_name}{else}{$page_title}{/if}</h2></div>
+     <div class="blank"></div>
+	  <form name="addnewsfrm" id="Frm1" action="news.php" method="post">
+	  <!-- {formhash} -->
+	  <input type="hidden" name="newsid" value="{$item.ID}">
+	{if $typeid == 9}<input type="hidden" name="typeid" value="9" />{/if}
+         <table class="offer_info_content">
+			<tr>
+            <th class="circle_left">{lang news_title}<font class="red">* </font></th>
+				<td class="circle_right"><font color="#666666">
+					<!--{if $smarty.get.act eq "view"}-->
+					{$item.Title}
+					{else}                          
+					<input name="title" type="text" id="title" value="{$item.Title}" size="150" class="required">
+					<!--{/if}-->
+				</font></td>
+			  </tr>
+			<!-- {if $CompanynewsTypes} -->
+			<tr>
+            <th>{lang category_n}</th>
+				<td><select name="type_id">
+                          {html_options options=$CompanynewsTypes selected=$item.type_id}
+                        </select></td>
+			</tr>
+			<!-- {/if} -->
+			<tr>
+				 <th>{lang content}<font class="red">* </font></th>
+				<td><p>
+					<!--{if $smarty.get.action eq "view"}-->
+					{$item.Content}
+					{else}
+					<textarea id="coon" style="width: 875px; height: 600px" name="content" cols="55" rows="10" wrap="VIRTUAL">{$item.Content}</textarea>
+					<!--{/if}-->
+					<font color="#FF3300"><br>
+				</font></p></td>
+             </tr>
+			<tr>
+				 <th class="circle_bottomleft"></th>
+				<td class="circle_bottomright"><input name="save" type="submit" id="save" value=" {lang confirm_submit} "></td>
+             </tr>                                 
+          </table>
+	</form>
+	  
+	  <div id="uploadImageVideo" style="margin-top: -645px;margin-left: 517px">
+		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+			<input type="hidden" name="do" value="product" />
+			<input type="hidden" name="action" value="uploadEditorFile" />
+			
+			
+			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+       onclick ="javascript:document.getElementById('imagefile').click();">
+      
+			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+			
+		</form>
+	</div>
+
+</div>
+</div>
+<!--{include file="footer.html"}-->

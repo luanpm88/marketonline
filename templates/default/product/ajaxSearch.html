@@ -1,0 +1,19 @@
+<div class="top_title">Tên Gian Hàng</div>
+<ul>
+    
+    <!--{loop $list item level key}-->
+        {if $item.shop_name}
+            <li>
+                <img src="{$item.logo}" />
+                <h2>
+                    <a href="{the_url module=space userid=`$item.cache_spacename`}">
+                        {$item.shop_name|strip_tags}
+                    </a>
+                </h2>
+                <p>
+                    {$item.name|strip_tags} ({$item.last_name} {$item.first_name})
+                </p>
+            </li>
+        {/if}
+    <!--{/loop}-->
+</ul>

@@ -1,0 +1,387 @@
+<?php
+class Products extends PbModel {
+ 	var $name = "Product";
+ 	var $info;
+
+ 	function Products()
+ 	{
+		parent::__construct();
+ 	}
+ 	
+ 	function initSearch()
+ 	{
+		//var_dump($area_a);
+ 		$this->condition[] = "Product.status=1 ";
+ 		if (isset($_GET['industryid']) && $area_a == null) {
+ 			if (strpos($_GET['industryid'], ",")!==false) {
+ 				$this->condition[]= "Product.industry_id IN (".trim($_GET['industryid']).")";
+ 			}else{
+	 			$industryid = intval($_GET['industryid']);
+	 			$this->condition[]= "Product.industry_id='".$industryid."'";
+ 			}
+ 		}
+ 		if (isset($_GET['areaid'])) {
+ 			if (strpos($_GET['areaid'], ",")!==false) {
+ 				$this->condition[]= "Product.area_id IN (".trim($_GET['areaid']).")";
+ 			}else{
+	 			$areaid = intval($_GET['areaid']);
+	 			$this->condition[]= "Product.area_id='".$areaid."'";
+ 			}
+ 		}
+ 		if (isset($_GET['type'])) {
+ 			if($_GET['type']=="commend"){
+ 				$this->condition[] = "Product.ifcommend='1'";
+ 			}
+ 		}
+ 		if (!empty($_GET['typeid'])) {
+ 			$this->condition[] = "Product.sort_id='".$_GET['typeid']."'";
+ 		}
+ 		if(!empty($_GET['q'])) {
+			uses("tag");
+			$tag = new Tags();
+			
+			$searchkeywords = strip_tags(urldecode($_GET['q']));
+			
+			$tags = $tag->findAll("id", null, array("Tag.name like '%".$searchkeywords."%'"));
+			$ors = "";
+			foreach($tags as $item)
+			{
+				$ors .= " OR Product.tag_ids LIKE '%,".$item["id"]."'";
+				$ors .= " OR Product.tag_ids LIKE '".$item["id"].",%'";
+				$ors .= " OR Product.tag_ids LIKE '".$item["id"]."'";
+				$ors .= " OR Product.tag_ids LIKE '%,".$item["id"].",%'";
+			}
+			//var_dump(implode(",", $tag_ids));
+			//echo $ors;
+ 			
+ 			$this->condition[]= "(Product.name like '%".$searchkeywords."%' ".$ors." )";
+ 		}
+ 		if (isset($_GET['pubdate'])) {
+ 			switch ($_GET['pubdate']) {
+ 				case "l3":
+ 					$this->condition[] = "Product.created>".($this->timestamp-3*86400);
+ 					break;
+ 				case "l10":
+ 					$this->condition[] = "Product.created>".($this->timestamp-10*86400);
+ 					break;
+ 				case "l30":
+ 					$this->condition[] = "Product.created>".($this->timestamp-30*86400);
+ 					break;
+ 				default:
+ 					break;
+ 			}
+ 		}
+ 		if (!empty($_GET['total_count'])) {
+ 			$this->amount = intval($_GET['total_count']);
+ 		}else{
+ 			$this->amount = $this->findCount();
+ 		}
+ 		if (!empty($_GET['orderby'])) {
+ 			switch ($_GET['orderby']) {
+ 				case "dateline":
+ 					$this->orderby = "created DESC";
+ 					break;
+				case "favourite":
+					$this->orderby = "clicked DESC";
+ 					break;
+ 				default:
+ 					break;
+ 			}
+ 		}
+ 	}
+ 	
+ 	function Search($firstcount, $displaypg)
+ 	{
+		//echo $firstcount;
+ 		global $cache_types;
+ 		uses("space","industry","area","productcomment");
+ 		$space = new Space();
+ 		$area = new Areas();
+ 		$industry = new Industries();
+		$productcomment = new Productcomments();
+ 		$cache_options = cache_read('typeoption');
+ 		$area_s = $space->array_multi2single($area->getCacheArea());
+ 		$industry_s = $space->array_multi2single($area->getCacheArea());
+ 		$result = $this->findAll("Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id"), null, $this->orderby, $firstcount, $displaypg);
+ 		while(list($keys,$values) = each($result)){
+ 			$result[$keys]['typename'] = $cache_types['productsort'][$values['sort_id']];
+			//get default picture
+			if($values['default_pic'])
+			{
+				$pic_col = 'picture'.$values['default_pic'];
+			}
+			else
+			{
+				$pic_col = 'picture';
+			}
+			//echo $pic_col;
+			
+ 			$result[$keys]['thumb'] = pb_get_attachmenturl($values[$pic_col], '', 'small');
+ 			if(isset($values['begin_time'])) $result[$keys]['pubdate'] = df($values['begin_time']);
+ 			else $result[$keys]['pubdate'] = '';
+ 			if (!empty($result[$keys]['area_id'])) {
+ 				$r1 = $area_s[$result[$keys]['area_id']];
+ 			}
+ 			if (!empty($result[$keys]['cache_companyname'])) {
+ 				$r2 = "<a href='".$space->rewrite($result[$keys]['cache_companyname'],$result[$keys]['company_id'])."'>".$result[$keys]['cache_companyname']."</a>";
+ 			}
+ 			if (!empty($r1) || !empty($r2)) {
+ 				$result[$keys]['extra'] = implode(" - ", array($r1, $r2));
+ 			}
+ 			$result[$keys]['url'] = $this->url(array("module"=>"product", "id"=>$values['id']));
+			$result[$keys]["price"] = number_format($result[$keys]["price"], 0, ',', '.');
+			$result[$keys]["new_price"] = number_format($result[$keys]["new_price"], 0, ',', '.');
+			$result[$keys]["shop_url"] = $space->setBaseUrlByUserId($result[$keys]['cache_spacename'], 'index');
+			$result[$keys]["comments_count"] = $productcomment->findCount(null, array("product_id=".$result[$keys]["id"]));
+		
+ 		}
+ 		return $result;
+ 	}
+
+	function checkProducts($id = null, $status = null)
+	{
+		if(is_array($id)){
+			$checkId = "id IN (".implode(",",$id).")";
+		}else {
+			$checkId = "id=".$id;
+		}
+		$sql = "UPDATE ".$this->getTable()." SET status=".$status." WHERE ".$checkId;
+		$return = $this->dbstuff->Execute($sql);
+		if($return){
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	function getInfo($id)
+	{
+		$sql = "SELECT p.*,m.username,c.name AS companyname,c.shop_name AS shop_name FROM {$this->table_prefix}products p LEFT JOIN {$this->table_prefix}members m ON m.id=p.member_id LEFT JOIN {$this->table_prefix}companies c ON c.member_id=p.member_id WHERE p.id=".$id;
+		$result = $this->dbstuff->GetRow($sql);
+		
+		
+		
+		return $result;
+	}
+	
+	function getSimilarByMemberId($member_id)
+	{
+		return $this->findAll("id,name", null, "Product.state=1 AND Product.status=1 AND Product.member_id={$member_id}", "Product.id DESC",0,8);
+	}
+	
+	function getProductById($product_id)
+	{
+		$sql = "SELECT p.*, b.name AS brand_name, i.name as industry_name FROM {$this->table_prefix}products p"
+			." LEFT JOIN {$this->table_prefix}brands b ON b.id = p.brand_id"
+			." LEFT JOIN {$this->table_prefix}industries i ON i.id = p.industry_id"
+			." WHERE p.id=".$product_id;
+		$result = $this->dbstuff->GetRow($sql);
+		//var_dump($result);
+		if (empty($result) || !$result) {
+			return false;
+		}
+		$result['pubdate'] = df($result['created']);
+		if (!empty($result['picture'])) {
+			$result['imgsmall'] = pb_get_attachmenturl($result['picture'], '', 'small');
+			$result['imgmiddle'] = pb_get_attachmenturl($result['picture'], '', 'middle');
+			$result['image'] = pb_get_attachmenturl($result['picture'], '', '');
+			$result['image_url'] = rawurlencode($result['picture']);
+		} else {
+			$result['image'] = pb_get_attachmenturl('', '', 'middle');
+		}
+		if (!empty($result['picture1'])) {
+			$result['imgsmall1'] = pb_get_attachmenturl($result['picture1'], '', 'small');
+			$result['imgmiddle1'] = pb_get_attachmenturl($result['picture1'], '', 'middle');
+			$result['image1'] = pb_get_attachmenturl($result['picture1'], '', '');
+			$result['image_url1'] = rawurlencode($result['picture1']);
+		}
+		if (!empty($result['picture2'])) {
+			$result['imgsmall2'] = pb_get_attachmenturl($result['picture2'], '', 'small');
+			$result['imgmiddle2'] = pb_get_attachmenturl($result['picture2'], '', 'middle');
+			$result['image2'] = pb_get_attachmenturl($result['picture2'], '', '');
+			$result['image_url2'] = rawurlencode($result['picture2']);
+		}
+		if (!empty($result['picture3'])) {
+			$result['imgsmall3'] = pb_get_attachmenturl($result['picture3'], '', 'small');
+			$result['imgmiddle3'] = pb_get_attachmenturl($result['picture3'], '', 'middle');
+			$result['image3'] = pb_get_attachmenturl($result['picture3'], '', '');
+			$result['image_url3'] = rawurlencode($result['picture3']);
+		}
+		if (!empty($result['picture4'])) {
+			$result['imgsmall4'] = pb_get_attachmenturl($result['picture4'], '', 'small');
+			$result['imgmiddle4'] = pb_get_attachmenturl($result['picture4'], '', 'middle');
+			$result['image4'] = pb_get_attachmenturl($result['picture4'], '', '');
+			$result['image_url4'] = rawurlencode($result['picture4']);
+		}
+		$result["price"] = number_format($result["price"], 0, ',', '.');
+		$result["new_price"] = number_format($result["new_price"], 0, ',', '.');
+		//echo $result["price"];
+		$this->info = $result;
+		return $result;
+	}
+	
+	function formatResult($result)
+	{
+		global $rewrite_able;
+		$_PB_CACHE['membergroup'] = cache_read("membergroup");
+		if (!empty($result)) {
+			$count = count($result);
+			for($i=0; $i<$count; $i++){
+				$result[$i]['pubdate'] = df($result[$i]['created']);
+				$result[$i]['content'] = strip_tags($result[$i]['content']);
+				$result[$i]['url'] = ($rewrite_able)? "product/detail/".$result[$i]['id'].".html":"index.php?do=product&action=detail&id=".$result[$i]['id'];;
+				$result[$i]['gradeimg'] = 'images/group/'.$_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['avatar'];
+				$result[$i]['gradename'] = $_PB_CACHE['membergroup'][$result[$i]['membergroup_id']]['name'];
+				
+				if($result[$i]['default_pic'])
+				{
+					$pic_col = 'picture'.$result[$i]['default_pic'];
+				}
+				else
+				{
+					$pic_col = 'picture';
+				}
+				
+				$result[$i]['image'] = pb_get_attachmenturl($result[$i][$pic_col]);
+				$result[$i]['smallimg'] = pb_get_attachmenturl($result[$i][$pic_col], '', 'small');
+				$trusttype_images = null;
+				if(!empty($result[$i]['trusttype_ids'])){
+					$tmp_trusttype = explode(",", $result[$i]['trusttype_ids']);
+					foreach ($tmp_trusttype as $val) {
+						$trusttype_images.='<img src="'.$_PB_CACHE['trusttype'][$val]['avatar'].'" alt="'.$_PB_CACHE['trusttype'][$val]['name'].'" />';
+					}
+				}
+				$result[$i]['trusttype'] = $trusttype_images;
+			}
+			return $result;
+		}else{
+			return null;
+		}
+	}
+	
+	function getNewProductImages($cats, $num)
+	{
+		//echo "Sdfsdfsdf";
+		//return true;
+		
+		$sql = "SELECT p.* FROM {$this->table_prefix}products p WHERE p.industry_id IN (".implode(',', $cats).") ORDER BY created DESC LIMIT 0, ".$num;
+		$result = $this->dbstuff->GetArray($sql);
+		//var_dump($result);
+		//echo $sql;
+		$image = array();
+		foreach($result as $key => $item)
+		{
+			if($item['default_pic'])
+			{
+				$pic_col = 'picture'.$item['default_pic'];
+			}
+			else
+			{
+				$pic_col = 'picture';
+			}
+			
+			$image[] = pb_get_attachmenturl($item[$pic_col]);
+		}
+		//var_dump($result);
+		
+		return $image;
+	}
+	
+	function deleteImage($product, $conditions)
+	{
+		$del_id = $this->primaryKey;
+		$tmp_ids = $condition = null;
+		if (is_array($ids))
+		{
+			$tmp_ids = implode(",",$ids);
+			$cond[] = "{$del_id} IN ({$tmp_ids})";
+			$this->catchIds = serialize($ids);			
+		}
+		else
+		{
+			$cond[] = "{$del_id}=".intval($ids);
+			$this->catchIds = $ids;
+		}
+		if (!empty($table)) {
+			$table_name = $this->table_prefix.$table;
+		}else{
+			$table_name = $this->getTable();
+		}
+		if(!empty($conditions)) {
+			if(is_array($conditions)) {
+				$tmp_where_cond = implode(" AND ", $conditions);
+				$cond[] = $tmp_where_cond;
+			}
+			else {
+				$cond[] = $conditions;
+			}
+		}
+		$this->setCondition($cond);
+		$sql = "DELETE FROM ".$table_name.$this->getCondition();
+		$deleted = $this->dbstuff->Execute($sql);
+		unset($this->condition);
+		return $deleted;
+	}
+	
+	function getUserOnlines()
+	{
+		$sql = "SELECT s.* FROM {$this->table_prefix}sessions s WHERE s.data LIKE '%MemberID%'";
+		$result = $this->dbstuff->GetArray($sql);
+		
+		$users = array();
+		foreach($result as $key => $item)
+		{
+			$users[] = $this->unserializes($result[$key]["data"]);
+		}
+		
+		//var_dump($users);
+		
+		return $users;
+	}
+	
+	function unserializes($data) {
+		$vars = preg_split(
+		'/([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\|/',
+		$data, -1, PREG_SPLIT_NO_EMPTY |
+		PREG_SPLIT_DELIM_CAPTURE
+		);
+		for ($i = 0; isset($vars[$i]); $i++) {
+			$result[$vars[$i++]] = unserialize($vars[$i]);
+		}
+		return $result;
+	}
+	
+	function isOnline($uid)
+	{		
+		$users = $this->getUserOnlines();
+		
+		foreach($users as $key => $item)
+		{
+			if($item["MemberID"] == $uid)
+			{
+				return true;
+			}
+		}		
+		return false;
+	}
+	
+	function updateShowProducts($hours = 3, $count_p = 5)
+	{
+		$sql = "SELECT company_id, `count` FROM (SELECT company_id,count(id) as `count` FROM {$this->table_prefix}products p WHERE p.created > ".($this->timestamp - $hours*3600)." AND `show`=1 GROUP BY company_id) as cc WHERE `count` > ".$count_p;		
+		//echo $sql;
+		$result = $this->dbstuff->GetArray($sql);
+		//var_dump($result);
+		
+		if(count($result))
+		{
+			foreach($result as $item)
+			{
+				$sql = "UPDATE {$this->table_prefix}products SET `show`=0 WHERE id IN (SELECT id FROM ( SELECT id FROM {$this->table_prefix}products WHERE created > ".($this->timestamp - $hours*3600)." AND `show`=1 AND company_id=".$item["company_id"]." ORDER BY created DESC LIMIT ".$count_p.", 200 ) tmp)";
+				//echo $sql;
+				$this->dbstuff->Execute($sql);
+			}
+		}
+	}
+	
+}
+?>

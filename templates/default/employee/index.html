@@ -1,0 +1,132 @@
+<!--{include file="`$theme_name`/header.html" page_title="Hồ sơ ứng viên" nav_id=9}-->
+<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding" class="job_page">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+
+
+
+<div class="row">
+  <div class="fifteen columns">
+
+    <div id="page-title">
+
+    <a class="back" href="javascript:history.back()"></a>
+    <div class="subtitle">
+        {lang job_head}
+    </div>
+   
+    
+	<h1 class="page-title">Hồ sơ ứng viên</h1>
+
+<!--{include file="`$theme_name`/job/postitem.html"}-->
+
+    
+    
+  </div>
+
+  
+  </div>
+</div>
+
+
+
+<div class="row">
+    
+	<!--{include file="`$theme_name`/job/jobsearchbox.html"}-->
+    
+</div>
+
+<div class="row">
+	<div id="job-content">
+		<div id="TopWorkCategory">
+			<h4>Cấp bậc</h4>
+		      <ul class="list-hot-cat">
+				<li rel="0" {if !$smarty.get.type}class="active"{/if}><a href="javascript:void(0)">Tất cả</a></li>
+
+				<!--{loop $JobProficiencies level1 level_1_industry key_level1}-->
+					<li {if $smarty.get.type == $key_level1}class="active"{/if} rel="{$key_level1}"><a href="javascript:void(0)">{$level1}</a></li>			 
+				<!--{/loop}-->
+			
+		      </ul>
+		</div>
+		
+		
+		
+		<div class="works-list">
+			<h3>Danh sách ứng viên</h3>
+			<table width="98%" style="">
+			  <tbody><tr class="job-table-list-head">
+			    <th width="40%" align="left">Vị trí mong muốn</th>
+			    <th width="35%" align="left">Cấp bậc</th>
+			    <th width="30%" align="left">Nơi làm việc</th>
+			    <!--<th width="15%" align="left">Mức lương</th>-->
+			    <!--<th width="15%" align="left">Hạn nộp</th>-->
+			  </tr>
+				
+			<!-- {employee row=20 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
+				<tr>
+					<td><a href="{the_url module='employees' id=`$job.id`}">{$job.expected_position}</td>
+					<td><a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)">{$job.joblevel}</a></td>
+					<td>
+					    {$job.areas}
+					</td>
+					<!--<td>{$job.salary}</td>-->
+					<!--<td>{$job.expired_dates}</td>-->
+				</tr>				
+			<!-- {/employee} -->
+			
+			<!--{if !$count}-->
+				<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào</td></tr>
+			<!--{/if}-->
+			  
+			</tbody></table>
+			
+			<div id="pagenav">
+				<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+			</div>
+			
+			  
+		      </div>
+		
+		
+		
+	</div>
+	<div id="job-sidebar">
+		
+		<!--{include file="`$theme_name`/job/rightbar.html"}-->	
+		
+	</div>
+</div>
+
+
+
+
+
+
+
+</div>
+  </div>
+
+
+
+
+<script>
+var app_language = '{$AppLanguage}';
+var area_id1 = 0;
+var area_id2 = 0;
+var area_id3 = 0;
+</script>
+<script src="scripts/multi_select.js" charset="{$charset}"></script>
+<script src="scripts/script_area.js"></script>
+<!--{include file="`$theme_name`/footer.html"}-->

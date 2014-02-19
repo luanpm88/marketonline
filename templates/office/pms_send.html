@@ -1,0 +1,114 @@
+<!--{assign var="page_title" value="`$_send_message`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem17').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<script>
+var allows_maximum_input = "{lang allows_maximum_input}";
+var can_also_enter = "{lang can_also_enter}";
+</script>
+<!--{literal}-->
+<script>
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="../attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+jQuery(document).ready(function($) {
+	$("#Content").textbox({
+		maxLength: 255,
+		onInput: function(event, status) {
+			$("#txtTips").html(allows_maximum_input+" <strong style='font-family:Arial;font-size:1.5em;'>" + status.maxLength + "</strong> "+can_also_enter+" <strong style='font-family:Arial;font-size:1.5em;'>" + status.leftLength + "</strong>");
+		}
+	});
+	$("#Frm1").validate({
+	submitHandler: function(form) {
+		$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
+		form.submit();
+	}
+	});
+<!--{/literal}-->
+{if $message}
+<!--{literal}-->
+	$('#To').focus();
+<!--{/literal}-->
+{/if}
+<!--{literal}-->
+})
+</script>
+<!--{/literal}-->
+{editor type="tiny_mce"}
+<div class="wrap clearfix pms-out">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{$page_title}</h2></div>
+     <div class="hint">{lang must_input_with_star}</div>
+     <div class="hint" style="color: red">{$message}</div>
+	  <form name="sendmsgfrm" id="Frm1" action="pms.php" method="post">
+	  <!-- {formhash} -->
+       <table class="offer_info_content">
+          <tr>
+            <th class="circle_left">{lang send_to}<font color="#FF6600">*</font></th>
+             <td class="circle_right"><input {if $message}style="border-color: red"{/if} name="to" type="text" id="To" size="30" value="{$item.to}" class="required"><font color="#666666">{lang send_other_username}</font></td>
+          </tr>
+          <tr>
+            <th> {lang theme_n}<font color="#FF6600">*</font></th>
+            <td><input name="pms[title]" type="text" id="title" size="30" value="{$mm.title}" class="required"></td>
+          </tr>
+          <tr>
+             <th>{lang content}<font color="#FF6600">*</font></th>
+             <td>
+		<input id="uploadIVbutton_out" type = "button" value = "Tải Ảnh/Video" 
+       onclick ="javascript:document.getElementById('imagefile').click();">
+		<textarea name="pms[content]" id="Content" cols="50" rows="6" wrap="VIRTUAL" class="required">{$mm.content}</textarea><div id="txtTips"></div></td>
+          </tr>
+          <tr>
+             <th class="circle_bottomleft"></th>
+             <td class="circle_bottomright"><input name="send" type=submit id="Send" value=" {lang send} ">&nbsp;&nbsp;<input name=reset type=reset id="reset" value=" {lang cancel} "></td>
+          </tr>
+           
+        </table>
+	  </form>
+ </div>
+ </div>
+
+ 
+   <div id="uploadImageVideo" style="margin-top: -645px;margin-left: 517px">
+		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+			<input type="hidden" name="do" value="product" />
+			<input type="hidden" name="action" value="uploadEditorFile" />
+			
+			
+			
+      
+			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+			
+		</form>
+	</div>
+ 
+<!--{include file="footer.html"}-->

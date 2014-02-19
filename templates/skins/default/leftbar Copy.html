@@ -1,0 +1,129 @@
+<aside class="four columns" id="left-sidebar">
+	      
+	      <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
+                <div class="widget-inner">
+                    <h3>{lang product_sort}</h3>
+		    <div class="scrollbarleft">
+			<ul>
+				<!--{loop $IndustryList item0 level_0 key0}-->
+					<li>
+						{if $item0.sub}{else}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/if}<a {if $level.0 == $item0.id}class="active"{/if} title="{$item0.typename}" href="{the_url module=producttype typeid=`$item0.id` userid=`$smarty.get.userid`}">{$item0.name}</a>
+						{if $item0.sub}<img src="images/xpand.jpg"/>{/if}
+						<ul {if $item0.id == $level.0}style="display: block"{/if}>
+						<!--{loop $item0.sub item1 level_1 key1}-->
+							<li>
+								{if $item1.sub}{else}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/if}<a {if $level.1 == $item1.id}class="active"{/if} title="{$item1.typename}" href="{the_url module=producttype typeid=`$item1.id` userid=`$smarty.get.userid`}">{$item1.name}</a>
+								{if $item1.sub}<img src="images/xpand.jpg"/>{/if}
+								<ul {if $item1.id == $level.1}style="display: block"{/if}>
+								<!--{loop $item1.sub item2 level_2 key2}-->
+									<li>
+										{if $item2.sub}{else}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/if}<a {if $level.2 == $item2.id}class="active"{/if} title="{$item2.typename}" href="{the_url module=producttype typeid=`$item2.id` userid=`$smarty.get.userid`}">{$item2.name}</a>
+										{if $item2.sub}<img src="images/xpand.jpg"/>{/if}
+										<ul {if $item2.id == $level.2}style="display: block"{/if}>
+										<!--{loop $item2.sub item3 level_3 key3}-->
+											<li>
+												{if $item3.sub}{else}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{/if}<a {if $level.3 == $item3.id}class="active"{/if} title="{$item3.typename}" href="{the_url module=producttype typeid=`$item3.id` userid=`$smarty.get.userid`}">{$item3.name}</a>
+											</li>
+										<!--{/loop}-->
+										</ul>
+									</li>
+								<!--{/loop}-->
+								</ul>
+							</li>
+						<!--{/loop}-->
+						</ul>
+					</li>
+				<!--{/loop}-->
+			</ul>
+			</div>
+		</div>
+	      </section>
+              
+              
+              
+              <section style="display: none" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
+                <div class="widget-inner">
+                    <h3>{lang friend_links}</h3>
+                    
+                    <!--{if $Links}-->
+				<ul>
+					<!--{loop $Links spacelink spacelink}-->
+					<li><a href="{$spacelink.url}">{$spacelink.title}</a></li>
+					<!--{/loop}-->
+				</ul>
+				<!--{/if}-->
+		</div></section>
+	      
+	       <!--{if $pb_username==$MEMBER.username}-->
+	      <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products kkleft">
+                <div class="widget-inner">
+                    <h3>{lang friend_links}</h3>
+                    
+				<!--{if $Friends}-->
+				<ul>
+					<!--{loop $Friends spacelink spacelink}-->
+					<li><a href="{$spacelink.link}" target="_blank">{$spacelink.shop_name}</a></li>
+					<!--{/loop}-->
+				</ul>
+				<!--{/if}-->
+
+		</div></section>
+	      
+	      
+	     
+	      
+	      <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products kkleft">
+                <div class="widget-inner">
+                    <h3>{lang follow}</h3>
+                    
+				<!--{if $FollowFriends}-->
+				<ul>
+					<!--{loop $FollowFriends spacelink spacelink}-->
+					<li><a href="{$spacelink.link}" target="_blank">{$spacelink.shop_name}</a></li>
+					<!--{/loop}-->
+				</ul>
+				<!--{/if}-->
+
+		</div></section>
+	      
+	      <!--{/if}-->
+              
+<!--              <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
+                <div class="widget-inner">
+                    <h3>{lang contact_method}</h3>
+                    
+                    <p>
+			{lang contact_people} {$COMPANY.link_man}  </p>
+			<p>{lang address} {$COMPANY.address}</p>
+                        <p>{lang phone} {$COMPANY.tel}</p>
+                        <p>{lang fax} {$COMPANY.fax}</p>
+                        
+                      
+                    
+                    
+		</div></section>-->
+		{if $COMPANY.facebook}
+		
+		<div class="wpb_wrapper fb_boxx">
+		    <img style="display: block; margin: 0 auto" src="images/facebg.png">
+		    
+		    
+			    <div class="facebookOuter">
+				    <div class="facebookInner">
+					<div class="fb-like-box"
+					     data-width="235" data-height="265"
+					     data-href="{$COMPANY.facebook}"
+					     data-colorscheme="light"
+					     data-border-color="#4e616d" data-show-faces="true"
+					     data-stream="false" data-header="false">
+					</div>
+				    </div>
+				</div>
+    
+		</div>
+		
+
+	      {/if}
+              
+</aside>
+

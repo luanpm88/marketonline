@@ -1,0 +1,155 @@
+<!--{literal}-->
+<style>
+    .fancybox-inner
+    {
+        height: auto !important;
+    }
+</style>
+<!--{/literal}-->
+
+
+<ul  class="product_list_widget">
+    
+    
+    <li class="no_ii no_corp" style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+	<a class="tooltipz iim ico-corp corpico" href="#nocorp_box" title="{$item.title}"><label>{lang supply_corp}:</label></a>
+        <div id="nocorp_box" style="display: none">
+	<div style="padding: 20px 20px 10px 20px;width: 500px;height:72px">
+			 <div class="content_inner">
+			 <h2>{lang no_corp}</h2>
+			 </div>
+	</div></div> 
+    </li>
+    <!--{pb:offer name="item" companyid=`$COMPANY.id` row=1 typeid=16 memberid=$MEMBER.id}-->
+    				<li style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+				    <a class="tooltipz iim ico-corp buyco" href="{$item.url}" title="{$item.title}"><label>{lang supply_corp}:</label> {$item.title|truncate:30}</a>
+                                    <!--{literal}--><style>
+                                            .no_corp
+                                            {
+                                                display: none;
+                                            }
+                                    </style><!--{/literal}-->
+                                </li>
+    <!--{/pb:offer}-->
+
+    
+    
+    
+    
+    
+     <li class="no_ii no_offer" style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+	<a class="tooltipz iim ico-corp ppico" href="#nosupply_box" title="{$item.title}"><label>{lang supply_offer_s}:</label></a>
+        <div id="nosupply_box" style="display: none">
+	<div style="padding: 20px 20px 10px 20px;width: 500px;height:72px">
+			 <div class="content_inner">
+			 <h2>{lang no_supply}</h2>
+			 </div>
+	</div></div> 
+    </li>
+    <!--{pb:offer name="item" companyid=`$COMPANY.id` row=1 typeid=10 memberid=$MEMBER.id}-->
+    				<li style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+				    <a class="tooltipz iim ico-corp ppico" href="{$item.url}" title="{$item.title}"><label>{lang supply_offer_s}:</label> {$item.title|truncate:30}</a>
+                                    <!--{literal}--><style>
+                                            .no_offer
+                                            {
+                                                display: none;
+                                            }
+                                    </style><!--{/literal}-->
+                                </li>
+    <!--{/pb:offer}-->
+    
+    
+    
+    
+    
+    <li class="no_ii no_buy" style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+	<a class="tooltipz iim ico-corp buyco" href="#nobuy_box" title="{$item.title}"><label>{lang release}:</label></a>
+        <div id="nobuy_box" style="display: none">
+	<div style="padding: 20px 20px 10px 20px;width: 500px;height:72px">
+			 <div class="content_inner">
+			 <h2>{lang no_release}</h2>
+			 </div>
+	</div></div> 
+    </li>
+    <!--{pb:offer name="item" companyid=`$COMPANY.id` row=1 typeid=14,9 memberid=$MEMBER.id}-->
+    				<li style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+				    <a class="tooltipz iim ico-corp buyco" href="{$item.url}" title="{$item.title}"><label>{lang release}:</label> {$item.title|truncate:24}</a>
+                                    <!--{literal}--><style>
+                                            .no_buy
+                                            {
+                                                display: none;
+                                            }
+                                    </style><!--{/literal}-->
+                                </li>
+    <!--{/pb:offer}-->
+    
+    
+    
+    
+    
+<li class="no_ii no_job" style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+	<a class="tooltipz iim ico-corp jobco" href="#nojob_box" title="{$item.title}"><label>{lang job}:</label></a>
+        <div id="nojob_box" style="display: none">
+	<div style="padding: 20px 20px 10px 20px;width: 500px;height:72px">
+			 <div class="content_inner">
+			 <h2>{lang no_job}</h2>
+			 </div>
+	</div></div> 
+    </li>
+<!--{job companyid="`$COMPANY.id`" row=1 status=1}-->
+				
+				
+				<li style="border-bottom:solid 1px #dfdfdf">
+				   <a class="tooltipz ico-corp jobco" href="{$job.url}" title="{$job.title}"><label>{lang job}:</label> {$job.title|truncate:25}</a>
+                                    <!--{literal}--><style>
+                                            .no_job
+                                            {
+                                                display: none;
+                                            }
+                                    </style><!--{/literal}-->
+                                </li>
+
+<!--{/job}-->
+
+
+
+
+
+<li class="no_ii no_news" style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
+	<a class="tooltipz iim ico-corp newsco" href="#nonews_box" title="{$item.title}"><label>{lang space_news}:</label></a>
+        <div id="nonews_box" style="display: none">
+	<div style="padding: 20px 20px 10px 20px;width: 500px;height:72px">
+			 <div class="content_inner">
+			 <h2>{lang no_news}</h2>
+			 </div>
+	</div></div> 
+    </li>
+<!--{companynews companyid=`$COMPANY.id` row=1}-->
+
+<li>
+    <a class="tooltipz ico-corp newsco" href="{$companynews.url}" title="{$companynews.title}"><label>{lang space_news}:</label> {$companynews.title|truncate:25}</a>
+    <!--{literal}--><style>
+        .no_news
+        {
+            display: none;
+        }
+    </style><!--{/literal}-->
+</li>
+						
+
+
+	
+		<!--{/companynews}-->
+
+                
+                <!-- {pb:product name="item" companyid=$COMPANY.id memberid=$MEMBER.id row=1} -->
+				<!--<li>
+				<img alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"><a class="tooltipz iim" target="_blank" href="{the_url module=product id=`$item.id`}" title="{$item.name}">[{lang products}] {$item.name|truncate:25}</a>
+				
+				</li>-->
+					
+					<!-- {/pb:product} -->
+
+                
+
+</ul>

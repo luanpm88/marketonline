@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type='text/javascript' src='{$theme_img_path}js/jquery.js?ver=1.8.3'></script>
+        
+        <!--{literal}-->	
+        <script type="application/x-javascript">
+            
+            function loadItem(id)
+            {
+                jQuery.ajax({
+			url: "index.php?do=job&action=ajaxImportJobDetail&id="+id,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			    jQuery('.result').append(id+". "+data);
+                            id++;
+                            if(id < 489) setTimeout("loadItem("+id+")", 100);
+			}
+		});
+            }
+            
+            var id = 27;
+            jQuery(document).ready(function(){
+                loadItem(id);
+            });
+            
+        </script>
+        <!--{/literal}-->
+    </head>
+    <body>
+        <div class="result"></div>
+    </body>
+</html>

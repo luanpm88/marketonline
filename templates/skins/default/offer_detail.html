@@ -1,0 +1,189 @@
+<!--{include file="header.html" PageTitle="`$Trade.name`" cur="space_index"}-->
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+<!--{literal}-->
+<script>
+$(document).ready(function() {
+    loadOfferComment();
+});
+</script>
+<!--{/literal}-->
+
+
+<div class="eleven columns offer_detail offer-detail-is" id="content">
+
+
+              
+              <div class="row content_main_left" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0; padding-right: 0" class="eleven columns">
+
+	<div id="container">
+	<div role="main" id="">
+
+
+
+<h6><a href="{$Menus.offer}">{lang offer}</a> / <a href="{$Menus.offer}&typeid={$Type.id}">{$Type.name}</a></h6>
+<h3 style="padding: 0; margin: 0 0 0 0;height: auto;margin-bottom: 10px">{$Trade.name}</h3>
+
+<div class="top_images_offer">
+    <div class="main-image">
+	{if $Trade.d_image}
+			<a href="{$Trade.d_image}" title="{$Trade.name}" rel="thumbnails" class="zoomz first">
+			<img width="200" height="200" src="{$Trade.d_image}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>
+			{/if}
+    </div>
+    <div class="offer-thumbnails">
+			{if $Trade.picture && $Trade.d_image != $Trade.image}
+			<a href="{$Trade.image}" title="{$Trade.name}" rel="thumbnails" class="zoomz first">
+			<img width="200" height="200" src="{$Trade.image}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>
+			{/if}
+			{if $Trade.picture1 && $Trade.d_image != $Trade.imgmiddle1}<a href="{$Trade.image1}" title="{$Trade.name}" rel="thumbnails" class="zoomz first">
+			<img width="200" height="200" src="{$Trade.imgmiddle1}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+			{if $Trade.picture2 && $Trade.d_image != $Trade.imgmiddle2}<a href="{$Trade.image2}" title="{$Trade.name}" rel="thumbnails" class="zoomz ">
+			<img width="200" height="200" src="{$Trade.imgmiddle2}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+			{if $Trade.picture3 && $Trade.d_image != $Trade.imgmiddle3}<a href="{$Trade.image3}" title="{$Trade.name}" rel="thumbnails" class="zoomz ">
+			<img width="200" height="200" src="{$Trade.imgmiddle3}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+			{if $Trade.picture4 && $Trade.d_image != $Trade.imgmiddle4}<a href="{$Trade.image4}" title="{$Trade.name}" rel="thumbnails" class="zoomz ">
+			<img width="200" height="200" src="{$Trade.imgmiddle4}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+    </div>
+</div>
+
+<div class="images" style="display: none">
+		{if $Trade.picture}
+			<a itemprop="image" href="{$Trade.image}" class="zoom" rel="thumbnails" title="{$Trade.name}"><img width="313" height="418" src="{$Trade.image}" class="attachment-shop_single wp-post-image" alt="{$Trade.name}"></a>
+			<!--<div class="detailtopconleft">
+				<p class="left1"><img src="{$Trade.image}" alt="" width="80" height="80" /></p>
+				<p class="left2"><a href="misc.php?source={$Trade.image_url}" target="_blank"><img src="{$theme_img_path}images/detail_17.jpg" alt="" /></a><span>{lang enlarge_image}</span></p>
+			</div>-->
+		{/if}
+	
+		
+
+	
+	<div class="thumbnails">
+		{if $Trade.picture1}<a href="{$Trade.image1}" title="{$Trade.name}" rel="thumbnails" class="zoom first">
+			<img width="200" height="200" src="{$Trade.imgmiddle1}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+		{if $Trade.picture2}<a href="{$Trade.image2}" title="{$Trade.name}" rel="thumbnails" class="zoom ">
+			<img width="200" height="200" src="{$Trade.imgmiddle2}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+			{if $Trade.picture3}<a href="{$Trade.image3}" title="{$Trade.name}" rel="thumbnails" class="zoom ">
+			<img width="200" height="200" src="{$Trade.imgmiddle3}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+			{if $Trade.picture4}<a href="{$Trade.image4}" title="{$Trade.name}" rel="thumbnails" class="zoom ">
+			<img width="200" height="200" src="{$Trade.imgmiddle4}" class="attachment-shop_thumbnail" alt="{$Trade.name}" /></a>{/if}
+			
+	</div>
+</div>
+<div class="summary">
+
+		
+		
+
+								
+	
+		
+
+	
+				
+
+</div>
+		
+
+
+	</div>
+
+
+
+<div class="trade-detail-info">
+
+
+
+		
+		{if $Trade.price}<p class="price"><span style="" class="title_disc">{lang price}:</span> {$Trade.price} VNĐ</p>{/if}
+		{if $Trade.brand_name}<p><span class="title_disc" style="">{lang brand}:</span> {$Trade.brand_name}</p>{/if}
+		{if $Trade.market}<p><span class="title_disc" style="">{lang market}</span> {$Trade.market}</p>{/if}
+		
+		<!--{foreach from=$ObjectParams name=form item=item1 key=key1}-->
+		    {if $item1.value}<p><span class="title_disc" style="">{$item1.label}</span> {$item1.value}</p>{/if}
+		<!--{/foreach}-->
+		
+		
+		
+		
+</div>
+<br style="clear:both" />
+{if $Trade.content}
+    <h4 style="margin: 25px 0 5px 0; font-size: 20px;">{lang description}</h4>
+		    {$Trade.content}
+		
+		
+		
+		{/if}
+		</div>
+	
+	
+	
+	<div id="comment_link"></div>
+	<div class="detail-comments offer-detail-comment">
+					<h4>{lang comments} (<span class="comment_count">{$comments_count}</span>)</h4>
+					
+					<div class="comments-box">
+					
+						<div class="comments_list">
+							
+						</div>
+					
+						<!--{if $pb_username!=""}-->
+							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postoffercomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+								<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+								<!-- {formhash} -->
+								<input type="hidden" id="pid" name="data[id]" value="{$Trade.id}" />
+								<textarea id="comment" name="data[content]"></textarea>
+								
+								<!--<input type="button" id="postcmm" value="{lang send}" onclick="postComment()" />-->
+							</form>
+						<!--{else}-->
+							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postoffercomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+									<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+									<!-- {formhash} -->
+									<input type="hidden" id="pid" name="data[id]" value="{$Trade.id}" />
+									<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
+									<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
+									<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
+									<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
+							</form>
+						<!--{/if}-->
+					
+					</div>
+				</div>
+	
+	
+</div>
+    </div>
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+

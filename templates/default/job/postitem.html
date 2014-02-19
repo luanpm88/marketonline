@@ -1,0 +1,15 @@
+<!--{if $pb_username!=""}-->
+  <div class="postitem jobpost">	
+	<a target="_blank" href="redirect.php?url=/virtual-office/job.php?do=edit">{lang add_job}</a>
+	
+	<a href="redirect.php?url=/virtual-office/employee.php?do=edit" class="notyet">Đăng tìm việc</a>
+	<!--<a href="#box_underi" class="notyet">Đăng tài liệu</a>-->
+  </div>
+<!--{else}-->
+  <div class="postitem jobpost">
+	<a href="#login-box" class="comment_but">{lang add_job}</a>
+	
+	<a href="#login-box" class="comment_but">Đăng tìm việc</a>
+	<!--<a href="#box_underi" class="notyet">Đăng tài liệu</a>-->
+  </div>
+<!--{/if}-->

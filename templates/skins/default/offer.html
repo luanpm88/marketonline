@@ -1,0 +1,123 @@
+<!--{include file="header.html" PageTitle="`$_space_offer`" cur="space_index"}-->
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+
+<!--{include file="topmenu.html"}-->
+
+
+<div class="row widget space_content">
+
+
+<!--{include file="leftbar.html"}-->
+
+
+
+<div class="eleven columns" id="content">
+
+
+              
+              <div class="row" style="margin-right: 0;">
+    <div style="width: 100%;padding-left: 0; padding-right: 0" class="eleven columns">
+
+	<div id="container">
+	<div role="main" id="offer_list_page">
+
+
+
+
+
+
+
+<div class="nntype">
+    
+	    <a href="{the_url module=space userid=`$COMPANY.cache_spacename` do=offer typeid=16}" {if $Type.id == 16}class="active"{/if}>{lang supply_corp}</a>
+	    <a href="{the_url module=space userid=`$COMPANY.cache_spacename` do=offer typeid=14}" {if $Type.id == 14}class="active"{/if}>{lang buy_offer}</a>
+	    <a href="{the_url module=space userid=`$COMPANY.cache_spacename` do=offer typeid=9}" {if $Type.id == 9}class="active"{/if}>{lang sell_offer}</a>
+	    <a href="{the_url module=space userid=`$COMPANY.cache_spacename` do=offer typeid=10}" {if $Type.id == 10}class="active"{/if}>{lang supply_offer}</a>
+	    
+</div>
+
+<div class="works-list offer_list">
+
+<table width="98%" cellspacing="1">
+	<tbody><tr class="table_th" style="color: #fff;">
+	  <th width="15%" align="left">{lang picture}</th>
+	  <th width="52%" align="left">{lang title}</th>
+	  <th width="15%" align="left">{lang created_date}</th>
+	  <th width="15%" align="left">{lang contact}</th>
+	</tr>
+		
+<!--{pb:offer name="item" companyid=`$COMPANY.id` row=10 typeid=$Type.id}-->
+						<!--<li><a href="{$WebRootUrl}{$item.url}" target="_blank"><img src="{$item.thumb}" width="80" height="80" alt="{$item.title}"></a><p>{$item.title|truncate:20}</p></li>-->
+						
+						
+						
+						
+						
+						<tr>
+								<td class="product" style="padding: 5px">
+										<div class="imgoutz">
+										<img alt="{$item.title}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}">
+										</div>
+								</td>
+						<td style="padding: 6px 10px;">
+								<a href="{$item.url}" title="{$item.title}">{$item.title|truncate:40}</a>
+								<p style="margin-bottom: 0;">{$item.content|pl|truncate:350}</p>
+						</td>
+						
+		
+
+						<td>{$item.pubdate}</td>
+						<td>
+								<a href="{$Menus.contact}"><span class="im_pms">{lang send_message}</span></a>								
+						</td>
+				</tr>
+				<!--{/pb:offer}-->	
+				
+				
+						
+				
+				
+			
+		
+	
+	
+	
+	
+      </tbody></table>
+</div>
+
+
+
+
+
+
+			<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+
+
+						
+
+		</div>
+	
+</div>
+    </div>
+
+</div>
+                  
+              </div>
+
+
+
+</div>
+
+
+
+</div>
+<!--{include file="footer.html"}-->
+
