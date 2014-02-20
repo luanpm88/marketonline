@@ -2288,7 +2288,7 @@ div.product div.images, #content div.product div.images {
 
 #detail_box_top {
     background: none repeat scroll 0 0 #EFEFEF;
-    border: 1px solid #999999;
+    border: 1px solid #333;
     float: left;
     margin-bottom: 20px;
     padding: 10px 5px 5px;
@@ -2379,9 +2379,9 @@ div.product div.images, #content div.product div.images {
 }
 
 #product_desc {
-    border-bottom: 1px solid #CCCCCC;
-    border-left: 1px solid #CCCCCC;
-    border-right: 1px solid #CCCCCC;
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
     float: left;
     margin-top: -20px;
     padding-top: 10px;
@@ -7109,17 +7109,18 @@ div.product .woocommerce_tabs ul.tabs li a, #content div.product .woocommerce_ta
 
 #stats_content .post_star {
     height: 20px;
+    margin-top: 5px;
 }
 #stats_content .post_star .star {
-    background: url("../image/star_disable.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../image/star_disable.png") no-repeat scroll 0 0 / 12px auto rgba(0, 0, 0, 0);
+    cursor: pointer;
     display: block;
     float: left;
     height: 20px;
-    width: 20px;
-    cursor: pointer;
+    width: 13px;
 }
 #stats_content .post_star .star.light {
-    background: url("../image/star.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: url("../image/star.png") no-repeat scroll 0 0 / 12px rgba(0, 0, 0, 0);
 }
 ul.stats_header
 {
@@ -7152,6 +7153,10 @@ ul.products li.product .price .amount
 {
     font-weight: bold;
     font-size: 16px;
+}
+.col_products .old_price
+{
+    font-size: 15px;
 }
 #product_desc #content
 {
@@ -7186,4 +7191,35 @@ ul.products li.product .price .amount
 {
     margin-bottom: 0;
     font-size: 15px;
+}
+.tab_item
+{
+
+}
+#stats_content .post_star .result {
+    display: block;
+    float: left;
+    font-size: 16px;
+    margin-left: 5px;
+    margin-top: -4px;
+}
+#stats_content .actions
+{
+    height: 40px;
+}
+#stats_content .actions .send-button {
+    background: none repeat scroll 0 0 #3B984C;
+    border: 0px solid #CCCCCC;
+    color: #FFFFFF;
+    padding: 5px 10px;
+    float: right;
+    cursor: pointer;
+}
+
+#stats_content .actions .send-button:hover {
+    opacity: 0.8;
+}
+#stats_content textarea
+{
+    margin-bottom: 5px;
 }

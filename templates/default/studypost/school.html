@@ -313,12 +313,31 @@
                 if (parseInt($(this).attr("rel")) <= rel) {
                     $(this).addClass("light");
                 }
+                else
+                {
+                    $(this).removeClass("light");
+                }
             });
+            $(this).parent().find('.result').html($(this).attr("rel"));
         });
         
         $('.post_star .star').live("mouseout", function() {
             $(this).parent().find('.star').removeClass('light');
+            $(this).parent().find('.result').html($(this).parent().find('.result').attr("value"));
+            
+            $(this).parent().find('.star').each(function() {
+                if (parseInt($(this).attr("rel")) <= parseInt($(this).parent().find('.result').attr("value"))) {
+                    $(this).addClass("light");
+                }
+            });
         });
+        
+        //hide show stats
+        $('.studypost_box .stats ul li a').live("click",function() {
+            //$('.tab_item').css("display","none");
+            //$(this).parent().parent().parent().find('#'+$(this).attr("rel")+"_content").css("display","block");
+        });
+        
     });
     
     var scroll_enabled = false;

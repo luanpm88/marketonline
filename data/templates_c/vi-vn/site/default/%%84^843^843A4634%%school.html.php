@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-19 14:17:42
+<?php /* Smarty version 2.6.27, created on 2014-02-19 16:51:05
          compiled from default%5Cstudypost/school.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school.html', 350, false),array('function', 'formhash', 'default\\studypost/school.html', 371, false),array('modifier', 'truncate', 'default\\studypost/school.html', 360, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school.html', 369, false),array('function', 'formhash', 'default\\studypost/school.html', 390, false),array('modifier', 'truncate', 'default\\studypost/school.html', 379, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -337,12 +337,31 @@ unset($_smarty_tpl_vars);
                 if (parseInt($(this).attr("rel")) <= rel) {
                     $(this).addClass("light");
                 }
+                else
+                {
+                    $(this).removeClass("light");
+                }
             });
+            $(this).parent().find(\'.result\').html($(this).attr("rel"));
         });
         
         $(\'.post_star .star\').live("mouseout", function() {
             $(this).parent().find(\'.star\').removeClass(\'light\');
+            $(this).parent().find(\'.result\').html($(this).parent().find(\'.result\').attr("value"));
+            
+            $(this).parent().find(\'.star\').each(function() {
+                if (parseInt($(this).attr("rel")) <= parseInt($(this).parent().find(\'.result\').attr("value"))) {
+                    $(this).addClass("light");
+                }
+            });
         });
+        
+        //hide show stats
+        $(\'.studypost_box .stats ul li a\').live("click",function() {
+            //$(\'.tab_item\').css("display","none");
+            //$(this).parent().parent().parent().find(\'#\'+$(this).attr("rel")+"_content").css("display","block");
+        });
+        
     });
     
     var scroll_enabled = false;
