@@ -125,23 +125,23 @@ if (isset($_POST['save'])) {
 	}else{	
 		if(!$hasCompany && $meminfo != 1 && $meminfo != 4 && $meminfo != 6)
 		{
-			pheader('location:company.php');
+			//pheader('location:company.php');
 		}
 		else if($meminfo == 1)
 		{
-			pheader('location:company.php');
+			//pheader('location:company.php');
 		}
 		else if($meminfo == 4)
 		{
-			pheader('location:employee.php');
+			//pheader('location:employee.php');
 		}
 		else if($meminfo == 6)
 		{
-			pheader('location:personal.php');
+			//pheader('location:personal.php');
 		}
 		else
 		{
-			flash('success');
+			//flash('success');
 		}
 	}
 }

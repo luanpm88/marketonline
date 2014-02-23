@@ -257,6 +257,31 @@ class PbModel extends Overloadable
 		unset($this->condition);
 		return $deleted;
 	}
+	
+	function delAll($conditions, $table = null)
+	{		
+		if (!empty($table)) {
+			$table_name = $this->table_prefix.$table;
+		}else{
+			$table_name = $this->getTable();
+		}
+		if(!empty($conditions)) {
+			$cond = array();
+			if(is_array($conditions)) {
+				$tmp_where_cond = implode(" AND ", $conditions);
+				$cond[] = $tmp_where_cond;
+			}
+			else {
+				$cond[] = $conditions;
+			}
+			$this->setCondition($cond);
+			$sql = "DELETE FROM ".$table_name.$this->getCondition();
+			$deleted = $this->dbstuff->Execute($sql);
+			unset($this->condition);
+			return $deleted;
+		}
+		return false;
+	}
 
 	function save($posts, $action=null, $id=null, $tbname = null, $conditions = null, $if_check_word_ban = false)
 	{

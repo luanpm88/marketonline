@@ -7,6 +7,74 @@
 <!--{literal}-->
 <script type="application/x-javascript">
     
+    function deleteStudypostcomment(box)
+    {
+        var id = box.attr("rel");
+        
+        $.ajax({   
+            url: ROOT_URL+"index.php?do=studypost&action=deleteComment&id="+id,
+            success: function(data){
+                box.parent().find(".count_current_comment").html(parseInt(box.parent().find(".count_current_comment").html())-1);
+                box.remove();
+            }   
+        }); 
+    }
+    
+    function checkStatsEditor(texta)
+    {
+            if ($.trim(texta.val()).length > 3 || texta.parent().parent().find(".stars .result").attr("value") != "0") {
+                texta.parent().parent().find(".send-button").addClass("active");
+            }
+            else
+            {
+                texta.parent().parent().find(".send-button").removeClass("active");
+            }
+    }
+    
+    function loadStudyPostCommnets(studypost_id, current_count)
+    {
+        var count = "";
+        if (typeof current_count != "undefined") {
+            count = current_count;
+        }
+        
+        $.ajax({   
+            url: ROOT_URL+"index.php?do=studypost&action=ajaxLoadStudypostComments&studypost_id="+studypost_id+"&count="+count,
+            success: function(data){
+                //alert(data);
+                
+                $('.studypost_box[rel='+studypost_id+'] .comment_list').html(data);
+                
+                if (count != "") {
+                    $('.studypost_box[rel='+studypost_id+'] .count_current_comment').html(parseInt(count)+10);
+                }
+            }   
+        });  
+    }
+    
+    function postStudypostComment(form)
+    {
+        $.ajax({   
+            type: "POST",            
+            url: form.attr("action"),
+            data: form.serialize(),
+            success: function(data){
+                var studypost_id = form.find("input[name='comment[studypost_id]']").val();
+                loadStudyPostCommnets(studypost_id);
+                
+                if (form.parent().find("input[name='comment[star]']").val() != "0") {
+                    form.find(".post_star").hide();
+                }
+                
+                form.find("textarea").val("");
+                form.find(".stars .star[rel='0']").trigger("click");
+                form.find(".stars .star").removeClass("light");                
+                
+                checkStatsEditor(form.find("textarea"));
+            }   
+        }); 
+    }
+    
     function deleteStudypost(id)
     {
         $.ajax({   
@@ -319,23 +387,68 @@
                 }
             });
             $(this).parent().find('.result').html($(this).attr("rel"));
+            if ($(this).attr("rel") == "0") {
+                $(this).parent().find('.result').html("");
+            }
         });
         
         $('.post_star .star').live("mouseout", function() {
             $(this).parent().find('.star').removeClass('light');
             $(this).parent().find('.result').html($(this).parent().find('.result').attr("value"));
+            if ($(this).parent().find('.result').attr("value") == "0") {
+                $(this).parent().find('.result').html("");
+            }
             
             $(this).parent().find('.star').each(function() {
                 if (parseInt($(this).attr("rel")) <= parseInt($(this).parent().find('.result').attr("value"))) {
                     $(this).addClass("light");
                 }
-            });
+            });           
+        });
+        
+        $('.post_star .star').live("click", function() {
+            $(this).parent().find('.result').attr("value", $(this).attr('rel'));
+            $(this).parent().find('.result').html($(this).attr('rel'));
+            if ($(this).attr('rel') == "0") {
+                $(this).parent().find('.result').html("");
+            }
+            
+            $(this).parent().parent().find("input[name='comment[star]']").val($(this).attr('rel'));
+            
+            checkStatsEditor($(this).parent().parent().find('.editor textarea'));
         });
         
         //hide show stats
         $('.studypost_box .stats ul li a').live("click",function() {
             //$('.tab_item').css("display","none");
             //$(this).parent().parent().parent().find('#'+$(this).attr("rel")+"_content").css("display","block");
+        });
+        
+        $('.studypost_box .actions .send-button').live("click",function(e) {
+            e.preventDefault();
+        });
+        
+        $('.studypost_box .actions .send-button.active').live("click",function(e) {
+            var form = $(this).parent().parent();
+            postStudypostComment(form);
+            e.preventDefault();
+        });
+        
+        $('.stats_content .editor textarea').live("keypress",function(e) {            
+            checkStatsEditor($(this));
+        });
+        //$('.stats_content .editor textarea').live("change",function(e) {
+            //checkStatsEditor($(this));
+        //});
+        
+        $('.comment_item .commentbox_delete_but').live("click", function() {            
+            deleteStudypostcomment($(this).parent().parent());
+        })
+        
+        $('.view_morecomment a').live("click", function() {
+            //alert($(this).parent().find(".count_current_comment").html());
+            
+            loadStudyPostCommnets($(this).parent().parent().parent().parent().attr("rel"), $(this).parent().find(".count_current_comment").html())
         });
         
     });

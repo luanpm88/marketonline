@@ -5,6 +5,7 @@ class Studypost extends PbController {
 	function Studypost()
 	{
 		$this->loadModel("studypost");
+		$this->loadModel("studypostcomment");
 		$this->loadModel("member");
 	}
 
@@ -89,6 +90,7 @@ class Studypost extends PbController {
 
 		if($pb_userinfo["pb_userid"] == $item["member_id"])
 		{
+			$this->studypostcomment->delAll("studypost_id = ".$item["id"]);
 			$this->studypost->del(intval($item["id"]));
 		}
 	}
@@ -123,11 +125,83 @@ class Studypost extends PbController {
 		foreach($studyposts as $key => $item)
 		{
 			$studyposts[$key]["member"] = $this->member->getInfoById(intval($item["member_id"]));
+			
+			//load comment			
+			$comments = $this->studypostcomment->loadComments($item["id"]);			
+			$studyposts[$key]["comments"] = $comments;
+			
+			$count = $this->studypostcomment->findCount(null, "studypost_id=".$item["id"]);
+			setvar("count", $count);
+			
+			//check commented
+			$comment_with_star = $this->studypostcomment->findCommentWithStar($item["id"],$user["id"]);
+			
+			$studyposts[$key]["comment_with_star"] = $comment_with_star;
 		}
 		
 		setvar("List", $studyposts);
 		
 		render("studypost/ajaxLoadStudyposts");
+	}
+	
+	function postcomment()
+	{
+		$pb_userinfo = pb_get_member_info();
+		//if(!isset($_POST["comment"]))
+		//{
+		//	flash("data_not_exists", '', 0);
+		//}
+		$comment = $_POST["comment"];
+
+		if(!empty($comment["studypost_id"]) && (!empty($comment["content"] || !empty($comment["star"]))))
+		{
+			pb_submit_check('comment');
+			$comment["member_id"] = $pb_userinfo["pb_userid"];
+			$comment["created"] = date("Y-m-d H:i:s");
+			$comment["modified"] = date("Y-m-d H:i:s");
+			
+			//check commented
+			$comment_with_star = $this->studypostcomment->findCommentWithStar($comment["studypost_id"],$pb_userinfo["pb_userid"]);
+
+			if(count($comment_with_star)) {
+				$comment["star"] = 0;
+			}
+			$this->studypostcomment->save($comment);
+			//pheader("location:".$_SERVER["HTTP_REFERER"]);
+		}
+	}
+	
+	function ajaxLoadStudypostComments()
+	{
+		if(isset($_GET["studypost_id"]))
+		{
+			//load comment			
+			$comments = $this->studypostcomment->loadComments($_GET["studypost_id"], $_GET["count"]);
+			
+			$count = $this->studypostcomment->findCount(null, "studypost_id=".$_GET["studypost_id"]);
+			setvar("count", $count);
+			
+			setvar("comments", $comments);
+			render("studypost/ajaxLoadStudypostComments");
+		}
+	}
+	
+	function deleteComment()
+	{
+		$pb_userinfo = pb_get_member_info();
+		
+		if(!isset($_GET["id"]))
+		{
+			flash("data_not_exists", '', 0);
+		}
+		
+			
+		$item = $this->studypostcomment->read("*", intval($_GET["id"]));
+
+		if($pb_userinfo["pb_userid"] == $item["member_id"])
+		{
+			$this->studypostcomment->del(intval($item["id"]));
+		}
 	}
 
 }

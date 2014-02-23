@@ -1,0 +1,48 @@
+                    <!--{if $count > 4}-->
+                        <div class="comment_item view_morecomment">
+                            <a href="javascript:void(0)">
+                                Xem them binh luan khac
+                            </a>
+                            <span class="count_current_comment" style="display: none">4</span>
+                        </div>
+                    <!--{/if}-->
+                    
+                    <!--{if $comments}-->
+                        <!--{loop $comments comment level_comment comment_key}-->
+                        <div class="comment_item" rel="{$comment.id}">
+                            
+                            {if $pb_userinfo.id == $comment.member_id}
+                                <div class="box_controls">
+                                    <a onclick="return confirm('Bạn có chắc là muốn xóa bài viết này?')" class="commentbox_delete_but" href="javascript:void(0)">Xóa</a>
+                                    <a style="display: none" class="commentbox_edit_but" href="javascript:void(0)">Chỉnh sửa</a>
+                                </div>
+                            {/if}
+                            
+                            <img src="{$comment.member.photo}" />
+                            <h2>{$comment.member.first_name} {$comment.member.last_name}</h2>
+                            
+                            <!--{if $comment.star > 0}-->
+                                <div class="stars">
+                                    <span class="star{if $comment.star >= 1} light{/if}" rel="1"></span>
+                                    <span class="star{if $comment.star >= 2} light{/if}" rel="2"></span>
+                                    <span class="star{if $comment.star >= 3} light{/if}" rel="3"></span>
+                                    <span class="star{if $comment.star >= 4} light{/if}" rel="4"></span>
+                                    <span class="star{if $comment.star >= 5} light{/if}" rel="5"></span>
+                                    <span class="star{if $comment.star >= 6} light{/if}" rel="6"></span>
+                                    <span class="star{if $comment.star >= 7} light{/if}" rel="7"></span>
+                                    <span class="star{if $comment.star >= 8} light{/if}" rel="8"></span>
+                                    <span class="star{if $comment.star >= 9} light{/if}" rel="9"></span>
+                                    <span class="star{if $comment.star >= 10} light{/if}" rel="10"></span>
+                                    <span class="result" value="0"></span>                            
+                                </div>
+                            <!--{/if}-->
+                            
+                            <div class="comment_content">
+                                {$comment.content}
+                            </div>
+                            <div class="box_moreinfo">
+                                {$comment.created}
+                            </div>
+                        </div>
+                        <!--{/loop}-->
+                    <!--{/if}-->

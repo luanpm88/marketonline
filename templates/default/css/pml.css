@@ -7107,19 +7107,19 @@ div.product .woocommerce_tabs ul.tabs li a, #content div.product .woocommerce_ta
 {
 }
 
-#stats_content .post_star {
+.stats .post_star {
     height: 20px;
-    margin-top: 5px;
+    margin-top: 15px;
 }
-#stats_content .post_star .star {
+.stats .stars .star {
     background: url("../image/star_disable.png") no-repeat scroll 0 0 / 12px auto rgba(0, 0, 0, 0);
     cursor: pointer;
     display: block;
     float: left;
-    height: 20px;
+    height: 13px;
     width: 13px;
 }
-#stats_content .post_star .star.light {
+.stats .stars .star.light {
     background: url("../image/star.png") no-repeat scroll 0 0 / 12px rgba(0, 0, 0, 0);
 }
 ul.stats_header
@@ -7196,30 +7196,97 @@ ul.products li.product .price .amount
 {
 
 }
-#stats_content .post_star .result {
+.stats_content .post_star .result {
     display: block;
     float: left;
     font-size: 16px;
     margin-left: 5px;
     margin-top: -4px;
 }
-#stats_content .actions
+.stats_content .actions
 {
     height: 40px;
 }
-#stats_content .actions .send-button {
-    background: none repeat scroll 0 0 #3B984C;
+.stats_content .actions .send-button {
+    background: none repeat scroll 0 0 #CCC;
     border: 0px solid #CCCCCC;
-    color: #FFFFFF;
+    color: #555;
     padding: 5px 10px;
     float: right;
+}
+.stats_content .actions .send-button.active {
+    background: none repeat scroll 0 0 #3B984C;
+    color: #FFFFFF;
     cursor: pointer;
 }
-
-#stats_content .actions .send-button:hover {
+.stats_content .actions .send-button:hover {
     opacity: 0.8;
 }
-#stats_content textarea
+.stats_content textarea
 {
     margin-bottom: 5px;
+}
+.post_star .star[rel="0"] {
+    background: url("../image/x-button.png") no-repeat scroll -1px -1px / 15px auto rgba(0, 0, 0, 0) !important;
+    height: 16px !important;
+    margin-right: 2px;
+    width: 16px !important;
+}
+.studypost_box .comment_list
+{
+    margin-top: 5px;
+}
+.studypost_box .comment_item {
+    border-bottom: 1px solid #FFFFFF;
+    margin-bottom: 5px;
+    min-height: 40px;
+    padding-bottom: 3px;
+}
+.studypost_box .comment_item:first-child {
+    border-top: 1px solid #FFFFFF;
+    padding-top: 5px;
+}
+.studypost_box .comment_item img {
+    float: left;
+    margin-right: 5px;
+    width: 40px;
+}
+.studypost_box .comment_item h2 {
+    display: block;
+    font-size: 13px;
+    margin: 0 5px 0 0;
+}
+.studypost_box .comment_item .box_moreinfo {
+    color: #AAAAAA;
+    font-size: 11px;
+    width: 470px;
+    margin-top: 5px;
+    margin-left: 45px;
+}
+.studypost_box .comment_item .comment_content
+{
+    margin-top: 5px;
+    margin-left: 45px;
+}
+.studypost_box textarea
+{
+    background: #fff;
+    border: solid 1px #aaa;
+}
+.comment_item .stars
+{
+    height: 13px;
+    margin-top: 5px;
+}
+.studypost_box .comment_item .box_controls {
+    margin-top: 0;
+}
+.stats_content form
+{
+    margin-bottom: 0;
+}
+.view_morecomment
+{
+    height: auto;
+    min-height: inherit !important;
 }
