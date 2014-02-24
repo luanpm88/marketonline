@@ -29,7 +29,7 @@
                 
                 <div class="comment_list">
                     
-                    <!--{if $count > 4}-->
+                    <!--{if $item.more}-->
                         <div class="comment_item view_morecomment">
                             <a href="javascript:void(0)">
                                 Xem them binh luan khac
@@ -40,7 +40,7 @@
                     
                     <!--{if $item.comments}-->
                         <!--{loop $item.comments comment level_comment comment_key}-->
-                        <div class="comment_item" rel="{$comment.id}">
+                        <div class="comment_item is_item" rel="{$comment.id}">
                             
                             {if $pb_userinfo.id == $comment.member_id}
                                 <div class="box_controls">

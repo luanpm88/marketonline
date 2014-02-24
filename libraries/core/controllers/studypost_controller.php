@@ -128,10 +128,11 @@ class Studypost extends PbController {
 			
 			//load comment			
 			$comments = $this->studypostcomment->loadComments($item["id"]);			
-			$studyposts[$key]["comments"] = $comments;
+			$studyposts[$key]["comments"] = $comments["comments"];
+			$studyposts[$key]["more"] = $comments["more"];
 			
-			$count = $this->studypostcomment->findCount(null, "studypost_id=".$item["id"]);
-			setvar("count", $count);
+			//$count = $this->studypostcomment->findCount(null, "studypost_id=".$item["id"]);
+			//setvar("count", $count);
 			
 			//check commented
 			$comment_with_star = $this->studypostcomment->findCommentWithStar($item["id"],$user["id"]);
@@ -153,7 +154,7 @@ class Studypost extends PbController {
 		//}
 		$comment = $_POST["comment"];
 
-		if(!empty($comment["studypost_id"]) && (!empty($comment["content"] || !empty($comment["star"]))))
+		if(!empty($comment["studypost_id"]) && (!empty($comment["content"]) || !empty($comment["star"])))
 		{
 			pb_submit_check('comment');
 			$comment["member_id"] = $pb_userinfo["pb_userid"];
@@ -176,10 +177,11 @@ class Studypost extends PbController {
 		if(isset($_GET["studypost_id"]))
 		{
 			//load comment			
-			$comments = $this->studypostcomment->loadComments($_GET["studypost_id"], $_GET["count"]);
+			$comments_a = $this->studypostcomment->loadComments($_GET["studypost_id"], $_GET["count"]);
 			
-			$count = $this->studypostcomment->findCount(null, "studypost_id=".$_GET["studypost_id"]);
-			setvar("count", $count);
+			$comments = $comments_a["comments"];
+			
+			setvar("more", $comments_a["more"]);
 			
 			setvar("comments", $comments);
 			render("studypost/ajaxLoadStudypostComments");

@@ -56,11 +56,30 @@ class Studypostcomments extends PbModel {
 		$studypost_id = intval($studypost_id);
 		$comment_conditions = array("studypost_id = ".$studypost_id);
 		$comments = $this->findAll("*", null, $comment_conditions, "created DESC limit ".$limit.", ".$nums);
+		$count_all = $this->findCount(null, $comment_conditions);
+		//var_dump($count_all);
+		//echo $nums;
+		
+		if($count_all <= $nums)
+		{
+			$more = false;
+		}
+		else
+		{
+			$more = true;
+		}
+		
 		foreach($comments as $comment_key => $comment)
 		{
 			$comments[$comment_key]["member"] = $member->getInfoById(intval($comment["member_id"]));
 		}
-		return $comments;
+		$reverse_comments = array();
+		foreach($comments as $commnet_key => $commnet)
+		{
+			$reverse_comments[] = $comments[count($comments)-$commnet_key-1];
+		}
+		
+		return array("more" => $more, "comments" => $reverse_comments);
 	}
 	
 	function findCommentWithStar($studypost_id, $member_id)

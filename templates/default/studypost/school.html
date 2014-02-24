@@ -17,7 +17,7 @@
                 box.parent().find(".count_current_comment").html(parseInt(box.parent().find(".count_current_comment").html())-1);
                 box.remove();
             }   
-        }); 
+        });
     }
     
     function checkStatsEditor(texta)
@@ -36,6 +36,7 @@
         var count = "";
         if (typeof current_count != "undefined") {
             count = current_count;
+            count = $('.studypost_box[rel='+studypost_id+'] .comment_list .is_item').length - 1;
         }
         
         $.ajax({   
@@ -490,6 +491,7 @@
                         <li class="{if $smarty.get.action == 'school'}active{/if}">
                             <a href="{the_url module=studypost action=school id=`$pb_userinfo.school_id`}" title="{$pb_userinfo.school_name}">
                                 {$pb_userinfo.school_name|truncate:40}
+                                Thanh vien: 20
                             </a>
                         </li>
                     </ul>
@@ -497,69 +499,90 @@
             </div>
             
             <div id="facelike_col2">
-                <div class="facelike_content">
-                    <div class="facelike_postform">
-                        <form class="studypost_form" method="post" action="{the_url module=studypost action=post}">
-                            <!-- {formhash} -->
-                            <input type="hidden" name="studypost[school_id]" value="{$pb_userinfo.school_id}" />
-                            
-                            <div class="textarea-content">
-                                <div class="top-controls">
-                                    <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
-                                    
-                                    
-                                    <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
-                                </div>                             
-                                <textarea name="studypost[content]" style="width:100%" id="studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
-                            </div>
-                            
-                            <div class="bottom-control">
-                                <label class="word-count">Số từ: <span></span></label>
-                                <input type="button" value="Gửi bài" class="send-button" />
-                            </div>
-                        </form>
-                        
-                        <div id="uploadImageVideo" style="margin-top: -595px;">
-                                            <iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
-                                            <form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
-                                                    <input type="hidden" name="do" value="product" />
-                                                    <input type="hidden" name="action" value="uploadEditorFile" />
-                                                    <input type="hidden" name="tag" value="studypost_{$pb_userinfo.username}_" /> 
-                                                    <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />                                                    
-                                            </form>
-                        </div>
+                <div class="col2-top">
+                    <div class="col2-top-banner">
                         
                     </div>
-                    <br style="clear: both" />
-                    
-                    <div id="studypost-main-content"></div>
-                    <div id="studypost-bottom-line-content"></div>
-                    
-                    <div class="edit_studypost_form hide_editor" style="">
-                        <form class="studypost_form" method="post" action="{the_url module=studypost action=update}">
-                            <!-- {formhash} -->
-                            <input type="hidden" name="studypost[school_id]" value="{$pb_userinfo.school_id}" />
-                            <input type="hidden" name="studypost[id]" value="" />
-                            
-                            <div class="textarea-content">
-                                <div class="top-controls">
-                                    <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                </div>
+                <div class="col2-bottom">
+                    <div class="col2-bottom-left">
+                        <div class="facelike_content">
+                            <div class="facelike_postform">
+                                <form class="studypost_form" method="post" action="{the_url module=studypost action=post}">
+                                    <!-- {formhash} -->
+                                    <input type="hidden" name="studypost[school_id]" value="{$pb_userinfo.school_id}" />
                                     
+                                    <div class="textarea-content">
+                                        <div class="top-controls">
+                                            <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                                            
+                                            
+                                            <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
+                                        </div>                             
+                                        <textarea name="studypost[content]" style="width:100%" id="studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                    </div>
                                     
-                                    <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
-                                </div>                             
-                                <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
-                            </div>
-                            
-                            <div class="bottom-control">
-                                <label class="word-count">Số từ: <span></span></label>
+                                    <div class="bottom-control">
+                                        <label class="word-count">Số từ: <span></span></label>
+                                        <input type="button" value="Gửi bài" class="send-button" />
+                                    </div>
+                                </form>
                                 
-                                <input type="button" value="Đóng" class="close-button" />
-                                <input type="button" value="Lưu lại" class="send-button" />
+                                <div id="uploadImageVideo" style="margin-top: -595px;">
+                                                    <iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+                                                    <form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+                                                            <input type="hidden" name="do" value="product" />
+                                                            <input type="hidden" name="action" value="uploadEditorFile" />
+                                                            <input type="hidden" name="tag" value="studypost_{$pb_userinfo.username}_" /> 
+                                                            <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />                                                    
+                                                    </form>
+                                </div>
+                                
                             </div>
-                        </form>
+                            <br style="clear: both" />
+                            
+                            <div id="studypost-main-content"></div>
+                            <div id="studypost-bottom-line-content"></div>
+                            
+                            <div class="edit_studypost_form hide_editor" style="">
+                                <form class="studypost_form" method="post" action="{the_url module=studypost action=update}">
+                                    <!-- {formhash} -->
+                                    <input type="hidden" name="studypost[school_id]" value="{$pb_userinfo.school_id}" />
+                                    <input type="hidden" name="studypost[id]" value="" />
+                                    
+                                    <div class="textarea-content">
+                                        <div class="top-controls">
+                                            <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                                            
+                                            
+                                            <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
+                                        </div>                             
+                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                    </div>
+                                    
+                                    <div class="bottom-control">
+                                        <label class="word-count">Số từ: <span></span></label>
+                                        
+                                        <input type="button" value="Đóng" class="close-button" />
+                                        <input type="button" value="Lưu lại" class="send-button" />
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
                     </div>
-                    
+                    <div class="col2-bottom-right">
+                        <div class="school_list">
+                            <ul>
+                                <li class="active">
+                                    <a href="http://localhost/marketonline/index.php?do=studypost&amp;action=school" title="Đại học Công nghiệp TP HCM">
+                                        Đại học Công nghiệp TP HCM
+                                        Thanh vien: 20
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             

@@ -989,8 +989,14 @@ $(window).scroll(function(){
 	
     });        
     
-        //console.log($(window).scrollLeft());
-        $('#verytopmenu').css("margin-left", -$(window).scrollLeft());
+        console.log($('#header .logo').scrollLeft());
+        if($('#header .logo').offset().left < $(window).scrollLeft()) {
+            $('#verytopmenu').css("margin-left", -(-$('#header .logo').offset().left + $(window).scrollLeft() - 10));
+        }
+        else
+        {
+            $('#verytopmenu').css("margin-left", $('#header .logo').offset().left);
+        }
         
 	//console.log($('#darkf').offset().top - $('#right_detail_banner').offset().top - $('#right_detail_banner').height());
 	//if($('#darkf').offset().top - $('#right_detail_banner').offset().top - $('#right_detail_banner').height() < 20)
