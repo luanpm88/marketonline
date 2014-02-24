@@ -983,12 +983,15 @@ $(window).scroll(function(){
 	//console.log($(window).height());
 	//console.log(windowpos);
 	//console.log($(this).css('top'));
+        
+        
 	
 	
-    });
+    });        
     
-    
-    
+        //console.log($(window).scrollLeft());
+        $('#verytopmenu').css("margin-left", -$(window).scrollLeft());
+        
 	//console.log($('#darkf').offset().top - $('#right_detail_banner').offset().top - $('#right_detail_banner').height());
 	//if($('#darkf').offset().top - $('#right_detail_banner').offset().top - $('#right_detail_banner').height() < 20)
 	//{
