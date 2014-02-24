@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-19 14:25:33
+<?php /* Smarty version 2.6.27, created on 2014-02-24 16:47:21
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1276, false),array('function', 'formhash', 'default/header.html', 1360, false),array('modifier', 'default', 'default/header.html', 1371, false),array('modifier', 'date_format', 'default/header.html', 1385, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1285, false),array('function', 'formhash', 'default/header.html', 1369, false),array('modifier', 'default', 'default/header.html', 1380, false),array('modifier', 'date_format', 'default/header.html', 1394, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -1077,12 +1077,21 @@ $(window).scroll(function(){
 	//console.log($(window).height());
 	//console.log(windowpos);
 	//console.log($(this).css(\'top\'));
+        
+        
 	
 	
-    });
+    });        
     
-    
-    
+        console.log($(\'#header .logo\').scrollLeft());
+        if($(\'#header .logo\').offset().left < $(window).scrollLeft()) {
+            $(\'#verytopmenu\').css("margin-left", -(-$(\'#header .logo\').offset().left + $(window).scrollLeft() - 10));
+        }
+        else
+        {
+            $(\'#verytopmenu\').css("margin-left", $(\'#header .logo\').offset().left);
+        }
+        
 	//console.log($(\'#darkf\').offset().top - $(\'#right_detail_banner\').offset().top - $(\'#right_detail_banner\').height());
 	//if($(\'#darkf\').offset().top - $(\'#right_detail_banner\').offset().top - $(\'#right_detail_banner\').height() < 20)
 	//{

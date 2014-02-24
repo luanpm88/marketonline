@@ -7323,3 +7323,7 @@ ul.products li.product .price .amount
     margin-left: 20px;
     margin-top: 10px;
 }
+#tab-description
+{
+    word-wrap: break-word;
+}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-22 15:42:31
+<?php /* Smarty version 2.6.27, created on 2014-02-24 16:47:21
          compiled from default/footer.html */ ?>
     <div id="darkf">
   <section id="footer" role="contentinfo">
@@ -6,7 +6,7 @@
     <div class="row">
 
     
-    <div id="company_info">
+    <div id="company_info" style="width: 900px !important; display: block">
 				    
 					<h2>CÔNG TY CỔ PHẦN TRUYỀN THÔNG VÀ TIẾP THỊ BMN</h2>
 					
