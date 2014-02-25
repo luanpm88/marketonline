@@ -56,5 +56,17 @@ class Schools extends PbModel {
 		
 		return $data;
 	}
+	
+	function getInfoById($id)
+	{
+		uses("memberfield");
+		$memberfield = new Memberfields();
+		
+		$school = $this->read("*", intval($id));
+		
+		$school["member_count"] = $memberfield->findCount(null, array("school_id = ".$id), "member_id");
+		
+		return $school;
+	}
 }
 ?>

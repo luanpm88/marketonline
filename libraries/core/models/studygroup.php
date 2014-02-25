@@ -37,7 +37,7 @@ class Studygroups extends PbModel {
 		return $time_add;
  	}
 	
-	function updateGroups($school_id, $subjects)
+	function updateGroups($school_id, $subjects, $member_id)
 	{
 		
 		$group_ids = array();
@@ -47,6 +47,7 @@ class Studygroups extends PbModel {
 				$val["name"] = "";
 				$val["school_id"] = $school_id;
 				$val["subject_id"] = $subject_id;
+				$val["member_id"] = $member_id;
 				$val["created"] = strtotime(date('Y-m-d H:i:s'));
 				$this->save($val);
 				
@@ -59,6 +60,13 @@ class Studygroups extends PbModel {
 			}
 		}
 		return $group_ids;
+	}
+	
+	function getStudygroupsBySchool($school_id)
+	{
+		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", array("LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = Studygroup.school_id", "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id"), array("Studygroup.school_id = ".$school_id));
+		
+		return $groups;
 	}
 }
 ?>

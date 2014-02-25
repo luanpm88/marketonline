@@ -6861,6 +6861,7 @@ div.product .woocommerce_tabs ul.tabs li a, #content div.product .woocommerce_ta
 .school_list ul li {
     list-style: none outside none;
     padding: 0px 0;
+    margin-bottom: 10px;
 }
 .school_list ul li a {
     background: url("../image/school-icon.png") no-repeat scroll 0px 0px / 40px auto;

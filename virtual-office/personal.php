@@ -87,7 +87,7 @@ if (isset($_POST['save'])) {
 		if(is_array($_POST["subjects_id"])) $subject_main_array = array_merge($_POST["subjects_id"],$subject_main_array);
 		
 		//update studygroups
-		$studygroup_ids = $studygroup->updateGroups($_POST['memberfield']['school_id'], $subject_main_array);
+		$studygroup_ids = $studygroup->updateGroups($_POST['memberfield']['school_id'], $subject_main_array, $the_memberid);
 		
 		//connect member to group
 		$studygroupmember->addMember($studygroup_ids, $the_memberid);

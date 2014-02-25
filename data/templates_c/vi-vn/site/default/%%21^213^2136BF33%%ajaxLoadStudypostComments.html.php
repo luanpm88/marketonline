@@ -1,6 +1,6 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 16:36:04
+<?php /* Smarty version 2.6.27, created on 2014-02-25 09:50:29
          compiled from default/studypost/ajaxLoadStudypostComments.html */ ?>
-                    <?php if ($this->_tpl_vars['count'] > 4): ?>
+                    <?php if ($this->_tpl_vars['more']): ?>
                         <div class="comment_item view_morecomment">
                             <a href="javascript:void(0)">
                                 Xem them binh luan khac
@@ -15,7 +15,7 @@ if ($this->_foreach['level_comment']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['comment_key'] => $this->_tpl_vars['comment']):
         $this->_foreach['level_comment']['iteration']++;
 ?>
-                        <div class="comment_item" rel="<?php echo $this->_tpl_vars['comment']['id']; ?>
+                        <div class="comment_item  is_item" rel="<?php echo $this->_tpl_vars['comment']['id']; ?>
 ">
                             
                             <?php if ($this->_tpl_vars['pb_userinfo']['id'] == $this->_tpl_vars['comment']['member_id']): ?>

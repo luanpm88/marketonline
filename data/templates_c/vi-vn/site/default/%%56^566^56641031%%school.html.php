@@ -1,18 +1,13 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 16:56:06
+<?php /* Smarty version 2.6.27, created on 2014-02-25 11:35:58
          compiled from default/studypost/school.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/school.html', 482, false),array('function', 'formhash', 'default/studypost/school.html', 503, false),array('modifier', 'truncate', 'default/studypost/school.html', 492, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/school.html', 482, false),array('function', 'formhash', 'default/studypost/school.html', 511, false),array('modifier', 'truncate', 'default/studypost/school.html', 492, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/sidebar.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/verytopmenu.html", 'smarty_include_vars' => array()));
@@ -33,7 +28,7 @@ unset($_smarty_tpl_vars);
                 box.parent().find(".count_current_comment").html(parseInt(box.parent().find(".count_current_comment").html())-1);
                 box.remove();
             }   
-        }); 
+        });
     }
     
     function checkStatsEditor(texta)
@@ -52,6 +47,7 @@ unset($_smarty_tpl_vars);
         var count = "";
         if (typeof current_count != "undefined") {
             count = current_count;
+            count = $(\'.studypost_box[rel=\'+studypost_id+\'] .comment_list .is_item\').length - 1;
         }
         
         $.ajax({   
@@ -524,6 +520,8 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?>" width="20" height="20" />
 ">
                                 <?php echo ((is_array($_tmp=$this->_tpl_vars['pb_userinfo']['school_name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>
 
+                                Thanh vien: <?php echo $this->_tpl_vars['school']['member_count']; ?>
+
                             </a>
                         </li>
                     </ul>
@@ -531,77 +529,108 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?>" width="20" height="20" />
             </div>
             
             <div id="facelike_col2">
-                <div class="facelike_content">
-                    <div class="facelike_postform">
-                        <form class="studypost_form" method="post" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'post'), $this);?>
-">
-                            <?php echo smarty_function_formhash(array(), $this);?>
-
-                            <input type="hidden" name="studypost[school_id]" value="<?php echo $this->_tpl_vars['pb_userinfo']['school_id']; ?>
-" />
-                            
-                            <div class="textarea-content">
-                                <div class="top-controls">
-                                    <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
-                                    
-                                    
-                                    <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
-                                </div>                             
-                                <textarea name="studypost[content]" style="width:100%" id="studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
-                            </div>
-                            
-                            <div class="bottom-control">
-                                <label class="word-count">Số từ: <span></span></label>
-                                <input type="button" value="Gửi bài" class="send-button" />
-                            </div>
-                        </form>
-                        
-                        <div id="uploadImageVideo" style="margin-top: -595px;">
-                                            <iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
-                                            <form method="POST" action="<?php echo $this->_tpl_vars['SiteUrl']; ?>
-index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
-                                                    <input type="hidden" name="do" value="product" />
-                                                    <input type="hidden" name="action" value="uploadEditorFile" />
-                                                    <input type="hidden" name="tag" value="studypost_<?php echo $this->_tpl_vars['pb_userinfo']['username']; ?>
-_" /> 
-                                                    <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />                                                    
-                                            </form>
-                        </div>
+                <div class="col2-top">
+                    <div class="col2-top-banner">
                         
                     </div>
-                    <br style="clear: both" />
-                    
-                    <div id="studypost-main-content"></div>
-                    <div id="studypost-bottom-line-content"></div>
-                    
-                    <div class="edit_studypost_form hide_editor" style="">
-                        <form class="studypost_form" method="post" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'update'), $this);?>
+                </div>
+                <div class="col2-bottom">
+                    <div class="col2-bottom-left">
+                        <div class="facelike_content">
+                            <div class="facelike_postform">
+                                <form class="studypost_form" method="post" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'post'), $this);?>
 ">
-                            <?php echo smarty_function_formhash(array(), $this);?>
+                                    <?php echo smarty_function_formhash(array(), $this);?>
 
-                            <input type="hidden" name="studypost[school_id]" value="<?php echo $this->_tpl_vars['pb_userinfo']['school_id']; ?>
+                                    <input type="hidden" name="studypost[school_id]" value="<?php echo $this->_tpl_vars['pb_userinfo']['school_id']; ?>
 " />
-                            <input type="hidden" name="studypost[id]" value="" />
-                            
-                            <div class="textarea-content">
-                                <div class="top-controls">
-                                    <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
                                     
+                                    <div class="textarea-content">
+                                        <div class="top-controls">
+                                            <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                                            
+                                            
+                                            <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
+                                        </div>                             
+                                        <textarea name="studypost[content]" style="width:100%" id="studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                    </div>
                                     
-                                    <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
-                                </div>                             
-                                <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
-                            </div>
-                            
-                            <div class="bottom-control">
-                                <label class="word-count">Số từ: <span></span></label>
+                                    <div class="bottom-control">
+                                        <label class="word-count">Số từ: <span></span></label>
+                                        <input type="button" value="Gửi bài" class="send-button" />
+                                    </div>
+                                </form>
                                 
-                                <input type="button" value="Đóng" class="close-button" />
-                                <input type="button" value="Lưu lại" class="send-button" />
+                                <div id="uploadImageVideo" style="margin-top: -595px;">
+                                                    <iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+                                                    <form method="POST" action="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+                                                            <input type="hidden" name="do" value="product" />
+                                                            <input type="hidden" name="action" value="uploadEditorFile" />
+                                                            <input type="hidden" name="tag" value="studypost_<?php echo $this->_tpl_vars['pb_userinfo']['username']; ?>
+_" /> 
+                                                            <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />                                                    
+                                                    </form>
+                                </div>
+                                
                             </div>
-                        </form>
+                            <br style="clear: both" />
+                            
+                            <div id="studypost-main-content"></div>
+                            <div id="studypost-bottom-line-content"></div>
+                            
+                            <div class="edit_studypost_form hide_editor" style="">
+                                <form class="studypost_form" method="post" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'update'), $this);?>
+">
+                                    <?php echo smarty_function_formhash(array(), $this);?>
+
+                                    <input type="hidden" name="studypost[school_id]" value="<?php echo $this->_tpl_vars['pb_userinfo']['school_id']; ?>
+" />
+                                    <input type="hidden" name="studypost[id]" value="" />
+                                    
+                                    <div class="textarea-content">
+                                        <div class="top-controls">
+                                            <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                                            
+                                            
+                                            <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
+                                        </div>                             
+                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                    </div>
+                                    
+                                    <div class="bottom-control">
+                                        <label class="word-count">Số từ: <span></span></label>
+                                        
+                                        <input type="button" value="Đóng" class="close-button" />
+                                        <input type="button" value="Lưu lại" class="send-button" />
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
                     </div>
-                    
+                    <div class="col2-bottom-right">
+                        <div class="school_list">
+                            <ul>
+                                <?php $_from = $this->_tpl_vars['groups']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_group'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level_group']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['group_key'] => $this->_tpl_vars['group']):
+        $this->_foreach['level_group']['iteration']++;
+?>
+                                    <li class="">
+                                        <a href="http://localhost/marketonline/index.php?do=studypost&amp;action=school" title="<?php echo $this->_tpl_vars['group']['subject_name']; ?>
+ <?php echo $this->_tpl_vars['group']['school_name']; ?>
+">
+                                            <?php echo $this->_tpl_vars['group']['subject_name']; ?>
+<br>
+                                            Thanh vien: <?php echo $this->_tpl_vars['group']['member_count']; ?>
+
+                                        </a>
+                                    </li>
+                                <?php endforeach; endif; unset($_from); ?>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             

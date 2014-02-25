@@ -1,25 +1,65 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 09:13:42
-         compiled from default/index.html */ ?>
+<?php /* Smarty version 2.6.27, created on 2014-02-25 09:34:23
+         compiled from default/register.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/index.html', 266, false),array('modifier', 'truncate', 'default/index.html', 273, false),)), $this); ?>
-<?php $this->assign('metakeywords', ($this->_tpl_vars['site_description'])); ?>
-<?php $this->assign('metadescription', ($this->_tpl_vars['site_description'])); ?>
-<?php $this->assign('do', 'offer'); ?>
-<?php $this->assign('home_title', $this->_tpl_vars['_G']['site_name']); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/register.html', 338, false),array('modifier', 'urldecode', 'default/register.html', 340, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['home_title']),'nav_id' => 1)));
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['_member_reg']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+<script src="data/cache/<?php echo $this->_tpl_vars['JsLanguage']; ?>
+/locale.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
+"></script>
 <?php echo '
-<style>
-	#top-social
-	{
-	    padding-top: 5px;
-	    margin-bottom: -35px;
-	}
+<style type="text/css">
+label.error {
+  font-weight: bold;
+  color: #b80000;
+}
 </style>
+
+
+<script>
+  
+function getSharingUsername() {
+		//code
+		$.ajax({
+			url: "index.php?do=product&action=getSharingUsername",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//$("#message_out").html(data);
+				//alert(data);
+				if(data != \'\')
+				{
+				  $(\'#dataMemberReferrerHidden\').val(data);
+				  $(\'.noreferrer\').remove();
+				}
+				else
+				{
+				  $(\'#dataMemberReferrerHidden\').remove();
+				  $(\'.noreferrer\').css("display", "block");
+				}
+			}
+  });
+}
+  
+  $(document).ready(function() {
+  
+    getSharingUsername();
+    
+  
+  });
+</script>
+
 '; ?>
+
+
+
+
+
+
+
+
 
 <div id="box_4home_tb" style="display: none">
 	
@@ -27,7 +67,7 @@ unset($_smarty_tpl_vars);
 	 
 	 
 	 
-	 	 <h2><strong>Kính chào Quý khách hàng!</strong></h2>
+	 	 	 <h2><strong>Kính chào Quý khách hàng!</strong></h2>
 	 
 <p>Công ty cổ phần Truyền Thông và Tiếp Thị BMN (BMN) xin giới thiệu Trang Thương Mại Điện Tử <a href="http://www.marketonline.vn">MarketOnline.vn</a> là Thị Trường Trực Tuyến để tương tác giữa <strong>Cung và Cầu</strong> cho mọi hoạt động trong cuộc sống và công việc.</p>
 <p>Trang Thương Mại Điện Tử là nơi để Quý khách hàng đăng tải Thông tin thương mại / Đầu tư / Mua-Bán / Phân phối / Dịch vụ / Tìm đối tác / Tuyển dụng / Rao vặt. Cũng như là Thị trường để Quý khách hàng tự giới thiệu năng lực Cá nhân, năng lực Cửa hàng, năng lực Doanh nghiệp, năng lực Tổ chức ở mọi lĩnh vực trong và ngoài nước.</p>
@@ -47,9 +87,6 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
 <p></p>
 <p><strong>Lưu ý: Trang <a href="http://marketonline.vn">MarketOnline.vn</a> đang trong quá trình hoàn thiện chức năng.</strong></p>
 
-
-	 
-	
 			
 	</div>
 	
@@ -72,7 +109,7 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
 <li>Tiếp nhận các thông tin về thị trường, doanh nghiệp, sản phẩm và dịch vụ của các đối tác, khách hàng, cũng như các thông báo cần thiết của <a href="http://www.marketonline.vn/">MarketOnline.vn</a> tạo liên lạc thuận lợi trong kinh doanh.</li>
 <li>Thực hiện các giao dịch thương mại trực tiếp hoặc gián tiếp qua Trang điện tử <a href="http://www.marketonline.vn/">MarketOnline.vn</a>.</li>
 <li>Được hưởng các chính sách ưu đãi theo từng thời điểm thông báo của BMN.</li>
-<li>Đề xuất, kiến nghị các vấn đề liên quan đến hoạt động của Trang điện tử <a href="http://www.marketonline.vn/">MarketOnline.vn</a> theo địa chỉ E-Mail: <a href="mailto:info@marketonline">info@marketonline.vn</a>.</li>
+<li>Đề xuất, kiến nghị các vấn đề liên quan đến hoạt động của Trang điện tử <a href="http://www.marketonline.vn/">MarketOnline.vn</a> theo địa chỉ E-Mail: <a href="mailto:info@marketonline">info@marketonline.vn</a></li>
 </ol>
 <h2><strong>Nghĩa vụ của thành viên</strong><strong></strong></h2>
 <ol>
@@ -206,6 +243,64 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
    
 
 
+<?php echo '
+<script>
+  $(document).ready(function() {
+    $(\'.submit_res\').click(function() {
+	    
+	    
+	    
+	    setTimeout(function(){
+	      if ($(\'label[for=typename]\').css(\'display\') != \'none\') {
+		$(\'.typename_out\').append($(\'label[for=typename]\').clone())
+		$(\'label[for=typename]\').eq(0).remove();
+	      }
+	      $("html, body").animate({ scrollTop:250 }, 100);
+	      
+	      
+	      //check submit button
+	      if(!$(\'#regfrm label.error\').filter(function() {
+		return $(this).css(\'display\') !== \'none\';
+	      }).length)
+	      {
+		$(\'.submit_res\').val("Đang xử lý thông tin...");
+		$(\'.submit_res\').addClass("reg-loading");
+		$(\'.submit_res\').after(\'<span class="lloading"></span>\');
+	      }	     
+	      
+	    }, 100);
+    });
+    
+    $(\'#dataMemberEmail\').keyup(function() {
+      if ($(this).val() == "") {
+	if (!$(\'.email_confirm\').hasClass("hide_res")) {
+	  $(\'.email_confirm\').addClass("hide_res");
+	}
+      }
+      else
+      {
+	$(\'.email_confirm\').removeClass("hide_res");
+      }
+    });
+    
+    $(\'#memberpass\').keyup(function() {
+      if ($(this).val() == "") {
+	if (!$(\'.password_confirm\').hasClass("hide_res")) {
+	  $(\'.password_confirm\').addClass("hide_res");
+	}
+      }
+      else
+      {
+	$(\'.password_confirm\').removeClass("hide_res");
+      }
+    });
+    
+    
+    
+    
+  });
+</script>
+'; ?>
 
 
 <div id="body-wrapper" >
@@ -216,7 +311,6 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
     experience this site.
 </div><![endif]-->
 
-
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/topmenu.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -224,213 +318,209 @@ unset($_smarty_tpl_vars);
  ?>
 
 
-
-
-
-
-<div class="row" style="position: relative; <?php if (! $this->_tpl_vars['tet2014']): ?>margin-top: -13px<?php endif; ?>">
-    
-    
-    
-      <div class="fifteen columns">
-
-    <div id="page-title" style="padding: 10px 10px 0 0">
-
-    <div class="subtitle">
-            </div>
-    <h1 class="page-title" style="font-size: 25px;margin-bottom: -2px !important;">Thị trường trực tuyến</h1>
-
-
-    
-    
-  </div>
-
-  
-  </div>
-      
-      
-      
-
-    <div id = "content" class = "fifteen columns" ><div class = "row" >
-
-    <div id="aq-block-2" class="aq-block aq-block-aq_hslider_posts_block fifteen columns aq-first cf">
-    <div class="wrap" style="">
-        <div class="scroll-box scroll-box-home" data-boxed="1">
-                <div class = "dragger">
-                    <div class="grid">
-			
-			
-			<?php $_from = $this->_tpl_vars['IndustryList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_0']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
-        $this->_foreach['level_0']['iteration']++;
-?>
-			<?php if ($this->_tpl_vars['key0'] != 19 && $this->_tpl_vars['key0'] != 5 && $this->_tpl_vars['key0'] != 3965): ?>
-			
-		<?php if ($this->_tpl_vars['k']%6 == 0 && $this->_tpl_vars['k'] != 0): ?>
-		     <br style="clear:both" />
-		<?php endif; ?>
-		  <?php if ($this->_tpl_vars['k']%3 == 0): ?>
-		     <div class = "gr-box">
-		  <?php endif; ?>
-		  
-		  
-		  <div class="item <?php if ($this->_tpl_vars['k']%6 == 5 || $this->_tpl_vars['k']%6 == 0): ?>large<?php else: ?>half<?php endif; ?> <?php if ($this->_tpl_vars['k']%6 == 0): ?>odd<?php else: ?><?php if ($this->_tpl_vars['k']%2 == 0): ?>even<?php else: ?>odd<?php endif; ?><?php endif; ?> <?php if ($this->_tpl_vars['item0']['image'] != ''): ?> hasbanner <?php endif; ?>">
-                                    <?php if ($this->_tpl_vars['item0']['image'] != "" && false): ?>
-					<img src="<?php echo $this->_tpl_vars['item0']['image']; ?>
-.small.png" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >					
-                                    <?php else: ?>
-					<img id="imgitem<?php echo $this->_tpl_vars['item0']['id']; ?>
-" rel="<?php echo $this->_tpl_vars['item0']['image']; ?>
-.small.png" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-				    <?php endif; ?>
-                                    <div class="description divlink <?php echo $this->_tpl_vars['item0']['disp']; ?>
-" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
-'">
-                                        <time><?php echo $this->_tpl_vars['_category']; ?>
-</time>
-                                        <h3><a class="tile_title" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
- (<?php echo $this->_tpl_vars['item0']['ppcount']; ?>
-)" class="typeboxlet01"><?php echo $this->_tpl_vars['item0']['name']; ?>
-</a></h3>
-
-                                        <ul>
-					  <?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_1_industry']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
-        $this->_foreach['level_1_industry']['iteration']++;
-?>
-					  	<li>
-							<h4><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id'])), $this);?>
-" title="<?php echo $this->_tpl_vars['level1']['name']; ?>
- (<?php echo $this->_tpl_vars['level1']['ppcount']; ?>
-)" class="typeboxlet01"><?php if ($this->_tpl_vars['k']%6 == 5 || $this->_tpl_vars['k']%6 == 0): ?><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 30) : smarty_modifier_truncate($_tmp, 30)); ?>
-<?php else: ?><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 50) : smarty_modifier_truncate($_tmp, 50)); ?>
-<?php endif; ?></a>                        </h4>
-						</li>				     
-					  <?php endforeach; endif; unset($_from); ?>
-					    <li><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
-"><?php echo $this->_tpl_vars['_read_more']; ?>
-</a></li>					    
-					</ul>
-
-                                    </div>
-                                    <a<?php if ($this->_tpl_vars['item0']['id'] == 3788): ?> rel="nofollow"<?php endif; ?> href="<?php if ($this->_tpl_vars['item0']['url'] != ""): ?><?php echo $this->_tpl_vars['item0']['url']; ?>
-<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
-<?php endif; ?>" <?php if ($this->_tpl_vars['item0']['url'] != ""): ?>target="_blank"<?php endif; ?>></a>
-                  </div>
-		  
-		  
-		  <?php if ($this->_tpl_vars['k']%3 == 2 || $this->_tpl_vars['item0']['last'] == 1): ?>
-		     </div>
-		  <?php endif; ?>
-		  <?php if ($this->_tpl_vars['k']++): ?><?php endif; ?>
-		  <?php endif; ?>
-	    <?php endforeach; endif; unset($_from); ?>
-		    
-		    
-		    </div>
-                </div>
-            </div>
+<div class="row">
+    <div class="fifteen columns" id="page-title" style="margin-top: -10px">
+        <a class="back" href="javascript:history.back()"></a>
+        <div class="subtitle">
             
-<?php echo '
-            <script type="text/javascript">
-                jQuery(document).ready(function() {
-                    var countElements = jQuery(".scroll-box .grid .gr-box").size();
-                    jQuery(".scroll-box .grid").width(countElements*584);
+                        <p><?php echo $this->_tpl_vars['_member']; ?>
+</p>
+        </div>
+        <h1 class="page-title">
+                        <?php echo $this->_tpl_vars['_register']; ?>
+                </h1>
 
-                    var scrollbox = jQuery(".scroll-box");
-                    var indent = ( jQuery(window).width() - jQuery(".fifteen.columns>.wrap").width() ) / 2;
 
-                    setBoxedSlider();
-
-                    var animateTime = 1,
-                            offsetStep = 5;
-
-                    scrollWrapper = jQuery(\'.scroll-box\');
-                    scrollContent = jQuery(\'.scroll-box .grid\');
-
-                    //event handling for buttons "left", "right"
-                    jQuery(\'.bttL\')
-                            .mousedown(function() {
-                                scrollContent.data(\'loop\', true).loopingAnimation(jQuery(this), jQuery(this).is(\'.bttR\') );
-                            })
-                            .bind("mouseup mouseout", function(){
-                                //scrollContent.data(\'loop\', false).stop();
-                            });
-
-                    jQuery.fn.loopingAnimation = function(el, dir){
-                        if(this.data(\'loop\')){
-                            var sign = (dir) ? \'-=\' : \'+=\';
-                            this.animate({ marginLeft: sign + offsetStep + \'px\' }, animateTime, function(){ jQuery(this).loopingAnimation(el,dir) });
-                        }
-                        return false;
-                    };
-                    //jQuery(\'.scroll-box\').tinyscrollbar({ axis: \'x\'});
-
-                });
-
-                jQuery(window).resize(function(){
-                    setBoxedSlider();
-                    setBoxedSlider();
-                });
-
-                function setBoxedSlider(){
-                    scrollbox = jQuery(".scroll-box");
-
-                    if(scrollbox.data("boxed") == "3"){
-                        var marginLeft = jQuery(\'.fifteen.columns\').width();
-                        marginLeft = (jQuery(window).width() - marginLeft)/2 - 9;
-
-                        scrollbox.width(jQuery(window).width() );
-
-                        if(marginLeft > 0)
-                            scrollbox.closest(".wrap").css("margin-left",(-marginLeft)+"px");
-                        scrollbox.closest(".wrap").width(jQuery(window).width());
-                    }
-                    else if(scrollbox.data("boxed") == "1"){
-                        scrollbox.closest(".wrap").css("width","100%");
-                        scrollbox.css("width","100%");
-                    }
-                    else if(scrollbox.data("boxed") == "2") {
-
-                        scrollbox.closest(".wrap").css("width","100%");
-                        scrollbox.css("width","100%");
-                        var indent = jQuery(window).width() - jQuery(".fifteen").width();
-                        console.log(indent);
-                        scrollbox.width(jQuery(".fifteen").width() + indent/2 + 9);
-                    }
-                    scrollbox.getNiceScroll().resize();
-                }
-            </script>
-	'; ?>
-
-       </div>
     </div>
+    <div class="fifteen columns"><div class="line" style="margin-top: -17px"></div></div>
+</div>
+
+
+<div class="row">
   
+<ul class="main_user_select">
+  <li class="active" rel="shop"><a href="javascript:void(0)">Tạo Gian hàng</a></li>
+  <li rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
+  <li rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
+  <li rel="learner"><a href="javascript:void(0)">Học tập</a></li>
+</ul>
+
+    <div class="four columns loginbox resbox">
+
+        <section id="woocommerce_login-2" class="widget-1 widget-first widget">
+	  <div class="widget-inner">
+	    
+	    
+	    
+	    
+	    <form name="regfrm" id="regfrm" method="post" action="" autocomplete="off">
+            <?php echo smarty_function_formhash(array(), $this);?>
+
+            <input type="hidden" name="register" value="<?php echo $this->_tpl_vars['_G']['type']; ?>
+" />
+            <!--<input type="hidden" name="typename" value="<?php echo ((is_array($_tmp=$this->_tpl_vars['_G']['typename'])) ? $this->_run_mod_handler('urldecode', true, $_tmp) : urldecode($_tmp)); ?>
+" />-->
+            <input type="hidden" name="forward" value="<?php echo $this->_tpl_vars['_G']['forward']; ?>
+" />
+	    <p class="typename_out you_are_form" style="margin-bottom: 15px;">
+			<label class="registerlabel" for="dataMemberUsername">
+			<?php echo $this->_tpl_vars['_member_type_choose']; ?>
+:<span>*</span>
+			</label>
+			
+			<input type="radio" name="typename" value="Personal" /> Cá nhân |
+			<input type="radio" name="typename" value="Shop" /> Cửa hàng |
+			<input type="radio" name="typename" value="Company" /> Doanh nghiệp
+			
+			<input class="hidden_check" type="radio" name="typename" value="Employee" />
+			<input class="hidden_check" type="radio" name="typename" value="Employer" />
+			<input class="hidden_check" type="radio" name="typename" value="Learner" />
+			
+	    </p>
+	    <p>
+			<label class="registerlabel" for="dataMemberUsername">
+			<?php echo $this->_tpl_vars['_member_login_name']; ?>
+<span>*</span>
+			</label>
+			
+			<input placeholder="Tên đăng nhập (không phải tên Shop)" type="text" name="data[member][username]" id="dataMemberUsername" value="" tabindex="1"/>
+	    
+			<label class="lenglabel" id="membernameDiv">
+			
+			</label>
+	    </p>
+	    <p>
+			<label class="registerlabel" for="dataMemberEmail">
+			<?php echo $this->_tpl_vars['_email']; ?>
+<span>*</span>
+			</label>
+
+			<input placeholder="E-mail để khách hàng liên hệ với bạn" type="text" name="data[member][email]" id="dataMemberEmail" value="" tabindex="2"/>
+
+			<label class="lenglabel" id="memberemailDiv">
+
+			</label>
+	</p>
+	<p class="email_confirm hide_res">
+			<label class="registerlabel" for="dataMemberEmail">
+			Nhập lại email<span>*</span>
+			</label>
+
+			<input placeholder="" type="text" name="confirm_email" id="dataMemberConfirmEmail" value="" tabindex="2"/>
+
+			<label class="lenglabel" id="memberemailDiv">
+
+			</label>
+	</p>
+	    <p>
+			<label class="registerlabel" for="memberpass">
+			<?php echo $this->_tpl_vars['_password']; ?>
+<span>*</span>
+			</label>
+
+			<input type="password" name="data[member][userpass]" id="memberpass" value="" tabindex="3">
+
+			<label class="lenglabel">
+			
+			</label>
+		</p>
+	    <p class="password_confirm hide_res">
+			<label class="registerlabel" for="re_memberpass">
+			<?php echo $this->_tpl_vars['_re_enter_password']; ?>
+<span>*</span>
+			</label>
+
+			<input name="re_memberpass" type="password" id="re_memberpass" value="" tabindex="4">
+
+			<label class="lenglabel">
+			
+			</label>
+            </p>
+	    
+	    
+	    
+	      <input type="hidden" name="data[member][referrer_id]" id="dataMemberReferrerHidden" value="" tabindex="5"/>
+	       
+	    
+	      <p class="noreferrer" style="display: none">
+			  <label class="registerlabel" for="dataMemberUsername">
+			  <?php echo $this->_tpl_vars['_referrer_name']; ?>
+
+			  </label>
+			  
+			  <input placeholder="<?php echo $this->_tpl_vars['_referrer_intro']; ?>
+" type="text" name="data[member][referrer_id]" id="dataMemberReferrer" value="" tabindex="5"/>
+			  <span class="referer_info">(<?php echo $this->_tpl_vars['_referer_info']; ?>
+)</span>
+	      
+			  <label class="lenglabel" id="memberReferrer">
   
-  <div class="fifteen columns"><div class="text-block clearing-container"><div class="row"><div id="aq-block-4" class="aq-block aq-block-aq_page_15_block fifteen aq-first cf">    <div class="">
-        <div class="row-fluid">
-	
-	<div class="wpb_content_element span4 column_container" style="margin-left: 20px">
-		<div class="wpb_wrapper">
+			  </label>
+	      </p>
+	    
+	    
+	    
+	    
+            <?php if ($this->_tpl_vars['ifcapt']): ?>
+	    <div id="res_captcha">
+		<div class="left">
+			
+			<span class="registercheck"><img class="registerpic" width="123" height="50" id="imgcaptcha" src="captcha.php?sid=<?php echo $this->_tpl_vars['sid']; ?>
+" alt="<?php echo $this->_tpl_vars['_unclear_see_numbers']; ?>
+" title="<?php echo $this->_tpl_vars['_unclear_see_numbers']; ?>
+" />
+			
+			<object type="application/x-shockwave-flash" data="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" height="19" width="19">
+			<param name="movie" value="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" />
+			</object>
+			<a href="javascript:;"><img src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+images/gongqiu03.jpg" class="registerpic2" id="exchange_imgcapt" /></a>
+			</span>
+		</div>
+		<div class="right">
+			<label class="registerlabel" for="login_auth" style="margin-top: 5px;margin-bottom: 8px;">
+			  <?php echo $this->_tpl_vars['_code']; ?>
+<span>*</span>
+			</label>
+			<input class="" name="data[capt_register]" id="login_auth" type="text" value="" size="4" style="width:117px; margin-bottom: 5px;" tabindex="5">&nbsp;<font class="gray" style="float: left"><?php echo $this->_tpl_vars['_input_code']; ?>
+</font>
+		</div>
+           </div>
+            <?php endif; ?>
+	    <br style="clear: both" />
+			<p class="registerp2">
+			  <input style="float: left; margin: 5px;" name="licence_check" id="LicenseCheck" type="checkbox" onclick="if(this.checked)$('#Submit').removeAttr('disabled'); else $('#Submit').attr('disabled','true');" checked="checked" />
+			  <label style="float: left;margin-top: 3px;" for="LicenseCheck"><?php echo $this->_tpl_vars['_see_agree']; ?>
+</label>
+			</p>
+			<div class="agree" id="agreements" style="display: none;"><?php echo $this->_tpl_vars['agreement']; ?>
+</div>
+          
+			<p class="registerbutton">
+			  <input type="submit" name="Submit" id="wp-submit" value="<?php echo $this->_tpl_vars['_register']; ?>
+" class="submit_w67 submit_res" />
+			</p>
+			</form>
+	    
+	    
+			<ul class="pagenav"></ul></div></section>
+			
+    </div>
+    
+    <div class="four columns register_right">
+	<div class="wpb_content_element span4 column_container">
+		<div class="wpb_wrapper" style="margin-top:-25px">
 			 <div class="row-fluid">
 	<div class="wpb_content_element span12 text-item wpb_text_column">
 		<div class="wpb_wrapper">
 			
-<!--<h6>Great made option</h6>-->
 <h2><a href="#box_4home_tb">Giới thiệu</a></h2>
-Kính chào Quý khách hàng !<br />
-Công ty cổ phần Truyền Thông và Tiếp Thị BMN (BMN) xin giới thiệu Trang điện tử (Marketonline.vn) hoạt động theo mô hình kinh doanh...
-<a class="more" href="#box_4home_tb">Xem thêm</a>
 
-<img class="icon_post" title="settings" alt="" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-/image/check1.png" width="32" height="32" />
+Kính chào Quý khách hàng!<br />
+Công ty cổ phần Truyền Thông và Tiếp Thị BMN (BMN) xin giới thiệu Trang điện tử (Marketonline.vn) hoạt động theo mô hình kinh doanh B2B...
+<br /><a class="more" href="#box_4home_tb">Xem thêm</a>
+
+<img height="32" width="32" src="http://theme.crumina.net/onetouch/wp-content/uploads/2012/12/check1.png" alt="" title="settings" class="icon_post">
 
 
 		</div> 
@@ -438,33 +528,33 @@ Công ty cổ phần Truyền Thông và Tiếp Thị BMN (BMN) xin giới thi�
 	<div class="wpb_content_element span12 text-item no-740 wpb_text_column">
 		<div class="wpb_wrapper">
 			
-<!--<h6>It was hard to make it so cool</h6>-->
+
 <h2><a href="#box_4home_ql">Quyền lợi thành viên</a></h2>
-
 Truy cập Trang điện tử www.marketonline.vn (Marketonline.vn) bằng tài khoản quản trị do Quý khách tự tạo. Sử dụng các sản phẩm, dịch vụ đã đăng ký với Marketonline.vn để phục vụ cho ..
-<a class="more" href="#box_4home_ql">Xem thêm</a>
+<br /><a class="more" href="#box_4home_ql">Xem thêm</a>
 
-<img class="icon_post" title="check" alt="" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-/image/check1.png" width="32" height="32" />
+<img height="32" width="32" src="http://theme.crumina.net/onetouch/wp-content/uploads/2012/12/check1.png" alt="" title="check" class="icon_post">
 
 
 		</div> 
 	</div> </div> 
 		</div> 
 	</div>
+	
+	
 	<div class="wpb_content_element span4 column_container">
 		<div class="wpb_wrapper">
 			 <div class="row-fluid">
 	<div class="wpb_content_element span12 text-item wpb_text_column">
 		<div class="wpb_wrapper">
 			
-<!--<h6>Great made option</h6>-->
+
 <h2><a href="#box_4home_dk">Điều khoản sử dụng</a></h2>
 Công ty Cổ phần Truyền Thông và Tiếp Thị BMN (gọi tắt là BMN) duy trì trang www.marketonline.vn (sau đây gọi là Trang điện tử) như một dịch vụ cung cấp cho khách hàng, bao gồm...
-<a class="more" href="#box_4home_dk">Xem thêm</a>
+<br /><a class="more" href="#box_4home_dk">Xem thêm</a>
 
-<img class="icon_post" title="settings" alt="" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-/image/check1.png" width="32" height="32" />
+
+<img height="32" width="32" src="http://theme.crumina.net/onetouch/wp-content/uploads/2012/12/check1.png" alt="" title="settings" class="icon_post">
 
 
 		</div> 
@@ -472,335 +562,75 @@ Công ty Cổ phần Truyền Thông và Tiếp Thị BMN (gọi tắt là BMN)�
 	<div class="wpb_content_element span12 text-item no-740 wpb_text_column">
 		<div class="wpb_wrapper">
 			
-<!--<h6>It was hard to make it so cool</h6>-->
-<h2><a href="#box_4home_bm">Bảo mật</a></h2>
-Công ty Cổ phần Truyền thông và Tiếp thị BMN (BMN) là đơn vị hoạt động trong lĩnh vực truyền thông tin tức và tiếp thị sản phẩm. Marketonline.vn là sản phẩm được BMN xây dựng...
-<a class="more" href="#box_4home_bm">Xem thêm</a>
 
-<img class="icon_post" title="check" alt="" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-/image/check1.png" width="32" height="32" />
+<h2><a href="#box_4home_bm">Bảo mật</a></h2>
+CCông ty Cổ phần Truyền thông và Tiếp thị BMN (BMN) là đơn vị hoạt động trong lĩnh vực truyền thông tin tức và tiếp thị sản phẩm. Marketonline.vn là sản phẩm được BMN xây dựng...
+<br /><a class="more" href="#box_4home_bm">Xem thêm</a>
+
+<img height="32" width="32" src="http://theme.crumina.net/onetouch/wp-content/uploads/2012/12/check1.png" alt="" title="check" class="icon_post">
 
 
 		</div> 
 	</div> </div> 
 		</div> 
-	</div>  
-	<div class="wpb_content_element span4 pad-r20 column_container">
-		<div class="wpb_wrapper fb_boxx">
-		    <img src="images/facebg.png" style="display: block; margin: 0 auto" />
-		    
-		    
-			    <div class="facebookOuter">
-        <div class="facebookInner">
-            <div class="fb-like-box"
-                 data-width="380" data-height="255"
-                 data-href="https://www.facebook.com/EMarketOnline.vn"
-                 data-colorscheme="light"
-                 data-border-color="#4e616d" data-show-faces="true"
-                 data-stream="false" data-header="false">
-            </div>
-        </div>
+	</div>
+	
+	
     </div>
-
     
-    
-    
-		</div> 
-	</div> </div>    </div>
-
-    </div></div></div></div><div id="aq-block-5" class="aq-block aq-block-aq_recent_block fifteen columns aq-first cf">        <div id="recent" class="section-block clearing-container">
-        <span class="icon recent"></span>
-        <div class="subtitle"><?php echo $this->_tpl_vars['_category']; ?>
 </div>
-        <h2 class="block-title">Thị trường nổi bật</h2>
-   
-
-    <div class="works-list hot_market dragger" style="margin-top: 20px;height: auto">
-        <ul class="filterable-grid gr-box" style="width: 100%">
-            
-
-	    
-
-                                
-
-                
-		
-		   <?php $_from = $this->_tpl_vars['IndustryList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_0']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
-        $this->_foreach['level_0']['iteration']++;
-?>
-	    <?php if ($this->_tpl_vars['key0'] == 3965): ?>
-
-		  
-		  
-		  <li style="float: left;width: 3" class="item large odd<?php if ($this->_tpl_vars['item0']['image'] != ''): ?> hasbanner <?php endif; ?>">
-                                    <?php if ($this->_tpl_vars['item0']['image'] != "" && false): ?>
-					<img src="<?php echo $this->_tpl_vars['item0']['image']; ?>
-" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-                                    <?php else: ?>
-					<img id="imgitem<?php echo $this->_tpl_vars['item0']['id']; ?>
-" rel="<?php echo $this->_tpl_vars['item0']['image']; ?>
-" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-				    <?php endif; ?>
-                                    <div class="description divlink <?php echo $this->_tpl_vars['item0']['disp']; ?>
-" onclick="window.location='index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-'">
-                                        <time><?php echo $this->_tpl_vars['_category']; ?>
-</time>
-                                        <h3><a class="tile_title" href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-" title="<?php echo $this->_tpl_vars['level0']['name']; ?>
-" class="typeboxlet01"><?php echo $this->_tpl_vars['item0']['name']; ?>
-</a></h3>
-
-                                        <ul>
-					  <?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_1_industry']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
-        $this->_foreach['level_1_industry']['iteration']++;
-?>
-					  	<li>
-							<h4><a href="index.php?do=product&level=2&industryid=<?php echo $this->_tpl_vars['level1']['id']; ?>
-" title="<?php echo $this->_tpl_vars['level1']['name']; ?>
-" class="typeboxlet01"><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 30) : smarty_modifier_truncate($_tmp, 30)); ?>
-</a></h4>
-						</li>				     
-					  <?php endforeach; endif; unset($_from); ?>
-					    <li><a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"><?php echo $this->_tpl_vars['_read_more']; ?>
-</a></li>					    
-					</ul>
-
-                                    </div>
-                                    <a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"></a>
-                  </li>
-		  
-		  
-		<?php endif; ?>  
-
-	    <?php endforeach; endif; unset($_from); ?>
-
-		
-		  <?php $_from = $this->_tpl_vars['IndustryList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_0']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
-        $this->_foreach['level_0']['iteration']++;
-?>
-	    <?php if ($this->_tpl_vars['key0'] == 5): ?>
-
-		  
-		  
-		  <li style="float: left;width: 3" class="item large odd<?php if ($this->_tpl_vars['item0']['image'] != ''): ?> hasbanner <?php endif; ?>">
-                                    <?php if ($this->_tpl_vars['item0']['image'] != "" && false): ?>
-					<img src="<?php echo $this->_tpl_vars['item0']['image']; ?>
-" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-                                    <?php else: ?>
-					<img id="imgitem<?php echo $this->_tpl_vars['item0']['id']; ?>
-" rel="<?php echo $this->_tpl_vars['item0']['image']; ?>
-" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-				    <?php endif; ?>
-                                    <div class="description divlink <?php echo $this->_tpl_vars['item0']['disp']; ?>
-" onclick="window.location='index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-'">
-                                        <time><?php echo $this->_tpl_vars['_category']; ?>
-</time>
-                                        <h3><a class="tile_title" href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-" title="<?php echo $this->_tpl_vars['level0']['name']; ?>
-" class="typeboxlet01"><?php echo $this->_tpl_vars['item0']['name']; ?>
-</a></h3>
-
-                                        <ul>
-					  <?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_1_industry']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
-        $this->_foreach['level_1_industry']['iteration']++;
-?>
-					  	<li>
-							<h4><a href="index.php?do=product&level=2&industryid=<?php echo $this->_tpl_vars['level1']['id']; ?>
-" title="<?php echo $this->_tpl_vars['level1']['name']; ?>
-" class="typeboxlet01"><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 30) : smarty_modifier_truncate($_tmp, 30)); ?>
-</a>                        </h4>
-						</li>				     
-					  <?php endforeach; endif; unset($_from); ?>
-					    <li><a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"><?php echo $this->_tpl_vars['_read_more']; ?>
-</a></li>					    
-					</ul>
-
-                                    </div>
-                                    <a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"></a>
-                  </li>
-		  
-		  
-		<?php endif; ?>  
-
-	    <?php endforeach; endif; unset($_from); ?>
 
 
-
-                <?php $_from = $this->_tpl_vars['IndustryList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_0']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
-        $this->_foreach['level_0']['iteration']++;
-?>
-	    <?php if ($this->_tpl_vars['key0'] == 19): ?>
-
-		  
-		  
-		  <li style="float: left;width: 3" class="item large odd<?php if ($this->_tpl_vars['item0']['image'] != ''): ?> hasbanner <?php endif; ?>">
-                                    <?php if ($this->_tpl_vars['item0']['image'] != "" && false): ?>
-					<img src="<?php echo $this->_tpl_vars['item0']['image']; ?>
-" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-                                    <?php else: ?>
-					<img id="imgitem<?php echo $this->_tpl_vars['item0']['id']; ?>
-" rel="<?php echo $this->_tpl_vars['item0']['image']; ?>
-" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" >
-				    <?php endif; ?>
-                                    <div class="description divlink <?php echo $this->_tpl_vars['item0']['disp']; ?>
-" onclick="window.location='index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-'">
-                                        <time><?php echo $this->_tpl_vars['_category']; ?>
-</time>
-                                        <h3><a class="tile_title" href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-" title="<?php echo $this->_tpl_vars['level0']['name']; ?>
-" class="typeboxlet01"><?php echo $this->_tpl_vars['item0']['name']; ?>
-</a></h3>
-
-                                        <ul>
-					  <?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_1_industry']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
-        $this->_foreach['level_1_industry']['iteration']++;
-?>
-					  	<li>
-							<h4><a href="index.php?do=product&level=2&industryid=<?php echo $this->_tpl_vars['level1']['id']; ?>
-" title="<?php echo $this->_tpl_vars['level1']['name']; ?>
-" class="typeboxlet01"><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 30) : smarty_modifier_truncate($_tmp, 30)); ?>
-</a>                        </h4>
-						</li>				     
-					  <?php endforeach; endif; unset($_from); ?>
-					    <li><a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"><?php echo $this->_tpl_vars['_read_more']; ?>
-</a></li>					    
-					</ul>
-
-                                    </div>
-                                    <a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"></a>
-                  </li>
-		  
-		  
-		<?php endif; ?>  
-
-	    <?php endforeach; endif; unset($_from); ?>
-
-
-                                            
-        </ul>
-    </div>
-    </div>
-
-    <?php echo '
-    <script type="text/javascript">
-        /*-----------------------------------------------------------------------------------
-
-           Custom JS - All front-end jQuery
-
-      -----------------------------------------------------------------------------------*/
-
-        jQuery(document).ready(function($) {
-
-            function portfolio_quicksand() {
-
-                // Setting Up Our Variables
-                var $filter;
-                var $container;
-                var $containerClone;
-                var $filterLink;
-                var $filteredItems
-
-                // Set Our Filter
-                $filter = $(\'.filter li.active a\').attr(\'class\');
-
-                // Set Our Filter Link
-                $filterLink = $(\'.filter li a\');
-
-                // Set Our Container
-                $container = $(\'ul.filterable-grid\');
-
-                // Clone Our Container
-                $containerClone = $container.clone();
-
-                // Apply our Quicksand to work on a click function
-                // for each for the filter li link elements
-                $filterLink.click(function(e)
-                {
-                    // Remove the active class
-                    $(\'.filter li\').removeClass(\'active\');
-
-                    // Split each of the filter elements and override our filter
-                    $filter = $(this).attr(\'class\').split(\' \');
-
-                    // Apply the \'active\' class to the clicked link
-                    $(this).parent().addClass(\'active\');
-
-                    // If \'all\' is selected, display all elements
-                    // else output all items referenced to the data-type
-                    if ($filter == \'all\') {
-                        $filteredItems = $containerClone.find(\'li\');
-                    }
-                    else {
-                        $filteredItems = $containerClone.find(\'li[data-type~=\' + $filter + \']\');
-                    }
-
-                    // Finally call the Quicksand function
-                    $container.quicksand($filteredItems,
-                            {
-                                // The Duration for animation
-                                duration: 750,
-                                // the easing effect when animation
-                                easing: \'easeInOutQuad\'
-                                // height adjustment becomes dynamic
-
-                            });
-
-                    //Initalize our PrettyPhoto Script When Filtered
-                    $container.quicksand($filteredItems,
-                            function () { lightbox(); }
-                    );
-                });
-            }
-
-            if(jQuery().quicksand) {
-                portfolio_quicksand();
-            }
-
-
-        }); // END OF DOCUMENT
-    </script>
-    '; ?>
-
-    </div>
-  
-</div></div>
-</div>
 
 </div>
   </div>
+
+<!--<script language="javascript" src="scripts/jquery/jquery.validatez.js"></script>-->
+<script language="javascript" src="scripts/validate.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
+"></script>
+<?php echo '
+<script>
+$(document).ready(function() {
+
+$(".row-fluid h2 a").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false
+		});
+		
+		$(".row-fluid a.more").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false
+		});
+		
+		$("#SeeAgreement").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false
+		});
+
+});
+</script>
+'; ?>
+
+
+
 
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -808,6 +638,5 @@ $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['the
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-
 
 

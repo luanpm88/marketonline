@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-24 16:47:21
+<?php /* Smarty version 2.6.27, created on 2014-02-25 10:16:51
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1285, false),array('function', 'formhash', 'default/header.html', 1369, false),array('modifier', 'default', 'default/header.html', 1380, false),array('modifier', 'date_format', 'default/header.html', 1394, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1300, false),array('function', 'formhash', 'default/header.html', 1384, false),array('modifier', 'default', 'default/header.html', 1395, false),array('modifier', 'date_format', 'default/header.html', 1409, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -1049,8 +1049,11 @@ if ($this->_foreach['level']['total'] > 0):
                 
                 //$(\'#mudimPanel\').parent().css("display","none");
                                 
+                margin_left = $(window).width() - 1200;
 	});
 	
+        
+var margin_left;
 $(window).scroll(function(){
 	
 	//$(\'#topmenu_outer\').css(\'top\', $(window).scrollTop()+\'px\');
@@ -1084,12 +1087,12 @@ $(window).scroll(function(){
     });        
     
         console.log($(\'#header .logo\').scrollLeft());
-        if($(\'#header .logo\').offset().left < $(window).scrollLeft()) {
-            $(\'#verytopmenu\').css("margin-left", -(-$(\'#header .logo\').offset().left + $(window).scrollLeft() - 10));
+        if(margin_left < $(window).scrollLeft()) {
+            $(\'#verytopmenu\').css("margin-left", -(-margin_left + $(window).scrollLeft()));
         }
         else
         {
-            $(\'#verytopmenu\').css("margin-left", $(\'#header .logo\').offset().left);
+            $(\'#verytopmenu\').css("margin-left", margin_left);
         }
         
 	//console.log($(\'#darkf\').offset().top - $(\'#right_detail_banner\').offset().top - $(\'#right_detail_banner\').height());
@@ -1104,7 +1107,19 @@ $(window).scroll(function(){
     
 });
 
+
+
 $(window).resize(function() {
+    margin_left = $(\'#verytopmenu\').offset().left;
+    console.log($(\'#header .logo\').scrollLeft());
+        if(margin_left < $(window).scrollLeft()) {
+            $(\'#verytopmenu\').css("margin-left", -(-margin_left + $(window).scrollLeft()));
+        }
+        else
+        {
+            $(\'#verytopmenu\').css("margin-left", margin_left);
+        }
+    
  //$(\'#verytopmenu\').css(\'padding-right\', 1200 - $(window).width());
  //if ($(window).width() < 1200) {
  // $(\'#darkf\').css(\'width\', \'1200px\');
@@ -1126,22 +1141,22 @@ $(window).resize(function() {
  
  //for sidebar
  if ($(\'#main_sidebar\').length) {
-    var movelength = (1200 + $(\'#main_sidebar\').width()) - $(window).width();
-    if (movelength > 0) {
-        movelength = $(\'#main_sidebar\').width();
-    }
-    else
-    {
-        movelength = $(\'#main_sidebar\').width() + movelength;
-    }
-  
-    if (movelength > 0) {
-        $(\'#topmenu_outer, #footer, .outpage_box\').css("padding-left", movelength+"px");
-    }
-    else
-    {
-        $(\'#topmenu_outer, #footer, .outpage_box\').css("padding-left", "0");
-    }
+    //var movelength = (1200 + $(\'#main_sidebar\').width()) - $(window).width();
+    //if (movelength > 0) {
+    //    movelength = $(\'#main_sidebar\').width();
+    //}
+    //else
+    //{
+    //    movelength = $(\'#main_sidebar\').width() + movelength;
+    //}
+    //
+    //if (movelength > 0) {
+    //    $(\'#topmenu_outer, #footer, .outpage_box\').css("padding-left", movelength+"px");
+    //}
+    //else
+    //{
+    //    $(\'#topmenu_outer, #footer, .outpage_box\').css("padding-left", "0");
+    //}
  }
  
  $(\'#facelike_col2\').css("min-height",$(\'#facelike_col1\').height());

@@ -7,6 +7,10 @@ class Studypost extends PbController {
 		$this->loadModel("studypost");
 		$this->loadModel("studypostcomment");
 		$this->loadModel("member");
+		$this->loadModel("memberfield");
+		$this->loadModel("studygroup");
+		$this->loadModel("studygroupmember");
+		$this->loadModel("school");
 	}
 
 	function index()
@@ -16,9 +20,25 @@ class Studypost extends PbController {
 	
 	function school()
 	{
+		$pb_userinfo = pb_get_member_info();
 		//cleanEditorFile
 		//$studyposts = $this->studypost->
+		//get list group
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
+		$groups = $this->studygroup->getStudygroupsBySchool($user["school_id"]);
+		foreach($groups as $key => $item)
+		{
+			$groups[$key]["member_count"] = $this->studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
+		}
+		
+		
+		$school = $this->school->getInfoById($user["school_id"]);
+		
+		//var_dump($school);
+		
+		setvar("groups",$groups);
+		setvar("school", $school);
 		render("studypost/school");
 	}
 	
@@ -131,6 +151,8 @@ class Studypost extends PbController {
 			$studyposts[$key]["comments"] = $comments["comments"];
 			$studyposts[$key]["more"] = $comments["more"];
 			
+			//var_dump($comments["more"]);
+			
 			//$count = $this->studypostcomment->findCount(null, "studypost_id=".$item["id"]);
 			//setvar("count", $count);
 			
@@ -182,6 +204,8 @@ class Studypost extends PbController {
 			$comments = $comments_a["comments"];
 			
 			setvar("more", $comments_a["more"]);
+			
+			//echo $comments_a["more"];
 			
 			setvar("comments", $comments);
 			render("studypost/ajaxLoadStudypostComments");
