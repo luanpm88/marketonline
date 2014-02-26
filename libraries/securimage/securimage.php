@@ -32,7 +32,7 @@
  * @version 2.0.1 BETA (December 6th, 2009)
  * @package Securimage
  *
- */
+**/
 
 /**
  ChangeLog
@@ -536,7 +536,7 @@ class Securimage {
 		$this->text_angle_maximum = 0;
 
 		$this->image_bg_color   = new Securimage_Color(0xff, 0xff, 0xff);
-    $this->text_color       = new Securimage_Color(0x3d, 0x3d, 0x3d);
+                $this->text_color       = new Securimage_Color(0x3d, 0x3d, 0x3d);
 		$this->multi_text_color = array(new Securimage_Color(0x0, 0x20, 0xCC),
 																		new Securimage_Color(0x0, 0x30, 0xEE),
 																		new Securimage_color(0x0, 0x40, 0xCC),
@@ -545,11 +545,11 @@ class Securimage {
 		$this->use_multi_text   = false;
 
 		$this->use_transparent_text         = false;
-		$this->text_transparency_percentage = 30;
+		$this->text_transparency_percentage = 50;
 
 		$this->num_lines            = 10;
 		$this->line_color           = new Securimage_Color(0x3d, 0x3d, 0x3d);
-		$this->draw_lines_over_text = true;
+		$this->draw_lines_over_text = false;
 
 		$this->image_signature = '';
 		$this->signature_color = new Securimage_Color(0x20, 0x50, 0xCC);

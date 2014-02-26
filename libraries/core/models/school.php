@@ -65,6 +65,7 @@ class Schools extends PbModel {
 		$school = $this->read("*", intval($id));
 		
 		$school["member_count"] = $memberfield->findCount(null, array("school_id = ".$id), "member_id");
+		$school["logo"] = pb_get_attachmenturl($school['logo'], '', 'small');
 		
 		return $school;
 	}

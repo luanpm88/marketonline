@@ -7328,3 +7328,22 @@ ul.products li.product .price .amount
 {
     word-wrap: break-word;
 }
+.old_price, .old_price .price_unit {
+    color: #F76F14;
+}
+.school-top-left-info img {
+    margin-top: 10px;
+    padding-right: 0;
+    width: 140px;
+}
+.school-top-left-info h1 {
+    font-size: 20px;
+    margin: 0;
+}
+.school-top-left-info {
+    border: 0 solid #CCCCCC;
+    margin-right: 10px;
+    margin-top: 0;
+    padding: 0;
+    text-align: center;
+}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-13 13:02:44
+<?php /* Smarty version 2.6.27, created on 2014-02-26 09:16:04
          compiled from default%5Cproduct/ajaxInbox.html */ ?>
 <div id="inboxhome">
 <a class="but" href="javascript:void(0)"><?php echo $this->_tpl_vars['_inbox']; ?>

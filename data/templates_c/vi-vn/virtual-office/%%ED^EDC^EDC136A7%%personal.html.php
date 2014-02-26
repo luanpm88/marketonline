@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-25 10:49:22
+<?php /* Smarty version 2.6.27, created on 2014-02-26 10:12:17
          compiled from personal.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 276, false),array('function', 'html_radios', 'personal.html', 322, false),array('modifier', 'default', 'personal.html', 530, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 276, false),array('function', 'html_radios', 'personal.html', 322, false),array('modifier', 'default', 'personal.html', 538, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_profile'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
@@ -29,13 +29,13 @@ unset($_smarty_tpl_vars);
 		{
 			if ($(\'input[name="other_school"]:checked\').length) {
 				$(\'.school_name span.select_box\').css("display","none");				
-				$(\'.school_name input[name="other_school_name"]\').css("display","inline");
-				$(\'.school_name input[name="other_school_name"]\').focus();
+				$(\'.school_name .new_school_form\').css("display","block");
+				$(\'.school_name .new_school_form\').focus();
 			}
 			else
 			{
 				$(\'.school_name span.select_box\').css("display","inline");				
-				$(\'.school_name input[name="other_school_name"]\').css("display","none");
+				$(\'.school_name .new_school_form\').css("display","none");
 			}
 		}
 		
@@ -196,7 +196,7 @@ function readURL(input) {
 				($(\'input[name="other_school_name"]\').val() == "" && $(\'input[name="other_school"]:checked\').length))
 			{
 				$(\'.school_name\').parent().find(\'label.errorz\').remove();
-				$(\'.school_name\').parent().append(\'<label for="" class="errorz">Nội dung yêu cầu nhập</label>\');
+				$(\'.school_name\').parent().append(\'<label for="" class="errorz">Yêu cầu nhập tên trường</label>\');
 				result = false;
 			}
 			else
@@ -433,7 +433,7 @@ images/offer_01.gif" /></div>
 				        <tr>
 						<th>Trường<font color="#FF6600">*</font></th>
 						<td>
-							<input type="checkbox" name="other_school" /> Không có trong danh sách
+							<input type="checkbox" name="other_school" /> Không có trong danh sách (tạo mới trường)
 							<br />
 							<span class="school_name">
 								<span class="select_box">
@@ -449,7 +449,15 @@ if ($this->_foreach['level_0']['total'] > 0):
 										<?php endforeach; endif; unset($_from); ?>
 									</select>
 								</span>
-								<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
+								<div class="new_school_form">
+									<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
+									<input placeholder="Địa chỉ" type="text" size="30" name="other_school_addres" />
+									<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
+									<input placeholder="Email" type="text" size="30" name="other_school_email" />
+									<input placeholder="Website" type="text" size="30" name="other_school_website" />
+									<br />Logo trường:<br /><input type="file" size="30" name="other_school_logo" />
+									<br />Hình ảnh giới thiệu:<br /><input type="file" size="30" name="other_school_banner" />
+								</div>
 							</span>
 							
 						</td>

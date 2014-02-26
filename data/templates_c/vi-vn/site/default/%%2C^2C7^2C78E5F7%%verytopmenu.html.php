@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-10 16:39:46
+<?php /* Smarty version 2.6.27, created on 2014-02-26 10:46:23
          compiled from default/verytopmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu.html', 8, false),array('function', 'the_url', 'default/verytopmenu.html', 31, false),)), $this); ?>
@@ -47,7 +47,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>  <?php endif; ?>" width="20" height="20" />
 		<?php if ($this->_tpl_vars['pb_company']): ?><?php echo $this->_tpl_vars['pb_company']['shop_name']; ?>
-<?php else: ?><?php echo $this->_tpl_vars['pb_username']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['pb_username']['first_name']; ?>
 <?php endif; ?>
 	    </a>
 	    <?php if ($this->_tpl_vars['pb_company']): ?><a class="staticon" style="padding-left: 0" class="name" href="javascript:void(0)"><img class="avatar" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>

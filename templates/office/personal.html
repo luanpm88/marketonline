@@ -21,13 +21,13 @@
 		{
 			if ($('input[name="other_school"]:checked').length) {
 				$('.school_name span.select_box').css("display","none");				
-				$('.school_name input[name="other_school_name"]').css("display","inline");
-				$('.school_name input[name="other_school_name"]').focus();
+				$('.school_name .new_school_form').css("display","block");
+				$('.school_name .new_school_form').focus();
 			}
 			else
 			{
 				$('.school_name span.select_box').css("display","inline");				
-				$('.school_name input[name="other_school_name"]').css("display","none");
+				$('.school_name .new_school_form').css("display","none");
 			}
 		}
 		
@@ -180,7 +180,7 @@ function readURL(input) {
 				($('input[name="other_school_name"]').val() == "" && $('input[name="other_school"]:checked').length))
 			{
 				$('.school_name').parent().find('label.errorz').remove();
-				$('.school_name').parent().append('<label for="" class="errorz">Nội dung yêu cầu nhập</label>');
+				$('.school_name').parent().append('<label for="" class="errorz">Yêu cầu nhập tên trường</label>');
 				result = false;
 			}
 			else
@@ -377,7 +377,7 @@ function readURL(input) {
 				        <tr>
 						<th>Trường<font color="#FF6600">*</font></th>
 						<td>
-							<input type="checkbox" name="other_school" /> Không có trong danh sách
+							<input type="checkbox" name="other_school" /> Không có trong danh sách (tạo mới trường)
 							<br />
 							<span class="school_name">
 								<span class="select_box">
@@ -387,7 +387,15 @@ function readURL(input) {
 										<!--{/loop}-->
 									</select>
 								</span>
-								<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
+								<div class="new_school_form">
+									<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
+									<input placeholder="Địa chỉ" type="text" size="30" name="other_school_addres" />
+									<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
+									<input placeholder="Email" type="text" size="30" name="other_school_email" />
+									<input placeholder="Website" type="text" size="30" name="other_school_website" />
+									<br />Logo trường:<br /><input type="file" size="30" name="other_school_logo" />
+									<br />Hình ảnh giới thiệu:<br /><input type="file" size="30" name="other_school_banner" />
+								</div>
 							</span>
 							
 						</td>

@@ -13,6 +13,12 @@ require("room.share.php");
 uses("attachment", "typeoption", "area", "school", "subject", "studygroup", "studygroupmember");
 $attachment = new Attachment('photo');
 $attachment->if_logo = true;
+
+$attachment_logo = new Attachment('other_school_logo');
+$attachment_logo->if_logo = true;
+
+$attachment_banner = new Attachment('other_school_banner');
+
 $member = new Members();
 $area = new Areas();
 $member_controller = new Member();
@@ -36,6 +42,20 @@ if (isset($_POST['save'])) {
 			if(!$schoolexsit)
 			{
 				$schoolval["name"] = trim($_POST['other_school_name']);
+				$schoolval["address"] = trim($_POST['other_school_addres']);
+				$schoolval["phone"] = trim($_POST['other_school_phone']);
+				$schoolval["email"] = trim($_POST['other_school_email']);
+				$schoolval["website"] = trim($_POST['other_school_website']);
+				
+				//logo and banner
+				if (!empty($_FILES['other_school_logo'])) {
+					$attachment_logo->upload_dir = "school".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
+					$attachment_logo->if_watermark = false;
+					$attachment_logo->rename_file = "school-logo-".$the_memberid;
+					$attachment_logo->upload_process();
+					$schoolval['logo'] = $attachment_logo->file_full_url;
+				}
+				
 				$schoolval["created"] = strtotime(date('Y-m-d H:i:s'));
 				
 				$school->save($schoolval);

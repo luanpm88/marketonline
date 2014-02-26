@@ -34,7 +34,7 @@ if ($handle = @opendir('images/backgrounds/'))
 	@closedir($handle);
 }
 srand ((float) microtime() * 10000000);
-$rand_keys = array_rand ($backgrounds);
+$rand_keys = array_rand($backgrounds);
 $background = $backgrounds[$rand_keys];
 $img->show($background);
 ?>

@@ -161,8 +161,6 @@ class Attachment extends PbController {
 				{
 					$this->resizeImage($this->out_file_full_path, 300, 300, "small");
 					$this->resizeImage($this->out_file_full_path, 100, 100, "smaller");
-					//$this->resizeImage($this->out_file_full_path, 300, 300, "small");
-					//$this->resizeImage($this->out_file_full_path, 100, 100, "smaller");
 				}
 				elseif($this->if_product_square)
 				{

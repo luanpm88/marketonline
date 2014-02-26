@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-17 08:10:39
+<?php /* Smarty version 2.6.27, created on 2014-02-26 09:19:32
          compiled from default%5Cproduct/comments.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/comments.html', 9, false),)), $this); ?>

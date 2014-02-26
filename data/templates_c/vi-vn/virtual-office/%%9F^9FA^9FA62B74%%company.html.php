@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-12 08:22:09
+<?php /* Smarty version 2.6.27, created on 2014-02-26 11:33:11
          compiled from company.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'company.html', 9, false),array('function', 'editor', 'company.html', 301, false),array('function', 'formhash', 'company.html', 342, false),array('function', 'html_radios', 'company.html', 465, false),)), $this); ?>
@@ -466,7 +466,7 @@ images/offer_01.gif" /></div>
 							<tr>
 								<th><?php echo $this->_tpl_vars['_address']; ?>
 <font class="red">*</font> </th>
-								<td><input placeholder="Số đường Tên đường, Phường/Xã" name="data[company][address]" type="text" id="address" value="<?php echo $this->_tpl_vars['item']['address']; ?>
+								<td><input placeholder="Số Tên đường, Phường/Xã" name="data[company][address]" type="text" id="address" value="<?php echo $this->_tpl_vars['item']['address']; ?>
 " class="required"> </td>
 							</tr>
 							<tr class="tel_area">

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-25 10:16:51
+<?php /* Smarty version 2.6.27, created on 2014-02-26 10:33:01
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1300, false),array('function', 'formhash', 'default/header.html', 1384, false),array('modifier', 'default', 'default/header.html', 1395, false),array('modifier', 'date_format', 'default/header.html', 1409, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1099, false),array('function', 'formhash', 'default/header.html', 1183, false),array('modifier', 'default', 'default/header.html', 1194, false),array('modifier', 'date_format', 'default/header.html', 1208, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -564,9 +564,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			\'frameHeight\': 400,
 			\'hideOnContentClick\': false
 		});
-		
-		
-		
+                
 		$(".fancybox-inner a.more").fancybox({
 			\'padding\': 0,
 			\'zoomOpacity\': true,
@@ -668,80 +666,13 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		//$(".banner_top").click(function(){alert("assadas")});
 		$(\'.ws_images div\').eq(1).css(\'display\', \'none\');
 		
-		//$(\'.connect_menu li a.menu_lvl1\').click(function(){
-		//	$(this).parent().parent().css(\'visibility\', \'hidden\');
-		//	$(\'.nav-products-menu\').css(\'height\', $(this).parent().find(\'ul\').height()+100);
-		//	$(this).parent().find(\'ul\').css(\'display\', \'block\');
-		//	$(this).parent().find(\'ul\').css(\'visibility\', \'visible\');
-		// });
-		//
-		// $(\'.connect_menu .menu li ul li a.bmenu_lvl2\').click(function(){
-		//  
-		//	$(this).parent().parent().parent().parent().css(\'visibility\', \'visible\');
-		//	$(\'.nav-products-menu\').css(\'height\', \'auto\');			
-		//	$(this).parent().parent().css(\'visibility\', \'hidden\');
-		// });
-		// 
-		// $(\'.connect_menu li a.menu_lvl2\').click(function(){
-		//	$(this).parent().parent().css(\'visibility\', \'hidden\');
-		//	$(\'.nav-products-menu\').css(\'height\', $(this).parent().find(\'ul\').height()+100);
-		//	$(this).parent().find(\'ul\').css(\'display\', \'block !important\');
-		//	$(this).parent().find(\'ul\').css(\'visibility\', \'visible !important\');
-		// });
-		//
-		// $(\'.connect_menu .menu li ul li a.bmenu_lvl3\').click(function(){
-		//  
-		//	$(this).parent().parent().parent().parent().css(\'visibility\', \'visible\');
-		//	$(\'.nav-products-menu\').css(\'height\', \'auto\');			
-		//	$(this).parent().parent().css(\'visibility\', \'hidden\');
-		// });
-		
-		//$(\'#left-sidebar\').stickyScroll({ container: \'#containerz\' });
-		//$(\'.connect_searchx\').stickyScroll({ container: \'#containerz\', topBoundary: \'32px\' });
-		
-		////cookie
-		// var date = new Date();
-		// var minutes = 60;
-		// date.setTime(date.getTime() + (minutes * 60 * 1000));
-		//$.cookie.settings = {
-		//    path : "/",
-		//    expires : date
-		//};
-		//
-		////$.cookie("welcome", "cookie_value");
-		////$.cookie("cookie_name2", "cookie_value2");
-		////alert($.cookie("welcome"));
-		//if (typeof($.cookie("welcome")) == \'undefined\') {
-		// //code
-		// $.cookie("welcome", true);
-		// $(\'.links-help-box\').css(\'display\', \'block\');
-		//}
-		
-		
 		$("#ProductName").keyup(function(event){
 		    if(event.keyCode == 13){
 			$("#search_list_but").click();
 		    }
 		});
 		
-	//       $(".box-level1").mCustomScrollbar({
-	//				autoHideScrollbar:true,
-	//				theme:"light-thin"
-	//			});
-	//       $(".box-level2").mCustomScrollbar({
-	//				autoHideScrollbar:true,
-	//				theme:"light-thin"
-	//			});
-	//       $(".box-level3").mCustomScrollbar({
-	//				autoHideScrollbar:true,
-	//				theme:"light-thin"
-	//			});
-	//       $(".box-level4").mCustomScrollbar({
-	//				autoHideScrollbar:true,
-	//				theme:"light-thin"
-	//			});
-		 
-		$(\'#right_detail_banner\').stickyScroll({ container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
+        	$(\'#right_detail_banner\').stickyScroll({ container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
 		//$(\'#topmenu_outer\').stickyScroll({ container: \'#topmenu_outer\', leftBanner: false, topbound: 275.1});
 		 
 		 console.log("zzzzz");
@@ -764,8 +695,6 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 });	 
 		 $(\'.klbox\').css(\'display\', \'block\');
 		 
-		 
-		 
 		 $(\'.leftlogodetail img\').resizecrop({
 		   width:168,
 		   height:168
@@ -785,15 +714,6 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 <?php echo $this->_tpl_vars['pb_company']['id']; ?>
 <?php echo '\');
 		 
-		 //FB.ui({
-		 //   method: \'feed\',
-		 //   link: \'https://developers.facebook.com/docs/reference/dialogs/\',
-		 //   picture: \'http://fbrell.com/f8.jpg\',
-		 //   name: \'Facebook Dialogs\',
-		 //   caption: \'Reference Documentation\',
-		 //   description: \'Using Dialogs to interact with people.\'
-		 // }, function(response){});
-		 
 		 $(\'#product_detail_box ul.product_list_widget li img\').resizecrop({
 		   width:100,
 		   height:100
@@ -807,86 +727,68 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 });
 		 $(\'#detail_box_top .thumbnails img\').css("visibility","visible");
 		 
-		 
-		 
-		 '; ?>
+		'; ?>
 <?php if ($this->_tpl_vars['theight']): ?><?php echo '
-		 $(\'#example2\').etalage({
-					thumb_image_width: 370,
-					thumb_image_height: '; ?>
+                    $(\'#example2\').etalage({
+                        thumb_image_width: 370,
+                        thumb_image_height: '; ?>
 <?php echo $this->_tpl_vars['theight']; ?>
 <?php echo ',
-					source_image_width: '; ?>
+                        source_image_width: '; ?>
 <?php echo $this->_tpl_vars['width']; ?>
 <?php echo ',
-					source_image_height: '; ?>
+                        source_image_height: '; ?>
 <?php echo $this->_tpl_vars['height']; ?>
 <?php echo ',
-					zoom_area_width: '; ?>
+                        zoom_area_width: '; ?>
 <?php echo $this->_tpl_vars['tile']*220; ?>
 <?php echo ',
-					zoom_areafalseheight: '; ?>
+                        zoom_areafalseheight: '; ?>
 <?php echo $this->_tpl_vars['tile']*220-$this->_tpl_vars['tile']*20; ?>
 <?php echo ',
-					zoom_area_distance: 5,
-					//small_thumbs: 4,
-					//smallthumb_inactive_opacity: 0.3,
-					//smallthumbs_position: \'left\',
-					show_icon: false,
-					autoplay: false,
-					keyboard: false,
-					zoom_easing: false
-				});
+                        zoom_area_distance: 5,
+                        //small_thumbs: 4,
+                        //smallthumb_inactive_opacity: 0.3,
+                        //smallthumbs_position: \'left\',
+                        show_icon: false,
+                        autoplay: false,
+                        keyboard: false,
+                        zoom_easing: false
+                    });
 		'; ?>
 <?php endif; ?><?php echo '
-		
 		
 		if ($(\'#product_desc .product_list_widget li\').length == 11) {
 		    $(\'#product_desc .product_list_widget li:last-child\').remove();
 		}
-		
-		
 		
 		$(\'body\').click(function(){$(\'#quick_inbox_content\').fadeOut();$(\'#quick_message_content\').fadeOut();});
 		$(\'#inboxhome a.but\').click(function(event){$(\'#quick_inbox_content\').toggle();event.stopPropagation();});
 		
 		var ann_count = 0;
 		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 15000);
-		
-		
+
 		//chatbox get new arrival
-		
-				
-		
 		//chatboxs
 		'; ?>
 
 		    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-		    
-		    <?php echo '
-                        setInterval(function(){ updateChatbox(); }, 8000);
-		    '; ?>
+                        <?php echo '
+                            setInterval(function(){ updateChatbox(); }, 8000);
+                        '; ?>
 
-		    
-		    
-		    <?php $_from = $this->_tpl_vars['chatboxs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+                        
+                        <?php $_from = $this->_tpl_vars['chatboxs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
         $this->_foreach['level']['iteration']++;
 ?>
-		    
-		    
-			
-			<?php if ($this->_tpl_vars['item'] != '' && $this->_tpl_vars['item'] != 0): ?>
-			    getChatbox(<?php echo $this->_tpl_vars['item']; ?>
+                            <?php if ($this->_tpl_vars['item'] != '' && $this->_tpl_vars['item'] != 0): ?>
+                                getChatbox(<?php echo $this->_tpl_vars['item']; ?>
 , true);			    
-			<?php endif; ?>
-
-			
-			
-                    <?php endforeach; endif; unset($_from); ?>
-		    <?php endif; ?>
-		
+                            <?php endif; ?>
+                        <?php endforeach; endif; unset($_from); ?>
+		    <?php endif; ?>		
 		<?php echo '
 		
 		
@@ -894,42 +796,17 @@ if ($this->_foreach['level']['total'] > 0):
 			$(\'#welcomnew-info-but\').trigger("click");
 		}
 		
-		////
-		
+		////		
 		$(\'.scroll-box .item img\').each(function() {
 		 
 		  $(this).attr("src", $(this).attr("rel"));
-		
-		//  $.ajax({
-		//	url: "index.php?do=product&action=ajaxLoadImage",
-		//	type: "POST",
-		//	encoding: "UTF-8",
-		//	data: "link="+$(this).attr("rel")+"&id="+$(this).attr("id")
-		//  }).done(function ( data ) {
-		//	//$(this).attr("src", data)
-		//	var datajson = JSON.parse(data);
-		//	//alert(datajson.id);
-		//	$(datajson.id).attr("src", datajson.url);
-		//  });
-		
-		});
-		
+                  
+                });
+                
 		$(\'.hot_market .item img\').each(function() {
 		 
 		   $(this).attr("src", $(this).attr("rel"));
-		
-		//  $.ajax({
-		//	url: "index.php?do=product&action=ajaxLoadImage",
-		//	type: "POST",
-		//	encoding: "UTF-8",
-		//	data: "link="+$(this).attr("rel")+"&id="+$(this).attr("id")
-		//  }).done(function ( data ) {
-		//	//$(this).attr("src", data)
-		//	var datajson = JSON.parse(data);
-		//	//alert(datajson.id);
-		//	$(datajson.id).attr("src", datajson.url);
-		//  });
-		
+                   
 		});
 		
 		$(\'#show-social\').click(function(){
@@ -1023,20 +900,12 @@ if ($this->_foreach['level']['total'] > 0):
                 $(\'.joblevel_link\').click(function(){		   
 		    $(\'#TopWorkCategory ul.list-hot-cat li[rel="\'+$(\'.joblevel_link\').attr("rel")+\'"] a\').trigger("click");
 		});
-                
-                
-                
-//                $(\'#job-content .company-info .logo img\').resizecrop({
-//		   width:170,
-//		   height:170
-//		 });
-                
+
                 $(".quantity_val").keyup(function(){
                         $(this).parseNumber({format:"####", locale:"vn"});
                         $(this).formatNumber({format:"####", locale:"vn"});
                 });
-                
-                
+
                 $(\'.product_listing a,.product_listing img, .logo_box_u a, .red_box a\').qtip({ // Grab some elements to apply the tooltip to
                     content: {
                         attr: \'title\'                        
@@ -1046,17 +915,10 @@ if ($this->_foreach['level']['total'] > 0):
                         adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
                     }
                 })
-                
-                //$(\'#mudimPanel\').parent().css("display","none");
-                                
-                margin_left = $(window).width() - 1200;
 	});
 	
         
-var margin_left;
 $(window).scroll(function(){
-	
-	//$(\'#topmenu_outer\').css(\'top\', $(window).scrollTop()+\'px\');
 	
     $.each($(\'.connect_searchx\'),function(){
         var eloffset = $(this).offset();
@@ -1077,89 +939,26 @@ $(window).scroll(function(){
             $(this).css(\'position\', \'fixed\');
 	    $(this).css(\'top\', \'24px\');    
         }
-	//console.log($(window).height());
-	//console.log(windowpos);
-	//console.log($(this).css(\'top\'));
-        
-        
-	
-	
     });        
     
-        console.log($(\'#header .logo\').scrollLeft());
-        if(margin_left < $(window).scrollLeft()) {
-            $(\'#verytopmenu\').css("margin-left", -(-margin_left + $(window).scrollLeft()));
-        }
-        else
-        {
-            $(\'#verytopmenu\').css("margin-left", margin_left);
-        }
-        
-	//console.log($(\'#darkf\').offset().top - $(\'#right_detail_banner\').offset().top - $(\'#right_detail_banner\').height());
-	//if($(\'#darkf\').offset().top - $(\'#right_detail_banner\').offset().top - $(\'#right_detail_banner\').height() < 20)
-	//{
-	//   console.log("out");
-	//   $(\'#detail_box #right_detail_banner\').css("top", "900px");
-	//}
-	//else
-	//{
-	//}
-    
+    //move verytopmenu with small screen
+    autoAjustVerytopmenu();
+   
 });
 
 
 
 $(window).resize(function() {
-    margin_left = $(\'#verytopmenu\').offset().left;
-    console.log($(\'#header .logo\').scrollLeft());
-        if(margin_left < $(window).scrollLeft()) {
-            $(\'#verytopmenu\').css("margin-left", -(-margin_left + $(window).scrollLeft()));
-        }
-        else
-        {
-            $(\'#verytopmenu\').css("margin-left", margin_left);
-        }
     
- //$(\'#verytopmenu\').css(\'padding-right\', 1200 - $(window).width());
- //if ($(window).width() < 1200) {
- // $(\'#darkf\').css(\'width\', \'1200px\');
- //}
- //else
- //{
- // $(\'#darkf\').css(\'width\', \'100%\');
- //}
+    //move verytopmenu with small screen
+    autoAjustVerytopmenu();
  
- //if ($(window).width() < 1190) {
- // $(\'#top-social a.open-soc\').css(\'right\', 1194 - $(window).width());
- // $(\'#top-social .soc-wrap\').css(\'margin-right\', 1194 - $(window).width());
- //}
- //else
- //{
- // $(\'#top-social a.open-soc\').css(\'right\', \'4px;\');
- // $(\'#top-social .soc-wrap\').css(\'margin-right\', \'0\');
- //}
+    //for sidebar
+    if ($(\'#main_sidebar\').length) {
+       
+    }
  
- //for sidebar
- if ($(\'#main_sidebar\').length) {
-    //var movelength = (1200 + $(\'#main_sidebar\').width()) - $(window).width();
-    //if (movelength > 0) {
-    //    movelength = $(\'#main_sidebar\').width();
-    //}
-    //else
-    //{
-    //    movelength = $(\'#main_sidebar\').width() + movelength;
-    //}
-    //
-    //if (movelength > 0) {
-    //    $(\'#topmenu_outer, #footer, .outpage_box\').css("padding-left", movelength+"px");
-    //}
-    //else
-    //{
-    //    $(\'#topmenu_outer, #footer, .outpage_box\').css("padding-left", "0");
-    //}
- }
- 
- $(\'#facelike_col2\').css("min-height",$(\'#facelike_col1\').height());
+    $(\'#facelike_col2\').css("min-height",$(window).height());
  
 });
 

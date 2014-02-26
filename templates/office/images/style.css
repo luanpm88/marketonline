@@ -3101,7 +3101,7 @@ span.notfinished
 .school_name .select2-container {
     width: 272px;
 }
-.school_name input[name=other_school_name]
+.school_name .new_school_form
 {
     display: none;
 }
@@ -3137,4 +3137,17 @@ label.errornull
 {
     color: red;
     display: block;
+}
+.new_school_form input
+{
+    margin-bottom: 5px;
+}
+input[name="other_school"]
+{
+    margin-bottom: 8px;
+}
+#product_edit_box .red
+{
+    font-size: 16px;
+    font-family: Tahoma;
 }

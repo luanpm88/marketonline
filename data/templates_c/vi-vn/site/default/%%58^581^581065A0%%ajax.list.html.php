@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-19 14:48:11
+<?php /* Smarty version 2.6.27, created on 2014-02-26 09:19:23
          compiled from default%5Cproduct/ajax.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajax.list.html', 12, false),)), $this); ?>
@@ -22,8 +22,7 @@ if ($this->_foreach['level']['total'] > 0):
 	<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
 ">
 
-		<div><img title="Vào xem chi tiết <?php if (! $this->_tpl_vars['item']['service']): ?>sản phẩm<?php else: ?>dịch vụ<?php endif; ?> <br><strong><?php echo $this->_tpl_vars['item']['name']; ?>
-</strong><br>Và liên hệ với nhà cung cấp <strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+		<div><img title="Vào xem chi tiết <?php if (! $this->_tpl_vars['item']['service']): ?>sản phẩm<?php else: ?>dịch vụ<?php endif; ?><br>Và liên hệ với nhà cung cấp <br /><strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
 </strong>" width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
 " class="attachment-shop_catalog wp-post-image" alt="<?php echo $this->_tpl_vars['item']['name']; ?>
 "></div>
@@ -53,7 +52,6 @@ if ($this->_foreach['level']['total'] > 0):
 		<?php endif; ?>
 	</a>
 
-	
 
 	<a style="display: none" onclick="getCart(<?php echo $this->_tpl_vars['item']['id']; ?>
 , 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple"><?php echo $this->_tpl_vars['_add_to_cart']; ?>

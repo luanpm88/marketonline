@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-13 13:36:54
+<?php /* Smarty version 2.6.27, created on 2014-02-26 09:16:04
          compiled from default%5Cproduct/ajaxTopChatAnnounce.html */ ?>
 <div id="messagehome">
 
