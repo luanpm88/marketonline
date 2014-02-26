@@ -395,6 +395,9 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		}
 		$productinfo['price'] = number_format($productinfo['price'], 0, ',', '.');
 		$productinfo['new_price'] = number_format($productinfo['new_price'], 0, ',', '.');
+		
+		$productinfo['content'] = str_replace("\\", "", $productinfo['content']);
+		
 		//var_dump($productinfo);
 		setvar("item",$productinfo);
 		$tpl_file = "product_edit";

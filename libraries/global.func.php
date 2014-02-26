@@ -1042,7 +1042,8 @@ function utf8_to_ascii($str) {
 function cleanContent($content)
 {
 	$content = str_replace("&quot;",'"',$content);
-		
+	$content = str_replace("\\",'"',$content);
+	
 	require_once(PHPB2B_ROOT. 'libraries'.DS.'htmlpurifier'.DS.'library'.DS.'HTMLPurifier.auto.php');
 		
 	$config = HTMLPurifier_Config::createDefault();

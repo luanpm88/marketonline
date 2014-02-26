@@ -71,7 +71,8 @@ editor_selector : \"mceEditor\",
 tinyMCE.init({
 {$mode}
 theme : \"{$theme}\",
-skin : \"o2k7\", 
+skin : \"o2k7\",
+editor_encoding: \"raw\",
 dialog_type : \"modal\", 
 skin_variant : \"silver\",
 relative_urls: false,

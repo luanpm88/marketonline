@@ -748,7 +748,6 @@ class Product extends PbController {
 		}
 		
 		render("product/connect");
-
 	}
 	
 	function detail()
@@ -892,7 +891,7 @@ class Product extends PbController {
 		//replace content
 		//$info['content'] = $info['content'];
 		
-		$info['content'] = cleanContent($info['content']);		
+		$info['content'] = cleanContent(stripslashes($info['content']));		
 		
 		//format html
 		$info['content'] = strip_tags($info['content'], "<p><br><strong><font><span><img><h2><h3><h4>");
