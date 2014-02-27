@@ -291,19 +291,21 @@ article.mini
 }
 
 #top_company_info {
-    background: url("../image/banner-bg.png") repeat-x scroll left -30px transparent;
+    background: url("../image/banner-bg.png") repeat-x scroll left 0px transparent;
     bottom: 5px;
     color: #fff;
     left: 10px;
     padding: 5px 10px;
     position: absolute;
     width: 907px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
 }
 
 #top_company_info h3 {
     color: #fff;
     font-size: 22px;
-    margin: 0 0 5px 0;
+    margin: 0 0 0 0;
+    font-weight: bold;
 }
 
 #top_company_info p {
@@ -1008,7 +1010,7 @@ aside .widget h3
 }
 #topmenu span
 {
-    margin-top: 5px;
+    margin-top: 6px;
     border: solid 1px #ccc;
     margin-left: 10px;
 }
@@ -1388,7 +1390,7 @@ ul.new_products {
     width: 903px;
 }
 #top_company_info {
-    padding: 2px 5px 10px;
+    padding: 20px 5px 5px;
 }
 .facebookOuter
 {background: #fff}
@@ -1877,4 +1879,7 @@ a.following
 .offer_list .product img
 {
     width:130px;
+}
+#TopSearch {
+    margin-left: 271px;
 }

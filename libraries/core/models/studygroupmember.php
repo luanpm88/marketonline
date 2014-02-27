@@ -64,7 +64,7 @@ class Studygroupmembers extends PbModel {
 	
 	function getSubjectIdsByMember($member_id)
 	{
-		$groups = $this->findAll("Studygroupmember.*, sg.subject_id", array("LEFT JOIN {$this->table_prefix}studygroups sg ON sg.id = Studygroupmember.studygroup_id"), array("member_id = '".$member_id."'"));
+		$groups = $this->findAll("Studygroupmember.*, sg.subject_id", array("LEFT JOIN {$this->table_prefix}studygroups sg ON sg.id = Studygroupmember.studygroup_id"), array("Studygroupmember.member_id = '".$member_id."'"));
 		
 		$result = array();
 		foreach($groups as $group) {

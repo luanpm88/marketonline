@@ -37,7 +37,7 @@ if (isset($_POST['save'])) {
 	//for other school
 		if($_POST['other_school'] == "on")
 		{			
-			$schoolexsit = $school->fields("*", array("LOWER(name) = '".strtolower($schoolval["name"])."'"));
+			$schoolexsit = $school->fields("*", array("LOWER(name) = '".trim($_POST['other_school_name'])."'"));
 			//var_dump($schoolexsit);
 			if(!$schoolexsit)
 			{
@@ -54,6 +54,15 @@ if (isset($_POST['save'])) {
 					$attachment_logo->rename_file = "school-logo-".$the_memberid;
 					$attachment_logo->upload_process();
 					$schoolval['logo'] = $attachment_logo->file_full_url;
+				}
+				if (!empty($_FILES['other_school_banner'])) {
+					$attachment_banner->upload_dir = "school".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
+					$attachment_banner->if_watermark = false;
+					$attachment_banner->if_school_banner = true;
+					$attachment_banner->if_thumb = false;
+					$attachment_banner->rename_file = "school-banner-".$the_memberid;
+					$attachment_banner->upload_process();
+					$schoolval['banner'] = $attachment_banner->file_full_url;
 				}
 				
 				$schoolval["created"] = strtotime(date('Y-m-d H:i:s'));
@@ -172,7 +181,7 @@ setvar("Schools",$school->getListOptions());
 
 //$memberinfo["studygroup_ids"] = $studygroupmember->getGroupsByMember($the_memberid);
 setvar("Subjects",$subject->getListOptions($studygroupmember->getSubjectIdsByMember($the_memberid)));
-//var_dump($subject->getListOptions());
+//var_dump($studygroupmember->getSubjectIdsByMember($the_memberid));
 $personal =  $pdb->GetRow("SELECT * FROM {$tb_prefix}personals WHERE member_id=".$the_memberid);
 
 setvar("resume_status",$personal['resume_status']);

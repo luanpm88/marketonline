@@ -62,9 +62,34 @@ class Studygroups extends PbModel {
 		return $group_ids;
 	}
 	
-	function getStudygroupsBySchool($school_id)
+	function getList($school_id = null, $member_id = null, $not_member = false)
 	{
-		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", array("LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = Studygroup.school_id", "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id"), array("Studygroup.school_id = ".$school_id));
+		uses("studygroupmember");
+		$studygroupmember = new Studygroupmembers();
+		
+		$conditions = array();
+		if($school_id) $conditions[] = "Studygroup.school_id = ".$school_id;
+		if($member_id)
+		{
+			if($not_member)
+			{
+				$conditions[] = "sgm.member_id IS NULL";
+			}
+			else
+			{
+				$conditions[] = "sgm.member_id = ".$member_id;
+			}
+		}
+		
+		$joins = array("LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = Studygroup.school_id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
+		
+		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", $joins, $conditions);
+		foreach($groups as $key => $item)
+		{
+			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
+		}
 		
 		return $groups;
 	}

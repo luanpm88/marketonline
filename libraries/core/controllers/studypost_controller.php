@@ -26,19 +26,19 @@ class Studypost extends PbController {
 		//get list group
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
-		$groups = $this->studygroup->getStudygroupsBySchool($user["school_id"]);
-		foreach($groups as $key => $item)
-		{
-			$groups[$key]["member_count"] = $this->studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
-		}
+		$groups = $this->studygroup->getList($user["school_id"], $pb_userinfo["pb_userid"], true);
+		$joined_groups = $this->studygroup->getList($user["school_id"], $pb_userinfo["pb_userid"]);
 		
+		//get current school
+		$school = $this->school->getInfoById($user["school_id"], $pb_userinfo["pb_userid"]);
 		
-		$school = $this->school->getInfoById($user["school_id"]);
+		//get school list
+		$school_list = $this->school->getList();
 		
-		//var_dump($school);
-		
+		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
 		setvar("school", $school);
+		setvar("school_list", $school_list);
 		render("studypost/school");
 	}
 	

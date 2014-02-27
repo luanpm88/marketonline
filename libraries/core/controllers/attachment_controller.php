@@ -22,6 +22,7 @@ class Attachment extends PbController {
     var $if_thumb_middle = true;
     var $if_thumb_large = false;
     var $if_banner = false;
+    var $if_school_banner = false;
     var $if_offer_150_120 = false;    
     var $if_logo = false;
     var $if_product_square = false;
@@ -173,7 +174,15 @@ class Attachment extends PbController {
 					list($width, $height) = $this->getScale("small");
 					$img->Thumb($width, $height);
 				}
+				if($this->if_thumb_large){
+					list($width, $height) = $this->getScale("large");
+					$img->Thumb($width, $height, null);
+				}
 		        }
+			if($this->if_school_banner)
+			{
+				$this->resizeImage($this->out_file_full_path, 1000, 375, "banner");
+			}
 			if($this->if_banner)
 			{
 				//echo "sdfsdfsdfsdf";
@@ -212,12 +221,8 @@ class Attachment extends PbController {
 			        	$markimg->appendTextMark($waterText);
 		        	}
 		        	if($this->width>150 || $this->height>150) $markimg->write($file_name);
-		        }
-			    if($this->if_thumb_large){
-			        list($width, $height) = $this->getScale("large");
-			    	$img->Thumb($width, $height, null);
-			    }
-			}
+		        }			
+		}
 	 		//save
 	 		if ($this->insert_new) {
 		 		$attach_info['attachment'] = $this->file_full_url;

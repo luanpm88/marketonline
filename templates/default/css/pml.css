@@ -4497,7 +4497,6 @@ a.skin_chat_with_owner.online {
 .info_tip {
 
 }
-
 .tooltip-box {
     left: 0;
     position: absolute;
@@ -7304,9 +7303,9 @@ ul.products li.product .price .amount
 {
     display: block;
     width: 100%;
-    height: 150px;
     border-bottom: solid 1px #ccc;
     background: #D8EADA;
+    height: 348px;
 }
 .col2-bottom
 {
@@ -7346,4 +7345,58 @@ ul.products li.product .price .amount
     margin-top: 0;
     padding: 0;
     text-align: center;
+}
+.school_list h4
+{
+    color: #333333;
+    display: block;
+    font-family: "Segoe UI Light";
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+.group_list li
+{
+    margin-left: 10px;
+}
+.register_right .text-item
+{
+    padding-bottom: 0;
+}
+#facelike_col2 {
+    margin-left: 254px;
+}
+#facelike_col1 {
+    position: fixed;
+}
+.banner-school-info {
+    background: none repeat scroll 0 0 #CCCCCC;
+    font-size: 16px;
+    height: 50px;
+    padding: 5px;
+    position: absolute;
+    top: 333px;
+    background: url("../image/banner-bg.png") repeat-x scroll left 0 rgba(0, 0, 0, 0);
+    width: 924px;
+}
+.banner-school-info p {
+    float: left;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+.banner-school-info p:first-child {
+    width: 100%;
+}
+.banner-school-info p a {
+    color: #fff;
+}
+.banner-school-info p label {
+    float: left;
+    margin-right: 5px;
+    font-family: "Segoe UI Light";
+    font-size: 14px;
+    color: #fff;
 }

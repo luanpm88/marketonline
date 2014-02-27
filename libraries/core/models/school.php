@@ -66,8 +66,24 @@ class Schools extends PbModel {
 		
 		$school["member_count"] = $memberfield->findCount(null, array("school_id = ".$id), "member_id");
 		$school["logo"] = pb_get_attachmenturl($school['logo'], '', 'small');
+		$school["banner"] = pb_get_attachmenturl($school['banner'], '', 'banner');
 		
 		return $school;
+	}
+	
+	function getList()
+	{
+		uses("memberfield");
+		$memberfield = new Memberfields();
+		
+		$school_list = $this->findAll("*", null, null, "created DESC");
+		foreach($school_list as $key => $item)
+		{
+			$school_list[$key]["logo"] = pb_get_attachmenturl($item['logo'], '', 'small');
+			$school_list[$key]["member_count"] = $memberfield->findCount(null, array("school_id = ".$item["id"]), "member_id");
+		}
+		
+		return $school_list;
 	}
 }
 ?>

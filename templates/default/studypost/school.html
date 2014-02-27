@@ -164,7 +164,7 @@
             success: function(data){
                 clearStudypostForm()
                 loadStudyPosts(true);
-                $("html, body").animate({ scrollTop: 0 }, 100);
+                $("html, body").animate({ scrollTop: 500 }, 100);
             }   
         });  
     }
@@ -451,6 +451,8 @@
             loadStudyPostCommnets($(this).parent().parent().parent().parent().attr("rel"), $(this).parent().find(".count_current_comment").html())
         });
         
+        $(window).scrollTop(198);
+        
     });
     
     var scroll_enabled = false;
@@ -478,11 +480,7 @@
             <div id="facelike_col1">
                 <div class="school-top-left-info">
                     <img src="{$school.logo}" />
-                    <h1>{$school.name}</h1>
-                    {if $school.address && false}<p><label>Địa chỉ:</label> {$school.address}</p>{/if}
-                    {if $school.phone && false}<p><label>Điện thoại:</label> {$school.address}</p>{/if}
-                    {if $school.email && false}<p><label>Email:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}
-                    {if $school.website && false}<p><label>Website:</label> {$school.website}</p>{/if}
+                    <h1>{$school.name}</h1>                    
                 </div>
                 <div class="top_user_info" style="display: none">
                     <img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" width="20" height="20" />
@@ -502,12 +500,32 @@
                         </li>
                     </ul>
                 </div>
+                
+                <div class="school_list">                    
+                    <h4>Nhóm đã tham gia</h4>
+                    <ul class="group_list">
+                        <!--{loop $joined_groups group level_group group_key}-->
+                            <li class="">
+                                <a href="http://localhost/marketonline/index.php?do=studypost&amp;action=school" title="{$group.subject_name} {$group.school_name}">
+                                    {$group.subject_name}
+                                    <div class="more-studybar">Thành viên: {$group.member_count}</div>
+                                </a>
+                            </li>
+                        <!--{/loop}-->
+                    </ul>
+                </div>
             </div>
             
             <div id="facelike_col2">
                 <div class="col2-top">
                     <div class="col2-top-banner">
-                        
+                        <img src="{$school.banner}" />
+                        <div class="banner-school-info">
+                            {if $school.address}<p>{$school.address}</p>{/if}
+                            {if $school.phone}<p><label>Điện thoại:</label> {$school.phone}</p>{/if}
+                            {if $school.email}<p><label>Email:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}
+                            {if $school.website}<p><label>Website:</label> {$school.website}</p>{/if}
+                        </div>
                     </div>
                 </div>
                 <div class="col2-bottom">
@@ -577,13 +595,26 @@
                     </div>
                     <div class="col2-bottom-right">
                         <div class="school_list">
-                            <ul>
+                            <h4>Trường</h4>
+                            <ul class="group_list">
                                 <li class="{if $smarty.get.action == 'school'}active{/if}">
                                     <a style="background-image:url('{$WebRootUrl}/{$school.logo}')" href="{the_url module=studypost action=school id=`$pb_userinfo.school_id`}" title="{$pb_userinfo.school_name}">
                                         {$pb_userinfo.school_name|truncate:40}
                                         <div class="more-studybar">Thành viên: {$school.member_count}</div>
                                     </a>
                                 </li>
+
+                                <!--{loop $school_list item level key}-->
+                                    <li class="{if $item.id == $school.id}active{/if}" style="display: none">
+                                        <a style="background-image:url('{$WebRootUrl}/{$item.logo}')" href="{the_url module=studypost action=school id=`$item.id`}" title="{$item.school_name}">
+                                            {$item.name|truncate:40}
+                                            <div class="more-studybar">Thành viên: {$item.member_count}</div>
+                                        </a>
+                                    </li>
+                                <!--{/loop}-->
+                            </ul>
+                            <h4>Nhóm học tập</h4>
+                            <ul class="group_list">
                                 <!--{loop $groups group level_group group_key}-->
                                     <li class="">
                                         <a href="http://localhost/marketonline/index.php?do=studypost&amp;action=school" title="{$group.subject_name} {$group.school_name}">

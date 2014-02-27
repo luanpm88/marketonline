@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-22 16:44:50
+<?php /* Smarty version 2.6.27, created on 2014-02-26 13:37:37
          compiled from footer.html */ ?>
 
   <div id="darkf">
