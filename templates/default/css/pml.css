@@ -5878,9 +5878,6 @@ body {
     clear: both;
     padding: 0px;
 }
-#job-search-box .job-search-tab .tab-content .tab-item {
-    display: none;
-}
 #job-search-box .job-search-tab .tab-content .tab-item.active {
     display: block;
 }
@@ -7612,4 +7609,8 @@ span.join_group:hover {
     float: left;
     position: absolute;
     font-family: 'Segoe UI';
+}
+#job-search-box .tab-item
+{
+    display: none;
 }

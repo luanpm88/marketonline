@@ -264,6 +264,10 @@ function smarty_function_the_url($params){
 						}
 						$return = URL."index.php?do=studypost&action=".$action.$id_s;
 					}
+					else
+					{
+						$return = URL."index.php?do=studypost";
+					}
 				//}
 				break;
 			default:

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-04 16:47:05
+<?php /* Smarty version 2.6.27, created on 2014-03-05 13:27:40
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1102, false),array('function', 'formhash', 'default/header.html', 1186, false),array('modifier', 'default', 'default/header.html', 1197, false),array('modifier', 'date_format', 'default/header.html', 1211, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1132, false),array('function', 'formhash', 'default/header.html', 1216, false),array('modifier', 'default', 'default/header.html', 1227, false),array('modifier', 'date_format', 'default/header.html', 1241, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -209,6 +209,33 @@ css/editorcss.css">
 </style>
 
 <script type="application/x-javascript">
+    
+    function moveLeftBar()
+    {
+        var leftbar = $(\'#facelike_col1\');
+        var win = $(window);
+        var scroll = (win.scrollTop()-200);
+        var more = leftbar.height() - win.height()+30;
+        
+        if(win.height() < leftbar.height())
+        {
+            if(scroll > 0)
+            {
+                if(scroll < more)
+                {
+                    leftbar.css(\'margin-top\',-scroll);
+                }
+                else
+                {
+                    leftbar.css(\'margin-top\',-more);
+                }
+            }
+            else
+            {
+                leftbar.css(\'margin-top\',0);
+            }
+        }
+    }
     
     
     function displayTet2014()
@@ -945,6 +972,9 @@ $(window).scroll(function(){
     
     //move verytopmenu with small screen
     autoAjustVerytopmenu();
+    
+    //
+    moveLeftBar();
    
 });
 

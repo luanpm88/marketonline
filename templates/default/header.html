@@ -143,6 +143,33 @@
 
 <script type="application/x-javascript">
     
+    function moveLeftBar()
+    {
+        var leftbar = $('#facelike_col1');
+        var win = $(window);
+        var scroll = (win.scrollTop()-200);
+        var more = leftbar.height() - win.height()+30;
+        
+        if(win.height() < leftbar.height())
+        {
+            if(scroll > 0)
+            {
+                if(scroll < more)
+                {
+                    leftbar.css('margin-top',-scroll);
+                }
+                else
+                {
+                    leftbar.css('margin-top',-more);
+                }
+            }
+            else
+            {
+                leftbar.css('margin-top',0);
+            }
+        }
+    }
+    
     
     function displayTet2014()
     {
@@ -851,6 +878,9 @@ $(window).scroll(function(){
     
     //move verytopmenu with small screen
     autoAjustVerytopmenu();
+    
+    //
+    moveLeftBar();
    
 });
 

@@ -15,7 +15,7 @@ class Studypost extends PbController {
 
 	function index()
 	{
-		
+		render("studypost/index");
 	}
 	
 	function school()

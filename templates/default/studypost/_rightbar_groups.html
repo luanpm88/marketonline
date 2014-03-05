@@ -5,9 +5,9 @@
                             <ul class="group_list rightbar_grouplist">
                                 <!--{loop $groups group level_group group_key}-->
                                     <li class="group_item" {if $group_key > 4}style="display:none"{/if}>
-                                        <div class="logo" onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'" title="{$group.subject_name} {$group.school_name}">
-                                            <strong>{$group.subject_name}</strong>
-                                            <div class="more-studybar">Thành viên: {$group.member_count}</div>
+                                        <div class="logo" onclick="" title="{$group.subject_name} {$group.school_name}">
+                                            <strong onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'">{$group.subject_name}</strong>
+                                            <div onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'" class="more-studybar">Thành viên: {$group.member_count}</div>
                                             <a class="join_group" onclick="window.location='{the_url module=studypost action=join_group id=`$group.id`}'">
                                                 <i>.</i>
                                                 Tham gia

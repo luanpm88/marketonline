@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-04 15:15:15
+<?php /* Smarty version 2.6.27, created on 2014-03-05 13:30:05
          compiled from default%5Cstudypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/group.html', 27, false),array('modifier', 'truncate', 'default\\studypost/group.html', 64, false),)), $this); ?>
@@ -8,7 +8,6 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 
-
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/verytopmenu.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -17,13 +16,14 @@ unset($_smarty_tpl_vars);
 
 <?php echo '
 <script type="application/x-javascript">
-
+    
     $(document).ready(function() {
         
         $(\'#facelike_col2\').css("min-height",$(window).height()+200);
         $(window).scrollTop(200);
         
     });
+
     
 </script>
 '; ?>

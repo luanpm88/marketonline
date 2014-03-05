@@ -4,7 +4,7 @@
     <ul class="group_list">
         <!--{loop $school_list item level key}-->
             {if $school.id != $item.id}
-                <li onclick="window.location='{the_url module=studypost action=group id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
+                <li onclick="window.location='{the_url module=studypost action=school id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
                     <a class="head-title">
                         <img src="{$WebRootUrl}/{$item.logo}" />
                         <span>{$item.name|truncate:40}</span>
