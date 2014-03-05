@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 17:01:17
+<?php /* Smarty version 2.6.27, created on 2014-03-04 16:47:05
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1100, false),array('function', 'formhash', 'default/header.html', 1184, false),array('modifier', 'default', 'default/header.html', 1195, false),array('modifier', 'date_format', 'default/header.html', 1209, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1102, false),array('function', 'formhash', 'default/header.html', 1186, false),array('modifier', 'default', 'default/header.html', 1197, false),array('modifier', 'date_format', 'default/header.html', 1211, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -915,6 +915,8 @@ if ($this->_foreach['level']['total'] > 0):
                         adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
                     }
                 })
+                
+                $(\'.title_more_school_button\').fancybox();
 	});
 	
         
@@ -959,7 +961,7 @@ $(window).resize(function() {
     }
  
     $(\'#facelike_col2\').css("min-height",$(window).height()+200);
-    $(window).scrollTop(200);
+    //$(window).scrollTop(200);
  
 });
 

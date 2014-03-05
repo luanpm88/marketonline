@@ -26,20 +26,76 @@ class Studypost extends PbController {
 		//get list group
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
-		$groups = $this->studygroup->getList($user["school_id"], $pb_userinfo["pb_userid"], true);
-		$joined_groups = $this->studygroup->getList($user["school_id"], $pb_userinfo["pb_userid"]);
+		if(isset($_GET["id"]))
+		{
+			$school_id = $_GET["id"];
+		}
+		else
+		{
+			$school_id = $user["school_id"];
+		}
+		
+		$groups = $this->studygroup->getList($school_id, $pb_userinfo["pb_userid"], true);
+		$joined_groups = $this->studygroup->getList(null, $pb_userinfo["pb_userid"]);
 		
 		//get current school
-		$school = $this->school->getInfoById($user["school_id"], $pb_userinfo["pb_userid"]);
+		$school = $this->school->getInfoById($school_id, $pb_userinfo["pb_userid"]);
 		
 		//get school list
 		$school_list = $this->school->getList();
 		
+		$belongToSchool = $user["school_id"] == $school["id"]?true:false;
+		setvar("belongToSchool",$belongToSchool);
+		
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
+		setvar("groups_count",count($groups));
 		setvar("school", $school);
 		setvar("school_list", $school_list);
 		render("studypost/school");
+	}
+	
+	function group()
+	{
+		$pb_userinfo = pb_get_member_info();
+		//cleanEditorFile
+		//$studyposts = $this->studypost->
+		//get list group
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
+		//		
+		$group = $this->studygroup->getInfoById(intval($_GET["id"]));
+		
+		if($group["school_id"])
+		{
+			$school_id = $group["school_id"];
+		}
+		else
+		{
+			$school_id = $user["school_id"];
+		}
+		
+		$this->studygroup->viewed(intval($_GET["id"]), $pb_userinfo["pb_userid"]);
+		$groups = $this->studygroup->getList($school_id, $pb_userinfo["pb_userid"], true);
+		$joined_groups = $this->studygroup->getList(null, $pb_userinfo["pb_userid"]);
+		
+		//get current school
+		$school = $this->school->getInfoById($school_id, $pb_userinfo["pb_userid"]);
+		
+		//get school list
+		$school_list = $this->school->getList();
+		
+		//check permission
+		$belongToGroup = $this->studygroupmember->belongToGroup($group["id"], $user["id"]);
+		
+		setvar("belongToGroup",$belongToGroup);
+		setvar("joined_groups",$joined_groups);
+		setvar("groups",$groups);
+		setvar("groups_count",count($groups));
+		setvar("group",$group);
+		setvar("school", $school);
+		setvar("school_list", $school_list);
+		render("studypost/group");
 	}
 	
 	function post()
@@ -52,14 +108,14 @@ class Studypost extends PbController {
 		}
 		$studypost = $_POST["studypost"];
 		
-		if(!empty($studypost["school_id"]))
+		if(!empty($studypost["school_id"]) || !empty($studypost["group_id"]))
 		{
 			pb_submit_check('studypost');
 			$studypost["member_id"] = $pb_userinfo["pb_userid"];
 			$studypost["created"] = date("Y-m-d H:i:s");
 			$studypost["modified"] = date("Y-m-d H:i:s");
 			
-			var_dump($studypost);
+			//var_dump($studypost);
 			
 			$this->studypost->save($studypost);
 			
@@ -77,7 +133,7 @@ class Studypost extends PbController {
 		}
 		$studypost = $_POST["studypost"];
 		
-		if(!empty($studypost["school_id"]) && !empty($studypost["id"]))
+		if((!empty($studypost["school_id"]) || !empty($studypost["group_id"])) && !empty($studypost["id"]))
 		{
 			pb_submit_check('studypost');
 			
@@ -122,10 +178,25 @@ class Studypost extends PbController {
 		
 		$conditions = array();
 		
-		if(isset($_GET["type"]) && $_GET["type"] == "school")
+		if(isset($_GET["type"]))
 		{
-			$conditions[] = "member_id = ".$user["id"];
-			$conditions[] = "school_id = ".$user["school_id"];
+			if($_GET["type"] == "school")
+			{
+				$conditions[] = "school_id = ".$user["school_id"];
+			}
+			else if($_GET["type"] == "group" && isset($_GET["id"]))
+			{
+				$conditions[] = "group_id = ".intval($_GET["id"]);
+				$this->studygroup->viewed($item["group_id"], $user["id"]);
+			}
+			else
+			{
+				$conditions[] = "FALSE";
+			}
+		}
+		else
+		{
+			$conditions[] = "FALSE";
 		}
 		
 		$load_pos = 0;
@@ -160,6 +231,10 @@ class Studypost extends PbController {
 			$comment_with_star = $this->studypostcomment->findCommentWithStar($item["id"],$user["id"]);
 			
 			$studyposts[$key]["comment_with_star"] = $comment_with_star;
+			
+			//save viewed
+			//echo "sdsdsd";
+			//$this->studygroup->viewed($item["group_id"], $user["id"]);
 		}
 		
 		setvar("List", $studyposts);
@@ -228,6 +303,48 @@ class Studypost extends PbController {
 		{
 			$this->studypostcomment->del(intval($item["id"]));
 		}
+	}
+	
+	function join_group()
+	{
+		$pb_userinfo = pb_get_member_info();
+		
+		if(!isset($_GET["id"]))
+		{
+			flash("data_not_exists", '', 0);
+		}
+		
+		$exsit = $this->studygroupmember->fields("*", array("member_id = '".$pb_userinfo["pb_userid"]."'", "studygroup_id = '".$_GET["id"]."'"));
+		
+		var_dump($exsit);
+		
+		if(empty($exsit)) {
+			$val["member_id"] = $pb_userinfo["pb_userid"];
+			$val["studygroup_id"] = $_GET["id"];
+			$val["created"] = strtotime(date("Y-m-d H:i:s"));
+			
+			$this->studygroupmember->save($val);
+		}
+		
+		pheader("location:index.php?do=studypost&action=group&id=".$_GET["id"]);
+	}
+	
+	function leave_group()
+	{
+		$pb_userinfo = pb_get_member_info();
+		
+		if(!isset($_GET["id"]))
+		{
+			flash("data_not_exists", '', 0);
+		}
+		
+		$exsit = $this->studygroupmember->fields("*", array("member_id = '".$pb_userinfo["pb_userid"]."'", "studygroup_id = '".$_GET["id"]."'"));
+		
+		if(!empty($exsit)) {
+			$this->studygroupmember->del(intval($exsit["id"]));
+		}
+		
+		pheader("location:index.php?do=studypost&action=school");
 	}
 
 }

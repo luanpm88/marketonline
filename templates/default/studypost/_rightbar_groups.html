@@ -1,0 +1,18 @@
+                            <h4>Nhóm học tập</h4>
+                            {if $groups_count > 5}
+                                <div class="title_more_group_button" onclick="$('.rightbar_grouplist .group_item').css('display','block');$(this).remove()" href="">Xem thêm</div>
+                            {/if}
+                            <ul class="group_list rightbar_grouplist">
+                                <!--{loop $groups group level_group group_key}-->
+                                    <li class="group_item" {if $group_key > 4}style="display:none"{/if}>
+                                        <div class="logo" onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'" title="{$group.subject_name} {$group.school_name}">
+                                            <strong>{$group.subject_name}</strong>
+                                            <div class="more-studybar">Thành viên: {$group.member_count}</div>
+                                            <a class="join_group" onclick="window.location='{the_url module=studypost action=join_group id=`$group.id`}'">
+                                                <i>.</i>
+                                                Tham gia
+                                            </a>
+                                        </div>
+                                    </li>
+                                <!--{/loop}-->
+                            </ul>

@@ -1,0 +1,16 @@
+                <div class="school_list">                    
+                    <h4>Nhóm đã tham gia</h4>
+                    <ul class="group_list">
+                        <!--{loop $joined_groups group level_group group_key}-->
+                            <li class="group_item {if $smarty.get.action == 'group' && $smarty.get.id == $group.id}active{/if}">
+                                <a class="logo" href="{the_url module=studypost action=group id=`$group.id`}" title="{$group.subject_name} {$group.school_name}">
+                                    {if $group.new_count && false}
+                                        <div class="new_count">{$group.new_count}</div>
+                                    {/if}
+                                    <h5>{$group.subject_name}</h5>
+                                    <div class="more-studybar">{$group.school_name}<br />Bài viết mới: <span {if $group.new_count}class="active"{/if}>{$group.new_count}</span></div>
+                                </a>
+                            </li>
+                        <!--{/loop}-->
+                    </ul>
+                </div>

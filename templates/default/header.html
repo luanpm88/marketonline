@@ -821,6 +821,8 @@ function goclicky_custom(meh, url, images, title, summary)
                         adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
                     }
                 })
+                
+                $('.title_more_school_button').fancybox();
 	});
 	
         
@@ -865,7 +867,7 @@ $(window).resize(function() {
     }
  
     $('#facelike_col2').css("min-height",$(window).height()+200);
-    $(window).scrollTop(200);
+    //$(window).scrollTop(200);
  
 });
 

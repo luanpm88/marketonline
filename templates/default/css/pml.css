@@ -1491,12 +1491,15 @@ div.product .woocommerce_tabs .panel, #content div.product .woocommerce_tabs .pa
     padding: 25px 0 10px;
 }
 
-#company_info h2
-{color: #fff}
-
-#company_info p
-{
-    line-height: 0.4;
+#company_info h2 {
+    color: #FFFFFF;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+#company_info p {
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
     color: #fff;
 }
 
@@ -3364,11 +3367,6 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 #page-title .breadcrumbs
 {
     font-size: 16px;
-}
-#company_info p {
-    font-size: 15px;
-    line-height: 20px;
-    margin-bottom: 6px;
 }
 .addthis_counter.addthis_bubble_style
 {
@@ -6862,13 +6860,14 @@ div.product .woocommerce_tabs ul.tabs li a, #content div.product .woocommerce_ta
     padding: 0px 0;
     margin-bottom: 10px;
 }
-.school_list ul li a {
-    background: url("../image/school-icon.png") no-repeat scroll 0px 0px / 40px auto;
-    height: 40px;
-    padding-left: 45px;
-    padding-top: 2px;
+.school_list ul li .logo {
+    background: url("../image/studygroup.png") no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0);
     display: block;
+    height: 42px;
     line-height: 18px;
+    padding-left: 50px;
+    padding-top: 2px;
+    cursor: pointer;
 }
 .school_list ul li:hover {
     background: #F0F6F2;
@@ -7348,11 +7347,12 @@ ul.products li.product .price .amount
 }
 .school_list h4
 {
-    color: #333333;
+    color: #999;
     display: block;
     font-family: "Segoe UI Light";
-    font-size: 14px;
+    font-size: 13px;
     margin-bottom: 7px;
+    font-weight: bold;
 }
 .group_list li
 {
@@ -7399,4 +7399,217 @@ ul.products li.product .price .amount
     font-family: "Segoe UI Light";
     font-size: 14px;
     color: #fff;
+}
+.facelike_postform
+{
+    float: left;
+}
+.facelike_postform .studypost_form
+{
+    float: left;
+    width: 100%;
+}
+.group_item .more-studybar {
+    display: block;
+    font-family: "Segoe UI Light";
+    line-height: 14px;
+    margin-top: -1px;
+    display: block;
+}
+.banner-group-info
+{
+    height: auto;
+    top: 301px;
+    padding-bottom: 0;
+    height: 82px;
+}
+.banner-group-info h2
+{
+    color: #fff;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.group_item h5 {
+    color: #333333;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Segoe UI";
+}
+.group_item .new_count {
+    background: none repeat scroll 0 0 #83D883;
+    color: #3B984C;
+    display: block;
+    float: right;
+    font-weight: bold;
+    height: 19px;
+    line-height: 17px;
+    margin-right: 5px;
+    padding: 0 3px 0px;
+}
+
+.school_list ul li a.join_group {
+    height: 20px;
+    line-height: 18px;
+    margin-right: 2px;
+    margin-top: 0;
+    cursor: pointer;
+}
+.school_list ul li a.join_group:hover {
+    text-decoration: underline;
+}
+
+.facelike_main .main_controls {
+    float: right;
+    margin-top: -27px;
+    position: relative;
+    right: 5px;
+}
+.facelike_main .main_controls a{
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+    color: #333333;
+    display: block;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+}
+.title_more_school_button, .title_more_group_button
+{
+    color: #3B984C;
+    float: right;
+    margin-right: 5px;
+    margin-top: -22px;
+    cursor: pointer;
+}
+.title_more_school_button:hover
+{
+    text-decoration: underline;
+}
+#other-school-list
+{
+    margin-right: 0px;
+}
+#other-school-list h3
+{
+    font-family: "Segoe UI Light";
+}
+#other-school-list ul li
+{
+    padding-right: 5px;
+    margin-left: 0;
+}
+#other-school-list ul li {
+    float: left;
+    margin-left: 0;
+    padding-right: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+.school_list_box img {
+    float: left;
+    margin-bottom: 0;
+    margin-right: 12px;
+    width: 93px;
+}
+.school_list_box a
+{
+    
+}
+.school_list_box p {
+    font-size: 14px !important;
+    line-height: 17px;
+    margin-bottom: 0;
+}
+.school_list_box p label {
+    float: left;
+    font-size: 14px;
+    height: 10px;
+    margin-right: 5px;
+}
+.school_list ul li a.head-title {
+    color: #333333;
+    font-weight: bold;
+}
+.school_list ul li a.head-title span {
+    display: block;
+    margin-top: -3px;
+    text-transform: uppercase;
+}
+#topmenu .main_banner {
+    display: block;
+    height: 339px !important;
+    overflow: hidden;
+}
+#other-school-list ul li
+{
+    width: 50%;
+}
+#other-school-list
+{
+    width: 1100px;
+}
+.school_list ul li .logo strong {
+    display: block;
+    margin-top: -7px;
+}
+a.join_group {
+    display: block;
+    height: 16px;
+    line-height: 16px;
+    margin-top: 1px;
+}
+a.join_group i {
+    background: url("../image/niU6oZtmDmn.png") no-repeat scroll -85px -222px rgba(0, 0, 0, 0);
+    display: block;
+    float: left;
+    height: 16px;
+    margin-right: 3px;
+    text-indent: -9000px;
+    width: 16px;
+}
+span.join_group:hover {
+    text-decoration: underline;
+}
+.col2-bottom-right .rightbar_grouplist li:hover
+{
+    background: transparent;
+}
+.col2-bottom-right .rightbar_grouplist li {
+    border-bottom: 1px solid #FFFFFF;
+    margin-bottom: 7px;
+    padding: 0 0 10px;
+}
+#company_info
+{
+    text-align: center;
+}
+#darkf
+{
+    margin-bottom: 0;
+    padding-bottom: 11px;
+}
+#footer {
+    padding: 8px 0 10px;
+}
+.backtotop
+{
+    background: url("../image/top.png") no-repeat scroll 0 10px / 36px auto rgba(0, 0, 0, 0);
+}
+.backtotop:hover
+{
+    background: url("../image/top_hov.png") no-repeat scroll 0 10px / 36px auto rgba(0, 0, 0, 0);
+}
+.more-studybar span.active {
+    font-weight: bold;
+    color: #3B984C;
+    background: #d2ecc4;
+    padding: 0px 2px;
+    display: block;
+    margin-top: -14px;
+    margin-left: 72px;
+    float: left;
+    position: absolute;
+    font-family: 'Segoe UI';
 }

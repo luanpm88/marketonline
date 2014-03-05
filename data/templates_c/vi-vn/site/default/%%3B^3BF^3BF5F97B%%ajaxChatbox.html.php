@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-13 13:08:41
+<?php /* Smarty version 2.6.27, created on 2014-03-04 15:09:17
          compiled from default%5Cproduct/ajaxChatbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajaxChatbox.html', 6, false),)), $this); ?>

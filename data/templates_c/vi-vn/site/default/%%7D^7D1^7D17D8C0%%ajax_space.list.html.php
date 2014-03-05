@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-13 16:27:11
+<?php /* Smarty version 2.6.27, created on 2014-03-04 14:37:43
          compiled from default%5Cproduct/ajax_space.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajax_space.list.html', 18, false),array('modifier', 'truncate', 'default\\product/ajax_space.list.html', 21, false),)), $this); ?>

@@ -258,7 +258,11 @@ function smarty_function_the_url($params){
 					//$return = URL."index.php?do=school";
 					if(!empty($action))
 					{
-						$return = URL."index.php?do=studypost&action=".$action;
+						if(!empty($id))
+						{
+							$id_s = "&id=".$id;
+						}
+						$return = URL."index.php?do=studypost&action=".$action.$id_s;
 					}
 				//}
 				break;

@@ -73,5 +73,22 @@ class Studygroupmembers extends PbModel {
 		
 		return $result;
 	}
+	
+	function belongToGroup($group_id, $member_id)
+	{
+		$conditions[] = "studygroup_id=".intval($group_id);
+		$conditions[] = "member_id=".intval($member_id);
+		
+		$exsit = $this->fields("id", $conditions);
+		
+		if(!empty($exsit))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }
 ?>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 13:37:36
+<?php /* Smarty version 2.6.27, created on 2014-03-04 15:06:00
          compiled from topmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'topmenu.html', 76, false),array('function', 'get_cache', 'topmenu.html', 119, false),array('function', 'the_url', 'topmenu.html', 144, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'topmenu.html', 77, false),array('function', 'get_cache', 'topmenu.html', 120, false),array('function', 'the_url', 'topmenu.html', 145, false),)), $this); ?>
 <?php echo '
 
 <script type="application/x-javascript">
@@ -20,6 +20,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 
 				//    position: \'right\'});
 			    }
 		});
+	
 	}
 	
 	function follow(shopid, but) {
@@ -104,15 +105,15 @@ index.php?do=product&action=change_banner" enctype="multipart/form-data" onsubmi
 	
 	
 	  <p><?php if ($this->_tpl_vars['banners']['1']): ?><img src="<?php echo $this->_tpl_vars['banners']['1']; ?>
-" /><?php endif; ?><input type="file" name="upload_banner_1" /></p>
+" /><?php endif; ?><input type="file" name="upload_banner_1" accept="image/*" /></p>
 	  <p><?php if ($this->_tpl_vars['banners']['2']): ?><img src="<?php echo $this->_tpl_vars['banners']['2']; ?>
-" /><?php endif; ?><input type="file" name="upload_banner_2" /></p>
+" /><?php endif; ?><input type="file" name="upload_banner_2" accept="image/*" /></p>
 	  <p><?php if ($this->_tpl_vars['banners']['3']): ?><img src="<?php echo $this->_tpl_vars['banners']['3']; ?>
-" /><?php endif; ?><input type="file" name="upload_banner_3" /></p>
+" /><?php endif; ?><input type="file" name="upload_banner_3" accept="image/*" /></p>
 	  <p><?php if ($this->_tpl_vars['banners']['4']): ?><img src="<?php echo $this->_tpl_vars['banners']['4']; ?>
-" /><?php endif; ?><input type="file" name="upload_banner_4" /></p>
+" /><?php endif; ?><input type="file" name="upload_banner_4" accept="image/*" /></p>
 	  <p><?php if ($this->_tpl_vars['banners']['5']): ?><img src="<?php echo $this->_tpl_vars['banners']['5']; ?>
-" /><?php endif; ?><input type="file" name="upload_banner_5" /></p>
+" /><?php endif; ?><input type="file" name="upload_banner_5" accept="image/*" /></p>
 	  
 	  <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="<?php echo $this->_tpl_vars['_upload']; ?>
 " /><br>
@@ -323,10 +324,11 @@ if ($this->_foreach['level']['total'] > 0):
 				<!--<img style="max-width: none;" src="<?php echo $this->_tpl_vars['item']; ?>
 ">-->
 					
-			  <li class="item_<?php echo $this->_tpl_vars['key']; ?>
+				<?php if ($this->_tpl_vars['item']): ?>
+					<li class="item_<?php echo $this->_tpl_vars['key']; ?>
 "><img src="<?php echo $this->_tpl_vars['item']; ?>
 .banner.jpg" /></li>
-			
+				<?php endif; ?>
 					
 				<?php endforeach; endif; unset($_from); ?>
 				</ul>

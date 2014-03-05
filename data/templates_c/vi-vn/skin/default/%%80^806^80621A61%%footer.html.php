@@ -1,31 +1,38 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 13:37:37
+<?php /* Smarty version 2.6.27, created on 2014-03-05 09:08:47
          compiled from footer.html */ ?>
 
   <div id="darkf">
   <section role="contentinfo" class="user_footer widget" id="footer">
 
 <div class="widget-inner" style="text-align: center">
-                    <h3><?php echo $this->_tpl_vars['COMPANY']['name']; ?>
+        <div class="foot-col1">
+		    <h3><?php echo $this->_tpl_vars['COMPANY']['name']; ?>
 </h3>
                     
-                    <p><?php echo $this->_tpl_vars['_address']; ?>
+                    <p>
+			<?php echo $this->_tpl_vars['_address']; ?>
 : <?php echo $this->_tpl_vars['COMPANY']['address']; ?>
-</p>
-			<?php if ($this->_tpl_vars['COMPANY']['tel']): ?><p><?php echo $this->_tpl_vars['_phone']; ?>
+
+		    </p>
+		    <p>
+			<?php if ($this->_tpl_vars['COMPANY']['tel']): ?><?php echo $this->_tpl_vars['_phone']; ?>
 : <?php echo $this->_tpl_vars['COMPANY']['tel']; ?>
-</p><?php endif; ?>
-			<?php if ($this->_tpl_vars['COMPANY']['fax']): ?><p><?php echo $this->_tpl_vars['_fax']; ?>
+<?php endif; ?>
+			<?php if ($this->_tpl_vars['COMPANY']['fax']): ?>-<?php echo $this->_tpl_vars['_fax']; ?>
 : <?php echo $this->_tpl_vars['COMPANY']['fax']; ?>
-</p><?php endif; ?>
-			<?php if ($this->_tpl_vars['COMPANY']['email']): ?><p><?php echo $this->_tpl_vars['_email']; ?>
+<?php endif; ?>
+		    </p>
+		    <p>
+			<?php if ($this->_tpl_vars['COMPANY']['email']): ?><?php echo $this->_tpl_vars['_email']; ?>
 : <?php echo $this->_tpl_vars['COMPANY']['email']; ?>
-</p><?php endif; ?>
-			<?php if ($this->_tpl_vars['COMPANY']['site_url']): ?><p><?php echo $this->_tpl_vars['_company_home']; ?>
+<?php endif; ?>
+			<?php if ($this->_tpl_vars['COMPANY']['site_url']): ?>-<?php echo $this->_tpl_vars['_company_home']; ?>
 : <a target="_blank" rel="nofollow" href="http://<?php echo $this->_tpl_vars['COMPANY']['site_url_name']; ?>
 "><?php echo $this->_tpl_vars['COMPANY']['site_url_name']; ?>
 </a><?php endif; ?>
 		    </p>
-                    
+        </div>
+	<div class="foot-col2">
 		    <h3><?php echo $this->_tpl_vars['_contact']; ?>
 </h3>
 		    <p><?php echo $this->_tpl_vars['_person_company_contact']; ?>
@@ -39,10 +46,9 @@
 			<p><?php echo $this->_tpl_vars['_email']; ?>
 : <?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 </p>
-			<?php if ($this->_tpl_vars['COMPANY']['facebook']): ?><p>Fanpage Facebook: <a rel="nofollow" href="https://<?php echo $this->_tpl_vars['COMPANY']['facebook']; ?>
-" target="_blank"><?php echo $this->_tpl_vars['COMPANY']['facebook']; ?>
-</a></p><?php endif; ?>
-                   
+			<?php if ($this->_tpl_vars['COMPANY']['facebook']): ?><p><a rel="nofollow" href="https://<?php echo $this->_tpl_vars['COMPANY']['facebook']; ?>
+" target="_blank">Liên kết Facebook</a></p><?php endif; ?>
+	</div>
 </div>
  
   </section>

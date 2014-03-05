@@ -125,7 +125,7 @@ class Fair extends PbController {
 				}
 				echo "<script language='javascript'>window.close();</script>";
 				exit;
-			}else {
+			} else {
 				if (isset($_POST['is_ajax']) && $_POST['is_ajax']) {
 					die("<img src='images/check_error.gif'/>".iconv($charset, "UTF-8//IGNORE", L("action_failed")));
 				}

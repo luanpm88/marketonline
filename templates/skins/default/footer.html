@@ -3,32 +3,32 @@
   <section role="contentinfo" class="user_footer widget" id="footer">
 
 <div class="widget-inner" style="text-align: center">
-                    <h3>{$COMPANY.name}</h3>
+        <div class="foot-col1">
+		    <h3>{$COMPANY.name}</h3>
                     
-                    <p>{lang address}: {$COMPANY.address}</p>
-			{if $COMPANY.tel}<p>{lang phone}: {$COMPANY.tel}</p>{/if}
-			{if $COMPANY.fax}<p>{lang fax}: {$COMPANY.fax}</p>{/if}
-			{if $COMPANY.email}<p>{lang email}: {$COMPANY.email}</p>{/if}
-			{if $COMPANY.site_url}<p>{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a>{/if}
+                    <p>
+			{lang address}: {$COMPANY.address}
 		    </p>
-                    
+		    <p>
+			{if $COMPANY.tel}{lang phone}: {$COMPANY.tel}{/if}
+			{if $COMPANY.fax}-{lang fax}: {$COMPANY.fax}{/if}
+		    </p>
+		    <p>
+			{if $COMPANY.email}{lang email}: <a href="mailto:{$COMPANY.email}">{$COMPANY.email}</a>{/if}
+			{if $COMPANY.site_url}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a>{/if}
+		    </p>
+        </div>
+	<div class="foot-col2">
 		    <h3>{lang contact}</h3>
 		    <p>{lang person_company_contact}: {$COMPANY.link_man}{if $COMPANY.position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$COMPANY.position}</p>{/if}
 			<p>{lang mobile_number}: {$COMPANY.contact_mobile}</p>
-			<p>{lang email}: {$COMPANY.contact_email}</p>
-			{if $COMPANY.facebook}<p>Fanpage Facebook: <a rel="nofollow" href="https://{$COMPANY.facebook}" target="_blank">{$COMPANY.facebook}</a></p>{/if}
-                   
+			<p>{lang email}: <a href="mailto:{$COMPANY.contact_email}">{$COMPANY.contact_email}</a></p>
+			{if $COMPANY.facebook}<p><a rel="nofollow" href="https://{$COMPANY.facebook}" target="_blank">Liên kết Facebook</a></p>{/if}
+	</div>
 </div>
  
   </section>
     </div>
-  
-  
-  
-  
-  
-  
-  
   
   <a href="#" id="linkTop" class="backtotop">
   <span></span>

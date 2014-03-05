@@ -20,12 +20,8 @@
     <div class="row">
         <div class="facelike_main">
             
-            <div id="facelike_col1">
-                <div class="school-top-left-info">
-                    <img src="{$school.logo}" />
-                    <h1>{$school.name}</h1>                    
-                </div>
-                <div class="top_user_info" style="display: none">
+            <div id="facelike_col1">                
+                <div class="top_user_info">
                     <img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" width="20" height="20" />
                     <h4>{$pb_userinfo.first_name} {$pb_userinfo.last_name}</h4>
                     <a style="padding-left: 0; margin-right: 10px" class="name" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
@@ -33,16 +29,6 @@
                     </a>
                 </div>
                 <br style="clear: both" />
-                <div class="school_list" style="display: none">
-                    <ul>
-                        <li class="{if $smarty.get.action == 'school'}active{/if}">
-                            <a href="{the_url module=studypost action=school id=`$school.id`}" title="{$school.name}">
-                                {$school.name|truncate:40}
-                                <div class="more-studybar">Thành viên: {$school.member_count}</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 
                 <!--{include file="`$theme_name`/studypost/_joined_groups.html"}-->
                 
@@ -52,12 +38,16 @@
                 <div class="col2-top">
                     <div class="col2-top-banner">
                         <img src="{$school.banner}" />
-                        <div class="banner-school-info">
+                        <div class="banner-school-info banner-group-info">
+                            <h2>{$group.subject_name} ({$group.school_name})</h2>
                             {if $school.address}<p>{$school.address}</p>{/if}
                             {if $school.phone}<p><label>Điện thoại:</label> {$school.phone}</p>{/if}
                             {if $school.email}<p><label>Email:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}
                             {if $school.website}<p><label>Website:</label> {$school.website}</p>{/if}
                         </div>
+                    </div>
+                    <div class="main_controls">
+                        <a href="{the_url module=studypost action=leave_group id=`$group.id`}">Rời khỏi nhóm</a>
                     </div>
                 </div>
                 <div class="col2-bottom">
@@ -66,7 +56,7 @@
                     </div>
                     <div class="col2-bottom-right">
                         <div class="school_list">
-                            <h4>Trường</h4>
+                            <h4>Trường</h4>                            
                             <!--{include file="`$theme_name`/studypost/_other_school_list.html"}-->
                             <ul class="group_list">
                                 <li class="{if $smarty.get.action == 'school'}active{/if}">
@@ -75,17 +65,6 @@
                                         <div class="more-studybar">Thành viên: {$school.member_count}</div>
                                     </a>
                                 </li>
-                            </ul>
-                            
-                            <ul class="group_list">
-                                <!--{loop $school_list item level key}-->
-                                    <li class="{if $item.id == $school.id}active{/if}" style="display: none">
-                                        <a class="logo" style="background-image:url('{$WebRootUrl}/{$item.logo}')" href="{the_url module=studypost action=school id=`$item.id`}" title="{$item.school_name}">
-                                            {$item.name|truncate:40}
-                                            <div class="more-studybar">Thành viên: {$item.member_count}</div>
-                                        </a>
-                                    </li>
-                                <!--{/loop}-->
                             </ul>
                             
                             <!--{include file="`$theme_name`/studypost/_rightbar_groups.html"}-->

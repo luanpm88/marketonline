@@ -68,12 +68,13 @@ class Studygroups extends PbModel {
 		$studygroupmember = new Studygroupmembers();
 		
 		$conditions = array();
-		if($school_id) $conditions[] = "Studygroup.school_id = ".$school_id;
+		if($school_id) $conditions[] = "sc.id = ".$school_id;
 		if($member_id)
 		{
 			if($not_member)
 			{
-				$conditions[] = "sgm.member_id IS NULL";
+				//$conditions[] = "((sgm.member_id IS NULL) OR (sgm.member_id != ".$member_id."))";
+				$conditions[] = "Studygroup.id NOT IN (SELECT studygroup_id FROM {$this->table_prefix}studygroupmembers WHERE member_id = ".$member_id.")";
 			}
 			else
 			{
@@ -85,13 +86,87 @@ class Studygroups extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
 		
+		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", $joins, $conditions, null, null, null, null, "Studygroup.id");
+		foreach($groups as $key => $item)
+		{
+			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
+			
+			$pb_userinfo = pb_get_member_info();
+			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
+		}
+		
+		return $groups;
+	}
+	
+	function getInfoById($id)
+	{
+		uses("studygroupmember");
+		$studygroupmember = new Studygroupmembers();
+		
+		$conditions = array();
+		if($id) $conditions[] = "Studygroup.id = ".intval($id);
+		
+		$joins = array("RIGHT JOIN {$this->table_prefix}schools AS sc ON sc.id = Studygroup.school_id");
+		$joins[] = "RIGHT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";
+		$joins[] = "RIGHT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
+		
 		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", $joins, $conditions);
 		foreach($groups as $key => $item)
 		{
 			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
+			
+			$pb_userinfo = pb_get_member_info();
+			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
 		}
+		//var_dump($groups);
+		return $groups[0];
+	}
+	
+	function getCountNew($group_id, $member_id)
+	{		
+		uses("studygroupview", "studypost");
+		$studygroupview = new Studygroupviews();
+		$studypost = new Studyposts();
+			
+		$conditions = array();
 		
-		return $groups;
+		$conditions[] = "Studypost.member_id != ".intval($member_id);
+		$conditions[] = "stv.member_id=".intval($member_id);
+		$conditions[] = "stv.studygroup_id=".intval($group_id);
+		$conditions[] = "stv.created < Studypost.created";
+		
+		$joins = array("RIGHT JOIN {$this->table_prefix}studygroupviews AS stv ON stv.studygroup_id = Studypost.group_id");
+		
+		$count = $studypost->findCount($joins, $conditions, "Studypost.id");
+		//var_dump($count);
+		return $count;
+	}
+	
+	function viewed($group_id, $member_id)
+	{
+		uses("studygroupview");
+		$studygroupview = new Studygroupviews();
+			
+		$conditions = array();
+		
+		$conditions[] = "studygroup_id=".intval($group_id);
+		$conditions[] = "member_id=".intval($member_id);
+		
+		$exsit = $studygroupview->fields("*", $conditions);
+		//var_dump($exsit);
+		if(empty($exsit))
+		{
+			$val["studygroup_id"] = intval($group_id);
+			$val["member_id"] = intval($member_id);
+			$val["created"] = date("Y-m-d H:i:s");
+			
+			
+			$studygroupview->save($val);
+		}
+		else
+		{
+			$studygroupview->saveField("created", date("Y-m-d H:i:s"), intval($exsit["id"]));
+		}
 	}
 }
 ?>

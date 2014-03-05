@@ -2062,7 +2062,7 @@ class Product extends PbController {
 				$attachment1->upload_process();
 				
 				$banners[1] = $attachment1->file_full_url;
-				//$company->saveField('banner', $vals['banner'], intval($_POST["com_id"]));
+
 			}
 			
 			if(!empty($_FILES['upload_banner_2']['name']))
@@ -2074,7 +2074,6 @@ class Product extends PbController {
 				$attachment2->upload_process();
 				
 				$banners[2] = $attachment2->file_full_url;
-				//$company->saveField('banner', $vals['banner'], intval($_POST["com_id"]));
 			}
 			
 			if(!empty($_FILES['upload_banner_3']['name']))

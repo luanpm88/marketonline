@@ -37,6 +37,27 @@ class Studyposts extends PbModel {
 		return $time_add;
  	}
 	
-	
+	function viewed($post_id, $member_id)
+	{
+		uses("studypostview");
+		$studypostview = new Studypostviews();
+			
+		$conditions = array();
+		
+		$conditions[] = "studypost_id=".intval($post_id);
+		$conditions[] = "member_id=".intval($member_id);
+		
+		$exsit = $studypostview->fields("id", $conditions);
+
+		if(empty($exsit))
+		{
+			$val["studypost_id"] = intval($post_id);
+			$val["member_id"] = intval($member_id);
+			$val["created"] = date("Y-m-d H:i:s");
+			
+			
+			$studypostview->save($val);
+		}
+	}
 }
 ?>

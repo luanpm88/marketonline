@@ -1,0 +1,20 @@
+<div class="title_more_school_button" href="#other-school-list">Danh sách trường</div>
+<div id="other-school-list" style="display: none" class="school_list">
+    <h3>Danh sách các trường khác</h3>
+    <ul class="group_list">
+        <!--{loop $school_list item level key}-->
+            {if $school.id != $item.id}
+                <li onclick="window.location='{the_url module=studypost action=group id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
+                    <a class="head-title">
+                        <img src="{$WebRootUrl}/{$item.logo}" />
+                        <span>{$item.name|truncate:40}</span>
+                    </a>
+                    {if $item.address}<p>{$item.address}</p>{/if}
+                    {if $item.phone}<p><label>Điện thoại:</label> {$item.phone}</p>{/if}
+                    {if $item.email}<p><label>Email:</label> <a href="mailto:{$item.email}">{$item.email}</a></p>{/if}
+                    {if $item.website}<p><label>Website:</label> {$item.website}</p>{/if}
+                </li>
+            {/if}
+        <!--{/loop}-->
+    </ul>
+</div>

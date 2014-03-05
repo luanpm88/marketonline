@@ -89,7 +89,7 @@ if (empty($company->info['picture'])) {
 $banners = json_decode($company->info['banners'], true);
 foreach($banners as $key => $item)
 {
-	$banners[$key] = $absolute_uri.$attachment_url.$item;
+	if ($item) $banners[$key] = $absolute_uri.$attachment_url.$item;
 }
 if(!count($banners)) $banners["noimage"] = $absolute_uri."templates/default/image/bannerCongTy.png";
 

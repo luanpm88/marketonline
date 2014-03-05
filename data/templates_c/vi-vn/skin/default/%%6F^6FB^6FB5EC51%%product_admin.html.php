@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-10-30 16:28:16
+<?php /* Smarty version 2.6.27, created on 2014-03-04 14:37:37
          compiled from product_admin.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array('PageTitle' => ($this->_tpl_vars['_space_product']),'cur' => 'space_index')));
@@ -652,7 +652,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 				    <div class="facebookInner">
 					<div class="fb-like-box"
 					     data-width="235" data-height="265"
-					     data-href="<?php echo $this->_tpl_vars['COMPANY']['facebook']; ?>
+					     data-href="<?php echo $this->_tpl_vars['COMPANY']['facebook_full']; ?>
 "
 					     data-colorscheme="light"
 					     data-border-color="#4e616d" data-show-faces="true"
