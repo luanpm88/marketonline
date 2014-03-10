@@ -499,14 +499,18 @@ class Companies extends PbModel {
 			." OR MATCH (`name`) AGAINST ('".$keyword."')"
 			." OR MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."')"
 			." OR MATCH (`keywords_string`) AGAINST ('".$keyword."')"
-			." ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT 0, 20";
+				." OR c.`shop_name` LIKE '%".$keyword."%'"
+				." OR c.`name` LIKE '%".$keyword."%'"
+				." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
+				." OR c.`keywords_string` LIKE '%".$keyword."%'"
+			." ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT 0, 50";
 		//echo $sql;
 		//$sql = "SELECT c.*, mf.first_name, mf.last_name"
 		//	
 		//	." FROM {$this->table_prefix}companies c"
 		//	." LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id = c.member_id"
 		//	." WHERE"
-		//	." c.`shop_name` LIKE '%".$keyword."%'"
+		//	." OR c.`shop_name` LIKE '%".$keyword."%'"
 		//	." OR c.`name` LIKE '%".$keyword."%'"
 		//	." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
 		//	//." OR mf.`last_name` LIKE '%".$keyword."%'"

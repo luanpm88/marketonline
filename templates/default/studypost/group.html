@@ -21,14 +21,7 @@
         <div class="facelike_main">
             
             <div id="facelike_col1">                
-                <div class="top_user_info">
-                    <img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" width="20" height="20" />
-                    <h4>{$pb_userinfo.first_name} {$pb_userinfo.last_name}</h4>
-                    <a style="padding-left: 0; margin-right: 10px" class="name" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
-                        Vào trang quản trị
-                    </a>
-                </div>
-                <br style="clear: both" />
+                <!--{include file="`$theme_name`/studypost/_top_user_info.html"}-->
                 
                 <!--{include file="`$theme_name`/studypost/_joined_groups.html"}-->
                 

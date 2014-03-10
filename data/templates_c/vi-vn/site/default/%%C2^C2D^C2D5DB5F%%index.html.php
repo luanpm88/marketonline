@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-05 13:42:39
+<?php /* Smarty version 2.6.27, created on 2014-03-10 10:48:03
          compiled from default%5Cstudypost/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get', 'default\\studypost/index.html', 60, false),array('function', 'the_url', 'default\\studypost/index.html', 88, false),array('function', 'pager', 'default\\studypost/index.html', 99, false),array('modifier', 'count', 'default\\studypost/index.html', 61, false),array('block', 'job', 'default\\studypost/index.html', 86, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/index.html', 66, false),array('modifier', 'truncate', 'default\\studypost/index.html', 69, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['_hr']),'nav_id' => 9)));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -25,9 +25,6 @@ $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['the
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-
-
-
 
 
 <div class="row">
@@ -77,74 +74,49 @@ unset($_smarty_tpl_vars);
 
 <div class="row">
 	<div id="job-content">
-		<div id="TopWorkCategory">
-			<h4>Đối tượng tuyển dụng</h4>
-		      <ul class="list-hot-cat">
-				<li rel="0" <?php if (! $_GET['type']): ?>class="active"<?php endif; ?>><a href="javascript:void(0)">Tất cả</a></li>
-				<?php echo smarty_function_get(array('from' => 'type','name' => 'jobtype','var' => 'Items'), $this);?>
-
-				<?php if (count($this->_tpl_vars['Items']) == 0): ?>
-				<?php echo smarty_function_get(array('var' => 'IndustryList','from' => 'industry'), $this);?>
-
-				<?php else: ?>
-				<?php $this->assign('IndustryList', ($this->_tpl_vars['Items'])); ?>
-				<?php endif; ?>
-				<?php $_from = $this->_tpl_vars['IndustryList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['IndustryList'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['IndustryList']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['industry_item']):
-        $this->_foreach['IndustryList']['iteration']++;
-?>
-					<li <?php if ($_GET['type'] == $this->_tpl_vars['industry_item']['id']): ?>class="active"<?php endif; ?> rel="<?php echo $this->_tpl_vars['industry_item']['id']; ?>
-"><a href="javascript:void(0)"><?php echo $this->_tpl_vars['industry_item']['name']; ?>
-</a></li>			 
-				<?php endforeach; endif; unset($_from); ?>
-			
+		<div id="TopStudytypeCategory">
+		      <ul class="list-studytype-cat">
+                                <li rel=""class="active"><a href="javascript:void(0)">Trường</a></li>
+                                <li rel=""><a href="javascript:void(0)">Môn học</a></li>
+                                <li rel=""><a href="javascript:void(0)">Học viên</a></li>
 		      </ul>
 		</div>
 		
-		
-		
-		<div class="works-list">
-			<h3>Danh sách tuyển dụng</h3>
-			<table width="98%" style="">
-			  <tbody><tr class="job-table-list-head">
-			    <th width="40%" align="left">Tên công việc</th>
-			    <th width="35%" align="left">Nhà tuyển dụng</th>
-			    <th width="15%" align="left">Nơi làm việc</th>
-			    <!--<th width="15%" align="left">Mức lương</th>-->
-			    <th width="15%" align="left">Hạn nộp</th>
-			  </tr>
-				
-			<?php $this->_tag_stack[] = array('job', array('row' => 20,'status' => 1,'start' => ($_GET['pos']),'keyword' => ($_GET['keyword']),'indust' => ($_GET['indust']),'type' => ($_GET['type']),'area' => ($this->_tpl_vars['area_string']))); $_block_repeat=true;smarty_block_job($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
-				<tr>
-					<td><a href="<?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id'])), $this);?>
-"><?php echo $this->_tpl_vars['job']['name']; ?>
-</td>
-					<td><a href="<?php if ($this->_tpl_vars['job']['membertype_id'] == 5): ?><?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id'])), $this);?>
-<?php else: ?><?php echo $this->_tpl_vars['job']['space_url']; ?>
-<?php endif; ?>"><?php echo $this->_tpl_vars['job']['companyname']; ?>
-</a></td>
-					<td><a class="job_city_link" href="javascript:void(0)" rel="<?php echo $this->_tpl_vars['job']['city_id']; ?>
-"><?php echo $this->_tpl_vars['job']['area']; ?>
-</a></td>
-					<!--<td><?php echo $this->_tpl_vars['job']['salary']; ?>
-</td>-->
-					<td><?php echo $this->_tpl_vars['job']['expired_dates']; ?>
-</td>
-				</tr>				
-			<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_job($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
-			  
-			</tbody></table>
-			
-			<div id="pagenav">
-				<p><div class="pagination"><?php echo smarty_function_pager(array('rowcount' => ($this->_tpl_vars['paging']['total']),'limit' => 20), $this);?>
-</div></p>
-			</div>
-			
-			  
-		      </div>
-		
-		
+                <div class="studypage-content">
+                    <div id="other-school-list" class="school_list main_list">
+                        <ul class="group_list">
+                            <?php $_from = $this->_tpl_vars['school_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+        $this->_foreach['level']['iteration']++;
+?>
+                                <?php if ($this->_tpl_vars['school']['id'] != $this->_tpl_vars['item']['id']): ?>
+                                    <li onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+'" class="school_list_box <?php if ($this->_tpl_vars['item']['id'] == $this->_tpl_vars['school']['id']): ?>active<?php endif; ?>">
+                                        <a class="head-title">
+                                            <img src="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+/<?php echo $this->_tpl_vars['item']['logo']; ?>
+" />
+                                            <span><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>
+</span>
+                                        </a>
+                                        <?php if ($this->_tpl_vars['item']['address']): ?><p><?php echo $this->_tpl_vars['item']['address']; ?>
+</p><?php endif; ?>
+                                        <?php if ($this->_tpl_vars['item']['phone']): ?><p><label>Điện thoại:</label> <?php echo $this->_tpl_vars['item']['phone']; ?>
+</p><?php endif; ?>
+                                        <?php if ($this->_tpl_vars['item']['email']): ?><p><label>Email:</label> <a href="mailto:<?php echo $this->_tpl_vars['item']['email']; ?>
+"><?php echo $this->_tpl_vars['item']['email']; ?>
+</a></p><?php endif; ?>
+                                        <?php if ($this->_tpl_vars['item']['website']): ?><p><label>Website:</label> <?php echo $this->_tpl_vars['item']['website']; ?>
+</p><?php endif; ?>
+                                    </li>
+                                <?php endif; ?>
+                            <?php endforeach; endif; unset($_from); ?>
+                        </ul>
+                    </div>
+                    <br style="clear: both" />
+                </div>
+
 		
 	</div>
 	<div id="job-sidebar">

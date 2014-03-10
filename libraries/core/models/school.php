@@ -85,5 +85,24 @@ class Schools extends PbModel {
 		
 		return $school_list;
 	}
+	
+	function getOptions($id = null)
+ 	{
+		$school_list = $this->findAll("*", null, null, "name");
+		
+		$typeOptions = "";
+		foreach($school_list as $key => $item)
+		{
+			if($id == $item["id"])
+			{
+				$selected = ' selected="selected"';
+			}
+			
+			$typeOptions.='<option value="'.$item["id"].'" '.$selected.'>';
+		 	$typeOptions.=$item["name"];
+		 	$typeOptions.='</option>' . "\n";
+		}
+		return $typeOptions;
+ 	}
 }
 ?>

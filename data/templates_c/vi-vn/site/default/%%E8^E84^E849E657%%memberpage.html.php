@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 11:51:16
-         compiled from default%5Cstudypost/school.html */ ?>
+<?php /* Smarty version 2.6.27, created on 2014-03-10 11:45:54
+         compiled from default%5Cstudypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school.html', 32, false),array('modifier', 'truncate', 'default\\studypost/school.html', 33, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 51, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -21,7 +21,7 @@ unset($_smarty_tpl_vars);
     $(document).ready(function() {
         
         $(\'#facelike_col2\').css("min-height",$(window).height()+200);
-        $(window).scrollTop(200);
+        //$(window).scrollTop(200);
         
     });
     
@@ -31,16 +31,45 @@ unset($_smarty_tpl_vars);
 
 <div class="outpage_box">
     <div class="row">
+        <div class="study-member-box">
+            <div class="member-right">
+                sdfsdfdsfdsfsf dsf sdf sdf s
+            </div>
+            <div class="member-left">
+                <div class="member-left-top">
+                    <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
+                    <h4><?php echo $this->_tpl_vars['member']['first_name']; ?>
+ <?php echo $this->_tpl_vars['member']['last_name']; ?>
+</h4>
+                    <?php if ($this->_tpl_vars['member']['school_name']): ?><p><label>Trường: </label><?php echo $this->_tpl_vars['member']['school_name']; ?>
+</p><?php endif; ?>
+                    <?php if ($this->_tpl_vars['member']['class']): ?><p><label>Lớp: </label><?php echo $this->_tpl_vars['member']['class']; ?>
+</p><?php endif; ?>
+                    <?php if ($this->_tpl_vars['member']['gender']): ?><p><label>Giới tính: </label><?php if ($this->_tpl_vars['member']['gender'] == 1): ?>Name<?php else: ?>Nữ<?php endif; ?></p><?php endif; ?>
+                    <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ: </label><?php echo $this->_tpl_vars['member']['address']; ?>
+</p><?php endif; ?>
+                    <?php if ($this->_tpl_vars['member']['mobile']): ?><p><label>Điện thoại: </label><?php echo $this->_tpl_vars['member']['mobile']; ?>
+</p><?php endif; ?>
+                    <?php if ($this->_tpl_vars['member']['email']): ?><p><label>Email: </label><?php echo $this->_tpl_vars['member']['email']; ?>
+</p><?php endif; ?>
+                </div>
+            </div>
+            
+            
+            <br style="clear: both" />
+        </div>
+    </div>
+    <div class="row">
         <div class="facelike_main">
             
             <div id="facelike_col1">
-                <div class="school-top-left-info">
-                    <img src="<?php echo $this->_tpl_vars['school']['logo']; ?>
-" />
-                    <h1><?php echo $this->_tpl_vars['school']['name']; ?>
-</h1>                    
-                </div>
-                
+                <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/studypost/_top_user_info.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
                 <div class="school_list" style="display: none">
                     <ul>
                         <li class="<?php if ($_GET['action'] == 'school'): ?>active<?php endif; ?>">
@@ -66,21 +95,8 @@ unset($_smarty_tpl_vars);
             
             <div id="facelike_col2">
                 <div class="col2-top">
-                    <div class="col2-top-banner">
-                        <img src="<?php echo $this->_tpl_vars['school']['banner']; ?>
-" />
-                        <div class="banner-school-info">
-                            <?php if ($this->_tpl_vars['school']['address']): ?><p><?php echo $this->_tpl_vars['school']['address']; ?>
-</p><?php endif; ?>
-                            <?php if ($this->_tpl_vars['school']['phone']): ?><p><label>Điện thoại:</label> <?php echo $this->_tpl_vars['school']['phone']; ?>
-</p><?php endif; ?>
-                            <?php if ($this->_tpl_vars['school']['email']): ?><p><label>Email:</label> <a href="mailto:<?php echo $this->_tpl_vars['school']['email']; ?>
-"><?php echo $this->_tpl_vars['school']['email']; ?>
-</a></p><?php endif; ?>
-                            <?php if ($this->_tpl_vars['school']['website']): ?><p><label>Website:</label> <?php echo $this->_tpl_vars['school']['website']; ?>
-</p><?php endif; ?>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
                 <div class="col2-bottom">
                     <div class="col2-bottom-left">

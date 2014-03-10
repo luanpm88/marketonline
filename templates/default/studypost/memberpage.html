@@ -9,7 +9,7 @@
     $(document).ready(function() {
         
         $('#facelike_col2').css("min-height",$(window).height()+200);
-        $(window).scrollTop(200);
+        //$(window).scrollTop(200);
         
     });
     
@@ -18,14 +18,32 @@
 
 <div class="outpage_box">
     <div class="row">
+        <div class="study-member-box">
+            <div class="member-right">
+                sdfsdfdsfdsfsf dsf sdf sdf s
+            </div>
+            <div class="member-left">
+                <div class="member-left-top">
+                    <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="20" height="20" />
+                    <h4>{$member.first_name} {$member.last_name}</h4>
+                    {if $member.school_name}<p><label>Trường: </label>{$member.school_name}</p>{/if}
+                    {if $member.class}<p><label>Lớp: </label>{$member.class}</p>{/if}
+                    {if $member.gender}<p><label>Giới tính: </label>{if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
+                    {if $member.address}<p><label>Địa chỉ: </label>{$member.address}</p>{/if}
+                    {if $member.mobile}<p><label>Điện thoại: </label>{$member.mobile}</p>{/if}
+                    {if $member.email}<p><label>Email: </label>{$member.email}</p>{/if}
+                </div>
+            </div>
+            
+            
+            <br style="clear: both" />
+        </div>
+    </div>
+    <div class="row">
         <div class="facelike_main">
             
             <div id="facelike_col1">
-                <div class="school-top-left-info">
-                    <img src="{$school.logo}" />
-                    <h1>{$school.name}</h1>                    
-                </div>
-                
+                <!--{include file="`$theme_name`/studypost/_top_user_info.html"}-->
                 <div class="school_list" style="display: none">
                     <ul>
                         <li class="{if $smarty.get.action == 'school'}active{/if}">
@@ -43,15 +61,8 @@
             
             <div id="facelike_col2">
                 <div class="col2-top">
-                    <div class="col2-top-banner">
-                        <img src="{$school.banner}" />
-                        <div class="banner-school-info">
-                            {if $school.address}<p>{$school.address}</p>{/if}
-                            {if $school.phone}<p><label>Điện thoại:</label> {$school.phone}</p>{/if}
-                            {if $school.email}<p><label>Email:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}
-                            {if $school.website}<p><label>Website:</label> {$school.website}</p>{/if}
-                        </div>
-                    </div>
+                    
+                    
                 </div>
                 <div class="col2-bottom">
                     <div class="col2-bottom-left">

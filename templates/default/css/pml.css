@@ -7614,3 +7614,87 @@ span.join_group:hover {
 {
     display: none;
 }
+#TopStudytypeCategory
+{
+    margin-top: 5px;
+}
+#TopStudytypeCategory ul {
+    border-bottom: 1px solid #AAAAAA;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+#TopStudytypeCategory ul li {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #EFEFEF;
+    border-color: #AAAAAA -moz-use-text-color #AAAAAA #AAAAAA;
+    border-image: none;
+    border-style: solid none solid solid;
+    border-width: 1px 0 1px 1px;
+    float: left;
+    list-style: none outside none;
+    margin-bottom: -1px;
+    margin-right: 0;
+}
+#TopStudytypeCategory ul li a {
+    color: #999999;
+    display: block;
+    font-size: 14px;
+    padding: 3px 60px;
+}
+#TopStudytypeCategory ul li.active {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom-color: #FFFFFF;
+}
+#TopStudytypeCategory ul li.active a {
+    color: #333333;
+}
+#TopStudytypeCategory ul li:last-child {
+    border-right: 1px solid #AAAAAA;
+}
+.studypage-content {
+    border-color: #AAAAAA;
+    border-style: solid;
+    border-width: 0 1px 1px;
+    clear: both;
+    padding: 10px 10px;
+}
+#other-school-list.main_list
+{
+    width: 100%;
+}
+.study-member-box
+{
+    padding: 10px 0;
+    border-bottom: solid 1px #aaa;
+    margin: 0 10px;
+}
+.study-member-box .member-left-top img
+{
+    width: 200px;
+    float: left;
+    margin-right: 10px;
+}
+.study-member-box .member-left-top h4 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+.study-member-box .member-left-top p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    margin-left: 210px;
+}
+.study-member-box .member-left-top label {
+    float: left;
+    font-size: 14px;
+    width: 75px;
+}
+.study-member-box .member-right {
+    border: 1px solid #AAAAAA;
+    float: right;
+    padding: 10px;
+    width: 50%;
+}

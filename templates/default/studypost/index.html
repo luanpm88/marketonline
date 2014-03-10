@@ -50,56 +50,36 @@
 
 <div class="row">
 	<div id="job-content">
-		<div id="TopWorkCategory">
-			<h4>Đối tượng tuyển dụng</h4>
-		      <ul class="list-hot-cat">
-				<li rel="0" {if !$smarty.get.type}class="active"{/if}><a href="javascript:void(0)">Tất cả</a></li>
-				<!-- {get from="type" name="jobtype" var="Items"} -->
-				<!-- {if $Items|@count eq 0} -->
-				<!-- {get var="IndustryList" from="industry"} -->
-				<!-- {else} -->
-				<!-- {assign var="IndustryList" value=`$Items`} -->
-				<!-- {/if} -->
-				<!--{foreach from=$IndustryList item=industry_item name=IndustryList}-->
-					<li {if $smarty.get.type == $industry_item.id}class="active"{/if} rel="{$industry_item.id}"><a href="javascript:void(0)">{$industry_item.name}</a></li>			 
-				<!--{/foreach}-->
-			
+		<div id="TopStudytypeCategory">
+		      <ul class="list-studytype-cat">
+                                <li rel=""class="active"><a href="javascript:void(0)">Trường</a></li>
+                                <li rel=""><a href="javascript:void(0)">Môn học</a></li>
+                                <li rel=""><a href="javascript:void(0)">Học viên</a></li>
 		      </ul>
 		</div>
 		
-		
-		
-		<div class="works-list">
-			<h3>Danh sách tuyển dụng</h3>
-			<table width="98%" style="">
-			  <tbody><tr class="job-table-list-head">
-			    <th width="40%" align="left">Tên công việc</th>
-			    <th width="35%" align="left">Nhà tuyển dụng</th>
-			    <th width="15%" align="left">Nơi làm việc</th>
-			    <!--<th width="15%" align="left">Mức lương</th>-->
-			    <th width="15%" align="left">Hạn nộp</th>
-			  </tr>
-				
-			<!-- {job row=20 status=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$area_string`} -->
-				<tr>
-					<td><a href="{the_url module='jobs' id=`$job.id`}">{$job.name}</td>
-					<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
-					<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
-					<!--<td>{$job.salary}</td>-->
-					<td>{$job.expired_dates}</td>
-				</tr>				
-			<!-- {/job} -->
-			  
-			</tbody></table>
-			
-			<div id="pagenav">
-				<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
-			</div>
-			
-			  
-		      </div>
-		
-		
+                <div class="studypage-content">
+                    <div id="other-school-list" class="school_list main_list">
+                        <ul class="group_list">
+                            <!--{loop $school_list item level key}-->
+                                {if $school.id != $item.id}
+                                    <li onclick="window.location='{the_url module=studypost action=school id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
+                                        <a class="head-title">
+                                            <img src="{$WebRootUrl}/{$item.logo}" />
+                                            <span>{$item.name|truncate:40}</span>
+                                        </a>
+                                        {if $item.address}<p>{$item.address}</p>{/if}
+                                        {if $item.phone}<p><label>Điện thoại:</label> {$item.phone}</p>{/if}
+                                        {if $item.email}<p><label>Email:</label> <a href="mailto:{$item.email}">{$item.email}</a></p>{/if}
+                                        {if $item.website}<p><label>Website:</label> {$item.website}</p>{/if}
+                                    </li>
+                                {/if}
+                            <!--{/loop}-->
+                        </ul>
+                    </div>
+                    <br style="clear: both" />
+                </div>
+
 		
 	</div>
 	<div id="job-sidebar">

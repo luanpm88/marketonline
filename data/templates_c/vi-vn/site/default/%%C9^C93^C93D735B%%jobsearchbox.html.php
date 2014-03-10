@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-05 13:57:36
+<?php /* Smarty version 2.6.27, created on 2014-03-10 09:55:47
          compiled from default/job/jobsearchbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/job/jobsearchbox.html', 6, false),)), $this); ?>
@@ -56,13 +56,17 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 						<?php if ($_GET['pos']): ?><input type="hidden" name="pos" value="<?php echo $_GET['pos']; ?>
 " /><?php endif; ?>
 						
+						<select name="type">
+						    <option value="school">Chọn: Trường / Môn học / Học viên</option>
+						    <option value="school">Trường</option>
+						    <option value="school">Môn học</option>
+						    <option value="school">Học viên</option>
+						    
+						</select>
+						
 						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="<?php echo $this->_tpl_vars['keyword']; ?>
 "/>
-						<select name="indust">
-							<option value="0">Tất cả ngành nghề</option>
-							<?php echo $this->_tpl_vars['JobindustOptions']; ?>
-							
-						</select>
+						
 						
 						<select name="area">
 							<option value="0">Tất cả địa điểm</option>
@@ -73,13 +77,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 						<input type="submit" value="Tìm kiếm" />
 					</form>
 				    <?php endif; ?>
-				</div>
-				<div id="job-study" class="tab-item">
-					
-				</div>
-				<div id="job-learn" class="tab-item">
-					33333333333333333333333333
-				</div>
+				</div>				
 			</div>
 		</div>
 	</div>

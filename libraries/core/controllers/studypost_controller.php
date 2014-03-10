@@ -11,10 +11,14 @@ class Studypost extends PbController {
 		$this->loadModel("studygroup");
 		$this->loadModel("studygroupmember");
 		$this->loadModel("school");
+		$this->loadModel("area");
 	}
 
 	function index()
 	{
+		setvar("school_list", $school_list = $this->school->getList());
+		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
+		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
 		render("studypost/index");
 	}
 	
@@ -346,6 +350,42 @@ class Studypost extends PbController {
 		
 		pheader("location:index.php?do=studypost&action=school");
 	}
-
+	
+	function memberpage()
+	{
+		if(!isset($_GET["id"]))
+		{
+			flash("data_not_exists", '', 0);
+		}
+		
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		$member = $this->member->getInfoById($_GET["id"]);
+		
+		if(isset($_GET["id"]))
+		{
+			$school_id = $_GET["id"];
+		}
+		else
+		{
+			$school_id = $user["school_id"];
+		}
+		
+		$groups = $this->studygroup->getList($school_id, $pb_userinfo["pb_userid"], true);
+		$joined_groups = $this->studygroup->getList(null, $pb_userinfo["pb_userid"]);
+		
+		//get current school
+		$school = $this->school->getInfoById($school_id, $pb_userinfo["pb_userid"]);
+		
+		//get school list
+		$school_list = $this->school->getList();
+		
+		setvar("joined_groups",$joined_groups);
+		setvar("groups",$groups);
+		setvar("groups_count",count($groups));
+		setvar("school", $school);
+		setvar("school_list", $school_list);
+		setvar("member", $member);
+		render("studypost/memberpage");
+	}
 }
 ?>
