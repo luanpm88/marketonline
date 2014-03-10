@@ -49,9 +49,23 @@
                     <!--{if $pb_username!=""}-->
                         <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false)" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Chat</a>
                     <!--{else}-->
-                        <a title="Hỗ trợ trực tuyến" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Chat</a>
+                        <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Chat</a>
                     <!--{/if}-->
-                    <a href="javascript::void(0)">Theo dõi</a>
+                    
+                    
+                    <!--{if $pb_username!=""}-->
+                            {if !$Followed}
+                                    <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang follow}</a>
+                            {else}
+                                    <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang followed}</a>
+                            {/if}
+                    <!--{else}-->
+                            {if !$Followed}
+                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
+                            {else}
+                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
+                            {/if}                                
+                    <!--{/if}-->                
                 </div>
             </div>
             

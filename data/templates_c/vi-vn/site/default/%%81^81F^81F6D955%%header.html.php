@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 12:39:33
+<?php /* Smarty version 2.6.27, created on 2014-03-10 14:15:50
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1131, false),array('function', 'formhash', 'default/header.html', 1215, false),array('modifier', 'default', 'default/header.html', 1226, false),array('modifier', 'date_format', 'default/header.html', 1240, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1158, false),array('function', 'formhash', 'default/header.html', 1242, false),array('modifier', 'default', 'default/header.html', 1253, false),array('modifier', 'date_format', 'default/header.html', 1267, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -209,6 +209,43 @@ css/editorcss.css">
 </style>
 
 <script type="application/x-javascript">
+    
+    function studyfollow(followid, but) {
+            $(but).addClass("following");
+            var temp = $(but).html();
+            $(but).html("'; ?>
+<?php echo $this->_tpl_vars['_following']; ?>
+<?php echo '");
+            $.ajax({
+                    url: "index.php?do=studypost&action=ajaxFollow&followid="+followid,
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                        //alert(data);
+                            if(data == "1")
+                            {
+                                $(but).removeClass("following");
+                                $(but).addClass("followed");
+                                $(but).attr("title", "'; ?>
+<?php echo $this->_tpl_vars['_unfollow']; ?>
+<?php echo '");
+                                $(but).html("'; ?>
+<?php echo $this->_tpl_vars['_followed']; ?>
+<?php echo '");
+                            }
+                            else
+                            {
+                                $(but).removeClass("following");
+                                $(but).removeClass("followed");
+                                $(but).attr("title", "'; ?>
+<?php echo $this->_tpl_vars['_postfollow']; ?>
+<?php echo '");
+                                $(but).html("'; ?>
+<?php echo $this->_tpl_vars['_follow']; ?>
+<?php echo '");
+                            }
+                        }
+            });
+    }
     
     function moveLeftBar(top)
     {

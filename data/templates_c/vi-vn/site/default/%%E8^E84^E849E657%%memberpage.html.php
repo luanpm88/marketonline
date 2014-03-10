@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 13:49:05
+<?php /* Smarty version 2.6.27, created on 2014-03-10 14:22:29
          compiled from default%5Cstudypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 86, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 87, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 99, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 100, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -21,7 +21,6 @@ unset($_smarty_tpl_vars);
     $(document).ready(function() {
         
         $(\'#facelike_col2\').css("min-height",$(window).height()+200);
-        //$(window).scrollTop(200);
         
     });
     
@@ -83,9 +82,31 @@ image/usericon.jpg  <?php endif; ?>"/>
                         <a href="javascript::void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['member']['id']; ?>
 , false)" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Chat</a>
                     <?php else: ?>
-                        <a title="Hỗ trợ trực tuyến" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" href="#login-box" onclick="">Chat</a>
+                        <a title="" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" href="#login-box" onclick="">Chat</a>
                     <?php endif; ?>
-                    <a href="javascript::void(0)">Theo dõi</a>
+                    
+                    
+                    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
+                            <?php if (! $this->_tpl_vars['Followed']): ?>
+                                    <a onclick="studyfollow(<?php echo $this->_tpl_vars['member']['id']; ?>
+, this)" href="javascript:void(0)"><?php echo $this->_tpl_vars['_follow']; ?>
+</a>
+                            <?php else: ?>
+                                    <a onclick="studyfollow(<?php echo $this->_tpl_vars['member']['id']; ?>
+, this)" href="javascript:void(0)"><?php echo $this->_tpl_vars['_followed']; ?>
+</a>
+                            <?php endif; ?>
+                    <?php else: ?>
+                            <?php if (! $this->_tpl_vars['Followed']): ?>
+                                <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+logging.php"><?php echo $this->_tpl_vars['_follow']; ?>
+</a>
+                            <?php else: ?>
+                                <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+logging.php"><?php echo $this->_tpl_vars['_followed']; ?>
+</a>
+                            <?php endif; ?>                                
+                    <?php endif; ?>                
                 </div>
             </div>
             

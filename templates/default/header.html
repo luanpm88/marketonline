@@ -143,6 +143,33 @@
 
 <script type="application/x-javascript">
     
+    function studyfollow(followid, but) {
+            $(but).addClass("following");
+            var temp = $(but).html();
+            $(but).html("<!--{/literal}-->{lang following}<!--{literal}-->");
+            $.ajax({
+                    url: "index.php?do=studypost&action=ajaxFollow&followid="+followid,
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                        //alert(data);
+                            if(data == "1")
+                            {
+                                $(but).removeClass("following");
+                                $(but).addClass("followed");
+                                $(but).attr("title", "<!--{/literal}-->{lang unfollow}<!--{literal}-->");
+                                $(but).html("<!--{/literal}-->{lang followed}<!--{literal}-->");
+                            }
+                            else
+                            {
+                                $(but).removeClass("following");
+                                $(but).removeClass("followed");
+                                $(but).attr("title", "<!--{/literal}-->{lang postfollow}<!--{literal}-->");
+                                $(but).html("<!--{/literal}-->{lang follow}<!--{literal}-->");
+                            }
+                        }
+            });
+    }
+    
     function moveLeftBar(top)
     {
         var leftbar = $('#facelike_col1');
