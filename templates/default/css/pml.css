@@ -7784,3 +7784,7 @@ span.join_group:hover {
 {
     padding-left: 25px;
 }
+#header .logo a img {
+    margin-bottom: 15px;
+    margin-top: 107px;
+}

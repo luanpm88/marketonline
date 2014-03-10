@@ -49,13 +49,13 @@
                             {if !$Friended}
                                     <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Kết bạn</a>
                             {else}
-                                    <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                                    <a class="del_addfriend" onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
                             {/if}
                     <!--{else}-->
                             {if !$Friended}
                                 <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
                             {else}
-                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi lời mời kết bạn</a>
+                                <a class="comment_but del_addfriend" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi lời mời kết bạn</a>
                             {/if}                                
                     <!--{/if}-->
                     
