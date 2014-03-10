@@ -14,6 +14,7 @@ class Studypost extends PbController {
 		$this->loadModel("area");
 		$this->loadModel("studyfollow");
 		$this->loadModel("studyfriend");
+		$this->loadModel("message");
 	}
 
 	function index()
@@ -436,6 +437,14 @@ class Studypost extends PbController {
 				if($this->studyfriend->addFriend($pb_userinfo["pb_userid"], $friendid))
 				{
 					echo "1";
+					
+					$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+					$member = $this->member->getInfoById($_GET['friendid']);
+					
+					$content = "<a href='".URL."index.php?do=studypost&action=memberpage&id=".$user["id"]."'>".$user["first_name"]." ".$user["last_name"]." đã gửi lời mời kết bạn đến bạn</a>";
+					$sms['content'] = mysql_real_escape_string($content);
+					$sms['title'] = mysql_real_escape_string("Lời mời kết bạn");
+					$result = $this->message->SendToUser($user['id'], $member["id"], $sms);
 				}
 				else
 				{
