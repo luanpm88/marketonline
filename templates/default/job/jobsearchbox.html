@@ -36,11 +36,13 @@
 						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
 						
-						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="{$keyword}"/>
-						<select name="indust">
-							<option value="0">Tất cả ngành nghề</option>
-							{$JobindustOptions}							
+						<select name="type">
+							<option value="school">Trường</option>
+														
 						</select>
+						
+						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="{$keyword}"/>
+						
 						
 						<select name="area">
 							<option value="0">Tất cả địa điểm</option>

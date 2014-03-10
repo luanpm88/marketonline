@@ -485,37 +485,38 @@ class Companies extends PbModel {
 		//		." FROM {$this->table_prefix}companies c WHERE MATCH (`shop_name`,`name`) AGAINST"
 		//		." ('".$keyword."')"
 		//		." ORDER BY score DESC LIMIT 0, 10";
+		//echo $sql;
 				
-		//$sql = "SELECT c.*, mf.first_name, mf.last_name,"
-		//	." MATCH (`shop_name`) AGAINST ('".$keyword."') AS score,"
-		//	." MATCH (`name`) AGAINST ('".$keyword."') AS score1,"
-		//	." MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."') AS score2,"
-		//	." MATCH (`keywords_string`) AGAINST ('".$keyword."') AS score3"
-		//	." FROM {$this->table_prefix}companies c"
-		//	." LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id = c.member_id"
-		//	." WHERE"
-		//	." MATCH (`shop_name`) AGAINST ('".$keyword."')"
-		//	." OR MATCH (`name`) AGAINST ('".$keyword."')"
-		//	." OR MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."')"
-		//	." OR MATCH (`keywords_string`) AGAINST ('".$keyword."')"
-		//	." ORDER BY (score + score1 + score2 + score3) DESC LIMIT 0, 10";
-		
-		$sql = "SELECT c.*, mf.first_name, mf.last_name"
-			
+		$sql = "SELECT c.*, mf.first_name, mf.last_name,"
+			." MATCH (`shop_name`) AGAINST ('".$keyword."') AS score,"
+			." MATCH (`name`) AGAINST ('".$keyword."') AS score1,"
+			." MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."') AS score2,"
+			." MATCH (`keywords_string`) AGAINST ('".$keyword."') AS score3"
 			." FROM {$this->table_prefix}companies c"
 			." LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id = c.member_id"
 			." WHERE"
-			." c.`shop_name` LIKE '%".$keyword."%'"
-			." OR c.`name` LIKE '%".$keyword."%'"
-			." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
-			//." OR mf.`last_name` LIKE '%".$keyword."%'"
-			." OR c.`keywords_string` LIKE '%".$keyword."%'"			
-			." ORDER BY created DESC LIMIT 0, 20";
+			." MATCH (`shop_name`) AGAINST ('".$keyword."')"
+			." OR MATCH (`name`) AGAINST ('".$keyword."')"
+			." OR MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."')"
+			." OR MATCH (`keywords_string`) AGAINST ('".$keyword."')"
+			." ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT 0, 20";
+		//echo $sql;
+		//$sql = "SELECT c.*, mf.first_name, mf.last_name"
+		//	
+		//	." FROM {$this->table_prefix}companies c"
+		//	." LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id = c.member_id"
+		//	." WHERE"
+		//	." c.`shop_name` LIKE '%".$keyword."%'"
+		//	." OR c.`name` LIKE '%".$keyword."%'"
+		//	." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
+		//	//." OR mf.`last_name` LIKE '%".$keyword."%'"
+		//	." OR c.`keywords_string` LIKE '%".$keyword."%'"			
+		//	." ORDER BY created DESC LIMIT 0, 20";
 		
 		//echo $sql."dddd";
 		$keyword = trim($keyword);
 		if(!empty($keyword)) $results = $this->dbstuff->GetArray($sql);
-		
+		//echo count($results);
 		foreach($results as &$result)
 		{
 			if($result)
