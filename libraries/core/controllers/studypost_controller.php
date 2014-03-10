@@ -13,6 +13,7 @@ class Studypost extends PbController {
 		$this->loadModel("school");
 		$this->loadModel("area");
 		$this->loadModel("studyfollow");
+		$this->loadModel("studyfriend");
 	}
 
 	function index()
@@ -386,6 +387,12 @@ class Studypost extends PbController {
 			$followed = $this->studyfollow->check($user["id"], $member["id"]);
 			setvar("Followed", $followed);
 		}
+		//checking follow
+		if($user["id"])
+		{
+			$friended = $this->studyfriend->check($user["id"], $member["id"]);
+			setvar("Friended", $friended);
+		}
 		
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
@@ -406,6 +413,27 @@ class Studypost extends PbController {
 			if($pb_userinfo ["pb_username"])
 			{
 				if($this->studyfollow->addFollow($pb_userinfo["pb_userid"], $followid))
+				{
+					echo "1";
+				}
+				else
+				{
+					echo "0";
+				}
+			}
+		}
+	}
+	
+	function ajaxFriend()
+	{
+		if(isset($_GET["friendid"]))
+		{
+			$friendid = intval($_GET['friendid']);
+			$pb_userinfo = pb_get_member_info();
+			//echo $pb_userinfo["pb_userid"];
+			if($pb_userinfo ["pb_username"])
+			{
+				if($this->studyfriend->addFriend($pb_userinfo["pb_userid"], $friendid))
 				{
 					echo "1";
 				}

@@ -143,6 +143,33 @@
 
 <script type="application/x-javascript">
     
+    function studyfriend(friendid, but) {
+            $(but).addClass("friending");
+            var temp = $(but).html();
+            $(but).html("<!--{/literal}-->Đang gửi lời kết bạn<!--{literal}-->");
+            $.ajax({
+                    url: "index.php?do=studypost&action=ajaxFriend&friendid="+friendid,
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                        //alert(data);
+                            if(data == "1")
+                            {
+                                $(but).removeClass("friending");
+                                $(but).addClass("friendpendding");
+                                $(but).attr("title", "<!--{/literal}--><!--{literal}-->");
+                                $(but).html("<!--{/literal}-->Đã gửi lời mời kết bạn<!--{literal}-->");
+                            }
+                            else
+                            {
+                                $(but).removeClass("friending");
+                                $(but).removeClass("friendpendding");
+                                $(but).attr("title", "<!--{/literal}--><!--{literal}-->");
+                                $(but).html("<!--{/literal}-->Kết bạn<!--{literal}-->");
+                            }
+                        }
+            });
+    }
+    
     function studyfollow(followid, but) {
             $(but).addClass("following");
             var temp = $(but).html();

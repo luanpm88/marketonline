@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 14:15:50
+<?php /* Smarty version 2.6.27, created on 2014-03-10 16:06:45
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1158, false),array('function', 'formhash', 'default/header.html', 1242, false),array('modifier', 'default', 'default/header.html', 1253, false),array('modifier', 'date_format', 'default/header.html', 1267, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1185, false),array('function', 'formhash', 'default/header.html', 1269, false),array('modifier', 'default', 'default/header.html', 1280, false),array('modifier', 'date_format', 'default/header.html', 1294, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -209,6 +209,38 @@ css/editorcss.css">
 </style>
 
 <script type="application/x-javascript">
+    
+    function studyfriend(friendid, but) {
+            $(but).addClass("friending");
+            var temp = $(but).html();
+            $(but).html("'; ?>
+Đang gửi lời kết bạn<?php echo '");
+            $.ajax({
+                    url: "index.php?do=studypost&action=ajaxFriend&friendid="+friendid,
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                        //alert(data);
+                            if(data == "1")
+                            {
+                                $(but).removeClass("friending");
+                                $(but).addClass("friendpendding");
+                                $(but).attr("title", "'; ?>
+<?php echo '");
+                                $(but).html("'; ?>
+Đã gửi lời mời kết bạn<?php echo '");
+                            }
+                            else
+                            {
+                                $(but).removeClass("friending");
+                                $(but).removeClass("friendpendding");
+                                $(but).attr("title", "'; ?>
+<?php echo '");
+                                $(but).html("'; ?>
+Kết bạn<?php echo '");
+                            }
+                        }
+            });
+    }
     
     function studyfollow(followid, but) {
             $(but).addClass("following");
@@ -1565,4 +1597,4 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
                             
                          </div>
         </div>
-</div>
+</div>

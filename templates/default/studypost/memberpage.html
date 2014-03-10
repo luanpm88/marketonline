@@ -45,7 +45,20 @@
                     {if $member.email}<p><label>Email </label>: {$member.email}</p>{/if}
                 </div>
                 <div class="controls">
-                    <a href="javascript::void(0)">Kết bạn</a>
+                    <!--{if $pb_username!=""}-->
+                            {if !$Friended}
+                                    <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Kết bạn</a>
+                            {else}
+                                    <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                            {/if}
+                    <!--{else}-->
+                            {if !$Friended}
+                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
+                            {else}
+                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi lời mời kết bạn</a>
+                            {/if}                                
+                    <!--{/if}-->
+                    
                     <!--{if $pb_username!=""}-->
                         <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false)" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Chat</a>
                     <!--{else}-->

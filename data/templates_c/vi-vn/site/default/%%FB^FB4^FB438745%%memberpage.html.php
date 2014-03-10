@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 14:22:29
-         compiled from default%5Cstudypost/memberpage.html */ ?>
+<?php /* Smarty version 2.6.27, created on 2014-03-10 16:08:03
+         compiled from default/studypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 99, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 100, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/memberpage.html', 112, false),array('modifier', 'truncate', 'default/studypost/memberpage.html', 113, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -77,7 +77,24 @@ image/usericon.jpg  <?php endif; ?>"/>
 </p><?php endif; ?>
                 </div>
                 <div class="controls">
-                    <a href="javascript::void(0)">Kết bạn</a>
+                    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
+                            <?php if (! $this->_tpl_vars['Friended']): ?>
+                                    <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
+, this)" href="javascript:void(0)">Kết bạn</a>
+                            <?php else: ?>
+                                    <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
+, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                            <?php endif; ?>
+                    <?php else: ?>
+                            <?php if (! $this->_tpl_vars['Friended']): ?>
+                                <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+logging.php">Kết bạn</a>
+                            <?php else: ?>
+                                <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+logging.php">Đã gửi lời mời kết bạn</a>
+                            <?php endif; ?>                                
+                    <?php endif; ?>
+                    
                     <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
                         <a href="javascript::void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['member']['id']; ?>
 , false)" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Chat</a>
@@ -202,4 +219,4 @@ unset($_smarty_tpl_vars);
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/footer_none.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>
+ ?>

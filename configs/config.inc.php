@@ -10,7 +10,7 @@
  */
 $dbhost = 'localhost';					// database server
 $dbuser = 'root';					// database user
-$dbpasswd = '';					        // database user password
+$dbpasswd = '123456';					        // database user password
 $dbname = 'marketonline';				// database user
 $pconnect = 0;						// if database long connect
 

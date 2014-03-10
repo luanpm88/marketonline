@@ -36,7 +36,7 @@ class Studyfollows extends PbModel {
 	
 	function getFollowIDs($userid)
 	{
-		$follows = $this->findAll("shop_id", null, array("member_id=".$userid));
+		$follows = $this->findAll("follow_id", null, array("member_id=".$userid));
 		$arr = array();
 		foreach($follows as $item)
 		{
