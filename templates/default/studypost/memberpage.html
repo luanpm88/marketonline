@@ -9,7 +9,6 @@
     $(document).ready(function() {
         
         $('#facelike_col2').css("min-height",$(window).height()+200);
-        //$(window).scrollTop(200);
         
     });
     
@@ -20,21 +19,41 @@
     <div class="row">
         <div class="study-member-box">
             <div class="member-right">
-                sdfsdfdsfdsfsf dsf sdf sdf s
+                <div class="member-pics-album">
+                    <div class="main">
+                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
+                    </div>
+                    <div class="thumbs">
+                        <span class="nav next">></span>
+                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
+                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
+                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
+                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
+                        <span class="nav prev"><</span>
+                    </div>
+                </div>
             </div>
             <div class="member-left">
                 <div class="member-left-top">
-                    <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="20" height="20" />
+                    <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}"/>
                     <h4>{$member.first_name} {$member.last_name}</h4>
-                    {if $member.school_name}<p><label>Trường: </label>{$member.school_name}</p>{/if}
-                    {if $member.class}<p><label>Lớp: </label>{$member.class}</p>{/if}
-                    {if $member.gender}<p><label>Giới tính: </label>{if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
-                    {if $member.address}<p><label>Địa chỉ: </label>{$member.address}</p>{/if}
-                    {if $member.mobile}<p><label>Điện thoại: </label>{$member.mobile}</p>{/if}
-                    {if $member.email}<p><label>Email: </label>{$member.email}</p>{/if}
+                    {if $member.school_name}<p class="school"><label>Trường </label>: {$member.school_name}</p>{/if}
+                    {if $member.class}<p><label>Lớp </label>: {$member.class}</p>{/if}
+                    {if $member.gender}<p><label>Giới tính </label>: {if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
+                    {if $member.address}<p><label>Địa chỉ </label>: {$member.address}</p>{/if}
+                    {if $member.mobile}<p><label>Điện thoại </label>: {$member.mobile}</p>{/if}
+                    {if $member.email}<p><label>Email </label>: {$member.email}</p>{/if}
+                </div>
+                <div class="controls">
+                    <a href="javascript::void(0)">Kết bạn</a>
+                    <!--{if $pb_username!=""}-->
+                        <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false)" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Chat</a>
+                    <!--{else}-->
+                        <a title="Hỗ trợ trực tuyến" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Chat</a>
+                    <!--{/if}-->
+                    <a href="javascript::void(0)">Theo dõi</a>
                 </div>
             </div>
-            
             
             <br style="clear: both" />
         </div>
@@ -43,17 +62,6 @@
         <div class="facelike_main">
             
             <div id="facelike_col1">
-                <!--{include file="`$theme_name`/studypost/_top_user_info.html"}-->
-                <div class="school_list" style="display: none">
-                    <ul>
-                        <li class="{if $smarty.get.action == 'school'}active{/if}">
-                            <a href="{the_url module=studypost action=school id=`$school.id`}" title="{$school.name}">
-                                {$school.name|truncate:40}
-                                <div class="more-studybar">Thành viên: {$school.member_count}</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 
                 <!--{include file="`$theme_name`/studypost/_joined_groups.html"}-->
                 

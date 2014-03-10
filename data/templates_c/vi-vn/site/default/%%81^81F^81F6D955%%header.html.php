@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-05 13:27:40
+<?php /* Smarty version 2.6.27, created on 2014-03-10 12:39:33
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1132, false),array('function', 'formhash', 'default/header.html', 1216, false),array('modifier', 'default', 'default/header.html', 1227, false),array('modifier', 'date_format', 'default/header.html', 1241, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1131, false),array('function', 'formhash', 'default/header.html', 1215, false),array('modifier', 'default', 'default/header.html', 1226, false),array('modifier', 'date_format', 'default/header.html', 1240, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -210,12 +210,14 @@ css/editorcss.css">
 
 <script type="application/x-javascript">
     
-    function moveLeftBar()
+    function moveLeftBar(top)
     {
         var leftbar = $(\'#facelike_col1\');
         var win = $(window);
-        var scroll = (win.scrollTop()-200);
-        var more = leftbar.height() - win.height()+30;
+        var scroll = (win.scrollTop() - top);
+        var more = leftbar.height() - win.height()+60;
+        
+        leftbar.css("position", "fixed");
         
         if(win.height() < leftbar.height())
         {
@@ -973,9 +975,6 @@ $(window).scroll(function(){
     //move verytopmenu with small screen
     autoAjustVerytopmenu();
     
-    //
-    moveLeftBar();
-   
 });
 
 

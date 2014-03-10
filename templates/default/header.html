@@ -143,12 +143,14 @@
 
 <script type="application/x-javascript">
     
-    function moveLeftBar()
+    function moveLeftBar(top)
     {
         var leftbar = $('#facelike_col1');
         var win = $(window);
-        var scroll = (win.scrollTop()-200);
-        var more = leftbar.height() - win.height()+30;
+        var scroll = (win.scrollTop() - top);
+        var more = leftbar.height() - win.height()+60;
+        
+        leftbar.css("position", "fixed");
         
         if(win.height() < leftbar.height())
         {
@@ -879,9 +881,6 @@ $(window).scroll(function(){
     //move verytopmenu with small screen
     autoAjustVerytopmenu();
     
-    //
-    moveLeftBar();
-   
 });
 
 

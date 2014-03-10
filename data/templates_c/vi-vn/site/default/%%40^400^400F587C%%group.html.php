@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-05 13:30:05
+<?php /* Smarty version 2.6.27, created on 2014-03-10 12:34:44
          compiled from default%5Cstudypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/group.html', 27, false),array('modifier', 'truncate', 'default\\studypost/group.html', 64, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/group.html', 43, false),array('modifier', 'truncate', 'default\\studypost/group.html', 57, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -34,20 +34,11 @@ unset($_smarty_tpl_vars);
         <div class="facelike_main">
             
             <div id="facelike_col1">                
-                <div class="top_user_info">
-                    <img class="avatar" src="<?php if ($this->_tpl_vars['pb_company']): ?><?php echo $this->_tpl_vars['pb_company']['image']; ?>
-<?php else: ?> <?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
- <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
-image/usericon.jpg  <?php endif; ?>  <?php endif; ?>" width="20" height="20" />
-                    <h4><?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
- <?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
-</h4>
-                    <a style="padding-left: 0; margin-right: 10px" class="name" href="<?php if ($this->_tpl_vars['pb_company']): ?><?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['pb_company']['cache_spacename'])), $this);?>
-<?php else: ?>redirect.php?url=/virtual-office/<?php endif; ?>">
-                        Vào trang quản trị
-                    </a>
-                </div>
-                <br style="clear: both" />
+                <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/studypost/_top_user_info.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
                 
                 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/studypost/_joined_groups.html", 'smarty_include_vars' => array()));

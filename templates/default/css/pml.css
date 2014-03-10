@@ -7363,7 +7363,11 @@ ul.products li.product .price .amount
     margin-left: 254px;
 }
 #facelike_col1 {
-    position: fixed;
+    position: absolute;
+}
+#facelike_col1 .school_list:first-child
+{
+    margin-top: 15px;
 }
 .banner-school-info {
     background: none repeat scroll 0 0 #CCCCCC;
@@ -7680,21 +7684,103 @@ span.join_group:hover {
 }
 .study-member-box .member-left-top h4 {
     font-size: 22px;
-    margin-bottom: 15px;
+    margin-bottom: -2px;
 }
 .study-member-box .member-left-top p {
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: -5px;
     margin-left: 210px;
+}
+.study-member-box .member-left-top p.school {
+    font-size: 16px;
+}
+.study-member-box .member-left-top p.school label {
+    font-size: 16px;
 }
 .study-member-box .member-left-top label {
     float: left;
     font-size: 14px;
+    height: 10px;
     width: 75px;
 }
 .study-member-box .member-right {
     border: 1px solid #AAAAAA;
     float: right;
-    padding: 10px;
-    width: 50%;
+    height: 404px;
+    padding: 4px;
+    width: 544px;
+}
+.member-pics-album
+{
+    
+}
+.member-pics-album .main {
+    height: 273px;
+    margin-bottom: 4px;
+    padding: 0;
+}
+.member-pics-album .main img {
+    height: 273px;
+    width: 534px;
+}
+.member-pics-album .thumbs {
+    height: 118px;
+}
+.member-pics-album .thumbs img {
+    height: 118px;
+    width: 118px;
+}
+.member-pics-album .thumbs .nav {
+    background: none repeat scroll 0 0 #D8EADA;
+    border: 1px solid #AAAAAA;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 16px;
+    height: 118px;
+    margin-right: 4px;
+    padding: 46px 4px;
+    vertical-align: middle;
+    width: 21px;
+    color: #999;
+}
+.member-pics-album .thumbs .nav:hover {
+    opacity: 0.7;
+    color: #333;
+}
+.member-pics-album .thumbs .next {
+    float: right;
+    margin-left: 4px;
+    margin-right: 0;
+}
+.member-pics-album .thumbs .prev {
+    float: left;
+}
+.member-left
+{
+    float: left;
+}
+.member-left .member-left-top {
+    float: left;
+    margin-bottom: -28px;
+}
+.member-left .controls {
+    display: block;
+    margin-left: 210px;
+}
+.member-left .controls a {
+    background: none repeat scroll 0 0 #3B984C;
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    height: 28px;
+    margin-right: 4px;
+    padding: 5px 20px;
+    opacity: 0.8;
+}
+.member-left .controls a:hover {
+    opacity: 1;
+}
+.member-left .controls a.skin_chat_with_owner
+{
+    padding-left: 25px;
 }

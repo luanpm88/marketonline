@@ -387,5 +387,10 @@ class Studypost extends PbController {
 		setvar("member", $member);
 		render("studypost/memberpage");
 	}
+	
+	function connectFriend()
+	{
+		
+	}
 }
 ?>

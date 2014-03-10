@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 11:45:54
+<?php /* Smarty version 2.6.27, created on 2014-03-10 13:49:05
          compiled from default%5Cstudypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 51, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 86, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 87, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -33,30 +33,61 @@ unset($_smarty_tpl_vars);
     <div class="row">
         <div class="study-member-box">
             <div class="member-right">
-                sdfsdfdsfdsfsf dsf sdf sdf s
+                <div class="member-pics-album">
+                    <div class="main">
+                        <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon.jpg  <?php endif; ?>" width="400" height="400" />
+                    </div>
+                    <div class="thumbs">
+                        <span class="nav next">></span>
+                        <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon.jpg  <?php endif; ?>" width="400" height="400" />
+                        <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon.jpg  <?php endif; ?>" width="400" height="400" />
+                        <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon.jpg  <?php endif; ?>" width="400" height="400" />
+                        <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon.jpg  <?php endif; ?>" width="400" height="400" />
+                        <span class="nav prev"><</span>
+                    </div>
+                </div>
             </div>
             <div class="member-left">
                 <div class="member-left-top">
                     <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
-image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
+image/usericon.jpg  <?php endif; ?>"/>
                     <h4><?php echo $this->_tpl_vars['member']['first_name']; ?>
  <?php echo $this->_tpl_vars['member']['last_name']; ?>
 </h4>
-                    <?php if ($this->_tpl_vars['member']['school_name']): ?><p><label>Trường: </label><?php echo $this->_tpl_vars['member']['school_name']; ?>
+                    <?php if ($this->_tpl_vars['member']['school_name']): ?><p class="school"><label>Trường </label>: <?php echo $this->_tpl_vars['member']['school_name']; ?>
 </p><?php endif; ?>
-                    <?php if ($this->_tpl_vars['member']['class']): ?><p><label>Lớp: </label><?php echo $this->_tpl_vars['member']['class']; ?>
+                    <?php if ($this->_tpl_vars['member']['class']): ?><p><label>Lớp </label>: <?php echo $this->_tpl_vars['member']['class']; ?>
 </p><?php endif; ?>
-                    <?php if ($this->_tpl_vars['member']['gender']): ?><p><label>Giới tính: </label><?php if ($this->_tpl_vars['member']['gender'] == 1): ?>Name<?php else: ?>Nữ<?php endif; ?></p><?php endif; ?>
-                    <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ: </label><?php echo $this->_tpl_vars['member']['address']; ?>
+                    <?php if ($this->_tpl_vars['member']['gender']): ?><p><label>Giới tính </label>: <?php if ($this->_tpl_vars['member']['gender'] == 1): ?>Name<?php else: ?>Nữ<?php endif; ?></p><?php endif; ?>
+                    <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ </label>: <?php echo $this->_tpl_vars['member']['address']; ?>
 </p><?php endif; ?>
-                    <?php if ($this->_tpl_vars['member']['mobile']): ?><p><label>Điện thoại: </label><?php echo $this->_tpl_vars['member']['mobile']; ?>
+                    <?php if ($this->_tpl_vars['member']['mobile']): ?><p><label>Điện thoại </label>: <?php echo $this->_tpl_vars['member']['mobile']; ?>
 </p><?php endif; ?>
-                    <?php if ($this->_tpl_vars['member']['email']): ?><p><label>Email: </label><?php echo $this->_tpl_vars['member']['email']; ?>
+                    <?php if ($this->_tpl_vars['member']['email']): ?><p><label>Email </label>: <?php echo $this->_tpl_vars['member']['email']; ?>
 </p><?php endif; ?>
                 </div>
+                <div class="controls">
+                    <a href="javascript::void(0)">Kết bạn</a>
+                    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
+                        <a href="javascript::void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['member']['id']; ?>
+, false)" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Chat</a>
+                    <?php else: ?>
+                        <a title="Hỗ trợ trực tuyến" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" href="#login-box" onclick="">Chat</a>
+                    <?php endif; ?>
+                    <a href="javascript::void(0)">Theo dõi</a>
+                </div>
             </div>
-            
             
             <br style="clear: both" />
         </div>
@@ -65,25 +96,6 @@ image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
         <div class="facelike_main">
             
             <div id="facelike_col1">
-                <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/studypost/_top_user_info.html", 'smarty_include_vars' => array()));
-$this->_tpl_vars = $_smarty_tpl_vars;
-unset($_smarty_tpl_vars);
- ?>
-                <div class="school_list" style="display: none">
-                    <ul>
-                        <li class="<?php if ($_GET['action'] == 'school'): ?>active<?php endif; ?>">
-                            <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['school']['id'])), $this);?>
-" title="<?php echo $this->_tpl_vars['school']['name']; ?>
-">
-                                <?php echo ((is_array($_tmp=$this->_tpl_vars['school']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>
-
-                                <div class="more-studybar">Thành viên: <?php echo $this->_tpl_vars['school']['member_count']; ?>
-</div>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
                 
                 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/studypost/_joined_groups.html", 'smarty_include_vars' => array()));
