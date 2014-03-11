@@ -1,15 +1,25 @@
 <!--{include file="`$theme_name`/header.html" page_title="Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ"}-->
 
 
-<!--{include file="`$theme_name`/verytopmenu.html"}-->
+<!--{include file="`$theme_name`/verytopmenu_study.html"}-->
 
 <!--{literal}-->
 <script type="application/x-javascript">
 
     $(document).ready(function() {
         
-        $('#facelike_col2').css("min-height",$(window).height()+200);
         
+    });
+    
+    $(window).resize(function() {    
+        
+        var minnn = $(window).height();
+        if ($(window).height() < $('#facelike_col1').height()) {
+            minnn = $('#facelike_col1').height();
+        }
+        $('#facelike_col2').css("min-height",minnn+200);
+        //$(window).scrollTop(200);
+     
     });
     
 </script>
@@ -60,7 +70,7 @@
                     <!--{/if}-->
                     
                     <!--{if $pb_username!=""}-->
-                        <a href="javascript::void(0)" onclick="getatbox({$member.id}, false)" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
+                        <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false, {$member.membertype_id})" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
                     <!--{else}-->
                         <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Tin nhắn</a>
                     <!--{/if}-->

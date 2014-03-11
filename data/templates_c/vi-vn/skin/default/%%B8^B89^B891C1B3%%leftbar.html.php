@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 13:37:36
+<?php /* Smarty version 2.6.27, created on 2014-03-11 14:16:09
          compiled from leftbar.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'leftbar.html', 11, false),)), $this); ?>
@@ -153,4 +153,3 @@ if ($this->_foreach['spacelink']['total'] > 0):
 	      <?php endif; ?>
               
 </aside>
-

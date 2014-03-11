@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 11:17:31
+<?php /* Smarty version 2.6.27, created on 2014-03-11 16:00:12
          compiled from default/studypost/_top_user_info.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_top_user_info.html', 4, false),)), $this); ?>
-<div class="top_user_info" style="display: none">
+<div class="top_user_info">
                     <img class="avatar" src="<?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>" width="20" height="20" />

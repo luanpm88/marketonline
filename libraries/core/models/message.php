@@ -32,7 +32,7 @@ class Messages extends PbModel  {
  			if (empty($data['type'])) {
  				$data['type'] = 'user';
  			}
- 			$sql = "INSERT INTO {$this->table_prefix}messages (title,content,from_member_id,cache_from_username,to_member_id,cache_to_username,created,type) VALUE ('".$data['title']."','".$data['content']."',".$from_memberinfo['id'].",'".$from_memberinfo['username']."',".$member_info['id'].",'".$member_info['username']."',{$this->timestamp},'".$data['type']."')";
+ 			$sql = "INSERT INTO {$this->table_prefix}messages (title,content,from_member_id,cache_from_username,to_member_id,cache_to_username,created,type,membertype_ids) VALUE ('".$data['title']."','".$data['content']."',".$from_memberinfo['id'].",'".$from_memberinfo['username']."',".$member_info['id'].",'".$member_info['username']."',{$this->timestamp},'".$data['type']."','".$data['membertype_ids']."')";
 
  			return $this->dbstuff->Execute($sql);
  		}

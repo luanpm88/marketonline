@@ -206,8 +206,11 @@ if ($pb_userinfo) {
 		
 	}
 }
-//var_dump($pb_userinfo);
-setvar('pb_userinfo', $member->getInfoById(intval($pb_userinfo["pb_userid"])));
+
+$mem = $member->getInfoById(intval($pb_userinfo["pb_userid"]));
+$mem["current_type"] = $mem["membertype_id"];
+
+setvar('pb_userinfo', $mem);
 //var_dump($member->read("*",intval($pb_userinfo["pb_userid"])));
 
 

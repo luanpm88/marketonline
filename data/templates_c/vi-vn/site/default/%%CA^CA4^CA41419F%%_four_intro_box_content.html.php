@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 14:54:49
+<?php /* Smarty version 2.6.27, created on 2014-03-11 09:02:31
          compiled from default/_four_intro_box_content.html */ ?>
 
 <div id="box_4home_tb" style="display: none">

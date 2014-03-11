@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 09:14:10
+<?php /* Smarty version 2.6.27, created on 2014-03-11 09:02:59
          compiled from default/product/ajaxAnnounce.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'default/product/ajaxAnnounce.html', 7, false),)), $this); ?>

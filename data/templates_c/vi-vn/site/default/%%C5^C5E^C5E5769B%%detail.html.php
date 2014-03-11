@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 13:46:25
+<?php /* Smarty version 2.6.27, created on 2014-03-11 11:21:21
          compiled from default/product/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 571, false),array('block', 'product', 'default/product/detail.html', 623, false),array('modifier', 'truncate', 'default/product/detail.html', 727, false),)), $this); ?>
@@ -831,7 +831,7 @@ image/usericon_big.png  <?php endif; ?> <?php endif; ?>" />
 	
     </div>
     
-    <h2 class="bottom-title">Gian hàng <?php echo $this->_tpl_vars['item']['shop_name']; ?>
+    <h2 style="width: 900px !important; display: block" class="bottom-title">Gian hàng <?php echo $this->_tpl_vars['item']['shop_name']; ?>
  trực tuyến</h2>
     <div class="bottom-address">
 	

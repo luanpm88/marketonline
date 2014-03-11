@@ -420,8 +420,15 @@
 	}
     }
     
-    function postChat(id, content, hash)
+    function postChat(id, content, hash, membertype_id)
     {
+	if(typeof(membertype_id)==='undefined') membertype_id = 0;
+	//membertype_id
+	var type_str = "";
+	if (membertype_id) {
+	    type_str = "&membertypeid="+membertype_id;
+	}
+	
 	if ($.trim(content) == "") {
 	    $('#chat-frame #chat-box-'+id+' textarea').val("");
 	    return;
@@ -442,7 +449,7 @@
 	
 			$.ajax({
 			    type: "POST",
-			    url: "index.php?do=product&action=postChat",
+			    url: "index.php?do=product&action=postChat"+type_str,
 			    encoding: "UTF-8",
 			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
 			}).done(function ( data ) {
@@ -458,7 +465,7 @@
     }
     
     function getChatbox(uid, hide)
-    {
+    {	
 	//show hide chatbox when exsit
 	if ($('#chat-box-'+uid).length>0) {
 	    //alert("exists");
@@ -522,7 +529,9 @@
 		$('#chat-frame #chat-box-'+uid+' .post-content').keydown(function(event) {
 		    if (event.keyCode == 13) {
 			event.preventDefault();
-		    	postChat(uid, $(this).val(), "zzz");
+			
+			var membertype_id = $('#chat-frame #chat-box-'+uid).attr('member-type');
+		    	postChat(uid, $(this).val(), "zzz", membertype_id);
 		    }
 		});		
 		

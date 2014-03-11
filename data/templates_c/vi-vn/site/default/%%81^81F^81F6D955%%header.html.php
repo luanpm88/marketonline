@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 16:06:45
+<?php /* Smarty version 2.6.27, created on 2014-03-11 16:16:34
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1185, false),array('function', 'formhash', 'default/header.html', 1269, false),array('modifier', 'default', 'default/header.html', 1280, false),array('modifier', 'date_format', 'default/header.html', 1294, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1182, false),array('function', 'formhash', 'default/header.html', 1266, false),array('modifier', 'default', 'default/header.html', 1277, false),array('modifier', 'date_format', 'default/header.html', 1291, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -1057,9 +1057,6 @@ $(window).resize(function() {
     if ($(\'#main_sidebar\').length) {
        
     }
- 
-    $(\'#facelike_col2\').css("min-height",$(window).height()+200);
-    //$(window).scrollTop(200);
  
 });
 

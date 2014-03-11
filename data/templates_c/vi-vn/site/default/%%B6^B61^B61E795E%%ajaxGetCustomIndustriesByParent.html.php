@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 09:16:47
+<?php /* Smarty version 2.6.27, created on 2014-03-11 11:33:33
          compiled from default/product/ajaxGetCustomIndustriesByParent.html */ ?>
 <option value="-1"><?php echo $this->_tpl_vars['_select']; ?>
 </option>	

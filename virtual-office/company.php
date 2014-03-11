@@ -15,7 +15,7 @@ require(LIB_PATH .'time.class.php');
 require(LIB_PATH. 'validation.class.php');
 $validate = new Validation();
 check_permission("company");
-uses("industry","area", "attachment", "companyfield", "typeoption", "member","tag","membertype");
+uses("industry","area", "attachment", "companyfield", "typeoption", "member","tag","membertype","membermembertype");
 $tag = new Tags();
 $attachment = new Attachment('pic');
 $attachment1 = new Attachment('banner');
@@ -25,6 +25,7 @@ $membertype = new Membertypes();
 $industry = new Industries();
 $companyfield = new Companyfields();
 $typeoption = new Typeoption();
+$membermembertype = new Membermembertypes();
 
 if($meminfo == 3)
 	$tpl_file = "shop";
@@ -259,6 +260,13 @@ if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "change_grouptyp
 if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "upgrade_company") {
 	$mem = $member->read("*", intval($memberinfo["id"]));
 	$memtype = $membertype->read("*", intval($_GET['id']));
+	
+	//save old membertype
+	$mmt["member_id"] = $mem["id"];
+	$mmt["membertype_id"] = $mem["membertype_id"];
+	$mmt["created"] = date("Y-m-d H:i:s");
+	$membermembertype->save($mmt);
+	
 	$member->saveField("membertype_id", intval($_GET['id']), intval($memberinfo["id"]));
 	$member->saveField("membergroup_id", intval($memtype['default_membergroup_id']), intval($memberinfo["id"]));
 	pheader("location:company.php");

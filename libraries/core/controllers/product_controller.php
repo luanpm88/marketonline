@@ -1,6 +1,9 @@
 <?php
 class Product extends PbController {
 	var $name = "Product";
+	var $CHAT_COUNT = 40;
+	var $MESSAGE_ANNOUNCE_COUNT = 20;
+	var $CHAT_ANNOUNCE_COUNT = 20;
 	
 	function Product()
 	{
@@ -2015,6 +2018,7 @@ class Product extends PbController {
 				$content = "<a href='http://marketonline.vn/virtual-office/sellrorder.php?do=view&id=".$info["id"]."'>".$memberfield["first_name"]." ".$memberfield["last_name"]." đã đặt hàng</a>";
 				$sms['content'] = mysql_real_escape_string($content);
 				$sms['title'] = mysql_real_escape_string("Hóa đơn mua");
+				$sms['membertype_ids'] = '[1][2][3]';
 				$result = $this->message->SendToUser($info['buyer_id'], $info["seller_id"], $sms);
 				
 						
@@ -2239,12 +2243,19 @@ class Product extends PbController {
 		uses("message");
 		$pms = new Messages();
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		$conditions[] = "Message.to_member_id=".$pb_userinfo["pb_userid"];
-		//$conditions[] = "Message.status=0";
+		
+		//type filter
+		if($user["membertype_id"])
+		{
+			$conditions[] = "CONCAT('[]',Message.membertype_ids,'[]') LIKE '%[".$user["membertype_id"]."]%'";
+		}
+		
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, 20);
+		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $MESSAGE_ANNOUNCE_COUNT);
 		//echo count($result);
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -2302,7 +2313,7 @@ class Product extends PbController {
 		//$conditions[] = "Message.status=0";
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, 20);
+		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $MESSAGE_ANNOUNCE_COUNT);
 		//echo count($result);
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -3241,6 +3252,9 @@ class Product extends PbController {
 					//send message to owner
 					$sms['content'] = mysql_real_escape_string("<a href='".$space_controller->rewrite($com['cache_spacename'])."'>".$memberfield["first_name"]." ".$memberfield["last_name"]."</a> đã bình luận cho sản phẩm <a href='".$this->product->url(array("module"=>"product", "id"=>$p['id']))."#comment_link'>".$p["name"]."</a> của bạn:<br />'".$_POST["data"]["content"]."'");
 					$sms['title'] = mysql_real_escape_string($pb_userinfo['pb_username']. " đã bình luận cho sản phẩm ".$p["name"]." của bạn");
+					
+					$sms['membertype_ids'] = '[1][2][3]';
+					
 					$result = $this->message->SendToUser($pb_userinfo['pb_userid'], $p["member_id"], $sms);
 					//var_dump($pb_userinfo['pb_userid']);
 				}
@@ -3255,7 +3269,7 @@ class Product extends PbController {
 				//send message to owner
 				$sms['content'] = mysql_real_escape_string("<strong>".$val["guest_name"]." (".$val["guest_email"].")</strong> đã bình luận cho sản phẩm <a href='".$this->product->url(array("module"=>"product", "id"=>$p['id']))."#comment_link'>".$p["name"]."</a> của bạn:<br />'".$_POST["data"]["content"]."'");
 				$sms['title'] = mysql_real_escape_string($val["guest_name"]. " đã bình luận cho sản phẩm ".$p["name"]." của bạn");
-				//var_dump($sms);
+				$sms['membertype_ids'] = '[1][2][3]';
 				$result = $this->message->SendToUser(0, $p["member_id"], $sms);
 			}
 			
@@ -3332,6 +3346,7 @@ class Product extends PbController {
 					//send message to owner
 					$sms['content'] = mysql_real_escape_string("<a href='".$space_controller->rewrite($com['cache_spacename'])."'>".$memberfield["first_name"]." ".$memberfield["last_name"]."</a> đã bình luận cho rao vặt <a onclick='getOfferDetail(".$p["id"].", 1)' href='javascript:void(0)'>".pb_lang_split($p["title"])."</a> của bạn:<br />".$_POST["data"]["content"]."'");
 					$sms['title'] = mysql_real_escape_string($pb_userinfo['pb_username']. " đã bình luận cho rao vặt ".$p["title"]." của bạn");
+					$sms['membertype_ids'] = '[1][2][3]';
 					$result = $this->message->SendToUser($pb_userinfo['pb_userid'], $p["member_id"], $sms);
 					//var_dump($pb_userinfo['pb_userid']);
 				}
@@ -3346,7 +3361,7 @@ class Product extends PbController {
 				//send message to owner
 				$sms['content'] = mysql_real_escape_string("<strong>".$val["guest_name"]." (".$val["guest_email"].")</strong> đã bình luận cho rao vặt <a onclick='getOfferDetail(".$p["id"].", 1)' href='javascript:void(0)'>".$p["name"]."</a> của bạn:<br />'".$_POST["data"]["content"]."'");
 				$sms['title'] = mysql_real_escape_string($val["guest_name"]. " đã bình luận cho sản phẩm ".$p["name"]." của bạn");
-				//var_dump($sms);
+				$sms['membertype_ids'] = '[1][2][3]';
 				$result = $this->message->SendToUser(0, $p["member_id"], $sms);
 			}
 			
@@ -3400,8 +3415,17 @@ class Product extends PbController {
 		$pms = new Messages();
 		$pb_userinfo = pb_get_member_info();
 		
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
 		$conditions[] = "Message.to_member_id=".$pb_userinfo["pb_userid"];
 		$conditions[] = "Message.announce=0";
+		
+		//type filter
+		if(isset($user["membertype_id"]))
+		{
+			$conditions[] = "CONCAT('[]',Message.membertype_ids,'[]') LIKE '%[".$user["membertype_id"]."]%'";
+		}
+		
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
 		
 		//get current timestamp
@@ -3409,7 +3433,7 @@ class Product extends PbController {
 		$timestamp = $date->getTimestamp();
 		$conditions[] = "Message.created > ".($timestamp - 9000);
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, 20);
+		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $MESSAGE_ANNOUNCE_COUNT);
 		//var_dump($result);
 		
 		if (!empty($result)) {
@@ -3522,6 +3546,7 @@ class Product extends PbController {
 	function postChat()
 	{		
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		if(isset($_POST["data"]))
 		{
@@ -3530,6 +3555,46 @@ class Product extends PbController {
 				//send message to owner
 				$sms['content'] = mysql_real_escape_string($_POST["data"]["content"]);
 				$sms['title'] = mysql_real_escape_string("chat");
+				
+				if(isset($_GET["membertypeid"]))
+				{
+					if(in_array($_GET["membertypeid"], array(6)))
+					{
+						$sms['membertype_to_ids'] = "[6]";					
+					}
+					elseif(in_array($_GET["membertypeid"], array(1,2,3)))
+					{
+						$sms['membertype_to_ids'] = "[1][2][3]";
+					}
+					elseif(in_array($_GET["membertypeid"], array(4)))
+					{
+						$sms['membertype_to_ids'] = "[4]";
+					}
+					elseif(in_array($_GET["membertypeid"], array(5)))
+					{
+						$sms['membertype_to_ids'] = "[5]";
+					}
+				}
+				if(isset($user["membertype_id"]))
+				{
+					if(in_array($user["membertype_id"], array(6)))
+					{
+						$sms['membertype_from_ids'] = "[6]";					
+					}
+					elseif(in_array($user["membertype_id"], array(1,2,3)))
+					{
+						$sms['membertype_from_ids'] = "[1][2][3]";
+					}
+					elseif(in_array($user["membertype_id"], array(4)))
+					{
+						$sms['membertype_from_ids'] = "[4]";
+					}
+					elseif(in_array($user["membertype_id"], array(5)))
+					{
+						$sms['membertype_from_ids'] = "[5]";
+					}
+				}
+				
 				$result = $this->chat->SendToUser($pb_userinfo['pb_userid'], intval($_POST["data"]["id"]), $sms);
 				
 				//var_dump($result);
@@ -3582,7 +3647,7 @@ class Product extends PbController {
 		$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id=".$user_id.") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id=".$user_id."))";
 		if(isset($_GET["date"])) $conditions[] = "Chat.created>".$_GET["date"];
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id");
-		$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created", 0, 20);
+		$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created", 0, $CHAT_COUNT);
 		
 		
 		if (!empty($result)) {
@@ -3706,7 +3771,7 @@ class Product extends PbController {
 		$conditions[] = "(Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id!=".$pb_userinfo["pb_userid"].")";
 		//$conditions[] = "Chat.read=0";
 		
-		$result = $this->chat->findAll("Chat.from_member_id, Chat.read", NULL, $conditions, "Chat.created DESC", 0, 20);
+		$result = $this->chat->findAll("Chat.from_member_id, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
 		
 		$as = array();
 		foreach($result as $item)
@@ -3723,15 +3788,22 @@ class Product extends PbController {
 	function getTopChatAnnounce()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id!=".$pb_userinfo["pb_userid"].") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id!=".$pb_userinfo["pb_userid"]."))";
+		
+		//filter membertype
+		if($user["membertype_id"])
+		{
+			$conditions[] = "(CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["membertype_id"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["membertype_id"]."]%')";
+		}
 		
 		$joins[] = "LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id";
 		$joins[] = "LEFT JOIN {$this->product->table_prefix}companies c2 ON c2.member_id = Chat.to_member_id";
 		
 		$joins[] = "INNER JOIN ( SELECT MAX(created) as maxdate, from_member_id, to_member_id FROM {$this->product->table_prefix}chats GROUP BY from_member_id, to_member_id ) ppp ON ppp.maxdate = Chat.created AND (ppp.from_member_id = Chat.from_member_id OR ppp.to_member_id = Chat.to_member_id)";
 		
-		$result = $this->chat->findAll("Chat.*, c.picture, c.shop_name, c2.picture as picture_2, c2.shop_name as shop_name_2", $joins, $conditions, "Chat.created DESC", 0, 20, null);
+		$result = $this->chat->findAll("Chat.*, c.picture, c.shop_name, c2.picture as picture_2, c2.shop_name as shop_name_2", $joins, $conditions, "Chat.created DESC", 0, $CHAT_ANNOUNCE_COUNT, null);
 		
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -4054,6 +4126,9 @@ class Product extends PbController {
 	function ajaxUpdateChats()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
+		
 		$ids = explode(',', $_GET["ids"]);
 
 		$results = array();
@@ -4063,8 +4138,16 @@ class Product extends PbController {
 			
 			$conditions = array();
 			$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id=".$user_id.") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id=".$user_id."))";
+			
+			//filter membertype
+			if($user["membertype_id"])
+			{
+				$conditions[] = "(CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["membertype_id"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["membertype_id"]."]%')";
+			}
+			
+			
 			$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id");
-			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, 20);
+			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
 			
 			if (!empty($result)) {
 				for($i=0; $i<count($result); $i++){

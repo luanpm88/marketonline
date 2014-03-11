@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 16:08:03
+<?php /* Smarty version 2.6.27, created on 2014-03-11 16:18:59
          compiled from default/studypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/memberpage.html', 112, false),array('modifier', 'truncate', 'default/studypost/memberpage.html', 113, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/memberpage.html', 128, false),array('modifier', 'truncate', 'default/studypost/memberpage.html', 129, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -10,7 +10,7 @@ unset($_smarty_tpl_vars);
 
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/verytopmenu.html", 'smarty_include_vars' => array()));
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/verytopmenu_study.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
@@ -20,7 +20,23 @@ unset($_smarty_tpl_vars);
 
     $(document).ready(function() {
         
-        $(\'#facelike_col2\').css("min-height",$(window).height()+200);
+        
+    });
+    
+    $(window).resize(function() {    
+        
+        var minnn = $(window).height();
+        if ($(window).height() < $(\'#facelike_col1\').height()) {
+            minnn = $(\'#facelike_col1\').height();
+        }
+        $(\'#facelike_col2\').css("min-height",minnn+200);
+        //$(window).scrollTop(200);
+     
+    });
+    
+    $(document).scroll(function() {
+
+        moveLeftBar(1000);
         
     });
     
@@ -82,7 +98,7 @@ image/usericon.jpg  <?php endif; ?>"/>
                                     <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
 , this)" href="javascript:void(0)">Kết bạn</a>
                             <?php else: ?>
-                                    <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
+                                    <a class="del_addfriend" onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
 , this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
                             <?php endif; ?>
                     <?php else: ?>
@@ -90,16 +106,17 @@ image/usericon.jpg  <?php endif; ?>"/>
                                 <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 logging.php">Kết bạn</a>
                             <?php else: ?>
-                                <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+                                <a class="comment_but del_addfriend" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 logging.php">Đã gửi lời mời kết bạn</a>
                             <?php endif; ?>                                
                     <?php endif; ?>
                     
                     <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
                         <a href="javascript::void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['member']['id']; ?>
-, false)" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Chat</a>
+, false, <?php echo $this->_tpl_vars['member']['membertype_id']; ?>
+)" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Tin nhắn</a>
                     <?php else: ?>
-                        <a title="" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" href="#login-box" onclick="">Chat</a>
+                        <a title="" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" href="#login-box" onclick="">Tin nhắn</a>
                     <?php endif; ?>
                     
                     

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-20 09:13:53
+<?php /* Smarty version 2.6.27, created on 2014-03-11 09:02:35
          compiled from default/logging.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/logging.html', 61, false),array('modifier', 'default', 'default/logging.html', 72, false),array('modifier', 'date_format', 'default/logging.html', 86, false),)), $this); ?>

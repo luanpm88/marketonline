@@ -444,6 +444,7 @@ class Studypost extends PbController {
 					$content = "<a href='".URL."index.php?do=studypost&action=memberpage&id=".$user["id"]."'>".$user["first_name"]." ".$user["last_name"]." đã gửi lời mời kết bạn đến bạn</a>";
 					$sms['content'] = mysql_real_escape_string($content);
 					$sms['title'] = mysql_real_escape_string("Lời mời kết bạn");
+					$sms['membertype_ids'] = '[6]';
 					$result = $this->message->SendToUser($user['id'], $member["id"], $sms);
 				}
 				else

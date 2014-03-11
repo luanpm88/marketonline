@@ -30,7 +30,7 @@
 	    <!--<a href="{if $pb_company}space/?userid={$pb_username}&do={else}redirect.php?url=/virtual-office/{/if}"></a>-->
 	    <a style="padding-left: 0; margin-right: 10px" class="name" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
 		<img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" width="20" height="20" />
-		{if $pb_company}{$pb_company.shop_name}{else}{$pb_username.first_name}{/if}
+		{if $pb_company}{$pb_company.shop_name}{else}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{/if}
 	    </a>
 	    {if $pb_company}<a class="staticon" style="padding-left: 0" class="name" href="javascript:void(0)"><img class="avatar" src="{$theme_img_path}image/stat.png" width="20" height="20" /></a>{/if}
 	    <div id="message_out" class="message">

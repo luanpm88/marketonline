@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-05 09:08:47
+<?php /* Smarty version 2.6.27, created on 2014-03-11 14:16:09
          compiled from footer.html */ ?>
 
   <div id="darkf">
@@ -24,8 +24,9 @@
 		    </p>
 		    <p>
 			<?php if ($this->_tpl_vars['COMPANY']['email']): ?><?php echo $this->_tpl_vars['_email']; ?>
-: <?php echo $this->_tpl_vars['COMPANY']['email']; ?>
-<?php endif; ?>
+: <a href="mailto:<?php echo $this->_tpl_vars['COMPANY']['email']; ?>
+"><?php echo $this->_tpl_vars['COMPANY']['email']; ?>
+</a><?php endif; ?>
 			<?php if ($this->_tpl_vars['COMPANY']['site_url']): ?>-<?php echo $this->_tpl_vars['_company_home']; ?>
 : <a target="_blank" rel="nofollow" href="http://<?php echo $this->_tpl_vars['COMPANY']['site_url_name']; ?>
 "><?php echo $this->_tpl_vars['COMPANY']['site_url_name']; ?>
@@ -44,8 +45,9 @@
 : <?php echo $this->_tpl_vars['COMPANY']['contact_mobile']; ?>
 </p>
 			<p><?php echo $this->_tpl_vars['_email']; ?>
-: <?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
-</p>
+: <a href="mailto:<?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
+"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
+</a></p>
 			<?php if ($this->_tpl_vars['COMPANY']['facebook']): ?><p><a rel="nofollow" href="https://<?php echo $this->_tpl_vars['COMPANY']['facebook']; ?>
 " target="_blank">Liên kết Facebook</a></p><?php endif; ?>
 	</div>
@@ -53,13 +55,6 @@
  
   </section>
     </div>
-  
-  
-  
-  
-  
-  
-  
   
   <a href="#" id="linkTop" class="backtotop">
   <span></span>
