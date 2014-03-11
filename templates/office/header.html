@@ -932,9 +932,13 @@ $(document).ready(function() {
 
 
 </head>
-<body>	
-	<!--<iframe src="{$SiteUrl}?do=product&action=TopIframe" style="border: none; width: 100%; height: 40px;" ></iframe>-->
-	<!--{include file="../default/topmenu_iframe.html"}-->
+<body>
+	{if $pb_userinfo.membertype_id == 6}
+		<!--{include file="topmenu_study.html"}-->
+	{else}
+		<!--{include file="topmenu.html"}-->
+	{/if}
+	
 <div id="content_bkg">
 <div id="basePageFrame">
     <div class="header clearfix" style="display: none">

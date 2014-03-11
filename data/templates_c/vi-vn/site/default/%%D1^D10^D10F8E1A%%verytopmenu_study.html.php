@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 15:53:13
+<?php /* Smarty version 2.6.27, created on 2014-03-11 16:43:26
          compiled from default/verytopmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_study.html', 8, false),array('function', 'the_url', 'default/verytopmenu_study.html', 47, false),)), $this); ?>
@@ -45,7 +45,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
 		<?php if ($this->_tpl_vars['pb_userinfo']['first_name']): ?><?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
- <?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
+ <?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['pb_userinfo']['username']; ?>
 <?php endif; ?>
 	    </a>

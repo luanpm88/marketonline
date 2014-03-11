@@ -1,0 +1,65 @@
+<div id="topmenu_outer">
+<div id="verytopmenu" style="padding-left:9px; height: 27px; margin-top: 9px;width: 1170px;">
+    <div class="left">
+	<a class="homex" href="{$SiteUrl}" target="_blank" style="margin-left: -8px;">.</a>
+        <!--<a href="{$SiteUrl}" target="_blank" class="home">{lang home_page}</a>--><a target="_blank" href="../contact.php">{lang contact_help}</a>
+	<!--<p id="f_language_bar"><a title="English" href="../redirect.php?url=virtual-office/index.php&amp;app_lang=en-us"><img alt="English" src="../languages/en-us/icon.gif"></a>&nbsp;<a title="Vietnam" href="../redirect.php?url=virtual-office/index.php&amp;app_lang=vi-vn"><img alt="Vietnam" src="../languages/vi-vn/icon.gif"></a>&nbsp;</p>-->
+    </div>
+    <div class="right">
+        <div id="topCart" class="cart"><a class="cart_link" target="_blank" href="../index.php?do=product&action=add_cart"></a></div>
+        
+        
+       
+	
+        <!--{if $pb_username!=""}-->
+        <div id="inbox_out" class="messagez">
+	    <a href="pms.php">{lang inbox}</a>
+	</div>
+	
+        
+	
+	<div id="settingouter" style="float:right">
+	    <a href="../redirect.php?url=/virtual-office/"><img class="avatar" src="{if $COMPANYINFO.name}../{$COMPANYINFO.logo}{else}{if $user_avatar} ../{$user_avatar} {else} ../templates/default/image/usericon.jpg  {/if}{/if}" width="20" height="20" /></a>
+	    
+	    <a class="name" href="../redirect.php?url=/virtual-office/">
+		   {if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
+	    </a>
+	    	    
+	    <a target="_blank" href="{the_url module=studypost action=school}"><img style="margin-bottom: -6px" src="../templates/default/image/connect.png" width="20" height="20" /></a>
+	    <a target="_blank" class="name" href="{the_url module=studypost action=school}">{lang connect_title}</a>
+	    
+	    <a href="javascript:void(0)" class="setting"><img style="margin-bottom: -6px" style="border: none" src="../templates/default/image/setting-icon_small.png" width="20" height="20" /></a>
+	    <div id="settingbox" style="display: none">
+		<ul>
+		    <li><a href="../redirect.php?url=/virtual-office/">{lang my_office_room}</a></li>
+		    <li><a href="../logging.php?action=logout">{lang login_out}</a></li>
+		</ul>		
+	    </div>	
+	</div>
+        <!--{else}-->
+        <a href="logging.php">{lang pls_login}</a><a href="register.php?typename=Company">{lang register_now}</a>
+        <!--{/if}-->
+        
+    </div>
+</div>
+</div>
+
+
+
+<!--{literal}-->
+<script type="text/javascript">
+                jQuery(document).ready(function() {
+		    $('#settingouter').hover(
+			function () {
+			    //$('#settingbox').fadeIn();
+			}
+			,
+			function () {
+			    $('#settingbox').fadeOut();
+			}
+		    );
+		    $('#settingouter a.setting').click(function(){$('#settingbox').toggle()});	    
+		    
+		});
+</script>
+<!--{/literal}-->

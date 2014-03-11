@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 11:33:32
+<?php /* Smarty version 2.6.27, created on 2014-03-11 16:46:40
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 944, false),array('function', 'formhash', 'header.html', 1023, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 948, false),array('function', 'formhash', 'header.html', 1027, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -972,14 +972,21 @@ if ($this->_foreach['level']['total'] > 0):
 
 
 </head>
-<body>	
-	<!--<iframe src="<?php echo $this->_tpl_vars['SiteUrl']; ?>
-?do=product&action=TopIframe" style="border: none; width: 100%; height: 40px;" ></iframe>-->
-	<?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => "../default/topmenu_iframe.html", 'smarty_include_vars' => array()));
+<body>
+	<?php if ($this->_tpl_vars['pb_userinfo']['membertype_id'] == 6): ?>
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "topmenu_study.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+	<?php else: ?>
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "topmenu.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+	<?php endif; ?>
+	
 <div id="content_bkg">
 <div id="basePageFrame">
     <div class="header clearfix" style="display: none">
