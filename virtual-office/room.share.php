@@ -172,7 +172,13 @@ if($hasProfile && $hasCompany)
 	//var_dump($session);
 	$chatboxs = $session->read("chatboxs".session_id());
 	$chatboxs = explode(",", $chatboxs);
+	foreach($chatboxs as $key => $uuu)
+	{
+		$uuu = explode("_",$uuu);
+		$chatboxsx[$key]["userid"] = $uuu[0];
+		$chatboxsx[$key]["typeid"] = $uuu[1];
+	}
 	////$session->write("chatboxs".session_id(), NULL);
-	setvar("chatboxs", $chatboxs);
+	setvar("chatboxs", $chatboxsx);
 
 ?>

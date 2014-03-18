@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-25 09:50:29
+<?php /* Smarty version 2.6.27, created on 2014-03-17 08:41:58
          compiled from default/studypost/ajaxLoadStudypostComments.html */ ?>
                     <?php if ($this->_tpl_vars['more']): ?>
                         <div class="comment_item view_morecomment">

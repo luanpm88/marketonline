@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 16:43:26
+<?php /* Smarty version 2.6.27, created on 2014-03-18 08:05:06
          compiled from default/verytopmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_study.html', 8, false),array('function', 'the_url', 'default/verytopmenu_study.html', 47, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_study.html', 8, false),array('function', 'the_url', 'default/verytopmenu_study.html', 31, false),)), $this); ?>
 <div id="topmenu_outer">
 <div id="verytopmenu">
     <div class="left">
@@ -40,7 +40,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 	<div id="settingouter" style="float:right">
 	    <!--<a href="<?php if ($this->_tpl_vars['pb_company']): ?>space/?userid=<?php echo $this->_tpl_vars['pb_username']; ?>
 &do=<?php else: ?>redirect.php?url=/virtual-office/<?php endif; ?>"></a>-->
-	    <a style="padding-left: 0; margin-right: 10px" class="name" href="redirect.php?url=/virtual-office/">
+	    <a style="padding-left: 0; margin-right: 10px" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['pb_userinfo']['id'])), $this);?>
+">
 		<img class="avatar" src="<?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
@@ -65,19 +66,15 @@ image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
 	    
 	    <a style="padding-left: 0" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school'), $this);?>
 "><img src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-image/connect.png" width="20" height="20" />&nbsp;<?php echo $this->_tpl_vars['_connect_title']; ?>
+image/school-icon.png" width="20" height="20" />&nbsp;<?php echo $this->_tpl_vars['_connect_title']; ?>
 </a>
 	    
-	    <a href="javascript:void(0)" class="setting"><img style="border: none" src="templates/default/image/setting-icon_small_w.png" width="20" height="20" /></a>
-	    <div id="settingbox" style="display: none">
-		<ul>
-		    <li><a target="_blank" href="redirect.php?url=/virtual-office/"><?php echo $this->_tpl_vars['_my_office_room']; ?>
-</a></li>
-		    <li><a href="logging.php?action=logout"><?php echo $this->_tpl_vars['_login_out']; ?>
-</a></li>
-		</ul>
-		<span class="pointer_topmenu">.</span>
-	    </div>	
+	    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_settingbox.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+	    
 	</div>
         <?php else: ?>
         <a href="logging.php"><?php echo $this->_tpl_vars['_pls_login']; ?>

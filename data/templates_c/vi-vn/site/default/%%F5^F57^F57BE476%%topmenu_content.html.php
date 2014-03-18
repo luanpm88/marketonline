@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 15:01:33
+<?php /* Smarty version 2.6.27, created on 2014-03-12 14:55:20
          compiled from default/topmenu_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/topmenu_content.html', 25, false),array('block', 'topmenuindustries', 'default/topmenu_content.html', 31, false),)), $this); ?>
@@ -13,7 +13,8 @@ image/logo-home.png" alt=""></a>
 	    <li>
 		
 		<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatbox(1, false)">Hỗ trợ trực tuyến</a>
+		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatbox(1, false, <?php echo $this->_tpl_vars['pb_userinfo']['membertype_id']; ?>
+)">Hỗ trợ trực tuyến</a>
 		<?php else: ?>
 		    <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
 		<?php endif; ?>

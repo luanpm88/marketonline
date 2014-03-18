@@ -127,6 +127,7 @@ class Attachment extends PbController {
 			
 			$isuploaded = $upload->upload($this->rename_file);
 			if (!$isuploaded) {
+				echo $this->attachment_dir;
 				flash("file_too_big", '', 0, implode(",", $this->allowed_file_ext));
 			}
 			//insert into db.
@@ -177,6 +178,12 @@ class Attachment extends PbController {
 				if($this->if_thumb_large){
 					list($width, $height) = $this->getScale("large");
 					$img->Thumb($width, $height, null);
+				}
+				
+				if($this->if_thumb_study)
+				{
+					$this->resizeImage($this->out_file_full_path, 300, 300, "small");
+					$this->resizeImage($this->out_file_full_path, 534, 273, "medium");
 				}
 		        }
 			if($this->if_school_banner)

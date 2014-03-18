@@ -398,7 +398,7 @@
 			</div>
 		<!--{/if}-->
 		
-		<!--{if $membertype_id == 5 && $hasCompany && $jobcount}-->
+		<!--{if ($membertype_id == 5 && $hasCompany && $jobcount) || ($membertype_id == 6 && $hasProfile)}-->
 		
 			<div class="create_shop">
 				<a href="#createShop" onclick="$('#upgrade_company').css('display','block')">Tạo SHOP<br /> tham gia hoạt động<br /> kinh doanh</a>

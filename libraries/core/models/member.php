@@ -165,10 +165,45 @@ class Members extends PbModel {
 				$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'smaller');;
 			}
 			
+			
+			if (empty($result['studypictures'])) {
+				$result['studypics'][0] = URL."images/no_studypic.png";
+			}else{
+				$studypics = json_decode($result['studypictures']);
+				foreach($studypics as $key => $item)
+				{
+					
+					
+					if($key != count($studypics)-1)
+					{
+						$arrs["value"] = $item;
+						$studypics[$key] = URL.pb_get_attachmenturl($item, '', 'small');
+						$arrs["image"] = $studypics[$key];
+						$result['studypics']['thumbs_tmp'][] = $arrs;
+					}
+					else
+					{
+						$studypics[$key] = URL.pb_get_attachmenturl($item, '', 'medium');
+						$result['studypics']['main'] = $studypics[$key];
+						$result['studypics']['main_value'] = $item;
+						$result['studypics']['main_key'] = $key;
+					}
+				}
+				//$result['studypics'] = $studypics;
+				//$result['studypics']['main'] = $studypics[count($studypics)-1];
+				for($i=count($result['studypics']['thumbs_tmp'])-1; $i >= 0; $i--)
+				{
+					$result['studypics']['thumbs'][$i] = $result['studypics']['thumbs_tmp'][$i];
+				}
+			}
+			
+			
 			$result['url'] = $space->rewrite($result["spacename"]);
 			$result['online'] = $this->isOnline($result["id"]);
+			
+			$result['other_types'] = $this->getOtherMembertypes($result["id"]);
+			//var_dump($this->getOtherMembertypes($result["id"]));
  		}		
-		
  		return $result;
  	}
  	
@@ -649,6 +684,16 @@ class Members extends PbModel {
 			}
 		}		
 		return false;
+	}
+	
+	function getOtherMembertypes($member_id)
+	{
+		uses("Membermembertype");
+		$mmt = new Membermembertypes();
+		
+		$ids = $mmt->findAll("membertype_id", null, "member_id=".$member_id);
+		
+		return $ids;
 	}
 }
 ?>

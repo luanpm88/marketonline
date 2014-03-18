@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 11:33:32
+<?php /* Smarty version 2.6.27, created on 2014-03-12 08:10:24
          compiled from menu.html */ ?>
 <table class="menu_nav" >
 	<tr>
@@ -507,7 +507,7 @@ images/code.gif"></th>
 			</div>
 		<?php endif; ?>
 		
-		<?php if ($this->_tpl_vars['membertype_id'] == 5 && $this->_tpl_vars['hasCompany'] && $this->_tpl_vars['jobcount']): ?>
+		<?php if (( $this->_tpl_vars['membertype_id'] == 5 && $this->_tpl_vars['hasCompany'] && $this->_tpl_vars['jobcount'] ) || ( $this->_tpl_vars['membertype_id'] == 6 && $this->_tpl_vars['hasProfile'] )): ?>
 		
 			<div class="create_shop">
 				<a href="#createShop" onclick="$('#upgrade_company').css('display','block')">Tạo SHOP<br /> tham gia hoạt động<br /> kinh doanh</a>

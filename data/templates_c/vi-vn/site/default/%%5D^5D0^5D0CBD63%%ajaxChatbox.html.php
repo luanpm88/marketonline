@@ -1,11 +1,11 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 13:18:31
+<?php /* Smarty version 2.6.27, created on 2014-03-17 08:36:39
          compiled from default/product/ajaxChatbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajaxChatbox.html', 6, false),)), $this); ?>
 <div class="chat-outer">
     <div class="chat-box" id="chat-box-<?php echo $this->_tpl_vars['member']['id']; ?>
 " rel="<?php echo $this->_tpl_vars['member']['id']; ?>
-" member-type="<?php echo $this->_tpl_vars['member']['membertype_id']; ?>
+" member-type="<?php echo $_GET['membertypeid']; ?>
 ">
 	<div class="chat-title">
 	    <span class="chat-close-but">x</span>

@@ -1,3 +1,74 @@
+    //for offer
+	  function getStudypictureDetail(id, index)
+	  {
+	    $('.offerbox-outer').html("<div class='offer-loading'>.</div>");
+	    $("#offerbox-but").trigger("click");
+	    
+	        $.ajax({
+			url: "index.php?do=studypost&action=getStudypictureDetail&id="+id			
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				
+				$('.offerbox-outer').html(data);
+				
+				  //$("#offerbox-but").trigger("click");
+				  
+				  //for offer album
+				  $('.left-offerbox a img').css("display", "none");
+				  $('.left-offerbox a img[rel='+index+']').addClass("active");
+				  
+				  $('.offer_content_inner .left-offerbox span.next').click(function() {
+				    $('.left-offerbox a img').each(function() {
+				      if ($(this).hasClass("active")) {				     
+					$(this).removeClass("active");
+					if ($(this).next().length) {
+					  $(this).next().addClass("active");
+					}
+					else
+					{
+					  $('.left-offerbox a img').eq(0).addClass("active");
+					}					
+					return false;
+				      }
+				    });
+				  });
+				  $('.offer_content_inner .left-offerbox span.previous').click(function() {
+				    $('.left-offerbox a img').each(function() {
+				      if ($(this).hasClass("active")) {				     
+					$(this).removeClass("active");
+					if ($(this).prev().length) {
+					  $(this).prev().addClass("active");
+					}
+					else
+					{
+					  $('.left-offerbox a img:last-child').addClass("active");
+					}					
+					return false;
+				      }
+				    });
+				  });
+				  
+				  $('.left-offerbox a').click(function() {
+				    $('.offer_content_inner .left-offerbox span.next').trigger("click");
+				  });
+				  
+				  
+				  
+				  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
+                                  
+                                  if ($('.left-offerbox img').length < 2) {
+                                        $('.left-offerbox span').remove();
+                                  }
+//				  
+//				  
+//				  loadOfferComment();
+//				  
+//				  $('#comment').val($.cookie("comment_tpm"));
+			}
+		});
+	}
+    
     function autoAjustVerytopmenu() {
 	//move verytopmenu with small screen
         if(1200 > $(window).width()) {
@@ -191,19 +262,19 @@
 	    //alert(data);
 	    var arr = jQuery.parseJSON(data);
 	    $(arr).each(function(index,value) {
-		//alert(value);
-		if ($('#chat-box-'+value).length>0) {
-		    if ($('#chat-box-'+value).hasClass('hidden')) {
-			getChatbox(value, true);
+		//alert(value.id);
+		if ($('#chat-box-'+value.id).length>0) {
+		    if ($('#chat-box-'+value.id).hasClass('hidden')) {
+			getChatbox(value.id, true, value.membertype_id);
 		    }
 		    else
 		    {
-			getChatbox(value, false);		       
+			getChatbox(value.id, false, value.membertype_id);		       
 		    }
 		}
 		else
 		{
-		    getChatbox(value, true);
+		    getChatbox(value.id, true, value.membertype_id);
 		}
 	    });
 	});
@@ -464,8 +535,15 @@
 			});
     }
     
-    function getChatbox(uid, hide)
-    {	
+    function getChatbox(uid, hide, membertype_id)
+    {
+	if(typeof(membertype_id)==='undefined') membertype_id = 0;
+	//membertype_id
+	var type_str = "";
+	if (membertype_id) {
+	    type_str = "&membertypeid="+membertype_id;
+	}
+	
 	//show hide chatbox when exsit
 	if ($('#chat-box-'+uid).length>0) {
 	    //alert("exists");
@@ -481,7 +559,7 @@
 	
 	//Load new chatbox
 	$.ajax({
-	    url: "index.php?do=product&action=getChatbox&id="+uid,
+	    url: "index.php?do=product&action=getChatbox&id="+uid+type_str,
 	}).done(function ( data ) {
 	    if( console && console.log && $('#chat-box-'+uid).length<1 ) {
 		//alert(data);
@@ -730,7 +808,7 @@
         }
         
         
-	//for offer
+	    //for offer
 	  function getOfferDetail(id, show)
 	  {	    
 	    $('.offer_transform ul.products li.product[rel="'+id+'"]').addClass('loading');
@@ -806,7 +884,7 @@
 				  $('#comment').val($.cookie("comment_tpm"));
 			}
 		});
-	  }
+	}
 	  
 	  
 	var keyupcount = 0;

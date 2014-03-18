@@ -60,7 +60,7 @@ $attachment_dir = 'attachment';
 
 /**
  * for install, and control panel
- */
+**/
 
 $app_lang = 'vi-vn';
 $cfg_checkip = 0;

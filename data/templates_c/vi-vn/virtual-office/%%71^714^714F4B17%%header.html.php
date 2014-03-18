@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 16:46:40
+<?php /* Smarty version 2.6.27, created on 2014-03-17 10:08:49
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 948, false),array('function', 'formhash', 'header.html', 1027, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 960, false),array('function', 'formhash', 'header.html', 1039, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -158,18 +158,18 @@ images/style.css" rel="stylesheet" type="text/css">
 	    var arr = jQuery.parseJSON(data);
 	    $(arr).each(function(index,value) {
 		//alert(value);
-		if ($(\'#chat-box-\'+value).length>0) {
-		    if ($(\'#chat-box-\'+value).hasClass(\'hidden\')) {
-			getChatbox(value, true);
+		if ($(\'#chat-box-\'+value.id).length>0) {
+		    if ($(\'#chat-box-\'+value.id).hasClass(\'hidden\')) {
+			getChatbox(value.id, true, value.membertype_id);
 		    }
 		    else
 		    {
-			getChatbox(value, false);		       
+			getChatbox(value.id, false, value.membertype_id);		       
 		    }
 		}
 		else
 		{
-		    getChatbox(value, true);
+		    getChatbox(value.id, true, value.membertype_id);
 		}
 	    });
 	});
@@ -283,7 +283,7 @@ images/style.css" rel="stylesheet" type="text/css">
     function removeChatbox(uid)
     {
 	$.ajax({
-	    url: "..index.php?do=product&action=removeChatbox&id="+uid,
+	    url: "../index.php?do=product&action=removeChatbox&id="+uid,
 	}).done(function ( data ) {
 	    clearInterval(ichatbox[uid]);
 	});
@@ -386,8 +386,14 @@ images/style.css" rel="stylesheet" type="text/css">
 	}
     }
     
-    function postChat(id, content, hash)
+    function postChat(id, content, hash, membertype_id)
     {
+	if(typeof(membertype_id)===\'undefined\') membertype_id = 0;
+	//membertype_id
+	var type_str = "";
+	if (membertype_id) {
+	    type_str = "&membertypeid="+membertype_id;
+	}
 	
 	if ($.trim(content) == "") {
 	    $(\'#chat-frame #chat-box-\'+id+\' textarea\').val("");
@@ -409,7 +415,7 @@ images/style.css" rel="stylesheet" type="text/css">
 	
 			$.ajax({
 			    type: "POST",
-			    url: "../index.php?do=product&action=postChat",
+			    url: "../index.php?do=product&action=postChat"+type_str,
 			    encoding: "UTF-8",
 			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
 			}).done(function ( data ) {
@@ -424,8 +430,14 @@ images/style.css" rel="stylesheet" type="text/css">
 			});
     }
     
-    function getChatbox(uid, hide)
+    function getChatbox(uid, hide, membertype_id)
     {
+	if(typeof(membertype_id)===\'undefined\') membertype_id = 0;
+	//membertype_id
+	var type_str = "";
+	if (membertype_id) {
+	    type_str = "&membertypeid="+membertype_id;
+	}
 	//show hide chatbox when exsit
 	if ($(\'#chat-box-\'+uid).length>0) {
 	    //alert("exists");
@@ -441,7 +453,7 @@ images/style.css" rel="stylesheet" type="text/css">
 	
 	//Load new chatbox
 	$.ajax({
-	    url: "../index.php?do=product&action=getChatbox&id="+uid,
+	    url: "../index.php?do=product&action=getChatbox&id="+uid+type_str,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		//alert(data);
@@ -815,10 +827,11 @@ if ($this->_foreach['level']['total'] > 0):
 		    
 		    
 			
-			<?php if ($this->_tpl_vars['item'] != '' && $this->_tpl_vars['item'] != 0): ?>
-			    getChatbox(<?php echo $this->_tpl_vars['item']; ?>
-, true);			    
-			<?php endif; ?>
+			<?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
+                                getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
+, true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
+);			    
+                        <?php endif; ?>
 
 			
 			
@@ -973,7 +986,7 @@ if ($this->_foreach['level']['total'] > 0):
 
 </head>
 <body>
-	<?php if ($this->_tpl_vars['pb_userinfo']['membertype_id'] == 6): ?>
+	<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6): ?>
 		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "topmenu_study.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;

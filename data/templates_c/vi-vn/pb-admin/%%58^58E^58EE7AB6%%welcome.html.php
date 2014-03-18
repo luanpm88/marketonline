@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-03 08:05:04
+<?php /* Smarty version 2.6.27, created on 2014-03-12 08:02:29
          compiled from welcome.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'welcome.html', 5, false),array('modifier', 'date_format', 'welcome.html', 50, false),array('function', 'iplocation', 'welcome.html', 50, false),)), $this); ?>

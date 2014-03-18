@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 16:16:34
+<?php /* Smarty version 2.6.27, created on 2014-03-18 15:25:50
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1182, false),array('function', 'formhash', 'default/header.html', 1266, false),array('modifier', 'default', 'default/header.html', 1277, false),array('modifier', 'date_format', 'default/header.html', 1291, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1216, false),array('function', 'formhash', 'default/header.html', 1300, false),array('modifier', 'default', 'default/header.html', 1311, false),array('modifier', 'date_format', 'default/header.html', 1325, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -881,9 +881,10 @@ if ($this->_foreach['level']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
         $this->_foreach['level']['iteration']++;
 ?>
-                            <?php if ($this->_tpl_vars['item'] != '' && $this->_tpl_vars['item'] != 0): ?>
-                                getChatbox(<?php echo $this->_tpl_vars['item']; ?>
-, true);			    
+                            <?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
+                                getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
+, true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
+);			    
                             <?php endif; ?>
                         <?php endforeach; endif; unset($_from); ?>
 		    <?php endif; ?>		
@@ -1015,6 +1016,40 @@ if ($this->_foreach['level']['total'] > 0):
                 })
                 
                 $(\'.title_more_school_button\').fancybox();
+                
+                
+                $(\'.member-pics-album .thumbs .prev\').addClass(\'ihide\');
+                $(\'.member-pics-album .thumbs .prev\').click(function() {
+                    var move = 2;
+                    
+                    for(var i = 0; i < move; i++)
+                    {
+                        if (parseInt( $(\'.thumbs .inner_slider\').css("margin-left")) <  -121) {
+                            $(\'.member-pics-album .thumbs .next\').removeClass(\'ihide\');
+                            $(\'.thumbs .inner_slider\').css("margin-left",parseInt( $(\'.thumbs .inner_slider\').css("margin-left"))+122);
+                        }
+                        if (parseInt( $(\'.thumbs .inner_slider\').css("margin-left")) >= -121)
+                        {
+                            $(\'.member-pics-album .thumbs .prev\').addClass(\'ihide\');
+                        }
+                    }
+                });
+                
+                $(\'.member-pics-album .thumbs .next\').click(function() {
+                    var move = 2;
+                    
+                    for(var i = 0; i < move; i++)
+                    {
+                        if ($(\'.thumbs .inner_slider img\').length*122 - 122*3 > -parseInt( $(\'.thumbs .inner_slider\').css("margin-left"))) {
+                            $(\'.thumbs .inner_slider\').css("margin-left",parseInt( $(\'.thumbs .inner_slider\').css("margin-left"))-122);
+                            $(\'.member-pics-album .thumbs .prev\').removeClass(\'ihide\');
+                        }
+                        if ($(\'.thumbs .inner_slider img\').length*122 - 122*3 <= -parseInt( $(\'.thumbs .inner_slider\').css("margin-left")))
+                        {
+                            $(\'.member-pics-album .thumbs .next\').addClass(\'ihide\');
+                        }
+                    }
+                });
 	});
 	
         

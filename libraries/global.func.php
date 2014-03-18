@@ -601,6 +601,9 @@ function pb_get_attachmenturl($src, $path = '', $size = '', $force = false, $nos
 		case "middle":
 			$scope = ".".$size;
 			break;
+		case "medium":
+			$scope = ".".$size;
+			break;
 		case "banner":
 			$scope = ".".$size;
 			break;

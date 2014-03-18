@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 11:27:43
+<?php /* Smarty version 2.6.27, created on 2014-03-12 08:10:39
          compiled from pms_send.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'pms_send.html', 58, false),array('function', 'formhash', 'pms_send.html', 72, false),)), $this); ?>
@@ -150,4 +150,4 @@ index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPic
 $this->_smarty_include(array('smarty_include_tpl_file' => "footer.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>
+ ?>

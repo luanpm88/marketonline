@@ -276,6 +276,7 @@ class PbModel extends Overloadable
 			}
 			$this->setCondition($cond);
 			$sql = "DELETE FROM ".$table_name.$this->getCondition();
+			//echo $sql;
 			$deleted = $this->dbstuff->Execute($sql);
 			unset($this->condition);
 			return $deleted;
@@ -394,6 +395,7 @@ class PbModel extends Overloadable
 			$conditions = $tmp_conditions;
 		}
 		$sql = "select ".trim($name)." from ".$this->getTable(true)." where ".$conditions;
+		//echo $sql;
 //		if ($this->cache_sql) {
 //			$return = $this->dbstuff->CacheGetOne($this->cache_sql, $sql);
 //		}else{

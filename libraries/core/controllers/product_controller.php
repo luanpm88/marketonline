@@ -2248,9 +2248,9 @@ class Product extends PbController {
 		$conditions[] = "Message.to_member_id=".$pb_userinfo["pb_userid"];
 		
 		//type filter
-		if($user["membertype_id"])
+		if($user["current_type"])
 		{
-			$conditions[] = "CONCAT('[]',Message.membertype_ids,'[]') LIKE '%[".$user["membertype_id"]."]%'";
+			$conditions[] = "CONCAT('[]',Message.membertype_ids,'[]') LIKE '%[".$user["current_type"]."]%'";
 		}
 		
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
@@ -2567,8 +2567,7 @@ class Product extends PbController {
 	
 	function importVatgia()
 	{
-		$this->render("product/importVatgia");
-		
+		$this->render("product/importVatgia");		
 	}
 	
 	function getArrayIndustry($id)
@@ -3421,9 +3420,9 @@ class Product extends PbController {
 		$conditions[] = "Message.announce=0";
 		
 		//type filter
-		if(isset($user["membertype_id"]))
+		if(isset($user["current_type"]))
 		{
-			$conditions[] = "CONCAT('[]',Message.membertype_ids,'[]') LIKE '%[".$user["membertype_id"]."]%'";
+			$conditions[] = "CONCAT('[]',Message.membertype_ids,'[]') LIKE '%[".$user["current_type"]."]%'";
 		}
 		
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
@@ -3482,6 +3481,15 @@ class Product extends PbController {
 			return;
 		}
 		
+		if(isset($_GET["membertypeid"]))
+		{
+			$membertype_id = intval($_GET["membertypeid"]);
+		}
+		else
+		{
+			$membertype_id = "";
+		}
+		
 		$member = $this->member->getInfoById($user_id);
 		$company = $this->company->getInfoByUserId($user_id);
 		$pb_userinfo = pb_get_member_info();
@@ -3497,7 +3505,8 @@ class Product extends PbController {
 			$exist = false;
 			foreach($chatboxs as $item)
 			{
-				if($item == $user_id)
+				$item = explode('_', $item);
+				if($item[0] == $user_id)
 				{
 					$exist = true;
 					break;
@@ -3505,13 +3514,13 @@ class Product extends PbController {
 			}
 			if(!$exist)
 			{
-				$chatboxs[] = $user_id;
+				$chatboxs[] = $user_id."_".$membertype_id;
 			}
 			$session->write('chatboxs'.session_id(), implode(",", $chatboxs));
 		}
 		else
 		{
-			$session->write('chatboxs'.session_id(), $user_id);
+			$session->write('chatboxs'.session_id(), $user_id."_".$membertype_id);
 		}
 		
 		if(isset($company["shop_name"]))
@@ -3528,7 +3537,7 @@ class Product extends PbController {
 		}
 		//echo $member["username"]."dddddd";
 
-		if($comname)
+		if($comname && in_array($membertype_id, array(1,2,3)))
 		{
 			$chattitle = $comname;
 		}
@@ -3575,21 +3584,26 @@ class Product extends PbController {
 						$sms['membertype_to_ids'] = "[5]";
 					}
 				}
-				if(isset($user["membertype_id"]))
+				if($user["current_type"] == '' || $user["current_type"] == 0)
 				{
-					if(in_array($user["membertype_id"], array(6)))
+					$user["current_type"] = $user["membertype_id"];
+				}
+				//echo $user["current_type"]."ssss";
+				if(isset($user["current_type"]))
+				{
+					if(in_array($user["current_type"], array(6)))
 					{
 						$sms['membertype_from_ids'] = "[6]";					
 					}
-					elseif(in_array($user["membertype_id"], array(1,2,3)))
+					elseif(in_array($user["current_type"], array(1,2,3)))
 					{
 						$sms['membertype_from_ids'] = "[1][2][3]";
 					}
-					elseif(in_array($user["membertype_id"], array(4)))
+					elseif(in_array($user["current_type"], array(4)))
 					{
 						$sms['membertype_from_ids'] = "[4]";
 					}
-					elseif(in_array($user["membertype_id"], array(5)))
+					elseif(in_array($user["current_type"], array(5)))
 					{
 						$sms['membertype_from_ids'] = "[5]";
 					}
@@ -3718,7 +3732,7 @@ class Product extends PbController {
 		
 		//store chatbox id to session
 		global $viewhelper, $session;
-		
+		//$session->write('chatboxs'.session_id(), '');
 		$chatboxs = $session->read("chatboxs".session_id());
 		//var_dump($chatboxs);
 		//echo "ssdsdsd";
@@ -3729,7 +3743,8 @@ class Product extends PbController {
 			//$new_chatbox[] = $user_id;
 			foreach($chatboxs as $item)
 			{
-				if($item != $user_id)
+				$itema = explode("_", $item);
+				if($itema[0] != $user_id)
 				{
 					$new_chatbox[] = $item;
 				}
@@ -3765,11 +3780,17 @@ class Product extends PbController {
 	{
 		global $session;
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		
 		
 		$conditions[] = "(Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id!=".$pb_userinfo["pb_userid"].")";
 		//$conditions[] = "Chat.read=0";
+		//filter membertype
+		if($user["current_type"])
+		{
+			//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
+		}
 		
 		$result = $this->chat->findAll("Chat.from_member_id, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
 		
@@ -3778,7 +3799,8 @@ class Product extends PbController {
 		{
 			if(!in_array($item["from_member_id"], $as) && $item["read"]==0)
 			{
-				$as[] = $item["from_member_id"];
+				$to_mem = $this->member->getInfoById($item["from_member_id"]);
+				$as[] = $to_mem;
 			}
 		}
 		
@@ -3793,9 +3815,9 @@ class Product extends PbController {
 		$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id!=".$pb_userinfo["pb_userid"].") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id!=".$pb_userinfo["pb_userid"]."))";
 		
 		//filter membertype
-		if($user["membertype_id"])
+		if($user["current_type"])
 		{
-			$conditions[] = "(CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["membertype_id"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["membertype_id"]."]%')";
+			//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
 		}
 		
 		$joins[] = "LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id";
@@ -3810,13 +3832,14 @@ class Product extends PbController {
 				
 				if($result[$i]["from_member_id"] != $pb_userinfo["pb_userid"])
 				{
+					$mem = $this->member->getInfoById($result[$i]["from_member_id"]);
+					
 					if($result[$i]["picture"])
 					{
 						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 					}
 					else
-					{
-						$mem = $this->member->getInfoById($result[$i]["from_member_id"]);
+					{						
 						if($mem["photo"])
 						{
 							$result[$i]["company_logo"] = pb_get_attachmenturl($mem["photo"], '', 'small');
@@ -3841,16 +3864,30 @@ class Product extends PbController {
 					}
 					
 					$result[$i]["chatid"] = $result[$i]["from_member_id"];
+					
+					//check member type
+					//var_dump($result[$i]);
+					if (strpos($result[$i]["membertype_from_ids"],$mem["membertype_id"]) !== false) {
+						$result[$i]["chattypeid"] = $mem["membertype_id"];
+					}
+					else
+					{
+						$ids = $this->member->getOtherMembertypes($result[$i]["from_member_id"]);
+						if (strpos($result[$i]["membertype_from_ids"],$ids[0]["membertype_id"]) !== false) {
+							$result[$i]["chattypeid"] = $ids[0]["membertype_id"];
+						}
+					}
 				}
 				else
 				{
+					$mem = $this->member->getInfoById($result[$i]["to_member_id"]);
+					
 					if($result[$i]["picture"])
 					{
 						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture_2"], '', 'smaller');
 					}
 					else
-					{
-						$mem = $this->member->getInfoById($result[$i]["to_member_id"]);
+					{						
 						if($mem["photo"])
 						{
 							$result[$i]["company_logo"] = pb_get_attachmenturl($mem["photo"], '', 'small');
@@ -3875,6 +3912,18 @@ class Product extends PbController {
 					}
 					
 					$result[$i]["chatid"] = $result[$i]["to_member_id"];
+					
+					//check member type
+					if (strpos($mem["membertype_to_ids"],$mem["membertype_id"]) !== false) {
+						$result[$i]["chattypeid"] = $mem["membertype_id"];
+					}
+					else
+					{
+						$ids = $this->member->getOtherMembertypes($result[$i]["to_member_id"]);
+						if (strpos($result[$i]["membertype_to_ids"],$ids[0]["membertype_id"]) !== false) {
+							$result[$i]["chattypeid"] = $ids[0]["membertype_id"];
+						}
+					}
 					
 				}
 				
@@ -4140,9 +4189,9 @@ class Product extends PbController {
 			$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id=".$user_id.") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id=".$user_id."))";
 			
 			//filter membertype
-			if($user["membertype_id"])
+			if($user["current_type"])
 			{
-				$conditions[] = "(CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["membertype_id"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["membertype_id"]."]%')";
+				//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
 			}
 			
 			

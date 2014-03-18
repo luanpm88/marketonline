@@ -1,7 +1,7 @@
 <!--{include file="`$theme_name`/header.html" page_title="Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ"}-->
 
 
-<!--{include file="`$theme_name`/verytopmenu_study.html"}-->
+<!--{include file="`$theme_name`/verytopmenu.html"}-->
 
 <!--{literal}-->
 <script type="application/x-javascript">
@@ -31,19 +31,56 @@
             <div class="member-right">
                 <div class="member-pics-album">
                     <div class="main">
-                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
+                        <img class="avatar" src="{$pb_userinfo.studypics.main}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$pb_userinfo.studypics.main_key})" />
+                        {if $pb_userid == $member.id}<a href="{the_url module=studypost action=del_studypic id=`$pb_userinfo.studypics.main_value`}" class="del_main_pic" rel="{$item.value}">x</a>{/if}
+                        {if $pb_userid == $member.id}
+                            <div class="upload_studymemberpagepics">
+                                <a class="but" href="javascript::void(0)" onclick="$('#uploadpics-but').trigger('click')">+ Tai anh</a>
+                            </div>
+                            <div id="upload_logo" class="hide">
+                                <div class="upload_logo">                                    
+                                    <iframe name="uploadpics" id="uploadpics" style="display: none"></iframe>
+                                    <form id="uploadpics_form" method="post" action="{$WebRootUrl}index.php?do=studypost&action=upload_picture" enctype="multipart/form-data">
+                                      <!-- {formhash} -->
+                                    
+                                    
+                                      <p><input type="file" name="upload_picture" id="uploadpics-but" onchange="$('#uploadpics_form').submit()" /></p>
+                                      
+                                      
+                                      <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
+                                    </form>
+                                </div>
+                            </div>
+                        {/if}
                     </div>
-                    <div class="thumbs">
-                        <span class="nav next">></span>
-                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
-                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
-                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
-                        <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="400" height="400" />
-                        <span class="nav prev"><</span>
-                    </div>
+                    
+                    {if $pb_userinfo.studypics.thumbs}
+                        <div class="thumbs">
+                            <span class="nav next">></span>
+                            <span class="nav prev"><</span>
+                            <div class="inner_slider">
+                                <!--{loop $pb_userinfo.studypics.thumbs item level key}-->
+                                    <div class="img_item">
+                                        <img class="avatar" src="{$item.image}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$key})" />
+                                        {if $pb_userid == $member.id}<a class="del_pic" rel="{$item.value}" href="{the_url module=studypost action=del_studypic id=`$item.value`}">x</a>{/if}
+                                    </div>
+                                <!--{/loop}-->
+                            </div>
+                            
+                        </div>
+                    {/if}
                 </div>
             </div>
             <div class="member-left">
+                
+                {if $friend_request}
+                    <div class="friend_requests">
+                        <strong>{$member.first_name} {$member.last_name}</strong> muon ket ban voi ban
+                        <a href="{the_url module=studypost action=acceptFriend id=`$member.id`}">Dong y</a>
+                        <a href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Tu choi</a>
+                    </div>
+                {/if}
+                
                 <div class="member-left-top">
                     <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}"/>
                     <h4>{$member.first_name} {$member.last_name}</h4>
@@ -55,22 +92,29 @@
                     {if $member.email}<p><label>Email </label>: {$member.email}</p>{/if}
                 </div>
                 <div class="controls">
-                    <!--{if $pb_username!=""}-->
-                            {if !$Friended}
-                                    <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Kết bạn</a>
-                            {else}
-                                    <a class="del_addfriend" onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
-                            {/if}
-                    <!--{else}-->
-                            {if !$Friended}
-                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
-                            {else}
-                                <a class="comment_but del_addfriend" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi lời mời kết bạn</a>
-                            {/if}                                
-                    <!--{/if}-->
+                    
+                    {if $pb_userid != $member.id && !$friend_request && !$is_friend}
+                        <!--{if $pb_username!=""}-->
+                                {if !$Friended}
+                                        <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Kết bạn</a>
+                                {else}
+                                        <a class="del_addfriend" onclick="studyfriend({$member.id}, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                                {/if}
+                        <!--{else}-->
+                                {if !$Friended}
+                                    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
+                                {else}
+                                    <a class="comment_but del_addfriend" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi Lời mời kết bạn</a>
+                                {/if}                                
+                        <!--{/if}-->
+                    {elseif $is_friend}
+                        <a class="" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Huy kết bạn</a>
+                    {/if}
+                    
+                    
                     
                     <!--{if $pb_username!=""}-->
-                        <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false, {$member.membertype_id})" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
+                        <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false, '6')" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
                     <!--{else}-->
                         <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Tin nhắn</a>
                     <!--{/if}-->

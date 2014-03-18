@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 14:16:09
+<?php /* Smarty version 2.6.27, created on 2014-03-12 15:41:45
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1168, false),array('modifier', 'default', 'header.html', 1179, false),array('modifier', 'date_format', 'header.html', 1193, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1185, false),array('modifier', 'default', 'header.html', 1196, false),array('modifier', 'date_format', 'header.html', 1210, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -1059,10 +1059,11 @@ if ($this->_foreach['level']['total'] > 0):
         $this->_foreach['level']['iteration']++;
 ?>
 			    
-			    <?php if ($this->_tpl_vars['item'] != '' && $this->_tpl_vars['item'] != 0): ?>
-				getChatbox(<?php echo $this->_tpl_vars['item']; ?>
-, true);			    
-			    <?php endif; ?>
+			   <?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
+                                getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
+, true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
+);			    
+                            <?php endif; ?>
 			    
 			<?php endforeach; endif; unset($_from); ?>
 			
@@ -1157,6 +1158,23 @@ if ($this->_foreach['level']['total'] > 0):
                         adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
                     }
                 })
+		
+
+		    $(\'#settingouter\').hover(
+			function () {
+			    //$(\'#settingbox\').fadeIn();
+			}
+			,
+			function () {
+			    //$(\'#settingbox\').fadeOut();
+			}
+		    );
+		    $(\'body\').click(function(){$(\'#settingbox\').fadeOut()});	
+		    $(\'#settingouter a.setting\').click(function(e){$(\'#settingbox\').toggle();e.stopPropagation();});
+		    
+		    $(\'body\').click(function(){if($(\'.clicked_note_box\').css(\'display\') == \'block\') $(\'.clicked_note_box\').fadeOut("slow", refreshClickedCompany(\'578\'))});	
+		    $(\'.staticon\').click(function(e){$(\'.over_air_box\').css("display","none");$(\'.clicked_note_box\').toggle();e.stopPropagation();});
+		    
 		
 	});
 	

@@ -207,8 +207,20 @@ if ($pb_userinfo) {
 	}
 }
 
+
+//Current membertype
 $mem = $member->getInfoById(intval($pb_userinfo["pb_userid"]));
-$mem["current_type"] = $mem["membertype_id"];
+
+if(!isset($mem["current_type"]) || $mem["current_type"] == "0")
+{
+    $mem["current_type"] = $mem["membertype_id"];
+    $member->saveField("current_type", $mem["current_type"], intval($mem["id"]));    
+}
+if(isset($_GET["change_current_type"]))
+{
+    $mem["current_type"] = $_GET["change_current_type"];
+    $member->saveField("current_type", $mem["current_type"], intval($mem["id"]));
+}
 
 setvar('pb_userinfo', $mem);
 //var_dump($member->read("*",intval($pb_userinfo["pb_userid"])));

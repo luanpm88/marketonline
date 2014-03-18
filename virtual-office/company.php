@@ -331,7 +331,7 @@ else
 	$tpm["link_man_gender"] = $memberinfo["gender"];
 	
 	
-	$tpm = am($tpm, $r1, $r2);	
+	$tpm = am($tpm, $r1, $r2);
 	setvar("item", $tpm);
 }
 

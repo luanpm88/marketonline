@@ -21,6 +21,7 @@
 	<div id="settingouter" style="float:right">
 	    <a href="../redirect.php?url=/virtual-office/"><img class="avatar" src="{if $COMPANYINFO.name}../{$COMPANYINFO.logo}{else}{if $user_avatar} ../{$user_avatar} {else} ../templates/default/image/usericon.jpg  {/if}{/if}" width="20" height="20" /></a>
 	    
+	    
 	    {if $COMPANYINFO.name}
 		<a class="name" href="{$COMPANYINFO.space_url}">
 		   {$COMPANYINFO.shop_name}
@@ -40,6 +41,27 @@
 	    <a href="javascript:void(0)" class="setting"><img style="margin-bottom: -6px" style="border: none" src="../templates/default/image/setting-icon_small.png" width="20" height="20" /></a>
 	    <div id="settingbox" style="display: none">
 		<ul>
+		    
+		    {if $pb_userinfo.membertype_id == 1 || $pb_userinfo.membertype_id == 2 || $pb_userinfo.membertype_id == 3}
+                        {if $pb_company}
+                            <li {if $pb_userinfo.current_type == 1 || $pb_userinfo.current_type == 2 || $pb_userinfo.current_type == 3}class="active"{/if}>
+                                <a href="{the_url module=space userid=`$pb_company.cache_spacename` change_current_type=`$pb_userinfo.membertype_id`}">
+                                    {$pb_company.shop_name}
+                                </a>
+                            </li>
+                        {/if}
+                    {/if}
+                    
+		    <!--{loop $pb_userinfo.other_types typeitem typeitem_0 typeitemkey0}-->
+			{if $typeitem.membertype_id == 6}
+                            <li {if $pb_userinfo.current_type == $typeitem.membertype_id}class="active"{/if}>                                
+                                <a href="{the_url module=studypost action=school change_current_type=`$typeitem.membertype_id`}">
+                                    {$pb_userinfo.first_name} {$pb_userinfo.last_name}
+                                </a>
+                            </li>
+                        {/if}
+		    <!--{/loop}-->
+		    
 		    <li><a href="../redirect.php?url=/virtual-office/">{lang my_office_room}</a></li>
 		    <li><a href="../logging.php?action=logout">{lang login_out}</a></li>
 		</ul>		

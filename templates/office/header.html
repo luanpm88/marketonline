@@ -147,18 +147,18 @@
 	    var arr = jQuery.parseJSON(data);
 	    $(arr).each(function(index,value) {
 		//alert(value);
-		if ($('#chat-box-'+value).length>0) {
-		    if ($('#chat-box-'+value).hasClass('hidden')) {
-			getChatbox(value, true);
+		if ($('#chat-box-'+value.id).length>0) {
+		    if ($('#chat-box-'+value.id).hasClass('hidden')) {
+			getChatbox(value.id, true, value.membertype_id);
 		    }
 		    else
 		    {
-			getChatbox(value, false);		       
+			getChatbox(value.id, false, value.membertype_id);		       
 		    }
 		}
 		else
 		{
-		    getChatbox(value, true);
+		    getChatbox(value.id, true, value.membertype_id);
 		}
 	    });
 	});
@@ -272,7 +272,7 @@
     function removeChatbox(uid)
     {
 	$.ajax({
-	    url: "..index.php?do=product&action=removeChatbox&id="+uid,
+	    url: "../index.php?do=product&action=removeChatbox&id="+uid,
 	}).done(function ( data ) {
 	    clearInterval(ichatbox[uid]);
 	});
@@ -375,8 +375,14 @@
 	}
     }
     
-    function postChat(id, content, hash)
+    function postChat(id, content, hash, membertype_id)
     {
+	if(typeof(membertype_id)==='undefined') membertype_id = 0;
+	//membertype_id
+	var type_str = "";
+	if (membertype_id) {
+	    type_str = "&membertypeid="+membertype_id;
+	}
 	
 	if ($.trim(content) == "") {
 	    $('#chat-frame #chat-box-'+id+' textarea').val("");
@@ -398,7 +404,7 @@
 	
 			$.ajax({
 			    type: "POST",
-			    url: "../index.php?do=product&action=postChat",
+			    url: "../index.php?do=product&action=postChat"+type_str,
 			    encoding: "UTF-8",
 			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
 			}).done(function ( data ) {
@@ -413,8 +419,14 @@
 			});
     }
     
-    function getChatbox(uid, hide)
+    function getChatbox(uid, hide, membertype_id)
     {
+	if(typeof(membertype_id)==='undefined') membertype_id = 0;
+	//membertype_id
+	var type_str = "";
+	if (membertype_id) {
+	    type_str = "&membertypeid="+membertype_id;
+	}
 	//show hide chatbox when exsit
 	if ($('#chat-box-'+uid).length>0) {
 	    //alert("exists");
@@ -430,7 +442,7 @@
 	
 	//Load new chatbox
 	$.ajax({
-	    url: "../index.php?do=product&action=getChatbox&id="+uid,
+	    url: "../index.php?do=product&action=getChatbox&id="+uid+type_str,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		//alert(data);
@@ -780,9 +792,9 @@ $(document).ready(function() {
 		    
 		    
 			
-			{if $item != '' && $item != 0}
-			    getChatbox({$item}, true);			    
-			{/if}
+			{if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
+                                getChatbox({$item.userid}, true, {$item.typeid});			    
+                        {/if}
 
 			
 			
@@ -933,7 +945,7 @@ $(document).ready(function() {
 
 </head>
 <body>
-	{if $pb_userinfo.membertype_id == 6}
+	{if $pb_userinfo.current_type == 6}
 		<!--{include file="topmenu_study.html"}-->
 	{else}
 		<!--{include file="topmenu.html"}-->

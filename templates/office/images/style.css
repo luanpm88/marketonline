@@ -3151,3 +3151,18 @@ input[name="other_school"]
     font-size: 16px;
     font-family: Tahoma;
 }
+#settingbox ul li
+{
+    padding: 0;
+}
+#settingbox ul li a
+{
+    padding: 5px 20px;
+    width: 166px;
+    display: block;
+}
+#settingbox ul li:hover a, #settingbox ul li.active a {
+    background: none repeat scroll 0 0 #6DBF7C;
+    color: #FFFFFF !important;
+    text-decoration: none;
+}

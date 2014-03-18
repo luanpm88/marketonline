@@ -773,8 +773,8 @@ function goclicky_custom(meh, url, images, title, summary)
                         {/literal}
                         
                         {loop $chatboxs item level key}
-                            {if $item != '' && $item != 0}
-                                getChatbox({$item}, true);			    
+                            {if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
+                                getChatbox({$item.userid}, true, {$item.typeid});			    
                             {/if}
                         {/loop}
 		    {/if}		
@@ -906,6 +906,40 @@ function goclicky_custom(meh, url, images, title, summary)
                 })
                 
                 $('.title_more_school_button').fancybox();
+                
+                
+                $('.member-pics-album .thumbs .prev').addClass('ihide');
+                $('.member-pics-album .thumbs .prev').click(function() {
+                    var move = 2;
+                    
+                    for(var i = 0; i < move; i++)
+                    {
+                        if (parseInt( $('.thumbs .inner_slider').css("margin-left")) <  -121) {
+                            $('.member-pics-album .thumbs .next').removeClass('ihide');
+                            $('.thumbs .inner_slider').css("margin-left",parseInt( $('.thumbs .inner_slider').css("margin-left"))+122);
+                        }
+                        if (parseInt( $('.thumbs .inner_slider').css("margin-left")) >= -121)
+                        {
+                            $('.member-pics-album .thumbs .prev').addClass('ihide');
+                        }
+                    }
+                });
+                
+                $('.member-pics-album .thumbs .next').click(function() {
+                    var move = 2;
+                    
+                    for(var i = 0; i < move; i++)
+                    {
+                        if ($('.thumbs .inner_slider img').length*122 - 122*3 > -parseInt( $('.thumbs .inner_slider').css("margin-left"))) {
+                            $('.thumbs .inner_slider').css("margin-left",parseInt( $('.thumbs .inner_slider').css("margin-left"))-122);
+                            $('.member-pics-album .thumbs .prev').removeClass('ihide');
+                        }
+                        if ($('.thumbs .inner_slider img').length*122 - 122*3 <= -parseInt( $('.thumbs .inner_slider').css("margin-left")))
+                        {
+                            $('.member-pics-album .thumbs .next').addClass('ihide');
+                        }
+                    }
+                });
 	});
 	
         

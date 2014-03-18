@@ -903,9 +903,9 @@ function goclicky(meh, url)
 		    
 			<!--{loop $chatboxs item level key}-->
 			    
-			    {if $item != '' && $item != 0}
-				getChatbox({$item}, true);			    
-			    {/if}
+			   {if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
+                                getChatbox({$item.userid}, true, {$item.typeid});			    
+                            {/if}
 			    
 			<!--{/loop}-->
 			
@@ -994,6 +994,23 @@ function goclicky(meh, url)
                         adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
                     }
                 })
+		
+
+		    $('#settingouter').hover(
+			function () {
+			    //$('#settingbox').fadeIn();
+			}
+			,
+			function () {
+			    //$('#settingbox').fadeOut();
+			}
+		    );
+		    $('body').click(function(){$('#settingbox').fadeOut()});	
+		    $('#settingouter a.setting').click(function(e){$('#settingbox').toggle();e.stopPropagation();});
+		    
+		    $('body').click(function(){if($('.clicked_note_box').css('display') == 'block') $('.clicked_note_box').fadeOut("slow", refreshClickedCompany('578'))});	
+		    $('.staticon').click(function(e){$('.over_air_box').css("display","none");$('.clicked_note_box').toggle();e.stopPropagation();});
+		    
 		
 	});
 	

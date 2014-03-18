@@ -529,4 +529,6 @@ $welcomnew_info["message"] = str_replace("{shop}","<a href='http://marketonline.
 setvar('welcomnew_info', $welcomnew_info);
 
 setvar("fb_description", strip_tags($COMPANY_CURRENT["description"]));
+
+setvar("theme_name", "../../default");
 ?>

@@ -13,7 +13,7 @@ $conditions = null;
 $indus_array = array();
 $custom_array = array();
 //var_dump($company->info);
-$conditions[] = "Product.status=1 AND Product.company_id='".$COMPANY_CURRENT['id']."'";
+$conditions[] = "Product.status=1 AND Product.company_id='".$COMPANY_CURRENT['id']."' AND Product.show = 1";
 
 if(isset($_POST["keyword"]) && $_POST["keyword"] != "")
 {

@@ -107,6 +107,12 @@ function smarty_function_the_url($params){
 				}
 				break;
 			case "space":
+				if($change_current_type)
+				{					
+					$return = URL."space/?userid=".$userid."&change_current_type=".$change_current_type;
+					break;
+				}
+				
 				if (!class_exists('Space')) {
 					uses("space");
 				}
@@ -258,11 +264,15 @@ function smarty_function_the_url($params){
 					//$return = URL."index.php?do=school";
 					if(!empty($action))
 					{
+						if(!empty($change_current_type))
+						{
+							$change_current_type = "&change_current_type=".$change_current_type;
+						}
 						if(!empty($id))
 						{
 							$id_s = "&id=".$id;
 						}
-						$return = URL."index.php?do=studypost&action=".$action.$id_s;
+						$return = URL."index.php?do=studypost&action=".$action.$id_s.$change_current_type;
 					}
 					else
 					{

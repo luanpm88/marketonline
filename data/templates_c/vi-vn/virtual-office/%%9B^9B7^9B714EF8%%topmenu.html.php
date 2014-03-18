@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 16:42:41
+<?php /* Smarty version 2.6.27, created on 2014-03-17 10:11:26
          compiled from topmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'topmenu.html', 37, false),)), $this); ?>
@@ -32,19 +32,20 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 <?php else: ?><?php if ($this->_tpl_vars['user_avatar']): ?> ../<?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> ../templates/default/image/usericon.jpg  <?php endif; ?><?php endif; ?>" width="20" height="20" /></a>
 	    
+	    
 	    <?php if ($this->_tpl_vars['COMPANYINFO']['name']): ?>
 		<a class="name" href="<?php echo $this->_tpl_vars['COMPANYINFO']['space_url']; ?>
 ">
 		   <?php echo $this->_tpl_vars['COMPANYINFO']['shop_name']; ?>
 
-		</a>
-	    
+		</a>	    
 	    <?php else: ?>
 		<a class="name" href="../redirect.php?url=/virtual-office/">
-		   <?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
+		   <?php if ($this->_tpl_vars['pb_userinfo']['first_name']): ?><?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
  <?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
-
-		</a>
+<?php else: ?><?php echo $this->_tpl_vars['pb_userinfo']['username']; ?>
+<?php endif; ?>
+	    </a>
 	    <?php endif; ?>
 	    
 	    
@@ -59,6 +60,36 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 	    <a href="javascript:void(0)" class="setting"><img style="margin-bottom: -6px" style="border: none" src="../templates/default/image/setting-icon_small.png" width="20" height="20" /></a>
 	    <div id="settingbox" style="display: none">
 		<ul>
+		    
+		    <?php if ($this->_tpl_vars['pb_userinfo']['membertype_id'] == 1 || $this->_tpl_vars['pb_userinfo']['membertype_id'] == 2 || $this->_tpl_vars['pb_userinfo']['membertype_id'] == 3): ?>
+                        <?php if ($this->_tpl_vars['pb_company']): ?>
+                            <li <?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 1 || $this->_tpl_vars['pb_userinfo']['current_type'] == 2 || $this->_tpl_vars['pb_userinfo']['current_type'] == 3): ?>class="active"<?php endif; ?>>
+                                <a href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['pb_company']['cache_spacename']),'change_current_type' => ($this->_tpl_vars['pb_userinfo']['membertype_id'])), $this);?>
+">
+                                    <?php echo $this->_tpl_vars['pb_company']['shop_name']; ?>
+
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    
+		    <?php $_from = $this->_tpl_vars['pb_userinfo']['other_types']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['typeitem_0'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['typeitem_0']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['typeitemkey0'] => $this->_tpl_vars['typeitem']):
+        $this->_foreach['typeitem_0']['iteration']++;
+?>
+			<?php if ($this->_tpl_vars['typeitem']['membertype_id'] == 6): ?>
+                            <li <?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == $this->_tpl_vars['typeitem']['membertype_id']): ?>class="active"<?php endif; ?>>                                
+                                <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','change_current_type' => ($this->_tpl_vars['typeitem']['membertype_id'])), $this);?>
+">
+                                    <?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
+ <?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
+
+                                </a>
+                            </li>
+                        <?php endif; ?>
+		    <?php endforeach; endif; unset($_from); ?>
+		    
 		    <li><a href="../redirect.php?url=/virtual-office/"><?php echo $this->_tpl_vars['_my_office_room']; ?>
 </a></li>
 		    <li><a href="../logging.php?action=logout"><?php echo $this->_tpl_vars['_login_out']; ?>

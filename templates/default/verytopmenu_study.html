@@ -28,7 +28,7 @@
 	
 	<div id="settingouter" style="float:right">
 	    <!--<a href="{if $pb_company}space/?userid={$pb_username}&do={else}redirect.php?url=/virtual-office/{/if}"></a>-->
-	    <a style="padding-left: 0; margin-right: 10px" class="name" href="redirect.php?url=/virtual-office/">
+	    <a style="padding-left: 0; margin-right: 10px" class="name" href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id`}">
 		<img class="avatar" src="{if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="20" height="20" />
 		{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
 	    </a>
@@ -44,16 +44,10 @@
 		</div>
 	    </div>
 	    
-	    <a style="padding-left: 0" class="name" href="{the_url module=studypost action=school}"><img src="{$theme_img_path}image/connect.png" width="20" height="20" />&nbsp;{lang connect_title}</a>
+	    <a style="padding-left: 0" class="name" href="{the_url module=studypost action=school}"><img src="{$theme_img_path}image/school-icon.png" width="20" height="20" />&nbsp;{lang connect_title}</a>
 	    
-	    <a href="javascript:void(0)" class="setting"><img style="border: none" src="templates/default/image/setting-icon_small_w.png" width="20" height="20" /></a>
-	    <div id="settingbox" style="display: none">
-		<ul>
-		    <li><a target="_blank" href="redirect.php?url=/virtual-office/">{lang my_office_room}</a></li>
-		    <li><a href="logging.php?action=logout">{lang login_out}</a></li>
-		</ul>
-		<span class="pointer_topmenu">.</span>
-	    </div>	
+	    <!--{include file="`$theme_name`/_settingbox.html"}-->
+	    
 	</div>
         <!--{else}-->
         <a href="logging.php">{lang pls_login}</a><a href="register.php?typename=Company">{lang register_now}</a>
