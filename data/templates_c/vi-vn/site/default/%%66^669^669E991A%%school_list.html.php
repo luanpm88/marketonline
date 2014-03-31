@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 15:48:41
-         compiled from default%5Cstudypost/index.html */ ?>
+<?php /* Smarty version 2.6.27, created on 2014-03-31 16:55:51
+         compiled from default%5Cstudypost/school_list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/index.html', 65, false),array('modifier', 'truncate', 'default\\studypost/index.html', 68, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school_list.html', 54, false),array('modifier', 'truncate', 'default\\studypost/school_list.html', 68, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['_hr']),'nav_id' => 9)));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -75,9 +75,12 @@ unset($_smarty_tpl_vars);
 	<div id="job-content">
 		<div id="TopStudytypeCategory">
 		      <ul class="list-studytype-cat">
-                                <li rel=""class="active"><a href="javascript:void(0)">Trường</a></li>
-                                <li rel=""><a href="javascript:void(0)">Môn học</a></li>
-                                <li rel=""><a href="javascript:void(0)">Học viên</a></li>
+                                <li rel="" class="active"><a href="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
+">Trường</a></li>
+                                <li rel=""><a href="<?php echo smarty_function_the_url(array('module' => 'studypost','type' => 'group'), $this);?>
+">Môn học</a></li>
+                                <li rel=""><a href="<?php echo smarty_function_the_url(array('module' => 'studypost','type' => 'learner'), $this);?>
+">Học viên</a></li>
 		      </ul>
 		</div>
 		

@@ -205,13 +205,14 @@ class Members extends PbModel {
 			$result['online'] = $this->isOnline($result["id"]);
 			
 			$result['other_types'] = $this->getOtherMembertypes($result["id"]);
+			//echo $result["id"];
 			//var_dump($this->getOtherMembertypes($result["id"]));
 			$is_student = false;
 			foreach($result['other_types'] as $item)
-			{
-				$is_student = true;
+			{				
 				if($item["membertype_id"] == 6)
 				{
+					$is_student = true;
 					break;
 				}
 			}

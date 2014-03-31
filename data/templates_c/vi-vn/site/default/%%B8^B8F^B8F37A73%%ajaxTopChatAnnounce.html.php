@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 09:16:04
+<?php /* Smarty version 2.6.27, created on 2014-03-31 10:02:25
          compiled from default%5Cproduct/ajaxTopChatAnnounce.html */ ?>
 <div id="messagehome">
 
@@ -21,7 +21,8 @@ if ($this->_foreach['level']['total'] > 0):
 ?>
 		<?php if (! $this->_tpl_vars['item']['hide']): ?>
 		    <li onclick="getChatbox(<?php echo $this->_tpl_vars['item']['chatid']; ?>
-, false);" <?php if (! $this->_tpl_vars['item']['read']): ?>class="unread" read="0"<?php endif; ?> chat-id="<?php echo $this->_tpl_vars['item']['id']; ?>
+, false, <?php echo $this->_tpl_vars['item']['chattypeid']; ?>
+);" <?php if (! $this->_tpl_vars['item']['read']): ?>class="unread" read="0"<?php endif; ?> chat-id="<?php echo $this->_tpl_vars['item']['id']; ?>
 " mem="<?php echo $this->_tpl_vars['item']['chatid']; ?>
 ">
 			<img src="<?php echo $this->_tpl_vars['item']['company_logo']; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 11:27:28
+<?php /* Smarty version 2.6.27, created on 2014-03-31 16:50:59
          compiled from default/job/jobsearchbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/job/jobsearchbox.html', 6, false),)), $this); ?>
@@ -20,7 +20,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 				    <?php if ($_GET['do'] != 'studypost'): ?>
 					<form action="<?php if ($_GET['do'] == 'job'): ?><?php echo smarty_function_the_url(array('module' => 'jobs'), $this);?>
 <?php endif; ?><?php if ($_GET['do'] == 'employee'): ?><?php echo smarty_function_the_url(array('module' => 'employees'), $this);?>
-<?php endif; ?>" methos="get">
+<?php endif; ?>" method="get">
 						<input type="hidden" name="do" value="<?php echo $_GET['do']; ?>
 " />
 						<?php if ($_GET['total_count']): ?><input type="hidden" name="total_count" value="<?php echo $_GET['total_count']; ?>
@@ -48,7 +48,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 					</form>
 				    <?php else: ?>
 					<form action="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
-" methos="get">
+" method="get" onsubmit="return checkSelectStudypostType()">
 						<input type="hidden" name="do" value="<?php echo $_GET['do']; ?>
 " />
 						<?php if ($_GET['total_count']): ?><input type="hidden" name="total_count" value="<?php echo $_GET['total_count']; ?>
@@ -57,19 +57,17 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 " /><?php endif; ?>
 						
 						<select name="type">
-						    <option value="school">Chọn: Trường / Môn học / Học viên</option>
-						    <option value="school">Trường</option>
-						    <option value="school">Môn học</option>
-						    <option value="school">Học viên</option>
-						    
+						    <option value="">Chọn: Trường / Môn học / Học viên</option>
+						    <option <?php if ($this->_tpl_vars['type'] == 'school'): ?>selected="selected"<?php endif; ?> value="school">Trường</option>
+						    <option <?php if ($this->_tpl_vars['type'] == 'group'): ?>selected="selected"<?php endif; ?> value="group">Môn học</option>
+						    <option <?php if ($this->_tpl_vars['type'] == 'learner'): ?>selected="selected"<?php endif; ?> value="learner">Học viên</option>						    
 						</select>
 						
 						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="<?php echo $this->_tpl_vars['keyword']; ?>
 "/>
 						
-						
 						<select name="area">
-							<option value="0">Tất cả địa điểm</option>
+							<option value="">Tất cả địa điểm</option>
 							<?php echo $this->_tpl_vars['AreaOptions']; ?>
 
 						</select>

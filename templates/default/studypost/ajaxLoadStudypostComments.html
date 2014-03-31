@@ -22,6 +22,7 @@
                             <h2>{$comment.member.first_name} {$comment.member.last_name}</h2>
                             
                             <!--{if $comment.star > 0}-->
+                            <div class="starshover">
                                 <div class="stars">
                                     <span class="star{if $comment.star >= 1} light{/if}" rel="1"></span>
                                     <span class="star{if $comment.star >= 2} light{/if}" rel="2"></span>
@@ -35,6 +36,8 @@
                                     <span class="star{if $comment.star >= 10} light{/if}" rel="10"></span>
                                     <span class="result" value="0"></span>                            
                                 </div>
+                                <div class="over_points">{$comment.star}</div>
+                            </div>
                             <!--{/if}-->
                             
                             <div class="comment_content">

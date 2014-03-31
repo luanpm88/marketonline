@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 08:41:27
+<?php /* Smarty version 2.6.27, created on 2014-03-31 15:55:56
          compiled from default/studypost/_main_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 539, false),array('function', 'formhash', 'default/studypost/_main_content.html', 540, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 542, false),array('function', 'formhash', 'default/studypost/_main_content.html', 543, false),)), $this); ?>
 <?php echo '
 <script type="application/x-javascript">
     
@@ -16,6 +16,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
             });
             
             $(\'.studypost-content-placeholder\').show();
+            
+            setTimeout(function(){$("#studypost-content_ifr").contents().find("body").html("")},0);
         }
         else
         {
@@ -179,7 +181,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
     
     function postStudypost(form)
     {
-        
         var editor = tinymce.get(form.find(\'textarea\').attr("id"));
         form.find(\'textarea\').val(editor.getContent());
         
@@ -216,40 +217,47 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
         });  
     }
     
-        function inserEditorFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
-		$(\'#uploadIVbutton\').attr(\'value\',\'Tải ảnh/video\');
-		if (image) {
-			currentEditor.execCommand(\'mceInsertContent\', false, "<img width=\'100%\' src=\''; ?>
+    function inserEditorFile(url, image) {
+        $(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+        $(\'#uploadIVbutton\').attr(\'value\',\'Tải ảnh/video\');
+        if (image) {
+            currentEditor.execCommand(\'mceInsertContent\', false, "<p><img width=\'100%\' src=\''; ?>
 <?php echo $this->_tpl_vars['WebRootUrl']; ?>
-<?php echo 'attachment/"+url+"\' />");
-                        currentEditor.execCommand(\'mceAutoResize\');
-		}
-		else
-		{
-			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
-			currentEditor.execCommand(\'mceInsertContent\', false, \'<video controls width="640" height="360">\'
-										+\'<source src="'; ?>
+<?php echo 'attachment/"+url+"\' /></p><p></p>");
+            currentEditor.focus();
+            
+            currentEditor.execCommand(\'mceAutoResize\');
+        }
+        else
+        {
+            alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+            currentEditor.execCommand(\'mceInsertContent\', false, \'<video controls width="640" height="360">\'
+                                        +\'<source src="'; ?>
 <?php echo $this->_tpl_vars['WebRootUrl']; ?>
 <?php echo 'attachment/\'+url+\'" type="video/mp4" />\'
-										+\'Your browser does not support the video tag.</video>\');
-		}		
-	}
+                                        +\'Your browser does not support the video tag.</video>\');
+            currentEditor.execCommand(\'mceAutoResize\');
+        }
+        
+        //move to last line
+        currentEditor.selection.select(currentEditor.getBody(), true); // ed is the editor instance
+        currentEditor.selection.collapse(false);
+    }
 	
-	function checkUploadEditorInput() {
-		//code
-		if($(\'#uploadEditorFile\').val() == \'\')
-		{
-			$(\'#uploadEditorFile\').css(\'border\', \'solid 1px red\');
-			return false;
-		} else
-		{
-			$(\'#uploadEditorFile\').css(\'border\', \'none\');
-			$(\'#uploadIVbutton\').attr(\'disabled\',\'disabled\');
-			$(\'#uploadIVbutton\').attr(\'value\',\'Đang tải...\');
-			return true;
-		}
-	}
+    function checkUploadEditorInput() {
+        //code
+        if($(\'#uploadEditorFile\').val() == \'\')
+        {
+            $(\'#uploadEditorFile\').css(\'border\', \'solid 1px red\');
+            return false;
+        } else
+        {
+            $(\'#uploadEditorFile\').css(\'border\', \'none\');
+            $(\'#uploadIVbutton\').attr(\'disabled\',\'disabled\');
+            $(\'#uploadIVbutton\').attr(\'value\',\'Đang tải...\');
+            return true;
+        }
+    }
     
     function countWord(string) {
         if (string == \'\') {
@@ -350,9 +358,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                             });
                             ed.on(\'focus\', function(e) {
                                 var content = ed.getContent();
-                                //if (content == TEXTAREA_STR) {
-                                //    ed.setContent("");                                 
-                                //}
                                 hidePlaceHolder(ed);
                                 onChangeEditor(ed, main);
                                 if(main) $("#studypost-content_ifr").contents().find("body").addClass("pdb20");
@@ -360,18 +365,14 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                                 if(main) hideEditStudypostForm();
                             });
                             ed.on(\'blur\', function(e) {
-                                //alert(ed.getContent());
                                 var content = ed.getContent();
-                                //if ($.trim(content) == \'\') {
-                                //    ed.setContent(TEXTAREA_STR);                                    
-                                //}
                                 showPlaceHolder(ed);
                                 onChangeEditor(ed, main);
                             });
                         },
                         
                 entity_encoding : "raw",
-                //autoresize_bottom_margin : 1,
+                autoresize_bottom_margin : 1,
                 content_css : "'; ?>
 <?php echo $this->_tpl_vars['theme_img_path']; ?>
 <?php echo 'css/editorcontent.css"
@@ -417,6 +418,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
             }
             var editor = tinymce.get($(this).parent().parent().find("textarea").attr("id"));
             editor.focus();
+            $(\'.studypost-content-placeholder\').css("top", $(\'.mce-edit-area\').offset().top+7);
+            $(\'.studypost-content-placeholder\').css("left", $(\'.mce-edit-area\').offset().left+6);
         });
         
         $(\'.facelike_postform .send-button.active\').live(\'click\', function() {
@@ -512,7 +515,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
         });
         
         $(\'.studypost_box\').live("mouseover",function() {
-            checkStatsEditor($(this).find(\'.stats_content textarea\'));
+            checkStatsEditor($(this).find(\'.stats_content .editor textarea\'));
         });
         
         $(\'.comment_item .commentbox_delete_but\').live("click", function() {            
@@ -597,6 +600,7 @@ _" />
                                     
                                 </div>
                                 <br style="clear: both" />
+                                <p class="line-gray">.</p>
                             <?php endif; ?>
                             
                             <div id="studypost-main-content"></div>

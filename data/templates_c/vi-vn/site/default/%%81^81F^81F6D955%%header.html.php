@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-28 15:09:35
+<?php /* Smarty version 2.6.27, created on 2014-03-31 16:00:24
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1075, false),array('function', 'formhash', 'default/header.html', 1159, false),array('modifier', 'default', 'default/header.html', 1170, false),array('modifier', 'date_format', 'default/header.html', 1184, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1078, false),array('function', 'formhash', 'default/header.html', 1162, false),array('modifier', 'default', 'default/header.html', 1173, false),array('modifier', 'date_format', 'default/header.html', 1187, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -908,9 +908,12 @@ if ($this->_foreach['level']['total'] > 0):
                    
 		});
                 
-                //$(\'.img_item\').hover();
-		
-		
+                //$(\'.img_item\').hover();		
+		$(\'.banner-school-info\').css("margin-top", -($(\'.banner-school-info\').height()+32));
+                if (!$(\'.inner_slider .img_item img\').length)
+                {
+                    $(\'.member-left-bottom\').addClass("small");
+                }
 	});
 	
         
@@ -1488,4 +1491,4 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
                             
                          </div>
         </div>
-</div>
+</div>

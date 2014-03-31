@@ -276,7 +276,14 @@ function smarty_function_the_url($params){
 					}
 					else
 					{
-						$return = URL."index.php?do=studypost";
+						if(!empty($type))
+						{
+							$return = URL."index.php?do=studypost&type=".$type;
+						}
+						else
+						{
+							$return = URL."index.php?do=studypost";
+						}
 					}
 				//}
 				break;

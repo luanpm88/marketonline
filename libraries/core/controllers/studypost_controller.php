@@ -25,10 +25,33 @@ class Studypost extends PbController {
 
 	function index()
 	{
-		setvar("school_list", $school_list = $this->school->getList());
+		if(isset($_GET["type"]))
+		{
+			$type = $_GET["type"];			
+		}
+		else
+		{
+			$type = "school";
+		}
+		setvar("type",$type);		
 		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
 		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
-		render("studypost/index");
+		
+		if($type == "school")
+		{
+			$conditions = array();
+			
+			if(isset($_GET["keyword"]))
+			{
+				$conditions = "lower(School.name) LIKE '%".$_GET["keyword"]."%'";
+				
+				setvar("keyword",$_GET["keyword"]);
+			}
+			
+			$school_list = $this->school->getList($conditions);
+			setvar("school_list", $school_list);
+			render("studypost/school_list");
+		}
 	}
 	
 	function school()
@@ -177,7 +200,9 @@ class Studypost extends PbController {
 
 				$this->studypost->save($item, "update", intval($item["id"]));
 				
-				echo $item["content"];
+				$studypost = $this->studypost->read("*",intval($item["id"]));
+				
+				echo $studypost["content"];
 			}
 		}
 	}
@@ -212,7 +237,11 @@ class Studypost extends PbController {
 		{
 			if($_GET["type"] == "school")
 			{
-				$conditions[] = "school_id = ".$user["school_id"];
+				if(!isset($_GET["id"]))
+				{
+					$_GET["id"] = $user["school_id"];
+				}
+				$conditions[] = "school_id = ".$_GET["id"];
 			}
 			else if($_GET["type"] == "group" && isset($_GET["id"]))
 			{

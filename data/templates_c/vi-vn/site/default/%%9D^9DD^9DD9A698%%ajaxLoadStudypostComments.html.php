@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-26 09:26:04
+<?php /* Smarty version 2.6.27, created on 2014-03-31 11:57:13
          compiled from default%5Cstudypost/ajaxLoadStudypostComments.html */ ?>
                     <?php if ($this->_tpl_vars['more']): ?>
                         <div class="comment_item view_morecomment">
@@ -32,6 +32,7 @@ if ($this->_foreach['level_comment']['total'] > 0):
 </h2>
                             
                             <?php if ($this->_tpl_vars['comment']['star'] > 0): ?>
+                            <div class="starshover">
                                 <div class="stars">
                                     <span class="star<?php if ($this->_tpl_vars['comment']['star'] >= 1): ?> light<?php endif; ?>" rel="1"></span>
                                     <span class="star<?php if ($this->_tpl_vars['comment']['star'] >= 2): ?> light<?php endif; ?>" rel="2"></span>
@@ -45,6 +46,9 @@ if ($this->_foreach['level_comment']['total'] > 0):
                                     <span class="star<?php if ($this->_tpl_vars['comment']['star'] >= 10): ?> light<?php endif; ?>" rel="10"></span>
                                     <span class="result" value="0"></span>                            
                                 </div>
+                                <div class="over_points"><?php echo $this->_tpl_vars['comment']['star']; ?>
+</div>
+                            </div>
                             <?php endif; ?>
                             
                             <div class="comment_content">

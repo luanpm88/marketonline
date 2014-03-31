@@ -798,9 +798,12 @@ function goclicky_custom(meh, url, images, title, summary)
                    
 		});
                 
-                //$('.img_item').hover();
-		
-		
+                //$('.img_item').hover();		
+		$('.banner-school-info').css("margin-top", -($('.banner-school-info').height()+32));
+                if (!$('.inner_slider .img_item img').length)
+                {
+                    $('.member-left-bottom').addClass("small");
+                }
 	});
 	
         

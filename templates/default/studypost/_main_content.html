@@ -12,6 +12,8 @@
             });
             
             $('.studypost-content-placeholder').show();
+            
+            setTimeout(function(){$("#studypost-content_ifr").contents().find("body").html("")},0);
         }
         else
         {
@@ -175,7 +177,6 @@
     
     function postStudypost(form)
     {
-        
         var editor = tinymce.get(form.find('textarea').attr("id"));
         form.find('textarea').val(editor.getContent());
         
@@ -212,36 +213,43 @@
         });  
     }
     
-        function inserEditorFile(url, image) {
-		$('#uploadIVbutton').attr('disabled','');
-		$('#uploadIVbutton').attr('value','Tải ảnh/video');
-		if (image) {
-			currentEditor.execCommand('mceInsertContent', false, "<img width='100%' src='<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"' />");
-                        currentEditor.execCommand('mceAutoResize');
-		}
-		else
-		{
-			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
-			currentEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
-										+'<source src="<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/'+url+'" type="video/mp4" />'
-										+'Your browser does not support the video tag.</video>');
-		}		
-	}
+    function inserEditorFile(url, image) {
+        $('#uploadIVbutton').attr('disabled','');
+        $('#uploadIVbutton').attr('value','Tải ảnh/video');
+        if (image) {
+            currentEditor.execCommand('mceInsertContent', false, "<p><img width='100%' src='<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"' /></p><p></p>");
+            currentEditor.focus();
+            
+            currentEditor.execCommand('mceAutoResize');
+        }
+        else
+        {
+            alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+            currentEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+                                        +'<source src="<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/'+url+'" type="video/mp4" />'
+                                        +'Your browser does not support the video tag.</video>');
+            currentEditor.execCommand('mceAutoResize');
+        }
+        
+        //move to last line
+        currentEditor.selection.select(currentEditor.getBody(), true); // ed is the editor instance
+        currentEditor.selection.collapse(false);
+    }
 	
-	function checkUploadEditorInput() {
-		//code
-		if($('#uploadEditorFile').val() == '')
-		{
-			$('#uploadEditorFile').css('border', 'solid 1px red');
-			return false;
-		} else
-		{
-			$('#uploadEditorFile').css('border', 'none');
-			$('#uploadIVbutton').attr('disabled','disabled');
-			$('#uploadIVbutton').attr('value','Đang tải...');
-			return true;
-		}
-	}
+    function checkUploadEditorInput() {
+        //code
+        if($('#uploadEditorFile').val() == '')
+        {
+            $('#uploadEditorFile').css('border', 'solid 1px red');
+            return false;
+        } else
+        {
+            $('#uploadEditorFile').css('border', 'none');
+            $('#uploadIVbutton').attr('disabled','disabled');
+            $('#uploadIVbutton').attr('value','Đang tải...');
+            return true;
+        }
+    }
     
     function countWord(string) {
         if (string == '') {
@@ -342,9 +350,6 @@
                             });
                             ed.on('focus', function(e) {
                                 var content = ed.getContent();
-                                //if (content == TEXTAREA_STR) {
-                                //    ed.setContent("");                                 
-                                //}
                                 hidePlaceHolder(ed);
                                 onChangeEditor(ed, main);
                                 if(main) $("#studypost-content_ifr").contents().find("body").addClass("pdb20");
@@ -352,18 +357,14 @@
                                 if(main) hideEditStudypostForm();
                             });
                             ed.on('blur', function(e) {
-                                //alert(ed.getContent());
                                 var content = ed.getContent();
-                                //if ($.trim(content) == '') {
-                                //    ed.setContent(TEXTAREA_STR);                                    
-                                //}
                                 showPlaceHolder(ed);
                                 onChangeEditor(ed, main);
                             });
                         },
                         
                 entity_encoding : "raw",
-                //autoresize_bottom_margin : 1,
+                autoresize_bottom_margin : 1,
                 content_css : "<!--{/literal}-->{$theme_img_path}<!--{literal}-->css/editorcontent.css"
 
         });
@@ -401,6 +402,8 @@
             }
             var editor = tinymce.get($(this).parent().parent().find("textarea").attr("id"));
             editor.focus();
+            $('.studypost-content-placeholder').css("top", $('.mce-edit-area').offset().top+7);
+            $('.studypost-content-placeholder').css("left", $('.mce-edit-area').offset().left+6);
         });
         
         $('.facelike_postform .send-button.active').live('click', function() {
@@ -496,7 +499,7 @@
         });
         
         $('.studypost_box').live("mouseover",function() {
-            checkStatsEditor($(this).find('.stats_content textarea'));
+            checkStatsEditor($(this).find('.stats_content .editor textarea'));
         });
         
         $('.comment_item .commentbox_delete_but').live("click", function() {            
@@ -573,6 +576,7 @@
                                     
                                 </div>
                                 <br style="clear: both" />
+                                <p class="line-gray">.</p>
                             {/if}
                             
                             <div id="studypost-main-content"></div>

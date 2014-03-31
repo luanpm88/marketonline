@@ -100,12 +100,12 @@ class Schools extends PbModel {
 		return $school;
 	}
 	
-	function getList()
+	function getList($conditions = null)
 	{
 		uses("memberfield");
 		$memberfield = new Memberfields();
 		
-		$school_list = $this->findAll("*", null, null, "created DESC");
+		$school_list = $this->findAll("*", null, $conditions, "created DESC");
 		foreach($school_list as $key => $item)
 		{
 			$school_list[$key]["logo"] = pb_get_attachmenturl($item['logo'], '', 'small');

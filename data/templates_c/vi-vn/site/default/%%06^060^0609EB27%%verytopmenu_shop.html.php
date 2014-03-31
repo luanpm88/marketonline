@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-24 09:42:10
+<?php /* Smarty version 2.6.27, created on 2014-03-31 10:02:21
          compiled from default/verytopmenu_shop.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_shop.html', 8, false),array('function', 'the_url', 'default/verytopmenu_shop.html', 31, false),)), $this); ?>

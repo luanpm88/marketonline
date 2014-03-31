@@ -1,3 +1,13 @@
+	function checkSelectStudypostType() {
+	    var type = $('#job-learn select[name=type]').val();
+	    
+	    if (type == '') {
+		alert("Bạn phải chọn: Trường / Môn học / Học viên");
+		return false;
+	    }
+	    return true;
+	}
+	
 	function loadStudygrouppicComment(box)
 	{
 		box.addClass('cloading');

@@ -7,7 +7,7 @@
     
     $(document).ready(function() {
         
-        $(window).scrollTop(148);
+        $(window).scrollTop(150);
     
     });
 
@@ -100,7 +100,8 @@
                         
                         
                         <div class="banner-school-info banner-group-info">
-                            <h2>{$group.subject_name} ({$group.school_name})</h2>
+                            <h2>{$group.subject_name}</h2>
+                            <h3>{$group.school_name}</h3>
                             {if $school.address}<p>{$school.address}</p>{/if}
                             {if $school.phone}<p><label>Điện thoại:</label> {$school.phone}</p>{/if}
                             {if $school.email}<p><label>Email:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}

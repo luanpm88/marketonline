@@ -7376,7 +7376,6 @@ ul.products li.product .price .amount
     height: 50px;
     padding: 5px;
     position: absolute;
-    top: 333px;
     background: url("../image/banner-bg.png") repeat-x scroll left 0 rgba(0, 0, 0, 0);
     width: 924px;
 }
@@ -7418,20 +7417,13 @@ ul.products li.product .price .amount
     margin-top: -1px;
     display: block;
 }
-.banner-group-info
-{
-    height: auto;
-    top: 301px;
-    padding-bottom: 0;
-    height: 82px;
-}
-.banner-group-info h2
-{
-    color: #fff;
-    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
-    margin-bottom: 5px;
-    text-transform: uppercase;
+
+.banner-group-info h2 {
+    color: #FFFFFF;
     font-weight: bold;
+    margin-bottom: 1px;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
 }
 .group_item h5 {
     color: #333333;
@@ -7478,10 +7470,10 @@ ul.products li.product .price .amount
     display: block;
     float: right;
     font-size: 14px;
-    height: 20px;
+    height: 25px;
     line-height: 20px;
     margin-left: 12px;
-    padding: 0 10px;
+    padding: 3px 10px;
 }
 .title_more_school_button, .title_more_group_button
 {
@@ -7884,14 +7876,15 @@ span.join_group:hover {
     display: block;
 }
 .upload_studymemberpagepics a.but {
-    background: none repeat scroll 0 0 #3B984C;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.4);
-    color: #FFFFFF;
+    color: #333333;
     float: right;
     font-size: 14px;
     margin-right: 10px;
     margin-top: -50px;
-    padding: 10px 20px;
+    padding: 2px 20px;
     position: relative;
 }
 .upload_studymemberpagepics a.but:hover {
@@ -8027,29 +8020,30 @@ span.join_group:hover {
     width: auto;
 }
 .changestudyava {
-    background: none repeat scroll 0 0 #3B984C;
-    color: #FFFFFF;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #333333;
+    display: none;
     margin-left: 18px;
     margin-top: 130px;
-    padding: 5px 10px;
+    padding: 2px 10px 4px;
     position: absolute;
-    display: none;
 }
 .changestudyava:hover {
-    color: #fff;
     opacity: 0.9;
 }
 .out_studyava:hover .changestudyava {
     display: block;
 }
 .changesschoollogo, .changesgrouplogo {
-    background: none repeat scroll 0 0 #3B984C;
-    color: #FFFFFF;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    color: #333333;
+    display: none;
     margin-left: 84px;
     margin-top: 159px;
-    padding: 5px 10px;
+    padding: 2px 10px 4px;
     position: absolute;
-    display: none;
 }
 .changesgrouplogo {
     margin-left: 22px;
@@ -8057,7 +8051,6 @@ span.join_group:hover {
 }
 .changesschoollogo:hover, .changesgrouplogo:hover {
     opacity: 0.9;
-    color: #fff;
 }
 .logo_out_hover:hover .changesschoollogo, .logo_out_hover:hover .changesgrouplogo {
     display: block;
@@ -8215,10 +8208,14 @@ span.join_group:hover {
     border: 1px solid #AAAAAA;
     display: block;
     float: none;
-    height: 222px;
+    height: 219px;
     margin-top: 40px;
     padding: 10px;
     width: 626px;
+}
+.member-left-bottom.small
+{
+    height: 97px;
 }
 .stats_content img
 {
@@ -8241,4 +8238,127 @@ span.join_group:hover {
 #facelike_col1 .group_list li.active
 {
     display: none;
+}
+.over_points {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    display: block;
+    height: 20px;
+    margin: -18px 0 0 176px;
+    padding: 0 3px;
+    position: absolute;
+    text-align: center;
+    display: none;
+}
+.starshover:hover .over_points
+{
+    display: block;
+}
+.stats_content .actions {
+    background: none repeat scroll 0 0 #EEEEEE;
+    height: 24px;
+    margin-top: -5px;
+    padding-right: 0px;
+    padding-top: 1px;
+}
+.stats_content .actions .send-button {
+    background: none repeat scroll 0 0 #CCCCCC;
+    border: 0 solid #CCCCCC;
+    color: #555555;
+    float: right;
+    font-size: 12px;
+    padding: 2px 10px;
+    height: 22px;
+}
+#facelike_col1 {
+    border-right: 1px solid #FFFFFF;
+}
+#facelike_col2 {
+    border-left: 1px solid #FFFFFF;
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.studypost_box {
+    background: none repeat scroll 0 0 #F0F6F2;
+    padding: 10px 10px 0;
+    border-bottom: 0 none;
+}
+#facelike_col2 .facelike_content
+{
+    padding: 0;
+}
+.stats_content textarea {
+    width: 529px;
+    max-width: 529px;
+    min-width: 529px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.facelike_postform {
+    background: none repeat scroll 0 0 #F0F6F2;
+    border-bottom: 0 none;
+    padding: 10px 10px 0;
+}
+.line-gray {
+    border-bottom: 1px solid #EEEEEE;
+    height: 18px;
+    text-indent: -4000px;
+}
+.studypost_form .bottom-control
+{
+    background: #D8EADA;
+}
+.stats_content .actions {
+    background: none repeat scroll 0 0 #D8EADA;
+}
+.col2-bottom-left
+{
+    min-height: 1px;
+}
+.studypost_box .box_content .inner-content p, .studypost_box .comment_item .comment_content
+{
+    font-size: 14px;
+    line-height: 20px;
+}
+.show-editor-button
+{
+    font-size: 14px;
+}
+.add-image-button
+{
+    font-size: 14px;
+}
+.banner-group-info h3 {
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    margin-top: 0;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+}
+.banner-school-info {
+    background: url("../image/banner-bg.png") repeat-x scroll left 0 rgba(0, 0, 0, 0);
+}
+.banner-school-info p {
+    line-height: 14px;
+}
+#studypost-content_ifr, #edit-studypost-content_ifr
+{
+    overflow-y: scroll;
+    max-height: 500px;
+}
+.banner-school-info {
+    display: block;
+    float: left;
+    height: auto;
+    padding-bottom: 6px;
+}
+.school_banners
+{
+    height: 351px;
+}
+.inner-content img
+{
+    margin-top: 5px;
 }
