@@ -31,11 +31,17 @@
             <div class="member-right">
                 <div class="member-pics-album">
                     <div class="main">
-                        <img class="avatar" src="{$pb_userinfo.studypics.main}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$pb_userinfo.studypics.main_key})" />
-                        {if $pb_userid == $member.id}<a href="{the_url module=studypost action=del_studypic id=`$pb_userinfo.studypics.main_value`}" class="del_main_pic" rel="{$item.value}">x</a>{/if}
+                        {if $pb_userid == $member.id && $member.studypics.main.id}
+                            <a onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_studypic id=`$member.studypics.main.id`}" class="del_main_pic" rel="{$member.studypics.main.id}">x</a>
+                        {/if}
+                        
+                        
+                            <img class="avatar" src="{$member.studypics.main.name_medium}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$member.studypics.main.id})" />
+
+                        
                         {if $pb_userid == $member.id}
                             <div class="upload_studymemberpagepics">
-                                <a class="but" href="javascript::void(0)" onclick="$('#uploadpics-but').trigger('click')">+ Tai anh</a>
+                                <a class="but" href="javascript::void(0)" onclick="$('#uploadpics-but').trigger('click')">+ Tải ảnh</a>
                             </div>
                             <div id="upload_logo" class="hide">
                                 <div class="upload_logo">                                    
@@ -44,7 +50,7 @@
                                       <!-- {formhash} -->
                                     
                                     
-                                      <p><input type="file" name="upload_picture" id="uploadpics-but" onchange="$('#uploadpics_form').submit()" /></p>
+                                      <p><input accept="image/*" type="file" name="upload_picture" id="uploadpics-but" onchange="$('#uploadpics_form').submit()" /></p>
                                       
                                       
                                       <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
@@ -54,16 +60,17 @@
                         {/if}
                     </div>
                     
-                    {if $pb_userinfo.studypics.thumbs}
+                    {if $member.studypics.thumbs}
                         <div class="thumbs">
                             <span class="nav next">></span>
                             <span class="nav prev"><</span>
                             <div class="inner_slider">
-                                <!--{loop $pb_userinfo.studypics.thumbs item level key}-->
-                                    <div class="img_item">
-                                        <img class="avatar" src="{$item.image}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$key})" />
-                                        {if $pb_userid == $member.id}<a class="del_pic" rel="{$item.value}" href="{the_url module=studypost action=del_studypic id=`$item.value`}">x</a>{/if}
+                                <!--{loop $member.studypics.thumbs item level key}-->
+                                    <span class="img_item_out"><div class="img_item">
+                                        <img class="avatar" src="{$item.name_small}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$item.id})" />                                        
                                     </div>
+                                    {if $pb_userid == $member.id}<a onclick="return confirm('Bạn có chắc muốn xóa hình này!')" class="del_pic" rel="{$item.id}" href="{the_url module=studypost action=del_studypic id=`$item.id`}">x</a>{/if}
+                                    </span>
                                 <!--{/loop}-->
                             </div>
                             
@@ -75,21 +82,41 @@
                 
                 {if $friend_request}
                     <div class="friend_requests">
-                        <strong>{$member.first_name} {$member.last_name}</strong> muon ket ban voi ban
-                        <a href="{the_url module=studypost action=acceptFriend id=`$member.id`}">Dong y</a>
-                        <a href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Tu choi</a>
+                        <strong>{$member.first_name} {$member.last_name}</strong> muốn kết bạn với bạn
+                        <a href="{the_url module=studypost action=acceptFriend id=`$member.id`}">Đồng ý</a>
+                        <a href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Từ chối</a>
                     </div>
                 {/if}
                 
                 <div class="member-left-top">
-                    <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}"/>
+                    {if $pb_userid == $member.id}
+                        <iframe name="upload" id="upload" style="display: none"></iframe>
+                        <form style="display: none" name="productaddfrm" id="Frm2_logo" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_logo_home" enctype="multipart/form-data">
+                          <!-- {formhash} -->
+                          <input type="hidden" name="uri" value="{$FURI}" />
+                        
+                          <p><input type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+                          
+                        </form>
+                    {/if}
+                    
+                    <div class="out_studyava">
+                        {if $pb_userid == $member.id}
+                            <a class="changestudyava" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">Thay hình đại diện</a>
+                        {/if}
+                        
+                        <a href="{the_url module=studypost action=memberpage id=`$member.id`}">
+                            <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}"/>
+                        </a>
+                    </div>
+                    
                     <h4>{$member.first_name} {$member.last_name}</h4>
-                    {if $member.school_name}<p class="school"><label>Trường </label>: {$member.school_name}</p>{/if}
-                    {if $member.class}<p><label>Lớp </label>: {$member.class}</p>{/if}
-                    {if $member.gender}<p><label>Giới tính </label>: {if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
-                    {if $member.address}<p><label>Địa chỉ </label>: {$member.address}</p>{/if}
-                    {if $member.mobile}<p><label>Điện thoại </label>: {$member.mobile}</p>{/if}
-                    {if $member.email}<p><label>Email </label>: {$member.email}</p>{/if}
+                    {if $member.school_name}<p class="school"><label>Trường </label>:&nbsp; {$member.school_name}</p>{/if}
+                    {if $member.class}<p><label>Lớp </label>:&nbsp; {$member.class}</p>{/if}
+                    {if $member.gender}<p><label>Giới tính </label>:&nbsp; {if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
+                    {if $member.address}<p><label>Địa chỉ </label>:&nbsp; {$member.address}</p>{/if}
+                    {if $member.mobile}<p><label>Điện thoại </label>:&nbsp; {$member.mobile}</p>{/if}
+                    {if $member.email}<p><label>Email </label>:&nbsp; {$member.email}</p>{/if}
                 </div>
                 <div class="controls">
                     
@@ -108,32 +135,39 @@
                                 {/if}                                
                         <!--{/if}-->
                     {elseif $is_friend}
-                        <a class="" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Huy kết bạn</a>
+                        <a class="" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Hủy kết bạn</a>
                     {/if}
                     
                     
-                    
-                    <!--{if $pb_username!=""}-->
-                        <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false, '6')" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
-                    <!--{else}-->
-                        <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Tin nhắn</a>
-                    <!--{/if}-->
-                    
-                    
-                    <!--{if $pb_username!=""}-->
-                            {if !$Followed}
-                                    <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang follow}</a>
-                            {else}
-                                    <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang followed}</a>
-                            {/if}
-                    <!--{else}-->
-                            {if !$Followed}
-                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
-                            {else}
-                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
-                            {/if}                                
-                    <!--{/if}-->                
-                </div>
+                    {if $pb_userid != $member.id}
+                        <!--{if $pb_username!=""}-->
+                            <a href="javascript::void(0)" onclick="getChatbox({$member.id}, false, '6')" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
+                        <!--{else}-->
+                            <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Tin nhắn</a>
+                        <!--{/if}-->
+                        
+                        
+                        <!--{if $pb_username!=""}-->
+                                {if !$Followed}
+                                        <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang follow}</a>
+                                {else}
+                                        <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang followed}</a>
+                                {/if}
+                        <!--{else}-->
+                                {if !$Followed}
+                                    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
+                                {else}
+                                    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
+                                {/if}                                
+                        <!--{/if}-->
+                    {/if}
+                
+                </div>                
+                
+                <div class="member-left-bottom">
+                    <h2>Tự giới thiệu</h2>
+                </div>                
+                
             </div>
             
             <br style="clear: both" />
@@ -150,6 +184,7 @@
             
             <div id="facelike_col2">
                 <div class="col2-top">
+                    
                     
                     
                 </div>

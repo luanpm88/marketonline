@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 15:52:41
+<?php /* Smarty version 2.6.27, created on 2014-03-25 11:10:53
          compiled from personal.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 276, false),array('function', 'html_radios', 'personal.html', 322, false),array('modifier', 'default', 'personal.html', 538, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 276, false),array('function', 'html_radios', 'personal.html', 322, false),array('modifier', 'default', 'personal.html', 542, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_profile'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
@@ -423,18 +423,17 @@ images/offer_01.gif" /></div>
 		
 		
 		
-		<?php if ($this->_tpl_vars['membertype_id'] == 6): ?>
+		<?php if ($this->_tpl_vars['membertype_id'] == 6 || $this->_tpl_vars['pb_userinfo']['is_student']): ?>
 		
 				<br style="clear: both" />		
-				<h3>Thông tin học tập</h3>
+				<h2 class="studyh2">Thông tin học tập</h2>
 				<span class="top-table">.</span>
 				<table class="offer_info_content">
 			      
 				        <tr>
 						<th>Trường<font color="#FF6600">*</font></th>
-						<td>
-							<input type="checkbox" name="other_school" /> Không có trong danh sách (tạo mới trường)
-							<br />
+						<td>							
+						
 							<span class="school_name">
 								<span class="select_box">
 									<select name="memberfield[school_id]" id="school_select">
@@ -448,38 +447,39 @@ if ($this->_foreach['level_0']['total'] > 0):
 </option>
 										<?php endforeach; endif; unset($_from); ?>
 									</select>
+									<br />
 								</span>
 								<div class="new_school_form">
 									<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
 									<input placeholder="Địa chỉ" type="text" size="30" name="other_school_addres" />
-									<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
+									<!--<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
 									<input placeholder="Email" type="text" size="30" name="other_school_email" />
-									<input placeholder="Website" type="text" size="30" name="other_school_website" />
-									<br />Logo trường:<br /><input type="file" size="30" name="other_school_logo" />
-									<br />Hình ảnh giới thiệu:<br /><input type="file" size="30" name="other_school_banner" />
+									<input placeholder="Website" type="text" size="30" name="other_school_website" />-->
+									<!--<br />Logo trường:<br /><input type="file" size="30" name="other_school_logo" />
+									<br />Hình ảnh giới thiệu:<br /><input type="file" size="30" name="other_school_banner" />-->
 								</div>
 							</span>
-							
+							<input type="checkbox" name="other_school" /> Thêm tên trường của bạn (nếu không có trong danh sách)
 						</td>
 					</tr>
 					<tr>
 						<th>Khoa</th>
 						<td>
-							<input size="30" name="memberfield[department]" type="text" id="memberskype" value="<?php echo $this->_tpl_vars['item']['skype']; ?>
+							<input size="30" name="memberfield[department]" type="text" id="memberskype" value="<?php echo $this->_tpl_vars['item']['department']; ?>
 ">
 						</td>
 					</tr>
 					<tr>
 						<th>Lớp</th>
 						<td>
-							<input size="30" name="memberfield[class]" type="text" id="memberskype" value="<?php echo $this->_tpl_vars['item']['skype']; ?>
+							<input size="30" name="memberfield[class]" type="text" id="memberskype" value="<?php echo $this->_tpl_vars['item']['class']; ?>
 ">
 						</td>
 					</tr>
 					<tr>
 						<th>Mã số sinh viên</th>
 						<td>
-							<input size="30" name="memberfield[mssv]" type="text" id="memberskype" value="<?php echo $this->_tpl_vars['item']['skype']; ?>
+							<input size="30" name="memberfield[mssv]" type="text" id="memberskype" value="<?php echo $this->_tpl_vars['item']['mssv']; ?>
 ">
 						</td>
 					</tr>
@@ -522,8 +522,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 		
 		
 		<br />		
-		<h3><?php echo $this->_tpl_vars['_addition_info_person']; ?>
- (nếu có)</h3>
+		<h3>Thông tin bổ sung cá nhân (nếu có)</h3>
 		<span class="top-table">.</span>
 		<table class="offer_info_content">
               
@@ -608,6 +607,11 @@ if ($this->_foreach['Educations']['total'] > 0):
 							<th><?php echo $this->_tpl_vars['_personal_homepage']; ?>
 </th>
 							<td><input name="memberfield[site_url]" type="text" id="site_url" value="<?php echo $this->_tpl_vars['item']['site_url']; ?>
+"></td>
+						      </tr>
+						      <tr>
+							<th>Facebook</th>
+							<td><input placeholder="Nick kết bạn của facebook (không phải trang fanpage) " name="memberfield[facebook]" type="text" id="site_url" value="<?php echo $this->_tpl_vars['item']['facebook']; ?>
 "></td>
 						      </tr>
 						       <tr style="display: none">

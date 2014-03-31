@@ -2216,6 +2216,7 @@ class Product extends PbController {
 			echo $_POST["com_id"];
 			$attachment->if_watermark = false;
 			$attachment->if_thumb_middle = false;
+			$attachment->if_logo = true;
 			
 			if($_POST["com_id"] == "")
 			{
@@ -3546,6 +3547,8 @@ class Product extends PbController {
 			$chattitle = $uname;
 		}
 		
+		
+		
 		setvar("Items",$result);
 		setvar("member", $member);
 		setvar("chattitle", $chattitle);
@@ -3867,7 +3870,7 @@ class Product extends PbController {
 					
 					//check member type
 					//var_dump($result[$i]);
-					if (strpos($result[$i]["membertype_from_ids"],$mem["membertype_id"]) !== false) {
+					if (strpos($result[$i]["membertype_from_ids"],$mem["membertype_id"]) !== false || true) {
 						$result[$i]["chattypeid"] = $mem["membertype_id"];
 					}
 					else
@@ -3914,7 +3917,7 @@ class Product extends PbController {
 					$result[$i]["chatid"] = $result[$i]["to_member_id"];
 					
 					//check member type
-					if (strpos($mem["membertype_to_ids"],$mem["membertype_id"]) !== false) {
+					if (strpos($mem["membertype_to_ids"],$mem["membertype_id"]) !== false || true) {
 						$result[$i]["chattypeid"] = $mem["membertype_id"];
 					}
 					else
@@ -4223,7 +4226,7 @@ class Product extends PbController {
 					//echo $result[$i]["id"];
 					
 					//set link content
-					$result[$i]["content"] = preg_replace('!(http://[a-z0-9_./?=&-]+)!i', '<a target="_blank" href="$1">$1</a> ', $result[$i]["content"]." ");
+					$result[$i]["content"] = preg_replace('!(https?://[a-z0-9_./?=&-]+)!i', '<a target="_blank" href="$1">$1</a> ', $result[$i]["content"]." ");
 					
 					$result[$i]["me"] = "";
 					if($result[$i]["from_member_id"] == $pb_userinfo["pb_userid"])

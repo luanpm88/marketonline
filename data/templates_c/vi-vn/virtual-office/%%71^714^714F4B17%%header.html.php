@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-17 10:08:49
+<?php /* Smarty version 2.6.27, created on 2014-03-21 09:24:33
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 960, false),array('function', 'formhash', 'header.html', 1039, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 960, false),array('function', 'the_url', 'header.html', 982, false),array('function', 'formhash', 'header.html', 1042, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -1036,15 +1036,21 @@ unset($_smarty_tpl_vars);
    <div id="main-nav">
 	 <div class="nav-wrapper">
 		<ul>
-		  <li><a href="index.php" id="home-page"><span><?php echo $this->_tpl_vars['_office_homepage']; ?>
+			<li><a href="index.php" id="home-page"><span><?php echo $this->_tpl_vars['_office_homepage']; ?>
 </span></a></li>
-		  
-		  <li><a class="current_nav" href="offer.php" id="info-manage"><span><?php echo $this->_tpl_vars['_info_manage']; ?>
+			
+			<li><a class="current_nav" href="offer.php" id="info-manage"><span><?php echo $this->_tpl_vars['_info_manage']; ?>
 </span></a></li>
-		  <?php if ($this->_tpl_vars['COMPANYINFO']['cache_spacename'] && $this->_tpl_vars['COMPANYINFO']['status'] == 1 && $this->_tpl_vars['MEMBER']['membertype_id'] != 5): ?><li class="shop_menu"><a href="<?php echo $this->_tpl_vars['COMPANYINFO']['space_url']; ?>
+			<?php if ($this->_tpl_vars['hasProfile'] && $this->_tpl_vars['membertype_id'] == 6): ?>
+			      <li><a class="" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['pb_userinfo']['id'])), $this);?>
+" id="info-manage"><span><?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
+ <?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
+</span></a></li>
+			<?php endif; ?>
+			<?php if ($this->_tpl_vars['COMPANYINFO']['cache_spacename'] && $this->_tpl_vars['COMPANYINFO']['status'] == 1 && $this->_tpl_vars['MEMBER']['membertype_id'] != 5): ?><li class="shop_menu"><a href="<?php echo $this->_tpl_vars['COMPANYINFO']['space_url']; ?>
 " target="_blank"><span><?php echo $this->_tpl_vars['COMPANYINFO']['shop_name']; ?>
 </span></a></li><?php endif; ?>
-		  <li><a href="../logging.php?action=logout"><span><?php echo $this->_tpl_vars['_login_out']; ?>
+			<li><a href="../logging.php?action=logout"><span><?php echo $this->_tpl_vars['_login_out']; ?>
 </span></a></li>
 		</ul>
 	</div>

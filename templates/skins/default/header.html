@@ -15,10 +15,9 @@
 <meta name ="keywords" content="{$TAG_STRING}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{if $COMPANY.logo}<meta property="og:image" content="{$COMPANY.logo}"/>{/if}
+{if $COMPANY.logo}<meta property="og:image" content="{$COMPANY.logo_big}"/>{/if}
 
-{if $banners.1}<meta property="og:image" content="{$banners.1}" />{/if}
-{if $banners.2}<meta property="og:image" content="{$banners.2}" />{/if}
+
 
 
 {if $fb_description}
@@ -74,6 +73,12 @@
 <script type='text/javascript' src='{$theme_img_path}js/jquery.jcookie.min.js'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.bxslider.js'></script>
 <link rel="stylesheet" href="{$theme_img_path}css/jquery.bxslider.css">
+
+
+<link href="{$theme_img_path}js/select2/select2.css" rel="stylesheet" type="text/css">
+<script src="{$theme_img_path}js/select2/select2.min.js"></script>
+<script src="{$theme_img_path}js/select2/select2_locale_vi.js"></script>
+
 
 <script src="{$WebRootUrl}data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
 
@@ -511,19 +516,19 @@ function goclicky(meh, url)
 		
 		$('#topmenu img').css("display", "block");
 		
-		$('.pagination a, .pagination span').each(function( index ){
-		  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
-		  if($(this).html() == "2")
-		  {
-		     if (!$('.pagination span').length) {
-		       $(this).before('<span>1</span>');
-		     }
-		     else
-		     {
-		       $(this).before('<a href="'+$(location).attr('href').replace("pos=", "posz=")+'">1</a>');
-		     }
-		  }
-		});
+		//$('.pagination a, .pagination span').each(function( index ){
+		//  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
+		//  if($(this).html() == "2")
+		//  {
+		//     if (!$('.pagination span').length) {
+		//       $(this).before('<span>1</span>');
+		//     }
+		//     else
+		//     {
+		//       $(this).before('<a href="'+$(location).attr('href').replace("pos=", "posz=")+'">1</a>');
+		//     }
+		//  }
+		//});
 		
 		
 		$('#custom-style-box .custom-button').click(function(){
@@ -1015,7 +1020,7 @@ function goclicky(meh, url)
 	});
 	
 	
-	$(window).scroll(function(){
+$(window).scroll(function(){
 	 
 	 //$('#topmenu_outer').css('top', $(window).scrollTop()+'px');
 	 
@@ -1048,6 +1053,9 @@ function goclicky(meh, url)
 	
 $(window).scroll(function() {
  
+ //move verytopmenu with small screen
+ autoAjustVerytopmenu();
+ 
  if($('#left-sidebar').height() < $('#content').height()) $('#left-sidebar').height($('#content').height());
  
  //$('#verytopmenu').css('padding-right', 1200 - $(window).width());
@@ -1070,6 +1078,12 @@ $(window).scroll(function() {
  //}
  
 });
+
+$(window).resize(function() {
+    //move verytopmenu with small screen
+    autoAjustVerytopmenu();
+});
+
 	
 </script>
 

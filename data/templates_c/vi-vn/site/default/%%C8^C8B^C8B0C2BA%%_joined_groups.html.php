@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 09:34:44
+<?php /* Smarty version 2.6.27, created on 2014-03-31 08:59:30
          compiled from default/studypost/_joined_groups.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_joined_groups.html', 6, false),)), $this); ?>
@@ -11,7 +11,8 @@ if ($this->_foreach['level_group']['total'] > 0):
         $this->_foreach['level_group']['iteration']++;
 ?>
                             <li class="group_item <?php if ($_GET['action'] == 'group' && $_GET['id'] == $this->_tpl_vars['group']['id']): ?>active<?php endif; ?>">
-                                <a class="logo" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
+                                <a <?php if ($this->_tpl_vars['group']['logo_origin']): ?>style="background:url(<?php echo $this->_tpl_vars['group']['logo']; ?>
+) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"<?php endif; ?> class="logo" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
 " title="<?php echo $this->_tpl_vars['group']['subject_name']; ?>
  <?php echo $this->_tpl_vars['group']['school_name']; ?>
 ">

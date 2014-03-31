@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-18 08:03:25
+<?php /* Smarty version 2.6.27, created on 2014-03-24 09:42:10
          compiled from default/verytopmenu_shop.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_shop.html', 8, false),array('function', 'the_url', 'default/verytopmenu_shop.html', 31, false),)), $this); ?>
@@ -42,8 +42,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 &do=<?php else: ?>redirect.php?url=/virtual-office/<?php endif; ?>"></a>-->
 	    <a style="padding-left: 0; margin-right: 10px" class="name" href="<?php if ($this->_tpl_vars['pb_company']): ?><?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['pb_company']['cache_spacename'])), $this);?>
 <?php else: ?>redirect.php?url=/virtual-office/<?php endif; ?>">
-		<?php echo $this->_tpl_vars['pb_userinfo']['current_type']; ?>
-<img class="avatar" src="<?php if ($this->_tpl_vars['pb_company']): ?><?php echo $this->_tpl_vars['pb_company']['image']; ?>
+		<img class="avatar" src="<?php if ($this->_tpl_vars['pb_company']): ?><?php echo $this->_tpl_vars['pb_company']['image']; ?>
 <?php else: ?> <?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>  <?php endif; ?>" width="20" height="20" />

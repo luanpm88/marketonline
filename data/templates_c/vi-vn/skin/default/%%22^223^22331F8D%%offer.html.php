@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-11 15:54:50
+<?php /* Smarty version 2.6.27, created on 2014-03-19 16:27:14
          compiled from offer.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'offer.html', 39, false),array('function', 'pager', 'offer.html', 101, false),array('block', 'offer', 'offer.html', 56, false),array('modifier', 'truncate', 'offer.html', 57, false),array('modifier', 'pl', 'offer.html', 71, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'offer.html', 39, false),array('function', 'pager', 'offer.html', 95, false),array('block', 'offer', 'offer.html', 56, false),array('modifier', 'truncate', 'offer.html', 57, false),array('modifier', 'pl', 'offer.html', 71, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array('PageTitle' => ($this->_tpl_vars['_space_offer']),'cur' => 'space_index')));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -134,19 +134,9 @@ unset($_smarty_tpl_vars);
 	
       </tbody></table>
 </div>
-
-
-
-
-
-
-			<p><div class="pagination"><?php echo smarty_function_pager(array('rowcount' => ($this->_tpl_vars['paging']['total']),'limit' => 20), $this);?>
+	<p><div class="pagination"><?php echo smarty_function_pager(array('rowcount' => ($this->_tpl_vars['paging']['total']),'limit' => 10), $this);?>
 </div></p>
-
-
-						
-
-		</div>
+</div>
 	
 </div>
     </div>
@@ -167,4 +157,3 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "footer.html", 'smarty
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-

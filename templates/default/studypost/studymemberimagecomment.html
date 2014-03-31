@@ -1,0 +1,24 @@
+{if $comments}
+<ul class="comment_list">
+    <!--{loop $comments item level key}-->
+        <li>
+            <img src="{$item.user.photo}" />
+            <h2>
+                
+                {if $item.user}
+                    <a href="{the_url module=space userid=`$item.space_name` do=contact}">{$item.first_name} {$item.last_name}</a> <span class="c_content">{$item.content}</span>
+                {else}
+                    <a href="javascript:void(0)" style="color: #333;cursor: default">{$item.guest_name}</a> <span class="c_content">{$item.content}</span>
+                {/if}
+                <br /><span>{$item.created}</span>
+            </h2>
+            
+            
+        </li>
+    <!--{/loop}-->
+</ul>
+{else}
+<p>{lang no_offer_comment}</p>
+{/if}
+
+

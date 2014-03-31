@@ -1,6 +1,32 @@
 <!--{literal}-->
 <script type="application/x-javascript">
     
+    function showPlaceHolder(editor)
+    {
+        if (editor.getContent() == "" && editor.id == "studypost-content") {
+            $('.studypost-content-placeholder').css("top", $('.mce-edit-area').offset().top+7);
+            $('.studypost-content-placeholder').css("left", $('.mce-edit-area').offset().left+6);
+            
+            $('.studypost-content-placeholder').live("click", function() {
+                tinymce.get("studypost-content").focus();
+            });
+            
+            $('.studypost-content-placeholder').show();
+        }
+        else
+        {
+            hidePlaceHolder(editor);
+        }
+        
+    }
+    
+    function hidePlaceHolder(editor)
+    {
+        if (editor.id == "studypost-content") {
+            $('.studypost-content-placeholder').hide();
+        }
+    }
+    
     function deleteStudypostcomment(box)
     {
         var id = box.attr("rel");
@@ -124,7 +150,8 @@
     {
         var editor = tinymce.get('studypost-content');
         $('#studypost-content').val("");
-        editor.setContent("<p>Đăng tải thông tin cho trường của bạn...</p>");
+        editor.setContent("");
+        showPlaceHolder(editor);
     }
     
     function loadStudyPosts(new_list)
@@ -143,7 +170,7 @@
                 scroll_enabled = true;
                 load_pos += load_num;
             }   
-        });  
+        });
     }
     
     function postStudypost(form)
@@ -240,12 +267,20 @@
         
         $(box+'.word-count span').html(countWord(content));
         
-        if (countWord(content) > 2 && content != '<p>Đăng tải thông tin cho trường của bạn...</p>') {
+        if (countWord(content) > 2 && content != '') {
             $(box+'.send-button').addClass("active");
         }
         else
-        {
+        {            
             $(box+'.send-button').removeClass("active");
+        }
+        
+        if ($.trim(content) == '') {
+            //showPlaceHolder(editor);
+        }
+        else
+        {
+            //hidePlaceHolder(editor);
         }
     }
     
@@ -261,7 +296,7 @@
                 plugins: [
                         "autoresize advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
                         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                        "table contextmenu directionality emoticons template textcolor paste textcolor"
+                        "table directionality emoticons template textcolor paste textcolor"
                 ],
                 language : 'vi_VN',
         
@@ -291,30 +326,44 @@
                             ed.on('keypress', function(e) {
                                onChangeEditor(ed, main);
                             });
+                            ed.on('keyup', function(e) {
+                               onChangeEditor(ed, main);
+                            });
                             ed.on('init', function(e) {
                                $('.mce-toolbar-grp').addClass("editor-hide");
                                onChangeEditor(ed, main);
+                               showPlaceHolder(ed);
+                            });
+                            ed.on('change', function(e) {
+                               onChangeEditor(ed, main);                               
+                            });
+                            ed.on('click', function(e) {
+                               onChangeEditor(ed, main);
                             });
                             ed.on('focus', function(e) {
-                               //alert(ed.getContent());
-                               var content = ed.getContent();
-                               if (content == '<p>Đăng tải thông tin cho trường của bạn...</p>') {
-                                    ed.setContent("");                                    
-                               }
-                               onChangeEditor(ed, main);
+                                var content = ed.getContent();
+                                //if (content == TEXTAREA_STR) {
+                                //    ed.setContent("");                                 
+                                //}
+                                hidePlaceHolder(ed);
+                                onChangeEditor(ed, main);
+                                if(main) $("#studypost-content_ifr").contents().find("body").addClass("pdb20");
+                                if(main) $("#studypost-content_ifr").css("min-height", "80px");
+                                if(main) hideEditStudypostForm();
                             });
                             ed.on('blur', function(e) {
-                               //alert(ed.getContent());
-                               var content = ed.getContent();
-                               if (content == '') {
-                                    ed.setContent('<p>Đăng tải thông tin cho trường của bạn...</p>');                                    
-                               }
-                               onChangeEditor(ed, main);
+                                //alert(ed.getContent());
+                                var content = ed.getContent();
+                                //if ($.trim(content) == '') {
+                                //    ed.setContent(TEXTAREA_STR);                                    
+                                //}
+                                showPlaceHolder(ed);
+                                onChangeEditor(ed, main);
                             });
                         },
                         
                 entity_encoding : "raw",
-                autoresize_bottom_margin : 1,
+                //autoresize_bottom_margin : 1,
                 content_css : "<!--{/literal}-->{$theme_img_path}<!--{literal}-->css/editorcontent.css"
 
         });
@@ -324,6 +373,17 @@
     var currentEditor;
     var resizeEditorInterval;
     var ACTION = "<!--{/literal}-->{$smarty.get.action}<!--{literal}-->";
+    if (ACTION == "school") {
+        TEXTAREA_STR = '<p>Đăng tải thông tin cho trường của bạn...</p>';
+    }
+    else if(ACTION == "group")
+    {
+        TEXTAREA_STR = '<p>Đăng tải thông tin cho nhóm của bạn...</p>';
+    }
+    else if (ACTION == "memberpage")
+    {
+        TEXTAREA_STR = '<p>Đăng tải thông tin cho trang của bạn...</p>';
+    }
     var ID = "<!--{/literal}-->{$smarty.get.id}<!--{literal}-->";
     $(document).ready(function() {
         
@@ -431,12 +491,13 @@
             e.preventDefault();
         });
         
-        $('.stats_content .editor textarea').live("keypress",function(e) {            
+        $('.stats_content .editor textarea').live("change keyup keydown paste cut copy",function(e) {            
             checkStatsEditor($(this));
         });
-        //$('.stats_content .editor textarea').live("change",function(e) {
-            //checkStatsEditor($(this));
-        //});
+        
+        $('.studypost_box').live("mouseover",function() {
+            checkStatsEditor($(this).find('.stats_content textarea'));
+        });
         
         $('.comment_item .commentbox_delete_but').live("click", function() {            
             deleteStudypostcomment($(this).parent().parent());
@@ -447,6 +508,9 @@
             
             loadStudyPostCommnets($(this).parent().parent().parent().parent().attr("rel"), $(this).parent().find(".count_current_comment").html())
         });
+        
+        $('.studypost-content-placeholder').html(TEXTAREA_STR);
+        
         
     });
     
@@ -470,7 +534,7 @@
                         
                         
                         <div class="facelike_content">
-                            {if $belongToGroup || $belongToSchool }
+                            {if $belongToGroup || $belongToSchool || $belongToMemberpage}
                                 <div class="facelike_postform">
                                     <form class="studypost_form" method="post" action="{the_url module=studypost action=post}">
                                         <!-- {formhash} -->
@@ -478,6 +542,8 @@
                                             <input type="hidden" name="studypost[school_id]" value="{$school.id}" />
                                         {elseif $smarty.get.action == "group"}
                                             <input type="hidden" name="studypost[group_id]" value="{$smarty.get.id}" />
+                                        {elseif $smarty.get.action == "memberpage"}
+                                            <input type="hidden" name="studypost[memberpage_id]" value="{$smarty.get.id}" />
                                         {/if}
                                         
                                         <div class="textarea-content">
@@ -485,7 +551,8 @@
                                                 <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
                                                 <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
                                             </div>                             
-                                            <textarea name="studypost[content]" style="width:100%" id="studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                            <textarea name="studypost[content]" style="width:100%;height:0px;" id="studypost-content"></textarea>
+                                            
                                         </div>
                                         
                                         <div class="bottom-control">
@@ -530,7 +597,7 @@
                                             
                                             <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
                                         </div>                             
-                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content"></textarea>                                
                                     </div>
                                     
                                     <div class="bottom-control">
@@ -543,3 +610,5 @@
                             </div>
                             
                         </div>
+
+<div class="studypost-content-placeholder"></div>

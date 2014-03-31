@@ -2335,6 +2335,7 @@ input#dataTag
     margin: 0;
     width: 360px !important;
     height: 50px !important;
+    padding: 5px;
 }
 #chat-frame .chat-box .chat-list ul li.chatloading
 {
@@ -3165,4 +3166,17 @@ input[name="other_school"]
     background: none repeat scroll 0 0 #6DBF7C;
     color: #FFFFFF !important;
     text-decoration: none;
+}
+.studyh2 {
+    color: #333333;
+    font-size: 20px;
+    margin: 15px 0 5px 0;
+}
+
+input[name="other_school_addres"], input[name="other_school_name"] {
+    width: 430px;
+}
+.school_name .select2-container
+{
+    width: 430px;
 }

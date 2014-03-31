@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 16:47:39
+<?php /* Smarty version 2.6.27, created on 2014-03-18 16:30:28
          compiled from topmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'topmenu_study.html', 28, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'topmenu_study.html', 24, false),)), $this); ?>
 <div id="topmenu_outer">
 <div id="verytopmenu" style="padding-left:9px; height: 27px; margin-top: 9px;width: 1170px;">
     <div class="left">
@@ -32,7 +32,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 <?php else: ?><?php if ($this->_tpl_vars['user_avatar']): ?> ../<?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> ../templates/default/image/usericon.jpg  <?php endif; ?><?php endif; ?>" width="20" height="20" /></a>
 	    
-	    <a class="name" href="../redirect.php?url=/virtual-office/">
+	    <a class="name" target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['pb_userinfo']['id'])), $this);?>
+">
 		   <?php if ($this->_tpl_vars['pb_userinfo']['first_name']): ?><?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
  <?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['pb_userinfo']['username']; ?>

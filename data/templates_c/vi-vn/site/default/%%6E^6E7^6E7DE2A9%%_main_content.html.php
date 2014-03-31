@@ -1,9 +1,35 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 09:34:44
+<?php /* Smarty version 2.6.27, created on 2014-03-31 08:41:27
          compiled from default/studypost/_main_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 475, false),array('function', 'formhash', 'default/studypost/_main_content.html', 476, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 539, false),array('function', 'formhash', 'default/studypost/_main_content.html', 540, false),)), $this); ?>
 <?php echo '
 <script type="application/x-javascript">
+    
+    function showPlaceHolder(editor)
+    {
+        if (editor.getContent() == "" && editor.id == "studypost-content") {
+            $(\'.studypost-content-placeholder\').css("top", $(\'.mce-edit-area\').offset().top+7);
+            $(\'.studypost-content-placeholder\').css("left", $(\'.mce-edit-area\').offset().left+6);
+            
+            $(\'.studypost-content-placeholder\').live("click", function() {
+                tinymce.get("studypost-content").focus();
+            });
+            
+            $(\'.studypost-content-placeholder\').show();
+        }
+        else
+        {
+            hidePlaceHolder(editor);
+        }
+        
+    }
+    
+    function hidePlaceHolder(editor)
+    {
+        if (editor.id == "studypost-content") {
+            $(\'.studypost-content-placeholder\').hide();
+        }
+    }
     
     function deleteStudypostcomment(box)
     {
@@ -128,7 +154,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
     {
         var editor = tinymce.get(\'studypost-content\');
         $(\'#studypost-content\').val("");
-        editor.setContent("<p>Đăng tải thông tin cho trường của bạn...</p>");
+        editor.setContent("");
+        showPlaceHolder(editor);
     }
     
     function loadStudyPosts(new_list)
@@ -147,7 +174,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                 scroll_enabled = true;
                 load_pos += load_num;
             }   
-        });  
+        });
     }
     
     function postStudypost(form)
@@ -248,12 +275,20 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
         
         $(box+\'.word-count span\').html(countWord(content));
         
-        if (countWord(content) > 2 && content != \'<p>Đăng tải thông tin cho trường của bạn...</p>\') {
+        if (countWord(content) > 2 && content != \'\') {
             $(box+\'.send-button\').addClass("active");
         }
         else
-        {
+        {            
             $(box+\'.send-button\').removeClass("active");
+        }
+        
+        if ($.trim(content) == \'\') {
+            //showPlaceHolder(editor);
+        }
+        else
+        {
+            //hidePlaceHolder(editor);
         }
     }
     
@@ -269,7 +304,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                 plugins: [
                         "autoresize advlist autolink autosave link image lists charmap print preview hr anchor pagebreak spellchecker",
                         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-                        "table contextmenu directionality emoticons template textcolor paste textcolor"
+                        "table directionality emoticons template textcolor paste textcolor"
                 ],
                 language : \'vi_VN\',
         
@@ -299,30 +334,44 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                             ed.on(\'keypress\', function(e) {
                                onChangeEditor(ed, main);
                             });
+                            ed.on(\'keyup\', function(e) {
+                               onChangeEditor(ed, main);
+                            });
                             ed.on(\'init\', function(e) {
                                $(\'.mce-toolbar-grp\').addClass("editor-hide");
                                onChangeEditor(ed, main);
+                               showPlaceHolder(ed);
+                            });
+                            ed.on(\'change\', function(e) {
+                               onChangeEditor(ed, main);                               
+                            });
+                            ed.on(\'click\', function(e) {
+                               onChangeEditor(ed, main);
                             });
                             ed.on(\'focus\', function(e) {
-                               //alert(ed.getContent());
-                               var content = ed.getContent();
-                               if (content == \'<p>Đăng tải thông tin cho trường của bạn...</p>\') {
-                                    ed.setContent("");                                    
-                               }
-                               onChangeEditor(ed, main);
+                                var content = ed.getContent();
+                                //if (content == TEXTAREA_STR) {
+                                //    ed.setContent("");                                 
+                                //}
+                                hidePlaceHolder(ed);
+                                onChangeEditor(ed, main);
+                                if(main) $("#studypost-content_ifr").contents().find("body").addClass("pdb20");
+                                if(main) $("#studypost-content_ifr").css("min-height", "80px");
+                                if(main) hideEditStudypostForm();
                             });
                             ed.on(\'blur\', function(e) {
-                               //alert(ed.getContent());
-                               var content = ed.getContent();
-                               if (content == \'\') {
-                                    ed.setContent(\'<p>Đăng tải thông tin cho trường của bạn...</p>\');                                    
-                               }
-                               onChangeEditor(ed, main);
+                                //alert(ed.getContent());
+                                var content = ed.getContent();
+                                //if ($.trim(content) == \'\') {
+                                //    ed.setContent(TEXTAREA_STR);                                    
+                                //}
+                                showPlaceHolder(ed);
+                                onChangeEditor(ed, main);
                             });
                         },
                         
                 entity_encoding : "raw",
-                autoresize_bottom_margin : 1,
+                //autoresize_bottom_margin : 1,
                 content_css : "'; ?>
 <?php echo $this->_tpl_vars['theme_img_path']; ?>
 <?php echo 'css/editorcontent.css"
@@ -338,6 +387,17 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
     var ACTION = "'; ?>
 <?php echo $_GET['action']; ?>
 <?php echo '";
+    if (ACTION == "school") {
+        TEXTAREA_STR = \'<p>Đăng tải thông tin cho trường của bạn...</p>\';
+    }
+    else if(ACTION == "group")
+    {
+        TEXTAREA_STR = \'<p>Đăng tải thông tin cho nhóm của bạn...</p>\';
+    }
+    else if (ACTION == "memberpage")
+    {
+        TEXTAREA_STR = \'<p>Đăng tải thông tin cho trang của bạn...</p>\';
+    }
     var ID = "'; ?>
 <?php echo $_GET['id']; ?>
 <?php echo '";
@@ -447,12 +507,13 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
             e.preventDefault();
         });
         
-        $(\'.stats_content .editor textarea\').live("keypress",function(e) {            
+        $(\'.stats_content .editor textarea\').live("change keyup keydown paste cut copy",function(e) {            
             checkStatsEditor($(this));
         });
-        //$(\'.stats_content .editor textarea\').live("change",function(e) {
-            //checkStatsEditor($(this));
-        //});
+        
+        $(\'.studypost_box\').live("mouseover",function() {
+            checkStatsEditor($(this).find(\'.stats_content textarea\'));
+        });
         
         $(\'.comment_item .commentbox_delete_but\').live("click", function() {            
             deleteStudypostcomment($(this).parent().parent());
@@ -463,6 +524,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
             
             loadStudyPostCommnets($(this).parent().parent().parent().parent().attr("rel"), $(this).parent().find(".count_current_comment").html())
         });
+        
+        $(\'.studypost-content-placeholder\').html(TEXTAREA_STR);
+        
         
     });
     
@@ -487,7 +551,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                         
                         
                         <div class="facelike_content">
-                            <?php if ($this->_tpl_vars['belongToGroup'] || $this->_tpl_vars['belongToSchool']): ?>
+                            <?php if ($this->_tpl_vars['belongToGroup'] || $this->_tpl_vars['belongToSchool'] || $this->_tpl_vars['belongToMemberpage']): ?>
                                 <div class="facelike_postform">
                                     <form class="studypost_form" method="post" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'post'), $this);?>
 ">
@@ -499,6 +563,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                                         <?php elseif ($_GET['action'] == 'group'): ?>
                                             <input type="hidden" name="studypost[group_id]" value="<?php echo $_GET['id']; ?>
 " />
+                                        <?php elseif ($_GET['action'] == 'memberpage'): ?>
+                                            <input type="hidden" name="studypost[memberpage_id]" value="<?php echo $_GET['id']; ?>
+" />
                                         <?php endif; ?>
                                         
                                         <div class="textarea-content">
@@ -506,7 +573,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                                                 <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
                                                 <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
                                             </div>                             
-                                            <textarea name="studypost[content]" style="width:100%" id="studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                            <textarea name="studypost[content]" style="width:100%;height:0px;" id="studypost-content"></textarea>
+                                            
                                         </div>
                                         
                                         <div class="bottom-control">
@@ -557,7 +625,7 @@ _" />
                                             
                                             <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
                                         </div>                             
-                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">Đăng tải thông tin cho trường của bạn...</textarea>                                
+                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content"></textarea>                                
                                     </div>
                                     
                                     <div class="bottom-control">
@@ -570,3 +638,5 @@ _" />
                             </div>
                             
                         </div>
+
+<div class="studypost-content-placeholder"></div>

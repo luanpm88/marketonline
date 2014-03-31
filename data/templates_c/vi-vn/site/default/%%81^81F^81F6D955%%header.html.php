@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-18 15:25:50
+<?php /* Smarty version 2.6.27, created on 2014-03-28 15:09:35
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1216, false),array('function', 'formhash', 'default/header.html', 1300, false),array('modifier', 'default', 'default/header.html', 1311, false),array('modifier', 'date_format', 'default/header.html', 1325, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1075, false),array('function', 'formhash', 'default/header.html', 1159, false),array('modifier', 'default', 'default/header.html', 1170, false),array('modifier', 'date_format', 'default/header.html', 1184, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -907,149 +907,10 @@ if ($this->_foreach['level']['total'] > 0):
 		   $(this).attr("src", $(this).attr("rel"));
                    
 		});
-		
-		$(\'#show-social\').click(function(){
-		
-		   displayTet2014();
-		
-		});
-		
-		$(\'#menu-primary-navigation\').hover(function() {
-		    $(\'.banner-small-top\').css("display","none");
-		},
-		function() {
-		    $(\'.banner-small-top\').css("display","block");
-		}
-		);
-		
-		
-		$(\'#job-search-box .job-search-tab .tab-content select\').select2();
-		
-		$(\'.pagination a, .pagination span\').each(function( index ) {
-		  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
-		  if($(this).html() == "2")
-		  {
-		     if (!$(\'.pagination span\').length) {
-		       $(this).before(\'<span>1</span>\');
-		     }
-		     else
-		     {
-		       $(this).before(\'<a href="\'+$(location).attr(\'href\').replace("pos=", "posz=")+\'">1</a>\');
-		     }
-		  }
-		});
-		
-		$(\'#TopWorkCategory ul.list-hot-cat li a\').click(function(){		   
-		    $(\'#job-learn input[name="type"]\').val($(this).parent().attr(\'rel\'));
-		    $(\'#job-learn input[name="pos"]\').remove();
-		    $(\'#job-learn input[name="total_count"]\').remove();
-		    $(\'#job-learn form\').submit();
-		});
-		
-		$(\'#job-learn input[type="submit"]\').click(function(){
-		    $(\'#job-learn input[name="pos"]\').remove();
-		    $(\'#job-learn input[name="total_count"]\').remove();
-		});
-		
-		$(\'.job_city_link\').click(function(){
-		    $(\'#job-learn select[name="area"]\').val($(this).attr(\'rel\'));
-		    $(\'#job-learn input[name="pos"]\').remove();
-		    $(\'#job-learn input[name="total_count"]\').remove();
-		    //$(\'#job-learn input[name="type"]\').val(\'\');
-		    $(\'#job-learn form\').submit();
-		});
-		
-		//
-		$(\'.you_are_form input[type="radio"]\').removeAttr("checked");
-		$(\'.main_user_select li\').click(function() {
-		    $(\'.main_user_select li\').removeClass(\'active\');
-		    $(this).addClass(\'active\');
-		    
-		    var type = $(this).attr("rel");
-		    
-		    $(\'.you_are_form input[type="radio"]\').removeAttr("checked");
-		    if (type == \'employee\') {			
-			$(\'.you_are_form input[value="Employee"]\').attr("checked","checked");
-			$(\'.you_are_form\').addClass("hide");
-		    } else if(type == \'employer\') {
-			$(\'.you_are_form input[value="Employer"]\').attr("checked","checked");
-			$(\'.you_are_form\').addClass("hide");
-		    } else if(type == \'learner\') {
-			$(\'.you_are_form input[value="Learner"]\').attr("checked","checked");
-			$(\'.you_are_form\').addClass("hide");
-		    } else {
-			$(\'.you_are_form\').removeClass("hide");
-		    }
-		});
                 
-                $(\'.joblevel_link\').click(function(){		   
-		    $(\'#job-learn input[name="type"]\').val($(this).attr(\'rel\'));
-		    $(\'#job-learn input[name="pos"]\').remove();
-		    $(\'#job-learn input[name="total_count"]\').remove();
-		    $(\'#job-learn form\').submit();
-		});
-                
-                $(\'.job_indust_link\').click(function(){		   
-		    $(\'#job-learn select[name="indust"]\').val($(this).attr(\'rel\'));
-		    $(\'#job-learn input[name="pos"]\').remove();
-		    $(\'#job-learn input[name="total_count"]\').remove();
-		    $(\'#job-learn form\').submit();
-		});
-                
-                $(\'.joblevel_link\').click(function(){		   
-		    $(\'#TopWorkCategory ul.list-hot-cat li[rel="\'+$(\'.joblevel_link\').attr("rel")+\'"] a\').trigger("click");
-		});
-
-                $(".quantity_val").keyup(function(){
-                        $(this).parseNumber({format:"####", locale:"vn"});
-                        $(this).formatNumber({format:"####", locale:"vn"});
-                });
-
-                $(\'.product_listing a,.product_listing img, .logo_box_u a, .red_box a\').qtip({ // Grab some elements to apply the tooltip to
-                    content: {
-                        attr: \'title\'                        
-                    },
-                    position: {
-                        target: \'mouse\', // Track the mouse as the positioning target
-                        adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
-                    }
-                })
-                
-                $(\'.title_more_school_button\').fancybox();
-                
-                
-                $(\'.member-pics-album .thumbs .prev\').addClass(\'ihide\');
-                $(\'.member-pics-album .thumbs .prev\').click(function() {
-                    var move = 2;
-                    
-                    for(var i = 0; i < move; i++)
-                    {
-                        if (parseInt( $(\'.thumbs .inner_slider\').css("margin-left")) <  -121) {
-                            $(\'.member-pics-album .thumbs .next\').removeClass(\'ihide\');
-                            $(\'.thumbs .inner_slider\').css("margin-left",parseInt( $(\'.thumbs .inner_slider\').css("margin-left"))+122);
-                        }
-                        if (parseInt( $(\'.thumbs .inner_slider\').css("margin-left")) >= -121)
-                        {
-                            $(\'.member-pics-album .thumbs .prev\').addClass(\'ihide\');
-                        }
-                    }
-                });
-                
-                $(\'.member-pics-album .thumbs .next\').click(function() {
-                    var move = 2;
-                    
-                    for(var i = 0; i < move; i++)
-                    {
-                        if ($(\'.thumbs .inner_slider img\').length*122 - 122*3 > -parseInt( $(\'.thumbs .inner_slider\').css("margin-left"))) {
-                            $(\'.thumbs .inner_slider\').css("margin-left",parseInt( $(\'.thumbs .inner_slider\').css("margin-left"))-122);
-                            $(\'.member-pics-album .thumbs .prev\').removeClass(\'ihide\');
-                        }
-                        if ($(\'.thumbs .inner_slider img\').length*122 - 122*3 <= -parseInt( $(\'.thumbs .inner_slider\').css("margin-left")))
-                        {
-                            $(\'.member-pics-album .thumbs .next\').addClass(\'ihide\');
-                        }
-                    }
-                });
+                //$(\'.img_item\').hover();
+		
+		
 	});
 	
         
@@ -1081,13 +942,11 @@ $(window).scroll(function(){
     
 });
 
-
-
 $(window).resize(function() {
-    
+
     //move verytopmenu with small screen
     autoAjustVerytopmenu();
- 
+
     //for sidebar
     if ($(\'#main_sidebar\').length) {
        

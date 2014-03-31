@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-12 15:41:45
+<?php /* Smarty version 2.6.27, created on 2014-03-28 15:09:47
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1185, false),array('modifier', 'default', 'header.html', 1196, false),array('modifier', 'date_format', 'header.html', 1210, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1199, false),array('modifier', 'default', 'header.html', 1210, false),array('modifier', 'date_format', 'header.html', 1224, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -23,13 +23,10 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 
 ">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<?php if ($this->_tpl_vars['COMPANY']['logo']): ?><meta property="og:image" content="<?php echo $this->_tpl_vars['COMPANY']['logo']; ?>
+<?php if ($this->_tpl_vars['COMPANY']['logo']): ?><meta property="og:image" content="<?php echo $this->_tpl_vars['COMPANY']['logo_big']; ?>
 "/><?php endif; ?>
 
-<?php if ($this->_tpl_vars['banners']['1']): ?><meta property="og:image" content="<?php echo $this->_tpl_vars['banners']['1']; ?>
-" /><?php endif; ?>
-<?php if ($this->_tpl_vars['banners']['2']): ?><meta property="og:image" content="<?php echo $this->_tpl_vars['banners']['2']; ?>
-" /><?php endif; ?>
+
 
 
 <?php if ($this->_tpl_vars['fb_description']): ?>
@@ -118,6 +115,15 @@ js/jquery.jcookie.min.js'></script>
 js/jquery.bxslider.js'></script>
 <link rel="stylesheet" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 css/jquery.bxslider.css">
+
+
+<link href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+js/select2/select2.css" rel="stylesheet" type="text/css">
+<script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+js/select2/select2.min.js"></script>
+<script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+js/select2/select2_locale_vi.js"></script>
+
 
 <script src="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 data/cache/<?php echo $this->_tpl_vars['JsLanguage']; ?>
@@ -583,19 +589,19 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		
 		$(\'#topmenu img\').css("display", "block");
 		
-		$(\'.pagination a, .pagination span\').each(function( index ){
-		  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
-		  if($(this).html() == "2")
-		  {
-		     if (!$(\'.pagination span\').length) {
-		       $(this).before(\'<span>1</span>\');
-		     }
-		     else
-		     {
-		       $(this).before(\'<a href="\'+$(location).attr(\'href\').replace("pos=", "posz=")+\'">1</a>\');
-		     }
-		  }
-		});
+		//$(\'.pagination a, .pagination span\').each(function( index ){
+		//  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
+		//  if($(this).html() == "2")
+		//  {
+		//     if (!$(\'.pagination span\').length) {
+		//       $(this).before(\'<span>1</span>\');
+		//     }
+		//     else
+		//     {
+		//       $(this).before(\'<a href="\'+$(location).attr(\'href\').replace("pos=", "posz=")+\'">1</a>\');
+		//     }
+		//  }
+		//});
 		
 		
 		$(\'#custom-style-box .custom-button\').click(function(){
@@ -1179,7 +1185,7 @@ if ($this->_foreach['level']['total'] > 0):
 	});
 	
 	
-	$(window).scroll(function(){
+$(window).scroll(function(){
 	 
 	 //$(\'#topmenu_outer\').css(\'top\', $(window).scrollTop()+\'px\');
 	 
@@ -1212,6 +1218,9 @@ if ($this->_foreach['level']['total'] > 0):
 	
 $(window).scroll(function() {
  
+ //move verytopmenu with small screen
+ autoAjustVerytopmenu();
+ 
  if($(\'#left-sidebar\').height() < $(\'#content\').height()) $(\'#left-sidebar\').height($(\'#content\').height());
  
  //$(\'#verytopmenu\').css(\'padding-right\', 1200 - $(window).width());
@@ -1234,6 +1243,12 @@ $(window).scroll(function() {
  //}
  
 });
+
+$(window).resize(function() {
+    //move verytopmenu with small screen
+    autoAjustVerytopmenu();
+});
+
 	
 </script>
 

@@ -282,13 +282,12 @@
     
 	<div id="detail_box_top">
 	    
-	    
 	    <table id="three_box_detail" class="" cellspacing="0" style="background: #EFEFEF; border: none; padding-right: 5px;margin-bottom: 5px;">
 		<tr>
 		    <td class="imgg">
 			
 			
-			<div class="images">
+				<div class="images">
 					{if $item.d_image}
 						<!--<a itemprop="image" href="{$item.d_image}" class="zoomz fancyx" rel="thumbnails" title="{$item.title}"><img width="313" height="418" src="{$item.d_image}" class="attachment-shop_single wp-post-image" alt="{$item.title}"></a>-->
 						<!--<div class="detailtopconleft">
@@ -470,7 +469,7 @@
 									    
 									    <td colspan="2" style="width: 100%">
 										<!--{if $pb_username!=""}-->
-											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatbox({$MEMBER.id}, false)">{lang chat_with_owner}</a>
+											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatbox({$MEMBER.id}, false, {$MEMBER.membertype_id})">{lang chat_with_owner}</a>
 										<!--{else}-->
 											<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
 										<!--{/if}-->
@@ -699,7 +698,7 @@
 									    
 									    <td colspan="2" style="width: 100%">
 										<!--{if $pb_username!=""}-->
-											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatbox({$MEMBER.id}, false)">{lang chat_with_owner}</a>
+											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatbox({$MEMBER.id}, false, $MEMBER.membertype_id)">{lang chat_with_owner}</a>
 										<!--{else}-->
 											<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
 										<!--{/if}-->

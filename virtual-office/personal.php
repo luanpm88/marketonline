@@ -166,7 +166,7 @@ if (isset($_POST['save'])) {
 		}
 		else if($meminfo == 6)
 		{
-			pheader('location:personal.php');
+			pheader('location:../index.php?do=studypost&action=memberpage&id='.$the_memberid);
 		}
 		else
 		{

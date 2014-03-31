@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-12 15:25:34
+<?php /* Smarty version 2.6.27, created on 2014-03-28 13:38:38
          compiled from ../../default/verytopmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', '../../default/verytopmenu_study.html', 8, false),array('function', 'the_url', '../../default/verytopmenu_study.html', 47, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', '../../default/verytopmenu_study.html', 8, false),array('function', 'the_url', '../../default/verytopmenu_study.html', 36, false),)), $this); ?>
 <div id="topmenu_outer">
 <div id="verytopmenu">
     <div class="left">
@@ -22,7 +22,12 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 " />
 	    <div class="search_result">
 		
-		<ul><li><h2><a></a></h2><p></p></li></ul>
+		<ul>
+		    <li>
+			<h2><a></a></h2>
+			<p></p>
+		    </li>
+		</ul>
 	    </div>
 	    <span class="right-search-icon">search</span>
 	</div>
@@ -40,7 +45,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 	<div id="settingouter" style="float:right">
 	    <!--<a href="<?php if ($this->_tpl_vars['pb_company']): ?>space/?userid=<?php echo $this->_tpl_vars['pb_username']; ?>
 &do=<?php else: ?>redirect.php?url=/virtual-office/<?php endif; ?>"></a>-->
-	    <a style="padding-left: 0; margin-right: 10px" class="name" href="redirect.php?url=/virtual-office/">
+	    <a style="padding-left: 0; margin-right: 10px" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['pb_userinfo']['id'])), $this);?>
+">
 		<img class="avatar" src="<?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>" width="20" height="20" />

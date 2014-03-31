@@ -16,8 +16,11 @@ require("share.inc.php");
 	{
 	    $session->write('chatboxs'.session_id(), '');
 	}
+	//$session->write("chatboxs".session_id(),'');
 	////get chatboxs
+	//echo $chatboxs."ddfdfdf";
 	$chatboxs = $session->read("chatboxs".session_id());
+	//echo $chatboxs."ddfdfdf";
 	$chatboxs = explode(",", $chatboxs);
 	foreach($chatboxs as $key => $uuu)
 	{
@@ -26,9 +29,7 @@ require("share.inc.php");
 		$chatboxsx[$key]["typeid"] = $uuu[1];
 	}
 	////$session->write("chatboxs".session_id(), NULL);
-	//var_dump($chatboxsx);
-	
-	
+
 	
 	setvar("chatboxs", $chatboxsx);
 

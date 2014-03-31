@@ -93,6 +93,9 @@ class Studygroups extends PbModel {
 			
 			$pb_userinfo = pb_get_member_info();
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
+			
+			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
+			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
 		}
 		
 		return $groups;
@@ -100,8 +103,10 @@ class Studygroups extends PbModel {
 	
 	function getInfoById($id)
 	{
-		uses("studygroupmember");
+		uses("studygroupmember", "studygroupimage", "studygroupimagecomment");
 		$studygroupmember = new Studygroupmembers();
+		$studygroupimage = new Studygroupimages();
+		$studygroupimagecomment = new Studygroupimagecomments();
 		
 		$conditions = array();
 		if($id) $conditions[] = "Studygroup.id = ".intval($id);
@@ -117,6 +122,35 @@ class Studygroups extends PbModel {
 			
 			$pb_userinfo = pb_get_member_info();
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
+			
+			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
+			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
+			
+			//get banners
+			$banners = $studygroupimage->findAll("*", null, array("group_id=".$id), "created DESC");
+			
+			if(count($banners))
+			{
+				foreach($banners as $kk => $item)
+				{
+					$banners[$kk]["image"] = pb_get_attachmenturl($item['name'], '', '');
+					$banners[$kk]["banner"] = pb_get_attachmenturl($item['name'], '', 'banner');
+					$banners[$kk]["description_raw"] = $item["description"];
+					$banners[$kk]["description"] = str_replace("\n","<br />",$item["description"]);
+					$banners[$kk]["comments"]["count"] = $studygroupimagecomment->findCount(null, array("studygroupimage_id=".$item["id"]));
+				}
+				$groups[$key]["banners"] = $banners;
+			}
+			else
+			{
+				$groups[$key]["no_banner"] = pb_get_attachmenturl('', '', 'banner');;
+			}
+			//var_dump($groups[$key]["banners"]);
+			
+			
+			$groups[$key]["banner_origin"] = $groups[$key]["banner"];
+			$groups[$key]["banner"] = pb_get_attachmenturl($groups[$key]['banner'], '', 'banner');
+			
 		}
 		//var_dump($groups);
 		return $groups[0];
@@ -168,5 +202,6 @@ class Studygroups extends PbModel {
 			$studygroupview->saveField("created", date("Y-m-d H:i:s"), intval($exsit["id"]));
 		}
 	}
+
 }
 ?>

@@ -70,6 +70,7 @@ if(isset($_GET["nid"]))
 }
 
 $amount = $trade->findCount(null, $conditions,"Trade.id");
+
 setvar("TradeTypes", $tradetypes = $trade_controller->getTradeTypes());
 setvar("TradeNames", $tradenames = $trade_controller->getTradeTypeNames());
 setvar("paging", array('total'=>$amount));

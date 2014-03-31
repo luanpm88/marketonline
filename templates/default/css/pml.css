@@ -7044,6 +7044,7 @@ div.product .woocommerce_tabs ul.tabs li a, #content div.product .woocommerce_ta
 }
 .studypost_box .box_header h2 {
     margin-bottom: 0;
+    font-size: 17px;
 }
 .studypost_box .box_header .box_moreinfo {
     color: #888888;
@@ -7250,7 +7251,7 @@ ul.products li.product .price .amount
 .studypost_box .comment_item img {
     float: left;
     margin-right: 5px;
-    width: 40px;
+    width: 35px;
 }
 .studypost_box .comment_item h2 {
     display: block;
@@ -7267,7 +7268,7 @@ ul.products li.product .price .amount
 .studypost_box .comment_item .comment_content
 {
     margin-top: 5px;
-    margin-left: 45px;
+    margin-left: 40px;
 }
 .studypost_box textarea
 {
@@ -7329,7 +7330,7 @@ ul.products li.product .price .amount
 .school-top-left-info img {
     margin-top: 10px;
     padding-right: 0;
-    width: 140px;
+    width: 190px;
 }
 .school-top-left-info h1 {
     font-size: 20px;
@@ -7463,17 +7464,23 @@ ul.products li.product .price .amount
 
 .facelike_main .main_controls {
     float: right;
-    margin-top: -27px;
+    margin-top: -35px;
     position: relative;
-    right: 5px;
+    right: 15px;
+    display: none;
 }
-.facelike_main .main_controls a{
+.facelike_main .col2-top:hover .main_controls {
+    display: block;
+}
+.facelike_main .main_controls a {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
     color: #333333;
     display: block;
+    float: right;
     font-size: 14px;
     height: 20px;
     line-height: 20px;
+    margin-left: 12px;
     padding: 0 10px;
 }
 .title_more_school_button, .title_more_group_button
@@ -7678,18 +7685,19 @@ span.join_group:hover {
 }
 .study-member-box .member-left-top img
 {
-    width: 200px;
+    width: 167px;
     float: left;
     margin-right: 10px;
 }
 .study-member-box .member-left-top h4 {
     font-size: 22px;
-    margin-bottom: -2px;
+    margin-bottom: 3px;
+    margin-top: 0;
 }
 .study-member-box .member-left-top p {
     font-size: 14px;
     margin-bottom: -5px;
-    margin-left: 210px;
+    margin-left: 177px;
 }
 .study-member-box .member-left-top p.school {
     font-size: 16px;
@@ -7722,6 +7730,7 @@ span.join_group:hover {
 .member-pics-album .main img {
     height: 273px;
     width: 534px;
+    cursor: pointer;
 }
 .member-pics-album .thumbs {
     margin-top: 4px;
@@ -7858,7 +7867,7 @@ span.join_group:hover {
 }
 .member-left .member-left-top
 {
-    margin-bottom: -33px;
+    margin-bottom: -24px;
 }
 
 .upload_studymemberpagepics {
@@ -7895,34 +7904,33 @@ span.join_group:hover {
 }
 .thumbs .del_pic {
     background: url("../image/x-button.png") repeat scroll 0 0 / 24px auto rgba(0, 0, 0, 0);
-    float: left;
-    height: 22px;
-    margin-left: -24px;
-    margin-top: 0;
-    position: absolute;
-    text-indent: -30000px;
-    width: 22px;
-    z-index: 20000;
-    display: none;
     cursor: pointer;
+    float: left;
+    height: 23px;
+    margin-left: -28px;
+    position: relative;
+    text-indent: -30000px;
+    width: 23px;
+    z-index: 10000;
+    display: none;
 }
 .img_item
 {
     float:left;
     margin-right: 4px;
 }
-.thumbs .img_item:hover .del_pic
+.thumbs .img_item_out:hover .del_pic
 {
     display: inline;
 }
 .member-pics-album .del_main_pic {
     background: url("../image/x-button.png") repeat scroll 0 0 / 40px auto rgba(0, 0, 0, 0);
     height: 40px;
-    margin-left: -39px;
+    margin-left: 495px;
     position: absolute;
     text-indent: -9000px;
     width: 40px;
-    z-index: 1000;
+    z-index: 100000000;
     display: none;
     cursor: pointer;
 }
@@ -7933,4 +7941,304 @@ span.join_group:hover {
 .offer_content_inner .right-offerbox .member-title p label
 {
     width: 66px;
+}
+.pic_description h4
+{
+    font-size: 14px;
+}
+.pic_description textarea {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    margin-bottom: 5px;
+    font-size: 14px !important;
+}
+.pic_description .save, .pic_description .close {
+    background: none repeat scroll 0 0 #3B984C;
+    border: none;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 5px 10px;
+    float: right;
+    cursor: pointer;
+    height: 25px;
+    margin-left: 5px;
+}
+.pic_description .close {
+    background: #CCC;
+    color: #333;
+}
+.pic_description_item
+{
+    display: none;
+}
+.pic_description_item .content
+{
+    font-size: 14px;
+    margin-top: 10px;
+}
+.pic_description_item.active
+{
+    display: block;
+}
+.pic_description_item .fhide
+{
+    display: none;
+}
+.overbox_del_studymempic {
+    background: url("../image/x-button.png") repeat scroll 0 0 / 32px auto rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: none !important;
+    height: 32px;
+    margin-left: 608px;
+    margin-top: 0;
+    position: absolute;
+    text-indent: -9000px;
+    width: 32px !important;
+    z-index: 1000;
+}
+.left-offerbox:hover .overbox_del_studymempic {
+    display: block !important;
+}
+.pic_description h4 a {
+    background: none repeat scroll 0 0 #EFEFEF;
+    border: 1px solid #AAAAAA;
+    color: #333333;
+    font-size: 13px;
+    padding: 2px 10px;
+}
+.offer_content_inner .left-offerbox a
+{
+    width: 100%;
+}
+.offer_content_inner .left-offerbox a img
+{
+    max-width: 637px;
+}
+.offer_content_inner .right-offerbox .member-title p label
+{
+    margin-left: -92px;
+}
+.offer_content_inner .right-offerbox .member-title p
+{
+    padding-left: 192px;
+}
+.offer_content_inner .right-offerbox .member-title p label.two_points {
+    margin-left: -10px;
+    width: auto;
+}
+.changestudyava {
+    background: none repeat scroll 0 0 #3B984C;
+    color: #FFFFFF;
+    margin-left: 18px;
+    margin-top: 130px;
+    padding: 5px 10px;
+    position: absolute;
+    display: none;
+}
+.changestudyava:hover {
+    color: #fff;
+    opacity: 0.9;
+}
+.out_studyava:hover .changestudyava {
+    display: block;
+}
+.changesschoollogo, .changesgrouplogo {
+    background: none repeat scroll 0 0 #3B984C;
+    color: #FFFFFF;
+    margin-left: 84px;
+    margin-top: 159px;
+    padding: 5px 10px;
+    position: absolute;
+    display: none;
+}
+.changesgrouplogo {
+    margin-left: 22px;
+    margin-top: 96px;
+}
+.changesschoollogo:hover, .changesgrouplogo:hover {
+    opacity: 0.9;
+    color: #fff;
+}
+.logo_out_hover:hover .changesschoollogo, .logo_out_hover:hover .changesgrouplogo {
+    display: block;
+}
+.group_left_top
+{
+    text-align: left;
+}
+.box-group-info .box2
+{
+    
+}
+.box-group-info .box-top
+{
+    
+}
+.box-group-info .box-bottom
+{
+    
+}
+.box-group-info {
+    margin-top: 10px;
+}
+
+.box-group-info img {
+    margin-top: 0;
+    width: 125px;
+}
+.box-group-info .box2 {
+    float: right;
+    width: 115px;
+}
+.box-group-info .box-top {
+    border: 1px solid #AAAAAA;
+    height: 56px;
+    margin-bottom: 4px;
+    padding: 5px 5px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+}
+.box-group-info .box-bottom {
+    border: 1px solid #AAAAAA;
+    height: 65px;
+    padding: 5px 5px;
+    font-weight: bold;
+    text-align: center;
+}
+.box-group-info .box-top label, .box-group-info .box-bottom label {
+    font-family: Segoe UI Light;
+    font-size: 13px;
+    font-weight: normal;
+}
+.box-group-info .box-top label
+{
+    margin-bottom: 8px;
+}
+.school_banners li
+{
+    list-style: none;
+    display: none;
+}
+.school_banners li.active
+{
+    display: block;
+}
+.studybanner_nav {
+    background: none repeat scroll 0 0 #D8EADA;
+    border: 0 solid #AAAAAA;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    color: #999999;
+    cursor: pointer;
+    font-family: Tahoma;
+    font-size: 16px;
+    height: 34px;
+    margin-top: -215px;
+    opacity: 0.8;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    text-indent: -3000px;
+    vertical-align: middle;
+    width: 34px;
+    z-index: 1000;
+    display: none;
+}
+.studybanner_nav:hover
+{
+    opacity: 1;
+}
+.studybanner_nav.next
+{
+    background: url("../image/nav_next.png") no-repeat scroll -3px -3px / 40px auto #FFFFFF;
+    margin-left: 880px;
+}
+.studybanner_nav.prev
+{
+    background: url("../image/nav_prev.png") no-repeat scroll -3px -3px / 40px auto #FFFFFF;
+    margin-left: 10px;
+}
+.del_schoolbanner {
+    background: url("../image/x-button.png") repeat scroll 0 0 / 40px auto rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: none;
+    height: 40px;
+    margin-left: 880px;
+    position: absolute;
+    text-indent: -9000px;
+    width: 40px;
+    z-index: 100000000;
+}
+.school_banners:hover .del_schoolbanner {
+    display: block;
+}
+
+.offer_content_inner .right-offerbox .member-title
+{
+    min-height: 87px;
+}
+.studypost-content-placeholder
+{
+    position: absolute;
+    display: none;
+}
+.member-left .controls
+{
+    margin-left: 178px;
+}
+.member-left .controls a
+{
+    height: 24px;
+    padding: 3px 20px;
+}
+.member-left .controls a.skin_chat_with_owner
+{
+    background: url("../image/offline.png") no-repeat scroll 7px 7px #3B984C !important;
+}
+.member-left .member-left-top {
+    height: 167px;
+    margin-bottom: -24px;
+    float: none;
+}
+.member-left .controls
+{
+    float: none;
+}
+.member-left-bottom {
+    display: block;
+    float: none;
+    margin-top: 30px;
+}
+.member-left-bottom {
+    background: none repeat scroll 0 0 #F9F9F9;
+    border: 1px solid #AAAAAA;
+    display: block;
+    float: none;
+    height: 222px;
+    margin-top: 40px;
+    padding: 10px;
+    width: 626px;
+}
+.stats_content img
+{
+    float: left;
+    margin-right: 5px;
+    height: 35px;
+}
+.stats_content textarea {
+    height: 35px;
+    width: 529px;
+}
+.stats .comment_list .stars .star
+{
+    background: url("../image/star_light.png") no-repeat scroll 0 0 / 12px auto rgba(0, 0, 0, 0);
+}
+.stats .comment_list .stars .star.light
+{
+    background: url("../image/star.png") no-repeat scroll 0 0 / 12px auto rgba(0, 0, 0, 0)
+}
+#facelike_col1 .group_list li.active
+{
+    display: none;
 }

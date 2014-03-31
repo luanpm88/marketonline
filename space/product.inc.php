@@ -13,7 +13,7 @@ $conditions = null;
 $indus_array = array();
 $custom_array = array();
 //var_dump($company->info);
-$conditions[] = "Product.status=1 AND Product.company_id='".$COMPANY_CURRENT['id']."' AND Product.show = 1";
+$conditions[] = "Product.status=1 AND Product.company_id='".$COMPANY_CURRENT['id']."' AND Product.state = 1";
 
 if(isset($_POST["keyword"]) && $_POST["keyword"] != "")
 {
@@ -87,6 +87,10 @@ if (isset($_GET['typeid'])) {
 	$conditions[] = "(".implode(" OR ", $conditions_temp).")";
 		
 }
+
+$amount = $product->findCount(null, $conditions,"id");
+//echo $amount."ssds";
+
 if (isset($_GET['new']) && $_GET['new'] == 1) {
 	$conditions[]= "ifnew=1";
 }
@@ -95,8 +99,7 @@ if (isset($_GET['new']) && $_GET['new'] == 1) {
 setvar("indus_array", $indus_array);
 setvar("custom_array", $custom_array);
 //var_dump($conditions);
-$amount = $product->findCount(null, $conditions,"id");
-//echo $amount."ssds";
+
 setvar("paging", array('total'=>$amount));
 $space->render($tpl_file);
 ?>

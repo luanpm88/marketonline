@@ -130,9 +130,11 @@ class Members extends PbModel {
 
  	function getInfoById($member_id)
  	{
-		uses("area", "space");
+		uses("area", "space", "studymemberimage", "studymemberimagecomment");
  		$area = new Areas();
 		$space = new Space();
+		$studymemberimagecomment = new Studymemberimagecomments();
+		$studymemberimage = new Studymemberimages();
  		$tmp_img = null;
  		$_PB_CACHE['membergroup'] = cache_read("membergroup");
  		$_PB_CACHE['trusttype'] = cache_read("trusttype");
@@ -160,41 +162,42 @@ class Members extends PbModel {
 			}
 			
 			if (empty($result['photo'])) {
-				$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');
+				$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
 			}else{
-				$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'smaller');;
+				$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');;
 			}
 			
 			
-			if (empty($result['studypictures'])) {
-				$result['studypics'][0] = URL."images/no_studypic.png";
-			}else{
-				$studypics = json_decode($result['studypictures']);
-				foreach($studypics as $key => $item)
+			//get study images
+			$studyimages = $studymemberimage->findAll("*", null, array("member_id=".$member_id), "created DESC");
+			//var_dump($studyimages);
+			if($studyimages)
+			{
+				foreach($studyimages as $key => $item)
 				{
+					$item["name_small"] = URL.pb_get_attachmenturl($item["name"], '', 'small');
+					$item["name_medium"] = URL.pb_get_attachmenturl($item["name"], '', 'medium');
+					$item["name_origin"] = URL.pb_get_attachmenturl($item["name"], '', '');
+					$item["comments"]["count"] = $studymemberimagecomment->findCount(null, array("studymemberimage_id=".$item["id"]));
+					$item["description_raw"] = $item["description"];
+					$item["description"] = str_replace("\n","<br />",$item["description"]);
 					
 					
-					if($key != count($studypics)-1)
+					if($key == 0)
 					{
-						$arrs["value"] = $item;
-						$studypics[$key] = URL.pb_get_attachmenturl($item, '', 'small');
-						$arrs["image"] = $studypics[$key];
-						$result['studypics']['thumbs_tmp'][] = $arrs;
+						$result["studypics"]["main"] = $item;
 					}
 					else
-					{
-						$studypics[$key] = URL.pb_get_attachmenturl($item, '', 'medium');
-						$result['studypics']['main'] = $studypics[$key];
-						$result['studypics']['main_value'] = $item;
-						$result['studypics']['main_key'] = $key;
+					{						
+						$result["studypics"]["thumbs"][] = $item;
 					}
+					$result['studypics']['pics'][] = $item;
 				}
-				//$result['studypics'] = $studypics;
-				//$result['studypics']['main'] = $studypics[count($studypics)-1];
-				for($i=count($result['studypics']['thumbs_tmp'])-1; $i >= 0; $i--)
-				{
-					$result['studypics']['thumbs'][$i] = $result['studypics']['thumbs_tmp'][$i];
-				}
+			}
+			else
+			{
+				$result['studypics']['main']['name_medium'] = URL."images/no_studypic.png";
+				$result['studypics']['main']['id'] = 0;
 			}
 			
 			
@@ -203,6 +206,16 @@ class Members extends PbModel {
 			
 			$result['other_types'] = $this->getOtherMembertypes($result["id"]);
 			//var_dump($this->getOtherMembertypes($result["id"]));
+			$is_student = false;
+			foreach($result['other_types'] as $item)
+			{
+				$is_student = true;
+				if($item["membertype_id"] == 6)
+				{
+					break;
+				}
+			}
+			$result['is_student'] = $is_student;
  		}		
  		return $result;
  	}

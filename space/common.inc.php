@@ -78,6 +78,7 @@ if (empty($company->info['picture'])) {
 	$company->info['logo'] = $absolute_uri.pb_get_attachmenturl('', '', 'small');
 }else{
 	$company->info['logo'] = $absolute_uri.pb_get_attachmenturl($company->info['picture'], '', 'small');
+	$company->info['logo_big'] = $absolute_uri.pb_get_attachmenturl($company->info['picture'], '', '');
 }
 
 //if (empty($company->info['banner'])) {
@@ -339,7 +340,7 @@ if(strtolower($_GET["userid"]) != "admin" && $do != 'ajaxannoucebox')
 		
 		//count product
 		$conditions = null;
-		$conditions[] = "Product.status=1 AND Product.company_id='".$COMPANY_CURRENT['id']."'";
+		$conditions[] = "Product.status=1 AND Product.state=1 AND Product.company_id='".$COMPANY_CURRENT['id']."'";
 		$indus_array = array();
 		$custom_array = array();
 		$id_i = intval($item0["id"]);

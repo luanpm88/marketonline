@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-18 08:05:06
+<?php /* Smarty version 2.6.27, created on 2014-03-24 17:04:52
          compiled from default/verytopmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_study.html', 8, false),array('function', 'the_url', 'default/verytopmenu_study.html', 31, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_study.html', 8, false),array('function', 'the_url', 'default/verytopmenu_study.html', 36, false),)), $this); ?>
 <div id="topmenu_outer">
 <div id="verytopmenu">
     <div class="left">
@@ -22,7 +22,12 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 " />
 	    <div class="search_result">
 		
-		<ul><li><h2><a></a></h2><p></p></li></ul>
+		<ul>
+		    <li>
+			<h2><a></a></h2>
+			<p></p>
+		    </li>
+		</ul>
 	    </div>
 	    <span class="right-search-icon">search</span>
 	</div>

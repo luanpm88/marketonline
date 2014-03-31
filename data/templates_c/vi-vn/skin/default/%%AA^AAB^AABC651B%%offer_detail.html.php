@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-12 14:49:22
+<?php /* Smarty version 2.6.27, created on 2014-03-28 13:53:20
          compiled from offer_detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'offer_detail.html', 151, false),array('function', 'formhash', 'offer_detail.html', 153, false),)), $this); ?>
@@ -274,7 +274,6 @@ image/usericon_big.png  <?php endif; ?> <?php endif; ?>" />
 	
 </div>
     </div>
-
 </div>
                   
               </div>
@@ -291,4 +290,3 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "footer.html", 'smarty
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-

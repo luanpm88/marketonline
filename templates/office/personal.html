@@ -367,18 +367,17 @@ function readURL(input) {
 		
 		
 		
-		{if $membertype_id == 6}
+		{if $membertype_id == 6 || $pb_userinfo.is_student}
 		
 				<br style="clear: both" />		
-				<h3>Thông tin học tập</h3>
+				<h2 class="studyh2">Thông tin học tập</h2>
 				<span class="top-table">.</span>
 				<table class="offer_info_content">
 			      
 				        <tr>
 						<th>Trường<font color="#FF6600">*</font></th>
-						<td>
-							<input type="checkbox" name="other_school" /> Không có trong danh sách (tạo mới trường)
-							<br />
+						<td>							
+						
 							<span class="school_name">
 								<span class="select_box">
 									<select name="memberfield[school_id]" id="school_select">
@@ -386,36 +385,37 @@ function readURL(input) {
 											<option value="{$item0.id}" {if $item.school_id == $item0.id}selected{/if}>{$item0.name}</option>
 										<!--{/loop}-->
 									</select>
+									<br />
 								</span>
 								<div class="new_school_form">
 									<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
 									<input placeholder="Địa chỉ" type="text" size="30" name="other_school_addres" />
-									<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
+									<!--<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
 									<input placeholder="Email" type="text" size="30" name="other_school_email" />
-									<input placeholder="Website" type="text" size="30" name="other_school_website" />
-									<br />Logo trường:<br /><input type="file" size="30" name="other_school_logo" />
-									<br />Hình ảnh giới thiệu:<br /><input type="file" size="30" name="other_school_banner" />
+									<input placeholder="Website" type="text" size="30" name="other_school_website" />-->
+									<!--<br />Logo trường:<br /><input type="file" size="30" name="other_school_logo" />
+									<br />Hình ảnh giới thiệu:<br /><input type="file" size="30" name="other_school_banner" />-->
 								</div>
 							</span>
-							
+							<input type="checkbox" name="other_school" /> Thêm tên trường của bạn (nếu không có trong danh sách)
 						</td>
 					</tr>
 					<tr>
 						<th>Khoa</th>
 						<td>
-							<input size="30" name="memberfield[department]" type="text" id="memberskype" value="{$item.skype}">
+							<input size="30" name="memberfield[department]" type="text" id="memberskype" value="{$item.department}">
 						</td>
 					</tr>
 					<tr>
 						<th>Lớp</th>
 						<td>
-							<input size="30" name="memberfield[class]" type="text" id="memberskype" value="{$item.skype}">
+							<input size="30" name="memberfield[class]" type="text" id="memberskype" value="{$item.class}">
 						</td>
 					</tr>
 					<tr>
 						<th>Mã số sinh viên</th>
 						<td>
-							<input size="30" name="memberfield[mssv]" type="text" id="memberskype" value="{$item.skype}">
+							<input size="30" name="memberfield[mssv]" type="text" id="memberskype" value="{$item.mssv}">
 						</td>
 					</tr>
 					<tr>
@@ -451,7 +451,7 @@ function readURL(input) {
 		
 		
 		<br />		
-		<h3>{lang addition_info_person} (nếu có)</h3>
+		<h3>Thông tin bổ sung cá nhân (nếu có)</h3>
 		<span class="top-table">.</span>
 		<table class="offer_info_content">
               
@@ -511,6 +511,10 @@ function readURL(input) {
 						      <tr>
 							<th>{lang personal_homepage}</th>
 							<td><input name="memberfield[site_url]" type="text" id="site_url" value="{$item.site_url}"></td>
+						      </tr>
+						      <tr>
+							<th>Facebook</th>
+							<td><input placeholder="Nick kết bạn của facebook (không phải trang fanpage) " name="memberfield[facebook]" type="text" id="site_url" value="{$item.facebook}"></td>
 						      </tr>
 						       <tr style="display: none">
 							<th>{lang login_jump}</th>

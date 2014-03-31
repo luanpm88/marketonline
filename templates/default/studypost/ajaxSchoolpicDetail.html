@@ -1,0 +1,107 @@
+<div class="offer_content_inner" style="">
+    
+			
+			<div class="left-offerbox">
+			    {if $pb_userid == 1030}
+				<div class="" style="position: absolute">
+				    <a class="overbox_del_studymempic" href="javascript:void(0)" title="Xóa hình này">X</a>
+				</div>
+			    {/if}
+				<a href="javascript:void(0)">					
+					<!--{loop $school.banners item level key}-->
+					    <img del-url="{the_url module=studypost action=del_schoolbanner id=`$item.id`}" src="{$item.image}" rel="{$item.id}" />					    	
+					<!--{/loop}-->								
+				</a>
+				<span class="next">.</span>
+				<span class="previous">.</span>
+			</div>
+			
+			<div class="right-offerbox">
+				<div class="member-title">
+						
+						
+					<div class="avatar">
+						<a href="{the_url module=studypost action=school id=`$school.id`}">
+						    <img src="{$school.logo}" />
+						</a>
+					</div>
+					<h2><a href="{the_url module=studypost action=school id=`$school.id`}">{$school.name}</a></h2>
+					
+					{if $school.address}<p><label>Địa chỉ </label><label class="two_points">:</label> {$school.address}</p>{/if}
+					{if $school.phone}<p><label>Điện thoại </label><label class="two_points">:</label> {$school.phone}</p>{/if}
+					{if $school.email}<p><label>Email </label><label class="two_points">:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}
+					{if $school.website}<p><label>Website </label><label class="two_points">:</label> <a href="{$school.website}">{$school.website}</a></p>{/if}
+					
+					
+		
+				</div>
+				<br style="clear: both" />
+				
+				<div class="pic_description">
+				    <!--{loop $school.banners item level key}-->
+					<div class="pic_description_item" rel="{$item.id}">					
+					    <div class="content" style="margin-top: 0px;margin-bottom: 10px;word-wrap: break-word;">{$item.description}</div>
+					    
+					    {if $pb_userid == 1030}
+						<div class="pic_description_form">
+						    <form class="picdes fhide" action="{the_url module=studypost action=postSchoolpicDescription}" method="post">
+							<textarea name="description" style="height:110px">{if $item.description}{$item.description_raw}{else}Thêm mô tả cho hình ảnh{/if}</textarea>
+							<input type="button" class="close" value="Hủy" />
+							<input type="button" class="save" value="Hoàn thành" />
+						    </form>
+						    <h4><a href="javascript:void(0)">
+						    {if $item.description}
+							Sửa mô tả cho hình ảnh
+						    {else}
+							Thêm mô tả cho hình ảnh
+						    {/if}
+						    </a></h4>
+						    
+						</div>
+					    {/if}
+					    
+					    
+					    <br style="clear: both" />
+				
+					    <div class="detail-comments">
+						    <h4>{lang comments} (<span class="comment_count">{$item.comments.count}</span>)</h4>
+						    
+						    <div class="comments-box">
+						    
+							    <div class="comments_list">
+								    
+							    </div>
+						    
+							    <!--{if $pb_username!=""}-->
+								    <form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=studypost action=postSchoolpicComment}" onsubmit="$('#Save').attr('disabled',true);">
+									    <img src="{$pb_userinfo.photo}" />
+									    <!-- {formhash} -->
+									    <input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+									    <textarea id="icomment" name="data[content]" class="studymemberpic_textarea"></textarea>
+									    
+									    <!--<input type="button" id="postcmm" value="{lang send}" onclick="postComment()" />-->
+								    </form>
+							    <!--{else}-->
+								<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=studypost action=postSchoolpicComment}" onsubmit="$('#Save').attr('disabled',true);">
+								    <input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+								    <a class="comment_but" href="#login-box">Gửi bình luận</a>
+								</form>
+							    <!--{/if}-->
+						    
+						    </div>
+					    </div>
+					    
+					    
+					</div>
+					
+					
+					
+				    <!--{/loop}-->
+				    
+				    
+				</div>
+				
+				
+			</div>
+			 
+		</div>

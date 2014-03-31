@@ -335,4 +335,5 @@ $sharing_username = $_SESSION["sharing_username"];
 //$chatboxs = explode(",", $chatboxs);
 ////$session->write("chatboxs".session_id(), NULL);
 //setvar("chatboxs", $chatboxs);
+setvar("FURI", $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 ?>

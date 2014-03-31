@@ -497,7 +497,8 @@ else
 	$conditions[] = "service = 0";
 }
 
-$amount = $product->findCount(null, $conditions,"Product.id");
+$amount = $product->findCount(null, $conditions, "Product.id");
+
 $page->setPagenav($amount);
 
 $orderby = "Product.created DESC";

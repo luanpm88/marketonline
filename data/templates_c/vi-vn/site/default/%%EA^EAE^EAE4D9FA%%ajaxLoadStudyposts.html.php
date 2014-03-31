@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 09:34:46
+<?php /* Smarty version 2.6.27, created on 2014-03-31 08:03:23
          compiled from default/studypost/ajaxLoadStudyposts.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/ajaxLoadStudyposts.html', 83, false),array('function', 'formhash', 'default/studypost/ajaxLoadStudyposts.html', 84, false),)), $this); ?>
@@ -131,6 +131,8 @@ if ($this->_foreach['level_comment']['total'] > 0):
                         <?php endif; ?>
                             
                         <div class="editor">
+                            <img src="<?php echo $this->_tpl_vars['pb_userinfo']['photo']; ?>
+" />
                             <textarea name="comment[content]"></textarea>
                         </div>
                         <div class="actions">

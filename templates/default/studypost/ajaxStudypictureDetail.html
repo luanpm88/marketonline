@@ -1,9 +1,15 @@
 <div class="offer_content_inner" style="">
-			 
+    
+			
 			<div class="left-offerbox">
-				<a href="javascript:void(0)">
-					<!--{loop $member.slides item level key}-->
-					    <img src="{$item}" rel="{$key}" />
+			    {if $pb_userid == $member.id}
+				<div class="" style="position: absolute">
+				    <a class="overbox_del_studymempic" href="javascript:void(0)" title="Xóa hình này">X</a>
+				</div>
+			    {/if}
+				<a href="javascript:void(0)">					
+					<!--{loop $member.studypics.pics item level key}-->
+					    <img del-url="{the_url module=studypost action=del_studypic id=`$item.id`}" src="{$item.name_origin}" rel="{$item.id}" />					    	
 					<!--{/loop}-->								
 				</a>
 				<span class="next">.</span>
@@ -14,134 +20,95 @@
 				<div class="member-title">
 						
 						
-			{if $company}
-						
 					<div class="avatar">
-						<a class="pic" target="_blank" href="{$company.url}"><img src="{$company.logo}" /></a>
+						<a href="{the_url module=studypost action=memberpage id=`$member.id`}">
+						    <img src="{$member.photo}" />
+						</a>
 						<!--{if $pb_username!=""}-->
-							<a class="chat_with_owner {if $member.online}online{/if}" onclick="getChatbox({$Trade.member_id}, false)" href="javascript:void(0)">Tin nhắn</a>
+							<a class="chat_with_owner {if $member.online}online{/if}" onclick="box({$member.id}, false, {$member.membertype_id})" href="javascript:void(0)">Tin nhắn</a>
 						<!--{else}-->
 							<a onclick="" href="#login-box" class="chat_with_owner {if $member.online}online{/if} comment_but">Nhắn tin</a>
 						<!--{/if}-->
 					</div>
-					<h2><a target="_blank" href="{$company.url}">{$company.shop_name}</a></h2>
+					<h2><a href="{the_url module=studypost action=memberpage id=`$member.id`}">{$member.first_name} {$member.last_name}</a></h2>
 					
-					{if $company.link_man}
-						<p>
-							<label>Liên hệ</label>:
-							{$company.link_man}
-						</p>
-					{/if}
-					{if $company.contact_mobile}
-						<p>
-							<label>Di động</label>:
-							{$company.contact_mobile}
-						</p>
-					{/if}
-					{if $company.contact_email}
-						<p>
-							<label>Email</label>:
-							{$company.contact_email}
-						</p>
-					{/if}
-					{if $company.address}
-						<p>
-							<label>Địa chỉ</label>:
-							{$member.address}
-						</p>
-					{/if}
-			{else}
-			
-						<div class="avatar">
-						<img src="{$member.photo}" />
-						<!--{if $pb_username!=""}-->
-							<a class="chat_with_owner {if $member.online}online{/if}" onclick="getChatbox({$member.id}, false)" href="javascript:void(0)">Tin nhắn</a>
-						<!--{else}-->
-							<a onclick="" href="#login-box" class="chat_with_owner {if $member.online}online{/if} comment_but">Nhắn tin</a>
-						<!--{/if}-->
-					</div>
-					<h2>{$member.first_name} {$member.last_name}</h2>
+					{if $member.school_name}<p class=""><label>Trường </label><label class="two_points">:</label> {$member.school_name}</p>{/if}
+					{if $member.class}<p><label>Lớp </label><label class="two_points">:</label> {$member.class}</p>{/if}
+					{if $member.gender}<p><label>Giới tính </label><label class="two_points">:</label> {if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
+					{if $member.address}<p><label>Địa chỉ </label><label class="two_points">:</label> {$member.address}</p>{/if}
+					{if $member.mobile}<p><label>Điện thoại </label><label class="two_points">:</label> {$member.mobile}</p>{/if}
+					{if $member.email}<p><label>Email </label><label class="two_points">:</label> {$member.email}</p>{/if}
 					
-					{if $member.mobile}
-						<p>
-							<label>Điện thoại</label>:
-							{$member.mobile}
-						</p>
-					{/if}
-					{if $member.email}
-						<p>
-							<label>Email</label>:
-							{$member.email}
-						</p>
-					{/if}
-					{if $member.address}
-						<p>
-							<label>Địa chỉ</label>:
-							{$member.address}
-						</p>
-					{/if}
-			{/if}
-						
-						
 					
-						
+		
 				</div>
 				<br style="clear: both" />
 				
-				<div class="detail-comments">
-					<h4>{lang comments} (<span class="comment_count">{$comments_count}</span>)</h4>
-					
-					<div class="comments-box">
-					
-						<div class="comments_list">
-							
+				<div class="pic_description">
+				    <!--{loop $member.studypics.pics item level key}-->
+					<div class="pic_description_item" rel="{$item.id}">					
+					    <div class="content" style="margin-top: 0px;margin-bottom: 10px;word-wrap: break-word;">{$item.description}</div>
+					    
+					    {if $pb_userid == $member.id}
+						<div class="pic_description_form">
+						    <form class="picdes fhide" action="{the_url module=studypost action=postStudymemberimageDescription}" method="post">
+							<textarea name="description" style="height:110px">{if $item.description}{$item.description_raw}{else}Thêm mô tả cho hình ảnh{/if}</textarea>
+							<input type="button" class="close" value="Hủy" />
+							<input type="button" class="save" value="Hoàn thành" />
+						    </form>
+						    <h4><a href="javascript:void(0)">
+						    {if $item.description}
+							Sửa mô tả cho hình ảnh
+						    {else}
+							Thêm mô tả cho hình ảnh
+						    {/if}
+						    </a></h4>
+						    
 						</div>
-					
-						<!--{if $pb_username!=""}-->
-							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postoffercomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
-								<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
-								<!-- {formhash} -->
-								<input type="hidden" id="pid" name="data[id]" value="{$Trade.id}" />
-								<textarea id="comment" name="data[content]"></textarea>
-								
-								<!--<input type="button" id="postcmm" value="{lang send}" onclick="postComment()" />-->
-							</form>
-						<!--{else}-->
-							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postoffercomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
-									<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
-									<!-- {formhash} -->
-									<input type="hidden" id="pid" name="data[id]" value="{$Trade.id}" />
-									<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
-									<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
-									<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
-									<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
-							</form>
-						<!--{/if}-->
-					
+					    {/if}
+					    
+					    
+					    <br style="clear: both" />
+				
+					    <div class="detail-comments">
+						    <h4>{lang comments} (<span class="comment_count">{$item.comments.count}</span>)</h4>
+						    
+						    <div class="comments-box">
+						    
+							    <div class="comments_list">
+								    
+							    </div>
+						    
+							    <!--{if $pb_username!=""}-->
+								    <form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=studypost action=postStudymemberimageComment}" onsubmit="$('#Save').attr('disabled',true);">
+									    <img src="{$pb_userinfo.photo}" />
+									    <!-- {formhash} -->
+									    <input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+									    <textarea id="icomment" name="data[content]" class="studymemberpic_textarea"></textarea>
+									    
+									    <!--<input type="button" id="postcmm" value="{lang send}" onclick="postComment()" />-->
+								    </form>
+							    <!--{else}-->
+								<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=studypost action=postStudymemberimageComment}" onsubmit="$('#Save').attr('disabled',true);">
+								    <input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+								    <a class="comment_but" href="#login-box">Gửi bình luận</a>
+								</form>
+							    <!--{/if}-->
+						    
+						    </div>
+					    </div>
+					    
+					    
 					</div>
+					
+					
+					
+				    <!--{/loop}-->
+				    
+				    
 				</div>
 				
-				<div class="detail-info">
-					<h4>{$Trade.name|truncate:80}</h4>
-					<div class="description">
-						{$Trade.content}
-					</div>
-				</div>
+				
 			</div>
 			 
 		</div>
-
-<!--{literal}-->
-<script>
-	if ($.cookie("guest_name") && $.cookie("guest_email")) {
-			$('input[name="box_guest_name"]').val($.cookie("guest_name"));
-			$('input[name="box_guest_email"]').val($.cookie("guest_email"));
-		}
-		if($('input[name="box_guest_name"]').val() != '' && $('input[name="box_guest_name"]').val() != '')
-		{
-			$('#guest_name').val($('input[name="box_guest_name"]').val());
-			$('#guest_email').val($('input[name="box_guest_email"]').val());
-			$('.guest_info').html('<strong>'+$('#guest_name').val()+'</strong> ('+$('#guest_email').val()+') | <a class="change_guest_info" href="javascript:void(0)">Chỉnh sửa</a> - <a class="delete_guest_info" href="javascript:void(0)">Thoát</a>');
-		}
-</script>
-<!--{/literal}-->

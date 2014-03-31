@@ -1,4 +1,340 @@
-    //for offer
+	function loadStudygrouppicComment(box)
+	{
+		box.addClass('cloading');
+		$.ajax({
+				type: "POST",
+				url: box.find('.comments-box form').attr("action"),
+				data: "id="+box.find('.comments-box #pid').val()
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					//alert(data);
+					box.find('.comments_list').html(data);
+					
+					if(box.find('.comments-box').css("display") != "none")
+					{
+					    box.find('.comments_list').mCustomScrollbar({
+					    	autoHideScrollbar:true,
+					    	theme:"light-thin",
+					    	scrollSpeed: 40
+					    });
+					}
+					
+					
+					box.removeClass('cloading');
+				}
+			});
+	}
+	
+	function getStudygrouppictureDetail(id, index)
+	  {
+	    $('.offerbox-outer').html("<div class='offer-loading'>.</div>");
+	    $("#offerbox-but").trigger("click");
+	    
+	        $.ajax({
+			url: "index.php?do=studypost&action=getStudygrouppicDetail&id="+id			
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				
+				$('.offerbox-outer').html(data);
+				
+				  //$("#offerbox-but").trigger("click");
+				  
+				  //for offer album
+				  $('.left-offerbox a img').css("display", "none");
+				  $('.left-offerbox a img[rel='+index+']').addClass("active");
+				  $('.pic_description .pic_description_item[rel='+index+']').addClass("active");
+				  
+				  $('.offer_content_inner .left-offerbox span.next').click(function() {
+				    $('.left-offerbox a img').each(function() {
+				      if ($(this).hasClass("active")) {				     
+					$(this).removeClass("active");
+					$('.pic_description .pic_description_item[rel='+$(this).attr("rel")+']').removeClass("active");
+					
+					if ($(this).next().length) {
+					  $(this).next().addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$(this).next().attr("rel")+']').addClass("active");
+					}
+					else
+					{
+					  $('.left-offerbox a img').eq(0).addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$('.left-offerbox a img').eq(0).attr("rel")+']').addClass("active");
+					}					
+					return false;
+				      }
+				    });
+				  });
+				  $('.offer_content_inner .left-offerbox span.previous').click(function() {
+				    $('.left-offerbox a img').each(function() {
+				      if ($(this).hasClass("active")) {				     
+					$(this).removeClass("active");
+					$('.pic_description .pic_description_item[rel='+$(this).attr("rel")+']').removeClass("active");
+					
+					if ($(this).prev().length) {
+					  $(this).prev().addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$(this).prev().attr("rel")+']').addClass("active");
+					}
+					else
+					{
+					  $('.left-offerbox a img:last-child').addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$('.left-offerbox a img:last-child').attr("rel")+']').addClass("active");
+					}					
+					return false;
+				      }
+				    });
+				  });
+				  
+				  $('.left-offerbox a').click(function() {
+				    //$('.offer_content_inner .left-offerbox span.next').trigger("click");
+				  });
+				  
+				  
+				  
+				  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
+                                  
+                                  if ($('.left-offerbox img').length < 2) {
+                                        $('.left-offerbox span').remove();
+                                  }
+				  
+				$('.pic_description_item').each(function() {
+				    loadStudygrouppicComment($(this).find('.detail-comments'));
+				});
+//				  
+//				  $('#comment').val($.cookie("comment_tpm"));
+			}
+		});
+	}
+	
+	function loadSchoolpicComment(box)
+	{
+		box.addClass('cloading');
+		$.ajax({
+				type: "POST",
+				url: box.find('.comments-box form').attr("action"),
+				data: "id="+box.find('.comments-box #pid').val()
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					//alert(data);
+					box.find('.comments_list').html(data);
+					
+					if(box.find('.comments-box').css("display") != "none")
+					{
+					    box.find('.comments_list').mCustomScrollbar({
+					    	autoHideScrollbar:true,
+					    	theme:"light-thin",
+					    	scrollSpeed: 40
+					    });
+					}
+					
+					
+					box.removeClass('cloading');
+				}
+			});
+	}
+	
+	function getSchoolpictureDetail(id, index)
+	  {
+	    $('.offerbox-outer').html("<div class='offer-loading'>.</div>");
+	    $("#offerbox-but").trigger("click");
+	    
+	        $.ajax({
+			url: "index.php?do=studypost&action=getSchoolpicDetail&id="+id			
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				
+				$('.offerbox-outer').html(data);
+				
+				  //$("#offerbox-but").trigger("click");
+				  
+				  //for offer album
+				  $('.left-offerbox a img').css("display", "none");
+				  $('.left-offerbox a img[rel='+index+']').addClass("active");
+				  $('.pic_description .pic_description_item[rel='+index+']').addClass("active");
+				  
+				  $('.offer_content_inner .left-offerbox span.next').click(function() {
+				    $('.left-offerbox a img').each(function() {
+				      if ($(this).hasClass("active")) {				     
+					$(this).removeClass("active");
+					$('.pic_description .pic_description_item[rel='+$(this).attr("rel")+']').removeClass("active");
+					
+					if ($(this).next().length) {
+					  $(this).next().addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$(this).next().attr("rel")+']').addClass("active");
+					}
+					else
+					{
+					  $('.left-offerbox a img').eq(0).addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$('.left-offerbox a img').eq(0).attr("rel")+']').addClass("active");
+					}					
+					return false;
+				      }
+				    });
+				  });
+				  $('.offer_content_inner .left-offerbox span.previous').click(function() {
+				    $('.left-offerbox a img').each(function() {
+				      if ($(this).hasClass("active")) {				     
+					$(this).removeClass("active");
+					$('.pic_description .pic_description_item[rel='+$(this).attr("rel")+']').removeClass("active");
+					
+					if ($(this).prev().length) {
+					  $(this).prev().addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$(this).prev().attr("rel")+']').addClass("active");
+					}
+					else
+					{
+					  $('.left-offerbox a img:last-child').addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$('.left-offerbox a img:last-child').attr("rel")+']').addClass("active");
+					}					
+					return false;
+				      }
+				    });
+				  });
+				  
+				  $('.left-offerbox a').click(function() {
+				    //$('.offer_content_inner .left-offerbox span.next').trigger("click");
+				  });
+				  
+				  
+				  
+				  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
+                                  
+                                  if ($('.left-offerbox img').length < 2) {
+                                        $('.left-offerbox span').remove();
+                                  }
+				  
+				$('.pic_description_item').each(function() {
+				    loadSchoolpicComment($(this).find('.detail-comments'));
+				});
+//				  
+//				  $('#comment').val($.cookie("comment_tpm"));
+			}
+		});
+	}
+	
+	
+	function toggleStudpicComment(box)
+	{
+	    if (box.find('form.picdes').hasClass("fhide")) {
+		box.find('form.picdes').removeClass("fhide");
+		box.find('form.picdes textarea').focus();
+		box.find('.content').addClass("fhide");
+		box.find('h4').addClass("fhide");
+	    }
+	    else
+	    {
+		box.find('form.picdes').addClass("fhide");		
+		box.find('.content').removeClass("fhide");
+		box.find('h4').removeClass("fhide");
+	    }
+	}
+	
+	function loadStudymemberimageComment(box)
+	{
+		box.addClass('cloading');
+		$.ajax({
+				type: "POST",
+				url: box.find('.comments-box form').attr("action"),
+				data: "id="+box.find('.comments-box #pid').val()
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					//alert(data);
+					box.find('.comments_list').html(data);
+					
+					if(box.find('.comments-box').css("display") != "none")
+					{
+					    box.find('.comments_list').mCustomScrollbar({
+					    	autoHideScrollbar:true,
+					    	theme:"light-thin",
+					    	scrollSpeed: 40
+					    });
+					}
+					
+					
+					box.removeClass('cloading');
+				}
+			});
+	}
+	
+	function postStudymemberimageComment(box)
+	{
+		valid = true;
+		var guest_string = '';
+		if (!box.find('#icomment').val().trim()) {
+			alert(box.find('#icomment').val().trim());
+			box.find('#icomment').addClass('invalid');
+			box.find('#icomment').focus();
+			box.find('#icomment').val("");
+			valid = false;
+		}
+		else
+		{
+			box.find('#icomment').removeClass('invalid');			
+		}
+		
+		//check guest
+		if(box.find('#guest_name').length)
+		{			
+			if(box.find('#guest_name').val() == '' || box.find('#guest_email').val() == '')
+			{		
+				box.find('#guest_isedit').val("1");
+				$("#guestbox-but").trigger("click");
+				//$('input[name="box_guest_name"]').focus();
+				valid = false;
+			}
+			else
+			{
+				guest_string = '&data[guest_name]='+box.find('#guest_name').val()+'&data[guest_email]='+box.find('#guest_email').val();
+			}
+		}
+		
+		if (valid) {
+			box.addClass('cloading');
+			box.find("#icomment").prop('disabled', true);
+			
+			//$.cookie("comment_tpm", null);
+			
+			$.ajax({
+				type: "POST",
+				url: box.find('.comments-box form').attr("action"),
+				encoding: "UTF-8",
+				data: "data[content]="+encodeURI(box.find('#icomment').val())+"&formhash="+box.find('#FormHash').val()+"&data[id]="+box.find('.comments-box #pid').val()+guest_string
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					//alert(data);
+					box.find('.comments_list').html(data);
+					//
+					
+					
+					box.find(".comments_list").mCustomScrollbar({
+						autoHideScrollbar:true,
+						theme:"light-thin",
+						scrollSpeed: 40
+					});
+					
+					box.removeClass('cloading');
+					box.find('#icomment').val("");
+					box.find('#icomment').prop('disabled', false);
+					
+					//update count
+					box.find('.comment_count').html(parseInt(box.find('.comment_count').html())+1);
+					
+					
+					
+					////
+					//getInbox();
+					
+					//if(box.find('#guest_name').length && !$('.offer-detail-is').length)
+					//{
+					//    $("#offerbox-but").trigger("click");
+					//    loadOfferComment();
+					//}
+				}
+			});
+		}
+	}
+	    
+	    
 	  function getStudypictureDetail(id, index)
 	  {
 	    $('.offerbox-outer').html("<div class='offer-loading'>.</div>");
@@ -17,17 +353,22 @@
 				  //for offer album
 				  $('.left-offerbox a img').css("display", "none");
 				  $('.left-offerbox a img[rel='+index+']').addClass("active");
+				  $('.pic_description .pic_description_item[rel='+index+']').addClass("active");
 				  
 				  $('.offer_content_inner .left-offerbox span.next').click(function() {
 				    $('.left-offerbox a img').each(function() {
 				      if ($(this).hasClass("active")) {				     
 					$(this).removeClass("active");
+					$('.pic_description .pic_description_item[rel='+$(this).attr("rel")+']').removeClass("active");
+					
 					if ($(this).next().length) {
 					  $(this).next().addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$(this).next().attr("rel")+']').addClass("active");
 					}
 					else
 					{
 					  $('.left-offerbox a img').eq(0).addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$('.left-offerbox a img').eq(0).attr("rel")+']').addClass("active");
 					}					
 					return false;
 				      }
@@ -37,12 +378,16 @@
 				    $('.left-offerbox a img').each(function() {
 				      if ($(this).hasClass("active")) {				     
 					$(this).removeClass("active");
+					$('.pic_description .pic_description_item[rel='+$(this).attr("rel")+']').removeClass("active");
+					
 					if ($(this).prev().length) {
 					  $(this).prev().addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$(this).prev().attr("rel")+']').addClass("active");
 					}
 					else
 					{
 					  $('.left-offerbox a img:last-child').addClass("active");
+					  $('.pic_description .pic_description_item[rel='+$('.left-offerbox a img:last-child').attr("rel")+']').addClass("active");
 					}					
 					return false;
 				      }
@@ -50,7 +395,7 @@
 				  });
 				  
 				  $('.left-offerbox a').click(function() {
-				    $('.offer_content_inner .left-offerbox span.next').trigger("click");
+				    //$('.offer_content_inner .left-offerbox span.next').trigger("click");
 				  });
 				  
 				  
@@ -60,14 +405,20 @@
                                   if ($('.left-offerbox img').length < 2) {
                                         $('.left-offerbox span').remove();
                                   }
-//				  
-//				  
-//				  loadOfferComment();
+				  
+				$('.pic_description_item').each(function() {
+				    loadStudymemberimageComment($(this).find('.detail-comments'));
+				});
 //				  
 //				  $('#comment').val($.cookie("comment_tpm"));
 			}
 		});
 	}
+	
+	
+	
+	
+	
     
     function autoAjustVerytopmenu() {
 	//move verytopmenu with small screen
@@ -714,7 +1065,7 @@
 		valid = true;
 		var guest_string = '';
 		if (!$('.detail-comments #comment').val().trim()) {
-		    alert($('.detail-comments #comment').val().trim());
+		    //alert($('.detail-comments #comment').val().trim());
 			$('.detail-comments #comment').addClass('invalid');
 			$('.detail-comments #comment').focus();
 			$('.detail-comments #comment').val("");
@@ -1120,6 +1471,280 @@
 		}
 	    
 		$('#comment').val($.cookie("comment_tpm"));
+		
+		$('#show-social').click(function(){
+		
+		   displayTet2014();
+		
+		});
+		
+		$('#menu-primary-navigation').hover(function() {
+		    $('.banner-small-top').css("display","none");
+		},
+		function() {
+		    $('.banner-small-top').css("display","block");
+		}
+		);
+		
+		
+		$('#job-search-box .job-search-tab .tab-content select').select2();
+		
+		$('.pagination a, .pagination span').each(function( index ) {
+		  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
+		  if($(this).html() == "2")
+		  {
+		     if (!$('.pagination span').length) {
+		       $(this).before('<span>1</span>');
+		     }
+		     else
+		     {
+		       $(this).before('<a href="'+$(location).attr('href').replace("pos=", "posz=")+'">1</a>');
+		     }
+		  }
+		});
+		
+		$('#TopWorkCategory ul.list-hot-cat li a').click(function(){		   
+		    $('#job-learn input[name="type"]').val($(this).parent().attr('rel'));
+		    $('#job-learn input[name="pos"]').remove();
+		    $('#job-learn input[name="total_count"]').remove();
+		    $('#job-learn form').submit();
+		});
+		
+		$('#job-learn input[type="submit"]').click(function(){
+		    $('#job-learn input[name="pos"]').remove();
+		    $('#job-learn input[name="total_count"]').remove();
+		});
+		
+		$('.job_city_link').click(function(){
+		    $('#job-learn select[name="area"]').val($(this).attr('rel'));
+		    $('#job-learn input[name="pos"]').remove();
+		    $('#job-learn input[name="total_count"]').remove();
+		    //$('#job-learn input[name="type"]').val('');
+		    $('#job-learn form').submit();
+		});
+		
+		//
+		$('.you_are_form input[type="radio"]').removeAttr("checked");
+		$('.main_user_select li').click(function() {
+		    $('.main_user_select li').removeClass('active');
+		    $(this).addClass('active');
+		    
+		    var type = $(this).attr("rel");
+		    
+		    $('.you_are_form input[type="radio"]').removeAttr("checked");
+		    if (type == 'employee') {			
+			$('.you_are_form input[value="Employee"]').attr("checked","checked");
+			$('.you_are_form').addClass("hide");
+		    } else if(type == 'employer') {
+			$('.you_are_form input[value="Employer"]').attr("checked","checked");
+			$('.you_are_form').addClass("hide");
+		    } else if(type == 'learner') {
+			$('.you_are_form input[value="Learner"]').attr("checked","checked");
+			$('.you_are_form').addClass("hide");
+		    } else {
+			$('.you_are_form').removeClass("hide");
+		    }
+		});
+                
+                $('.joblevel_link').click(function(){		   
+		    $('#job-learn input[name="type"]').val($(this).attr('rel'));
+		    $('#job-learn input[name="pos"]').remove();
+		    $('#job-learn input[name="total_count"]').remove();
+		    $('#job-learn form').submit();
+		});
+                
+                $('.job_indust_link').click(function(){		   
+		    $('#job-learn select[name="indust"]').val($(this).attr('rel'));
+		    $('#job-learn input[name="pos"]').remove();
+		    $('#job-learn input[name="total_count"]').remove();
+		    $('#job-learn form').submit();
+		});
+                
+                $('.joblevel_link').click(function(){		   
+		    $('#TopWorkCategory ul.list-hot-cat li[rel="'+$('.joblevel_link').attr("rel")+'"] a').trigger("click");
+		});
+
+                $(".quantity_val").keyup(function(){
+                        $(this).parseNumber({format:"####", locale:"vn"});
+                        $(this).formatNumber({format:"####", locale:"vn"});
+                });
+
+                $('.product_listing a,.product_listing img, .logo_box_u a, .red_box a').qtip({ // Grab some elements to apply the tooltip to
+                    content: {
+                        attr: 'title'                        
+                    },
+                    position: {
+                        target: 'mouse', // Track the mouse as the positioning target
+                        adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
+                    }
+                })
+                
+                $('.title_more_school_button').fancybox();
+                
+                
+                $('.member-pics-album .thumbs .prev').addClass('ihide');
+                if ($('.thumbs .inner_slider img').length < 5) {
+                    $('.member-pics-album .thumbs .next').addClass('ihide');
+                }
+                $('.member-pics-album .thumbs .prev').click(function() {
+                    var move = 1;
+                    
+                    for(var i = 0; i < move; i++)
+                    {
+                        if (parseInt( $('.thumbs .inner_slider').css("margin-left")) <  -121) {
+                            $('.member-pics-album .thumbs .next').removeClass('ihide');
+                            $('.thumbs .inner_slider').css("margin-left",parseInt( $('.thumbs .inner_slider').css("margin-left"))+122);
+                        }
+                        if (parseInt( $('.thumbs .inner_slider').css("margin-left")) >= -121)
+                        {
+                            $('.member-pics-album .thumbs .prev').addClass('ihide');
+                        }
+                    }
+                });
+                
+                $('.member-pics-album .thumbs .next').click(function() {
+                    var move = 1;
+                    
+                    for(var i = 0; i < move; i++)
+                    {
+                        if ($('.thumbs .inner_slider img').length*122 - 122*3 > -parseInt( $('.thumbs .inner_slider').css("margin-left"))) {
+                            $('.thumbs .inner_slider').css("margin-left",parseInt( $('.thumbs .inner_slider').css("margin-left"))-122);
+                            $('.member-pics-album .thumbs .prev').removeClass('ihide');
+                        }
+                        if ($('.thumbs .inner_slider img').length*122 - 122*3 <= -parseInt( $('.thumbs .inner_slider').css("margin-left")))
+                        {
+                            $('.member-pics-album .thumbs .next').addClass('ihide');
+                        }
+                    }
+                });
+		
+		$('.pic_description .save').live("click", function(event) {
+		    
+		    var contentbox = $(this).parents('.pic_description_item');
+		    
+		    if ($.trim(contentbox.find('form.picdes textarea').val()) == "Thêm mô tả cho hình ảnh") {
+			contentbox.find('form.picdes textarea').val("");
+		    }
+		    
+		    if ($.trim(contentbox.find('form.picdes textarea').val()) == "") {
+			contentbox.find('form.picdes textarea').val("");
+		    }
+		    
+		    var data = $(this).parents('form').serialize();
+		    
+			$.ajax({
+			    type: "POST",
+			    url: $(this).parents('form.picdes').attr("action"),
+			    encoding: "UTF-8",
+			    data: data+"&id="+$('.left-offerbox a img.active').attr('rel')
+			}).done(function ( data ) {
+			    if( console && console.log ) {
+				data = JSON.parse(data);
+				//alert(data);
+				contentbox.find('.content').html(data.withbreak);
+				contentbox.find('form.picdes textarea').val(data.normal);
+				toggleStudpicComment(contentbox);
+				if(data.normal != '')
+				{
+				    contentbox.find('h4 a').html("Sửa mô tả cho hình ảnh");
+				}
+				else
+				{
+				    contentbox.find('h4 a').html("Thêm mô tả cho hình ảnh");
+				    contentbox.find('form.picdes textarea').val("Thêm mô tả cho hình ảnh");
+				}
+			    }
+			});
+		    
+		    
+		    
+		    
+		});
+		
+		$('.pic_description .close').live("click", function(event) {
+		    var contentbox = $(this).parents('.pic_description_item');
+		    toggleStudpicComment(contentbox);	
+		});
+		
+		$('.pic_description .pic_description_item h4 a').live("click", function(event) {
+		    var contentbox = $(this).parents('.pic_description_item');
+		    
+		    toggleStudpicComment(contentbox);		    
+		    
+		});
+		
+		$('.overbox_del_studymempic').live("click", function() {
+		    var ok = confirm("Bạn có chắc muốn xóa hình này!");
+		    
+		    if(ok)
+		    {
+			//alert($('.left-offerbox a img.active').attr("rel"));
+			window.location = $('.left-offerbox a img.active').attr("del-url");
+			//alert($('.left-offerbox a img.active').attr("del-url"));
+		    }
+		});
+		
+		$('.studymemberpic_textarea').live("keydown", function(event) {
+			//$.cookie("comment_tpm", $('#comment').val());			
+			if (event.keyCode == 13) {
+			    event.preventDefault();
+			    postStudymemberimageComment($(this).parents('.detail-comments'));
+			}
+		});
+		
+		$('.pic_description_form textarea').after('<span class="placeholder_textarea"></span>');
+		
+		//$('.pic_description_form textarea').live("keydown", function(event) {
+		//	if ($.trim($(this).val()) == "Thêm mô tả cho hình ảnh") {
+		//	    $(this).val("");
+		//	}
+		//});
+		//$('.pic_description_form textarea').live("keyup", function(event) {
+		//	if ($.trim($(this).val()) == "") {
+		//	    $(this).val("Thêm mô tả cho hình ảnh");
+		//	}
+		//});
+		$('.pic_description_form textarea').live("focus", function(event) {
+			if ($.trim($(this).val()) == "Thêm mô tả cho hình ảnh") {
+			    $(this).val("");
+			}
+		});
+		$('.pic_description_form textarea').live("blur", function(event) {
+			if ($.trim($(this).val()) == "") {
+			    $(this).val("Thêm mô tả cho hình ảnh");
+			}
+		});
+		
+		
+		//nav banners slider
+		$('.school_banners li').first().addClass("active");
+		if ($('.school_banners li').length > 1) {
+		    $('.studybanner_nav.next').show();
+		}
+		$('.studybanner_nav.prev').click(function(){
+		    var banneractive = $('.school_banners li.active');
+		    if(banneractive.prev().length)
+		    {
+			banneractive.removeClass("active");
+			banneractive.prev().addClass("active");
+			$('.studybanner_nav.next').show();
+			if (!banneractive.prev().prev().length) {
+			    $(this).hide();
+			}
+		    }
+		});
+		$('.studybanner_nav.next').click(function(){
+		    var banneractive = $('.school_banners li.active');
+		    if(banneractive.next().length)
+		    {
+			banneractive.removeClass("active");
+			banneractive.next().addClass("active");
+			$('.studybanner_nav.prev').show();
+			if (!banneractive.next().next().length) {
+			    $(this).hide();
+			}
+		    }
+		});
 		
 		
 	});
