@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 13:15:43
+<?php /* Smarty version 2.6.27, created on 2014-04-03 15:30:13
          compiled from default%5Cstudypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default\\studypost/group.html', 45, false),array('function', 'the_url', 'default\\studypost/group.html', 64, false),array('modifier', 'truncate', 'default\\studypost/group.html', 146, false),)), $this); ?>
@@ -19,7 +19,7 @@ unset($_smarty_tpl_vars);
     
     $(document).ready(function() {
         
-        $(window).scrollTop(150);
+        $(window).scrollTop(152);
     
     });
 
@@ -117,8 +117,8 @@ unset($_smarty_tpl_vars);
                         
                         <ul class="school_banners">
                             <?php if ($this->_tpl_vars['group']['no_banner']): ?>
-                                <li><a href="javascript:void(0)"><img src="<?php echo $this->_tpl_vars['group']['no_banner']; ?>
-" /></a></li>
+                                <li><a href="javascript:void(0)"><!--<img src="<?php echo $this->_tpl_vars['group']['no_banner']; ?>
+" />--></a></li>
                             <?php else: ?>
                                 <?php $_from = $this->_tpl_vars['group']['banners']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level']['total'] > 0):

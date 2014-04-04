@@ -3180,3 +3180,23 @@ input[name="other_school_addres"], input[name="other_school_name"] {
 {
     width: 430px;
 }
+#dataSchoolArea select
+{
+    min-width: 144px !important;
+    width: 144px !important;
+}
+#dataSchoolArea
+{
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.other_school_area_title {
+    font-size: 13px;
+    margin-left: -57px;
+    position: absolute;
+    margin-top: 5px;
+}
+.new_school_form input
+{
+    margin-bottom: 0;
+}

@@ -51,37 +51,33 @@
 	<div id="job-content">
 		<div id="TopStudytypeCategory">
 		      <ul class="list-studytype-cat">
-                                <li rel="" class="active"><a href="{the_url module=studypost}">Trường</a></li>
-                                <li rel=""><a href="{the_url module=studypost type=group}">Môn học</a></li>
+                                <li rel=""><a href="{the_url module=studypost}">Trường</a></li>
+                                <li rel="" class="active"><a href="{the_url module=studypost type=group}">Môn học</a></li>
                                 <li rel=""><a href="{the_url module=studypost type=learner}">Học viên</a></li>
 		      </ul>
 		</div>
 		
                 <div class="studypage-content">
                     <div id="other-school-list" class="school_list main_list">
-		      {if $school_list}
                         <ul class="group_list">
-                            <!--{loop $school_list item level key}-->
-                                    <li onclick="window.location='{the_url module=studypost action=school id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
+                            <!--{loop $group_list item level key}-->
+                                    <li onclick="window.location='{the_url module=studypost action=group id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
                                         <a class="head-title">
-                                            <img src="{$WebRootUrl}/{$item.logo}" />
-                                            <span>{$item.name|truncate:40}</span>
+                                            <img src="{$item.logo}" />
+                                            <span>{$item.subject_name|truncate:40}</span>
+					    <span>{$item.school_name}</span>
                                         </a>
                                         {if $item.address}<p>{$item.address}</p>{/if}
-                                        {if $item.phone}<p><label>Điện thoại:</label> {$item.phone}</p>{/if}
-                                        {if $item.email}<p><label>Email:</label> <a href="mailto:{$item.email}">{$item.email}</a></p>{/if}
+                                        {if $item.member_count}<p><label>Thành viên:</label> {$item.member_count}</p>{/if}
+                                        {if $item.created}<p><label>Ngày tạo:</label> {$item.created_at}</p>{/if}
                                         {if $item.website}<p><label>Website:</label> {$item.website}</p>{/if}
                                     </li>
                             <!--{/loop}-->
                         </ul>
-		      {else}
-			<p></p>
-			<p> Không tìm thấy trường nào...!</p>
-		      {/if}
                     </div>
-		    <!--<div id="pagenav">
+		    <div id="pagenav">
 		      <p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
-		    </div>-->
+		    </div>
                     <br style="clear: both" />
                 </div>
 

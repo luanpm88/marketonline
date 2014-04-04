@@ -698,8 +698,7 @@ class Members extends PbModel {
 			}
 		}		
 		return false;
-	}
-	
+	}	
 	function getOtherMembertypes($member_id)
 	{
 		uses("Membermembertype");
@@ -708,6 +707,35 @@ class Members extends PbModel {
 		$ids = $mmt->findAll("membertype_id", null, "member_id=".$member_id);
 		
 		return $ids;
+	}	
+	function getStudyList($conds = array())
+	{
+		uses("area");
+ 		$area = new Areas();
+		
+		$conditions = $conds;
+		$conditions[] = "(Member.membertype_id=6 OR mmt.membertype_id=6)";
+				
+		$joins = array("LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}membermembertypes mmt ON mmt.member_id=Member.id";
+				
+		$members = $this->findAll("Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		
+		foreach($members as $key => $result)
+		{
+			$result["address_s"] = $result["address"];
+			$result["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
+			
+			$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+			$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');;
+
+			$result['online'] = $this->isOnline($result["id"]);
+			
+			$members[$key] = $result;	
+		}
+		
+		return $members;
 	}
 }
 ?>

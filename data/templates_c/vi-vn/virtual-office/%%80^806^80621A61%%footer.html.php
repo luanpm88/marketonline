@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 10:23:15
+<?php /* Smarty version 2.6.27, created on 2014-04-03 14:02:43
          compiled from footer.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'mailto', 'footer.html', 7, false),array('modifier', 'pl', 'footer.html', 9, false),)), $this); ?>
@@ -91,6 +91,32 @@ $(document).ready(function() {
 		 
 		 $(\'#dataArea select\').change(function( index ) {
                         $(\'#dataArea select\').each(function( index ) {
+                        //alert($(this).children().length);
+                           if($(this).children().length == 1)
+                           {
+                             $(this).addClass(\'lock\');
+                           }
+                           else
+                           {
+                            $(this).removeClass(\'lock\');
+                           }
+                       });
+		 });
+		 
+		 $(\'#dataSchoolArea select\').each(function( index ) {
+		//alert($(this).children().length);
+		if($(this).children().length == 1)
+		     {
+		       $(this).addClass(\'lock\');
+		     }
+		     else
+		     {
+		      $(this).removeClass(\'lock\');
+		     }
+		 });
+		 
+		 $(\'#dataSchoolArea select\').change(function( index ) {
+                        $(\'#dataSchoolArea select\').each(function( index ) {
                         //alert($(this).children().length);
                            if($(this).children().length == 1)
                            {

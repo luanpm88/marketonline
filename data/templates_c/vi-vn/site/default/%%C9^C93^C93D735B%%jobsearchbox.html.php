@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 16:50:59
+<?php /* Smarty version 2.6.27, created on 2014-04-03 16:31:59
          compiled from default/job/jobsearchbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/job/jobsearchbox.html', 6, false),)), $this); ?>
@@ -56,21 +56,23 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 						<?php if ($_GET['pos']): ?><input type="hidden" name="pos" value="<?php echo $_GET['pos']; ?>
 " /><?php endif; ?>
 						
-						<select name="type">
+						<select name="type" style="float: left;margin-right: 5px;">
 						    <option value="">Chọn: Trường / Môn học / Học viên</option>
 						    <option <?php if ($this->_tpl_vars['type'] == 'school'): ?>selected="selected"<?php endif; ?> value="school">Trường</option>
 						    <option <?php if ($this->_tpl_vars['type'] == 'group'): ?>selected="selected"<?php endif; ?> value="group">Môn học</option>
 						    <option <?php if ($this->_tpl_vars['type'] == 'learner'): ?>selected="selected"<?php endif; ?> value="learner">Học viên</option>						    
 						</select>
 						
-						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="<?php echo $this->_tpl_vars['keyword']; ?>
-"/>
 						
-						<select name="area">
+						
+						<select name="area" style="float: left;margin-right: 5px;">
 							<option value="">Tất cả địa điểm</option>
 							<?php echo $this->_tpl_vars['AreaOptions']; ?>
 
 						</select>
+						
+						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="<?php echo $this->_tpl_vars['keyword']; ?>
+"/>
 						
 						<input type="submit" value="Tìm kiếm" />
 					</form>

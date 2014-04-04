@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 11:29:48
+<?php /* Smarty version 2.6.27, created on 2014-04-03 15:03:53
          compiled from personal.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 276, false),array('function', 'html_radios', 'personal.html', 322, false),array('modifier', 'default', 'personal.html', 542, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 312, false),array('function', 'html_radios', 'personal.html', 358, false),array('modifier', 'default', 'personal.html', 582, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_profile'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
@@ -128,6 +128,18 @@ function readURL(input) {
 				result = false;
 			}
 			
+			if(($(\'#school_select\').val() == "0" && !$(\'input[name="other_school"]:checked\').length) ||
+				(($(\'#dataSchoolAreaId1\').val() == "0" || $(\'#dataSchoolAreaId2\').val() == "0" || $(\'#dataSchoolAreaId3\').val() == "0") && $(\'input[name="other_school"]:checked\').length))
+			{
+				result = false;
+			}
+			
+			if(($(\'#school_select\').val() == "0" && !$(\'input[name="other_school"]:checked\').length) ||
+				($(\'input[name="other_school_addres"]\').val() == "" && $(\'input[name="other_school"]:checked\').length))
+			{
+				result = false;
+			}
+			
 			
 			if (result) {
 				$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
@@ -195,13 +207,37 @@ function readURL(input) {
 			if(($(\'#school_select\').val() == "0" && !$(\'input[name="other_school"]:checked\').length) ||
 				($(\'input[name="other_school_name"]\').val() == "" && $(\'input[name="other_school"]:checked\').length))
 			{
-				$(\'.school_name\').parent().find(\'label.errorz\').remove();
-				$(\'.school_name\').parent().append(\'<label for="" class="errorz">Yêu cầu nhập tên trường</label>\');
+				$(\'.school_name_bound\').find(\'label.errorz\').remove();
+				$(\'.school_name_bound\').append(\'<label for="" class="errorz">Yêu cầu nhập tên trường</label>\');
 				result = false;
 			}
 			else
 			{
-				$(\'.school_name\').parent().find(\'label.errorz\').remove();
+				$(\'.school_name_bound\').find(\'label.errorz\').remove();
+			}
+			
+			if(($(\'#school_select\').val() == "0" && !$(\'input[name="other_school"]:checked\').length) ||
+				(($(\'#dataSchoolAreaId1\').val() == "0" || $(\'#dataSchoolAreaId2\').val() == "0" || $(\'#dataSchoolAreaId3\').val() == "0") && $(\'input[name="other_school"]:checked\').length))
+			{
+				$(\'#dataSchoolArea\').find(\'label.errorz\').remove();
+				$(\'#dataSchoolArea\').append(\'<label for="" class="errorz">Yêu cầu chọn khu vực</label>\');
+				result = false;
+			}
+			else
+			{
+				$(\'#dataSchoolArea\').find(\'label.errorz\').remove();
+			}
+			
+			if(($(\'#school_select\').val() == "0" && !$(\'input[name="other_school"]:checked\').length) ||
+				($(\'input[name="other_school_addres"]\').val() == "" && $(\'input[name="other_school"]:checked\').length))
+			{
+				$(\'.school_address_bound\').find(\'label.errorz\').remove();
+				$(\'.school_address_bound\').append(\'<label for="" class="errorz">Yêu cầu nhập địa chỉ</label>\');
+				result = false;
+			}
+			else
+			{
+				$(\'.school_address_bound\').find(\'label.errorz\').remove();
 			}
 				
 			
@@ -388,8 +424,8 @@ images/offer_01.gif" /></div>
 								<th><?php echo $this->_tpl_vars['_email_addr']; ?>
 <font color="#FF6600">*</font></th>
 								<td><input name="member[email]" type="text" id="memberemail" value="<?php echo $this->_tpl_vars['item']['email']; ?>
-" size="40" class="required email"> (<a name="mod" href="javascript:;" onclick="javascript:$('#memberemail').attr('disabled',false);"><?php echo $this->_tpl_vars['_modify']; ?>
-</a>)</td>
+" size="40" class="required email">
+								</td>
 							      </tr>
 							      <tr>
 								<th><?php echo $this->_tpl_vars['_area']; ?>
@@ -416,13 +452,6 @@ images/offer_01.gif" /></div>
 			</tr>
 		</table>
 		
-		
-		
-		
-		
-		
-		
-		
 		<?php if ($this->_tpl_vars['membertype_id'] == 6 || $this->_tpl_vars['pb_userinfo']['is_student']): ?>
 		
 				<br style="clear: both" />		
@@ -431,7 +460,8 @@ images/offer_01.gif" /></div>
 				<table class="offer_info_content">
 			      
 				        <tr>
-						<th>Trường<font color="#FF6600">*</font></th>
+						<th>Trường<font color="#FF6600">*</font>
+						</th>
 						<td>							
 						
 							<span class="school_name">
@@ -450,8 +480,17 @@ if ($this->_foreach['level_0']['total'] > 0):
 									<br />
 								</span>
 								<div class="new_school_form">
-									<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
-									<input placeholder="Địa chỉ" type="text" size="30" name="other_school_addres" />
+									<div class="school_name_bound"><input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" /></div>
+									<div class="other_school_area_title">Khu vực</div>
+									<div id="dataSchoolArea">
+										<select name="other_school_area[id][1]" id="dataSchoolAreaId1" class="level_1" style="width:120px;" ></select>
+										<select name="other_school_area[id][2]" id="dataSchoolAreaId2" class="level_2" style="width:120px;"></select>
+										<select name="other_school_area[id][3]" id="dataSchoolAreaId3" class="level_3" style="width:120px;"></select>
+									</div>
+									<div class="school_address_bound"><input placeholder="Số đường Tên đường, Phường/Xã" type="text" size="30" name="other_school_addres" /></div>
+									
+									
+									
 									<!--<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
 									<input placeholder="Email" type="text" size="30" name="other_school_email" />
 									<input placeholder="Website" type="text" size="30" name="other_school_website" />-->
@@ -654,6 +693,14 @@ var area_id2 = <?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['area_id2']
  ;
 var area_id3 = <?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['area_id3'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
  ;
+
+var school_area_id1 = <?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['area_id1'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
+ ;
+var school_area_id2 = <?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['area_id2'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
+ ;
+var school_area_id3 = <?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['area_id3'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
+ ;
+
 </script>
 <?php echo '
 <script>

@@ -114,6 +114,18 @@ function readURL(input) {
 				result = false;
 			}
 			
+			if(($('#school_select').val() == "0" && !$('input[name="other_school"]:checked').length) ||
+				(($('#dataSchoolAreaId1').val() == "0" || $('#dataSchoolAreaId2').val() == "0" || $('#dataSchoolAreaId3').val() == "0") && $('input[name="other_school"]:checked').length))
+			{
+				result = false;
+			}
+			
+			if(($('#school_select').val() == "0" && !$('input[name="other_school"]:checked').length) ||
+				($('input[name="other_school_addres"]').val() == "" && $('input[name="other_school"]:checked').length))
+			{
+				result = false;
+			}
+			
 			
 			if (result) {
 				$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
@@ -179,13 +191,37 @@ function readURL(input) {
 			if(($('#school_select').val() == "0" && !$('input[name="other_school"]:checked').length) ||
 				($('input[name="other_school_name"]').val() == "" && $('input[name="other_school"]:checked').length))
 			{
-				$('.school_name').parent().find('label.errorz').remove();
-				$('.school_name').parent().append('<label for="" class="errorz">Yêu cầu nhập tên trường</label>');
+				$('.school_name_bound').find('label.errorz').remove();
+				$('.school_name_bound').append('<label for="" class="errorz">Yêu cầu nhập tên trường</label>');
 				result = false;
 			}
 			else
 			{
-				$('.school_name').parent().find('label.errorz').remove();
+				$('.school_name_bound').find('label.errorz').remove();
+			}
+			
+			if(($('#school_select').val() == "0" && !$('input[name="other_school"]:checked').length) ||
+				(($('#dataSchoolAreaId1').val() == "0" || $('#dataSchoolAreaId2').val() == "0" || $('#dataSchoolAreaId3').val() == "0") && $('input[name="other_school"]:checked').length))
+			{
+				$('#dataSchoolArea').find('label.errorz').remove();
+				$('#dataSchoolArea').append('<label for="" class="errorz">Yêu cầu chọn khu vực</label>');
+				result = false;
+			}
+			else
+			{
+				$('#dataSchoolArea').find('label.errorz').remove();
+			}
+			
+			if(($('#school_select').val() == "0" && !$('input[name="other_school"]:checked').length) ||
+				($('input[name="other_school_addres"]').val() == "" && $('input[name="other_school"]:checked').length))
+			{
+				$('.school_address_bound').find('label.errorz').remove();
+				$('.school_address_bound').append('<label for="" class="errorz">Yêu cầu nhập địa chỉ</label>');
+				result = false;
+			}
+			else
+			{
+				$('.school_address_bound').find('label.errorz').remove();
 			}
 				
 			
@@ -336,7 +372,8 @@ function readURL(input) {
 							      </tr>
 							      <tr>
 								<th>{lang email_addr}<font color="#FF6600">*</font></th>
-								<td><input name="member[email]" type="text" id="memberemail" value="{$item.email}" size="40" class="required email"> (<a name="mod" href="javascript:;" onclick="javascript:$('#memberemail').attr('disabled',false);">{lang modify}</a>)</td>
+								<td><input name="member[email]" type="text" id="memberemail" value="{$item.email}" size="40" class="required email">
+								</td>
 							      </tr>
 							      <tr>
 								<th>{lang area}<font color="#FF6600">*</font></th>
@@ -360,13 +397,6 @@ function readURL(input) {
 			</tr>
 		</table>
 		
-		
-		
-		
-		
-		
-		
-		
 		{if $membertype_id == 6 || $pb_userinfo.is_student}
 		
 				<br style="clear: both" />		
@@ -375,7 +405,8 @@ function readURL(input) {
 				<table class="offer_info_content">
 			      
 				        <tr>
-						<th>Trường<font color="#FF6600">*</font></th>
+						<th>Trường<font color="#FF6600">*</font>
+						</th>
 						<td>							
 						
 							<span class="school_name">
@@ -388,8 +419,17 @@ function readURL(input) {
 									<br />
 								</span>
 								<div class="new_school_form">
-									<input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" />
-									<input placeholder="Địa chỉ" type="text" size="30" name="other_school_addres" />
+									<div class="school_name_bound"><input placeholder="Nhập tên trường" type="text" size="30" name="other_school_name" /></div>
+									<div class="other_school_area_title">Khu vực</div>
+									<div id="dataSchoolArea">
+										<select name="other_school_area[id][1]" id="dataSchoolAreaId1" class="level_1" style="width:120px;" ></select>
+										<select name="other_school_area[id][2]" id="dataSchoolAreaId2" class="level_2" style="width:120px;"></select>
+										<select name="other_school_area[id][3]" id="dataSchoolAreaId3" class="level_3" style="width:120px;"></select>
+									</div>
+									<div class="school_address_bound"><input placeholder="Số đường Tên đường, Phường/Xã" type="text" size="30" name="other_school_addres" /></div>
+									
+									
+									
 									<!--<input placeholder="Số điện thoại" type="text" size="30" name="other_school_phone" />
 									<input placeholder="Email" type="text" size="30" name="other_school_email" />
 									<input placeholder="Website" type="text" size="30" name="other_school_website" />-->
@@ -542,6 +582,11 @@ var app_language = '{$AppLanguage}';
 var area_id1 = {$item.area_id1|default:0} ;
 var area_id2 = {$item.area_id2|default:0} ;
 var area_id3 = {$item.area_id3|default:0} ;
+
+//var school_area_id1 = {$item.area_id1|default:0} ;
+//var school_area_id2 = {$item.area_id2|default:0} ;
+//var school_area_id3 = {$item.area_id3|default:0} ;
+
 </script>
 <!--{literal}-->
 <script>

@@ -3,7 +3,6 @@
     <h3>Danh sách các trường khác</h3>
     <ul class="group_list">
         <!--{loop $school_list item level key}-->
-            {if $school.id != $item.id}
                 <li onclick="window.location='{the_url module=studypost action=school id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
                     <a class="head-title">
                         <img src="{$WebRootUrl}/{$item.logo}" />
@@ -14,7 +13,6 @@
                     {if $item.email}<p><label>Email:</label> <a href="mailto:{$item.email}">{$item.email}</a></p>{/if}
                     {if $item.website}<p><label>Website:</label> {$item.website}</p>{/if}
                 </li>
-            {/if}
         <!--{/loop}-->
     </ul>
 </div>

@@ -36,19 +36,21 @@
 						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
 						
-						<select name="type">
+						<select name="type" style="float: left;margin-right: 5px;">
 						    <option value="">Chọn: Trường / Môn học / Học viên</option>
 						    <option {if $type == 'school'}selected="selected"{/if} value="school">Trường</option>
 						    <option {if $type == 'group'}selected="selected"{/if} value="group">Môn học</option>
 						    <option {if $type == 'learner'}selected="selected"{/if} value="learner">Học viên</option>						    
 						</select>
 						
-						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="{$keyword}"/>
 						
-						<select name="area">
+						
+						<select name="area" style="float: left;margin-right: 5px;">
 							<option value="">Tất cả địa điểm</option>
 							{$AreaOptions}
 						</select>
+						
+						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="{$keyword}"/>
 						
 						<input type="submit" value="Tìm kiếm" />
 					</form>

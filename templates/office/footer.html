@@ -88,6 +88,32 @@ $(document).ready(function() {
                            }
                        });
 		 });
+		 
+		 $('#dataSchoolArea select').each(function( index ) {
+		//alert($(this).children().length);
+		if($(this).children().length == 1)
+		     {
+		       $(this).addClass('lock');
+		     }
+		     else
+		     {
+		      $(this).removeClass('lock');
+		     }
+		 });
+		 
+		 $('#dataSchoolArea select').change(function( index ) {
+                        $('#dataSchoolArea select').each(function( index ) {
+                        //alert($(this).children().length);
+                           if($(this).children().length == 1)
+                           {
+                             $(this).addClass('lock');
+                           }
+                           else
+                           {
+                            $(this).removeClass('lock');
+                           }
+                       });
+		 });
 
 		$("#add_new_brand_but").fancybox({
 			'padding': 0,

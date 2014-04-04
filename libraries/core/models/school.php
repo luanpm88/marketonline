@@ -59,10 +59,11 @@ class Schools extends PbModel {
 	
 	function getInfoById($id)
 	{
-		uses("memberfield", "schoolimage", "schoolimagecomment");
+		uses("memberfield", "schoolimage", "schoolimagecomment","area");
 		$memberfield = new Memberfields();
 		$schoolimage = new Schoolimages();
 		$schoolimagecomment = new Schoolimagecomments();
+		$area = new Areas();
 		
 		$school = $this->read("*", intval($id));
 		
@@ -94,22 +95,26 @@ class Schools extends PbModel {
 		
 		$school["banner_origin"] = $school["banner"];
 		$school["banner"] = pb_get_attachmenturl($school['banner'], '', 'banner');
-		
+		//$school["address"] = pb_get_attachmenturl($school['banner'], '', 'banner');
+		$school["address"] = $school["address"].", ".$area->getFullName($school["area_id"]);
+		//var_dump($school["area_id"]);
 		
 		
 		return $school;
 	}
 	
-	function getList($conditions = null)
+	function getList($conditions = null, $firstcount = null, $displaypg = null)
 	{
-		uses("memberfield");
+		uses("memberfield","area");
 		$memberfield = new Memberfields();
+		$area = new Areas();
 		
 		$school_list = $this->findAll("*", null, $conditions, "created DESC");
 		foreach($school_list as $key => $item)
 		{
 			$school_list[$key]["logo"] = pb_get_attachmenturl($item['logo'], '', 'small');
 			$school_list[$key]["member_count"] = $memberfield->findCount(null, array("school_id = ".$item["id"]), "member_id");
+			$school_list[$key]["address"] = $item["address"].", ".$area->getFullName($item["area_id"]);
 		}
 		
 		return $school_list;

@@ -62,12 +62,13 @@ class Studygroups extends PbModel {
 		return $group_ids;
 	}
 	
-	function getList($school_id = null, $member_id = null, $not_member = false)
+	function getList($school_id = null, $member_id = null, $not_member = false, $conds = array())
 	{
-		uses("studygroupmember");
+		uses("studygroupmember","area");
+		$area = new Areas();
 		$studygroupmember = new Studygroupmembers();
 		
-		$conditions = array();
+		$conditions = $conds;
 		if($school_id) $conditions[] = "sc.id = ".$school_id;
 		if($member_id)
 		{
@@ -86,7 +87,7 @@ class Studygroups extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
 		
-		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", $joins, $conditions, null, null, null, null, "Studygroup.id");
+		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, sc.address AS school_address, sc.area_id AS school_area_id, su.name AS subject_name", $joins, $conditions, null, null, null, null, "Studygroup.id");
 		foreach($groups as $key => $item)
 		{
 			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
@@ -96,6 +97,10 @@ class Studygroups extends PbModel {
 			
 			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
 			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
+			
+			$groups[$key]["address"] = $item["school_address"].", ".$area->getFullName($item["school_area_id"]);
+			
+			$groups[$key]["created_at"] = date("d-m-Y", $item["created"]);
 		}
 		
 		return $groups;

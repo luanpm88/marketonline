@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 10:02:35
+<?php /* Smarty version 2.6.27, created on 2014-04-03 15:19:54
          compiled from default/studypost/_rightbar_groups.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_rightbar_groups.html', 9, false),)), $this); ?>
-                            <h4>Nhóm học tập</h4>
+                            <h4>Nhóm môn học</h4>
                             <?php if ($this->_tpl_vars['groups_count'] > 5): ?>
                                 <div class="title_more_group_button" onclick="$('.rightbar_grouplist .group_item').css('display','block');$(this).remove()" href="">Xem thêm</div>
                             <?php endif; ?>

@@ -7,7 +7,7 @@
     
     $(document).ready(function() {
         
-        $(window).scrollTop(150);
+        $(window).scrollTop(152);
     
     });
 
@@ -85,7 +85,7 @@
                         
                         <ul class="school_banners">
                             {if $group.no_banner}
-                                <li><a href="javascript:void(0)"><img src="{$group.no_banner}" /></a></li>
+                                <li><a href="javascript:void(0)"><!--<img src="{$group.no_banner}" />--></a></li>
                             {else}
                                 <!--{loop $group.banners item level key}-->
                                     <li>

@@ -7,7 +7,7 @@
 
     $(document).ready(function() {
         
-        $(window).scrollTop(120);
+        $(window).scrollTop(110);
         
     });
     
@@ -84,7 +84,7 @@
                         
                         <ul class="school_banners">
                             {if $school.no_banner}
-                                <li><a href="javascript:void(0)"><img src="{$school.no_banner}" /></a></li>
+                                <li><a href="javascript:void(0)"><!--<img src="{$school.no_banner}" />--></a></li>
                             {else}
                                 <!--{loop $school.banners item level key}-->
                                     <li>
@@ -101,7 +101,8 @@
                         
                         
                         
-                        <div class="banner-school-info">
+                        <div class="banner-school-info banner-group-info">
+                            <h2>{$school.name}</h2>
                             {if $school.address}<p>{$school.address}</p>{/if}
                             {if $school.phone}<p><label>Điện thoại:</label> {$school.phone}</p>{/if}
                             {if $school.email}<p><label>Email:</label> <a href="mailto:{$school.email}">{$school.email}</a></p>{/if}
@@ -146,16 +147,18 @@
                                 </li>
                             </ul>
                             
-                            <ul class="group_list">
-                                <!--{loop $school_list item level key}-->
-                                    <li class="{if $item.id == $school.id}active{/if}" style="display: none">
-                                        <a class="logo" style="background-image:url('{$WebRootUrl}/{$item.logo}')" href="{the_url module=studypost action=school id=`$item.id`}" title="{$item.school_name}">
-                                            {$item.name|truncate:40}
-                                            <div class="more-studybar">Thành viên: {$item.member_count}</div>
-                                        </a>
-                                    </li>
-                                <!--{/loop}-->
-                            </ul>
+                            
+                                <ul class="group_list">
+                                    <!--{loop $school_list item level key}-->
+                                        <li class="{if $item.id == $school.id}active{/if}" style="display: none">
+                                            <a class="logo" style="background-image:url('{$WebRootUrl}/{$item.logo}')" href="{the_url module=studypost action=school id=`$item.id`}" title="{$item.school_name}">
+                                                {$item.name|truncate:40}
+                                                <div class="more-studybar">Thành viên: {$item.member_count}</div>
+                                            </a>
+                                        </li>
+                                    <!--{/loop}-->
+                                </ul>
+                            
                             
                             <!--{include file="`$theme_name`/studypost/_rightbar_groups.html"}-->
                             

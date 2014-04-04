@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 10:39:17
+<?php /* Smarty version 2.6.27, created on 2014-04-03 15:39:50
          compiled from default/studypost/_top_user_info.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_top_user_info.html', 2, false),)), $this); ?>
@@ -17,5 +17,4 @@ image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
 redirect.php?url=/virtual-office/" target="_blank">
         Vào trang quản trị
     </a>
-</div>
-<br style="clear: both" />
+</div>

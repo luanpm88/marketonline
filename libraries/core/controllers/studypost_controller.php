@@ -41,17 +41,78 @@ class Studypost extends PbController {
 		{
 			$conditions = array();
 			
-			if(isset($_GET["keyword"]))
+			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
 			{
-				$conditions = "lower(School.name) LIKE '%".$_GET["keyword"]."%'";
+				$conditions[] = "lower(School.name) LIKE '%".$_GET["keyword"]."%'";
 				
 				setvar("keyword",$_GET["keyword"]);
 			}
 			
-			$school_list = $this->school->getList($conditions);
+			if(isset($_GET["area"]) && $_GET["area"] != "")
+			{
+				$areas = $this->area->getChildArea($_GET["area"]);
+				//var_dump($areas.implode(","));
+				$conditions[] = "School.area_id IN (".implode(",",$areas).")";
+				
+				setvar("area",$_GET["area"]);
+			}
+			
+			$school_list = $this->school->getList($conditions, $page->firstcount, $page->displaypg);
 			setvar("school_list", $school_list);
 			render("studypost/school_list");
 		}
+		elseif($type == "group")
+		{
+			$conditions = array();
+			
+			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
+			{
+				$conditions[] = "lower(su.name) LIKE '%".$_GET["keyword"]."%'";
+				
+				setvar("keyword", $_GET["keyword"]);
+			}
+			
+			if(isset($_GET["area"]) && $_GET["area"] != "")
+			{
+				$areas = $this->area->getChildArea($_GET["area"]);
+				//var_dump($areas.implode(","));
+				$conditions[] = "sc.area_id IN (".implode(",",$areas).")";
+				
+				setvar("area",$_GET["area"]);
+			}
+			
+			$group_list = $this->studygroup->getList(null, $pb_userinfo["pb_userid"], false, $conditions);
+			//var_dump($group_list);
+			setvar("group_list", $group_list);
+			render("studypost/group_list");
+		}
+		elseif($type == "learner")
+		{
+			$conditions = array();
+			
+			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
+			{
+				$conditions[] = "lower(su.name) LIKE '%".$_GET["keyword"]."%'";
+				
+				setvar("keyword", $_GET["keyword"]);
+			}
+			
+			if(isset($_GET["area"]) && $_GET["area"] != "")
+			{
+				$areas = $this->area->getChildArea($_GET["area"]);
+				//var_dump($areas.implode(","));
+				$conditions[] = "sc.area_id IN (".implode(",",$areas).")";
+				
+				setvar("area",$_GET["area"]);
+			}
+			
+			$learner_list = $this->member->getStudyList($conditions);
+			//var_dump($learner_list);
+			setvar("learner_list", $learner_list);
+			render("studypost/learner_list");
+		}
+		
+		setvar("paging", array('total'=>$amount));
 	}
 	
 	function school()

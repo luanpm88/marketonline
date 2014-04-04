@@ -8362,3 +8362,77 @@ span.join_group:hover {
 {
     margin-top: 5px;
 }
+.school-top-left-info h1
+{
+    text-transform: uppercase;
+}
+.facelike_main
+{
+    padding-top: 10px;
+}
+.school-top-left-info img
+{
+    margin-top: 0;
+}
+#facelike_col2
+{
+    min-height: 900px;
+}
+#facelike_col1 .top_user_info
+{
+    height: 50px;
+}
+.member-left-top-bound
+{
+    height: 183px;
+}
+.member-left-bottom
+{
+    margin-top: 0;
+}
+.member-left-bottom
+{
+    height: 222px;
+}
+.member-left-bottom.small
+{
+    height: 100px;
+}
+.school_list_box img
+{
+    padding: 3px;
+    border: solid 1px #aaa;
+}
+.school-top-left-info img {
+    border: 1px solid #AAAAAA;
+    padding: 3px;
+}
+.study-member-box .member-left-top img {
+    padding: 3px;
+    border: solid 1px #aaa;
+}
+#job-search-box .job-search-tab .tab-content #job-learn
+{
+    height: 42px;
+}
+.select2-container .select2-choice
+{
+    border-radius: 0 !important;
+}
+.stats_content .actions
+{
+    margin-left: 40px;
+}
+.stats_content textarea
+{
+    height: 28px;
+}
+.stats_content .actions
+{
+    height: 21px;
+    background: none;
+}
+.stats_content .actions .send-button
+{
+    height: 19px;
+}
