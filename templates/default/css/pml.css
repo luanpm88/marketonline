@@ -8529,3 +8529,14 @@ span.join_group:hover {
 {
     
 }
+.chat_friend_list .chat_list_hooker {
+    background: url("../image/chat-friend.png") no-repeat scroll 0 0 / 36px auto #FFFFFF;
+    border: 2px solid #3B984C;
+    border-radius: 20px;
+    height: 40px;
+    margin-left: -55px;
+    margin-top: -10px;
+    position: absolute;
+    text-indent: -5000px;
+    width: 40px;
+}

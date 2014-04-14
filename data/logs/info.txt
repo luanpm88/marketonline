@@ -2585,3 +2585,4 @@ Time	File	IP		Data
 [10:22:42] [logging] [127.0.0.1] Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:28.0) Gecko/20100101 Firefox/28.0
 [11:30:14] [logging] [127.0.0.1] Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:28.0) Gecko/20100101 Firefox/28.0
 [11:53:47] [logging] [127.0.0.1] Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36
+[12:18:12] [logging] [127.0.0.1] Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:28.0) Gecko/20100101 Firefox/28.0
