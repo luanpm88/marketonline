@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-03 16:31:59
+<?php /* Smarty version 2.6.27, created on 2014-04-14 08:10:05
          compiled from default/job/jobsearchbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/job/jobsearchbox.html', 6, false),)), $this); ?>
@@ -30,23 +30,24 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 						<input type="hidden" name="type" value="<?php echo $_GET['type']; ?>
 " />
 						
-						<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="<?php echo $this->_tpl_vars['keyword']; ?>
-"/>
-						<select name="indust">
+						<select name="indust" style="float: left;margin-right: 5px;">
 							<option value="0">Tất cả ngành nghề</option>
 							<?php echo $this->_tpl_vars['JobindustOptions']; ?>
 							
 						</select>
 						
-						<select name="area">
+						<select name="area" style="float: left;margin-right: 5px;">
 							<option value="0">Tất cả địa điểm</option>
 							<?php echo $this->_tpl_vars['AreaOptions']; ?>
 
 						</select>
 						
+						<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="<?php echo $this->_tpl_vars['keyword']; ?>
+"/>
+						
 						<input type="submit" value="Tìm kiếm" />
 					</form>
-				    <?php else: ?>
+				<?php else: ?>
 					<form action="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
 " method="get" onsubmit="return checkSelectStudypostType()">
 						<input type="hidden" name="do" value="<?php echo $_GET['do']; ?>

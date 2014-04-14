@@ -4,9 +4,10 @@
 
     <div id="quick_inbox_content" class="over_air_box">
         <div class="pointer"></div>
+	<div class="announce_title">Hộp thư</div>
         <ul>
             {if !$Items}
-                <li style="text-align: center">{lang no_message}</li>
+                <li style="text-align: center">Hiện chưa có thông tin nào</li>
             {/if}
             <!--{loop $Items item level key}-->
                 <li {if !$item.status}class="unread"{/if}>

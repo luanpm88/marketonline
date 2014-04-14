@@ -217,6 +217,8 @@
 			
 		//$.cookie("welcome", "cookie_value");
 		//alert($.cookie("welcssome"));
+		
+		
 	});
 </script>
 
@@ -618,31 +620,14 @@
 	    <a style="color:#6E7476" href="{the_url module=space userid=`$item.space_name`}" title="{$item.shop_name}">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h5>
 						    <h3>{lang add_information_release} cùng gian hàng</h3>
 					</div>
-			<ul class="product_list_widget">
-		    {pb:product memberid=`$item.member_id` row=11 titlelen="35" name="itemz"}
-				{if $Product.id != $itemz.id}
-					<li>{$itemz.link}
-			<a style="float: right;width: 100px;" href="{the_url id=`$itemz.id` module='product'}"><img width="200" height="200" src="{$itemz.thumb}" class="attachment-shop_thumbnail wp-post-image" alt="675476-1"></a>
-				
-				<!--<del><span class="amount">&#36;{$itemz.price}</span></del>-->
-				<ins style="margin-top: 10px;padding: 0;max-width: 162px;">
-				
-				{if $itemz.new_price || $itemz.price}
-					{if $itemz.new_price != "" && $itemz.new_price != 0}
-						{if $itemz.price}<span class="old_price">{$itemz.price} <span class="price_unit">VNĐ{if $itemz.price_unit}/{$itemz.price_unit}{/if}</span></span> {/if}<span class="amount">{$itemz.new_price} <span class="price_unit">VNĐ{if $itemz.price_unit}/{$itemz.price_unit}{/if}</span></span>
-					{else}
-									<span class="amount">{$itemz.price} <span class="price_unit">VNĐ{if $itemz.price_unit}/{$itemz.price_unit}{/if}</span></span>
-					{/if}
-				{/if}
-				
-				</ins>
-					</li>
-					{/if}
-                    {/pb:product}
-				
-				
 			
-			</ul>
+			
+			
+			<div class="related_products_box">
+				
+			</div>
+			
+		
 			<div class="view_more_detail">
 				<a href="{the_url module=space userid=`$item.space_name`}">Xem thêm sản phẩm của gian hàng <strong>{$item.shop_name}</strong></a>
 			</div>
@@ -752,6 +737,27 @@
 
 </div>
   </div>
+
+<!--{literal}-->
+<script>
+		//get related products
+		$.ajax({
+			url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&action=related_products&member_id=<!--{/literal}-->{$item.member_id}<!--{literal}-->&product_id=<!--{/literal}-->{$item.id}<!--{literal}-->",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				$('.related_products_box').html(data);
+				
+				$('#product_detail_box ul.product_list_widget li img').resizecrop({
+					width:100,
+					height:100
+				});
+				
+				$('#product_detail_box ul.product_list_widget li img').css("float", "none");
+				$('#product_detail_box ul.product_list_widget li img').css("visibility", "visible");
+			}
+		});
+</script>
+<!--{/literal}-->
 
 
 <!--{include file="`$theme_name`/footer.html"}-->

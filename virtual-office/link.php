@@ -39,14 +39,14 @@ $result = $link->findMember($the_memberid);
 
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
-		$result[$i]['senddate'] = df($result[$i]['created']);
+		
 		if ($result[$i]['company_status'] == 1 && $result[$i]['checkout'] == 1)
 		{
 			$link->updateStatus($the_memberid ,$result[$i]['id'], 3);
 			$result[$i]['type_id'] = 3;
 		}
 		//get memifo
-		$result[$i]['info'] = $member->getInfoById($the_memberid);
+		//$result[$i]['info'] = $member->getInfoById($the_memberid);
 		
 	}
 	setvar("Items", $result);

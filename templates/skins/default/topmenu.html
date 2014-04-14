@@ -76,6 +76,7 @@
 	<form name="productaddfrm" id="Frm1" method="post" action="{$WebRootUrl}index.php?do=product&action=change_banner" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
 	  <!-- {formhash} -->
 	  <input type="hidden" name="username" value="{$MEMBER.username}" />
+	  <input type="hidden" name="memid" value="{$MEMBER.id}" />
 	  <input type="hidden" name="com_id" value="{$COMPANY.id}" />
 	  <input type="hidden" name="uri" value="{$FURI}" />
 	

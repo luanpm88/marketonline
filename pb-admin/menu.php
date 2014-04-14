@@ -152,7 +152,7 @@ $menus = array(
                 'text'  => L("member_manage", "tpl"),
                 'url'   => 'member.php',
             ),
-			'membergroup'  => array(
+	    'membergroup'  => array(
                 'text'  => L("membergroup", "tpl"),
                 'url'   => 'membergroup.php?type=define',
             ),
@@ -310,6 +310,17 @@ $menus = array(
                 'text'  => L("plugin", "tpl").L("management", "tpl"),
                 'url'   => 'plugin.php',
             ),
+        ),
+    ),
+    'membercheckout'     => array(
+        'text'      => "Cộng tác viên",
+        'subtext'	=> L("member_manage_center", "tpl"),
+        'default'   => 'member',
+        'children'  => array(
+            'member' => array(
+                'text'  => "Cộng tác viên",
+                'url'   => 'membercheckout.php',
+            ),	    
         ),
     ),
 );

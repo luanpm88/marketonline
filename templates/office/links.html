@@ -36,7 +36,7 @@
               <th>{lang status_link}</th>
 	      <th>{lang checkout}</th>
               <th>{lang created_link}</th>
-	      <th>{lang action_link}</th>
+	      <!--<th>{lang action_link}</th>-->
             </tr>
 			<!--{foreach from=$Items item=item}-->
 			<!--{if $item.type_id == 1}-->
@@ -49,11 +49,11 @@
               <td>{if $item.company_status == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
 	      <td>{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
               <td>{$item.senddate}</td>
-	      <td>		
+	      <!--<td>		
 		{if $item.company_status == 1 && $item.checkout == 0 && $countAgent < 10}
 		    <a class="btn_agent" href="link.php?do=setAgent&id={$item.id}" title="{lang set_agent}">{lang set_agent}</a>
 		{/if}
-	      </td>
+	      </td>-->
             </tr>
 	    
 		    <!--{/if}-->
@@ -66,7 +66,7 @@
 	  </form>
 	  
 	  
-	  <h1>{lang agent} ({$CountAgent}/10)</h1>
+	  <!--<h1>{lang agent} ({$CountAgent}/10)</h1>
 	  <table class="bglist">
             <tr align="center">
 
@@ -77,10 +77,10 @@
               <th>{lang status_link}</th>
 	      <th>{lang checkout}</th>
               <th>{lang created_link}</th>
-            </tr>
+            </tr>-->
 			<!--{foreach from=$Items item=item}-->
 			<!--{if $item.type_id == 2}-->
-            <tr align="center" class="bggray">
+            <!--<tr align="center" class="bggray">
 
               <td style="text-align: left">{$item.username}</td>
 	      <td style="text-align: left">{$item.info.first_name} {$item.info.last_name}</td>
@@ -90,13 +90,13 @@
 	      <td>{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
               <td>{$item.senddate}</td>
 
-            </tr>
+            </tr>-->
 	     <!--{/if}-->
 			<!--{/foreach}-->
-            <tr align="center" class="bggray">
+            <!--<tr align="center" class="bggray">
               <td colspan="7">{$ByPages}</td>
             </tr>
-        </table>  
+        </table>  -->
 	  
 	  
 	  

@@ -35,6 +35,7 @@ $smarty->assign("theme_img_path", "templates/".$theme_name."/");
 $smarty->assign('ThemeName', $theme_name);
 $cache_data = $push_data = array();
 //$pdb->Execute("DELETE FROM {$tb_prefix}spacecaches WHERE expiration<".$time_stamp);
+
 if (!empty($userid)) {
 	$userid = rawurldecode($userid);
 	$member->setInfoBySpaceName($userid);
@@ -329,124 +330,124 @@ if($pb_userinfo["pb_userid"])
 		setvar("FACE", $FACE);
 }
 
-if(strtolower($_GET["userid"]) != "admin" && $do != 'ajaxannoucebox')
-{
-	$tree = $producttype->findTree('id,name,level', array("0"=>'member_id='.$member->info['id']));
-	
-	$level_padding = 0;
-	foreach($tree as $key0 => $item0)
-	{
-		
-		
-		//count product
-		$conditions = null;
-		$conditions[] = "Product.status=1 AND Product.state=1 AND Product.company_id='".$COMPANY_CURRENT['id']."'";
-		$indus_array = array();
-		$custom_array = array();
-		$id_i = intval($item0["id"]);
-		//$_GET["memberid"] = $item0["member_id"];
-		$level = 0;
-		
-		foreach($tree as $key => $item)
-		{			
-			if($level)
-			{
-				if($item["level"] > $level)
-				{
-					if(!isset($item["member_id"]))
-					{
-						$indus_array[] = $item["id"];
-					}
-					else
-					{
-						$custom_array[] = $item["id"];
-					}
-				}
-				else
-				{
-					break;
-				}
-			}		
-			elseif($item["id"] == $id_i)
-			{
-				//echo "no do".$id_i;
-				if(!$item0["member_id"] && !isset($item["member_id"]))
-				{			
-					$indus_array[] = $id_i;
-					$level = $item["level"];
-				}
-				if($item0["member_id"] && isset($item["member_id"]))
-				{
-					$custom_array[] = $id_i;
-					$level = $item["level"];
-				}
-				
-			}
-			//echo $level;
-		}
-		$conditions_temp = null;
-		if(!empty($indus_array))
-			$conditions_temp['industry'] = "Product.industry_id IN (".implode(',',$indus_array).")";
-					     
-		if(!empty($custom_array))
-			$conditions_temp['customid'] = "Product.producttype_id IN (".implode(',',$custom_array).")";		
-		      
-		$conditions[] = "((".implode(" OR ", $conditions_temp).") AND Product.state=1)";
-				
-		$tree[$key0]["count"] = $product->findCount_left(null, $conditions,"id");
-		
-		
-		
-		
-	}
-	
-	foreach($tree as $key0 => $item0)
-	{
-		
-		$tree[$key0]["lpad"] = $level_padding;
-		$tree[$key0]["padding"] = $level_padding*25;
-		//$item0["countChildren"] == 1
-		//echo $tree[$key0]["count"]."-".$tree[$key0+1]["count"]."<br>";
-		if($item0["countChildren"] == 1 && $tree[$key0]["count"] == $tree[$key0+1]["count"])
-		{
-			$tree[$key0]["hide"] = true;
-			//$tree[$key-1]["countChildren"] = $tree[$key-1]["countChildren"] - 1;
-		}
-		else
-		{
-			if($tree[$key0+1]["level"] > $tree[$key0]["level"])
-			{
-				$level_padding++;
-			}
-			
-			if($tree[$key0+1]["level"] <= $level_padding)
-			{
-				$level_padding = $tree[$key0+1]["level"]-1;
-			}
-		}
-		
-		
-		//else
-		//{
-		//	$level_padding++;
-		//}
-		//
-		//if($tree[$key0+1]["level"] == $tree[$key0]["level"])
-		//{
-		//	$level_padding = $level_padding-1;
-		//}
-		//
-		//if($tree[$key0+1]["level"] < $tree[$key0]["level"])
-		//{
-		//	$level_padding = $tree[$key0+1]["level"]-1;
-		//}
-		
-		
-		
-	}
-
-}
-//var_dump($tree);
+//if(strtolower($_GET["userid"]) != "admin" && $do != 'ajaxannoucebox')
+//{
+//	$tree = $producttype->findTree('id,name,level', array("0"=>'member_id='.$member->info['id']));
+//	
+//	$level_padding = 0;
+//	foreach($tree as $key0 => $item0)
+//	{
+//		
+//		
+//		//count product
+//		$conditions = null;
+//		$conditions[] = "Product.status=1 AND Product.state=1 AND Product.company_id='".$COMPANY_CURRENT['id']."'";
+//		$indus_array = array();
+//		$custom_array = array();
+//		$id_i = intval($item0["id"]);
+//		//$_GET["memberid"] = $item0["member_id"];
+//		$level = 0;
+//		
+//		foreach($tree as $key => $item)
+//		{			
+//			if($level)
+//			{
+//				if($item["level"] > $level)
+//				{
+//					if(!isset($item["member_id"]))
+//					{
+//						$indus_array[] = $item["id"];
+//					}
+//					else
+//					{
+//						$custom_array[] = $item["id"];
+//					}
+//				}
+//				else
+//				{
+//					break;
+//				}
+//			}		
+//			elseif($item["id"] == $id_i)
+//			{
+//				//echo "no do".$id_i;
+//				if(!$item0["member_id"] && !isset($item["member_id"]))
+//				{			
+//					$indus_array[] = $id_i;
+//					$level = $item["level"];
+//				}
+//				if($item0["member_id"] && isset($item["member_id"]))
+//				{
+//					$custom_array[] = $id_i;
+//					$level = $item["level"];
+//				}
+//				
+//			}
+//			//echo $level;
+//		}
+//		$conditions_temp = null;
+//		if(!empty($indus_array))
+//			$conditions_temp['industry'] = "Product.industry_id IN (".implode(',',$indus_array).")";
+//					     
+//		if(!empty($custom_array))
+//			$conditions_temp['customid'] = "Product.producttype_id IN (".implode(',',$custom_array).")";		
+//		      
+//		$conditions[] = "((".implode(" OR ", $conditions_temp).") AND Product.state=1)";
+//				
+//		$tree[$key0]["count"] = $product->findCount_left(null, $conditions,"id");
+//		
+//		
+//		
+//		
+//	}
+//	
+//	foreach($tree as $key0 => $item0)
+//	{
+//		
+//		$tree[$key0]["lpad"] = $level_padding;
+//		$tree[$key0]["padding"] = $level_padding*25;
+//		//$item0["countChildren"] == 1
+//		//echo $tree[$key0]["count"]."-".$tree[$key0+1]["count"]."<br>";
+//		if($item0["countChildren"] == 1 && $tree[$key0]["count"] == $tree[$key0+1]["count"])
+//		{
+//			$tree[$key0]["hide"] = true;
+//			//$tree[$key-1]["countChildren"] = $tree[$key-1]["countChildren"] - 1;
+//		}
+//		else
+//		{
+//			if($tree[$key0+1]["level"] > $tree[$key0]["level"])
+//			{
+//				$level_padding++;
+//			}
+//			
+//			if($tree[$key0+1]["level"] <= $level_padding)
+//			{
+//				$level_padding = $tree[$key0+1]["level"]-1;
+//			}
+//		}
+//		
+//		
+//		//else
+//		//{
+//		//	$level_padding++;
+//		//}
+//		//
+//		//if($tree[$key0+1]["level"] == $tree[$key0]["level"])
+//		//{
+//		//	$level_padding = $level_padding-1;
+//		//}
+//		//
+//		//if($tree[$key0+1]["level"] < $tree[$key0]["level"])
+//		//{
+//		//	$level_padding = $tree[$key0+1]["level"]-1;
+//		//}
+//		
+//		
+//		
+//	}
+//
+//}
+////var_dump($tree);
 
 
 //Custome Style

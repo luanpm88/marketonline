@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-28 14:43:21
+<?php /* Smarty version 2.6.27, created on 2014-04-11 10:11:07
          compiled from default/product/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 571, false),array('block', 'product', 'default/product/detail.html', 623, false),array('modifier', 'truncate', 'default/product/detail.html', 727, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 572, false),array('modifier', 'truncate', 'default/product/detail.html', 711, false),array('block', 'product', 'default/product/detail.html', 726, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -245,6 +245,8 @@ unset($_smarty_tpl_vars);
 			
 		//$.cookie("welcome", "cookie_value");
 		//alert($.cookie("welcssome"));
+		
+		
 	});
 </script>
 
@@ -326,13 +328,12 @@ unset($_smarty_tpl_vars);
     
 	<div id="detail_box_top">
 	    
-	    
 	    <table id="three_box_detail" class="" cellspacing="0" style="background: #EFEFEF; border: none; padding-right: 5px;margin-bottom: 5px;">
 		<tr>
 		    <td class="imgg">
 			
 			
-			<div class="images">
+				<div class="images">
 					<?php if ($this->_tpl_vars['item']['d_image']): ?>
 						<!--<a itemprop="image" href="<?php echo $this->_tpl_vars['item']['d_image']; ?>
 " class="zoomz fancyx" rel="thumbnails" title="<?php echo $this->_tpl_vars['item']['title']; ?>
@@ -780,41 +781,14 @@ image/usericon_big.png  <?php endif; ?> <?php endif; ?>" />
 						    <h3><?php echo $this->_tpl_vars['_add_information_release']; ?>
  cùng gian hàng</h3>
 					</div>
-			<ul class="product_list_widget">
-		    <?php $this->_tag_stack[] = array('product', array('memberid' => ($this->_tpl_vars['item']['member_id']),'row' => 11,'titlelen' => '35','name' => 'itemz')); $_block_repeat=true;smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
-				<?php if ($this->_tpl_vars['Product']['id'] != $this->_tpl_vars['itemz']['id']): ?>
-					<li><?php echo $this->_tpl_vars['itemz']['link']; ?>
-
-			<a style="float: right;width: 100px;" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['itemz']['id']),'module' => 'product'), $this);?>
-"><img width="200" height="200" src="<?php echo $this->_tpl_vars['itemz']['thumb']; ?>
-" class="attachment-shop_thumbnail wp-post-image" alt="675476-1"></a>
-				
-				<!--<del><span class="amount">&#36;<?php echo $this->_tpl_vars['itemz']['price']; ?>
-</span></del>-->
-				<ins style="margin-top: 10px;padding: 0;max-width: 162px;">
-				
-				<?php if ($this->_tpl_vars['itemz']['new_price'] || $this->_tpl_vars['itemz']['price']): ?>
-					<?php if ($this->_tpl_vars['itemz']['new_price'] != "" && $this->_tpl_vars['itemz']['new_price'] != 0): ?>
-						<?php if ($this->_tpl_vars['itemz']['price']): ?><span class="old_price"><?php echo $this->_tpl_vars['itemz']['price']; ?>
- <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemz']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemz']['price_unit']; ?>
-<?php endif; ?></span></span> <?php endif; ?><span class="amount"><?php echo $this->_tpl_vars['itemz']['new_price']; ?>
- <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemz']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemz']['price_unit']; ?>
-<?php endif; ?></span></span>
-					<?php else: ?>
-									<span class="amount"><?php echo $this->_tpl_vars['itemz']['price']; ?>
- <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemz']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemz']['price_unit']; ?>
-<?php endif; ?></span></span>
-					<?php endif; ?>
-				<?php endif; ?>
-				
-				</ins>
-					</li>
-					<?php endif; ?>
-                    <?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
-				
-				
 			
-			</ul>
+			
+			
+			<div class="related_products_box">
+				
+			</div>
+			
+		
 			<div class="view_more_detail">
 				<a href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['item']['space_name'])), $this);?>
 ">Xem thêm sản phẩm của gian hàng <strong><?php echo $this->_tpl_vars['item']['shop_name']; ?>
@@ -977,6 +951,34 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 
 </div>
   </div>
+
+<?php echo '
+<script>
+		//get related products
+		$.ajax({
+			url: "'; ?>
+<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+<?php echo 'index.php?do=product&action=related_products&member_id='; ?>
+<?php echo $this->_tpl_vars['item']['member_id']; ?>
+<?php echo '&product_id='; ?>
+<?php echo $this->_tpl_vars['item']['id']; ?>
+<?php echo '",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				$(\'.related_products_box\').html(data);
+				
+				$(\'#product_detail_box ul.product_list_widget li img\').resizecrop({
+					width:100,
+					height:100
+				});
+				
+				$(\'#product_detail_box ul.product_list_widget li img\').css("float", "none");
+				$(\'#product_detail_box ul.product_list_widget li img\').css("visibility", "visible");
+			}
+		});
+</script>
+'; ?>
+
 
 
 <?php $_smarty_tpl_vars = $this->_tpl_vars;

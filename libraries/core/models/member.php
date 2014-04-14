@@ -689,7 +689,8 @@ class Members extends PbModel {
 	function isOnline($uid)
 	{		
 		$users = $this->getUserOnlines();
-		
+		//var_dump($users);
+		//echo $uid;
 		foreach($users as $key => $item)
 		{
 			if($item["MemberID"] == $uid)
@@ -708,33 +709,105 @@ class Members extends PbModel {
 		
 		return $ids;
 	}	
-	function getStudyList($conds = array())
+	function getStudyList($conds = array(), $keyword = '')
 	{
 		uses("area");
  		$area = new Areas();
 		
 		$conditions = $conds;
 		$conditions[] = "(Member.membertype_id=6 OR mmt.membertype_id=6)";
-				
+		$conditions[] = "sc.id IS NOT NULL";
+		
+		//for keyword
+		$keyword_str = '';
+		$order_by_score = null;
+		if($keyword != '')
+		{
+			$keyword_str = ",MATCH(mf.first_name, mf.last_name) AGAINST ('".$keyword."') as score";
+			$conditions[] = "(MATCH(mf.first_name, mf.last_name) AGAINST('".$keyword."') OR CONCAT(mf.first_name, ' '. mf.last_name) LIKE '%".$keyword."%' )";
+			$order_by_score = "score DESC";
+		}
+		//echo "sdsd".$keyword_str."sdsd";
+		
 		$joins = array("LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}membermembertypes mmt ON mmt.member_id=Member.id";
 				
-		$members = $this->findAll("Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		$members = $this->findAll("Member.*,mf.*,sc.name as school_name".$keyword_str, $joins, $conditions, $order_by_score);
 		
 		foreach($members as $key => $result)
 		{
 			$result["address_s"] = $result["address"];
 			$result["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
 			
-			$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
-			$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');;
+			$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');
 
 			$result['online'] = $this->isOnline($result["id"]);
 			
 			$members[$key] = $result;	
 		}
 		
+		return $members;
+	}
+	
+	function getFriendIds($user_id)
+	{
+		$conditions = array("sf.member_id=".$user_id);
+		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
+		$member_ids = $this->findAll("sf.friend_id", $joins, $conditions);
+
+		$ids = array();
+		foreach($member_ids as $row)
+		{
+			$ids[] = $row["friend_id"];
+		}
+		
+		$conditions = array("sf.friend_id=".$user_id);
+		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
+		$member_ids = $this->findAll("sf.member_id", $joins, $conditions);
+		
+		foreach($member_ids as $row)
+		{
+			$ids[] = $row["member_id"];
+		}
+		
+		//var_dump($ids);
+		return $ids;
+	}
+	
+	function getFriendChatList($user_id)
+	{
+		uses("area");
+ 		$area = new Areas();
+		
+		$conditions = array("(sf.member_id=".$user_id." OR sfr.friend_id=".$user_id.")");
+		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
+		$members = $this->findAll("Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		//var_dump($members);
+		foreach($members as $key => $item)
+		{
+			$members[$key]['link_people'] = $members[$key]['link_man'];
+ 			
+			if($members[$key]["address"])
+			{
+				$members[$key]["address_s"] = $members[$key]["address"];
+				$members[$key]["address"] = $members[$key]["address"].", ".$area->getFullName($members[$key]["area_id"]);
+			}
+			
+			if (empty($members[$key]['photo'])) {
+				$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+			}else{
+				$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+			}
+			
+			
+			$members[$key]['online'] = $this->isOnline($members[$key]["id"]);
+
+		}
+		//var_dump($members);
 		return $members;
 	}
 }

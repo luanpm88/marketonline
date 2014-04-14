@@ -287,6 +287,9 @@ function smarty_function_the_url($params){
 					}
 				//}
 				break;
+			case "root-url":
+				$return = URL;
+				break;
 			default:
 				if (!empty($id)) {
 					if ($rewrite_able) {

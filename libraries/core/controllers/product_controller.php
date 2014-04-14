@@ -999,6 +999,13 @@ class Product extends PbController {
 		render("product/detail");
 	}
 	
+	function related_products()
+	{
+		setvar("product_id",$_GET["product_id"]);
+		setvar("member_id",$_GET["member_id"]);
+		render("product/_related_products");
+	}
+	
 	function inquery()
 	{
 		global $viewhelper;
@@ -1187,10 +1194,8 @@ class Product extends PbController {
 							}
 						}
 					}
-					
 				}
 			}
-			//var_dump($area_a);
 		}
 		
 		//echo $_SERVER["REMOTE_ADDR"] ;
@@ -2046,16 +2051,15 @@ class Product extends PbController {
 		$attachment5 = new Attachment('upload_banner_5');
 		
 		$company = new Companies();
-		var_dump($pb_userinfo);
+		//var_dump($pb_userinfo);
 		//var_dump($_POST["com_id"]);
 		$com = $company->read("member_id, banners", $_POST["com_id"]);
-		var_dump($com);
+		//var_dump($com);
 		$banners = array();
 		$banners = json_decode($com["banners"], true);
 		//var_dump($banners);
 		
-		if ($com["member_id"] == $pb_userinfo["pb_userid"]) {
-			
+		if ($com["member_id"] == $_POST["memid"]) {
 			
 			if(!empty($_FILES['upload_banner_1']['name']))
 			{
@@ -2066,7 +2070,6 @@ class Product extends PbController {
 				$attachment1->upload_process();
 				
 				$banners[1] = $attachment1->file_full_url;
-
 			}
 			
 			if(!empty($_FILES['upload_banner_2']['name']))
@@ -2116,7 +2119,7 @@ class Product extends PbController {
 				//$company->saveField('banner', $vals['banner'], intval($_POST["com_id"]));
 			}
 			
-			var_dump($banners);
+			//var_dump($banners);
 			//pheader("location:".$_POST["uri"]);
 			$company->saveField('banners', json_encode($banners), intval($_POST["com_id"]));
 			pheader("location:".$_POST["uri"]);
@@ -2224,7 +2227,7 @@ class Product extends PbController {
 				$_POST["com_id"] = $date->getTimestamp();
 			}
 			
-			$attachment->rename_file = "company-ava-".$_POST["com_id"];
+			$attachment->rename_file = "member-ava-".$_POST["com_id"];
 			$attachment->upload_process();
 			$vals['banner'] = $attachment->file_full_url;
 			$member->saveField('photo', $vals['banner'], intval($_POST["com_id"]));
@@ -4225,8 +4228,9 @@ class Product extends PbController {
 					$this->chat->saveField("announce", 1, intval($result[$i]["id"]));
 					//echo $result[$i]["id"];
 					
-					//set link content
+					//set link content					
 					$result[$i]["content"] = preg_replace('!(https?://[a-z0-9_./?=&-]+)!i', '<a target="_blank" href="$1">$1</a> ', $result[$i]["content"]." ");
+					$result[$i]["content"] = preg_replace('!(www.[a-z0-9_./?=&-]+)!i', '<a target="_blank" href="http://$1">$1</a> ', $result[$i]["content"]." ");
 					
 					$result[$i]["me"] = "";
 					if($result[$i]["from_member_id"] == $pb_userinfo["pb_userid"])
@@ -4381,6 +4385,112 @@ class Product extends PbController {
 			
 			$this->language->save($val);
 		}
+	}
+	
+	function get_space_tree()
+	{
+		$member = $this->member->getInfoByid($_GET["page_memid"]);
+		$company = $this->company->getInfoByUserId($_GET["page_memid"]);
+		
+		//echo $member["id"];
+		//echo $company["id"];
+		
+		$tree = $this->producttype->findTree('id,name,level', array("0"=>'member_id='.$member['id']));
+	
+		$level_padding = 0;
+		foreach($tree as $key0 => $item0)
+		{
+			
+			
+			//count product
+			$conditions = null;
+			$conditions[] = "Product.status=1 AND Product.state=1 AND Product.company_id='".$company['id']."'";
+			$indus_array = array();
+			$custom_array = array();
+			$id_i = intval($item0["id"]);
+			//$_GET["memberid"] = $item0["member_id"];
+			$level = 0;
+			
+			foreach($tree as $key => $item)
+			{			
+				if($level)
+				{
+					if($item["level"] > $level)
+					{
+						if(!isset($item["member_id"]))
+						{
+							$indus_array[] = $item["id"];
+						}
+						else
+						{
+							$custom_array[] = $item["id"];
+						}
+					}
+					else
+					{
+						break;
+					}
+				}		
+				elseif($item["id"] == $id_i)
+				{
+					//echo "no do".$id_i;
+					if(!$item0["member_id"] && !isset($item["member_id"]))
+					{			
+						$indus_array[] = $id_i;
+						$level = $item["level"];
+					}
+					if($item0["member_id"] && isset($item["member_id"]))
+					{
+						$custom_array[] = $id_i;
+						$level = $item["level"];
+					}
+					
+				}
+				//echo $level;
+			}
+			$conditions_temp = null;
+			if(!empty($indus_array))
+				$conditions_temp['industry'] = "Product.industry_id IN (".implode(',',$indus_array).")";
+						     
+			if(!empty($custom_array))
+				$conditions_temp['customid'] = "Product.producttype_id IN (".implode(',',$custom_array).")";		
+			      
+			$conditions[] = "((".implode(" OR ", $conditions_temp).") AND Product.state=1)";
+					
+			$tree[$key0]["count"] = $this->product->findCount_left(null, $conditions,"id");
+			
+			
+			
+			
+		}
+		
+		foreach($tree as $key0 => $item0)
+		{
+			
+			$tree[$key0]["lpad"] = $level_padding;
+			$tree[$key0]["padding"] = $level_padding*25;
+
+			if($item0["countChildren"] == 1 && $tree[$key0]["count"] == $tree[$key0+1]["count"])
+			{
+				$tree[$key0]["hide"] = true;
+				//$tree[$key-1]["countChildren"] = $tree[$key-1]["countChildren"] - 1;
+			}
+			else
+			{
+				if($tree[$key0+1]["level"] > $tree[$key0]["level"])
+				{
+					$level_padding++;
+				}
+				
+				if($tree[$key0+1]["level"] <= $level_padding)
+				{
+					$level_padding = $tree[$key0+1]["level"]-1;
+				}
+			}
+		}
+		setvar("tree",$tree);
+		
+		$this->render("product/get_space_tree");
 	}
 }
 ?>

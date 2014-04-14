@@ -5896,9 +5896,10 @@ body {
     height: 33px;
     margin-left: 15px;
     margin-top: 1px;
-    position: absolute;
+    position: relative;
     width: 130px;
     cursor: pointer;
+    float: right;
 }
 #job-search-box .job-search-tab .tab-content select {
     font-size: 14px;
@@ -7491,9 +7492,11 @@ ul.products li.product .price .amount
 {
     margin-right: 0px;
 }
-#other-school-list h3
-{
+#other-school-list h3 {
     font-family: "Segoe UI Light";
+    font-weight: bold;
+    margin-left: 10px;
+    margin-top: 0;
 }
 #other-school-list ul li
 {
@@ -7534,17 +7537,17 @@ ul.products li.product .price .amount
 }
 .school_list ul li a.head-title span {
     display: block;
-    margin-top: -3px;
     text-transform: uppercase;
+    line-height: 22px;
 }
 #topmenu .main_banner {
     display: block;
     height: 339px !important;
     overflow: hidden;
 }
-#other-school-list ul li
-{
-    width: 50%;
+#other-school-list ul li {
+    margin: 10px;
+    width: 48%;
 }
 #other-school-list
 {
@@ -8189,6 +8192,10 @@ span.join_group:hover {
 {
     background: url("../image/offline.png") no-repeat scroll 7px 7px #3B984C !important;
 }
+.member-left .controls a.skin_chat_with_owner.online
+{
+    background: url("../image/online.png") no-repeat scroll 7px 7px #3B984C !important;
+}
 .member-left .member-left-top {
     height: 167px;
     margin-bottom: -24px;
@@ -8435,4 +8442,90 @@ span.join_group:hover {
 .stats_content .actions .send-button
 {
     height: 19px;
+}
+.studypage-content #other-school-list ul li {
+    margin: 10px;
+    width: 395px;
+}
+.studypage-content .school_list ul li a.head-title span
+{
+    line-height: normal;
+    margin-top: 0;
+}
+
+.tree_loading {
+    background: url("../image/ajax-loader.gif") no-repeat scroll 120px 40px rgba(0, 0, 0, 0);
+    height: 100px;
+    width: 100%;
+}
+#job-search-box .job-search-tab .tab-content select {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    font-size: 14px;
+    height: 32px;
+    margin-top: -1px;
+    padding-top: 6px;
+    width: 280px;
+}
+.announce_title {
+    background: none repeat scroll 0 0 #D8EADA;
+    border-bottom: 1px solid #CCCCCC;
+    font-weight: bold;
+    padding: 3px;
+}
+.chat_friend_list {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    padding: 10px;
+    position: fixed;
+    right: 0;
+    top: 50px;
+    z-index: 2000;
+    width: 300px;
+}
+.chat_friend_list .chat_list_hooker
+{
+    
+}
+.chat_friend_list .main_list
+{
+    
+}
+.chat_friend_list .main_list ul
+{
+    margin: 0;
+}
+.chat_friend_list .main_list ul li {
+    list-style: none outside none;
+    min-height: 40px;
+    margin-bottom: 5px;
+    padding-right: 10px;
+}
+.chat_friend_list .main_list ul li .online_status {
+    background: url("../image/offline.png") no-repeat scroll 0 center rgba(0, 0, 0, 0);
+    height: 40px;
+    margin-left: 270px;
+    position: absolute;
+    text-indent: -5000px;
+    width: 10px;
+}
+.chat_friend_list .main_list ul li.online .online_status {
+    background-image: url("../image/online.png");
+}
+.chat_friend_list .main_list ul li p {
+    margin: 0;
+}
+.chat_friend_list .main_list ul li img {
+    float: left;
+    margin-right: 5px;
+    width: 40px;
+}
+.chat_friend_list .main_list ul li h2 {
+    color: #333333;
+    font-size: 14px;
+    margin: 0;
+}
+.chat_friend_list .main_list ul li h2 a
+{
+    
 }

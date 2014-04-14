@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-13 08:58:13
+<?php /* Smarty version 2.6.27, created on 2014-04-11 15:03:44
          compiled from links.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'links.html', 27, false),)), $this); ?>
@@ -63,8 +63,8 @@ images/offer_01.gif" /></div>
 </th>
               <th><?php echo $this->_tpl_vars['_created_link']; ?>
 </th>
-	      <th><?php echo $this->_tpl_vars['_action_link']; ?>
-</th>
+	      <!--<th><?php echo $this->_tpl_vars['_action_link']; ?>
+</th>-->
             </tr>
 			<?php $_from = $this->_tpl_vars['Items']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
@@ -85,14 +85,14 @@ images/offer_01.gif" /></div>
 	      <td><?php if ($this->_tpl_vars['item']['checkout'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
               <td><?php echo $this->_tpl_vars['item']['senddate']; ?>
 </td>
-	      <td>		
+	      <!--<td>		
 		<?php if ($this->_tpl_vars['item']['company_status'] == 1 && $this->_tpl_vars['item']['checkout'] == 0 && $this->_tpl_vars['countAgent'] < 10): ?>
 		    <a class="btn_agent" href="link.php?do=setAgent&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 " title="<?php echo $this->_tpl_vars['_set_agent']; ?>
 "><?php echo $this->_tpl_vars['_set_agent']; ?>
 </a>
 		<?php endif; ?>
-	      </td>
+	      </td>-->
             </tr>
 	    
 		    <?php endif; ?>
@@ -106,7 +106,7 @@ images/offer_01.gif" /></div>
 	  </form>
 	  
 	  
-	  <h1><?php echo $this->_tpl_vars['_agent']; ?>
+	  <!--<h1><?php echo $this->_tpl_vars['_agent']; ?>
  (<?php echo $this->_tpl_vars['CountAgent']; ?>
 /10)</h1>
 	  <table class="bglist">
@@ -126,12 +126,12 @@ images/offer_01.gif" /></div>
 </th>
               <th><?php echo $this->_tpl_vars['_created_link']; ?>
 </th>
-            </tr>
+            </tr>-->
 			<?php $_from = $this->_tpl_vars['Items']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
 ?>
 			<?php if ($this->_tpl_vars['item']['type_id'] == 2): ?>
-            <tr align="center" class="bggray">
+            <!--<tr align="center" class="bggray">
 
               <td style="text-align: left"><?php echo $this->_tpl_vars['item']['username']; ?>
 </td>
@@ -147,14 +147,14 @@ images/offer_01.gif" /></div>
               <td><?php echo $this->_tpl_vars['item']['senddate']; ?>
 </td>
 
-            </tr>
+            </tr>-->
 	     <?php endif; ?>
 			<?php endforeach; endif; unset($_from); ?>
-            <tr align="center" class="bggray">
+            <!--<tr align="center" class="bggray">
               <td colspan="7"><?php echo $this->_tpl_vars['ByPages']; ?>
 </td>
             </tr>
-        </table>  
+        </table>  -->
 	  
 	  
 	  
@@ -214,4 +214,4 @@ images/offer_01.gif" /></div>
 $this->_smarty_include(array('smarty_include_tpl_file' => "footer.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>
+ ?>

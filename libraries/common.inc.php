@@ -6,7 +6,7 @@
  *      @version $Revision: 2148 $
  */
 
- class MyDateTime extends DateTime
+class MyDateTime extends DateTime
 {
     public function setTimestamp( $timestamp )
     {
@@ -231,15 +231,15 @@ setvar('pb_userinfo', $mem);
 
 $js_language = $app_lang;
 $_G = array(
-'SiteUrl'=>URL, 
-'charset'=>$charset, 
-'AppLanguage'=>$app_lang, 
-'WebRootUrl'=>$absolute_uri, 
-'TemplateDir'=>'templates', 
-'JsLanguage'=>$js_language, 
-'cookiepre'=>$cookiepre, 
-'cookiedomain'=>$cookiedomain, 
-'cookiepath'=>$cookiepath
+    'SiteUrl'=>URL, 
+    'charset'=>$charset, 
+    'AppLanguage'=>$app_lang, 
+    'WebRootUrl'=>$absolute_uri, 
+    'TemplateDir'=>'templates', 
+    'JsLanguage'=>$js_language, 
+    'cookiepre'=>$cookiepre, 
+    'cookiedomain'=>$cookiedomain, 
+    'cookiepath'=>$cookiepath
 );
 uaAssign($_G);
 if (!empty($_PB_CACHE['setting']['site_theme_styles'])) {
@@ -322,18 +322,5 @@ if(isset($_GET["un"]))
 $sharing_username = $_SESSION["sharing_username"];
 
 
-//welcomnew info share
-//share info
-//$welcomnew_info = $announcement->read("message", 7);
-//$welcomnew_info["message"] = str_replace("{shop}","",$welcomnew_info["message"]);
-//setvar('welcomnew_info', $welcomnew_info);
-
-//echo $sharing_username;
-
-////get chatboxs
-//$chatboxs = $session->read("chatboxs".session_id());
-//$chatboxs = explode(",", $chatboxs);
-////$session->write("chatboxs".session_id(), NULL);
-//setvar("chatboxs", $chatboxs);
 setvar("FURI", $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 ?>

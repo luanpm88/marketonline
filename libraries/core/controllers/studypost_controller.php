@@ -41,11 +41,11 @@ class Studypost extends PbController {
 		{
 			$conditions = array();
 			
+			$keyword = '';
 			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
 			{
-				$conditions[] = "lower(School.name) LIKE '%".$_GET["keyword"]."%'";
-				
-				setvar("keyword",$_GET["keyword"]);
+				$keyword = $_GET["keyword"];
+				setvar("keyword",$keyword);
 			}
 			
 			if(isset($_GET["area"]) && $_GET["area"] != "")
@@ -57,7 +57,7 @@ class Studypost extends PbController {
 				setvar("area",$_GET["area"]);
 			}
 			
-			$school_list = $this->school->getList($conditions, $page->firstcount, $page->displaypg);
+			$school_list = $this->school->getList($conditions, $page->firstcount, $page->displaypg,$keyword);
 			setvar("school_list", $school_list);
 			render("studypost/school_list");
 		}
@@ -65,11 +65,11 @@ class Studypost extends PbController {
 		{
 			$conditions = array();
 			
+			$keyword = '';
 			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
 			{
-				$conditions[] = "lower(su.name) LIKE '%".$_GET["keyword"]."%'";
-				
-				setvar("keyword", $_GET["keyword"]);
+				$keyword = $_GET["keyword"];
+				setvar("keyword",$keyword);
 			}
 			
 			if(isset($_GET["area"]) && $_GET["area"] != "")
@@ -81,7 +81,7 @@ class Studypost extends PbController {
 				setvar("area",$_GET["area"]);
 			}
 			
-			$group_list = $this->studygroup->getList(null, $pb_userinfo["pb_userid"], false, $conditions);
+			$group_list = $this->studygroup->getList(null, $pb_userinfo["pb_userid"], false, $conditions,$keyword);
 			//var_dump($group_list);
 			setvar("group_list", $group_list);
 			render("studypost/group_list");
@@ -90,23 +90,23 @@ class Studypost extends PbController {
 		{
 			$conditions = array();
 			
+			$keyword = '';
 			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
 			{
-				$conditions[] = "lower(su.name) LIKE '%".$_GET["keyword"]."%'";
-				
-				setvar("keyword", $_GET["keyword"]);
+				$keyword = $_GET["keyword"];
+				setvar("keyword",$keyword);
 			}
 			
 			if(isset($_GET["area"]) && $_GET["area"] != "")
 			{
 				$areas = $this->area->getChildArea($_GET["area"]);
 				//var_dump($areas.implode(","));
-				$conditions[] = "sc.area_id IN (".implode(",",$areas).")";
+				$conditions[] = "mf.area_id IN (".implode(",",$areas).")";
 				
 				setvar("area",$_GET["area"]);
 			}
 			
-			$learner_list = $this->member->getStudyList($conditions);
+			$learner_list = $this->member->getStudyList($conditions, $keyword);
 			//var_dump($learner_list);
 			setvar("learner_list", $learner_list);
 			render("studypost/learner_list");
@@ -302,7 +302,30 @@ class Studypost extends PbController {
 				{
 					$_GET["id"] = $user["school_id"];
 				}
-				$conditions[] = "school_id = ".$_GET["id"];
+				if($_GET["id"] != $user["school_id"])
+				{
+					//get member ids from school
+					$member_ids = $this->school->getMemberIds($_GET["id"]);
+					$conditions[] = "group_id = 0";
+					$conditions[] = "(school_id = ".$_GET["id"]." OR member_id IN (".implode(',',$member_ids)."))";
+				}
+				else
+				{
+					//get member ids from school
+					$member_ids = $this->school->getMemberIds($_GET["id"]);
+					$friend_ids = $this->member->getFriendIds($user["id"]);
+					if(count($friend_ids))
+					{
+						$cond_friends = " OR member_id IN (".implode(',',$friend_ids).")"
+							." OR member_id IN (".implode(',',$friend_ids).")";
+					}
+					//var_dump($friend_ids);
+					$conditions[] = "group_id = 0";
+					$conditions[] = "(school_id = ".$_GET["id"]
+								.$cond_friends
+								." OR member_id IN (".implode(',',$member_ids).")"
+							.")";
+				}
 			}
 			else if($_GET["type"] == "group" && isset($_GET["id"]))
 			{
@@ -492,6 +515,7 @@ class Studypost extends PbController {
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		$member = $this->member->getInfoById($_GET["id"]);
+		//echo $member["online"];
 		
 		if(isset($_GET["id"]))
 		{
@@ -583,7 +607,7 @@ class Studypost extends PbController {
 					$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 					$member = $this->member->getInfoById($_GET['friendid']);
 					
-					$content = "<a href='".URL."index.php?do=studypost&action=memberpage&id=".$user["id"]."'>".$user["first_name"]." ".$user["last_name"]." đã gửi lời mời kết bạn đến bạn</a>";
+					$content = "<a style='font-weight:bold' href='".URL."index.php?do=studypost&action=memberpage&id=".$user["id"]."'>".$user["first_name"]." ".$user["last_name"]."</a> đã gửi lời mời kết bạn đến bạn";
 					$sms['content'] = mysql_real_escape_string($content);
 					$sms['title'] = mysql_real_escape_string("Lời mời kết bạn");
 					$sms['membertype_ids'] = '[6]';
@@ -1089,6 +1113,16 @@ class Studypost extends PbController {
 		//var_dump($comments);
 		setvar("comments", $comments);
 		$this->render("studypost/studymemberimagecomment");
+	}
+	
+	function getChatFriendList()
+	{
+		if(isset($_GET["id"]))
+		{
+			$members = $this->member->getFriendChatList($_GET["id"]);
+		}
+		setvar("members",$members);
+		$this->render("studypost/getChatFriendList");
 	}
 }
 ?>

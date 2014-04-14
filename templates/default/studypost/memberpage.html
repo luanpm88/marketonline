@@ -79,14 +79,15 @@
                 </div>
             </div>
             <div class="member-left">
-                <div class="member-left-top-bound">
-                    {if $friend_request}
+                {if $friend_request}
                         <div class="friend_requests">
                             <strong>{$member.first_name} {$member.last_name}</strong> muốn kết bạn với bạn
                             <a href="{the_url module=studypost action=acceptFriend id=`$member.id`}">Đồng ý</a>
                             <a href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Từ chối</a>
                         </div>
                     {/if}
+                <div class="member-left-top-bound">
+                    
                     
                     <div class="member-left-top">
                         {if $pb_userid == $member.id}

@@ -17,20 +17,21 @@
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
 						<input type="hidden" name="type" value="{$smarty.get.type}" />
 						
-						<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="{$keyword}"/>
-						<select name="indust">
+						<select name="indust" style="float: left;margin-right: 5px;">
 							<option value="0">Tất cả ngành nghề</option>
 							{$JobindustOptions}							
 						</select>
 						
-						<select name="area">
+						<select name="area" style="float: left;margin-right: 5px;">
 							<option value="0">Tất cả địa điểm</option>
 							{$AreaOptions}
 						</select>
 						
+						<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="{$keyword}"/>
+						
 						<input type="submit" value="Tìm kiếm" />
 					</form>
-				    {else}
+				{else}
 					<form action="{the_url module='studypost'}" method="get" onsubmit="return checkSelectStudypostType()">
 						<input type="hidden" name="do" value="{$smarty.get.do}" />
 						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}

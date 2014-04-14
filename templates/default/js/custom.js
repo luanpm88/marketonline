@@ -1,3 +1,13 @@
+	function getChatFriendList(id) {
+	    $.ajax({
+		url: "index.php?do=studypost&action=getChatFriendList&id="+id			
+	    }).done(function ( data ) {
+		if( console && console.log ) {
+		    $('.chat_friend_list .main_list').html(data);
+		}
+	    });
+	}
+	
 	function checkSelectStudypostType() {
 	    var type = $('#job-learn select[name=type]').val();
 	    

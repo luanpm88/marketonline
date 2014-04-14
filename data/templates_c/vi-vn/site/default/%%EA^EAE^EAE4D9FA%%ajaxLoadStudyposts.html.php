@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 08:03:23
+<?php /* Smarty version 2.6.27, created on 2014-04-04 08:47:41
          compiled from default/studypost/ajaxLoadStudyposts.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/ajaxLoadStudyposts.html', 83, false),array('function', 'formhash', 'default/studypost/ajaxLoadStudyposts.html', 84, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/ajaxLoadStudyposts.html', 86, false),array('function', 'formhash', 'default/studypost/ajaxLoadStudyposts.html', 87, false),)), $this); ?>
 <?php if ($this->_tpl_vars['List']): ?>
     <?php $_from = $this->_tpl_vars['List']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level_0']['total'] > 0):
@@ -75,6 +75,7 @@ if ($this->_foreach['level_comment']['total'] > 0):
 </h2>
 
                             <?php if ($this->_tpl_vars['comment']['star'] > 0): ?>
+                            <div class="starshover">
                                 <div class="stars">
                                     <span class="star<?php if ($this->_tpl_vars['comment']['star'] >= 1): ?> light<?php endif; ?>" rel="1"></span>
                                     <span class="star<?php if ($this->_tpl_vars['comment']['star'] >= 2): ?> light<?php endif; ?>" rel="2"></span>
@@ -88,6 +89,9 @@ if ($this->_foreach['level_comment']['total'] > 0):
                                     <span class="star<?php if ($this->_tpl_vars['comment']['star'] >= 10): ?> light<?php endif; ?>" rel="10"></span>
                                     <span class="result" value="0"></span>                            
                                 </div>
+                                <div class="over_points"><?php echo $this->_tpl_vars['comment']['star']; ?>
+</div>
+                            </div>
                             <?php endif; ?>
                             
                             <div class="comment_content">

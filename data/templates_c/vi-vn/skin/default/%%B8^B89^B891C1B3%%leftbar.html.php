@@ -1,40 +1,11 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 14:16:09
+<?php /* Smarty version 2.6.27, created on 2014-04-08 16:47:44
          compiled from leftbar.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'leftbar.html', 11, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'leftbar.html', 99, false),)), $this); ?>
 <aside class="four columns leftbar_space" id="left-sidebar">
-	      <?php if ($this->_tpl_vars['tree']): ?>
-	      <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
-                <div class="widget-inner">
-                    <h3><?php echo $this->_tpl_vars['_product_category']; ?>
-</h3>
-		    <div class="scrollbarleft">
-			<ul>
-			    <?php $_from = $this->_tpl_vars['tree']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_0']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
-        $this->_foreach['level_0']['iteration']++;
-?>
-					  <?php if (true): ?>
-					      <li style="padding-left: <?php echo $this->_tpl_vars['item0']['padding']; ?>
-px<?php if ($this->_tpl_vars['item0']['hide']): ?>;display: none<?php endif; ?>" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954 plevel<?php echo $this->_tpl_vars['item0']['lpad']; ?>
- <?php if ($this->_tpl_vars['item0']['member_id'] == $_GET['memberid'] && $this->_tpl_vars['item0']['id'] == $_GET['typeid']): ?> active<?php endif; ?>" id="menu-item-954">
-						<a class="item menu_lvl1" rel="<?php echo $this->_tpl_vars['item0']['id']; ?>
-" content="<?php echo $this->_tpl_vars['item0']['id']; ?>
-" href="<?php echo smarty_function_the_url(array('module' => 'producttype','typeid' => ($this->_tpl_vars['item0']['id']),'member_id' => ($this->_tpl_vars['item0']['member_id']),'userid' => ($_GET['userid'])), $this);?>
-">
-						  <span><?php echo $this->_tpl_vars['item0']['count']; ?>
-</span><?php echo $this->_tpl_vars['item0']['name']; ?>
- 
-						</a>
-					      </li>
-					   <?php endif; ?>
-			    <?php endforeach; endif; unset($_from); ?>
-			</ul>
-			</div>
-		</div>
-	      </section>
-              <?php endif; ?>
+	      <div class="tree_bound">
+		<div class="tree_loading"></div>
+	      </div>
               
               
               <section style="display: none" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
@@ -153,3 +124,33 @@ if ($this->_foreach['spacelink']['total'] > 0):
 	      <?php endif; ?>
               
 </aside>
+
+
+
+<?php echo '
+<script>
+    $(document).ready(function() {
+	$.ajax({
+	    url: "'; ?>
+<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+<?php echo 'index.php?do=product&action=get_space_tree&userid='; ?>
+<?php echo $_GET['userid']; ?>
+<?php echo '&page_memid='; ?>
+<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
+<?php echo '&typeid='; ?>
+<?php echo $_GET['typeid']; ?>
+<?php echo '&page='; ?>
+<?php echo $_GET['page']; ?>
+<?php echo '&memberid='; ?>
+<?php echo $_GET['memberid']; ?>
+<?php echo '&order='; ?>
+<?php echo $_GET['order']; ?>
+<?php echo '",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+		$(\'.tree_bound\').html(data);
+	    }
+	});
+    });
+</script>
+'; ?>

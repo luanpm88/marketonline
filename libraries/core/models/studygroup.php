@@ -62,7 +62,7 @@ class Studygroups extends PbModel {
 		return $group_ids;
 	}
 	
-	function getList($school_id = null, $member_id = null, $not_member = false, $conds = array())
+	function getList($school_id = null, $member_id = null, $not_member = false, $conds = array(),$keyword = '')
 	{
 		uses("studygroupmember","area");
 		$area = new Areas();
@@ -83,11 +83,21 @@ class Studygroups extends PbModel {
 			}
 		}
 		
+		//for keyword
+		$keyword_str = '';
+		$order_by_score = null;
+		if($keyword != '')
+		{
+			$keyword_str = ",MATCH(su.name) AGAINST ('".$keyword."') as score,MATCH(sc.name) AGAINST ('".$keyword."') as score2";
+			$conditions[] = "(MATCH(su.name) AGAINST('".$keyword."') OR MATCH(sc.name) AGAINST('".$keyword."') OR sc.name LIKE '%".$keyword."%' OR su.name LIKE '%".$keyword."%')";
+			$order_by_score = "score DESC,score2 DESC";
+		}
+		
 		$joins = array("LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = Studygroup.school_id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
 		
-		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, sc.address AS school_address, sc.area_id AS school_area_id, su.name AS subject_name", $joins, $conditions, null, null, null, null, "Studygroup.id");
+		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, sc.address AS school_address, sc.area_id AS school_area_id, su.name AS subject_name".$keyword_str, $joins, $conditions, $order_by_score, null, null, null, "Studygroup.id");
 		foreach($groups as $key => $item)
 		{
 			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
@@ -157,7 +167,6 @@ class Studygroups extends PbModel {
 			$groups[$key]["banner"] = pb_get_attachmenturl($groups[$key]['banner'], '', 'banner');
 			
 		}
-		//var_dump($groups);
 		return $groups[0];
 	}
 	
@@ -177,7 +186,6 @@ class Studygroups extends PbModel {
 		$joins = array("RIGHT JOIN {$this->table_prefix}studygroupviews AS stv ON stv.studygroup_id = Studypost.group_id");
 		
 		$count = $studypost->findCount($joins, $conditions, "Studypost.id");
-		//var_dump($count);
 		return $count;
 	}
 	

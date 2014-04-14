@@ -147,22 +147,15 @@ class Caches extends PbObject {
 	function writeCache($script, $cachenames = '', $cachedata = '', $prefix = 'cache_') {
 		global $phpb2b_auth_key;
 		$fpc = true;
-//		if (!empty($this->lang_dirname)) {
-//			$app_lang = $this->lang_dirname;
-//		}
-		//after 4.3, this is not mustable.
-//		else {
-//			$app_lang = $this->lang_dirname = $GLOBALS['app_lang'];
-//		}
 		$mod_label = "Created";
 		if (!empty($cachenames)) {
-			if(is_array($cachenames) && !$cachedata) {
-				foreach($cachenames as $name) {
-					$cachedata .= $this->getCacheArray($name, $script);
-				}
-			}else{
-				$cachedata.= $this->getCacheArray($cachenames);
+		    if(is_array($cachenames) && !$cachedata) {
+			foreach($cachenames as $name) {
+			    $cachedata .= $this->getCacheArray($name, $script);
 			}
+		    }else{
+			$cachedata.= $this->getCacheArray($cachenames);
+		    }
 		}
 		if(!empty($cachedata)){
 			if(!empty($this->lang_dirname))
@@ -185,7 +178,6 @@ class Caches extends PbObject {
 		}else{
 			return true;
 		}
-		
 	}	
 	
 	function getCacheArray($cachename = '', $script = '') {
@@ -197,143 +189,142 @@ class Caches extends PbObject {
 		}
 		switch($cachename) {
 			case 'nav':
-				$this->lang_dirname = '';
-				$navs = $pdb->GetArray("SELECT id,name,description,url,target,display_order,highlight FROM {$tb_prefix}navs  WHERE status=1 ORDER BY display_order ASC");
-				$navmns = $_nlink = array();
-				if (!empty($navs)) {
-					foreach ($navs as $nav=>$nav_val) {
-						$lang_title = $nav_val['name'];
-						$_tmp = pb_lang_split($lang_title, true);
-						foreach ($_tmp as $_nk=>$_nv) {
-							$_nlink[$_nk] = '<a href="'.$nav_val['url'].'" title="'.$_nv.'"'.parse_highlight($nav_val['highlight']).'"><span>'.$_nv.'</span></a>';
-						}
-						$navmns[$nav_val['id']]['link'] = pb_lang_merge($_nlink);
-						$navmns[$nav_val['id']]['id'] = $nav_val['id'];
-						$navmns[$nav_val['id']]['name'] = $lang_title;
-						$navmns[$nav_val['id']]['url'] = $nav_val['url'];
-						$navmns[$nav_val['id']]['level'] = $nav_val['display_order'];
-					}
-					$data['navs'] = $navmns;
+			    $this->lang_dirname = '';
+			    $navs = $pdb->GetArray("SELECT id,name,description,url,target,display_order,highlight FROM {$tb_prefix}navs  WHERE status=1 ORDER BY display_order ASC");
+			    $navmns = $_nlink = array();
+			    if (!empty($navs)) {
+				foreach ($navs as $nav=>$nav_val) {
+				    $lang_title = $nav_val['name'];
+				    $_tmp = pb_lang_split($lang_title, true);
+				    foreach ($_tmp as $_nk=>$_nv) {
+					    $_nlink[$_nk] = '<a href="'.$nav_val['url'].'" title="'.$_nv.'"'.parse_highlight($nav_val['highlight']).'"><span>'.$_nv.'</span></a>';
+				    }
+				    $navmns[$nav_val['id']]['link'] = pb_lang_merge($_nlink);
+				    $navmns[$nav_val['id']]['id'] = $nav_val['id'];
+				    $navmns[$nav_val['id']]['name'] = $lang_title;
+				    $navmns[$nav_val['id']]['url'] = $nav_val['url'];
+				    $navmns[$nav_val['id']]['level'] = $nav_val['display_order'];
 				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-				break;
+				$data['navs'] = $navmns;
+			    }
+			    $curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
+			    break;
 			case 'trusttype':
-				$this->lang_dirname = '';
-				$pdb->setFetchMode(ADODB_FETCH_ASSOC);
-				$conditions = "";
-				$sql = "SELECT * FROM {$tb_prefix}trusttypes ORDER BY display_order ASC,id DESC";
-				$result = $pdb->GetArray($sql);
-				foreach ($result as $key=>$val) {
-					$result[$key]['avatar'] = $val['image'];
-					unset($result[$key]['description'], $result[$key]['display_order'], $result[$key]['status'], $result[$key]['image']);
-					$data[$val['id']] = $result[$key];
-				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
-				break;
+			    $this->lang_dirname = '';
+			    $pdb->setFetchMode(ADODB_FETCH_ASSOC);
+			    $conditions = "";
+			    $sql = "SELECT * FROM {$tb_prefix}trusttypes ORDER BY display_order ASC,id DESC";
+			    $result = $pdb->GetArray($sql);
+			    foreach ($result as $key=>$val) {
+				$result[$key]['avatar'] = $val['image'];
+				unset($result[$key]['description'], $result[$key]['display_order'], $result[$key]['status'], $result[$key]['image']);
+				$data[$val['id']] = $result[$key];
+			    }
+			    $curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
+			    break;
 			case 'country':
-				$this->lang_dirname = '';
-				$pdb->setFetchMode(ADODB_FETCH_ASSOC);
-				$conditions = "";
-				$sql = "SELECT * FROM {$tb_prefix}countries ORDER BY display_order ASC,id ASC";
-				$result = $pdb->GetArray($sql);
-				foreach ($result as $key=>$val) {
-					$result[$key]['image'] = $val['picture'];
-					unset($result[$key]['display_order']);
-					$data[$val['id']] = $result[$key];
-				}
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray(pb_lang_split_recursive($data)).";\n\n";
-				break;
+			    $this->lang_dirname = '';
+			    $pdb->setFetchMode(ADODB_FETCH_ASSOC);
+			    $conditions = "";
+			    $sql = "SELECT * FROM {$tb_prefix}countries ORDER BY display_order ASC,id ASC";
+			    $result = $pdb->GetArray($sql);
+			    foreach ($result as $key=>$val) {
+				$result[$key]['image'] = $val['picture'];
+				unset($result[$key]['display_order']);
+				$data[$val['id']] = $result[$key];
+			    }
+			    $curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray(pb_lang_split_recursive($data)).";\n\n";
+			    break;
 			case 'setting':
-				$this->lang_dirname = '';
-				$tmp_mail = array();
-				$table = 'setting';
-				$conditions = "";
-				$sql = "SELECT * FROM {$tb_prefix}settings WHERE type_id IN (0,1)";
-				$setting = $pdb->GetArray($sql);
+			    $this->lang_dirname = '';
+			    $tmp_mail = array();
+			    $table = 'setting';
+			    $conditions = "";
+			    $sql = "SELECT * FROM {$tb_prefix}settings WHERE type_id IN (0,1)";
+			    $setting = $pdb->GetArray($sql);
 //				$tmp = '';
-				foreach ($setting as $key=>$val) {
-					//For multi
-					$s_title = $val['valued'];
+			    foreach ($setting as $key=>$val) {
+				//For multi
+				$s_title = $val['valued'];
 //					$tmp = unserialize($val['valued']);
 //					if (!empty($tmp[$this->lang_dirname]) && !is_array($tmp[$this->lang_dirname])) {
 //						$s_title = $tmp[$this->lang_dirname];
 //					}
-					$data[$val['variable']] = $s_title;
-				}
-				//set sendmail
-				$tmp_mail['send_mail'] = $data['send_mail'];
-				$tmp_mail['auth_protocol'] = $data['auth_protocol'];
-				$tmp_mail['smtp_server'] = $data['smtp_server'];
-				$tmp_mail['smtp_port'] = $data['smtp_port'];
-				$tmp_mail['smtp_auth'] = $data['smtp_auth'];
-				$tmp_mail['mail_from'] = $data['mail_from'];
-				$tmp_mail['mail_fromwho'] = $data['mail_fromwho'];
-				$tmp_mail['auth_username'] = $data['auth_username'];
-				$tmp_mail['auth_password'] = $data['auth_password'];
-				$tmp_mail['mail_delimiter'] = $data['mail_delimiter'];
-				$tmp_mail['sendmail_silent'] = $data['sendmail_silent'];
-				$data['mail'] = serialize($tmp_mail);
-				unset($tmp_mail,$data['send_mail'],$data['smtp_server'],$data['smtp_port'],$data['smtp_auth'],$data['mail_from'],$data['mail_fromwho'],$data['auth_username'],$data['auth_password'],$data['mail_delimiter'],$data['sendmail_silent']);
-				$data['capt_auth'] = bindec($data['capt_logging'].$data['capt_register'].$data['capt_post_free'].$data['capt_add_market'].$data['capt_login_admin'].$data['capt_apply_friendlink'].$data['capt_service']);
-				unset($data['capt_logging'],$data['capt_register'],$data['capt_post_free'],$data['capt_add_market'],$data['capt_login_admin'],$data['capt_apply_friendlink'],$data['capt_service']);
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
+				$data[$val['variable']] = $s_title;
+			    }
+			    //set sendmail
+			    $tmp_mail['send_mail'] = $data['send_mail'];
+			    $tmp_mail['auth_protocol'] = $data['auth_protocol'];
+			    $tmp_mail['smtp_server'] = $data['smtp_server'];
+			    $tmp_mail['smtp_port'] = $data['smtp_port'];
+			    $tmp_mail['smtp_auth'] = $data['smtp_auth'];
+			    $tmp_mail['mail_from'] = $data['mail_from'];
+			    $tmp_mail['mail_fromwho'] = $data['mail_fromwho'];
+			    $tmp_mail['auth_username'] = $data['auth_username'];
+			    $tmp_mail['auth_password'] = $data['auth_password'];
+			    $tmp_mail['mail_delimiter'] = $data['mail_delimiter'];
+			    $tmp_mail['sendmail_silent'] = $data['sendmail_silent'];
+			    $data['mail'] = serialize($tmp_mail);
+			    unset($tmp_mail,$data['send_mail'],$data['smtp_server'],$data['smtp_port'],$data['smtp_auth'],$data['mail_from'],$data['mail_fromwho'],$data['auth_username'],$data['auth_password'],$data['mail_delimiter'],$data['sendmail_silent']);
+			    $data['capt_auth'] = bindec($data['capt_logging'].$data['capt_register'].$data['capt_post_free'].$data['capt_add_market'].$data['capt_login_admin'].$data['capt_apply_friendlink'].$data['capt_service']);
+			    unset($data['capt_logging'],$data['capt_register'],$data['capt_post_free'],$data['capt_add_market'],$data['capt_login_admin'],$data['capt_apply_friendlink'],$data['capt_service']);
+			    $curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($data).";\n\n";
 			break;
 			case 'area':
-				$this->lang_dirname = '';
-				$sql = "select * from {$tb_prefix}areas a where a.parent_id=0 ORDER by display_order asc";
-				$top_areas = $sec_areas = $third_areas = $areas = $total_areas = array();
-				$area1 = $pdb->GetArray($sql);
-				$op = "<!--// Created ".date("M j, Y, G:i")." -->\n";
-				$op .= "var data_area = { \n";
-				foreach($area1 as $key=>$val){
-					//For multi
-					$i_title = $val['name'];
+			    $this->lang_dirname = '';
+			    $sql = "select * from {$tb_prefix}areas a where a.parent_id=0 ORDER by display_order asc";
+			    $top_areas = $sec_areas = $third_areas = $areas = $total_areas = array();
+			    $area1 = $pdb->GetArray($sql);
+			    $op = "<!--// Created ".date("M j, Y, G:i")." -->\n";
+			    $op .= "var data_area = { \n";
+			    foreach($area1 as $key=>$val){
+				//For multi
+				$i_title = $val['name'];
 //					$tmp = unserialize($val['description']);
 //					if(!empty($tmp[$this->lang_dirname])) $i_title = $tmp[$this->lang_dirname];
-					$top_areas[$val['id']] = $total_areas[1][$val['id']] = $i_title;
-					$sql = "select * from {$tb_prefix}areas a where level=2 AND parent_id=".$val['id']." ORDER by display_order asc";
-					$sec_areas = $pdb->GetArray($sql);
-					foreach($sec_areas as $key2=>$val2){
-						//For multi
-						$i_title = $val2['name'];
-//						$tmp = unserialize($val2['description']);
-//						if(!empty($tmp[$this->lang_dirname])) $i_title = $tmp[$this->lang_dirname];
-						$third_areas = $pdb->GetArray("select id,name,parent_id,top_parentid from {$tb_prefix}areas a where level=3 AND parent_id=".$val2['id']." ORDER by display_order asc");
-						$areas[$val['id']]['sub'][$val2['id']] = $i_title;
-						$total_areas[2][$val2['id']] = $i_title;
-						foreach($third_areas as $key3=>$val3){
-							//For multi
-							$i_title = $val3['name'];
+				$top_areas[$val['id']] = $total_areas[1][$val['id']] = $i_title;
+				$sql = "select * from {$tb_prefix}areas a where level=2 AND parent_id=".$val['id']." ORDER by display_order asc";
+				$sec_areas = $pdb->GetArray($sql);
+				foreach($sec_areas as $key2=>$val2){
+				    //For multi
+				    $i_title = $val2['name'];
+//						
+				    $third_areas = $pdb->GetArray("select id,name,parent_id,top_parentid from {$tb_prefix}areas a where level=3 AND parent_id=".$val2['id']." ORDER by display_order asc");
+				    $areas[$val['id']]['sub'][$val2['id']] = $i_title;
+				    $total_areas[2][$val2['id']] = $i_title;
+				    foreach($third_areas as $key3=>$val3) {
+					//For multi
+					$i_title = $val3['name'];
 //							$tmp = unserialize($val3['description']);
 //							if(!empty($tmp[$this->lang_dirname])) $i_title = $tmp[$this->lang_dirname];
-							$areas[$val2['id']]['sub'][$val3['id']] = $total_areas[3][$val3['id']] = $i_title;
-						}
-					}
+					$areas[$val2['id']]['sub'][$val3['id']] = $total_areas[3][$val3['id']] = $i_title;
+				    }
 				}
-				$top_areas = pb_lang_split_recursive($this->convert2utf8($top_areas));
-				$areas = pb_lang_split_recursive($this->convert2utf8($areas));
-				$op .= "'0':".json_encode($top_areas);
-				$tmp_op = array();
-				foreach ($top_areas as $js_key=>$js_val){
-					if(isset($areas[$js_key])){
-						foreach ($areas[$js_key] as $js_key1=>$js_val1) {
-							$tmp_op[] = "'0,{$js_key}':".json_encode($areas[$js_key]['sub']);
-							foreach ($areas[$js_key]['sub'] as $js_key2=>$js_val2) {
-								if(!empty($areas[$js_key2]['sub'])) $tmp_op[] = "'0,{$js_key},{$js_key2}':".json_encode($areas[$js_key2]['sub']);
-							}
-						}
-					}
-				}
-				if (!empty($tmp_op)) {
-					$op .=",\n";
-					$tmp_op = implode(",\n", $tmp_op);
-					$op .= $tmp_op."\n}";
-				}else{
-					$op .= "\n}";
-				}
-				$fp = file_put_contents($this->cache_path. "area.js", $op);
-				ksort($total_areas);
-				$curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_areas).";\n\n";
+			    }
+			    $top_areas = pb_lang_split_recursive($this->convert2utf8($top_areas));
+			    $areas = pb_lang_split_recursive($this->convert2utf8($areas));
+			    $op .= "'0':".json_encode($top_areas);
+			    $tmp_op = array();
+			    foreach ($top_areas as $js_key=>$js_val){
+				    if(isset($areas[$js_key])){
+					    foreach ($areas[$js_key] as $js_key1=>$js_val1) {
+						    $tmp_op[] = "'0,{$js_key}':".json_encode($areas[$js_key]['sub']);
+						    foreach ($areas[$js_key]['sub'] as $js_key2=>$js_val2) {
+							    if(!empty($areas[$js_key2]['sub'])) $tmp_op[] = "'0,{$js_key},{$js_key2}':".json_encode($areas[$js_key2]['sub']);
+						    }
+					    }
+				    }
+			    }
+			    if (!empty($tmp_op)) {
+				    $op .=",\n";
+				    $tmp_op = implode(",\n", $tmp_op);
+				    $op .= $tmp_op."\n}";
+			    }else{
+				    $op .= "\n}";
+			    }
+			    $fp = file_put_contents($this->cache_path. "area.js", $op);
+			    ksort($total_areas);
+			    $curdata = "\$_PB_CACHE['$cachename'] = ".$this->evalArray($total_areas).";\n\n";
 			break;
 			case 'industry':
 				$this->lang_dirname = '';
@@ -391,7 +382,7 @@ class Caches extends PbObject {
 							foreach ($datas[$js_key]['sub'] as $js_key2=>$js_val2) {
 								if(!empty($datas[$js_key2]['sub'])) $tmp_op[] = "'0,{$js_key},{$js_key2}':".json_encode($datas[$js_key2]['sub']);
 								foreach ($datas[$js_key2]['sub'] as $js_key3=>$js_val3) {
-								    //echo $js_key3."<br />";
+									//echo $js_key3."<br />";
 									if(!empty($datas[$js_key3]['sub'])) $tmp_op[] = "'0,{$js_key},{$js_key2},{$js_key3}':".json_encode($datas[$js_key3]['sub']);
 								}
 							}

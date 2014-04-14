@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-28 08:08:23
+<?php /* Smarty version 2.6.27, created on 2014-04-04 08:47:40
          compiled from default/studypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 145, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 146, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -19,7 +19,7 @@ unset($_smarty_tpl_vars);
     
     $(document).ready(function() {
         
-        $(window).scrollTop(148);
+        $(window).scrollTop(152);
     
     });
 
@@ -117,8 +117,8 @@ unset($_smarty_tpl_vars);
                         
                         <ul class="school_banners">
                             <?php if ($this->_tpl_vars['group']['no_banner']): ?>
-                                <li><a href="javascript:void(0)"><img src="<?php echo $this->_tpl_vars['group']['no_banner']; ?>
-" /></a></li>
+                                <li><a href="javascript:void(0)"><!--<img src="<?php echo $this->_tpl_vars['group']['no_banner']; ?>
+" />--></a></li>
                             <?php else: ?>
                                 <?php $_from = $this->_tpl_vars['group']['banners']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level']['total'] > 0):
@@ -142,8 +142,9 @@ if ($this->_foreach['level']['total'] > 0):
                         
                         <div class="banner-school-info banner-group-info">
                             <h2><?php echo $this->_tpl_vars['group']['subject_name']; ?>
- (<?php echo $this->_tpl_vars['group']['school_name']; ?>
-)</h2>
+</h2>
+                            <h3><?php echo $this->_tpl_vars['group']['school_name']; ?>
+</h3>
                             <?php if ($this->_tpl_vars['school']['address']): ?><p><?php echo $this->_tpl_vars['school']['address']; ?>
 </p><?php endif; ?>
                             <?php if ($this->_tpl_vars['school']['phone']): ?><p><label>Điện thoại:</label> <?php echo $this->_tpl_vars['school']['phone']; ?>

@@ -13,6 +13,11 @@ class Links extends PbModel {
 		$member = new Members();
 		////findAll($fields = null, $joins = null, $conditions = null, $order = null, $limit = null, $offset = null, $recursive = null)
 		$result = $member->findAll("Member.*, c.status AS company_status, l.type_id", array("LEFT JOIN {$this->table_prefix}links l ON l.member_id=Member.id", "LEFT JOIN {$this->table_prefix}companies c ON c.member_id=Member.id"), array("l.parent_id=".$userid));
+		foreach($result as $i => $item)
+		{
+			$result[$i]["info"] = $member->getInfoById($item["id"]);
+			$result[$i]['senddate'] = df($item['created']);
+		}
 		return $result;
 	}
 	

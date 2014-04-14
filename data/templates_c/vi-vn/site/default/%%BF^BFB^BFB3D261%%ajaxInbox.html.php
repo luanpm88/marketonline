@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 09:02:33
+<?php /* Smarty version 2.6.27, created on 2014-04-14 11:02:42
          compiled from default/product/ajaxInbox.html */ ?>
 <div id="inboxhome">
 <a class="but" href="javascript:void(0)"><?php echo $this->_tpl_vars['_inbox']; ?>
@@ -8,10 +8,10 @@
 
     <div id="quick_inbox_content" class="over_air_box">
         <div class="pointer"></div>
+	<div class="announce_title">Hộp thư</div>
         <ul>
             <?php if (! $this->_tpl_vars['Items']): ?>
-                <li style="text-align: center"><?php echo $this->_tpl_vars['_no_message']; ?>
-</li>
+                <li style="text-align: center">Hiện chưa có thông tin nào</li>
             <?php endif; ?>
             <?php $_from = $this->_tpl_vars['Items']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level']['total'] > 0):

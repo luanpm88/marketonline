@@ -685,14 +685,14 @@ function goclicky_custom(meh, url, images, title, summary)
         	$('#right_detail_banner').stickyScroll({ container: '#right_detail_banner', leftBanner: true, topbound: 275.1 });
 		//$('#topmenu_outer').stickyScroll({ container: '#topmenu_outer', leftBanner: false, topbound: 275.1});
 		 
-		 console.log("zzzzz");
+		//console.log("zzzzz");
 		 
-		 //alert($(window).height());
-		 //alert($('body').height());
-		 if ($(window).height() > $('body').height()) {
-		  //code
-		  $('#darkf').css('position', 'absolute');
-		 }
+		//alert($(window).height());
+		//alert($('body').height());
+                if ($(window).height() > $('body').height()) {
+                 //code
+                 $('#darkf').css('position', 'absolute');
+                }
 		 
 		 $('.fancyx').fancybox();
 		 
@@ -722,12 +722,8 @@ function goclicky_custom(meh, url, images, title, summary)
 		 
 		 getNewClicked('<!--{/literal}-->{$pb_company.id}<!--{literal}-->');
 		 
-		 $('#product_detail_box ul.product_list_widget li img').resizecrop({
-		   width:100,
-		   height:100
-		 });
-		 $('#product_detail_box ul.product_list_widget li img').css("float", "none");
-		 $('#product_detail_box ul.product_list_widget li img').css("visibility", "visible");
+		 
+		 
 		 
 		 $('#detail_box_top .thumbnails img').resizecrop({
 		   width:91,
@@ -762,14 +758,14 @@ function goclicky_custom(meh, url, images, title, summary)
 		$('#inboxhome a.but').click(function(event){$('#quick_inbox_content').toggle();event.stopPropagation();});
 		
 		var ann_count = 0;
-		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 15000);
+		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 30000);
 
 		//chatbox get new arrival
 		//chatboxs
 		{/literal}
 		    {if $pb_username!=""}
                         {literal}
-                            setInterval(function(){ updateChatbox(); }, 8000);
+                            setInterval(function(){ updateChatbox(); }, 15000);
                         {/literal}
                         
                         {loop $chatboxs item level key}
@@ -804,6 +800,9 @@ function goclicky_custom(meh, url, images, title, summary)
                 {
                     $('.member-left-bottom').addClass("small");
                 }
+                
+                //get chat griend list
+                getChatFriendList({/literal}{$pb_userinfo.id}{literal});
 	});
 	
         
@@ -1326,4 +1325,11 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
                             
                          </div>
         </div>
+</div>
+
+<div class="chat_friend_list">
+    <div class="chat_list_hooker">Bạn bè</div>
+    <div class="main_list">
+        
+    </div>
 </div>

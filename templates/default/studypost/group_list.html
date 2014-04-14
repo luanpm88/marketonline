@@ -4,6 +4,7 @@
 <div id="body-wrapper" >
 <div id="body-wrapper-padding" class="job_page">
 <!--[if lt IE 7]>
+
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
     browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
     experience this site.
@@ -69,8 +70,7 @@
                                         </a>
                                         {if $item.address}<p>{$item.address}</p>{/if}
                                         {if $item.member_count}<p><label>Thành viên:</label> {$item.member_count}</p>{/if}
-                                        {if $item.created}<p><label>Ngày tạo:</label> {$item.created_at}</p>{/if}
-                                        {if $item.website}<p><label>Website:</label> {$item.website}</p>{/if}
+                                        
                                     </li>
                             <!--{/loop}-->
                         </ul>

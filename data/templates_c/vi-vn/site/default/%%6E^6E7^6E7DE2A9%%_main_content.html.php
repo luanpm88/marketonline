@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 15:55:56
+<?php /* Smarty version 2.6.27, created on 2014-04-14 08:16:45
          compiled from default/studypost/_main_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 542, false),array('function', 'formhash', 'default/studypost/_main_content.html', 543, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 373, false),array('function', 'formhash', 'default/studypost/_main_content.html', 543, false),)), $this); ?>
 <?php echo '
 <script type="application/x-javascript">
     
@@ -381,7 +381,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
     }
     
     var ROOT_URL = "'; ?>
-<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
 <?php echo '";
     var currentEditor;
     var resizeEditorInterval;

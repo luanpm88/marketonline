@@ -103,13 +103,23 @@ class Schools extends PbModel {
 		return $school;
 	}
 	
-	function getList($conditions = null, $firstcount = null, $displaypg = null)
+	function getList($conditions = null, $firstcount = null, $displaypg = null, $keyword = "")
 	{
 		uses("memberfield","area");
 		$memberfield = new Memberfields();
 		$area = new Areas();
 		
-		$school_list = $this->findAll("*", null, $conditions, "created DESC");
+		//for keyword
+		$keyword_str = '';
+		$order_by_score = null;
+		if($keyword != '')
+		{
+			$keyword_str = ",MATCH(School.name) AGAINST ('".$keyword."') as score";
+			$conditions[] = "(MATCH(School.name) AGAINST('".$keyword."') OR School.name LIKE '%".$keyword."%')";
+			$order_by_score = "score DESC,";
+		}
+		
+		$school_list = $this->findAll("*".$keyword_str, null, $conditions, $order_by_score."created DESC");
 		foreach($school_list as $key => $item)
 		{
 			$school_list[$key]["logo"] = pb_get_attachmenturl($item['logo'], '', 'small');
@@ -138,5 +148,18 @@ class Schools extends PbModel {
 		}
 		return $typeOptions;
  	}
+	
+	function getMemberIds($school_id)
+	{
+		$sql = "SELECT m.id FROM {$this->table_prefix}members m LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=m.id LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id WHERE mf.school_id='{$school_id}'";
+ 		$result = $this->dbstuff->GetArray($sql);
+		
+		$ids = array();
+		foreach($result as $row)
+		{
+			$ids[] = $row["id"];
+		}
+		return $ids;
+	}
 }
 ?>

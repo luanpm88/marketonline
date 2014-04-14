@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 16:00:24
+<?php /* Smarty version 2.6.27, created on 2014-04-14 11:29:47
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1078, false),array('function', 'formhash', 'default/header.html', 1162, false),array('modifier', 'default', 'default/header.html', 1173, false),array('modifier', 'date_format', 'default/header.html', 1187, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1077, false),array('function', 'formhash', 'default/header.html', 1161, false),array('modifier', 'default', 'default/header.html', 1172, false),array('modifier', 'date_format', 'default/header.html', 1186, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -773,14 +773,14 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
         	$(\'#right_detail_banner\').stickyScroll({ container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
 		//$(\'#topmenu_outer\').stickyScroll({ container: \'#topmenu_outer\', leftBanner: false, topbound: 275.1});
 		 
-		 console.log("zzzzz");
+		//console.log("zzzzz");
 		 
-		 //alert($(window).height());
-		 //alert($(\'body\').height());
-		 if ($(window).height() > $(\'body\').height()) {
-		  //code
-		  $(\'#darkf\').css(\'position\', \'absolute\');
-		 }
+		//alert($(window).height());
+		//alert($(\'body\').height());
+                if ($(window).height() > $(\'body\').height()) {
+                 //code
+                 $(\'#darkf\').css(\'position\', \'absolute\');
+                }
 		 
 		 $(\'.fancyx\').fancybox();
 		 
@@ -812,12 +812,8 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 <?php echo $this->_tpl_vars['pb_company']['id']; ?>
 <?php echo '\');
 		 
-		 $(\'#product_detail_box ul.product_list_widget li img\').resizecrop({
-		   width:100,
-		   height:100
-		 });
-		 $(\'#product_detail_box ul.product_list_widget li img\').css("float", "none");
-		 $(\'#product_detail_box ul.product_list_widget li img\').css("visibility", "visible");
+		 
+		 
 		 
 		 $(\'#detail_box_top .thumbnails img\').resizecrop({
 		   width:91,
@@ -864,7 +860,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		$(\'#inboxhome a.but\').click(function(event){$(\'#quick_inbox_content\').toggle();event.stopPropagation();});
 		
 		var ann_count = 0;
-		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 15000);
+		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 30000);
 
 		//chatbox get new arrival
 		//chatboxs
@@ -872,7 +868,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 
 		    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
                         <?php echo '
-                            setInterval(function(){ updateChatbox(); }, 8000);
+                            setInterval(function(){ updateChatbox(); }, 15000);
                         '; ?>
 
                         
@@ -914,6 +910,11 @@ if ($this->_foreach['level']['total'] > 0):
                 {
                     $(\'.member-left-bottom\').addClass("small");
                 }
+                
+                //get chat griend list
+                getChatFriendList('; ?>
+<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+<?php echo ');
 	});
 	
         
@@ -1491,4 +1492,11 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
                             
                          </div>
         </div>
-</div>
+</div>
+
+<div class="chat_friend_list">
+    <div class="chat_list_hooker">Bạn bè</div>
+    <div class="main_list">
+        
+    </div>
+</div>

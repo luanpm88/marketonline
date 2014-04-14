@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-12 08:02:29
+<?php /* Smarty version 2.6.27, created on 2014-04-11 15:19:07
          compiled from member.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'member.html', 22, false),array('function', 'iplocation', 'member.html', 65, false),array('modifier', 'date_format', 'member.html', 63, false),array('modifier', 'pl', 'member.html', 101, false),)), $this); ?>
@@ -88,7 +88,7 @@ unset($_smarty_tpl_vars);
 		</thead>
 		<tfoot>
 			<tr>
-			  <th colspan="10"><div class="pageLinks"><?php echo $this->_tpl_vars['ByPages']; ?>
+			  <th colspan="11"><div class="pageLinks"><?php echo $this->_tpl_vars['ByPages']; ?>
 </div></th>
 			</tr>
 		<tfoot>
@@ -156,7 +156,7 @@ images/new.gif" alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['pubda
 			</tr>
 			<?php endforeach; else: ?>
 			<tr class="no_data info">
-			  <td colspan="10"><?php echo $this->_tpl_vars['_no_datas']; ?>
+			  <td colspan="11"><?php echo $this->_tpl_vars['_no_datas']; ?>
 </td>
 			</tr>
 			<?php endif; unset($_from); ?>

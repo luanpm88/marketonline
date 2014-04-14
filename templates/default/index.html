@@ -78,9 +78,9 @@
 		  
 		  <div class="item {if $k%6 == 5 || $k%6 == 0}large{else}half{/if} {if $k%6 == 0}odd{else}{if $k%2 == 0}even{else}odd{/if}{/if} {if $item0.image != ''} hasbanner {/if}">
                                     {if $item0.image != "" && false}
-					<img src="{$item0.image}.small.png" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >					
+					<img src="{$item0.image}.small.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >					
                                     {else}
-					<img id="imgitem{$item0.id}" rel="{$item0.image}.small.png" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
+					<img id="imgitem{$item0.id}" rel="{$item0.image}.small.jpg" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
 				    {/if}
                                     <div class="description divlink {$item0.disp}" onclick="window.location='{the_url module=products level=1 industryid=`$item0.id`}'">
                                         <time>{lang category}</time>

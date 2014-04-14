@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-12 13:36:59
+<?php /* Smarty version 2.6.27, created on 2014-04-11 08:40:00
          compiled from topmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'topmenu.html', 77, false),array('function', 'the_url', 'topmenu.html', 299, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'topmenu.html', 77, false),array('function', 'the_url', 'topmenu.html', 300, false),)), $this); ?>
 <?php echo '
 
 <script type="application/x-javascript">
@@ -97,6 +97,8 @@ index.php?do=product&action=change_banner" enctype="multipart/form-data" onsubmi
 	  <?php echo smarty_function_formhash(array(), $this);?>
 
 	  <input type="hidden" name="username" value="<?php echo $this->_tpl_vars['MEMBER']['username']; ?>
+" />
+	  <input type="hidden" name="memid" value="<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
 " />
 	  <input type="hidden" name="com_id" value="<?php echo $this->_tpl_vars['COMPANY']['id']; ?>
 " />
