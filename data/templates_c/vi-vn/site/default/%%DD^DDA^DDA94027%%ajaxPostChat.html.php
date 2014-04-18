@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-10 13:47:14
+<?php /* Smarty version 2.6.27, created on 2014-04-14 15:52:45
          compiled from default%5Cproduct/ajaxPostChat.html */ ?>
 <li class="me" rel="<?php echo $this->_tpl_vars['created']; ?>
 ">

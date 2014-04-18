@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 10:02:25
+<?php /* Smarty version 2.6.27, created on 2014-04-14 12:44:55
          compiled from default%5Cproduct/ajaxTopChatAnnounce.html */ ?>
 <div id="messagehome">
 
@@ -9,6 +9,7 @@
 
     <div id="quick_message_content" class="over_air_box">
 	<div class="pointer"></div>
+	<div class="announce_title">Tin nhắn</div>
         <ul>
             <?php if (! $this->_tpl_vars['Items']): ?>
                 <li style="text-align: center"><?php echo $this->_tpl_vars['_no_message']; ?>

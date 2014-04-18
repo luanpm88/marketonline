@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 10:23:15
+<?php /* Smarty version 2.6.27, created on 2014-04-14 15:57:28
          compiled from topmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'topmenu_study.html', 24, false),)), $this); ?>
@@ -41,7 +41,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 	    </a>
 	    	    
 	    <a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school'), $this);?>
-"><img style="margin-bottom: -6px" src="../templates/default/image/connect.png" width="20" height="20" /></a>
+"><img style="margin-bottom: -6px" src="../templates/default/image/studygroup_old.png" width="20" height="20" /></a>
 	    <a target="_blank" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school'), $this);?>
 "><?php echo $this->_tpl_vars['_connect_title']; ?>
 </a>

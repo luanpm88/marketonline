@@ -803,6 +803,7 @@ function goclicky_custom(meh, url, images, title, summary)
                 
                 //get chat griend list
                 getChatFriendList({/literal}{$pb_userinfo.id}{literal});
+                setInterval('getChatFriendList({/literal}{$pb_userinfo.id}{literal});',60000);
 	});
 	
         
@@ -1327,9 +1328,11 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
         </div>
 </div>
 
+{if $pb_userinfo.current_type == 6}
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
         
     </div>
 </div>
+{/if}

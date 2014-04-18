@@ -4184,7 +4184,16 @@ class Product extends PbController {
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		
-		$ids = explode(',', $_GET["ids"]);
+		$idalls = explode(',', $_GET["ids"]);
+		
+		$ids = array();
+		$types = array();
+		foreach($idalls as $item)
+		{
+			$pps = explode('_', $item);
+			$ids[] = $pps[0];
+			$types[] = $pps[1];
+		}
 
 		$results = array();
 		for($k=0; $k<count($ids)-1; $k++)
@@ -4197,7 +4206,7 @@ class Product extends PbController {
 			//filter membertype
 			if($user["current_type"])
 			{
-				//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
+				//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%' AND CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$types[$k]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%' AND CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$types[$k]."]%'))";
 			}
 			
 			

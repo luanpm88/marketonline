@@ -7926,7 +7926,7 @@ span.join_group:hover {
     position: absolute;
     text-indent: -9000px;
     width: 40px;
-    z-index: 100000000;
+    z-index: 100;
     display: none;
     cursor: pointer;
 }
@@ -8476,12 +8476,13 @@ span.join_group:hover {
 .chat_friend_list {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 1px solid #AAAAAA;
-    padding: 10px;
+    box-shadow: 4px 2px 9px rgba(0, 0, 0, 0.3);
+    padding: 5px 0px 10px 10px;
     position: fixed;
-    right: 0;
+    right: -300px;
     top: 50px;
-    z-index: 2000;
     width: 300px;
+    z-index: 2000;
 }
 .chat_friend_list .chat_list_hooker
 {
@@ -8489,7 +8490,11 @@ span.join_group:hover {
 }
 .chat_friend_list .main_list
 {
-    
+
+}
+.chat_friend_list .scroll_list
+{
+    padding-right: 10px;
 }
 .chat_friend_list .main_list ul
 {
@@ -8498,13 +8503,20 @@ span.join_group:hover {
 .chat_friend_list .main_list ul li {
     list-style: none outside none;
     min-height: 40px;
-    margin-bottom: 5px;
-    padding-right: 10px;
+    margin-bottom: 10px;
+    padding-right: 14px;
+    cursor: pointer;
+}
+.chat_friend_list .main_list ul li:hover {
+    background: #EDF4EF;
+}
+.chat_friend_list .main_list ul li:last-child {
+    margin-bottom: 0;
 }
 .chat_friend_list .main_list ul li .online_status {
     background: url("../image/offline.png") no-repeat scroll 0 center rgba(0, 0, 0, 0);
     height: 40px;
-    margin-left: 270px;
+    margin-left: 265px;
     position: absolute;
     text-indent: -5000px;
     width: 10px;
@@ -8530,13 +8542,38 @@ span.join_group:hover {
     
 }
 .chat_friend_list .chat_list_hooker {
-    background: url("../image/chat-friend.png") no-repeat scroll 0 0 / 36px auto #FFFFFF;
+    background: url("../image/chat-friend.png") no-repeat scroll -1px -1px / 36px auto #FFFFFF;
     border: 2px solid #3B984C;
     border-radius: 20px;
-    height: 40px;
+    height: 38px;
     margin-left: -55px;
-    margin-top: -10px;
+    margin-top: -5px;
     position: absolute;
     text-indent: -5000px;
-    width: 40px;
+    width: 38px;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+.chat_list_title {
+    background: none repeat scroll 0 0 #3B984C;
+    border-bottom: 1px solid #AAAAAA;
+    color: #FFFFFF;
+    margin: 5px 10px 5px 0;
+    padding: 4px 5px;
+}
+.chat_list_title span
+{
+    float: right;
+}
+.chat_friend_list .mCSB_container
+{
+    margin-right: 0;
+}
+.chat_friend_list .mCustomScrollBox
+{
+    overflow: visible !important;
+}
+.chat_friend_list .mCSB_scrollTools
+{
+    margin-right: -12px;
 }

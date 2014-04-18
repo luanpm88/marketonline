@@ -1,31 +1,19 @@
-<ul>
-            {if !$members}
-                <li style="text-align: center">Chưa có bạn</li>
-            {else}
-                <!--{loop $members item level key}-->
-                        <li class="{if $item.online}online{/if}" onclick="getChatbox({$item.id}, false, {$item.membertype_id});">
-                            <div class="online_status">.</div>
-                            <img src="{$item.photo}" />
-                            <h2 class="title">{$item.first_name} {$item.last_name}</h2>
-                            <p class="content">{$item.school_name}</p>
-                            <!--<p class="timeinbox">{$item.created}</p>-->
+<div class="chat_list_title"><strong>Danh sách bạn bè</strong> <span>{$count} bạn</span></div>
+<div class="scroll_list">
+            <ul>
+                        {if !$members}
+                            <li style="text-align: center">Chưa có bạn</li>
+                        {else}
+                            <!--{loop $members item level key}-->
+                                    <li class="{if $item.online}online{/if}" onclick="getChatbox({$item.id}, false, {$item.membertype_id});">
+                                        <div class="online_status">.</div>
+                                        <img src="{$item.photo}" />
+                                        <h2 class="title">{$item.first_name} {$item.last_name}</h2>
+                                        <p class="content">{$item.school_name}</p>
+                                        <!--<p class="timeinbox">{$item.created}</p>-->
+                                    </li>
+                            <!--{/loop}-->
+                        {/if}
                         
-                        </li>
-                        <li class="{if $item.online}online{/if}" onclick="getChatbox({$item.id}, false, {$item.membertype_id});">
-                            <div class="online_status">.</div>
-                            <img src="{$item.photo}" />
-                            <h2 class="title">{$item.first_name} {$item.last_name}</h2>
-                            <p class="content">{$item.school_name}</p>
-                            <!--<p class="timeinbox">{$item.created}</p>-->
-                        </li>
-                        <li class="{if $item.online}online{/if}" onclick="getChatbox({$item.id}, false, {$item.membertype_id});">
-                            <div class="online_status">.</div>
-                            <img src="{$item.photo}" />
-                            <h2 class="title">{$item.first_name} {$item.last_name}</h2>
-                            <p class="content">{$item.school_name}</p>
-                            <!--<p class="timeinbox">{$item.created}</p>-->
-                        </li>
-                <!--{/loop}-->
-            {/if}
-            
-</ul>
+            </ul>
+</div>

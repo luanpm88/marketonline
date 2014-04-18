@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-03 16:28:16
+<?php /* Smarty version 2.6.27, created on 2014-04-14 16:02:07
          compiled from default%5Cstudypost/school.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default\\studypost/school.html', 42, false),array('function', 'the_url', 'default\\studypost/school.html', 60, false),array('modifier', 'truncate', 'default\\studypost/school.html', 70, false),)), $this); ?>

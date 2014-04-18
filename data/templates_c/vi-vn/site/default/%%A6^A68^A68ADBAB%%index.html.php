@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-31 10:02:20
+<?php /* Smarty version 2.6.27, created on 2014-04-14 12:44:55
          compiled from default%5Cindex.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\index.html', 85, false),array('modifier', 'truncate', 'default\\index.html', 92, false),)), $this); ?>
@@ -100,13 +100,13 @@ if ($this->_foreach['level_0']['total'] > 0):
 		  <div class="item <?php if ($this->_tpl_vars['k']%6 == 5 || $this->_tpl_vars['k']%6 == 0): ?>large<?php else: ?>half<?php endif; ?> <?php if ($this->_tpl_vars['k']%6 == 0): ?>odd<?php else: ?><?php if ($this->_tpl_vars['k']%2 == 0): ?>even<?php else: ?>odd<?php endif; ?><?php endif; ?> <?php if ($this->_tpl_vars['item0']['image'] != ''): ?> hasbanner <?php endif; ?>">
                                     <?php if ($this->_tpl_vars['item0']['image'] != "" && false): ?>
 					<img src="<?php echo $this->_tpl_vars['item0']['image']; ?>
-.small.png" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
+.small.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " >					
                                     <?php else: ?>
 					<img id="imgitem<?php echo $this->_tpl_vars['item0']['id']; ?>
 " rel="<?php echo $this->_tpl_vars['item0']['image']; ?>
-.small.png" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
+.small.jpg" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " >
 				    <?php endif; ?>

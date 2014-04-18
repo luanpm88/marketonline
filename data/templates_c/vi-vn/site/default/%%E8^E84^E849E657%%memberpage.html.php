@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-03 15:46:18
+<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:38
          compiled from default%5Cstudypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 35, false),array('function', 'formhash', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 204, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 35, false),array('function', 'formhash', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 205, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -109,8 +109,7 @@ if ($this->_foreach['level']['total'] > 0):
                 </div>
             </div>
             <div class="member-left">
-                <div class="member-left-top-bound">
-                    <?php if ($this->_tpl_vars['friend_request']): ?>
+                <?php if ($this->_tpl_vars['friend_request']): ?>
                         <div class="friend_requests">
                             <strong><?php echo $this->_tpl_vars['member']['first_name']; ?>
  <?php echo $this->_tpl_vars['member']['last_name']; ?>
@@ -121,6 +120,8 @@ if ($this->_foreach['level']['total'] > 0):
 ">Từ chối</a>
                         </div>
                     <?php endif; ?>
+                <div class="member-left-top-bound">
+                    
                     
                     <div class="member-left-top">
                         <?php if ($this->_tpl_vars['pb_userid'] == $this->_tpl_vars['member']['id']): ?>

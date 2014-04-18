@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 11:29:47
+<?php /* Smarty version 2.6.27, created on 2014-04-14 15:50:19
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1077, false),array('function', 'formhash', 'default/header.html', 1161, false),array('modifier', 'default', 'default/header.html', 1172, false),array('modifier', 'date_format', 'default/header.html', 1186, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1078, false),array('function', 'formhash', 'default/header.html', 1162, false),array('modifier', 'default', 'default/header.html', 1173, false),array('modifier', 'date_format', 'default/header.html', 1187, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -915,6 +915,9 @@ if ($this->_foreach['level']['total'] > 0):
                 getChatFriendList('; ?>
 <?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
 <?php echo ');
+                setInterval(\'getChatFriendList('; ?>
+<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+<?php echo ');\',60000);
 	});
 	
         
@@ -1494,9 +1497,11 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
         </div>
 </div>
 
+<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6): ?>
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
         
     </div>
 </div>
+<?php endif; ?>

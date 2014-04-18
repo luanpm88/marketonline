@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-03 15:19:54
+<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:39
          compiled from default/studypost/_rightbar_groups.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_rightbar_groups.html', 9, false),)), $this); ?>

@@ -4,6 +4,18 @@
 	    }).done(function ( data ) {
 		if( console && console.log ) {
 		    $('.chat_friend_list .main_list').html(data);
+		    $('.chat_friend_list .scroll_list').css("max-height",$(window).height()-103);
+		    if($('.chat_friend_list').css("right") == "0px")
+		    {
+			if(!$('.chat_friend_list .scroll_list').hasClass("mCustomScrollbar"))
+			{
+			    $('.chat_friend_list .scroll_list').mCustomScrollbar({
+					    	autoHideScrollbar:true,
+					    	theme:"light-thin",
+					    	scrollSpeed: 40
+					    });
+			}
+		    }
 		}
 	    });
 	}
@@ -556,7 +568,7 @@
 	//get current chatboxs
 	var ids = '';
 	$('#chat-frame .chat-box').each(function(){
-	    ids += $(this).attr('rel')+",";
+	    ids += $(this).attr('rel')+"_"+$(this).attr('member-type')+",";
 	});	
 	
 	$.ajax({
@@ -1767,4 +1779,25 @@
 		});
 		
 		
+		$('.chat_friend_list .chat_list_hooker').live("click", function() {
+		    //alert($('.chat_friend_list').css("right"));
+		    if($('.chat_friend_list').css("right") == "0px")
+		    {
+			$('.chat_friend_list').css("right","-300px");
+			$('#chat-frame').css("right","75px");
+		    }
+		    else
+		    {
+			$('.chat_friend_list').css("right","0px");
+			$('#chat-frame').css("right","305px");
+			if(!$('.chat_friend_list .scroll_list').hasClass("mCustomScrollbar"))
+			{
+			    $('.chat_friend_list .scroll_list').mCustomScrollbar({
+					    	autoHideScrollbar:true,
+					    	theme:"light-thin",
+					    	scrollSpeed: 40
+					    });
+			}
+		    }
+		});
 	});

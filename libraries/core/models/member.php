@@ -780,7 +780,7 @@ class Members extends PbModel {
 		uses("area");
  		$area = new Areas();
 		
-		$conditions = array("(sf.member_id=".$user_id." OR sfr.friend_id=".$user_id.")");
+		$conditions = array("(sf.friend_id=".$user_id." OR sfr.member_id=".$user_id.")");
 		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
