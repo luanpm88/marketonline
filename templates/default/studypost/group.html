@@ -109,7 +109,9 @@
                         </div>
                     </div>
                     <div class="main_controls">
-                        <a href="{the_url module=studypost action=leave_group id=`$group.id`}">Rời khỏi nhóm</a>
+                        {if $belongToGroup}
+                            <a href="{the_url module=studypost action=leave_group id=`$group.id`}">Rời khỏi nhóm</a>
+                        {/if}
                         
                         {if $pb_userid == 1030}
                             <iframe name="upload" id="upload" style="display: none"></iframe>
@@ -150,6 +152,27 @@
                             </ul>
                             
                             <!--{include file="`$theme_name`/studypost/_rightbar_groups.html"}-->
+                            
+                            {if $pb_userinfo.id == 1030}
+                                <h4>Thành viên chờ duyệt</h4>
+                                {if $groups_count > 5}
+                                    <div class="title_more_group_button" onclick="$('.rightbar_grouplist .group_item').css('display','block');$(this).remove()" href="">Xem thêm</div>
+                                {/if}
+                                <ul class="group_list rightbar_grouplist waiting_list">
+                                    <!--{loop $waiting_list mem level_group group_key}-->
+                                        <li class="group_item">
+                                            <div  {if $mem.photo}style="background:url({$mem.info.photo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" onclick="" title="{$mem.info.first_name} {$mem.info.last_name}">
+                                                <strong onclick="window.location='{the_url module=studypost action=group id=`$mem.info.id`}'">{$mem.info.first_name} {$mem.info.last_name}</strong>
+                                                <p>{$mem.info.school_name}</p>
+                                                <div class="action">
+                                                    <a href="{the_url module=studypost action=group_accept id=`$mem.info.id` group_id=`$mem.studygroup_id`}">Duyệt</a>
+                                                    <a href="{the_url module=studypost action=group_reject id=`$mem.info.id` group_id=`$mem.studygroup_id`}">Bỏ qua</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    <!--{/loop}-->
+                                </ul>
+                            {/if}
                             
                         </div>
                     </div>

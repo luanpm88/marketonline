@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-24 08:07:53
+<?php /* Smarty version 2.6.27, created on 2014-04-19 09:32:03
          compiled from default/product/ajax.offerlist.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'default/product/ajax.offerlist.html', 20, false),array('function', 'the_url', 'default/product/ajax.offerlist.html', 103, false),)), $this); ?>
@@ -148,8 +148,9 @@ if ($this->_foreach['level']['total'] > 0):
  (<?php echo $this->_tpl_vars['item']['comments_count']; ?>
 )</a>
 		<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['item']['member_id']; ?>
-, false)"><?php echo $this->_tpl_vars['_message']; ?>
+			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('<?php echo $this->_tpl_vars['item']['member_id']; ?>
+x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
+', false)"><?php echo $this->_tpl_vars['_message']; ?>
 </a>
 		<?php else: ?>
 			<a class="comment_link message_tool comment_but" href="#login-box"><?php echo $this->_tpl_vars['_message']; ?>

@@ -8,10 +8,18 @@
                                         <div  {if $group.logo_origin}style="background:url({$group.logo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" onclick="" title="{$group.subject_name} {$group.school_name}">
                                             <strong onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'">{$group.subject_name}</strong>
                                             <div onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'" class="more-studybar">Thành viên: {$group.member_count}</div>
-                                            <a class="join_group" onclick="window.location='{the_url module=studypost action=join_group id=`$group.id`}'">
-                                                <i>.</i>
-                                                Tham gia
-                                            </a>
+                                            
+                                            {if $group.joined && !$group.status}
+                                                <a class="join_group" onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'">
+                                                    <i>.</i>
+                                                    Chờ duyệt
+                                                </a>
+                                            {else}
+                                                <a class="join_group" onclick="window.location='{the_url module=studypost action=join_group id=`$group.id`}'">
+                                                    <i>.</i>
+                                                    Tham gia
+                                                </a>
+                                            {/if}
                                         </div>
                                     </li>
                                 <!--{/loop}-->

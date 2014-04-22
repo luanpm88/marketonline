@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-19 14:05:09
+<?php /* Smarty version 2.6.27, created on 2014-04-21 16:21:30
          compiled from pms_detail.html */ ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_view_message'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
@@ -85,4 +85,4 @@ images/offer_01.gif" /></div>
 $this->_smarty_include(array('smarty_include_tpl_file' => "footer.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>
+ ?>

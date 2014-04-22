@@ -80,7 +80,7 @@
 	}
 	
 	
-       //var_dump($params['industryid']);
+       //var_dump($params['customid']);
 	if (!empty($params['industryid']) || !empty($params['customid'])) {
 	      if(is_array($params['industryid']) && !empty($params['industryid']))
 		     $conditions_temp['industry'] = "p.industry_id IN (".implode(',',$params['industryid']).")";
@@ -143,7 +143,7 @@
 	if (isset($params['limit'])) {
 		$mysql_limit = " ".trim($params['limit']);
 	}
-	$sql = "SELECT p.*,p.id as productid,p.name as names,p.name as title,cache_companyname as companyname,p.order as porder FROM {$product->table_prefix}products p ".$product->getCondition()."{$orderby}".$mysql_limit;
+	$sql = "SELECT m.membertype_id,p.*,p.id as productid,p.name as names,p.name as title,cache_companyname as companyname,p.order as porder FROM {$product->table_prefix}products p INNER JOIN {$product->table_prefix}members m ON m.id = p.member_id ".$product->getCondition()."{$orderby}".$mysql_limit;
 	//echo $sql;
 
 	if(empty($smarty->blockvars[$param_count])) {

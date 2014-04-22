@@ -62,15 +62,41 @@
                     <div id="other-school-list" class="school_list main_list">
                         <ul class="group_list">
                             <!--{loop $group_list item level key}-->
-                                    <li onclick="window.location='{the_url module=studypost action=group id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
-                                        <a class="head-title">
-                                            <img src="{$item.logo}" />
-                                            <span>{$item.subject_name|truncate:40}</span>
-					    <span>{$item.school_name}</span>
-                                        </a>
-                                        {if $item.address}<p>{$item.address}</p>{/if}
-                                        {if $item.member_count}<p><label>Thành viên:</label> {$item.member_count}</p>{/if}
-                                        
+                                    <li class="school_list_box {if $item.id == $school.id}active{/if}">
+					<div onclick="window.location='{the_url module=studypost action=group id=`$item.id`}'">
+					    <a class="head-title">
+						<img src="{$item.logo}" />
+						<span>{$item.subject_name|truncate:40}</span>
+						<span>{$item.school_name}</span>
+					    </a>
+					    {if $item.address}<p>{$item.address}</p>{/if}
+					    {if $item.member_count}<p><label>Thành viên:</label> {$item.member_count}</p>{/if}
+					</div>
+					
+					<div class="action">					    
+                                                {if $item.joined}
+						    {if !$item.status}
+							<a href="{the_url module=studypost action=group id=`$item.id`}">
+							    Chờ duyệt
+							</a>
+						    {else}
+							<a href="{the_url module=studypost action=group id=`$item.id`}">
+							    Đã tham gia
+							</a>
+						    {/if}
+						{else}
+						    {if !$item.status}
+							<a class="join_group" onclick="window.location='{the_url module=studypost action=join_group id=`$item.id`}'">
+							    Tham gia
+							</a>
+						    {else}
+							<a href="{the_url module=studypost action=group id=`$item.id`}">
+							    Đã tham gia
+							</a>
+						    {/if}
+						    
+						{/if}
+					</div>
                                     </li>
                             <!--{/loop}-->
                         </ul>
@@ -85,7 +111,7 @@
 	</div>
 	<div id="job-sidebar">
 		
-		<!--{include file="`$theme_name`/job/rightbar.html"}-->	
+		<!--{include file="`$theme_name`/job/rightbar.html"}-->
 		
 	</div>
 </div>

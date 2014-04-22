@@ -272,7 +272,11 @@ function smarty_function_the_url($params){
 						{
 							$id_s = "&id=".$id;
 						}
-						$return = URL."index.php?do=studypost&action=".$action.$id_s.$change_current_type;
+						if(!empty($group_id))
+						{
+							$group_id_s = "&group_id=".$group_id;
+						}
+						$return = URL."index.php?do=studypost&action=".$action.$id_s.$group_id_s.$change_current_type;
 					}
 					else
 					{

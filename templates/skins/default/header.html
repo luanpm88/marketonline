@@ -320,7 +320,7 @@ function goclicky(meh, url)
 	}
 	var pos_searchlist = 300;
 	var ichatbox = new Array();
-	var companylogo = '<!--{/literal}-->{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
+	var companylogo = '<!--{/literal}-->{if $pb_company && $pb_userinfo.current_type != 6}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
 	$(document).ready(function() {
 		if (window.chrome) {
 			$("#f_language_bar").css("margin-top", "-1px");
@@ -902,17 +902,11 @@ function goclicky(meh, url)
 		    <!--{if $pb_username!=""}-->
 		    
 			<!--{literal}-->
-			    setInterval(function(){ updateChatbox(); }, 8000);
+			    setInterval(function(){ updateChatboxNew(); }, 8000);
 			<!--{/literal}-->
 		    
 		    
-			<!--{loop $chatboxs item level key}-->
-			    
-			   {if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
-                                getChatbox({$item.userid}, true, {$item.typeid});			    
-                            {/if}
-			    
-			<!--{/loop}-->
+			
 			
 		    <!--{/if}-->
 		

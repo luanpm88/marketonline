@@ -5,7 +5,7 @@
                             <li style="text-align: center">Chưa có bạn</li>
                         {else}
                             <!--{loop $members item level key}-->
-                                    <li class="{if $item.online}online{/if}" onclick="getChatbox({$item.id}, false, {$item.membertype_id});">
+                                    <li class="{if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x6', false);">
                                         <div class="online_status">.</div>
                                         <img src="{$item.photo}" />
                                         <h2 class="title">{$item.first_name} {$item.last_name}</h2>

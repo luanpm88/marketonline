@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 12:49:17
+<?php /* Smarty version 2.6.27, created on 2014-04-21 10:56:21
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 960, false),array('function', 'the_url', 'header.html', 982, false),array('function', 'formhash', 'header.html', 1042, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 1166, false),array('function', 'the_url', 'header.html', 1188, false),array('function', 'formhash', 'header.html', 1248, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -42,6 +42,218 @@ images/style.css" rel="stylesheet" type="text/css">
 <!--<script src="http://marketonline.vn/scripts/mudim-0.9-r162.js"></script>-->
 <?php echo '
 <script>
+	
+	function updateChatboxNew()
+    {
+	$.ajax({
+	    url: "../index.php?do=product&action=updateChatboxNew",
+	}).done(function ( data ) {
+	    //alert(data);
+	    var arr = jQuery.parseJSON(data);
+	    $(arr).each(function(index,value) {
+		//alert(value.id);
+		if ($(\'#chat-box-\'+value).length>0) {
+		    if ($(\'#chat-box-\'+value).hasClass(\'hidden\')) {
+			getChatboxNew(value, true);
+		    }
+		    else
+		    {
+			getChatboxNew(value, false);		       
+		    }
+		}
+		else
+		{
+		    getChatboxNew(value, true);
+		}
+	    });
+	});
+    }
+    function postChatNew(id, content, hash)
+    {	
+	if ($.trim(content) == "") {
+	    $(\'#chat-frame #chat-box-\'+id+\' textarea\').val("");
+	    return;
+	}
+	
+	//remove notification
+	$(\'#chat-frame #chat-box-\'+id+\' .notification\').html(\'\');
+	
+	$(\'#chat-frame #chat-box-\'+id).addClass("chatloading");	
+	
+	$(\'#chat-frame #chat-box-\'+id+\' .chat-list ul\').append(\'<li class="me temp" rel="\'+$(\'#chat-frame #chat-box-\'+id+\' .chat-list ul li:last-child\').attr("rel")+\'" class="me">\'+
+								\'<img width="40" height="40" src="\'+companylogo+\'" class="avatar">\'+
+								$(\'#chat-frame #chat-box-\'+id+\' textarea\').val()+
+							    \'<span class="status">đang gửi...</span></li>\');
+	
+	$(\'#chat-frame #chat-box-\'+id+\' textarea\').val("");
+	$(\'#chat-frame #chat-box-\'+id+\' .chat-list\').scrollTop($(\'#chat-frame #chat-box-\'+id+\' .chat-list\')[0].scrollHeight);
+	
+			$.ajax({
+			    type: "POST",
+			    url: "../index.php?do=product&action=postChatNew",
+			    encoding: "UTF-8",
+			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
+			}).done(function ( data ) {
+			    if( console && console.log ) {
+				$(\'#chat-frame #chat-box-\'+id).removeClass("chatloading");
+			    }
+			});
+    }
+    
+    
+    function removeChatboxNew(uid)
+    {
+	$.ajax({
+	    url: "../index.php?do=product&action=removeChatboxNew&id="+uid,
+	}).done(function ( data ) {
+	    clearInterval(ichatbox[uid]);
+	});
+    }
+    
+    function updateChatsNew()
+    {
+	//get current chatboxs
+	var ids = \'\';
+	$(\'#chat-frame .chat-box\').each(function(){
+	    ids += $(this).attr(\'rel\')+",";
+	});	
+	
+	$.ajax({
+	    url: "../index.php?do=product&action=ajaxUpdateChatsNew&ids="+ids,
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+		//remove temp item
+		
+		$(\'#chat-frame .chat-box .chat-list ul li.chatloading\').remove();
+		
+		//update chats
+		var datajson = JSON.parse(data);
+		$.each(datajson, function(i, items){
+		    //Update each chatbox
+		    var element = null;
+		    for (var j = items.length-1; j >= 0; j--) {
+			element = items[j];
+			//update each chat line			
+			updateChatsById(i, element);			
+			
+		    }
+		    
+		    //check if viewed
+		    var last_line = $(\'#chat-frame #chat-box-\'+i+\' .chat-list ul li\').last();
+		    if (last_line.hasClass("me") && last_line.attr("read") == \'1\') {
+		        $(\'#chat-frame #chat-box-\'+i+\' .notification\').html(items[0].viewed_notice);
+		    }
+		    else
+		    {
+			$(\'#chat-frame #chat-box-\'+i+\' .notification\').html(\'\');
+		    }
+		    
+		    
+		    
+		    
+		});
+		
+		//check for unread message
+		checkChatboxUnread();
+	    }
+	});
+    }
+    
+    function getChatboxNew(uid, hide)
+    {
+	//show hide chatbox when exsit
+	if ($(\'#chat-box-\'+uid).length>0) {
+	    //alert("exists");
+	    if (hide) {
+		hideChatbox(uid);
+	    }
+	    else
+	    {
+		showChatbox(uid);
+	    }
+	    return;
+	}
+	
+	//Load new chatbox
+	$.ajax({
+	    url: "../index.php?do=product&action=getChatboxNew&id="+uid,
+	}).done(function ( data ) {
+	    if( console && console.log && $(\'#chat-box-\'+uid).length<1 ) {
+		//alert(data);
+		
+		$(\'#chat-frame\').prepend(data);
+		$(\'#chat-frame #chat-box-\'+uid+\' .chat-list\').scrollTop($(\'#chat-frame #chat-box-\'+uid+\' .chat-list\')[0].scrollHeight);
+		
+		// Chat box functions
+		$(\'#chat-frame #chat-box-\'+uid+\' .chat-title\').click(function() {
+		   
+		    
+		    $(this).parent().find(".chat-content").toggle();
+		    $(this).parent().find(".chat-form").toggle();
+		    
+		    //Title click
+		    if ($(this).parent().hasClass("hidden")) {
+			$(this).parent().removeClass("hidden");			
+			updateReadChat(uid);
+			$(\'#chat-frame #chat-box-\'+uid+\' .chat-list\').scrollTop($(\'#chat-frame #chat-box-\'+uid+\' .chat-list\')[0].scrollHeight);
+			
+		    }
+		    else
+		    {
+			$(this).parent().addClass("hidden");
+		    }
+		    
+		    //***checkChatboxUnread();
+		    $(this).parent().find(".chat-form textarea").focus();
+		});
+		
+		$(\'#chat-frame #chat-box-\'+uid+\' .chat-title h2 a\').click(function() {
+			if (!$(this).parent().parent().parent().hasClass("hidden"))
+			{				
+				window.location = $(this).attr("rel");
+			}
+		});
+		
+		//close chatbox
+		$(\'#chat-frame #chat-box-\'+uid+\' .chat-title span.chat-close-but\').click(function(){
+		    $(this).parent().parent().parent().remove();
+		    removeChatboxNew(uid);	
+		});
+		
+		//post chat
+		$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').keydown(function(event) {
+		    if (event.keyCode == 13) {
+			event.preventDefault();
+
+		    	postChatNew(uid, $(this).val());
+		    }
+		});		
+		
+		//refresh new post
+		clearInterval(chat_interval);
+		chat_interval = setInterval("updateChatsNew()", 5000);
+		
+		//hide chatbox
+		if (hide) {
+		    hideChatbox(uid);
+		}
+		
+		
+		//set read chats
+		if(!$(\'#chat-frame #chat-box-\'+uid).hasClass("hidden"))
+		{
+		    updateReadChat(uid);
+		}
+		
+		
+		//check chatbox status
+		//***checkChatboxUnread();
+		
+		//focus
+		$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').focus();
+	    }
+	});
+    }
 	
 	function updateChatsById(uid, item)
     {
@@ -691,7 +903,7 @@ images/style.css" rel="stylesheet" type="text/css">
 	var on_page = 1;
 	var boong = 1;
 	var companylogo = \''; ?>
-<?php if ($this->_tpl_vars['COMPANYINFO']['name']): ?>../<?php echo $this->_tpl_vars['COMPANYINFO']['logo']; ?>
+<?php if ($this->_tpl_vars['COMPANYINFO']['name'] && $this->_tpl_vars['MEMBER']['current_type'] != 6): ?>../<?php echo $this->_tpl_vars['COMPANYINFO']['logo']; ?>
 <?php else: ?><?php if ($this->_tpl_vars['user_avatar']): ?> ../<?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> ../templates/default/image/usericon.jpg  <?php endif; ?><?php endif; ?><?php echo '\';
 $(document).ready(function() {
@@ -813,29 +1025,22 @@ $(document).ready(function() {
 	}
 	
 	
-	setInterval(function(){ updateChatbox(); }, 8000);
+	setInterval(function(){ updateChatboxNew(); }, 8000);
 	
 	
 	///chattt
 	'; ?>
 
-		<?php $_from = $this->_tpl_vars['chatboxs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+		<?php $_from = $this->_tpl_vars['chatboxsnew']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
         $this->_foreach['level']['iteration']++;
 ?>
-		    
-		    
-			
-			<?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
-                                getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
-, true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
-);			    
-                        <?php endif; ?>
-
-			
-			
-		<?php endforeach; endif; unset($_from); ?>
+                            <?php if ($this->_tpl_vars['item'] != ''): ?>
+                                getChatboxNew("<?php echo $this->_tpl_vars['item']; ?>
+", true);
+                            <?php endif; ?>
+                        <?php endforeach; endif; unset($_from); ?>
 	<?php echo '
 	
 	

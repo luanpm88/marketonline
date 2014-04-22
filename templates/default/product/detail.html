@@ -211,9 +211,7 @@
                 
 		
 		
-		if ($('.product_list_widget li').length < 6) {
-			$('.view_more_detail').remove()
-		}
+		
 			
 		//$.cookie("welcome", "cookie_value");
 		//alert($.cookie("welcssome"));
@@ -471,7 +469,7 @@
 									    
 									    <td colspan="2" style="width: 100%">
 										<!--{if $pb_username!=""}-->
-											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatbox({$MEMBER.id}, false, {$MEMBER.membertype_id})">{lang chat_with_owner}</a>
+											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)">{lang chat_with_owner}</a>
 										<!--{else}-->
 											<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
 										<!--{/if}-->
@@ -754,6 +752,9 @@
 				
 				$('#product_detail_box ul.product_list_widget li img').css("float", "none");
 				$('#product_detail_box ul.product_list_widget li img').css("visibility", "visible");
+				if ($('.product_list_widget li').length < 6) {
+					$('.view_more_detail').remove()
+				}
 			}
 		});
 </script>

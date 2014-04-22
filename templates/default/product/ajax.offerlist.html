@@ -102,7 +102,7 @@
 	<div class="product_tools" style="display: none">
 		<a class="comment_link" href="{the_url id=`$item.id` module='product'}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
 		<!--{if $pb_username!=""}-->
-			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatbox({$item.member_id}, false)">{lang message}</a>
+			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
 		<!--{else}-->
 			<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
 		<!--{/if}-->

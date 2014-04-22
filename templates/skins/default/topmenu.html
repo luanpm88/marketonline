@@ -253,7 +253,7 @@
 			<a onclick="follow({$COMPANY.id}, this)" href="javascript:void(0)">{lang followed}</a>
 		{/if}
 		
-		<a class="skin_chat_with_owner {if $MEMBER.online}online{/if}" onclick="getChatbox({$MEMBER.id}, false, {$MEMBER.membertype_id})" href="javascript:void(0)">Tin nhắn</a>
+		<a class="skin_chat_with_owner {if $MEMBER.online}online{/if}" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)" href="javascript:void(0)">Tin nhắn</a>
 	</div>
 	<!--{else}-->
 	<div style="" class="postitem follow_but">

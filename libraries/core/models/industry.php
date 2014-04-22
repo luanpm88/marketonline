@@ -641,7 +641,9 @@ OR id =1
 	
 	function getCount($id)
 	{
-		$cats = $this->field('count', array("id=".$id));
+		$ii = $this->field("children", "id=".$id);
+		$cats = $this->getCountProduct($ii);
+		//$cats = $this->field('count', array("id=".$id));
 		return $cats;
 
 	}

@@ -62,15 +62,40 @@
 		      {if $learner_list}
                         <ul class="group_list">
                             <!--{loop $learner_list item level key}-->
-                                    <li onclick="window.location='{the_url module=studypost action=memberpage id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
-                                        <a class="head-title">
-                                            <img src="{$item.photo}" />
-                                            <span>{$item.first_name} {$item.last_name}</span>
-                                        </a>
-                                        {if $item.address}<p>{$item.address}</p>{/if}
-                                        {if $item.mobile}<p><label>Điện thoại:</label> {$item.mobile}</p>{/if}
-                                        
-                                        {if $item.email}<p><label>Email:</label> {$item.email}</p>{/if}
+                                    <li class="school_list_box {if $item.id == $school.id}active{/if}">
+					<div onclick="window.location='{the_url module=studypost action=memberpage id=`$item.id`}'">
+					    <a class="head-title">
+						<img src="{$item.photo}" />
+						<span>{$item.first_name} {$item.last_name}</span>
+					    </a>
+					    {if $item.address}<p>{$item.address}</p>{/if}
+					    
+					    
+					    {if $item.email}<p><label>Email:</label> {$item.email}</p>{/if}
+					</div>
+					
+					<div class="action">
+					    {if $pb_userid != $item.id && !$item.friending && !$item.is_friend}
+						<!--{if $pb_username!=""}-->
+							{if !$item.friended}
+								<a onclick="studyfriend({$item.id}, this)" href="javascript:void(0)">Kết bạn</a>
+							{else}
+								<a onclick="studyfriend({$item.id}, this)" class="del_addfriend" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+							{/if}
+						<!--{else}-->
+							{if !$item.friended}
+							    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
+							{else}
+							    <a class="comment_but del_addfriend" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi Lời mời kết bạn</a>
+							{/if}                                
+						<!--{/if}-->
+					    {elseif $item.is_friend}
+						<a class="" href="{the_url module=studypost action=rejectFriend id=`$item.id`}">
+						    
+						    Bạn bè
+						</a>
+					    {/if}
+					</div>
                                     </li>
                             <!--{/loop}-->
                         </ul>

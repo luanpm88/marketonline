@@ -21,7 +21,16 @@
                             </li>
                         {/if}
 		    <!--{/loop}-->
+		    
+		    		    
+		    {if $pb_userinfo.current_type == 6}
+			<!--<li class="sline">.</li>-->
+			<li>
+			    <a href="{the_url module=studypost}">Diễn đàn Dạy và Học</a>
+			</li>
+		    {/if}
 		    <li><a target="_blank" href="redirect.php?url=/virtual-office/">{lang my_office_room}</a></li>
+		    <li class="sline">.</li>
 		    <li><a href="logging.php?action=logout">{lang login_out}</a></li>
 		</ul>
 		<span class="pointer_topmenu">.</span>

@@ -20,6 +20,11 @@ require("../libraries/common.inc.php");
 	}
 	////$session->write("chatboxs".session_id(), NULL);
 	setvar("chatboxs", $chatboxsx);
+	
+	$chatboxsnew = $session->read("chatboxsnew".session_id());
+	//echo $chatboxs."ddfdfdf";
+	$chatboxsnew = explode(",", $chatboxsnew);
+	setvar("chatboxsnew", $chatboxsnew);
 
 
 $do = null;

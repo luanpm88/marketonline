@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 15:58:42
+<?php /* Smarty version 2.6.27, created on 2014-04-19 09:09:42
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'product.html', 41, false),array('function', 'pager', 'product.html', 125, false),array('block', 'product', 'product.html', 72, false),array('modifier', 'truncate', 'product.html', 83, false),)), $this); ?>
@@ -150,8 +150,9 @@ unset($_smarty_tpl_vars);
  (<?php echo $this->_tpl_vars['item']['comments_count']; ?>
 )</a>
 		<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['item']['member_id']; ?>
-, false)"><?php echo $this->_tpl_vars['_message']; ?>
+			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('<?php echo $this->_tpl_vars['item']['member_id']; ?>
+x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
+', false)"><?php echo $this->_tpl_vars['_message']; ?>
 </a>
 		<?php else: ?>
 			<a class="comment_link message_tool comment_but" href="#login-box"><?php echo $this->_tpl_vars['_message']; ?>
@@ -210,4 +211,3 @@ unset($_smarty_tpl_vars);
 
 
 
-

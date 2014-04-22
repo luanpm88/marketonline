@@ -25,6 +25,10 @@ class Studypost extends PbController {
 
 	function index()
 	{
+		
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
 		if(isset($_GET["type"]))
 		{
 			$type = $_GET["type"];			
@@ -81,7 +85,11 @@ class Studypost extends PbController {
 				setvar("area",$_GET["area"]);
 			}
 			
-			$group_list = $this->studygroup->getList(null, $pb_userinfo["pb_userid"], false, $conditions,$keyword);
+			$group_list = $this->studygroup->getList(null, null, false, $conditions,$keyword);
+			foreach($group_list as $key => $group)
+			{
+				$group_list[$key]["joined"] = $this->studygroupmember->belongToGroup($group["id"],$user["id"]);
+			}
 			//var_dump($group_list);
 			setvar("group_list", $group_list);
 			render("studypost/group_list");
@@ -107,6 +115,12 @@ class Studypost extends PbController {
 			}
 			
 			$learner_list = $this->member->getStudyList($conditions, $keyword);
+			foreach($learner_list as $key => $mem)
+			{
+				$learner_list[$key]["is_friend"] = $this->studyfriend->isFriend($user["id"], $mem["id"]);
+				$learner_list[$key]["friended"] = $this->studyfriend->check($user["id"], $mem["id"]);
+				$learner_list[$key]["friending"] = $friend_request = $this->studyfriend->getFriendRequest($user["id"], $mem["id"]);
+			}
 			//var_dump($learner_list);
 			setvar("learner_list", $learner_list);
 			render("studypost/learner_list");
@@ -174,6 +188,10 @@ class Studypost extends PbController {
 		
 		$this->studygroup->viewed(intval($_GET["id"]), $pb_userinfo["pb_userid"]);
 		$groups = $this->studygroup->getList($school_id, $pb_userinfo["pb_userid"], true);
+		foreach($groups as $key => $item)
+		{
+			$groups[$key]["joined"] = $this->studygroupmember->belongToGroup($item["id"],$user["id"]);
+		}
 		$joined_groups = $this->studygroup->getList(null, $pb_userinfo["pb_userid"]);
 		
 		//get current school
@@ -183,13 +201,16 @@ class Studypost extends PbController {
 		$school_list = $this->school->getList();
 		
 		//check permission
-		$belongToGroup = $this->studygroupmember->belongToGroup($group["id"], $user["id"]);
+		$belongToGroup = $this->studygroupmember->belongToGroup($group["id"], $user["id"], 1);
 		
 		//get leader
 		$group_leader = $this->member->getInfoById(1030);
 		
-		setvar("group_leader", $group_leader);
+		//get waiting list
+		$waiting_list = $this->studygroup->getWaitingList($group["id"]);
+		setvar("waiting_list", $waiting_list);
 		
+		setvar("group_leader", $group_leader);		
 		setvar("belongToGroup",$belongToGroup);
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
@@ -222,7 +243,7 @@ class Studypost extends PbController {
 		{
 			$valid = true;
 		}
-		elseif(!empty($studypost["group_id"]) && $this->studygroupmember->belongToGroup($studypost["group_id"], $user["id"]))
+		elseif(!empty($studypost["group_id"]) && $this->studygroupmember->belongToGroup($studypost["group_id"], $user["id"], 1))
 		{
 			$valid = true;
 		}
@@ -467,6 +488,7 @@ class Studypost extends PbController {
 	function join_group()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		if(!isset($_GET["id"]))
 		{
@@ -481,8 +503,21 @@ class Studypost extends PbController {
 			$val["member_id"] = $pb_userinfo["pb_userid"];
 			$val["studygroup_id"] = $_GET["id"];
 			$val["created"] = strtotime(date("Y-m-d H:i:s"));
+			$val["status"] = 0;
 			
 			$this->studygroupmember->save($val);
+			
+			$group = $this->studygroup->getInfoById($_GET["id"]);
+			var_dump($group);
+			
+			//send message to moderate
+			//send message to owner
+			$sms['content'] = mysql_real_escape_string("<a href='".URL."index.php?do=studypost&action=memberpage&id=".$user["id"]."'>".$user["first_name"]." ".$user["last_name"]."</a> đã xin tham gia nhóm <a href='".URL."index.php?do=studypost&action=group&id=".$group["id"]."'>".$group["subject_name"]."</a> của bạn");
+			$sms['title'] = mysql_real_escape_string($user["first_name"]." ".$user["last_name"] . " xin tham gia nhóm của bạn");
+					
+			$sms['membertype_ids'] = '[6]';
+					
+			$result = $this->message->SendToUser($user['id'], 1030, $sms);
 		}
 		
 		pheader("location:index.php?do=studypost&action=group&id=".$_GET["id"]);
@@ -1124,6 +1159,32 @@ class Studypost extends PbController {
 		setvar("members",$members);
 		setvar("count",count($members));
 		$this->render("studypost/getChatFriendList");
+	}
+	
+	function group_accept()
+	{
+		$pb_userinfo = pb_get_member_info();
+		
+		if($pb_userinfo["pb_userid"] == 1030)
+		{
+			$gm = $this->studygroupmember->field("id",array("member_id=".$_GET["id"],"studygroup_id=".$_GET["group_id"]));
+			//var_dump($gm);
+			$this->studygroupmember->saveField("status", 1, intval($gm));			
+		}
+		pheader("location:".$_SERVER["HTTP_REFERER"]);
+	}
+	
+	function group_reject()
+	{
+		$pb_userinfo = pb_get_member_info();
+		
+		if($pb_userinfo["pb_userid"] == 1030)
+		{
+			$gm = $this->studygroupmember->field("id",array("member_id=".$_GET["id"],"studygroup_id=".$_GET["group_id"]));
+			//var_dump($gm);
+			$this->studygroupmember->del(intval($gm));			
+		}
+		pheader("location:".$_SERVER["HTTP_REFERER"]);
 	}
 }
 ?>

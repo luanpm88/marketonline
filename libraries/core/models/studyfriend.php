@@ -77,7 +77,7 @@ class Studyfriends extends PbModel {
 		uses("message");
 		$message = new Messages();
 		
-		$friend = $this->fields("*", array("member_id=".$memid, "friend_id=".$userid));
+		$friend = $this->fields("*", array("((member_id=".$memid." AND friend_id=".$userid.") OR (member_id=".$userid." AND friend_id=".$memid."))"));
 		$id = $friend["id"];
 		$this->del(intval($id));
 		$sms = $message->delAll(array("content=\"".$friend["message"]."\""));

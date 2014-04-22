@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-04 08:47:40
+<?php /* Smarty version 2.6.27, created on 2014-04-22 10:14:22
          compiled from default/studypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 146, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 148, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -157,8 +157,10 @@ if ($this->_foreach['level']['total'] > 0):
                         </div>
                     </div>
                     <div class="main_controls">
-                        <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'leave_group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
+                        <?php if ($this->_tpl_vars['belongToGroup']): ?>
+                            <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'leave_group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
 ">Rời khỏi nhóm</a>
+                        <?php endif; ?>
                         
                         <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
                             <iframe name="upload" id="upload" style="display: none"></iframe>
@@ -221,6 +223,40 @@ $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['the
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+                            
+                            <?php if ($this->_tpl_vars['pb_userinfo']['id'] == 1030): ?>
+                                <h4>Thành viên chờ duyệt</h4>
+                                <?php if ($this->_tpl_vars['groups_count'] > 5): ?>
+                                    <div class="title_more_group_button" onclick="$('.rightbar_grouplist .group_item').css('display','block');$(this).remove()" href="">Xem thêm</div>
+                                <?php endif; ?>
+                                <ul class="group_list rightbar_grouplist waiting_list">
+                                    <?php $_from = $this->_tpl_vars['waiting_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_group'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level_group']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['group_key'] => $this->_tpl_vars['mem']):
+        $this->_foreach['level_group']['iteration']++;
+?>
+                                        <li class="group_item">
+                                            <div  <?php if ($this->_tpl_vars['mem']['photo']): ?>style="background:url(<?php echo $this->_tpl_vars['mem']['info']['photo']; ?>
+) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"<?php endif; ?> class="logo" onclick="" title="<?php echo $this->_tpl_vars['mem']['info']['first_name']; ?>
+ <?php echo $this->_tpl_vars['mem']['info']['last_name']; ?>
+">
+                                                <strong onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['mem']['info']['id'])), $this);?>
+'"><?php echo $this->_tpl_vars['mem']['info']['first_name']; ?>
+ <?php echo $this->_tpl_vars['mem']['info']['last_name']; ?>
+</strong>
+                                                <p><?php echo $this->_tpl_vars['mem']['info']['school_name']; ?>
+</p>
+                                                <div class="action">
+                                                    <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group_accept','id' => ($this->_tpl_vars['mem']['info']['id']),'group_id' => ($this->_tpl_vars['mem']['studygroup_id'])), $this);?>
+">Duyệt</a>
+                                                    <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group_reject','id' => ($this->_tpl_vars['mem']['info']['id']),'group_id' => ($this->_tpl_vars['mem']['studygroup_id'])), $this);?>
+">Bỏ qua</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    <?php endforeach; endif; unset($_from); ?>
+                                </ul>
+                            <?php endif; ?>
                             
                         </div>
                     </div>

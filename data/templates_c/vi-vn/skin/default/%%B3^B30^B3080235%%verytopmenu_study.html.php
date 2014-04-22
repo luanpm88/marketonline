@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-11 07:54:40
+<?php /* Smarty version 2.6.27, created on 2014-04-18 10:39:37
          compiled from ../../default/verytopmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', '../../default/verytopmenu_study.html', 8, false),array('function', 'the_url', '../../default/verytopmenu_study.html', 36, false),)), $this); ?>
@@ -72,7 +72,7 @@ image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
 	    <a style="padding-left: 0" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['pb_userinfo']['school_id'])), $this);?>
 ">
 		<img src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-image/school-icon.png" width="20" height="20" />&nbsp;<?php echo $this->_tpl_vars['_connect_title']; ?>
+image/studygroup_old.png" width="20" height="20" />&nbsp;<?php echo $this->_tpl_vars['_connect_title']; ?>
 </a>
 	    
 	    <?php $_smarty_tpl_vars = $this->_tpl_vars;

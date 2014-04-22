@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-11 10:11:07
+<?php /* Smarty version 2.6.27, created on 2014-04-21 13:59:29
          compiled from default/product/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 572, false),array('modifier', 'truncate', 'default/product/detail.html', 711, false),array('block', 'product', 'default/product/detail.html', 726, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 570, false),array('modifier', 'truncate', 'default/product/detail.html', 709, false),array('block', 'product', 'default/product/detail.html', 724, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -239,9 +239,7 @@ unset($_smarty_tpl_vars);
                 
 		
 		
-		if ($(\'.product_list_widget li\').length < 6) {
-			$(\'.view_more_detail\').remove()
-		}
+		
 			
 		//$.cookie("welcome", "cookie_value");
 		//alert($.cookie("welcssome"));
@@ -601,9 +599,9 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 									    
 									    <td colspan="2" style="width: 100%">
 										<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-											<a class="chat_with_owner <?php if ($this->_tpl_vars['online']): ?>online<?php endif; ?>" href="javascript:void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
-, false, <?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
-)"><?php echo $this->_tpl_vars['_chat_with_owner']; ?>
+											<a class="chat_with_owner <?php if ($this->_tpl_vars['online']): ?>online<?php endif; ?>" href="javascript:void(0)" onclick="getChatboxNew('<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
+x<?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
+', false)"><?php echo $this->_tpl_vars['_chat_with_owner']; ?>
 </a>
 										<?php else: ?>
 											<a class="chat_with_owner <?php if ($this->_tpl_vars['online']): ?>online<?php endif; ?> comment_but" href="#login-box" onclick=""><?php echo $this->_tpl_vars['_chat_with_owner']; ?>
@@ -974,6 +972,9 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 				
 				$(\'#product_detail_box ul.product_list_widget li img\').css("float", "none");
 				$(\'#product_detail_box ul.product_list_widget li img\').css("visibility", "visible");
+				if ($(\'.product_list_widget li\').length < 6) {
+					$(\'.view_more_detail\').remove()
+				}
 			}
 		});
 </script>

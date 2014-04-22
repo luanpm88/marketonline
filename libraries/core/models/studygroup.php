@@ -75,11 +75,11 @@ class Studygroups extends PbModel {
 			if($not_member)
 			{
 				//$conditions[] = "((sgm.member_id IS NULL) OR (sgm.member_id != ".$member_id."))";
-				$conditions[] = "Studygroup.id NOT IN (SELECT studygroup_id FROM {$this->table_prefix}studygroupmembers WHERE member_id = ".$member_id.")";
+				$conditions[] = "Studygroup.id NOT IN (SELECT studygroup_id FROM {$this->table_prefix}studygroupmembers sgm2 WHERE member_id = ".$member_id." AND sgm2.status=1)";
 			}
 			else
 			{
-				$conditions[] = "sgm.member_id = ".$member_id;
+				$conditions[] = "(sgm.member_id = ".$member_id." AND sgm.status=1)";
 			}
 		}
 		
@@ -97,7 +97,7 @@ class Studygroups extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
 		
-		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, sc.address AS school_address, sc.area_id AS school_area_id, su.name AS subject_name".$keyword_str, $joins, $conditions, $order_by_score, null, null, null, "Studygroup.id");
+		$groups = $this->findAll("sgm.status, Studygroup.*, sc.name AS school_name, sc.address AS school_address, sc.area_id AS school_area_id, su.name AS subject_name".$keyword_str, $joins, $conditions, $order_by_score, null, null, null, "Studygroup.id");
 		foreach($groups as $key => $item)
 		{
 			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
@@ -214,6 +214,27 @@ class Studygroups extends PbModel {
 		{
 			$studygroupview->saveField("created", date("Y-m-d H:i:s"), intval($exsit["id"]));
 		}
+	}
+	
+	function getWaitingList($group_id)
+	{
+		uses("studygroupmember","member");
+		$studygroupmember = new Studygroupmembers();
+		$member = new Members();
+		
+		$conditions = array();		
+		$conditions[] = "stgm.studygroup_id=".intval($group_id);
+		$conditions[] = "stgm.status=0";
+		
+		$joins = array("INNER JOIN {$this->table_prefix}studygroupmembers AS stgm ON stgm.member_id = Member.id");
+		$members = $member->findAll("*,stgm.studygroup_id", $joins, $conditions);
+		//var_dump($members);
+		foreach($members as $key => $item)
+		{
+			$members[$key]["info"] = $member->getInfoById($item["member_id"]);
+		}
+		
+		return $members;
 	}
 
 }

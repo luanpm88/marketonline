@@ -1,10 +1,224 @@
-	function getChatFriendList(id) {
+    function updateChatboxNew()
+    {
+	$.ajax({
+	    url: "index.php?do=product&action=updateChatboxNew",
+	}).done(function ( data ) {
+	    //alert(data);
+	    var arr = jQuery.parseJSON(data);
+	    $(arr).each(function(index,value) {
+		//alert(value.id);
+		if ($('#chat-box-'+value).length>0) {
+		    if ($('#chat-box-'+value).hasClass('hidden')) {
+			getChatboxNew(value, true);
+		    }
+		    else
+		    {
+			getChatboxNew(value, false);		       
+		    }
+		}
+		else
+		{
+		    getChatboxNew(value, true);
+		}
+	    });
+	});
+    }
+    function postChatNew(id, content, hash)
+    {	
+	if ($.trim(content) == "") {
+	    $('#chat-frame #chat-box-'+id+' textarea').val("");
+	    return;
+	}
+	
+	//remove notification
+	$('#chat-frame #chat-box-'+id+' .notification').html('');
+	
+	$('#chat-frame #chat-box-'+id).addClass("chatloading");	
+	
+	$('#chat-frame #chat-box-'+id+' .chat-list ul').append('<li class="me temp" rel="'+$('#chat-frame #chat-box-'+id+' .chat-list ul li:last-child').attr("rel")+'" class="me">'+
+								'<img width="40" height="40" src="'+companylogo+'" class="avatar">'+
+								$('#chat-frame #chat-box-'+id+' textarea').val()+
+							    '<span class="status">đang gửi...</span></li>');
+	
+	$('#chat-frame #chat-box-'+id+' textarea').val("");
+	$('#chat-frame #chat-box-'+id+' .chat-list').scrollTop($('#chat-frame #chat-box-'+id+' .chat-list')[0].scrollHeight);
+	
+			$.ajax({
+			    type: "POST",
+			    url: "index.php?do=product&action=postChatNew",
+			    encoding: "UTF-8",
+			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
+			}).done(function ( data ) {
+			    if( console && console.log ) {
+				$('#chat-frame #chat-box-'+id).removeClass("chatloading");
+			    }
+			});
+    }
+    
+    
+    function removeChatboxNew(uid)
+    {
+	$.ajax({
+	    url: "index.php?do=product&action=removeChatboxNew&id="+uid,
+	}).done(function ( data ) {
+	    clearInterval(ichatbox[uid]);
+	});
+    }
+    
+    function updateChatsNew()
+    {
+	//get current chatboxs
+	var ids = '';
+	$('#chat-frame .chat-box').each(function(){
+	    ids += $(this).attr('rel')+",";
+	});	
+	
+	$.ajax({
+	    url: "index.php?do=product&action=ajaxUpdateChatsNew&ids="+ids,
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+		//remove temp item
+		
+		$('#chat-frame .chat-box .chat-list ul li.chatloading').remove();
+		
+		//update chats
+		var datajson = JSON.parse(data);
+		$.each(datajson, function(i, items){
+		    //Update each chatbox
+		    var element = null;
+		    for (var j = items.length-1; j >= 0; j--) {
+			element = items[j];
+			//update each chat line			
+			updateChatsById(i, element);			
+			
+		    }
+		    
+		    //check if viewed
+		    var last_line = $('#chat-frame #chat-box-'+i+' .chat-list ul li').last();
+		    if (last_line.hasClass("me") && last_line.attr("read") == '1') {
+		        $('#chat-frame #chat-box-'+i+' .notification').html(items[0].viewed_notice);
+		    }
+		    else
+		    {
+			$('#chat-frame #chat-box-'+i+' .notification').html('');
+		    }
+		    
+		    
+		    
+		    
+		});
+		
+		//check for unread message
+		checkChatboxUnread();
+	    }
+	});
+    }
+    
+    function getChatboxNew(uid, hide)
+    {
+	//show hide chatbox when exsit
+	if ($('#chat-box-'+uid).length>0) {
+	    //alert("exists");
+	    if (hide) {
+		hideChatbox(uid);
+	    }
+	    else
+	    {
+		showChatbox(uid);
+	    }
+	    return;
+	}
+	
+	//Load new chatbox
+	$.ajax({
+	    url: "index.php?do=product&action=getChatboxNew&id="+uid,
+	}).done(function ( data ) {
+	    if( console && console.log && $('#chat-box-'+uid).length<1 ) {
+		//alert(data);
+		
+		$('#chat-frame').prepend(data);
+		$('#chat-frame #chat-box-'+uid+' .chat-list').scrollTop($('#chat-frame #chat-box-'+uid+' .chat-list')[0].scrollHeight);
+		
+		// Chat box functions
+		$('#chat-frame #chat-box-'+uid+' .chat-title').click(function() {
+		   
+		    
+		    $(this).parent().find(".chat-content").toggle();
+		    $(this).parent().find(".chat-form").toggle();
+		    
+		    //Title click
+		    if ($(this).parent().hasClass("hidden")) {
+			$(this).parent().removeClass("hidden");			
+			updateReadChat(uid);
+			$('#chat-frame #chat-box-'+uid+' .chat-list').scrollTop($('#chat-frame #chat-box-'+uid+' .chat-list')[0].scrollHeight);
+			
+		    }
+		    else
+		    {
+			$(this).parent().addClass("hidden");
+		    }
+		    
+		    //***checkChatboxUnread();
+		    $(this).parent().find(".chat-form textarea").focus();
+		});
+		
+		$('#chat-frame #chat-box-'+uid+' .chat-title h2 a').click(function() {
+			if (!$(this).parent().parent().parent().hasClass("hidden"))
+			{				
+				window.location = $(this).attr("rel");
+			}
+		});
+		
+		//close chatbox
+		$('#chat-frame #chat-box-'+uid+' .chat-title span.chat-close-but').click(function(){
+		    $(this).parent().parent().parent().remove();
+		    removeChatboxNew(uid);	
+		});
+		
+		//post chat
+		$('#chat-frame #chat-box-'+uid+' .post-content').keydown(function(event) {
+		    if (event.keyCode == 13) {
+			event.preventDefault();
+
+		    	postChatNew(uid, $(this).val());
+		    }
+		});		
+		
+		//refresh new post
+		clearInterval(chat_interval);
+		chat_interval = setInterval("updateChatsNew()", 5000);
+		
+		//hide chatbox
+		if (hide) {
+		    hideChatbox(uid);
+		}
+		
+		
+		//set read chats
+		if(!$('#chat-frame #chat-box-'+uid).hasClass("hidden"))
+		{
+		    updateReadChat(uid);
+		}
+		
+		
+		//check chatbox status
+		//***checkChatboxUnread();
+		
+		//focus
+		$('#chat-frame #chat-box-'+uid+' .post-content').focus();
+	    }
+	});
+    }
+	
+	
+	function getChatFriendList(id) {	    
+	    $('.chat_friend_list').css("height",$(window).height());
 	    $.ajax({
 		url: "index.php?do=studypost&action=getChatFriendList&id="+id			
 	    }).done(function ( data ) {
 		if( console && console.log ) {
 		    $('.chat_friend_list .main_list').html(data);
-		    $('.chat_friend_list .scroll_list').css("max-height",$(window).height()-103);
+		    $('.chat_friend_list .scroll_list').css("height",$(window).height()-103);
 		    if($('.chat_friend_list').css("right") == "0px")
 		    {
 			if(!$('.chat_friend_list .scroll_list').hasClass("mCustomScrollbar"))
@@ -750,22 +964,22 @@
     function hideChatbox(uid)
     {
 	var item = $('#chat-frame #chat-box-'+uid);	
-		    item.find(".chat-content").css("display", "none");
-		    item.find(".chat-form").css("display", "none");
+	item.find(".chat-content").css("display", "none");
+	item.find(".chat-form").css("display", "none");
 
-		    //Title click
-		    item.addClass("hidden");
+	//Title click
+	item.addClass("hidden");
     }
     function showChatbox(uid)
     {
 	var item = $('#chat-frame #chat-box-'+uid);	
-		    item.find(".chat-content").css("display", "block");
-		    item.find(".chat-form").css("display", "block");
+	item.find(".chat-content").css("display", "block");
+	item.find(".chat-form").css("display", "block");
 
-		    //Title click
-		    item.removeClass("hidden");
-		    updateReadChat(uid);
-		    $('#chat-frame #chat-box-'+uid+' .chat-form textarea').focus();
+	//Title click
+	item.removeClass("hidden");
+	updateReadChat(uid);
+	$('#chat-frame #chat-box-'+uid+' .chat-form textarea').focus();
     }
     
     function removeChatbox(uid)
@@ -896,7 +1110,7 @@
 	$('#chat-frame #chat-box-'+id+' .chat-list ul').append('<li class="me temp" rel="'+$('#chat-frame #chat-box-'+id+' .chat-list ul li:last-child').attr("rel")+'" class="me">'+
 								'<img width="40" height="40" src="'+companylogo+'" class="avatar">'+
 								$('#chat-frame #chat-box-'+id+' textarea').val()+
-							    '<span class="status">đang gửi...</span></li>');
+								'<span class="status">đang gửi...</span></li>');
 	
 	$('#chat-frame #chat-box-'+id+' textarea').val("");
 	$('#chat-frame #chat-box-'+id+' .chat-list').scrollTop($('#chat-frame #chat-box-'+id+' .chat-list')[0].scrollHeight);

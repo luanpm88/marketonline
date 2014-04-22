@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-28 14:20:28
+<?php /* Smarty version 2.6.27, created on 2014-04-19 09:36:16
          compiled from default/product/ajaxOfferDetail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajaxOfferDetail.html', 99, false),array('function', 'formhash', 'default/product/ajaxOfferDetail.html', 101, false),array('modifier', 'truncate', 'default/product/ajaxOfferDetail.html', 123, false),)), $this); ?>
@@ -32,9 +32,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 "><img src="<?php echo $this->_tpl_vars['company']['logo']; ?>
 " /></a>
 						<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-							<a class="chat_with_owner <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" onclick="getChatbox(<?php echo $this->_tpl_vars['Trade']['member_id']; ?>
-, false, <?php echo $this->_tpl_vars['member']['membertype_id']; ?>
-)" href="javascript:void(0)">Tin nhắn</a>
+							<a class="chat_with_owner <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" onclick="getChatboxNew('<?php echo $this->_tpl_vars['Trade']['member_id']; ?>
+x<?php echo $this->_tpl_vars['member']['membertype_id']; ?>
+', false)" href="javascript:void(0)">Tin nhắn</a>
 						<?php else: ?>
 							<a onclick="" href="#login-box" class="chat_with_owner <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?> comment_but">Nhắn tin</a>
 						<?php endif; ?>

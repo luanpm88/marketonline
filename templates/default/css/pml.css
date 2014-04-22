@@ -8244,7 +8244,6 @@ span.join_group:hover {
 }
 #facelike_col1 .group_list li.active
 {
-    display: none;
 }
 .over_points {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -8576,4 +8575,136 @@ span.join_group:hover {
 .chat_friend_list .mCSB_scrollTools
 {
     margin-right: -12px;
+}
+.chat-list-ajax {
+    background: url("../image/ajax-loading.gif") no-repeat scroll 126px center rgba(0, 0, 0, 0);
+    height: 100px;
+    text-indent: -5000px;
+}
+.friend_menu_items{
+    margin: 24px 0 0;
+    position: absolute;
+    display:none;
+    padding-top: 8px;
+}
+.friend_menu_items_inner {
+    border: 1px solid #AAAAAA;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    float: left;
+}
+.friend_menu:hover .friend_menu_items.active {
+    display: block;
+}
+.friend_menu_items ul
+{
+    
+}
+.friend_menu_items ul li {
+    list-style: none outside none;
+    padding: 0;
+}
+.member-left .controls .friend_menu_items ul li a {
+    background-color: #FFFFFF;
+    color: #333333;
+    height: 27px;
+    margin-right: 0;
+    opacity: 1;
+    width: 200px;
+}
+.member-left .controls .friend_menu_items ul li a:hover {
+    background: #F9F9F9;
+}
+.friend_checked {
+    float: left;
+    margin-left: -10px;
+    margin-right: 5px;
+}
+.friend_menu .pointer_topmenu {
+    right: 175px;
+    background: url("../image/pointer_topmenu.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
+    top: 0;
+}
+.school_list_box .action
+{
+    padding-top: 5px;
+}
+.school_list_box .action a {
+    border: 1px solid #AAAAAA;
+    padding: 0px 5px;
+    display: inline;
+}
+.studypage-content .school_list ul li a.head-title span
+{
+    margin-top: 2px;
+}
+.widget ul.menu li, .widget ul.pagenav li {
+    background: url("../image/list-circle.png") no-repeat scroll 8px 11px rgba(0, 0, 0, 0);
+}
+.connect_menu .menu li a {
+    font-size: 15px;
+    padding: 4px 22px 4px 21px;
+}
+.widget ul.menu li.liback {
+    background: url("../image/back.png") no-repeat scroll 4px 5px/20px rgba(0, 0, 0, 0);
+    padding-left: 6px;
+}
+.box-scroll
+{
+    margin-top: 0;
+    border: 3px solid #BBBBBB;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+.parent-menu-title a {
+    background: none repeat scroll 0 0 #D8EADA;
+    display: block;
+    font-size: 14px;
+    margin-top: -5px;
+}
+.parent-menu-title a {
+    background: none repeat scroll 0 0 #D8EADA;
+    display: block;
+    font-size: 14px;
+    margin-top: -5px;
+    padding: 5px 8px;
+}
+.widget ul.menu li, .widget ul.pagenav li {
+    margin-right: 0;
+}
+.parent-menu-title span
+{
+    display: none;
+}
+#SearchList h5
+{
+    padding-left: 5px;
+}
+.connect_menu .menu li.active {
+    background: none repeat scroll 0 0 #F0F6F2;
+}
+#settingbox ul li.sline {
+    border-top: 1px solid #ccc;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    text-indent: -3000px;
+}
+.waiting_list
+{
+    
+}
+.waiting_list p
+{
+    margin: 0;
+    line-height: 14px;
+}
+.waiting_list .action a {
+    border: 1px solid #AAAAAA;
+    color: #3B984C;
+    font-size: 12px;
+    margin-right: 5px;
+    padding: 0 3px;
+}
+.waiting_list .action a:hover
+{
+    text-decoration: underline;
 }

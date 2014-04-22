@@ -74,10 +74,11 @@ class Studygroupmembers extends PbModel {
 		return $result;
 	}
 	
-	function belongToGroup($group_id, $member_id)
+	function belongToGroup($group_id, $member_id, $status = 0)
 	{
 		$conditions[] = "studygroup_id=".intval($group_id);
 		$conditions[] = "member_id=".intval($member_id);
+		$conditions[] = "status=".$status;
 		
 		$exsit = $this->fields("id", $conditions);
 		

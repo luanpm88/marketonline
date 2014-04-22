@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 15:58:43
+<?php /* Smarty version 2.6.27, created on 2014-04-19 11:22:23
          compiled from topmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'topmenu.html', 77, false),array('function', 'the_url', 'topmenu.html', 300, false),)), $this); ?>
@@ -337,9 +337,9 @@ if ($this->_foreach['level']['total'] > 0):
 </a>
 		<?php endif; ?>
 		
-		<a class="skin_chat_with_owner <?php if ($this->_tpl_vars['MEMBER']['online']): ?>online<?php endif; ?>" onclick="getChatbox(<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
-, false, <?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
-)" href="javascript:void(0)">Tin nhắn</a>
+		<a class="skin_chat_with_owner <?php if ($this->_tpl_vars['MEMBER']['online']): ?>online<?php endif; ?>" onclick="getChatboxNew('<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
+x<?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
+', false)" href="javascript:void(0)">Tin nhắn</a>
 	</div>
 	<?php else: ?>
 	<div style="" class="postitem follow_but">

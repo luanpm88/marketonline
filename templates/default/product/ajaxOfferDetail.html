@@ -21,7 +21,7 @@
 					<div class="avatar">
 						<a class="pic" target="_blank" href="{$company.url}"><img src="{$company.logo}" /></a>
 						<!--{if $pb_username!=""}-->
-							<a class="chat_with_owner {if $member.online}online{/if}" onclick="getChatbox({$Trade.member_id}, false, {$member.membertype_id})" href="javascript:void(0)">Tin nhắn</a>
+							<a class="chat_with_owner {if $member.online}online{/if}" onclick="getChatboxNew('{$Trade.member_id}x{$member.membertype_id}', false)" href="javascript:void(0)">Tin nhắn</a>
 						<!--{else}-->
 							<a onclick="" href="#login-box" class="chat_with_owner {if $member.online}online{/if} comment_but">Nhắn tin</a>
 						<!--{/if}-->

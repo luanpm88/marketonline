@@ -171,8 +171,9 @@ class Product extends PbController {
 						$industries[$_GET["industryid"]]["box1"] = $industries;
 								
 						foreach( $industries[$_GET["industryid"]]["box1"] as $key => $item)
-						{									
-							 $industries[$_GET["industryid"]]["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
+						{
+							$ii = $this->industry->field("children", "id=".$item["id"]);
+							$industries[$_GET["industryid"]]["box1"][$key]["count"] = $this->industry->getCountProduct($ii);
 						}
 						
 						
@@ -910,7 +911,21 @@ class Product extends PbController {
 			$info['d_imgsmall'] = $info['imgsmall'];
 		}
 		//echo $info['d_image'];
-		list($width, $height, $type, $attr) = getimagesize($info['d_image']);
+		$width = 500;
+		$height = 600;
+		
+		$re = array('ấ','ầ','ẩ','ẫ','ậ','Ấ','Ầ','Ẩ','Ẫ','Ậ','ắ','ằ','ẳ','ẵ','ặ','Ắ','Ằ','Ẳ','Ẵ','Ặ','á','à','ả','ã','ạ','â','ă','Á','À','Ả','Ã','Ạ','Â','Ă'
+					,'ế','ề','ể','ễ','ệ','Ế','Ề','Ể','Ễ','Ệ','é','è','ẻ','ẽ','ẹ','ê','É','È','Ẻ','Ẽ','Ẹ','Ê'
+					,'í','ì','ỉ','ĩ','ị','Í','Ì','Ỉ','Ĩ','Ị'
+					,'ố','ồ','ổ','ỗ','ộ','Ố','Ồ','Ổ','Ô','Ộ','ớ','ờ','ở','ỡ','ợ','Ớ','Ờ','Ở','Ỡ','Ợ','ó','ò','ỏ','õ','ọ','ô','ơ','Ó','Ò','Ỏ','Õ','Ọ','Ô','Ơ'
+					,'ứ','ừ','ử','ữ','ự','Ứ','Ừ','Ử','Ữ','Ự','ú','ù','ủ','ũ','ụ','ư','Ú','Ù','Ủ','Ũ','Ụ','Ư'
+					,'ý','ỳ','ỷ','ỹ','ỵ','Ý','Ỳ','Ỷ','Ỹ','Ỵ'
+					,'đ','Đ');
+		
+		if(!preg_match('/\:[0-9]+\//',$info['d_image']))
+		{
+			list($width, $height, $type, $attr) = getimagesize(str_replace(' ', "%20", $info['d_image']));
+		}		
 		//var_dump($width .$height. $type. $attr);
 		setvar("width",$width);
 		setvar("height",$height);
@@ -1252,9 +1267,12 @@ class Product extends PbController {
 				$products[$key]["price"] = number_format($item["price"], 0, ',', '.');
 				$products[$key]["old_price"] = number_format($item["old_price"], 0, ',', '.');
 				
+				
 				//get space_name
 				$mem = $this->member->getInfoById($item['member_id']);
 				$com = $this->company->getInfoByUserId($item['member_id']);
+				
+				
 				
 				$space_controller->setBaseUrlByUserId($mem["space_name"], "offer");
 				$products[$key]['url'] = $space_controller->rewriteDetail("offer", $item['id']);
@@ -2275,7 +2293,7 @@ class Product extends PbController {
 						$result[$i]['typename'] = L("system_message", "tpl");
 						break;
 				}
-				if($result[$i]["picture"])
+				if($result[$i]["picture"] && $result[$i]["membertype_ids"] != '[6]')
 				{
 					$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 				}
@@ -2388,7 +2406,7 @@ class Product extends PbController {
 					$level0['sub'][$key]["count"] = $this->industry->getCount($item["id"]);
 				}			
 				setvar("Items", $level0['sub']);				
-				setvar("Map", " | ".$level0["name"]);
+				setvar("Map", " | <parent>".$level0["name"]."</parent>");
 				$this->render("product/ajaxLoadMenuConnect");
 				return;
 			}
@@ -2403,7 +2421,7 @@ class Product extends PbController {
 							$level1['sub'][$key]["count"] = $this->industry->getCount($item["id"]);
 						}
 						setvar("Items", $level1['sub']);
-						setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | ".$level1["name"]);
+						setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <parent>".$level1["name"]."</parent>");
 						$this->render("product/ajaxLoadMenuConnect");
 						exit;
 					}
@@ -2418,7 +2436,7 @@ class Product extends PbController {
 									$level2['sub'][$key]["count"] = $this->industry->getCount($item["id"]);
 								}
 								setvar("Items", $level2['sub']);
-								setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> | ".$level2["name"]);
+								setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> | <parent>".$level2["name"]."</parent>");
 								$this->render("product/ajaxLoadMenuConnect");
 								exit;
 							}
@@ -2434,7 +2452,7 @@ class Product extends PbController {
 											$level3['sub'][$key]["count"] = $this->industry->getCount($item["id"]);
 										}
 										setvar("Items", $level3['sub']);
-										setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> | <a href='javascript:void(0)' rel='".$level2["id"]."'>".$level2["name"]."</a> | ".$level3["name"]);
+										setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> | <a href='javascript:void(0)' rel='".$level2["id"]."'>".$level2["name"]."</a> | <parent>".$level3["name"]."</parent>");
 										//echo "<a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> / <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> / <a href='javascript:void(0)' rel='".$level2["id"]."'>".$level2["name"]."</a> / ".$level3["name"];
 										$this->render("product/ajaxLoadMenuConnect");
 										exit;
@@ -3818,7 +3836,9 @@ class Product extends PbController {
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
-		$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id!=".$pb_userinfo["pb_userid"].") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id!=".$pb_userinfo["pb_userid"]."))";
+		$user_code = $user["id"]."x".$user["current_type"];
+		
+		$conditions[] = "((Chat.to_code='".$user_code."' AND Chat.from_code!='".$user_code."') OR (Chat.from_code='".$user_code."' AND Chat.to_code!='".$user_code."'))";
 		
 		//filter membertype
 		if($user["current_type"])
@@ -3829,7 +3849,7 @@ class Product extends PbController {
 		$joins[] = "LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id";
 		$joins[] = "LEFT JOIN {$this->product->table_prefix}companies c2 ON c2.member_id = Chat.to_member_id";
 		
-		$joins[] = "INNER JOIN ( SELECT MAX(created) as maxdate, from_member_id, to_member_id FROM {$this->product->table_prefix}chats GROUP BY from_member_id, to_member_id ) ppp ON ppp.maxdate = Chat.created AND (ppp.from_member_id = Chat.from_member_id OR ppp.to_member_id = Chat.to_member_id)";
+		$joins[] = "INNER JOIN ( SELECT MAX(created) as maxdate, from_code, to_code FROM {$this->product->table_prefix}chats GROUP BY from_code, to_code ) ppp ON ppp.maxdate = Chat.created AND (ppp.from_code = Chat.from_code OR ppp.to_code = Chat.to_code)";
 		
 		$result = $this->chat->findAll("Chat.*, c.picture, c.shop_name, c2.picture as picture_2, c2.shop_name as shop_name_2", $joins, $conditions, "Chat.created DESC", 0, $CHAT_ANNOUNCE_COUNT, null);
 		
@@ -3839,8 +3859,11 @@ class Product extends PbController {
 				if($result[$i]["from_member_id"] != $pb_userinfo["pb_userid"])
 				{
 					$mem = $this->member->getInfoById($result[$i]["from_member_id"]);
+					$pps = explode("x",$result[$i]["from_code"]);
 					
-					if($result[$i]["picture"])
+					$result[$i]["membertype_id"] = $pps[1];
+					
+					if($result[$i]["picture"] && $pps[1] != 6)
 					{
 						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 					}
@@ -3856,7 +3879,7 @@ class Product extends PbController {
 						}
 					}
 					
-					if($result[$i]["shop_name"])
+					if($result[$i]["shop_name"] && $pps[1] != 6)
 					{
 						$result[$i]["name"] = $result[$i]["shop_name"];
 					}
@@ -3888,7 +3911,11 @@ class Product extends PbController {
 				{
 					$mem = $this->member->getInfoById($result[$i]["to_member_id"]);
 					
-					if($result[$i]["picture"])
+					$pps = explode("x",$result[$i]["to_code"]);
+					
+					$result[$i]["membertype_id"] = $pps[1];
+					
+					if($result[$i]["picture_2"] && $pps[1] != 6)
 					{
 						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture_2"], '', 'smaller');
 					}
@@ -3904,7 +3931,7 @@ class Product extends PbController {
 						}
 					}
 					
-					if($result[$i]["shop_name_2"])
+					if($result[$i]["shop_name_2"] && $pps[1] != 6)
 					{
 						$result[$i]["name"] = $result[$i]["shop_name_2"];
 					}
@@ -4251,16 +4278,12 @@ class Product extends PbController {
 					{
 						$string_date = df($result[$i]["viewed_date"], 'H:i');
 						$result[$i]["viewed_notice"] = "Đã xem lúc ".$string_date;
-					}
-					
-				}
-				
+					}					
+				}				
 			}
-
 			$results[$ids[$k]] = $result;
 		}
 		//var_dump($results);
-		
 		echo json_encode($results);
 	}
 	
@@ -4268,7 +4291,7 @@ class Product extends PbController {
 	{
 		$industries = $this->industry->getCacheIndustry();
 		$i = 1;
-		$min = 3980;
+		$min = 0;
 		foreach($industries as $key0 => $level0)
 		{
 			if($i > $min){
@@ -4293,7 +4316,6 @@ class Product extends PbController {
 							echo $i."-".$level3["id"]."<br />";
 							$this->industry->saveField("count", $this->industry->countProduct($level3["id"]), intval($level3["id"]));
 						}
-						
 						$i++;
 					}
 					$i++;
@@ -4501,5 +4523,311 @@ class Product extends PbController {
 		
 		$this->render("product/get_space_tree");
 	}
+	
+	function getChatboxNew()
+	{
+		
+		if(isset($_GET["id"]))
+		{
+			$parts = explode("x", $_GET["id"]);
+			$user_id = $parts[0];
+			$type_id = $parts[1];
+			$chatid = $_GET["id"];
+		}
+		else
+		{
+			return;
+		}
+		
+		
+		$member = $this->member->getInfoById($user_id);
+		$company = $this->company->getInfoByUserId($user_id);
+		$pb_userinfo = pb_get_member_info();
+		
+		global $viewhelper, $session;
+		
+		$chatboxs = $session->read("chatboxsnew".session_id());
+
+		if($chatboxs)
+		{
+			$chatboxs = explode(",", $chatboxs);
+			
+			$exist = false;
+			foreach($chatboxs as $item)
+			{
+				if($item == $chatid)
+				{
+					$exist = true;
+					break;
+				}
+			}
+			if(!$exist)
+			{
+				$chatboxs[] = $chatid;
+			}
+			$session->write('chatboxsnew'.session_id(), implode(",", $chatboxs));
+		}
+		else
+		{
+			$session->write('chatboxsnew'.session_id(), $chatid);
+		}
+		
+		if(isset($company["shop_name"]))
+		{
+			$comname = $company["shop_name"];
+		}
+		if(!empty($member["first_name"]))
+		{
+			$uname = $member["first_name"]." ".$member["last_name"];
+		}
+		else
+		{
+			$uname = $member["username"];
+		}
+		//echo $member["username"]."dddddd";
+		//echo $type_id;
+		if($comname && in_array($type_id, array(1,2,3)))
+		{
+			$chattitle = $comname;
+		}
+		else
+		{
+			$chattitle = $uname;
+		}
+		
+		
+		
+		setvar("Items",$result);
+		setvar("member", $member);
+		setvar("type_id", $type_id);
+		setvar("chatid", $chatid);
+		setvar("chattitle", $chattitle);
+		$this->render("product/ajaxChatboxNew");
+	}
+	
+	function removeChatboxNew()
+	{
+		if(isset($_GET["id"]))
+		{
+			$chatid = intval($_GET["id"]);
+		}
+		else
+		{
+			return;
+		}
+		
+		//store chatbox id to session
+		global $viewhelper, $session;
+		//$session->write('chatboxs'.session_id(), '');
+		$chatboxs = $session->read("chatboxsnew".session_id());
+		//var_dump($chatboxs);
+		//echo "ssdsdsd";
+		//$session->write('chatboxs'.session_id(), "");
+		$chatboxs = explode(",", $chatboxs);
+		
+			$new_chatbox = array();
+			//$new_chatbox[] = $user_id;
+			foreach($chatboxs as $item)
+			{
+				if($item != $chatid)
+				{
+					$new_chatbox[] = $item;
+				}
+			}
+			
+			$session->write('chatboxsnew'.session_id(), implode(",", $new_chatbox));
+		
+	}
+	
+	function postChatNew()
+	{		
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
+		$chatid = $_POST["data"]["id"];
+		$parts = explode("x",$chatid);
+		
+		if(isset($_POST["data"]))
+		{
+			//var_dump($pb_userinfo);
+			if($pb_userinfo){
+				//send message to owner
+				$sms['content'] = mysql_real_escape_string($_POST["data"]["content"]);
+				$sms['title'] = mysql_real_escape_string("chat");
+				
+				$sms['to_code'] = $chatid;
+				$sms['from_code'] = $user["id"]."x".$user["current_type"];
+				
+				$result = $this->chat->SendToUser($pb_userinfo['pb_userid'], intval($parts[0]), $sms);
+				
+				//var_dump($result);
+			}			
+		}
+		
+		
+		$com = $this->company->getInfoByUserId($pb_userinfo['pb_userid']);
+		//var_dump($com);
+				if($com["picture"])
+				{
+					$picture = pb_get_attachmenturl($com["picture"], "");
+				}
+				else
+				{
+					$member = $this->member->read("photo", $pb_userinfo['pb_userid']);
+					if($member["photo"])
+					{
+						$picture = pb_get_attachmenturl($member["photo"], '', 'small');
+					}
+					else
+					{
+						$picture = URL."templates/default/image/usericon_big.png";
+					}
+				}
+		//echo $picture;
+		setvar("picture", $picture);
+		setvar("content", $_POST["data"]["content"]);
+		setvar("created", $result["timestamp"]);
+		setvar("chatid", $result["new_id"]);
+		$this->render("product/ajaxPostChat");
+	}
+	
+	function ajaxUpdateChatsNew()
+	{
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
+		$user_code = $user["id"]."x".$user["current_type"];
+		
+		$ids = explode(',', $_GET["ids"]);
+		
+		//echo $user_code;
+
+		$results = array();
+		for($k=0; $k<count($ids)-1; $k++)
+		{
+			$chatid = $ids[$k];
+			
+			$pps = explode("x",$chatid);
+			
+			$conditions = array();
+			$conditions[] = "((Chat.to_code='".$user_code."' AND Chat.from_code='".$chatid."') OR (Chat.from_code='".$user_code."' AND Chat.to_code='".$chatid."'))";
+			
+			$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id");
+			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
+			
+			if (!empty($result)) {
+				for($i=0; $i<count($result); $i++){
+					
+					$show_com_logo = true;
+					if($result[$i]["from_code"] == $user_code)
+					{
+						if($user["current_type"] == 6)
+						{
+							$show_com_logo = false;
+						}
+					}
+					else
+					{
+						if($pps[1] == 6)
+						{
+							$show_com_logo = false;
+						}
+					}
+					
+					if($result[$i]["picture"] && $show_com_logo)
+					{
+						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'small');
+					}
+					else
+					{
+						$mem = $this->member->read("photo", $result[$i]["from_member_id"]);
+						if($mem["photo"])
+						{
+							$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
+						}
+						else
+						{
+							$result[$i]["company_logo"] = URL."templates/default/image/usericon_big.png";
+						}
+					}
+					$result[$i]["created_or"] = $result[$i]["created"];
+					$result[$i]["created"] = df($result[$i]["created"], 'd/m/Y - H:i');
+					$this->chat->saveField("announce", 1, intval($result[$i]["id"]));
+					//echo $result[$i]["id"];
+					
+					//set link content					
+					$result[$i]["content"] = preg_replace('!(https?://[a-z0-9_./?=&-]+)!i', '<a target="_blank" href="$1">$1</a> ', $result[$i]["content"]." ");
+					$result[$i]["content"] = preg_replace('!(www.[a-z0-9_./?=&-]+)!i', '<a target="_blank" href="http://$1">$1</a> ', $result[$i]["content"]." ");
+					
+					$result[$i]["me"] = "";
+					if($result[$i]["from_member_id"] == $pb_userinfo["pb_userid"])
+					{
+						$result[$i]["me"] = "me";
+					}
+					
+					if($result[$i]["viewed_date"])
+					{
+						$string_date = df($result[$i]["viewed_date"], 'H:i');
+						$result[$i]["viewed_notice"] = "Đã xem lúc ".$string_date;
+					}
+					
+				}
+				
+			}
+
+			$results[$ids[$k]] = $result;
+		}
+		//var_dump($results);
+		
+		echo json_encode($results);
+	}
+	
+	function updateChatboxNew()
+	{
+		global $session;
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
+		$user_code = $user["id"]."x".$user["membertype_id"];
+		
+		$conditions[] = "(Chat.to_code='".$user_code."' AND Chat.from_member_id!='".$user_code."')";
+		//$conditions[] = "Chat.read=0";
+		//filter membertype
+		if($user["current_type"])
+		{
+			//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
+		}
+		
+		$result = $this->chat->findAll("Chat.from_code, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
+		
+		$as = array();
+		foreach($result as $item)
+		{
+			if(!in_array($item["from_code"], $as) && $item["read"]==0)
+			{
+				$as[] = $item["from_code"];
+			}
+		}
+		
+		echo json_encode($as);
+	}
+	
+	//function convert_to_new_chat()
+	//{
+	//	$fields = "Chat.*,to_m.membertype_id as to_m_type,from_m.membertype_id as from_m_type";
+	//	$joins = array("LEFT JOIN {$this->product->table_prefix}members to_m ON to_m.id = Chat.to_member_id");
+	//	$joins[] = "LEFT JOIN {$this->product->table_prefix}members from_m ON from_m.id = Chat.from_member_id";
+	//	
+	//	$chats = $this->chat->findAll($fields,$joins);
+	//	foreach($chats as $key => $item)
+	//	{
+	//		$to_code = $item["to_member_id"]."x".$item["to_m_type"];
+	//		$from_code = $item["from_member_id"]."x".$item["from_m_type"];
+	//		echo $item["id"]."-".$from_code."-".$to_code."<br />";
+	//		
+	//		$this->chat->saveField("to_code", $to_code, intval($item["id"]));
+	//		$this->chat->saveField("from_code", $from_code, intval($item["id"]));
+	//	}
+	//}
 }
 ?>

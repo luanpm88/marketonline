@@ -146,18 +146,19 @@
     function studyfriend(friendid, but) {
             $(but).addClass("friending");
             var temp = $(but).html();
-            $(but).html("<!--{/literal}-->Đang gửi lời kết bạn<!--{literal}-->");
+            $(but).html("<!--{/literal}-->Đang xử lý...<!--{literal}-->");
             $.ajax({
                     url: "index.php?do=studypost&action=ajaxFriend&friendid="+friendid,
             }).done(function ( data ) {
                     if( console && console.log ) {
-                        //alert(data);
+                            //alert(data);
                             if(data == "1")
                             {
                                 $(but).removeClass("friending");
                                 $(but).addClass("friendpendding");
                                 $(but).attr("title", "<!--{/literal}--><!--{literal}-->");
                                 $(but).html("<!--{/literal}-->Đã gửi lời mời kết bạn<!--{literal}-->");
+                                $('.friend_menu_items').addClass("active");
                             }
                             else
                             {
@@ -165,8 +166,9 @@
                                 $(but).removeClass("friendpendding");
                                 $(but).attr("title", "<!--{/literal}--><!--{literal}-->");
                                 $(but).html("<!--{/literal}-->Kết bạn<!--{literal}-->");
+                                $('.friend_menu_items').removeClass("active");
                             }
-                        }
+                        }                        
             });
     }
     
@@ -436,7 +438,7 @@ function goclicky_custom(meh, url, images, title, summary)
 	//chatbox
 	var ichatbox = new Array();
 	
-	var companylogo = '<!--{/literal}-->{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
+	var companylogo = '<!--{/literal}-->{if $pb_company && $pb_userinfo.current_type != 6}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
 	
 	
 	$(document).ready(function() {
@@ -765,12 +767,19 @@ function goclicky_custom(meh, url, images, title, summary)
 		{/literal}
 		    {if $pb_username!=""}
                         {literal}
-                            setInterval(function(){ updateChatbox(); }, 15000);
+                            //setInterval(function(){ updateChatbox(); }, 15000);
+                            setInterval(function(){ updateChatboxNew(); }, 15000);
                         {/literal}
                         
                         {loop $chatboxs item level key}
                             {if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
-                                getChatbox({$item.userid}, true, {$item.typeid});			    
+                                //getChatbox({$item.userid}, true, {$item.typeid});			    
+                            {/if}
+                        {/loop}
+                        
+                        {loop $chatboxsnew item level key}
+                            {if $item != ''}
+                                getChatboxNew("{$item}", true);
                             {/if}
                         {/loop}
 		    {/if}		
@@ -1332,7 +1341,7 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
-        
+        <div class="chat-list-ajax">loading...</div>
     </div>
 </div>
 {/if}

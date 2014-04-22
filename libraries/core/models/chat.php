@@ -26,7 +26,7 @@ class Chats extends PbModel  {
  			if (empty($data['type'])) {
  				$data['type'] = 'user';
  			}
- 			$sql = "INSERT INTO {$this->table_prefix}chats (title,content,from_member_id,cache_from_username,to_member_id,cache_to_username,created,type,membertype_to_ids,membertype_from_ids) VALUE ('".$data['title']."','".$data['content']."',".$from_memberinfo['id'].",'".$from_memberinfo['username']."',".$member_info['id'].",'".$member_info['username']."',{$this->timestamp},'".$data['type']."','".$data['membertype_to_ids']."','".$data['membertype_from_ids']."')";
+ 			$sql = "INSERT INTO {$this->table_prefix}chats (title,content,from_member_id,cache_from_username,to_member_id,cache_to_username,created,type,membertype_to_ids,membertype_from_ids,chatid,to_code,from_code) VALUE ('".$data['title']."','".$data['content']."',".$from_memberinfo['id'].",'".$from_memberinfo['username']."',".$member_info['id'].",'".$member_info['username']."',{$this->timestamp},'".$data['type']."','".$data['membertype_to_ids']."','".$data['membertype_from_ids']."','".$data['chatid']."','".$data['to_code']."','".$data['from_code']."')";
 			echo $sql;
  			$this->dbstuff->Execute($sql);
 			//var_dump($this);

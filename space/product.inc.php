@@ -6,8 +6,9 @@
  *      @version $Revision: 2048 $
  */
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
-uses("product");
+uses("product","producttype");
 $product = new Products();
+$producttype = new Producttypes();
 $tpl_file = "product";
 $conditions = null;
 $indus_array = array();
@@ -34,6 +35,7 @@ if (isset($_GET['typeid'])) {
 
 	
 	$level = 0;
+	$tree = $producttype->findTree('id,name,level', array("0"=>'member_id='.$info['id']));
 	foreach($tree as $key => $item)
 	{		
 		if($level)
@@ -74,7 +76,7 @@ if (isset($_GET['typeid'])) {
 		}
 		//echo $level;
 	}
-	//var_dump($indus_array);
+	//var_dump($_GET['typeid']);
 	//var_dump($custom_array);
 	
 	$conditions_temp = null;
@@ -98,7 +100,7 @@ if (isset($_GET['new']) && $_GET['new'] == 1) {
 //var_dump($conditions);
 setvar("indus_array", $indus_array);
 setvar("custom_array", $custom_array);
-//var_dump($conditions);
+//var_dump($amount);
 
 setvar("paging", array('total'=>$amount));
 $space->render($tpl_file);

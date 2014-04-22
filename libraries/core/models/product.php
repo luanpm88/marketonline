@@ -102,7 +102,7 @@ class Products extends PbModel {
  		$cache_options = cache_read('typeoption');
  		$area_s = $space->array_multi2single($area->getCacheArea());
  		$industry_s = $space->array_multi2single($area->getCacheArea());
- 		$result = $this->findAll("Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id"), null, $this->orderby, $firstcount, $displaypg);
+ 		$result = $this->findAll("m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id"), null, $this->orderby, $firstcount, $displaypg);
  		while(list($keys,$values) = each($result)){
  			$result[$keys]['typename'] = $cache_types['productsort'][$values['sort_id']];
 			//get default picture

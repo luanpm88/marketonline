@@ -15,6 +15,7 @@ require("share.inc.php");
 	if(isset($_GET["change_current_type"]))
 	{
 	    $session->write('chatboxs'.session_id(), '');
+	    $session->write('chatboxsnew'.session_id(), '');
 	}
 	//$session->write("chatboxs".session_id(),'');
 	////get chatboxs
@@ -32,6 +33,11 @@ require("share.inc.php");
 
 	
 	setvar("chatboxs", $chatboxsx);
+	
+	$chatboxsnew = $session->read("chatboxsnew".session_id());
+	//echo $chatboxs."ddfdfdf";
+	$chatboxsnew = explode(",", $chatboxsnew);
+	setvar("chatboxsnew", $chatboxsnew);
 
 
 if (!empty($_GET['do'])) {

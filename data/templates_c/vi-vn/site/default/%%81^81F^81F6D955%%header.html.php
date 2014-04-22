@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 15:50:19
+<?php /* Smarty version 2.6.27, created on 2014-04-19 15:26:30
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1078, false),array('function', 'formhash', 'default/header.html', 1162, false),array('modifier', 'default', 'default/header.html', 1173, false),array('modifier', 'date_format', 'default/header.html', 1187, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1087, false),array('function', 'formhash', 'default/header.html', 1171, false),array('modifier', 'default', 'default/header.html', 1182, false),array('modifier', 'date_format', 'default/header.html', 1196, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -214,12 +214,12 @@ css/editorcss.css">
             $(but).addClass("friending");
             var temp = $(but).html();
             $(but).html("'; ?>
-Đang gửi lời kết bạn<?php echo '");
+Đang xử lý...<?php echo '");
             $.ajax({
                     url: "index.php?do=studypost&action=ajaxFriend&friendid="+friendid,
             }).done(function ( data ) {
                     if( console && console.log ) {
-                        //alert(data);
+                            //alert(data);
                             if(data == "1")
                             {
                                 $(but).removeClass("friending");
@@ -228,6 +228,7 @@ css/editorcss.css">
 <?php echo '");
                                 $(but).html("'; ?>
 Đã gửi lời mời kết bạn<?php echo '");
+                                $(\'.friend_menu_items\').addClass("active");
                             }
                             else
                             {
@@ -237,8 +238,9 @@ css/editorcss.css">
 <?php echo '");
                                 $(but).html("'; ?>
 Kết bạn<?php echo '");
+                                $(\'.friend_menu_items\').removeClass("active");
                             }
-                        }
+                        }                        
             });
     }
     
@@ -521,7 +523,7 @@ function goclicky_custom(meh, url, images, title, summary)
 	var ichatbox = new Array();
 	
 	var companylogo = \''; ?>
-<?php if ($this->_tpl_vars['pb_company']): ?><?php echo $this->_tpl_vars['pb_company']['image']; ?>
+<?php if ($this->_tpl_vars['pb_company'] && $this->_tpl_vars['pb_userinfo']['current_type'] != 6): ?><?php echo $this->_tpl_vars['pb_company']['image']; ?>
 <?php else: ?> <?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
@@ -868,7 +870,8 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 
 		    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
                         <?php echo '
-                            setInterval(function(){ updateChatbox(); }, 15000);
+                            //setInterval(function(){ updateChatbox(); }, 15000);
+                            setInterval(function(){ updateChatboxNew(); }, 15000);
                         '; ?>
 
                         
@@ -878,9 +881,20 @@ if ($this->_foreach['level']['total'] > 0):
         $this->_foreach['level']['iteration']++;
 ?>
                             <?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
-                                getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
+                                //getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
 , true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
 );			    
+                            <?php endif; ?>
+                        <?php endforeach; endif; unset($_from); ?>
+                        
+                        <?php $_from = $this->_tpl_vars['chatboxsnew']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+        $this->_foreach['level']['iteration']++;
+?>
+                            <?php if ($this->_tpl_vars['item'] != ''): ?>
+                                getChatboxNew("<?php echo $this->_tpl_vars['item']; ?>
+", true);
                             <?php endif; ?>
                         <?php endforeach; endif; unset($_from); ?>
 		    <?php endif; ?>		
@@ -1501,7 +1515,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
-        
+        <div class="chat-list-ajax">loading...</div>
     </div>
 </div>
-<?php endif; ?>
+<?php endif; ?>
