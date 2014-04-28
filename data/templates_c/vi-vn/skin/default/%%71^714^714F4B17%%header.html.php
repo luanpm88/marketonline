@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-19 11:22:23
+<?php /* Smarty version 2.6.27, created on 2014-04-28 08:04:52
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1193, false),array('modifier', 'default', 'header.html', 1204, false),array('modifier', 'date_format', 'header.html', 1218, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1232, false),array('modifier', 'default', 'header.html', 1243, false),array('modifier', 'date_format', 'header.html', 1257, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -174,6 +174,23 @@ css/options.css' rel='stylesheet' type='text/css'>
 </style>
 
 <script type="application/x-javascript">
+ 
+ function showCart()
+    {
+        $.ajax({
+	    url: "index.php?do=product&action=getTopCartAjaxNew",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+                $(\'#show_top_cart\').html(data);
+                $(\'#topcart-but\').trigger("click");
+                //cart product image
+                $(\'#cart img\').resizecrop({
+		   width:200,
+		   height:200
+		});
+            }
+        });
+    }
     
     
       function getAnnounce(ann_count)
@@ -350,6 +367,8 @@ function goclicky(meh, url)
 					//$(\'#box_alert\')
 					$(\'#hiddenclicker\').trigger(\'click\');
 				}
+				
+				
 			}
 		});
 	}
@@ -473,6 +492,20 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			\'frameWidth\': 530,
 			\'frameHeight\': 400,
 			\'hideOnContentClick\': false
+		});
+		
+		$("#topcart-but").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false,
+			helpers: { 
+			      title: null
+			}
 		});
 		
 		$(\'.scrollbarleft ul li img\').click(function() {
@@ -1059,7 +1092,16 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 
 		    
 		    
-			
+			<?php $_from = $this->_tpl_vars['chatboxsnew']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+        $this->_foreach['level']['iteration']++;
+?>
+                            <?php if ($this->_tpl_vars['item'] != ''): ?>
+                                getChatboxNew("<?php echo $this->_tpl_vars['item']; ?>
+", true);
+                            <?php endif; ?>
+                        <?php endforeach; endif; unset($_from); ?>
 			
 		    <?php endif; ?>
 		
@@ -1169,7 +1211,9 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		    $(\'body\').click(function(){if($(\'.clicked_note_box\').css(\'display\') == \'block\') $(\'.clicked_note_box\').fadeOut("slow", refreshClickedCompany(\'578\'))});	
 		    $(\'.staticon\').click(function(e){$(\'.over_air_box\').css("display","none");$(\'.clicked_note_box\').toggle();e.stopPropagation();});
 		    
-		
+		   $(\'#topCart\').live("click",function() {
+		       showCart();
+		   });
 	});
 	
 	
@@ -1533,3 +1577,8 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
                          </div>
         </div>
 </div>
+
+<a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
+<div id="show_top_cart">
+    
+</div>

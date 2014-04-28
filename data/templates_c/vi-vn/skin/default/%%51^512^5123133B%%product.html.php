@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-19 09:09:42
+<?php /* Smarty version 2.6.27, created on 2014-04-22 12:18:35
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'product.html', 41, false),array('function', 'pager', 'product.html', 125, false),array('block', 'product', 'product.html', 72, false),array('modifier', 'truncate', 'product.html', 83, false),)), $this); ?>
@@ -211,3 +211,4 @@ unset($_smarty_tpl_vars);
 
 
 
+

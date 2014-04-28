@@ -122,12 +122,16 @@
             else
             {
                       var leaveTop = 0;
+                      var bottomBound = $('#darkf');
+                      if (options.bottomBound) {
+                        bottomBound = $(options.bottomBound);
+                      }
                       if ($('#detail_box #right_detail_banner').height() > $(window).height()) {
                         leaveTop = $('#detail_box #right_detail_banner').height() - $(window).height();
                       }
                       //console.log(settings.topBoundary);
                       //leaveTop = 148;
-                    if($('#darkf').offset().top - $('#topmenu_outer').offset().top - el.height() + leaveTop > 10)
+                    if(bottomBound.offset().top - $('#topmenu_outer').offset().top - el.height() + leaveTop > 10)
                     {
                       
                       var top = $(document).scrollTop(),
@@ -165,7 +169,7 @@
                     else
                     {
                       el.offset({
-                          top: $('#darkf').offset().top - el.height() - 15
+                          top: bottomBound.offset().top - el.height() - 15
                         })
                     }
                     

@@ -770,7 +770,7 @@ ul.products li.product
     color: #FFFFFF;
     float: right;
     font-size: 16px;
-    padding: 10px 30px;
+    padding: 3px 20px;
     text-align: center;
     cursor: pointer;
     border: none;
@@ -1792,7 +1792,7 @@ h1 {
     height: 30px;
     margin-right: 0;
     padding: 5px 5px 5px 5px;
-    width: 188px;
+    width: 187px;
     margin-right: 5px;
 }
 
@@ -1868,14 +1868,14 @@ a.loading
 #product_detail_box {
 
     float: left;
-    margin: -24px 10px 10px;
+    margin: -30px 10px 10px;
     padding-top: 0;
     width: 83%;
 }
 
 #right_detail_banner {
     float: right;
-    margin-top: -59px;
+    margin-top: -66px;
     padding-right: 10px;
     width: 15%;
 }
@@ -4924,7 +4924,7 @@ insitem {
     margin-right: 3px;
 }
 #containerz .postitem {
-    margin-top: -52px;
+    margin-top: -50px;
 }
 .product_listing ul.products li.boxcols img {
     min-height: 180px;
@@ -5811,7 +5811,7 @@ body {
 .success_box h4 {
     color: #333333;
     font-size: 16px;
-    line-height: 22px;
+    line-height: 24px;
 }
 .reg_foot a.gomail {
     background: none repeat scroll 0 0 #3B984C;
@@ -5886,7 +5886,7 @@ body {
     font-size: 14px;
     height: 35px;
     margin-right: 5px;
-    width: 400px;
+    width: 398px;
 }
 #job-search-box .job-search-tab .tab-content input[type="submit"] {
     background: none repeat scroll 0 0 #3B984C;
@@ -6576,7 +6576,7 @@ service.service_title span {
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 5px 20px;
 }
 #product_detail_box ul.product_list_widget li:hover
 {
@@ -8651,7 +8651,7 @@ span.join_group:hover {
 .box-scroll
 {
     margin-top: 0;
-    border: 3px solid #BBBBBB;
+    border: 1px solid #0064D2;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 .parent-menu-title a {
@@ -8707,4 +8707,382 @@ span.join_group:hover {
 .waiting_list .action a:hover
 {
     text-decoration: underline;
+}
+#cart img {
+    height: 160px;
+    visibility: hidden;
+}
+#cart .offer_img a {
+    border: 1px solid #AAAAAA;
+    padding: 2px;
+    float: left;
+}
+#cart .offer_img span img {
+    border: none;
+    padding: 0;
+    height: auto;
+    visibility: visible;
+    width: auto;
+    max-width: none;
+}
+.cart_content table
+{
+    background: #ddd;
+}
+.cart_content table tr{
+    background: #fff;
+}
+.hide_border {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: rgba(0, 0, 0, 0);
+    display: block;
+    float: right;
+    height: 36px;
+    margin: -9px -11px -9px 0;
+    text-indent: -4000px;
+    width: 1px;
+}
+table tbody tr:nth-child(2n) .hide_border {
+    background-color: #F9F9F9;
+}
+.quantity_but {
+    height: 22px;
+    background: #6CBE42;
+}
+.quantity_sel {
+    height: 22px;
+}
+.cart_remove
+{
+    height: 22px;
+    padding: 0 20px;
+    background: #6CBE42;
+}
+table tbody tr td {
+    padding: 8px 10px;
+}
+#cart th {
+    padding: 8px 10px;
+}
+.cart_content table
+{
+    border: 1px solid #aaa;
+}
+.show_top_cart
+{
+    background: #fff;
+    border-radius: 3px;
+}
+.fancybox-overlay
+{
+    background: rgba(0, 0, 0, 0.7) !important;
+}
+.no_pp{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+    float: left;
+    margin: 10px 2px 20px;
+    padding: 30px;
+    text-align: center;
+    width: 353px;
+}
+.box-profile p
+{
+    font-size: 14px;
+    margin-bottom: 0;
+}
+.orderdetail_form
+{
+    width: 100%;
+    padding: 10px;
+}
+.orderdetail_form_ut
+{
+    width: 1000px;
+}
+.orderdetail_form
+{
+    border-width: 2px;
+}
+.cart_link span.outcount {
+    margin-left: 6px;
+    margin-top: -16px;
+}
+#verytopmenu .cart a.cart_link {
+    background: url("../image/cart-icon_small_w.png") no-repeat scroll 5px 4px transparent;
+    padding: 13px 22px;
+}
+#verytopmenu .cart a.cart_link:hover
+{
+    background-color: #71c681;
+}
+#containerz .postitem {
+    
+}
+.page-titlez.mainhotnew
+{
+    margin-top: 10px !important;
+}
+.link_friends .widget h3
+{
+    border-color: #ccc !important;
+}
+.parent-menu-title a {
+    background: none repeat scroll 0 0 #EDF4EF;
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-right: 4px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 100%;
+}
+.product_list_title {
+    font-size: 15px;
+}
+.parent-menu-title a
+{
+    border-bottom: solid 1px #ccc;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+}
+#SearchList.connect_searchx input[type="submit"] {
+    border-left: 1px solid #CCCCCC;
+}
+#SearchList input[type="submit"] {
+    background-position: 5px 8px;
+    height: 33px;
+}
+#SearchList h5 {
+    padding: 4px 10px;
+}
+#SearchList h5 {
+    height: 33px;
+}
+#SearchList input[type="text"], #SearchList select {
+    height: 33px;
+}
+#SearchList.home_search_list select, #SearchList.home_search_list input
+{
+    height: 33px;
+    font-size: 14px;
+}
+#SearchList.home_search_list input[type="submit"]
+{
+    background-position: 5px 5px;
+}
+#SearchList.connect_searchx input[type="text"]
+{
+    width: 319px;
+}
+.space_wrapper .recent-tabs-widget .tabs dd a
+{
+    height: 33px;
+}
+.recent-tabs-widget .tabs dd span
+{
+    bottom: 12px;
+}
+.recent-tabs-widget
+{
+    padding-bottom: 6px;
+}
+.space_wrapper #left-sidebar
+{
+    padding-top: 5px;
+}
+#content .product_listing
+{
+    margin-top: -6px;
+}
+.link_friends {
+    margin-top: -10px;
+}
+#nav_menu-2
+{
+    margin-top: -5px;
+}
+#SearchList.connect_searchx input[type="text"]
+{
+    margin-bottom: 0;
+}
+#SearchList h5
+{
+    margin-bottom: 14px !important;
+}
+.connect_ptitle
+{
+    margin-top: -7px;
+}
+.bottom_industry_list {
+    background: none repeat scroll 0 0 #F0F6F2;
+    border: 1px solid #AAAAAA;
+    clear: both;
+    float: left;
+    margin: 10px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-top: 15px;
+    width: 1180px;
+}
+.bottom_industry_list h3 {
+    background: none repeat scroll 0 0 #D8EADA;
+    border-bottom: 1px solid #AAAAAA;
+    font-size: 18px;
+    margin: -15px 0 10px -20px;
+    padding: 8px 15px;
+    text-align: center;
+}
+.bottom_industry_list h3 a:hover {
+    color: red;
+}
+.bottom_industry_list ul
+{
+    
+}
+.bottom_industry_list ul li
+{
+    list-style: none
+}
+.bottom_industry_list ul li.view-more {
+    margin-left: -20px;
+}
+.bottom_industry_list ul li.view-more a {
+    color: #0064D2;
+    font-size: 12px;
+    font-weight: bold;
+}
+.bottom_industry_list ul li a
+{
+    font-size: 14px;
+    color: #333;
+}
+.bottom_industry_list ul li a:hover
+{
+    color: red;
+}
+.bottom_industry_list ul li.clear
+{
+    clear: both;
+}
+.bottom_industry_list ul li.level0 {
+    background: none repeat scroll 0 0 #FFFFFF;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    float: left;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    padding: 10px;
+    width: 273px;
+}
+.bottom_industry_list ul li.level0:last-child {
+}
+.bottom_industry_list ul li a.level0 {
+    font-weight: bold;
+}
+.bottom_industry_list ul li.level0.more-item {    
+    height: 197px;
+    padding: 75px 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 417px;
+}
+.bottom_industry_list ul li.level0.more-item a {
+    background: none repeat scroll 0 0 #D8EADA;
+    border: 1px solid #CCCCCC;
+    font-size: 24px;
+    padding: 5px 20px;
+}
+.bottom_industry_list ul li a.level0 {
+    color: red;
+}
+.bottom_industry_list ul li a.level0:hover {
+    color: #0064D2;
+}
+.bottom_industry_list ul li ul
+{
+    
+}
+.bottom_industry_list ul li.level1
+{
+    
+}
+.bottom_industry_list ul li a.level1
+{
+    
+}
+#job-search-box .job-search-tab .tab-content #job-learn {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #AAAAAA;
+}
+#job-search-box .job-search-tab ul {
+    border-bottom: 0 solid #83D328;
+}
+#job-search-box .job-search-tab ul li.active a {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #AAAAAA #AAAAAA -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color: #333333;
+    display: block;
+    margin-bottom: -1px;
+    font-weight: bold;
+    color: #3B984C;
+}
+#job-search-box .job-search-tab .tab-content #job-learn {
+    padding: 5px 25px 5px 5px;
+    height: 43px;
+}
+#job-search-box .select2-container .select2-choice
+{
+    width: 325px;
+}
+
+#job-search-box .job-search-tab .tab-content input[type="text"]
+{
+    width: 330px;
+}
+#TopWorkCategory ul li.active a {
+    background: none repeat scroll 0 0 #ECF0E8;
+    color: #333;
+}
+#TopWorkCategory ul li a:hover {
+    background: none repeat scroll 0 0 #F5F5F5;
+}
+.postitem.jobpost
+{
+    margin-top: 0;
+}
+.chat_friend_list .main_list ul li.title {
+    background: none repeat scroll 0 0 #D8EADA;
+    height: auto;
+    min-height: inherit;
+    padding: 5px;
+    text-align: center;
+}
+.banner_top {
+    width: 428px;
 }

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:38
+<?php /* Smarty version 2.6.27, created on 2014-04-28 10:14:33
          compiled from default%5Cstudypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 35, false),array('function', 'formhash', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 205, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 35, false),array('function', 'formhash', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 228, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -167,35 +167,60 @@ image/usericon.jpg  <?php endif; ?>"/>
 </p><?php endif; ?>
                     </div>
                     <div class="controls">
-                        
-                        <?php if ($this->_tpl_vars['pb_userid'] != $this->_tpl_vars['member']['id'] && ! $this->_tpl_vars['friend_request'] && ! $this->_tpl_vars['is_friend']): ?>
-                            <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-                                    <?php if (! $this->_tpl_vars['Friended']): ?>
-                                            <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
-, this)" href="javascript:void(0)">Kết bạn</a>
-                                    <?php else: ?>
-                                            <a class="del_addfriend" onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
-, this)" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
-                                    <?php endif; ?>
-                            <?php else: ?>
-                                    <?php if (! $this->_tpl_vars['Friended']): ?>
-                                        <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+                        <div class="friend_menu">
+                            <?php if ($this->_tpl_vars['pb_userid'] != $this->_tpl_vars['member']['id'] && ! $this->_tpl_vars['friend_request'] && ! $this->_tpl_vars['is_friend']): ?>
+                                <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
+                                        <?php if (! $this->_tpl_vars['Friended']): ?>
+                                                <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
+, this)" href="javascript:void(0)" class="kkkmember">Kết bạn</a>
+                                        <?php else: ?>
+                                                <a onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
+, this)" class="del_addfriend kkkmember" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                                        <?php endif; ?>
+                                <?php else: ?>
+                                        <?php if (! $this->_tpl_vars['Friended']): ?>
+                                            <a class="comment_but" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 logging.php">Kết bạn</a>
-                                    <?php else: ?>
-                                        <a class="comment_but del_addfriend" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+                                        <?php else: ?>
+                                            <a class="comment_but del_addfriend" href="#login-box" href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 logging.php">Đã gửi Lời mời kết bạn</a>
-                                    <?php endif; ?>                                
+                                        <?php endif; ?>                                
+                                <?php endif; ?>
+                            <?php elseif ($this->_tpl_vars['is_friend']): ?>
+                                <a class="" href="javascript:void(0)">
+                                    <img class="friend_checked" src="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+/templates/default/image/check_list.png" />
+                                    Bạn bè
+                                </a>
                             <?php endif; ?>
-                        <?php elseif ($this->_tpl_vars['is_friend']): ?>
-                            <a class="" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'rejectFriend','id' => ($this->_tpl_vars['member']['id'])), $this);?>
+                            
+                            
+                                <div class="friend_menu_items<?php if ($this->_tpl_vars['Friended'] || $this->_tpl_vars['is_friend']): ?> active<?php endif; ?>">
+                                    <div class="friend_menu_items_inner">
+                                        <span class="pointer_topmenu">.</span>
+                                        <ul>
+                                            <li>
+                                                <?php if ($this->_tpl_vars['is_friend']): ?>
+                                                    <a class="" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'rejectFriend','id' => ($this->_tpl_vars['member']['id'])), $this);?>
 ">Hủy kết bạn</a>
-                        <?php endif; ?>
-                        
+                                                <?php endif; ?>
+                                                <?php if (! $this->_tpl_vars['is_friend']): ?>
+                                                    <a class="" href="javascript:void(0)" onclick="studyfriend(<?php echo $this->_tpl_vars['member']['id']; ?>
+, $('.kkkmember'))">Hủy kết bạn</a>
+                                                <?php endif; ?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+                            
+                        </div>    
+                            
                         
                         <?php if ($this->_tpl_vars['pb_userid'] != $this->_tpl_vars['member']['id']): ?>
                             <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-                                <a href="javascript::void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['member']['id']; ?>
-, false, '6')" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Tin nhắn</a>
+                                <a href="javascript::void(0)" onclick="getChatboxNew('<?php echo $this->_tpl_vars['member']['id']; ?>
+x6', false)" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>">Tin nhắn</a>
                             <?php else: ?>
                                 <a title="" class="skin_chat_with_owner comment_but <?php if ($this->_tpl_vars['member']['online']): ?>online<?php endif; ?>" href="#login-box" onclick="">Tin nhắn</a>
                             <?php endif; ?>

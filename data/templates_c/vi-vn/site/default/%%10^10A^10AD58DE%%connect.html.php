@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-21 10:01:09
+<?php /* Smarty version 2.6.27, created on 2014-04-25 14:21:38
          compiled from default%5Cproduct/connect.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/connect.html', 660, false),array('modifier', 'default', 'default\\product/connect.html', 890, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/connect.html', 678, false),array('modifier', 'default', 'default\\product/connect.html', 908, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Trang chủ - Nơi liên kết Chia sẻ giữa các Thành viên")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -228,6 +228,16 @@ unset($_smarty_tpl_vars);
 				  first_offer =  0;
 				}
 				
+				$(\'a,img\').qtip({ // Grab some elements to apply the tooltip to
+				    content: {
+					attr: \'title\'                        
+				    },
+				    position: {
+					target: \'mouse\', // Track the mouse as the positioning target
+					adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
+				    }
+				})
+				
 			}
 		});
 	}
@@ -279,7 +289,15 @@ unset($_smarty_tpl_vars);
 				});
 				
 				
-				
+				$(\'a,img\').qtip({ // Grab some elements to apply the tooltip to
+				    content: {
+					attr: \'title\'                        
+				    },
+				    position: {
+					target: \'mouse\', // Track the mouse as the positioning target
+					adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
+				    }
+				})
 				
 			}
 		});
@@ -305,7 +323,7 @@ unset($_smarty_tpl_vars);
 		if ($(\'#aq-block-5\').height())
 		  pos_searchlist = $(\'#aq-block-5\').height() + 440;
 		else
-		  pos_searchlist = 255;
+		  pos_searchlist = 240;
 	 
 	       $(".hotnewlist").removeClass("active");
 	       $(\'#new_product_but\').addClass("active");
@@ -465,7 +483,7 @@ unset($_smarty_tpl_vars);
 		{
 		  //alert("ayda");
 		  var amount = $(\'.inner_slide\').height() - $(window).height() + 50;
-		  $(\'.outer_slide\').css(\'margin-top\', amount);
+		  $(\'.outer_slide\').css(\'margin-top\', amount + 4);
 		  $(\'.inner_slide\').css(\'margin-top\', -amount);
 		}
 		
@@ -538,13 +556,10 @@ unset($_smarty_tpl_vars);
       <div id="page-title" class="fifteen columns connect_ptitle">
         <a href="javascript:history.back()" class="back"></a>
         <div class="subtitle">
-            <?php if ($this->_tpl_vars['pb_company']): ?><?php echo $this->_tpl_vars['pb_company']['name']; ?>
-<?php else: ?><?php echo $this->_tpl_vars['pb_username']; ?>
-<?php endif; ?>        </div>
+            Trang chủ        </div>
 
                 <h1 class="page-title">
-           <?php echo $this->_tpl_vars['_connect_title']; ?>
- - Liên kết, Chia sẻ</h1>
+          Liên kết & Theo dõi</h1>
 
         <!--<div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
@@ -557,10 +572,10 @@ unset($_smarty_tpl_vars);
     </div>
 
     
-<div class="row" style="height: 52px;">
+<div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 255px">
+                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 240px">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>
@@ -575,8 +590,7 @@ unset($_smarty_tpl_vars);
 	
         <!--<label><?php echo $this->_tpl_vars['_industry']; ?>
 &nbsp;&nbsp;</label>-->
-        <input type="text" id="ProductName" name="q" placeholder="<?php echo $this->_tpl_vars['_search_keyword']; ?>
-" />
+        <input type="text" id="ProductName" name="q" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
 	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title"><?php echo $this->_tpl_vars['_product_category']; ?>
 </span></a><span class="cat_pointer">.</span><span class="product_list_title"></span></h5>
@@ -719,7 +733,7 @@ if ($this->_foreach['level_0']['total'] > 0):
                 <div class="widget-inner">
 		  
 		  
-		  <?php if (true): ?>
+		  <?php if (false): ?>
 			<div class="tooltip-box links-help-box"><span class="pointer-tooltip">...</span><span class="toolbox-close">X</span><div class="tooltip-box-content">
 			  
 			<h2>
@@ -746,7 +760,7 @@ _un.htmls')">Quảng bá gian hàng <strong><?php echo $this->_tpl_vars['pb_comp
 </a>
 		      <!--<a title="<?php echo $this->_tpl_vars['_add_link_help']; ?>
 " href="#add_link" class="top_plus">+</a>-->
-		      <a title="Liên kết để tăng thêm lượt truy cập cho gian hàng &quot;<?php echo $this->_tpl_vars['pb_company']['shop_name']; ?>
+		      <a title="Chia sẻ để tăng thêm lượt truy cập cho gian hàng &quot;<?php echo $this->_tpl_vars['pb_company']['shop_name']; ?>
 &quot;" href="javascript:void(0)" onclick="goclicky(this, '<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['pb_company']['cache_spacename'])), $this);?>
 /<?php echo $this->_tpl_vars['pb_userid']; ?>
 _un.htmls')" class="top_plus linked">Mời bạn bè +</a>
@@ -836,17 +850,17 @@ if ($this->_foreach['level_0']['total'] > 0):
    
   </aside>
   
-  <div id="content" class="eleven columns" style="margin-top: -7px">
+  <div id="content" class="eleven columns" style="margin-top: 0px">
     <div id="main" style="margin-top: -8px;">
 
       
       <div class="page-title">
 
     
-    <div class="subtitle loplo" style="margin-top: 7px;">
+    <div class="subtitle loplo" style="margin-top: 0;">
         <?php echo $this->_tpl_vars['_product_list']; ?>
     </div>
-    <h1 style="font-size: 18px;margin: 0;padding-top: 20px;" class="page-title mainhotnew">
+    <h1 style="font-size: 18px;margin: 0;padding-top: 10px;" class="page-title mainhotnew">
       <a id="new_product_but" class="hotnewlist active" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
       

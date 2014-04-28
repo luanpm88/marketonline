@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-19 09:19:45
+<?php /* Smarty version 2.6.27, created on 2014-04-28 10:57:47
          compiled from default/topmenu_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/topmenu_content.html', 25, false),array('block', 'topmenuindustries', 'default/topmenu_content.html', 31, false),)), $this); ?>
@@ -13,7 +13,7 @@ image/logo-home.png" alt=""></a>
 	    <li>
 		
 		<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatbox('1x2', false)">Hỗ trợ trực tuyến</a>
+		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatboxNew('1x2', false)">Hỗ trợ trực tuyến</a>
 		<?php else: ?>
 		    <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
 		<?php endif; ?>
@@ -54,7 +54,20 @@ image/product_bg.png);'></span></a></span>
 	
 </ul>
 </li>
-<li class="menu-blog" style="visibility: hidden"><span class="menu-item-wrap">
+	
+<li class="menu-blog" style=""><span class="menu-item-wrap">
+<a  href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+" style='background-color:#ffaa31; background-size:cover; background-image:url();' >
+<span class="link-text">Dịch vụ</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/service_bg.png);'></span></a></span>
+<!--<ul>
+	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Mua</span></a></span></li>
+	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Bán</span></a></span></li>
+	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhà Phân phối</span></a></span></li>
+</ul>-->
+</li>
+	
+<li class="menu-blog" style="visibility: hidden;display: none"><span class="menu-item-wrap">
 <a  href="ThuongMai.php" style='background-color:#57BAE8; background-size:cover; background-image:url();' >
 <span class="link-text">Thương mại</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/trade_bg.png);'></span></a></span>
@@ -196,3 +209,4 @@ _un.htmls<?php else: ?><?php echo $this->_tpl_vars['F_URL']; ?>
       </div>
   </div>
 </div>
+

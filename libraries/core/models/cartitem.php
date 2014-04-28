@@ -2,7 +2,7 @@
 class Cartitems extends PbModel {
  	var $name = "Cartitem";
  	var $info;
- 	var $fields = "c.shop_name,ci.id,ci.cart_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.picture as p_picture,p.id as p_id,m.space_name,m.id as member_id";
+ 	var $fields = "c.shop_name,ci.id,ci.cart_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.picture as p_picture,p.id as p_id,m.space_name,m.id as member_id";
  	var $amount;
  	var $instance = NULL;
 	var $condition;
@@ -413,6 +413,19 @@ class Cartitems extends PbModel {
 				."ORDER BY m.space_name";
 				
 			$result = $this->dbstuff->GetArray($sql);
+			
+			foreach($result as $key => $item)
+			{
+				if($item["p_new_price"] != "" && $item["p_new_price"] != 0)
+				{
+					$result[$key]['p_price'] = $item["p_new_price"];
+				}
+				else
+				{
+					$result[$key]['p_price'] = $item["p_price"];
+				}
+			}
+			
 			if(!empty($result)){
 				//var_dump($result);
 				return $this->formatResult($result);
@@ -435,12 +448,25 @@ class Cartitems extends PbModel {
 			$sql = "SELECT ".$this->fields." FROM ".$this->table_prefix."cartitems ci "
 				."LEFT JOIN ".$this->table_prefix."products p ON p.id=ci.product_id "
 				."LEFT JOIN ".$this->table_prefix."members m ON p.member_id=m.id "
+				."LEFT JOIN ".$this->table_prefix."companies c ON p.company_id=c.id "
 				."WHERE {$condition} "
 				."ORDER BY m.space_name";
 				
 			//echo $sql;
 				
 			$result = $this->dbstuff->GetArray($sql);
+			foreach($result as $key => $item)
+			{
+				if($item["p_new_price"] != "" && $item["p_new_price"] != 0)
+				{
+					$result[$key]['p_price'] = $item["p_new_price"];
+				}
+				else
+				{
+					$result[$key]['p_price'] = $item["p_price"];
+				}
+			}
+			
 			if(!empty($result)){
 				//var_dump($result);
 				return $this->formatResult($result);

@@ -1,0 +1,49 @@
+<div id="messagehome">
+
+<a class="but" href="javascript:void(0)">{lang inbox} </a>{if $Count}<span class="outcount"><span class="message_counter">{$Count}</span></span>{/if}
+
+
+    <div id="quick_message_content" class="over_air_box">
+	<div class="pointer"></div>
+	<div class="announce_title">Tin nhắn</div>
+        <ul>
+            {if !$Items}
+                <li style="text-align: center">{lang no_message}</li>
+            {/if}
+            <!--{loop $Items item level key}-->
+		{if !$item.hide}
+		    <li onclick="getChatboxNew('{$item.chatid}x{$item.membertype_id}', false);" {if !$item.read}class="unread" read="0"{/if} chat-id="{$item.id}" mem="{$item.chatid}">
+			<img src="{$item.company_logo}" />
+			<p class="title">{$item.name}</p>
+			<p class="content">{$item.content}</p>
+			<p class="timeinbox">{$item.created}</p>
+		    </li>
+		{/if}
+            <!--{/loop}-->
+        </ul>
+        <a class="inbox_more message_close" href="javascript:void(0)">X {lang close}</a>
+<!--      <a class="inbox_more" href="javascript:void(0)">|</a>   <a class="inbox_more" href="{$SiteUrl}virtual-office/pms.php">{lang read_more}</a>-->
+    </div>
+</div>
+<!--{literal}-->
+<script>
+    
+//$("#quick_message_content ul").mCustomScrollbar({
+//						autoHideScrollbar:true,
+//						theme:"light-thin",
+//						scrollSpeed: 40
+//					});
+$('#quick_message_content').css("display","none");
+$('#quick_message_content').css("visibility","visible");
+$("#messagehome a.but").click(function(e){
+		    $('.over_air_box').css("display","none");
+		    $('#quick_message_content').toggle();
+                    e.stopPropagation();
+		    updateReadTopChat();
+		});
+$("#messagehome .message_close").click(function(){
+		    $('#quick_message_content').css("display","none");
+		});
+                
+</script>
+<!--{/literal}-->

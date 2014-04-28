@@ -14,6 +14,29 @@
                                     </li>
                             <!--{/loop}-->
                         {/if}
+                        {if $pb_userinfo.id == 757}
+                            <li class="title" style="">Đang trực tuyến</li>
+                                                    {if !$online_list}
+                                                        <li style="text-align: center">Chưa có bạn</li>
+                                                    {else}
+                                                        <!--{loop $online_list item level key}-->
+                                                                <li class="{if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x{$item.membertype_id}', false);">
+                                                                    <div class="online_status">.</div>
+                                                                    <img src="{$item.photo}" />
+                                                                    
+                                                                    {if $item.membertype_id == 6}
+                                                                        <h2 class="title">{$item.first_name} {$item.last_name}</h2>
+                                                                        <p class="content">{$item.school_name}</p>
+                                                                    {else}
+                                                                        <h2 class="title">{$item.shop_name}</h2>
+                                                                        <p class="content">{$item.first_name} {$item.last_name}</p>
+                                                                    {/if}
+                                                                    <!--<p class="timeinbox">{$item.created}</p>-->
+                                                                </li>
+                                                        <!--{/loop}-->
+                                                    {/if}
+                        {/if}
                         
             </ul>
 </div>
+

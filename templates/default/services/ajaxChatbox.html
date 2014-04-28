@@ -1,0 +1,20 @@
+<div class="chat-outer">
+    <div class="chat-box" id="chat-box-{$member.id}" rel="{$member.id}" member-type="{$smarty.get.membertypeid}">
+	<div class="chat-title">
+	    <span class="chat-close-but">x</span>
+	    <span class="chat-min-but">-</span>
+	    <h2><a rel="{if $smarty.get.membertypeid == 6}{the_url module=studypost action=memberpage id=`$member.id`}{else}{the_url module=space userid=`$member.space_name`}{/if}" href="javascript:void(0)" class="{if $member.online}online{/if}">{$chattitle}</a></h2>
+	</div>
+	<div class="chat-content">
+	    <div class="chat-list">
+		<ul>
+		    <li class="chatloading"></li>
+		</ul>
+		<div class="notification"></div>
+	    </div>	    
+	</div>
+	<div class="chat-form">
+	    <textarea class="post-content" name="chat[content]"></textarea>
+	</div>
+    </div>
+</div>

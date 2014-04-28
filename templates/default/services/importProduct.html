@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    <script type='text/javascript' src='{$theme_img_path}js/jquery.js?ver=1.8.3'></script>
+    
+<!--{literal}-->
+<script type="application/x-javascript">
+    var idd = 3001;
+    function startImport() {
+        //code
+	if (idd <= 3787)
+	{
+	    jQuery.ajax({
+			url: "index.php?do=offer&action=importProductAjax&id="+idd,
+		    }).done(function ( data ) {
+			    if( console && console.log ) {
+				    
+				    //alert(data);
+				    jQuery('#result').append(idd+". "+data+"<br />");
+				    
+				    idd++;
+				    startImport();
+			    }
+		    });
+	}
+    }
+</script>
+<!--{/literal}-->
+
+</head>
+
+<body>
+
+<input type="button" id="import" value="Import" onclick="startImport();" />
+
+<div id="result"></div>
+
+</body>
+</html>

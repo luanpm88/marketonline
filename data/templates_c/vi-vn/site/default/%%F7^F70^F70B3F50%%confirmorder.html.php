@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-15 12:17:01
+<?php /* Smarty version 2.6.27, created on 2014-04-22 16:56:47
          compiled from default%5Cproduct/confirmorder.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/confirmorder.html', 132, false),)), $this); ?>
@@ -147,18 +147,18 @@ unset($_smarty_tpl_vars);
 				<input type='hidden' name="do" value="product" />
 				<input type='hidden' name="action" value="confirmorder" />
 				
-				<table>
+				<table cellspacing="1">
 					<tr>
-						<th><?php echo $this->_tpl_vars['_picture']; ?>
+						<th width="10%" style="text-align: center"><?php echo $this->_tpl_vars['_picture']; ?>
 </th>
-						<th><?php echo $this->_tpl_vars['_product']; ?>
+						<th style="text-align: center"><?php echo $this->_tpl_vars['_product']; ?>
 </th>
 						
-						<th><?php echo $this->_tpl_vars['_quantity']; ?>
+						<th style="text-align: center"><?php echo $this->_tpl_vars['_quantity']; ?>
 </th>
-						<th><?php echo $this->_tpl_vars['_unit_price']; ?>
+						<th style="text-align: right;padding-right: 43px"><?php echo $this->_tpl_vars['_unit_price']; ?>
  (VNĐ)</th>
-						<th><?php echo $this->_tpl_vars['_sum_price']; ?>
+						<th style="text-align: right;padding-right: 43px"><?php echo $this->_tpl_vars['_sum_price']; ?>
  (VNĐ)</th>					
 						
 					</tr>
@@ -182,21 +182,21 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 								
 							</td>
 							
-							<td align=center><?php echo $this->_tpl_vars['sticky']['quantity']; ?>
+							<td align=center style="text-align: center"><?php echo $this->_tpl_vars['sticky']['quantity']; ?>
 
 								</td>
-							<td align=right style="text-align: right;"><?php echo $this->_tpl_vars['sticky']['p_price']; ?>
+							<td align=right style="text-align: right;padding-right: 43px"><?php echo $this->_tpl_vars['sticky']['p_price']; ?>
 </td>
-							<td align=right style="text-align: right;"><?php echo $this->_tpl_vars['sticky']['p_total']; ?>
+							<td align=right style="text-align: right;padding-right: 43px"><?php echo $this->_tpl_vars['sticky']['p_total']; ?>
 </td>
 							
 							</tr>
 							<?php endforeach; endif; unset($_from); ?>
 							<tr>
-								<td colspan=4 align=right style="text-align: right;"><?php echo $this->_tpl_vars['_total']; ?>
+								<td colspan=4 align=right style="text-align: right;">Tổng cộng
+								<span style="margin: -8px -11px -9px 0;height: 34px;" class="hide_border">.</span></td>
+								<td align=right style="text-align: right;padding-right: 43px"><?php echo $this->_tpl_vars['StickyItems']['total']; ?>
 </td>
-								<td align=right style="text-align: right;"><?php echo $this->_tpl_vars['StickyItems']['total']; ?>
- VNĐ</td>
 							</tr>
 							<tr>
 								<td colspan=5 align=right style="text-align: right;">

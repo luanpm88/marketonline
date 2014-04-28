@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-15 11:43:19
+<?php /* Smarty version 2.6.27, created on 2014-04-28 08:33:42
          compiled from banner.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'banner.html', 10, false),array('modifier', 'date_format', 'banner.html', 63, false),)), $this); ?>

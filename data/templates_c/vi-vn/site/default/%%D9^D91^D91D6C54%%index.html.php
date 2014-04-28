@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-03 13:19:39
+<?php /* Smarty version 2.6.27, created on 2014-04-28 08:57:07
          compiled from default%5Cproduct/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 404, false),array('modifier', 'truncate', 'default\\product/index.html', 411, false),array('modifier', 'default', 'default\\product/index.html', 747, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 408, false),array('modifier', 'truncate', 'default\\product/index.html', 415, false),array('modifier', 'default', 'default\\product/index.html', 751, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -308,6 +308,10 @@ unset($_smarty_tpl_vars);
 			
 			
 		});
+		
+		if (window.location.hash == "#sale") {
+			setTimeout(\'$("#sale_product_but").trigger("click")\',2000);
+		}
 	});
 	
 	
@@ -416,13 +420,13 @@ if ($this->_foreach['level_0']['total'] > 0):
 		  <div class="item <?php if ($this->_tpl_vars['k']%6 == 5 || $this->_tpl_vars['k']%6 == 0): ?>large<?php else: ?>half<?php endif; ?> <?php if ($this->_tpl_vars['k']%6 == 0): ?>odd<?php else: ?><?php if ($this->_tpl_vars['k']%2 == 0): ?>even<?php else: ?>odd<?php endif; ?><?php endif; ?> <?php if ($this->_tpl_vars['item0']['image'] != ''): ?> hasbanner <?php endif; ?>">
                                     <?php if ($this->_tpl_vars['item0']['image'] != "" && false): ?>
 					<img src="<?php echo $this->_tpl_vars['item0']['image']; ?>
-.small.png" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
+.small.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " >
                                     <?php else: ?>
 					<img id="imgitem<?php echo $this->_tpl_vars['item0']['id']; ?>
 " rel="<?php echo $this->_tpl_vars['item0']['image']; ?>
-.small.png" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
+.small.jpg" src="images/green.jpg" style="margin:0 0;" alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " >
 				    <?php endif; ?>
@@ -698,12 +702,11 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
     
   </div>
 
-    <div id="SearchList" style="padding-right: 5px">
+    <div id="SearchList" class="home_search_list" style="padding-right: 5px">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>
 " />
-        <input style="margin-right: 32px" type="text" id="ProductName" name="q" placeholder="<?php echo $this->_tpl_vars['_search_keyword']; ?>
-" />  
+        <input style="margin-right: 32px;padding-right: 5px;" type="text" id="ProductName" name="q" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />  
         <!--<select id="selectarea">
           <option>-- Sắp xếp theo --</option>
           <option value="">Ngày đăng</option>

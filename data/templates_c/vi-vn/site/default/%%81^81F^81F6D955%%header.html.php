@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-19 15:26:30
+<?php /* Smarty version 2.6.27, created on 2014-04-28 09:36:39
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1087, false),array('function', 'formhash', 'default/header.html', 1171, false),array('modifier', 'default', 'default/header.html', 1182, false),array('modifier', 'date_format', 'default/header.html', 1196, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1109, false),array('function', 'formhash', 'default/header.html', 1193, false),array('modifier', 'default', 'default/header.html', 1204, false),array('modifier', 'date_format', 'default/header.html', 1218, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -209,6 +209,23 @@ css/editorcss.css">
 </style>
 
 <script type="application/x-javascript">
+    
+    function showCart()
+    {
+        $.ajax({
+	    url: "index.php?do=product&action=getTopCartAjaxNew",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+                $(\'#show_top_cart\').html(data);
+                $(\'#topcart-but\').trigger("click");
+                //cart product image
+                $(\'#cart img\').resizecrop({
+		   width:200,
+		   height:200
+		});
+            }
+        });
+    }
     
     function studyfriend(friendid, but) {
             $(but).addClass("friending");
@@ -472,28 +489,22 @@ function goclicky_custom(meh, url, images, title, summary)
 				}
 				
 				if(item) item.removeClass(\'loading\');
+                                
+                                if (param != "") {
+                                    //showCart();
+                                }
 			}
 		});
 	}
 	
 	function removeCartItem(id, row, down) {
-		//code
-		//alert(down.replace(/\\./g, ""));
-		//alert($.number($(\'#cart_total\').html().replace(/\\./g, "") - down.replace(/\\./g, ""), 0, \',\', \'.\'));
-		
-		$.ajax({
-			url: "index.php?do=product&action=add_cart&task=remove&cartitemid="+id,
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				//alert(data);
-				//$(row).parent().parent().fadeOut();
-				//$(\'#cart_count\').html($(\'#cart_count\').html()-1);
-				//
-				//$(\'#cart_total\').html($.number($(\'#cart_total\').html().replace(/\\./g, "") - down.replace(/\\./g, ""), 0, \',\', \'.\'));
-                                
-                                getCart();				
-			}
-		});
+            $.ajax({
+                    url: "index.php?do=product&action=add_cart&task=remove&cartitemid="+id,
+            }).done(function ( data ) {
+                if( console && console.log ) {
+                    getCart();				
+                }
+            });
 	}
 	
 	function getInbox() {
@@ -537,9 +548,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		
 		$(\'.thumbnails a\').eq(4).css(\'margin-right\', \'0\');
 		
-		getCart();
-		getInbox();
-		getTopChat();
+		
 		//$(\'a.cart_link\').click(function(){
 		//	$(\'.item_rows\').toggle();
 		//});
@@ -730,6 +739,20 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			      title: null
 			}
 		});
+                
+                $("#topcart-but").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false,
+			helpers: { 
+			      title: null
+			}
+		});
 		
 		//for offer
 		$("#offerbox-but").fancybox({
@@ -772,7 +795,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		    }
 		});
 		
-        	$(\'#right_detail_banner\').stickyScroll({ container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
+        	$(\'#right_detail_banner\').stickyScroll({bottomBound: ".bottom_industry_list", container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
 		//$(\'#topmenu_outer\').stickyScroll({ container: \'#topmenu_outer\', leftBanner: false, topbound: 275.1});
 		 
 		//console.log("zzzzz");
@@ -861,44 +884,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		$(\'body\').click(function(){$(\'#quick_inbox_content\').fadeOut();$(\'#quick_message_content\').fadeOut();});
 		$(\'#inboxhome a.but\').click(function(event){$(\'#quick_inbox_content\').toggle();event.stopPropagation();});
 		
-		var ann_count = 0;
-		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 30000);
-
-		//chatbox get new arrival
-		//chatboxs
-		'; ?>
-
-		    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-                        <?php echo '
-                            //setInterval(function(){ updateChatbox(); }, 15000);
-                            setInterval(function(){ updateChatboxNew(); }, 15000);
-                        '; ?>
-
-                        
-                        <?php $_from = $this->_tpl_vars['chatboxs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
-        $this->_foreach['level']['iteration']++;
-?>
-                            <?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
-                                //getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
-, true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
-);			    
-                            <?php endif; ?>
-                        <?php endforeach; endif; unset($_from); ?>
-                        
-                        <?php $_from = $this->_tpl_vars['chatboxsnew']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
-        $this->_foreach['level']['iteration']++;
-?>
-                            <?php if ($this->_tpl_vars['item'] != ''): ?>
-                                getChatboxNew("<?php echo $this->_tpl_vars['item']; ?>
-", true);
-                            <?php endif; ?>
-                        <?php endforeach; endif; unset($_from); ?>
-		    <?php endif; ?>		
-		<?php echo '
+		
 		
 		
 		if (window.location.hash == "#welcomenew") {
@@ -932,6 +918,21 @@ if ($this->_foreach['level']['total'] > 0):
                 setInterval(\'getChatFriendList('; ?>
 <?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
 <?php echo ');\',60000);
+                
+                //cart product image
+                $(\'#cart img\').resizecrop({
+		   width:200,
+		   height:200
+		});
+                
+                $(\'#topCart\').live("click",function() {
+                    showCart();
+                });
+                
+                $(\'.bottom_industry_list ul li.view-more a\').live("click",function(){
+                    $(this).parent().parent().find(\'li\').removeClass("hide");
+                    $(this).remove();
+                });
 	});
 	
         
@@ -1090,20 +1091,32 @@ $(document).scroll(function() {
 
 <a id="hiddenclicker" href="#box_alert" style="display: none">Hidden Clicker</a>
 <div id="box_alert" style="display: none">
-	
-	<div style="padding: 20px;width: 300px">
-			<h4><?php echo $this->_tpl_vars['_added_to_cart']; ?>
-</h4>
-<br />
-			<p>
-				<a id="add_paragraph" title="Add" class="button button-blue" href="index.php?do=product&action=add_cart"><?php echo $this->_tpl_vars['_go_to_cart']; ?>
+    
+    <div style="width:400px;">
+        <div class="fifteen columns" id="page-title" style="padding-left: 20px;margin-top: 5px;">
+        
+                <h1 class="page-title">
+                                <strong><?php echo $this->_tpl_vars['_cart']; ?>
+</strong>                    </h1>
+        
+                <div class="breadcrumbs" style="width:auto"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+"><?php echo $this->_tpl_vars['_home_page']; ?>
+</a> <span class="delim">/</span><a href="index.php?do=product"><?php echo $this->_tpl_vars['_product_center']; ?>
+</a><span class="delim">/</span><?php echo $this->_tpl_vars['_cart']; ?>
+ </div>
+        
+            </div>
+                            <div class="qiugouleftcon carttable" style="padding: 20px">
+                                <p style="" class="no_pp" style="padding: 15px;"><?php echo $this->_tpl_vars['_added_to_cart']; ?>
+!
+                                    <br /><br />
+                                    <a id="add_paragraph" title="Vào giỏ hàng" class="button button-blue" href="javascript:void(0)" onclick="showCart()" style="margin-right: 10px;"><?php echo $this->_tpl_vars['_go_to_cart']; ?>
 </a>
-				&nbsp;
-				<a href="javascript:$.fancybox.close();"><?php echo $this->_tpl_vars['_close']; ?>
-</a>
-			</p>
-			
-	</div>
+                                    <a id="add_paragraph" title="Tiếp tục mua" class="button button-blue" href="javascript:void(0)" onclick="javascript:$.fancybox.close();">Tiếp tục mua</a>
+                                </p>
+                                
+                            </div>
+        </div>
 	
    </div>
 
@@ -1511,7 +1524,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
         </div>
 </div>
 
-<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6): ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['id'] == 757): ?>
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
@@ -1519,3 +1532,8 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
     </div>
 </div>
 <?php endif; ?>
+
+<a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
+<div id="show_top_cart">
+    
+</div>

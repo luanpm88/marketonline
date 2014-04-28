@@ -209,6 +209,10 @@ if (!empty($_GET['do'])) {
 	
 	//$setvar("FACE", $FACE);
 	
+	//listing main industries
+	$industries = $industrybd->getCacheIndustry();
+	setvar("industries",$industries);
+	
 	setvar("fimages", $imageface);
 	setvar("count_fimages", count($imageface));
 	

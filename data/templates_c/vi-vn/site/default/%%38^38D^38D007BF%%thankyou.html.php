@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-15 13:24:57
+<?php /* Smarty version 2.6.27, created on 2014-04-22 16:27:38
          compiled from default%5Cproduct/thankyou.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/thankyou.html', 84, false),)), $this); ?>
@@ -53,7 +53,7 @@ unset($_smarty_tpl_vars);
 
 <div class="row res_box res_done_box flash_boxz" style="clear: both;
     margin: 10px auto;
-    width: 500px;">
+    width: 510px;">
     <h2><?php echo $this->_tpl_vars['_thank_for_confirm']; ?>
 </h2>
     <div class="success_box">

@@ -546,12 +546,11 @@ jQuery(document).ready(function($) {
 				
 				<!--{foreach from=$Forms name=form item=item1 key=key1}-->				
 					<tr>
-					   <th> {$item1.label}{lang colon}{if $key1 == 6 || $key1 == 7}<font class="red">*</font>{/if}</th>
+					   <th> {$item1.label}{lang colon}{if $key1 == 6 || ($getvar.type != 'service' && $key1 == 7)}<font class="red">*</font>{/if}</th>
 					   <td class="tdright"><font color="#666666">
-					     <input placeholder="{$item1.description}" name="data[formitem][{$key1}]" type="text" id="{$item1.id}" value="{$item1.value}" {if $key1 == 6 || $key1 == 7}class="required"{/if}></font>
-					   
+					     <input placeholder="{$item1.description}" name="data[formitem][{$key1}]" type="text" id="{$item1.id}" value="{$item1.value}" {if $key1 == 6 || ($getvar.type != 'service' && $key1 == 7)}class="required"{/if}></font>
 					   </td>
-					 </tr>
+					</tr>
 				<!--{/foreach}-->
 				
 					<tr>
@@ -635,17 +634,11 @@ jQuery(document).ready(function($) {
 							  <!--{if $item.id}-->
 							  &nbsp;<a class="preview_link" href="{the_url module=product id=`$item.id`}" title="{lang preview}{$item.name}" target="_blank" style="text-decoration:underline;color:blue;">{lang preview}</a>
 							  <!--{/if}-->
-        
 	</form>
 	  
 	
 	<br />
-	
 
-
-
-
-	
 	<div id="uploadImageVideo">
 		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
 		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">

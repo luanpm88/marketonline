@@ -117,6 +117,23 @@
 </style>
 
 <script type="application/x-javascript">
+ 
+ function showCart()
+    {
+        $.ajax({
+	    url: "index.php?do=product&action=getTopCartAjaxNew",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+                $('#show_top_cart').html(data);
+                $('#topcart-but').trigger("click");
+                //cart product image
+                $('#cart img').resizecrop({
+		   width:200,
+		   height:200
+		});
+            }
+        });
+    }
     
     
       function getAnnounce(ann_count)
@@ -285,6 +302,8 @@ function goclicky(meh, url)
 					//$('#box_alert')
 					$('#hiddenclicker').trigger('click');
 				}
+				
+				
 			}
 		});
 	}
@@ -404,6 +423,20 @@ function goclicky(meh, url)
 			'frameWidth': 530,
 			'frameHeight': 400,
 			'hideOnContentClick': false
+		});
+		
+		$("#topcart-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			helpers: { 
+			      title: null
+			}
 		});
 		
 		$('.scrollbarleft ul li img').click(function() {
@@ -906,7 +939,11 @@ function goclicky(meh, url)
 			<!--{/literal}-->
 		    
 		    
-			
+			{loop $chatboxsnew item level key}
+                            {if $item != ''}
+                                getChatboxNew("{$item}", true);
+                            {/if}
+                        {/loop}
 			
 		    <!--{/if}-->
 		
@@ -1010,7 +1047,9 @@ function goclicky(meh, url)
 		    $('body').click(function(){if($('.clicked_note_box').css('display') == 'block') $('.clicked_note_box').fadeOut("slow", refreshClickedCompany('578'))});	
 		    $('.staticon').click(function(e){$('.over_air_box').css("display","none");$('.clicked_note_box').toggle();e.stopPropagation();});
 		    
-		
+		   $('#topCart').live("click",function() {
+		       showCart();
+		   });
 	});
 	
 	
@@ -1332,4 +1371,9 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
                             
                          </div>
         </div>
+</div>
+
+<a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
+<div id="show_top_cart">
+    
 </div>

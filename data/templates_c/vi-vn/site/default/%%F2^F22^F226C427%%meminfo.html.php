@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-15 08:29:54
+<?php /* Smarty version 2.6.27, created on 2014-04-22 17:03:59
          compiled from default%5Cproduct/meminfo.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'default\\product/meminfo.html', 418, false),)), $this); ?>
@@ -274,14 +274,14 @@ unset($_smarty_tpl_vars);
 			<form name="offer_list_frm" id="cart" method="post" onsubmit="return checkConfirmOrderFields();">
 
 
-<div class="orderdetail_form_ut">
+<div class="orderdetail_form_ut" style="width:900px">
 <h3 class="head"><?php echo $this->_tpl_vars['_customer_info']; ?>
 </h3>
 		<!--<h2>Thông tin người mua</h2>   -->
                 <p class="hint"><?php echo $this->_tpl_vars['_member_info_announce']; ?>
 </p>
 		
-	<div class="checkInfor orderdetail_form">
+	<div class="checkInfor orderdetail_form" style="padding:20px">
                         
             
             <div class="clearfix bg-blockItem boderStore" style="margin-top:20px;">
@@ -441,9 +441,9 @@ unset($_smarty_tpl_vars);
           
             <div class="clearfix"></div>
             <div class="messforSell">
-                <span style=""><?php echo $this->_tpl_vars['_message_for_buyer']; ?>
+                <span style="font-size: 14px;margin-top: 20px;font-size:18px"><?php echo $this->_tpl_vars['_message_for_buyer']; ?>
 </span>
-		<textarea id="message" type="text" name="data[order][message]" value="" style="" class="bgInput"></textarea>
+		<textarea style="max-width: 858px;width:858px;" id="message" type="text" name="data[order][message]" value="" style="" class="bgInput"></textarea>
             </div>
             <div class="boxGray clearfix ">
                   <a href="?portal=market&amp;page=shopping_cart" class="btn-small SGray btCheck"><span><?php echo $this->_tpl_vars['_back']; ?>

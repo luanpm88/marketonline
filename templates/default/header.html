@@ -143,6 +143,23 @@
 
 <script type="application/x-javascript">
     
+    function showCart()
+    {
+        $.ajax({
+	    url: "index.php?do=product&action=getTopCartAjaxNew",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+                $('#show_top_cart').html(data);
+                $('#topcart-but').trigger("click");
+                //cart product image
+                $('#cart img').resizecrop({
+		   width:200,
+		   height:200
+		});
+            }
+        });
+    }
+    
     function studyfriend(friendid, but) {
             $(but).addClass("friending");
             var temp = $(but).html();
@@ -388,28 +405,22 @@ function goclicky_custom(meh, url, images, title, summary)
 				}
 				
 				if(item) item.removeClass('loading');
+                                
+                                if (param != "") {
+                                    //showCart();
+                                }
 			}
 		});
 	}
 	
 	function removeCartItem(id, row, down) {
-		//code
-		//alert(down.replace(/\./g, ""));
-		//alert($.number($('#cart_total').html().replace(/\./g, "") - down.replace(/\./g, ""), 0, ',', '.'));
-		
-		$.ajax({
-			url: "index.php?do=product&action=add_cart&task=remove&cartitemid="+id,
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				//alert(data);
-				//$(row).parent().parent().fadeOut();
-				//$('#cart_count').html($('#cart_count').html()-1);
-				//
-				//$('#cart_total').html($.number($('#cart_total').html().replace(/\./g, "") - down.replace(/\./g, ""), 0, ',', '.'));
-                                
-                                getCart();				
-			}
-		});
+            $.ajax({
+                    url: "index.php?do=product&action=add_cart&task=remove&cartitemid="+id,
+            }).done(function ( data ) {
+                if( console && console.log ) {
+                    getCart();				
+                }
+            });
 	}
 	
 	function getInbox() {
@@ -449,9 +460,7 @@ function goclicky_custom(meh, url, images, title, summary)
 		
 		$('.thumbnails a').eq(4).css('margin-right', '0');
 		
-		getCart();
-		getInbox();
-		getTopChat();
+		
 		//$('a.cart_link').click(function(){
 		//	$('.item_rows').toggle();
 		//});
@@ -642,6 +651,20 @@ function goclicky_custom(meh, url, images, title, summary)
 			      title: null
 			}
 		});
+                
+                $("#topcart-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			helpers: { 
+			      title: null
+			}
+		});
 		
 		//for offer
 		$("#offerbox-but").fancybox({
@@ -684,7 +707,7 @@ function goclicky_custom(meh, url, images, title, summary)
 		    }
 		});
 		
-        	$('#right_detail_banner').stickyScroll({ container: '#right_detail_banner', leftBanner: true, topbound: 275.1 });
+        	$('#right_detail_banner').stickyScroll({bottomBound: ".bottom_industry_list", container: '#right_detail_banner', leftBanner: true, topbound: 275.1 });
 		//$('#topmenu_outer').stickyScroll({ container: '#topmenu_outer', leftBanner: false, topbound: 275.1});
 		 
 		//console.log("zzzzz");
@@ -759,31 +782,7 @@ function goclicky_custom(meh, url, images, title, summary)
 		$('body').click(function(){$('#quick_inbox_content').fadeOut();$('#quick_message_content').fadeOut();});
 		$('#inboxhome a.but').click(function(event){$('#quick_inbox_content').toggle();event.stopPropagation();});
 		
-		var ann_count = 0;
-		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 30000);
-
-		//chatbox get new arrival
-		//chatboxs
-		{/literal}
-		    {if $pb_username!=""}
-                        {literal}
-                            //setInterval(function(){ updateChatbox(); }, 15000);
-                            setInterval(function(){ updateChatboxNew(); }, 15000);
-                        {/literal}
-                        
-                        {loop $chatboxs item level key}
-                            {if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
-                                //getChatbox({$item.userid}, true, {$item.typeid});			    
-                            {/if}
-                        {/loop}
-                        
-                        {loop $chatboxsnew item level key}
-                            {if $item != ''}
-                                getChatboxNew("{$item}", true);
-                            {/if}
-                        {/loop}
-		    {/if}		
-		{literal}
+		
 		
 		
 		if (window.location.hash == "#welcomenew") {
@@ -813,6 +812,21 @@ function goclicky_custom(meh, url, images, title, summary)
                 //get chat griend list
                 getChatFriendList({/literal}{$pb_userinfo.id}{literal});
                 setInterval('getChatFriendList({/literal}{$pb_userinfo.id}{literal});',60000);
+                
+                //cart product image
+                $('#cart img').resizecrop({
+		   width:200,
+		   height:200
+		});
+                
+                $('#topCart').live("click",function() {
+                    showCart();
+                });
+                
+                $('.bottom_industry_list ul li.view-more a').live("click",function(){
+                    $(this).parent().parent().find('li').removeClass("hide");
+                    $(this).remove();
+                });
 	});
 	
         
@@ -967,17 +981,25 @@ $(document).scroll(function() {
 
 <a id="hiddenclicker" href="#box_alert" style="display: none">Hidden Clicker</a>
 <div id="box_alert" style="display: none">
-	
-	<div style="padding: 20px;width: 300px">
-			<h4>{lang added_to_cart}</h4>
-<br />
-			<p>
-				<a id="add_paragraph" title="Add" class="button button-blue" href="index.php?do=product&action=add_cart">{lang go_to_cart}</a>
-				&nbsp;
-				<a href="javascript:$.fancybox.close();">{lang close}</a>
-			</p>
-			
-	</div>
+    
+    <div style="width:400px;">
+        <div class="fifteen columns" id="page-title" style="padding-left: 20px;margin-top: 5px;">
+        
+                <h1 class="page-title">
+                                <strong>{lang cart}</strong>                    </h1>
+        
+                <div class="breadcrumbs" style="width:auto"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="index.php?do=product">{lang product_center}</a><span class="delim">/</span>{lang cart} </div>
+        
+            </div>
+                            <div class="qiugouleftcon carttable" style="padding: 20px">
+                                <p style="" class="no_pp" style="padding: 15px;">{lang added_to_cart}!
+                                    <br /><br />
+                                    <a id="add_paragraph" title="Vào giỏ hàng" class="button button-blue" href="javascript:void(0)" onclick="showCart()" style="margin-right: 10px;">{lang go_to_cart}</a>
+                                    <a id="add_paragraph" title="Tiếp tục mua" class="button button-blue" href="javascript:void(0)" onclick="javascript:$.fancybox.close();">Tiếp tục mua</a>
+                                </p>
+                                
+                            </div>
+        </div>
 	
    </div>
 
@@ -1337,7 +1359,7 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
         </div>
 </div>
 
-{if $pb_userinfo.current_type == 6}
+{if $pb_userinfo.current_type == 6 || $pb_userinfo.id == 757}
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
@@ -1345,3 +1367,8 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
     </div>
 </div>
 {/if}
+
+<a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
+<div id="show_top_cart">
+    
+</div>

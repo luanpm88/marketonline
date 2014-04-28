@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-03 15:39:50
+<?php /* Smarty version 2.6.27, created on 2014-04-28 12:59:47
          compiled from default/studypost/_top_user_info.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_top_user_info.html', 2, false),)), $this); ?>

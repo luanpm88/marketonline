@@ -19,6 +19,13 @@ function smarty_function_the_url($params){
 					$return = URL."index.php?do=product";
 				}
 				break;
+			case 'service_main':
+				if ($rewrite_able) {
+					$return = URL."services";
+				}else{
+					$return = URL."index.php?do=product&action=services";
+				}
+				break;
 			case "announce":
 				if ($rewrite_able) {
 					$return = URL."$module/detail/".$id.".html";
@@ -203,6 +210,10 @@ function smarty_function_the_url($params){
 					{
 						$return = URL."search/tag/keyid_".$tag.".html";
 					}
+					else if($level == "search")
+					{
+						$return = URL."index.php?do=product&level=search&tag=".$tag;
+					}
 				}else{
 					$return = URL."index.php?do=product&level=".$level."&industryid=".$industryid;
 					if($action == 'postcomment')
@@ -216,6 +227,10 @@ function smarty_function_the_url($params){
 					else if($action == 'search')
 					{
 						$return = URL."index.php?do=product&action=search&tag=".$tag;
+					}
+					else if($level == "search")
+					{
+						$return = URL."index.php?do=product&level=search&tag=".$tag;
 					}
 				}
 				break;

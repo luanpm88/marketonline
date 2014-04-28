@@ -699,7 +699,17 @@ class Members extends PbModel {
 			}
 		}		
 		return false;
-	}	
+	}
+	function getOnlineIds()
+	{
+		$users = $this->getUserOnlines();
+		$ids = array();
+		foreach($users as $key => $item)
+		{
+			$ids[] = $item["MemberID"];			
+		}		
+		return $ids;
+	}
 	function getOtherMembertypes($member_id)
 	{
 		uses("Membermembertype");
@@ -811,6 +821,62 @@ class Members extends PbModel {
 		}
 		//var_dump($members);
 		return $members;
+	}
+	
+	function getOnlineChatList($user_id)
+	{
+		uses("area");
+ 		$area = new Areas();
+		
+		$ids = $this->getOnlineIds();
+		//var_dump(implode(",",$ids));
+		
+		$conditions = array("Member.id IN (".implode(",",$ids).")");
+		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON Member.id=c.member_id";
+		$members = $this->findAll("c.picture as c_picture,c.shop_name,Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		//var_dump($members);
+		$exsit = array();
+		$result = array();
+		foreach($members as $key => $item)
+		{		
+			$members[$key]['link_people'] = $members[$key]['link_man'];
+ 			
+			if($members[$key]["address"])
+			{
+				$members[$key]["address_s"] = $members[$key]["address"];
+				$members[$key]["address"] = $members[$key]["address"].", ".$area->getFullName($members[$key]["area_id"]);
+			}
+			
+			if($item["membertype_id"] != 6 && $item["c_picture"] != "")
+			{
+				$members[$key]['photo'] = URL.pb_get_attachmenturl($item["c_picture"], '', 'small');;
+				
+			}
+			else
+			{
+				if (empty($members[$key]['photo'])) {
+					$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				}else{
+					$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+				}
+				
+			}
+			
+			
+			$members[$key]['online'] = 1;
+			
+			if(!in_array($item["id"],$exsit))
+			{
+				$exsit[] = $item["id"];
+				$result[] = $members[$key];
+			}
+		}
+		//var_dump($members);
+		return $result;
 	}
 	
 	function belongToGroup()

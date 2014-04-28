@@ -76,6 +76,11 @@ if (!empty($memberinfo)) {
 	$group['name'] = $g['name'];
 	$group['image'] = $g['avatar'];
 	setvar("group", $group);
+	
+	
+	
+	
+	
 	template("index");
 }else{
 	flash('invalid_user');

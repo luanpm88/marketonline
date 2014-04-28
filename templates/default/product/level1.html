@@ -51,6 +51,7 @@
 						  
 						  if (industryid) {
 						      //getFilterProducts() in custom.js
+						      $('#ProductName').val("");
 						      ajaxListProduct(getFilterProducts());
 						  }
 						 
@@ -67,14 +68,10 @@
 				    
 				    //update parent menu link
 				      $('.parent-menu-title').html($('.box-level'+(levelx-1)+' li.active a').clone());
-				//      $('.parent-menu-title').live("click",function() {
-				//	industryid = $(this).find("a").attr('rel');
-				//
-				//	if (industryid) {
-				//	    ajaxListProduct(getFilterProducts());
-				//	    ajaxLoadMenu(industryid, parseInt(levelx)+1);
-				//	}
-				//      });
+				      if (industryid == 0) {
+					$('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục sản phẩm</a>");
+					$('.product_list_title').html(" / Tìm kiếm");
+				      }
 				    
 				  if (levelx == '2') {
 				    $('.s-scroll').animate({ marginLeft: '-240px' }, 500);
@@ -93,35 +90,18 @@
 					    theme:"light-thin"
 				    });
 				    
-				    
-				//    $('.box-level'+level+' ul li a.mback').click(function() {
-				//      //$('.s-scroll').animate({ marginLeft: '0px' }, 500);
-				//      //ajaxLoadMenu($(this).attr("rel"), '2', $(this));
-				//      //alert(level-3);
-				//      if (level-3 < 0) {
-				//	$('a.all_p').trigger('clicky');
-				//      }
-				//      else
-				//      {
-				//	$('.product_list_title a').eq(level-3).trigger('click');
-				//      }
-				//    });				
-				
-				    				    
 				    $('.box-level'+level+' ul li a.item').click(function() {
 				      ajaxLoadMenu($(this).attr("rel"), parseInt(level)+1, $(this));				      
 				    });
 				    
-				    				    
-				    
-				    
-				    
 				    $('.box-level'+level+' ul.menu li a').click(function() {
-
+						  
 						  industryid = $(this).attr('rel');
+						  
 						  
 						  if (industryid) {
 						     //getFilterProducts() in custom.js
+						     $('#ProductName').val("");
 						    ajaxListProduct(getFilterProducts());
 						  }
 						 
@@ -163,10 +143,6 @@
 			}
 		}).done(function ( data ) {
 			if( console && console.log ) {
-				//console.log("Sample of data:", data.slice(0, 200));
-				//alert($(data).filter(".products_0").html());
-				//$('#list_product_ajax').html(data);
-				//alert(data);
 				for (var j=0; j < 5; j++) {
 				    $('#list_product_ajax'+j+' ul').html("");
 				}
@@ -218,7 +194,7 @@
 	}
 	
 	 function resetFilter(args) {
-	    $('#ProductName').val("");
+	    //$('#ProductName').val("");
 	    $('#dataProductIndustryId1').val(0);
 	    $('#dataProductIndustryId2').val(0);
 	    $('#dataProductIndustryId3').val(0);
@@ -269,7 +245,6 @@
 					adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
 				    }
 				})
-				
 			}
 		});
 	}
@@ -294,7 +269,7 @@
 	  if ($('#aq-block-5').height())
 	    pos_searchlist = $('#aq-block-5').height() + 440;
 	  else
-	    pos_searchlist = 278;
+	    pos_searchlist = 263;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -389,24 +364,6 @@
 		});
 		
 		$('#search_list_but').click(function() {
-			
-			//get industry select
-			//if ($('#dataProductIndustryId3').val() != "0") {
-			//	//code
-			//	industryid = $('#dataProductIndustryId3').val();
-			//	//alert("dsds");
-			//} else if ($('#dataProductIndustryId2').val() != "0") {
-			////code
-			//	industryid = $('#dataProductIndustryId2').val();
-			//} else
-			//{
-			//	industryid = $('#dataProductIndustryId1').val();
-			//}
-			//
-			//alert(industryid);
-			//getFilterProducts() in custom.js
-			
-			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
 		});
 		
@@ -428,6 +385,7 @@
 			
 			if (industryid) {
 			    //getFilterProducts() in custom.js
+			    $('#ProductName').val("");
 			    ajaxListProduct(getFilterProducts());
 			}
 		});
@@ -700,10 +658,10 @@
 </div>
 
     
-<div class="row" style="height: 52px;">
+<div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 278px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 263px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="{lang search}" />
@@ -716,9 +674,12 @@
 	</div>
 	
         <!--<label>{lang industry}&nbsp;&nbsp;</label>-->
-        <input type="text" id="ProductName" name="q" placeholder="{lang search_keyword}" />
+        <input type="text" id="ProductName" name="q" value="{$keyword}" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
-	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title"></span></h5>
+	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title">
+	  
+	  
+	</span></h5>
 	
 	<section style="background: none; width: 230px" class="widget-1 widget-first widget widget_nav_menu widget_recent_products nav-products-menu connect_menu" id="nav_menu-2">
 	  <div class="widget-inner">
@@ -848,16 +809,16 @@
    
   </aside>
   
-  <div id="content" class="eleven columns" style="margin-top: -13px">
+  <div id="content" class="eleven columns" style="margin-top: -16px">
     <div id="main">
 
       
       <div class="page-title">
 
     
-    <div class="subtitle loplo" style="margin-top: 12px;">
+    <div class="subtitle loplo" style="margin-top: 8px;">
         {lang product_list}    </div>
-    <h1 style="font-size: 18px;margin: 0;padding-top: 7px;" class="page-titlez mainhotnew">
+    <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <a id="new_product_but" class="hotnewlist active" href="javascript:void(0)">{lang new_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;
       
       <!-- for sale -->

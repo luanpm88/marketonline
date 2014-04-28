@@ -1155,8 +1155,11 @@ class Studypost extends PbController {
 		if(isset($_GET["id"]))
 		{
 			$members = $this->member->getFriendChatList($_GET["id"]);
+			$online_list = $this->member->getOnlineChatList($_GET["id"]);
+			//var_dump($online_list);
 		}
 		setvar("members",$members);
+		setvar("online_list",$online_list);
 		setvar("count",count($members));
 		$this->render("studypost/getChatFriendList");
 	}

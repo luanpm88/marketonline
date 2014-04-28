@@ -43,6 +43,36 @@
                        });
 		 });
 		 
+		getCart();
+		getInbox();
+		getTopChat();
+		 
+		 
+		 var ann_count = 0;
+		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 30000);
+
+		//chatbox get new arrival
+		//chatboxs
+		{/literal}
+		    {if $pb_username!=""}
+                        {literal}
+                            //setInterval(function(){ updateChatbox(); }, 15000);
+                            setInterval(function(){ updateChatboxNew(); }, 15000);
+                        {/literal}
+                        
+                        {loop $chatboxs item level key}
+                            {if $item.userid != '' && $item.userid != 0 && $item.typeid != ''}
+                                //getChatbox({$item.userid}, true, {$item.typeid});			    
+                            {/if}
+                        {/loop}
+                        
+                        {loop $chatboxsnew item level key}
+                            {if $item != ''}
+                                getChatboxNew("{$item}", true);
+                            {/if}
+                        {/loop}
+		    {/if}		
+		{literal}
 		
 	});
   

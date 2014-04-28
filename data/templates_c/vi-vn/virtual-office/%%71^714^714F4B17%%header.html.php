@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-21 10:56:21
+<?php /* Smarty version 2.6.27, created on 2014-04-28 08:33:17
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 1166, false),array('function', 'the_url', 'header.html', 1188, false),array('function', 'formhash', 'header.html', 1248, false),)), $this); ?>
@@ -282,7 +282,7 @@ images/style.css" rel="stylesheet" type="text/css">
 	var result = \'<li class="\'+item.me+\'" rel="\'+item.created_or+\'" chat-id="\'+item.id+\'" read="\'+item.read+\'">\'
                             +\'<span class="datetimec">\'+item.created+\'</span>\'
                             +\'<img width="40" height="40" src="\'+item.company_logo+\'" class="avatar">\'
-                            +item.content+\'</li>\';
+                            +item.content.replace(/\\\\/g, \'\')+\'</li>\';
 	
 	return result;
     }

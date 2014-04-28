@@ -7,7 +7,7 @@
 	    <li>
 		
 		<!--{if $pb_username!=""}-->
-		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatbox('1x2', false)">Hỗ trợ trực tuyến</a>
+		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatboxNew('1x2', false)">Hỗ trợ trực tuyến</a>
 		<!--{else}-->
 		    <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
 		<!--{/if}-->
@@ -41,7 +41,18 @@
 	
 </ul>
 </li>
-<li class="menu-blog" style="visibility: hidden"><span class="menu-item-wrap">
+	
+<li class="menu-blog" style=""><span class="menu-item-wrap">
+<a  href="{the_url module='service_main'}" style='background-color:#ffaa31; background-size:cover; background-image:url();' >
+<span class="link-text">Dịch vụ</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url({$theme_img_path}image/service_bg.png);'></span></a></span>
+<!--<ul>
+	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Mua</span></a></span></li>
+	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Bán</span></a></span></li>
+	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhà Phân phối</span></a></span></li>
+</ul>-->
+</li>
+	
+<li class="menu-blog" style="visibility: hidden;display: none"><span class="menu-item-wrap">
 <a  href="ThuongMai.php" style='background-color:#57BAE8; background-size:cover; background-image:url();' >
 <span class="link-text">Thương mại</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url({$theme_img_path}image/trade_bg.png);'></span></a></span>
 <ul>

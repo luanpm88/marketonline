@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 15:58:43
+<?php /* Smarty version 2.6.27, created on 2014-04-22 12:10:44
          compiled from ../../default/_settingbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '../../default/_settingbox.html', 8, false),)), $this); ?>
@@ -34,8 +34,18 @@ if ($this->_foreach['typeitem_0']['total'] > 0):
                             </li>
                         <?php endif; ?>
 		    <?php endforeach; endif; unset($_from); ?>
+		    
+		    		    
+		    <?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6): ?>
+			<!--<li class="sline">.</li>-->
+			<li>
+			    <a href="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
+">Diễn đàn Dạy và Học</a>
+			</li>
+		    <?php endif; ?>
 		    <li><a target="_blank" href="redirect.php?url=/virtual-office/"><?php echo $this->_tpl_vars['_my_office_room']; ?>
 </a></li>
+		    <li class="sline">.</li>
 		    <li><a href="logging.php?action=logout"><?php echo $this->_tpl_vars['_login_out']; ?>
 </a></li>
 		</ul>

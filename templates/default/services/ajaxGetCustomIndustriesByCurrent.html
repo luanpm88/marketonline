@@ -1,0 +1,11 @@
+<!--{loop $list item0 level_0 key0}-->
+<div id="block_{$key0}">
+    <option value="-1">{lang select}</option>
+    <!--{loop $item0.children item1 level_1 key1}-->
+        <option value="{$item1.id}" {if $item1.id == $item0.active}selected="selected"{/if}>{$item1.name}</option>
+    <!--{/loop}-->
+    <option value="0">-{lang create_custom_industry}-</option>
+</div>
+<!--{/loop}-->
+
+

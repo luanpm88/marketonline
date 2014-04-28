@@ -1,0 +1,787 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$page_title`" nav_id="`$nav_id`"}-->
+
+<!--{literal}-->
+<style>
+	.fancybox-skin
+	{
+		padding: 0px !important;
+	}
+</style>
+
+<script type="application/x-javascript">
+	
+	function postComment()
+	{
+		valid = true;
+		var guest_string = '';
+		if (!$('#comment').val().trim()) {
+			$('#comment').addClass('invalid');
+			$('#comment').focus();
+			$('#comment').val("");
+			valid = false;
+		}
+		else
+		{
+			$('#comment').removeClass('invalid');
+		}
+		
+		//check guest
+		if($('#guest_name').length)
+		{			
+			if($('#guest_name').val() == '' || $('#guest_email').val() == '')
+			{		
+				$('#guest_isedit').val("1");
+				$("#guestbox-but").trigger("click");
+				//$('input[name="box_guest_name"]').focus();
+				valid = false;
+			}
+			else
+			{
+				guest_string = '&data[guest_name]='+$('#guest_name').val()+'&data[guest_email]='+$('#guest_email').val();
+			}
+		}
+
+		if (valid) {
+			$('#comments').addClass('cloading');
+			$("#comment").prop('disabled', true);				
+			//alert(encodeURI($('#comment').val()));
+			$.cookie("comment_tpm", null);
+			$.ajax({
+				type: "POST",
+				url: "<!--{/literal}-->{the_url module=products action=postcomment id=`$item.id`}<!--{literal}-->",
+				encoding: "UTF-8",
+				data: "data[content]="+encodeURI($('#comment').val())+"&formhash="+$('#FormHash').val()+"&data[id]=<!--{/literal}-->{$item.id}<!--{literal}-->"+guest_string
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					//alert(data);
+					$('#comm-list').html(data);
+					
+					
+					
+					$(".comment_list").mCustomScrollbar({
+						autoHideScrollbar:true,
+						theme:"light-thin",
+						scrollSpeed: 40
+					});
+					
+					$('#comments').removeClass('cloading');
+					$('#comment').val("");
+					$("#comment").prop('disabled', false);
+					
+					getInbox();
+				}
+			});
+		}
+	}
+	
+	function loadComment()
+	{
+		$('#comments').addClass('cloading');
+		$.ajax({
+				type: "POST",
+				url: "<!--{/literal}-->{the_url module=products action=postcomment id=`$item.id`}<!--{literal}-->",
+				data: "id=<!--{/literal}-->{$item.id}<!--{literal}-->"
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					//alert("ddd");
+					$('#comm-list').html(data);		
+					
+					
+					$('#comments').removeClass('cloading');
+					
+					if (window.location.hash == "#comment_pos") {
+						$('#comment_link').trigger("click");
+					}
+					
+					if (!$('#comments .mCSB_container').length) {
+						$(".comment_list").mCustomScrollbar({
+							autoHideScrollbar:true,
+							theme:"light-thin",
+							scrollSpeed: 40
+						});
+					}
+					//$('#comments').css("display","none");
+					
+					
+				}
+			});
+	}
+    
+	function loadAnnouceBox() {
+		
+		$.ajax({
+			url: "space/?userid=<!--{/literal}-->{$MEMBER.space_name}<!--{literal}-->&do=ajaxannoucebox",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$('#annouce_box').html(data);
+				//$('.tooltipz').tooltipster({fixedWidth: 300,
+				//    position: 'right'});
+			    }
+		});
+	}
+	
+	function follow(shopid, but) {
+		$(but).addClass("following");
+		var temp = $(but).html();
+		$(but).html("<!--{/literal}-->{lang following}<!--{literal}-->");
+		$.ajax({
+			url: "index.php?do=product&action=ajaxFollow&shopid="+shopid,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			    //alert(data);
+				if(data == "1")
+				{
+				    $(but).removeClass("following");
+				    $(but).addClass("followed");
+				    $(but).attr("title", "<!--{/literal}-->{lang unfollow}<!--{literal}-->");
+				    $(but).html("<!--{/literal}-->{lang followed}<!--{literal}-->");
+				}
+				else
+				{
+				    $(but).removeClass("following");
+				    $(but).removeClass("followed");
+				    $(but).attr("title", "<!--{/literal}-->{lang postfollow}<!--{literal}-->");
+				    $(but).html("<!--{/literal}-->{lang follow}<!--{literal}-->");
+				}
+			    }
+		});
+		
+		
+	}
+	
+    
+    
+	$(document).ready(function() {
+		$("#edit_banner a").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false
+		});
+		
+		loadAnnouceBox();
+		
+		loadComment();
+		$('#comment').keydown(function(event) {
+			if (event.keyCode == 13) {
+				//event.preventDefault();
+				//postComment();				
+			}
+		});
+		
+		$('#comment').keypress(function(event) {
+			$.cookie("comment_tpm", $('#comment').val());
+			if (event.keyCode == 13) {				
+				event.preventDefault();
+				postComment();
+			}
+		});
+		
+		//$(".comment_list").mCustomScrollbar({
+		//	autoHideScrollbar:true,
+		//	theme:"light-thin",
+		//	scrollSpeed: 40
+		//});
+		
+		$('#comment_link').click(function() {
+			//$('#comments').toggle();
+			
+			if (!$('.woocommerce_tabs .mCSB_container').length) {
+						$(".comment_list").mCustomScrollbar({
+							autoHideScrollbar:true,
+							theme:"light-thin",
+							scrollSpeed: 40
+						});
+					}
+		});	
+		
+		
+		//Products Detail Tab
+                $('.woocommerce_tabs .tabs li').click(function(event) {
+                    event.preventDefault();
+                    
+                    $('.woocommerce_tabs .panel').css("display","none");
+                    $($(this).find('a').attr('href')).css("display","block");
+                });
+                
+		
+		
+		
+			
+		//$.cookie("welcome", "cookie_value");
+		//alert($.cookie("welcssome"));
+		
+		
+	});
+</script>
+
+	<!--{/literal}-->
+
+
+
+
+
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding" class="product_detail_page">
+
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<div class="row">
+    <div class="fifteen columns" id="page-title">
+        <a class="back" href="javascript:history.back()"></a>
+        <div class="subtitle">
+            
+                        <p>{if $item.service}{lang services}{else}{lang products}{/if}</p>
+        </div>
+        
+{if $item.service}
+        <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=service_main}">{lang service}</a> <span class="delim">/</span>{$item.industry_names} </div>
+{else}
+	<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=product_main}">{lang product}</a> <span class="delim">/</span>{$item.industry_names} </div>
+{/if}
+	<h1 class="page-title">
+                        {$item.title}
+	</h1>
+	<!--{if $pb_username!=""}-->
+  <div class="postitem">
+	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
+	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a>
+  </div>
+<!--{else}-->
+  <div class="postitem"><a href="redirect.php?url=/logging.php">{lang post_product}</a>
+  <a target="_blank" href="redirect.php?url=/logging.php">{lang add_service}</a></div>
+<!--{/if}-->
+
+
+
+    </div>
+    
+    
+    <div class="fifteen columns" style="margin-top: -5px;"><div class="line"></div></div>
+</div>
+
+
+<div class="row" id="detail_box">
+    
+    
+    
+    
+    
+    
+    <div id="product_detail_box" class="product">
+    
+	<div id="detail_box_top">
+	    
+	    <table id="three_box_detail" class="" cellspacing="0" style="background: #EFEFEF; border: none; padding-right: 5px;margin-bottom: 5px;">
+		<tr>
+		    <td class="imgg">
+			
+			
+				<div class="images">
+					{if $item.d_image}
+						<!--<a itemprop="image" href="{$item.d_image}" class="zoomz fancyx" rel="thumbnails" title="{$item.title}"><img width="313" height="418" src="{$item.d_image}" class="attachment-shop_single wp-post-image" alt="{$item.title}"></a>-->
+						<!--<div class="detailtopconleft">
+							<p class="left1"><img src="{$item.image}" alt="" width="80" height="80" /></p>
+							<p class="left2"><a href="misc.php?source={$item.image_url}" target="_blank"><img src="{$theme_img_path}images/detail_17.jpg" alt="" /></a><span>{lang enlarge_image}</span></p>
+						</div>-->
+						<a itemprop="image" href="{$item.d_image}" class="fancyx" rel="thumbnails" title="{$item.title}">
+						<ul id="example2">
+							<li>
+								<img class="etalage_thumb_image" src="{$item.d_imgsmall}" />
+								<img class="etalage_source_image" src="{$item.d_image}" />
+							</li>
+						</ul>
+						</a>
+					{/if}
+				
+					
+			
+				
+				<div class="thumbnails">
+					{if $item.picture && $item.d_image != $item.image}<a href="{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+						<img width="200" height="200" src="{$item.imgsmall}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
+						{/if}
+					{if $item.picture1 && $item.d_image != $item.image1}<a href="{$item.image1}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+						<img width="200" height="200" src="{$item.imgsmall1}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
+						{/if}
+					{if $item.picture2 && $item.d_image != $item.image2}<a href="{$item.image2}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
+						<img width="200" height="200" src="{$item.imgsmall2}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
+						{/if}
+					{if $item.picture3 && $item.d_image != $item.image3}<a href="{$item.image3}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
+						<img width="200" height="200" src="{$item.imgsmall3}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
+						{/if}
+					{if $item.picture4 && $item.d_image != $item.image4}<a href="{$item.image4}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
+						<img width="200" height="200" src="{$item.imgsmall4}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
+						{/if}
+						
+				</div>
+			</div>
+			
+		    </td>
+		    <td style="width: 34%">
+			
+			<div class="summary">
+
+				    <div class="sum_top">
+					{if $item.service}<service class="service_title"><span>{lang services}</span> {$item.industry_name}</service>{/if}
+					<div class="top_left_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+			
+				
+				{if $item.brand_name}<p><span class="title_disc" style="">{lang brand}</span> {$item.brand_name}</p>{/if}
+				{if $item.market}<p><span class="title_disc" style="">{lang market}</span> {$item.market}</p>{/if}
+				{if $item.product_code}<p><span class="title_disc" style="">{lang product_code}</span> {$item.product_code}</p>{/if}
+				{if false}<p><span class="title_disc" style="">{lang area_tt}</span> {$item.area_names}</p>{/if}
+			
+				
+					<!--{foreach from=$ObjectParams name=form item=item1 key=key1}-->
+					{if $item1.value}<p style="clear: both"><span class="title_disc" style="">{$item1.label}</span> {$item1.value}</p>{/if}
+			 <!--{/foreach}-->
+				
+			
+				<p itemprop="price" class="price">
+					{if $item.new_price || $item.price}					
+						{if $item.new_price != "" && $item.new_price != 0}
+							{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+						{else}
+							<span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+						{/if}
+					{/if}
+				</p>
+			
+			
+				<link itemprop="availability" href="http://schema.org/InStock" />
+			
+			</div>
+					<div itemprop="description">
+			
+			
+			</div>
+			
+			
+			
+				
+				<form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
+			
+					<button onclick="getCart({$item.id}, $('#quantity').val(), $(this));" type="button" class="single_add_to_cart_button button alt">{lang add_to_cart}</button>
+					<div class="quantity">
+					    <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />
+					</div>
+					
+					{if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label>{$item.tag}</p>{/if}
+					
+				</form>
+
+				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcomenew'){else}goclicky_custom(this, '{$F_URL}#welcomenew', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
+					<span class="at15t_facebookz">
+						<span class="">Share on facebook</span>
+					</span>
+				</a>
+				<div class="share_buts">
+					
+				  <!-- AddThis Button BEGIN -->
+				{literal}
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<!--<a class="addthis_button_facebook"></a>-->
+					<a class="addthis_button_twitter"></a>
+					<a class="addthis_button_google_plusone_share"></a>
+					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+				{/literal}
+				<!-- AddThis Button END -->
+			</div>
+			
+			
+				
+				    </div>
+				
+				    
+				
+				</div>
+			
+			
+			
+		    </td>
+		    <td style="min-width:254px">
+			
+			
+			    
+			    <div id="shop_info">
+			
+				
+				<section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
+					
+					
+					{if $item.shop_name}			
+								
+					<div class="logo_box_u">
+					<div class="four columns logo logoz">
+					    
+					
+					    <a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$COMPANY.shop_name}</strong>">
+						<img class="klbox" alt="{$COMPANY.name}" src="{$COMPANY.logo}"></a>
+					  </div>
+					  <div id="TopMenuCat">
+					    <div class="childcat">
+						<img class="" src="{$MEMBER.groupimage}" alt="{$MEMBER.groupname}" /><br />({$COMPANY.clicked})
+					    </div>
+					    <div style="margin-top: 5px;" class="childcat">
+						<span><a href="{the_url module=space userid=`$item.space_name`}#chinh-sach">Chính sách<br><span style="font-size: 13px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span></a></span>
+					    </div>
+					    
+					  </div>
+					</div>			
+								
+					{/if}			
+								
+								<!--<h5>Chủ Shop</h5>-->
+						<div class="red_box">
+								<h3 class="shop_name" style="">{if $item.shop_name}
+					<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
+								
+						
+								    <table class="box_info_col">
+									<tr>
+									    <th>Liên hệ:</th>
+									    <td>{$item.link_people}</td>
+									</tr>
+									<tr>
+									    <th>{lang phone}:</th>
+									    <td>{$COMPANY.contact_mobile}</td>
+									</tr>
+									<tr>
+									    <th>{lang email}:</th>
+									    <td><a href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a></td>
+									</tr>
+										<tr>
+									    
+									    <td colspan="2" style="width: 100%">
+										<!--{if $pb_username!=""}-->
+											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)">{lang chat_with_owner}</a>
+										<!--{else}-->
+											<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
+										<!--{/if}-->
+									    </td>
+									</tr>
+								  </table>
+						 </div>
+					
+
+							</div>
+				
+				
+							<h3 style="padding-left: 0;border-bottom: solid 1px #aaa;padding-bottom: 5px;">{lang announce}</h3>
+							    <div id="annouce_box">
+				    <div style="clear: both">Đang tải...</div>
+							    </div>
+				
+				
+				</section>
+			    
+			    </div>
+			    
+			    
+			</div>
+		    
+			
+			
+		    </td>
+		</tr>
+	    </table>
+	    
+    
+    </div>
+    
+    
+    <div id="product_desc">
+	
+	
+	
+	
+	    <div class="eleven columns" style="padding: 0;">
+
+        <div id="container">
+	<div id="content" role="main">
+
+
+        
+        
+
+<div itemscope itemtype="http://schema.org/Product" id="product-850" class="post-850 product type-product status-publish hentry">
+
+
+		<div class="woocommerce_tabs">
+		<ul class="tabs">
+			<li class="description_tab  active">
+				<a href="#tab-description">{lang details_n}</a>
+			</li>
+			<li class="description_tab">
+				<a href="#tab-commenttab">
+					<div id="comment_link">
+						<label>
+							<h2>{lang comment_list} ({$comments_count})</h2>
+						</label>
+					</div>
+				</a>
+			</li>
+		</ul>
+		
+		<div class="panel entry-content" id="tab-description">
+			{if $item.content}
+			    <h2 class="page-title">
+				{$item.title}                    </h2>
+	
+				{$item.content}
+			{/if}
+			
+			<div class="buy-bottom">
+				<div>
+					<a rel="buynow" href="index.php?do=product&action=add_cart&id={$item.id}">ĐẶT MUA</a>
+				</div>
+			</div>
+
+		</div>
+		
+		<div class="panel entry-content" id="tab-commenttab" style="display: none">
+			
+			<div id="comments">
+				
+				<div id="comm-list"></div>
+				
+				<!--{if $pb_username!=""}-->
+					<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+						<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+						<!-- {formhash} -->
+						<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+						<textarea id="comment" name="data[content]"></textarea>
+					</form>
+				<!--{else}-->
+					<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+						<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+						<!-- {formhash} -->
+						<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+						<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
+						<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
+						<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
+						<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
+					</form>
+				<!--{/if}-->
+			</div>
+			
+		</div>
+
+	</div>
+
+	
+
+
+</div>
+
+
+        
+        <div class="clear"></div>
+
+
+        	</div>
+</div>
+    </div>
+	
+	
+	
+	
+	    <div class="four columns" style="padding-bottom: 0;padding-top: 5px">
+
+
+	
+	
+			<section style="background: none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
+				<img class="logoiconz" src="{$COMPANY.logo}" title="{$COMPANY.name}" alt="{$COMPANY.name}" />
+				<div class="widget-inner">
+					<div class="left-bottom-detail-head">
+						<h5>{if $item.shop_name}
+	    <a style="color:#6E7476" href="{the_url module=space userid=`$item.space_name`}" title="{$item.shop_name}">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h5>
+						    <h3>{lang add_information_release} cùng gian hàng</h3>
+					</div>
+			
+			
+			
+			<div class="related_products_box">
+				
+			</div>
+			
+		
+			<div class="view_more_detail">
+				<a href="{the_url module=space userid=`$item.space_name`}">Xem thêm sản phẩm của gian hàng <strong>{$item.shop_name}</strong></a>
+			</div>
+		</div></section>
+			
+    </div>
+	
+	
+	
+	
+	
+    
+	
+    </div>
+    
+    <h2 style="width: 900px !important; display: block" class="bottom-title">Gian hàng {$item.shop_name} trực tuyến</h2>
+    <div class="bottom-address">
+	
+		<div class="bottom-address-left">
+			
+			<h2>{$COMPANY.name}</h2>
+                    
+			<p>{lang address}: {$COMPANY.address}</p>
+			    {if $COMPANY.tel}<p>{lang phone}: {$COMPANY.tel}</p>{/if}
+			    {if $COMPANY.fax}<p>{lang fax}: {$COMPANY.fax}</p>{/if}
+			    {if $COMPANY.email}<p>{lang email}: {$COMPANY.email}</p>{/if}
+			    {if $COMPANY.site_url_name}<p>{lang company_home}: {$COMPANY.site_url_name}{/if}
+			</p>
+			    
+
+		</div>
+		<div class="bottom-address-right">
+			
+			<div class="red_box">
+				<h3 class="shop_name" style="">{if $item.shop_name}
+					<a href="{the_url module=space userid=`$item.space_name`}" title="{$item.shop_name}">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
+								
+								    <table class="box_info_col">
+									<tr>
+									    <th>Liên hệ:</th>
+									    <td>{$item.link_people}</td>
+									</tr>
+									<tr>
+									    <th>{lang phone}:</th>
+									    <td>{$COMPANY.contact_mobile}</td>
+									</tr>
+									<tr>
+									    <th>{lang email}:</th>
+									    <td><a href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a></td>
+									</tr>
+										<tr>
+									    
+									    <td colspan="2" style="width: 100%">
+										<!--{if $pb_username!=""}-->
+											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)">{lang chat_with_owner}</a>
+										<!--{else}-->
+											<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
+										<!--{/if}-->
+									    </td>
+									</tr>
+								  </table>
+						 </div>
+			
+		</div>
+    </div>
+    
+    
+	
+    
+    
+    
+</div>
+
+
+
+<div id="right_detail_banner">
+	<div class="inner">
+	    <div class="detail_box_content">
+		
+		<a href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
+		
+		{if $COMPANY.r_spacename}<a href="{the_url module=space userid=`$COMPANY.r_spacename`}" class="leftlogodetail"><img title="{$COMPANY.r_name}" alt="{$COMPANY.r_name}" src="{$COMPANY.r_logo}" /><span class="shopname_right">{$COMPANY.r_shop_name|truncate:32}</span></a>{/if}
+		
+		<!--{foreach from=$banners item=itemxxx}-->
+		
+			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="{the_url module=banner_click id=`$itemxxx.id`}"><img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" /><span class="shopname_right">{$itemxxx.title|truncate:32}</span></a>-->
+			<a class="" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="{the_url module=space userid=`$itemxxx.space_name`}">{$itemxxx.title}</a>
+			<a class="leftlogodetail" href="{the_url module=space userid=`$itemxxx.space_name`}">
+				<img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" />
+				<span style="display: none" class="shopname_right">{$itemxxx.title|truncate:32}</span>
+			</a>
+			{$itemxxx.description|truncate:99}
+		
+		<!--{/foreach}-->
+		
+		
+		<!-- {pb:product name="itemz" industryid="$inn_array" row=2} -->
+		    {if $Product.id != $itemz.id}
+			<a style="display: none" href="{the_url module=product id=`$itemz.id`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
+		    {/if}
+		<!-- {/pb:product} -->
+		
+		<!--<a href="index.php?do=product&level=1&industryid={$banner.banner1_id}"><img src="{$banner.banner1}" /></a>-->
+	    </div>
+	</div>
+</div>
+
+
+
+<div class="bottom_industry_list">
+	<h3><a href="{the_url module='product_main'}">Danh mục sản phẩm</a></h3>
+	<ul>
+		<!--{loop $industries item0 level_0 key0}-->
+			<li class="level0 {if $level_0%4 == 0}clear{/if}">
+				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id`}">{$item0.name}</a>
+				<ul>
+					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
+						<li class="level1 {if $key_level1 > 4}hide{/if}">
+							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id`}">{$level1.name}</a>
+						</li>
+					<!--{/loop}-->
+					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
+				</ul>
+			</li>
+			{if $level_0++}{/if}
+		<!--{/loop}-->
+		<li class="level0 more-item"><a href="{the_url module='product_main'}">Sản phẩm mới</a></li>
+		<li class="level0 more-item"><a href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a></li>
+	</ul>
+</div>
+
+
+</div>
+  </div>
+
+<!--{literal}-->
+<script>
+	//get related products
+	$.ajax({
+		url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&action=related_products&member_id=<!--{/literal}-->{$item.member_id}<!--{literal}-->&product_id=<!--{/literal}-->{$item.id}<!--{literal}-->",
+	}).done(function ( data ) {
+		if( console && console.log ) {
+			$('.related_products_box').html(data);
+			
+			$('#product_detail_box ul.product_list_widget li img').resizecrop({
+				width:100,
+				height:100
+			});
+			
+			$('#product_detail_box ul.product_list_widget li img').css("float", "none");
+			$('#product_detail_box ul.product_list_widget li img').css("visibility", "visible");
+			if ($('.product_list_widget li').length < 6) {
+				$('.view_more_detail').remove()
+			}
+		}
+	});
+</script>
+<!--{/literal}-->
+
+
+<!--{include file="`$theme_name`/footer.html"}-->

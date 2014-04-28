@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-12 14:43:46
+<?php /* Smarty version 2.6.27, created on 2014-04-25 11:17:02
          compiled from product_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 327, false),array('function', 'html_options', 'product_edit.html', 541, false),array('function', 'html_radios', 'product_edit.html', 573, false),array('function', 'the_url', 'product_edit.html', 636, false),array('modifier', 'default', 'product_edit.html', 573, false),)), $this); ?>
@@ -679,13 +679,13 @@ if ($this->_foreach['form']['total'] > 0):
 					<tr>
 					   <th> <?php echo $this->_tpl_vars['item1']['label']; ?>
 <?php echo $this->_tpl_vars['_colon']; ?>
-<?php if ($this->_tpl_vars['key1'] == 6 || $this->_tpl_vars['key1'] == 7): ?><font class="red">*</font><?php endif; ?></th>
+<?php if ($this->_tpl_vars['key1'] == 6 || ( $this->_tpl_vars['getvar']['type'] != 'service' && $this->_tpl_vars['key1'] == 7 )): ?><font class="red">*</font><?php endif; ?></th>
 					   <td class="tdright"><font color="#666666">
 					     <input placeholder="<?php echo $this->_tpl_vars['item1']['description']; ?>
 " name="data[formitem][<?php echo $this->_tpl_vars['key1']; ?>
 ]" type="text" id="<?php echo $this->_tpl_vars['item1']['id']; ?>
 " value="<?php echo $this->_tpl_vars['item1']['value']; ?>
-" <?php if ($this->_tpl_vars['key1'] == 6 || $this->_tpl_vars['key1'] == 7): ?>class="required"<?php endif; ?>></font>
+" <?php if ($this->_tpl_vars['key1'] == 6 || ( $this->_tpl_vars['getvar']['type'] != 'service' && $this->_tpl_vars['key1'] == 7 )): ?>class="required"<?php endif; ?>></font>
 					   
 					   </td>
 					 </tr>

@@ -148,7 +148,7 @@ class Industries extends PbModel {
  				if (!function_exists("smarty_function_the_url")) {
  					require(PLUGIN_PATH."slug/function.the_url.php");
  				}
- 				$r[] = "<a href='index.php?do=product&level=".$level."&industryid=".$the_id."' rel='special_link'>".$datas[$val]."</a>";
+ 				$r[] = "<a href='index.php?do=".$do."&level=".$level."&industryid=".$the_id."' rel='special_link'>".$datas[$val]."</a>";
  			}else{
  				$r[] = $datas[$val];
  			}
@@ -454,13 +454,19 @@ class Industries extends PbModel {
 		return $result;
 	}
 	
-	function getCountProduct($ids, $member_id = null)
+	function getCountProduct($ids, $member_id = null, $service = 0)
 	{
 		$member_condition = '';
 		if($member_id)
 		{
-			$member_condition = " AND p.member_id='".$member_id."'";
+			$member_condition .= " AND p.member_id='".$member_id."'";
 		}
+		
+		if($service)
+		{
+			$member_condition .= " AND p.service=1";
+		}
+		
 		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p WHERE p.industry_id IN (".$ids.")".$member_condition;
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
@@ -639,10 +645,10 @@ OR id =1
 				}
 	}
 	
-	function getCount($id)
-	{
+	function getCount($id,$service = 0)
+	{		
 		$ii = $this->field("children", "id=".$id);
-		$cats = $this->getCountProduct($ii);
+		$cats = $this->getCountProduct($ii,null,$service);
 		//$cats = $this->field('count', array("id=".$id));
 		return $cats;
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:39
+<?php /* Smarty version 2.6.27, created on 2014-04-28 07:59:06
          compiled from default/footer_none.html */ ?>
 <div id="darkf" style="display: none"></div>
  
@@ -45,6 +45,49 @@
                        });
 		 });
 		 
+		getCart();
+		getInbox();
+		getTopChat();
+		 
+		 
+		 var ann_count = 0;
+		setInterval(function(){getAnnounce(ann_count);getInbox();ann_count++}, 30000);
+
+		//chatbox get new arrival
+		//chatboxs
+		'; ?>
+
+		    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
+                        <?php echo '
+                            //setInterval(function(){ updateChatbox(); }, 15000);
+                            setInterval(function(){ updateChatboxNew(); }, 15000);
+                        '; ?>
+
+                        
+                        <?php $_from = $this->_tpl_vars['chatboxs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+        $this->_foreach['level']['iteration']++;
+?>
+                            <?php if ($this->_tpl_vars['item']['userid'] != '' && $this->_tpl_vars['item']['userid'] != 0 && $this->_tpl_vars['item']['typeid'] != ''): ?>
+                                //getChatbox(<?php echo $this->_tpl_vars['item']['userid']; ?>
+, true, <?php echo $this->_tpl_vars['item']['typeid']; ?>
+);			    
+                            <?php endif; ?>
+                        <?php endforeach; endif; unset($_from); ?>
+                        
+                        <?php $_from = $this->_tpl_vars['chatboxsnew']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
+        $this->_foreach['level']['iteration']++;
+?>
+                            <?php if ($this->_tpl_vars['item'] != ''): ?>
+                                getChatboxNew("<?php echo $this->_tpl_vars['item']; ?>
+", true);
+                            <?php endif; ?>
+                        <?php endforeach; endif; unset($_from); ?>
+		    <?php endif; ?>		
+		<?php echo '
 		
 	});
   

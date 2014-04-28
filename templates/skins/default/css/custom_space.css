@@ -1101,7 +1101,7 @@ ul.new_products li.product a img
 }
 .space_content #content
 {
-    padding-top: 7px;
+    padding-top: 2px;
 }
 
 .leftbar_space .widget.widget_recent_products
@@ -1920,4 +1920,9 @@ a.following
 .postitem.kkkk
 {
     margin-top: -65px;
+}
+#space_search_box input[type="text"]
+{
+    height: 32px;
+    margin-top: -17px;
 }

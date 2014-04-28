@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-21 12:34:23
+<?php /* Smarty version 2.6.27, created on 2014-04-25 14:54:40
          compiled from default%5Cproduct/cart.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/cart.html', 62, false),)), $this); ?>
@@ -63,11 +63,11 @@ unset($_smarty_tpl_vars);
 				<input type='hidden' name="action" value="add_cart" />
 				<input type='hidden' id="task" name="task" value="update" />
 				<input type='hidden' id="cartitemid" name="cartitemid" value="" />
-				<table>
+				<table cellspacing=1>
 					<tr>
 						<th><?php echo $this->_tpl_vars['_picture']; ?>
 </th>
-						<th width="41%" style="text-align: left"><?php echo $this->_tpl_vars['_products']; ?>
+						<th width="35%" style="text-align: left"><?php echo $this->_tpl_vars['_products']; ?>
 </th>
 						
 						<th style="text-align: right" width="157px"><?php echo $this->_tpl_vars['_quantity']; ?>
@@ -104,15 +104,14 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 "><img src="<?php echo $this->_tpl_vars['sticky']['image']; ?>
 " border=0 alt="<?php echo $this->_tpl_vars['sticky']['title']; ?>
 "></a></td>
-							<td class="title_link">
+							<td style="padding-top: 20px" class="title_link">
 								<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 </a>
-								
 							</td>
 							
-							<td align="right">
+							<td style="padding-top: 20px" align="right">
 							    <select class="quantity_sel" onchange="$(this).parent().find('.quantity_val').val($(this).val())">
 								<option value="1" selected="selected">1</option>
 								<option value="2">2</option>
@@ -125,17 +124,17 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 								<option value="9">9</option>
 								<option value="10">10</option>
 							    </select>
-							    <input class="quantity_val" style="height:28px;margin: 0 auto; width: 48px; text-align: right" type="text" name="product[<?php echo $this->_tpl_vars['sticky']['id']; ?>
+							    <input class="quantity_val" style="height:22px;margin: 0 auto; width: 48px; text-align: right" type="text" name="product[<?php echo $this->_tpl_vars['sticky']['id']; ?>
 ]" value="<?php echo $this->_tpl_vars['sticky']['quantity']; ?>
 " />
 							    <input class="quantity_but" type="submit" value="<?php echo $this->_tpl_vars['_update']; ?>
 " />
 							</td>
-							<td align=right style="text-align: right;"><?php echo $this->_tpl_vars['sticky']['p_price']; ?>
+							<td align=right style="text-align: right;padding-top: 20px"><?php echo $this->_tpl_vars['sticky']['p_price']; ?>
 </td>
-							<td align=right style="text-align: right;"><?php echo $this->_tpl_vars['sticky']['p_total']; ?>
+							<td align=right style="text-align: right;padding-top: 20px"><?php echo $this->_tpl_vars['sticky']['p_total']; ?>
 </td>
-							<td align="right"  style="text-align: right">
+							<td align="right"  style="text-align: right;padding-top: 20px">
 							    
 							    <input class="cart_remove" onclick="$('#cartitemid').val('<?php echo $this->_tpl_vars['sticky']['id']; ?>
 ');$('#task').val('remove');$('#cart').submit()" type="button" value="<?php echo $this->_tpl_vars['_remove']; ?>
@@ -144,11 +143,18 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 							</tr>
 							<?php endforeach; endif; unset($_from); ?>
 							<tr>
-								<td colspan=4 align=right style="text-align: right;"><?php echo $this->_tpl_vars['_total']; ?>
-</td>
-								<td align=right style="text-align: right;"><?php echo $this->_tpl_vars['shop']['total']; ?>
-</td>
-								<td>VNĐ</td>
+							    <td colspan=4 align=right style="text-align: right;">
+								Tổng cộng
+								<span class="hide_border">.</span>
+							    </td>
+							    <td align=right style="text-align: right;">
+								<?php echo $this->_tpl_vars['shop']['total']; ?>
+
+								<span class="hide_border">.</span>
+							    </td>
+							    <td>
+								VNĐ
+							    </td>
 							</tr>
 							<tr>
 								<td colspan=6 align=right style="text-align: right;">
@@ -162,9 +168,7 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 '"  type="button" value="<?php echo $this->_tpl_vars['_confirm_cart']; ?>
 " />
 									<?php endif; ?>
-									
-									<input type="submit" class="checkout_but" style="margin-right: 10px" value="<?php echo $this->_tpl_vars['_update']; ?>
-" />
+									<input type="submit" class="checkout_but" style="margin-right: 10px" value="Cập nhật" />
 								</td>
 								
 							</tr>
@@ -176,8 +180,7 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 		
 		<?php else: ?>
 		
-			<p><?php echo $this->_tpl_vars['_cart_empty']; ?>
-</p>
+			<p>Hiện chưa có sản phẩm nào!</p>
 			
 			<p class="back button"><a href="javascript:history.go(-1);"><?php echo $this->_tpl_vars['_go_back']; ?>
 </a></p>

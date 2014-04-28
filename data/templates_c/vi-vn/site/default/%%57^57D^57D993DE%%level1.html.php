@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 16:41:00
+<?php /* Smarty version 2.6.27, created on 2014-04-25 14:24:23
          compiled from default%5Cproduct/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'default\\product/level1.html', 973, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'default\\product/level1.html', 936, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -42,6 +42,8 @@ unset($_smarty_tpl_vars);
 			  
 				$(\'.product_list_title\').html($(data).filter(\'#mapp\').html());
 				
+				
+				
 				$(\'.product_list_title a\').eq(0).click(function() {
 				      ajaxLoadMenu($(this).attr("rel"), \'2\', $(this));
 				});
@@ -58,6 +60,7 @@ unset($_smarty_tpl_vars);
 						  
 						  if (industryid) {
 						      //getFilterProducts() in custom.js
+						      $(\'#ProductName\').val("");
 						      ajaxListProduct(getFilterProducts());
 						  }
 						 
@@ -71,7 +74,13 @@ unset($_smarty_tpl_vars);
 				    {
 				      levelx = level - 1;
 				    }
-				    //alert(levelx);
+				    
+				    //update parent menu link
+				      $(\'.parent-menu-title\').html($(\'.box-level\'+(levelx-1)+\' li.active a\').clone());
+				      if (industryid == 0) {
+					$(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
+					$(\'.product_list_title\').html(" / Tìm kiếm");
+				      }
 				    
 				  if (levelx == \'2\') {
 				    $(\'.s-scroll\').animate({ marginLeft: \'-240px\' }, 500);
@@ -90,46 +99,18 @@ unset($_smarty_tpl_vars);
 					    theme:"light-thin"
 				    });
 				    
-				    
-				//    $(\'.box-level\'+level+\' ul li a.mback\').click(function() {
-				//      //$(\'.s-scroll\').animate({ marginLeft: \'0px\' }, 500);
-				//      //ajaxLoadMenu($(this).attr("rel"), \'2\', $(this));
-				//      //alert(level-3);
-				//      if (level-3 < 0) {
-				//	$(\'a.all_p\').trigger(\'clicky\');
-				//      }
-				//      else
-				//      {
-				//	$(\'.product_list_title a\').eq(level-3).trigger(\'click\');
-				//      }
-				//    });
-				
-				$(\'.box-level2 ul li a.mback\').click(function() {
-				      $(\'.s-scroll\').animate({ marginLeft: \'0px\' }, 500);
-				    });
-				    
-				    $(\'.box-level3 ul li a.mback\').click(function() {
-				      $(\'.s-scroll\').animate({ marginLeft: \'-240px\' }, 500);
-				    });
-				    
-				    $(\'.box-level4 ul li a.mback\').click(function() {
-				      $(\'.s-scroll\').animate({ marginLeft: \'-480px\' }, 500);
-				    });
-				    				    
 				    $(\'.box-level\'+level+\' ul li a.item\').click(function() {
 				      ajaxLoadMenu($(this).attr("rel"), parseInt(level)+1, $(this));				      
 				    });
 				    
-				    				    
-				    
-				    
-				    
 				    $(\'.box-level\'+level+\' ul.menu li a\').click(function() {
-
+						  
 						  industryid = $(this).attr(\'rel\');
+						  
 						  
 						  if (industryid) {
 						     //getFilterProducts() in custom.js
+						     $(\'#ProductName\').val("");
 						    ajaxListProduct(getFilterProducts());
 						  }
 						 
@@ -171,10 +152,6 @@ unset($_smarty_tpl_vars);
 			}
 		}).done(function ( data ) {
 			if( console && console.log ) {
-				//console.log("Sample of data:", data.slice(0, 200));
-				//alert($(data).filter(".products_0").html());
-				//$(\'#list_product_ajax\').html(data);
-				//alert(data);
 				for (var j=0; j < 5; j++) {
 				    $(\'#list_product_ajax\'+j+\' ul\').html("");
 				}
@@ -226,7 +203,7 @@ unset($_smarty_tpl_vars);
 	}
 	
 	 function resetFilter(args) {
-	    $(\'#ProductName\').val("");
+	    //$(\'#ProductName\').val("");
 	    $(\'#dataProductIndustryId1\').val(0);
 	    $(\'#dataProductIndustryId2\').val(0);
 	    $(\'#dataProductIndustryId3\').val(0);
@@ -277,7 +254,6 @@ unset($_smarty_tpl_vars);
 					adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
 				    }
 				})
-				
 			}
 		});
 	}
@@ -302,7 +278,7 @@ unset($_smarty_tpl_vars);
 	  if ($(\'#aq-block-5\').height())
 	    pos_searchlist = $(\'#aq-block-5\').height() + 440;
 	  else
-	    pos_searchlist = 278;
+	    pos_searchlist = 263;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -402,37 +378,11 @@ unset($_smarty_tpl_vars);
 		});
 		
 		$(\'#search_list_but\').click(function() {
-			
-			//get industry select
-			//if ($(\'#dataProductIndustryId3\').val() != "0") {
-			//	//code
-			//	industryid = $(\'#dataProductIndustryId3\').val();
-			//	//alert("dsds");
-			//} else if ($(\'#dataProductIndustryId2\').val() != "0") {
-			////code
-			//	industryid = $(\'#dataProductIndustryId2\').val();
-			//} else
-			//{
-			//	industryid = $(\'#dataProductIndustryId1\').val();
-			//}
-			//
-			//alert(industryid);
-			//getFilterProducts() in custom.js
-			
-			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
 		});
 		
-				    $(\'.box-level2 ul li a.mback\').click(function() {
-				      $(\'.s-scroll\').animate({ marginLeft: \'0px\' }, 200);
-				    });
-				    
 				    $(\'.box-level2 ul li a.item\').click(function() {
 				      ajaxLoadMenu($(this).attr("rel"), \'3\', $(this));				      
-				    });
-				    
-				    $(\'.box-level3 ul li a.mback\').click(function() {
-				      $(\'.s-scroll\').animate({ marginLeft: \'-240px\' }, 200);
 				    });
 				    
 				    $(\'.box-level3 ul li a.item\').click(function() {
@@ -442,25 +392,16 @@ unset($_smarty_tpl_vars);
 				    $(\'.box-level4 ul li a.item\').click(function() {
 				      ajaxLoadMenu($(this).attr("rel"), \'5\', $(this));
 				    });
-				    
-				    $(\'.box-level4 ul li a.mback\').click(function() {
-				      $(\'.s-scroll\').animate({ marginLeft: \'-480px\' }, 200);
-				    });
+
 		
 		$(\'.box-scroll ul.menu li a.item\').click(function() {
-		  
-		  
-			
 			industryid = $(this).attr(\'rel\');
 			
 			if (industryid) {
-			  
-			    
 			    //getFilterProducts() in custom.js
+			    $(\'#ProductName\').val("");
 			    ajaxListProduct(getFilterProducts());
 			}
-			
-			
 		});
 		
 		$(\'a.all_p\').click(function() {
@@ -474,6 +415,8 @@ unset($_smarty_tpl_vars);
 		    ajaxListProduct(getFilterProducts());
 		    
 		    $(\'.s-scroll\').animate({ marginLeft: \'0px\' }, 200);
+		    
+		    $(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
 		});
 		
 		$(\'.box-level1 ul li a.item\').click(function() {		
@@ -497,7 +440,21 @@ unset($_smarty_tpl_vars);
 					autoHideScrollbar:true,
 					theme:"light-thin"
 				});
-		
+				
+		$(\'.parent-menu-title\').live("click",function() {
+		  industryid = $(this).find("a").attr(\'rel\');
+		  $(\'.connect_menu .menu li a[rel=\'+industryid+\']\').trigger("click");
+		});
+		$(\'.widget ul.menu li.liback\').live("click", function(){
+		  if($(\'.product_list_title a\').length)
+		  {
+		    $(\'.product_list_title a\').last().trigger("click");
+		  }
+		  else
+		  {
+		    $(\'a.all_p\').trigger("click");
+		  }
+		});		
 	});
 	
 	
@@ -749,10 +706,10 @@ if ($this->_foreach['level_0']['total'] > 0):
 </div>
 
     
-<div class="row" style="height: 52px;">
+<div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 278px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 263px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>
@@ -767,17 +724,17 @@ if ($this->_foreach['level_0']['total'] > 0):
 	
         <!--<label><?php echo $this->_tpl_vars['_industry']; ?>
 &nbsp;&nbsp;</label>-->
-        <input type="text" id="ProductName" name="q" placeholder="<?php echo $this->_tpl_vars['_search_keyword']; ?>
-" />
+        <input type="text" id="ProductName" name="q" value="<?php echo $this->_tpl_vars['keyword']; ?>
+" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
-	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title"><?php echo $this->_tpl_vars['_product_category']; ?>
-</span></a> <span class="product_list_title"></span></h5>
+	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title">
+	  
+	  
+	</span></h5>
 	
 	<section style="background: none; width: 230px" class="widget-1 widget-first widget widget_nav_menu widget_recent_products nav-products-menu connect_menu" id="nav_menu-2">
 	  <div class="widget-inner">
 	   
-	    
-	    
 	    <ul class="menu" id="menu-features-list" style="display: none">
 	      
 	      <?php $_from = $this->_tpl_vars['IndustryList']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
@@ -827,7 +784,8 @@ if ($this->_foreach['level_2_industry']['total'] > 0):
 " href="javascript:void(0)"><?php echo $this->_tpl_vars['level2']['name']; ?>
 </a></li>
 				<?php endforeach; endif; unset($_from); ?>
-				<?php if ($this->_tpl_vars['level1']['sub']): ?><li><a class="mback bmenu_lvl3" href="javascript:void(0)"><?php echo $this->_tpl_vars['_back']; ?>
+				<?php if ($this->_tpl_vars['level1']['sub']): ?><li><a class="mback bmenu_lvl3" href="javascript:void(0)" back-id="<?php echo $this->_tpl_vars['item0']['id']; ?>
+"><?php echo $this->_tpl_vars['_back']; ?>
 </a></li><?php endif; ?>
 			      </ul>
 			    <?php endif; ?>
@@ -842,7 +800,12 @@ if ($this->_foreach['level_2_industry']['total'] > 0):
 	      
 </ul>
 	    
+	    
+	    
 	    <div class="box-scroll">
+	      <div class="parent-menu-title">
+		
+	      </div>
 	      <div class="s-scroll">
 	      <div class="box-level1">
 		<ul class="menu" id="menu-features-list">
@@ -975,17 +938,17 @@ if ($this->_foreach['spacelink']['total'] > 0):
    
   </aside>
   
-  <div id="content" class="eleven columns" style="margin-top: -13px">
+  <div id="content" class="eleven columns" style="margin-top: -16px">
     <div id="main">
 
       
       <div class="page-title">
 
     
-    <div class="subtitle loplo" style="margin-top: 7px;">
+    <div class="subtitle loplo" style="margin-top: 8px;">
         <?php echo $this->_tpl_vars['_product_list']; ?>
     </div>
-    <h1 style="font-size: 18px;margin: 0;padding-top: 7px;" class="page-titlez mainhotnew">
+    <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <a id="new_product_but" class="hotnewlist active" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
       

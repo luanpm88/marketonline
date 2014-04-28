@@ -211,12 +211,14 @@
     }
 	
 	
+	
 	function getChatFriendList(id) {	    
 	    $('.chat_friend_list').css("height",$(window).height());
 	    $.ajax({
 		url: "index.php?do=studypost&action=getChatFriendList&id="+id			
 	    }).done(function ( data ) {
 		if( console && console.log ) {
+		    
 		    $('.chat_friend_list .main_list').html(data);
 		    $('.chat_friend_list .scroll_list').css("height",$(window).height()-103);
 		    if($('.chat_friend_list').css("right") == "0px")
@@ -772,7 +774,7 @@
 	var result = '<li class="'+item.me+'" rel="'+item.created_or+'" chat-id="'+item.id+'" read="'+item.read+'">'
                             +'<span class="datetimec">'+item.created+'</span>'
                             +'<img width="40" height="40" src="'+item.company_logo+'" class="avatar">'
-                            +item.content+'</li>';
+                            +item.content.replace(/\\/g, '')+'</li>';
 	
 	return result;
     }
