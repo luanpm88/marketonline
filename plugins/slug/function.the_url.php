@@ -21,9 +21,24 @@ function smarty_function_the_url($params){
 				break;
 			case 'service_main':
 				if ($rewrite_able) {
-					$return = URL."services";
+					$return = URL."services";					
 				}else{
 					$return = URL."index.php?do=product&action=services";
+				}
+				break;
+			case 'offer_main':
+				if ($rewrite_able) {
+					$return = URL."offers";
+					if($offertype)
+					{
+						$return = URL."offers/".$offertype;
+					}
+				}else{
+					$return = URL."index.php?do=product&action=offers";
+					if($offertype)
+					{
+						$return = URL."index.php?do=product&action=offers&offertype=".$offertype;
+					}
 				}
 				break;
 			case "announce":
@@ -308,6 +323,21 @@ function smarty_function_the_url($params){
 				break;
 			case "root-url":
 				$return = URL;
+				break;
+			case "services":
+				if ($rewrite_able) {
+					$return = URL."services/list-".$level."-".$industryid.".html";
+					if($level == "search")
+					{
+						$return = URL."index.php?do=product&action=services&level=search&tag=".$tag;
+					}
+				}else{
+					$return = URL."index.php?do=product&action=services&level=".$level."&industryid=".$industryid;
+					if($level == "search")
+					{
+						$return = URL."index.php?do=product&action=services&level=search&tag=".$tag;
+					}
+				}
 				break;
 			default:
 				if (!empty($id)) {

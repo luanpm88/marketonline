@@ -19,7 +19,7 @@ class Attachment extends PbController {
     var $is_water_text;
     var $water_text_color;
     var $if_thumb = true;
-    var $if_thumb_middle = true;
+    var $if_thumb_middle = false;
     var $if_thumb_large = false;
     var $if_banner = false;
     var $if_school_banner = false;

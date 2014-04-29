@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 10:57:47
+<?php /* Smarty version 2.6.27, created on 2014-04-28 16:59:04
          compiled from default/topmenu_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/topmenu_content.html', 25, false),array('block', 'topmenuindustries', 'default/topmenu_content.html', 31, false),)), $this); ?>
@@ -67,17 +67,21 @@ image/service_bg.png);'></span></a></span>
 </ul>-->
 </li>
 	
-<li class="menu-blog" style="visibility: hidden;display: none"><span class="menu-item-wrap">
-<a  href="ThuongMai.php" style='background-color:#57BAE8; background-size:cover; background-image:url();' >
+<li class="menu-blog" style=""><span class="menu-item-wrap">
+<a  href="<?php echo smarty_function_the_url(array('module' => 'offer_main'), $this);?>
+" style='background-color:#57BAE8; background-size:cover; background-image:url();' >
 <span class="link-text">Thương mại</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/trade_bg.png);'></span></a></span>
 <ul>
-	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Mua</span></a></span></li>
-	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Bán</span></a></span></li>
-	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhà Phân phối</span></a></span></li>
+	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="<?php echo smarty_function_the_url(array('module' => 'offer_main','offertype' => 'buy'), $this);?>
+"><span class="link-text">Nhu cầu Mua</span></a></span></li>
+	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="<?php echo smarty_function_the_url(array('module' => 'offer_main','offertype' => 'sell'), $this);?>
+"><span class="link-text">Nhu cầu Bán</span></a></span></li>
+	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="<?php echo smarty_function_the_url(array('module' => 'offer_main','offertype' => 'supply'), $this);?>
+"><span class="link-text">Nhà Phân phối</span></a></span></li>
 </ul>
 </li>
-<li class="menu-shop" style="visibility: hidden">
+<li class="menu-shop" style="visibility: hidden;display: none">
     <span class="menu-item-wrap">
         <a  href="ThiTruong.php" style='background-color:#6cbe42; background-size:cover; background-image:url();'>
             <span class="link-text">Thị trường</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>

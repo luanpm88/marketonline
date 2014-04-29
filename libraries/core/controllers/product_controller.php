@@ -431,10 +431,10 @@ class Product extends PbController {
 									{										
 										$level2["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
 									}
-									foreach($level2["box2"] as $key => $item)
-									{										
-										$level2["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
-									}
+									//foreach($level2["box2"] as $key => $item)
+									//{										
+									//	$level2["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
+									//}
 									foreach($level2["box3"] as $key => $item)
 									{										
 										$level2["box3"][$key]["count"] = $this->industry->getCount($item["id"]);
@@ -496,14 +496,14 @@ class Product extends PbController {
 										{
 											$level3["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
 										}
-										foreach($level3["box2"] as $key => $item)
-										{
-											$level3["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
-										}
-										foreach($level3["box3"] as $key => $item)
-										{
-											$level3["box3"][$key]["count"] = $this->industry->getCount($item["id"]);
-										}
+										//foreach($level3["box2"] as $key => $item)
+										//{
+										//	$level3["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
+										//}
+										//foreach($level3["box3"] as $key => $item)
+										//{
+										//	$level3["box3"][$key]["count"] = $this->industry->getCount($item["id"]);
+										//}
 										foreach($level3["box4"] as $key => $item)
 										{
 											$level3["box4"][$key]["count"] = $this->industry->getCount($item["id"]);
@@ -826,7 +826,14 @@ class Product extends PbController {
 				$ii = 0;
 				foreach ($tag_res as $key=>$val){
 					//$tags.='<a href="'.$this->url(array("module"=>"tag", "do"=>"product", "q"=>$val)).'" target="_blank">'.$val.'</a>';
-					$tags.='<a href="'.$this->product->url(array("module"=>"products","level"=>"search","tag"=>urlencode($key))).'">'.$val.'</a>';
+					if($info["service"])
+					{
+						$tags.='<a href="'.$this->product->url(array("module"=>"products","level"=>"search","tag"=>urlencode($key))).'">'.$val.'</a>';
+					}
+					else
+					{
+						$tags.='<a href="'.$this->product->url(array("module"=>"products","level"=>"search","tag"=>urlencode($key))).'">'.$val.'</a>';
+					}
 					if($ii != count($tag_res)-1) $tags.=", ";
 					$ii++;
 				}
@@ -885,7 +892,7 @@ class Product extends PbController {
 		$viewhelper->setMetaKeyword($meta_info['keyword']);
 		$viewhelper->setPosition($info['name']);
 		$info['industry_names'] = $industry->disSubNames($info['industry_id'],' <span class="delim">/</span> ', true, "product");
-		$info['industry_service_names'] = $industry->disSubNames($info['industry_id'],' <span class="delim">/</span> ', true, "product&action=services");
+		$info['industry_service_names'] = $industry->disSubNames($info['industry_id'],' <span class="delim">/</span> ', true, "services");
 		$info['area_names'] = $area->disSubNames($company_info['area_id'], " / ", false, "product");
 		$info['title'] = strip_tags($info['name']);
 		//var_dump($info);
@@ -1232,7 +1239,7 @@ class Product extends PbController {
 		//echo $_SERVER["REMOTE_ADDR"] ;
 		
 		
-		if (isset($_GET['type']) && $_GET['type'] == 'offer') {		
+		if ((isset($_GET['type']) && $_GET['type'] == 'offer') || isset($_GET["offer_page"]) ) {		
 			
 			$this->trade->initSearch();			
 
@@ -1270,6 +1277,12 @@ class Product extends PbController {
 					}			
 				}
 			
+			
+			//for offer type
+			if (isset($_GET['offertype']) && $_GET['offertype'] != 'all') {
+				$this->trade->condition[] = 'Trade.type_id = '.$_GET['offertype'];
+				
+			}
 			
 			
 			$products = $this->trade->Search($pos_pg, 15);
@@ -1328,7 +1341,7 @@ class Product extends PbController {
 			
 			
 			
-			if (isset($_GET['type']) && $_GET['type'] == 'service') {
+			if (isset($_GET['type']) && $_GET['type'] == 'service' || isset($_GET['service_page'])) {
 				$this->product->condition[] = "Product.service = 1";
 			}
 			else
@@ -2502,7 +2515,14 @@ class Product extends PbController {
 		$service = 0;
 		if(isset($_GET["tipe"]))
 		{
-			$service = 1;
+			if($_GET["tipe"] == 'service')
+			{
+				$service = 1;
+			}
+			else if($_GET["tipe"] == 'offer')
+			{
+				$service = 2;
+			}
 		}
 		
 		if($_GET['industryid'] == 0)
@@ -2583,8 +2603,7 @@ class Product extends PbController {
 					}					
 				}
 			}
-		}
-		
+		}		
 	}
 	
 	function ajaxLoadMenuConnectNoCache()
@@ -4951,7 +4970,7 @@ class Product extends PbController {
 	//}
 	
 	function services()
-	{		
+	{
 		//update show product
 		$this->product->updateShowProducts(3, 5);
 		
@@ -5016,7 +5035,7 @@ class Product extends PbController {
 						foreach( $industries[$_GET["industryid"]]["box1"] as $key => $item)
 						{
 							$ii = $this->industry->field("children", "id=".$item["id"]);
-							$industries[$_GET["industryid"]]["box1"][$key]["count"] = $this->industry->getCountProduct($ii);
+							$industries[$_GET["industryid"]]["box1"][$key]["count"] = $this->industry->getCountProduct($ii,null,1);
 						}
 						
 						
@@ -5114,11 +5133,11 @@ class Product extends PbController {
 								
 								foreach($level1["box1"] as $key => $item)
 								{									
-									$level1["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
+									$level1["box1"][$key]["count"] = $this->industry->getCount($item["id"],1);
 								}
 								foreach($level1["box2"] as $key => $item)
 								{									
-									$level1["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
+									$level1["box2"][$key]["count"] = $this->industry->getCount($item["id"],1);
 								}	
 								
 								$level1["parent_name"] = $level0["name"];
@@ -5229,15 +5248,15 @@ class Product extends PbController {
 									
 									foreach($level2["box1"] as $key => $item)
 									{										
-										$level2["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
+										$level2["box1"][$key]["count"] = $this->industry->getCount($item["id"],1);
 									}
-									foreach($level2["box2"] as $key => $item)
-									{										
-										$level2["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
-									}
+									//foreach($level2["box2"] as $key => $item)
+									//{										
+									//	$level2["box2"][$key]["count"] = $this->industry->getCount($item["id"],1);
+									//}
 									foreach($level2["box3"] as $key => $item)
 									{										
-										$level2["box3"][$key]["count"] = $this->industry->getCount($item["id"]);
+										$level2["box3"][$key]["count"] = $this->industry->getCount($item["id"],1);
 									}
 														
 									
@@ -5294,19 +5313,19 @@ class Product extends PbController {
 										
 										foreach($level3["box1"] as $key => $item)
 										{
-											$level3["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
+											$level3["box1"][$key]["count"] = $this->industry->getCount($item["id"],1);
 										}
-										foreach($level3["box2"] as $key => $item)
-										{
-											$level3["box2"][$key]["count"] = $this->industry->getCount($item["id"]);
-										}
-										foreach($level3["box3"] as $key => $item)
-										{
-											$level3["box3"][$key]["count"] = $this->industry->getCount($item["id"]);
-										}
+										//foreach($level3["box2"] as $key => $item)
+										//{
+										//	$level3["box2"][$key]["count"] = $this->industry->getCount($item["id"],1);
+										//}
+										//foreach($level3["box3"] as $key => $item)
+										//{
+										//	$level3["box3"][$key]["count"] = $this->industry->getCount($item["id"],1);
+										//}
 										foreach($level3["box4"] as $key => $item)
 										{
-											$level3["box4"][$key]["count"] = $this->industry->getCount($item["id"]);
+											$level3["box4"][$key]["count"] = $this->industry->getCount($item["id"],1);
 										}
 										
 										$IndustryList = $level3;
@@ -5348,6 +5367,423 @@ class Product extends PbController {
 		}
 	}
 	
+	function deletemiddle()
+	{
+		$url = PHPB2B_ROOT."attachment/";
+		$products = $this->product->findAll("*",null,array("picture NOT LIKE '%ichodientuvn.com/pict/%'","picture NOT LIKE '%http://media.vatgia.vn%'"),null,$_GET["offset"],$_GET["offset"]+1000);
+		foreach($products as $item)
+		{
+			echo $url.$item["picture"].".middle.jpg";
+			echo $item["picture1"].".middle.jpg";
+			echo $item["picture2"].".middle.jpg";
+			echo $item["picture3"].".middle.jpg";
+			echo $item["picture4"].".middle.jpg";
+			echo "<br />";
+			
+			@unlink($url.$item["picture"].".middle.jpg");
+			@unlink($url.$item["picture1"].".middle.jpg");
+			@unlink($url.$item["picture2"].".middle.jpg");
+			@unlink($url.$item["picture3"].".middle.jpg");
+			@unlink($url.$item["picture4"].".middle.jpg");
+		}
+	}
 	
+	function offers()
+	{
+		//update show product
+		$this->product->updateShowProducts(3, 5);
+		
+		$data = array();
+		$_PB_CACHE['industry'] = cache_read("industry");
+		require(CACHE_COMMON_PATH."cache_type.php");
+		$index_latest_industry_ids = 10;
+		using("industry");
+		$industry = new Industries();
+		$ProductSorts = $_PB_CACHE['productsort'];
+		$result = $this->product->dbstuff->GetArray($sql = "SELECT distinct industry_id AS iid FROM {$this->product->table_prefix}products WHERE status=1 ORDER BY id DESC LIMIT 0,{$index_latest_industry_ids}");
+		if (!empty($result)) {
+			foreach ($result as $key=>$val) {
+				$data[$val['iid']]['id'] = $val['iid'];
+				if(isset($_PB_CACHE['industry'][1][$val['iid']])) $data[$val['iid']]['name'] = $_PB_CACHE['industry'][1][$val['iid']];
+				$tmp_result = $this->product->dbstuff->GetArray("SELECT id,name,picture,sort_id,industry_id FROM {$this->product->table_prefix}products WHERE status=1 AND industry_id=".$val['iid']." ORDER BY id DESC LIMIT 0,5");
+				if (!empty($tmp_result)) {
+					foreach ($tmp_result as $key1=>$val1) {
+						$data[$val['iid']]['sub'][$val1['id']]['id'] = $val1['id'];
+						$data[$val['iid']]['sub'][$val1['id']]['name'] = $val1['name'];
+						$data[$val['iid']]['sub'][$val1['id']]['sort'] = $ProductSorts[$val1['sort_id']];
+						$data[$val['iid']]['sub'][$val1['id']]['image'] = pb_get_attachmenturl($val1['picture'], '', 'small');
+					}
+				}
+			}
+			setvar("IndustryProducts", $data);
+		}
+
+		//get all industries from cache
+		$industries = $this->industry->getCacheIndustry();
+		if(isset($_GET["level"]))
+		{
+			setvar("p_level", $_GET["level"]);
+			if($_GET["level"] == "search")
+			{
+				$IndustryList["id"] = 0;				
+				$IndustryList["box1"] = $industries;
+				
+				if(isset($_GET["tag"]))
+				{
+					$keyword = $this->tag->read("name", intval($_GET["tag"]));
+					$keyword = $keyword["name"];
+					$IndustryList["name"] = "Tìm theo từ khóa '<span class='keyword'>".$keyword."</span>'";
+					setvar("keyword", $keyword);
+				}
+				
+				setvar("IndustryList", $IndustryList);
+				render("offers/level1");
+			}
+			else if($_GET["level"] == 1)
+			{
+				if(isset($_GET["industryid"]))
+				{
+					$count1 = 0;
+					
+					foreach($industries[$_GET["industryid"]]["sub"] as $key1 => $level1)
+					{
+						$industries[$_GET["industryid"]]["level0_name"] = $industries[$_GET["industryid"]]["name"];
+						$industries[$_GET["industryid"]]["level0_id"] = $industries[$_GET["industryid"]]["id"];
+						$industries[$_GET["industryid"]]["box1"] = $industries;
+								
+						foreach( $industries[$_GET["industryid"]]["box1"] as $key => $item)
+						{
+							$ii = $this->industry->field("children", "id=".$item["id"]);
+							$industries[$_GET["industryid"]]["box1"][$key]["count"] = $this->industry->getCountProduct($ii,null,2);
+						}
+						
+						
+						
+						$cats = array();					
+						$cats[] = $level1["id"];
+						
+						//$industries[$_GET["industryid"]]["sub"][$key1]["ppcount"] = $this->industry->countProduct($level1["id"]);
+						
+						if($count1%6 == 1)
+						{
+							$industries[$_GET["industryid"]]["sub"][$key1]["break"] = 1;
+						}
+						else
+						{
+							$industries[$_GET["industryid"]]["sub"][$key1]["break"] = 0;
+						}
+						
+						//echo $level1["name"];
+						if($count1%6 == 0 || $count1%6 == 5)
+						{
+							$maxitem = 11;
+						}
+						else
+						{
+							$maxitem = 3;
+						}
+						
+						//if(rand(0,1) || $count0%6 == 0 || $count0%6 == 5)
+						//{
+							$industries[$_GET["industryid"]]["sub"][$key1]["disp"] = "disp";
+						//}
+						//else
+						//{
+						//	$industries[$_GET["industryid"]]["sub"][$key1]["disp"] = "hiden";
+						//}
+						
+						
+						//getImage
+						//$rowi = $industry->getByID($key0);
+						$industries[$_GET["industryid"]]["sub"][$key1]["image"] = pb_get_attachmenturl($industries[$_GET["industryid"]]["sub"][$key1]["picture"], "", "");
+						
+						if(preg_match('/nopicture/', $industries[$_GET["industryid"]]["sub"][$key1]["image"])) $industries[$_GET["industryid"]]["sub"][$key1]["image"] = "";
+						
+						
+						foreach($level1['sub'] as $key2 => $level2)
+						{
+							$cats[] = $level2["id"];
+							
+							//echo $key2."-".$maxitem."/";
+							if($key2 > $maxitem)
+							{
+								unset($industries[$_GET["industryid"]]["sub"][$key1]["sub"][$key2]);
+							}
+							
+							//$industries[$_GET["industryid"]]["sub"][$key1]["sub"][$key2]["ppcount"] = $this->industry->countProduct($level2["id"]);
+						}			
+						$count1++;
+						
+						if($key1 == count($industries[$_GET["industryid"]]["sub"])-1)
+						{
+							$industries[$_GET["industryid"]]["sub"][$key1]["last"] = 1;
+						}
+						else
+						{
+							$industries[$_GET["industryid"]]["sub"][$key1]["last"] = 0;
+						}
+						
+					}
+				}
+				//$IndustryList["count"] = count($IndustryList["sub"]);
+				$industries["id"] = $_GET["industryid"] ;
+				
+				setvar("IndustryList", $industries[$_GET["industryid"]]);
+				
+				render("offers/level1");
+			}
+			else if($_GET["level"] == 2)
+			{
+				if(isset($_GET["industryid"]))
+				{
+					$count0 = 0;
+					foreach($industries as $key0 => $level0)
+					{					
+						foreach($level0['sub'] as $key1 => $level1)
+						{
+							if($level1["id"] == $_GET["industryid"])
+							{								
+								$level1["level0_name"] = $level0["name"];
+								$level1["level0_id"] = $level0["id"];
+								$level1["level1_name"] = $level1["name"];
+								$level1["level1_id"] = $level1["id"];
+								$level1["box2"] = $level0['sub'];
+								$level1["box1"] = $industries;
+								
+								foreach($level1["box1"] as $key => $item)
+								{									
+									$level1["box1"][$key]["count"] = $this->industry->getCount($item["id"],2);
+								}
+								foreach($level1["box2"] as $key => $item)
+								{									
+									$level1["box2"][$key]["count"] = $this->industry->getCount($item["id"],2);
+								}	
+								
+								$level1["parent_name"] = $level0["name"];
+								$level1["parent_id"] = $level0["id"];
+								//var_dump($level1);
+								foreach($level1['sub'] as $key2 => $level2)
+								{
+									$cats = array();
+									$cats[] = $level2["id"];
+									//echo $key2;
+									
+									//$level1["sub"][$key2]["ppcount"] = $this->industry->countProduct($level2["id"]);
+									
+									if($key2%6 == 1)
+									{
+										$industries[$_GET["industryid"]]["sub"][$key1]["break"] = 1;
+									}
+									else
+									{
+										$industries[$_GET["industryid"]]["sub"][$key1]["break"] = 0;
+									}
+									
+									//echo $level1["name"];
+									if($key2%6 == 0 || $key2%6 == 5)
+									{
+										$maxitem = 11;
+									}
+									else
+									{
+										$maxitem = 3;
+									}								
+									
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										$cats[] = $level3["id"];
+										
+										//$level1["sub"][$key2]["sub"][$key3]["ppcount"] = $this->industry->countProduct($level3["id"]);
+										
+										//echo $key2."-".$maxitem."/";
+										if($key3 > $maxitem)
+										{
+											unset($level1["sub"][$key2]["sub"][$key3]);
+										}
+									}	
+									
+								}
+								$IndustryList = $level1;
+							}
+						}						
+						$count0++;
+					}
+				}
+				//var_dump($IndustryList);
+				$IndustryList["count"] = count($IndustryList["sub"]);
+				setvar("IndustryList", $IndustryList);
+				
+				render("offers/level1");
+			}
+			else if($_GET["level"] == 3)
+			{
+				if(isset($_GET["industryid"]))
+				{
+					$count0 = 0;
+					foreach($industries as $key0 => $level0)
+					{					
+						foreach($level0['sub'] as $key1 => $level1)
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								if($level2["id"] == $_GET["industryid"])
+								{
+									$level2["level1_name"] = $level1["name"];
+									$level2["level1_id"] = $level1["id"];
+									$level2["level0_name"] = $level0["name"];
+									$level2["level0_id"] = $level0["id"];
+									$level2["box3"] = $level1['sub'];
+									$level2["box2"] = $level0['sub'];
+									$level2["box1"] = $industries;
+									
+									
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										$cats = array();
+										$cats[] = $level3["id"];
+										//echo $key2;
+										if($key3%3 == 2)
+										{
+											$maxitem = 11;
+											$level2["sub"][$key3]["size"] = "large";
+										}
+										else
+										{
+											$maxitem = 3;
+											$level2["sub"][$key3]["size"] = "half";
+										}
+										
+										if($key3%2 == 0)
+										{										
+											$level2["sub"][$key3]["odd"] = 1;
+										}
+										else
+										{										
+											$level2["sub"][$key3]["odd"] = 0;
+										}
+										
+										
+									}
+									
+									foreach($level2["box1"] as $key => $item)
+									{										
+										$level2["box1"][$key]["count"] = $this->industry->getCount($item["id"],2);
+									}
+									//foreach($level2["box2"] as $key => $item)
+									//{										
+									//	$level2["box2"][$key]["count"] = $this->industry->getCount($item["id"],2);
+									//}
+									foreach($level2["box3"] as $key => $item)
+									{										
+										$level2["box3"][$key]["count"] = $this->industry->getCount($item["id"],2);
+									}
+														
+									
+									$IndustryList = $level2;
+									
+									
+									
+									
+								}
+							}
+						}						
+						$count0++;
+					}
+				}
+				//var_dump($IndustryList);
+				$IndustryList["count"] = count($IndustryList["sub"]);
+				setvar("IndustryList", $IndustryList);
+				
+				render("offers/level1");
+			}
+			else if($_GET["level"] == 4)
+			{
+				//echo $_GET["industryid"];
+				//var_dump($industries);
+				if(isset($_GET["industryid"]))
+				{
+					$count0 = 0;
+					foreach($industries as $key0 => $level0)
+					{					
+						foreach($level0['sub'] as $key1 => $level1)
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								//if($level2["id"] == 2586)
+								//{
+								//		var_dump($level2['sub']);
+								//}
+								foreach($level2['sub'] as $key3 => $level3)
+								{
+																
+									if($level3["id"] == $_GET["industryid"])
+									{
+										//echo $level3["id"];
+										$level3["level2_name"] = $level2["name"];
+										$level3["level2_id"] = $level2["id"];
+										$level3["level1_name"] = $level1["name"];
+										$level3["level1_id"] = $level1["id"];
+										$level3["level0_name"] = $level0["name"];
+										$level3["level0_id"] = $level0["id"];
+										$level3["box4"] = $level2['sub'];
+										$level3["box3"] = $level1['sub'];
+										$level3["box2"] = $level0['sub'];
+										$level3["box1"] = $industries;
+										
+										foreach($level3["box1"] as $key => $item)
+										{
+											$level3["box1"][$key]["count"] = $this->industry->getCount($item["id"],2);
+										}
+										//foreach($level3["box2"] as $key => $item)
+										//{
+										//	$level3["box2"][$key]["count"] = $this->industry->getCount($item["id"],2);
+										//}
+										//foreach($level3["box3"] as $key => $item)
+										//{
+										//	$level3["box3"][$key]["count"] = $this->industry->getCount($item["id"],2);
+										//}
+										foreach($level3["box4"] as $key => $item)
+										{
+											$level3["box4"][$key]["count"] = $this->industry->getCount($item["id"],2);
+										}
+										
+										$IndustryList = $level3;
+										break;
+									}
+									
+									
+								}
+								
+							}
+						}						
+						$count0++;
+					}
+				}
+				setvar("IndustryList", $IndustryList);
+				
+				render("offers/level1");
+			}
+		}
+		else
+		{
+			$IndustryList["id"] = 0;				
+			$IndustryList["box1"] = $industries;
+			
+			if(isset($_GET["tag"]))
+			{
+				$keyword = $this->tag->read("name", intval($_GET["tag"]));
+				$keyword = $keyword["name"];
+				$IndustryList["name"] = "Tìm theo từ khóa '<span class='keyword'>".$keyword."</span>'";
+				setvar("keyword", $keyword);
+			}
+			else
+			{
+				$IndustryList["name"] = "Thương mại";
+			}
+			
+			setvar("IndustryList", $IndustryList);
+			render("offers/level1");
+		}
+	}
 }
 ?>

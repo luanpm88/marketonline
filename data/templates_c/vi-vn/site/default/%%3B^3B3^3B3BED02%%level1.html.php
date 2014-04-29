@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 12:51:13
+<?php /* Smarty version 2.6.27, created on 2014-04-28 16:14:45
          compiled from default%5Cservices/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\services/level1.html', 652, false),array('modifier', 'default', 'default\\services/level1.html', 937, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\services/level1.html', 652, false),array('modifier', 'default', 'default\\services/level1.html', 928, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -912,10 +912,6 @@ if ($this->_foreach['level_0']['total'] > 0):
   
 <div class="row" id="containerz">
   <aside id="left-sidebar" class="four columns follow-scroll connect_menu">
-   
-   
-	
-	
 	
 	<section style="display: none" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products ">
                 <div class="widget-inner">
@@ -954,7 +950,7 @@ if ($this->_foreach['spacelink']['total'] > 0):
 </a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       <!-- for sale -->
-      <!--<a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+      
       
       
       <!--<a id="hot_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_hot_product']; ?>
@@ -966,6 +962,9 @@ if ($this->_foreach['spacelink']['total'] > 0):
       
       <a id="new_service_but" class="hotnewlist active" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      <a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
       <!-- for offer -->
       <!--<a id="new_offer_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_raovat']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;-->
@@ -1056,14 +1055,6 @@ if ($this->_foreach['spacelink']['total'] > 0):
   </div>
 </div>
   
-  
-
-
-  
-
-
-
-
   
   
 

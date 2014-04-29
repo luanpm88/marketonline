@@ -1396,6 +1396,8 @@
 	    if(offer != 0) ff += "&type=offer";
 	    //for sale
 	    if(sale != 0) ff += "&type=sale";
+	    
+	    if(typeof(offertype) != 'undefined') ff += "&offertype="+offertype;
             
             if($('#ProductName').val())
 	    {
