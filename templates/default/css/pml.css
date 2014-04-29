@@ -5688,7 +5688,7 @@ body {
     overflow-y: scroll;
 }
 body, button, input, label, select, td, textarea {
-    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-family: "Segoe UI", 'lucida grande',tahoma,verdana,arial,sans-serif;
     font-size: 11px;
 }
 body {
@@ -6453,7 +6453,7 @@ service.service_title span {
 }
 .product_listing ul.products li.product:hover
 {
-    border-color: red;
+    background: #F0F6F2;
 }
 #job-search-box .job-search-tab .tab-content input[type="text"]
 {
@@ -9086,3 +9086,133 @@ table tbody tr td {
 .banner_top {
     width: 284px;
 }
+.product_listing ul.products li.product
+{
+    cursor: pointer;
+}
+.mainhotnew .active {
+    border-bottom: 2px solid #FF0000;
+}
+.detail_box_content a.noresize
+{
+    max-height: none;
+    padding: 0;
+    border: none;
+}
+.rightbanner_block
+{
+    margin-bottom: 30px;
+    padding: 5px;
+    border: solid 1px #fff;
+}
+.rightbanner_block:hover
+{
+    border: solid 1px #3B984C;
+}
+.rightbanner_block:last-child
+{
+    margin-bottom: 0;
+}
+.rightbanner_block:first-child a.title
+{    
+    border: none !important;    
+}
+.rightbanner_block a.title
+{
+    border: none !important;
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}
+.rightbanner_block .img_box
+{
+    padding: 0;
+    border: solid 1px #fff;
+}
+.rightbanner_block .img_box img
+{
+    max-height: 156px;
+    max-width: 156px;
+    display: block;
+    margin: auto;
+}
+.rightbanner_block .price_unit
+{
+    font-size: 12px;
+}
+.rightbanner_block .price
+{
+    font-weight: bold;
+    font-size: 14px;
+}
+.rightbanner_block .old_price
+{
+    margin-bottom: 0;
+    font-size: 14px;
+}
+.related_products_bottom {
+    border: 1px solid #CCCCCC;
+    float: left;
+    margin: 5px 10px 10px;
+    padding: 10px;
+    width: 1180px;
+}
+.related_products_bottom  h3 {
+    
+}
+.related_products_bottom ul
+{
+    
+}
+.related_products_bottom ul li {
+    float: left;
+    list-style: none outside none;
+    margin-right: 18px;
+    text-align: center;
+    width: 150px;
+}
+.related_products_bottom ul li:last-child {
+    margin-right: 0;
+}
+.related_products_bottom ul li .img_box {
+    height: 150px;
+    position: relative;
+    width: 150px;
+    margin-bottom: 5px;
+}
+.related_products_bottom ul li img {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    max-height: 150px;
+    max-width: 150px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.related_products_bottom ul li a
+{
+    text-align: center;
+}
+.related_products_bottom ul li .price_unit
+{
+    font-size: 12px;
+}
+.related_products_bottom ul li .price
+{
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.related_products_bottom ul li .old_price
+{
+    margin-bottom: 0;
+    font-size: 14px;
+}
+.related_bottom_h3 {
+    color: #0064D2;
+    font-size: 22px;
+    margin: 10px 10px 0;
+}
+

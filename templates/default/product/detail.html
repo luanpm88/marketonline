@@ -704,36 +704,42 @@
 <div id="right_detail_banner">
 	<div class="inner">
 	    <div class="detail_box_content">
+		{if !$MEMBER.checkout}
+			<!--{include file="`$theme_name`/product/_product_detail_rightbar_nopaid.html"}-->
+		{else}
+			<!--{include file="`$theme_name`/product/_product_detail_rightbar_paid.html"}-->
+		{/if}
 		
-		<a href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
-		
-		{if $COMPANY.r_spacename}<a href="{the_url module=space userid=`$COMPANY.r_spacename`}" class="leftlogodetail"><img title="{$COMPANY.r_name}" alt="{$COMPANY.r_name}" src="{$COMPANY.r_logo}" /><span class="shopname_right">{$COMPANY.r_shop_name|truncate:32}</span></a>{/if}
-		
-		<!--{foreach from=$banners item=itemxxx}-->
-		
-			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="{the_url module=banner_click id=`$itemxxx.id`}"><img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" /><span class="shopname_right">{$itemxxx.title|truncate:32}</span></a>-->
-			<a class="" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="{the_url module=space userid=`$itemxxx.space_name`}">{$itemxxx.title}</a>
-			<a class="leftlogodetail" href="{the_url module=space userid=`$itemxxx.space_name`}">
-				<img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" />
-				<span style="display: none" class="shopname_right">{$itemxxx.title|truncate:32}</span>
-			</a>
-			{$itemxxx.description|truncate:99}
-		
-		<!--{/foreach}-->
-		
-		
-		<!-- {pb:product name="itemz" industryid="$inn_array" row=2} -->
-		    {if $Product.id != $itemz.id}
-			<a style="display: none" href="{the_url module=product id=`$itemz.id`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
-		    {/if}
-		<!-- {/pb:product} -->
-		
-		<!--<a href="index.php?do=product&level=1&industryid={$banner.banner1_id}"><img src="{$banner.banner1}" /></a>-->
 	    </div>
 	</div>
 </div>
 
+<div class="middle-bottom-line" style="clear: both"></div>
 
+<h3 class="related_bottom_h3">Sản phẩm cùng loại</h3>
+<div class="related_products_bottom">	
+	<ul>
+		
+		<!--{loop $bottom_related_products itemvv levelvv keyvv}-->
+			<li class="">
+				<a href="{the_url module=product id=`$itemvv.id`}" title="{$itemvv.name}">
+					<div class="img_box">
+						<img title="{$itemvv.name}" alt="{$itemvv.name}" src="{$itemvv.thumb}" />
+					</div>
+					{$itemvv.name|truncate:45}
+				</a>
+				{if $itemvv.new_price || $itemvv.price}
+					{if $itemvv.new_price != "" && $itemvv.new_price != 0}
+						<span class="price">{if $itemvv.price}<span class="old_price">{$itemvv.price} <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>{/if} <span class="amount">{$itemvv.new_price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span> {if $itemvv.price_note}<span class="noteprice">({$itemvv.price_note})</span>{/if}
+					{else}
+						<span class="price"><span class="amount">{$itemvv.price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>
+					{/if}
+				{/if}
+			</li>
+		<!--{/loop}-->
+		
+	</ul>
+</div>
 
 <div class="bottom_industry_list">
 	<h3><a href="{the_url module='product_main'}">Danh mục sản phẩm</a></h3>

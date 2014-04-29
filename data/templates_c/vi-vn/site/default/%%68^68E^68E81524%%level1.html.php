@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 11:42:26
-         compiled from default/product/level1.html */ ?>
+<?php /* Smarty version 2.6.27, created on 2014-04-29 07:55:23
+         compiled from default/services/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'default/product/level1.html', 936, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/services/level1.html', 652, false),array('modifier', 'default', 'default/services/level1.html', 928, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -34,7 +34,7 @@ unset($_smarty_tpl_vars);
 	    if(item) item.parent().parent().find("li").removeClass(\'active\');
 	    if(item) item.parent().addClass(\'active\');
 	    $.ajax({
-			url: "index.php?do=product&action=ajaxLoadMenuConnect&industryid="+id,			
+			url: "index.php?do=product&action=ajaxLoadMenuConnect&tipe=service&industryid="+id,			
 		}).done(function ( data ) {
 			if( console && console.log ) {
 			  
@@ -79,7 +79,7 @@ unset($_smarty_tpl_vars);
 				      $(\'.parent-menu-title\').html($(\'.box-level\'+(levelx-1)+\' li.active a\').clone());
 				      if (industryid == 0) {
 					$(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
-					//$(\'.product_list_title\').html(" / Tìm kiếm");
+					$(\'.product_list_title\').html(" / Tìm kiếm");
 				      }
 				    
 				  if (levelx == \'2\') {
@@ -145,7 +145,7 @@ unset($_smarty_tpl_vars);
 	      $(\'.product_list_loading\').height($(\'.product_listing\').height());
 		$(\'.product_list_loading\').css("display", "block");
 		$.ajax({
-			url: "index.php?do=product&leftbar=1&action=listAjax"+filter,
+			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1"+filter,
 			beforeSend: function ( xhr ) {
 				//xhr.overrideMimeType("text/plain; charset=x-user-defined");
 				$(\'#list_product_ajax\').html(\'<div class="loading">\'+$(\'#loading\').html()+\'</div>\');
@@ -227,7 +227,7 @@ unset($_smarty_tpl_vars);
 	function ajaxListProductScroll(filter) {
 	  
 		$.ajax({
-			url: "index.php?do=product&leftbar=1&action=listAjax"+filter,
+			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1"+filter,
 		}).done(function ( data ) {
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 200));
@@ -282,14 +282,15 @@ unset($_smarty_tpl_vars);
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
-	       $(\'#new_product_but\').addClass("active");
+	       $(\'#new_service_but\').addClass("active");
 	       industryid = '; ?>
 <?php echo $this->_tpl_vars['IndustryList']['id']; ?>
 <?php echo ';
 	       
 	      
 	      //getFilterProducts() in custom.js
-	      ajaxListProduct(getFilterProducts());
+	      //ajaxListProduct(getFilterProducts());
+	      setTimeout(\'$("#new_service_but").trigger("click")\',500);
 	      
 	      
 	      ajaxLoadMenu('; ?>
@@ -694,8 +695,8 @@ if ($this->_foreach['level_0']['total'] > 0):
 
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
-</a> <span class="delim">/</span><a href="index.php?do=product"><?php echo $this->_tpl_vars['_product_center']; ?>
-</a></div>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+">Dịch vụ</a></div>
 
     <h1 class="page-title"><?php echo $this->_tpl_vars['IndustryList']['name']; ?>
 </h1>
@@ -911,10 +912,6 @@ if ($this->_foreach['level_0']['total'] > 0):
   
 <div class="row" id="containerz">
   <aside id="left-sidebar" class="four columns follow-scroll connect_menu">
-   
-   
-	
-	
 	
 	<section style="display: none" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products ">
                 <div class="widget-inner">
@@ -946,25 +943,27 @@ if ($this->_foreach['spacelink']['total'] > 0):
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        <?php echo $this->_tpl_vars['_product_list']; ?>
-    </div>
+        Danh sách dịch vụ    </div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
-      <a id="new_product_but" class="hotnewlist active" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       <!-- for sale -->
-      <a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;
       
       
-      <a id="hot_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_hot_product']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      <!--<a id="hot_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_hot_product']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       <!-- for other -->
-      <a id="other_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_other_product']; ?>
+      <!--<a id="other_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_other_product']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+      
+      <a id="new_service_but" class="hotnewlist active" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
       
-      <!--<a id="new_service_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+      <a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
       <!-- for offer -->
       <!--<a id="new_offer_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_raovat']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;-->
@@ -1010,10 +1009,10 @@ if ($this->_foreach['spacelink']['total'] > 0):
 			
 			</div>
 			<div id="list_product_ajax1" class="col_products">
-			  <ul class="products">
-			  
+			   <ul class="products">
 			   
-			  </ul>
+			   
+			   </ul>
 			   
 			   
 			</div>
@@ -1055,14 +1054,6 @@ if ($this->_foreach['spacelink']['total'] > 0):
   </div>
 </div>
   
-  
-
-
-  
-
-
-
-
   
   
 

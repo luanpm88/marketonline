@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 09:36:39
+<?php /* Smarty version 2.6.27, created on 2014-04-29 11:05:44
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1109, false),array('function', 'formhash', 'default/header.html', 1193, false),array('modifier', 'default', 'default/header.html', 1204, false),array('modifier', 'date_format', 'default/header.html', 1218, false),)), $this); ?>
@@ -795,7 +795,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		    }
 		});
 		
-        	$(\'#right_detail_banner\').stickyScroll({bottomBound: ".bottom_industry_list", container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
+        	$(\'#right_detail_banner\').stickyScroll({bottomBound: ".middle-bottom-line", container: \'#right_detail_banner\', leftBanner: true, topbound: 275.1 });
 		//$(\'#topmenu_outer\').stickyScroll({ container: \'#topmenu_outer\', leftBanner: false, topbound: 275.1});
 		 
 		//console.log("zzzzz");
@@ -1536,4 +1536,4 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
 <div id="show_top_cart">
     
-</div>
+</div>

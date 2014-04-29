@@ -27,102 +27,6 @@ class Product extends PbController {
 	
 	function index()
 	{
-		//echo selfURL();
-		//$con=mysqli_connect("localhost","root","","b2bwin8");
-		//// Check connection
-		//if (mysqli_connect_errno())
-		//  {
-		//  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-		//  }
-		//  
-		//  $con->set_charset("utf8");
-		
-		//mysqli_query($con,"INSERT INTO Persons (FirstName, LastName, Age)
-		//VALUES ('Peter', 'Griffin',35)");
-		
-		//mysqli_query($con,"INSERT INTO Persons (FirstName, LastName, Age)
-		//VALUES ('Glenn', 'Quagmire',33)");
-		
-		
-		
-		//insert tinh/thanh
-		//$handle = @fopen("vn.txt", "r");
-		//if ($handle) {
-		//	while (($buffer = fgets($handle, 4096)) !== false) {
-		//	    //echo $buffer;
-		//	    if( preg_match ( '/case/' , $buffer ) )
-		//	    {
-		//		$str = explode('"', $buffer);
-		//		echo $str[1];
-		//		if($str[1] != "" && isset($str[1])) mysqli_query($con,"INSERT INTO `pb_areas` (`attachment_id`, `areatype_id`, `child_ids`, `top_parentid`, `level`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `display_order`, `description`, `available`, `created`, `modified`) VALUES"
-		//				." (0, 0, NULL, 1, 2, '".$str[1]."', '', '', 0, 1, 0, NULL, 1, 0, 0)");
-		//	    }
-		//	}
-		//	if (!feof($handle)) {
-		//	    echo "Error: unexpected fgets() fail\n";
-		//	}
-		//	fclose($handle);
-		//}
-		
-		//insert quan/huyen
-		//$handle = @fopen("vn.txt", "r");
-		//if ($handle) {
-		//	$parent = 1;
-		//	while (($buffer = fgets($handle, 4096)) !== false) {
-		//	    //echo $buffer;
-		//	    if( preg_match ( '/case/' , $buffer ) )
-		//	    {
-		//		$parent++;				
-		//	    }
-		//	    else
-		//	    {
-		//		if( preg_match ( '/\"/' , $buffer ) )
-		//		{
-		//			$str = explode('"', $buffer);
-		//			echo $parent . "--" . $str[1]."<br />";
-		//			if($str[1] != "" && isset($str[1])) mysqli_query($con,"INSERT INTO `pb_areas` (`attachment_id`, `areatype_id`, `child_ids`, `top_parentid`, `level`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `display_order`, `description`, `available`, `created`, `modified`) VALUES"
-		//				." (0, 0, NULL, 1, 3, '".$str[1]."', '', '', 0, ".$parent.", 0, NULL, 1, 0, 0)");
-		//		}
-		//		
-		//	    }
-		//	}
-		//	if (!feof($handle)) {
-		//	    echo "Error: unexpected fgets() fail\n";
-		//	}
-		//	fclose($handle);
-		//}
-		
-		
-		//get all industry
-		//$content = file_get_contents("nn.txt");
-		//$content = preg_replace('/^\s+|\n|\r|\s+$/m', '', $content);
-		//echo $content;
-		//preg_match_all('/\<td(.*?)h4(.*?)\>(.*?)\<span(.*?)\>(.*?)\<\/span(.*?)\<\/h4(.*?)\<\/td/', $content, $level1);
-		//var_dump($level1);
-		
-		//foreach($level1[5] as $kk => $item)
-		//{
-		//	if($item != "" && isset($item)) mysqli_query($con,"INSERT INTO `pb_industries` (`attachment_id`, `industrytype_id`, `child_ids`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `top_parentid`, `level`, `display_order`, `description`, `available`, `created`, `modified`) VALUES"
-		//					." (0, 0, NULL, '".$item."', '', '', 0, 0, 0, 1, 0, NULL, 1, 0, 0)");
-		//}
-		
-		//$pid = 1;
-		//foreach($level1[7] as $kk => $item)
-		//{
-		//	preg_match_all('/\<li(.*?)\<a(.*?)href\=\"(.*?)\"(.*?)\>(.*?)\<span/', $item, $childitem);
-		//	//var_dump($childitem);
-		//	foreach($childitem[5] as $uu => $tim)
-		//	{
-		//		echo trim($tim);
-		//		echo $childitem[3][$uu];
-		//		if($item != "" && isset($item)) mysqli_query($con,"INSERT INTO `pb_industries` (`attachment_id`, `industrytype_id`, `child_ids`, `name`, `url`, `alias_name`, `highlight`, `parent_id`, `top_parentid`, `level`, `display_order`, `description`, `available`, `created`, `modified`, `tempurl`) VALUES"
-		//					." (0, 0, NULL, '".trim($tim)."', '', '', 0, ".$pid.", ".$pid.", 2, 0, NULL, 1, 0, 0, '".$childitem[3][$uu]."')");
-		//	}
-		//	$pid++;
-		//}
-		
-		//mysqli_close($con);
-		
 		//update show product
 		$this->product->updateShowProducts(3, 5);
 		
@@ -693,8 +597,7 @@ class Product extends PbController {
 					}
 				}
 			}
-			setvar("IndustryProducts", $data);
-			
+			setvar("IndustryProducts", $data);			
 		}
 
 		$industries = $this->industry->getCacheIndustry();
@@ -826,13 +729,13 @@ class Product extends PbController {
 				$ii = 0;
 				foreach ($tag_res as $key=>$val){
 					//$tags.='<a href="'.$this->url(array("module"=>"tag", "do"=>"product", "q"=>$val)).'" target="_blank">'.$val.'</a>';
-					if($info["service"])
+					if(!$info["service"])
 					{
 						$tags.='<a href="'.$this->product->url(array("module"=>"products","level"=>"search","tag"=>urlencode($key))).'">'.$val.'</a>';
 					}
 					else
 					{
-						$tags.='<a href="'.$this->product->url(array("module"=>"products","level"=>"search","tag"=>urlencode($key))).'">'.$val.'</a>';
+						$tags.='<a href="'.$this->product->url(array("module"=>"services","level"=>"search","tag"=>urlencode($key))).'">'.$val.'</a>';
 					}
 					if($ii != count($tag_res)-1) $tags.=", ";
 					$ii++;
@@ -891,7 +794,7 @@ class Product extends PbController {
 		empty($meta_info['description'])?$viewhelper->setMetaDescription($info['content']):$viewhelper->setMetaDescription($meta_info['description']);
 		$viewhelper->setMetaKeyword($meta_info['keyword']);
 		$viewhelper->setPosition($info['name']);
-		$info['industry_names'] = $industry->disSubNames($info['industry_id'],' <span class="delim">/</span> ', true, "product");
+		$info['industry_names'] = $industry->disSubNames($info['industry_id'],' <span class="delim">/</span> ', true, "products");
 		$info['industry_service_names'] = $industry->disSubNames($info['industry_id'],' <span class="delim">/</span> ', true, "services");
 		$info['area_names'] = $area->disSubNames($company_info['area_id'], " / ", false, "product");
 		$info['title'] = strip_tags($info['name']);
@@ -965,10 +868,6 @@ class Product extends PbController {
 		
 		setvar("tile",$ttt);
 		
-		//echo $width/325;
-		
-		
-		
 		if($info['image'] && !preg_match('/http/', $info['image']))
 			setvar('fb_image', "http://marketonline.vn/".$info['image']);
 		else
@@ -1033,6 +932,17 @@ class Product extends PbController {
 		//listing main industries
 		$industries = $this->industry->getCacheIndustry();
 		setvar("industries",$industries);
+		
+		//get product banner for paid member
+		if($member_info["checkout"])
+		{
+			$product_banners = $this->product->getProductBanners($member_info["id"]);
+			setvar("product_banners",$product_banners);
+		}
+		
+		//find related products
+		$bottom_related_products = $this->product->findByIndustry($info["industry_id"]);
+		setvar("bottom_related_products",$bottom_related_products);
 		
 		render("product/detail");
 	}
@@ -1227,7 +1137,6 @@ class Product extends PbController {
 											}
 										}
 									}
-									
 								}
 							}
 						}
@@ -1676,14 +1585,6 @@ class Product extends PbController {
 		$con->set_charset("utf8");
 		
 		$query = "SELECT * FROM `pb_industries` WHERE level=3 AND id='".$_GET["id"]."'";                    
-		
-		//if ($result = $con->query($query)) {
-		//	echo "sdfsdf";
-		//	while($row = $result->fetch_assoc())
-		//	{
-		//		var_dump($row);
-		//	}
-		//}
 		
 		$result = $con->query($query);
 		$row = $result->fetch_assoc();
@@ -4501,48 +4402,47 @@ class Product extends PbController {
 	function importLanguage()
 	{
 		$content = "<select >
-                                        
-<option value='1' selected >Arabic</option>
-<option value='2' >Bengali</option>
-<option value='3' >Bulgarian</option>
-<option value='4' >Burmese</option>
-<option value='5' >Cambodian</option>
-<option value='6' >Cebuano</option>
-<option value='7' >Chinese (Cantonese)</option>
-<option value='8' >Chinese (Mandarin)</option>
-<option value='9' >Czech</option>
-<option value='10' >Danish</option>
-<option value='11' >Dutch</option>
-<option value='12' >English</option>
-<option value='13' >Finnish</option>
-<option value='14' >French</option>
-<option value='15' >German</option>
-<option value='16' >Greek</option>
-<option value='17' >Hindi</option>
-<option value='18' >Hungarian</option>
-<option value='19' >Indonesian</option>
-<option value='20' >Italian</option>
-<option value='21' >Japanese</option>
-<option value='22' >Javanese</option>
-<option value='23' >Korean</option>
-<option value='24' >Laotian</option>
-<option value='25' >Malay</option>
-<option value='26' >Norwegian</option>
-<option value='27' >Polish</option>
-<option value='28' >Portuguese</option>
-<option value='29' >Romanian</option>
-<option value='30' >Russian</option>
-<option value='31' >Spanish</option>
-<option value='32' >Swedish</option>
-<option value='33' >Tagolog</option>
-<option value='34' >Taiwanese</option>
-<option value='35' >Thai</option>
-<option value='36' >Turkish</option>
-<option value='37' >Ukranian</option>
-<option value='38' >Vietnamese</option>
-<option value='39' >Other</option>
-                                    </select>
-";
+				<option value='1' selected >Arabic</option>
+				<option value='2' >Bengali</option>
+				<option value='3' >Bulgarian</option>
+				<option value='4' >Burmese</option>
+				<option value='5' >Cambodian</option>
+				<option value='6' >Cebuano</option>
+				<option value='7' >Chinese (Cantonese)</option>
+				<option value='8' >Chinese (Mandarin)</option>
+				<option value='9' >Czech</option>
+				<option value='10' >Danish</option>
+				<option value='11' >Dutch</option>
+				<option value='12' >English</option>
+				<option value='13' >Finnish</option>
+				<option value='14' >French</option>
+				<option value='15' >German</option>
+				<option value='16' >Greek</option>
+				<option value='17' >Hindi</option>
+				<option value='18' >Hungarian</option>
+				<option value='19' >Indonesian</option>
+				<option value='20' >Italian</option>
+				<option value='21' >Japanese</option>
+				<option value='22' >Javanese</option>
+				<option value='23' >Korean</option>
+				<option value='24' >Laotian</option>
+				<option value='25' >Malay</option>
+				<option value='26' >Norwegian</option>
+				<option value='27' >Polish</option>
+				<option value='28' >Portuguese</option>
+				<option value='29' >Romanian</option>
+				<option value='30' >Russian</option>
+				<option value='31' >Spanish</option>
+				<option value='32' >Swedish</option>
+				<option value='33' >Tagolog</option>
+				<option value='34' >Taiwanese</option>
+				<option value='35' >Thai</option>
+				<option value='36' >Turkish</option>
+				<option value='37' >Ukranian</option>
+				<option value='38' >Vietnamese</option>
+				<option value='39' >Other</option>
+		</select>
+		";
 
 
 		require_once(LIB_PATH. "simple_html_dom.php");	
@@ -5262,9 +5162,6 @@ class Product extends PbController {
 									
 									$IndustryList = $level2;
 									
-									
-									
-									
 								}
 							}
 						}						
@@ -5330,11 +5227,8 @@ class Product extends PbController {
 										
 										$IndustryList = $level3;
 										break;
-									}
-									
-									
+									}									
 								}
-								
 							}
 						}						
 						$count0++;
@@ -5636,7 +5530,6 @@ class Product extends PbController {
 									$level2["box2"] = $level0['sub'];
 									$level2["box1"] = $industries;
 									
-									
 									foreach($level2['sub'] as $key3 => $level3)
 									{
 										$cats = array();
@@ -5669,21 +5562,14 @@ class Product extends PbController {
 									{										
 										$level2["box1"][$key]["count"] = $this->industry->getCount($item["id"],2);
 									}
-									//foreach($level2["box2"] as $key => $item)
-									//{										
-									//	$level2["box2"][$key]["count"] = $this->industry->getCount($item["id"],2);
-									//}
+
 									foreach($level2["box3"] as $key => $item)
 									{										
 										$level2["box3"][$key]["count"] = $this->industry->getCount($item["id"],2);
 									}
-														
-									
+
 									$IndustryList = $level2;
-									
-									
-									
-									
+
 								}
 							}
 						}						
@@ -5749,11 +5635,8 @@ class Product extends PbController {
 										
 										$IndustryList = $level3;
 										break;
-									}
-									
-									
-								}
-								
+									}									
+								}								
 							}
 						}						
 						$count0++;

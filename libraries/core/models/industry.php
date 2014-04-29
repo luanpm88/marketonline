@@ -658,5 +658,87 @@ OR id =1
 		return $cats;
 
 	}
+	
+	function getWithChildren($id)
+	{
+		$_GET['industryid'] = $id;
+		$area_a = array();
+		if (isset($_GET['industryid'])) {
+			//Get industry level 1
+			$industries = $industry->getCacheIndustry();			
+			$area_a[] = $_GET['industryid'];
+			foreach($industries as $key0 => $level0)
+			{
+				if($level0["id"] == $_GET['industryid'])
+				{
+					foreach($level0['sub'] as $key1 => $level1)
+					{
+						$area_a[] = $level1["id"];
+						foreach($level1['sub'] as $key2 => $level2)
+						{
+							$area_a[] = $level2["id"];
+							foreach($level2['sub'] as $key3 => $level3)
+							{
+								$area_a[] = $level3["id"];								
+							}
+						}
+					}
+					break;
+				}
+				else
+				{
+					foreach($level0['sub'] as $key1 => $level1)
+					{
+						if($level1["id"] == $_GET['industryid'])
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								$area_a[] = $level2["id"];
+								foreach($level2['sub'] as $key3 => $level3)
+								{
+									$area_a[] = $level3["id"];									
+								}
+							}
+							break;
+						}
+						else
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								if($level2["id"] == $_GET['industryid'])
+								{
+									$area_a[] = $level2["id"];
+									//echo count($level2['sub']);
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										//echo $level3["id"];
+										$area_a[] = $level3["id"];										
+									}
+									//var_dump($area_a);
+									break;
+								}
+								else
+								{
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										
+										if($level3["id"] == $_GET['industryid'])
+										{
+											$area_a[] = $level3["id"];											
+											break;
+										}										
+									}
+									
+								}
+							}
+						}
+					}
+					
+				}
+			}
+			//var_dump($area_a);
+		}
+		return $area_a;
+	}
 }
 ?>

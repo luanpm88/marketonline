@@ -169,7 +169,7 @@
                     else
                     {
                       el.offset({
-                          top: bottomBound.offset().top - el.height() - 15
+                          top: bottomBound.offset().top - el.height() - 10
                         })
                     }
                     

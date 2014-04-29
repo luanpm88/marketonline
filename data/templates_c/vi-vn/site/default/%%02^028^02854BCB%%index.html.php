@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-08 15:27:18
+<?php /* Smarty version 2.6.27, created on 2014-04-29 10:22:58
          compiled from default/product/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/index.html', 404, false),array('modifier', 'truncate', 'default/product/index.html', 411, false),array('modifier', 'default', 'default/product/index.html', 747, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/index.html', 408, false),array('modifier', 'truncate', 'default/product/index.html', 415, false),array('modifier', 'default', 'default/product/index.html', 751, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -308,6 +308,10 @@ unset($_smarty_tpl_vars);
 			
 			
 		});
+		
+		if (window.location.hash == "#sale") {
+			setTimeout(\'$("#sale_product_but").trigger("click")\',2000);
+		}
 	});
 	
 	
@@ -669,11 +673,11 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
       <a id="other_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_other_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
       
-      <a id="new_service_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--<a id="new_service_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       <!-- for offer -->
-      <a id="new_offer_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_raovat']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--<a id="new_offer_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_raovat']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       
       
@@ -698,12 +702,11 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
     
   </div>
 
-    <div id="SearchList" style="padding-right: 5px">
+    <div id="SearchList" class="home_search_list" style="padding-right: 5px">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>
 " />
-        <input style="margin-right: 32px" type="text" id="ProductName" name="q" placeholder="<?php echo $this->_tpl_vars['_search_keyword']; ?>
-" />  
+        <input style="margin-right: 32px;padding-right: 5px;" type="text" id="ProductName" name="q" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />  
         <!--<select id="selectarea">
           <option>-- Sắp xếp theo --</option>
           <option value="">Ngày đăng</option>

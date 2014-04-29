@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 09:20:20
+<?php /* Smarty version 2.6.27, created on 2014-04-29 12:22:41
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'product.html', 147, false),array('modifier', 'strip_tags', 'product.html', 151, false),array('modifier', 'default', 'product.html', 200, false),array('function', 'the_url', 'product.html', 175, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'product.html', 154, false),array('modifier', 'strip_tags', 'product.html', 158, false),array('modifier', 'default', 'product.html', 221, false),array('function', 'the_url', 'product.html', 196, false),)), $this); ?>
 <?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>
 	<?php $this->assign('page_title', ($this->_tpl_vars['_service_management'])); ?>
 <?php else: ?>
@@ -166,9 +166,10 @@ images/offer_01.gif" /></div>
          <table class="bglist">
               <!-- product -->
                     <col width="75">
-                    <col width="260">
+                    <col width="250">
                     <col width="60">
 			<col width="60">
+				<?php if ($this->_tpl_vars['pb_userinfo']['checkout']): ?><col width="60"><?php endif; ?>
                     <col width="60">
 		    <col width="60">
                     <col width="80">
@@ -181,11 +182,17 @@ images/offer_01.gif" /></div>
 </th>
                    <th><?php echo $this->_tpl_vars['_published']; ?>
 </th>
+		   <?php if ($this->_tpl_vars['pb_userinfo']['checkout']): ?>
+			<th style="text-align: left">Quảng cáo</th>
+		   <?php endif; ?>
 		   
 		   <th style="text-align: left"><?php echo $this->_tpl_vars['_created_date']; ?>
 </th>
                    <th style="text-align: left"><?php echo $this->_tpl_vars['_release']; ?>
-</th>		   
+</th>
+		   
+		   
+		   
                    <th width="15%" style="text-align: left"><?php echo $this->_tpl_vars['_operation']; ?>
 </th>
                 </tr> 
@@ -234,6 +241,26 @@ images/unpublished.png">
 			</a>
 		    <?php endif; ?>
 		</td>
+		
+		<?php if ($this->_tpl_vars['pb_userinfo']['checkout']): ?>
+			<td>
+				<?php if ($this->_tpl_vars['item']['ads'] == 1): ?>
+				    <a href="<?php echo $_SERVER['PHP_SELF']; ?>
+?do=ads&type=down&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+" title="Bỏ quảng cáo khỏi trang sản phẩm">
+					<img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
+images/published.png">
+				    </a>
+				<?php else: ?>
+				    <a href="<?php echo $_SERVER['PHP_SELF']; ?>
+?do=ads&type=up&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+" title="Đặt làm quảng cáo trang sản phẩm">
+					<img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
+images/unpublished.png">
+				    </a>
+				<?php endif; ?>
+			</td>
+		<?php endif; ?>
 		
 		<td style="text-align: left"><?php echo $this->_tpl_vars['item']['created']; ?>
 </td>

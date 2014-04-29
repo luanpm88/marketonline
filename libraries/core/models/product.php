@@ -220,6 +220,22 @@ class Products extends PbModel {
 		return $result;
 	}
 	
+	function getProductBanners($user_id)
+	{
+		$sql = "SELECT p.*, b.name AS brand_name, i.name as industry_name FROM {$this->table_prefix}products p"
+			." LEFT JOIN {$this->table_prefix}brands b ON b.id = p.brand_id"
+			." LEFT JOIN {$this->table_prefix}industries i ON i.id = p.industry_id"
+			." WHERE p.member_id=".$user_id." AND ads=1"
+			." ORDER BY ads_time DESC LIMIT 10";
+		$results = $this->dbstuff->GetArray($sql);
+		
+		foreach($results as &$result)
+		{
+			$this->formatInfo($result);
+		}
+		return $results;
+	}
+	
 	function formatResult($result)
 	{
 		global $rewrite_able;
@@ -383,5 +399,80 @@ class Products extends PbModel {
 		}
 	}
 	
+	
+	function findByIndustry($iid)
+	{
+		//get children ids
+		uses("industry");
+		$industry_db = new Industries();
+		$industry = $industry_db->read("children", $iid);
+			
+		$sql = "SELECT p.*, b.name AS brand_name, i.name as industry_name FROM {$this->table_prefix}products p"
+			." LEFT JOIN {$this->table_prefix}brands b ON b.id = p.brand_id"
+			." LEFT JOIN {$this->table_prefix}industries i ON i.id = p.industry_id"
+			." WHERE i.id IN (".$industry["children"].")"
+			." ORDER BY created DESC LIMIT 10";
+		$results = $this->dbstuff->GetArray($sql);
+		
+		foreach($results as &$result)
+		{
+			$this->formatInfo($result);
+		}
+
+		return $results;
+	}
+	
+	function formatInfo(&$result)
+	{
+			//var_dump($result);
+			if (empty($result) || !$result) {
+				return false;
+			}
+			$result['pubdate'] = df($result['created']);
+			if (!empty($result['picture'])) {
+				$result['imgsmall'] = pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['imgmiddle'] = pb_get_attachmenturl($result['picture'], '', 'middle');
+				$result['image'] = pb_get_attachmenturl($result['picture'], '', '');
+				$result['image_url'] = rawurlencode($result['picture']);
+			} else {
+				$result['image'] = pb_get_attachmenturl('', '', 'middle');
+			}
+			if (!empty($result['picture1'])) {
+				$result['imgsmall1'] = pb_get_attachmenturl($result['picture1'], '', 'small');
+				$result['imgmiddle1'] = pb_get_attachmenturl($result['picture1'], '', 'middle');
+				$result['image1'] = pb_get_attachmenturl($result['picture1'], '', '');
+				$result['image_url1'] = rawurlencode($result['picture1']);
+			}
+			if (!empty($result['picture2'])) {
+				$result['imgsmall2'] = pb_get_attachmenturl($result['picture2'], '', 'small');
+				$result['imgmiddle2'] = pb_get_attachmenturl($result['picture2'], '', 'middle');
+				$result['image2'] = pb_get_attachmenturl($result['picture2'], '', '');
+				$result['image_url2'] = rawurlencode($result['picture2']);
+			}
+			if (!empty($result['picture3'])) {
+				$result['imgsmall3'] = pb_get_attachmenturl($result['picture3'], '', 'small');
+				$result['imgmiddle3'] = pb_get_attachmenturl($result['picture3'], '', 'middle');
+				$result['image3'] = pb_get_attachmenturl($result['picture3'], '', '');
+				$result['image_url3'] = rawurlencode($result['picture3']);
+			}
+			if (!empty($result['picture4'])) {
+				$result['imgsmall4'] = pb_get_attachmenturl($result['picture4'], '', 'small');
+				$result['imgmiddle4'] = pb_get_attachmenturl($result['picture4'], '', 'middle');
+				$result['image4'] = pb_get_attachmenturl($result['picture4'], '', '');
+				$result['image_url4'] = rawurlencode($result['picture4']);
+			}
+			$result["price"] = number_format($result["price"], 0, ',', '.');
+			$result["new_price"] = number_format($result["new_price"], 0, ',', '.');
+			
+			if($result['default_pic'])
+			{
+				$result['thumb'] = $result['imgsmall'.$result['default_pic']];
+			}
+			else
+			{
+				$result['thumb'] = $result['imgsmall'];
+			}
+		
+	}
 }
 ?>

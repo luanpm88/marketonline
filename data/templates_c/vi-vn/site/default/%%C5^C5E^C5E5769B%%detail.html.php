@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-21 13:59:29
+<?php /* Smarty version 2.6.27, created on 2014-04-29 14:34:34
          compiled from default/product/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 570, false),array('modifier', 'truncate', 'default/product/detail.html', 709, false),array('block', 'product', 'default/product/detail.html', 724, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 570, false),array('modifier', 'truncate', 'default/product/detail.html', 729, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -283,11 +283,20 @@ unset($_smarty_tpl_vars);
         </div>
         
 
-        <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+        <?php if ($this->_tpl_vars['item']['service']): ?>
+		<div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
-</a> <span class="delim">/</span><a href="index.php?do=product"><?php echo $this->_tpl_vars['_product']; ?>
-</a> <span class="delim">/</span><?php echo $this->_tpl_vars['item']['industry_names']; ?>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+">Dịch vụ</a> <span class="delim">/</span><?php echo $this->_tpl_vars['item']['industry_service_names']; ?>
  </div>
+	<?php else: ?>
+		<div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+"><?php echo $this->_tpl_vars['_home_page']; ?>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+">Sản phẩm</a> <span class="delim">/</span><?php echo $this->_tpl_vars['item']['industry_names']; ?>
+ </div>
+	<?php endif; ?>
+	
 	<h1 class="page-title">
                         <?php echo $this->_tpl_vars['item']['title']; ?>
 
@@ -496,19 +505,18 @@ if ($this->_foreach['form']['total'] > 0):
 				<div class="share_buts">
 					
 				  <!-- AddThis Button BEGIN -->
-				  <?php echo '
-<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-	
-<!--<a class="addthis_button_facebook"></a>-->
-<a class="addthis_button_twitter"></a>
-<a class="addthis_button_google_plusone_share"></a>
-<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
-</div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
-'; ?>
+				<?php echo '
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<!--<a class="addthis_button_facebook"></a>-->
+					<a class="addthis_button_twitter"></a>
+					<a class="addthis_button_google_plusone_share"></a>
+					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+				'; ?>
 
-<!-- AddThis Button END -->
+				<!-- AddThis Button END -->
 			</div>
 			
 			
@@ -624,10 +632,6 @@ x<?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
 				
 				
 				</section>
-				
-				
-			    
-			    
 			    
 			    </div>
 			    
@@ -830,8 +834,7 @@ image/usericon_big.png  <?php endif; ?> <?php endif; ?>" />
 <?php endif; ?>
 			</p>
 			    
-			
-			
+
 		</div>
 		<div class="bottom-address-right">
 			
@@ -866,8 +869,9 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 									    
 									    <td colspan="2" style="width: 100%">
 										<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-											<a class="chat_with_owner <?php if ($this->_tpl_vars['online']): ?>online<?php endif; ?>" href="javascript:void(0)" onclick="getChatbox(<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
-, false, $MEMBER.membertype_id)"><?php echo $this->_tpl_vars['_chat_with_owner']; ?>
+											<a class="chat_with_owner <?php if ($this->_tpl_vars['online']): ?>online<?php endif; ?>" href="javascript:void(0)" onclick="getChatboxNew('<?php echo $this->_tpl_vars['MEMBER']['id']; ?>
+x<?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
+', false)"><?php echo $this->_tpl_vars['_chat_with_owner']; ?>
 </a>
 										<?php else: ?>
 											<a class="chat_with_owner <?php if ($this->_tpl_vars['online']): ?>online<?php endif; ?> comment_but" href="#login-box" onclick=""><?php echo $this->_tpl_vars['_chat_with_owner']; ?>
@@ -879,8 +883,10 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 						 </div>
 			
 		</div>
-	
     </div>
+    
+    
+	
     
     
     
@@ -891,59 +897,103 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 <div id="right_detail_banner">
 	<div class="inner">
 	    <div class="detail_box_content">
+		<?php if (! $this->_tpl_vars['MEMBER']['checkout']): ?>
+			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/product/_product_detail_rightbar_nopaid.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		<?php else: ?>
+			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/product/_product_detail_rightbar_paid.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		<?php endif; ?>
 		
-		<a href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
-		
-		<?php if ($this->_tpl_vars['COMPANY']['r_spacename']): ?><a href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['COMPANY']['r_spacename'])), $this);?>
-" class="leftlogodetail"><img title="<?php echo $this->_tpl_vars['COMPANY']['r_name']; ?>
-" alt="<?php echo $this->_tpl_vars['COMPANY']['r_name']; ?>
-" src="<?php echo $this->_tpl_vars['COMPANY']['r_logo']; ?>
-" /><span class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['COMPANY']['r_shop_name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
-</span></a><?php endif; ?>
-		
-	<?php $_from = $this->_tpl_vars['banners']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['itemxxx']):
-?>
-	
-		<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="<?php echo smarty_function_the_url(array('module' => 'banner_click','id' => ($this->_tpl_vars['itemxxx']['id'])), $this);?>
-"><img title="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" alt="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" src="<?php echo $this->_tpl_vars['itemxxx']['image']; ?>
-" /><span class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
-</span></a>-->
-		<a class="" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
-"><?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-</a>
-		<a class="leftlogodetail" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
-">
-			<img title="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" alt="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" src="<?php echo $this->_tpl_vars['itemxxx']['image']; ?>
-" />
-			<span style="display: none" class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
-</span>
-		</a>
-		<?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['description'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 99) : smarty_modifier_truncate($_tmp, 99)); ?>
- <br />
-	
-	<?php endforeach; endif; unset($_from); ?>
-		
-		
-		<?php $this->_tag_stack[] = array('product', array('name' => 'itemz','industryid' => ($this->_tpl_vars['inn_array']),'row' => 2)); $_block_repeat=true;smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
-		    <?php if ($this->_tpl_vars['Product']['id'] != $this->_tpl_vars['itemz']['id']): ?>
-			<a style="display: none" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemz']['id'])), $this);?>
-"><img title="<?php echo $this->_tpl_vars['itemz']['name']; ?>
-" alt="<?php echo $this->_tpl_vars['itemz']['name']; ?>
-" src="<?php echo $this->_tpl_vars['itemz']['thumb']; ?>
-" /></a>
-		    <?php endif; ?>
-		<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
-		
-		<!--<a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['banner']['banner1_id']; ?>
-"><img src="<?php echo $this->_tpl_vars['banner']['banner1']; ?>
-" /></a>-->
 	    </div>
 	</div>
+</div>
+
+<div class="middle-bottom-line" style="clear: both"></div>
+
+<h3 class="related_bottom_h3">Sản phẩm cùng loại</h3>
+<div class="related_products_bottom">	
+	<ul>
+		
+		<?php $_from = $this->_tpl_vars['bottom_related_products']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['levelvv'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['levelvv']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['keyvv'] => $this->_tpl_vars['itemvv']):
+        $this->_foreach['levelvv']['iteration']++;
+?>
+			<li class="">
+				<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemvv']['id'])), $this);?>
+" title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
+">
+					<div class="img_box">
+						<img title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
+" alt="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
+" src="<?php echo $this->_tpl_vars['itemvv']['thumb']; ?>
+" />
+					</div>
+					<?php echo ((is_array($_tmp=$this->_tpl_vars['itemvv']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 45) : smarty_modifier_truncate($_tmp, 45)); ?>
+
+				</a>
+				<?php if ($this->_tpl_vars['itemvv']['new_price'] || $this->_tpl_vars['itemvv']['price']): ?>
+					<?php if ($this->_tpl_vars['itemvv']['new_price'] != "" && $this->_tpl_vars['itemvv']['new_price'] != 0): ?>
+						<span class="price"><?php if ($this->_tpl_vars['itemvv']['price']): ?><span class="old_price"><?php echo $this->_tpl_vars['itemvv']['price']; ?>
+ <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
+<?php endif; ?></span></span><?php endif; ?> <span class="amount"><?php echo $this->_tpl_vars['itemvv']['new_price']; ?>
+</span> <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
+<?php endif; ?></span></span> <?php if ($this->_tpl_vars['itemvv']['price_note']): ?><span class="noteprice">(<?php echo $this->_tpl_vars['itemvv']['price_note']; ?>
+)</span><?php endif; ?>
+					<?php else: ?>
+						<span class="price"><span class="amount"><?php echo $this->_tpl_vars['itemvv']['price']; ?>
+</span> <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
+<?php endif; ?></span></span>
+					<?php endif; ?>
+				<?php endif; ?>
+			</li>
+		<?php endforeach; endif; unset($_from); ?>
+		
+	</ul>
+</div>
+
+<div class="bottom_industry_list">
+	<h3><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+">Danh mục sản phẩm</a></h3>
+	<ul>
+		<?php $_from = $this->_tpl_vars['industries']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level_0']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
+        $this->_foreach['level_0']['iteration']++;
+?>
+			<li class="level0 <?php if ($this->_tpl_vars['level_0']%4 == 0): ?>clear<?php endif; ?>">
+				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+"><?php echo $this->_tpl_vars['item0']['name']; ?>
+</a>
+				<ul>
+					<?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level_1_industry']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
+        $this->_foreach['level_1_industry']['iteration']++;
+?>
+						<li class="level1 <?php if ($this->_tpl_vars['key_level1'] > 4): ?>hide<?php endif; ?>">
+							<a class="level1" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id'])), $this);?>
+"><?php echo $this->_tpl_vars['level1']['name']; ?>
+</a>
+						</li>
+					<?php endforeach; endif; unset($_from); ?>
+					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
+				</ul>
+			</li>
+			<?php if ($this->_tpl_vars['level_0']++): ?><?php endif; ?>
+		<?php endforeach; endif; unset($_from); ?>
+		<li class="level0 more-item"><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+">Sản phẩm mới</a></li>
+		<li class="level0 more-item"><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+#sale">Giảm giá/Khuyến mãi</a></li>
+	</ul>
 </div>
 
 
@@ -952,31 +1002,31 @@ contact"><?php echo $this->_tpl_vars['COMPANY']['contact_email']; ?>
 
 <?php echo '
 <script>
-		//get related products
-		$.ajax({
-			url: "'; ?>
+	//get related products
+	$.ajax({
+		url: "'; ?>
 <?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
 <?php echo 'index.php?do=product&action=related_products&member_id='; ?>
 <?php echo $this->_tpl_vars['item']['member_id']; ?>
 <?php echo '&product_id='; ?>
 <?php echo $this->_tpl_vars['item']['id']; ?>
 <?php echo '",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$(\'.related_products_box\').html(data);
-				
-				$(\'#product_detail_box ul.product_list_widget li img\').resizecrop({
-					width:100,
-					height:100
-				});
-				
-				$(\'#product_detail_box ul.product_list_widget li img\').css("float", "none");
-				$(\'#product_detail_box ul.product_list_widget li img\').css("visibility", "visible");
-				if ($(\'.product_list_widget li\').length < 6) {
-					$(\'.view_more_detail\').remove()
-				}
+	}).done(function ( data ) {
+		if( console && console.log ) {
+			$(\'.related_products_box\').html(data);
+			
+			$(\'#product_detail_box ul.product_list_widget li img\').resizecrop({
+				width:100,
+				height:100
+			});
+			
+			$(\'#product_detail_box ul.product_list_widget li img\').css("float", "none");
+			$(\'#product_detail_box ul.product_list_widget li img\').css("visibility", "visible");
+			if ($(\'.product_list_widget li\').length < 6) {
+				$(\'.view_more_detail\').remove()
 			}
-		});
+		}
+	});
 </script>
 '; ?>
 

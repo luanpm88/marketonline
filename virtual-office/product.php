@@ -429,13 +429,31 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		}
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
+	if ($do == "ads") {
+		switch ($_GET['type']) {
+			case "up":
+				$state = 1;
+				break;
+			case "down":
+				$state = 0;
+				break;
+			default:
+				$state = 0;
+				break;
+		}
+		if (!empty($id)) {
+			$vals['ads'] = $state;
+			$vals['ads_time'] = date('Y-m-d H:i:s');
+			$updated = $pdb->Execute("UPDATE {$tb_prefix}products SET ads={$state}, ads_time='{$vals['ads_time'] }' WHERE id={$id} AND member_id={$the_memberid}");
+		}
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
 	if (($do == "del" || $_GET['act']=="del") && !empty($id)) {
 		$res = $product->read("id, picture, picture1, picture2, picture3, picture4, industry_id",$id);
 		if($res){
 			if($the_memberid == $res["id"]) $product->deleteImage($res);
 			
 			//update count			
-			
 			
 			if(!$product->del($_GET['id'], $conditions)){
 				flash();
@@ -509,7 +527,7 @@ if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	setvar('sortOrder',$o_arr[1]);
 }
 
-$result = $product->findAll("sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
+$result = $product->findAll("ads,sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
 if ($result) {
 	$i_count = count($result);
 	for ($i=0; $i<$i_count; $i++) {

@@ -16,9 +16,6 @@
 
 <!--{literal}-->
 <script type="application/x-javascript">
-  
-
-  
 	  function ajaxLoadMenu(id, level, item) {
 	    //code
 	    //$('h1.page-title').html(item.html());
@@ -70,7 +67,7 @@
 				      $('.parent-menu-title').html($('.box-level'+(levelx-1)+' li.active a').clone());
 				      if (industryid == 0) {
 					$('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục sản phẩm</a>");
-					$('.product_list_title').html(" / Tìm kiếm");
+					//$('.product_list_title').html(" / Tìm kiếm");
 				      }
 				    
 				  if (levelx == '2') {
@@ -403,7 +400,7 @@
 		    
 		    $('.s-scroll').animate({ marginLeft: '0px' }, 200);
 		    
-		    $('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục sản phẩm</a>");
+		    $('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục dịch vụ</a>");
 		});
 		
 		$('.box-level1 ul li a.item').click(function() {		
@@ -677,7 +674,7 @@
         <!--<label>{lang industry}&nbsp;&nbsp;</label>-->
         <input type="text" id="ProductName" name="q" value="{$keyword}" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
-	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title">
+	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục dịch vụ</span></a> <span class="product_list_title">
 	  
 	  
 	</span></h5>
@@ -938,21 +935,3 @@ var industry_id3 = {$item.industry_id3|default:0} ;
 <script src="scripts/script_industry.js"></script>
 
 <!--{include file="`$theme_name`/footer_none.html"}-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

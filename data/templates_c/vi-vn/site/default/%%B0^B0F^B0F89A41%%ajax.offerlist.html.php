@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-19 09:32:03
+<?php /* Smarty version 2.6.27, created on 2014-04-29 08:19:13
          compiled from default/product/ajax.offerlist.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'default/product/ajax.offerlist.html', 20, false),array('function', 'the_url', 'default/product/ajax.offerlist.html', 103, false),)), $this); ?>
@@ -17,7 +17,8 @@ if ($this->_foreach['level']['total'] > 0):
 
 <li class="product<?php echo $this->_tpl_vars['item']['isfirst']; ?>
 " rel="<?php echo $this->_tpl_vars['item']['id']; ?>
-">
+" onclick="getOfferDetail(<?php echo $this->_tpl_vars['item']['id']; ?>
+,0);">
 
 	<div class="images">
 		<a href="javascript:void(0)" class="fancy-box-offer">	

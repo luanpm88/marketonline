@@ -1,0 +1,26 @@
+<!--{foreach from=$product_banners item=itemxxx}-->
+		
+			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="{the_url module=banner_click id=`$itemxxx.id`}"><img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" /><span class="shopname_right">{$itemxxx.title|truncate:32}</span></a>-->
+			<div class="rightbanner_block">
+				
+				<a class="noresize" href="{the_url module=product id=`$itemxxx.id`}">
+					<div class="img_box">
+						<img title="{$itemxxx.name}" alt="{$itemxxx.name}" src="{$itemxxx.image}" />
+					</div>
+					<span style="display: none" class="shopname_right">{$itemxxx.name|truncate:32}</span>
+				</a>
+				<a class="title" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="{the_url module=product id=`$itemxxx.id`}">{$itemxxx.name}</a>
+				
+				{if $itemxxx.new_price || $itemxxx.price}
+					{if $itemxxx.new_price != "" && $itemxxx.new_price != 0}
+						<span class="price">{if $itemxxx.price}<span class="old_price">{$itemxxx.price} <span class="price_unit">VNĐ{if $itemxxx.price_unit}/{$itemxxx.price_unit}{/if}</span></span>{/if} <span class="amount">{$itemxxx.new_price}</span> <span class="price_unit">VNĐ{if $itemxxx.price_unit}/{$itemxxx.price_unit}{/if}</span></span> {if $itemxxx.price_note}<span class="noteprice">({$itemxxx.price_note})</span>{/if}
+					{else}
+						<span class="price"><span class="amount">{$itemxxx.price}</span> <span class="price_unit">VNĐ{if $itemxxx.price_unit}/{$itemxxx.price_unit}{/if}</span></span>
+					{/if}
+				{/if}
+				
+				
+			</div>
+			{$itemxxx.description|truncate:99}
+		
+<!--{/foreach}-->
