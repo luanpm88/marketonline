@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 14:34:34
+<?php /* Smarty version 2.6.27, created on 2014-05-23 21:55:58
          compiled from default/product/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 570, false),array('modifier', 'truncate', 'default/product/detail.html', 729, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 585, false),array('modifier', 'truncate', 'default/product/detail.html', 744, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -273,8 +273,25 @@ unset($_smarty_tpl_vars);
 
 
 <div class="row">
-    <div class="fifteen columns" id="page-title">
-        <a class="back" href="javascript:history.back()"></a>
+    <div class="fifteen columns" id="page-title" style="padding-left: 110px;">
+	
+	<div class="super-main-category mainproductpage <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+		<div class="show-but">
+			Chuyên mục chính			
+		</div>
+		<a href="<?php if ($this->_tpl_vars['item']['service']): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+	
+        <!--<a class="back" href="javascript:history.back()"></a>-->
         <div class="subtitle">
             
                         <p><?php if ($this->_tpl_vars['item']['service']): ?><?php echo $this->_tpl_vars['_services']; ?>

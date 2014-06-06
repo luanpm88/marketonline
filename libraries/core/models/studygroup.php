@@ -48,6 +48,7 @@ class Studygroups extends PbModel {
 				$val["school_id"] = $school_id;
 				$val["subject_id"] = $subject_id;
 				$val["member_id"] = $member_id;
+				$val["leader_id"] = $member_id;
 				$val["created"] = strtotime(date('Y-m-d H:i:s'));
 				$this->save($val);
 				

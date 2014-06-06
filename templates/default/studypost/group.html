@@ -51,7 +51,7 @@
                         </form>
                         
                         <div class="logo_out_hover">
-                            {if $pb_userid == 1030}
+                            {if $pb_userid == 1030 || $pb_userid == $group_leader.id}
                                 <a class="changesgrouplogo" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">
                                     {if $group.logo_origin}
                                         Thay logo
@@ -66,8 +66,24 @@
                                     <div class="box-top"><label>Thành viên</label>{$group.member_count}</div>
                                     <div class="box-bottom"><label>Quản trị viên</label>
                                         <a href="{the_url module=studypost action=memberpage id=`$group_leader.id`}">{$group_leader.first_name} {$group_leader.last_name}</a>
+                                           
                                     </div>
+                                        {if $pb_userid == 10309}
+                                            <a class="change-group-leader-but" href="#change-group-leader-form">
+                                                Thay Quản lý nhóm
+                                            </a>
+                                            <div id="change-group-leader-form" style="display: none;padding: 20px;">
+                                                <form style="margin-bottom: 0;" action="{the_url module=root-url}index.php">
+                                                    <input type="hidden" value="studypost" name="do" />
+                                                    <input type="hidden" value="changeGroupLeader" name="action" />
+                                                    <input type="hidden" value="{$group.id}" name="group_id" />
+                                                    <input type="text" value="" name="username" placeholder="Tên người dùng" />
+                                                    <input type="submit" class="button-style" value="Thay Quản lý" />
+                                                </form>
+                                            </div>
+                                        {/if} 
                                 </div>
+                                
                             </div>
                         </div>
                         
@@ -89,7 +105,7 @@
                             {else}
                                 <!--{loop $group.banners item level key}-->
                                     <li>
-                                        {if $pb_userid == 1030}<a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_studygroupbanner id=`$item.id`}">x</a>{/if}
+                                        {if $pb_userid == 1030 || $pb_userid == $group_leader.id}<a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_studygroupbanner id=`$item.id`}">x</a>{/if}
                                         <a href="javascript:void(0)" onclick="getStudygrouppictureDetail({$group.id},{$item.id})"><img src="{$item.banner}" /></a>
                                     </li>
                                 <!--{/loop}-->
@@ -113,7 +129,7 @@
                             <a href="{the_url module=studypost action=leave_group id=`$group.id`}">Rời khỏi nhóm</a>
                         {/if}
                         
-                        {if $pb_userid == 1030}
+                        {if $pb_userid == 1030 || $pb_userid == $group_leader.id}
                             <iframe name="upload" id="upload" style="display: none"></iframe>
                             <form style="display: none" name="productaddfrm" id="Frm2_banner" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_group_banner" enctype="multipart/form-data">
                               <!-- {formhash} -->
@@ -153,7 +169,7 @@
                             
                             <!--{include file="`$theme_name`/studypost/_rightbar_groups.html"}-->
                             
-                            {if $pb_userinfo.id == 1030}
+                            {if $pb_userinfo.id == 1030 || $pb_userid == $group_leader.id}
                                 <h4>Thành viên chờ duyệt</h4>
                                 {if $groups_count > 5}
                                     <div class="title_more_group_button" onclick="$('.rightbar_grouplist .group_item').css('display','block');$(this).remove()" href="">Xem thêm</div>
@@ -162,7 +178,7 @@
                                     <!--{loop $waiting_list mem level_group group_key}-->
                                         <li class="group_item">
                                             <div  {if $mem.photo}style="background:url({$mem.info.photo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" onclick="" title="{$mem.info.first_name} {$mem.info.last_name}">
-                                                <strong onclick="window.location='{the_url module=studypost action=group id=`$mem.info.id`}'">{$mem.info.first_name} {$mem.info.last_name}</strong>
+                                                <strong onclick="window.location='{the_url module=studypost action=memberpage id=`$mem.info.id`}'">{$mem.info.first_name} {$mem.info.last_name}</strong>
                                                 <p>{$mem.info.school_name}</p>
                                                 <div class="action">
                                                     <a href="{the_url module=studypost action=group_accept id=`$mem.info.id` group_id=`$mem.studygroup_id`}">Duyệt</a>

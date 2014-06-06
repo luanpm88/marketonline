@@ -115,7 +115,7 @@
                         {if $member.school_name}<p class="school"><label>Trường </label>:&nbsp; {$member.school_name}</p>{/if}
                         {if $member.class}<p><label>Lớp </label>:&nbsp; {$member.class}</p>{/if}
                         {if $member.gender}<p><label>Giới tính </label>:&nbsp; {if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
-                        {if $member.address}<p><label>Địa chỉ </label>:&nbsp; {$member.address}</p>{/if}
+                        {if $member.address}<p><label>Địa chỉ </label><span><i>:&nbsp; </i>{$member.address}</span></p>{/if}
                         {if $member.mobile}<p><label>Điện thoại </label>:&nbsp; {$member.mobile}</p>{/if}
                         {if $member.email}<p><label>Email </label>:&nbsp; {$member.email}</p>{/if}
                     </div>
@@ -191,8 +191,21 @@
                 </div>
                 
                 <div class="member-left-bottom">
-                    <h2>Tự giới thiệu</h2>
-                </div>                
+                        <h2>Tự giới thiệu
+                        {if $pb_userid == $member.id}
+                            <a href="{the_url module=root-url}virtual-office/personal.php#tgttext" style="font-size: 14px;">(Chỉnh sửa)</a>
+                        {/if}</h2>
+                        {$member.intro}
+                </div>
+                <a class="member-left-bottom-more" href="#member-left-bottom-content">Xem thêm...</a>
+                <div id="member-left-bottom-content" style="display: none">
+                    <h2>Tự giới thiệu
+                        {if $pb_userid == $member.id}
+                            <a href="{the_url module=root-url}virtual-office/personal.php#tgttext" style="font-size: 14px;">(Chỉnh sửa)</a>
+                        {/if}
+                    </h2>
+                    {$member.intro}
+                </div>
                 
             </div>
             
@@ -210,8 +223,6 @@
             
             <div id="facelike_col2">
                 <div class="col2-top">
-                    
-                    
                     
                 </div>
                 <div class="col2-bottom">

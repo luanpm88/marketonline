@@ -1819,7 +1819,7 @@
                         $(this).formatNumber({format:"####", locale:"vn"});
                 });
 
-                $('.product_listing a,.product_listing img, .logo_box_u a, .red_box a').qtip({ // Grab some elements to apply the tooltip to
+                $('.product_listing a.none,.product_listing img.none, .logo_box_u a, .red_box a').qtip({ // Grab some elements to apply the tooltip to
                     content: {
                         attr: 'title'                        
                     },

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 09:07:17
+<?php /* Smarty version 2.6.27, created on 2014-05-23 17:28:08
          compiled from default/topmenu_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/topmenu_content.html', 25, false),array('block', 'topmenuindustries', 'default/topmenu_content.html', 31, false),)), $this); ?>
@@ -38,18 +38,16 @@ image/logo-home.png" alt=""></a>
 image/product_bg.png);'></span></a></span>
 <ul>
     
-    <?php $this->_tag_stack[] = array('topmenuindustries', array('level' => 1,'row' => 4,'orderby' => 'display_order')); $_block_repeat=true;smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
+    <?php $this->_tag_stack[] = array('topmenuindustries', array('level' => 1,'row' => 3,'orderby' => 'display_order')); $_block_repeat=true;smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 	
 	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['industry']['id'])), $this);?>
 "><span class="link-text"><?php echo $this->_tpl_vars['industry']['name']; ?>
 </span></a></span></li>
-	
 	    
     <?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
     
-	
-	
-        <li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="index.php?do=product"><span class="link-text"><?php echo $this->_tpl_vars['_read_more']; ?>
+        <li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+"><span class="link-text"><?php echo $this->_tpl_vars['_read_more']; ?>
 </span></a></span></li>
 	
 </ul>
@@ -60,11 +58,23 @@ image/product_bg.png);'></span></a></span>
 " style='background-color:#ffaa31; background-size:cover; background-image:url();' >
 <span class="link-text">Dịch vụ</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/service_bg.png);'></span></a></span>
-<!--<ul>
-	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Mua</span></a></span></li>
-	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Bán</span></a></span></li>
-	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhà Phân phối</span></a></span></li>
-</ul>-->
+<ul>
+    
+    <?php $this->_tag_stack[] = array('topmenuindustries', array('level' => 1,'row' => 3,'orderby' => 'display_order')); $_block_repeat=true;smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
+	
+	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'services','level' => 1,'industryid' => ($this->_tpl_vars['industry']['id'])), $this);?>
+"><span class="link-text"><?php echo $this->_tpl_vars['industry']['name']; ?>
+</span></a></span></li>
+	
+    <?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
+    
+	
+	
+        <li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+"><span class="link-text"><?php echo $this->_tpl_vars['_read_more']; ?>
+</span></a></span></li>
+	
+</ul>
 </li>
 	
 <li class="menu-blog" style=""><span class="menu-item-wrap">
@@ -72,7 +82,7 @@ image/service_bg.png);'></span></a></span>
 " style='background-color:#57BAE8; background-size:cover; background-image:url();' >
 <span class="link-text">Thương mại</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/trade_bg.png);'></span></a></span>
-<ul>
+<ul style="margin-left: 307px">
 	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="<?php echo smarty_function_the_url(array('module' => 'offer_main','offertype' => 'buy'), $this);?>
 "><span class="link-text">Nhu cầu Mua</span></a></span></li>
 	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="<?php echo smarty_function_the_url(array('module' => 'offer_main','offertype' => 'sell'), $this);?>

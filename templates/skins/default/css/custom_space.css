@@ -1926,3 +1926,11 @@ a.following
     height: 32px;
     margin-top: -17px;
 }
+.main_banner img
+{
+    border: solid 1px #aaa;
+}
+#top_company_info
+{
+    border-bottom: solid 1px #aaa;
+}

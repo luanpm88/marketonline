@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-05 08:19:05
+<?php /* Smarty version 2.6.27, created on 2014-06-06 13:58:52
          compiled from default/studypost/school.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/school.html', 42, false),array('function', 'the_url', 'default/studypost/school.html', 60, false),array('modifier', 'truncate', 'default/studypost/school.html', 70, false),)), $this); ?>
@@ -65,7 +65,7 @@ index.php?do=studypost&action=change_school_logo" enctype="multipart/form-data">
                         </form>
                         
                         <div class="logo_out_hover">
-                            <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+                            <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['school']['leader_id']): ?>
                                 <a class="changesschoollogo" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">
                                     <?php if ($this->_tpl_vars['school']['logo_origin']): ?>
                                         Thay logo
@@ -122,7 +122,7 @@ if ($this->_foreach['level']['total'] > 0):
         $this->_foreach['level']['iteration']++;
 ?>
                                     <li>
-                                        <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?><a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'del_schoolbanner','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+                                        <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['school']['leader_id']): ?><a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'del_schoolbanner','id' => ($this->_tpl_vars['item']['id'])), $this);?>
 ">x</a><?php endif; ?>
                                         <a href="javascript:void(0)" onclick="getSchoolpictureDetail(<?php echo $this->_tpl_vars['school']['id']; ?>
 ,<?php echo $this->_tpl_vars['item']['id']; ?>
@@ -134,9 +134,6 @@ if ($this->_foreach['level']['total'] > 0):
                         </ul>
                         <span class="studybanner_nav next">></span>
                         <span class="studybanner_nav prev"><</span>
-                        
-                        
-                        
                         
                         
                         <div class="banner-school-info banner-group-info">
@@ -155,7 +152,7 @@ if ($this->_foreach['level']['total'] > 0):
                     </div>
                     <div class="main_controls">
                         
-                        <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+                        <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['school']['leader_id']): ?>
                         
                             <iframe name="upload" id="upload" style="display: none"></iframe>
                             <form style="display: none" name="productaddfrm" id="Frm2_banner" method="post" action="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
@@ -230,7 +227,6 @@ if ($this->_foreach['level']['total'] > 0):
                                         </li>
                                     <?php endforeach; endif; unset($_from); ?>
                                 </ul>
-                            
                             
                             <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/studypost/_rightbar_groups.html", 'smarty_include_vars' => array()));

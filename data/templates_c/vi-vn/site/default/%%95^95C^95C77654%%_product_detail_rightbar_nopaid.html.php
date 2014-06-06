@@ -1,8 +1,8 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 10:02:06
+<?php /* Smarty version 2.6.27, created on 2014-05-23 14:44:43
          compiled from default/product/_product_detail_rightbar_nopaid.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/_product_detail_rightbar_nopaid.html', 3, false),array('modifier', 'truncate', 'default/product/_product_detail_rightbar_nopaid.html', 3, false),array('block', 'product', 'default/product/_product_detail_rightbar_nopaid.html', 18, false),)), $this); ?>
-                <a href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
+                <a style="margin-bottom: 10px" href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
 		
 		<?php if ($this->_tpl_vars['COMPANY']['r_spacename']): ?><a href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['COMPANY']['r_spacename'])), $this);?>
 " class="leftlogodetail"><img title="<?php echo $this->_tpl_vars['COMPANY']['r_name']; ?>
@@ -21,10 +21,10 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 " src="<?php echo $this->_tpl_vars['itemxxx']['image']; ?>
 " /><span class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
 </span></a>-->
-			<a class="" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
+			<a class="" style="border: none;margin-top: 25px;padding-top: 10px;border-top:solid 1px #ccc;padding-bottom: 0" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
 "><?php echo $this->_tpl_vars['itemxxx']['title']; ?>
 </a>
-			<a class="leftlogodetail" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
+			<a class="leftlogodetailz" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
 ">
 				<img title="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
 " alt="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
@@ -33,15 +33,15 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 				<span style="display: none" class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
 </span>
 			</a>
-			<?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['description'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 99) : smarty_modifier_truncate($_tmp, 99)); ?>
-
-		
+			<?php if ($this->_tpl_vars['itemxxx']['description']): ?><div style="margin-bottom: 0"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['description'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 99) : smarty_modifier_truncate($_tmp, 99)); ?>
+</div><?php endif; ?>
+	
 		<?php endforeach; endif; unset($_from); ?>
 		
 		
 		<?php $this->_tag_stack[] = array('product', array('name' => 'itemz','industryid' => ($this->_tpl_vars['inn_array']),'row' => 2)); $_block_repeat=true;smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 		    <?php if ($this->_tpl_vars['Product']['id'] != $this->_tpl_vars['itemz']['id']): ?>
-			<a style="display: none" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemz']['id'])), $this);?>
+			<a style="display: none;margin-bottom: 20px" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemz']['id'])), $this);?>
 "><img title="<?php echo $this->_tpl_vars['itemz']['name']; ?>
 " alt="<?php echo $this->_tpl_vars['itemz']['name']; ?>
 " src="<?php echo $this->_tpl_vars['itemz']['thumb']; ?>

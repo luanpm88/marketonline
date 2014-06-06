@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 11:05:44
+<?php /* Smarty version 2.6.27, created on 2014-06-06 12:56:42
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1109, false),array('function', 'formhash', 'default/header.html', 1193, false),array('modifier', 'default', 'default/header.html', 1204, false),array('modifier', 'date_format', 'default/header.html', 1218, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1154, false),array('function', 'formhash', 'default/header.html', 1238, false),array('modifier', 'default', 'default/header.html', 1249, false),array('modifier', 'date_format', 'default/header.html', 1263, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -209,6 +209,21 @@ css/editorcss.css">
 </style>
 
 <script type="application/x-javascript">
+    
+    function loadMainCategoryMenu()
+    {
+        $.ajax({
+	    url: "index.php?do=product&action=ajaxMainCategoryMenu&service='; ?>
+<?php echo $this->_tpl_vars['item']['service']; ?>
+<?php echo $_GET['action']; ?>
+<?php echo '",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+                $(\'.super-main-category .main-cat-content\').html(data);
+                $(\'.menu_industry_list ul li.level0 ul\').height($(\'.toptoptop\').height());
+            }
+        });
+    }
     
     function showCart()
     {
@@ -784,6 +799,10 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			      title: null
 			}
 		});
+                
+                $(\'.member-left-bottom-more\').fancybox();
+                
+                $(\'.change-group-leader-but\').fancybox();
 		
 		
 		//$(".banner_top").click(function(){alert("assadas")});
@@ -819,8 +838,8 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 $(\'.klbox\').css(\'display\', \'block\');
 		 
 		 $(\'.leftlogodetail img\').resizecrop({
-		   width:168,
-		   height:168
+		   width:158,
+		   height:158
 		 });
 		 $(\'.leftlogodetail img\').css("visibility","visible");
 		 
@@ -933,6 +952,35 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
                     $(this).parent().parent().find(\'li\').removeClass("hide");
                     $(this).remove();
                 });
+                
+                //auto related products height
+                var maxrpheight = 0;
+                $(\'.related_products_bottom ul li\').each(function(){
+                    //alert($(this).height());
+                    if($(this).height()+10 > maxrpheight)
+                    {
+                        maxrpheight = $(this).height()+10;
+                    }
+                })
+                $(\'.related_products_bottom ul li\').css(\'height\',maxrpheight)
+                
+                loadMainCategoryMenu();
+                $(\'.super-main-category .show-but:first-child\').live("click", function(e) {
+                    $(\'.super-main-category .main-cat-content-out\').toggle();
+                    $(\'.menu_industry_list ul li.level0 ul\').height($(\'.toptoptop\').height());
+                    if ($(\'.super-main-category .main-cat-content-out\').css("display") == "block") {
+                        //$(\'#page-title .subtitle\').css("visibility","hidden");
+                        //$(\'#page-title .breadcrumbs\').css("visibility","hidden");
+                        //$(\'#page-title h1.page-title\').css("visibility","hidden");
+                    }
+                    e.stopPropagation();
+                })                
+                $(\'body\').click(function(){$(\'.super-main-category .main-cat-content-out\').fadeOut()
+                    //$(\'#page-title .subtitle\').css("visibility","visible");
+                    //$(\'#page-title .breadcrumbs\').css("visibility","visible");
+                    //$(\'#page-title h1.page-title\').css("visibility","visible");
+                });	
+		
 	});
 	
         

@@ -1,16 +1,48 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 12:49:21
+<?php /* Smarty version 2.6.27, created on 2014-06-06 12:42:38
          compiled from personal.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'personal.html', 312, false),array('function', 'html_radios', 'personal.html', 358, false),array('modifier', 'default', 'personal.html', 582, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'personal.html', 3, false),array('function', 'formhash', 'personal.html', 343, false),array('function', 'html_radios', 'personal.html', 389, false),array('modifier', 'default', 'personal.html', 637, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_profile'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+<?php echo smarty_function_editor(array('type' => 'tiny_mce'), $this);?>
 
 <?php echo '
 <script>
+	
+		function inserEditorFile(url, image) {
+		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
+		if (image) {
+			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, "<img src=\'../attachment/"+url+"\' />");
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, \'<video controls width="640" height="360">\'
+										+\'<source src="../attachment/\'+url+\'" type="video/mp4" />\'
+										+\'Your browser does not support the video tag.</video>\');
+		}		
+	}
+	
+	function checkUploadEditorInput() {
+		//code
+		if($(\'#uploadEditorFile\').val() == \'\')
+		{
+			$(\'#uploadEditorFile\').css(\'border\', \'solid 1px red\');
+			return false;
+		} else
+		{
+			$(\'#uploadEditorFile\').css(\'border\', \'none\');
+			$(\'#uploadIVbutton\').attr(\'disabled\',\'disabled\');
+			$(\'#uploadIVbutton\').attr(\'value\',\'Đang tải...\');
+			return true;
+		}
+	}
+	
 		function checkOtherSubject()
 		{
 			if ($(\'input[name="other_subject"]:checked\').length) {
@@ -601,6 +633,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 							<td><input size="30" name="memberfield[yahoo]" type="text" id="memberyahoo" value="<?php echo $this->_tpl_vars['item']['yahoo']; ?>
 "></td>
 						      </tr>
+							  
 						      
 						      
 						      <tr style="display: none">
@@ -671,12 +704,37 @@ if ($this->_foreach['office_redirect']['total'] > 0):
 		    
 		</table>
 				<span class="top-table">.</span>
+				
+				<br />
+				<h3 id="tgttext">Tự giới thiệu</h3>
+				<p>
+					<input style="display: none" id="uploadIVbutton" class="upload-editor-image-button" type = "button" value = "Tải Ảnh/Video" 
+       onclick ="javascript:document.getElementById('imagefile').click();">
+                    <textarea name="memberfield[intro]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 600px"><?php echo $this->_tpl_vars['item']['intro']; ?>
+</textarea>
+                </p>
+				
 		</div>
 		
 		
 		<input name="save" type="submit" id="save" value="<?php echo $this->_tpl_vars['_save']; ?>
 " />
 	    </form>
+	  
+	  <div id="uploadImageVideo" style="display: none">
+		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+		<form method="POST" action="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+			<input type="hidden" name="do" value="product" />
+			<input type="hidden" name="action" value="uploadEditorFile" />
+			
+			
+			
+      
+			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+			
+		</form>
+	</div>
   </div>
  </div>
 <script language="javascript">

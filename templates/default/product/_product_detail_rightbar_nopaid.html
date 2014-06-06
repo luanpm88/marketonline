@@ -1,23 +1,23 @@
-                <a href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
+                <a style="margin-bottom: 10px" href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
 		
 		{if $COMPANY.r_spacename}<a href="{the_url module=space userid=`$COMPANY.r_spacename`}" class="leftlogodetail"><img title="{$COMPANY.r_name}" alt="{$COMPANY.r_name}" src="{$COMPANY.r_logo}" /><span class="shopname_right">{$COMPANY.r_shop_name|truncate:32}</span></a>{/if}
 		
 		<!--{foreach from=$banners item=itemxxx}-->
 		
 			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="{the_url module=banner_click id=`$itemxxx.id`}"><img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" /><span class="shopname_right">{$itemxxx.title|truncate:32}</span></a>-->
-			<a class="" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="{the_url module=space userid=`$itemxxx.space_name`}">{$itemxxx.title}</a>
-			<a class="leftlogodetail" href="{the_url module=space userid=`$itemxxx.space_name`}">
+			<a class="" style="border: none;margin-top: 25px;padding-top: 10px;border-top:solid 1px #ccc;padding-bottom: 0" href="{the_url module=space userid=`$itemxxx.space_name`}">{$itemxxx.title}</a>
+			<a class="leftlogodetailz" href="{the_url module=space userid=`$itemxxx.space_name`}">
 				<img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" />
 				<span style="display: none" class="shopname_right">{$itemxxx.title|truncate:32}</span>
 			</a>
-			{$itemxxx.description|truncate:99}
-		
+			{if $itemxxx.description}<div style="margin-bottom: 0">{$itemxxx.description|truncate:99}</div>{/if}
+	
 		<!--{/foreach}-->
 		
 		
 		<!-- {pb:product name="itemz" industryid="$inn_array" row=2} -->
 		    {if $Product.id != $itemz.id}
-			<a style="display: none" href="{the_url module=product id=`$itemz.id`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
+			<a style="display: none;margin-bottom: 20px" href="{the_url module=product id=`$itemz.id`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
 		    {/if}
 		<!-- {/pb:product} -->
 		

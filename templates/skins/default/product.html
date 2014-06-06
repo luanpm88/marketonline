@@ -74,9 +74,15 @@
 					
 				
 					<li class="product {$item.pos}">
+					    
+					    <div class="hidden-info-list-item">
+						    <a href="{the_url id=`$item.id` module='product'}">Xem chi tiết</a>
+						    <!--Và liên hệ với nhà cung cấp<br />
+						    <strong class='red'>{$item.shop_name}</strong>-->
+					    </div>
 
 	
-	<a href="{the_url module=product id=`$item.id`}" title="Vào xem chi tiết {if !$item.service}sản phẩm{else}dịch vụ{/if} <br><strong>{$item.name}</strong>">
+	<a href="{the_url module=product id=`$item.id`}" title="">
 
 		<div class="u_p_img_box"><div class="imgout"><img alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"></div></div>
     <div class="price_title">

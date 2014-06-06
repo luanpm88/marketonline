@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 07:48:21
+<?php /* Smarty version 2.6.27, created on 2014-05-23 21:55:20
          compiled from default/offers/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/offers/level1.html', 724, false),array('modifier', 'default', 'default/offers/level1.html', 1013, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/offers/level1.html', 721, false),array('modifier', 'default', 'default/offers/level1.html', 1023, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -78,8 +78,8 @@ unset($_smarty_tpl_vars);
 				    //update parent menu link
 				      $(\'.parent-menu-title\').html($(\'.box-level\'+(levelx-1)+\' li.active a\').clone());
 				      if (industryid == 0) {
-					$(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
-					$(\'.product_list_title\').html(" / Tìm kiếm");
+					$(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục thương mại</a>");
+					//$(\'.product_list_title\').html(" / Tìm kiếm");
 				      }
 				    
 				  if (levelx == \'2\') {
@@ -494,7 +494,7 @@ unset($_smarty_tpl_vars);
 		    
 		    $(\'.s-scroll\').animate({ marginLeft: \'0px\' }, 200);
 		    
-		    $(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
+		    $(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục thương mại</a>");
 		});
 		
 		$(\'.box-level1 ul li a.item\').click(function() {		
@@ -581,9 +581,6 @@ unset($_smarty_tpl_vars);
     <div id="page-title">
 
     <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        <?php echo $this->_tpl_vars['_market']; ?>
-    </div>
     <h1 class="page-title"><?php echo $this->_tpl_vars['IndustryList']['name']; ?>
 </h1>
 
@@ -761,19 +758,31 @@ if ($this->_foreach['level_0']['total'] > 0):
 <div class="row">
   <div class="fifteen columns" style="padding-left: 0">
 
-    <div id="page-title" class="connect_ptitle">
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
 
-    <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        <?php echo $this->_tpl_vars['_market']; ?>
-
-    </div>
+    <div class="super-main-category mainproductpage market">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'offer_main'), $this);?>
+" class="show-but current-but market">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+    
+    <div class="subtitle">Thương mại</div>
     
 
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
-</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
-">Dịch vụ</a></div>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'offer_main'), $this);?>
+">Thương mại</a></div>
 
     <h1 class="page-title"><?php echo $this->_tpl_vars['IndustryList']['name']; ?>
 </h1>
@@ -805,7 +814,7 @@ if ($this->_foreach['level_0']['total'] > 0):
         <input type="text" id="ProductName" name="q" value="<?php echo $this->_tpl_vars['keyword']; ?>
 " placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
-	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title">
+	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục thương mại</span></a> <span class="product_list_title">
 	  
 	  
 	</span></h5>
@@ -1024,8 +1033,7 @@ if ($this->_foreach['spacelink']['total'] > 0):
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        <?php echo $this->_tpl_vars['_product_list']; ?>
-    </div>
+        Thị trường thương mại    </div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;-->
@@ -1045,8 +1053,8 @@ if ($this->_foreach['spacelink']['total'] > 0):
 </a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       <!-- for offer -->
       <a id="new_offer_but" class="hotnewlist" href="javascript:void(0)">Tất cả</a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a id="new_offer_but_buy" class="hotnewlist" href="javascript:void(0)">Mua</a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a id="new_offer_but_sell" class="hotnewlist" href="javascript:void(0)">Bán</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="new_offer_but_buy" class="hotnewlist" href="javascript:void(0)">Nhu cầu mua</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="new_offer_but_sell" class="hotnewlist" href="javascript:void(0)">Nhu cầu bán</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a id="new_offer_but_pp" class="hotnewlist" href="javascript:void(0)">Phân phối</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <!--<a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       

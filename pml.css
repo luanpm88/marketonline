@@ -8164,7 +8164,7 @@ span.join_group:hover {
     position: absolute;
     text-indent: -9000px;
     width: 40px;
-    z-index: 200;
+    z-index: 100000000;
 }
 .school_banners:hover .del_schoolbanner {
     display: block;
@@ -8219,6 +8219,29 @@ span.join_group:hover {
     margin-top: 40px;
     padding: 10px;
     width: 626px;
+    overflow: hidden;
+    
+    
+}
+.member-left-bottom-more
+{
+    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(65%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    display: block;
+    height: 45px;
+    margin-top: -46px;
+    position: relative;
+    z-index: 1000;
+    margin-left: 1px;
+    margin-right: 1px;
+    padding: 26px 15px 0;
+    text-align: right;
+    font-weight: bold;
 }
 .member-left-bottom.small
 {
@@ -9517,6 +9540,7 @@ table tbody tr td {
 .super-main-category .show-but.current-but.market {
     background: url("../image/trade_bg.png") repeat scroll -7px -10px / 57px auto #57BAE8;
 }
+
 .menu-item-wrap .link-text
 {
     font-size: 17px;
@@ -9525,75 +9549,22 @@ table tbody tr td {
 {
     padding-bottom: 5px;
 }
+.member-left-top-bound
+{
+    max-width: 626px;
+}
+.study-member-box .member-left-top p span {
+    display: block;
+    line-height: 16px;
+    margin-bottom: 5px;
+    margin-left: 85px;
+    padding-top: 3px;
+}
+.study-member-box .member-left-top p i {
+    font-style: normal;
+    margin-left: -10px;
+}
 #member-left-bottom-content
 {
     width: 800px;
-}
-.member-left-bottom
-{
-    overflow: hidden;
-}
-.member-left-bottom-more
-{
-    background: -moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 65%, rgba(255,255,255,1) 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(65%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* IE10+ */
-    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 65%,rgba(255,255,255,1) 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-    display: block;
-    height: 45px;
-    margin-top: -46px;
-    position: relative;
-    z-index: 1000;
-    margin-left: 1px;
-    margin-right: 1px;
-    padding: 26px 15px 0;
-    text-align: right;
-    font-weight: bold;
-}
-.studypost_box {
-    background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #CCCCCC;
-}
-.stats_content textarea {
-    min-width: 527px;
-    width: 527px;
-}
-.outpage_box {
-    background: none repeat scroll 0 0 #F0F6F2;
-}
-.school-top-left-info img {
-    background: none repeat scroll 0 0 #FFFFFF;
-}
-#facelike_col2 {
-    background: none repeat scroll 0 0 #F0F6F2;
-}
-#facelike_col1 {
-    border-right: 0px solid #CCCCCC;
-}
-#facelike_col2 {
-    border-left: 0px solid #ccc;
-}
-.facelike_postform {
-    padding: 10px 0 0;
-}
-.change-group-leader-but
-{
-    font-weight: normal;
-    font-size: 12px;
-    color: red;
-}
-.button-style
-{
-    padding: 5px 10px;
-    border: none;
-    color: #fff;
-    background: #3B984C;
-    font-size: 14px;
-    cursor: pointer;
-}
-#facelike_col1 .school_list ul li {
-    margin-right: 1px;
 }

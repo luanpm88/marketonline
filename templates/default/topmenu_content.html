@@ -28,16 +28,13 @@
                     <span class='tile-icon' style='background-image:url({$theme_img_path}image/product_bg.png);'></span></a></span>
 <ul>
     
-    <!--{pb:topmenuindustries level=1 row=4 orderby=display_order}-->
+    <!--{pb:topmenuindustries level=1 row=3 orderby=display_order}-->
 	
 	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="{the_url module=products level=1 industryid=`$industry.id`}"><span class="link-text">{$industry.name}</span></a></span></li>
-	
 	    
     <!--{/pb:topmenuindustries}-->
     
-	
-	
-        <li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="index.php?do=product"><span class="link-text">{lang read_more}</span></a></span></li>
+        <li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="{the_url module=service_main}"><span class="link-text">{lang read_more}</span></a></span></li>
 	
 </ul>
 </li>
@@ -45,17 +42,25 @@
 <li class="menu-blog" style=""><span class="menu-item-wrap">
 <a  href="{the_url module='service_main'}" style='background-color:#ffaa31; background-size:cover; background-image:url();' >
 <span class="link-text">Dịch vụ</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url({$theme_img_path}image/service_bg.png);'></span></a></span>
-<!--<ul>
-	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Mua</span></a></span></li>
-	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhu cầu Bán</span></a></span></li>
-	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="ThuongMaiCap2.php"><span class="link-text">Nhà Phân phối</span></a></span></li>
-</ul>-->
+<ul>
+    
+    <!--{pb:topmenuindustries level=1 row=3 orderby=display_order}-->
+	
+	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="{the_url module=services level=1 industryid=`$industry.id`}"><span class="link-text">{$industry.name}</span></a></span></li>
+	
+    <!--{/pb:topmenuindustries}-->
+    
+	
+	
+        <li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="{the_url module=service_main}"><span class="link-text">{lang read_more}</span></a></span></li>
+	
+</ul>
 </li>
 	
 <li class="menu-blog" style=""><span class="menu-item-wrap">
 <a  href="{the_url module='offer_main'}" style='background-color:#57BAE8; background-size:cover; background-image:url();' >
 <span class="link-text">Thương mại</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url({$theme_img_path}image/trade_bg.png);'></span></a></span>
-<ul>
+<ul style="margin-left: 307px">
 	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="{the_url module='offer_main' offertype="buy"}"><span class="link-text">Nhu cầu Mua</span></a></span></li>
 	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="{the_url module='offer_main' offertype="sell"}"><span class="link-text">Nhu cầu Bán</span></a></span></li>
 	<li class="menu-right-sidebar"><span class="menu-item-wrap"><a  href="{the_url module='offer_main' offertype="supply"}"><span class="link-text">Nhà Phân phối</span></a></span></li>

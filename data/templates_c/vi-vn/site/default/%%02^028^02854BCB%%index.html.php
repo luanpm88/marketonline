@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 10:22:58
+<?php /* Smarty version 2.6.27, created on 2014-05-23 21:40:41
          compiled from default/product/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/index.html', 408, false),array('modifier', 'truncate', 'default/product/index.html', 415, false),array('modifier', 'default', 'default/product/index.html', 751, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/index.html', 359, false),array('modifier', 'truncate', 'default/product/index.html', 432, false),array('modifier', 'default', 'default/product/index.html', 768, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -362,12 +362,34 @@ unset($_smarty_tpl_vars);
 <div class="row">
   <div class="fifteen columns pl0 pindex">
 
-    <div id="page-title" class="pt0">
+    <div id="page-title" class="pt0" style="padding-left: 110px;">
+      
+      
+      <div class="super-main-category mainproductpage">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="<?php if ($this->_tpl_vars['item']['service']): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+      
 
-    <a class="back" href="javascript:history.back()"></a>
+    <!--<a class="back" href="javascript:history.back()"></a>-->
     <div class="subtitle">
             </div>
-    <div class="breadcrumbs" style="padding-bottom: 0;"><a href="javascript:void(0)">Danh mục ngành nghề</a> </div>
+    <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+"><?php echo $this->_tpl_vars['_home_page']; ?>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+">Sản phẩm</a></div>
     <h1 class="page-title">Thị trường Mua-Bán, Phân phối</h1>
 
   </div>

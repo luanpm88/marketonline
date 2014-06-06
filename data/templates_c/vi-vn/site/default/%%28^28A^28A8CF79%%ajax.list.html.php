@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 14:29:14
+<?php /* Smarty version 2.6.27, created on 2014-05-23 09:59:34
          compiled from default/product/ajax.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajax.list.html', 12, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajax.list.html', 11, false),)), $this); ?>
 <?php if ($this->_tpl_vars['Count']): ?>
 
 
@@ -17,19 +17,23 @@ if ($this->_foreach['level']['total'] > 0):
 
 <li class="product<?php echo $this->_tpl_vars['item']['isfirst']; ?>
  boxcols">
-
+	<div class="hidden-info-list-item">
+		<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+">Xem chi tiết</a>
+		<!--Và liên hệ với nhà cung cấp<br />
+		<strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+</strong>-->
+	</div>
 	
 	<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
 ">
 
-		<div><img title="Vào xem chi tiết <?php if (! $this->_tpl_vars['item']['service']): ?>sản phẩm<?php else: ?>dịch vụ<?php endif; ?><br>Và liên hệ với nhà cung cấp <br /><strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
-</strong>" width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
+		<div><img width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
 " class="attachment-shop_catalog wp-post-image" alt="<?php echo $this->_tpl_vars['item']['name']; ?>
 "></div>
 		<a class="shop_info_product" href="<?php echo $this->_tpl_vars['item']['shop_url']; ?>
-" title="Vào xem gian hàng <br><strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
-</strong>">
-			<div>Sản phẩm của gian hàng:</div>
+" title="">
+			<div>Xem gian hàng:</div>
 			<span><?php echo $this->_tpl_vars['item']['shop_name']; ?>
 </span>
 		</a>
@@ -81,7 +85,7 @@ x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
 
 <?php endforeach; endif; unset($_from); ?>
 <?php endif; ?>		
-					
+
 
 <?php else: ?>
 <div style="text-align: center; margin-top: 20px;">

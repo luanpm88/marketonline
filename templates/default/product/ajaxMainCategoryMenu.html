@@ -1,0 +1,26 @@
+<div class="main-items-header">
+    <a href="{the_url module='product_main'}" class="itemmain product">Sản phẩm</a>
+    <a href="{the_url module='service_main'}" class="itemmain service">Dịch vụ</a>
+    <a href="{the_url module='offer_main'}" class="itemmain market">Thương mại</a>
+</div>
+
+<div class="menu_industry_list">
+	<!--<h3><a href="{the_url module='product_main'}">Danh mục sản phẩm</a></h3>-->
+	<ul class="toptoptop">
+		<!--{loop $industries item0 level_0 key0}-->
+			<li class="level0 {if $level_0%4 == 0}clear{/if}">
+				<a class="level0" href="{if $module == "offers"}index.php?do=product&action=offers&level=1&industryid={$item0.id}{else}{the_url module=`$module` level=1 industryid=`$item0.id`}{/if}">{$item0.name}
+                                <i></i></a>
+				<ul style="display: none">
+					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
+						<li class="level1">
+							<a class="level1" href="{if $module == "offers"}index.php?do=product&action=offers&level=2&industryid={$level1.id}{else}{the_url module=`$module` level=2 industryid=`$level1.id`}{/if}">{$level1.name}</a>
+						</li>
+					<!--{/loop}-->
+				</ul>
+                                
+			</li>
+			{if $level_0++}{/if}
+		<!--{/loop}-->
+	</ul>
+</div>

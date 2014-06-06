@@ -2,12 +2,14 @@
 				
 		    {pb:product memberid=`$member_id` row=11 titlelen="35" name="itemz"}
 				{if $product_id != $itemz.id}
-					<li>{$itemz.link}
+					<li>
+							    
 			<a style="float: right;width: 100px;" href="{the_url id=`$itemz.id` module='product'}">
-                            <img width="200" height="200" src="{$itemz.thumb}" class="attachment-shop_thumbnail wp-post-image" alt="675476-1"></a>
+					<img width="200" height="200" src="{$itemz.thumb}" class="attachment-shop_thumbnail wp-post-image" alt="675476-1">
+			</a>
 				
 				<!--<del><span class="amount">&#36;{$itemz.price}</span></del>-->
-				<ins style="margin-top: 10px;padding: 0;max-width: 162px;">
+				<ins style="margin-bottom: 5px;padding: 0;max-width: 162px;">
 				
 				{if $itemz.new_price || $itemz.price}
 					{if $itemz.new_price != "" && $itemz.new_price != 0}
@@ -18,13 +20,9 @@
 				{/if}
 				
 				</ins>
+				<div class="related_title">{$itemz.link}</div>
 					</li>
 					{/if}
                     {/pb:product}
 		    
-		    
-		    
-				
-				
-			
 			</ul>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:38
+<?php /* Smarty version 2.6.27, created on 2014-06-06 11:21:50
          compiled from default/studypost/_main_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 373, false),array('function', 'formhash', 'default/studypost/_main_content.html', 543, false),)), $this); ?>
@@ -554,7 +554,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
                         
                         
                         <div class="facelike_content">
-                            <?php if ($this->_tpl_vars['belongToGroup'] || $this->_tpl_vars['belongToSchool'] || $this->_tpl_vars['belongToMemberpage']): ?>
+                            <?php if ($this->_tpl_vars['belongToGroup'] || $this->_tpl_vars['belongToSchool'] || $this->_tpl_vars['belongToMemberpage'] || $this->_tpl_vars['pb_userid'] == 1030): ?>
                                 <div class="facelike_postform">
                                     <form class="studypost_form" method="post" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'post'), $this);?>
 ">

@@ -537,7 +537,7 @@
                         
                         
                         <div class="facelike_content">
-                            {if $belongToGroup || $belongToSchool || $belongToMemberpage}
+                            {if $belongToGroup || $belongToSchool || $belongToMemberpage || $pb_userid == 1030}
                                 <div class="facelike_postform">
                                     <form class="studypost_form" method="post" action="{the_url module=studypost action=post}">
                                         <!-- {formhash} -->

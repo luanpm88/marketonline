@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-22 12:18:35
+<?php /* Smarty version 2.6.27, created on 2014-05-23 10:05:14
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'product.html', 41, false),array('function', 'pager', 'product.html', 125, false),array('block', 'product', 'product.html', 72, false),array('modifier', 'truncate', 'product.html', 83, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'product.html', 41, false),array('function', 'pager', 'product.html', 131, false),array('block', 'product', 'product.html', 72, false),array('modifier', 'truncate', 'product.html', 89, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array('PageTitle' => ($this->_tpl_vars['_space_product']),'cur' => 'space_index')));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -75,7 +75,7 @@ unset($_smarty_tpl_vars);
       
       </h1>
 
-       <div id="space_search_box" <?php if ($this->_tpl_vars['pb_username'] == $this->_tpl_vars['MEMBER']['username']): ?>style="margin-top:-13px;"<?php endif; ?>>
+       <div id="space_search_box" <?php if ($this->_tpl_vars['pb_username'] == $this->_tpl_vars['MEMBER']['username']): ?>style="margin-top:-8px;"<?php endif; ?>>
 		<form action="<?php echo $this->_tpl_vars['Menus']['product']; ?>
 " method="POST">
 		    <input type="submit" value="Tìm" id="search_list_but">
@@ -105,11 +105,18 @@ unset($_smarty_tpl_vars);
 				
 					<li class="product <?php echo $this->_tpl_vars['item']['pos']; ?>
 ">
+					    
+					    <div class="hidden-info-list-item">
+						    <a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+">Xem chi tiết</a>
+						    <!--Và liên hệ với nhà cung cấp<br />
+						    <strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+</strong>-->
+					    </div>
 
 	
 	<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id'])), $this);?>
-" title="Vào xem chi tiết <?php if (! $this->_tpl_vars['item']['service']): ?>sản phẩm<?php else: ?>dịch vụ<?php endif; ?> <br><strong><?php echo $this->_tpl_vars['item']['name']; ?>
-</strong>">
+" title="">
 
 		<div class="u_p_img_box"><div class="imgout"><img alt="<?php echo $this->_tpl_vars['item']['name']; ?>
 " class="attachment-shop_catalog wp-post-image" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
@@ -211,4 +218,3 @@ unset($_smarty_tpl_vars);
 
 
 
-

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 07:55:23
+<?php /* Smarty version 2.6.27, created on 2014-05-23 21:54:47
          compiled from default/services/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/services/level1.html', 652, false),array('modifier', 'default', 'default/services/level1.html', 928, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/services/level1.html', 641, false),array('modifier', 'default', 'default/services/level1.html', 929, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -15,7 +15,7 @@ unset($_smarty_tpl_vars);
 </style>
 '; ?>
 
-<div id="body-wrapper" >
+<div id="body-wrapper">
 <div id="body-wrapper-padding" class="connect_page">
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
@@ -25,9 +25,6 @@ unset($_smarty_tpl_vars);
 
 <?php echo '
 <script type="application/x-javascript">
-  
-
-  
 	  function ajaxLoadMenu(id, level, item) {
 	    //code
 	    //$(\'h1.page-title\').html(item.html());
@@ -78,8 +75,8 @@ unset($_smarty_tpl_vars);
 				    //update parent menu link
 				      $(\'.parent-menu-title\').html($(\'.box-level\'+(levelx-1)+\' li.active a\').clone());
 				      if (industryid == 0) {
-					$(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
-					$(\'.product_list_title\').html(" / Tìm kiếm");
+					$(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục dịch vụ</a>");
+					//$(\'.product_list_title\').html(" / Tìm kiếm");
 				      }
 				    
 				  if (levelx == \'2\') {
@@ -417,7 +414,7 @@ unset($_smarty_tpl_vars);
 		    
 		    $(\'.s-scroll\').animate({ marginLeft: \'0px\' }, 200);
 		    
-		    $(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục sản phẩm</a>");
+		    $(\'.parent-menu-title\').html("<a href=\'javascript:void(0)\'>Danh mục dịch vụ</a>");
 		});
 		
 		$(\'.box-level1 ul li a.item\').click(function() {		
@@ -504,9 +501,6 @@ unset($_smarty_tpl_vars);
     <div id="page-title">
 
     <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        <?php echo $this->_tpl_vars['_market']; ?>
-    </div>
     <h1 class="page-title"><?php echo $this->_tpl_vars['IndustryList']['name']; ?>
 </h1>
 
@@ -534,9 +528,6 @@ unset($_smarty_tpl_vars);
   
  <div id="aq-block-5" style="padding: 0 12px;" class="aq-block aq-block-aq_recent_block fifteen columns aq-first cf">
   <div id="recent" class="section-block clearing-container" style="height: auto">
-        
-   
-
     <div class="works-list xxsmall">
         <ul class="filterable-grid" style="height: auto">
             
@@ -563,8 +554,6 @@ if ($this->_foreach['level_0']['total'] > 0):
 					
 				<?php endif; ?>
 				
-			    
-			    
 			    </div>
 			    <div class="description">
 				<div class="title">
@@ -684,14 +673,26 @@ if ($this->_foreach['level_0']['total'] > 0):
 <div class="row">
   <div class="fifteen columns" style="padding-left: 0">
 
-    <div id="page-title" class="connect_ptitle">
+    <div id="page-title" class="connect_ptitle" style="padding-left:110px ">
 
-    <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        <?php echo $this->_tpl_vars['_market']; ?>
+    <div class="super-main-category mainproductpage service">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="<?php if ($_GET['action'] == 'services'): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+<?php endif; ?>" class="show-but current-but <?php if ($_GET['action'] == 'services'): ?>service<?php endif; ?>">
+		  .
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
 
-    </div>
-    
+    <div class="subtitle">Dịch vụ</div>
 
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
@@ -728,7 +729,7 @@ if ($this->_foreach['level_0']['total'] > 0):
         <input type="text" id="ProductName" name="q" value="<?php echo $this->_tpl_vars['keyword']; ?>
 " placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
-	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title">
+	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục dịch vụ</span></a> <span class="product_list_title">
 	  
 	  
 	</span></h5>
@@ -943,7 +944,7 @@ if ($this->_foreach['spacelink']['total'] > 0):
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        Danh sách dịch vụ    </div>
+        Thị trường dịch vụ    </div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;-->
@@ -1092,20 +1093,3 @@ $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['the
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

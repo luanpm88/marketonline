@@ -136,7 +136,7 @@ class Space extends PbController {
 		return $this->base_url;
 	}
 
-	function getMenu(){
+	function getMenu() {
 		return $this->menu;
 	}
 	

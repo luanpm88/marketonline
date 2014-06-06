@@ -941,7 +941,7 @@ class Product extends PbController {
 		}
 		
 		//find related products
-		$bottom_related_products = $this->product->findByIndustry($info["industry_id"]);
+		$bottom_related_products = $this->product->findByIndustry($info["industry_id"],$member_info["id"]);
 		setvar("bottom_related_products",$bottom_related_products);
 		
 		render("product/detail");
@@ -5253,7 +5253,7 @@ class Product extends PbController {
 			}
 			else
 			{
-				$IndustryList["name"] = "Danh sách dịch vụ";
+				$IndustryList["name"] = "Thị trường dịch vụ";
 			}
 			
 			setvar("IndustryList", $IndustryList);
@@ -5661,12 +5661,35 @@ class Product extends PbController {
 			}
 			else
 			{
-				$IndustryList["name"] = "Thương mại";
+				$IndustryList["name"] = "Thị trường thương mại";
 			}
 			
 			setvar("IndustryList", $IndustryList);
 			render("offers/level1");
 		}
 	}
+	
+	function ajaxMainCategoryMenu()
+	{
+		//listing main industries
+		$industries = $this->industry->getCacheIndustry();
+		if(isset($_GET["service"]) && $_GET["service"] != "" && $_GET["service"] != "0detail" && $_GET["service"] != "h")
+		{
+			$module = "services";
+			if($_GET["service"] == "offers")
+			{
+				$module = "offers";
+			}
+		}
+		else
+		{
+			$module = "products";
+		}
+		
+		setvar("module",$module);
+		setvar("industries",$industries);
+		render("product/ajaxMainCategoryMenu");
+	}
+	
 }
 ?>

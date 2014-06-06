@@ -6,7 +6,7 @@
 }
 </style>
 <!--{/literal}-->
-<div id="body-wrapper" >
+<div id="body-wrapper">
 <div id="body-wrapper-padding" class="connect_page">
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
@@ -66,7 +66,7 @@
 				    //update parent menu link
 				      $('.parent-menu-title').html($('.box-level'+(levelx-1)+' li.active a').clone());
 				      if (industryid == 0) {
-					$('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục sản phẩm</a>");
+					$('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục dịch vụ</a>");
 					//$('.product_list_title').html(" / Tìm kiếm");
 				      }
 				    
@@ -482,8 +482,6 @@
     <div id="page-title">
 
     <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        {lang market}    </div>
     <h1 class="page-title">{$IndustryList.name}</h1>
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="index.php?do=product">{lang product_center}</a><span class="delim">/</span><a href="index.php?do=product&level=1&industryid={$IndustryList.level0_id}">{$IndustryList.level0_name}</a><span class="delim">/</span><a href="index.php?do=product&level=2&industryid={$IndustryList.level1_id}">{$IndustryList.level1_name}</a><span class="delim">/</span>{$IndustryList.name} </div>
@@ -502,9 +500,6 @@
   
  <div id="aq-block-5" style="padding: 0 12px;" class="aq-block aq-block-aq_recent_block fifteen columns aq-first cf">
   <div id="recent" class="section-block clearing-container" style="height: auto">
-        
-   
-
     <div class="works-list xxsmall">
         <ul class="filterable-grid" style="height: auto">
             
@@ -521,8 +516,6 @@
 					
 				{/if}
 				
-			    
-			    
 			    </div>
 			    <div class="description">
 				<div class="title">
@@ -638,13 +631,24 @@
 <div class="row">
   <div class="fifteen columns" style="padding-left: 0">
 
-    <div id="page-title" class="connect_ptitle">
+    <div id="page-title" class="connect_ptitle" style="padding-left:110px ">
 
-    <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        {lang market}
-    </div>
-    
+    <div class="super-main-category mainproductpage service">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{if $smarty.get.action == "services"}{the_url module='service_main'}{else}{the_url module='product_main'}{/if}" class="show-but current-but {if $smarty.get.action == "services"}service{/if}">
+		  .
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+
+    <div class="subtitle">Dịch vụ</div>
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=service_main}">Dịch vụ</a></div>
 
@@ -811,7 +815,7 @@
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        Danh sách dịch vụ    </div>
+        Thị trường dịch vụ    </div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)">{lang new_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       

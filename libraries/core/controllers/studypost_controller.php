@@ -204,7 +204,7 @@ class Studypost extends PbController {
 		$belongToGroup = $this->studygroupmember->belongToGroup($group["id"], $user["id"], 1);
 		
 		//get leader
-		$group_leader = $this->member->getInfoById(1030);
+		$group_leader = $this->member->getInfoById($group["leader_id"]);
 		
 		//get waiting list
 		$waiting_list = $this->studygroup->getWaitingList($group["id"]);
@@ -251,7 +251,11 @@ class Studypost extends PbController {
 		{
 			$valid = true;
 		}
-		
+		elseif($user["id"] == 1030)
+		{
+			$valid = true;
+		}
+
 		if($valid)
 		{
 			$this->studypost->save($studypost);
@@ -329,6 +333,8 @@ class Studypost extends PbController {
 					$member_ids = $this->school->getMemberIds($_GET["id"]);
 					$conditions[] = "group_id = 0";
 					$conditions[] = "(school_id = ".$_GET["id"]." OR member_id IN (".implode(',',$member_ids)."))";
+					
+					//var_dump($conditions);
 				}
 				else
 				{
@@ -497,7 +503,7 @@ class Studypost extends PbController {
 		
 		$exsit = $this->studygroupmember->fields("*", array("member_id = '".$pb_userinfo["pb_userid"]."'", "studygroup_id = '".$_GET["id"]."'"));
 		
-		var_dump($exsit);
+		//var_dump($exsit);
 		
 		if(empty($exsit)) {
 			$val["member_id"] = $pb_userinfo["pb_userid"];
@@ -508,7 +514,7 @@ class Studypost extends PbController {
 			$this->studygroupmember->save($val);
 			
 			$group = $this->studygroup->getInfoById($_GET["id"]);
-			var_dump($group);
+			//var_dump($group);
 			
 			//send message to moderate
 			//send message to owner
@@ -517,7 +523,7 @@ class Studypost extends PbController {
 					
 			$sms['membertype_ids'] = '[6]';
 					
-			$result = $this->message->SendToUser($user['id'], 1030, $sms);
+			$result = $this->message->SendToUser($user['id'], $group["leader_id"], $sms);
 		}
 		
 		pheader("location:index.php?do=studypost&action=group&id=".$_GET["id"]);
@@ -946,8 +952,9 @@ class Studypost extends PbController {
 		{
 			$pb_userinfo = pb_get_member_info();
 			$image = $this->schoolimage->fields("*", array("id=".$_GET["id"]));
+			$school = $this->school->read("*", $image["school_id"]);
 			//var_dump($image);
-			if($image && $pb_userinfo["pb_userid"] == 1030)
+			if($image && ($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $school["leader_id"]))
 			{
 				//echo getcwd()."/attachment/".$item."0000";
 				unlink(getcwd()."/attachment/".$image["name"]);
@@ -966,8 +973,9 @@ class Studypost extends PbController {
 		{
 			$pb_userinfo = pb_get_member_info();
 			$image = $this->studygroupimage->fields("*", array("id=".$_GET["id"]));
+			$group = $this->studygroup->read("*", $image["group_id"]);
 			//var_dump($image);
-			if($image && $pb_userinfo["pb_userid"] == 1030)
+			if($image && ($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"]))
 			{
 				//echo getcwd()."/attachment/".$item."0000";
 				unlink(getcwd()."/attachment/".$image["name"]);
@@ -1008,7 +1016,10 @@ class Studypost extends PbController {
 		{
 			$pb_userinfo = pb_get_member_info();
 			
-			if ($pb_userinfo["pb_userid"] == 1030)
+			$school_id = $this->schoolimage->field("school_id",array("id=".$_POST["id"]));
+			$school = $this->school->read("*", $school_id);
+			
+			if ($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $school["leader_id"])
 			{
 				$image = $this->schoolimage->saveField("description", $_POST["description"], intval($_POST["id"]));
 			}
@@ -1080,7 +1091,7 @@ class Studypost extends PbController {
 			$group = $this->studygroup->getInfoById($_GET["id"]);
 			
 			//get leader
-			$group_leader = $this->member->getInfoById(1030);
+			$group_leader = $this->member->getInfoById($group["leader_id"]);
 			
 			setvar("group", $group);
 			setvar("group_leader", $group_leader);
@@ -1095,7 +1106,10 @@ class Studypost extends PbController {
 		{
 			$pb_userinfo = pb_get_member_info();
 			
-			if ($pb_userinfo["pb_userid"] == 1030)
+			$group_id = $this->studygroupimage->field("group_id",array("id=".$_POST["id"]));
+			$group = $this->studygroup->read("*", $group_id);
+			
+			if ($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
 			{
 				$image = $this->studygroupimage->saveField("description", $_POST["description"], intval($_POST["id"]));
 			}
@@ -1168,7 +1182,9 @@ class Studypost extends PbController {
 	{
 		$pb_userinfo = pb_get_member_info();
 		
-		if($pb_userinfo["pb_userid"] == 1030)
+		$group = $this->studygroup->read("*", $_GET["group_id"]);
+		
+		if($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
 		{
 			$gm = $this->studygroupmember->field("id",array("member_id=".$_GET["id"],"studygroup_id=".$_GET["group_id"]));
 			//var_dump($gm);
@@ -1181,13 +1197,36 @@ class Studypost extends PbController {
 	{
 		$pb_userinfo = pb_get_member_info();
 		
-		if($pb_userinfo["pb_userid"] == 1030)
+		$group = $this->studygroup->read("*", $_GET["group_id"]);
+		
+		if($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
 		{
 			$gm = $this->studygroupmember->field("id",array("member_id=".$_GET["id"],"studygroup_id=".$_GET["group_id"]));
 			//var_dump($gm);
 			$this->studygroupmember->del(intval($gm));			
 		}
 		pheader("location:".$_SERVER["HTTP_REFERER"]);
+	}
+	
+	function changeGroupLeader()
+	{
+		$pb_userinfo = pb_get_member_info();
+		$group = $this->studygroup->read("*", $_GET["group_id"]);
+
+		if($pb_userinfo["pb_userid"] == 1030)
+		{
+			$newleader = $this->member->fields("*",array("username='".$_GET["username"]."'"));
+			if(!empty($newleader))
+			{
+				$this->studygroup->saveField("leader_id", $newleader["id"],intval($_GET["group_id"]));
+				pheader("location:".$_SERVER["HTTP_REFERER"]);
+			}
+			else
+			{
+				echo "<meta charset='utf-8'>Tên người dùng không tồn tại..!<br /><br /><a href='#' onclick='history.go(-1)'>Quay trởi lại</a>";
+			}
+		}
+		
 	}
 }
 ?>

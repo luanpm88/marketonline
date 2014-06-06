@@ -557,8 +557,6 @@
     <div id="page-title">
 
     <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        {lang market}    </div>
     <h1 class="page-title">{$IndustryList.name}</h1>
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="index.php?do=product">{lang product_center}</a><span class="delim">/</span><a href="index.php?do=product&level=1&industryid={$IndustryList.level0_id}">{$IndustryList.level0_name}</a><span class="delim">/</span><a href="index.php?do=product&level=2&industryid={$IndustryList.level1_id}">{$IndustryList.level1_name}</a><span class="delim">/</span>{$IndustryList.name} </div>
@@ -713,12 +711,24 @@
 <div class="row">
   <div class="fifteen columns" style="padding-left: 0">
 
-    <div id="page-title" class="connect_ptitle">
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
 
-    <a class="back" href="javascript:history.back()"></a>
-    <div class="subtitle">
-        {lang market}
-    </div>
+    <div class="super-main-category mainproductpage market">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{the_url module='offer_main'}" class="show-but current-but market">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+    
+    <div class="subtitle">Thương mại</div>
     
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=offer_main}">Thương mại</a></div>
@@ -890,7 +900,7 @@
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        {lang product_list}    </div>
+        Thị trường thương mại    </div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)">{lang new_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       

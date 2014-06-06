@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-25 16:04:29
+<?php /* Smarty version 2.6.27, created on 2014-06-06 12:45:19
          compiled from default/studypost/ajaxStudygrouppicDetail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/ajaxStudygrouppicDetail.html', 12, false),array('function', 'formhash', 'default/studypost/ajaxStudygrouppicDetail.html', 78, false),)), $this); ?>
@@ -6,7 +6,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
     
 			
 			<div class="left-offerbox">
-			    <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+			    <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['group']['leader_id']): ?>
 				<div class="" style="position: absolute">
 				    <a class="overbox_del_studymempic" href="javascript:void(0)" title="Xóa hình này">X</a>
 				</div>
@@ -68,7 +68,7 @@ if ($this->_foreach['level']['total'] > 0):
 					    <div class="content" style="margin-top: 0px;margin-bottom: 10px;word-wrap: break-word;"><?php echo $this->_tpl_vars['item']['description']; ?>
 </div>
 					    
-					    <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+					    <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['group']['leader_id']): ?>
 						<div class="pic_description_form">
 						    <form class="picdes fhide" action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'postStudygrouppicDescription'), $this);?>
 " method="post">

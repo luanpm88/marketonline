@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 13:01:59
+<?php /* Smarty version 2.6.27, created on 2014-04-29 16:07:47
          compiled from default/product/_product_detail_rightbar_paid.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/_product_detail_rightbar_paid.html', 3, false),array('modifier', 'truncate', 'default/product/_product_detail_rightbar_paid.html', 3, false),)), $this); ?>
@@ -19,7 +19,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 					<div class="img_box">
 						<img title="<?php echo $this->_tpl_vars['itemxxx']['name']; ?>
 " alt="<?php echo $this->_tpl_vars['itemxxx']['name']; ?>
-" src="<?php echo $this->_tpl_vars['itemxxx']['image']; ?>
+" src="<?php echo $this->_tpl_vars['itemxxx']['thumb']; ?>
 " />
 					</div>
 					<span style="display: none" class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>

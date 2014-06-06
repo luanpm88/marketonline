@@ -348,12 +348,29 @@
 <div class="row">
   <div class="fifteen columns pl0 pindex">
 
-    <div id="page-title" class="pt0">
+    <div id="page-title" class="pt0" style="padding-left: 110px;">
+      
+      
+      <div class="super-main-category mainproductpage">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{if $item.service}{the_url module='service_main'}{else}{the_url module='product_main'}{/if}" class="show-but current-but {if $item.service}service{/if}">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+      
 
-    <a class="back" href="javascript:history.back()"></a>
+    <!--<a class="back" href="javascript:history.back()"></a>-->
     <div class="subtitle">
             </div>
-    <div class="breadcrumbs" style="padding-bottom: 0;"><a href="javascript:void(0)">Danh mục ngành nghề</a> </div>
+    <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=product_main}">Sản phẩm</a></div>
     <h1 class="page-title">Thị trường Mua-Bán, Phân phối</h1>
 
   </div>

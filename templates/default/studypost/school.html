@@ -48,7 +48,7 @@
                         </form>
                         
                         <div class="logo_out_hover">
-                            {if $pb_userid == 1030}
+                            {if $pb_userid == 1030 || $pb_userid == $school.leader_id}
                                 <a class="changesschoollogo" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">
                                     {if $school.logo_origin}
                                         Thay logo
@@ -88,7 +88,7 @@
                             {else}
                                 <!--{loop $school.banners item level key}-->
                                     <li>
-                                        {if $pb_userid == 1030}<a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_schoolbanner id=`$item.id`}">x</a>{/if}
+                                        {if $pb_userid == 1030 || $pb_userid == $school.leader_id}<a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_schoolbanner id=`$item.id`}">x</a>{/if}
                                         <a href="javascript:void(0)" onclick="getSchoolpictureDetail({$school.id},{$item.id})"><img src="{$item.banner}" /></a>
                                     </li>
                                 <!--{/loop}-->
@@ -96,9 +96,6 @@
                         </ul>
                         <span class="studybanner_nav next">></span>
                         <span class="studybanner_nav prev"><</span>
-                        
-                        
-                        
                         
                         
                         <div class="banner-school-info banner-group-info">
@@ -111,7 +108,7 @@
                     </div>
                     <div class="main_controls">
                         
-                        {if $pb_userid == 1030}
+                        {if $pb_userid == 1030 || $pb_userid == $school.leader_id}
                         
                             <iframe name="upload" id="upload" style="display: none"></iframe>
                             <form style="display: none" name="productaddfrm" id="Frm2_banner" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_school_banner" enctype="multipart/form-data">
@@ -158,7 +155,6 @@
                                         </li>
                                     <!--{/loop}-->
                                 </ul>
-                            
                             
                             <!--{include file="`$theme_name`/studypost/_rightbar_groups.html"}-->
                             

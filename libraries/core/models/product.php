@@ -400,7 +400,7 @@ class Products extends PbModel {
 	}
 	
 	
-	function findByIndustry($iid)
+	function findByIndustry($iid,$userid)
 	{
 		//get children ids
 		uses("industry");
@@ -410,8 +410,8 @@ class Products extends PbModel {
 		$sql = "SELECT p.*, b.name AS brand_name, i.name as industry_name FROM {$this->table_prefix}products p"
 			." LEFT JOIN {$this->table_prefix}brands b ON b.id = p.brand_id"
 			." LEFT JOIN {$this->table_prefix}industries i ON i.id = p.industry_id"
-			." WHERE i.id IN (".$industry["children"].")"
-			." ORDER BY created DESC LIMIT 10";
+			." WHERE i.id IN (".$industry["children"].") AND p.member_id=".$userid
+			." ORDER BY created DESC LIMIT 7";
 		$results = $this->dbstuff->GetArray($sql);
 		
 		foreach($results as &$result)

@@ -143,6 +143,18 @@
 
 <script type="application/x-javascript">
     
+    function loadMainCategoryMenu()
+    {
+        $.ajax({
+	    url: "index.php?do=product&action=ajaxMainCategoryMenu&service={/literal}{$item.service}{$smarty.get.action}{literal}",
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+                $('.super-main-category .main-cat-content').html(data);
+                $('.menu_industry_list ul li.level0 ul').height($('.toptoptop').height());
+            }
+        });
+    }
+    
     function showCart()
     {
         $.ajax({
@@ -696,6 +708,10 @@ function goclicky_custom(meh, url, images, title, summary)
 			      title: null
 			}
 		});
+                
+                $('.member-left-bottom-more').fancybox();
+                
+                $('.change-group-leader-but').fancybox();
 		
 		
 		//$(".banner_top").click(function(){alert("assadas")});
@@ -731,8 +747,8 @@ function goclicky_custom(meh, url, images, title, summary)
 		 $('.klbox').css('display', 'block');
 		 
 		 $('.leftlogodetail img').resizecrop({
-		   width:168,
-		   height:168
+		   width:158,
+		   height:158
 		 });
 		 $('.leftlogodetail img').css("visibility","visible");
 		 
@@ -827,6 +843,35 @@ function goclicky_custom(meh, url, images, title, summary)
                     $(this).parent().parent().find('li').removeClass("hide");
                     $(this).remove();
                 });
+                
+                //auto related products height
+                var maxrpheight = 0;
+                $('.related_products_bottom ul li').each(function(){
+                    //alert($(this).height());
+                    if($(this).height()+10 > maxrpheight)
+                    {
+                        maxrpheight = $(this).height()+10;
+                    }
+                })
+                $('.related_products_bottom ul li').css('height',maxrpheight)
+                
+                loadMainCategoryMenu();
+                $('.super-main-category .show-but:first-child').live("click", function(e) {
+                    $('.super-main-category .main-cat-content-out').toggle();
+                    $('.menu_industry_list ul li.level0 ul').height($('.toptoptop').height());
+                    if ($('.super-main-category .main-cat-content-out').css("display") == "block") {
+                        //$('#page-title .subtitle').css("visibility","hidden");
+                        //$('#page-title .breadcrumbs').css("visibility","hidden");
+                        //$('#page-title h1.page-title').css("visibility","hidden");
+                    }
+                    e.stopPropagation();
+                })                
+                $('body').click(function(){$('.super-main-category .main-cat-content-out').fadeOut()
+                    //$('#page-title .subtitle').css("visibility","visible");
+                    //$('#page-title .breadcrumbs').css("visibility","visible");
+                    //$('#page-title h1.page-title').css("visibility","visible");
+                });	
+		
 	});
 	
         

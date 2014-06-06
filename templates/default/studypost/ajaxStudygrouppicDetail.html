@@ -2,7 +2,7 @@
     
 			
 			<div class="left-offerbox">
-			    {if $pb_userid == 1030}
+			    {if $pb_userid == 1030 || $pb_userid == $group.leader_id}
 				<div class="" style="position: absolute">
 				    <a class="overbox_del_studymempic" href="javascript:void(0)" title="Xóa hình này">X</a>
 				</div>
@@ -42,7 +42,7 @@
 					<div class="pic_description_item" rel="{$item.id}">					
 					    <div class="content" style="margin-top: 0px;margin-bottom: 10px;word-wrap: break-word;">{$item.description}</div>
 					    
-					    {if $pb_userid == 1030}
+					    {if $pb_userid == 1030 || $pb_userid == $group.leader_id}
 						<div class="pic_description_form">
 						    <form class="picdes fhide" action="{the_url module=studypost action=postStudygrouppicDescription}" method="post">
 							<textarea name="description" style="height:110px">{if $item.description}{$item.description_raw}{else}Thêm mô tả cho hình ảnh{/if}</textarea>

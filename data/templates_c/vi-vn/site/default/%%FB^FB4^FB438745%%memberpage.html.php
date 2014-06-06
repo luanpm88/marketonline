@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-19 15:30:46
+<?php /* Smarty version 2.6.27, created on 2014-06-06 13:29:42
          compiled from default/studypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/memberpage.html', 35, false),array('function', 'formhash', 'default/studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default/studypost/memberpage.html', 228, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/memberpage.html', 35, false),array('function', 'formhash', 'default/studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default/studypost/memberpage.html', 239, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -159,8 +159,8 @@ image/usericon.jpg  <?php endif; ?>"/>
                         <?php if ($this->_tpl_vars['member']['class']): ?><p><label>Lớp </label>:&nbsp; <?php echo $this->_tpl_vars['member']['class']; ?>
 </p><?php endif; ?>
                         <?php if ($this->_tpl_vars['member']['gender']): ?><p><label>Giới tính </label>:&nbsp; <?php if ($this->_tpl_vars['member']['gender'] == 1): ?>Name<?php else: ?>Nữ<?php endif; ?></p><?php endif; ?>
-                        <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ </label>:&nbsp; <?php echo $this->_tpl_vars['member']['address']; ?>
-</p><?php endif; ?>
+                        <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ </label><span><i>:&nbsp; </i><?php echo $this->_tpl_vars['member']['address']; ?>
+</span></p><?php endif; ?>
                         <?php if ($this->_tpl_vars['member']['mobile']): ?><p><label>Điện thoại </label>:&nbsp; <?php echo $this->_tpl_vars['member']['mobile']; ?>
 </p><?php endif; ?>
                         <?php if ($this->_tpl_vars['member']['email']): ?><p><label>Email </label>:&nbsp; <?php echo $this->_tpl_vars['member']['email']; ?>
@@ -254,8 +254,25 @@ logging.php"><?php echo $this->_tpl_vars['_followed']; ?>
                 </div>
                 
                 <div class="member-left-bottom">
-                    <h2>Tự giới thiệu</h2>
-                </div>                
+                        <h2>Tự giới thiệu
+                        <?php if ($this->_tpl_vars['pb_userid'] == $this->_tpl_vars['member']['id']): ?>
+                            <a href="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+virtual-office/personal.php#tgttext" style="font-size: 14px;">(Chỉnh sửa)</a>
+                        <?php endif; ?></h2>
+                        <?php echo $this->_tpl_vars['member']['intro']; ?>
+
+                </div>
+                <a class="member-left-bottom-more" href="#member-left-bottom-content">Xem thêm...</a>
+                <div id="member-left-bottom-content" style="display: none">
+                    <h2>Tự giới thiệu
+                        <?php if ($this->_tpl_vars['pb_userid'] == $this->_tpl_vars['member']['id']): ?>
+                            <a href="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+virtual-office/personal.php#tgttext" style="font-size: 14px;">(Chỉnh sửa)</a>
+                        <?php endif; ?>
+                    </h2>
+                    <?php echo $this->_tpl_vars['member']['intro']; ?>
+
+                </div>
                 
             </div>
             
@@ -277,8 +294,6 @@ unset($_smarty_tpl_vars);
             
             <div id="facelike_col2">
                 <div class="col2-top">
-                    
-                    
                     
                 </div>
                 <div class="col2-bottom">
@@ -352,4 +367,4 @@ unset($_smarty_tpl_vars);
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/footer_none.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
- ?>
+ ?>

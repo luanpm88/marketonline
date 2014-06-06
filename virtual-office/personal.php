@@ -47,6 +47,8 @@ if (isset($_POST['save'])) {
 				$schoolval["email"] = trim($_POST['other_school_email']);
 				$schoolval["website"] = trim($_POST['other_school_website']);
 				$schoolval["area_id"] = PbController::getMultiId($_POST['other_school_area']['id']);
+				$schoolval["member_id"] = $the_memberid;
+				$schoolval["leader_id"] = $the_memberid;
 				
 				//logo and banner
 				if (!empty($_FILES['other_school_logo'])) {

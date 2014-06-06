@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 07:48:00
+<?php /* Smarty version 2.6.27, created on 2014-05-23 16:58:47
          compiled from default/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/index.html', 85, false),array('modifier', 'truncate', 'default/index.html', 92, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/index.html', 97, false),array('modifier', 'truncate', 'default/index.html', 104, false),)), $this); ?>
 <?php $this->assign('metakeywords', ($this->_tpl_vars['site_description'])); ?>
 <?php $this->assign('metadescription', ($this->_tpl_vars['site_description'])); ?>
 <?php $this->assign('do', 'offer'); ?>
@@ -57,10 +57,22 @@ unset($_smarty_tpl_vars);
       <div class="fifteen columns">
 
     <div id="page-title" style="padding: 10px 10px 0 0">
+	
+	<div class="super-main-category">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
 
-    <div class="subtitle">
-            </div>
-    <h1 class="page-title" style="font-size: 25px;margin-bottom: -2px !important;">Thị trường trực tuyến</h1>
+    <h1 class="page-title" style="font-size: 25px;margin-bottom: -2px !important;float: left;clear: none">
+	Thị trường trực tuyến
+    </h1>
 
 
     

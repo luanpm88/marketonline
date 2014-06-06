@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-22 10:14:22
+<?php /* Smarty version 2.6.27, created on 2014-06-06 14:02:03
          compiled from default/studypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 148, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 165, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -72,7 +72,7 @@ index.php?do=studypost&action=change_group_logo" enctype="multipart/form-data">
                         </form>
                         
                         <div class="logo_out_hover">
-                            <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+                            <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['group_leader']['id']): ?>
                                 <a class="changesgrouplogo" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">
                                     <?php if ($this->_tpl_vars['group']['logo_origin']): ?>
                                         Thay logo
@@ -93,8 +93,27 @@ index.php?do=studypost&action=change_group_logo" enctype="multipart/form-data">
 "><?php echo $this->_tpl_vars['group_leader']['first_name']; ?>
  <?php echo $this->_tpl_vars['group_leader']['last_name']; ?>
 </a>
+                                           
                                     </div>
+                                        <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+                                            <a class="change-group-leader-but" href="#change-group-leader-form">
+                                                Thay Quản lý nhóm
+                                            </a>
+                                            <div id="change-group-leader-form" style="display: none;padding: 20px;">
+                                                <form style="margin-bottom: 0;" action="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+index.php">
+                                                    <input type="hidden" value="studypost" name="do" />
+                                                    <input type="hidden" value="changeGroupLeader" name="action" />
+                                                    <input type="hidden" value="<?php echo $this->_tpl_vars['group']['id']; ?>
+" name="group_id" />
+                                                    <input type="text" value="" name="username" placeholder="Tên người dùng" />
+                                                    <input type="submit" class="button-style" value="Thay Quản lý" />
+                                                </form>
+                                            </div>
+                                        <?php endif; ?> 
+                                           
                                 </div>
+                                
                             </div>
                         </div>
                         
@@ -126,7 +145,7 @@ if ($this->_foreach['level']['total'] > 0):
         $this->_foreach['level']['iteration']++;
 ?>
                                     <li>
-                                        <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?><a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'del_studygroupbanner','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+                                        <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['group_leader']['id']): ?><a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'del_studygroupbanner','id' => ($this->_tpl_vars['item']['id'])), $this);?>
 ">x</a><?php endif; ?>
                                         <a href="javascript:void(0)" onclick="getStudygrouppictureDetail(<?php echo $this->_tpl_vars['group']['id']; ?>
 ,<?php echo $this->_tpl_vars['item']['id']; ?>
@@ -162,7 +181,7 @@ if ($this->_foreach['level']['total'] > 0):
 ">Rời khỏi nhóm</a>
                         <?php endif; ?>
                         
-                        <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+                        <?php if ($this->_tpl_vars['pb_userid'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['group_leader']['id']): ?>
                             <iframe name="upload" id="upload" style="display: none"></iframe>
                             <form style="display: none" name="productaddfrm" id="Frm2_banner" method="post" action="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 index.php?do=studypost&action=change_group_banner" enctype="multipart/form-data">
@@ -224,7 +243,7 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
                             
-                            <?php if ($this->_tpl_vars['pb_userinfo']['id'] == 1030): ?>
+                            <?php if ($this->_tpl_vars['pb_userinfo']['id'] == 1030 || $this->_tpl_vars['pb_userid'] == $this->_tpl_vars['group_leader']['id']): ?>
                                 <h4>Thành viên chờ duyệt</h4>
                                 <?php if ($this->_tpl_vars['groups_count'] > 5): ?>
                                     <div class="title_more_group_button" onclick="$('.rightbar_grouplist .group_item').css('display','block');$(this).remove()" href="">Xem thêm</div>
@@ -240,7 +259,7 @@ if ($this->_foreach['level_group']['total'] > 0):
 ) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"<?php endif; ?> class="logo" onclick="" title="<?php echo $this->_tpl_vars['mem']['info']['first_name']; ?>
  <?php echo $this->_tpl_vars['mem']['info']['last_name']; ?>
 ">
-                                                <strong onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['mem']['info']['id'])), $this);?>
+                                                <strong onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['mem']['info']['id'])), $this);?>
 '"><?php echo $this->_tpl_vars['mem']['info']['first_name']; ?>
  <?php echo $this->_tpl_vars['mem']['info']['last_name']; ?>
 </strong>
