@@ -92,7 +92,8 @@ function smarty_function_the_url($params){
 				break;
 			case "product":
 				if ($rewrite_able) {
-					$return = URL."$module/detail/".$id.".html";
+					//$return = URL."$module/detail/".$id.".html";
+					$return = URL."san-pham/".$id."/".preg_replace("/[^A-Za-z0-9 \-]/", '', utf8_to_ascii($product_name));
 				}else{
 					$return = URL."index.php?do=".$module."&action=detail&id=".$id;
 				}

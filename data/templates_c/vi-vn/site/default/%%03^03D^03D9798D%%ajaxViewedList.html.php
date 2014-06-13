@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 11:21:24
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:35:16
          compiled from default/product/ajaxViewedList.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajaxViewedList.html', 6, false),)), $this); ?>
@@ -12,7 +12,7 @@ if ($this->_foreach['level_0']['total'] > 0):
                 <li>
                                   <?php if (true): ?>
                                       <a title="<?php echo $this->_tpl_vars['item0']['name']; ?>
-" class="link_item" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item0']['id']),'module' => 'product'), $this);?>
+" class="link_item" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item0']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item0']['name'])), $this);?>
 ">
                                         <img alt="<?php echo $this->_tpl_vars['item0']['name']; ?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>

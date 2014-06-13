@@ -17,7 +17,7 @@
 		
 		<!-- {pb:product name="itemz" industryid="$inn_array" row=2} -->
 		    {if $Product.id != $itemz.id}
-			<a style="display: none;margin-bottom: 20px" href="{the_url module=product id=`$itemz.id`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
+			<a style="display: none;margin-bottom: 20px" href="{the_url module=product id=`$itemz.id` product_name=`$itemz.name`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
 		    {/if}
 		<!-- {/pb:product} -->
 		

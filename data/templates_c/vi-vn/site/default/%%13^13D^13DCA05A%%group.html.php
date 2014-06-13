@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 14:02:03
+<?php /* Smarty version 2.6.27, created on 2014-06-06 15:02:03
          compiled from default/studypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 165, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default/studypost/group.html', 45, false),array('function', 'the_url', 'default/studypost/group.html', 64, false),array('modifier', 'truncate', 'default/studypost/group.html', 164, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -95,7 +95,7 @@ index.php?do=studypost&action=change_group_logo" enctype="multipart/form-data">
 </a>
                                            
                                     </div>
-                                        <?php if ($this->_tpl_vars['pb_userid'] == 1030): ?>
+                                        <?php if ($this->_tpl_vars['pb_userid'] == 10309): ?>
                                             <a class="change-group-leader-but" href="#change-group-leader-form">
                                                 Thay Quản lý nhóm
                                             </a>
@@ -111,7 +111,6 @@ index.php">
                                                 </form>
                                             </div>
                                         <?php endif; ?> 
-                                           
                                 </div>
                                 
                             </div>

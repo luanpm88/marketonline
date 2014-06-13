@@ -6,7 +6,7 @@
                 <li onclick="window.location='{the_url module=studypost action=school id=`$item.id`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
                     <a class="head-title">
                         <img src="{$WebRootUrl}/{$item.logo}" />
-                        <span>{$item.name|truncate:40}</span>
+                        <span>{$item.name|truncate:38}</span>
                     </a>
                     {if $item.address}<p>{$item.address}</p>{/if}
                     {if $item.phone}<p><label>Điện thoại:</label> {$item.phone}</p>{/if}

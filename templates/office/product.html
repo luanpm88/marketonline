@@ -193,7 +193,7 @@
 		
                 <td style="text-align: left">
 			<a href="product.php?do=refresh&id={$item.id}&{$current_uri}">{lang bump_to_top}</a><br />
-			<a href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a><br /><a href="{the_url id=`$item.id` module='product'}" target="_blank" title="{lang click_preview}">{lang click_preview}</a><br /><a onclick="return confirm('{lang delete_confirm}')" href="{$smarty.server.PHP_SELF}?act=del&id={$item.id}">{lang delete}</a></td>
+			<a href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a><br /><a href="{the_url id=`$item.id` module='product' product_name=`$item.name`}" target="_blank" title="{lang click_preview}">{lang click_preview}</a><br /><a onclick="return confirm('{lang delete_confirm}')" href="{$smarty.server.PHP_SELF}?act=del&id={$item.id}">{lang delete}</a></td>
                 </tr> 
               <!--{/foreach}-->
         </table> 

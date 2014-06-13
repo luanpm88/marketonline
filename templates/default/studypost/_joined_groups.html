@@ -8,7 +8,7 @@
                                         <div class="new_count">{$group.new_count}</div>
                                     {/if}
                                     <h5>{$group.subject_name}</h5>
-                                    <div class="more-studybar">{$group.school_name}<br />Bài viết mới: <span {if $group.new_count}class="active"{/if}>{$group.new_count}</span></div>
+                                    <div class="more-studybar">{$group.school_name|truncate:38}<br />Bài viết mới: <span {if $group.new_count}class="active"{/if}>{$group.new_count}</span></div>
                                 </a>
                             </li>
                         <!--{/loop}-->

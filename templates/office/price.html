@@ -30,7 +30,7 @@
             </tr>
 			<!--{foreach from=$Items item=item}-->
             <tr align="center" class="bgwhite">
-              <td><a href="{the_url module=product id=$item.product_id}" style="text-decoration:underline" target="_blank">{$item.title}</a></td>
+              <td><a href="{the_url module=product id=$item.product_id product_name=`$item.title`}" style="text-decoration:underline" target="_blank">{$item.title}</a></td>
               <td>{$item.price}{$Monetaries[$item.currency]}/{$Measuries[$item.units]}</td>
               <td class="orange">{$item.created|date_format:"%Y-%m-%d"}</td>
               <td><a href="price.php?do=edit&id={$item.id}">{lang modify}</a>&nbsp;&nbsp;<a href="price.php?do=del&id={$item.id}">{lang delete}</a>&nbsp;&nbsp;</td>

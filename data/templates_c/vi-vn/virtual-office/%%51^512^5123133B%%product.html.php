@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 12:22:41
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:41:59
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'product.html', 154, false),array('modifier', 'strip_tags', 'product.html', 158, false),array('modifier', 'default', 'product.html', 221, false),array('function', 'the_url', 'product.html', 196, false),)), $this); ?>
@@ -280,7 +280,7 @@ images/unpublished.png">
 </a><br />
 			<a href="product.php?do=edit<?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>&type=service<?php endif; ?>&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo $this->_tpl_vars['_modify']; ?>
-</a><br /><a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+</a><br /><a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 " target="_blank" title="<?php echo $this->_tpl_vars['_click_preview']; ?>
 "><?php echo $this->_tpl_vars['_click_preview']; ?>
 </a><br /><a onclick="return confirm('<?php echo $this->_tpl_vars['_delete_confirm']; ?>

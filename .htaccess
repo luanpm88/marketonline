@@ -13,6 +13,7 @@ RewriteRule ^(.*)products/list-([0-9]+)-([0-9]+)\.html$ index.php?do=product&lev
 RewriteRule ^(.*)services/list-([0-9]+)-([0-9]+)\.html$ index.php?do=product&action=services&level=$2&industryid=$3 [L]
 RewriteRule ^(.*)search/tag/keyid_([0-9]+).html$ index.php?do=product&action=search&tag=$2 [L]
 RewriteRule ^(.*)product/detail/([0-9]+)\.html$ index.php\?do=product&action=detail&id=$2 [L]
+RewriteRule ^(.*)san-pham/([0-9]+)/(.*)$ index.php\?do=product&action=detail&id=$2 [L]
 RewriteRule ^(.*)banner/click/([0-9]+)\.html$ index.php\?do=product&action=banner_click&id=$2 [L]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/$ space/\?userid=$2 [L]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/$ space/\?userid=$2&do=$3 [L]

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 11:17:02
+<?php /* Smarty version 2.6.27, created on 2014-06-06 17:04:47
          compiled from product_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 327, false),array('function', 'html_options', 'product_edit.html', 541, false),array('function', 'html_radios', 'product_edit.html', 573, false),array('function', 'the_url', 'product_edit.html', 636, false),array('modifier', 'default', 'product_edit.html', 573, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 327, false),array('function', 'html_options', 'product_edit.html', 541, false),array('function', 'html_radios', 'product_edit.html', 572, false),array('function', 'the_url', 'product_edit.html', 635, false),array('modifier', 'default', 'product_edit.html', 572, false),)), $this); ?>
 <?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>
 	<?php $this->assign('page_title', ($this->_tpl_vars['_add_service'])); ?>
 <?php else: ?>
@@ -75,7 +75,7 @@ var SiteUrl = "<?php echo $this->_tpl_vars['SiteUrl']; ?>
 	}
 	
 	function inserEditorFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, \'<img src="../attachment/\'+url+\'" />\');
@@ -686,9 +686,8 @@ if ($this->_foreach['form']['total'] > 0):
 ]" type="text" id="<?php echo $this->_tpl_vars['item1']['id']; ?>
 " value="<?php echo $this->_tpl_vars['item1']['value']; ?>
 " <?php if ($this->_tpl_vars['key1'] == 6 || ( $this->_tpl_vars['getvar']['type'] != 'service' && $this->_tpl_vars['key1'] == 7 )): ?>class="required"<?php endif; ?>></font>
-					   
 					   </td>
-					 </tr>
+					</tr>
 				<?php endforeach; endif; unset($_from); ?>
 				
 					<tr>
@@ -797,23 +796,17 @@ if ($this->_foreach['Countries']['total'] > 0):
        <input name="save" type="submit" id="save" value=" <?php echo $this->_tpl_vars['_confirm_submit']; ?>
  ">
 							  <?php if ($this->_tpl_vars['item']['id']): ?>
-							  &nbsp;<a class="preview_link" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+							  &nbsp;<a class="preview_link" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id']),'product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['_preview']; ?>
 <?php echo $this->_tpl_vars['item']['name']; ?>
 " target="_blank" style="text-decoration:underline;color:blue;"><?php echo $this->_tpl_vars['_preview']; ?>
 </a>
 							  <?php endif; ?>
-        
 	</form>
 	  
 	
 	<br />
-	
 
-
-
-
-	
 	<div id="uploadImageVideo">
 		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
 		<form method="POST" action="<?php echo $this->_tpl_vars['SiteUrl']; ?>

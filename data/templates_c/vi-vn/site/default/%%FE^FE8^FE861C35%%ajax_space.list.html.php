@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-11 15:06:35
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:41:42
          compiled from default/product/ajax_space.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajax_space.list.html', 18, false),array('modifier', 'truncate', 'default/product/ajax_space.list.html', 21, false),)), $this); ?>
@@ -23,7 +23,7 @@ if ($this->_foreach['level']['total'] > 0):
 					<li class="product ">
 
 	
-	<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+	<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id']),'product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 ">
 
 		<div class="space_img_out"><img width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>

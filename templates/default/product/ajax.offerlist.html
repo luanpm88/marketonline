@@ -100,7 +100,7 @@
 	<a style="display: none" onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
 	
 	<div class="product_tools" style="display: none">
-		<a class="comment_link" href="{the_url id=`$item.id` module='product'}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+		<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
 		<!--{if $pb_username!=""}-->
 			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
 		<!--{else}-->

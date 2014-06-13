@@ -3,13 +3,13 @@
 			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="{the_url module=banner_click id=`$itemxxx.id`}"><img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" /><span class="shopname_right">{$itemxxx.title|truncate:32}</span></a>-->
 			<div class="rightbanner_block">
 				
-				<a class="noresize" href="{the_url module=product id=`$itemxxx.id`}">
+				<a class="noresize" href="{the_url module=product id=`$itemxxx.id` product_name=`$itemxxx.name`}">
 					<div class="img_box">
 						<img title="{$itemxxx.name}" alt="{$itemxxx.name}" src="{$itemxxx.thumb}" />
 					</div>
 					<span style="display: none" class="shopname_right">{$itemxxx.name|truncate:32}</span>
 				</a>
-				<a class="title" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="{the_url module=product id=`$itemxxx.id`}">{$itemxxx.name}</a>
+				<a class="title" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="{the_url module=product id=`$itemxxx.id` product_name=`$itemxxx.name`}">{$itemxxx.name}</a>
 				
 				{if $itemxxx.new_price || $itemxxx.price}
 					{if $itemxxx.new_price != "" && $itemxxx.new_price != 0}

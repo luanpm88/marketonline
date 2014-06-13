@@ -5,7 +5,7 @@
 <script>
 	
 		function inserEditorFile(url, image) {
-		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').removeAttr('disabled');
 		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
 		if (image) {
 			tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");

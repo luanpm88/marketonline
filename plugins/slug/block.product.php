@@ -106,7 +106,7 @@
 	if (!empty($_GET['areaid'])) {
 		$conditions['area'] = "p.area_id=".intval($_GET['areaid']);
 	}
-	$orderby = null;
+	$orderby = " ORDER BY created DESC ";
 	if (!empty($orderbys)) {
 		$orderby.=" ORDER BY ".implode(",", $orderbys);
 	}
@@ -158,7 +158,7 @@
 		$repeat = true;
 		$item['rownum'] = $key;
 		$item['iteration'] = ++$key;
-		$url = smarty_function_the_url(array("module"=>"product", "id"=>$item['id']));
+		$url = smarty_function_the_url(array("module"=>"product", "id"=>$item['id'], "product_name"=>$item['name']));
 		$item['url'] = $url;
 		$item['name'] = $item['names'] = $item['title'] = pb_lang_split($item['name']);
 		if (isset($params['titlelen'])) {

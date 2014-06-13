@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:38
+<?php /* Smarty version 2.6.27, created on 2014-06-06 15:06:40
          compiled from default/studypost/_other_school_list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_other_school_list.html', 6, false),array('modifier', 'truncate', 'default/studypost/_other_school_list.html', 9, false),)), $this); ?>
@@ -17,7 +17,7 @@ if ($this->_foreach['level']['total'] > 0):
                         <img src="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 /<?php echo $this->_tpl_vars['item']['logo']; ?>
 " />
-                        <span><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>
+                        <span><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 38) : smarty_modifier_truncate($_tmp, 38)); ?>
 </span>
                     </a>
                     <?php if ($this->_tpl_vars['item']['address']): ?><p><?php echo $this->_tpl_vars['item']['address']; ?>

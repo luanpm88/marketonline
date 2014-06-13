@@ -356,7 +356,7 @@
 					<li class="product {$item.pos}">
 
 	
-	<a href="{the_url module=product id=`$item.id`}" title="{$item.name}">
+	<a href="{the_url module=product id=`$item.id` product_name=`$item.name`}" title="{$item.name}">
 
 		<div class="imgout"><img alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"></div>
 		<h3>{$item.name|truncate:40}</h3>

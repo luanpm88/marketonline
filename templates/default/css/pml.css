@@ -9597,3 +9597,15 @@ table tbody tr td {
 #facelike_col1 .school_list ul li {
     margin-right: 1px;
 }
+.studypost_form .bottom-control {
+    height: 39px;
+    padding: 3px 5px;
+    background: none repeat scroll 0 0 #F6F7F8;
+}
+.stats_content .actions {
+    height: 34px;
+}
+.stats_content .actions .send-button {
+    height: 21px;
+    margin: 5px 0;
+}

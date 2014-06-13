@@ -65,9 +65,9 @@
 													
 							<!--{loop $shop.items sticky sticky_offer}-->
 							<tr>
-							<td class="offer_img" width="9%"><a href="{the_url module=product id=`$sticky.p_id`}" title="{$sticky.p_name}"><img src="{$sticky.image}" border=0 alt="{$sticky.title}"></a></td>
+							<td class="offer_img" width="9%"><a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}"><img src="{$sticky.image}" border=0 alt="{$sticky.title}"></a></td>
 							<td style="padding-top: 20px" class="title_link">
-								<a href="{the_url module=product id=`$sticky.p_id`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
+								<a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
 							</td>
 							
 							<td style="padding-top: 20px" align="right">

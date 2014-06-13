@@ -266,7 +266,7 @@
         {if $item.service}
 		<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=service_main}">Dịch vụ</a> <span class="delim">/</span>{$item.industry_service_names} </div>
 	{else}
-		<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=product_main}">Sản phẩm</a> <span class="delim">/</span>{$item.industry_names} </div>
+		<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=product_main product_name=`$item.name`}">Sản phẩm</a> <span class="delim">/</span>{$item.industry_names} </div>
 	{/if}
 	
 	<h1 class="page-title">
@@ -737,7 +737,7 @@
 		
 		<!--{loop $bottom_related_products itemvv levelvv keyvv}-->
 			<li class="">
-				<a href="{the_url module=product id=`$itemvv.id`}" title="{$itemvv.name}">
+				<a href="{the_url module=product id=`$itemvv.id` product_name=`$itemvv.name`}" title="{$itemvv.name}">
 					<div class="img_box">
 						<img title="{$itemvv.name}" alt="{$itemvv.name}" src="{$itemvv.thumb}" />
 					</div>

@@ -4,7 +4,7 @@
 				{if $product_id != $itemz.id}
 					<li>
 							    
-			<a style="float: right;width: 100px;" href="{the_url id=`$itemz.id` module='product'}">
+			<a style="float: right;width: 100px;" href="{the_url id=`$itemz.id` module='product' product_name=`$itemz.name`}">
 					<img width="200" height="200" src="{$itemz.thumb}" class="attachment-shop_thumbnail wp-post-image" alt="675476-1">
 			</a>
 				

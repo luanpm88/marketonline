@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-05-23 21:55:58
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:35:12
          compiled from default/product/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/detail.html', 51, false),array('function', 'formhash', 'default/product/detail.html', 585, false),array('modifier', 'truncate', 'default/product/detail.html', 744, false),)), $this); ?>
@@ -309,7 +309,7 @@ unset($_smarty_tpl_vars);
 	<?php else: ?>
 		<div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
-</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'product_main','product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 ">Sản phẩm</a> <span class="delim">/</span><?php echo $this->_tpl_vars['item']['industry_names']; ?>
  </div>
 	<?php endif; ?>
@@ -944,7 +944,7 @@ if ($this->_foreach['levelvv']['total'] > 0):
         $this->_foreach['levelvv']['iteration']++;
 ?>
 			<li class="">
-				<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemvv']['id'])), $this);?>
+				<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemvv']['id']),'product_name' => ($this->_tpl_vars['itemvv']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
 ">
 					<div class="img_box">

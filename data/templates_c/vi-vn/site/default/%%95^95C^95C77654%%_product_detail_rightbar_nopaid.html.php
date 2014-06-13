@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-05-23 14:44:43
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:35:12
          compiled from default/product/_product_detail_rightbar_nopaid.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/_product_detail_rightbar_nopaid.html', 3, false),array('modifier', 'truncate', 'default/product/_product_detail_rightbar_nopaid.html', 3, false),array('block', 'product', 'default/product/_product_detail_rightbar_nopaid.html', 18, false),)), $this); ?>
@@ -41,7 +41,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 		
 		<?php $this->_tag_stack[] = array('product', array('name' => 'itemz','industryid' => ($this->_tpl_vars['inn_array']),'row' => 2)); $_block_repeat=true;smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 		    <?php if ($this->_tpl_vars['Product']['id'] != $this->_tpl_vars['itemz']['id']): ?>
-			<a style="display: none;margin-bottom: 20px" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemz']['id'])), $this);?>
+			<a style="display: none;margin-bottom: 20px" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemz']['id']),'product_name' => ($this->_tpl_vars['itemz']['name'])), $this);?>
 "><img title="<?php echo $this->_tpl_vars['itemz']['name']; ?>
 " alt="<?php echo $this->_tpl_vars['itemz']['name']; ?>
 " src="<?php echo $this->_tpl_vars['itemz']['thumb']; ?>

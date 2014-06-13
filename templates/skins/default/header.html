@@ -157,7 +157,7 @@
 	}
     
     function inserCustomBGFile(url, image) {
-		$('#uploadIVbutton').attr('disabled','');
+		$('#uploadIVbutton').removeAttr('disabled');
 		//$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
 		if (image) {
 			//alert(url);
@@ -165,7 +165,7 @@
 			$('#background_image').val("url('"+"<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"')");
 			$('#body-wrapper').css('backgroundImage', "url('<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime()+"')");
 			$('.custom_bg img').attr("src", "<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime());
-			$('#uploadIVbutton').removeAttr('disabled','');
+			$('#uploadIVbutton').removeAttr('disabled');
 		}
 			
 	}

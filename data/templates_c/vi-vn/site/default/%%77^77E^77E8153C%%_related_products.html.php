@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-29 17:02:24
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:35:15
          compiled from default/product/_related_products.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('block', 'product', 'default/product/_related_products.html', 3, false),array('function', 'the_url', 'default/product/_related_products.html', 7, false),)), $this); ?>
@@ -8,7 +8,7 @@ smarty_core_load_plugins(array('plugins' => array(array('block', 'product', 'def
 				<?php if ($this->_tpl_vars['product_id'] != $this->_tpl_vars['itemz']['id']): ?>
 					<li>
 							    
-			<a style="float: right;width: 100px;" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['itemz']['id']),'module' => 'product'), $this);?>
+			<a style="float: right;width: 100px;" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['itemz']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['itemz']['name'])), $this);?>
 ">
 					<img width="200" height="200" src="<?php echo $this->_tpl_vars['itemz']['thumb']; ?>
 " class="attachment-shop_thumbnail wp-post-image" alt="675476-1">

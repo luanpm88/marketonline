@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-05-23 09:59:34
+<?php /* Smarty version 2.6.27, created on 2014-06-06 16:35:53
          compiled from default/product/ajax.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/ajax.list.html', 11, false),)), $this); ?>
@@ -18,14 +18,14 @@ if ($this->_foreach['level']['total'] > 0):
 <li class="product<?php echo $this->_tpl_vars['item']['isfirst']; ?>
  boxcols">
 	<div class="hidden-info-list-item">
-		<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+		<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 ">Xem chi tiết</a>
 		<!--Và liên hệ với nhà cung cấp<br />
 		<strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
 </strong>-->
 	</div>
 	
-	<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+	<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 ">
 
 		<div><img width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
@@ -64,7 +64,7 @@ if ($this->_foreach['level']['total'] > 0):
 	<div class="product_tools">
 		<a class="comment_link stat_link" href="javascript:void(0)"><?php echo $this->_tpl_vars['item']['clicked']; ?>
 </a>
-		<a class="comment_link" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+		<a class="comment_link" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
 #comment_pos"><?php echo $this->_tpl_vars['_comment_list']; ?>
  (<?php echo $this->_tpl_vars['item']['comments_count']; ?>
 )</a>
