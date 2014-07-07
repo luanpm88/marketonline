@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 16:20:52
+<?php /* Smarty version 2.6.27, created on 2014-07-02 10:47:30
          compiled from default/job/jobsearchbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/job/jobsearchbox.html', 6, false),)), $this); ?>
@@ -7,20 +7,23 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 			<ul>
 				<!--<li><a href="#box_underi" rel="job-learn" class="notyet">Học tập</a></li>-->
 				
-				<li <?php if ($_GET['do'] == 'employee'): ?>class="active"<?php endif; ?>><a href="<?php echo smarty_function_the_url(array('module' => 'employees'), $this);?>
+				<li class="tabgroup1 <?php if ($_GET['do'] == 'employee'): ?>active<?php endif; ?>"><a href="<?php echo smarty_function_the_url(array('module' => 'employees'), $this);?>
 " rel="job-learn" class="">Hồ sơ ứng viên</a></li>
-				<li <?php if ($_GET['do'] == 'job'): ?>class="active"<?php endif; ?>><a href="<?php echo smarty_function_the_url(array('module' => 'jobs'), $this);?>
+				<li class="tabgroup2 <?php if ($_GET['do'] == 'job'): ?>active<?php endif; ?>"><a href="<?php echo smarty_function_the_url(array('module' => 'jobs'), $this);?>
 " rel="job-learn">Việc làm</a></li>
-				<li <?php if ($_GET['do'] == 'studypost'): ?>class="active"<?php endif; ?>><a href="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
-" rel="job-study">Học tập</a></li>
+				<li class="tabgroup3 <?php if ($_GET['do'] == 'studypost' && ! $_GET['type']): ?>active<?php endif; ?>"><a href="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
+" rel="job-study">Trường</a></li>
+				<li class="tabgroup3 <?php if ($_GET['do'] == 'studypost' && $_GET['type'] == 'group'): ?>active<?php endif; ?>"><a href="<?php echo smarty_function_the_url(array('module' => 'studypost','type' => 'group'), $this);?>
+" rel="job-study">Môn học</a></li>
+				<li class="tabgroup3 <?php if ($_GET['do'] == 'studypost' && $_GET['type'] == 'learner'): ?>active<?php endif; ?>"><a href="<?php echo smarty_function_the_url(array('module' => 'studypost','type' => 'learner'), $this);?>
+" rel="job-study">Học viên</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="job-learn" class="tab-item active">
 						
 				    <?php if ($_GET['do'] != 'studypost'): ?>
-					<form action="<?php if ($_GET['do'] == 'job'): ?><?php echo smarty_function_the_url(array('module' => 'jobs'), $this);?>
-<?php endif; ?><?php if ($_GET['do'] == 'employee'): ?><?php echo smarty_function_the_url(array('module' => 'employees'), $this);?>
-<?php endif; ?>" method="get">
+					<form action="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+" method="get">
 						<input type="hidden" name="do" value="<?php echo $_GET['do']; ?>
 " />
 						<?php if ($_GET['total_count']): ?><input type="hidden" name="total_count" value="<?php echo $_GET['total_count']; ?>
@@ -48,7 +51,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 						<input type="submit" value="Tìm kiếm" />
 					</form>
 				<?php else: ?>
-					<form action="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
+					<form action="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
 " method="get" onsubmit="return checkSelectStudypostType()">
 						<input type="hidden" name="do" value="<?php echo $_GET['do']; ?>
 " />

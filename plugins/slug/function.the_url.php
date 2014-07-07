@@ -12,26 +12,46 @@ function smarty_function_the_url($params){
 	$return = "##";
 	if (!empty($module)) {
 		switch ($module) {
+			case 'login':
+				if ($rewrite_able) {
+					$return = URL."dang-nhap";
+				}else{
+					$return = URL."logging.php";
+				}
+				break;
 			case 'product_main':
 				if ($rewrite_able) {
-					$return = URL."products";
+					$return = URL."san-pham";
 				}else{
 					$return = URL."index.php?do=product";
 				}
 				break;
 			case 'service_main':
 				if ($rewrite_able) {
-					$return = URL."services";					
+					$return = URL."dich-vu";					
 				}else{
 					$return = URL."index.php?do=product&action=services";
 				}
 				break;
 			case 'offer_main':
 				if ($rewrite_able) {
-					$return = URL."offers";
+					$return = URL."thuong-mai";
 					if($offertype)
 					{
-						$return = URL."offers/".$offertype;
+						switch($offertype) {
+							case "buy":
+								$offertype = "mua";
+								break;
+							case "sell":
+								$offertype = "ban";
+								break;
+							case "supply":
+								$offertype = "phan-phoi";
+								break;
+							default:
+								break;
+						}
+						$return = URL."thuong-mai/".$offertype;
 					}
 				}else{
 					$return = URL."index.php?do=product&action=offers";
@@ -92,8 +112,10 @@ function smarty_function_the_url($params){
 				break;
 			case "product":
 				if ($rewrite_able) {
-					//$return = URL."$module/detail/".$id.".html";
-					$return = URL."san-pham/".$id."/".preg_replace("/[^A-Za-z0-9 \-]/", '', utf8_to_ascii($product_name));
+					$rootname = "san-pham";
+					if($service == "1") $rootname = "dich-vu";
+					
+					$return = URL.$rootname."/".$id."/".stringToURI($product_name);
 				}else{
 					$return = URL."index.php?do=".$module."&action=detail&id=".$id;
 				}
@@ -213,7 +235,7 @@ function smarty_function_the_url($params){
 				break;
 			case "products":
 				if ($rewrite_able) {
-					$return = URL."products/list-".$level."-".$industryid.".html";
+					$return = URL."san-pham/".$level."/".$industryid."/".stringToURI($title);
 					if($action == 'postcomment')
 					{
 						$return = URL."comments/add.html";
@@ -250,9 +272,24 @@ function smarty_function_the_url($params){
 					}
 				}
 				break;
+			case "offers":
+				if ($rewrite_able) {
+					$return = URL."thuong-mai/".$level."/".$industryid."/".stringToURI($title);
+					if(!empty($id))
+					{
+						$return = URL."thuong-mai/".$id."/".stringToURI($title);
+					}
+				}else{
+					$return = URL."index.php?do=product&action=offers&level=".$level."&industryid=".$industryid;
+					if(!empty($id))
+					{
+						$return = URL."index.php?do=offer&action=detail&id=".$id;
+					}
+				}
+				break;
 			case "connect":
 				if ($rewrite_able) {
-					$return = URL."connect.html";
+					$return = URL."trang-chu";
 				}else{
 					$return = URL."index.php?do=product&action=connect";
 					//http://marketonline.vn/beta/index.php?do=product&level=1&industryid=1
@@ -267,32 +304,80 @@ function smarty_function_the_url($params){
 				}
 				break;
 			case "jobs":
-				//if ($rewrite_able) {
-				//	$return = URL."jobs";
-				//}else{
+				if ($rewrite_able) {
+					$return = URL."hoc-va-lam/viec-lam";
+					if(!empty($id))
+					{
+						$return = URL."hoc-va-lam/viec-lam/".$id."/".stringToURI($title);
+					}
+				}else{
 					$return = URL."index.php?do=job";
 					if(!empty($id))
 					{
 						$return = URL."index.php?do=job&action=detail&id=".$id;
 					}
-				//}
+				}
 				break;
 			case "employees":
-				//if ($rewrite_able) {
-				//	$return = URL."jobs";
-				//}else{
+				if ($rewrite_able) {
+					$return = URL."hoc-va-lam/ho-so-ung-vien";
+					if(!empty($id))
+					{
+						$return = URL."hoc-va-lam/ho-so-ung-vien/".$id."/".stringToURI($title);
+					}
+				}else{
 					$return = URL."index.php?do=employee";
 					if(!empty($id))
 					{
 						$return = URL."index.php?do=employee&action=detail&id=".$id;
 					}
-				//}
+				}
 				break;
 			case "studypost":
-				//if ($rewrite_able) {
-				//	$return = URL."jobs";
-				//}else{
-					//$return = URL."index.php?do=school";
+				if ($rewrite_able && (!empty($type) || (in_array($action, array("group","school","memberpage","")) && empty($change_current_type)))) {
+					if(!empty($action))
+					{
+						switch($action) {
+							case "group":
+								$action = "nhom";
+								break;
+							case "memberpage":
+								$action = "hoc-vien";
+								break;
+							default:
+								$action = "truong";
+								break;
+						}
+						if(!empty($id)) {
+							$return = URL."hoc-va-lam/".$action."/".$id."/".stringToURI($title);
+						}
+						else {
+							$return = URL."hoc-va-lam/".$action;
+						}
+					}
+					else
+					{
+						if(!empty($type))
+						{
+							switch($type) {
+								case "group":
+									$type = "nhom";
+									break;
+								case "learner":
+									$type = "hoc-vien";
+									break;
+								default:
+									$type = "truong";
+									break;
+							}
+							$return = URL."hoc-va-lam/".$type;
+						}
+						else
+						{
+							$return = URL."hoc-va-lam/truong";
+						}
+					}
+				}else{
 					if(!empty($action))
 					{
 						if(!empty($change_current_type))
@@ -320,14 +405,14 @@ function smarty_function_the_url($params){
 							$return = URL."index.php?do=studypost";
 						}
 					}
-				//}
+				}
 				break;
 			case "root-url":
 				$return = URL;
 				break;
 			case "services":
 				if ($rewrite_able) {
-					$return = URL."services/list-".$level."-".$industryid.".html";
+					$return = URL."dich-vu/".$level."/".$industryid."/".stringToURI($title);
 					if($level == "search")
 					{
 						$return = URL."index.php?do=product&action=services&level=search&tag=".$tag;
@@ -337,6 +422,65 @@ function smarty_function_the_url($params){
 					if($level == "search")
 					{
 						$return = URL."index.php?do=product&action=services&level=search&tag=".$tag;
+					}
+				}
+				break;
+			case "register":
+				if ($rewrite_able) {
+					$return = URL."dang-ky";					
+					if(isset($typename))
+					{
+						switch($typename) {
+							case "Company":
+								$typename = "tao-gian-hang";
+								break;
+							case "Employee":
+								$typename = "xin-viec";
+								break;
+							case "Employer":
+								$typename = "tuyen-dung";
+								break;
+							case "Learner":
+								$typename = "hoc-tap";
+								break;
+							default:
+								$typename = "tao-gian-hang";
+								break;
+						}
+						$return = URL."dang-ky/".$typename;
+					}
+				}else{
+					$return = URL."register.php?typename=Company";
+					if(isset($typename))
+					{
+						$return = URL."register.php?typename=".$typename;
+					}
+				}
+				break;
+			case "redirect":
+				if ($rewrite_able) {
+					if(isset($url))
+					{
+						switch($url) {
+							case "/virtual-office/product.php?do=edit":
+								$return = URL."dang-san-pham";
+								break;
+							case "/logging.php":
+								$return = URL."dang-nhap";
+								break;
+							case "/virtual-office/product.php?do=edit%26type=service":
+								$return = URL."dang-dich-vu";
+								break;
+							default:
+								$return = URL."redirect.php?url=".$url;
+								break;
+						}
+						
+					}
+				}else{
+					if(isset($url))
+					{
+						$return = URL."redirect.php?url=".$url;
 					}
 				}
 				break;

@@ -13,7 +13,7 @@
 	<div class="main_content_left">
 		<div class="blank"></div>
 		    <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
-		<div class="offer_info_title"><h2>{lang announce}: {$item.subject}</h2></div>
+		<div class="offer_info_title"><h2>{$item.subject}</h2></div>
       
 		<div class="content-inner">
 			{$item.message}
@@ -23,16 +23,7 @@
 	</div>
 	
 	<div class="main_content_right">
-           <div class="notice">
-              <h2>{lang announce}</h2>
-              <ul>
-				{announce row=10 userid=$MEMBER.id typeid=1 membertypeid=$MEMBER.membertype_id}
-				{if $announce.status}
-					<li{if !$announce.read} class="notread"{/if}><a href="{$announce.url}">{$announce.title}</a></li>
-				{/if}
-				{/announce}
-              </ul>
-           </div>
+	    <!--{include file="_rightbar.html"}-->           
         </div>
 		
 </div>

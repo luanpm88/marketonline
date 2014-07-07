@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 16:20:52
+<?php /* Smarty version 2.6.27, created on 2014-06-13 08:37:29
          compiled from default/job/postitem.html */ ?>
 <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
   <div class="postitem jobpost">	

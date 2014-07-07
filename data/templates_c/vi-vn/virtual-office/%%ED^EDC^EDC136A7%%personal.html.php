@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 12:42:38
+<?php /* Smarty version 2.6.27, created on 2014-06-13 22:34:18
          compiled from personal.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'personal.html', 3, false),array('function', 'formhash', 'personal.html', 343, false),array('function', 'html_radios', 'personal.html', 389, false),array('modifier', 'default', 'personal.html', 637, false),)), $this); ?>
@@ -14,7 +14,7 @@ unset($_smarty_tpl_vars);
 <script>
 	
 		function inserEditorFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, "<img src=\'../attachment/"+url+"\' />");

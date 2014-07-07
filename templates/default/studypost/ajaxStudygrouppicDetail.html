@@ -21,15 +21,15 @@
 						
 						
 					<div class="avatar">
-						<a href="{the_url module=studypost action=group id=`$group.id`}">
+						<a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
 						    <img src="{$group.logo}" />
 						</a>
 					</div>
-					<h2><a href="{the_url module=studypost action=group id=`$group.id`}">{$group.subject_name} ({$group.school_name})</a></h2>
+					<h2><a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">{$group.subject_name} ({$group.school_name})</a></h2>
 					
 					<p><label style="width:95px;">Thành viên</label><label class="two_points">:</label> {$group.member_count}</p>
 					<p><label style="width:95px;">Quản trị viên</label><label class="two_points">:</label>
-						<a href="{the_url module=studypost action=memberpage id=`$group_leader.id`}">{$group_leader.first_name} {$group_leader.last_name}</a>
+						<a href="{the_url module=studypost action=memberpage id=`$group_leader.id` title=`$group_leader.fullname`}">{$group_leader.first_name} {$group_leader.last_name}</a>
 					</p>
 					
 					

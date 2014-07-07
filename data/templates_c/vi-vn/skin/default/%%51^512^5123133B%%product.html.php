@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-05-23 10:05:14
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:38:37
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'product.html', 41, false),array('function', 'pager', 'product.html', 131, false),array('block', 'product', 'product.html', 72, false),array('modifier', 'truncate', 'product.html', 89, false),)), $this); ?>
@@ -85,11 +85,13 @@ unset($_smarty_tpl_vars);
 	    </div>
 
 <?php if ($this->_tpl_vars['pb_username'] == $this->_tpl_vars['MEMBER']['username']): ?>
-  <div class="postitem kkkk"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-  <a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a>
-  </div>
+  <div class="postitem kkkk">
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_postitems.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+      </div>
 <?php endif; ?>
 
  </div>
@@ -107,7 +109,7 @@ unset($_smarty_tpl_vars);
 ">
 					    
 					    <div class="hidden-info-list-item">
-						    <a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+						    <a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 ">Xem chi tiết</a>
 						    <!--Và liên hệ với nhà cung cấp<br />
 						    <strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
@@ -115,7 +117,7 @@ unset($_smarty_tpl_vars);
 					    </div>
 
 	
-	<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+	<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['item']['id']),'product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 " title="">
 
 		<div class="u_p_img_box"><div class="imgout"><img alt="<?php echo $this->_tpl_vars['item']['name']; ?>
@@ -152,7 +154,7 @@ unset($_smarty_tpl_vars);
 	<div class="product_tools">
 		<a class="comment_link stat_link" href="javascript:void(0)"><?php echo $this->_tpl_vars['item']['clicked']; ?>
 </a>
-		<a class="comment_link comment_count_li" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+		<a class="comment_link comment_count_li" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 #comment_pos"><?php echo $this->_tpl_vars['_comment_list']; ?>
  (<?php echo $this->_tpl_vars['item']['comments_count']; ?>
 )</a>
@@ -218,3 +220,4 @@ unset($_smarty_tpl_vars);
 
 
 
+

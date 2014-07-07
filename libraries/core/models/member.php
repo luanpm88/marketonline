@@ -217,6 +217,7 @@ class Members extends PbModel {
 				}
 			}
 			$result['is_student'] = $is_student;
+			$result['fullname'] = $result['first_name']." ".$result['last_name'];
  		}		
  		return $result;
  	}
@@ -274,7 +275,7 @@ class Members extends PbModel {
 					$this->params['data']['member']['email'] = $tmpUser['email'];
 					$this->params['data']['member']['last_login'] = $this->params['data']['member']['created'] = $this->params['data']['member']['modified'] = $this->timestamp;
 					$i18n =& new L10n();
-					$this->params['data']['member']['space_name'] = $i18n->translateSpaceName($this->params['data']['member']['username']); //Todo:
+					$this->params['data']['member']['space_name'] = stringToURI($this->params['data']['member']['username']); //Todo:
 					//some memberfiled info
 					$this->params['data']['member']['membergroup_id'] = (!empty($passport->default_groupid))?$passport->default_groupid:$default_membergroupid;
 					$time_limits = $this->dbstuff->GetOne ( "SELECT default_live_time FROM {$this->table_prefix}membergroups WHERE id={$this->params['data']['member']['membergroup_id']}" );
@@ -432,7 +433,8 @@ class Members extends PbModel {
 		$this->params['data']['member']['userpass'] = $this->authPasswd($this->params['data']['member']['userpass']);
 		$i18n =& new L10n();
 		if(empty($this->params['data']['member']['space_name']))
-		$this->params['data']['member']['space_name'] = $i18n->translateSpaceName($space_name);//Todo:
+		//$this->params['data']['member']['space_name'] = $i18n->translateSpaceName($space_name);//Todo:
+		$this->params['data']['member']['space_name'] = stringToURI($space_name);//Todo:
 		//$uip = pb_ip2long(pb_getenv('REMOTE_ADDR'));
 		//if(empty($uip)){
 		//	pheader("location:".URL."redirect.php?message=".urlencode(L('sys_error')));
@@ -504,6 +506,7 @@ class Members extends PbModel {
 	
 	function updateSpaceName($member_info, $new_space_name)
 	{
+		$invalidNames = array("san-pham","dich-vu","thuong-mai","dang-ky");
 		if (empty($member_info) || !$member_info || !is_array($member_info)) {
 			return false;
 		}
@@ -518,7 +521,7 @@ class Members extends PbModel {
 			return $data['space_name'];
 		}else{
 			$if_exists = $this->dbstuff->GetOne("SELECT id FROM {$this->table_prefix}members WHERE space_name='".$new_space_name."'");
-			if ($if_exists) {
+			if ($if_exists || in_array($new_space_name,$invalidNames)) {
 				//flash("space_name_exists");
 				$date = new MyDateTime();
 				$new_space_name .= "-".$date->getTimestamp();
@@ -754,7 +757,7 @@ class Members extends PbModel {
 
 			$result['online'] = $this->isOnline($result["id"]);
 			
-			
+			$result['fullname'] = $result['first_name']." ".$result['last_name'];
 			
 			$members[$key] = $result;	
 		}
@@ -832,6 +835,9 @@ class Members extends PbModel {
 		//var_dump(implode(",",$ids));
 		
 		$conditions = array("Member.id IN (".implode(",",$ids).")");
+		if($user_id != 757) {
+			$conditions[] = "Member.referrer_id = ".intval($user_id);
+		}
 		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";

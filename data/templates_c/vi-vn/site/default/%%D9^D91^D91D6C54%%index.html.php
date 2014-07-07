@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 08:57:07
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:32:52
          compiled from default%5Cproduct/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 408, false),array('modifier', 'truncate', 'default\\product/index.html', 415, false),array('modifier', 'default', 'default\\product/index.html', 751, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 359, false),array('modifier', 'truncate', 'default\\product/index.html', 432, false),array('modifier', 'default', 'default\\product/index.html', 766, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -82,19 +82,19 @@ unset($_smarty_tpl_vars);
 				
 				
 				
-				if (offer && first_offer) {
-				  $(\'.offer_transform ul.products li.product img\').live(\'click\', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  $(\'.offer_transform ul.products li.product h3 a\').live(\'click\', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  first_offer =  0;
-				}
+				//if (offer && first_offer) {
+				//  $(\'.offer_transform ul.products li.product img\').live(\'click\', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  $(\'.offer_transform ul.products li.product h3 a\').live(\'click\', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  first_offer =  0;
+				//}
 				
 				$(\'a,img\').qtip({ // Grab some elements to apply the tooltip to
 				    content: {
@@ -362,12 +362,34 @@ unset($_smarty_tpl_vars);
 <div class="row">
   <div class="fifteen columns pl0 pindex">
 
-    <div id="page-title" class="pt0">
+    <div id="page-title" class="pt0" style="padding-left: 110px;">
+      
+      
+      <div class="super-main-category mainproductpage">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="<?php if ($this->_tpl_vars['item']['service']): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+      
 
-    <a class="back" href="javascript:history.back()"></a>
+    <!--<a class="back" href="javascript:history.back()"></a>-->
     <div class="subtitle">
             </div>
-    <div class="breadcrumbs" style="padding-bottom: 0;"><a href="javascript:void(0)">Danh mục ngành nghề</a> </div>
+    <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+"><?php echo $this->_tpl_vars['_home_page']; ?>
+</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+">Sản phẩm</a></div>
     <h1 class="page-title">Thị trường Mua-Bán, Phân phối</h1>
 
   </div>
@@ -431,11 +453,11 @@ if ($this->_foreach['level_0']['total'] > 0):
 " >
 				    <?php endif; ?>
                                     <div class="description divlink <?php echo $this->_tpl_vars['item0']['disp']; ?>
-" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 '">
                                         <time><?php echo $this->_tpl_vars['_category']; ?>
 </time>
-                                        <h3><a class="tile_title" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+                                        <h3><a class="tile_title" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>
  (<?php echo $this->_tpl_vars['item0']['ppcount']; ?>
 )" class="typeboxlet01"><?php echo $this->_tpl_vars['item0']['name']; ?>
@@ -448,7 +470,7 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
         $this->_foreach['level_1_industry']['iteration']++;
 ?>
 					  	<li>
-							<a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id'])), $this);?>
+							<a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id']),'title' => ($this->_tpl_vars['level1']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['level1']['name']; ?>
  (<?php echo $this->_tpl_vars['level1']['ppcount']; ?>
 )" class="typeboxlet01"><?php if ($this->_tpl_vars['k']%6 == 5 || $this->_tpl_vars['k']%6 == 0): ?><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 30) : smarty_modifier_truncate($_tmp, 30)); ?>
@@ -456,14 +478,14 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 <?php endif; ?></a>                        
 						</li>				     
 					  <?php endforeach; endif; unset($_from); ?>
-					    <li><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+					    <li><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['_read_more']; ?>
 </a></li>					    
 					</ul>
 
                                     </div>
 				    <a href="<?php if ($this->_tpl_vars['item0']['url'] != ""): ?><?php echo $this->_tpl_vars['item0']['url']; ?>
-<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 <?php endif; ?>" <?php if ($this->_tpl_vars['item0']['url'] != ""): ?>target="_blank"<?php endif; ?>></a>
                   </div>
 		  
@@ -673,11 +695,11 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
       <a id="other_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_other_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
       
-      <a id="new_service_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--<a id="new_service_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_services']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       <!-- for offer -->
-      <a id="new_offer_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_raovat']; ?>
-</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--<a id="new_offer_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_raovat']; ?>
+</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       
       
@@ -687,17 +709,15 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
       </h1>
 
     <br />
-<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-  <div class="postitem" style="margin-top: -70px"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-  <a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php else: ?>
-  <div class="postitem" style="margin-top: -70px"><a href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-  <a target="_blank" href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php endif; ?>
+
+  <div class="postitem" style="margin-top: -70px">
+    <?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_postitems.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+  </div>
+
     
     
   </div>

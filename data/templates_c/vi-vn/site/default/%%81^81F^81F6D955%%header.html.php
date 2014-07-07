@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 12:56:42
+<?php /* Smarty version 2.6.27, created on 2014-07-07 12:05:16
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1154, false),array('function', 'formhash', 'default/header.html', 1238, false),array('modifier', 'default', 'default/header.html', 1249, false),array('modifier', 'date_format', 'default/header.html', 1263, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1169, false),array('function', 'formhash', 'default/header.html', 1253, false),array('modifier', 'default', 'default/header.html', 1264, false),array('modifier', 'date_format', 'default/header.html', 1278, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -23,7 +23,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 	<meta name ="keywords" content="<?php echo $this->_tpl_vars['TAG_STRING']; ?>
 ">
 <?php else: ?>
-	<meta name ="keywords" content="Thị trường Mua Bán, Phân phối, Việc làm, Đầu tư, Tiêu dùng, Dịch vụ">
+	<meta name ="keywords" content="Thị trường Mua Bán, Phân phối, Việc làm, Đầu tư, Tiêu dùng, Dịch vụ, Đăng sản phẩm, Đăng dịch vụ, Đăng tuyển dụng, Đơn xin việc, Đăng quảng cáo, Đăng rao vặt">
 <?php endif; ?>
 
 
@@ -108,7 +108,8 @@ css/responsivez.css">-->
 css/colorbox.css">
  <link rel="stylesheet" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+    <link rel="stylesheet" href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+<?php echo $this->_tpl_vars['theme_img_path']; ?>
 css/pml.css">
 <script type='text/javascript' src='<?php echo $this->_tpl_vars['theme_img_path']; ?>
 js/jquery.js?ver=1.8.3'></script>
@@ -800,6 +801,21 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			}
 		});
                 
+                $(".group-menu-item").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+                
                 $(\'.member-left-bottom-more\').fancybox();
                 
                 $(\'.change-group-leader-but\').fancybox();
@@ -991,7 +1007,7 @@ $(window).scroll(function(){
 	//console.log(eloffset);
 	var windowpos;
 	if ($(window).scrollTop() >= pos_searchlist) {
-	  windowpos = $(window).scrollTop()+27;
+	  windowpos = $(window).scrollTop()+32;
 	}
 	else
 	{
@@ -1003,7 +1019,7 @@ $(window).scroll(function(){
 	    $(this).css(\'top\', pos_searchlist+\'px\');
         } else {
             $(this).css(\'position\', \'fixed\');
-	    $(this).css(\'top\', \'24px\');    
+	    $(this).css(\'top\', \'32px\');    
         }
     });        
     
@@ -1448,13 +1464,31 @@ register.php"><?php echo $this->_tpl_vars['_register']; ?>
                     </div>
 		    
 		    
-		     <div class="box-res-con">
-		     <div class="inner-boxx">
-    <h4><?php echo $this->_tpl_vars['_not_register_annouce']; ?>
+		    <div class="box-res-con">
+                        <div class="inner-boxx">
+                            <h4><?php echo $this->_tpl_vars['_not_register_annouce']; ?>
 </h4><br />
-    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='register.php?typename=Company'"><?php echo $this->_tpl_vars['_register']; ?>
+                            <?php if ($_GET['do'] == 'product'): ?>
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Company'), $this);?>
+'"><?php echo $this->_tpl_vars['_register']; ?>
 </button>
-</div>
+                            <?php endif; ?>
+                            <?php if ($_GET['do'] == 'employee'): ?>
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employee'), $this);?>
+'"><?php echo $this->_tpl_vars['_register']; ?>
+</button>
+                            <?php endif; ?>
+                            <?php if ($_GET['do'] == 'job'): ?>
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employer'), $this);?>
+'"><?php echo $this->_tpl_vars['_register']; ?>
+</button>
+                            <?php endif; ?>
+                            <?php if ($_GET['do'] == 'studypost'): ?>
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Learner'), $this);?>
+'"><?php echo $this->_tpl_vars['_register']; ?>
+</button>
+                            <?php endif; ?>
+                        </div>
 		    </div>
 <?php endif; ?>
                     
@@ -1584,4 +1618,4 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
 <div id="show_top_cart">
     
-</div>
+</div>

@@ -1,7 +1,9 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 15:05:05
+<?php /* Smarty version 2.6.27, created on 2014-07-03 09:06:37
          compiled from default/studypost/_joined_groups.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_joined_groups.html', 6, false),array('modifier', 'truncate', 'default/studypost/_joined_groups.html', 11, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_joined_groups.html', 8, false),array('modifier', 'truncate', 'default/studypost/_joined_groups.html', 13, false),)), $this); ?>
+<?php if ($this->_tpl_vars['pb_userid']): ?>
+                
                 <div class="school_list">                    
                     <h4>Nhóm đã tham gia</h4>
                     <ul class="group_list">
@@ -12,7 +14,7 @@ if ($this->_foreach['level_group']['total'] > 0):
 ?>
                             <li class="group_item <?php if ($_GET['action'] == 'group' && $_GET['id'] == $this->_tpl_vars['group']['id']): ?>active<?php endif; ?>">
                                 <a <?php if ($this->_tpl_vars['group']['logo_origin']): ?>style="background:url(<?php echo $this->_tpl_vars['group']['logo']; ?>
-) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"<?php endif; ?> class="logo" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
+) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"<?php endif; ?> class="logo" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id']),'title' => ($this->_tpl_vars['group']['subject_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['group']['subject_name']; ?>
  <?php echo $this->_tpl_vars['group']['school_name']; ?>
 ">
@@ -30,3 +32,4 @@ if ($this->_foreach['level_group']['total'] > 0):
                         <?php endforeach; endif; unset($_from); ?>
                     </ul>
                 </div>
+<?php endif; ?>

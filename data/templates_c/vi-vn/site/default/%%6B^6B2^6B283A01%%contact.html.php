@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-18 09:00:00
+<?php /* Smarty version 2.6.27, created on 2014-07-03 16:38:21
          compiled from default%5Ccontact.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Liên hệ với chúng tôi")));

@@ -203,19 +203,19 @@
 				
 				
 				
-				if (offer && first_offer) {
-				  $('.offer_transform ul.products li.product img').live('click', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  $('.offer_transform ul.products li.product h3 a').live('click', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  first_offer =  0;
-				}
+				//if (offer && first_offer) {
+				//  $('.offer_transform ul.products li.product img').live('click', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  $('.offer_transform ul.products li.product h3 a').live('click', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  first_offer =  0;
+				//}
 				
 				$('a,img').qtip({ // Grab some elements to apply the tooltip to
 				    content: {
@@ -310,7 +310,7 @@
 		if ($('#aq-block-5').height())
 		  pos_searchlist = $('#aq-block-5').height() + 440;
 		else
-		  pos_searchlist = 240;
+		  pos_searchlist = 252;
 	 
 	       $(".hotnewlist").removeClass("active");
 	       $('#new_product_but').addClass("active");
@@ -554,7 +554,7 @@
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 240px">
+                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 252px">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="{lang search}" />
@@ -782,14 +782,9 @@
       </h1>
 
 
-<!--{if $pb_username!=""}-->
-  <div class="postitem"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
-  <a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a></div>
-<!--{else}-->
-  <div class="postitem"><a href="redirect.php?url=/logging.php">{lang post_product}</a>
-    <a href="redirect.php?url=/logging.php">{lang add_service}</a></div>
-<!--{/if}-->
-    
+<div class="postitem">
+	<!--{include file="`$theme_name`/_postitems.html"}-->
+      </div>
     
   </div>
       

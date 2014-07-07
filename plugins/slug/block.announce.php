@@ -66,6 +66,7 @@ function smarty_block_announce($params, $content, &$smarty, &$repeat) {
 		$smarty->blockvars[$param_count] = $announce->GetArray($sql);
 		if(!$smarty->blockvars[$param_count]) return $repeat = false;
 	}
+	$icount = 0;
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {
 		$repeat = true;
 		//$url = smarty_function_the_url(array("id"=>$item['id'], "module"=>'announce'));
@@ -92,8 +93,11 @@ function smarty_block_announce($params, $content, &$smarty, &$repeat) {
 			}			
 		}
 		
+		$item['order'] = $icount+1;
 		
 		$smarty->assign($params['name'], $item);
+		
+		$icount++;
 	}
 	else {
 		$repeat = false;

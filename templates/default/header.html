@@ -16,7 +16,7 @@
 {if $TAG_STRING}
 	<meta name ="keywords" content="{$TAG_STRING}">
 {else}
-	<meta name ="keywords" content="Thị trường Mua Bán, Phân phối, Việc làm, Đầu tư, Tiêu dùng, Dịch vụ">
+	<meta name ="keywords" content="Thị trường Mua Bán, Phân phối, Việc làm, Đầu tư, Tiêu dùng, Dịch vụ, Đăng sản phẩm, Đăng dịch vụ, Đăng tuyển dụng, Đơn xin việc, Đăng quảng cáo, Đăng rao vặt">
 {/if}
 
 
@@ -76,7 +76,7 @@
 <!--<link rel="stylesheet" href="{$theme_img_path}css/responsivez.css">-->
 <link rel="stylesheet" href="{$theme_img_path}css/colorbox.css">
  <link rel="stylesheet" href="{$theme_img_path}css/jquery.mCustomScrollbar.css">
-    <link rel="stylesheet" href="{$theme_img_path}css/pml.css">
+    <link rel="stylesheet" href="{$SiteUrl}{$theme_img_path}css/pml.css">
 <script type='text/javascript' src='{$theme_img_path}js/jquery.js?ver=1.8.3'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.themepunch.plugins.min.js?ver=3.5.1'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.themepunch.revolution.min.js?ver=3.5.1'></script>
@@ -709,6 +709,21 @@ function goclicky_custom(meh, url, images, title, summary)
 			}
 		});
                 
+                $(".group-menu-item").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+                
                 $('.member-left-bottom-more').fancybox();
                 
                 $('.change-group-leader-but').fancybox();
@@ -882,7 +897,7 @@ $(window).scroll(function(){
 	//console.log(eloffset);
 	var windowpos;
 	if ($(window).scrollTop() >= pos_searchlist) {
-	  windowpos = $(window).scrollTop()+27;
+	  windowpos = $(window).scrollTop()+32;
 	}
 	else
 	{
@@ -894,7 +909,7 @@ $(window).scroll(function(){
 	    $(this).css('top', pos_searchlist+'px');
         } else {
             $(this).css('position', 'fixed');
-	    $(this).css('top', '24px');    
+	    $(this).css('top', '32px');    
         }
     });        
     
@@ -1288,11 +1303,22 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
                     </div>
 		    
 		    
-		     <div class="box-res-con">
-		     <div class="inner-boxx">
-    <h4>{lang not_register_annouce}</h4><br />
-    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='register.php?typename=Company'">{lang register}</button>
-</div>
+		    <div class="box-res-con">
+                        <div class="inner-boxx">
+                            <h4>{lang not_register_annouce}</h4><br />
+                            {if $smarty.get.do == "product"}
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Company"}'">{lang register}</button>
+                            {/if}
+                            {if $smarty.get.do == "employee"}
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Employee"}'">{lang register}</button>
+                            {/if}
+                            {if $smarty.get.do == "job"}
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Employer"}'">{lang register}</button>
+                            {/if}
+                            {if $smarty.get.do == "studypost"}
+                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Learner"}'">{lang register}</button>
+                            {/if}
+                        </div>
 		    </div>
 {/if}
                     

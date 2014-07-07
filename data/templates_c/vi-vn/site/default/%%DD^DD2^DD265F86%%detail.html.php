@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-12 12:02:08
+<?php /* Smarty version 2.6.27, created on 2014-07-04 13:41:52
          compiled from default%5Cjob/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get', 'default\\job/detail.html', 69, false),array('function', 'the_url', 'default\\job/detail.html', 116, false),array('function', 'pager', 'default\\job/detail.html', 364, false),array('modifier', 'count', 'default\\job/detail.html', 70, false),array('block', 'job', 'default\\job/detail.html', 349, false),)), $this); ?>
@@ -277,7 +277,7 @@ if ($this->_foreach['IndustryList']['total'] > 0):
 </th>
 					<td>
 					<?php echo $this->_tpl_vars['item']['require_age']; ?>
- tuổi
+
 											</td>
 				</tr>
 				<?php endif; ?>
@@ -288,7 +288,7 @@ if ($this->_foreach['IndustryList']['total'] > 0):
 </th>
 					<td>
 						<?php echo $this->_tpl_vars['item']['exper']; ?>
- năm																	
+																	
 					</td>
 				</tr>
 				<?php endif; ?>
@@ -413,7 +413,7 @@ if ($this->_foreach['IndustryList']['total'] > 0):
 					    <th align="left" valign="top">Thông tin liên hệ nộp hồ sơ</th>
 					    <td>
 						<div class="text left_com_info job_contact_detail" style="">
-							<p><?php if ($this->_tpl_vars['item']['contact_gender'] == 1): ?>Mr.<?php else: ?>Mrs.<?php endif; ?> <?php echo $this->_tpl_vars['item']['contact_name']; ?>
+							<p><?php if ($this->_tpl_vars['item']['contact_gender'] == 1): ?>Mr.<?php elseif ($this->_tpl_vars['item']['contact_gender'] == 2): ?>Mrs.<?php endif; ?> <?php echo $this->_tpl_vars['item']['contact_name']; ?>
 <?php if ($this->_tpl_vars['item']['contact_position']): ?>&nbsp;&nbsp;/&nbsp;&nbsp;<?php echo $this->_tpl_vars['_chucvu']; ?>
 : <?php echo $this->_tpl_vars['item']['contact_position']; ?>
 </p><?php endif; ?>
@@ -450,10 +450,10 @@ if ($this->_foreach['IndustryList']['total'] > 0):
 			<?php $this->_tag_stack[] = array('job', array('row' => 10,'status' => 1,'start' => ($_GET['pos']),'keyword' => ($_GET['keyword']),'indust' => ($this->_tpl_vars['item']['jobindusts']),'type' => ($this->_tpl_vars['item']['jobtype_id']),'area' => ($this->_tpl_vars['area_string']))); $_block_repeat=true;smarty_block_job($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 				<?php if ($this->_tpl_vars['job']['id'] != $this->_tpl_vars['item']['id']): ?>
 					<tr>
-						<td><a href="<?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id'])), $this);?>
+						<td><a href="<?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id']),'title' => ($this->_tpl_vars['job']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['job']['name']; ?>
 </td>
-						<td><a href="<?php if ($this->_tpl_vars['job']['membertype_id'] == 5): ?><?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id'])), $this);?>
+						<td><a href="<?php if ($this->_tpl_vars['job']['membertype_id'] == 5): ?><?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id']),'title' => ($this->_tpl_vars['job']['name'])), $this);?>
 <?php else: ?><?php echo $this->_tpl_vars['job']['space_url']; ?>
 <?php endif; ?>" target="_blank"><?php echo $this->_tpl_vars['job']['companyname']; ?>
 </a></td>

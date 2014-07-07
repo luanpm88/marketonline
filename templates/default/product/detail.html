@@ -266,21 +266,16 @@
         {if $item.service}
 		<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=service_main}">Dịch vụ</a> <span class="delim">/</span>{$item.industry_service_names} </div>
 	{else}
-		<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=product_main product_name=`$item.name`}">Sản phẩm</a> <span class="delim">/</span>{$item.industry_names} </div>
+		<div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=product_main}">Sản phẩm</a> <span class="delim">/</span>{$item.industry_names} </div>
 	{/if}
 	
 	<h1 class="page-title">
                         {$item.title}
 	</h1>
-	<!--{if $pb_username!=""}-->
-  <div class="postitem">
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a>
-  </div>
-<!--{else}-->
-  <div class="postitem"><a href="redirect.php?url=/logging.php">{lang post_product}</a>
-  <a target="_blank" href="redirect.php?url=/logging.php">{lang add_service}</a></div>
-<!--{/if}-->
+	
+	<div class="postitem">
+		<!--{include file="`$theme_name`/_postitems.html"}-->
+	</div>
 
 
 
@@ -314,7 +309,7 @@
 							<p class="left1"><img src="{$item.image}" alt="" width="80" height="80" /></p>
 							<p class="left2"><a href="misc.php?source={$item.image_url}" target="_blank"><img src="{$theme_img_path}images/detail_17.jpg" alt="" /></a><span>{lang enlarge_image}</span></p>
 						</div>-->
-						<a itemprop="image" href="{$item.d_image}" class="fancyx" rel="thumbnails" title="{$item.title}">
+						<a itemprop="image" href="{$item.d_image}" class="fancyx" rel="thumbnails" title="">
 						<ul id="example2">
 							<li>
 								<img class="etalage_thumb_image" src="{$item.d_imgsmall}" />
@@ -761,11 +756,11 @@
 	<ul>
 		<!--{loop $industries item0 level_0 key0}-->
 			<li class="level0 {if $level_0%4 == 0}clear{/if}">
-				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id`}">{$item0.name}</a>
+				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{$item0.name}</a>
 				<ul>
 					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
 						<li class="level1 {if $key_level1 > 4}hide{/if}">
-							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id`}">{$level1.name}</a>
+							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
 						</li>
 					<!--{/loop}-->
 					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>

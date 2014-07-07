@@ -1,9 +1,21 @@
-<div class="top_user_info">
-    <a href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id`}">
-        <img class="avatar" src="{if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="20" height="20" />
-    </a>
-    <h4><a href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id`}">{$pb_userinfo.first_name} {$pb_userinfo.last_name}</a></h4>
-    <a style="padding-left: 0; margin-right: 10px" class="name" href="{$WebRootUrl}redirect.php?url=/virtual-office/" target="_blank">
-        Vào trang quản trị
-    </a>
-</div>
+{if $pb_userid}
+    <div class="top_user_info">
+        <a href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id` title=`$pb_userinfo.fullname`}">
+            <img class="avatar" src="{if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.jpg  {/if}" width="20" height="20" />
+        </a>
+        <h4><a href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id` title=`$pb_userinfo.fullname`}">{$pb_userinfo.first_name} {$pb_userinfo.last_name}</a></h4>
+        <a style="padding-left: 0; margin-right: 10px" class="name" href="{$WebRootUrl}redirect.php?url=/virtual-office/" target="_blank">
+            Vào trang quản trị
+        </a>
+    </div>
+{else}
+    <div class="top_user_info">
+        <a href="#login-box" class="comment_but">
+            <img class="avatar" src="{if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.jpg  {/if}" width="20" height="20" />
+        </a>
+        <h4>Khách viếng thăm</h4>
+        <a style="padding-left: 0; margin-right: 10px" class="name comment_but"  href="#login-box">
+            Tham gia Diễn đàn
+        </a>
+    </div>
+{/if}

@@ -1,7 +1,9 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-22 11:20:52
+<?php /* Smarty version 2.6.27, created on 2014-07-03 16:39:08
          compiled from default%5Cproduct/ajax.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajax.list.html', 12, false),)), $this); ?>
+<div class="total-count"><?php echo $this->_tpl_vars['TotalCount']; ?>
+</div>
 <?php if ($this->_tpl_vars['Count']): ?>
 
 
@@ -17,19 +19,23 @@ if ($this->_foreach['level']['total'] > 0):
 
 <li class="product<?php echo $this->_tpl_vars['item']['isfirst']; ?>
  boxcols">
-
+	<div class="hidden-info-list-item">
+		<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
+">Xem chi tiết</a>
+		<!--Và liên hệ với nhà cung cấp<br />
+		<strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+</strong>-->
+	</div>
 	
-	<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+	<a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 ">
 
-		<div><img title="Vào xem chi tiết <?php if (! $this->_tpl_vars['item']['service']): ?>sản phẩm<?php else: ?>dịch vụ<?php endif; ?><br>Và liên hệ với nhà cung cấp <br /><strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
-</strong>" width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
+		<div><img width="225" height="" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
 " class="attachment-shop_catalog wp-post-image" alt="<?php echo $this->_tpl_vars['item']['name']; ?>
 "></div>
 		<a class="shop_info_product" href="<?php echo $this->_tpl_vars['item']['shop_url']; ?>
-" title="Vào xem gian hàng <br><strong class='red'><?php echo $this->_tpl_vars['item']['shop_name']; ?>
-</strong>">
-			<div>Sản phẩm của gian hàng:</div>
+" title="">
+			<div>Xem gian hàng:</div>
 			<span><?php echo $this->_tpl_vars['item']['shop_name']; ?>
 </span>
 		</a>
@@ -60,7 +66,7 @@ if ($this->_foreach['level']['total'] > 0):
 	<div class="product_tools">
 		<a class="comment_link stat_link" href="javascript:void(0)"><?php echo $this->_tpl_vars['item']['clicked']; ?>
 </a>
-		<a class="comment_link" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+		<a class="comment_link" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 #comment_pos"><?php echo $this->_tpl_vars['_comment_list']; ?>
  (<?php echo $this->_tpl_vars['item']['comments_count']; ?>
 )</a>
@@ -73,8 +79,6 @@ x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
 			<a class="comment_link message_tool comment_but" href="#login-box"><?php echo $this->_tpl_vars['_message']; ?>
 </a>
 		<?php endif; ?>
-		
-		
 	</div>
 
 </li>
@@ -83,17 +87,24 @@ x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
 
 <?php endforeach; endif; unset($_from); ?>
 <?php endif; ?>		
-					
-				
-					
-				
-					
-				
-			
-<?php else: ?>
-<div style="text-align: center; margin-top: 20px;">
 
-</div>
+
+<?php else: ?>
+
+<?php if (! $this->_tpl_vars['TotalCount']): ?>
+<ul class="products_0">
+
+	<li class="empty-list">
+		<?php if ($_GET['type'] == 'service'): ?>
+			Hiện chưa có dịch vụ phù hợp ở mục này...
+		<?php else: ?>
+			Đã hết hàng trên kệ...
+		<?php endif; ?>	
+	</li>
+
+</ul>
+<?php endif; ?>
+
 <?php endif; ?>
 
 <?php echo '

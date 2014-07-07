@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 14:04:10
+<?php /* Smarty version 2.6.27, created on 2014-06-13 14:50:56
          compiled from default%5Cproduct/ajaxOfferDetail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajaxOfferDetail.html', 99, false),array('function', 'formhash', 'default\\product/ajaxOfferDetail.html', 101, false),array('modifier', 'truncate', 'default\\product/ajaxOfferDetail.html', 123, false),)), $this); ?>

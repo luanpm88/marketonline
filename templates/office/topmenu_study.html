@@ -21,7 +21,7 @@
 	<div id="settingouter" style="float:right">
 	    <a href="../redirect.php?url=/virtual-office/"><img class="avatar" src="{if $COMPANYINFO.name}../{$COMPANYINFO.logo}{else}{if $user_avatar} ../{$user_avatar} {else} ../templates/default/image/usericon.jpg  {/if}{/if}" width="20" height="20" /></a>
 	    
-	    <a class="name" target="_blank" href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id`}">
+	    <a class="name" target="_blank" href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id` title=`$pb_userinfo.fullname`}">
 		   {if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
 	    </a>
 	    	    
@@ -37,7 +37,19 @@
 	    </div>	
 	</div>
         <!--{else}-->
-        <a href="logging.php">{lang pls_login}</a><a href="register.php?typename=Company">{lang register_now}</a>
+	    <a href="logging.php">{lang pls_login}</a>
+	    {if $smarty.get.do == "product" || $smarty.get.do == ""}
+		<a href="{the_url module="register"}">{lang register_now}</a>	    
+	    {/if}
+	    {if $smarty.get.do == "employee"}
+		<a href="{the_url module="register" typename="Employee"}">{lang register_now}</a>	    
+	    {/if}
+	    {if $smarty.get.do == "job"}
+		<a href="{the_url module="register" typename="Employer"}">{lang register_now}</a>	    
+	    {/if}
+	    {if $smarty.get.do == "studypost"}
+		<a href="{the_url module="register" typename="Learner"}">{lang register_now}</a>	    
+	    {/if}
         <!--{/if}-->
         
     </div>

@@ -49,21 +49,22 @@
 
 <div class="row">
 	<div id="job-content">
-		<div id="TopStudytypeCategory">
+		<!--<div id="TopStudytypeCategory">
 		      <ul class="list-studytype-cat">
                                 <li rel=""><a href="{the_url module=studypost}">Trường</a></li>
                                 <li rel=""><a href="{the_url module=studypost type=group}">Môn học</a></li>
                                 <li rel="" class="active"><a href="{the_url module=studypost type=learner}">Học viên</a></li>
 		      </ul>
-		</div>
+		</div>-->
 		
                 <div class="studypage-content">
                     <div id="other-school-list" class="school_list main_list">
+			<h1>Danh sách Học viên</h1>
 		      {if $learner_list}
                         <ul class="group_list">
                             <!--{loop $learner_list item level key}-->
                                     <li class="school_list_box {if $item.id == $school.id}active{/if}">
-					<div onclick="window.location='{the_url module=studypost action=memberpage id=`$item.id`}'">
+					<div onclick="window.location='{the_url module=studypost action=memberpage id=`$item.id` title=`$item.fullname`}'">
 					    <a class="head-title">
 						<img src="{$item.photo}" />
 						<span>{$item.first_name} {$item.last_name}</span>

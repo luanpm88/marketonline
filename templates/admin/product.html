@@ -67,7 +67,7 @@
           <ul id="handler_icon">
             <li><a class="btn_delete" href="product.php?id={$item.id}&do=del" title="{lang delete}">{lang delete}</a></li>
             <li><a class="btn_edit" href="product.php?do=edit&id={$item.id}" title="{lang edit}">{lang edit}</a></li> 
-             <li><a class="btn_browse" href="{the_url id=`$item.id` module='product' product_name=`$item.name`}" target="_blank" title="{lang preview}">{lang preview}</a></li>
+             <li><a class="btn_browse" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang preview}">{lang preview}</a></li>
           </ul>  
 		  </td>
 		</tr>

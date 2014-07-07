@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 16:43:47
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:27:13
          compiled from default%5Cregister.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default\\register.html', 164, false),array('modifier', 'urldecode', 'default\\register.html', 166, false),)), $this); ?>
@@ -168,10 +168,10 @@ unset($_smarty_tpl_vars);
 <div class="row">
   
 <ul class="main_user_select">
-  <li class="active" rel="shop"><a href="javascript:void(0)">Tạo Gian hàng</a></li>
-  <li rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
-  <li rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
-  <li rel="learner"><a href="javascript:void(0)">Học tập</a></li>
+  <li class="<?php if ($_GET['typename'] == 'Company'): ?>active<?php endif; ?>" rel="shop"><a href="javascript:void(0)">Tạo Gian hàng</a></li>
+  <li class="<?php if ($_GET['typename'] == 'Employee'): ?>active<?php endif; ?>" rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
+  <li class="<?php if ($_GET['typename'] == 'Employer'): ?>active<?php endif; ?>" rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
+  <li class="<?php if ($_GET['typename'] == 'Learner'): ?>active<?php endif; ?>" rel="learner"><a href="javascript:void(0)">Học tập</a></li>
 </ul>
 
     <div class="four columns loginbox resbox">

@@ -6,7 +6,6 @@ class Tags extends PbModel {
  	var $inserted_id = array();
  	var $id;
  	
-
  	function Tags()
  	{
 		parent::__construct();

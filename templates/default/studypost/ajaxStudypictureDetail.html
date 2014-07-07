@@ -21,7 +21,7 @@
 						
 						
 					<div class="avatar">
-						<a href="{the_url module=studypost action=memberpage id=`$member.id`}">
+						<a href="{the_url module=studypost action=memberpage id=`$member.id` title=`$member.fullname`}">
 						    <img src="{$member.photo}" />
 						</a>
 						<!--{if $pb_username!=""}-->
@@ -30,7 +30,7 @@
 							<a onclick="" href="#login-box" class="chat_with_owner {if $member.online}online{/if} comment_but">Nhắn tin</a>
 						<!--{/if}-->
 					</div>
-					<h2><a href="{the_url module=studypost action=memberpage id=`$member.id`}">{$member.first_name} {$member.last_name}</a></h2>
+					<h2><a href="{the_url module=studypost action=memberpage id=`$member.id` title=`$member.fullname`}">{$member.first_name} {$member.last_name}</a></h2>
 					
 					{if $member.school_name}<p class=""><label>Trường </label><label class="two_points">:</label> {$member.school_name}</p>{/if}
 					{if $member.class}<p><label>Lớp </label><label class="two_points">:</label> {$member.class}</p>{/if}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-12 08:02:27
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:00:24
          compiled from header.html */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -31,7 +31,7 @@ var DeleteSure = "<?php echo $this->_tpl_vars['_delete_sure']; ?>
 <script>
 		
 		function inserEditorFile(url, image) {
-				$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+				$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 				$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 				if (image) {
 					tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, "<img src=\'../attachment/"+url+"\' />");
@@ -84,4 +84,4 @@ th.hover, thead td.hover, tfoot td.hover
 '; ?>
 
 </head>
-<body>
+<body>

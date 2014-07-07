@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 08:04:52
+<?php /* Smarty version 2.6.27, created on 2014-07-03 16:53:27
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1232, false),array('modifier', 'default', 'header.html', 1243, false),array('modifier', 'date_format', 'header.html', 1257, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1232, false),array('function', 'the_url', 'header.html', 1287, false),array('modifier', 'default', 'header.html', 1243, false),array('modifier', 'date_format', 'header.html', 1257, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -214,7 +214,7 @@ css/options.css' rel='stylesheet' type='text/css'>
 	}
     
     function inserCustomBGFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		//$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			//alert(url);
@@ -228,7 +228,7 @@ css/options.css' rel='stylesheet' type='text/css'>
 			$(\'.custom_bg img\').attr("src", "'; ?>
 <?php echo $this->_tpl_vars['WebRootUrl']; ?>
 <?php echo 'attachment/"+url+"?"+d.getTime());
-			$(\'#uploadIVbutton\').removeAttr(\'disabled\',\'\');
+			$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		}
 			
 	}
@@ -1482,7 +1482,8 @@ register.php"><?php echo $this->_tpl_vars['_register']; ?>
 		     <div class="inner-boxx">
     <h4><?php echo $this->_tpl_vars['_not_register_annouce']; ?>
 </h4><br />
-    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='register.php?typename=Company'"><?php echo $this->_tpl_vars['_register']; ?>
+    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register'), $this);?>
+'"><?php echo $this->_tpl_vars['_register']; ?>
 </button>
 </div>
 		    </div>

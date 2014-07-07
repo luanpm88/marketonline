@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 16:20:52
+<?php /* Smarty version 2.6.27, created on 2014-07-03 08:34:21
          compiled from default%5Cstudypost/school_list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school_list.html', 54, false),array('function', 'pager', 'default\\studypost/school_list.html', 83, false),array('modifier', 'truncate', 'default\\studypost/school_list.html', 68, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school_list.html', 54, false),array('function', 'pager', 'default\\studypost/school_list.html', 84, false),array('modifier', 'truncate', 'default\\studypost/school_list.html', 69, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Học Tập",'nav_id' => 9)));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -73,7 +73,7 @@ unset($_smarty_tpl_vars);
 
 <div class="row">
 	<div id="job-content">
-		<div id="TopStudytypeCategory">
+		<!--<div id="TopStudytypeCategory">
 		      <ul class="list-studytype-cat">
                                 <li rel="" class="active"><a href="<?php echo smarty_function_the_url(array('module' => 'studypost'), $this);?>
 ">Trường</a></li>
@@ -82,10 +82,11 @@ unset($_smarty_tpl_vars);
                                 <li rel=""><a href="<?php echo smarty_function_the_url(array('module' => 'studypost','type' => 'learner'), $this);?>
 ">Học viên</a></li>
 		      </ul>
-		</div>
+		</div>-->
 		
                 <div class="studypage-content">
                     <div id="other-school-list" class="school_list main_list">
+		      <h1>Danh sách Trường</h1>
 		      <?php if ($this->_tpl_vars['school_list']): ?>
                         <ul class="group_list">
                             <?php $_from = $this->_tpl_vars['school_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
@@ -93,7 +94,7 @@ if ($this->_foreach['level']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
         $this->_foreach['level']['iteration']++;
 ?>
-                                    <li onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+                                    <li onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id']),'title' => ($this->_tpl_vars['item']['name'])), $this);?>
 '" class="school_list_box <?php if ($this->_tpl_vars['item']['id'] == $this->_tpl_vars['school']['id']): ?>active<?php endif; ?>">
                                         <a class="head-title">
                                             <img src="<?php echo $this->_tpl_vars['WebRootUrl']; ?>

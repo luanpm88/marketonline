@@ -107,6 +107,11 @@ class Trades extends PbModel {
  		}
  		return $result;
  	}
+	function SearchCount()
+ 	{
+ 		$result = $this->findCount();
+		return $result;
+	}
  	
 	function &getInstance() {
 		static $instance = array();
@@ -444,6 +449,41 @@ class Trades extends PbModel {
 		}
 		
 		return $Trade;
+	}
+	
+	function findByType($type_id)
+	{
+		$results = $this->findAll("*", null, array("type_id=".$type_id), "created DESC", 0, 7);
+		//var_dump(count($results));
+		foreach($results as &$result)
+		{
+			$this->formatInfo($result);
+		}
+		return $results;
+	}
+	
+	function formatInfo(&$result)
+	{
+		global $viewhelper;
+		$cache_types = cache_read("type");
+		$result['pubdate'] = df($result['submit_time']);
+		$result['title'] = pb_lang_split($result['title']);
+		$result['content'] = pb_lang_split($result['content']);
+		$result['digest'] = pb_lang_split($result['digest']);
+		$result['typename'] = $cache_types['offertype'][$result['type_id']];
+		//var_dump($cache_types);
+		
+		if($result['default_pic'])
+		{
+			$pic_col = 'picture'.$result['default_pic'];
+		}
+		else
+		{
+			$pic_col = 'picture';
+		}
+		
+		$result['thumb'] = pb_get_attachmenturl($result[$pic_col], '', 'small', '150_120');
+		$result['url'] = $this->url(array("module"=>"offer", "id"=>$result['id']));
 	}
 	
 }

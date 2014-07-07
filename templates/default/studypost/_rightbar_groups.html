@@ -6,11 +6,11 @@
                                 <!--{loop $groups group level_group group_key}-->
                                     <li class="group_item" {if $group_key > 4}style="display:none"{/if}>
                                         <div  {if $group.logo_origin}style="background:url({$group.logo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" onclick="" title="{$group.subject_name} {$group.school_name}">
-                                            <strong onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'">{$group.subject_name}</strong>
-                                            <div onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'" class="more-studybar">Thành viên: {$group.member_count}</div>
+                                            <strong onclick="window.location='{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}'">{$group.subject_name}</strong>
+                                            <div onclick="window.location='{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}'" class="more-studybar">Thành viên: {$group.member_count}</div>
                                             
                                             {if $group.joined && !$group.status}
-                                                <a class="join_group" onclick="window.location='{the_url module=studypost action=group id=`$group.id`}'">
+                                                <a class="join_group" onclick="window.location='{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}'">
                                                     <i>.</i>
                                                     Chờ duyệt
                                                 </a>

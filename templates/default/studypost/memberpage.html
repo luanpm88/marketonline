@@ -106,7 +106,7 @@
                                 <a class="changestudyava" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">Thay hình đại diện</a>
                             {/if}
                             
-                            <a href="{the_url module=studypost action=memberpage id=`$member.id`}">
+                            <a href="{the_url module=studypost action=memberpage id=`$member.id` title=`$member.fullname`}">
                                 <img class="avatar" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}"/>
                             </a>
                         </div>
@@ -235,7 +235,7 @@
                             <!--{include file="`$theme_name`/studypost/_other_school_list.html"}-->
                             <ul class="group_list">
                                 <li class="{if $smarty.get.action == 'school'}active{/if}">
-                                    <a class="logo" style="background-image:url('{$WebRootUrl}/{$school.logo}')" href="{the_url module=studypost action=school id=`$school.id`}" title="{$school.name}">
+                                    <a class="logo" style="background-image:url('{$WebRootUrl}/{$school.logo}')" href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}" title="{$school.name}">
                                         {$school.name|truncate:40}
                                         <div class="more-studybar">Thành viên: {$school.member_count}</div>
                                     </a>
@@ -245,7 +245,7 @@
                             <ul class="group_list">
                                 <!--{loop $school_list item level key}-->
                                     <li class="{if $item.id == $school.id}active{/if}" style="display: none">
-                                        <a class="logo" style="background-image:url('{$WebRootUrl}/{$item.logo}')" href="{the_url module=studypost action=school id=`$item.id`}" title="{$item.school_name}">
+                                        <a class="logo" style="background-image:url('{$WebRootUrl}/{$item.logo}')" href="{the_url module=studypost action=school id=`$item.id` title=`$item.name`}" title="{$item.school_name}">
                                             {$item.name|truncate:40}
                                             <div class="more-studybar">Thành viên: {$item.member_count}</div>
                                         </a>

@@ -108,7 +108,7 @@ $page->displaypg = 25;
 $amount = $saleorder->findCount(null, $conditions);
 //echo $amount;
 $page->setPagenav($amount);
-$result = $saleorder->findAll("Saleorder.id,Saleorder.buyer_id,Saleorder.message,Saleorder.created, space_name", array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id"), $conditions, "id DESC", $page->firstcount, $page->displaypg);
+$result = $saleorder->findAll("mf.first_name, mf.last_name, Member.username, Saleorder.id,Saleorder.buyer_id,Saleorder.message,Saleorder.created, space_name", array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id","LEFT JOIN pb_memberfields as mf ON Member.id = mf.member_id"), $conditions, "id DESC", $page->firstcount, $page->displaypg);
 
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

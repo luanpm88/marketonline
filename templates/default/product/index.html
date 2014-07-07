@@ -73,19 +73,19 @@
 				
 				
 				
-				if (offer && first_offer) {
-				  $('.offer_transform ul.products li.product img').live('click', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  $('.offer_transform ul.products li.product h3 a').live('click', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  first_offer =  0;
-				}
+				//if (offer && first_offer) {
+				//  $('.offer_transform ul.products li.product img').live('click', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  $('.offer_transform ul.products li.product h3 a').live('click', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  first_offer =  0;
+				//}
 				
 				$('a,img').qtip({ // Grab some elements to apply the tooltip to
 				    content: {
@@ -422,21 +422,21 @@
                                     {else}
 					<img id="imgitem{$item0.id}" rel="{$item0.image}.small.jpg" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
 				    {/if}
-                                    <div class="description divlink {$item0.disp}" onclick="window.location='{the_url module=products level=1 industryid=`$item0.id`}'">
+                                    <div class="description divlink {$item0.disp}" onclick="window.location='{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}'">
                                         <time>{lang category}</time>
-                                        <h3><a class="tile_title" href="{the_url module=products level=1 industryid=`$item0.id`}" title="{$item0.name} ({$item0.ppcount})" class="typeboxlet01">{$item0.name}</a></h3>
+                                        <h3><a class="tile_title" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}" title="{$item0.name} ({$item0.ppcount})" class="typeboxlet01">{$item0.name}</a></h3>
 
                                         <ul>
 					  <!--{loop $item0.sub level1 level_1_industry key_level1}-->
 					  	<li>
-							<a href="{the_url module=products level=2 industryid=`$level1.id`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">{if $k%6 == 5 || $k%6 == 0}{$level1.name|truncate:30}{else}{$level1.name|truncate:50}{/if}</a>                        
+							<a href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">{if $k%6 == 5 || $k%6 == 0}{$level1.name|truncate:30}{else}{$level1.name|truncate:50}{/if}</a>                        
 						</li>				     
 					  <!--{/loop}-->
-					    <li><a href="{the_url module=products level=1 industryid=`$item0.id`}">{lang read_more}</a></li>					    
+					    <li><a href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{lang read_more}</a></li>					    
 					</ul>
 
                                     </div>
-				    <a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id`}{/if}" {if $item0.url != ""}target="_blank"{/if}></a>
+				    <a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}" {if $item0.url != ""}target="_blank"{/if}></a>
                   </div>
 		  
 		  
@@ -650,13 +650,11 @@
       </h1>
 
     <br />
-<!--{if $pb_username!=""}-->
-  <div class="postitem" style="margin-top: -70px"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
-  <a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a></div>
-<!--{else}-->
-  <div class="postitem" style="margin-top: -70px"><a href="redirect.php?url=/logging.php">{lang post_product}</a>
-  <a target="_blank" href="redirect.php?url=/logging.php">{lang add_service}</a></div>
-<!--{/if}-->
+
+  <div class="postitem" style="margin-top: -70px">
+    <!--{include file="`$theme_name`/_postitems.html"}-->
+  </div>
+
     
     
   </div>

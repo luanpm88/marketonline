@@ -94,21 +94,21 @@
                                     {else}
 					<img id="imgitem{$item0.id}" rel="{$item0.image}.small.jpg" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
 				    {/if}
-                                    <div class="description divlink {$item0.disp}" onclick="window.location='{the_url module=products level=1 industryid=`$item0.id`}'">
+                                    <div class="description divlink {$item0.disp}" onclick="window.location='{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}'">
                                         <time>{lang category}</time>
-                                        <h3><a class="tile_title" href="{the_url module=products level=1 industryid=`$item0.id`}" title="{$item0.name} ({$item0.ppcount})" class="typeboxlet01">{$item0.name}</a></h3>
+                                        <h3><a class="tile_title" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}" title="{$item0.name} ({$item0.ppcount})" class="typeboxlet01">{$item0.name}</a></h3>
 
                                         <ul>
 					  <!--{loop $item0.sub level1 level_1_industry key_level1}-->
 					  	<li>
-							<h4><a href="{the_url module=products level=2 industryid=`$level1.id`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">{if $k%6 == 5 || $k%6 == 0}{$level1.name|truncate:30}{else}{$level1.name|truncate:50}{/if}</a>                        </h4>
+							<h4><a href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">{if $k%6 == 5 || $k%6 == 0}{$level1.name|truncate:30}{else}{$level1.name|truncate:50}{/if}</a>                        </h4>
 						</li>				     
 					  <!--{/loop}-->
-					    <li><a href="{the_url module=products level=1 industryid=`$item0.id`}">{lang read_more}</a></li>					    
+					    <li><a href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{lang read_more}</a></li>					    
 					</ul>
 
                                     </div>
-                                    <a{if $item0.id == 3788} rel="nofollow"{/if} href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id`}{/if}" {if $item0.url != ""}target="_blank"{/if}></a>
+                                    <a{if $item0.id == 3788} rel="nofollow"{/if} href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}" {if $item0.url != ""}target="_blank"{/if}></a>
                   </div>
 		  
 		  
@@ -507,11 +507,11 @@ Công ty Cổ phần Truyền thông và Tiếp thị BMN (BMN) là đơn vị h
 	<ul>
 		<!--{loop $industries item0 level_0 key0}-->
 			<li class="level0 {if $level_0%4 == 0}clear{/if}">
-				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id`}">{$item0.name}</a>
+				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{$item0.name}</a>
 				<ul>
 					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
 						<li class="level1 {if $key_level1 > 4}hide{/if}">
-							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id`}">{$level1.name}</a>
+							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
 						</li>
 					<!--{/loop}-->
 					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>

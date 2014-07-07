@@ -95,12 +95,10 @@ a:hover {
     text-indent: -3000px;
     width: 27px;
 }
-
 #verytopmenu a:hover
 {
     color: #57BAE8;
 }
-
 #verytopmenu .left a
 { 
     padding-right: 15px;
@@ -110,12 +108,10 @@ a:hover {
 {
     padding-left: 15px;
 }
-
 #verytopmenu .right a.name
 {
     padding-left: 2px;
 }
-
 #verytopmenu .right img
 {
    margin-top: -30px;
@@ -3946,7 +3942,7 @@ div.product div.images div.thumbnails a, #content div.product div.images div.thu
     height: 26px;
     margin-left: -15px;
     position: absolute;
-    top: 4px;
+    top: 8px;
     width: 33px;
     z-index: -1;
 }
@@ -4239,7 +4235,6 @@ div.product div.images div.thumbnails a, #content div.product div.images div.thu
     padding-right: 5px;
     margin-right: -4px;
 }
-
 #chat-frame .chat-box .chat-content .chat-list ul li:last-child {
     border-bottom: none;
 }
@@ -4295,11 +4290,6 @@ div.product div.images div.thumbnails a, #content div.product div.images div.thu
 {
     margin-left: 0;
 }
-
-
-
-
-
 #quick_message_content
 {
     position: absolute;
@@ -4376,7 +4366,7 @@ div.product div.images div.thumbnails a, #content div.product div.images div.thu
     display: block;
     margin-left: -15px;
     position: absolute;
-    top: 4px;
+    top: 8px;
     width: 33px;
     z-index: -1;
     height: 26px;
@@ -5080,7 +5070,7 @@ div.product div.images div.thumbnails a, #content div.product div.images div.thu
     border: 1px solid #AAAAAA;
     height: 32px;
     margin-bottom: 5px;
-    max-width: 337px;
+    max-width: 332px;
 }
 .detail-comments form img
 {
@@ -7664,7 +7654,7 @@ span.join_group:hover {
 .studypage-content {
     border-color: #AAAAAA;
     border-style: solid;
-    border-width: 0 1px 1px;
+    border-width: 1px;
     clear: both;
     padding: 10px 10px;
 }
@@ -8494,6 +8484,7 @@ span.join_group:hover {
 .chat_friend_list .scroll_list
 {
     padding-right: 10px;
+    overflow: hidden;
 }
 .chat_friend_list .main_list ul
 {
@@ -9003,7 +8994,7 @@ table tbody tr td {
     padding: 75px 0;
     text-align: center;
     vertical-align: middle;
-    width: 417px;
+    width: 420px;
 }
 .bottom_industry_list ul li.level0.more-item a {
     background: none repeat scroll 0 0 #D8EADA;
@@ -9053,8 +9044,8 @@ table tbody tr td {
     color: #3B984C;
 }
 #job-search-box .job-search-tab .tab-content #job-learn {
-    padding: 5px 25px 5px 5px;
-    height: 43px;
+    height: 39px;
+    padding: 3px 25px 3px 3px;
 }
 #job-search-box .select2-container .select2-choice
 {
@@ -9608,4 +9599,267 @@ table tbody tr td {
 .stats_content .actions .send-button {
     height: 21px;
     margin: 5px 0;
+}
+.study-member-box .member-left-top p span {
+    display: block;
+    line-height: 16px;
+    margin-bottom: 5px;
+    margin-left: 85px;
+    padding-top: 3px;
+    max-width: 370px;
+}
+.study-member-box .member-left-top p i {
+    font-style: normal;
+    margin-left: -10px;
+}
+.member-left-bottom-more
+{
+    margin-right: 8px;
+}
+#job-search-box .job-search-tab ul li.tabgroup1 a
+{
+    margin-right: 34px;
+}
+#job-search-box .job-search-tab ul li.tabgroup2 a
+{
+    margin-right: 34px;
+}
+#job-search-box .job-search-tab ul li.tabgroup3 a
+{
+    margin-right: 2px;
+}
+#job-search-box .job-search-tab ul li.active a {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #3B984C;
+}
+.studypage-content .main_list h1
+{
+    margin: 0 0 10px 0;
+}
+#job-search-box .job-search-tab ul li.active a {
+    height: 36px;
+}
+#job-search-box .job-search-tab ul li a {
+    border-bottom: 6px solid #FFFFFF;
+}
+#job-search-box .job-search-tab ul li {
+    height: 35px;
+}
+.studypage-content {
+    padding: 5px 10px 10px;
+}
+#facelike_col1 .school_list ul li {
+    margin-right: 11px;
+}
+input[name=redirect]
+{
+    position: absolute;
+    top: -9000px;
+}
+.group-menu ul
+{
+    
+}
+.group-menu ul li {
+    list-style: none outside none;
+    margin-bottom: 5px;
+}
+.group-menu ul li a {
+    border-bottom: 1px solid #CCCCCC;
+    display: block;
+    font-size: 16px;
+    margin-right: 12px;
+    padding: 2px 0;
+}
+.group-box
+{
+    padding: 20px;
+    width: 800px;
+}
+.group-box p
+{
+    margin-bottom: 5px;
+}
+.group-info-edit .mce-toolbar-grp.editor-hide
+{
+    display: block !important;
+}
+.hidez
+{
+    position: absolute;
+    top: -9000px;
+}
+.pagination-list {
+    display: block;
+}
+.pagination-list ul {
+    float: right;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.pagination-list ul li {
+    float: left;
+    height: 30px;
+    list-style: none outside none;
+}
+.pagination-list ul li a {
+    border: 1px solid #ccc;
+    color: #333;
+    margin-right: 5px;
+    padding: 2px 8px;
+}
+.pagination-list ul li a:hover {
+    background: #ccc;
+}
+.pagination-list ul li.active a:hover {
+    background: #3b984c;
+}
+.pagination-list ul li.active a {
+    background: #3b984c;
+    border-color: #3b984c;
+    color: #fff;
+}
+#content .product_listing {
+    clear:both;
+}
+.empty-list {
+    font-size: 16px;
+    padding: 20px;
+    position: absolute;
+    text-align: center;
+    width: 900px;
+}
+#footer {
+    padding: 30px 0 40px;
+}
+#company_info {
+    text-align: left;
+}
+#company_info .cleft {
+    float: left;
+    width: 50%;
+}
+#company_info .cright {
+    float: right;
+    padding-top: 24px;
+    width: 50%;
+}
+.bottom_industry_list {
+    margin-bottom: 30px;
+}
+.offer_detail_box
+{
+    margin-top: 0;
+}
+.offer_detail_page .right-offerbox {
+    width: 540px;
+    background: #edf4ef;
+}
+.offer_detail_page .member-title {
+    background: #d8eada;
+    margin: -20px;
+    min-height: 87px;
+    padding: 20px !important;
+}
+.offer_detail_page .member-title h2 {
+    color: #3b984c;
+    font-size: 18px;
+    height: 32px;
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+.offer_detail_page .member-title h2 a {
+    background: none repeat scroll 0 0 red;
+    color: #fff;
+    padding: 5px 10px;
+}
+.offer_detail_page .member-title h2 a:hover, .red_box h3:hover {
+    background: #3b984c;
+}
+.offer_detail_page .right-offerbox .member-title .avatar {
+    width: 130px;
+}
+.offer_detail_page .right-offerbox .member-title img {
+    border: 0 solid;
+    width: 100%;
+}
+.offer_detail_page .right-offerbox .member-title p {
+    padding-left: 205px;
+}
+.offer_detail_page .right-offerbox .member-title p label {
+    margin-left: -63px;
+    width: 55px;
+}
+.offer_detail_page .detail-info {
+    clear: both;
+    padding-top: 1px;
+}
+.offer_detail_page .right-offerbox .member-title {
+    min-height: 205px;
+}
+.product_listing ul.products li.product {
+    cursor: inherit;
+}
+.quick_view {
+    display: block;
+    font-size: 12px;
+    margin-top: -5px;
+    text-align: right;
+    clear: both;
+}
+.offer_detail_page .member-title a.chat_with_owner {
+    width: 130px;
+    text-align: center;
+}
+.offer_detail_page .detail-comments form textarea {
+    max-width: 460px;
+}
+.offer_detail_page .detail-comments .comments_list {
+    max-height: 265px;
+}
+.offer_detail_page .mCSB_dragger {
+    max-height: none !important;
+}
+.offer_detail_page {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+#page-title .breadcrumbs {
+}
+#page-title .subtitle {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+.soc-wrap {
+    padding-top: 8px;
+}
+.tiled-menu li ul li {
+    padding-top: 7px;
+}
+.offer_detail_page .related_bottom_h3 {
+    
+}
+#settingbox ul li.sline {
+    border-bottom: 1px solid #ccc;
+    border-top: none;
+    padding: 5px 0 0 0;
+}
+#topmenu_outer {
+    height: 42px;
+    padding-top: 5px;
+}
+#header {
+    padding-top: 46px !important;
+}
+.offer_detail_page .offer_content_inner {
+    background: none repeat scroll 0 0 #fff;
+}
+.offer_detail_page .offer_content_inner .left-offerbox {
+    border: 1px solid #ccc;
+}
+.offer_detail_page .offer_content_inner .left-offerbox a img {
+    max-height: 598px;
+}
+.offer_detail_page .offer_content_inner .left-offerbox a img {
+    max-width: 638px;
 }

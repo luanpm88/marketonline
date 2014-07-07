@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 08:33:17
+<?php /* Smarty version 2.6.27, created on 2014-07-04 16:10:28
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 1166, false),array('function', 'the_url', 'header.html', 1188, false),array('function', 'formhash', 'header.html', 1248, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 1172, false),array('function', 'the_url', 'header.html', 1194, false),array('function', 'formhash', 'header.html', 1254, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -1084,6 +1084,12 @@ if ($this->_foreach['level']['total'] > 0):
 	//	//alert("sdfsdf");
 	//	$(\'#change_logo_but\').trigger(\'click\');
 	//});
+	
+	$(\'.notice\').each(function() {
+		if(!$(this).find(\'li\').length) {
+			$(this).hide();
+		}
+	});
 	
 });
 

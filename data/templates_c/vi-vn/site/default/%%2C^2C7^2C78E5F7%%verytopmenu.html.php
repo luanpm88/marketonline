@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 12:44:53
+<?php /* Smarty version 2.6.27, created on 2014-06-13 08:00:26
          compiled from default/verytopmenu.html */ ?>
 <?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6): ?>
   <?php $_smarty_tpl_vars = $this->_tpl_vars;

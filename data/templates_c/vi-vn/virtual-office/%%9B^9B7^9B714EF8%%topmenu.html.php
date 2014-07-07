@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 09:20:14
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:35:06
          compiled from topmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'topmenu.html', 37, false),)), $this); ?>
@@ -98,9 +98,28 @@ if ($this->_foreach['typeitem_0']['total'] > 0):
 	    </div>	
 	</div>
         <?php else: ?>
-        <a href="logging.php"><?php echo $this->_tpl_vars['_pls_login']; ?>
-</a><a href="register.php?typename=Company"><?php echo $this->_tpl_vars['_register_now']; ?>
+	    <a href="logging.php"><?php echo $this->_tpl_vars['_pls_login']; ?>
 </a>
+	    <?php if ($_GET['do'] == 'product' || $_GET['do'] == ""): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>	    
+	    <?php endif; ?>
+	    <?php if ($_GET['do'] == 'employee'): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employee'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>	    
+	    <?php endif; ?>
+	    <?php if ($_GET['do'] == 'job'): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employer'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>	    
+	    <?php endif; ?>
+	    <?php if ($_GET['do'] == 'studypost'): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Learner'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>	    
+	    <?php endif; ?>
         <?php endif; ?>
         
     </div>

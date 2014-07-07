@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 17:04:47
+<?php /* Smarty version 2.6.27, created on 2014-07-04 16:11:01
          compiled from product_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 327, false),array('function', 'html_options', 'product_edit.html', 541, false),array('function', 'html_radios', 'product_edit.html', 572, false),array('function', 'the_url', 'product_edit.html', 635, false),array('modifier', 'default', 'product_edit.html', 572, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 337, false),array('function', 'html_options', 'product_edit.html', 551, false),array('function', 'html_radios', 'product_edit.html', 582, false),array('function', 'the_url', 'product_edit.html', 645, false),array('block', 'announce', 'product_edit.html', 322, false),array('modifier', 'default', 'product_edit.html', 582, false),)), $this); ?>
 <?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>
 	<?php $this->assign('page_title', ($this->_tpl_vars['_add_service'])); ?>
 <?php else: ?>
@@ -360,9 +360,20 @@ unset($_smarty_tpl_vars);
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
 images/offer_01.gif" /></div>
-     <div class="offer_info_title"><h2><?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?><?php echo $this->_tpl_vars['_service_add_edit']; ?>
+     <div class="offer_info_title">
+	<h2><?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?><?php echo $this->_tpl_vars['_service_add_edit']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['_product_add_edit']; ?>
-<?php endif; ?></h2></div>
+<?php endif; ?></h2>
+	<div class="top-announce">
+		<?php $this->_tag_stack[] = array('announce', array('row' => 1,'userid' => $this->_tpl_vars['MEMBER']['id'],'typeid' => 6,'membertypeid' => $this->_tpl_vars['MEMBER']['membertype_id'])); $_block_repeat=true;smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
+			<a target="_blank" href="announce.php?type=6">Hướng dẫn</a>
+		<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
+		<?php $this->_tag_stack[] = array('announce', array('row' => 1,'userid' => $this->_tpl_vars['MEMBER']['id'],'typeid' => 1,'membertypeid' => $this->_tpl_vars['MEMBER']['membertype_id'])); $_block_repeat=true;smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
+			<a target="_blank" href="announce.php?type=1"><?php echo $this->_tpl_vars['_announce']; ?>
+</a>
+		<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>		
+	</div>
+     </div>
 
      
      

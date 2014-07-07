@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-05-21 09:27:00
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:00:37
          compiled from offertype.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'offertype.html', 36, false),)), $this); ?>

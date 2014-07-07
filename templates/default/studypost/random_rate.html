@@ -1,0 +1,28 @@
+<meta charset="utf-8">
+    <h2></h2>
+<form action="index.php?do=studypost&action=random_rate" method="post">
+    <input type="hidden" name="shop" value="1" />
+    <br />
+    <input type="text" name="min_rand" value="{$smarty.post.min_rand}" /><br />
+    <input type="text" name="max_rand" value="{$smarty.post.max_rand}" /><br /><br />
+    
+    <br />
+    <input type="text" name="min_rate" value="{$smarty.post.min_rate}" /><br />
+    <input type="text" name="max_rate" value="{$smarty.post.max_rate}" /><br /><br />
+    <input type="submit" value="###" />
+</form>
+
+<br />
+<br />
+<h2></h2>
+<form action="index.php?do=studypost&action=random_rate" method="post">
+    <input type="hidden" name="offer" value="1" />
+    <br />
+    <input type="text" name="offer_min_rand" value="{$smarty.post.offer_min_rand}" /><br />
+    <input type="text" name="offer_max_rand" value="{$smarty.post.offer_max_rand}" /><br /><br />
+    
+    <br />
+    <input type="text" name="offer_min_rate" value="{$smarty.post.offer_min_rate}" /><br />
+    <input type="text" name="offer_max_rate" value="{$smarty.post.offer_max_rate}" /><br /><br />
+    <input type="submit" value="###" />
+</form>

@@ -502,7 +502,7 @@ class PbModel extends Overloadable
 			}else{
 				$tmp_condition = $this->condition;
 			}
-			$tmp_condition = str_replace("WHERE", "", $tmp_condition);
+			//$tmp_condition = str_replace("WHERE", "", $tmp_condition);
 			$sql.= " WHERE ".$tmp_condition." ";			
 		}
 		//echo $sql."<br />";

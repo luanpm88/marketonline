@@ -185,7 +185,7 @@ class Product extends PbController {
 				
 				setvar("IndustryList", $industries[$_GET["industryid"]]);
 				
-				render("product/level1");
+				render("product/category");
 			}
 			else if($_GET["level"] == 2)
 			{
@@ -279,7 +279,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("product/level1");
+				render("product/category");
 			}
 			else if($_GET["level"] == 3)
 			{
@@ -360,7 +360,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("product/level1");
+				render("product/category");
 			}
 			else if($_GET["level"] == 4)
 			{
@@ -427,7 +427,7 @@ class Product extends PbController {
 				}
 				setvar("IndustryList", $IndustryList);
 				
-				render("product/level1");
+				render("product/category");
 			}
 		}
 		else
@@ -1019,7 +1019,12 @@ class Product extends PbController {
 	function listAjax()
 	{
 		global $pos, $limit;
+		$num_per_page = 15;
 		
+		if(isset($_GET["num_per_page"]))
+		{
+			$num_per_page = $_GET["num_per_page"];
+		}
 		
 		if (!empty($_GET['pos_pg'])) {
  			$pos_pg = $_GET['pos_pg'];
@@ -1194,7 +1199,8 @@ class Product extends PbController {
 			}
 			
 			
-			$products = $this->trade->Search($pos_pg, 15);
+			$products = $this->trade->Search($pos_pg, $num_per_page);
+			$count = $this->trade->SearchCount();
 			//var_dump($products);
 			$space_controller = new Space();
 			foreach($products as $key => $item)
@@ -1228,6 +1234,7 @@ class Product extends PbController {
 				if($aaaa[1]) $products[$key]['area_names'] = $aaaa[1];
 			}
 			
+			setvar("TotalCount", $count);
 			setvar("Count", count($products));
 			setvar("Products", $products);
 			
@@ -1321,7 +1328,8 @@ class Product extends PbController {
 			}
 			//var_dump($this->product->condition);
 			//testing code ne
-			$products = $this->product->Search($pos_pg, 15);
+			$products = $this->product->Search($pos_pg, $num_per_page);
+			$count = $this->product->SearchCount();
 			
 			foreach($products as $pkey => $item)
 			{
@@ -1337,6 +1345,7 @@ class Product extends PbController {
 			}
 			
 			//var_dump($result);
+			setvar("TotalCount", $count);
 			setvar("Count", count($products));
 			setvar("Products", $products);
 			$this->render("product/ajax.list");
@@ -2068,7 +2077,7 @@ class Product extends PbController {
 				$memberfield = $this->memberfield->fields("*", array("member_id=".$pb_userinfo['pb_userid']));
 				$content = "<a href='http://marketonline.vn/virtual-office/sellrorder.php?do=view&id=".$info["id"]."'>".$memberfield["first_name"]." ".$memberfield["last_name"]." đã đặt hàng</a>";
 				$sms['content'] = mysql_real_escape_string($content);
-				$sms['title'] = mysql_real_escape_string("Hóa đơn mua");
+				$sms['title'] = mysql_real_escape_string("Lịch sửa mua hàng");
 				$sms['membertype_ids'] = '[1][2][3]';
 				$result = $this->message->SendToUser($info['buyer_id'], $info["seller_id"], $sms);
 				
@@ -3556,6 +3565,8 @@ class Product extends PbController {
 		$company = $this->company->getInfoByUserId($user_id);
 		$pb_userinfo = pb_get_member_info();
 		
+		
+		
 		global $viewhelper, $session;
 		
 		$chatboxs = $session->read("chatboxs".session_id());
@@ -4583,6 +4594,11 @@ class Product extends PbController {
 		$company = $this->company->getInfoByUserId($user_id);
 		$pb_userinfo = pb_get_member_info();
 		
+		if($pb_userinfo["pb_userid"] == $user_id)
+		{
+			return;
+		}
+		
 		global $viewhelper, $session;
 		
 		$chatboxs = $session->read("chatboxsnew".session_id());
@@ -4654,7 +4670,6 @@ class Product extends PbController {
 		{
 			return;
 		}
-		
 		//store chatbox id to session
 		global $viewhelper, $session;
 		//$session->write('chatboxs'.session_id(), '');

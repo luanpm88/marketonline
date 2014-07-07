@@ -50,37 +50,38 @@
 
 <div class="row">
 	<div id="job-content">
-		<div id="TopStudytypeCategory">
+		<!--<div id="TopStudytypeCategory">
 		      <ul class="list-studytype-cat">
                                 <li rel=""><a href="{the_url module=studypost}">Trường</a></li>
                                 <li rel="" class="active"><a href="{the_url module=studypost type=group}">Môn học</a></li>
                                 <li rel=""><a href="{the_url module=studypost type=learner}">Học viên</a></li>
 		      </ul>
-		</div>
+		</div>-->
 		
                 <div class="studypage-content">
                     <div id="other-school-list" class="school_list main_list">
+			<h1>Danh sách Môn học</h1>
                         <ul class="group_list">
                             <!--{loop $group_list item level key}-->
                                     <li class="school_list_box {if $item.id == $school.id}active{/if}">
-					<div onclick="window.location='{the_url module=studypost action=group id=`$item.id`}'">
+					<div onclick="window.location='{the_url module=studypost action=group id=`$item.id` title=`$item.subject_name`}'">
 					    <a class="head-title">
 						<img src="{$item.logo}" />
 						<span>{$item.subject_name|truncate:40}</span>
-						<span>{$item.school_name}</span>
+						<span>{$item.school_name|truncate:40}</span>
 					    </a>
-					    {if $item.address}<p>{$item.address}</p>{/if}
+					    {if $item.address}<p>{$item.address|truncate:40}</p>{/if}
 					    {if $item.member_count}<p><label>Thành viên:</label> {$item.member_count}</p>{/if}
 					</div>
 					
 					<div class="action">					    
                                                 {if $item.joined}
 						    {if !$item.status}
-							<a href="{the_url module=studypost action=group id=`$item.id`}">
+							<a href="{the_url module=studypost action=group id=`$item.id` title=`$item.subject_name`}">
 							    Chờ duyệt
 							</a>
 						    {else}
-							<a href="{the_url module=studypost action=group id=`$item.id`}">
+							<a href="{the_url module=studypost action=group id=`$item.id` title=`$item.subject_name`}">
 							    Đã tham gia
 							</a>
 						    {/if}
@@ -90,7 +91,7 @@
 							    Tham gia
 							</a>
 						    {else}
-							<a href="{the_url module=studypost action=group id=`$item.id`}">
+							<a href="{the_url module=studypost action=group id=`$item.id` title=`$item.subject_name`}">
 							    Đã tham gia
 							</a>
 						    {/if}

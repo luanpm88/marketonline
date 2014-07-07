@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-05-18 05:14:03
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:00:32
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'product.html', 26, false),array('function', 'the_url', 'product.html', 70, false),array('modifier', 'pl', 'product.html', 61, false),)), $this); ?>
@@ -127,7 +127,7 @@ unset($_smarty_tpl_vars);
 " title="<?php echo $this->_tpl_vars['_edit']; ?>
 "><?php echo $this->_tpl_vars['_edit']; ?>
 </a></li> 
-             <li><a class="btn_browse" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product'), $this);?>
+             <li><a class="btn_browse" href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 " target="_blank" title="<?php echo $this->_tpl_vars['_preview']; ?>
 "><?php echo $this->_tpl_vars['_preview']; ?>
 </a></li>

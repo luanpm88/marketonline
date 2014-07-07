@@ -146,10 +146,10 @@ function getSharingUsername() {
 <div class="row">
   
 <ul class="main_user_select">
-  <li class="active" rel="shop"><a href="javascript:void(0)">Tạo Gian hàng</a></li>
-  <li rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
-  <li rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
-  <li rel="learner"><a href="javascript:void(0)">Học tập</a></li>
+  <li class="{if $smarty.get.typename == "Company"}active{/if}" rel="shop"><a href="javascript:void(0)">Tạo Gian hàng</a></li>
+  <li class="{if $smarty.get.typename == "Employee"}active{/if}" rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
+  <li class="{if $smarty.get.typename == "Employer"}active{/if}" rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
+  <li class="{if $smarty.get.typename == "Learner"}active{/if}" rel="learner"><a href="javascript:void(0)">Học tập</a></li>
 </ul>
 
     <div class="four columns loginbox resbox">

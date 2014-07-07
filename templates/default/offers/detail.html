@@ -1,0 +1,298 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$Trade.name` - MarketOnline.vn" nav_id="`$nav_id`"}-->
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding" class="product_detail_page">
+
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<!--{literal}-->
+	<script>
+		$(document).ready(function() {
+			if ($.cookie("guest_name") && $.cookie("guest_email")) {
+				$('input[name="box_guest_name"]').val($.cookie("guest_name"));
+				$('input[name="box_guest_email"]').val($.cookie("guest_email"));
+			}
+			if($('input[name="box_guest_name"]').val() != '' && $('input[name="box_guest_name"]').val() != '')
+			{
+				$('#guest_name').val($('input[name="box_guest_name"]').val());
+				$('#guest_email').val($('input[name="box_guest_email"]').val());
+				$('.guest_info').html('<strong>'+$('#guest_name').val()+'</strong> ('+$('#guest_email').val()+') | <a class="change_guest_info" href="javascript:void(0)">Chỉnh sửa</a> - <a class="delete_guest_info" href="javascript:void(0)">Thoát</a>');
+			}			
+		
+			$('.left-offerbox a img').css("display", "none");
+			  $('.left-offerbox a img').eq(0).addClass("active");
+			  
+			  $('.offer_content_inner .left-offerbox span.next').click(function() {
+			    $('.left-offerbox a img').each(function() {
+			      if ($(this).hasClass("active")) {				     
+				$(this).removeClass("active");
+				if ($(this).next().length) {
+				  $(this).next().addClass("active");
+				}
+				else
+				{
+				  $('.left-offerbox a img').eq(0).addClass("active");
+				}					
+				return false;
+			      }
+			    });
+			  });
+			  $('.offer_content_inner .left-offerbox span.previous').click(function() {
+			    $('.left-offerbox a img').each(function() {
+			      if ($(this).hasClass("active")) {				     
+				$(this).removeClass("active");
+				if ($(this).prev().length) {
+				  $(this).prev().addClass("active");
+				}
+				else
+				{
+				  $('.left-offerbox a img:last-child').addClass("active");
+				}					
+				return false;
+			      }
+			    });
+			  });
+			  
+			  $('.left-offerbox a').click(function() {
+			    $('.offer_content_inner .left-offerbox span.next').trigger("click");
+			  });
+			  
+			  
+			  
+			  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
+			  
+			  if ($('.left-offerbox img').length < 2) {
+				$('.left-offerbox span').remove();
+			  }
+			  
+			  
+			  loadOfferComment();
+			  
+			  $('#comment').val($.cookie("comment_tpm"));
+		
+		});
+	</script>
+<!--{/literal}-->
+
+
+<div class="row">
+  <div class="fifteen columns" style="padding-left: 0">
+
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
+
+    <div class="super-main-category mainproductpage market">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{the_url module='offer_main'}" class="show-but current-but market">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+    
+    <div class="subtitle">Thương mại / {$Trade.typename}</div>
+    
+
+    <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=offer_main}">Thương mại</a> <span class="delim">/</span>{$Trade.industry_names}</div>
+
+    <h1 class="page-title">{$Trade.name}</h1>
+    
+  </div>
+
+  </div>
+</div>
+
+
+
+<div id="detail_box" class="row">
+	<div id="offer_detail_box" class="product offer_detail_page">
+		
+		
+		<div class="offer_content_inner" style="">
+			 
+			<div class="left-offerbox">
+				<a href="javascript:void(0)">
+					{if $Trade.image}<img src="{$Trade.image}" />{/if}
+                                        {if $Trade.image1}<img src="{$Trade.image1}" />{/if}
+                                        {if $Trade.image2}<img src="{$Trade.image2}" />{/if}
+                                        {if $Trade.image3}<img src="{$Trade.image3}" />{/if}
+                                        {if $Trade.image4}<img src="{$Trade.image4}" />{/if}					
+				</a>
+				<span class="next">.</span>
+				<span class="previous">.</span>
+			</div>
+			
+			<div class="right-offerbox">
+				<div class="member-title">
+						
+						
+			{if $company}
+						
+					<div class="avatar">
+						<a class="pic" href="{$company.url}"><img src="{$company.logo}" /></a>
+						<!--{if $pb_username!=""}-->
+							<a class="chat_with_owner {if $member.online}online{/if}" onclick="getChatboxNew('{$Trade.member_id}x{$member.membertype_id}', false)" href="javascript:void(0)">Tin nhắn</a>
+						<!--{else}-->
+							<a onclick="" href="#login-box" class="chat_with_owner {if $member.online}online{/if} comment_but">Nhắn tin</a>
+						<!--{/if}-->
+					</div>
+					<h2><a href="{$company.url}">{$company.shop_name}</a></h2>
+					{if $company.link_man}
+						<p>
+							<label>Liên hệ</label>:
+							{$company.link_man}
+						</p>
+					{/if}
+					{if $company.contact_mobile}
+						<p>
+							<label>Di động</label>:
+							{$company.contact_mobile}
+						</p>
+					{/if}
+					{if $company.contact_email}
+						<p>
+							<label>Email</label>:
+							{$company.contact_email}
+						</p>
+					{/if}
+					{if $company.address}
+						<p>
+							<label>Địa chỉ</label>:
+							{$member.address}
+						</p>
+					{/if}
+			{else}
+			
+						<div class="avatar">
+						<img src="{$member.photo}" />
+						<a onclick="" href="#login-box" class="chat_with_owner online comment_but">Nhắn tin</a>
+					</div>
+					<h2>{$member.name}</h2>
+					
+					{if $member.mobile}
+						<p>
+							<label>Điện thoại</label>:
+							{$member.mobile}
+						</p>
+					{/if}
+					{if $member.email}
+						<p>
+							<label>Email</label>:
+							{$member.email}
+						</p>
+					{/if}
+					{if $member.address}
+						<p>
+							<label>Địa chỉ</label>:
+							{$member.address}
+						</p>
+					{/if}
+			{/if}
+						
+						
+					
+						
+				</div>
+				<br style="clear: both" />
+				<br />
+				<div class="detail-comments">
+					<h4>{lang comments} (<span class="comment_count">{$comments_count}</span>)</h4>
+					
+					<div class="comments-box">
+					
+						<div class="comments_list">
+							
+						</div>
+					
+						<!--{if $pb_username!=""}-->
+							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postoffercomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+								<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+								<!-- {formhash} -->
+								<input type="hidden" id="pid" name="data[id]" value="{$Trade.id}" />
+								<textarea id="comment" name="data[content]"></textarea>
+								
+								<!--<input type="button" id="postcmm" value="{lang send}" onclick="postComment()" />-->
+							</form>
+						<!--{else}-->
+							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postoffercomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+									<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+									<!-- {formhash} -->
+									<input type="hidden" id="pid" name="data[id]" value="{$Trade.id}" />
+									<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
+									<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
+									<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
+									<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
+							</form>
+						<!--{/if}-->
+					
+					</div>
+				</div>
+				
+				
+			</div>
+			 
+		</div>		
+		
+		<div class="detail-info">
+			<h1>{$Trade.name}</h1>
+			<div class="description">
+				{$Trade.content}
+			</div>
+		</div>
+	</div>
+	
+	
+	<!--<div id="right_detail_banner">
+		<div class="inner">
+		    <div class="detail_box_content">
+			aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa 
+			
+		    </div>
+		</div>
+	</div>-->
+	
+	<div class="middle-bottom-line" style="clear: both"></div>
+	<p></p>
+	<h3 class="related_bottom_h3">{$Trade.typename} mới</h3>
+	<div class="related_products_bottom">	
+		<ul>
+			
+			<!--{loop $bottom_related_products itemvv levelvv keyvv}-->
+				<li class="">
+					<a href="{the_url module=offers id=`$itemvv.id` title=`$itemvv.title`}" title="{$itemvv.title}">
+						<div class="img_box">
+							<img title="{$itemvv.title}" alt="{$itemvv.title}" src="{$itemvv.thumb}" />
+						</div>
+						{$itemvv.title|truncate:45}
+					</a>
+					{if $itemvv.new_price || $itemvv.price}
+						{if $itemvv.new_price != "" && $itemvv.new_price != 0}
+							<span class="price">{if $itemvv.price}<span class="old_price">{$itemvv.price} <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>{/if} <span class="amount">{$itemvv.new_price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span> {if $itemvv.price_note}<span class="noteprice">({$itemvv.price_note})</span>{/if}
+						{else}
+							<span class="price"><span class="amount">{$itemvv.price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>
+						{/if}
+					{/if}
+				</li>
+			<!--{/loop}-->
+			
+		</ul>
+	</div>
+	
+</div>
+
+</div>
+</div>
+
+<!--{include file="`$theme_name`/footer.html"}-->

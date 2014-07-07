@@ -1049,6 +1049,12 @@ $(document).ready(function() {
 	//	$('#change_logo_but').trigger('click');
 	//});
 	
+	$('.notice').each(function() {
+		if(!$(this).find('li').length) {
+			$(this).hide();
+		}
+	});
+	
 });
 
 

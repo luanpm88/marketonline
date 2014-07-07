@@ -316,7 +316,17 @@ jQuery(document).ready(function($) {
 	
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
-     <div class="offer_info_title"><h2>{if $getvar.type == 'service'}{lang service_add_edit}{else}{lang product_add_edit}{/if}</h2></div>
+     <div class="offer_info_title">
+	<h2>{if $getvar.type == 'service'}{lang service_add_edit}{else}{lang product_add_edit}{/if}</h2>
+	<div class="top-announce">
+		{announce row=1 userid=$MEMBER.id typeid=6 membertypeid=$MEMBER.membertype_id}
+			<a target="_blank" href="announce.php?type=6">Hướng dẫn</a>
+		{/announce}
+		{announce row=1 userid=$MEMBER.id typeid=1 membertypeid=$MEMBER.membertype_id}
+			<a target="_blank" href="announce.php?type=1">{lang announce}</a>
+		{/announce}		
+	</div>
+     </div>
 
      
      

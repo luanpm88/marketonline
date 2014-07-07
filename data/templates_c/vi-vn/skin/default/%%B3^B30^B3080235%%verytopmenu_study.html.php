@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-18 10:39:37
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:35:52
          compiled from ../../default/verytopmenu_study.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', '../../default/verytopmenu_study.html', 8, false),array('function', 'the_url', '../../default/verytopmenu_study.html', 36, false),)), $this); ?>
@@ -12,7 +12,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 </a>-->
 	<!--<a href="javascript:void(0)"><?php echo $this->_tpl_vars['_help']; ?>
 </a>-->
-	<a class="top_contact_help" href="contact.php"><?php echo $this->_tpl_vars['_contact_help']; ?>
+	<a class="top_contact_help" href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+lien-he"><?php echo $this->_tpl_vars['_contact_help']; ?>
 </a>
 	<p id="f_language_bar"><?php echo smarty_function_get_cache(array('name' => 'language','image' => 'y','sep' => "&nbsp;",'echo' => 'y'), $this);?>
 </p>
@@ -45,7 +46,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache',
 	<div id="settingouter" style="float:right">
 	    <!--<a href="<?php if ($this->_tpl_vars['pb_company']): ?>space/?userid=<?php echo $this->_tpl_vars['pb_username']; ?>
 &do=<?php else: ?>redirect.php?url=/virtual-office/<?php endif; ?>"></a>-->
-	    <a style="padding-left: 0; margin-right: 10px" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['pb_userinfo']['id'])), $this);?>
+	    <a style="padding-left: 0; margin-right: 10px" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['pb_userinfo']['id']),'title' => ($this->_tpl_vars['pb_userinfo']['fullname'])), $this);?>
 ">
 		<img class="avatar" src="<?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
@@ -69,7 +70,7 @@ image/usericon.jpg  <?php endif; ?>" width="20" height="20" />
 		</div>
 	    </div>
 	    
-	    <a style="padding-left: 0" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['pb_userinfo']['school_id'])), $this);?>
+	    <a style="padding-left: 0" class="name" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['pb_userinfo']['school_id']),'title' => ($this->_tpl_vars['pb_userinfo']['school_name'])), $this);?>
 ">
 		<img src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/studygroup_old.png" width="20" height="20" />&nbsp;<?php echo $this->_tpl_vars['_connect_title']; ?>
@@ -83,9 +84,26 @@ unset($_smarty_tpl_vars);
 	    
 	</div>
         <?php else: ?>
-        <a href="logging.php"><?php echo $this->_tpl_vars['_pls_login']; ?>
-</a><a href="register.php?typename=Company"><?php echo $this->_tpl_vars['_register_now']; ?>
+	    <a href="<?php echo smarty_function_the_url(array('module' => 'login'), $this);?>
+"><?php echo $this->_tpl_vars['_pls_login']; ?>
 </a>
+	    <?php if ($_GET['do'] == 'employee'): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employee'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>	    
+	    <?php elseif ($_GET['do'] == 'job'): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employer'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>	    
+	    <?php elseif ($_GET['do'] == 'studypost'): ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Learner'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>
+	    <?php else: ?>
+		<a href="<?php echo smarty_function_the_url(array('module' => 'register'), $this);?>
+"><?php echo $this->_tpl_vars['_register_now']; ?>
+</a>
+	    <?php endif; ?>
         <?php endif; ?>
         
     </div>

@@ -1,4 +1,4 @@
-<!--{assign var="page_title" value="`$_sms`"}-->
+<!--{assign var="page_title" value="Lịch sử mua hàng"}-->
 <!--{include file="header.html"}-->
 
 <!--{literal}-->
@@ -18,7 +18,7 @@
      <div class="main_content">
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
-     <div class="offer_info_title"><h2>{lang order_list}</h2></div>
+     <div class="offer_info_title"><h2>Lịch sử mua hàng</h2></div>
 
 	  <form name="pmsfrm" method="post" action="{$smarty.server.PHP_SELF}">
 	  <!-- {formhash} -->
@@ -38,7 +38,7 @@
             <tr class="bggray row1">
               
 
-	      <td style="text-align: left" width=10%><a href="buyerorder.php?do=view&id={$item.id}">{$item.space_name}</a></td>
+	      <td style="text-align: left" width=10%><a target="_blank" href="{the_url module=space userid=`$item.space_name`}">{$item.shop_name}</a></td>
 	      <td style="text-align: left" align="left">{$item.message}</td>
 	      <td>{$item.created}</td>
 	      <td><a href="buyerorder.php?do=view&id={$item.id}">{lang preview} >></a></td>

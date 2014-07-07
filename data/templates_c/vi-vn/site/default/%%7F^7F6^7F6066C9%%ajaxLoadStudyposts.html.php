@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 13:46:41
+<?php /* Smarty version 2.6.27, created on 2014-06-13 11:37:00
          compiled from default%5Cstudypost/ajaxLoadStudyposts.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/ajaxLoadStudyposts.html', 86, false),array('function', 'formhash', 'default\\studypost/ajaxLoadStudyposts.html', 87, false),)), $this); ?>
@@ -107,10 +107,10 @@ if ($this->_foreach['level_comment']['total'] > 0):
                     <?php endif; ?>
                 </div>
                 
-                <div class="stats_content" class="tab_item">
+                <div class="stats_content" class="tab_item" >
                     <form id="sudypostcomment_form_<?php echo $this->_tpl_vars['item']['id']; ?>
 " action="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'postcomment'), $this);?>
-" method="post" >
+" method="post" <?php if (! $this->_tpl_vars['pb_userid']): ?>onclick="$('.comment_but').trigger('click')"<?php endif; ?>>
                         <?php echo smarty_function_formhash(array(), $this);?>
 
                         <input type="hidden" name="comment[studypost_id]" value="<?php echo $this->_tpl_vars['item']['id']; ?>
@@ -135,8 +135,9 @@ if ($this->_foreach['level_comment']['total'] > 0):
                         <?php endif; ?>
                             
                         <div class="editor">
-                            <img src="<?php echo $this->_tpl_vars['pb_userinfo']['photo']; ?>
-" />
+                            <img src="<?php if ($this->_tpl_vars['pb_userinfo']['photo']): ?> <?php echo $this->_tpl_vars['pb_userinfo']['photo']; ?>
+ <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/usericon_big.jpg  <?php endif; ?>" />
                             <textarea name="comment[content]"></textarea>
                         </div>
                         <div class="actions">

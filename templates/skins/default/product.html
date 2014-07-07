@@ -57,9 +57,9 @@
 	    </div>
 
 <!--{if $pb_username==$MEMBER.username}-->
-  <div class="postitem kkkk"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
-  <a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a>
-  </div>
+  <div class="postitem kkkk">
+	<!--{include file="`$theme_name`/_postitems.html"}-->
+      </div>
 <!--{/if}-->
 
  </div>
@@ -76,13 +76,13 @@
 					<li class="product {$item.pos}">
 					    
 					    <div class="hidden-info-list-item">
-						    <a href="{the_url id=`$item.id` module='product' product_name=`$item.name`}">Xem chi tiết</a>
+						    <a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">Xem chi tiết</a>
 						    <!--Và liên hệ với nhà cung cấp<br />
 						    <strong class='red'>{$item.shop_name}</strong>-->
 					    </div>
 
 	
-	<a href="{the_url module=product id=`$item.id` product_name=`$item.name`}" title="">
+	<a href="{the_url module=product id=`$item.id` product_name=`$item.name` service=`$item.service`}" title="">
 
 		<div class="u_p_img_box"><div class="imgout"><img alt="{$item.name}" class="attachment-shop_catalog wp-post-image" src="{$item.thumb}"></div></div>
     <div class="price_title">
@@ -105,7 +105,7 @@
 	
 	<div class="product_tools">
 		<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
-		<a class="comment_link comment_count_li" href="{the_url id=`$item.id` module='product' product_name=`$item.name`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+		<a class="comment_link comment_count_li" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
 		<!--{if $pb_username!=""}-->
 			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
 		<!--{else}-->

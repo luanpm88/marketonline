@@ -4,7 +4,7 @@
 				{if $product_id != $itemz.id}
 					<li>
 							    
-			<a style="float: right;width: 100px;" href="{the_url id=`$itemz.id` module='product' product_name=`$itemz.name`}">
+			<a style="float: right;width: 100px;" href="{the_url id=`$itemz.id` module='product' product_name=`$itemz.name` service=`$itemz.service`}">
 					<img width="200" height="200" src="{$itemz.thumb}" class="attachment-shop_thumbnail wp-post-image" alt="675476-1">
 			</a>
 				
@@ -20,7 +20,7 @@
 				{/if}
 				
 				</ins>
-				<div class="related_title">{$itemz.link}</div>
+				<div class="related_title"><a href="{the_url id=`$itemz.id` module='product' product_name=`$itemz.name` service=`$itemz.service`}">{$itemz.name}</a></div>
 					</li>
 					{/if}
                     {/pb:product}

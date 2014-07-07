@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-05-23 17:28:08
+<?php /* Smarty version 2.6.27, created on 2014-07-02 13:36:14
          compiled from default/topmenu_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/topmenu_content.html', 25, false),array('block', 'topmenuindustries', 'default/topmenu_content.html', 31, false),)), $this); ?>
@@ -40,7 +40,7 @@ image/product_bg.png);'></span></a></span>
     
     <?php $this->_tag_stack[] = array('topmenuindustries', array('level' => 1,'row' => 3,'orderby' => 'display_order')); $_block_repeat=true;smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 	
-	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['industry']['id'])), $this);?>
+	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['industry']['id']),'title' => ($this->_tpl_vars['industry']['name'])), $this);?>
 "><span class="link-text"><?php echo $this->_tpl_vars['industry']['name']; ?>
 </span></a></span></li>
 	    
@@ -62,7 +62,7 @@ image/service_bg.png);'></span></a></span>
     
     <?php $this->_tag_stack[] = array('topmenuindustries', array('level' => 1,'row' => 3,'orderby' => 'display_order')); $_block_repeat=true;smarty_block_topmenuindustries($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 	
-	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'services','level' => 1,'industryid' => ($this->_tpl_vars['industry']['id'])), $this);?>
+	<li class="menu-sortable-portfolio"><span class="menu-item-wrap"><a href="<?php echo smarty_function_the_url(array('module' => 'services','level' => 1,'industryid' => ($this->_tpl_vars['industry']['id']),'title' => ($this->_tpl_vars['industry']['name'])), $this);?>
 "><span class="link-text"><?php echo $this->_tpl_vars['industry']['name']; ?>
 </span></a></span></li>
 	
@@ -223,3 +223,4 @@ _un.htmls<?php else: ?><?php echo $this->_tpl_vars['F_URL']; ?>
       </div>
   </div>
 </div>
+

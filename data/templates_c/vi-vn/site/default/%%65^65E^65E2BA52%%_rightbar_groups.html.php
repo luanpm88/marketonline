@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 10:57:08
+<?php /* Smarty version 2.6.27, created on 2014-07-03 09:06:37
          compiled from default/studypost/_rightbar_groups.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_rightbar_groups.html', 9, false),)), $this); ?>
@@ -17,15 +17,15 @@ if ($this->_foreach['level_group']['total'] > 0):
 ) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"<?php endif; ?> class="logo" onclick="" title="<?php echo $this->_tpl_vars['group']['subject_name']; ?>
  <?php echo $this->_tpl_vars['group']['school_name']; ?>
 ">
-                                            <strong onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
+                                            <strong onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id']),'title' => ($this->_tpl_vars['group']['subject_name'])), $this);?>
 '"><?php echo $this->_tpl_vars['group']['subject_name']; ?>
 </strong>
-                                            <div onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
+                                            <div onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id']),'title' => ($this->_tpl_vars['group']['subject_name'])), $this);?>
 '" class="more-studybar">Thành viên: <?php echo $this->_tpl_vars['group']['member_count']; ?>
 </div>
                                             
                                             <?php if ($this->_tpl_vars['group']['joined'] && ! $this->_tpl_vars['group']['status']): ?>
-                                                <a class="join_group" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id'])), $this);?>
+                                                <a class="join_group" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'group','id' => ($this->_tpl_vars['group']['id']),'title' => ($this->_tpl_vars['group']['subject_name'])), $this);?>
 '">
                                                     <i>.</i>
                                                     Chờ duyệt

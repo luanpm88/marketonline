@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-02-10 08:33:01
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:16:43
          compiled from person.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'person.html', 9, false),array('function', 'editor', 'person.html', 17, false),array('function', 'formhash', 'person.html', 272, false),array('function', 'html_radios', 'person.html', 398, false),)), $this); ?>
@@ -93,7 +93,7 @@ option_economic_type = "<?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['o
 	
 	function inserEditorFile(url, image) {
 		
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			tinyMCE.activeEditor.execCommand(\'mceFocus\',false,\'company_des\');
@@ -399,7 +399,7 @@ images/offer_01.gif" /></div>
 							<tr>
 								<th><?php echo $this->_tpl_vars['_address']; ?>
 <font class="red">*</font> </th>
-								<td><input name="data[company][address]" type="text" id="address" value="<?php echo $this->_tpl_vars['item']['address']; ?>
+								<td><input placeholder="Số Tên đường, Phường/Xã" name="data[company][address]" type="text" id="address" value="<?php echo $this->_tpl_vars['item']['address']; ?>
 " class="required"> </td>
 							</tr>
 							<tr>

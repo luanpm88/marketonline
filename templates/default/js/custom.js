@@ -1376,7 +1376,7 @@
 					
 					if($('.detail-comments #guest_name').length && !$('.offer-detail-is').length)
 					{
-					    $("#offerbox-but").trigger("click");
+					    if(!$('.offer_detail_page').length) $("#offerbox-but").trigger("click");
 					    loadOfferComment();
 					}
 				}
@@ -1773,7 +1773,7 @@
 		    $('#job-learn form').submit();
 		});
 		
-		//
+		//register tab
 		$('.you_are_form input[type="radio"]').removeAttr("checked");
 		$('.main_user_select li').click(function() {
 		    $('.main_user_select li').removeClass('active');
@@ -1795,6 +1795,8 @@
 			$('.you_are_form').removeClass("hide");
 		    }
 		});
+		//check for register type
+		$('.main_user_select li.active').trigger("click");
                 
                 $('.joblevel_link').click(function(){		   
 		    $('#job-learn input[name="type"]').val($(this).attr('rel'));

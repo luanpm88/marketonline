@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 14:21:38
+<?php /* Smarty version 2.6.27, created on 2014-07-04 16:30:30
          compiled from default%5Cproduct/connect.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/connect.html', 678, false),array('modifier', 'default', 'default\\product/connect.html', 908, false),)), $this); ?>
@@ -214,19 +214,19 @@ unset($_smarty_tpl_vars);
 				
 				
 				
-				if (offer && first_offer) {
-				  $(\'.offer_transform ul.products li.product img\').live(\'click\', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  $(\'.offer_transform ul.products li.product h3 a\').live(\'click\', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  first_offer =  0;
-				}
+				//if (offer && first_offer) {
+				//  $(\'.offer_transform ul.products li.product img\').live(\'click\', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  $(\'.offer_transform ul.products li.product h3 a\').live(\'click\', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  first_offer =  0;
+				//}
 				
 				$(\'a,img\').qtip({ // Grab some elements to apply the tooltip to
 				    content: {
@@ -323,7 +323,7 @@ unset($_smarty_tpl_vars);
 		if ($(\'#aq-block-5\').height())
 		  pos_searchlist = $(\'#aq-block-5\').height() + 440;
 		else
-		  pos_searchlist = 240;
+		  pos_searchlist = 249;
 	 
 	       $(".hotnewlist").removeClass("active");
 	       $(\'#new_product_but\').addClass("active");
@@ -575,7 +575,7 @@ unset($_smarty_tpl_vars);
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 240px">
+                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 249px">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>

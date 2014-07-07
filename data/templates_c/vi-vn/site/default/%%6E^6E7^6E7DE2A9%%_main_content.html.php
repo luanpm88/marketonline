@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 11:21:50
+<?php /* Smarty version 2.6.27, created on 2014-06-13 08:37:44
          compiled from default/studypost/_main_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_main_content.html', 373, false),array('function', 'formhash', 'default/studypost/_main_content.html', 543, false),)), $this); ?>
@@ -218,7 +218,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
     }
     
     function inserEditorFile(url, image) {
-        $(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+        $(\'#uploadIVbutton\').removeAttr(\'disabled\');
         $(\'#uploadIVbutton\').attr(\'value\',\'Tải ảnh/video\');
         if (image) {
             currentEditor.execCommand(\'mceInsertContent\', false, "<p><img width=\'100%\' src=\''; ?>

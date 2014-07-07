@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-22 12:10:44
+<?php /* Smarty version 2.6.27, created on 2014-06-13 09:55:57
          compiled from ../../default/_settingbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '../../default/_settingbox.html', 8, false),)), $this); ?>

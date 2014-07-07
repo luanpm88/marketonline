@@ -3,15 +3,17 @@
 			<ul>
 				<!--<li><a href="#box_underi" rel="job-learn" class="notyet">Học tập</a></li>-->
 				
-				<li {if $smarty.get.do == "employee"}class="active"{/if}><a href="{the_url module='employees'}" rel="job-learn" class="">Hồ sơ ứng viên</a></li>
-				<li {if $smarty.get.do == "job"}class="active"{/if}><a href="{the_url module='jobs'}" rel="job-learn">Việc làm</a></li>
-				<li {if $smarty.get.do == "studypost"}class="active"{/if}><a href="{the_url module='studypost'}" rel="job-study">Học tập</a></li>
+				<li class="tabgroup1 {if $smarty.get.do == "employee"}active{/if}"><a href="{the_url module='employees'}" rel="job-learn" class="">Hồ sơ ứng viên</a></li>
+				<li class="tabgroup2 {if $smarty.get.do == "job"}active{/if}"><a href="{the_url module='jobs'}" rel="job-learn">Việc làm</a></li>
+				<li class="tabgroup3 {if $smarty.get.do == "studypost" && !$smarty.get.type}active{/if}"><a href="{the_url module='studypost'}" rel="job-study">Trường</a></li>
+				<li class="tabgroup3 {if $smarty.get.do == "studypost" && $smarty.get.type == "group"}active{/if}"><a href="{the_url module='studypost' type='group'}" rel="job-study">Môn học</a></li>
+				<li class="tabgroup3 {if $smarty.get.do == "studypost" && $smarty.get.type == "learner"}active{/if}"><a href="{the_url module='studypost' type='learner'}" rel="job-study">Học viên</a></li>
 			</ul>
 			<div class="tab-content">
 				<div id="job-learn" class="tab-item active">
 						
 				    {if $smarty.get.do != "studypost"}
-					<form action="{if $smarty.get.do == "job"}{the_url module='jobs'}{/if}{if $smarty.get.do == "employee"}{the_url module='employees'}{/if}" method="get">
+					<form action="{the_url module="root-url"}" method="get">
 						<input type="hidden" name="do" value="{$smarty.get.do}" />
 						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
@@ -32,7 +34,7 @@
 						<input type="submit" value="Tìm kiếm" />
 					</form>
 				{else}
-					<form action="{the_url module='studypost'}" method="get" onsubmit="return checkSelectStudypostType()">
+					<form action="{the_url module="root-url"}" method="get" onsubmit="return checkSelectStudypostType()">
 						<input type="hidden" name="do" value="{$smarty.get.do}" />
 						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}

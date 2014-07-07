@@ -21,11 +21,11 @@
 						
 						
 					<div class="avatar">
-						<a href="{the_url module=studypost action=school id=`$school.id`}">
+						<a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
 						    <img src="{$school.logo}" />
 						</a>
 					</div>
-					<h2><a href="{the_url module=studypost action=school id=`$school.id`}">{$school.name}</a></h2>
+					<h2><a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">{$school.name}</a></h2>
 					
 					{if $school.address}<p><label>Địa chỉ </label><label class="two_points">:</label> {$school.address}</p>{/if}
 					{if $school.phone}<p><label>Điện thoại </label><label class="two_points">:</label> {$school.phone}</p>{/if}

@@ -82,8 +82,8 @@
                     <!--{/if}-->
                 </div>
                 
-                <div class="stats_content" class="tab_item">
-                    <form id="sudypostcomment_form_{$item.id}" action="{the_url module=studypost action=postcomment}" method="post" >
+                <div class="stats_content" class="tab_item" >
+                    <form id="sudypostcomment_form_{$item.id}" action="{the_url module=studypost action=postcomment}" method="post" {if !$pb_userid}onclick="$('.comment_but').trigger('click')"{/if}>
                         <!-- {formhash} -->
                         <input type="hidden" name="comment[studypost_id]" value="{$item.id}" />
                         <input type="hidden" name="comment[star]" value="0" />
@@ -106,7 +106,7 @@
                         <!--{/if}-->
                             
                         <div class="editor">
-                            <img src="{$pb_userinfo.photo}" />
+                            <img src="{if $pb_userinfo.photo} {$pb_userinfo.photo} {else} {$theme_img_path}image/usericon_big.jpg  {/if}" />
                             <textarea name="comment[content]"></textarea>
                         </div>
                         <div class="actions">

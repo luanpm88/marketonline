@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 10:14:33
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:38:43
          compiled from default%5Cstudypost/memberpage.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 35, false),array('function', 'formhash', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 228, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/memberpage.html', 35, false),array('function', 'formhash', 'default\\studypost/memberpage.html', 50, false),array('modifier', 'truncate', 'default\\studypost/memberpage.html', 239, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -143,7 +143,7 @@ index.php?do=studypost&action=change_logo_home" enctype="multipart/form-data">
                                 <a class="changestudyava" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">Thay hình đại diện</a>
                             <?php endif; ?>
                             
-                            <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['member']['id'])), $this);?>
+                            <a href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'memberpage','id' => ($this->_tpl_vars['member']['id']),'title' => ($this->_tpl_vars['member']['fullname'])), $this);?>
 ">
                                 <img class="avatar" src="<?php if ($this->_tpl_vars['member']['photo']): ?> <?php echo $this->_tpl_vars['member']['photo']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
@@ -159,8 +159,8 @@ image/usericon.jpg  <?php endif; ?>"/>
                         <?php if ($this->_tpl_vars['member']['class']): ?><p><label>Lớp </label>:&nbsp; <?php echo $this->_tpl_vars['member']['class']; ?>
 </p><?php endif; ?>
                         <?php if ($this->_tpl_vars['member']['gender']): ?><p><label>Giới tính </label>:&nbsp; <?php if ($this->_tpl_vars['member']['gender'] == 1): ?>Name<?php else: ?>Nữ<?php endif; ?></p><?php endif; ?>
-                        <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ </label>:&nbsp; <?php echo $this->_tpl_vars['member']['address']; ?>
-</p><?php endif; ?>
+                        <?php if ($this->_tpl_vars['member']['address']): ?><p><label>Địa chỉ </label><span><i>:&nbsp; </i><?php echo $this->_tpl_vars['member']['address']; ?>
+</span></p><?php endif; ?>
                         <?php if ($this->_tpl_vars['member']['mobile']): ?><p><label>Điện thoại </label>:&nbsp; <?php echo $this->_tpl_vars['member']['mobile']; ?>
 </p><?php endif; ?>
                         <?php if ($this->_tpl_vars['member']['email']): ?><p><label>Email </label>:&nbsp; <?php echo $this->_tpl_vars['member']['email']; ?>
@@ -254,8 +254,25 @@ logging.php"><?php echo $this->_tpl_vars['_followed']; ?>
                 </div>
                 
                 <div class="member-left-bottom">
-                    <h2>Tự giới thiệu</h2>
-                </div>                
+                        <h2>Tự giới thiệu
+                        <?php if ($this->_tpl_vars['pb_userid'] == $this->_tpl_vars['member']['id']): ?>
+                            <a href="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+virtual-office/personal.php#tgttext" style="font-size: 14px;">(Chỉnh sửa)</a>
+                        <?php endif; ?></h2>
+                        <?php echo $this->_tpl_vars['member']['intro']; ?>
+
+                </div>
+                <a class="member-left-bottom-more" href="#member-left-bottom-content">Xem thêm...</a>
+                <div id="member-left-bottom-content" style="display: none">
+                    <h2>Tự giới thiệu
+                        <?php if ($this->_tpl_vars['pb_userid'] == $this->_tpl_vars['member']['id']): ?>
+                            <a href="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+virtual-office/personal.php#tgttext" style="font-size: 14px;">(Chỉnh sửa)</a>
+                        <?php endif; ?>
+                    </h2>
+                    <?php echo $this->_tpl_vars['member']['intro']; ?>
+
+                </div>
                 
             </div>
             
@@ -278,8 +295,6 @@ unset($_smarty_tpl_vars);
             <div id="facelike_col2">
                 <div class="col2-top">
                     
-                    
-                    
                 </div>
                 <div class="col2-bottom">
                     <div class="col2-bottom-left">
@@ -301,7 +316,7 @@ unset($_smarty_tpl_vars);
                                 <li class="<?php if ($_GET['action'] == 'school'): ?>active<?php endif; ?>">
                                     <a class="logo" style="background-image:url('<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 /<?php echo $this->_tpl_vars['school']['logo']; ?>
-')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['school']['id'])), $this);?>
+')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['school']['id']),'title' => ($this->_tpl_vars['school']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['school']['name']; ?>
 ">
                                         <?php echo ((is_array($_tmp=$this->_tpl_vars['school']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>
@@ -321,7 +336,7 @@ if ($this->_foreach['level']['total'] > 0):
                                     <li class="<?php if ($this->_tpl_vars['item']['id'] == $this->_tpl_vars['school']['id']): ?>active<?php endif; ?>" style="display: none">
                                         <a class="logo" style="background-image:url('<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 /<?php echo $this->_tpl_vars['item']['logo']; ?>
-')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id']),'title' => ($this->_tpl_vars['item']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['item']['school_name']; ?>
 ">
                                             <?php echo ((is_array($_tmp=$this->_tpl_vars['item']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>

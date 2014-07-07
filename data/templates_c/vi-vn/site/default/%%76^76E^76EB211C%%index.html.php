@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 16:39:57
+<?php /* Smarty version 2.6.27, created on 2014-07-02 10:47:29
          compiled from default%5Cjob/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'get', 'default\\job/index.html', 60, false),array('function', 'the_url', 'default\\job/index.html', 88, false),array('function', 'pager', 'default\\job/index.html', 99, false),array('modifier', 'count', 'default\\job/index.html', 61, false),array('block', 'job', 'default\\job/index.html', 86, false),)), $this); ?>
@@ -117,10 +117,10 @@ if ($this->_foreach['IndustryList']['total'] > 0):
 				
 			<?php $this->_tag_stack[] = array('job', array('row' => 20,'status' => 1,'start' => ($_GET['pos']),'keyword' => ($_GET['keyword']),'indust' => ($_GET['indust']),'type' => ($_GET['type']),'area' => ($this->_tpl_vars['area_string']))); $_block_repeat=true;smarty_block_job($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
 				<tr>
-					<td><a href="<?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id'])), $this);?>
+					<td><a href="<?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id']),'title' => ($this->_tpl_vars['job']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['job']['name']; ?>
 </td>
-					<td><a href="<?php if ($this->_tpl_vars['job']['membertype_id'] == 5): ?><?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id'])), $this);?>
+					<td><a href="<?php if ($this->_tpl_vars['job']['membertype_id'] == 5): ?><?php echo smarty_function_the_url(array('module' => 'jobs','id' => ($this->_tpl_vars['job']['id']),'title' => ($this->_tpl_vars['job']['name'])), $this);?>
 <?php else: ?><?php echo $this->_tpl_vars['job']['space_url']; ?>
 <?php endif; ?>"><?php echo $this->_tpl_vars['job']['companyname']; ?>
 </a></td>

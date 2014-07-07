@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 10:29:02
+<?php /* Smarty version 2.6.27, created on 2014-07-02 13:36:13
          compiled from default%5Cindex.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\index.html', 85, false),array('modifier', 'truncate', 'default\\index.html', 92, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\index.html', 97, false),array('modifier', 'truncate', 'default\\index.html', 104, false),)), $this); ?>
 <?php $this->assign('metakeywords', ($this->_tpl_vars['site_description'])); ?>
 <?php $this->assign('metadescription', ($this->_tpl_vars['site_description'])); ?>
 <?php $this->assign('do', 'offer'); ?>
@@ -57,10 +57,22 @@ unset($_smarty_tpl_vars);
       <div class="fifteen columns">
 
     <div id="page-title" style="padding: 10px 10px 0 0">
+	
+	<div class="super-main-category">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
 
-    <div class="subtitle">
-            </div>
-    <h1 class="page-title" style="font-size: 25px;margin-bottom: -2px !important;">Thị trường trực tuyến</h1>
+    <h1 class="page-title" style="font-size: 25px;margin-bottom: -2px !important;float: left;clear: none">
+	Thị trường trực tuyến
+    </h1>
 
 
     
@@ -111,11 +123,11 @@ if ($this->_foreach['level_0']['total'] > 0):
 " >
 				    <?php endif; ?>
                                     <div class="description divlink <?php echo $this->_tpl_vars['item0']['disp']; ?>
-" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 '">
                                         <time><?php echo $this->_tpl_vars['_category']; ?>
 </time>
-                                        <h3><a class="tile_title" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+                                        <h3><a class="tile_title" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['item0']['name']; ?>
  (<?php echo $this->_tpl_vars['item0']['ppcount']; ?>
 )" class="typeboxlet01"><?php echo $this->_tpl_vars['item0']['name']; ?>
@@ -128,7 +140,7 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
         $this->_foreach['level_1_industry']['iteration']++;
 ?>
 					  	<li>
-							<h4><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id'])), $this);?>
+							<h4><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id']),'title' => ($this->_tpl_vars['level1']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['level1']['name']; ?>
  (<?php echo $this->_tpl_vars['level1']['ppcount']; ?>
 )" class="typeboxlet01"><?php if ($this->_tpl_vars['k']%6 == 5 || $this->_tpl_vars['k']%6 == 0): ?><?php echo ((is_array($_tmp=$this->_tpl_vars['level1']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 30) : smarty_modifier_truncate($_tmp, 30)); ?>
@@ -136,14 +148,14 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 <?php endif; ?></a>                        </h4>
 						</li>				     
 					  <?php endforeach; endif; unset($_from); ?>
-					    <li><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+					    <li><a href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['_read_more']; ?>
 </a></li>					    
 					</ul>
 
                                     </div>
                                     <a<?php if ($this->_tpl_vars['item0']['id'] == 3788): ?> rel="nofollow"<?php endif; ?> href="<?php if ($this->_tpl_vars['item0']['url'] != ""): ?><?php echo $this->_tpl_vars['item0']['url']; ?>
-<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 <?php endif; ?>" <?php if ($this->_tpl_vars['item0']['url'] != ""): ?>target="_blank"<?php endif; ?>></a>
                   </div>
 		  
@@ -636,7 +648,7 @@ if ($this->_foreach['level_0']['total'] > 0):
         $this->_foreach['level_0']['iteration']++;
 ?>
 			<li class="level0 <?php if ($this->_tpl_vars['level_0']%4 == 0): ?>clear<?php endif; ?>">
-				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['item0']['name']; ?>
 </a>
 				<ul>
@@ -646,7 +658,7 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
         $this->_foreach['level_1_industry']['iteration']++;
 ?>
 						<li class="level1 <?php if ($this->_tpl_vars['key_level1'] > 4): ?>hide<?php endif; ?>">
-							<a class="level1" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id'])), $this);?>
+							<a class="level1" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id']),'title' => ($this->_tpl_vars['level1']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['level1']['name']; ?>
 </a>
 						</li>

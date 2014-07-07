@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 12:49:16
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:39:02
          compiled from shop.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'shop.html', 9, false),array('function', 'editor', 'shop.html', 271, false),array('function', 'formhash', 'shop.html', 313, false),array('function', 'html_radios', 'shop.html', 435, false),)), $this); ?>
@@ -89,7 +89,7 @@ option_economic_type = "<?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['o
 	}
 	
 	function inserEditorFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, "<img src=\'../attachment/"+url+"\' />");

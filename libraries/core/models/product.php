@@ -137,6 +137,12 @@ class Products extends PbModel {
  		}
  		return $result;
  	}
+	
+	function SearchCount()
+	{		
+ 		$result = $this->findCount(array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id"), null, "Product.id");
+		return $result;
+	}
 
 	function checkProducts($id = null, $status = null)
 	{
@@ -418,7 +424,6 @@ class Products extends PbModel {
 		{
 			$this->formatInfo($result);
 		}
-
 		return $results;
 	}
 	

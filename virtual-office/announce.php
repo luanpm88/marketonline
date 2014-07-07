@@ -9,9 +9,10 @@ require("../libraries/common.inc.php");
 require("room.share.php");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
-uses("announcement");
+uses("announcement","announcementtype");
 
 $announce = new Announcements();
+$announcementtype = new Announcementtypes();
 
 if (!empty($_GET['id'])) {
 	$id = intval($_GET['id']);
@@ -26,6 +27,15 @@ if (!empty($_GET['id'])) {
 
 	//var_dump($info);	
 	$tpl_file = "announce";
+	setvar("item",$info);
+	template($tpl_file);
+}
+elseif (!empty($_GET['type']))
+{
+	$info = $announcementtype->read("*", $_GET['type'], null, null);
+	
+	
+	$tpl_file = "announce_list";
 	setvar("item",$info);
 	template($tpl_file);
 }

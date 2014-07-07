@@ -187,25 +187,25 @@
 				
 				
 				
-				//for offer
-				$('.offer_transform ul.products li.product img').not('.offer_transform ul.products li.product span img').resizecrop({
-				  width:150,
-				  height:120
-				});
-				
-				if (offer && first_offer) {
-				  $('.offer_transform ul.products li.product img').live('click', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  $('.offer_transform ul.products li.product h3 a').live('click', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  first_offer =  0;
-				}
+				////for offer
+				//$('.offer_transform ul.products li.product img').not('.offer_transform ul.products li.product span img').resizecrop({
+				//  width:150,
+				//  height:120
+				//});
+				//
+				//if (offer && first_offer) {
+				//  $('.offer_transform ul.products li.product img').live('click', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  $('.offer_transform ul.products li.product h3 a').live('click', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  first_offer =  0;
+				//}
 				
 			}
 		});
@@ -712,13 +712,9 @@
       </h1>
 
 
-<!--{if $pb_username!=""}-->
-  <div class="postitem"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit">{lang post_product}</a>
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service">{lang add_service}</a></div>
-<!--{else}-->
-  <div class="postitem"><a href="redirect.php?url=/logging.php">{lang post_product}</a>
-  <a target="_blank" href="redirect.php?url=/logging.php">{lang add_service}</a></div>
-<!--{/if}-->
+<div class="postitem">
+	<!--{include file="`$theme_name`/_postitems.html"}-->
+      </div>
     
     
   </div>

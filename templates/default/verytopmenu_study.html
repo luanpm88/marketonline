@@ -4,7 +4,7 @@
 	<a class="homex" href="{$SiteUrl}" style="margin-left: -4px;">.</a>
         <!--<a href="{$SiteUrl}" class="home">{lang home_page}</a>-->
 	<!--<a href="javascript:void(0)">{lang help}</a>-->
-	<a class="top_contact_help" href="contact.php">{lang contact_help}</a>
+	<a class="top_contact_help" href="{$SiteUrl}lien-he">{lang contact_help}</a>
 	<p id="f_language_bar"><!--{get_cache name="language" image="y" sep="&nbsp;" echo=y}--></p>
 	
 	<div id="TopSearch">
@@ -33,7 +33,7 @@
 	
 	<div id="settingouter" style="float:right">
 	    <!--<a href="{if $pb_company}space/?userid={$pb_username}&do={else}redirect.php?url=/virtual-office/{/if}"></a>-->
-	    <a style="padding-left: 0; margin-right: 10px" class="name" href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id`}">
+	    <a style="padding-left: 0; margin-right: 10px" class="name" href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id` title=`$pb_userinfo.fullname`}">
 		<img class="avatar" src="{if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="20" height="20" />
 		{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
 	    </a>
@@ -49,14 +49,23 @@
 		</div>
 	    </div>
 	    
-	    <a style="padding-left: 0" class="name" href="{the_url module=studypost action=school id=`$pb_userinfo.school_id`}">
+	    <a style="padding-left: 0" class="name" href="{the_url module=studypost action=school id=`$pb_userinfo.school_id` title=`$pb_userinfo.school_name`}">
 		<img src="{$theme_img_path}image/studygroup_old.png" width="20" height="20" />&nbsp;{lang connect_title}</a>
 	    
 	    <!--{include file="`$theme_name`/_settingbox.html"}-->
 	    
 	</div>
         <!--{else}-->
-        <a href="logging.php">{lang pls_login}</a><a href="register.php?typename=Company">{lang register_now}</a>
+	    <a href="{the_url module=login}">{lang pls_login}</a>
+	    {if $smarty.get.do == "employee"}
+		<a href="{the_url module="register" typename="Employee"}">{lang register_now}</a>	    
+	    {elseif $smarty.get.do == "job"}
+		<a href="{the_url module="register" typename="Employer"}">{lang register_now}</a>	    
+	    {elseif $smarty.get.do == "studypost"}
+		<a href="{the_url module="register" typename="Learner"}">{lang register_now}</a>
+	    {else}
+		<a href="{the_url module="register"}">{lang register_now}</a>
+	    {/if}
         <!--{/if}-->
         
     </div>

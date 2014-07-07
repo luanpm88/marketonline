@@ -1,29 +1,37 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 13:06:08
+<?php /* Smarty version 2.6.27, created on 2014-07-03 16:51:55
          compiled from default/footer.html */ ?>
     <div id="darkf">
+      
   <section id="footer" role="contentinfo">
 
     <div class="row">
 
     
     <div id="company_info" style="width: 100%; display: block">
-				    
+				    <div class="cleft">
 					<h2>CÔNG TY CỔ PHẦN TRUYỀN THÔNG VÀ TIẾP THỊ BMN</h2>
 					
 					<p><strong><?php echo $this->_tpl_vars['_office_room']; ?>
-:</strong> 444/4 Cách Mạng Tháng 8, Phường 11, Quận 3, TP.HCM, &nbsp;&nbsp;<strong>GPĐK:</strong> 0311181221 - Cấp ngày 23-09-2011 </p>
-					<p>
+:</strong> 444/4 Cách Mạng Tháng 8, Phường 11, Quận 3, TP.HCM, &nbsp;&nbsp;
+					</p>
+					<p><strong>GPĐK:</strong> 0311181221 - Cấp ngày 23-09-2011 </p>
+					
+				    </div>
+				    <div class="cright">
+				      <p>
 					  <strong>
 					    <?php echo $this->_tpl_vars['_vpgd']; ?>
 :
 					  </strong>
 					  Block B R.606 - Indochina Park Tower, 04 Nguyễn Đình Chiểu, Quận 1, TP.HCM, &nbsp;&nbsp;
+				      </p>
+				      <p>
 					  <strong>ĐT:</strong> (84) 08.3846 1716&nbsp;&nbsp;
 					  <strong>Hotline:</strong> 0903.07.1122, &nbsp;&nbsp;<strong>Email:</strong> <a href="mailto:contact@marketonline.vn">contact@marketonline.vn</a>
 					</p>
-					
-
 				    </div>
+
+		</div>
     
     
     </div>

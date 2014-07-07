@@ -48,12 +48,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 		if (empty($companyinfo['name'])) {
 			$i18n = new L10n();
 			//$space_name = $i18n->translateSpaceName($_POST['data']['company']['shop_name']);
-			$space_name = utf8_to_ascii($_POST['data']['company']['shop_name']);
-			$space_name = str_replace("&", "-", $space_name);
-			$space_name = str_replace("'", "", $space_name);
-			$space_name = str_replace(".", "-", $space_name);
-			$space_name = str_replace(",", "-", $space_name);
-			$space_name = preg_replace('/[\!\@\#\$\%\^\&\*\(\)\/\"\'\<\>\~\`\:\;\?]/', "-", $space_name);
+			$space_name = stringToURI($_POST['data']['company']['shop_name']);			
 			
 			//$vals['cache_spacename'] = $space_name;
 			$vals['first_letter'] = substr($space_name, 0, 1);
@@ -189,12 +184,8 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		$vals['new_clicked_date'] = date('d-m-Y H:i:s');
 		
-			$space_name = utf8_to_ascii($vals['shop_name']);
-			$space_name = str_replace("&", "-", $space_name);
-			$space_name = str_replace("'", "", $space_name);
-			$space_name = str_replace(".", "-", $space_name);
-			$space_name = str_replace(",", "-", $space_name);
-			$space_name = preg_replace('/[\!\@\#\$\%\^\&\*\(\)\/\"\'\<\>\~\`\:\;\?]/', "-", $space_name);
+		$space_name = stringToURI($vals['shop_name']);
+			
 		
 		$member->updateSpaceName($memberinfo['id'], $space_name);
 		$company->save($vals);

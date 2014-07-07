@@ -5,6 +5,8 @@ class Studypost extends PbController {
 	function Studypost()
 	{
 		$this->loadModel("studypost");
+		$this->loadModel("company");
+		$this->loadModel("trade");
 		$this->loadModel("studypostcomment");
 		$this->loadModel("member");
 		$this->loadModel("memberfield");
@@ -1174,6 +1176,7 @@ class Studypost extends PbController {
 		}
 		setvar("members",$members);
 		setvar("online_list",$online_list);
+		setvar("count_online_list", count($online_list));
 		setvar("count",count($members));
 		$this->render("studypost/getChatFriendList");
 	}
@@ -1227,6 +1230,50 @@ class Studypost extends PbController {
 			}
 		}
 		
+	}
+	
+	function group_info_edit()
+	{
+		$group = $this->studygroup->read("*", $_GET["group_id"]);
+		$group["info"] = $group[$_GET["type"]];
+		setvar("group", $group);
+		$this->render("studypost/group_info_edit");
+	}
+	
+	function update_group_info()
+	{
+		$pb_userinfo = pb_get_member_info();
+		$group = $this->studygroup->read("*", $_POST["group_id"]);
+
+		if ($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
+		{
+			$this->studygroup->saveField($_POST["type"], $_POST["group-info-content"], intval($_POST["group_id"]));
+		}
+		
+		echo '<script>window.parent.location.reload(false);</script>';
+	}	
+	function random_rate()
+	{
+		if(!empty($_POST["shop"]))
+		{
+			$add = rand($_POST["min_rand"],$_POST["max_rand"]);
+			$sql = "update pb_companies set clicked=clicked+".$add.", new_clicked=new_clicked+".$add." where clicked >= ".$_POST["min_rate"]." AND clicked <= ".$_POST["max_rate"]."";
+			echo "Thành công...!!<br /><br />";
+			
+			$return = $this->company->dbstuff->Execute($sql);
+		}
+		if(!empty($_POST["offer"]))
+		{
+			$add = rand($_POST["offer_min_rand"],$_POST["offer_max_rand"]);
+			$sql = "update pb_trades set clicked=clicked+".$add." where clicked >= ".$_POST["offer_min_rate"]." AND clicked <= ".$_POST["offer_max_rate"]."";
+			echo "Thành công...!!<br /><br />";
+			
+			$return = $this->trade->dbstuff->Execute($sql);
+		}
+		
+		
+		
+		$this->render("studypost/random_rate");
 	}
 }
 ?>

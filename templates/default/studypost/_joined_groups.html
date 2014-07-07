@@ -1,9 +1,11 @@
+{if $pb_userid}
+                
                 <div class="school_list">                    
                     <h4>Nhóm đã tham gia</h4>
                     <ul class="group_list">
                         <!--{loop $joined_groups group level_group group_key}-->
                             <li class="group_item {if $smarty.get.action == 'group' && $smarty.get.id == $group.id}active{/if}">
-                                <a {if $group.logo_origin}style="background:url({$group.logo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" href="{the_url module=studypost action=group id=`$group.id`}" title="{$group.subject_name} {$group.school_name}">
+                                <a {if $group.logo_origin}style="background:url({$group.logo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}" title="{$group.subject_name} {$group.school_name}">
                                     {if $group.new_count && false}
                                         <div class="new_count">{$group.new_count}</div>
                                     {/if}
@@ -14,3 +16,4 @@
                         <!--{/loop}-->
                     </ul>
                 </div>
+{/if}

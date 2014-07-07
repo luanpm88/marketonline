@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-14 09:55:53
+<?php /* Smarty version 2.6.27, created on 2014-07-04 14:43:25
          compiled from announce.edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'announce.edit.html', 2, false),array('function', 'fetch', 'announce.edit.html', 3, false),)), $this); ?>

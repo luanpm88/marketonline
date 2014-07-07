@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-14 16:59:18
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:27:48
          compiled from default%5Cregister.done.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['_register']))));
@@ -99,7 +99,7 @@ unset($_smarty_tpl_vars);
 			<!--<h4><?php echo $this->_tpl_vars['RegTips']; ?>
 </h4>-->
 			<h4>Chúng tôi đã gửi email kích hoạt tài khoản "<strong><?php echo $this->_tpl_vars['username']; ?>
-</strong>" qua <strong><?php echo $_GET['em']; ?>
+</strong>" tới <strong><?php echo $_GET['em']; ?>
 </strong>.
 			<br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email.
 			<br /><br />(Lưu ý: kiểm tra cả mục inbox và spam)</h4>

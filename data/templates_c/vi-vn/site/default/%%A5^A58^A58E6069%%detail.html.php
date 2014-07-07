@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 16:09:54
+<?php /* Smarty version 2.6.27, created on 2014-07-07 10:34:47
          compiled from default%5Cproduct/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/detail.html', 51, false),array('function', 'formhash', 'default\\product/detail.html', 570, false),array('modifier', 'truncate', 'default\\product/detail.html', 710, false),array('block', 'product', 'default\\product/detail.html', 725, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/detail.html', 51, false),array('function', 'formhash', 'default\\product/detail.html', 580, false),array('modifier', 'truncate', 'default\\product/detail.html', 739, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -273,8 +273,25 @@ unset($_smarty_tpl_vars);
 
 
 <div class="row">
-    <div class="fifteen columns" id="page-title">
-        <a class="back" href="javascript:history.back()"></a>
+    <div class="fifteen columns" id="page-title" style="padding-left: 110px;">
+	
+	<div class="super-main-category mainproductpage <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+		<div class="show-but">
+			Chuyên mục chính			
+		</div>
+		<a href="<?php if ($this->_tpl_vars['item']['service']): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
+<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+	
+        <!--<a class="back" href="javascript:history.back()"></a>-->
         <div class="subtitle">
             
                         <p><?php if ($this->_tpl_vars['item']['service']): ?><?php echo $this->_tpl_vars['_services']; ?>
@@ -301,19 +318,14 @@ unset($_smarty_tpl_vars);
                         <?php echo $this->_tpl_vars['item']['title']; ?>
 
 	</h1>
-	<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-  <div class="postitem">
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a>
-  </div>
-<?php else: ?>
-  <div class="postitem"><a href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-  <a target="_blank" href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php endif; ?>
+	
+	<div class="postitem">
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_postitems.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+	</div>
 
 
 
@@ -356,8 +368,7 @@ images/detail_17.jpg" alt="" /></a><span><?php echo $this->_tpl_vars['_enlarge_i
 </span></p>
 						</div>-->
 						<a itemprop="image" href="<?php echo $this->_tpl_vars['item']['d_image']; ?>
-" class="fancyx" rel="thumbnails" title="<?php echo $this->_tpl_vars['item']['title']; ?>
-">
+" class="fancyx" rel="thumbnails" title="">
 						<ul id="example2">
 							<li>
 								<img class="etalage_thumb_image" src="<?php echo $this->_tpl_vars['item']['d_imgsmall']; ?>
@@ -897,62 +908,67 @@ x<?php echo $this->_tpl_vars['MEMBER']['membertype_id']; ?>
 <div id="right_detail_banner">
 	<div class="inner">
 	    <div class="detail_box_content">
+		<?php if (! $this->_tpl_vars['MEMBER']['checkout']): ?>
+			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/product/_product_detail_rightbar_nopaid.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		<?php else: ?>
+			<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/product/_product_detail_rightbar_paid.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+		<?php endif; ?>
 		
-		<a href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
-		
-		<?php if ($this->_tpl_vars['COMPANY']['r_spacename']): ?><a href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['COMPANY']['r_spacename'])), $this);?>
-" class="leftlogodetail"><img title="<?php echo $this->_tpl_vars['COMPANY']['r_name']; ?>
-" alt="<?php echo $this->_tpl_vars['COMPANY']['r_name']; ?>
-" src="<?php echo $this->_tpl_vars['COMPANY']['r_logo']; ?>
-" /><span class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['COMPANY']['r_shop_name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
-</span></a><?php endif; ?>
-		
-		<?php $_from = $this->_tpl_vars['banners']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
-    foreach ($_from as $this->_tpl_vars['itemxxx']):
-?>
-		
-			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="<?php echo smarty_function_the_url(array('module' => 'banner_click','id' => ($this->_tpl_vars['itemxxx']['id'])), $this);?>
-"><img title="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" alt="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" src="<?php echo $this->_tpl_vars['itemxxx']['image']; ?>
-" /><span class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
-</span></a>-->
-			<a class="" style="border: none;margin-top: 10px;padding-top: 5px;border-top:solid 1px #ccc;" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
-"><?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-</a>
-			<a class="leftlogodetail" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['itemxxx']['space_name'])), $this);?>
-">
-				<img title="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" alt="<?php echo $this->_tpl_vars['itemxxx']['title']; ?>
-" src="<?php echo $this->_tpl_vars['itemxxx']['image']; ?>
-" />
-				<span style="display: none" class="shopname_right"><?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 32) : smarty_modifier_truncate($_tmp, 32)); ?>
-</span>
-			</a>
-			<?php echo ((is_array($_tmp=$this->_tpl_vars['itemxxx']['description'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 99) : smarty_modifier_truncate($_tmp, 99)); ?>
-
-		
-		<?php endforeach; endif; unset($_from); ?>
-		
-		
-		<?php $this->_tag_stack[] = array('product', array('name' => 'itemz','industryid' => ($this->_tpl_vars['inn_array']),'row' => 2)); $_block_repeat=true;smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
-		    <?php if ($this->_tpl_vars['Product']['id'] != $this->_tpl_vars['itemz']['id']): ?>
-			<a style="display: none" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemz']['id'])), $this);?>
-"><img title="<?php echo $this->_tpl_vars['itemz']['name']; ?>
-" alt="<?php echo $this->_tpl_vars['itemz']['name']; ?>
-" src="<?php echo $this->_tpl_vars['itemz']['thumb']; ?>
-" /></a>
-		    <?php endif; ?>
-		<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_product($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
-		
-		<!--<a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['banner']['banner1_id']; ?>
-"><img src="<?php echo $this->_tpl_vars['banner']['banner1']; ?>
-" /></a>-->
 	    </div>
 	</div>
 </div>
 
+<div class="middle-bottom-line" style="clear: both"></div>
 
+<h3 class="related_bottom_h3">Sản phẩm cùng loại</h3>
+<div class="related_products_bottom">	
+	<ul>
+		
+		<?php $_from = $this->_tpl_vars['bottom_related_products']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['levelvv'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['levelvv']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['keyvv'] => $this->_tpl_vars['itemvv']):
+        $this->_foreach['levelvv']['iteration']++;
+?>
+			<li class="">
+				<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemvv']['id']),'product_name' => ($this->_tpl_vars['itemvv']['name'])), $this);?>
+" title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
+">
+					<div class="img_box">
+						<img title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
+" alt="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
+" src="<?php echo $this->_tpl_vars['itemvv']['thumb']; ?>
+" />
+					</div>
+					<?php echo ((is_array($_tmp=$this->_tpl_vars['itemvv']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 45) : smarty_modifier_truncate($_tmp, 45)); ?>
+
+				</a>
+				<?php if ($this->_tpl_vars['itemvv']['new_price'] || $this->_tpl_vars['itemvv']['price']): ?>
+					<?php if ($this->_tpl_vars['itemvv']['new_price'] != "" && $this->_tpl_vars['itemvv']['new_price'] != 0): ?>
+						<span class="price"><?php if ($this->_tpl_vars['itemvv']['price']): ?><span class="old_price"><?php echo $this->_tpl_vars['itemvv']['price']; ?>
+ <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
+<?php endif; ?></span></span><?php endif; ?> <span class="amount"><?php echo $this->_tpl_vars['itemvv']['new_price']; ?>
+</span> <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
+<?php endif; ?></span></span> <?php if ($this->_tpl_vars['itemvv']['price_note']): ?><span class="noteprice">(<?php echo $this->_tpl_vars['itemvv']['price_note']; ?>
+)</span><?php endif; ?>
+					<?php else: ?>
+						<span class="price"><span class="amount"><?php echo $this->_tpl_vars['itemvv']['price']; ?>
+</span> <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
+<?php endif; ?></span></span>
+					<?php endif; ?>
+				<?php endif; ?>
+			</li>
+		<?php endforeach; endif; unset($_from); ?>
+		
+	</ul>
+</div>
 
 <div class="bottom_industry_list">
 	<h3><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
@@ -964,7 +980,7 @@ if ($this->_foreach['level_0']['total'] > 0):
         $this->_foreach['level_0']['iteration']++;
 ?>
 			<li class="level0 <?php if ($this->_tpl_vars['level_0']%4 == 0): ?>clear<?php endif; ?>">
-				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id'])), $this);?>
+				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['item0']['name']; ?>
 </a>
 				<ul>
@@ -974,7 +990,7 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
         $this->_foreach['level_1_industry']['iteration']++;
 ?>
 						<li class="level1 <?php if ($this->_tpl_vars['key_level1'] > 4): ?>hide<?php endif; ?>">
-							<a class="level1" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id'])), $this);?>
+							<a class="level1" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id']),'title' => ($this->_tpl_vars['level1']['name'])), $this);?>
 "><?php echo $this->_tpl_vars['level1']['name']; ?>
 </a>
 						</li>

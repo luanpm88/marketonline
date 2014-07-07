@@ -109,9 +109,32 @@ class Space extends PbController {
 			$this->base_url = URL."{$user_id}";
 			foreach ($space_actions as $key=>$val) {
 				if($val=="index" || $val=="home"){
-					$tmp_menus[$val] = URL."".$user_id;
+					$tmp_menus[$val] = URL.$user_id;
 				}else{
-					$tmp_menus[$val] = URL.$user_id."/".$val.".htmls";
+					switch($val) {
+						case "offer":
+							$val_s = "thuong-mai";
+							break;
+						case "news":
+							$val_s = "tin-tuc";
+							break;
+						case "job":
+							$val_s = "tuyen-dung";
+							break;
+						case "intro":
+							$val_s = "ho-so";
+							break;
+						case "contact":
+							$val_s = "lien-he";
+							break;
+						case "product":
+							$val_s = "san-pham";
+							break;
+						default:
+							$val_s = "";
+							break;
+					}
+					$tmp_menus[$val] = URL.$user_id."/".$val_s;
 				}
 			}
 		}else{

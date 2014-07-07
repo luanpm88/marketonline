@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 15:06:40
+<?php /* Smarty version 2.6.27, created on 2014-07-03 09:14:02
          compiled from default/studypost/_other_school_list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/studypost/_other_school_list.html', 6, false),array('modifier', 'truncate', 'default/studypost/_other_school_list.html', 9, false),)), $this); ?>
@@ -11,7 +11,7 @@ if ($this->_foreach['level']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
         $this->_foreach['level']['iteration']++;
 ?>
-                <li onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id'])), $this);?>
+                <li onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['item']['id']),'title' => ($this->_tpl_vars['item']['name'])), $this);?>
 '" class="school_list_box <?php if ($this->_tpl_vars['item']['id'] == $this->_tpl_vars['school']['id']): ?>active<?php endif; ?>">
                     <a class="head-title">
                         <img src="<?php echo $this->_tpl_vars['WebRootUrl']; ?>

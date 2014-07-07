@@ -14,8 +14,8 @@
                                     </li>
                             <!--{/loop}-->
                         {/if}
-                        {if $pb_userinfo.id == 757}
-                            <li class="title" style="">Đang trực tuyến</li>
+                        {if $pb_userinfo.id}
+                            <li class="title" style="">Đang trực tuyến ({$count_online_list})</li>
                                 {if !$online_list}
                                     <li style="text-align: center">Chưa có bạn</li>
                                 {else}

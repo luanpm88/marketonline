@@ -68,7 +68,19 @@
 	    </div>	
 	</div>
         <!--{else}-->
-        <a href="logging.php">{lang pls_login}</a><a href="register.php?typename=Company">{lang register_now}</a>
+	    <a href="logging.php">{lang pls_login}</a>
+	    {if $smarty.get.do == "product" || $smarty.get.do == ""}
+		<a href="{the_url module="register"}">{lang register_now}</a>	    
+	    {/if}
+	    {if $smarty.get.do == "employee"}
+		<a href="{the_url module="register" typename="Employee"}">{lang register_now}</a>	    
+	    {/if}
+	    {if $smarty.get.do == "job"}
+		<a href="{the_url module="register" typename="Employer"}">{lang register_now}</a>	    
+	    {/if}
+	    {if $smarty.get.do == "studypost"}
+		<a href="{the_url module="register" typename="Learner"}">{lang register_now}</a>	    
+	    {/if}
         <!--{/if}-->
         
     </div>

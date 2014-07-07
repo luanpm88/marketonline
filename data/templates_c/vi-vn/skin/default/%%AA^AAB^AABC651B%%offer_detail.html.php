@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-03-28 13:53:20
+<?php /* Smarty version 2.6.27, created on 2014-07-04 14:14:23
          compiled from offer_detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'offer_detail.html', 151, false),array('function', 'formhash', 'offer_detail.html', 153, false),)), $this); ?>
@@ -48,19 +48,19 @@ $(document).ready(function() {
 
               
               <div class="row content_main_left" style="margin-right: 0;">
-    <div style="width: 100%;padding-left: 0; padding-right: 0" class="eleven columns">
+    <div style="width: 100%;padding-left: 0; padding-right: 0;padding-top: 2px;" class="eleven columns">
 
 	<div id="container">
 	<div role="main" id="">
 
 
 
-<h6><a href="<?php echo $this->_tpl_vars['Menus']['offer']; ?>
+<h5 style="text-transform: none;font-size: 16px;"><a href="<?php echo $this->_tpl_vars['Menus']['offer']; ?>
 "><?php echo $this->_tpl_vars['_offer']; ?>
 </a> / <a href="<?php echo $this->_tpl_vars['Menus']['offer']; ?>
 &typeid=<?php echo $this->_tpl_vars['Type']['id']; ?>
 "><?php echo $this->_tpl_vars['Type']['name']; ?>
-</a></h6>
+</a></h5>
 <h3 style="padding: 0; margin: 0 0 0 0;height: auto;margin-bottom: 10px"><?php echo $this->_tpl_vars['Trade']['name']; ?>
 </h3>
 
@@ -290,3 +290,4 @@ $this->_smarty_include(array('smarty_include_tpl_file' => "footer.html", 'smarty
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
+

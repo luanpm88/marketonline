@@ -148,7 +148,7 @@ class Industries extends PbModel {
  				if (!function_exists("smarty_function_the_url")) {
  					require(PLUGIN_PATH."slug/function.the_url.php");
  				}
- 				$r[] = "<a href='".smarty_function_the_url(array("module"=>$do,"level"=>$level, "industryid"=>$the_id))."' rel='special_link'>".$datas[$val]."</a>";
+ 				$r[] = "<a href='".smarty_function_the_url(array("module"=>$do,"level"=>$level, "industryid"=>$the_id, "title"=>$datas[$val]))."' rel='special_link'>".$datas[$val]."</a>";
  			}else{
  				$r[] = $datas[$val];
  			}

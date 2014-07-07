@@ -61,11 +61,11 @@
                                 </a>
                             {/if}
                             <div class="box-group-info">
-                                <a href="{the_url module=studypost action=group id=`$group.id`}"><img src="{$group.logo}" /></a>
+                                <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}"><img src="{$group.logo}" /></a>
                                 <div class="box2">
                                     <div class="box-top"><label>Thành viên</label>{$group.member_count}</div>
                                     <div class="box-bottom"><label>Quản trị viên</label>
-                                        <a href="{the_url module=studypost action=memberpage id=`$group_leader.id`}">{$group_leader.first_name} {$group_leader.last_name}</a>
+                                        <a href="{the_url module=studypost action=memberpage id=`$group_leader.id` title=`$group_leader.fullname`}">{$group_leader.first_name} {$group_leader.last_name}</a>
                                            
                                     </div>
                                         {if $pb_userid == 10309}
@@ -89,7 +89,7 @@
                         
                     <h1>{$group.name}</h1>                    
                 </div>
-                
+                <!--{include file="`$theme_name`/studypost/_group_menu.html"}-->
                 <!--{include file="`$theme_name`/studypost/_joined_groups.html"}-->
                 
             </div>
@@ -160,7 +160,7 @@
                             <!--{include file="`$theme_name`/studypost/_other_school_list.html"}-->
                             <ul class="group_list">
                                 <li class="{if $smarty.get.action == 'school'}active{/if}">
-                                    <a class="logo" style="background-image:url('{$WebRootUrl}/{$school.logo}')" href="{the_url module=studypost action=school id=`$school.id`}" title="{$school.name}">
+                                    <a class="logo" style="background-image:url('{$WebRootUrl}/{$school.logo}')" href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}" title="{$school.name}">
                                         {$school.name|truncate:40}
                                         <div class="more-studybar">Thành viên: {$school.member_count}</div>
                                     </a>
@@ -178,7 +178,7 @@
                                     <!--{loop $waiting_list mem level_group group_key}-->
                                         <li class="group_item">
                                             <div  {if $mem.photo}style="background:url({$mem.info.photo}) no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)"{/if} class="logo" onclick="" title="{$mem.info.first_name} {$mem.info.last_name}">
-                                                <strong onclick="window.location='{the_url module=studypost action=memberpage id=`$mem.info.id`}'">{$mem.info.first_name} {$mem.info.last_name}</strong>
+                                                <strong onclick="window.location='{the_url module=studypost action=memberpage id=`$mem.info.id` title=`$mem.fullname`}'">{$mem.info.first_name} {$mem.info.last_name}</strong>
                                                 <p>{$mem.info.school_name}</p>
                                                 <div class="action">
                                                     <a href="{the_url module=studypost action=group_accept id=`$mem.info.id` group_id=`$mem.studygroup_id`}">Duyệt</a>

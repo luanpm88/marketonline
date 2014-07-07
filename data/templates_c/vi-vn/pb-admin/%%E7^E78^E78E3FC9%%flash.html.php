@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-05-11 02:18:17
+<?php /* Smarty version 2.6.27, created on 2014-07-04 10:00:42
          compiled from flash.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strip_tags', 'flash.html', 16, false),)), $this); ?>

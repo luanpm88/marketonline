@@ -1934,3 +1934,12 @@ a.following
 {
     border-bottom: solid 1px #aaa;
 }
+.foot-col2, .foot-col1 {
+    margin-bottom: 18px;
+}
+#darkf .user_footer {
+    padding: 12px 0 0px !important;
+}
+#header {
+    padding-top: 42px !important;
+}
