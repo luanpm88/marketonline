@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-11 16:19:11
+<?php /* Smarty version 2.6.27, created on 2014-07-09 16:36:36
          compiled from membercheckout.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'membercheckout.html', 22, false),array('modifier', 'pl', 'membercheckout.html', 122, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'membercheckout.html', 22, false),array('modifier', 'pl', 'membercheckout.html', 127, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -62,11 +62,11 @@ unset($_smarty_tpl_vars);
 " id="dataZone">
 		<thead>
 			<tr>
-			  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<?php echo $this->_tpl_vars['_select_switch']; ?>
+			  <th width="4%" class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="<?php echo $this->_tpl_vars['_select_switch']; ?>
 "></th>
-			  <th><label for="idAll"><?php echo $this->_tpl_vars['_cp_username']; ?>
+			  <th width="15%"><label for="idAll"><?php echo $this->_tpl_vars['_cp_username']; ?>
 </label></th>
-			  <th>Người giới thiệu</th>
+			  <th width="15%">Người giới thiệu</th>
 			  <th>Khách hàng (đã giới thiệu)</th>
 			   <th style="text-align: center;"><?php echo $this->_tpl_vars['_checkout']; ?>
 </th>
@@ -84,91 +84,99 @@ unset($_smarty_tpl_vars);
 			<?php $_from = $this->_tpl_vars['Items']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
 ?>
-			<tr class="tatr2">
-			  <td class="firstCell" valign="top"><?php if ($this->_tpl_vars['item']['candelete']): ?><input type="checkbox" name="id[]" value="<?php echo $this->_tpl_vars['item']['id']; ?>
+			
+				<tr class="tatr2">
+				  <td class="firstCell" valign="top"><?php if ($this->_tpl_vars['item']['candelete']): ?><input type="checkbox" name="id[]" value="<?php echo $this->_tpl_vars['item']['id']; ?>
 " onclick="pbCheckItem(this,'idAll');" id="item_<?php echo $this->_tpl_vars['item']['id']; ?>
 " title="<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php endif; ?></td>
-			  <td valign="top"><label for="item_<?php echo $this->_tpl_vars['item']['id']; ?>
+				  <td valign="top"><label for="item_<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo $this->_tpl_vars['item']['username']; ?>
 </label><br><span style="color:gray;" title="<?php echo $this->_tpl_vars['item']['NickName']; ?>
 "><small><?php echo $this->_tpl_vars['item']['NickName']; ?>
 </small></span></td>
-			  <td valign="top">
-				<?php if ($this->_tpl_vars['item']['parent']): ?><a href="#"><?php echo $this->_tpl_vars['item']['parent']['username']; ?>
- (<?php echo $this->_tpl_vars['item']['parent']['first_name']; ?>
+				  <td valign="top">
+					<?php if ($this->_tpl_vars['item']['parent']): ?><?php echo $this->_tpl_vars['item']['parent']['username']; ?>
+<br /><small><?php echo $this->_tpl_vars['item']['parent']['first_name']; ?>
  <?php echo $this->_tpl_vars['item']['parent']['last_name']; ?>
-)</a><?php endif; ?>
-			  </td>
-			  <td>
-				<?php if ($this->_tpl_vars['item']['members']): ?>
-				<table class="bglist" width="100%" style="background: #fff;padding: 5px;border: solid 1px #aaa">
-					<tr align="center">
-			    
-					  <th style="text-align: left"><?php echo $this->_tpl_vars['_username']; ?>
+</small><?php endif; ?>
+				  </td>
+				  <td valign="top">
+					<a href="javascript:void(0)" onclick="$('.list<?php echo $this->_tpl_vars['item']['id']; ?>
+').toggle()">Members (<?php echo $this->_tpl_vars['item']['members_count']; ?>
+)</a>
+					<?php if ($this->_tpl_vars['item']['members']): ?>
+					<table class="bglist list<?php echo $this->_tpl_vars['item']['id']; ?>
+" width="100%" style="display: none;background: #fff;padding: 5px;border: solid 1px #aaa">
+						<tr align="center">
+				    
+						  <th style="text-align: left"><?php echo $this->_tpl_vars['_username']; ?>
 </th>
-					  <th style="text-align: left"><?php echo $this->_tpl_vars['_name']; ?>
+						  <th style="text-align: left"><?php echo $this->_tpl_vars['_name']; ?>
 </th>
-
-					  <th><?php echo $this->_tpl_vars['_status_link']; ?>
+	
+						  <th><?php echo $this->_tpl_vars['_status_link']; ?>
 </th>
-					  <th><?php echo $this->_tpl_vars['_checkout']; ?>
+						  <th><?php echo $this->_tpl_vars['_checkout']; ?>
 </th>
-					  <th>Thời gian</th>
-					  <!--<th><?php echo $this->_tpl_vars['_action_link']; ?>
+						  <th>Thời gian</th>
+						  <!--<th><?php echo $this->_tpl_vars['_action_link']; ?>
 </th>-->
-					</tr>
-						    <?php $_from = $this->_tpl_vars['item']['members']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+						</tr>
+							    <?php $_from = $this->_tpl_vars['item']['members']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['itemc']):
 ?>
-
-					<tr align="center" class="bggray">
-			    
-					  <td style="text-align: left"><?php echo $this->_tpl_vars['itemc']['username']; ?>
+	
+						<tr align="center" class="bggray">
+				    
+						  <td style="text-align: left"><?php echo $this->_tpl_vars['itemc']['username']; ?>
 </td>
-					  <td style="text-align: left"><?php echo $this->_tpl_vars['itemc']['info']['first_name']; ?>
+						  <td style="text-align: left"><?php echo $this->_tpl_vars['itemc']['info']['first_name']; ?>
  <?php echo $this->_tpl_vars['itemc']['info']['last_name']; ?>
 </td>
-
-					  <td style="text-align: center"><?php if ($this->_tpl_vars['itemc']['company_status'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
-					  <td style="text-align: center"><?php if ($this->_tpl_vars['itemc']['checkout'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
-					  <td><?php echo $this->_tpl_vars['itemc']['senddate']; ?>
+	
+						  <td style="text-align: center"><?php if ($this->_tpl_vars['itemc']['company_status'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
+						  <td style="text-align: center"><?php if ($this->_tpl_vars['itemc']['checkout'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
+						  <td><?php echo $this->_tpl_vars['itemc']['senddate']; ?>
 </td>
-
-					</tr>
-					<?php endforeach; endif; unset($_from); ?>
-				    </table>
-				<?php endif; ?>
-
-			  </td>
-			  <td  style="text-align: center;padding-top: 10px" valign="top"><?php if ($this->_tpl_vars['item']['checkout'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
-			  <td class="handler" valign="top">
-              <ul id="handler_icon">
-                <?php if ($this->_tpl_vars['item']['candelete']): ?><li><a class="btn_delete" href="member.php?id=<?php echo $this->_tpl_vars['item']['id']; ?>
+	
+						</tr>
+						<?php endforeach; endif; unset($_from); ?>
+					    </table>
+					<?php endif; ?>
+	
+				  </td>
+				  <td  style="text-align: center;padding-top: 10px" valign="top"><?php if ($this->_tpl_vars['item']['checkout'] == 1): ?><img src="../templates/office/images/published.png"><?php else: ?><img src="../templates/office/images/unpublished.png"><?php endif; ?></td>
+				  <td class="handler" valign="top">
+					<ul id="handler_icon">
+					  <?php if ($this->_tpl_vars['item']['candelete']): ?><li><a class="btn_delete" href="member.php?id=<?php echo $this->_tpl_vars['item']['id']; ?>
 &do=del<?php echo $this->_tpl_vars['addParams']; ?>
 " title="<?php echo $this->_tpl_vars['_delete']; ?>
 "><?php echo $this->_tpl_vars['_delete']; ?>
 </a></li><?php endif; ?>
-                <li><a class="btn_edit" href="member.php?do=edit&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+					  <li><a class="btn_edit" href="member.php?do=edit&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 <?php echo $this->_tpl_vars['addParams']; ?>
 " title="<?php echo $this->_tpl_vars['_edit']; ?>
 "><?php echo $this->_tpl_vars['_edit']; ?>
 </a></li>
-		<li style="width: auto"><a class="btn_paid" href="member.php?do=paid&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+					  <!--<li style="width: auto">
+						<a class="btn_paid" href="member.php?do=paid&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 <?php echo $this->_tpl_vars['addParams']; ?>
 " title="<?php echo $this->_tpl_vars['_paid']; ?>
 " onclick="return confirm('<?php echo $this->_tpl_vars['_checkout_confirm']; ?>
 ')"><?php echo $this->_tpl_vars['_paid']; ?>
-<br /></a></li>
-		<li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+<br /></a>
+					  </li>
+					  <li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 <?php echo $this->_tpl_vars['addParams']; ?>
 " title="<?php echo $this->_tpl_vars['_unpaid']; ?>
 " onclick="return confirm('<?php echo $this->_tpl_vars['_delete_checkout_confirm']; ?>
 ')"><?php echo $this->_tpl_vars['_unpaid']; ?>
-</a></li>
-              </ul>
-              </td>
-			</tr>
+</a></li>-->
+					</ul>
+					</td>
+				</tr>
+
 			<?php endforeach; else: ?>
 			<tr class="no_data info">
 			  <td colspan="11"><?php echo $this->_tpl_vars['_no_datas']; ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 16:10:28
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:23:38
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 1172, false),array('function', 'the_url', 'header.html', 1194, false),array('function', 'formhash', 'header.html', 1254, false),)), $this); ?>
@@ -23,7 +23,7 @@ images/style.css" rel="stylesheet" type="text/css">
 <script src="../data/cache/<?php echo $this->_tpl_vars['JsLanguage']; ?>
 /locale.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
 "></script>
-<script src="../scripts/jquery/jquery.validate_.js"></script>
+<script src="../scripts/jquery/jquery.validate_2.js"></script>
 <script src="../scripts/general.js"></script>
 <script type='text/javascript' src='../images/jwplayer/jwplayer.js'></script>
 <script type='text/javascript' src='../templates/default/js/jquery.resizecrop-1.0.3.js'></script>
@@ -350,15 +350,15 @@ images/style.css" rel="stylesheet" type="text/css">
     }
     
     function getTopChat() {
-		//code
-		$.ajax({
-			url: "../index.php?do=product&action=getTopChatAnnounce",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$("#message_out").html(data);
-				//alert(data);
-			}
-		});
+	//code
+	$.ajax({
+		url: "../index.php?do=product&action=getTopChatAnnounce",
+	}).done(function ( data ) {
+		if( console && console.log ) {
+			$("#message_out").html(data);
+			//alert(data);
+		}
+	});
     }
     
     function updateChatbox()

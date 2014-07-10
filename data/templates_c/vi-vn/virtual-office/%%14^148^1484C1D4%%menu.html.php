@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 22:34:19
+<?php /* Smarty version 2.6.27, created on 2014-07-09 11:26:15
          compiled from menu.html */ ?>
 <table class="menu_nav" >
 	<tr>
@@ -128,7 +128,10 @@ images/invoice.png"></th>
 					  <th><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
 images/invoice.png"></th>
 					  <td><a href="sellerorder.php"><?php echo $this->_tpl_vars['_sell_order']; ?>
-</a></td>
+</a>
+						<?php if ($this->_tpl_vars['count_sellerorder']): ?><div class="unread"><span><?php echo $this->_tpl_vars['count_sellerorder']; ?>
+</span></div><?php endif; ?>
+					  </td>
 					</tr>
 				</table></td>
 			  </tr>

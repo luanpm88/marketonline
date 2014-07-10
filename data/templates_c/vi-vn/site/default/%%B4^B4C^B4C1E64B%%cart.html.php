@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 14:54:40
+<?php /* Smarty version 2.6.27, created on 2014-07-07 13:41:00
          compiled from default%5Cproduct/cart.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/cart.html', 62, false),)), $this); ?>
@@ -99,13 +99,13 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
         $this->_foreach['sticky_offer']['iteration']++;
 ?>
 							<tr>
-							<td class="offer_img" width="9%"><a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
+							<td class="offer_img" width="9%"><a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id']),'product_name' => ($this->_tpl_vars['sticky']['p_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><img src="<?php echo $this->_tpl_vars['sticky']['image']; ?>
 " border=0 alt="<?php echo $this->_tpl_vars['sticky']['title']; ?>
 "></a></td>
 							<td style="padding-top: 20px" class="title_link">
-								<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
+								<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id']),'product_name' => ($this->_tpl_vars['sticky']['p_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 </a>

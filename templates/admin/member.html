@@ -1,4 +1,35 @@
 <!-- {include file="header.html"} -->
+<!--{literal}-->
+<script>
+	$(document).ready(function() {
+		$('.btn_paid').click(function() {			
+			if($(this).parent().find('input[name=months]').val() != '' && $(this).parent().find('input[name=amount]').val() != '') {
+				if(confirm('<!--{/literal}-->{lang checkout_confirm}<!--{literal}-->')) {
+					$('#paid_form input[name=id]').val($(this).parent().find('input[name=id]').val());
+					$('#paid_form input[name=months]').val($(this).parent().find('input[name=months]').val());
+					$('#paid_form input[name=amount]').val($(this).parent().find('input[name=amount]').val());
+					$('#paid_form').submit();
+				}
+			}
+			else
+			{
+				alert("Chọn số tháng và số tiền!");
+			}
+		});
+	});
+</script>
+<!--{/literal}-->
+
+
+<form id="paid_form" action="member.php" method="get">
+	<input type="hidden" name="do" value="paid" />
+	<input type="hidden" name="id" value="" />
+	<input placeholder="tháng" type="text" name="months" style="float: left;width: 35px;margin-right: 5px;text-align: right" />
+	<input placeholder="số tiền" type="text" name="amount" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
+	<a class="btn_paid check{$item.id}" href="#" title="{lang paid}" onclick="">{lang paid}</a>
+</form>
+
+
 <div id="currentPosition">
 	<p>{lang your_current_position} {lang member_center} &raquo; {lang member}</p>
 </div>
@@ -40,14 +71,14 @@
 			  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
 			  <th><label for="idAll">{lang cp_username}</label></th>
 			  <th>{lang times}</th>
-			  <th>{lang checked_status}</th>
+			  <th>checked_status</th>
 			  <th>{lang ip_address}</th>
 			  <th>{lang trust_type}</th>
 			  <th>{lang membergroup}</th>
 			  <th>{lang integral}</th>
-			  <th>{lang trust_star}</th>
-			   <th>{lang checkout}</th>
-			  <th>{lang action}</th>
+			  <th>trust_star</th>
+			   
+			  <th width="20%">{lang action}</th>
 			</tr>
 		</thead>
 		<tfoot>
@@ -67,15 +98,25 @@
 			  <td><!-- {if $item.membergroup_id} --><a href="member.php?do=search&groupid={$item.membergroup_id}"><img src="{$item.group_image}" border="0" alt="{$Membergroups[$item.membergroup_id].name}" /></a><!-- {/if} --></td>
 			  <td>{$item.points}</td>
 			  <td>{$item.credits}</td>
-			  <td>{$item.checkout}</td>
-			  <td class="handler">
-              <ul id="handler_icon">
-                {if $item.candelete}<li><a class="btn_delete" href="member.php?id={$item.id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>{/if}
-                <li><a class="btn_edit" href="member.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
-		<li style="width: auto"><a class="btn_paid" href="member.php?do=paid&id={$item.id}{$addParams}" title="{lang paid}" onclick="return confirm('{lang checkout_confirm}')">{lang paid}<br /></a></li>
-		<li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id={$item.id}{$addParams}" title="{lang unpaid}" onclick="return confirm('{lang delete_checkout_confirm}')">{lang unpaid}</a></li>
-              </ul>
-              </td>
+			  
+			<td class="handler">
+				<ul id="handler_icon">
+				  {if $item.candelete}<li><a class="btn_delete" href="member.php?id={$item.id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>{/if}
+				  <li><a class="btn_edit" href="member.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+				  {if !$item.checkout}
+					<li style="width: auto">
+						<!--<form action="member.php" method="get">
+							<input type="hidden" name="do" value="paid" />-->
+							<input type="hidden" name="id" value="{$item.id}" />
+							<input placeholder="tháng" type="text" name="months" style="float: left;width: 35px;margin-right: 5px;text-align: right" />
+							<input placeholder="số tiền" type="text" name="amount" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
+							<a class="btn_paid check{$item.id}" href="#" title="{lang paid}" onclick="">{lang paid}</a>
+						<!--</form>-->
+					</li>
+				  {/if}
+				  <!--<li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id={$item.id}{$addParams}" title="{lang unpaid}" onclick="return confirm('{lang delete_checkout_confirm}')">{lang unpaid}</a></li>-->
+				</ul>
+			</td>
 			</tr>
 			<!--{foreachelse}-->
 			<tr class="no_data info">

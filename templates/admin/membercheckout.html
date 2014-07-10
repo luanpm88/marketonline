@@ -37,9 +37,9 @@
   <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}" id="dataZone">
 		<thead>
 			<tr>
-			  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
-			  <th><label for="idAll">{lang cp_username}</label></th>
-			  <th>Người giới thiệu</th>
+			  <th width="4%" class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
+			  <th width="15%"><label for="idAll">{lang cp_username}</label></th>
+			  <th width="15%">Người giới thiệu</th>
 			  <th>Khách hàng (đã giới thiệu)</th>
 			   <th style="text-align: center;">{lang checkout}</th>
 			  <th>{lang action}</th>
@@ -52,52 +52,57 @@
 		<tfoot>
 		<tbody>
 			<!--{foreach from=$Items item=item}-->
-			<tr class="tatr2">
-			  <td class="firstCell" valign="top">{if $item.candelete}<input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}">{/if}</td>
-			  <td valign="top"><label for="item_{$item.id}">{$item.username}</label><br><span style="color:gray;" title="{$item.NickName}"><small>{$item.NickName}</small></span></td>
-			  <td valign="top">
-				{if $item.parent}<a href="#">{$item.parent.username} ({$item.parent.first_name} {$item.parent.last_name})</a>{/if}
-			  </td>
-			  <td>
-				{if $item.members}
-				<table class="bglist" width="100%" style="background: #fff;padding: 5px;border: solid 1px #aaa">
-					<tr align="center">
-			    
-					  <th style="text-align: left">{lang username}</th>
-					  <th style="text-align: left">{lang name}</th>
+			
+				<tr class="tatr2">
+				  <td class="firstCell" valign="top">{if $item.candelete}<input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}">{/if}</td>
+				  <td valign="top"><label for="item_{$item.id}">{$item.username}</label><br><span style="color:gray;" title="{$item.NickName}"><small>{$item.NickName}</small></span></td>
+				  <td valign="top">
+					{if $item.parent}{$item.parent.username}<br /><small>{$item.parent.first_name} {$item.parent.last_name}</small>{/if}
+				  </td>
+				  <td valign="top">
+					<a href="javascript:void(0)" onclick="$('.list{$item.id}').toggle()">Members ({$item.members_count})</a>
+					{if $item.members}
+					<table class="bglist list{$item.id}" width="100%" style="display: none;background: #fff;padding: 5px;border: solid 1px #aaa">
+						<tr align="center">
+				    
+						  <th style="text-align: left">{lang username}</th>
+						  <th style="text-align: left">{lang name}</th>
+	
+						  <th>{lang status_link}</th>
+						  <th>{lang checkout}</th>
+						  <th>Thời gian</th>
+						  <!--<th>{lang action_link}</th>-->
+						</tr>
+							    <!--{foreach from=$item.members item=itemc}-->
+	
+						<tr align="center" class="bggray">
+				    
+						  <td style="text-align: left">{$itemc.username}</td>
+						  <td style="text-align: left">{$itemc.info.first_name} {$itemc.info.last_name}</td>
+	
+						  <td style="text-align: center">{if $itemc.company_status == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+						  <td style="text-align: center">{if $itemc.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+						  <td>{$itemc.senddate}</td>
+	
+						</tr>
+						<!--{/foreach}-->
+					    </table>
+					{/if}
+	
+				  </td>
+				  <td  style="text-align: center;padding-top: 10px" valign="top">{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
+				  <td class="handler" valign="top">
+					<ul id="handler_icon">
+					  {if $item.candelete}<li><a class="btn_delete" href="member.php?id={$item.id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>{/if}
+					  <li><a class="btn_edit" href="member.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+					  <!--<li style="width: auto">
+						<a class="btn_paid" href="member.php?do=paid&id={$item.id}{$addParams}" title="{lang paid}" onclick="return confirm('{lang checkout_confirm}')">{lang paid}<br /></a>
+					  </li>
+					  <li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id={$item.id}{$addParams}" title="{lang unpaid}" onclick="return confirm('{lang delete_checkout_confirm}')">{lang unpaid}</a></li>-->
+					</ul>
+					</td>
+				</tr>
 
-					  <th>{lang status_link}</th>
-					  <th>{lang checkout}</th>
-					  <th>Thời gian</th>
-					  <!--<th>{lang action_link}</th>-->
-					</tr>
-						    <!--{foreach from=$item.members item=itemc}-->
-
-					<tr align="center" class="bggray">
-			    
-					  <td style="text-align: left">{$itemc.username}</td>
-					  <td style="text-align: left">{$itemc.info.first_name} {$itemc.info.last_name}</td>
-
-					  <td style="text-align: center">{if $itemc.company_status == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
-					  <td style="text-align: center">{if $itemc.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
-					  <td>{$itemc.senddate}</td>
-
-					</tr>
-					<!--{/foreach}-->
-				    </table>
-				{/if}
-
-			  </td>
-			  <td  style="text-align: center;padding-top: 10px" valign="top">{if $item.checkout == 1}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}</td>
-			  <td class="handler" valign="top">
-              <ul id="handler_icon">
-                {if $item.candelete}<li><a class="btn_delete" href="member.php?id={$item.id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>{/if}
-                <li><a class="btn_edit" href="member.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
-		<li style="width: auto"><a class="btn_paid" href="member.php?do=paid&id={$item.id}{$addParams}" title="{lang paid}" onclick="return confirm('{lang checkout_confirm}')">{lang paid}<br /></a></li>
-		<li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id={$item.id}{$addParams}" title="{lang unpaid}" onclick="return confirm('{lang delete_checkout_confirm}')">{lang unpaid}</a></li>
-              </ul>
-              </td>
-			</tr>
 			<!--{foreachelse}-->
 			<tr class="no_data info">
 			  <td colspan="11">{lang no_datas}</td>

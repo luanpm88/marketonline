@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 10:17:14
+<?php /* Smarty version 2.6.27, created on 2014-07-07 14:05:53
          compiled from product_admin.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array('PageTitle' => ($this->_tpl_vars['_space_product']),'cur' => 'space_index')));
@@ -730,17 +730,11 @@ if ($this->_foreach['spacelink']['total'] > 0):
       </h1>
 
 
-<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-  <div class="postitem"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php else: ?>
-  <div class="postitem"><a href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-  <a target="_blank" href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php endif; ?>
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_postitems.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
     
     
   </div>

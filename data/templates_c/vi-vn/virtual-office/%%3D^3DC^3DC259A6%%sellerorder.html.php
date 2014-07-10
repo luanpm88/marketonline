@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 13:32:34
+<?php /* Smarty version 2.6.27, created on 2014-07-09 11:32:54
          compiled from sellerorder.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'sellerorder.html', 24, false),)), $this); ?>
@@ -44,7 +44,7 @@ images/offer_01.gif" /></div>
               
 	      <th style="text-align: left" width="25%"><?php echo $this->_tpl_vars['_buyer']; ?>
 </th>
-	      <th style="text-align: left" width="40%"><?php echo $this->_tpl_vars['_message']; ?>
+	      <th style="text-align: left" width="20%"><?php echo $this->_tpl_vars['_message']; ?>
 </th>
 	      <th width="20%"><?php echo $this->_tpl_vars['_time']; ?>
 </th>
@@ -57,13 +57,15 @@ images/offer_01.gif" /></div>
 			<?php $_from = $this->_tpl_vars['Items']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['item']):
 ?>
-            <tr class="bggray">
+            <tr class="bggray read<?php echo $this->_tpl_vars['item']['read']; ?>
+">
               
 
 	      <td style="text-align: left" width=10%><a href="sellerorder.php?do=view&id=<?php echo $this->_tpl_vars['item']['id']; ?>
-"><?php echo $this->_tpl_vars['item']['first_name']; ?>
+"><?php if ($this->_tpl_vars['item']['first_name']): ?><?php echo $this->_tpl_vars['item']['first_name']; ?>
  <?php echo $this->_tpl_vars['item']['last_name']; ?>
-</a></td>
+ <?php else: ?><?php echo $this->_tpl_vars['item']['username']; ?>
+<?php endif; ?></a></td>
 	      <td style="text-align: left" align="left"><?php echo $this->_tpl_vars['item']['message']; ?>
 </td>
 	      <td><?php echo $this->_tpl_vars['item']['created']; ?>
@@ -76,7 +78,11 @@ images/offer_01.gif" /></div>
 	      
               
             </tr>
-			<?php endforeach; endif; unset($_from); ?>
+			<?php endforeach; else: ?>
+				<tr class="no_data info">
+				  <td colspan="7">Chưa có đơn đặt hàng</td>
+				</tr>
+			<?php endif; unset($_from); ?>
             <tr align="center" class="bggray">
               <td colspan="5"><?php echo $this->_tpl_vars['ByPages']; ?>
 </td>

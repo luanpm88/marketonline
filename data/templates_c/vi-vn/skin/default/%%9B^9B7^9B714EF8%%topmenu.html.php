@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 09:55:56
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:07:18
          compiled from topmenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'topmenu.html', 77, false),array('function', 'the_url', 'topmenu.html', 300, false),)), $this); ?>
@@ -142,7 +142,7 @@ index.php?do=product&action=change_logo_home" enctype="multipart/form-data" onsu
 " />
 	
 	
-	  <p><input type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+	  <p><input accept="image/*" type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
 	  
 	  
 	  <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="<?php echo $this->_tpl_vars['_upload']; ?>

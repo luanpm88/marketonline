@@ -203,12 +203,14 @@ if (isset($_GET['do'])) {
 $fields = "Member.id,username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,last_ip,points,credits,membergroup_id,status,Member.created AS pubdate,last_login,trusttype_ids,checkout,links.parent_id,rlinks.mm";
 
 $conditions[] = "(rlinks.mm IS NOT NULL OR links.parent_id IS NOT NULL)";
+$conditions[] = "Member.id = rlinks.parent_id";
 
 
 $joins[] = "LEFT JOIN {$tb_prefix}memberfields mf ON Member.id=mf.member_id";
 $joins[] = "LEFT JOIN {$tb_prefix}links links ON links.member_id=Member.id";
 $joins[] = "LEFT JOIN (SELECT parent_id,MAX(member_id) as mm FROM {$tb_prefix}links GROUP BY parent_id) rlinks ON rlinks.parent_id=Member.id";
 
+$page->displaypg = 1000;
 
 $amount = $member->findCount($joins, $conditions, "Member.id");
 $page->setPagenav($amount);
@@ -235,6 +237,7 @@ if (!empty($result)) {
 		
 		//referer manager
 		$result[$i]["members"] = $link->findMember($result[$i]["id"]);
+		$result[$i]["members_count"] = count($result[$i]["members"]);
 		//var_dump($result[$i]["members"]);
 		$result[$i]["parent"] = $member->getInfoById($result[$i]["parent_id"]);
 		

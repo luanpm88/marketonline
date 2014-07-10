@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-13 11:15:35
+<?php /* Smarty version 2.6.27, created on 2014-07-07 13:54:50
          compiled from sellerorder_detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'sellerorder_detail.html', 145, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'sellerorder_detail.html', 143, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_view_message'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
@@ -190,11 +190,12 @@ images/offer_01.gif" /></div>
     foreach ($_from as $this->_tpl_vars['sticky']):
 ?>
 							<tr>
-							<td class="offer_img"><img height="60" src="<?php echo $this->_tpl_vars['sticky']['image']; ?>
+							<td class="offer_img"><img height="60" src="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+<?php echo $this->_tpl_vars['sticky']['image']; ?>
 " border=0 alt="<?php echo $this->_tpl_vars['sticky']['title']; ?>
 "></td>
 							<td class="title_link">
-								<a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
+								<a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id']),'product_name' => ($this->_tpl_vars['sticky']['p_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 </a>

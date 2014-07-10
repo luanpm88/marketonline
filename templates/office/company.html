@@ -342,7 +342,7 @@ jQuery(document).ready(function($) {
 	  <!-- {formhash} -->
 	  <input type="hidden" value="{$MEMBER.uername}" name="admin">
 	  <input type="hidden" value="{$COMPANYINFO.id}" name="com_id">
-	  <input type="file" id="change_logo_but" name="upload_logo">
+	  <input type="file" id="change_logo_but" name="upload_logo" accept="image/*">
 	  <input type="submit" value="tải lên" style="padding: 2px 10px; margin-left: 10px;" class="checkout_but">
 	</form>	
 </div>
@@ -383,7 +383,7 @@ jQuery(document).ready(function($) {
 					<div style="margin-top: 5px;<!--{if $item.picture}--> display: none<!--{/if}-->" id="change_logoz"><a href="javascript:void(0)"><!--{if $item.picture}-->{lang change_logo}<!--{else}-->{lang add_logo}<!--{/if}--></a></div>
 					<div id="shop_name"><input title="{lang shop_name_limit}" alt="{lang shop_name_limit}" maxlength="25" value="{$item.shop_name}" id="company_shop_name" name="data[company][shop_name]" class="required" type="text" placeholder="{lang input_shop_name}"/></div>
 					
-					<input id="com_pic" style="margin-bottom: 5px;position: absolute;margin-left: -50000px" name="pic" type="file" id="Picture" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'">
+					<input accept="image/*" id="com_pic" style="margin-bottom: 5px;position: absolute;margin-left: -50000px" name="pic" type="file" id="Picture" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'">
 					
 				</td>
 				<td class="circle_right" valign="top">
@@ -654,7 +654,7 @@ jQuery(document).ready(function($) {
 	      
 	      <tr style="display: none">
                 <th>{lang company_banner} (1200x400)</th>
-                <td><div><input name="banner" type="file" id="Banner" size="32" ></div>
+                <td><div><input accept="image/*" name="banner" type="file" id="Banner" size="32" ></div>
 		<!--{if $item.banner}--><div style="margin-top: 5px"><img style="width: 300px; height: 100px" src="{$item.banner}" width="117" height="63" alt="{lang company_banner}" /></div><!--{/if}--></td>
               </tr>
 	      

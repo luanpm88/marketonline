@@ -1,7 +1,7 @@
 <?php
 class Product extends PbController {
 	var $name = "Product";
-	var $CHAT_COUNT = 40;
+	var $CHAT_COUNT = 50;
 	var $MESSAGE_ANNOUNCE_COUNT = 20;
 	var $CHAT_ANNOUNCE_COUNT = 20;
 	
@@ -73,8 +73,14 @@ class Product extends PbController {
 					setvar("keyword", $keyword);
 				}
 				
+				if(isset($_GET["keyword"]))
+				{
+					$IndustryList["name"] = "Tìm theo từ khóa '<span class='keyword'>".$keyword."</span>'";
+					setvar("keyword", $_GET["keyword"]);
+				}
+				
 				setvar("IndustryList", $IndustryList);
-				render("product/level1");
+				render("product/category");
 			}
 			else if($_GET["level"] == 1)
 			{
@@ -2314,7 +2320,7 @@ class Product extends PbController {
 		
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $MESSAGE_ANNOUNCE_COUNT);
+		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $this->MESSAGE_ANNOUNCE_COUNT);
 		//echo count($result);
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -2372,7 +2378,7 @@ class Product extends PbController {
 		//$conditions[] = "Message.status=0";
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $MESSAGE_ANNOUNCE_COUNT);
+		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $this->MESSAGE_ANNOUNCE_COUNT);
 		//echo count($result);
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -3503,7 +3509,7 @@ class Product extends PbController {
 		$timestamp = $date->getTimestamp();
 		$conditions[] = "Message.created > ".($timestamp - 9000);
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $MESSAGE_ANNOUNCE_COUNT);
+		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $this->MESSAGE_ANNOUNCE_COUNT);
 		//var_dump($result);
 		
 		if (!empty($result)) {
@@ -3736,7 +3742,7 @@ class Product extends PbController {
 		$conditions[] = "((Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id=".$user_id.") OR (Chat.from_member_id=".$pb_userinfo["pb_userid"]." AND Chat.to_member_id=".$user_id."))";
 		if(isset($_GET["date"])) $conditions[] = "Chat.created>".$_GET["date"];
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id");
-		$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created", 0, $CHAT_COUNT);
+		$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created", 0, $this->CHAT_COUNT);
 		
 		
 		if (!empty($result)) {
@@ -3867,7 +3873,7 @@ class Product extends PbController {
 			//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
 		}
 		
-		$result = $this->chat->findAll("Chat.from_member_id, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
+		$result = $this->chat->findAll("Chat.from_member_id, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $this->CHAT_COUNT);
 		
 		$as = array();
 		foreach($result as $item)
@@ -3902,7 +3908,7 @@ class Product extends PbController {
 		
 		$joins[] = "INNER JOIN ( SELECT MAX(created) as maxdate, from_code, to_code FROM {$this->product->table_prefix}chats GROUP BY from_code, to_code ) ppp ON ppp.maxdate = Chat.created AND (ppp.from_code = Chat.from_code OR ppp.to_code = Chat.to_code)";
 		
-		$result = $this->chat->findAll("Chat.*, c.picture, c.shop_name, c2.picture as picture_2, c2.shop_name as shop_name_2", $joins, $conditions, "Chat.created DESC", 0, $CHAT_ANNOUNCE_COUNT, null);
+		$result = $this->chat->findAll("Chat.*, c.picture, c.shop_name, c2.picture as picture_2, c2.shop_name as shop_name_2", $joins, $conditions, "Chat.created DESC", 0, $this->CHAT_ANNOUNCE_COUNT, null);
 		
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -4185,12 +4191,26 @@ class Product extends PbController {
 			return;
 		}
 		
-		//
-		$result = $this->company->fullTextSearch($keyword);
-		
-		//var_dump($result);
-		setvar("list", $result);
-		$this->render("product/ajaxSearch");
+		if(isset($_GET["type"]) && $_GET["type"] == "shop")
+		{
+			//
+			$result = $this->company->fullTextSearch($keyword);
+			
+			//var_dump($result);
+			setvar("list", $result);
+			$this->render("product/ajaxSearch");
+		}
+		else
+		{
+			$_GET["q"] = $keyword;
+			//
+			$this->product->initSearch();
+			$result = $this->product->Search(0, 50);
+			
+			//var_dump($result);
+			setvar("list", $result);
+			$this->render("product/ajaxSearchProduct");
+		}
 	}
 	
 	function updateShowProducts()
@@ -4289,7 +4309,7 @@ class Product extends PbController {
 			
 			
 			$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id");
-			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
+			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, $this->CHAT_COUNT);
 			
 			if (!empty($result)) {
 				for($i=0; $i<count($result); $i++){
@@ -4767,8 +4787,8 @@ class Product extends PbController {
 			$conditions[] = "((Chat.to_code='".$user_code."' AND Chat.from_code='".$chatid."') OR (Chat.from_code='".$user_code."' AND Chat.to_code='".$chatid."'))";
 			
 			$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Chat.from_member_id");
-			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
-			
+			$result = $this->chat->findAll("Chat.*,c.picture", $joins, $conditions, "Chat.created DESC", 0, $this->CHAT_COUNT);
+			//var_dump($this->CHAT_COUNT);
 			if (!empty($result)) {
 				for($i=0; $i<count($result); $i++){
 					
@@ -4852,7 +4872,7 @@ class Product extends PbController {
 			//$conditions[] = "((CONCAT('[]',Chat.membertype_to_ids,'[]') LIKE '%[".$user["current_type"]."]%') OR (CONCAT('[]',Chat.membertype_from_ids,'[]') LIKE '%[".$user["current_type"]."]%'))";
 		}
 		
-		$result = $this->chat->findAll("Chat.from_code, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $CHAT_COUNT);
+		$result = $this->chat->findAll("Chat.from_code, Chat.read", NULL, $conditions, "Chat.created DESC", 0, $this->CHAT_COUNT);
 		
 		$as = array();
 		foreach($result as $item)

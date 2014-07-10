@@ -308,7 +308,7 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
  {literal}
      <script>
 	    $(document).ready(function() {
-	      if ($.browser.msie && parseFloat($.browser.version) <= 10 || parseFloat($.browser.version) == 11) {
+		if ($.browser.msie && parseFloat($.browser.version) <= 10 || parseFloat($.browser.version) == 11) {
 		
 				//cookie
 				 var date = new Date();
@@ -329,7 +329,9 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 				}
 		
 					
-	      }
+		}
+		
+		{/literal}{if $pb_userinfo.id}getChatFriendList({$pb_userinfo.id});{/if}{literal}
 	    });
     </script>
      {/literal}

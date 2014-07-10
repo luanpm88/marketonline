@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-06 16:41:59
+<?php /* Smarty version 2.6.27, created on 2014-07-07 16:23:03
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'product.html', 154, false),array('modifier', 'strip_tags', 'product.html', 158, false),array('modifier', 'default', 'product.html', 221, false),array('function', 'the_url', 'product.html', 196, false),)), $this); ?>
@@ -166,13 +166,13 @@ images/offer_01.gif" /></div>
          <table class="bglist">
               <!-- product -->
                     <col width="75">
-                    <col width="250">
+                    <col width="200">
                     <col width="60">
 			<col width="60">
-				<?php if ($this->_tpl_vars['pb_userinfo']['checkout']): ?><col width="60"><?php endif; ?>
+				<?php if ($this->_tpl_vars['pb_userinfo']['checkout']): ?><col width="71"><?php endif; ?>
                     <col width="60">
 		    <col width="60">
-                    <col width="80">
+                    <col width="82">
                 <tr>
                    <th width="9%"><?php echo $this->_tpl_vars['_sample_image']; ?>
 </th>
@@ -193,7 +193,7 @@ images/offer_01.gif" /></div>
 		   
 		   
 		   
-                   <th width="15%" style="text-align: left"><?php echo $this->_tpl_vars['_operation']; ?>
+                   <th width="" style="text-align: left"><?php echo $this->_tpl_vars['_operation']; ?>
 </th>
                 </tr> 
               <?php $_from = $this->_tpl_vars['Items']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
@@ -209,12 +209,12 @@ images/offer_01.gif" /></div>
 			    <a title="<?php echo $this->_tpl_vars['item']['name']; ?>
 " href="product.php?do=edit<?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>&type=service<?php endif; ?>&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 ">
-				<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 100) : smarty_modifier_truncate($_tmp, 100)); ?>
+				<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 80) : smarty_modifier_truncate($_tmp, 80)); ?>
 
 			    </a>
 			</strong>
 			
-			<p><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['item']['content'])) ? $this->_run_mod_handler('strip_tags', true, $_tmp) : smarty_modifier_strip_tags($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, 180) : smarty_modifier_truncate($_tmp, 180)); ?>
+			<p><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['item']['content'])) ? $this->_run_mod_handler('strip_tags', true, $_tmp) : smarty_modifier_strip_tags($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, 120) : smarty_modifier_truncate($_tmp, 120)); ?>
 </p>
 			<?php if ($this->_tpl_vars['item']['price']): ?><p style="color: #ec8a49"><?php echo $this->_tpl_vars['item']['price']; ?>
  VNĐ</p><?php endif; ?>
@@ -280,7 +280,7 @@ images/unpublished.png">
 </a><br />
 			<a href="product.php?do=edit<?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>&type=service<?php endif; ?>&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo $this->_tpl_vars['_modify']; ?>
-</a><br /><a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name'])), $this);?>
+</a><br /><a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 " target="_blank" title="<?php echo $this->_tpl_vars['_click_preview']; ?>
 "><?php echo $this->_tpl_vars['_click_preview']; ?>
 </a><br /><a onclick="return confirm('<?php echo $this->_tpl_vars['_delete_confirm']; ?>

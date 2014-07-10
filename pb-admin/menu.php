@@ -320,7 +320,11 @@ $menus = array(
             'member' => array(
                 'text'  => "Cộng tác viên",
                 'url'   => 'membercheckout.php',
-            ),	    
+            ),
+            'checkout' => array(
+                'text'  => "Quản lý thanh tóan",
+                'url'   => 'checkout.php',
+            ),
         ),
     ),
 );

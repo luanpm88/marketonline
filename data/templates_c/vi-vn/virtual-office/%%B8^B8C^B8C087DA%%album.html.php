@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-13 09:02:19
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:21:07
          compiled from album.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'strip_tags', 'album.html', 53, false),array('modifier', 'truncate', 'album.html', 53, false),)), $this); ?>
@@ -47,11 +47,11 @@ unset($_smarty_tpl_vars);
 	 <div class="offer_banner"><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
 images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2>
-	<?php if ($this->_tpl_vars['membertype_id'] == 2): ?><?php echo $this->_tpl_vars['_album_company']; ?>
+	<?php if ($this->_tpl_vars['MEMBER']['membergroup_id'] == 3): ?><?php echo $this->_tpl_vars['_album_company']; ?>
 <?php endif; ?>
-	<?php if ($this->_tpl_vars['membertype_id'] == 3): ?><?php echo $this->_tpl_vars['_album_shop']; ?>
+	<?php if ($this->_tpl_vars['MEMBER']['membergroup_id'] == 1): ?><?php echo $this->_tpl_vars['_album_shop']; ?>
 <?php endif; ?>
-	<?php if ($this->_tpl_vars['membertype_id'] == 1): ?><?php echo $this->_tpl_vars['_album_person']; ?>
+	<?php if ($this->_tpl_vars['MEMBER']['membergroup_id'] == 2): ?><?php echo $this->_tpl_vars['_album_person']; ?>
 <?php endif; ?>
      </h2></div>
       <div class="hint"><span class="btn_hint"><a href="album.php?do=edit" class="btn_publish"><?php echo $this->_tpl_vars['_update_album']; ?>

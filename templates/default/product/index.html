@@ -17,9 +17,6 @@
 <!--{literal}-->
 <script type="application/x-javascript">
   
-	  
-  
-   
 	function getMinHeight() {
 	    
 	    //for offer
@@ -41,7 +38,8 @@
 	 }
 	 
 	function ajaxListProduct(filter) {
-		
+		$('.list_loading').show();
+		$('.col_products ul').html("");
 		$.ajax({
 			url: "index.php?do=product&action=listAjax"+filter,
 			beforeSend: function ( xhr ) {
@@ -52,7 +50,7 @@
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 100));
 				//alert($(data).filter(".products_0").html());
-				//$('#list_product_ajax').html(data);
+				$('.list_loading').hide();
 				for (var j=0; j < 4; j++) {
 				    $('#list_product_ajax'+j+' ul').html("");
 				}
@@ -691,6 +689,8 @@
 
 	<div id="container">
 	<div id="content" role="main" class="product_listing">
+	  
+	  <div class="list_loading">mm</div>
 
 	  <div id="offer-ajax-list">
 	      

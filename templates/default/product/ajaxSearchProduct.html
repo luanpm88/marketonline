@@ -1,0 +1,56 @@
+<div class="top_title">Sản phẩm</div>
+{if $list}
+<div class="search-scroll">
+<ul class="product">
+    
+    <!--{loop $list item level key}-->
+        
+            <li onclick="window.location={the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+                <img src="{$item.thumb}" />
+                <h2>
+                    <a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+                        {$item.name|truncate:40}
+                    </a>
+                </h2>
+                <p>
+                    {$item.shop_name}
+                </p>
+                <p>
+                    {if $item.new_price || $item.price}
+			{if $item.new_price != "" && $item.new_price != 0}
+				<span class="price">
+                                    
+                                    <span class="amount">
+                                        {$item.new_price}
+                                    </span>
+                                    <span class="price_unit">
+                                        VNĐ{if $item.price_unit}/{$item.price_unit}{/if}
+                                    </span>
+                                    {if $item.price}
+                                    <!--<span class="old_price">
+                                        {$item.price}
+                                        <span class="price_unit">
+                                            VNĐ{if $item.price_unit}/{$item.price_unit}{/if}
+                                        </span>
+                                    </span>-->
+                                    {/if}
+                                </span>
+			{else}
+				<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+			{/if}
+                    {/if}
+                </p>
+            </li>
+        
+    <!--{/loop}-->
+    <li class="more-topsearch" onclick="window.location='{the_url module=root-url}index.php?do=product&level=search&keyword={$smarty.get.keyword}'">
+        <h2><a href="{the_url module=root-url}index.php?do=product&level=search&keyword={$smarty.get.keyword}">
+        Xem thêm...
+        </a></h2>
+    </li>
+</ul>
+
+</div>
+{else}
+    <div class="no-search-top">Không có sản phẩm phù hợp</div>
+{/if}

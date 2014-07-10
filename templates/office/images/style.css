@@ -3204,7 +3204,6 @@ input[name="other_school_addres"], input[name="other_school_name"] {
     color: #fff;
     padding: 5px 10px;
 }
-
 .top-announce {
     float: right;
     margin-top: -11px;
@@ -3212,10 +3211,14 @@ input[name="other_school_addres"], input[name="other_school_name"] {
 .top-announce a {
     background: none repeat scroll 0 0 red;
     color: #fff;
+    display: block;
+    float: right;
     font-size: 16px;
     font-weight: bold;
+    height: 19px;
     margin-left: 5px;
-    padding: 8px 30px;
+    padding: 5px 20px;
+    height: 19px;
 }
 .top-announce a:hover {
     background: #6dbf7c;
@@ -3228,4 +3231,61 @@ input[name="other_school_addres"], input[name="other_school_name"] {
     line-height: 24px;
     margin-top: 10px;
     text-align: justify;
+}
+.sort_box label {
+    display: block;
+    float: left;
+    padding-top: 3px;
+    width: 80px;
+}
+.back_product_list {
+    display: block;
+    height: 19px;
+    margin-top: -11px;
+    padding: 5px 15px;
+}
+.btn_publish {
+    padding: 4px 22px;
+}
+.btn_hint {
+    margin: -22px 0 0 10px;
+}
+.bglist {
+    margin-top: 15px;
+}
+.bglist th {
+    font-size: 14px;
+}
+.menu_nav .unread {
+    background: none repeat scroll 0 0 red;
+    color: #fff;
+    display: block;
+    float: right;
+    height: 16px;
+    margin-right: 3px;
+    margin-top: -19px;
+    padding: 0 3px;
+    width: auto;
+}
+.menu_nav .unread span {
+    display: block;
+    font-family: arial;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: -2px;
+}
+.bglist .read0, .bglist .read0 td, .bglist .read0 td a {
+    color: red;
+}
+.button {
+    background: none repeat scroll 0 0 #6cbe42;
+    color: #ffffff !important;
+    font-size: 16px !important;
+    height: auto;
+    line-height: normal;
+    margin: 10px 0;
+    padding: 4px 22px;
+    width: auto;
+    display: block;
+    float: left;
 }

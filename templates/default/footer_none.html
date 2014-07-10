@@ -135,6 +135,18 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 				 $("#browser-info-but").trigger('click');
 				}
 	      }
+	      
+	      
+	      //
+	      loadViewedHistory();
+	      
+	      loadMainCategoryMenu();
+	      
+	      //get chat griend list
+	      {/literal}{if $pb_userinfo.id}getChatFriendList({$pb_userinfo.id});{/if}{literal}
+	      setInterval('getChatFriendList({/literal}{$pb_userinfo.id}{literal});',60000);
+	      
+	      <!--{/literal}-->{if $pb_company.id}getNewClicked('{$pb_company.id}');{/if}<!--{literal}-->
 	    });
     </script>
      {/literal}

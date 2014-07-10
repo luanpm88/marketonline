@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 10:19:32
+<?php /* Smarty version 2.6.27, created on 2014-07-08 11:04:46
          compiled from default%5Coffers/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\offers/detail.html', 95, false),array('function', 'formhash', 'default\\offers/detail.html', 222, false),array('modifier', 'truncate', 'default\\offers/detail.html', 278, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\offers/detail.html', 95, false),array('function', 'formhash', 'default\\offers/detail.html', 250, false),array('modifier', 'truncate', 'default\\offers/detail.html', 308, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['Trade']['name'])." - MarketOnline.vn",'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -159,6 +159,9 @@ unset($_smarty_tpl_vars);
 				<span class="previous">.</span>
 			</div>
 			
+			
+			
+			
 			<div class="right-offerbox">
 				<div class="member-title">
 						
@@ -247,6 +250,37 @@ x<?php echo $this->_tpl_vars['member']['membertype_id']; ?>
 				</div>
 				<br style="clear: both" />
 				<br />
+				
+				
+				<a class="" title="" onclick="<?php if (! $this->_tpl_vars['FACE']): ?>goclicky(this, '<?php echo $this->_tpl_vars['F_URL']; ?>
+#welcomenew')<?php else: ?>goclicky_custom(this, '<?php echo $this->_tpl_vars['F_URL']; ?>
+#welcomenew', '<?php echo $this->_tpl_vars['FACE']['images']; ?>
+', '<?php echo $this->_tpl_vars['FACE']['title']; ?>
+', '<?php echo $this->_tpl_vars['FACE']['summary']; ?>
+')<?php endif; ?>" href="javascript:void(0)">
+					<span class="at15t_facebookz">
+						<span class="">Share on facebook</span>
+					</span>
+				</a>
+				<div class="share_buts">
+					
+				  <!-- AddThis Button BEGIN -->
+				<?php echo '
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<!--<a class="addthis_button_facebook"></a>-->
+					<a class="addthis_button_twitter"></a>
+					<a class="addthis_button_google_plusone_share"></a>
+					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+				'; ?>
+
+				<!-- AddThis Button END -->
+				
+				<br style="clear: both" />
+				
+				
 				<div class="detail-comments">
 					<h4><?php echo $this->_tpl_vars['_comments']; ?>
  (<span class="comment_count"><?php echo $this->_tpl_vars['comments_count']; ?>
@@ -294,6 +328,8 @@ image/usericon_big.png  <?php endif; ?> <?php endif; ?>" />
 					
 					</div>
 				</div>
+				
+				
 				
 				
 			</div>

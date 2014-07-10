@@ -196,7 +196,7 @@ if (isset($_GET['do'])) {
 	
 	if($do=="unpaid" && !empty($id))
 	{
-		//$member->saveField("checkout", "0", $id);
+		$member->saveField("checkout", "0", $id);
 	}
 }
 $fields = "id,username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,last_ip,points,credits,membergroup_id,status,created AS pubdate,last_login,trusttype_ids,checkout";

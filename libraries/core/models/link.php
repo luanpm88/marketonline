@@ -24,6 +24,10 @@ class Links extends PbModel {
 	function findParent($userid, $type_id)
 	{		
 		// = "Member.*, c.status AS company_status, l.type_id", array("LEFT JOIN {$this->table_prefix}links l ON l.member_id=Member.id", "LEFT JOIN {$this->table_prefix}companies c ON c.member_id=Member.id"), array("l.member_id=".$userid, "type_id=".$type_id);
+		if(!$type_id)
+		{
+			return $this->field("parent_id", array("member_id=".$userid));
+		}
 		return $this->field("parent_id", array("member_id=".$userid, "type_id=".$type_id));
 	}
 	

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 08:33:42
+<?php /* Smarty version 2.6.27, created on 2014-07-07 16:15:09
          compiled from banner.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'banner.html', 10, false),array('modifier', 'date_format', 'banner.html', 63, false),)), $this); ?>
@@ -168,8 +168,7 @@ images/unpublished.png">
 		</tr>
 		<?php endforeach; else: ?>
 		<tr class="no_data info">
-		  <td colspan="7"><?php echo $this->_tpl_vars['_no_datas']; ?>
-</td>
+		  <td colspan="7">Chưa có thông tin quảng cáo</td>
 		</tr>
 		<?php endif; unset($_from); ?>
     </tbody>

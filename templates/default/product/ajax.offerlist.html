@@ -19,11 +19,7 @@
 			<h3>
 				
 				<a target="_blank" href="{the_url module=offers action=detail id=`$item.id` title=`$item.title`}" title="{$item.title}">
-					{if $isConnect}
-						{$item.title|truncate:28}
-					{else}
-						{$item.title|truncate:70}
-					{/if}
+					{$item.title}
 				</a>
 							
 			</h3>
@@ -47,7 +43,7 @@
 					{$item.content|truncate:350}
 				{/if}
 				
-				<a href="javascript:void(0)" class="quick_view" onclick="getOfferDetail({$item.id},0);">Xem nhanh</a>
+				
 			
 		</div>
 		
@@ -56,7 +52,9 @@
 				<h4>Lượt truy cập</h4>
 			<p>	{$item.clicked}
 			</p>
-			
+			<p>
+				<a href="javascript:void(0)" class="quick_view" onclick="getOfferDetail({$item.id},0);">Xem nhanh</a>
+			</p>
 		</div>
 		
 		<div class="offer_date_col">

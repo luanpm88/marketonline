@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 15:38:17
+<?php /* Smarty version 2.6.27, created on 2014-07-07 16:11:46
          compiled from offer.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'offer.html', 46, false),array('modifier', 'pl', 'offer.html', 65, false),array('modifier', 'truncate', 'offer.html', 65, false),array('modifier', 'strip_tags', 'offer.html', 69, false),)), $this); ?>
@@ -162,8 +162,8 @@ images/unpublished.png">
           <table class="offer_publish_submit">
             <tr>
               <td>
-				<div align="right">
-                <input type="submit" name="del" value="<?php echo $this->_tpl_vars['_delete_message']; ?>
+				<div align="right" style="padding-top: 10px;">
+				<input type="submit" name="del" value="<?php echo $this->_tpl_vars['_delete_message']; ?>
 " onclick="return window.confirm('<?php echo $this->_tpl_vars['_ok_delete']; ?>
 ');">&nbsp;
 				<input type="submit" name="refresh" value="<?php echo $this->_tpl_vars['_repeating_information']; ?>

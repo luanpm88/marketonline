@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 12:05:16
+<?php /* Smarty version 2.6.27, created on 2014-07-08 16:56:56
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1169, false),array('function', 'formhash', 'default/header.html', 1253, false),array('modifier', 'default', 'default/header.html', 1264, false),array('modifier', 'date_format', 'default/header.html', 1278, false),)), $this); ?>
@@ -868,9 +868,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 
 		 
 		 
-		 getNewClicked(\''; ?>
-<?php echo $this->_tpl_vars['pb_company']['id']; ?>
-<?php echo '\');
+		 
 		 
 		 
 		 
@@ -946,13 +944,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
                     $(\'.member-left-bottom\').addClass("small");
                 }
                 
-                //get chat griend list
-                getChatFriendList('; ?>
-<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
-<?php echo ');
-                setInterval(\'getChatFriendList('; ?>
-<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
-<?php echo ');\',60000);
+                 
                 
                 //cart product image
                 $(\'#cart img\').resizecrop({
@@ -980,7 +972,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
                 })
                 $(\'.related_products_bottom ul li\').css(\'height\',maxrpheight)
                 
-                loadMainCategoryMenu();
+                
                 $(\'.super-main-category .show-but:first-child\').live("click", function(e) {
                     $(\'.super-main-category .main-cat-content-out\').toggle();
                     $(\'.menu_industry_list ul li.level0 ul\').height($(\'.toptoptop\').height());
@@ -997,6 +989,8 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
                     //$(\'#page-title h1.page-title\').css("visibility","visible");
                 });	
 		
+                
+                
 	});
 	
         
@@ -1606,7 +1600,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
         </div>
 </div>
 
-<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['id'] == 757): ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['id'] == 757 || $this->_tpl_vars['pb_userinfo']['current_type']): ?>
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">

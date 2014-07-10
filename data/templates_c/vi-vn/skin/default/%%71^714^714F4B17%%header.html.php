@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 16:53:27
+<?php /* Smarty version 2.6.27, created on 2014-07-08 09:31:33
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1232, false),array('function', 'the_url', 'header.html', 1287, false),array('modifier', 'default', 'header.html', 1243, false),array('modifier', 'date_format', 'header.html', 1257, false),)), $this); ?>
@@ -1582,4 +1582,13 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
 <div id="show_top_cart">
     
-</div>
+</div>
+
+<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['id'] == 757 || $this->_tpl_vars['pb_userinfo']['current_type']): ?>
+<div class="chat_friend_list">
+    <div class="chat_list_hooker">Bạn bè</div>
+    <div class="main_list">
+        <div class="chat-list-ajax">loading...</div>
+    </div>
+</div>
+<?php endif; ?>

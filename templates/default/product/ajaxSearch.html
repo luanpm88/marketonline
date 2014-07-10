@@ -1,9 +1,11 @@
 <div class="top_title">Tên Gian Hàng</div>
-<ul>
+{if $list}
+<div class="search-scroll">
+<ul class="shop">
     
     <!--{loop $list item level key}-->
         {if $item.shop_name}
-            <li>
+            <li onclick="window.location={the_url module=space userid=`$item.cache_spacename`}">
                 <img src="{$item.logo}" />
                 <h2>
                     <a href="{the_url module=space userid=`$item.cache_spacename`}">
@@ -17,3 +19,7 @@
         {/if}
     <!--{/loop}-->
 </ul>
+</div>
+{else}
+    <div class="no-search-top">Không có gian hàng phù hợp</div>
+{/if}

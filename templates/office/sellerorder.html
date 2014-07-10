@@ -27,7 +27,7 @@
               
               
 	      <th style="text-align: left" width="25%">{lang buyer}</th>
-	      <th style="text-align: left" width="40%">{lang message}</th>
+	      <th style="text-align: left" width="20%">{lang message}</th>
 	      <th width="20%">{lang time}</th>
 	      <th width="15%" align="center"><strong>{lang operation}</strong></th>
 	      
@@ -35,10 +35,10 @@
               
             </tr>
 			<!--{foreach from=$Items item=item}-->
-            <tr class="bggray">
+            <tr class="bggray read{$item.read}">
               
 
-	      <td style="text-align: left" width=10%><a href="sellerorder.php?do=view&id={$item.id}">{$item.first_name} {$item.last_name}</a></td>
+	      <td style="text-align: left" width=10%><a href="sellerorder.php?do=view&id={$item.id}">{if $item.first_name}{$item.first_name} {$item.last_name} {else}{$item.username}{/if}</a></td>
 	      <td style="text-align: left" align="left">{$item.message}</td>
 	      <td>{$item.created}</td>
 	      <td><a href="sellerorder.php?do=view&id={$item.id}">{lang preview} >></a></td>
@@ -47,6 +47,10 @@
 	      
               
             </tr>
+			<!--{foreachelse}-->
+				<tr class="no_data info">
+				  <td colspan="7">Chưa có đơn đặt hàng</td>
+				</tr>
 			<!--{/foreach}-->
             <tr align="center" class="bggray">
               <td colspan="5">{$ByPages}</td>

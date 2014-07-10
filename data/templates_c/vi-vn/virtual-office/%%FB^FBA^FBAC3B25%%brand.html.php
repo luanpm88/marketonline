@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-11-13 09:03:07
+<?php /* Smarty version 2.6.27, created on 2014-07-07 16:26:16
          compiled from brand.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'cycle', 'brand.html', 29, false),array('modifier', 'nl2br', 'brand.html', 35, false),array('modifier', 'truncate', 'brand.html', 35, false),)), $this); ?>

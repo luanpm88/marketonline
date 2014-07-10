@@ -7,14 +7,8 @@
 	<a class="top_contact_help" href="{$SiteUrl}lien-he">{lang contact_help}</a>
 	<p id="f_language_bar"><!--{get_cache name="language" image="y" sep="&nbsp;" echo=y}--></p>
 	
-	<div id="TopSearch">
-	    <input type="text" placeholder="{lang search_shop}" />
-	    <div class="search_result">
-		
-		<ul><li><h2><a></a></h2><p></p></li></ul>
-	    </div>
-	    <span class="right-search-icon">search</span>
-	</div>
+	<!--{include file="`$theme_name`/_topsearch.html"}-->	
+	
     </div>
     <div class="right">
         <div id="topCart" class="cart"><a class="cart_link" href="javascript:void(0)"></a></div>

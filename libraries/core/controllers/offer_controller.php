@@ -1639,6 +1639,7 @@ class Offer extends PbController {
 			$Trade["name"] = strip_tags(pb_lang_split($Trade["title"]));
 			$Trade["content"] = pb_lang_split($Trade["content"]);
 			$Trade["price"] = number_format($Trade["price"], 0, ',', '.');
+			$Trade["new_price"] = number_format($Trade["new_price"], 0, ',', '.');
 			
 			$Type = $this->tradetype->read("*", $Trade["type_id"], null, null);
 			//var_dump($Type);
@@ -1677,6 +1678,32 @@ class Offer extends PbController {
 					$Trade['image4'] = pb_get_attachmenturl($Trade['picture4'], '', '');
 					$Trade['image_url4'] = rawurlencode($Trade['picture4']);
 				}
+				
+				
+				if($Trade['image'] && !preg_match('/http/', $Trade['image']))
+					setvar('fb_image', "http://marketonline.vn/".$Trade['image']);
+				else
+					setvar('fb_image', $Trade['image']);
+					
+				if($Trade['image1'] && !preg_match('/http/', $Trade['image1']))
+					setvar('fb_image1', "http://marketonline.vn/".$Trade['image1']);
+				else
+					setvar('fb_image1', $Trade['image1']);
+				
+				if($Trade['image2'] && !preg_match('/http/', $Trade['image2']))
+					setvar('fb_image2', "http://marketonline.vn/".$Trade['image2']);
+				else
+					setvar('fb_image2', $Trade['image2']);
+					
+				if($Trade['image3'] && !preg_match('/http/', $Trade['image3']))
+					setvar('fb_image3', "http://marketonline.vn/".$Trade['image3']);
+				else
+					setvar('fb_image3', $Trade['image3']);
+					
+				if($Trade['image4'] && !preg_match('/http/', $Trade['image4']))
+					setvar('fb_image4', "http://marketonline.vn/".$Trade['image4']);
+				else
+					setvar('fb_image4', $Trade['image4']);
 			
 			
 			$company = $this->company->getInfoByUserId($Trade["member_id"]);
@@ -1725,6 +1752,9 @@ class Offer extends PbController {
 			//find related products
 			$bottom_related_products = $this->trade->findByType($Trade['type_id']);
 			setvar("bottom_related_products",$bottom_related_products);
+			
+			$company_info = $this->company->getInfoById($Trade['company_id']);
+			setvar("fb_description", mb_convert_encoding(preg_replace('/\s+/'," ",substr(trim(strip_tags($Trade["content"])),0, 1000)),"UTF-8"));
 			
 			setvar("comments_count", $comments_count);					
 			//var_dump($Trade);

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 14:16:11
+<?php /* Smarty version 2.6.27, created on 2014-07-08 14:34:35
          compiled from default/verytopmenu_shop.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_shop.html', 8, false),array('function', 'the_url', 'default/verytopmenu_shop.html', 31, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'get_cache', 'default/verytopmenu_shop.html', 8, false),array('function', 'the_url', 'default/verytopmenu_shop.html', 25, false),)), $this); ?>
 <div id="topmenu_outer">
 <div id="verytopmenu">
     <div class="left">
@@ -18,15 +18,12 @@ lien-he"><?php echo $this->_tpl_vars['_contact_help']; ?>
 	<p id="f_language_bar"><?php echo smarty_function_get_cache(array('name' => 'language','image' => 'y','sep' => "&nbsp;",'echo' => 'y'), $this);?>
 </p>
 	
-	<div id="TopSearch">
-	    <input type="text" placeholder="<?php echo $this->_tpl_vars['_search_shop']; ?>
-" />
-	    <div class="search_result">
-		
-		<ul><li><h2><a></a></h2><p></p></li></ul>
-	    </div>
-	    <span class="right-search-icon">search</span>
-	</div>
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_topsearch.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>	
+	
     </div>
     <div class="right">
         <div id="topCart" class="cart"><a class="cart_link" href="javascript:void(0)"></a></div>

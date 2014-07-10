@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-08 14:47:54
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:23:51
          compiled from offer_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'offer_edit.html', 12, false),array('function', 'formhash', 'offer_edit.html', 257, false),array('function', 'pl', 'offer_edit.html', 289, false),array('function', 'html_radios', 'offer_edit.html', 485, false),array('function', 'html_options', 'offer_edit.html', 514, false),array('function', 'the_url', 'offer_edit.html', 614, false),array('modifier', 'pl', 'offer_edit.html', 295, false),array('modifier', 'default', 'offer_edit.html', 485, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'offer_edit.html', 12, false),array('function', 'formhash', 'offer_edit.html', 261, false),array('function', 'pl', 'offer_edit.html', 293, false),array('function', 'html_radios', 'offer_edit.html', 489, false),array('function', 'html_options', 'offer_edit.html', 518, false),array('function', 'the_url', 'offer_edit.html', 618, false),array('modifier', 'pl', 'offer_edit.html', 299, false),array('modifier', 'default', 'offer_edit.html', 489, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_business_information'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
@@ -60,7 +60,7 @@ var enter_title = "<?php echo $this->_tpl_vars['_enter_title']; ?>
 	
 	
 	function inserEditorFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, "<img src=\'../attachment/"+url+"\' />");
@@ -282,7 +282,15 @@ unset($_smarty_tpl_vars);
 images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2><?php echo $this->_tpl_vars['_business_information']; ?>
  (<?php echo $this->_tpl_vars['_raovat']; ?>
-)</h2></div>
+)</h2>
+     
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "_top_announce.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+     
+     </div>
 		<form name="TradeFrm" id="Frm1" enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>
 ">
 		<?php echo smarty_function_formhash(array(), $this);?>
@@ -409,7 +417,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile0').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload0" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " name="linkpic" placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " class="linkpic" type="text" id="uploadlinkfile" />
@@ -425,7 +433,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile1').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload1" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " name="linkpic1" placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " class="linkpic" type="text" id="uploadlinkfile1" />
@@ -441,7 +449,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile2').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload2" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " name="linkpic2" placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " class="linkpic" type="text" id="uploadlinkfile2" />
@@ -457,7 +465,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile3').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload3" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " name="linkpic3" class="linkpic" type="text" id="uploadlinkfile3" />
@@ -473,7 +481,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile4').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload4" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " name="linkpic4" class="linkpic" type="text" id="uploadlinkfile4" />

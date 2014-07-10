@@ -134,6 +134,9 @@
 				<span class="previous">.</span>
 			</div>
 			
+			
+			
+			
 			<div class="right-offerbox">
 				<div class="member-title">
 						
@@ -207,6 +210,31 @@
 				</div>
 				<br style="clear: both" />
 				<br />
+				
+				
+				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcomenew'){else}goclicky_custom(this, '{$F_URL}#welcomenew', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
+					<span class="at15t_facebookz">
+						<span class="">Share on facebook</span>
+					</span>
+				</a>
+				<div class="share_buts">
+					
+				  <!-- AddThis Button BEGIN -->
+				{literal}
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<!--<a class="addthis_button_facebook"></a>-->
+					<a class="addthis_button_twitter"></a>
+					<a class="addthis_button_google_plusone_share"></a>
+					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+				{/literal}
+				<!-- AddThis Button END -->
+				
+				<br style="clear: both" />
+				
+				
 				<div class="detail-comments">
 					<h4>{lang comments} (<span class="comment_count">{$comments_count}</span>)</h4>
 					
@@ -239,6 +267,8 @@
 					
 					</div>
 				</div>
+				
+				
 				
 				
 			</div>

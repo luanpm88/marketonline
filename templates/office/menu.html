@@ -100,7 +100,9 @@
 					</tr>
 					<tr class="MenuItem8">
 					  <th><img src="{$office_theme_path}images/invoice.png"></th>
-					  <td><a href="sellerorder.php">{lang sell_order}</a></td>
+					  <td><a href="sellerorder.php">{lang sell_order}</a>
+						{if $count_sellerorder}<div class="unread"><span>{$count_sellerorder}</span></div>{/if}
+					  </td>
 					</tr>
 				</table></td>
 			  </tr>

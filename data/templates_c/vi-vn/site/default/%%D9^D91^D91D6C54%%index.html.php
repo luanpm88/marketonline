@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 10:32:52
+<?php /* Smarty version 2.6.27, created on 2014-07-08 09:03:28
          compiled from default%5Cproduct/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 359, false),array('modifier', 'truncate', 'default\\product/index.html', 432, false),array('modifier', 'default', 'default\\product/index.html', 766, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 357, false),array('modifier', 'truncate', 'default\\product/index.html', 430, false),array('modifier', 'default', 'default\\product/index.html', 766, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -26,9 +26,6 @@ unset($_smarty_tpl_vars);
 <?php echo '
 <script type="application/x-javascript">
   
-	  
-  
-   
 	function getMinHeight() {
 	    
 	    //for offer
@@ -50,7 +47,8 @@ unset($_smarty_tpl_vars);
 	 }
 	 
 	function ajaxListProduct(filter) {
-		
+		$(\'.list_loading\').show();
+		$(\'.col_products ul\').html("");
 		$.ajax({
 			url: "index.php?do=product&action=listAjax"+filter,
 			beforeSend: function ( xhr ) {
@@ -61,7 +59,7 @@ unset($_smarty_tpl_vars);
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 100));
 				//alert($(data).filter(".products_0").html());
-				//$(\'#list_product_ajax\').html(data);
+				$(\'.list_loading\').hide();
 				for (var j=0; j < 4; j++) {
 				    $(\'#list_product_ajax\'+j+\' ul\').html("");
 				}
@@ -756,6 +754,8 @@ unset($_smarty_tpl_vars);
 
 	<div id="container">
 	<div id="content" role="main" class="product_listing">
+	  
+	  <div class="list_loading">mm</div>
 
 	  <div id="offer-ajax-list">
 	      

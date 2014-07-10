@@ -5189,30 +5189,27 @@ p.keywords a:hover{
     padding: 2px 5px;
     width: 350px;
 }
+#TopSearch .search-scroll {
+    max-height: 500px;
+}
 #TopSearch .search_result {
     background: none repeat scroll 0 0 #FFFFFF;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
     display: none;
     margin-left: -1px;
     margin-top: -12px;
-    max-height: 580px;
     overflow-x: hidden;
     overflow-y: auto;
     position: absolute;
 
 }
 #TopSearch .search_result ul {
-    border: 1px solid #000;
     margin: 0;
-    padding-bottom: 5px;
-    border-top: none;
 }
 #TopSearch .search_result .top_title {
     background: none repeat scroll 0 0 #EDF4EF;
     font-weight: bold;
     padding: 4px 6px 5px;
-    border: solid 1px #333;
-    border-bottom: none;
 }
 #TopSearch .search_result ul li {
     border-bottom: 0 none;
@@ -9450,7 +9447,7 @@ table tbody tr td {
     left: 10px;
 }
 .super-main-category.mainproductpage .show-but {
-    background: url("../image/show-menu-icon.png") repeat scroll -4px -3px / 50px auto #3B984C;
+    background: url("../image/show-menu-icon-big.png") repeat scroll #3B984C;
     cursor: pointer;
     display: block;
     height: 42px;
@@ -9801,11 +9798,11 @@ input[name=redirect]
     cursor: inherit;
 }
 .quick_view {
-    display: block;
-    font-size: 12px;
-    margin-top: -5px;
-    text-align: right;
     clear: both;
+    display: block;
+    font-size: 14px;
+    margin-top: 12px;
+    text-align: center;
 }
 .offer_detail_page .member-title a.chat_with_owner {
     width: 130px;
@@ -9815,7 +9812,8 @@ input[name=redirect]
     max-width: 460px;
 }
 .offer_detail_page .detail-comments .comments_list {
-    max-height: 265px;
+    max-height: 230px;
+    height: auto;
 }
 .offer_detail_page .mCSB_dragger {
     max-height: none !important;
@@ -9862,4 +9860,139 @@ input[name=redirect]
 }
 .offer_detail_page .offer_content_inner .left-offerbox a img {
     max-width: 638px;
+}
+.top_contact_help {
+    margin-top: 4px !important;
+    padding-top: 4px !important;
+}
+.list_loading
+{
+    background: url("../image/loading.gif") no-repeat scroll center center / 100px rgba(0, 0, 0, 0);
+    height: 300px;
+    text-indent: -5000px;
+}
+.offer_transform ul.products li.product h3 {
+    height: 30px;
+    overflow: hidden;
+}
+#TopSearch input {
+    float:left;
+}
+#verytopmenu .search-type {
+    float: left;
+    background: #fff;
+    margin-top: 3px;
+}
+#verytopmenu .search-type .icon-search-box {    
+    height: 26px;
+    width: 26px;
+    float: left;
+    cursor: pointer;
+}
+#verytopmenu .search-type .icon-shop {
+    background: url("../image/shop-icon.png") no-repeat scroll 2px 3px #fff;
+}
+#verytopmenu .search-type .icon-product {
+    background: url("../image/product-icon.png") no-repeat scroll 2px 3px #fff;
+}
+#verytopmenu .search-type ul {
+    border: 1px solid #aaa;
+    position: absolute;
+    width: 200px;
+    display: none;
+    margin-top: 26px;
+}
+#verytopmenu .search-type ul li {
+    list-style: none;
+}
+#verytopmenu .search-type ul li.shop a {
+    background: url("../image/shop-icon.png") no-repeat scroll 2px 5px #fff;
+    
+}
+#verytopmenu .search-type ul li.product a {
+    background: url("../image/product-icon.png") no-repeat scroll 2px 5px #fff;
+}
+#verytopmenu .search-type ul li a {    
+    color: #333;
+    display: block;
+    font-weight: normal;
+    height: auto;
+    margin: 0;
+    padding: 5px 10px 5px 30px;
+    width: 100%;
+}
+#verytopmenu .search-type ul li a:hover {
+    background-color: #f0f2f2;
+}
+#TopSearch input {
+    width: 342px;
+}
+#TopSearch input:focus {
+    background: #fff;
+}
+#TopSearch .search_result {
+    margin-top: 29px;
+    border: solid 1px #333;
+}
+#TopSearch .search_result span img {
+    max-height: none;
+    max-width: none;
+}
+.no-search-top {
+    padding: 10px;
+    text-align: center;
+    width: 383px;
+}
+#TopSearch .search_result ul.product li {
+    min-height: 80px;
+}
+.search-loading {
+    background: url("../image/ajax-loader.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+    text-indent: -50000px;
+}
+#verytopmenu .search-type .pointer {
+    background: url("../image/arrow_down.png") no-repeat scroll 2px 10px / 10px auto #fff;
+    cursor: pointer;
+    float: left;
+    height: 26px;
+    text-indent: -9000px;
+    width: 14px;
+}
+#TopSearch .search_result .price_unit {
+    float: none;
+    font-size: 14px;
+    font-family: "Segoe UI";
+    font-weight: normal;
+    color: #3b984c;
+}
+#TopSearch .search_result .old_price {
+    display: inline;
+    float: none;
+    font-size: 14px;
+    font-weight: normal;
+}
+#TopSearch .search_result .amount {
+    float: none;
+    font-size: 14px;
+    margin-right: 0;
+    color: #3b984c;
+}
+#TopSearch .search_result li:hover span, #TopSearch .search_result li.active span {
+    color: #fff !important;
+}
+#TopSearch .search_result ul li h2 {
+    height: 23px;
+    overflow: hidden;
+}
+#TopSearch .search-scroll {
+    width: 382px;
+}
+.more-topsearch {
+    text-align: center;
+    height: 33px !important;
+    min-height: inherit !important;
+    background: #F2F4F4;
+}
+.box-scroll div {
+    min-height: 1px;
 }

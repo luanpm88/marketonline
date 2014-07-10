@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 16:51:55
+<?php /* Smarty version 2.6.27, created on 2014-07-08 09:33:09
          compiled from default/footer.html */ ?>
     <div id="darkf">
       
@@ -136,7 +136,16 @@ if ($this->_foreach['level']['total'] > 0):
                         <?php endforeach; endif; unset($_from); ?>
 		    <?php endif; ?>		
 		<?php echo '
+	  
+	  
+	  
+	  
+	  
+	  
 	});
+  
+  
+  
   
 </script>
 
@@ -229,6 +238,21 @@ js/jquery.validate.min.js?ver%5B0%5D=jquery'></script>
 				 $("#browser-info-but").trigger(\'click\');
 				}
 	      }
+	      
+	      //
+	      loadViewedHistory();
+	      loadMainCategoryMenu();
+	      //get chat griend list
+              '; ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['id']): ?>getChatFriendList(<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+);<?php endif; ?><?php echo '
+              setInterval(\'getChatFriendList('; ?>
+<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+<?php echo ');\',60000);
+	      
+	      '; ?>
+<?php if ($this->_tpl_vars['pb_company']['id']): ?>getNewClicked('<?php echo $this->_tpl_vars['pb_company']['id']; ?>
+');<?php endif; ?><?php echo '
 	    });
     </script>
      '; ?>

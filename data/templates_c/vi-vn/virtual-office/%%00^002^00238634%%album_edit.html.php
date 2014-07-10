@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-19 07:55:12
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:21:11
          compiled from album_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'album_edit.html', 10, false),array('function', 'formhash', 'album_edit.html', 71, false),array('function', 'html_options', 'album_edit.html', 104, false),)), $this); ?>
@@ -36,7 +36,7 @@ var can_also_enter = "<?php echo $this->_tpl_vars['_can_also_enter']; ?>
 <script>
 	
 	function inserEditorFile(url, image) {
-		$(\'#uploadIVbutton\').attr(\'disabled\',\'\');
+		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
 		$(\'#uploadIVbutton\').attr(\'value\',\'Tải Ảnh/Video\');
 		if (image) {
 			tinyMCE.activeEditor.execCommand(\'mceInsertContent\', false, "<img src=\'../attachment/"+url+"\' />");
@@ -77,11 +77,11 @@ unset($_smarty_tpl_vars);
 	 <div class="offer_banner"><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
 images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2>
-	<?php if ($this->_tpl_vars['membertype_id'] == 2): ?><?php echo $this->_tpl_vars['_album_company']; ?>
+	<?php if ($this->_tpl_vars['MEMBER']['membergroup_id'] == 3): ?><?php echo $this->_tpl_vars['_album_company']; ?>
 <?php endif; ?>
-	<?php if ($this->_tpl_vars['membertype_id'] == 3): ?><?php echo $this->_tpl_vars['_album_shop']; ?>
+	<?php if ($this->_tpl_vars['MEMBER']['membergroup_id'] == 1): ?><?php echo $this->_tpl_vars['_album_shop']; ?>
 <?php endif; ?>
-	<?php if ($this->_tpl_vars['membertype_id'] == 1): ?><?php echo $this->_tpl_vars['_album_person']; ?>
+	<?php if ($this->_tpl_vars['MEMBER']['membergroup_id'] == 2): ?><?php echo $this->_tpl_vars['_album_person']; ?>
 <?php endif; ?>
      </h2></div>
      <div class="hint"><?php echo $this->_tpl_vars['_must_input_with_star']; ?>

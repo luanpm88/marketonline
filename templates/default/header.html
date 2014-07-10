@@ -776,7 +776,7 @@ function goclicky_custom(meh, url, images, title, summary)
 		 
 		 
 		 
-		 getNewClicked('<!--{/literal}-->{$pb_company.id}<!--{literal}-->');
+		 
 		 
 		 
 		 
@@ -840,9 +840,7 @@ function goclicky_custom(meh, url, images, title, summary)
                     $('.member-left-bottom').addClass("small");
                 }
                 
-                //get chat griend list
-                getChatFriendList({/literal}{$pb_userinfo.id}{literal});
-                setInterval('getChatFriendList({/literal}{$pb_userinfo.id}{literal});',60000);
+                 
                 
                 //cart product image
                 $('#cart img').resizecrop({
@@ -870,7 +868,7 @@ function goclicky_custom(meh, url, images, title, summary)
                 })
                 $('.related_products_bottom ul li').css('height',maxrpheight)
                 
-                loadMainCategoryMenu();
+                
                 $('.super-main-category .show-but:first-child').live("click", function(e) {
                     $('.super-main-category .main-cat-content-out').toggle();
                     $('.menu_industry_list ul li.level0 ul').height($('.toptoptop').height());
@@ -887,6 +885,8 @@ function goclicky_custom(meh, url, images, title, summary)
                     //$('#page-title h1.page-title').css("visibility","visible");
                 });	
 		
+                
+                
 	});
 	
         
@@ -1430,7 +1430,7 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
         </div>
 </div>
 
-{if $pb_userinfo.current_type == 6 || $pb_userinfo.id == 757}
+{if $pb_userinfo.current_type == 6 || $pb_userinfo.id == 757 || $pb_userinfo.current_type}
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">

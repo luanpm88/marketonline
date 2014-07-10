@@ -54,7 +54,7 @@ class Products extends PbModel {
 			//var_dump(implode(",", $tag_ids));
 			//echo $ors;
  			
- 			$this->condition[]= "(Product.name like '%".$searchkeywords."%' ".$ors." )";
+ 			$this->condition[]= "(MATCH (Product.name) AGAINST ('".$searchkeywords."') OR MATCH (Product.content) AGAINST ('".$searchkeywords."') OR Product.name like '%".$searchkeywords."%' ".$ors." )";
  		}
  		if (isset($_GET['pubdate'])) {
  			switch ($_GET['pubdate']) {
@@ -102,7 +102,16 @@ class Products extends PbModel {
  		$cache_options = cache_read('typeoption');
  		$area_s = $space->array_multi2single($area->getCacheArea());
  		$industry_s = $space->array_multi2single($area->getCacheArea());
- 		$result = $this->findAll("m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id"), null, $this->orderby, $firstcount, $displaypg);
+		
+		
+		$searchkeywords = strip_tags(urldecode($_GET['q']));
+		if (isset($_GET['q'])) {
+			$fields = "MATCH (Product.name) AGAINST ('".$searchkeywords."') AS score, MATCH (Product.content) AGAINST ('".$searchkeywords."') AS score1, ";
+			$this->orderby = '(score*3 + score1) DESC';
+		}
+		
+		
+ 		$result = $this->findAll($fields."m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id"), null, $this->orderby, $firstcount, $displaypg);
  		while(list($keys,$values) = each($result)){
  			$result[$keys]['typename'] = $cache_types['productsort'][$values['sort_id']];
 			//get default picture

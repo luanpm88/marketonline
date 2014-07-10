@@ -252,7 +252,11 @@ jQuery(document).ready(function($) {
      <div class="main_content">
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
-     <div class="offer_info_title"><h2>{lang business_information} ({lang raovat})</h2></div>
+     <div class="offer_info_title"><h2>{lang business_information} ({lang raovat})</h2>
+     
+	<!--{include file="_top_announce.html"}-->
+     
+     </div>
 		<form name="TradeFrm" id="Frm1" enctype="multipart/form-data" method="post" action="{$smarty.server.PHP_SELF}">
 		<!-- {formhash} -->
 		<input type="hidden" name="id" value="{$item.id}">
@@ -346,7 +350,7 @@ jQuery(document).ready(function($) {
 				<td class="pic_title">H1</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile0').trigger('click')">{lang upload_picture}: <span class="picload0" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
 				    <br><input title="{lang pic_note}" name="linkpic" placeholder="{lang link_picture}" class="linkpic" type="text" id="uploadlinkfile" />
 				</td>
 
@@ -359,7 +363,7 @@ jQuery(document).ready(function($) {
 				<td class="pic_title">H2</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile1').trigger('click')">{lang upload_picture}: <span class="picload1" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
 				    <br><input title="{lang pic_note}" name="linkpic1" placeholder="{lang link_picture}" class="linkpic" type="text" id="uploadlinkfile1" />
 				</td>
 
@@ -372,7 +376,7 @@ jQuery(document).ready(function($) {
 				<td class="pic_title">H3</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile2').trigger('click')">{lang upload_picture}: <span class="picload2" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
 				    <br><input title="{lang pic_note}" name="linkpic2" placeholder="{lang link_picture}" class="linkpic" type="text" id="uploadlinkfile2" />
 				     
 				    </td>
@@ -385,7 +389,7 @@ jQuery(document).ready(function($) {
 				<td class="pic_title">H4</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile3').trigger('click')">{lang upload_picture}: <span class="picload3" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
 				    <br><input title="{lang pic_note}" placeholder="{lang link_picture}" name="linkpic3" class="linkpic" type="text" id="uploadlinkfile3" />
 				     
 				    </td>
@@ -398,7 +402,7 @@ jQuery(document).ready(function($) {
 				<td class="pic_title">H5</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile4').trigger('click')">{lang upload_picture}: <span class="picload4" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
 				    <br><input title="{lang pic_note}" placeholder="{lang link_picture}" name="linkpic4" class="linkpic" type="text" id="uploadlinkfile4" />
 				     
 				    </td>

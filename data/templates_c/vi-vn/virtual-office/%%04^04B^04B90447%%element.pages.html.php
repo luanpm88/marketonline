@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-25 09:20:20
+<?php /* Smarty version 2.6.27, created on 2014-07-07 13:54:33
          compiled from element.pages.html */ ?>
 <?php echo '
 <style>

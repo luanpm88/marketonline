@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 13:32:31
+<?php /* Smarty version 2.6.27, created on 2014-07-09 11:47:32
          compiled from buyerorder.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'buyerorder.html', 24, false),array('function', 'the_url', 'buyerorder.html', 41, false),)), $this); ?>
@@ -44,7 +44,7 @@ images/offer_01.gif" /></div>
               
 	      <th style="text-align: left" width="25%"><?php echo $this->_tpl_vars['_seller']; ?>
 </th>
-	      <th style="text-align: left" width="40%"><?php echo $this->_tpl_vars['_message']; ?>
+	      <th style="text-align: left" width="20%"><?php echo $this->_tpl_vars['_message']; ?>
 </th>
 	      <th width="20%"><?php echo $this->_tpl_vars['_time']; ?>
 </th>
@@ -75,7 +75,11 @@ images/offer_01.gif" /></div>
 	      
               
             </tr>
-			<?php endforeach; endif; unset($_from); ?>
+			<?php endforeach; else: ?>
+				<tr class="no_data info">
+				  <td colspan="7">Chưa có lịch sử mua hàng</td>
+				</tr>
+			<?php endif; unset($_from); ?>
             <tr align="center" class="bggray">
               <td colspan="5"><?php echo $this->_tpl_vars['ByPages']; ?>
 </td>

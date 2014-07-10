@@ -88,9 +88,10 @@ class Members extends PbModel {
 	function setPaid($id)
 	{
 		//find parent's agent
-		uses("link", "connectpaidnote");
+		uses("link", "connectpaidnote","checkouttransaction");
 		$link = new Links();
 		$note = new Connectpaidnotes();
+		$transaction = new Checkouttransactions();
 		
 		$member = $this->getInfoById($id);
 		
@@ -122,15 +123,26 @@ class Members extends PbModel {
 		}
 		
 		
-		
+		//update transaction
+		if($member["checkout"] == 0 && $_GET["months"] != "" && $_GET["amount"] != "")
+		{
+			$parentid = $link->findParent($id);		
+			if($parentid)
+			{
+				$grandid = $link->findParent($parentid);
+			}
 			
-		$this->saveField("checkout", "1", $id);
+			$transaction->save(array("member_id" => $id, "parent_id" => $parentid, "grand_id" => $grandid, "created" => date("Y-m-d H:i:s"), "months" => $_GET["months"], "amount" => $_GET["amount"]));
+			
+			$this->saveField("checkout", "1", $id);
+		}
 	}
 	
 
  	function getInfoById($member_id)
  	{
-		uses("area", "space", "studymemberimage", "studymemberimagecomment");
+		uses("area", "space", "studymemberimage", "studymemberimagecomment", "link");
+		$link = new Links();
  		$area = new Areas();
 		$space = new Space();
 		$studymemberimagecomment = new Studymemberimagecomments();
@@ -218,6 +230,7 @@ class Members extends PbModel {
 			}
 			$result['is_student'] = $is_student;
 			$result['fullname'] = $result['first_name']." ".$result['last_name'];
+			$result['parent_id'] = $link->findParent($result['id']);
  		}		
  		return $result;
  	}

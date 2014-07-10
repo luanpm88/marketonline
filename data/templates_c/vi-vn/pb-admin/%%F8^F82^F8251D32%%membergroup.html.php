@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-06-10 02:03:05
+<?php /* Smarty version 2.6.27, created on 2014-07-10 08:17:55
          compiled from membergroup.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'pl', 'membergroup.html', 42, false),array('modifier', 'default', 'membergroup.html', 72, false),)), $this); ?>

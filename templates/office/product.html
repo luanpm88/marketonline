@@ -121,13 +121,13 @@
          <table class="bglist">
               <!-- product -->
                     <col width="75">
-                    <col width="250">
+                    <col width="200">
                     <col width="60">
 			<col width="60">
-				{if $pb_userinfo.checkout}<col width="60">{/if}
+				{if $pb_userinfo.checkout}<col width="71">{/if}
                     <col width="60">
 		    <col width="60">
-                    <col width="80">
+                    <col width="82">
                 <tr>
                    <th width="9%">{lang sample_image}</th>
                    <th style="text-align: left">{lang content}</th>
@@ -142,7 +142,7 @@
 		   
 		   
 		   
-                   <th width="15%" style="text-align: left">{lang operation}</th>
+                   <th width="" style="text-align: left">{lang operation}</th>
                 </tr> 
               <!--{foreach item=item from=$Items}-->
                 <tr class="row{$item.row}">
@@ -151,11 +151,11 @@
                     <div style="text-align:left;">
 			<strong>
 			    <a title="{$item.name}" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">
-				{$item.name|truncate:100}
+				{$item.name|truncate:80}
 			    </a>
 			</strong>
 			
-			<p>{$item.content|strip_tags|truncate:180}</p>
+			<p>{$item.content|strip_tags|truncate:120}</p>
 			{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
 		    </div>
                 </td>

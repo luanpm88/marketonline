@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-22 16:27:38
+<?php /* Smarty version 2.6.27, created on 2014-07-07 13:51:00
          compiled from emails/buyorder.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'emails/buyorder.html', 141, false),)), $this); ?>
@@ -181,7 +181,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 " border=0 alt="<?php echo $this->_tpl_vars['sticky']['title']; ?>
 "></td>
 							<td class="title_link" style="background: #fff">
-								<a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
+								<a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id']),'product_name' => ($this->_tpl_vars['sticky']['p_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 </a>

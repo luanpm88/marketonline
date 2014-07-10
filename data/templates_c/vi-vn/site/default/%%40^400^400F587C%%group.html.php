@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 09:06:37
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:39:16
          compiled from default%5Cstudypost/group.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'default\\studypost/group.html', 45, false),array('function', 'the_url', 'default\\studypost/group.html', 64, false),array('modifier', 'truncate', 'default\\studypost/group.html', 164, false),)), $this); ?>
@@ -229,7 +229,7 @@ unset($_smarty_tpl_vars);
                                 <li class="<?php if ($_GET['action'] == 'school'): ?>active<?php endif; ?>">
                                     <a class="logo" style="background-image:url('<?php echo $this->_tpl_vars['WebRootUrl']; ?>
 /<?php echo $this->_tpl_vars['school']['logo']; ?>
-')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['school']['id'])), $this);?>
+')" href="<?php echo smarty_function_the_url(array('module' => 'studypost','action' => 'school','id' => ($this->_tpl_vars['school']['id']),'title' => ($this->_tpl_vars['school']['name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['school']['name']; ?>
 ">
                                         <?php echo ((is_array($_tmp=$this->_tpl_vars['school']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>

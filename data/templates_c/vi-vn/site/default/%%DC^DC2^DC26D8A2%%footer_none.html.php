@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 08:00:37
+<?php /* Smarty version 2.6.27, created on 2014-07-08 10:24:28
          compiled from default/footer_none.html */ ?>
 <div id="darkf" style="display: none"></div>
  
@@ -172,6 +172,24 @@ js/scrolling.js'></script>
 				 $("#browser-info-but").trigger(\'click\');
 				}
 	      }
+	      
+	      
+	      //
+	      loadViewedHistory();
+	      
+	      loadMainCategoryMenu();
+	      
+	      //get chat griend list
+	      '; ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['id']): ?>getChatFriendList(<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+);<?php endif; ?><?php echo '
+	      setInterval(\'getChatFriendList('; ?>
+<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+<?php echo ');\',60000);
+	      
+	      '; ?>
+<?php if ($this->_tpl_vars['pb_company']['id']): ?>getNewClicked('<?php echo $this->_tpl_vars['pb_company']['id']; ?>
+');<?php endif; ?><?php echo '
 	    });
     </script>
      '; ?>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-26 08:03:57
+<?php /* Smarty version 2.6.27, created on 2014-07-08 16:27:18
          compiled from default%5Cproduct/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/level1.html', 491, false),array('modifier', 'default', 'default\\product/level1.html', 954, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/level1.html', 491, false),array('modifier', 'default', 'default\\product/level1.html', 950, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -174,19 +174,19 @@ unset($_smarty_tpl_vars);
 				
 				
 				
-				if (offer && first_offer) {
-				  $(\'.offer_transform ul.products li.product img\').live(\'click\', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  $(\'.offer_transform ul.products li.product h3 a\').live(\'click\', function() {
-				
-				    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
-				  
-				  });
-				  first_offer =  0;
-				}
+				//if (offer && first_offer) {
+				//  $(\'.offer_transform ul.products li.product img\').live(\'click\', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  $(\'.offer_transform ul.products li.product h3 a\').live(\'click\', function() {
+				//
+				//    getOfferDetail($(this).parent().parent().parent().attr("rel"),0);
+				//  
+				//  });
+				//  first_offer =  0;
+				//}
 				
 				
 				$(\'a,img\').qtip({ // Grab some elements to apply the tooltip to
@@ -278,7 +278,7 @@ unset($_smarty_tpl_vars);
 	  if ($(\'#aq-block-5\').height())
 	    pos_searchlist = $(\'#aq-block-5\').height() + 440;
 	  else
-	    pos_searchlist = 263;
+	    pos_searchlist = 271;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -729,7 +729,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 263px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 271px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>
@@ -995,17 +995,13 @@ if ($this->_foreach['spacelink']['total'] > 0):
       </h1>
 
 
-<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-  <div class="postitem"><a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-	<a target="_blank" href="redirect.php?url=/virtual-office/product.php?do=edit%26type=service"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php else: ?>
-  <div class="postitem"><a href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_post_product']; ?>
-</a>
-  <a target="_blank" href="redirect.php?url=/logging.php"><?php echo $this->_tpl_vars['_add_service']; ?>
-</a></div>
-<?php endif; ?>
+<div class="postitem">
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_postitems.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
+      </div>
     
     
   </div>

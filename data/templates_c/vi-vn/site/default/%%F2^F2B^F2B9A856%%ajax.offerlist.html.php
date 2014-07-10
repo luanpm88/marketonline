@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 16:23:15
+<?php /* Smarty version 2.6.27, created on 2014-07-08 11:45:15
          compiled from default%5Cproduct/ajax.offerlist.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajax.offerlist.html', 13, false),array('modifier', 'truncate', 'default\\product/ajax.offerlist.html', 23, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajax.offerlist.html', 13, false),array('modifier', 'truncate', 'default\\product/ajax.offerlist.html', 38, false),)), $this); ?>
 <div class="total-count"><?php echo $this->_tpl_vars['TotalCount']; ?>
 </div>
 <?php if ($this->_tpl_vars['Count']): ?>
@@ -36,13 +36,8 @@ if ($this->_foreach['level']['total'] > 0):
 				<a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'offers','action' => 'detail','id' => ($this->_tpl_vars['item']['id']),'title' => ($this->_tpl_vars['item']['title'])), $this);?>
 " title="<?php echo $this->_tpl_vars['item']['title']; ?>
 ">
-					<?php if ($this->_tpl_vars['isConnect']): ?>
-						<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 28) : smarty_modifier_truncate($_tmp, 28)); ?>
+					<?php echo $this->_tpl_vars['item']['title']; ?>
 
-					<?php else: ?>
-						<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 70) : smarty_modifier_truncate($_tmp, 70)); ?>
-
-					<?php endif; ?>
 				</a>
 							
 			</h3>
@@ -76,8 +71,7 @@ if ($this->_foreach['level']['total'] > 0):
 
 				<?php endif; ?>
 				
-				<a href="javascript:void(0)" class="quick_view" onclick="getOfferDetail(<?php echo $this->_tpl_vars['item']['id']; ?>
-,0);">Xem nhanh</a>
+				
 			
 		</div>
 		
@@ -87,7 +81,10 @@ if ($this->_foreach['level']['total'] > 0):
 			<p>	<?php echo $this->_tpl_vars['item']['clicked']; ?>
 
 			</p>
-			
+			<p>
+				<a href="javascript:void(0)" class="quick_view" onclick="getOfferDetail(<?php echo $this->_tpl_vars['item']['id']; ?>
+,0);">Xem nhanh</a>
+			</p>
 		</div>
 		
 		<div class="offer_date_col">

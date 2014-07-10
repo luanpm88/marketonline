@@ -54,6 +54,11 @@ if (isset($_GET['do'])) {
 						$datas = $saleorderitem->getStickyDatas($id);
 						$info = $saleorder->read("*", $id, null, array('id'=>$id));
 						
+						if($info["read"] == 0)
+						{
+							$saleorder->saveField("`read`", 1, intval($id));
+						}
+						
 						$seller = $member->read("Member.*, mf.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id"));
 						//var_dump($seller);
 						//var_dump($datas);
@@ -108,7 +113,7 @@ $page->displaypg = 25;
 $amount = $saleorder->findCount(null, $conditions);
 //echo $amount;
 $page->setPagenav($amount);
-$result = $saleorder->findAll("mf.first_name, mf.last_name, Member.username, Saleorder.id,Saleorder.buyer_id,Saleorder.message,Saleorder.created, space_name", array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id","LEFT JOIN pb_memberfields as mf ON Member.id = mf.member_id"), $conditions, "id DESC", $page->firstcount, $page->displaypg);
+$result = $saleorder->findAll("Saleorder.read, mf.first_name, mf.last_name, Member.username, Saleorder.id,Saleorder.buyer_id,Saleorder.message,Saleorder.created, space_name", array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id","LEFT JOIN pb_memberfields as mf ON Member.id = mf.member_id"), $conditions, "id DESC", $page->firstcount, $page->displaypg);
 
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

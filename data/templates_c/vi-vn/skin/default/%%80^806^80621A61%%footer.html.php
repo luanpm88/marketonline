@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 09:55:57
+<?php /* Smarty version 2.6.27, created on 2014-07-08 09:54:31
          compiled from footer.html */ ?>
 
   <div id="darkf">
@@ -430,7 +430,7 @@ templates/skins/default/image/settings-left.png" id="appear_iconz"></div>
  <?php echo '
      <script>
 	    $(document).ready(function() {
-	      if ($.browser.msie && parseFloat($.browser.version) <= 10 || parseFloat($.browser.version) == 11) {
+		if ($.browser.msie && parseFloat($.browser.version) <= 10 || parseFloat($.browser.version) == 11) {
 		
 				//cookie
 				 var date = new Date();
@@ -451,7 +451,11 @@ templates/skins/default/image/settings-left.png" id="appear_iconz"></div>
 				}
 		
 					
-	      }
+		}
+		
+		'; ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['id']): ?>getChatFriendList(<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
+);<?php endif; ?><?php echo '
 	    });
     </script>
      '; ?>

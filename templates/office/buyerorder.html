@@ -27,7 +27,7 @@
               
               
 	      <th style="text-align: left" width="25%">{lang seller}</th>
-	      <th style="text-align: left" width="40%">{lang message}</th>
+	      <th style="text-align: left" width="20%">{lang message}</th>
 	      <th width="20%">{lang time}</th>
 	      <th width="15%" align="center"><strong>{lang operation}</strong></th>             
 	      
@@ -47,6 +47,10 @@
 	      
               
             </tr>
+			<!--{foreachelse}-->
+				<tr class="no_data info">
+				  <td colspan="7">Chưa có lịch sử mua hàng</td>
+				</tr>
 			<!--{/foreach}-->
             <tr align="center" class="bggray">
               <td colspan="5">{$ByPages}</td>

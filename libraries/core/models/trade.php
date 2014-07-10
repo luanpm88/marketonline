@@ -19,7 +19,7 @@ class Trades extends PbModel {
 		
  		if (isset($_GET['q'])) {
  			$searchkeywords = urldecode($_GET['q']);
- 			$this->condition[]= "title like '%".$searchkeywords."%'";
+ 			$this->condition[]= "(MATCH (title) AGAINST ('".$searchkeywords."') OR MATCH (content) AGAINST ('".$searchkeywords."') OR title like '%".$searchkeywords."%')";
  		}
  		if (isset($_GET['pubdate'])) {
  			switch ($_GET['pubdate']) {
@@ -84,7 +84,14 @@ class Trades extends PbModel {
  	function Search($firstcount, $displaypg)
  	{
  		global $viewhelper, $cache_types;
- 		$result = $this->findAll("*,content AS digest", null, null, $this->orderby, $firstcount, $displaypg);
+		
+		$searchkeywords = urldecode($_GET['q']);
+		if (isset($_GET['q'])) {
+			$fields = "MATCH (title) AGAINST ('".$searchkeywords."') AS score, MATCH (content) AGAINST ('".$searchkeywords."') AS score1, ";
+			$this->orderby = '(score*3 + score1) DESC';
+		}
+		
+ 		$result = $this->findAll($fields."Trade.*,content AS digest", null, null, $this->orderby, $firstcount, $displaypg);
  		while(list($keys,$values) = each($result)){
  			$result[$keys]['pubdate'] = df($values['submit_time']);
  			$result[$keys]['title'] = pb_lang_split($values['title']);
@@ -471,6 +478,8 @@ class Trades extends PbModel {
 		$result['content'] = pb_lang_split($result['content']);
 		$result['digest'] = pb_lang_split($result['digest']);
 		$result['typename'] = $cache_types['offertype'][$result['type_id']];
+		$result["price"] = number_format($result["price"], 0, ',', '.');		
+		$result["new_price"] = number_format($result["new_price"], 0, ',', '.');
 		//var_dump($cache_types);
 		
 		if($result['default_pic'])

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 16:11:01
+<?php /* Smarty version 2.6.27, created on 2014-07-09 13:04:46
          compiled from product_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 337, false),array('function', 'html_options', 'product_edit.html', 551, false),array('function', 'html_radios', 'product_edit.html', 582, false),array('function', 'the_url', 'product_edit.html', 645, false),array('block', 'announce', 'product_edit.html', 322, false),array('modifier', 'default', 'product_edit.html', 582, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 332, false),array('function', 'html_options', 'product_edit.html', 546, false),array('function', 'html_radios', 'product_edit.html', 577, false),array('function', 'the_url', 'product_edit.html', 640, false),array('modifier', 'default', 'product_edit.html', 577, false),)), $this); ?>
 <?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>
 	<?php $this->assign('page_title', ($this->_tpl_vars['_add_service'])); ?>
 <?php else: ?>
@@ -347,7 +347,7 @@ Nhập giá sản phẩm ( > 1.000 VNĐ)<?php echo '</label>\');
 <div class="wrap clearfix">
     <div class="sidebar">
        <div class="sidebar_menu">
-         <?php $_smarty_tpl_vars = $this->_tpl_vars;
+		<?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "menu.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
@@ -364,15 +364,13 @@ images/offer_01.gif" /></div>
 	<h2><?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?><?php echo $this->_tpl_vars['_service_add_edit']; ?>
 <?php else: ?><?php echo $this->_tpl_vars['_product_add_edit']; ?>
 <?php endif; ?></h2>
-	<div class="top-announce">
-		<?php $this->_tag_stack[] = array('announce', array('row' => 1,'userid' => $this->_tpl_vars['MEMBER']['id'],'typeid' => 6,'membertypeid' => $this->_tpl_vars['MEMBER']['membertype_id'])); $_block_repeat=true;smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
-			<a target="_blank" href="announce.php?type=6">Hướng dẫn</a>
-		<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>
-		<?php $this->_tag_stack[] = array('announce', array('row' => 1,'userid' => $this->_tpl_vars['MEMBER']['id'],'typeid' => 1,'membertypeid' => $this->_tpl_vars['MEMBER']['membertype_id'])); $_block_repeat=true;smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
-			<a target="_blank" href="announce.php?type=1"><?php echo $this->_tpl_vars['_announce']; ?>
-</a>
-		<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_announce($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>		
-	</div>
+	
+	<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => "_top_announce.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>	
+	
      </div>
 
      
@@ -556,7 +554,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile0').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload0" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload0').html($(this).val());" style="display: none" name="pic" type="file" id="uploadfile0" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " name="linkpic" placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " class="linkpic" type="text" id="uploadlinkfile" />
@@ -572,7 +570,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile1').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload1" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload1').html($(this).val())" style="display: none" name="pic1" type="file" id="uploadfile1" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " name="linkpic1" placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " class="linkpic" type="text" id="uploadlinkfile1" />
@@ -588,7 +586,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile2').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload2" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload2').html($(this).val())" style="display: none" name="pic2" type="file" id="uploadfile2" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " name="linkpic2" placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " class="linkpic" type="text" id="uploadlinkfile2" />
@@ -604,7 +602,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile3').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload3" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload3').html($(this).val())" style="display: none" name="pic3" type="file" id="uploadfile3" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " name="linkpic3" class="linkpic" type="text" id="uploadlinkfile3" />
@@ -620,7 +618,7 @@ images/delete-icon.png" /></a>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile4').trigger('click')"><?php echo $this->_tpl_vars['_upload_picture']; ?>
 : <span class="picload4" style="color: #3B984C">......</span></a>
-				    <input onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
+				    <input accept="image/*" onchange="$('.picload4').html($(this).val())" style="display: none" name="pic4" type="file" id="uploadfile4" onchange="preview()" />
 				    <br><input title="<?php echo $this->_tpl_vars['_pic_note']; ?>
 " placeholder="<?php echo $this->_tpl_vars['_link_picture']; ?>
 " name="linkpic4" class="linkpic" type="text" id="uploadlinkfile4" />

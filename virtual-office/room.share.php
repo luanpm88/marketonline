@@ -9,8 +9,9 @@ session_start();
 $office_theme_name = "";
 require(CACHE_LANG_PATH.'lang_office.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("member", "memberfield", "company", "job", "employee");
+uses("member", "memberfield", "company", "job", "employee", "saleorder");
 $job = new Jobs();
+$saleorder = new Saleorders();
 $employee = new Employees();
 $member = new Members();
 $memberfield = new Memberfields();
@@ -185,5 +186,12 @@ if($hasProfile && $hasCompany)
 	//echo $chatboxs."ddfdfdf";
 	$chatboxsnew = explode(",", $chatboxsnew);
 	setvar("chatboxsnew", $chatboxsnew);
-
+	
+	
+	//count seller order
+	$conds = array();
+	$conds[] = "Saleorder.seller_id=".$the_memberid;
+	$conds[] = "Saleorder.read=0";
+	$count_sellerorder = $saleorder->findCount(array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id","LEFT JOIN pb_memberfields as mf ON Member.id = mf.member_id"), $conds, "Saleorder.id");
+	setvar("count_sellerorder", $count_sellerorder);
 ?>
