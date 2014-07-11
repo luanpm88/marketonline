@@ -87,7 +87,7 @@ class Multibytes extends PbObject
 		static $instance = array();
 
 		if (!$instance) {
-			$instance[0] =& new Multibytes();
+			$instance[0] = new Multibytes();
 		}
 		return $instance[0];
 	}

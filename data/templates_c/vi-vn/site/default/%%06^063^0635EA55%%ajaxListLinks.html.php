@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-26 12:05:06
+<?php /* Smarty version 2.6.27, created on 2014-07-10 11:00:42
          compiled from default%5Cproduct/ajaxListLinks.html */ ?>
 
 <h3><?php echo $this->_tpl_vars['_friend_links']; ?>

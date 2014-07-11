@@ -36,7 +36,7 @@ class Spaces extends PbModel {
 		return $result;
 	}
 	
-	function getFriends($member_id, $company_id = 0)
+	function getFriends_old($member_id, $company_id = 0)
 	{
 		global $rewrite_able;
 		
@@ -75,7 +75,77 @@ class Spaces extends PbModel {
 		return $returna;
 	}
 	
+	function getFriends($member_id, $limit = 0)
+	{
+		global $rewrite_able;
+		
+		$result = array();
+		$condition = null;
+		if (!empty($limit)) {
+			$limitstr = "LIMIT 0,".$limit;
+		}
+		
+		uses("member");
+		$member = new Members();
+		$m = $member->read('referrer_id', $member_id);
+		//echo "llll".$member_id."ssss";
+		$sql = "SELECT s.*, c.shop_name as shop_name, c.picture as company_picture"
+			." FROM {$this->table_prefix}members s"
+			." LEFT JOIN {$this->table_prefix}links l ON l.member_id = s.id"
+			." LEFT JOIN {$this->table_prefix}companies c ON c.member_id = l.member_id"
+			." WHERE l.parent_id='{$member_id}' AND c.shop_name IS NOT NULL"
+			." OR s.id='{$member_id}' {$condition}"
+			." ORDER BY s.created DESC {$limitstr}";
+		$result = $this->dbstuff->GetArray($sql);//set and get db cache
+		//echo $sql;
+		//var_dump($result);
+		//return $sql;
+		
+			$returna = array();
+			for($i=0; $i<count($result); $i++){
+				//echo $result[$i]["shop_name"];
+				if($result[$i]["shop_name"])
+				{
+					$result[$i]["image"] = pb_get_attachmenturl($result[$i]['company_picture'], '', 'smaller');
+					
+					if($rewrite_able)
+						$result[$i]["link"] = URL.$result[$i]["space_name"];
+					else
+						$result[$i]["link"] = URL.'space/?userid='.$result[$i]["username"].'&do=';
+						
+					$returna[] = $result[$i];
+				}
+			}
+
+		//var_dump($returna);
+		return $returna;
+	}
 	
+	function getFriendsCount($member_id)
+	{
+		global $rewrite_able;
+		
+		$result = array();
+		$condition = null;
+		if (!empty($limit)) {
+			$limitstr = "LIMIT 0,".$limit;
+		}
+		
+		uses("member");
+		$member = new Members();
+		$m = $member->read('referrer_id', $member_id);
+		//echo "llll".$member_id."ssss";
+		$sql = "SELECT COUNT(s.id)"
+			." FROM {$this->table_prefix}members s"
+			." LEFT JOIN {$this->table_prefix}links l ON l.member_id = s.id"
+			." LEFT JOIN {$this->table_prefix}companies c ON c.member_id = l.member_id"
+			." WHERE l.parent_id='{$member_id}'"
+			." OR s.id='{$member_id}' {$condition}"
+			." ORDER BY s.created DESC {$limitstr}";
+		$result = $this->dbstuff->GetArray($sql);//set and get db cache
+		
+		return $result;
+	}
 	
 	function getFollowFriends($member_id, $company_id = 0)
 	{

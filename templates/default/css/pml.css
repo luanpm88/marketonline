@@ -9996,3 +9996,16 @@ input[name=redirect]
 .box-scroll div {
     min-height: 1px;
 }
+.fancybox-overlay {
+    background: rgba(0,0,0,0.4) !important;
+}
+.fancybox-skin {
+    background: #fff !important;
+    border-radius: 2px !important;
+}
+.fancybox-opened .fancybox-skin {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0) !important;
+}
+#welcomnew-info p {
+    font-size: 18px !important;
+}

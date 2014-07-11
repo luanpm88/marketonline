@@ -191,7 +191,7 @@ if (isset($_GET['do'])) {
 	if($do=="paid" && !empty($id))
 	{
 		//$member->saveField("checkout", "1", $id);
-		$member->setPaid($id);
+		$member->setPaid($id, $_GET["months"], $_GET["amount"]);
 	}
 	
 	if($do=="unpaid" && !empty($id))

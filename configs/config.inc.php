@@ -64,4 +64,4 @@ $attachment_dir = 'attachment';
 
 $app_lang = 'vi-vn';
 $cfg_checkip = 0;
-//$debug=4;
+$debug=4;

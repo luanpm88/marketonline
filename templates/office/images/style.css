@@ -2910,8 +2910,7 @@ span.notfinished
     font-size: 18px;
 }
 .employee_steps .active
-{
-    
+{    
 }
 .employee_steps a span {
     border: 3px solid #3B984C;
@@ -3288,4 +3287,8 @@ input[name="other_school_addres"], input[name="other_school_name"] {
     width: auto;
     display: block;
     float: left;
+}
+.link_manage h1 {
+    font-size: 18px;
+    margin-top: 30px;
 }

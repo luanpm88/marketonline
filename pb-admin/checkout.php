@@ -192,7 +192,7 @@ if (isset($_GET['do'])) {
 	if($do=="paid" && !empty($id))
 	{
 		//$member->saveField("checkout", "1", $id);
-		$member->setPaid($id);
+		$member->setPaid($id, $_GET["months"], $_GET["amount"]);
 	}
 	
 	if($do=="unpaid" && !empty($id))
@@ -250,14 +250,18 @@ if (!empty($result)) {
 		//find last checkout
 		uses("checkouttransaction");
 		$transaction = new Checkouttransactions();
-		$lastcheck = $transaction->findAll("*", null, array("member_id=".$result[$i]['id']), "created DESC", 0, 1);
+		$lastcheck = $member->getLastCheck($result[$i]['id']);
 		
 		if (count($lastcheck))
 		{
-			$result[$i]["lastcheck"] = $lastcheck[0];
+			$result[$i]["lastcheck"] = $lastcheck;
 			
 			$result[$i]["parent"] = $member->getInfoById($result[$i]["lastcheck"]["parent_id"]);
 			$result[$i]["grand"] = $member->getInfoById($result[$i]["lastcheck"]["grand_id"]);
+			
+			
+			
+			
 		}
 		//var_dump($result[$i]["lastcheck"]);
 		

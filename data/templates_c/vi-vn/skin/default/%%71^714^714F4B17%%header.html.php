@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-08 09:31:33
+<?php /* Smarty version 2.6.27, created on 2014-07-10 16:37:30
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1232, false),array('function', 'the_url', 'header.html', 1287, false),array('modifier', 'default', 'header.html', 1243, false),array('modifier', 'date_format', 'header.html', 1257, false),)), $this); ?>
@@ -1371,7 +1371,7 @@ $(window).resize(function() {
 <a id="share-info-but" href="#share-info" style="display: none">Hidden Clicker</a>
 <div id="share-info" style="display: none">
 	
-	<div style="padding: 20px 20px 20px 20px;width: 1000px;max-height: 600px;overflow-x: hidden">
+	<div style="padding: 20px 20px 20px 20px;width: 1000px;max-height: 800px;overflow-x: hidden">
 			
 			<?php echo $this->_tpl_vars['share_info']['message']; ?>
 
@@ -1549,7 +1549,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="welcomnew-info-but" href="#welcomnew-info" style="display: none">Hidden Clicker</a>
 <div id="welcomnew-info" style="display: none">
 	
-	<div style="padding: 20px 20px 20px 20px;width: 600px;max-height: 600px;overflow-x: hidden">
+	<div style="padding: 20px 20px 20px 20px;width: 750px;max-height: 600px;overflow-x: hidden">
 			
 			<?php echo $this->_tpl_vars['welcomnew_info']['message']; ?>
 

@@ -171,7 +171,10 @@ if(isset($_POST['register'])){
 			
 			$link->save(array("parent_id"=>$referrer, "member_id"=>$last_member_id, "type_id"=>1, "created"=>date("Y-m-d H:i:s")));
 		}
-		
+		else
+		{
+			$link->save(array("parent_id"=>757, "member_id"=>$last_member_id, "type_id"=>1, "created"=>date("Y-m-d H:i:s")));
+		}
 		
 		if (empty($_PB_CACHE['setting']['reg_filename'])) {
 			$gopage = URL.'register.php?action=done&em='.urlencode($member->params['data']['member']['email']);

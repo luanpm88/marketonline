@@ -21,12 +21,15 @@ class Product extends PbController {
 		$this->loadModel("tradecomment");
 		$this->loadModel("tradetype");
 		$this->loadModel("tag");
+		$this->loadModel("link");
 		$this->loadModel("language");
 		$this->loadModel("announcement");
 	}
 	
 	function index()
 	{
+		//$this->member->calculatePaidGif(757);
+		//return;
 		//update show product
 		$this->product->updateShowProducts(3, 5);
 		
@@ -611,7 +614,8 @@ class Product extends PbController {
 		//get links and follows
 		uses("space");
 		$space = new Spaces();
-		$links = $space->getFriends($pb_userinfo['pb_userid']);
+		//echo $pb_userinfo['pb_userid'];
+		$links = $space->getFriends($pb_userinfo['pb_userid'],9);
 		//var_dump($links);
 		
 		//foreach($links as $key => $item)
@@ -627,8 +631,9 @@ class Product extends PbController {
 		//	$follows[$key]["link"] = 'space/?userid='.$item["username"].'&do=';
 		//	
 		//}
-		
-		setvar('count_links', count($links));
+		$count_links = $space->getFriendsCount($pb_userinfo['pb_userid']);
+		//var_dump($count_links);
+		setvar('count_links', $count_links[0]["COUNT(s.id)"]);
 		setvar('count_follows', count($follows));
 		setvar('links', $links);
 		setvar('follows', $follows);
@@ -2081,7 +2086,7 @@ class Product extends PbController {
 			
 				//send message to owner
 				$memberfield = $this->memberfield->fields("*", array("member_id=".$pb_userinfo['pb_userid']));
-				$content = "<a href='http://marketonline.vn/virtual-office/sellrorder.php?do=view&id=".$info["id"]."'>".$memberfield["first_name"]." ".$memberfield["last_name"]." đã đặt hàng</a>";
+				$content = "<a href='http://marketonline.vn/virtual-office/sellerorder.php?do=view&id=".$info["id"]."'>".$memberfield["first_name"]." ".$memberfield["last_name"]." đã đặt hàng</a>";
 				$sms['content'] = mysql_real_escape_string($content);
 				$sms['title'] = mysql_real_escape_string("Lịch sửa mua hàng");
 				$sms['membertype_ids'] = '[1][2][3]';
@@ -5726,5 +5731,13 @@ class Product extends PbController {
 		render("product/ajaxMainCategoryMenu");
 	}
 	
+	//function convert757friends()
+	//{
+	//	$result = $this->space->getFriends_old(757);
+	//	foreach($result as $item)
+	//	{
+	//		$this->link->save(array("parent_id"=>757, "member_id"=>$item["id"], "type_id"=>1, "created"=>$item["created"]));
+	//	}
+	//}
 }
 ?>

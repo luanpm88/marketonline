@@ -85,7 +85,7 @@ class Members extends PbModel {
  		return $this->info;
  	}
 	
-	function setPaid($id)
+	function setPaid($id, $months, $amount)
 	{
 		//find parent's agent
 		uses("link", "connectpaidnote","checkouttransaction");
@@ -124,7 +124,7 @@ class Members extends PbModel {
 		
 		
 		//update transaction
-		if($member["checkout"] == 0 && $_GET["months"] != "" && $_GET["amount"] != "")
+		if($member["checkout"] == 0 && $months != "" && $amount != "")
 		{
 			$parentid = $link->findParent($id);		
 			if($parentid)
@@ -132,7 +132,7 @@ class Members extends PbModel {
 				$grandid = $link->findParent($parentid);
 			}
 			
-			$transaction->save(array("member_id" => $id, "parent_id" => $parentid, "grand_id" => $grandid, "created" => date("Y-m-d H:i:s"), "months" => $_GET["months"], "amount" => $_GET["amount"]));
+			$transaction->save(array("member_id" => $id, "parent_id" => $parentid, "grand_id" => $grandid, "created" => date("Y-m-d H:i:s"), "months" => $months, "amount" => $amount));
 			
 			$this->saveField("checkout", "1", $id);
 		}
@@ -901,6 +901,95 @@ class Members extends PbModel {
 	function belongToGroup()
 	{
 		
+	}
+	
+	function countEffectiveMembers($parent_id = null, $product_count = 9)
+	{
+		$conditions = array();
+		$joins = array();
+		if(!empty($parent_id)) {
+			$joins[] = "LEFT JOIN {$this->table_prefix}links l ON l.member_id=Member.id";
+			$conditions[] = "l.parent_id=".intval($parent_id);
+		}
+		
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON Member.id=c.member_id";
+		$joins[] = "LEFT JOIN (SELECT p.member_id, COUNT(p.id) AS pcount FROM {$this->table_prefix}products AS p GROUP BY p.member_id) mp ON mp.member_id = Member.id";
+		$conditions[] = "(c.picture != '' AND c.banners IS NOT NULL AND c.picture IS NOT NULL AND c.banners != '')";
+		$conditions[] = "(Member.checkout=1 OR mp.pcount > {$product_count})";
+		
+		$result = $this->findCount($joins, $conditions, "Member.id");
+		
+		return $result;
+	}
+	
+	function updatePaid($member_id, $months = 0)
+	{
+		uses("checkouttransaction");
+		$transaction = new Checkouttransactions();
+		
+		$lastcheck = $this->getLastCheck($member_id);
+		
+		if(strtotime($lastcheck["deadline"]) > strtotime(date('Y-m-d'))) {
+			$transaction->saveField("months", $lastcheck["months"]+$months, intval($lastcheck["id"]));
+		}
+		else
+		{
+			$this->saveField("checkout", 0, intval($member_id));
+			$this->setPaid($member_id, $months, "Effective Members Gift");
+		}
+	}
+	
+	function calculatePaidGif($member_id)
+	{
+		$gif_rate = 12;
+		$bonus_num = 10;
+		$member = $this->read("*",$member_id);
+		$current_count = $member["counted_effective_members"];
+		$new_count = $this->countEffectiveMembers($member_id);
+		
+		$more_count = $new_count - $current_count;
+		
+		$months_gif = intval($more_count/$bonus_num)*$gif_rate;
+		
+		$save_count = $new_count - $more_count%$bonus_num;
+		
+		//echo $current_count."-".$new_count."-".$more_count."-".$months_gif."-".$save_count;
+		
+		if($months_gif > 0)
+		{
+			if($member["checkout"] == 1) {
+				$this->updatePaid($member_id, $months_gif);
+			}
+			else {
+				echo "set paid";
+				$this->setPaid($member_id, $months_gif, "Effective Members Gift");
+			}
+			
+			$this->saveField("counted_effective_members", $save_count, intval($member_id));
+		}
+		else
+		{
+			//echo "nothing";
+		}
+	}
+	
+	function getLastCheck($menber_id)
+	{
+		uses("checkouttransaction");
+		$transaction = new Checkouttransactions();
+		$lastcheck = $transaction->findAll("*", null, array("member_id=".$menber_id), "created DESC", 0, 1);
+		$lastcheck = $lastcheck[0];
+		
+		$lastcheck["created"] = date("Y-m-d", strtotime($lastcheck["created"]));
+		if($lastcheck["months"]) {
+			$lastcheck["deadline"] = date("Y-m-d", strtotime($lastcheck["created"])+(($lastcheck["months"]*30+15)*24*60*60));
+			if(strtotime($lastcheck["deadline"]) - strtotime(date('Y-m-d')) <= 15*24*60*60)
+			{
+				$lastcheck["warning"] = true;
+			}
+		}
+
+		return $lastcheck;
 	}
 }
 ?>
