@@ -30,7 +30,7 @@ class Areas extends PbModel {
 	function &getInstance() {
 		static $instance = array();
 		if (!$instance) {
-			$instance[0] =& new Areas();
+			$instance[0] = new Areas();
 		}
 		return $instance[0];
 	}

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-08 09:54:31
+<?php /* Smarty version 2.6.27, created on 2014-08-15 16:03:19
          compiled from footer.html */ ?>
 
   <div id="darkf">
@@ -181,6 +181,7 @@ index.php?do=product&action=uploadCustomBGFile" name="insertPicForm" id="insertP
 " />
 		<input type="hidden" name="uri" value="<?php echo $this->_tpl_vars['FURI']; ?>
 " />
+			<h2 class="custom-style-box-title">Đổi màu trang cá nhân</h2>
 		    <h2>Màu sắc chung</h2>
 			<ul>
 				<li>
@@ -453,12 +454,15 @@ templates/skins/default/image/settings-left.png" id="appear_iconz"></div>
 					
 		}
 		
-		'; ?>
-<?php if ($this->_tpl_vars['pb_userinfo']['id']): ?>getChatFriendList(<?php echo $this->_tpl_vars['pb_userinfo']['id']; ?>
-);<?php endif; ?><?php echo '
 	    });
     </script>
      '; ?>
 
+     
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_footer_script.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>
 </body>
 </html>

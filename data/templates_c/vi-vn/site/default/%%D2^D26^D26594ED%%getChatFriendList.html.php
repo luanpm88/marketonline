@@ -1,9 +1,13 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-26 15:58:39
+<?php /* Smarty version 2.6.27, created on 2014-08-21 08:21:21
          compiled from default%5Cstudypost/getChatFriendList.html */ ?>
-<div class="chat_list_title"><strong>Danh sách bạn bè</strong> <span><?php echo $this->_tpl_vars['count']; ?>
- bạn</span></div>
+<?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/getChatFriendList.html', 20, false),)), $this); ?>
+<div class="chat_list_title"><strong>Danh sách bạn bè</strong> <!--<span><?php echo $this->_tpl_vars['count']; ?>
+ bạn</span>--></div>
 <div class="scroll_list">
             <ul>
+                        <li class="title" style="">Bạn học tập đang trực tuyến (<?php echo $this->_tpl_vars['count']; ?>
+)</li>
                         <?php if (! $this->_tpl_vars['members']): ?>
                             <li style="text-align: center">Chưa có bạn</li>
                         <?php else: ?>
@@ -28,8 +32,10 @@ x6', false);">
                             <?php endforeach; endif; unset($_from); ?>
                         <?php endif; ?>
                         <?php if ($this->_tpl_vars['pb_userinfo']['id']): ?>
-                            <li class="title" style="">Đang trực tuyến (<?php echo $this->_tpl_vars['count_online_list']; ?>
+                            <li class="title" style="">Liên kết đang trực tuyến (<?php echo $this->_tpl_vars['count_online_list']; ?>
 )</li>
+                            <li class="invite" style=""><a href="<?php echo smarty_function_the_url(array('module' => 'share_shop','space_name' => ($this->_tpl_vars['pb_userinfo']['space_name'])), $this);?>
+">Mời bạn bè tham gia</a></li>
                                 <?php if (! $this->_tpl_vars['online_list']): ?>
                                     <li style="text-align: center">Chưa có bạn</li>
                                 <?php else: ?>
@@ -54,9 +60,11 @@ x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
                                                 <?php else: ?>
                                                     <h2 class="title"><?php echo $this->_tpl_vars['item']['shop_name']; ?>
 </h2>
-                                                    <p class="content"><?php echo $this->_tpl_vars['item']['first_name']; ?>
+                                                    <p class="content"><?php if ($this->_tpl_vars['item']['first_name']): ?><?php echo $this->_tpl_vars['item']['first_name']; ?>
  <?php echo $this->_tpl_vars['item']['last_name']; ?>
-</p>
+<?php if (! $this->_tpl_vars['item']['shop_name']): ?> (<?php echo $this->_tpl_vars['item']['username']; ?>
+)<?php endif; ?><?php else: ?><?php echo $this->_tpl_vars['item']['username']; ?>
+<?php endif; ?></p>
                                                 <?php endif; ?>
                                                 <!--<p class="timeinbox"><?php echo $this->_tpl_vars['item']['created']; ?>
 </p>-->

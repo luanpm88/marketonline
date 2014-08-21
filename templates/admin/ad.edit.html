@@ -21,8 +21,54 @@ jQuery(document).ready(function($) {
 </div>
 <div class="info">
   <form method="post" action="ad.php" enctype="multipart/form-data" id="EditFrm" name="edit_frm">
-  <input type="hidden" name="id" value="{$smarty.get.id}" />  
+  <input type="hidden" name="id" value="{$smarty.get.id}" />
+  
+
+  <div style="margin: 20px;padding: 10px;border: solid 1px #333">
+			<h2>Phần dành cho Thương hiệu</h2>
+			<table class="infoTable">
+			      
+			      
+			      
+			      <tr>
+				      <th style="border-bottom: solid 1px #333" class="paddingT15"> Tên SPACE của SHOP quảng cáo</th>
+				      <td style="border-bottom: solid 1px #333" class="paddingT15 wordSpacing5">          
+					      <input style="width:400px" class="infoTableInput2" name="space_name" value="{$item.company.cache_spacename}" />
+				      </td>
+			      </tr>
+			      
+			      
+			      
+			      <tr>
+				      <th> {lang sectors}</td>
+				      <td>
+					      <ul class="industry_list_checkbox">
+						      <!--{loop $industries_checkbox itemc level_0 key0}-->
+							   <li><input type="checkbox" {if $itemc.checked}checked="checked"{/if} name="industries_checkbox[]" value="{$itemc.id}">{$itemc.name}</li>
+						      <!--{/loop}-->
+						      <li><input type="checkbox" name="industries_checkbox[]" value="0">{lang others}</li>
+					      </ul>
+				      </td>
+			      </tr>
+			      <tr>
+				      <th> Nhóm</td>
+				      <td>
+					      <input {if $item.membergroup_id==1}checked="checked"{/if} type="radio" name="ad[membergroup_id]" value="1" /> Cửa hàng
+					      <input {if $item.membergroup_id==2}checked="checked"{/if} type="radio" name="ad[membergroup_id]" value="2" /> Cá nhân
+					      <input {if $item.membergroup_id==3}checked="checked"{/if} type="radio" name="ad[membergroup_id]" value="3" /> Doanh nghiệp
+					      <input type="radio" name="ad[membergroup_id]" value="" /> None
+				      </td>
+			      </tr>
+			</table>
+  </div>
+  
     <table class="infoTable">
+	
+	
+	
+	
+	
+	
       <tr>
         <th class="paddingT15"> {lang ads}{lang title}{lang colon}</th>
         <td class="paddingT15 wordSpacing5">          
@@ -45,6 +91,16 @@ jQuery(document).ready(function($) {
 		</select></td>
       </tr>
       <tr>
+        <th class="paddingT15"> {lang parent_categories}{lang colon}</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="ad[industry_id]" id="dataParentId">
+		<option value="0">{lang no}</option>
+		<option value="-1" {if $smarty.get.industry_id=="-1"}selected="selected"{/if}>Tất cả</option>
+		{$CacheItems}
+        </select>
+       </td>
+      </tr>
+      <tr>
         <th class="paddingT15">{lang link_mode}{lang colon}</th>
         <td class="paddingT15 wordSpacing5"><label for="Sourcetype1"><input type="radio" name="m_sourcetype" id="Sourcetype1" value="1"/>{lang local_upload}</label><label for="Sourcetype2"><input type="radio" name="m_sourcetype" id="Sourcetype2" value="2"/>{lang link_address}</label>
           </td>
@@ -62,6 +118,14 @@ jQuery(document).ready(function($) {
 		<input class="infoTableInput2" type="file" name="attach" /></td>
       </tr>
       </tbody>
+      
+      <tr>
+        <th class="paddingT15">Đường dẫn hình</th>
+        <td class="paddingT15 wordSpacing5">
+		<input type="text" name="ad[source_url]" value="{$item.source_url}">
+	</td>
+      </tr>
+      
       <tr>
         <th class="paddingT15"> {lang width}{lang colon}</th>
         <td class="paddingT15 wordSpacing5">

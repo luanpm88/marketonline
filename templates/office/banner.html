@@ -33,7 +33,9 @@ var can_also_enter = "{lang can_also_enter}";
 	{if $MEMBER.membergroup_id == 1}{lang ad_pic}{/if}
 	{if $MEMBER.membergroup_id == 2}{lang ad_pic}{/if}
      </h2></div>
-<div class="hint"><span class="btn_hint"><a href="banner.php?do=edit" class="btn_publish">{lang add_site_advertising}</a></span></div>
+<div class="hint"><span class="btn_hint">
+	<a href="banner.php?do=price_list" class="btn_publish">{lang add_site_advertising}</a>
+	</span></div>
 
 
 
@@ -63,7 +65,9 @@ var can_also_enter = "{lang can_also_enter}";
 		  <td>{if $item.is_image==1}<a href="{$item.src}" rel="lightbox"><img class="double-border" src="{$item.src}" width="150" /></a>{else}{$item.start_date|date_format:"%Y-%m-%d"}{lang arrive_to}{$item.end_date|date_format:"%Y-%m-%d"}{/if}</td>
 		  <td style="text-align: left;vertical-align: top"><label for="item_{$item.id}"><strong>{$item.title}</strong></label>
 		  <br />
-		  {lang position}: {$item.industry_names}
+		  Vị trí: {if $item.adzone_id == "6"}<strong>Trang chi tiết sản phẩm</strong>{/if}
+		  {if $item.adzone_id == "7"}<strong>Trang chính sản phẩm</strong>{/if}<br />
+		  {if $item.adzone_id == "7"}Chuyên mục: {$item.industry_names}{/if}
 		  
 		  </td>
 		  <!--<td><a title="{lang click_and_search}" href="ad.php?do=search&adzone_id={$item.adzone_id}">{$item.adzone}</a></td>-->
@@ -82,7 +86,13 @@ var can_also_enter = "{lang can_also_enter}";
 				    <!--{/if}-->
 			{/if}
 		</td>
-		  <td>{if $item.status}<span class="stt_valid">{lang checkouted}</span>{else}<span class="stt_invalid">{lang nocheckout}</span>{/if}</td>
+		  <td>
+			{if $item.status}
+				<span class="stt_valid">{lang checkouted}</span>
+			{else}
+				<span class="stt_invalid">{lang nocheckout}</span>
+			{/if}
+		  </td>
 		  
 		  <td>{$item.clicked}</td>
 		  <td class="handler">

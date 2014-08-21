@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-10 08:46:11
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:52:52
          compiled from member.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'member.html', 53, false),array('function', 'iplocation', 'member.html', 96, false),array('modifier', 'date_format', 'member.html', 94, false),array('modifier', 'pl', 'member.html', 142, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'member.html', 53, false),array('function', 'the_url', 'member.html', 96, false),array('function', 'iplocation', 'member.html', 101, false),array('modifier', 'date_format', 'member.html', 99, false),array('modifier', 'pl', 'member.html', 147, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -32,13 +32,13 @@ unset($_smarty_tpl_vars);
 
 
 
-<form id="paid_form" action="member.php" method="get">
+<form id="paid_form" action="member.php" method="get" style="position: absolute;top: -9000px">
 	<input type="hidden" name="do" value="paid" />
 	<input type="hidden" name="id" value="" />
 	<input placeholder="tháng" type="text" name="months" style="float: left;width: 35px;margin-right: 5px;text-align: right" />
 	<input placeholder="số tiền" type="text" name="amount" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
 	<a class="btn_paid check<?php echo $this->_tpl_vars['item']['id']; ?>
-" href="#" title="<?php echo $this->_tpl_vars['_paid']; ?>
+" href="#checkout" title="<?php echo $this->_tpl_vars['_paid']; ?>
 " onclick=""><?php echo $this->_tpl_vars['_paid']; ?>
 </a>
 </form>
@@ -136,13 +136,22 @@ unset($_smarty_tpl_vars);
 " title="<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php endif; ?></td>
 			  <td><label for="item_<?php echo $this->_tpl_vars['item']['id']; ?>
-"><?php echo $this->_tpl_vars['item']['username']; ?>
+" class=""><?php echo $this->_tpl_vars['item']['username']; ?>
 </label><br><span style="color:gray;" title="<?php echo $this->_tpl_vars['item']['NickName']; ?>
 "><small><?php echo $this->_tpl_vars['item']['NickName']; ?>
-</small></span></td>
+</small></span>
+			  
+			  <br /><small>Giới thiệu: <strong><?php echo $this->_tpl_vars['item']['parent_username']; ?>
+</strong></small>
+			  <?php if ($this->_tpl_vars['item']['shop_name']): ?><br /><small>Shop: <a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['item']['space_name'])), $this);?>
+"><strong><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+</strong></a></small><?php endif; ?>
+			  
+			  </td>
 			  <td><?php if ($this->_tpl_vars['item']['pubdate'] > $this->_tpl_vars['today_timestamp']): ?><img src="<?php echo $this->_tpl_vars['admin_theme_path']; ?>
 images/new.gif" alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['item']['pubdate'])) ? $this->_run_mod_handler('date_format', true, $_tmp, '%H:%M:%S') : smarty_modifier_date_format($_tmp, '%H:%M:%S')); ?>
-"/><?php else: ?><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['pubdate'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%m-%d %H:%M") : smarty_modifier_date_format($_tmp, "%m-%d %H:%M")); ?>
+"/><br /><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['pubdate'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%m-%d %H:%M") : smarty_modifier_date_format($_tmp, "%m-%d %H:%M")); ?>
+<?php else: ?><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['pubdate'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%m-%d %H:%M") : smarty_modifier_date_format($_tmp, "%m-%d %H:%M")); ?>
 <?php endif; ?>&nbsp;</td>
 			  <td><?php echo $this->_tpl_vars['MemberStatus'][$this->_tpl_vars['item']['status']]; ?>
 </td>

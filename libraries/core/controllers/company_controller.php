@@ -2,19 +2,166 @@
 class Company extends PbController {
 	var $name = "Company";
 	
-	function Company()
-	{
+	function Company() {
 		global $viewhelper;
+		
+		$this->loadModel("company");
+		$this->loadModel("industry");
+		
 		$this->viewhelper = $viewhelper;
 	}
 	
-	function index()
-	{
-		render("company/index", 1);		
+	function index() {
+		//echo $_GET["keyword"]."zzzzz";
+		//GET TOP INDUSTRY TILES
+		$industries = $this->industry->getCacheIndustry();		
+		$count0 = 0;
+		$fimages = array();
+		foreach($industries as $key0 => $level0)
+		{
+			$cats = array();
+			$cats[] = $level0["id"];
+			if($count0%6 == 0 || $count0%6 == 5)
+			{
+				$maxitem = 11;
+			}
+			else
+			{
+				$maxitem = 3;
+			}
+			
+			$industries[$key0]["disp"] = "disp";
+		
+			//getImage
+			$industries[$key0]["image"] = pb_get_attachmenturl($industries[$key0]["picture"], "", "");
+			
+			if(preg_match('/nopicture/', $industries[$key0]["image"]))  $industries[$key0]["image"] = "";
+			
+			//FACEBOOK IMAGES
+			if($industries[$key0]["image"] != '' && $industries[$key0]["share_facebook"])
+			{
+				$fimages[] = $industries[$key0]["image"];
+			}
+			
+			foreach($level0['sub'] as $key1 => $level1)
+			{
+				$cats[] = $level1["id"];
+				
+				foreach($level1['sub'] as $key2 => $level2)
+				{
+					$cats[] = $level2["id"];
+				}
+
+				if($key1 > $maxitem)
+				{
+					unset($industries[$key0]["sub"][$key1]);
+				}
+				
+			}
+			
+			if($count0 == count($industries)-1)
+			{
+				$industries[$key0]["last"] = 1;
+			}
+			else
+			{
+				$industries[$key0]["last"] = 0;
+			}
+			
+			$count0++;
+		}
+		setvar("IndustryList", $industries);
+		
+		////GET COMPANIES
+		//$this->company->initSearch();
+		//$companies = $this->company->Search(0, 12);
+		//setvar("companies", $companies);
+		
+		//GET ADSES
+		uses("ad","adzone");
+		$ads = new Adses();
+		$adzones = new Adzones();
+		
+		$conditions = array();
+		$joins = array();
+		
+		$joins[] = "LEFT JOIN {$ads->table_prefix}companies c ON c.id=Ads.company_id";
+		$joins[] = "LEFT JOIN {$ads->table_prefix}members m ON m.id=c.member_id";
+		
+		//GET CURRENT INDUSTRY		
+		if(isset($_GET["industryid"])) {
+			$industryid = $_GET["industryid"];
+			
+			$industry = $this->industry->read("*", intval($_GET["industryid"]));
+			//var_dump($industry);
+			setvar("industry",$industry);
+			
+			//conditions
+			$conditions[] = "(((c.industries LIKE '".$industryid."')"
+							." OR (c.industries LIKE '%,".$industryid."')"
+							." OR (c.industries LIKE '".$industryid.",%')"
+							." OR (c.industries LIKE '%,".$industryid.",%')) OR ("
+					."(Ads.industries LIKE '".$industryid."')"
+							." OR (Ads.industries LIKE '%,".$industryid."')"
+							." OR (Ads.industries LIKE '".$industryid.",%')"
+							." OR (Ads.industries LIKE '%,".$industryid.",%')"
+					."))";
+		}
+		if(!empty($_GET['membergroup_id'])){
+ 			$conditions[] = "(m.membergroup_id='".intval($_GET['membergroup_id'])."' OR Ads.membergroup_id='".intval($_GET['membergroup_id'])."')";
+ 		}
+		
+		$zones = $adzones->findAll("*", null, array("company_zone=1"), "display_order");
+
+		foreach($zones as &$zone) {
+			$zone_condition = array("Ads.adzone_id=".$zone["id"]);
+			$adses = $ads->findAll("c.cache_spacename, c.name as company_name, c.picture, Ads.*", $joins, array_merge($conditions, $zone_condition));
+			
+			foreach($adses as &$item) {				
+				$item = $ads->formatResult($item);
+			}
+			
+			$zone["adses"] = $adses;
+		}
+		//var_dump($adses);
+		
+		setvar("list", $zones);
+		render("company/index", 1);
 	}
 	
-	function detail()
-	{
+	function search() {
+		$result = $this->company->fullTextSearch($_GET["keyword"],0,40,true);
+		//var_dump($result);
+		setvar("list", $result["result"]);
+		setvar("count", $result["count"]);
+		setvar("pagination", pagination($result["count"], 10, 1));
+		//render("company/search", 1);
+		//uses("ad");
+		//$ads = new Adses();
+		//
+		//$conditions = array();
+		//$joins = array();
+		//
+		//$joins[] = "LEFT JOIN {$ads->table_prefix}companies c ON c.id=Ads.company_id";
+		//$joins[] = "LEFT JOIN {$ads->table_prefix}members m ON m.id=c.member_id";
+		//$joins[] = "LEFT JOIN {$ads->table_prefix}adzones ad ON ad.id=Ads.adzone_id";
+		//
+		//$conditions[] = "ad.company_zone=1";
+		//
+		//if(trim($_GET["keyword"])) {
+		//	$keyword = strtolower(trim($_GET["keyword"]));
+		//	$conditions[] = "(Ads.title='' AND (LOWER(c.name) LIKE '%{$keyword}%' OR LOWER(c.shop_name) LIKE '%{$keyword}%'))";
+		//}		
+		//
+		//$adses = $ads->findAll("c.cache_spacename, c.name as company_name, c.picture, Ads.*", $joins, $conditions);
+		//foreach($adses as &$item) {				
+		//	$item = $ads->formatResult($item);
+		//}
+		//setvar("list", $adses);
+		render("company/search", 1);
+	}
+	
+	function detail() {
 		global $G;
 		using("area","industry");
 		$area = new Areas();

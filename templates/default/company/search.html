@@ -1,0 +1,143 @@
+<!--{include file="`$theme_name`/header.html" page_title="Thương hiệu - MarketOnline.vn" nav_id="`$nav_id`"}-->
+
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<div class="row">
+  <div class="fifteen columns" style="padding-left: 0">
+
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
+
+    <div class="super-main-category mainproductpage company">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{the_url module='companies'}" class="show-but current-but market">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+    
+    
+
+    <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=offer_main}">Thương hiệu</a></div>
+
+    <h1 class="page-title">Thương hiệu {if $industry}- {$industry.name}{/if}</h1>
+    
+  </div>
+
+  </div>
+</div>
+
+
+
+<div class="row company-container">
+		
+	
+	
+      <div class="row" style="margin: 0">
+	<div style="margin-top: 0px;padding-left: 4px;" class="fifteen columns">
+      
+	  <span style="margin-right: 20px" class="icon back"></span>
+	      <h2 class="block-title">
+		  <span class="keyword-announce">
+                        Tìm thương hiệu theo từ khóa '<strong>{$smarty.get.keyword}</strong>'
+		  </span>
+	      </h2>
+	</div>
+      </div>
+      
+      
+	<div style="float: right; width: 300px; margin-top: -50px" id="searchleft_innerbox">
+	    <form action="{the_url module='companies' action='search'}" method="get">
+		<input type="hidden" name="do" value="company" />
+		<input type="hidden" name="action" value="search" />
+		<input type="text" placeholder="Tìm kiếm" name="keyword" style="float: left">
+		<input type="submit" value="Tìm kiếm">
+	    </form>
+	</div>
+      
+        <div class="works-list">
+                
+                <div class="pagination-list company-pagination">
+                    {$pagination}
+                </div>
+                <br style="clear:both" />
+                
+                <div class="pagination-list company-pagination">
+                    <ul>
+                        <li class="first"><a rel="1" href="javascript:void(0)">&lt;&lt;</a></li>
+                        <li class="prev"><a rel="4" href="javascript:void(0)">&lt;</a></li>
+                        <li class="num"><a rel="1" href="javascript:void(0)">1</a></li>
+                        <li class="num"><a rel="2" href="javascript:void(0)">2</a></li>
+                        <li class="num"><a rel="3" href="javascript:void(0)">3</a></li>
+                        <li class="next"><a rel="6" href="javascript:void(0)">&gt;</a></li>
+                        <li class="last"><a rel="42" href="javascript:void(0)">&gt;&gt;</a></li>
+                    </ul>
+                </div>
+                <br style="clear:both" />
+          
+              <ul style="height: 230px;" class="filterable-grid">
+                  
+                  <!--{loop $list item level key}-->
+                      <li data-type="dentity motion sites web-design " data-id="id-1" class="item">
+                          <div class="half odd">
+                              <div class="pic"><img title="{$item.name}" alt="{$item.name}" style="margin:0 0;" src="{$item.logo}"></div>
+                              
+                              <a target="_blank" title="{$item.name}" href="{$item.href}"></a>
+                          </div>
+                            <div class="description-bottom">
+                                  <div class="title">				      
+                                      <h4><a target="_blank" title="{$item.name}" href="{$item.href}">{$item.name}</a></h4>
+                                  </div>
+                            </div>
+                      </li>
+                  <!--{/loop}-->
+                    
+              </ul>
+        </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+
+
+
+<!--{include file="`$theme_name`/footer.html"}-->
+
+
+

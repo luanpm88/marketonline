@@ -1,24 +1,23 @@
-                <a style="margin-bottom: 10px" href="http://marketonline.vn/product/detail/19550.html" class="leftlogodetail"><img title="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" alt="TÊN SẢN PHẨM (CHI TIẾT MẪU ) CẦN CÓ CÁC HẠNG MỤC SAU" src="http://marketonline.vn/attachment/2013/09/26/product-1-19550.jpg" /><span class="shopname_right">Sản phẩm mẫu</span></a>
-		
-		{if $COMPANY.r_spacename}<a href="{the_url module=space userid=`$COMPANY.r_spacename`}" class="leftlogodetail"><img title="{$COMPANY.r_name}" alt="{$COMPANY.r_name}" src="{$COMPANY.r_logo}" /><span class="shopname_right">{$COMPANY.r_shop_name|truncate:32}</span></a>{/if}
-		
-		<!--{foreach from=$banners item=itemxxx}-->
-		
-			<!--<a target="_blank" rel="nofollow" class="leftlogodetail" href="{the_url module=banner_click id=`$itemxxx.id`}"><img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" /><span class="shopname_right">{$itemxxx.title|truncate:32}</span></a>-->
-			<a class="" style="border: none;margin-top: 25px;padding-top: 10px;border-top:solid 1px #ccc;padding-bottom: 0" href="{the_url module=space userid=`$itemxxx.space_name`}">{$itemxxx.title}</a>
-			<a class="leftlogodetailz" href="{the_url module=space userid=`$itemxxx.space_name`}">
-				<img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" />
-				<span style="display: none" class="shopname_right">{$itemxxx.title|truncate:32}</span>
-			</a>
-			{if $itemxxx.description}<div style="margin-bottom: 0">{$itemxxx.description|truncate:99}</div>{/if}
-	
-		<!--{/foreach}-->
-		
-		
-		<!-- {pb:product name="itemz" industryid="$inn_array" row=2} -->
-		    {if $Product.id != $itemz.id}
-			<a style="display: none;margin-bottom: 20px" href="{the_url module=product id=`$itemz.id` product_name=`$itemz.name`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
-		    {/if}
-		<!-- {/pb:product} -->
-		
-		<!--<a href="index.php?do=product&level=1&industryid={$banner.banner1_id}"><img src="{$banner.banner1}" /></a>-->
+<!--{foreach from=$banners item=itemxxx}-->
+<div class="rightbanner_block text_left">
+	<a class="" style="border: none;margin-top: 0;padding-top: 0;border-top:solid 0px #ccc;padding-bottom: 0" href="{the_url module=ad id=`$itemxxx.id`}">{$itemxxx.title}</a>
+	<a class="leftlogodetailz" href="{the_url module=ad id=`$itemxxx.id`}">
+		<img title="{$itemxxx.title}" alt="{$itemxxx.title}" src="{$itemxxx.image}" />
+		<span style="display: none" class="shopname_right">{$itemxxx.title|truncate:32}</span>
+	</a>
+	{if $itemxxx.description}<div style="margin-bottom: 0">{$itemxxx.description|truncate:99}</div>{/if}
+</div>
+<!--{/foreach}-->
+
+<!-- {pb:product name="itemz" industryid="$inn_array" row=2} -->
+    {if $Product.id != $itemz.id}
+	<a style="display: none;margin-bottom: 20px" href="{the_url module=product id=`$itemz.id` product_name=`$itemz.name`}"><img title="{$itemz.name}" alt="{$itemz.name}" src="{$itemz.thumb}" /></a>
+    {/if}
+<!-- {/pb:product} -->
+
+<!--{if $COMPANY.r_spacename}-->
+	<a href="{the_url module=space userid=`$COMPANY.r_spacename`}" class="leftlogodetail">
+		<img title="{$COMPANY.r_name}" alt="{$COMPANY.r_name}" src="{$COMPANY.r_logo}" />
+		<span class="shopname_right">{$COMPANY.r_shop_name|truncate:32}</span>
+	</a>
+<!--{/if}-->

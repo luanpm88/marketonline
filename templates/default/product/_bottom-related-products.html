@@ -1,0 +1,19 @@
+<ul>		
+        <!--{loop $bottom_related_products itemvv levelvv keyvv}-->
+                <li class="">
+                        <a href="{the_url module=product id=`$itemvv.id` product_name=`$itemvv.name`}" title="{$itemvv.name}">
+                                <div class="img_box">
+                                        <img title="{$itemvv.name}" alt="{$itemvv.name}" src="{$itemvv.thumb}" />
+                                </div>
+                                {$itemvv.name|truncate:45}
+                        </a>
+                        {if $itemvv.new_price || $itemvv.price}
+                                {if $itemvv.new_price != "" && $itemvv.new_price != 0}
+                                        <span class="price">{if $itemvv.price}<span class="old_price">{$itemvv.price} <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>{/if} <span class="amount">{$itemvv.new_price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span> {if $itemvv.price_note}<span class="noteprice">({$itemvv.price_note})</span>{/if}
+                                {else}
+                                        <span class="price"><span class="amount">{$itemvv.price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>
+                                {/if}
+                        {/if}
+                </li>
+        <!--{/loop}-->
+</ul>

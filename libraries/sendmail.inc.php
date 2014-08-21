@@ -14,9 +14,29 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
     $mail = new PHPMailer();
     $result = false;
     $logdata['created'] = time();
+    
+    
+    
+    
+    
+    
     if (!empty($G['mail'])) {
     	extract(unserialize($G['mail']));
     }
+    //$smtp_server = 'mail.marketonline.vn';
+    //$smtp_port = 25;
+    //$auth_username = 'contact@marketonline.vn';
+    //$auth_password = 'con1tact@#$1';
+    //$auth_protocol = '';
+    //$mail_from = 'contact@marketonline.vn';
+    
+    //$smtp_server = 'smtp.gmail.com';
+    //$smtp_port = 465;
+    //$auth_username = 'bmnmarketonline@gmail.com';
+    //$auth_password = 'merketonlinebmn@#$123';
+    //$auth_protocol = 'ssl';
+    //$mail_from = 'bmnmarketonline@gmail.com';
+    
     if ($send_mail == 2) {
     	$mail->IsSMTP();
     	$mail->Host       = $smtp_server;
@@ -72,9 +92,11 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
 		$logdata['handle_type'] = "error";
 		$logdata['source_module'] = "sendmail";
 		$logdata['description'] = $mail->ErrorInfo;
+		
 		$log->Add($logdata);
 		return false;
 	}
+	//echo $smtp_server."-".$auth_username."-".$smtp_port."-".$auth_protocol."-".$mail->ErrorInfo;
 	if(!empty($redirect_url)){
 	    pheader("Location:".$redirect_url);
 	}else{

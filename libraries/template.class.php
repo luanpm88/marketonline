@@ -99,7 +99,7 @@ class TemplateEngines extends Smarty {
 		$this->compile_dir =$comp_d;
 	}
 	
-	function flash($message_code, $url, $pause = 1, $extra = '') {
+	function flash($message_code, $url, $pause = 1, $extra = '', $mes = "") {
 		global $theme_name;
 		$images = array("failed.png", "success.png", "notice.png");
 		$styles = array("error", "true");
@@ -127,6 +127,9 @@ class TemplateEngines extends Smarty {
 				$page_title = $box_title = $message = L($message_code, "msg", $extra);				
 			}
 		}
+		
+		if($mes != "") $message = $mes;
+		
 		$this->assign('action_img', $image);
 		$this->assign('action_style', $style);
 		$this->assign('url', $url);

@@ -212,7 +212,7 @@
 				<br />
 				
 				
-				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcomenew'){else}goclicky_custom(this, '{$F_URL}#welcomenew', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
+				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcome14'){else}goclicky_custom(this, '{$F_URL}#welcome14', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
 					<span class="at15t_facebookz">
 						<span class="">Share on facebook</span>
 					</span>
@@ -277,6 +277,7 @@
 		
 		<div class="detail-info">
 			<h1>{$Trade.name}</h1>
+			{if $Trade.price}<h4>Giá: <span class="amount">{$Trade.price} VNĐ{if $Trade.price_unit}/{$Trade.price_unit}{/if}</span></h4>{/if}
 			<div class="description">
 				{$Trade.content}
 			</div>

@@ -78,6 +78,11 @@
 	</div>
 	
 	<div class="space_contact_right">
+	    
+	    {if $success}<p class="contact_success">{lang contact_success}</p>{/if}
+
+	    {if $capt_check == false}<div class="capt-error contact-error">Mã bảo mật không đúng. Vui lòng nhập lại!</div>{/if}
+	    
 		<h3 style="padding-left: 0">{lang contact}</h3>
 
 	     <form action="" method="POST" name="contact_feedback" id="contact_feedback" class="contact-form">
@@ -86,13 +91,36 @@
 		
 		 <div class="fields">
 		     <label for="sender_name">{lang sender}</label>
-		     <input class="text" name="sender_name" id="sender_name" type="text">
+		     <input class="text" name="sender_name" id="sender_name" type="text" value="{$post.sender_name}">
 		     <label for="sender_email">{lang sender_email}</label>
-		     <input id="sender_email" name="sender_email" class="text span4" type="text">
+		     <input id="sender_email" name="sender_email" class="text span4" type="text" value="{$post.sender_email}">
 		     <label>{lang subject}</label>
-		     <input class="text span4" name="letter_subject" id="letter_subject" type="text">
+		     <input class="text span4" name="letter_subject" id="letter_subject" type="text" value="{$post.letter_subject}">
 			<label>{lang message}</label>
-			<textarea style="min-height: 158px;max-width:430px; width:430px;" name="letter_text" id="letter_text" cols="40" rows="10" placeholder="" tabindex="4"></textarea>
+			<textarea style="min-height: 158px;max-width:430px; width:430px;" name="letter_text" id="letter_text" cols="40" rows="10" placeholder="" tabindex="4">{$post.letter_text}</textarea>
+			
+			
+			<!-- {if $ifcapt} -->
+			    <div id="res_captcha">
+				<div class="left" style="padding-right: 0">
+					
+					<span class="registercheck"><img class="registerpic" width="123" height="50" id="imgcaptcha" src="captcha.php?sid={$sid}" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" />
+					
+					<object type="application/x-shockwave-flash" data="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" height="19" width="19">
+					<param name="movie" value="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" />
+					</object>
+					<a href="javascript:;"><img src="{$theme_img_path}images/gongqiu03.jpg" class="registerpic2" id="exchange_imgcapt" /></a>
+					</span>
+				</div>
+				<div class="right">
+					<label class="registerlabel" for="login_auth" style="margin-top: 5px;margin-bottom: 8px;">
+					  {lang code}<span>*</span>
+					</label>
+					<input class="" name="data[capt_service]" id="login_auth" type="text" value="" size="4" style="width:117px; margin-bottom: 5px;" tabindex="5">&nbsp;<font class="gray" style="float: left">{lang input_code}</font>
+				</div>
+			   </div>
+			<!-- {/if} -->
+			
 		 </div>
 		</div>
 		 

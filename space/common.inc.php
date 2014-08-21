@@ -165,7 +165,7 @@ if($do != 'ajaxannoucebox')
 $member->info['fb_des'] = str_replace('\'', '', $member->info['description']);
 $member->info['fb_des'] = str_replace('\"', '', $member->info['fb_des']);
 
-$member->info['online'] = $product->isOnline($member->info['id']);
+$member->info['online'] = $member->isOnline($member->info['id']);
 
 $company->info['description'] = str_replace('<a', '<a target="_blank" rel="nofollow"', $company->info['description']);
 
@@ -502,7 +502,7 @@ $styles_string = "<style>";
 	
 	if(!empty($styles["borderColor"]))
 	{
-		$styles_string .= ".fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img{border-color:".$styles["borderColor"]."}";
+		$styles_string .= "#top_company_info, #topmenu img, .fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img{border-color:".$styles["borderColor"]."}";
 		$styles_string .= ".pagination span,.pagination a:hover{background:".$styles["borderColor"]."}";
 		$styles_string .= "#darkf{border-top:solid 1px ".$styles["borderColor"]."}";
 	}
@@ -520,7 +520,9 @@ setvar('styles_all', $styles);
 
 //share info
 $share_info = $announcement->read("message", 6);
-
+$share_info = str_replace("{shop}","<a target='_blank' style='text-decoration: underline;' href='http://marketonline.vn/".$COMPANY_CURRENT["cache_spacename"]."'>".$COMPANY_CURRENT["shop_name"]."</a>",$share_info);
+$share_info = str_replace("{phone}",$COMPANY_CURRENT["tel"],$share_info);
+$share_info = str_replace("{email}",$member->info["email"],$share_info);
 setvar('share_info', $share_info);
 
 setvar('tree', $tree);

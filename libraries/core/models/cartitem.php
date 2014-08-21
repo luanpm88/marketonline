@@ -2,7 +2,7 @@
 class Cartitems extends PbModel {
  	var $name = "Cartitem";
  	var $info;
- 	var $fields = "c.shop_name,ci.id,ci.cart_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.picture as p_picture,p.id as p_id,m.space_name,m.id as member_id";
+ 	var $fields = "c.shop_name,ci.id,ci.cart_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.default_pic,p.picture as p_picture,p.picture1 as p_picture1,p.picture2 as p_picture2,p.picture3 as p_picture3,p.picture4 as p_picture4,p.id as p_id,m.space_name,m.id as member_id";
  	var $amount;
  	var $instance = NULL;
 	var $condition;
@@ -304,7 +304,17 @@ class Cartitems extends PbModel {
 				$space_name = $result[$i]['space_name'];
 			}
 			
-			$result[$i]['image'] = pb_get_attachmenturl($result[$i]['p_picture'], '', 'small');
+			if($result[$i]['default_pic'])
+			{
+				$pic_col = 'p_picture'.$result[$i]['default_pic'];
+			}
+			else
+			{
+				$pic_col = 'p_picture';
+			}
+			
+			$result[$i]['image'] = pb_get_attachmenturl($result[$i][$pic_col], '', 'small');
+			//$result[$i]['image'] = pb_get_attachmenturl($result[$i]['p_picture'], '', 'small');
 			
 			$result_new[$result[$i]['member_id']]['total'] += $result[$i]['p_price']*$result[$i]['quantity'];			
 			$result_new[$result[$i]['member_id']]['items'][$i] = $result[$i];
@@ -359,7 +369,20 @@ class Cartitems extends PbModel {
 					$result[$i]['gradeimg'] = pb_get_attachmenturl($membergroups[$result[$i]['membergroup_id']]['avatar'], '', 'group');
 					$result[$i]['gradename'] = $membergroups[$result[$i]['membergroup_id']]['name'];
 				}
-				$result[$i]['image'] = pb_get_attachmenturl($result[$i]['picture'], '', 'small');
+				
+				
+				//if($result[$i]['default_pic'])
+				//{
+				//	$pic_col = 'picture'.$result[$i]['default_pic'];
+				//}
+				//else
+				//{
+				//	$pic_col = 'picture';
+				//}
+				//
+				//$result[$i]['image'] = $pic_col;//pb_get_attachmenturl($result[$i][$pic_col], '', 'small');
+				
+				
 				$trusttype_images = null;
 				if(!empty($result[$i]['trusttype_ids'])){
 					$tmp_trusttype = explode(",", $result[$i]['trusttype_ids']);

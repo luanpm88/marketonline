@@ -6,6 +6,14 @@ Options +FollowSymLinks
 Options +Indexes  
 RewriteEngine On
 
+RewriteRule ^thuong-hieu/?$ index.php?do=company&membergroup_id=3 [L]
+RewriteRule ^thuong-hieu/cua-hang/?$ index.php?do=company&membergroup_id=1 [L]
+RewriteRule ^thuong-hieu/ca-nhan/?$ index.php?do=company&membergroup_id=2 [L]
+RewriteRule ^thuong-hieu/doanh-nghiep/?$ index.php?do=company&membergroup_id=3 [L]
+RewriteRule ^thuong-hieu/cua-hang/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=1&industryid=$1 [L]
+RewriteRule ^thuong-hieu/ca-nhan/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=2&industryid=$1 [L]
+RewriteRule ^thuong-hieu/doanh-nghiep/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=3&industryid=$1 [L]
+
 RewriteRule ^dang-san-pham?$ redirect.php?url=/virtual-office/product.php?do=edit [L]
 RewriteRule ^dang-dich-vu?$ redirect.php?url=/virtual-office/product.php?do=edit\%26type=service [L]
 RewriteRule ^lien-he/?$ contact.php [L]
@@ -57,6 +65,7 @@ RewriteRule ^(.*)hoc-va-lam/hoc-vien/([0-9]+)/(.*)$ index.php?do=studypost&actio
 
 RewriteRule ^(.*)jobs$ index.php?do=job [L]
 
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/chia-se$ index.php?do=product&action=inviteFriendPage&space_name=$1 [L]
 RewriteRule ^([\_\-a-zA-Z0-9%]+)$ space/\?userid=$1&dd=$2 [L]
 RewriteRule ^([\_\-a-zA-Z0-9%]+)/welcome.htmls$ space/\?userid=$1&welcome=1 [L]
 RewriteRule ^([\_\-a-zA-Z0-9%]+)/([\_\s\-a-zA-Z0-9%]+)_un.htmls$ space/\?userid=$1&un=$2 [L]
@@ -93,12 +102,12 @@ RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)\.html$
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/list-([0-9]+)\.html$ space/\?userid=$2&do=$3&page=$4 [L]
 RewriteRule ^(.*)space/([a-zA-Z0-9%]+)/([a-zA-Z]+)/detail-([0-9]+)\.html$ space/\?userid=$2&do=$3&nid=$4 [L]
 
-RewriteRule ^([\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)-([0-9]+)_([a-zA-Z]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4&memberid=$5&order=$6 [L]
-RewriteRule ^([\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4&memberid=$5 [L]
-RewriteRule ^([\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)_([a-zA-Z]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4&order=$5 [L]
-RewriteRule ^([\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4 [L]
-RewriteRule ^([\-a-zA-Z0-9%]+)/([a-zA-Z]+)/list-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&page=$3 [L]
-RewriteRule ^([\-a-zA-Z0-9%]+)/([a-zA-Z]+)/detail-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&nid=$3 [L]
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)-([0-9]+)_([a-zA-Z]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4&memberid=$5&order=$6 [L]
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4&memberid=$5 [L]
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)_([a-zA-Z]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4&order=$5 [L]
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/([a-zA-Z]+)/type-([0-9]+)-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&typeid=$3&page=$4 [L]
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/([a-zA-Z]+)/list-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&page=$3 [L]
+RewriteRule ^([\_\-a-zA-Z0-9%]+)/([a-zA-Z]+)/detail-([0-9]+)\.htmls$ space/\?userid=$1&do=$2&nid=$3 [L]
 
 
 #RewriteCond %{HTTP_HOST} ^(www.)?(?!/.|www|bbs|demo)(.*)\.yourdomain\.com$

@@ -11,7 +11,7 @@ class Announce extends PbController {
 	function &getInstance() {
 		static $instance = array();
 		if (!$instance) {
-			$instance[0] =& new Announce();
+			$instance[0] = new Announce();
 		}
 		return $instance[0];
 	}

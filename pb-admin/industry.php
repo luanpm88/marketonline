@@ -21,6 +21,7 @@ $condition = null;
 $conditions = array();
 $tpl_file = "industry";
 $page = new Pages();
+$page->displaypg = 30;
 setvar("Types", $_PB_CACHE['industrytype']);
 $cache_items = $_PB_CACHE['industry'];
 setvar("AskAction", $typeoption->get_cache_type("common_option"));
@@ -74,6 +75,10 @@ if (isset($_POST['save'])) {
 			}elseif (array_key_exists($parent_id, $cache_items[2])){
 				$level = $_POST['data']['industry']['level'] = 3;
 				$top_parentid = $_POST['data']['industry']['top_parentid'] = $pdb->GetOne("SELECT parent_id FROM {$tb_prefix}industries WHERE id=".$parent_id);
+			}elseif (array_key_exists($parent_id, $cache_items[3])){
+				$level = $_POST['data']['industry']['level'] = 4;
+				$pprent = $pdb->GetOne("SELECT parent_id FROM {$tb_prefix}industries WHERE id=".$parent_id);
+				$top_parentid = $_POST['data']['industry']['top_parentid'] = $pdb->GetOne("SELECT parent_id FROM {$tb_prefix}industries WHERE id=".$pprent);
 			}
 		}
 	}
@@ -125,14 +130,22 @@ if (isset($_POST['save'])) {
 			$values = implode(",", $tmp_name);
 			$sql = "INSERT INTO {$tb_prefix}industries (name,url,parent_id,top_parentid,level,display_order,industrytype_id, picture) VALUES ".$values;
 			$result = $pdb->Execute($sql);
+			
+		        $id = $pdb->Insert_ID();
 		}
 	}
+	
 	if ($result) {
 //		$_languages = unserialize($_PB_CACHE['setting']['languages']);
 //		foreach ($_languages as $key=>$val) {
 //			$cache->lang_dirname = $key;
 //			$cache->cache_path = PHPB2B_ROOT."data".DS."cache".DS.$key.DS;
 			$cache->writeCache("industry", "industry");
+			
+			$industry->updateIndustryChildren($id);
+			if($parent_id) $industry->updateIndustryChildren($parent_id);
+			if($pprent) $industry->updateIndustryChildren($pprent);
+			if($top_parentid) $industry->updateIndustryChildren($top_parentid);
 //		}
 	}
 }
@@ -176,7 +189,7 @@ if (isset($_GET['do'])) {
 		}
 	}
 	if ($do == "edit") {
-		setvar("CacheItems", $industry->getTypeOptions());
+		
 		foreach ($viewhelper->colorarray as $color) {
 			$colors[] = '"'.substr($color, 1).'"';
 		}
@@ -193,6 +206,8 @@ if (isset($_GET['do'])) {
 			setvar("item", $res);
 		}
 		$tpl_file = "industry.edit";
+		//echo $res["parent_id"];
+		setvar("CacheItems", $industry->getTypeOptions($res["parent_id"]));
 		template($tpl_file);
 		exit;
 	}
@@ -204,7 +219,7 @@ if (isset($_GET['do'])) {
 }
 $amount = $industry->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $industry->findAll("id,name,name as title,highlight,parent_id,industrytype_id,top_parentid,level,display_order,available,share_facebook", null, $conditions, "level ASC,display_order ASC,id ASC", $page->firstcount, $page->displaypg);
+$result = $industry->findAll("ad_price,id,name,name as title,highlight,parent_id,industrytype_id,top_parentid,level,display_order,available,share_facebook", null, $conditions, "level ASC,display_order ASC,id ASC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$tmp_name = array();
@@ -225,6 +240,13 @@ if (!empty($result)) {
 	setvar("Items", $result);
 	setvar("ByPages", $page->pagenav);
 }
+
+if(isset($_GET['level'])) {
+	$isearch = $industry->findAll("id,name",null,array("level=".($_GET['level']-1)),"name");
+	setvar("isearch", $isearch);
+}
+
+
 $stats = $pdb->GetArray("SELECT level,count(id) as amount FROM ".$tb_prefix."industries GROUP BY level");
 setvar("LevelStats", $stats);
 template($tpl_file);

@@ -85,6 +85,31 @@ if (!empty($_POST['job']) && $_POST['save']) {
 	$vals['jobindusts'] = "[".implode("][", $_POST['jobindusts'])."]";
 	//echo $vals['jobcats'];
 	//echo $vals['expired_dates'].strtotime($vals['expired_dates']);
+	$custom_indust_ids = array();
+	if(isset($_POST["custom_indust"])) {
+		$custom_industs = explode(",", $_POST["custom_indust"]);
+		foreach($custom_industs as $item) {
+			$item = trim($item);
+			if($item) {
+				$exsit = $jobindusts->findAll("id,name",null,array("LOWER(name) = '".strtolower($item)."'"));
+				if(count($exsit)) {
+					$exsit = $exsit[0];
+					$custom_indust_ids[] = $exsit["id"];
+				}
+				else
+				{
+					$jobindusts->save(array("name"=>$item,"`group`"=>"zzzKhác"));
+					$tbname = (is_null($tbname))? $jobindusts->getTable():trim($tbname);
+					$insert_key = $tbname."_id";
+					$custom_indust_ids[] =  $jobindusts->$insert_key;
+				}
+			}
+		}
+	}
+	//var_dump($custom_indust_ids);
+	if(count($custom_indust_ids)) {
+		$vals['jobindusts'] .= "[".implode("][", $custom_indust_ids)."]";
+	}
 	
 	$vals['expired_dates'] = str_replace('/', '-', $vals['expired_dates']);
 	$vals['expired_dates'] = strtotime($vals['expired_dates']);

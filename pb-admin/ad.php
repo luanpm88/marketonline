@@ -17,6 +17,7 @@ $company = new Companies();
 $adzone = new Adzones();
 $ads = new Adses();
 $page = new Pages();
+$page->displaypg = 20;
 $typeoption = new Typeoption();
 $industry = new Industries();
 $conditions = array();
@@ -27,6 +28,9 @@ if (isset($_POST['save'])) {
 	if(isset($_POST['id'])){
 		$id = intval($_POST['id']);
 	}
+	
+	$vals['industries'] = implode(",", $_POST["industries_checkbox"]);
+	
 	if (!empty($_FILES['attach']['name'])) {
 		$aname = (empty($id))?($ads->getMaxId()+1):$id;
 		$attachment->if_thumb=false;
@@ -47,6 +51,13 @@ if (isset($_POST['save'])) {
 	if(!empty($_POST['data']['start_date'])) {
 		$vals['start_date'] = Times::dateConvert($_POST['data']['start_date']);
 	}
+	
+	if(!empty($_POST['space_name'])) {
+		$com = $company->getInfoBySpaceName($_POST['space_name']);
+		$vals['company_id'] = $com["id"];
+	}
+	
+	
 	if (!empty($id)) {
 		$vals['modified'] = $time_stamp;
 		$result = $ads->save($vals, "update", $id);
@@ -63,7 +74,7 @@ if (isset($_POST['save'])) {
 	}
 	$adzone->updateBreathe($vals['adzone_id']);
 	if (!empty($url)) {
-		flash("success", $url);
+		//flash("success", $url);
 	}
 }
 if (isset($_POST['del']) && !empty($_POST['id'])) {
@@ -80,6 +91,12 @@ if(isset($_POST['down'])&&!empty($_POST['id'])){
 	foreach($ids as $id){
 		$pdb->Execute("UPDATE {$tb_prefix}adses set state=0 where id=".$id);
     }
+}
+if (isset($_POST['saveorder'])) {
+	foreach ($_POST['order'] as $key => $val) {
+		//echo $key." ".$val;
+		$ads->saveField("`display_order`",$val,intval($key));
+	}
 }
 if (isset($_GET['do'])){
 	$do = trim($_GET['do']);
@@ -101,23 +118,83 @@ if (isset($_GET['do'])){
 			if (!empty($result['end_date'])) {
 				$result['end_date'] = df($result['end_date']);
 			}
+			
+			if($result["company_id"]) {
+				$result["company"] = $company->getInfoById($result["company_id"]);
+				//var_dump($result["company"]);
+			}
+			
 			setvar("item",$result);
+			setvar("CacheItems", $industry->getTypeOptions($result["industry_id"]));
 		}
 		$tpl_file = "ad.edit";
+		
+		$industries_array = explode(",", $result["industries"]);
+		$industries_checkbox = $industry->findAll("id, name", null, array("level = 1"));
+		foreach($industries_checkbox as $key => $item)
+		{
+			if(in_array($item["id"], $industries_array))
+			{
+				$industries_checkbox[$key]["checked"] = 1;
+			}
+		}
+		//var_dump($industries_array);
+		setvar("industries_checkbox", $industries_checkbox);
+		
+		
 		template($tpl_file);
 		exit;
 	}
 	if ($do == "search") {
 		if (!empty($_GET['adzone_id'])) {
+			$company_zone = $adzone->read("*", intval($_GET['adzone_id']));
+			$company_zone = $company_zone["company_zone"];
+			setvar("company_zone", $company_zone);
 			$conditions[] = "Ads.adzone_id=".$_GET['adzone_id'];
 		}
+		if ($_GET['adzone_id'] == "7" && isset($_GET['industry_id']) && $_GET['industry_id'] !=0) {
+			$parent = $industry->getParent($_GET['industry_id']);
+			$conditions[] = "Ads.industry_id IN (".implode(",",$parent).")";;
+		}
+		if ($_GET['status'] != "") {
+			$conditions[] = "Ads.status=".$_GET['status'];
+		}
+		
+		if ($_GET['company_industry_id'] != "") {
+			$industryid = $_GET['company_industry_id'];			
+			
+			//conditions
+			$conditions[] = "(((c.industries LIKE '".$industryid."')"
+							." OR (c.industries LIKE '%,".$industryid."')"
+							." OR (c.industries LIKE '".$industryid.",%')"
+							." OR (c.industries LIKE '%,".$industryid.",%')) OR ("
+					."(Ads.industries LIKE '".$industryid."')"
+							." OR (Ads.industries LIKE '%,".$industryid."')"
+							." OR (Ads.industries LIKE '".$industryid.",%')"
+							." OR (Ads.industries LIKE '%,".$industryid.",%')"
+					."))";
+		}
+		if(!empty($_GET['membergroup_id'])){
+ 			$conditions[] = "(m.membergroup_id='".intval($_GET['membergroup_id'])."' OR Ads.membergroup_id='".intval($_GET['membergroup_id'])."')";
+ 		}
+	}
+	
+	if($do=="paid" && !empty($id))
+	{
+		$ads->setPaid($id, $_GET["months"], $_GET["amount"]);
+		//echo $id.$_GET["months"].$_GET["amount"];
 	}
 }
-$amount = $ads->findCount();
-$page->setPagenav($amount);
+
 $joins[] = "LEFT JOIN {$tb_prefix}adzones az ON az.id=Ads.adzone_id";
 $joins[] = "LEFT JOIN {$tb_prefix}industries indust ON indust.id=Ads.industry_id";
-$result = $ads->findAll("Ads.*,az.name AS adzone,indust.name AS industry_name",$joins, $conditions, " Ads.id desc", $page->firstcount, $page->displaypg);
+$joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Ads.company_id";
+$joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=c.member_id";
+
+$amount = $ads->findCount($joins,$conditions,"Ads.id");
+$page->setPagenav($amount);
+
+$result = $ads->findAll("Ads.*,az.name AS adzone,indust.name AS industry_name",$joins, $conditions, " Ads.display_order,Ads.created DESC", $page->firstcount, $page->displaypg);
 for($i=0; $i<count($result); $i++){
 	if (!empty($result[$i]['source_url'])) {
 		if (strstr($result[$i]['source_url'], "http")) {
@@ -132,7 +209,14 @@ for($i=0; $i<count($result); $i++){
 	
 	$result[$i]["industry_names"] = $industry->getTreeIndustry($result[$i]["industry_id"]);
 	//var_dump($result[$i]["com"] );
+	$result[$i]["lastcheck"] = $ads->getLastCheckout($result[$i]['id']);
+	//var_dump($result[$i]["lastcheck"]);
+	if($result[$i]["company_id"]) {
+		$result[$i]["company"] = $company->getInfoById($result[$i]["company_id"]);
+	}
 }
+setvar("CompanyTopLevel", $industry->findAll("id,name", null, array("level=1")));
+setvar("CacheItems", $industry->getTypeOptions($_GET["industry_id"]));
 setvar("Items",$result);
 setvar("ByPages",$page->pagenav);
 template($tpl_file);

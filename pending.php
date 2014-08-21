@@ -24,7 +24,7 @@ if (empty($validate_str)) {
 if (!empty($validate_str)) {
 	list($tmp_username, $exp_time) = explode("\t", $validate_str);
     if ($exp_time<$time_stamp) {
-    	flash("auth_expired", null, 0);
+    	flash("auth_expired", null, 0, '', "Bạn vui lòng <a class='link_underline' href='".$member->url(array("module"=>"register"))."'><strong>&nbsp;&nbsp;Đăng ký&nbsp;&nbsp;</strong></a> lại");
     }
     $user_exists = $member->checkUserExist($tmp_username, true);
     if ($user_exists && isset($_GET['action'])) {

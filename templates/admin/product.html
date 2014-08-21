@@ -6,7 +6,7 @@
     <h3>{lang product_center}</h3> 
     <ul class="subnav">
 		<li><a class="btn1" href="product.php"><span>{lang management}</span></a></li>
-        <li><a href="product.php?do=edit">{lang add_or_edit}</a></li>
+		<li><a href="product.php?do=edit">{lang add_or_edit}</a></li>
 		<li><a href="productsort.php">{lang category}</a></li>
 		<li><a href="productcategory.php">{lang product}{lang sorts}</a></a></li>
 		<li><a href="brand.php">{lang brands}</a></a></li>
@@ -59,7 +59,12 @@
 		  <td class="firstCell"><input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}"></td>
 		  <td>{if $item.created>$today_timestamp}<span class="icon-new"></span>{/if}{if $item.Ifcommend}<span class="icon-commend"></span>{/if}{if $item.ProductPicture!=''}<span class="icon-pic"></span>{/if}</td>
 		  <td><label for="item_{$item.id}">{$item.ProductName|pl}</label></td>
-		  <td><a href="company.php?do=edit&id={$item.CID}">{$item.companyname}</a></td>
+		  <td>
+			<a target="_blank" href="{the_url module=space userid=`$item.cache_spacename`}">{$item.companyname}</a>
+			<br /><small>Shop: <a target="_blank" href="{the_url module=space userid=`$item.cache_spacename`}"><strong>{$item.shop_name}</strong></a></small>
+			<br /><small>Username: <strong>{$item.username}</strong></small>
+		  
+		  </td>
 		  <td>{$BooleanVars[$item.ProductState]}</td>
 		  <td>{$CheckStatus[$item.ProductStatus]}</td>
 		  <td class="pb_datetime">{$item.pubdate}</td>
@@ -68,6 +73,7 @@
             <li><a class="btn_delete" href="product.php?id={$item.id}&do=del" title="{lang delete}">{lang delete}</a></li>
             <li><a class="btn_edit" href="product.php?do=edit&id={$item.id}" title="{lang edit}">{lang edit}</a></li> 
              <li><a class="btn_browse" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang preview}">{lang preview}</a></li>
+	     <li style="height: auto"><a class="" href="product.php?id={$item.id}&do=refresh" title="{lang delete}">Đưa lên đầu</a></li>
           </ul>  
 		  </td>
 		</tr>

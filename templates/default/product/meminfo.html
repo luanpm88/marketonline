@@ -1,4 +1,4 @@
-<!--{include file="`$theme_name`/header.html" page_title="`$page_title`" nav_id="`$nav_id`"}-->
+<!--{include file="`$theme_name`/header.html" page_title="Bổ sung thông tin mua hàng" nav_id="`$nav_id`"}-->
 
 
 
@@ -310,7 +310,7 @@ function checkConfirmOrderFields() {
 			
 			<p>
 				<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" maxlength="11" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}" {if $pb_userinfo.fullname} readonly="readonly" {/if}>
+				<input type="text" maxlength="11" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}" {if $pb_userinfo.first_name} readonly="readonly" {/if}>
 			</p>
 			
 			<p>

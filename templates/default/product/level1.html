@@ -488,7 +488,7 @@
 			Chuyên mục chính
 			
 		</div>
-		<a href="{if $item.service}{the_url module='service_main'}{else}{the_url module='product_main'}{/if}" class="show-but current-but {if $item.service}service{/if}">
+		<a href="{if $item.service}{the_url module='service_main'}{else}{the_url module='product_main'}{/if}" class="show-but current-but {if $item.service}service{else}product{/if}">
 			.			
 		</a>
 		<br style="clear:both" />

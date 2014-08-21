@@ -57,9 +57,12 @@ var can_also_enter = "{lang can_also_enter}";
 		      <tr>
                         <th>{lang job_indust}<font color="#FF6600">*</font></th>
                         <td class="tdright">
-				<select name="jobindusts[]" id="JobindustId" class="required" multiple>
+				<select name="jobindusts[]" id="JobindustId" class="" multiple>
 					{$JobindustOptions}
 				</select>
+				<div style="margin-top: 5px">
+					<input style="width:627px" name="custom_indust" type="text" placeholder="Nhập tên các ngành nghề khác nếu không có ở danh sách trên. Cách nhau dấu phẩy (,)" />
+				</div>
 			</td>
                       </tr>
 		      <tr>
@@ -379,6 +382,10 @@ jQuery(document).ready(function($) {
 			result = false;
 		}
 		
+		if ($('select[name="jobindusts[]"]').val() == null && $('input[name="custom_indust"]').val().trim() == "") {
+			result = false;
+		}
+		
 		if (result) {
 			$(form).find(":submit").attr("disabled", true).attr("value",pb_lang.DO_PROCESSING);
 			document.GetDocumentByID('#save').click();
@@ -451,6 +458,17 @@ jQuery(document).ready(function($) {
 		else
 		{
 			$('input[name="job[salary]"]').parent().find('label.errornull').remove();
+		}
+		
+		if ($('select[name="jobindusts[]"]').val() == null && $('input[name="custom_indust"]').val().trim() == "") {
+			$('input[name="custom_indust"]').parent().find('label.errornull').remove();
+			$('input[name="custom_indust"]').parent().append('<label for="" class="errornull">Yêu cầu chọn ngành nghề hoặc nhập ngành nghề khác</label>');
+			
+			result = false;
+		}
+		else
+		{
+			$('input[name="custom_indust"]').parent().find('label.errornull').remove();
 		}
 		
 		if (!result) {

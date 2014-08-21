@@ -84,9 +84,18 @@ if (isset($_POST['save'])) {
 if (isset($_POST['del']) && !empty($_POST['id'])) {
 	$adzone->del($_POST['id']);
 }
+
+if (isset($_POST['saveorder'])) {
+	foreach ($_POST['order'] as $key => $val) {
+		//echo $key." ".$val;
+		$adzone->saveField("`display_order`",$val,intval($key));
+	}
+}
+
+
 $amount = $adzone->findCount();
 $page->setPagenav($amount);
-$result = $adzone->findAll("*",null, $conditions, " id desc", $page->firstcount, $page->displaypg);
+$result = $adzone->findAll("*",null, $conditions, " created", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['numbers'] = $pdb->GetOne("SELECT count(id) AS amount FROM {$tb_prefix}adses WHERE adzone_id=".$result[$i]['id']);

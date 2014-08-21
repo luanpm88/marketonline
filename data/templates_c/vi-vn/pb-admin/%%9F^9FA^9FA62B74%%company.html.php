@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2013-06-21 09:28:44
+<?php /* Smarty version 2.6.27, created on 2014-08-14 10:40:05
          compiled from company.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'company.html', 24, false),array('function', 'the_url', 'company.html', 73, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'html_options', 'company.html', 24, false),array('function', 'the_url', 'company.html', 66, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -109,7 +109,13 @@ unset($_smarty_tpl_vars);
 "></td>
 		  <td><label for="item_<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo $this->_tpl_vars['item']['CompanyName']; ?>
-</label><?php if ($this->_tpl_vars['item']['if_commend'] == 1): ?><span class="icon-commend"></span><?php endif; ?></td>
+</label><?php if ($this->_tpl_vars['item']['if_commend'] == 1): ?><span class="icon-commend"></span><?php endif; ?>
+		  
+		  <?php if ($this->_tpl_vars['item']['shop_name']): ?><br /><small>Shop: <a target="_blank" href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['item']['space_name'])), $this);?>
+"><strong><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+</strong></a></small><?php endif; ?>
+		  
+		  </td>
 		  <td><a href="member.php?do=edit&id=<?php echo $this->_tpl_vars['item']['member_id']; ?>
 " title="<?php echo $this->_tpl_vars['item']['NickName']; ?>
 "><?php echo $this->_tpl_vars['item']['username']; ?>

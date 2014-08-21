@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-08 09:03:28
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:57:57
          compiled from default%5Cproduct/index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 357, false),array('modifier', 'truncate', 'default\\product/index.html', 430, false),array('modifier', 'default', 'default\\product/index.html', 766, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/index.html', 369, false),array('modifier', 'truncate', 'default\\product/index.html', 441, false),array('modifier', 'default', 'default\\product/index.html', 828, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ")));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -59,7 +59,7 @@ unset($_smarty_tpl_vars);
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 100));
 				//alert($(data).filter(".products_0").html());
-				$(\'.list_loading\').hide();
+				//$(\'.list_loading\').hide();
 				for (var j=0; j < 4; j++) {
 				    $(\'#list_product_ajax\'+j+\' ul\').html("");
 				}
@@ -206,6 +206,7 @@ unset($_smarty_tpl_vars);
 			$(this).addClass("active");
 			orderby = \'favourite\';
 			
+			$(\'.top_new_product_main\').hide();
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -217,6 +218,7 @@ unset($_smarty_tpl_vars);
 			$(this).addClass("active");
 			orderby = \'dateline\';
 			
+			$(\'.top_new_product_main\').show();
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -228,6 +230,8 @@ unset($_smarty_tpl_vars);
 			$(this).addClass("active");
 			orderby = \'dateline\';
 			service = 1;
+			
+			$(\'.top_new_product_main\').hide();
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -242,6 +246,8 @@ unset($_smarty_tpl_vars);
 			orderby = \'dateline\';
 			other = 1;
 			
+			$(\'.top_new_product_main\').hide();
+			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
 		});
@@ -253,6 +259,8 @@ unset($_smarty_tpl_vars);
 			$(this).addClass("active");
 			orderby = \'dateline\';
 			sale = 1;
+			
+			$(\'.top_new_product_main\').hide();
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -266,6 +274,8 @@ unset($_smarty_tpl_vars);
 			$(this).addClass("active");
 			orderby = \'dateline\';
 			offer = 1;
+			
+			$(\'.top_new_product_main\').hide();
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -282,6 +292,8 @@ unset($_smarty_tpl_vars);
 		});
 		
 		$(\'#search_list_but\').click(function() {
+		  
+			ajaxListProduct(getFilterProducts());
 			
 			//get industry select
 			if ($(\'#dataProductIndustryId4\').val() != "0") {
@@ -357,20 +369,20 @@ unset($_smarty_tpl_vars);
     </div>-->
   
   
-<div class="row">
-  <div class="fifteen columns pl0 pindex">
+  
+  <div class="row">
+  <div class="fifteen columns" style="padding-left: 0">
 
-    <div id="page-title" class="pt0" style="padding-left: 110px;">
-      
-      
-      <div class="super-main-category mainproductpage">
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px;">
+
+    <div class="super-main-category mainproductpage">
 		<div class="show-but">
 			Chuyên mục chính
 			
 		</div>
-		<a href="<?php if ($this->_tpl_vars['item']['service']): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
+		<a href="<?php if ($_GET['action'] == 'services'): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
 <?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+<?php endif; ?>" class="show-but current-but product">
 			.			
 		</a>
 		<br style="clear:both" />
@@ -379,22 +391,21 @@ unset($_smarty_tpl_vars);
 			<div class="main-cat-content"></div>
 		</div>
 	</div>
-      
-
-    <!--<a class="back" href="javascript:history.back()"></a>-->
-    <div class="subtitle">
-            </div>
+    
+    
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
-</a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-">Sản phẩm</a></div>
-    <h1 class="page-title">Thị trường Mua-Bán, Phân phối</h1>
+</a> <span class="delim">/</span><a href="index.php?do=product"><?php echo $this->_tpl_vars['_product_center']; ?>
+</a></div>
 
+    <h1 class="page-title">Thị trường Mua-Bán, Phân phối</h1>
+    
   </div>
 
-  
   </div>
 </div>
+  
+  
   
   
 <div class="row products_index">
@@ -666,8 +677,36 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 
     </div>
   
-</div></div>
 </div>
+    
+    </div>
+</div>
+  
+  
+  
+	  <div class="product_main_page_banners"></div>
+	  <?php echo '
+	    <script>
+	      $(document).ready(function() {
+		$.ajax({
+			url: "index.php?do=product&action=ajaxProductMainPageBanners",
+			beforeSend: function ( xhr ) {
+				
+			}
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			  $(\'.product_main_page_banners\').html(data);
+			  $(\'.product_main_page_banners .box .box_inner ul li a img\').resizecrop({
+			    width:288,
+			    height:96
+			  });
+			}
+		});
+	      });
+	    </script>
+	  '; ?>
+
+  
   
   
 <div class="row" style="clear: both">
@@ -753,9 +792,36 @@ unset($_smarty_tpl_vars);
     <div class="eleven columns">
 
 	<div id="container">
+	  
+	  <div class="top_new_product_main"></div>
+	  <?php echo '
+	    <script>
+	      $(document).ready(function() {
+		$.ajax({
+			url: "index.php?do=product&action=ajaxTopNewProductMain",
+			beforeSend: function ( xhr ) {
+				
+			}
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			  $(\'.top_new_product_main\').html(data);
+			  
+			  //$(\'.top_new_product_main .box ul li img\').resizecrop({
+			  //  width:200,
+			  //  height:200
+			  //});
+			  renderProductHSlide();
+			}
+		});
+	      });
+	    </script>
+	  '; ?>
+
+	  
+	  
 	<div id="content" role="main" class="product_listing">
 	  
-	  <div class="list_loading">mm</div>
+	  
 
 	  <div id="offer-ajax-list">
 	      
@@ -765,7 +831,7 @@ unset($_smarty_tpl_vars);
 			<!-- list ajax product -->
 			<div id="list_product_ajax0" class="col_products">
 			<ul class="products">
-			   
+			  
 
 			</ul>
 			
@@ -795,17 +861,15 @@ unset($_smarty_tpl_vars);
 			   
 			   
 			</div>
-			
+			<div class="list_loading">mm</div>
 			<!--<div id="list_product_ajax4" class="col_products">
 			   <ul class="products">
-			   
 			   
 			  
 			   </ul>
 			   
 			   
 			</div>-->
-			
 		
 		<div class="clear"></div>
 
@@ -855,21 +919,3 @@ $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['the
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

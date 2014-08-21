@@ -9,16 +9,19 @@
 	<ul class="toptoptop">
 		<!--{loop $industries item0 level_0 key0}-->
 			<li class="level0 {if $level_0%4 == 0}clear{/if}">
-				<a class="level0" href="{the_url module=`$module` level=1 industryid=`$item0.id` title=`$item0.name`}">{$item0.name}
-                                <i></i></a>
-				<ul style="display: none">
+				<a class="level0" href="{the_url module=`$module` level=1 industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">{$item0.name}
+				    {if $module!="companies"}<i></i>{/if}
+				</a>
+				
+				{if $module!="companies"}
+				    <ul style="display: none">
 					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
 						<li class="level1">
 							<a class="level1" href="{the_url module=`$module` level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
 						</li>
 					<!--{/loop}-->
-				</ul>
-                                
+				    </ul>
+                                {/if}
 			</li>
 			{if $level_0++}{/if}
 		<!--{/loop}-->

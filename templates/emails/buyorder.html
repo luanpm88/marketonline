@@ -24,19 +24,19 @@
 		</p>
 		
 		<p>
-			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.mobile}
 		</p>
 		
 		<p>
-			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.email}
 		</p>
 		
 			
 		
 		<p>
-			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.address}
 		</p>
    
@@ -58,19 +58,19 @@
 		</p>
 		
 		<p>
-			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.receiver_mobile}
 		</p>
 		
 		<p>
-			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.receiver_email}
 		</p>
 		
 			
 		
 		<p>
-			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.receiver_address}
 		</p>
    
@@ -82,30 +82,30 @@
             </div>
           </div>
     
-    <div class="blockBStore" style="float: left; width: 30%">
+       <div class="blockBStore" style="float: left; width: 30%">
             <h3>{lang seller}</h3>
             <div class="contStore" style="clear: both;">
               <div class="formProfile box-profile">		
 		
 		<p>
 			<span>{lang space_name}:<b class="red-bold"></b>&nbsp;</span>
-			{$Seller.space_name}
+			{$Seller.shop_name}
 		</p>
 		
 		<p>
-			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
 			{$Seller.mobile}
 		</p>
 		
 		<p>
-			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
 			{$Seller.email}
 		</p>
 		
 			
 		
 		<p>
-			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
 			{$Seller.address}
 		</p>
    
@@ -119,6 +119,11 @@
     
     </div>
      <div class="blank"></div>
+       {if $Info.message}
+		<br />
+		<h3>Ghi chú từ khách:</h3>
+		<p>{$Info.message}</p>
+       {/if}
      <br style="clear: both" />
      <h3>{lang list_items}</h3>
 	  <table style="background: #aaaaaa" class="news" width="100%" border="0" cellspacing="1" cellpadding="5" cellspacing="0">

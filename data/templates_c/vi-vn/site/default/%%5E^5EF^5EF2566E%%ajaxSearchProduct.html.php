@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-10 09:34:30
+<?php /* Smarty version 2.6.27, created on 2014-08-18 08:44:43
          compiled from default%5Cproduct/ajaxSearchProduct.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajaxSearchProduct.html', 8, false),array('modifier', 'truncate', 'default\\product/ajaxSearchProduct.html', 12, false),)), $this); ?>
@@ -62,17 +62,18 @@ if ($this->_foreach['level']['total'] > 0):
             </li>
         
     <?php endforeach; endif; unset($_from); ?>
-    <li class="more-topsearch" onclick="window.location='<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
-index.php?do=product&level=search&keyword=<?php echo $_GET['keyword']; ?>
-'">
-        <h2><a href="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
-index.php?do=product&level=search&keyword=<?php echo $_GET['keyword']; ?>
-">
-        Xem thêm...
-        </a></h2>
-    </li>
+    
 </ul>
 
+</div>
+<div class="more-topsearch" onclick="window.location='<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+index.php?do=product&level=search&keyword=<?php echo $_GET['keyword']; ?>
+'">
+    <h2><a href="<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+index.php?do=product&level=search&keyword=<?php echo $_GET['keyword']; ?>
+">
+    Xem thêm...
+    </a></h2>
 </div>
 <?php else: ?>
     <div class="no-search-top">Không có sản phẩm phù hợp</div>

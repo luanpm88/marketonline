@@ -526,7 +526,6 @@
 		scroll_enabled = false;
 		//code
 		console.log('Scrolled to bottom');
-		
                 loadStudyPosts();		
 	    }
 	}
@@ -535,84 +534,107 @@
 </script>
 <!--{/literal}-->                        
                         
+<div class="facelike_content">
+        
+        
+        {if ($smarty.get.action == "school" && $belongToSchool) || $smarty.get.action == "group" || ($smarty.get.action == "memberpage" && $belongToMemberpage)}
+        
+        
+            {if !$pb_userinfo.id}
+                <a class="invalid comment_but" href="#login-box"></a>
+            {elseif  $smarty.get.action == "group" && !$belongToGroup}
+                {if $isWaitingValid}
+                    <a class="invalid comment_but" href="#register-group"></a>
+                    <div id="register-group" style="padding: 20px;display: none;width:400px">
+                        <h2>Thông báo</h2>
+                        <p>Thành viên đang đợi duyệt</p>
                         
-                        <div class="facelike_content">
-                            {if $belongToGroup || $belongToSchool || $belongToMemberpage || $pb_userid == 1030}
-                                <div class="facelike_postform">
-                                    <form class="studypost_form" method="post" action="{the_url module=studypost action=post}">
-                                        <!-- {formhash} -->
-                                        {if $smarty.get.action == "school"}
-                                            <input type="hidden" name="studypost[school_id]" value="{$school.id}" />
-                                        {elseif $smarty.get.action == "group"}
-                                            <input type="hidden" name="studypost[group_id]" value="{$smarty.get.id}" />
-                                        {elseif $smarty.get.action == "memberpage"}
-                                            <input type="hidden" name="studypost[memberpage_id]" value="{$smarty.get.id}" />
-                                        {/if}
-                                        
-                                        <div class="textarea-content">
-                                            <div class="top-controls">
-                                                <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
-                                                <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
-                                            </div>                             
-                                            <textarea name="studypost[content]" style="width:100%;height:0px;" id="studypost-content"></textarea>
-                                            
-                                        </div>
-                                        
-                                        <div class="bottom-control">
-                                            <label class="word-count">Số từ: <span></span></label>
-                                            <input type="button" value="Gửi bài" class="send-button" />
-                                        </div>
-                                    </form>
-                                    
-                                    <div id="uploadImageVideo" style="margin-top: -595px;">
-                                        <iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
-                                        <form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
-                                                <input type="hidden" name="do" value="product" />
-                                                <input type="hidden" name="action" value="uploadEditorFile" />
-                                                <input type="hidden" name="tag" value="studypost_{$pb_userinfo.username}_" /> 
-                                                <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />                                                    
-                                        </form>
-                                    </div>
-                                    
-                                </div>
-                                <br style="clear: both" />
-                                <p class="line-gray">.</p>
-                            {/if}
-                            
-                            <div id="studypost-main-content"></div>
-                            <div id="studypost-bottom-line-content"></div>
-                            
-                            <div class="edit_studypost_form hide_editor" style="">
-                                <form class="studypost_form" method="post" action="{the_url module=studypost action=update}">
-                                    <!-- {formhash} -->
-                                    
-                                    {if $smarty.get.action == "school"}
-                                        <input type="hidden" name="studypost[school_id]" value="{$school.id}" />
-                                    {elseif $smarty.get.action == "group"}
-                                        <input type="hidden" name="studypost[group_id]" value="{$smarty.get.id}" />
-                                    {/if}
-                                    
-                                    <input type="hidden" name="studypost[id]" value="" />
-                                    
-                                    <div class="textarea-content">
-                                        <div class="top-controls">
-                                            <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
-                                            
-                                            
-                                            <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
-                                        </div>                             
-                                        <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content"></textarea>                                
-                                    </div>
-                                    
-                                    <div class="bottom-control">
-                                        <label class="word-count">Số từ: <span></span></label>
-                                        
-                                        <input type="button" value="Đóng" class="close-button" />
-                                        <input type="button" value="Lưu lại" class="send-button" />
-                                    </div>
-                                </form>
-                            </div>
-                            
-                        </div>
+                    </div>
+                {else}
+                    <a class="invalid comment_but" href="#register-group"></a>
+                    <div id="register-group" style="padding: 20px;display: none;width:400px">
+                        <h2>Thông báo</h2>
+                        <p>Bạn chưa phải là thành viên của nhóm này</p>
+                        <p><a class="button" href="{the_url module=studypost action=join_group id=`$group.id`}">Tham gia nhóm '{$group.subject_name}'</a></p>
+                    </div>
+                {/if}
+            {/if}
+        
+            <div class="facelike_postform">
+                <form class="studypost_form" method="post" action="{the_url module=studypost action=post}">
+                    <!-- {formhash} -->
+                    {if $smarty.get.action == "school"}
+                        <input type="hidden" name="studypost[school_id]" value="{$school.id}" />
+                    {elseif $smarty.get.action == "group"}
+                        <input type="hidden" name="studypost[group_id]" value="{$smarty.get.id}" />
+                    {elseif $smarty.get.action == "memberpage"}
+                        <input type="hidden" name="studypost[memberpage_id]" value="{$smarty.get.id}" />
+                    {/if}
+                    
+                    <div class="textarea-content">
+                        <div class="top-controls">
+                            <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                            <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
+                        </div>                             
+                        <textarea name="studypost[content]" style="width:100%;height:0px;" id="studypost-content"></textarea>
+                        
+                    </div>
+                    
+                    <div class="bottom-control">
+                        <label class="word-count">Số từ: <span></span></label>
+                        <input type="button" value="Gửi bài" class="send-button" />
+                    </div>
+                </form>
+                
+                <div id="uploadImageVideo" style="margin-top: -595px;">
+                    <iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+                    <form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+                            <input type="hidden" name="do" value="product" />
+                            <input type="hidden" name="action" value="uploadEditorFile" />
+                            <input type="hidden" name="tag" value="studypost_{$pb_userinfo.username}_" /> 
+                            <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />                                                    
+                    </form>
+                </div>
+                
+            </div>
+            <br style="clear: both" />
+            <p class="line-gray">.</p>
+        {/if}
+        
+        <div id="studypost-main-content"></div>
+        <div id="studypost-bottom-line-content"></div>
+        
+        <div class="edit_studypost_form hide_editor" style="">
+            <form class="studypost_form" method="post" action="{the_url module=studypost action=update}">
+                <!-- {formhash} -->
+                
+                {if $smarty.get.action == "school"}
+                    <input type="hidden" name="studypost[school_id]" value="{$school.id}" />
+                {elseif $smarty.get.action == "group"}
+                    <input type="hidden" name="studypost[group_id]" value="{$smarty.get.id}" />
+                {/if}
+                
+                <input type="hidden" name="studypost[id]" value="" />
+                
+                <div class="textarea-content">
+                    <div class="top-controls">
+                        <a href="javascript:void(0)" onclick="javascript:document.getElementById('imagefile').click();" class="add-image-button">Tải ảnh/video</a>
+                        <a href="javascript:void(0)" class="show-editor-button">Công cụ soạn thảo</a>
+                    </div>                             
+                    <textarea name="studypost[content]" style="width:100%" id="edit-studypost-content">
+                        
+                    </textarea>                                
+                </div>
+                
+                <div class="bottom-control">
+                    <label class="word-count">Số từ: <span></span></label>
+                    
+                    <input type="button" value="Đóng" class="close-button" />
+                    <input type="button" value="Lưu lại" class="send-button" />
+                </div>
+            </form>
+        </div>
+        
+    </div>
 
 <div class="studypost-content-placeholder"></div>

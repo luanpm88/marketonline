@@ -54,7 +54,11 @@ if (isset($_GET['do'])) {
 						$datas = $saleorderitem->getStickyDatas($id);
 						$info = $saleorder->read("*", $id, null, array('id'=>$id));
 						
-						$seller = $member->read("Member.*, mf.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id"));
+						if($info["buyer_id"] != $the_memberid) {
+							pheader("location:index.php");
+						}
+						
+						$seller = $member->read("c.shop_name,Member.*, mf.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
 						//var_dump($seller);
 						//var_dump($datas);
 						
@@ -98,7 +102,7 @@ if (isset($_POST['send']) && !empty($_POST['pms'])) {
 if (isset($_POST['del'])) {
 	$result = $pms->del($_POST['id'],"to_member_id=".$the_memberid);
 	if ($result) {
-		pheader("location:pms.php");
+		pheader("location:pms.php");er("location:pms.php");
 	}else {
 		flash();
 	}

@@ -38,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			position: 'top',
 			speed: 350,
 			timer: 0,
-			theme: '.tooltipster-default',
+			theme: '.tooltipster-light',
 			touchDevices: true,
 			trigger: 'hover',
 			updateAnimation: true

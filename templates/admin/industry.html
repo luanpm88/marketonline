@@ -20,9 +20,18 @@
 	</div>
     <div class="fontr"> 
         <form name="search_frm" id="SearchFrm" method="get"> 
-        <input type="hidden" name="do" value="search" />
+		<input type="hidden" name="do" value="search" />
+		<input type="hidden" name="level" value="{$smarty.get.level}" />
              <div> 
-				{lang category_keyword} : <input class="queryInput" type="text" name="name" value="" /> 
+				Từ khóa: <input class="queryInput" type="text" name="name" value="" />
+		parent:
+		<select onchange="$('#SearchFrm').submit();" name="parentid">
+			<option value="">none</option>
+			
+			<!--{loop $isearch item level key}-->
+				<option {if $smarty.get.parentid == $item.id}selected="selected"{/if} value="{$item.id}">{$item.name}</option>
+			<!--{/loop}-->
+		</select>
                 <input type="submit" name="search" id="Search" class="formbtn" value="{lang searching}" /> 
             </div> 
         </form> 
@@ -40,6 +49,7 @@
 		  <th>Facebook</th>
 		  <th>{lang display_order}</th>
 		  <th>{lang grade_sample}</th>
+		  <th>Giá</th>
 		  <th>{lang sorts}</th>
 		  <th>{lang action}</th>
 		</tr>
@@ -55,6 +65,7 @@
 		  <td>{$item.share_facebook}</td>
 		  <td><input type="text" name="data[display_order][]" value="{$item.display_order}"></td>
 		  <td>{$item.title|pl}</td>
+		  <td>{$item.ad_price}</td>
 		  <td><a title="{$Types[$item.industrytype_id]}" href="industry.php?do=search&typeid={$item.industrytype_id}">{$Types[$item.industrytype_id]}</a></td>
 		  <td class="handler">
            <ul id="handler_icon">

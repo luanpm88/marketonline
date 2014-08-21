@@ -228,5 +228,74 @@ class Adses extends PbModel {
  		}
  		return $return;
  	}
+	
+	function setPaid($id, $months, $amount)
+	{
+		//find parent's agent
+		uses("adcheckout");
+		$adcheckout = new Adcheckouts();
+		
+		$ad = $this->read("*", $id);
+		
+		//update transaction
+		if($ad["status"] == 0 && $months != "" && $amount != "")
+		{
+			$adcheckout->save(array("ad_id" => $id, "created" => date("Y-m-d H:i:s"), "months" => $months, "amount" => $amount));
+			
+			$this->saveField("status", "1", intval($id));
+		}
+	}
+	
+	function getLastCheckout($ad_id)
+	{
+		uses("adcheckout");
+		$transaction = new Adcheckouts();
+
+		$lastcheck = $transaction->findAll("*", null, array("ad_id=".$ad_id), "created DESC", 0, 1);
+		$lastcheck = $lastcheck[0];
+		
+		$lastcheck["created"] = date("Y-m-d", strtotime($lastcheck["created"]));
+		if($lastcheck["months"]) {
+			$lastcheck["deadline"] = date("Y-m-d", strtotime($lastcheck["created"])+(($lastcheck["months"]*30+15)*24*60*60));
+			if(strtotime($lastcheck["deadline"]) - strtotime(date('Y-m-d')) <= 15*24*60*60)
+			{
+				$lastcheck["warning"] = true;
+			}
+		}
+
+		return $lastcheck;
+	}
+	
+	function formatResult($item) {		
+		if (!empty($item['source_url'])) {
+			if (strstr($item['source_url'], "http")) {
+				$item['logo'] = $item['source_url'];
+			}else{
+				$item['logo'] = URL.$item['source_url'];
+			}
+		}
+		else {
+			if (empty($item['picture'])) {
+				$item['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+			}else{
+				$item['logo'] = URL.pb_get_attachmenturl($item['picture'], '', 'small');
+			}
+		}
+		
+		if(!empty($item['title'])) {
+			$item["name"] = $item["title"];
+		}
+		else {
+			$item["name"] = $item["company_name"];
+		}
+		if(!empty($item['target_url'])) {
+			$item["href"] = $item["target_url"];
+		}
+		else {
+			$item["href"] = $this->url(array("module"=>"space", "userid"=>$item["cache_spacename"]));
+		}
+		
+		return $item;
+	}
 }
 ?>

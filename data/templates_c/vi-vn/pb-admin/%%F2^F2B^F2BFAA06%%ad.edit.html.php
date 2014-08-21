@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-23 09:59:13
+<?php /* Smarty version 2.6.27, created on 2014-08-14 14:48:56
          compiled from ad.edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'fetch', 'ad.edit.html', 2, false),array('function', 'html_radios', 'ad.edit.html', 88, false),array('modifier', 'default', 'ad.edit.html', 83, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'fetch', 'ad.edit.html', 2, false),array('function', 'html_radios', 'ad.edit.html', 152, false),array('function', 'editor', 'ad.edit.html', 184, false),array('modifier', 'default', 'ad.edit.html', 147, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -40,8 +40,63 @@ jQuery(document).ready(function($) {
 <div class="info">
   <form method="post" action="ad.php" enctype="multipart/form-data" id="EditFrm" name="edit_frm">
   <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>
-" />  
+" />
+  
+
+  <div style="margin: 20px;padding: 10px;border: solid 1px #333">
+			<h2>Phần dành cho Thương hiệu</h2>
+			<table class="infoTable">
+			      
+			      
+			      
+			      <tr>
+				      <th style="border-bottom: solid 1px #333" class="paddingT15"> Tên SPACE của SHOP quảng cáo</th>
+				      <td style="border-bottom: solid 1px #333" class="paddingT15 wordSpacing5">          
+					      <input style="width:400px" class="infoTableInput2" name="space_name" value="<?php echo $this->_tpl_vars['item']['company']['cache_spacename']; ?>
+" />
+				      </td>
+			      </tr>
+			      
+			      
+			      
+			      <tr>
+				      <th> <?php echo $this->_tpl_vars['_sectors']; ?>
+</td>
+				      <td>
+					      <ul class="industry_list_checkbox">
+						      <?php $_from = $this->_tpl_vars['industries_checkbox']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['level_0']['total'] > 0):
+    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['itemc']):
+        $this->_foreach['level_0']['iteration']++;
+?>
+							   <li><input type="checkbox" <?php if ($this->_tpl_vars['itemc']['checked']): ?>checked="checked"<?php endif; ?> name="industries_checkbox[]" value="<?php echo $this->_tpl_vars['itemc']['id']; ?>
+"><?php echo $this->_tpl_vars['itemc']['name']; ?>
+</li>
+						      <?php endforeach; endif; unset($_from); ?>
+						      <li><input type="checkbox" name="industries_checkbox[]" value="0"><?php echo $this->_tpl_vars['_others']; ?>
+</li>
+					      </ul>
+				      </td>
+			      </tr>
+			      <tr>
+				      <th> Nhóm</td>
+				      <td>
+					      <input <?php if ($this->_tpl_vars['item']['membergroup_id'] == 1): ?>checked="checked"<?php endif; ?> type="radio" name="ad[membergroup_id]" value="1" /> Cửa hàng
+					      <input <?php if ($this->_tpl_vars['item']['membergroup_id'] == 2): ?>checked="checked"<?php endif; ?> type="radio" name="ad[membergroup_id]" value="2" /> Cá nhân
+					      <input <?php if ($this->_tpl_vars['item']['membergroup_id'] == 3): ?>checked="checked"<?php endif; ?> type="radio" name="ad[membergroup_id]" value="3" /> Doanh nghiệp
+					      <input type="radio" name="ad[membergroup_id]" value="" /> None
+				      </td>
+			      </tr>
+			</table>
+  </div>
+  
     <table class="infoTable">
+	
+	
+	
+	
+	
+	
       <tr>
         <th class="paddingT15"> <?php echo $this->_tpl_vars['_ads']; ?>
 <?php echo $this->_tpl_vars['_title']; ?>
@@ -82,6 +137,20 @@ if ($this->_foreach['sel_adzone']['total'] > 0):
 		</select></td>
       </tr>
       <tr>
+        <th class="paddingT15"> <?php echo $this->_tpl_vars['_parent_categories']; ?>
+<?php echo $this->_tpl_vars['_colon']; ?>
+</th>
+        <td class="paddingT15 wordSpacing5">
+        <select name="ad[industry_id]" id="dataParentId">
+		<option value="0"><?php echo $this->_tpl_vars['_no']; ?>
+</option>
+		<option value="-1" <?php if ($_GET['industry_id'] == "-1"): ?>selected="selected"<?php endif; ?>>Tất cả</option>
+		<?php echo $this->_tpl_vars['CacheItems']; ?>
+
+        </select>
+       </td>
+      </tr>
+      <tr>
         <th class="paddingT15"><?php echo $this->_tpl_vars['_link_mode']; ?>
 <?php echo $this->_tpl_vars['_colon']; ?>
 </th>
@@ -109,6 +178,15 @@ if ($this->_foreach['sel_adzone']['total'] > 0):
 		<input class="infoTableInput2" type="file" name="attach" /></td>
       </tr>
       </tbody>
+      
+      <tr>
+        <th class="paddingT15">Đường dẫn hình</th>
+        <td class="paddingT15 wordSpacing5">
+		<input type="text" name="ad[source_url]" value="<?php echo $this->_tpl_vars['item']['source_url']; ?>
+">
+	</td>
+      </tr>
+      
       <tr>
         <th class="paddingT15"> <?php echo $this->_tpl_vars['_width']; ?>
 <?php echo $this->_tpl_vars['_colon']; ?>
@@ -200,6 +278,8 @@ if ($this->_foreach['sel_adzone']['total'] > 0):
 var ad_url = "<?php echo $this->_tpl_vars['item']['source_url']; ?>
 ";
 </script>
+<?php echo smarty_function_editor(array('type' => 'tiny_mce'), $this);?>
+
 <?php echo '
 <script>
 Calendar.setup({

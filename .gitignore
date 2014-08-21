@@ -1,2 +1,3 @@
 attachment/*
-data/cache/*
+data/*
+data/config/*

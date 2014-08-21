@@ -184,7 +184,7 @@ if (isset($_POST['save'])) {
     	if (!empty($_FILES['pic']['name']) && empty($_POST['linkpic'])) {
     		$attach_id = (empty($id))?"product-".$the_memberid."-".($product->getMaxId()+1):"product-".$the_memberid."-".$id;
     		$attachment->rename_file = $attach_id;
-			$attachment->upload_process();    		
+		$attachment->upload_process();    		
     	    $product->params['data']['product']['picture'] = $attachment->file_full_url;
     	}
 	elseif(!empty($_POST['linkpic']))
@@ -449,7 +449,8 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
 	if (($do == "del" || $_GET['act']=="del") && !empty($id)) {
-		$res = $product->read("id, picture, picture1, picture2, picture3, picture4, industry_id",$id);
+		$res = $product->read("id, picture, picture1, picture2, picture3, picture4, industry_id,service",$id);
+		$isService = $res["service"];
 		if($res){
 			if($the_memberid == $res["id"]) $product->deleteImage($res);
 			
@@ -465,8 +466,15 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		}else {
 			flash("data_not_exists");;
 		}
+		
+		if (isset($isService)) {
+			header('Location:product.php?type=service&success=1');
+		}
+		else {
+			header('Location:product.php?success=1');
+		}
 	}
-	if($do == 'refresh' || !empty($id))
+	if($do == 'refresh' && !empty($id))
 	{
 		$cons[] = 'member_id = '.$the_memberid;
 		if (isset($_GET['level4']) && $_GET['level4'] != '0') {
@@ -486,6 +494,11 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		$latest = $product->findAll("created", null, $cons,"created DESC",0,1);
 		$product->saveField("created", $latest[0]['created']+1, intval($id), $cons );
 
+	}
+	//var_dump($do == 'admin_refresh' && $pb_userinfo["role"] == "admin");
+	if($do == 'admin_refresh' && $pb_userinfo["role"] == "admin")
+	{
+		$product->saveField("created", $time_stamp, intval($_GET["id"]));
 	}
 }
 if (isset($_GET['typeid']) && !empty($_GET['typeid'])) {

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 14:05:53
+<?php /* Smarty version 2.6.27, created on 2014-08-13 15:43:53
          compiled from product_admin.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array('PageTitle' => ($this->_tpl_vars['_space_product']),'cur' => 'space_index')));

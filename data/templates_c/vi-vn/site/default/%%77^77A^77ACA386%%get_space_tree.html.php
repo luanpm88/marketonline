@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 09:56:07
+<?php /* Smarty version 2.6.27, created on 2014-08-13 16:13:05
          compiled from default%5Cproduct/get_space_tree.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/get_space_tree.html', 9, false),)), $this); ?>

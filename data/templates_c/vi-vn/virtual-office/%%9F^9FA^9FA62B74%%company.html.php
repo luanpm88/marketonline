@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 22:34:45
+<?php /* Smarty version 2.6.27, created on 2014-08-14 08:59:18
          compiled from company.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'company.html', 9, false),array('function', 'editor', 'company.html', 301, false),array('function', 'formhash', 'company.html', 342, false),array('function', 'html_radios', 'company.html', 465, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'company.html', 9, false),array('function', 'editor', 'company.html', 301, false),array('function', 'formhash', 'company.html', 340, false),array('function', 'html_radios', 'company.html', 464, false),)), $this); ?>
 <?php $this->assign('page_title', ($this->_tpl_vars['_company_information'])); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
@@ -352,9 +352,7 @@ unset($_smarty_tpl_vars);
 	    <h2<?php if ($this->_tpl_vars['hasCompany']): ?> class="done"<?php endif; ?>><a class="active" href="company.php"><?php echo $this->_tpl_vars['_added_comany_info']; ?>
 </a></h2><?php if ($this->_tpl_vars['hasCompany']): ?> <img style="margin-left: 10px; margin-right: -13px;" src="../templates/office/images/published_big.png" /><?php endif; ?>
 	</div>
-    </div>
-
-    
+</div>
 	
 <?php endif; ?>
 
@@ -382,7 +380,7 @@ unset($_smarty_tpl_vars);
 " name="admin">
 	  <input type="hidden" value="<?php echo $this->_tpl_vars['COMPANYINFO']['id']; ?>
 " name="com_id">
-	  <input type="file" id="change_logo_but" name="upload_logo">
+	  <input type="file" id="change_logo_but" name="upload_logo" accept="image/*">
 	  <input type="submit" value="tải lên" style="padding: 2px 10px; margin-left: 10px;" class="checkout_but">
 	</form>	
 </div>
@@ -397,6 +395,7 @@ images/offer_01.gif" /></div>
 </h2></div>
      <div class="hint"><?php echo $this->_tpl_vars['_must_input_with_star']; ?>
 </div>
+     <?php if ($_GET['message'] == 'success'): ?><p class="message">Thông tin được lưu thành công!</p><?php endif; ?>
 	  <?php echo $this->_tpl_vars['Errors']; ?>
 
 	  <form name="company_frm" id="CompanyFrm" action="<?php echo $_SERVER['PHP_SELF']; ?>
@@ -440,7 +439,7 @@ images/offer_01.gif" /></div>
 " id="company_shop_name" name="data[company][shop_name]" class="required" type="text" placeholder="<?php echo $this->_tpl_vars['_input_shop_name']; ?>
 "/></div>
 					
-					<input id="com_pic" style="margin-bottom: 5px;position: absolute;margin-left: -50000px" name="pic" type="file" id="Picture" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'">
+					<input accept="image/*" id="com_pic" style="margin-bottom: 5px;position: absolute;margin-left: -50000px" name="pic" type="file" id="Picture" size="32" onchange="document.getElementById('CompanyLogo').innerHTML='<img src=\''+this.value+'\' width=117 height=63>'">
 					
 				</td>
 				<td class="circle_right" valign="top">
@@ -810,7 +809,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 	      <tr style="display: none">
                 <th><?php echo $this->_tpl_vars['_company_banner']; ?>
  (1200x400)</th>
-                <td><div><input name="banner" type="file" id="Banner" size="32" ></div>
+                <td><div><input accept="image/*" name="banner" type="file" id="Banner" size="32" ></div>
 		<?php if ($this->_tpl_vars['item']['banner']): ?><div style="margin-top: 5px"><img style="width: 300px; height: 100px" src="<?php echo $this->_tpl_vars['item']['banner']; ?>
 " width="117" height="63" alt="<?php echo $this->_tpl_vars['_company_banner']; ?>
 " /></div><?php endif; ?></td>

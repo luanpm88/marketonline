@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 15:38:14
+<?php /* Smarty version 2.6.27, created on 2014-08-13 16:15:52
          compiled from index.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'index.html', 6, false),array('modifier', 'pl', 'index.html', 43, false),)), $this); ?>
@@ -118,7 +118,7 @@ if ($this->_foreach['items_offer']['total'] > 0):
 <?php endif; ?>
 			</strong></p>
 		<?php endif; ?>-->
-                <p class="message"><strong><?php echo $this->_tpl_vars['_messages']; ?>
+                <p class="message_home"><strong><?php echo $this->_tpl_vars['_messages']; ?>
  </strong><?php echo $this->_tpl_vars['_common_message']; ?>
  <em><?php echo ((is_array($_tmp=@$this->_tpl_vars['pm']['user'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
 </em> <?php echo $this->_tpl_vars['_number']; ?>

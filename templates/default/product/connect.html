@@ -307,10 +307,10 @@
 	var scroll = false;
 	$(document).ready(function() {
 	       
-		if ($('#aq-block-5').height())
-		  pos_searchlist = $('#aq-block-5').height() + 440;
-		else
-		  pos_searchlist = 252;
+		//if ($('#aq-block-5').height())
+		//  pos_searchlist = $('#aq-block-5').height() + 440;
+		//else
+		pos_searchlist = 248;
 	 
 	       $(".hotnewlist").removeClass("active");
 	       $('#new_product_but').addClass("active");
@@ -554,7 +554,7 @@
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 252px">
+                <div id="SearchList" class="connect_searchx connect_menu_hide" style="padding-left: 10px;position: absolute; top: 248px">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="{lang search}" />
@@ -685,7 +685,7 @@
 		  
                     <h3><a href="javascript:void(0)" onclick="getLinksAll($(this))" id="go_list_all_links">{lang friend_links} : {$count_links}</a>
 		      <!--<a title="{lang add_link_help}" href="#add_link" class="top_plus">+</a>-->
-		      <a title="Chia sẻ để tăng thêm lượt truy cập cho gian hàng &quot;{$pb_company.shop_name}&quot;" href="javascript:void(0)" onclick="goclicky(this, '{the_url module=space userid=`$pb_company.cache_spacename`}/{$pb_userid}_un.htmls')" class="top_plus linked">Mời bạn bè +</a>
+		      <a title="Chia sẻ để tăng thêm lượt truy cập cho gian hàng &quot;{$pb_company.shop_name}&quot; của bạn" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`"}" onclick="" class="top_plus linked">Mời bạn bè +</a>
 		    </h3>
 
 		    
@@ -695,14 +695,13 @@
 			
 			
 			    <!--{loop $links item0 level_0 key0}-->
-			    
-			      {if $item0.shop_name && $key0 < 9}
+
 				  <a target="_blank" class="link_item" href="{$item0.link}">
 				    <img src="{$item0.image}" />
 				    <span class="bg">.</span>
 				    <title>{$item0.shop_name}</title>
 				  </a>
-			      {/if}
+
 			    <!--{/loop}-->
 			    {if $count_links < 9}
 				<a class="link_item add_link" href="#add_link" title="{lang add_link_help}">				    

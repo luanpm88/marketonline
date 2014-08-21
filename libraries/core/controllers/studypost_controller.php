@@ -205,13 +205,16 @@ class Studypost extends PbController {
 		//check permission
 		$belongToGroup = $this->studygroupmember->belongToGroup($group["id"], $user["id"], 1);
 		
+		//check forwating
+		$isWaitingValid = $this->studygroupmember->belongToGroup($group["id"], $user["id"], 0);
+		
 		//get leader
 		$group_leader = $this->member->getInfoById($group["leader_id"]);
 		
 		//get waiting list
 		$waiting_list = $this->studygroup->getWaitingList($group["id"]);
 		setvar("waiting_list", $waiting_list);
-		
+		setvar("isWaitingValid", $isWaitingValid);	
 		setvar("group_leader", $group_leader);		
 		setvar("belongToGroup",$belongToGroup);
 		setvar("joined_groups",$joined_groups);
@@ -527,7 +530,7 @@ class Studypost extends PbController {
 					
 			$result = $this->message->SendToUser($user['id'], $group["leader_id"], $sms);
 		}
-		
+		//setFlash("Thành công", "<p>Bạn đã xin tham gia nhóm thành công. Đang đợi trưởng nhóm duyệt.</p>");
 		pheader("location:index.php?do=studypost&action=group&id=".$_GET["id"]);
 	}
 	
@@ -1168,10 +1171,12 @@ class Studypost extends PbController {
 	
 	function getChatFriendList()
 	{
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		if(isset($_GET["id"]))
 		{
 			$members = $this->member->getFriendChatList($_GET["id"]);
-			$online_list = $this->member->getOnlineChatList($_GET["id"]);
+			$online_list = $this->member->getOnlineChatList($user);
 			//var_dump($online_list);
 		}
 		setvar("members",$members);

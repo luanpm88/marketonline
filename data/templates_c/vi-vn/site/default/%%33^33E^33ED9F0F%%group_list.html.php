@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 09:05:41
+<?php /* Smarty version 2.6.27, created on 2014-08-19 16:10:00
          compiled from default%5Cstudypost/group_list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/group_list.html', 55, false),array('function', 'pager', 'default\\studypost/group_list.html', 106, false),array('modifier', 'truncate', 'default\\studypost/group_list.html', 70, false),)), $this); ?>

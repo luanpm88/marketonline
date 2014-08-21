@@ -114,6 +114,7 @@ function ua_referer($default = '') {
 	}
 	return $referer;
 }
+
 if(isset($_GET['action'])){
 	$action = trim($_GET['action']);
 	switch ($action) {

@@ -11,19 +11,19 @@
 
 <!--{include file="`$theme_name`/topmenu.html"}-->
 
-
 <div class="row">
     <div class="fifteen columns" id="page-title">
         <a class="back" href="javascript:history.back()"></a>
         <div class="subtitle">
-            
-                        <p></p>
+            <p></p>
         </div>
         <h1 class="page-title">
-                        {lang cart}                    </h1>
+            {lang cart}
+	</h1>
 
-        <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="index.php?do=product">{lang product_center}</a><span class="delim">/</span>{lang cart} </div>
-
+        <div class="breadcrumbs">
+	    <a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="index.php?do=product">{lang product_center}</a><span class="delim">/</span>{lang cart}
+	</div>
     </div>
     
     
@@ -49,12 +49,10 @@
 					<tr>
 						<th>{lang picture}</th>
 						<th width="35%" style="text-align: left">{lang products}</th>
-						
 						<th style="text-align: right" width="157px">{lang quantity} <span id="update_quantity_but"></span></th>
 						<th style="text-align: right">{lang unit_price} (VNĐ)</th>
 						<th style="text-align: right">{lang sum_price} (VNĐ)</th>
 						<th style="text-align: right" width="10%" style="text-align: left" width="15%">{lang action}</th>	
-						
 					</tr>
 					<!--{loop $StickyItems shop sticky_offer}-->
 						<tr>
@@ -65,7 +63,8 @@
 													
 							<!--{loop $shop.items sticky sticky_offer}-->
 							<tr>
-							<td class="offer_img" width="9%"><a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}"><img src="{$sticky.image}" border=0 alt="{$sticky.title}"></a></td>
+							<td class="offer_img" width="9%"><a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}">
+							<img src="{$sticky.image}" border=0 alt="{$sticky.title}"></a></td>
 							<td style="padding-top: 20px" class="title_link">
 								<a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
 							</td>
@@ -113,7 +112,7 @@
 										<input name="checkout" class="checkout_but" onclick="window.location='index.php?do=product&action=meminfo&id={$shop.id}'"  type="button" value="{lang confirm_cart}" />
 									{/if}
 									{if !$pb_username}										
-										<input name="checkout" class="checkout_but" onclick="window.location='cartlogging.php?id={$shop.id}'"  type="button" value="{lang confirm_cart}" />
+										<input href="#login-box" name="checkout" class="checkout_but comment_but" redirect="index.php?do=product&action=meminfo&id={$shop.id}"  type="button" value="{lang confirm_cart}" />
 									{/if}
 									<input type="submit" class="checkout_but" style="margin-right: 10px" value="Cập nhật" />
 								</td>

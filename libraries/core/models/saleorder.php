@@ -382,5 +382,11 @@ class Saleorders extends PbModel {
 		}
 		return false;
 	}
+	
+	function deleteItems($order_id) {
+		$sql = "DELETE FROM ".$this->table_prefix."saleorderitems WHERE saleorder_id=".$order_id;
+		$deleted = $this->dbstuff->Execute($sql);
+		return;
+	}
 }
 ?>

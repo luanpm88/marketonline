@@ -100,6 +100,10 @@ $menus = array(
                 'text'  => L("product_center", "tpl"),
                 'url'   => 'product.php',
             ),
+            'product_ads' => array(
+                'text'  => "Sản phẩm quảng cáo",
+                'url'   => 'productad.php',
+            ),
             'company' => array(
                 'text'  => L("yellow_page", "tpl"),
                 'url'   => 'company.php',

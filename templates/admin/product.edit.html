@@ -69,12 +69,7 @@ jQuery(document).ready(function($) {
 			</span>        
         </td>
       </tr>
-      <tr>
-        <th class="paddingT15"> {lang detailed_contents}</th>
-        <td class="paddingT15 wordSpacing5"><textarea style="width:650px;height:300px;" name="data[product][content]" id="dataProductContent">{$item.content}</textarea>
-		</td>
-
-      </tr>
+      
       <tr>
         <th class="paddingT15"> {lang seo_title}</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[meta][title]" type="text" id="seo_title" value="{$item.seo_title}" />        </td>
@@ -86,6 +81,15 @@ jQuery(document).ready(function($) {
       <tr>
         <th class="paddingT15"> {lang seo_description}</th>
         <td class="paddingT15 wordSpacing5"><input name="data[meta][description]" type="text" id="seo_description" value="{$item.seo_description}" />        </td>
+      </tr>
+      <tr>
+        <th class="paddingT15">Quảng cáo</th>
+        <td class="paddingT15 wordSpacing5">
+		<!--{loop $productadtypes item level key}-->
+			<input {$item.check} type="checkbox" name="data[productadtype][]" value="{$item.id}" /> {$item.name}<br />
+		<!--{/loop}-->
+		
+	</td>
       </tr>
       <tr>
         <th class="paddingT15">{lang picture}</th>

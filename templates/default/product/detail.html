@@ -101,8 +101,6 @@
 						});
 					}
 					//$('#comments').css("display","none");
-					
-					
 				}
 			});
 	}
@@ -146,8 +144,6 @@
 				}
 			    }
 		});
-		
-		
 	}
 	
     
@@ -242,7 +238,7 @@
 <div class="row">
     <div class="fifteen columns" id="page-title" style="padding-left: 110px;">
 	
-	<div class="super-main-category mainproductpage {if $item.service}service{/if}">
+	<div class="super-main-category mainproductpage {if $item.service}service{else}product{/if}">
 		<div class="show-but">
 			Chuyên mục chính			
 		</div>
@@ -348,7 +344,7 @@
 			<div class="summary">
 
 				    <div class="sum_top">
-					{if $item.service}<service class="service_title"><span>{lang services}</span> {$item.industry_name}</service>{/if}
+					{if $item.service && $item.industry_name}<service class="service_title"><span>{lang services}</span> {$item.industry_name}</service>{/if}
 					<div class="top_left_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 			
 				
@@ -396,7 +392,7 @@
 					
 				</form>
 
-				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcomenew'){else}goclicky_custom(this, '{$F_URL}#welcomenew', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
+				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcome14'){else}goclicky_custom(this, '{$F_URL}#welcome14', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
 					<span class="at15t_facebookz">
 						<span class="">Share on facebook</span>
 					</span>
@@ -728,50 +724,13 @@
 
 <h3 class="related_bottom_h3">Sản phẩm cùng loại</h3>
 <div class="related_products_bottom">	
-	<ul>
-		
-		<!--{loop $bottom_related_products itemvv levelvv keyvv}-->
-			<li class="">
-				<a href="{the_url module=product id=`$itemvv.id` product_name=`$itemvv.name`}" title="{$itemvv.name}">
-					<div class="img_box">
-						<img title="{$itemvv.name}" alt="{$itemvv.name}" src="{$itemvv.thumb}" />
-					</div>
-					{$itemvv.name|truncate:45}
-				</a>
-				{if $itemvv.new_price || $itemvv.price}
-					{if $itemvv.new_price != "" && $itemvv.new_price != 0}
-						<span class="price">{if $itemvv.price}<span class="old_price">{$itemvv.price} <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>{/if} <span class="amount">{$itemvv.new_price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span> {if $itemvv.price_note}<span class="noteprice">({$itemvv.price_note})</span>{/if}
-					{else}
-						<span class="price"><span class="amount">{$itemvv.price}</span> <span class="price_unit">VNĐ{if $itemvv.price_unit}/{$itemvv.price_unit}{/if}</span></span>
-					{/if}
-				{/if}
-			</li>
-		<!--{/loop}-->
-		
-	</ul>
+	
 </div>
 
 <div class="bottom_industry_list">
-	<h3><a href="{the_url module='product_main'}">Danh mục sản phẩm</a></h3>
-	<ul>
-		<!--{loop $industries item0 level_0 key0}-->
-			<li class="level0 {if $level_0%4 == 0}clear{/if}">
-				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{$item0.name}</a>
-				<ul>
-					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
-						<li class="level1 {if $key_level1 > 4}hide{/if}">
-							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
-						</li>
-					<!--{/loop}-->
-					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
-				</ul>
-			</li>
-			{if $level_0++}{/if}
-		<!--{/loop}-->
-		<li class="level0 more-item"><a href="{the_url module='product_main'}">Sản phẩm mới</a></li>
-		<li class="level0 more-item"><a href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a></li>
-	</ul>
+	
 </div>
+
 
 
 </div>
@@ -798,6 +757,9 @@
 			}
 		}
 	});
+	
+	{/literal}getBottomRelatedProducts({$item.industry_id},{$COMPANY.member_id});{literal}
+	getBottomIndustryList();
 </script>
 <!--{/literal}-->
 

@@ -1,6 +1,7 @@
-<div class="chat_list_title"><strong>Danh sách bạn bè</strong> <span>{$count} bạn</span></div>
+<div class="chat_list_title"><strong>Danh sách bạn bè</strong> <!--<span>{$count} bạn</span>--></div>
 <div class="scroll_list">
             <ul>
+                        <li class="title" style="">Bạn học tập đang trực tuyến ({$count})</li>
                         {if !$members}
                             <li style="text-align: center">Chưa có bạn</li>
                         {else}
@@ -15,7 +16,8 @@
                             <!--{/loop}-->
                         {/if}
                         {if $pb_userinfo.id}
-                            <li class="title" style="">Đang trực tuyến ({$count_online_list})</li>
+                            <li class="title" style="">Liên kết đang trực tuyến ({$count_online_list})</li>
+                            <li class="invite" style=""><a href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`"}">Mời bạn bè tham gia</a></li>
                                 {if !$online_list}
                                     <li style="text-align: center">Chưa có bạn</li>
                                 {else}
@@ -29,7 +31,7 @@
                                                     <p class="content">{$item.school_name}</p>
                                                 {else}
                                                     <h2 class="title">{$item.shop_name}</h2>
-                                                    <p class="content">{$item.first_name} {$item.last_name}</p>
+                                                    <p class="content">{if $item.first_name}{$item.first_name} {$item.last_name}{if !$item.shop_name} ({$item.username}){/if}{else}{$item.username}{/if}</p>
                                                 {/if}
                                                 <!--<p class="timeinbox">{$item.created}</p>-->
                                             </li>

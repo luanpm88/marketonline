@@ -12,13 +12,15 @@ require("share.inc.php");
 require(PHPB2B_ROOT."libraries/sendmail.inc.php");
 require(LIB_PATH.'passport.class.php');
 require(CACHE_LANG_PATH."lang_emails.php");
-
+uses('member');
+$member = new Members();
 global $G;
 
+$capt_check = capt_check_2("capt_service");
 
 //echo $G["service_email"];
 
-if(isset($_POST['send']))
+if(isset($_POST['send']) && $capt_check)
 {
     
     setvar("sender_name", $_POST['sender_name']);
@@ -31,6 +33,12 @@ if(isset($_POST['send']))
         setvar("success", 1);
     }
 }
-
+else
+{
+    setvar("post", $_POST);
+}
+setvar("support_members", $member->getAdminSupport());
+setvar("capt_check",$capt_check);
+setvar("sid",md5(uniqid($time_stamp)));
 $tpl_file = "contact";
 render($tpl_file);

@@ -4,51 +4,32 @@
 	      </div>
               
               
-              <section style="display: none" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
-                <div class="widget-inner">
-                    <h3>{lang friend_links}</h3>
-                    
-                    <!--{if $Links}-->
-				<ul>
-					<!--{loop $Links spacelink spacelink}-->
-					<li><a href="{$spacelink.url}">{$spacelink.title}</a></li>
-					<!--{/loop}-->
-				</ul>
-				<!--{/if}-->
-		</div></section>
 	      
-	       <!--{if $pb_username == 'Shop Yen' && $COMPANY.id != 479 }-->
-			    <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products kkleft">
-			      <div class="widget-inner">
-				  <h3>{lang friend_links}</h3>
-				  
-					      <!--{if $Friends}-->
-					      <ul>
-						      <!--{loop $Friends spacelink spacelink}-->
-						      <li><a href="{$spacelink.link}" target="_blank">{$spacelink.shop_name}</a></li>
-						      <!--{/loop}-->
-					      </ul>
-					      <!--{/if}-->
-	      
-			      </div></section>
-			    
+	      <!--{if $pb_userinfo.role == 'admin' && $MEMBER.id != $pb_userinfo.id }-->
+			    <!--{if $Friends}-->
+					  <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products kkleft">
+					    <div class="widget-inner">
+						<h3>{lang friend_links}</h3>					    
+							    <ul>
+								    <!--{loop $Friends spacelink spacelink}-->
+								    <li><a href="{$spacelink.link}" target="_blank">{$spacelink.shop_name}</a></li>
+								    <!--{/loop}-->
+							    </ul>			    
+					  </div></section>
+			    <!--{/if}-->	    
 			    
 			   
-			    
-			    <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products kkleft">
-			      <div class="widget-inner">
-				  <h3>{lang follow}</h3>
-				  
-					      <!--{if $FollowFriends}-->
-					      <ul>
-						      <!--{loop $FollowFriends spacelink spacelink}-->
-						      <li><a href="{$spacelink.link}" target="_blank">{$spacelink.shop_name}</a></li>
-						      <!--{/loop}-->
-					      </ul>
-					      <!--{/if}-->
-	      
-			      </div></section>
-	      
+			    <!--{if $FollowFriends}-->
+					  <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products kkleft">
+					    <div class="widget-inner">
+						<h3>{lang follow}</h3>						    
+							    <ul>
+								    <!--{loop $FollowFriends spacelink spacelink}-->
+								    <li><a href="{$spacelink.link}" target="_blank">{$spacelink.shop_name}</a></li>
+								    <!--{/loop}-->
+							    </ul>		    
+					  </div></section>
+			    <!--{/if}-->
 	      <!--{/if}-->
               
 <!--              <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">

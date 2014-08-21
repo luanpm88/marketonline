@@ -149,7 +149,7 @@ body{ background:#DAF3FD ; }
 .count_info_content p {height:26px; line-height:26px; text-indent:30px;}
 .count_info_content .info { background: url(info.gif) no-repeat; }
 .count_info_content .credit { background: url(credit.gif) no-repeat;}
-.count_info_content .message { background: url(pms.gif) no-repeat;}
+.count_info_content .message_home { background: url(pms.gif) no-repeat;}
 .count_info_content .collect { background: url(collect.gif) no-repeat;}
 .main_content_right { width:203px; float:right}
 .notice { background: url(notice.gif) no-repeat 0 5px; padding:5px 0 0 0}
@@ -1285,7 +1285,7 @@ table.offer_info_content
     padding: 10px 0;
     position: absolute;
     right: auto !important;
-    width: 205px;
+    width: 225px;
     z-index: 1000;
 }
 
@@ -2156,7 +2156,7 @@ input#dataTag
     border-left: 2px solid #3B984C;
     border-right: 1px solid #3B984C;
     box-shadow: 0 0 2px rgba(80, 80, 80, 0.6);
-    margin: -246px 0 0;
+    margin: -276px 0 0;
     position: relative;
 }
 #chat-frame .chat-box.hidden {
@@ -2190,7 +2190,7 @@ input#dataTag
 }
 #chat-frame .chat-box .chat-title:hover
 {
-    opacity: 0.7;
+    background: rgba(59,152,76,0.9);
 }
 #chat-frame .chat-box .chat-title .chat-close-but {
     background: url("../../default/image/close_but.png") no-repeat scroll 4px 5px rgba(255, 255, 255, 0.7);
@@ -2252,8 +2252,8 @@ input#dataTag
     padding: 0 0 0 19px;
 }
 #chat-frame .chat-box .chat-title h2 a {
-    background: url("../../default/image/offline.png") no-repeat scroll 0 7px transparent;
-    padding-left: 18px;
+    background: url("../../default/image/offline.png") no-repeat scroll 0 3px transparent;
+    padding-left: 19px;
 }
 
 
@@ -2262,18 +2262,20 @@ input#dataTag
 }
 #chat-frame .chat-box .chat-content .chat-list
 {
-    height: 160px;
+    height: 190px;
     overflow: auto;
-    width: 347px;
+    width: 357px;
     overflow-x: hidden;
 }
 #chat-frame .chat-box .chat-content .chat-list .notification {
+    background: none repeat scroll 0 0 #fff;
     color: #888888;
-    font-size: 14px;
+    float: right;
+    font-size: 11px;
     margin-top: -15px;
-    position: ;
+    margin-right: 5px;
     text-align: right;
-    width: 320px;
+    width: auto;
 }
 #chat-frame .chat-box .chat-content .chat-list ul
 {
@@ -2283,8 +2285,9 @@ input#dataTag
 #chat-frame .chat-box .chat-content .chat-list ul li {
     border-bottom: 1px solid #EEEEEE;
     list-style: none outside none;
-    padding: 5px 4px 2px 40px;
+    padding: 5px 4px 0px 40px;
     min-height: 40px;
+    word-break: break-all;
 }
 #chat-frame .chat-box .chat-content .chat-list ul li:first-child {
     border-top: 1px solid #EEEEEE;
@@ -2294,8 +2297,8 @@ input#dataTag
     background: none repeat scroll 0 0 #FFFFFF;
     color: #AAAAAA;
     float: right;
-    font-size: 12px;
-    margin-top: -16px;
+    font-size: 10px;
+    margin-top: -15px;
     padding-left: 5px;
     padding-right: 5px;
     height: 12px;
@@ -2305,7 +2308,7 @@ input#dataTag
 #chat-frame .chat-box .chat-content .chat-list ul li:last-child {
     border-bottom: none;
 }
-#chat-frame .chat-box .chat-content .chat-list ul li img {
+#chat-frame .chat-box .chat-content .chat-list ul li img.avatar {
     float: left;
     width: 32px;
     height: 32px;
@@ -3158,7 +3161,6 @@ input[name="other_school"]
 #settingbox ul li a
 {
     padding: 5px 20px;
-    width: 166px;
     display: block;
 }
 #settingbox ul li:hover a, #settingbox ul li.active a {
@@ -3291,4 +3293,115 @@ input[name="other_school_addres"], input[name="other_school_name"] {
 .link_manage h1 {
     font-size: 18px;
     margin-top: 30px;
+}
+#chat-frame .chat-box .chat-form .emotion-box {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #333;
+    padding: 5px;
+    position: absolute;
+    top: 21px;
+    z-index: 5000;
+}
+#chat-frame .chat-box .chat-form .emotion-box span {
+    
+}
+#chat-frame .chat-box .chat-form .emotion-box span img {
+    margin: 4px 1px;
+    border: solid 1px #fff;
+}
+#chat-frame .chat-box .chat-form .emotion-box span img:hover {
+    cursor: pointer;
+    border: solid 1px #bbb;
+}
+.emotion-box-but, .chatimage-box-but {
+    background: url("../images/emotion-but.png") no-repeat scroll 0 0 / 22px auto rgba(0, 0, 0, 0);
+    border: 1px solid #aaa;
+    height: 22px;
+    position: absolute;
+    text-indent: -50000px;
+    width: 22px;
+    margin-left: 346px;
+    margin-top: 2px;
+}
+.emotion-box-but:hover, .chatimage-box-but:hover {
+    background-color: #e0e3e3;
+}
+#chat-frame .chat-box .chat-form textarea {
+
+}
+.typing {
+    margin-top: 0;
+}
+.typing {
+    border-top: 1px solid #eeeeee;
+    list-style: none outside none;
+    min-height: 50px;
+    padding: 5px 4px 0px 40px;
+    word-break: break-all;
+    margin-top: 15px;
+    color: #aaa;
+}
+.typing img.avatar {
+    float: left;
+    height: 32px;
+    margin-left: -40px;
+    margin-right: 5px;
+    width: 32px;
+}
+.chatimage-box-but {
+    background: url("../images/chatimage-but.png") no-repeat scroll center center / 20px auto #fff;
+    margin-left: 346px;
+    margin-top: 26px;
+}
+.ajax-loader {
+    background: url("../images/ajax-loader.gif") no-repeat scroll center center transparent;
+    text-indent: -9000px;
+}
+.select2-container-multi .select2-choices {
+    border: solid 1px #333 !important;
+}
+.ad_industry #dataProductIndustryId1, .ad_industry #dataProductIndustryId1 option {
+    width: 300px !important;
+}
+.ad_price {
+}
+.price_tab {
+    float: left;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.price_tab li {
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    float: left;
+    font-size: 18px;
+    margin-right: 10px;
+    padding: 10px 20px;
+    opacity: 0.4;
+    cursor: pointer
+}
+.price_tab li.active, .price_tab li:hover {
+    opacity: 1;
+}
+#chat-frame .chat-box .chat-content .chat-list ul li img.avatar {
+    margin-top: 3px;
+}
+#chat-frame .chat-box .chat-content .chat-list ul li {
+    padding: 2px 4px 2px 40px;
+}
+.emotion img {
+    margin-top: 5px;
+}
+#chat-frame .chat-box .chat-content .chat-list ul li span.datetimec {
+    margin-top: -13px;
+}
+#chat-frame .chat-box .chat-content .chat-list ul li:last-child {
+    padding-bottom: 15px;
+}
+p.message {
+    clear: both;
+    color: #0064d2;
+    font-size: 18px;
+    margin-bottom: 5px;
+    text-align: center;
 }

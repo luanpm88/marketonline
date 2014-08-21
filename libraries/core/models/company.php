@@ -35,9 +35,12 @@ class Companies extends PbModel {
  		if (isset($_GET['industryid'])) {
  			if (strpos($_GET['industryid'], ",")!==false) {
  				$this->condition[]= "Company.industry_id IN (".trim($_GET['industryid']).")";
- 			}else{
+ 			} else {
 	 			$industryid = intval($_GET['industryid']);
-	 			$this->condition[]= "Company.industry_id='".$industryid."'";
+	 			$this->condition[]= "((Company.industries LIKE '".$industryid."')"
+							." OR (Company.industries LIKE '%,".$industryid."')"
+							." OR (Company.industries LIKE '".$industryid.",%')"
+							." OR (Company.industries LIKE '%,".$industryid.",%'))";
  			}
  		}
  		if (isset($_GET['areaid'])) {
@@ -79,6 +82,15 @@ class Companies extends PbModel {
  				default:
  					break;
  			}
+ 		} else {
+			$this->orderby = "created DESC";
+		}
+		
+		if(!empty($_GET['membertype_id'])){
+ 			$this->condition[]="m.membertype_id='".intval($_GET['membertype_id'])."'";
+ 		}
+		if(!empty($_GET['membergroup_id'])){
+ 			$this->condition[]="m.membergroup_id='".intval($_GET['membergroup_id'])."'";
  		}
  	}
  	
@@ -92,7 +104,10 @@ class Companies extends PbModel {
  		$cache_options = cache_read('typeoption');
  		$area_s = $space->array_multi2single($area->getCacheArea());
  		$industry_s = $space->array_multi2single($industry->getIndustry());
- 		$result = $this->findAll("*,name AS title,description AS digest", null, null, $this->orderby, $firstcount, $displaypg);
+		
+		$joins = array("LEFT JOIN {$this->table_prefix}members AS m ON m.id = Company.member_id");
+		
+ 		$result = $this->findAll("Company.*,Company.name AS title,Company.description AS digest", $joins, null, $this->orderby, $firstcount, $displaypg);
 		if (!isset($_PB_CACHE['membergroup'])) {
 			$_PB_CACHE['membergroup'] = cache_read("membergroup");
 		}
@@ -262,7 +277,7 @@ class Companies extends PbModel {
  		$area = new Areas();
 		$space = new Space();
 		
-		$sql = "SELECT c.*,c.name as companyname,tel AS link_tel,cf.* FROM {$this->table_prefix}companies c LEFT JOIN {$this->table_prefix}companyfields cf ON c.id=cf.company_id WHERE c.id={$company_id}";
+		$sql = "SELECT link.parent_id,c.*,c.name as companyname,tel AS link_tel,cf.* FROM {$this->table_prefix}companies c LEFT JOIN {$this->table_prefix}companyfields cf ON c.id=cf.company_id LEFT JOIN {$this->table_prefix}links link ON c.member_id=link.member_id WHERE c.id={$company_id}";
 		$result = $this->dbstuff->GetRow($sql);
 		
 		if($result)
@@ -293,6 +308,7 @@ class Companies extends PbModel {
 			}else{
 				$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
 				$result['logosmall'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['logobig'] = URL.pb_get_attachmenturl($result['picture'], '', '');
 			}
 			
 			$result['url'] = $space->rewrite($result["cache_spacename"]);
@@ -342,6 +358,57 @@ class Companies extends PbModel {
 			}else{
 				$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
 				$result['logosmall'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['logobig'] = URL.pb_get_attachmenturl($result['picture'], '', '');
+			}
+			
+			$result['url'] = $space->rewrite($result["cache_spacename"]);
+			
+			$result["site_url_name"] = str_replace('http://', '', $result["site_url"]);
+			$result["site_url_name"] = str_replace('https://', '', $result["site_url_name"]);
+		}
+		
+		$this->info = $result;
+		return $result;
+	}
+	
+	function getInfoBySpaceName($id)
+	{
+		uses("area", "space");
+ 		$area = new Areas();
+		$space = new Space();
+		
+		$sql = "SELECT c.*,c.name as companyname,tel AS link_tel,cf.*,m.membertype_id FROM {$this->table_prefix}companies c LEFT JOIN {$this->table_prefix}companyfields cf ON c.id=cf.company_id LEFT JOIN {$this->table_prefix}members m ON m.id=c.member_id WHERE LOWER(c.cache_spacename)='".strtolower($id)."'";
+		$result = $this->dbstuff->GetRow($sql);
+		
+		if($result)
+		{
+			$result["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
+			
+			list(,$telcode, $telzone, $tel) = $this->splitPhone($result['tel']);
+			list(,$faxcode, $faxzone, $fax) = $this->splitPhone($result['fax']);
+			if($telcode != '000' && $telzone != '' && $tel != '')
+			{
+				$result['tel'] = '('.$telcode.') '.$telzone.'.'.substr($tel, 0, 4)." ".substr($tel, 4);
+			}
+			else
+			{
+				$result['tel'] = '';
+			}
+			if($faxcode != '000' && $faxzone != '' && $fax != '')
+			{
+				$result['fax'] = '('.$faxcode.') '.$faxzone.'.'.substr($fax, 0, 4)." ".substr($fax, 4);
+			}
+			else
+			{
+				$result['fax'] = '';
+			}
+			
+			if (empty($result['picture'])) {
+				$result['logo'] = URL.pb_get_attachmenturl('', '', 'smaller');
+			}else{
+				$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
+				$result['logosmall'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['logobig'] = URL.pb_get_attachmenturl($result['picture'], '', '');
 			}
 			
 			$result['url'] = $space->rewrite($result["cache_spacename"]);
@@ -461,18 +528,19 @@ class Companies extends PbModel {
 	
 	function countProduct($id)
 	{
-//		uses("product");
+//#####		uses("product");
 // 		$product = new Products();
 		
-		//$result = $product->findCount(null, array("Product.company_id=".intval($id)));
-		
-		$sql = "SELECT count(id) AS amount FROM pb_products AS Product WHERE Product.company_id=".intval($id);
-		$result = $this->dbstuff->GetRow($sql);
-		//var_dump($result);
-		return $result["amount"];
+		////$result = $product->findCount(null, array("Product.company_id=".intval($id)));
+		//
+		//$sql = "SELECT count(id) AS amount FROM pb_products AS Product WHERE Product.company_id=".intval($id);
+		//$result = $this->dbstuff->GetRow($sql);
+		////var_dump($result);
+		//return $result["amount"];
+		return 0;
 	}
 	
-	function fullTextSearch($keyword)
+	function fullTextSearch($keyword, $offset = 0, $limit = 40, $pagination = false)
 	{
 		uses("area","space");
  		$area = new Areas();
@@ -491,19 +559,20 @@ class Companies extends PbModel {
 			." MATCH (`shop_name`) AGAINST ('".$keyword."') AS score,"
 			." MATCH (`name`) AGAINST ('".$keyword."') AS score1,"
 			." MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."') AS score2,"
-			." MATCH (`keywords_string`) AGAINST ('".$keyword."') AS score3"
-			." FROM {$this->table_prefix}companies c"
+			." MATCH (`keywords_string`) AGAINST ('".$keyword."') AS score3";
+		$sql_middle = " FROM {$this->table_prefix}companies c"
 			." LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id = c.member_id"
 			." WHERE"
 			." MATCH (`shop_name`) AGAINST ('".$keyword."')"
 			." OR MATCH (`name`) AGAINST ('".$keyword."')"
 			." OR MATCH (`first_name`,`last_name`) AGAINST ('".$keyword."')"
 			." OR MATCH (`keywords_string`) AGAINST ('".$keyword."')"
-				." OR c.`shop_name` LIKE '%".$keyword."%'"
-				." OR c.`name` LIKE '%".$keyword."%'"
-				." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
-				." OR c.`keywords_string` LIKE '%".$keyword."%'"
-			." ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT 0, 50";
+			." OR LOWER(c.`email`) LIKE '%".strtolower($keyword)."%'"
+			." OR c.`shop_name` LIKE '%".$keyword."%'"
+			." OR c.`name` LIKE '%".$keyword."%'"
+			." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
+			." OR c.`keywords_string` LIKE '%".$keyword."%'";
+		$sql_foot = " ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT {$offset}, {$limit}";
 		//echo $sql;
 		//$sql = "SELECT c.*, mf.first_name, mf.last_name"
 		//	
@@ -519,7 +588,7 @@ class Companies extends PbModel {
 		
 		//echo $sql."dddd";
 		$keyword = trim($keyword);
-		if(!empty($keyword)) $results = $this->dbstuff->GetArray($sql);
+		if(!empty($keyword)) $results = $this->dbstuff->GetArray($sql.$sql_middle.$sql_foot);
 		//echo count($results);
 		foreach($results as &$result)
 		{
@@ -556,7 +625,17 @@ class Companies extends PbModel {
 			}
 		}
 		
-		return $results;
+		if($pagination) {
+			$count = $this->dbstuff->GetRow("SELECT COUNT(c.id) ".$sql_middle);
+			$count = $count["COUNT(c.id)"];
+			return array("result"=>$results,"count"=>$count);
+		} else {
+			return $results;
+		}		
+	}
+	
+	function getParent($id) {
+		
 	}
 }
 ?>

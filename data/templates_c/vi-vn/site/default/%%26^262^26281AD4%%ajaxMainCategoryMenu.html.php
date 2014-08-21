@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 09:51:23
+<?php /* Smarty version 2.6.27, created on 2014-08-14 09:41:24
          compiled from default%5Cproduct/ajaxMainCategoryMenu.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajaxMainCategoryMenu.html', 2, false),)), $this); ?>
@@ -21,11 +21,14 @@ if ($this->_foreach['level_0']['total'] > 0):
         $this->_foreach['level_0']['iteration']++;
 ?>
 			<li class="level0 <?php if ($this->_tpl_vars['level_0']%4 == 0): ?>clear<?php endif; ?>">
-				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => ($this->_tpl_vars['module']),'level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
+				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => ($this->_tpl_vars['module']),'level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name']),'membergroup_id' => ($_GET['membergroup_id'])), $this);?>
 "><?php echo $this->_tpl_vars['item0']['name']; ?>
 
-                                <i></i></a>
-				<ul style="display: none">
+				    <?php if ($this->_tpl_vars['module'] != 'companies'): ?><i></i><?php endif; ?>
+				</a>
+				
+				<?php if ($this->_tpl_vars['module'] != 'companies'): ?>
+				    <ul style="display: none">
 					<?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['level_1_industry']['total'] > 0):
     foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
@@ -37,8 +40,8 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 </a>
 						</li>
 					<?php endforeach; endif; unset($_from); ?>
-				</ul>
-                                
+				    </ul>
+                                <?php endif; ?>
 			</li>
 			<?php if ($this->_tpl_vars['level_0']++): ?><?php endif; ?>
 		<?php endforeach; endif; unset($_from); ?>

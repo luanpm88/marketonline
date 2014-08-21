@@ -1,4 +1,4 @@
-<!--{include file="`$theme_name`/header.html" page_title="Thị trường Mua-Bán, Phân phối Sản phẩm/Dịch vụ"}-->
+<!--{include file="`$theme_name`/header.html" page_title="`$member.first_name` `$member.last_name` - Trang cá nhân"}-->
 
 
 <!--{include file="`$theme_name`/verytopmenu.html"}-->
@@ -8,6 +8,13 @@
 
     $(document).ready(function() {
         
+        //$('.img_item').hover();
+        if (!$('.inner_slider .img_item img').length)
+        {
+            //$('.member-left-bottom').addClass("small");
+        }
+        
+        $('.member-left-bottom').height($('.study-member-box .member-right').height() - $('.member-left-top-bound').height() - 17);
         
     });
     
@@ -112,81 +119,83 @@
                         </div>
                         
                         <h4>{$member.first_name} {$member.last_name}</h4>
-                        {if $member.school_name}<p class="school"><label>Trường </label>:&nbsp; {$member.school_name}</p>{/if}
+                        {if $member.school_name}<p class="school"><label>Trường </label><span><i>:&nbsp; </i>{$member.school_name}</span></p>{/if}
                         {if $member.class}<p><label>Lớp </label>:&nbsp; {$member.class}</p>{/if}
                         {if $member.gender}<p><label>Giới tính </label>:&nbsp; {if $member.gender == 1}Name{else}Nữ{/if}</p>{/if}
                         {if $member.address}<p><label>Địa chỉ </label><span><i>:&nbsp; </i>{$member.address}</span></p>{/if}
                         {if $member.mobile}<p><label>Điện thoại </label>:&nbsp; {$member.mobile}</p>{/if}
                         {if $member.email}<p><label>Email </label>:&nbsp; {$member.email}</p>{/if}
-                    </div>
-                    <div class="controls">
-                        <div class="friend_menu">
-                            {if $pb_userid != $member.id && !$friend_request && !$is_friend}
+                        
+                        <div class="controls">
+                            <div class="friend_menu">
+                                {if $pb_userid != $member.id && !$friend_request && !$is_friend}
+                                    <!--{if $pb_username!=""}-->
+                                            {if !$Friended}
+                                                    <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember">Kết bạn</a>
+                                            {else}
+                                                    <a onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                                            {/if}
+                                    <!--{else}-->
+                                            {if !$Friended}
+                                                <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
+                                            {else}
+                                                <a class="comment_but del_addfriend" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi Lời mời kết bạn</a>
+                                            {/if}                                
+                                    <!--{/if}-->
+                                {elseif $is_friend}
+                                    <a class="" href="javascript:void(0)">
+                                        <img class="friend_checked" src="{the_url module=root-url}/templates/default/image/check_list.png" />
+                                        Bạn bè
+                                    </a>
+                                {/if}
+                                
+                                
+                                    <div class="friend_menu_items{if $Friended || $is_friend} active{/if}">
+                                        <div class="friend_menu_items_inner">
+                                            <span class="pointer_topmenu">.</span>
+                                            <ul>
+                                                <li>
+                                                    {if $is_friend}
+                                                        <a class="" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Hủy kết bạn</a>
+                                                    {/if}
+                                                    {if !$is_friend}
+                                                        <a class="" href="javascript:void(0)" onclick="studyfriend({$member.id}, $('.kkkmember'))">Hủy kết bạn</a>
+                                                    {/if}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                
+                                
+                            </div>    
+                                
+                            
+                            {if $pb_userid != $member.id}
                                 <!--{if $pb_username!=""}-->
-                                        {if !$Friended}
-                                                <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember">Kết bạn</a>
+                                    <a href="javascript::void(0)" onclick="getChatboxNew('{$member.id}x6', false)" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
+                                <!--{else}-->
+                                    <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Tin nhắn</a>
+                                <!--{/if}-->
+                                
+                                
+                                <!--{if $pb_username!=""}-->
+                                        {if !$Followed}
+                                                <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang follow}</a>
                                         {else}
-                                                <a onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                                                <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang followed}</a>
                                         {/if}
                                 <!--{else}-->
-                                        {if !$Friended}
-                                            <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">Kết bạn</a>
+                                        {if !$Followed}
+                                            <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
                                         {else}
-                                            <a class="comment_but del_addfriend" href="#login-box" href="{$WebRootUrl}logging.php">Đã gửi Lời mời kết bạn</a>
+                                            <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
                                         {/if}                                
                                 <!--{/if}-->
-                            {elseif $is_friend}
-                                <a class="" href="javascript:void(0)">
-                                    <img class="friend_checked" src="{the_url module=root-url}/templates/default/image/check_list.png" />
-                                    Bạn bè
-                                </a>
                             {/if}
-                            
-                            
-                                <div class="friend_menu_items{if $Friended || $is_friend} active{/if}">
-                                    <div class="friend_menu_items_inner">
-                                        <span class="pointer_topmenu">.</span>
-                                        <ul>
-                                            <li>
-                                                {if $is_friend}
-                                                    <a class="" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Hủy kết bạn</a>
-                                                {/if}
-                                                {if !$is_friend}
-                                                    <a class="" href="javascript:void(0)" onclick="studyfriend({$member.id}, $('.kkkmember'))">Hủy kết bạn</a>
-                                                {/if}
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            
-                            
-                        </div>    
-                            
                         
-                        {if $pb_userid != $member.id}
-                            <!--{if $pb_username!=""}-->
-                                <a href="javascript::void(0)" onclick="getChatboxNew('{$member.id}x6', false)" class="skin_chat_with_owner comment_but {if $member.online}online{/if}">Tin nhắn</a>
-                            <!--{else}-->
-                                <a title="" class="skin_chat_with_owner comment_but {if $member.online}online{/if}" href="#login-box" onclick="">Tin nhắn</a>
-                            <!--{/if}-->
-                            
-                            
-                            <!--{if $pb_username!=""}-->
-                                    {if !$Followed}
-                                            <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang follow}</a>
-                                    {else}
-                                            <a onclick="studyfollow({$member.id}, this)" href="javascript:void(0)">{lang followed}</a>
-                                    {/if}
-                            <!--{else}-->
-                                    {if !$Followed}
-                                        <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
-                                    {else}
-                                        <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
-                                    {/if}                                
-                            <!--{/if}-->
-                        {/if}
-                    
+                        </div>
                     </div>
+                    
                 
                 </div>
                 
@@ -213,7 +222,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="facelike_main">
+        <div class="facelike_main memberpage_facelike">
             
             <div id="facelike_col1">
                 

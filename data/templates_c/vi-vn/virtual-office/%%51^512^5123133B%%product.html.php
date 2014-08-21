@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 16:23:03
+<?php /* Smarty version 2.6.27, created on 2014-08-14 15:27:00
          compiled from product.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'product.html', 154, false),array('modifier', 'strip_tags', 'product.html', 158, false),array('modifier', 'default', 'product.html', 221, false),array('function', 'the_url', 'product.html', 196, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'truncate', 'product.html', 154, false),array('modifier', 'strip_tags', 'product.html', 158, false),array('modifier', 'default', 'product.html', 224, false),array('function', 'the_url', 'product.html', 197, false),)), $this); ?>
 <?php if ($this->_tpl_vars['getvar']['type'] == 'service'): ?>
 	<?php $this->assign('page_title', ($this->_tpl_vars['_service_management'])); ?>
 <?php else: ?>
@@ -274,6 +274,9 @@ images/unpublished.png">
 </a>--></td>
 		
                 <td style="text-align: left">
+			<?php if ($this->_tpl_vars['pb_userinfo']['role'] == 'admin'): ?><a href="product.php?do=admin_refresh&id=<?php echo $this->_tpl_vars['item']['id']; ?>
+&<?php echo $this->_tpl_vars['current_uri']; ?>
+">Lên nhất (admin)</a><br /><?php endif; ?>
 			<a href="product.php?do=refresh&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 &<?php echo $this->_tpl_vars['current_uri']; ?>
 "><?php echo $this->_tpl_vars['_bump_to_top']; ?>
@@ -283,11 +286,13 @@ images/unpublished.png">
 </a><br /><a href="<?php echo smarty_function_the_url(array('id' => ($this->_tpl_vars['item']['id']),'module' => 'product','product_name' => ($this->_tpl_vars['item']['name']),'service' => ($this->_tpl_vars['item']['service'])), $this);?>
 " target="_blank" title="<?php echo $this->_tpl_vars['_click_preview']; ?>
 "><?php echo $this->_tpl_vars['_click_preview']; ?>
-</a><br /><a onclick="return confirm('<?php echo $this->_tpl_vars['_delete_confirm']; ?>
+</a>
+			<!--<br /><a onclick="return confirm('<?php echo $this->_tpl_vars['_delete_confirm']; ?>
 ')" href="<?php echo $_SERVER['PHP_SELF']; ?>
 ?act=del&id=<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo $this->_tpl_vars['_delete']; ?>
-</a></td>
+</a>-->
+		</td>
                 </tr> 
               <?php endforeach; endif; unset($_from); ?>
         </table> 

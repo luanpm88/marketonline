@@ -85,13 +85,14 @@
 <script src="{$theme_img_path}js/jquery.qtip.min.js"></script>
 <link rel="stylesheet" href="{$theme_img_path}css/jquery.qtip.min.css">
 
-<script src="{$theme_img_path}js/custom.js"></script>
+<script src="{$theme_img_path}js/custom.js?v=1"></script>
 
 <link rel="stylesheet" media="screen" type="text/css" href="{$theme_img_path}css/colorpicker.css" />
 
 <link rel="stylesheet" media="screen" type="text/css" href="{$theme_img_path}js/nivo/nivo-slider.css" />
 <link rel="stylesheet" media="screen" type="text/css" href="{$theme_img_path}js/nivo/themes/default/default.css" />
 
+<script type="text/javascript" src="{$theme_img_path}js/jemotion/jemotion.js"></script>
 
 <!--<script src="http://marketonline.vn/scripts/mudim-0.9-r162.js"></script>-->
 
@@ -136,25 +137,7 @@
     }
     
     
-      function getAnnounce(ann_count)
-	{
-	   $.ajax({
-			       url: "index.php?do=product&action=getAnnounce",
-		       }).done(function ( data ) {
-			       if( console && console.log ) {
-				       //alert(data);
-				       $('#announce-frame').prepend(data);
-				       
-				       $('#announce-frame .announce-box').each(function(index){				    
-					   if (!$(this).hasClass("showed")) {
-					       $(this).addClass("ann"+ann_count);
-					       $(this).addClass("showed");
-					       setTimeout(function(){$(".ann"+ann_count).fadeOut()}, 60000);					
-					   }				    
-				       });
-			       }
-		       });
-	}
+
     
     function inserCustomBGFile(url, image) {
 		$('#uploadIVbutton').removeAttr('disabled');
@@ -327,19 +310,12 @@ function goclicky(meh, url)
 		});
 	}
 	
-	function getInbox() {
-		//code
-		$.ajax({
-			url: "index.php?do=product&action=ajaxInbox",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$("#inbox_out").html(data);
-			}
-		});
-	}
 	var pos_searchlist = 300;
 	var ichatbox = new Array();
 	var companylogo = '<!--{/literal}-->{if $pb_company && $pb_userinfo.current_type != 6}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
+        
+        var ROOT_URL = '<!--{/literal}-->{the_url module=root-url}<!--{literal}-->';
+        
 	$(document).ready(function() {
 		if (window.chrome) {
 			$("#f_language_bar").css("margin-top", "-1px");
@@ -348,9 +324,8 @@ function goclicky(meh, url)
 		
 		$('.thumbnails a').eq(4).css('margin-right', '0');
 		
-		getCart();
-		getInbox();
-		getTopChat();
+		
+		{/literal}{if $pb_username!=""}{literal}getTopChat();{/literal}{/if}{literal}
 		//$('a.cart_link').click(function(){
 		//	$('.item_rows').toggle();
 		//});
@@ -480,15 +455,11 @@ function goclicky(meh, url)
 		
 		if($('#content').height() > $('#left-sidebar').height())
 		{
-		      $('#left-sidebar').css('min-height',$('#content').height()+45+"px");
-				}
+		    $('#left-sidebar').css('min-height',$('#content').height()+45+"px");
+		}
 		
 		
-		//setInterval(funcio);
-		
-		getNewClicked('<!--{/literal}-->{$pb_company.id}<!--{literal}-->');
-		
-		$('body').click(function(){if($('.clicked_note_box').css('display') == 'block') $('.clicked_note_box').fadeOut("slow", refreshClickedCompany('<!--{/literal}-->{$pb_company.id}<!--{literal}-->'))});	
+        	$('body').click(function(){if($('.clicked_note_box').css('display') == 'block') $('.clicked_note_box').fadeOut("slow", refreshClickedCompany('<!--{/literal}-->{$pb_company.id}<!--{literal}-->'))});	
 		$('.staticon').click(function(e){$('.over_air_box').css("display","none");$('.clicked_note_box').toggle();e.stopPropagation();});
 		
 		//$('.facebookOuter iframe').addClass();
@@ -808,7 +779,7 @@ function goclicky(meh, url)
 			 },
 			 onChange: function (hsb, hex, rgb) {
 				 $('#colorSelector9 div').css('backgroundColor', '#' + hex);
-				 $('.fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img').css('border-color', '#' + hex);
+				 $('#top_company_info, #topmenu img, .fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img').css('border-color', '#' + hex);
 				 $('.pagination span,.pagination a:hover').css('background', '#' + hex);
 				 $('#darkf').css('border-top', 'solid 1px #' + hex);
 				$('#borderColor').val('#' + hex);
@@ -924,32 +895,8 @@ function goclicky(meh, url)
 		 $('body').click(function(){$('#quick_inbox_content').fadeOut();$('#quick_message_content').fadeOut()});
 		    $('#inboxhome a.but').click(function(event){$('#quick_inbox_content').toggle();event.stopPropagation();});
 		    
-		var ann_count = 0;
-		setInterval(function(){ getAnnounce(ann_count); ann_count++}, 15000);
 		
-		//chatbox get new arrival
-		//setInterval(function(){ updateChatbox(); }, 5000);
-		
-		//chatboxs
-		<!--{/literal}-->
-		    <!--{if $pb_username!=""}-->
-		    
-			<!--{literal}-->
-			    setInterval(function(){ updateChatboxNew(); }, 8000);
-			<!--{/literal}-->
-		    
-		    
-			{loop $chatboxsnew item level key}
-                            {if $item != ''}
-                                getChatboxNew("{$item}", true);
-                            {/if}
-                        {/loop}
-			
-		    <!--{/if}-->
-		
-		<!--{literal}-->
-		
-		
+				
 		$(".comment_but").fancybox({
 			'padding': 0,
 			'zoomOpacity': true,
@@ -1050,6 +997,28 @@ function goclicky(meh, url)
 		   $('#topCart').live("click",function() {
 		       showCart();
 		   });
+                   
+                   
+                $("#underconstruction-info-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+                   
+                //if(!$.cookie("underconstruction"))
+                //{
+                //    $.cookie("underconstruction", true);
+                //    $("#underconstruction-info-but").trigger("click");
+                //}
 	});
 	
 	
@@ -1146,16 +1115,24 @@ $(window).resize(function() {
 <a id="hiddenclicker" href="#box_alert" style="display: none">Hidden Clicker</a>
 <div id="box_alert" style="display: none">
 	
-	<div style="padding: 20px;width: 300px">
-			<h4>{lang added_to_cart}</h4>
-<br />
-			<p>
-				<a id="add_paragraph" title="Add" class="button button-blue" href="index.php?do=product&action=add_cart">{lang go_to_cart}</a>
-				&nbsp;
-				<a href="javascript:$.fancybox.close();">{lang close}</a>
-			</p>
-			
-	</div>
+	<div style="width:400px;">
+        <div class="fifteen columns" id="page-title" style="padding-left: 20px;margin-top: 5px;">
+        
+                <h1 class="page-title">
+                                <strong>{lang cart}</strong>                    </h1>
+        
+                <div class="breadcrumbs" style="width:auto"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="index.php?do=product">{lang product_center}</a><span class="delim">/</span>{lang cart} </div>
+        
+            </div>
+                            <div class="qiugouleftcon carttable" style="padding: 20px">
+                                <p style="" class="no_pp" style="padding: 15px;">{lang added_to_cart}!
+                                    <br /><br />
+                                    <a id="add_paragraph" title="Vào giỏ hàng" class="button button-blue" href="javascript:void(0)" onclick="showCart()" style="margin-right: 10px;">{lang go_to_cart}</a>
+                                    <a id="add_paragraph" title="Tiếp tục mua" class="button button-blue" href="javascript:void(0)" onclick="javascript:$.fancybox.close();">Tiếp tục mua</a>
+                                </p>
+                                
+                            </div>
+        </div>
 	
    </div>
 
@@ -1208,113 +1185,20 @@ $(window).resize(function() {
 </div>
 
 
-   <div id="login-box" style="display: none">
-	
-	<div style="padding: 20px 20px 0px 20px;width: 320px">
-			  
-			 <div class="content_inner" style="padding-bottom:10px;">
-			  
-			  
-			  
-			  
-			  
-			  
-			  <div class="wrapper">
-    <div class="content">
-        
-	<h1>{lang login}</h1>
-	
-        <div class="loadingcon">
-        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
-            <input type="hidden" name="action" value="logging">
-	    <input type="hidden" name="type" value="{$Type}">
-	    <input type="hidden" name="redirect" value="{$F_URL}">
-	    <!-- {formhash} -->
-	    <input type="hidden" name="forward" value="{$_G.forward}" />
-            <div class="loadingconleft">
-                
-				{if $LoginError}{$LoginError}{/if}
-				<br />
-{if $pb_username!=""}
-					<label class="loadingname">
-                        {lang user_name}
-                    </label>
-                    <label>
-                        {$pb_username|default:'`$_account_n_email_n_mobile`'}
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        {lang member_type}
-                    </label>
-                    <label>
-                        {$member_info.groupname}<img src="{$member_info.groupimage}" />
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        {lang your_last_login}{lang colon}
-                    </label>
-                    <label>
-                        {$member_info.last_login|date_format:"%Y-%m-%d %H:%M"}
-                    </label>
-                    <br clear="all" />
-{else}
-					<label class="loadingname">
-                        {lang user_name}
-                    </label>
-                    <label>
-                        <input type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">&nbsp;
-                    </label>
-                    <label class="loadingname">
-                    {lang password}
-                    </label>
-                    <label>
-                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}&nbsp;
-                    </label>
-                    <br clear="all" />
-                    
-                    <div class="clear"></div>
-                    <div class="login" id="btnLoginDiv">
-                       <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton" />
-		       <div class="info_but_login">
-		       	<a href="{$WebRootUrl}getpasswd.php">{lang forget_password}</a><br />
-		       	<a href="{$WebRootUrl}register.php">{lang register}</a>
-		       </div>
-                    </div>
-		    
-		   <div class="box-res-con">
-		     <div class="inner-boxx">
-    <h4>{lang not_register_annouce}</h4><br />
-    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register"}'">{lang register}</button>
-</div>
-		    </div>
-{/if}
-                    
-            </div>
-            
-        </form>
-        </div>
-    </div>
-</div>
-<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
-<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
-<script language="javascript" src="scripts/validate.js" charset="{$charset}"></script>
-<script>
-var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
-</script>
-			 
-			 
-			 
-			  
-			 </div>
-	</div>
-	
-</div>
-
 <div id="announce-frame"></div>
    
       <div id="chat-frame">
     
    </div>
+      <div style="display:none">
+        <iframe name="uploadChatImage_frame" id="uploadChatImage_frame" style="display: none"></iframe>
+            <form target="uploadChatImage_frame" name="productaddfrm" id="uploadChatImage" method="post" action="{$WebRootUrl}index.php?do=product&action=uploadChatImage" enctype="multipart/form-data">
+              <!-- {formhash} -->
+              <input type="hidden" name="chatbox_id" value="" />
+              <p><input accept="image/*" type="file" name="uploadChatImage" id="uploadChatImage_but" onchange="$('#uploadChatImage').submit()" /></p>
+    
+            </form>
+    </div>
       
       
          <div id="history-list-frame">    
@@ -1378,7 +1262,7 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
     
 </div>
 
-{if $pb_userinfo.current_type == 6 || $pb_userinfo.id == 757 || $pb_userinfo.current_type}
+{if $pb_userinfo.current_type == 6 || $pb_userinfo.role == 'admin' || $pb_userinfo.current_type}
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
@@ -1386,3 +1270,5 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
     </div>
 </div>
 {/if}
+
+<!--{include file="`$theme_name`/_header_includes.html"}-->

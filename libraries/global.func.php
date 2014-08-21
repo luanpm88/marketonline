@@ -47,7 +47,6 @@ function pb_getenv($key) {
 	if ($val !== null) {
 		return $val;
 	}
-
 	switch ($key) {
 		case 'SCRIPT_FILENAME':
 			if (defined('SERVER_IIS') && SERVER_IIS === true) {
@@ -90,6 +89,7 @@ function pb_getenv($key) {
 			}
 			break;
 	}
+	//echo $_SERVER['SERVER_NAME'].$_SERVER['HTTP_HOST'];
 	return null;
 }
 
@@ -137,7 +137,7 @@ function pheader($string, $replace = true, $http_response_code = 0) {
 	}
 }
 
-function flash($message_title = '', $back_url = '', $pause = 3, $extra = '')
+function flash($message_title = '', $back_url = '', $pause = 3, $extra = '', $mes = '')
 {
 	global $smarty;
 	if (empty($back_url)) {
@@ -149,7 +149,7 @@ function flash($message_title = '', $back_url = '', $pause = 3, $extra = '')
 			$back_url = "javascript:;";
 		}
 	}
-	$return = $smarty->flash($message_title, $back_url, $pause, $extra);
+	$return = $smarty->flash($message_title, $back_url, $pause, $extra, $mes);
 }
 
 
@@ -369,7 +369,7 @@ function uses() {
 	$args = func_get_args();
 	foreach($args as $arg) {
 		$class_name = strtolower($arg);
-		include_once(LIB_PATH . "core/controllers/".$class_name. '_controller.php');
+		if(is_file($model_file = LIB_PATH . "core/controllers/".$class_name. '_controller.php')) include_once(LIB_PATH . "core/controllers/".$class_name. '_controller.php');
 		if(is_file($model_file = LIB_PATH . "core/models/".$class_name. '.php')) include_once($model_file);
 	}
 }
@@ -662,6 +662,48 @@ function capt_check($capt_name)
 			$smarty->assign("ifcapt", false);
 		}
 	}
+}
+
+function capt_check_2($capt_name)
+{
+	global $_POST, $_PB_CACHE, $smarty, $charset;
+	$return = true;
+	$capt_require = array(
+		"capt_logging",
+		"capt_register",
+		"capt_post_free",
+		"capt_add_market",
+		"capt_login_admin",
+		"capt_apply_friendlink",
+		"capt_service"
+	);
+	if (in_array($capt_name, $capt_require)) {
+		$t = decbin($_PB_CACHE['setting']['capt_auth']);
+		$capt_auth = sprintf("%07d", $t);
+		$key = array_search($capt_name, $capt_require);
+		
+		if($capt_auth[$key]){
+			if (!empty($_POST['data'])) {
+				
+				include(LIB_PATH. "securimage/securimage.php");
+				$img = new Securimage();
+				$post_code = trim($_POST['data'][$capt_name]);
+				header('Content-Type: text/html; charset='.$charset);
+				if(!$img->check($post_code)){
+					//var_dump($_SESSION['securimage_code_value']);
+					$return = false; //flash('invalid_capt', null, 0);
+				}
+				else
+				{
+					$return = true;
+				}
+			}
+			$smarty->assign("ifcapt", true);
+		}else{
+			$smarty->assign("ifcapt", false);
+		}
+	}
+	return $return;
 }
 
 
@@ -1068,5 +1110,52 @@ function cleanContent($content)
 function stringToURI($string)
 {
 	return preg_replace("/\-$/", '', preg_replace("/\-(\-)+/", '-', preg_replace("/[^A-Za-z0-9 \-]/", '', utf8_to_ascii($string))));
+}
+function setFlash($title, $message)
+{
+	$_SESSION["flash_title"] = $title;
+	$_SESSION["flash_message"] = $message;
+}
+function cleanSlash(&$item) {
+	$item["name"] = str_replace('\\','',$item["name"]);
+	$item["content"] = str_replace('\\','',$item["content"]);
+}
+function fix_text_error($text) {
+	$text = str_replace('\\','',$text);
+	return $text;
+}
+function get_domain($url)
+{
+  $pieces = parse_url($url);
+  $domain = isset($pieces['host']) ? $pieces['host'] : '';
+  if (preg_match('/(?P<domain>[a-z0-9][a-z0-9\-\.]{1,69})$/i', $domain, $regs)) {
+    return $regs['domain'];
+  }
+  return false;
+}
+function pagination($total, $num_per_page, $current) {
+	$pages = ceil($total/$num_per_page);
+	if($pages < 2) {
+		return "";
+	}
+	
+	$result = '<ul>';
+	if($current != 1) {
+		$result .= '<li class="first"><a href="javascript:void(0)">&lt;&lt;</a></li>'
+			.'<li class="prev"><a href="javascript:void(0)">&lt;</a></li>';
+	}
+	for($i=1;$i<=$pages;$i++) {
+		if($i == $current) {
+			$class='';
+		}
+		$result .= '<li class="num"><a rel="'.$i.'" href="javascript:void(0)">'.$i.'</a></li>';
+	}
+	if($current != $pages) {
+		$result .= '<li class="next"><a href="javascript:void(0)">&gt;</a></li>'
+                        .'<li class="last"><a href="javascript:void(0)">&gt;&gt;</a></li>';
+	}	
+	$result .= '<ul>';
+	
+	return $result;
 }
 ?>

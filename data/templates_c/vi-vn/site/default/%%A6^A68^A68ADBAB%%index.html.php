@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-02 13:36:13
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:37:42
          compiled from default%5Cindex.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\index.html', 97, false),array('modifier', 'truncate', 'default\\index.html', 104, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\index.html', 98, false),array('modifier', 'truncate', 'default\\index.html', 105, false),)), $this); ?>
 <?php $this->assign('metakeywords', ($this->_tpl_vars['site_description'])); ?>
 <?php $this->assign('metadescription', ($this->_tpl_vars['site_description'])); ?>
 <?php $this->assign('do', 'offer'); ?>
@@ -32,6 +32,7 @@ unset($_smarty_tpl_vars);
 
 <div id="body-wrapper" >
 <div id="body-wrapper-padding">
+	
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
     browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
@@ -414,8 +415,9 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 					</ul>
 
                                     </div>
-                                    <a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"></a>
+                                    <a href="<?php if ($this->_tpl_vars['item0']['url'] != ""): ?><?php echo $this->_tpl_vars['item0']['url']; ?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
+<?php endif; ?>"></a>
                   </li>
 		  
 		  
@@ -475,8 +477,9 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 					</ul>
 
                                     </div>
-                                    <a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"></a>
+                                    <a href="<?php if ($this->_tpl_vars['item0']['url'] != ""): ?><?php echo $this->_tpl_vars['item0']['url']; ?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
+<?php endif; ?>"></a>
                   </li>
 		  
 		  
@@ -537,8 +540,9 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 					</ul>
 
                                     </div>
-                                    <a href="index.php?do=product&level=1&industryid=<?php echo $this->_tpl_vars['item0']['id']; ?>
-"></a>
+                                    <a href="<?php if ($this->_tpl_vars['item0']['url'] != ""): ?><?php echo $this->_tpl_vars['item0']['url']; ?>
+<?php else: ?><?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
+<?php endif; ?>"></a>
                   </li>
 		  
 		  

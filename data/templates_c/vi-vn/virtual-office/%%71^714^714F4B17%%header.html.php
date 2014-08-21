@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-09 13:23:38
+<?php /* Smarty version 2.6.27, created on 2014-08-13 15:47:58
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'sprintf', 'header.html', 1172, false),array('function', 'the_url', 'header.html', 1194, false),array('function', 'formhash', 'header.html', 1254, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'header.html', 986, false),array('function', 'formhash', 'header.html', 1376, false),array('modifier', 'sprintf', 'header.html', 1294, false),)), $this); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -38,10 +38,52 @@ images/style.css" rel="stylesheet" type="text/css">
 <link href="../templates/office/calendar/jquery.datepick.css" rel="stylesheet" type="text/css">
 <script src="../templates/office/calendar/jquery.datepick.js"></script>
 <script src="../templates/office/calendar/jquery.datepick-vi.js"></script>
+
+<script type="text/javascript" src="../templates/default/js/jemotion/jemotion.js"></script>
+
 <!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite.js"></script>-->
 <!--<script src="http://marketonline.vn/scripts/mudim-0.9-r162.js"></script>-->
 <?php echo '
 <script>
+	
+	function insertChatImage(image, box) {
+		$(\'#chat-frame #chat-box-\'+box+\' textarea\').val("<div class=\'ajax-loader\'>Đang tải ảnh...</div>");
+		postChatNew(box, image);
+	}
+	
+	function insertAtCaret(areaId,text) {
+	var txtarea = document.getElementById(areaId);
+	var scrollPos = txtarea.scrollTop;
+	var strPos = 0;
+	var br = ((txtarea.selectionStart || txtarea.selectionStart == \'0\') ? 
+	    "ff" : (document.selection ? "ie" : false ) );
+	if (br == "ie") { 
+	    txtarea.focus();
+	    var range = document.selection.createRange();
+	    range.moveStart (\'character\', -txtarea.value.length);
+	    strPos = range.text.length;
+	}
+	else if (br == "ff") strPos = txtarea.selectionStart;
+    
+	var front = (txtarea.value).substring(0,strPos);  
+	var back = (txtarea.value).substring(strPos,txtarea.value.length); 
+	txtarea.value=front+text+back;
+	strPos = strPos + text.length;
+	if (br == "ie") { 
+	    txtarea.focus();
+	    var range = document.selection.createRange();
+	    range.moveStart (\'character\', -txtarea.value.length);
+	    range.moveStart (\'character\', strPos);
+	    range.moveEnd (\'character\', 0);
+	    range.select();
+	}
+	else if (br == "ff") {
+	    txtarea.selectionStart = strPos;
+	    txtarea.selectionEnd = strPos;
+	    txtarea.focus();
+	}
+	txtarea.scrollTop = scrollPos;
+    }
 	
 	function updateChatboxNew()
     {
@@ -85,6 +127,11 @@ images/style.css" rel="stylesheet" type="text/css">
 								$(\'#chat-frame #chat-box-\'+id+\' textarea\').val()+
 							    \'<span class="status">đang gửi...</span></li>\');
 	
+	$(\'#chat-frame #chat-box-\'+id+\' .chat-list ul li.temp\').emotions({
+	    handle: "a#toggle",
+	    css: null //Note: don\'t put comma (,) after the last property
+	});
+	
 	$(\'#chat-frame #chat-box-\'+id+\' textarea\').val("");
 	$(\'#chat-frame #chat-box-\'+id+\' .chat-list\').scrollTop($(\'#chat-frame #chat-box-\'+id+\' .chat-list\')[0].scrollHeight);
 	
@@ -92,7 +139,7 @@ images/style.css" rel="stylesheet" type="text/css">
 			    type: "POST",
 			    url: "../index.php?do=product&action=postChatNew",
 			    encoding: "UTF-8",
-			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
+			    data: "data[content]="+encodeURIComponent(content)+"&formhash="+hash+"&data[id]="+id
 			}).done(function ( data ) {
 			    if( console && console.log ) {
 				$(\'#chat-frame #chat-box-\'+id).removeClass("chatloading");
@@ -115,11 +162,26 @@ images/style.css" rel="stylesheet" type="text/css">
 	//get current chatboxs
 	var ids = \'\';
 	$(\'#chat-frame .chat-box\').each(function(){
-	    ids += $(this).attr(\'rel\')+",";
-	});	
+	    var last = 0;
+	    if ($(this).find(\'.chat-content .chat-list ul li\').length > 1) {
+		if($(this).find(\'.chat-content .chat-list ul li[read=0]\').length) {
+		  last = $(this).find(\'.chat-content .chat-list ul li[read=0]\').first().attr("rel");
+		}
+		else {
+		  last = parseInt($(this).find(\'.chat-content .chat-list ul li\').last().attr("rel"))+1;
+		}
+	    }
+	    
+	    ids += $(this).attr(\'rel\')+"_"+last+",";
+	});
+	
+	var typing = \'\';	
+	if ($(\':focus\').hasClass(\'post-content\') && $(\':focus\').val().trim() != \'\' ) {
+	    typing = \'&typing=\'+$(\':focus\').parent().parent().attr("rel");
+	}
 	
 	$.ajax({
-	    url: "../index.php?do=product&action=ajaxUpdateChatsNew&ids="+ids,
+	    url: "../index.php?do=product&action=ajaxUpdateChatsNew&ids="+ids+typing,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		//remove temp item
@@ -131,8 +193,8 @@ images/style.css" rel="stylesheet" type="text/css">
 		$.each(datajson, function(i, items){
 		    //Update each chatbox
 		    var element = null;
-		    for (var j = items.length-1; j >= 0; j--) {
-			element = items[j];
+		    for (var j = items.data.length-1; j >= 0; j--) {
+			element = items.data[j];
 			//update each chat line			
 			updateChatsById(i, element);			
 			
@@ -141,7 +203,7 @@ images/style.css" rel="stylesheet" type="text/css">
 		    //check if viewed
 		    var last_line = $(\'#chat-frame #chat-box-\'+i+\' .chat-list ul li\').last();
 		    if (last_line.hasClass("me") && last_line.attr("read") == \'1\') {
-		        $(\'#chat-frame #chat-box-\'+i+\' .notification\').html(items[0].viewed_notice);
+		        if(items.data.length) $(\'#chat-frame #chat-box-\'+i+\' .notification\').html(items.data[0].viewed_notice);
 		    }
 		    else
 		    {
@@ -149,7 +211,20 @@ images/style.css" rel="stylesheet" type="text/css">
 		    }
 		    
 		    
+		    $(\'#chat-frame #chat-box-\'+i+\' .chat-list ul li .emotion\').emotions({
+			handle: "a#toggle",
+			css: null //Note: don\'t put comma (,) after the last property
+		    });
 		    
+		    if (items.typing) {
+			var nneeww = $(\'#chat-frame #chat-box-\'+i+\' .typing\').css("display") == "none";
+			$(\'#chat-frame #chat-box-\'+i+\' .typing\').show();
+			if(nneeww) $(\'#chat-frame #chat-box-\'+i+\' .chat-list\').scrollTop($(\'#chat-frame #chat-box-1x2 .chat-list\').scrollTop()+66);
+		    }
+		    else
+		    {
+			$(\'#chat-frame #chat-box-\'+i+\' .typing\').hide();
+		    }
 		    
 		});
 		
@@ -204,7 +279,7 @@ images/style.css" rel="stylesheet" type="text/css">
 		    }
 		    
 		    //***checkChatboxUnread();
-		    $(this).parent().find(".chat-form textarea").focus();
+		    //$(this).parent().find(".chat-form textarea").focus();
 		});
 		
 		$(\'#chat-frame #chat-box-\'+uid+\' .chat-title h2 a\').click(function() {
@@ -226,8 +301,11 @@ images/style.css" rel="stylesheet" type="text/css">
 			event.preventDefault();
 
 		    	postChatNew(uid, $(this).val());
+			
+			$(\'#chat-frame #chat-box-\'+uid+\' .emotion-box\').hide();
 		    }
-		});		
+		});
+		$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').focus(function() {$(\'#chat-frame #chat-box-\'+uid+\' .emotion-box\').hide();});		
 		
 		//refresh new post
 		clearInterval(chat_interval);
@@ -250,7 +328,27 @@ images/style.css" rel="stylesheet" type="text/css">
 		//***checkChatboxUnread();
 		
 		//focus
-		$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').focus();
+		//$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').focus();
+		
+		$(\'#chat-frame #chat-box-\'+uid+\' .emotion-box\').emotions({
+                    handle: "a#toggle",
+                    css: null //Note: don\'t put comma (,) after the last property
+                });
+		
+		$(\'#chat-frame #chat-box-\'+uid+\' .emotion-box-but\').click(function(){
+		    $(\'#chat-frame #chat-box-\'+uid+\' .emotion-box\').toggle();
+		});
+		$(\'#chat-frame #chat-box-\'+uid+\' .emotion-box span img\').click(function() {
+		    insertAtCaret("chatboxarea"+uid,\' \'+decodeURIComponent(unescape($(this).attr("rel"))).replace(\'&lt;\',\'<\').replace(\'&gt;\', \'>\').replace(\'&amp;\', \'&\')+\' \');
+		});		
+		$(\'#chat-frame #chat-box-\'+uid+\' .chat-form textarea\').click(function(){
+		    $(\'#chat-frame #chat-box-\'+uid+\' .emotion-box\').hide();
+		});
+		
+		$(\'#chat-frame #chat-box-\'+uid+\' .chatimage-box-but\').click(function(){
+		    $(\'#uploadChatImage input[name=chatbox_id]\').val(uid);
+		    $(\'#uploadChatImage_but\').trigger("click");
+		});
 	    }
 	});
     }
@@ -272,6 +370,8 @@ images/style.css" rel="stylesheet" type="text/css">
 	    $(\'#chat-frame #chat-box-\'+uid+\' .chat-list ul li.temp\').remove();
 	    //render chat line if not exsit
 	    $(\'#chat-frame #chat-box-\'+uid+\' .chat-list ul\').append(renderChatLine(item));
+	    $(\'li[chat-id="\'+item.id+\'"] .chatimage_thumb\').fancybox();
+	    $(\'li[chat-id="\'+item.id+\'"] .chatimage_thumb\').attr("target","_blank");
 	    //scroll to bottom
 	    $(\'#chat-frame #chat-box-\'+uid+\' .chat-list\').scrollTop($(\'#chat-frame #chat-box-\'+uid+\' .chat-list\')[0].scrollHeight);
 	}
@@ -282,7 +382,7 @@ images/style.css" rel="stylesheet" type="text/css">
 	var result = \'<li class="\'+item.me+\'" rel="\'+item.created_or+\'" chat-id="\'+item.id+\'" read="\'+item.read+\'">\'
                             +\'<span class="datetimec">\'+item.created+\'</span>\'
                             +\'<img width="40" height="40" src="\'+item.company_logo+\'" class="avatar">\'
-                            +item.content.replace(/\\\\/g, \'\')+\'</li>\';
+                            +\'<span class="emotion">\'+item.content.replace(/\\\\/g, \'\')+\'</span></li>\';
 	
 	return result;
     }
@@ -440,7 +540,7 @@ images/style.css" rel="stylesheet" type="text/css">
 		$(this).removeClass("unread");
 		$(this).find(".unread_count").remove();
 	    }
-	    
+	    $(this).find(\'ul li[read=1]\').removeClass(\'boong\');
 	    //$(this).find(\'.chat-list\').scrollTop($(this).find(\'.chat-list\')[0].scrollHeight);
 	});
     }
@@ -489,7 +589,7 @@ images/style.css" rel="stylesheet" type="text/css">
 		    //Title click
 		    item.removeClass("hidden");
 		    updateReadChat(uid);
-		    $(\'#chat-frame #chat-box-\'+uid+\' .chat-form textarea\').focus();
+		    //$(\'#chat-frame #chat-box-\'+uid+\' .chat-form textarea\').focus();
     }
     
     function removeChatbox(uid)
@@ -629,7 +729,7 @@ images/style.css" rel="stylesheet" type="text/css">
 			    type: "POST",
 			    url: "../index.php?do=product&action=postChat"+type_str,
 			    encoding: "UTF-8",
-			    data: "data[content]="+content+"&formhash="+hash+"&data[id]="+id
+			    data: "data[content]="+encodeURIComponent(content)+"&formhash="+hash+"&data[id]="+id
 			}).done(function ( data ) {
 			    if( console && console.log ) {
 			        //alert(\'#chat-frame #chat-box-\'+id+\' .chat-list ul li[rel=\'+$(data).attr("rel")+\']\');
@@ -693,7 +793,7 @@ images/style.css" rel="stylesheet" type="text/css">
 		    }
 		    
 		    //***checkChatboxUnread();
-		    $(this).parent().find(".chat-form textarea").focus();
+		    //$(this).parent().find(".chat-form textarea").focus();
 		});
 		
 		$(\'#chat-frame #chat-box-\'+uid+\' .chat-title h2 a\').click(function() {
@@ -738,7 +838,7 @@ images/style.css" rel="stylesheet" type="text/css">
 		//***checkChatboxUnread();
 		
 		//focus
-		$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').focus();
+		//$(\'#chat-frame #chat-box-\'+uid+\' .post-content\').focus();
 	    }
 	});
     }
@@ -906,6 +1006,11 @@ images/style.css" rel="stylesheet" type="text/css">
 <?php if ($this->_tpl_vars['COMPANYINFO']['name'] && $this->_tpl_vars['MEMBER']['current_type'] != 6): ?>../<?php echo $this->_tpl_vars['COMPANYINFO']['logo']; ?>
 <?php else: ?><?php if ($this->_tpl_vars['user_avatar']): ?> ../<?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> ../templates/default/image/usericon.jpg  <?php endif; ?><?php endif; ?><?php echo '\';
+	
+	var ROOT_URL = \''; ?>
+<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+<?php echo '\';
+	
 $(document).ready(function() {
 	
 	$("#GoTop").click(function(){
@@ -1091,6 +1196,27 @@ if ($this->_foreach['level']['total'] > 0):
 		}
 	});
 	
+	
+	$("#underconstruction-info-but").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+	if(!$.cookie("underconstruction"))
+	{
+	    $.cookie("underconstruction", true);
+	    $("#underconstruction-info-but").trigger("click");
+	}
+	
 });
 
 
@@ -1114,8 +1240,6 @@ if ($this->_foreach['level']['total'] > 0):
 		$(\'#brand_id_select\').append(\'<option value="\'+id+\'">\'+title+\'</option>\');
 		$(\'#brand_id_select\').val(id);
 		$(\'#new_brand_box\').css(\'display\', \'none\');
-		
-		
 	}
 	
 	function getCart(p_id, amount) {
@@ -1376,6 +1500,17 @@ unset($_smarty_tpl_vars);
    <div id="chat-frame">
     
    </div>
+   <div style="display:none">
+        <iframe name="uploadChatImage_frame" id="uploadChatImage_frame" style="display: none"></iframe>
+            <form target="uploadChatImage_frame" name="productaddfrm" id="uploadChatImage" method="post" action="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+index.php?do=product&action=uploadChatImage" enctype="multipart/form-data">
+              <?php echo smarty_function_formhash(array(), $this);?>
+
+              <input type="hidden" name="chatbox_id" value="" />
+              <p><input accept="image/*" type="file" name="uploadChatImage" id="uploadChatImage_but" onchange="$('#uploadChatImage').submit()" /></p>
+    
+            </form>
+    </div>
    
    
 <div id="upgrade_shop" class="notifybox" style="display: none">
@@ -1402,4 +1537,24 @@ unset($_smarty_tpl_vars);
 			<li><a href="company.php?do=upgrade_company&id=2">Công Ty</a></li>
 		</ul>
 	</div>
+</div>
+
+<a id="underconstruction-info-but" href="#underconstruction-info" style="display: none">Hidden Clicker</a>
+   <div id="underconstruction-info" style="display: none">
+	
+	<div style="padding: 20px 20px 20px 20px;width: 800px">
+			
+            <div class="content_inner" style="padding-bottom:10px;">
+            <p><h4>Kính gửi quý Khách hàng!</h4></p>
+            <p>Cám ơn Quý khách đã tin tưởng và sử dụng dịch vụ thương mại điện tử của chúng tôi trong thời gian qua.
+                Hiện nay lượng truy cập đã tăng đột ngột làm chúng tôi không kịp xử lý. Mong quý khách thông cảm nếu trong thời gian sử dụng có bị trở ngại về tốc độ truy cập.
+            </p>
+            <p>
+                Chúng tôi đang nâng cấp và khắc phục trong ngày 11/08/2014. Sau thời gian nói trên chắc chắn chúng tôi sẽ làm hài lòng quý khách và cung cấp cho quý khách dịch vụ tốt hơn.
+            </p>
+            <p></p>
+            <p>Kính chúc Quý khách nhiều sức khỏe, hạnh phúc và thành công!</p>
+	</div>
+      </div>
+	
 </div>

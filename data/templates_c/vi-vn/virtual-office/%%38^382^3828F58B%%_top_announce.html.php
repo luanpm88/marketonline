@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 14:50:51
+<?php /* Smarty version 2.6.27, created on 2014-08-13 15:47:58
          compiled from _top_announce.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('block', 'announce', '_top_announce.html', 2, false),)), $this); ?>

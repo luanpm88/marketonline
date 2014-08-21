@@ -17,6 +17,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company'])) {
 		//echo $_POST['data']['company']['policy'];
 		$company->saveField('policy',$_POST['data']['company']['policy'], intval($companyinfo["id"]));
 		$companyinfo["policy"] = $_POST['data']['company']['policy'];
+		pheader("location:policy.php");
 	}
 
 }

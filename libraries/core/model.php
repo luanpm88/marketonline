@@ -326,6 +326,7 @@ class PbModel extends Overloadable
 		}
 		if (strtolower($action) == "update") {
 			$insertsql = $this->dbstuff->GetUpdateSQL($rs,$record);
+			//var_dump($insertsql);
 			$new_id = false;
 		}else {
 			$insertsql = $this->dbstuff->GetInsertSQL($rs,$record);
@@ -424,7 +425,7 @@ class PbModel extends Overloadable
 //		}else{
 			$return = $this->dbstuff->GetRow($sql);
 //		}
-//var_dump($return);
+		//var_dump($return);
 		return $return;
 	}
 
@@ -604,7 +605,7 @@ class PbModel extends Overloadable
 			$sql.=$records;
 		}
 		
-		//echo $sql;
+		//echo $sql."<br /><br /><br /><br />";
 		
 		if (!empty($ADODB_CACHE_DIR) && $this->cache_sql && !defined("IN_PBADMIN")) {
 			$return = $this->dbstuff->CacheGetArray($sql);
@@ -624,14 +625,12 @@ class PbModel extends Overloadable
 	
 	function clicked($code, $trade)
 	{
-		//echo $code."_".$id;
-		//var_dump($trade);
 		$date = new MyDateTime();
 		$time_stamp = $date->getTimestamp();
 		$added = false;
-		
+
 		if(!$trade["clicked_logs"])
-		{
+		{			
 			$logs[] = array($code => $time_stamp);
 			$this->saveField("clicked", $trade["clicked"]+1,intval($trade["id"]));
 			$added = true;
@@ -654,7 +653,7 @@ class PbModel extends Overloadable
 						$exsit = false;
 					}
 				}
-				
+
 				foreach($item as $time)
 				{
 					//echo $time;
@@ -664,17 +663,17 @@ class PbModel extends Overloadable
 					}
 				}
 			}
-			
+
 			if(!$exsit)
 			{
-				$logs[] = array($code => $time_stamp);
+				array_unshift($logs, array($code => $time_stamp));
 				$this->saveField("clicked", $trade["clicked"]+1,intval($trade["id"]));
 				$added = true;
 			}
 			
 			$this->saveField("clicked_logs", json_encode($logs),intval($trade["id"]));
 		}
-		
+
 		if($added && isset($trade["company_id"]))
 		{
 			uses("company");
@@ -685,7 +684,7 @@ class PbModel extends Overloadable
 		return $added;
 	}
 
-	 function check($id = null, $status = 0)
+	function check($id = null, $status = 0)
 	{
 		if(is_array($id)){
 			$checkId = "id in (".implode(",",$id).")";
@@ -696,9 +695,9 @@ class PbModel extends Overloadable
 		}
 		$sql = "update ".$this->getTable()." set status='".$status."' where ".$checkId;
 		$return = $this->dbstuff->Execute($sql);
-		if($return){
+		if($return) {
 			return true;
-		}else {
+		} else {
 			return false;
 		}
 	}
@@ -920,7 +919,6 @@ class PbModel extends Overloadable
 			case "studypost":
 				echo "hehehe";
 				break;
-			
 			default:				
 		}
 	}

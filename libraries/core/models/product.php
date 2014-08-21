@@ -42,8 +42,8 @@ class Products extends PbModel {
 			
 			$searchkeywords = strip_tags(urldecode($_GET['q']));
 			
-			$tags = $tag->findAll("id", null, array("Tag.name like '%".$searchkeywords."%'"));
-			$ors = "";
+			$tags = $tag->findAll("id", null, array("LOWER(Tag.name) like '".strtolower($searchkeywords)."'"));
+			$ors .= "MATCH (Product.name) AGAINST ('".$searchkeywords."') OR MATCH (Product.content) AGAINST ('".$searchkeywords."') OR Product.name like '%".$searchkeywords."%' ";
 			foreach($tags as $item)
 			{
 				$ors .= " OR Product.tag_ids LIKE '%,".$item["id"]."'";
@@ -53,8 +53,14 @@ class Products extends PbModel {
 			}
 			//var_dump(implode(",", $tag_ids));
 			//echo $ors;
- 			
- 			$this->condition[]= "(MATCH (Product.name) AGAINST ('".$searchkeywords."') OR MATCH (Product.content) AGAINST ('".$searchkeywords."') OR Product.name like '%".$searchkeywords."%' ".$ors." )";
+			
+			
+			//$ors .= " OR REPLACE(LOWER(Product.product_code), '-', '')='".strtolower(str_replace("-","",$searchkeywords))."'";
+			//$ors .= " OR LOWER(Product.product_code)='".strtolower($searchkeywords)."'";
+			$ors .= " OR MATCH (Product.product_code) AGAINST ('".$searchkeywords."')";
+			$ors .= " OR MATCH (b.name) AGAINST ('".$searchkeywords."')";
+			
+ 			$this->condition[] = "(".$ors.")";
  		}
  		if (isset($_GET['pubdate'])) {
  			switch ($_GET['pubdate']) {
@@ -107,11 +113,71 @@ class Products extends PbModel {
 		$searchkeywords = strip_tags(urldecode($_GET['q']));
 		if (isset($_GET['q'])) {
 			$fields = "MATCH (Product.name) AGAINST ('".$searchkeywords."') AS score, MATCH (Product.content) AGAINST ('".$searchkeywords."') AS score1, ";
-			$this->orderby = '(score*3 + score1) DESC';
+			$fields .= "MATCH (b.name) AGAINST ('".$searchkeywords."') AS score2, ";
+			$fields .= "MATCH (Product.product_code) AGAINST ('".$searchkeywords."') AS score3, ";
+			$this->orderby = '(score*3 + score1 + score2*3 + score3*4) DESC';
 		}
 		
+		$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Product.brand_id";
 		
- 		$result = $this->findAll($fields."m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id"), null, $this->orderby, $firstcount, $displaypg);
+ 		$result = $this->findAll($fields."m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, null, $this->orderby, $firstcount, $displaypg);
+ 		while(list($keys,$values) = each($result)){
+ 			$result[$keys]['typename'] = $cache_types['productsort'][$values['sort_id']];
+			//get default picture
+			if($values['default_pic'])
+			{
+				$pic_col = 'picture'.$values['default_pic'];
+			}
+			else
+			{
+				$pic_col = 'picture';
+			}
+			//echo $pic_col;
+			
+ 			$result[$keys]['thumb'] = pb_get_attachmenturl($values[$pic_col], '', 'small');
+ 			if(isset($values['begin_time'])) $result[$keys]['pubdate'] = df($values['begin_time']);
+ 			else $result[$keys]['pubdate'] = '';
+ 			if (!empty($result[$keys]['area_id'])) {
+ 				$r1 = $area_s[$result[$keys]['area_id']];
+ 			}
+ 			if (!empty($result[$keys]['cache_companyname'])) {
+ 				$r2 = "<a href='".$space->rewrite($result[$keys]['cache_companyname'],$result[$keys]['company_id'])."'>".$result[$keys]['cache_companyname']."</a>";
+ 			}
+ 			if (!empty($r1) || !empty($r2)) {
+ 				$result[$keys]['extra'] = implode(" - ", array($r1, $r2));
+ 			}
+ 			$result[$keys]['url'] = $this->url(array("module"=>"product", "id"=>$values['id']));
+			$result[$keys]["price"] = number_format($result[$keys]["price"], 0, ',', '.');
+			$result[$keys]["new_price"] = number_format($result[$keys]["new_price"], 0, ',', '.');
+			$result[$keys]["shop_url"] = $space->setBaseUrlByUserId($result[$keys]['cache_spacename'], 'index');
+			$result[$keys]["comments_count"] = $productcomment->findCount(null, array("product_id=".$result[$keys]["id"]));
+			$result[$keys]["name"] = fix_text_error($result[$keys]["name"]);
+		
+ 		}
+ 		return $result;
+ 	}
+	
+	function getTopProducts()
+	{
+		global $cache_types;
+ 		uses("space","industry","area","productcomment");
+ 		$space = new Space();
+ 		$area = new Areas();
+ 		$industry = new Industries();
+		$productcomment = new Productcomments();
+ 		$cache_options = cache_read('typeoption');
+ 		$area_s = $space->array_multi2single($area->getCacheArea());
+ 		$industry_s = $space->array_multi2single($area->getCacheArea());
+		
+		
+		$conditions = array("Product.status=1");
+		$conditions[] = "pa.productadtype_id=1";
+		
+		$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}productads AS pa ON pa.product_id = Product.id";
+		
+ 		$result = $this->findAll("pa.`order` as ad_order, m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "ad_order");
  		while(list($keys,$values) = each($result)){
  			$result[$keys]['typename'] = $cache_types['productsort'][$values['sort_id']];
 			//get default picture
@@ -145,11 +211,11 @@ class Products extends PbModel {
 		
  		}
  		return $result;
- 	}
+	}
 	
 	function SearchCount()
 	{		
- 		$result = $this->findCount(array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id"), null, "Product.id");
+ 		$result = $this->findCount(array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id","LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Product.brand_id"), null, "Product.id");
 		return $result;
 	}
 
@@ -230,6 +296,7 @@ class Products extends PbModel {
 		}
 		$result["price"] = number_format($result["price"], 0, ',', '.');
 		$result["new_price"] = number_format($result["new_price"], 0, ',', '.');
+		
 		//echo $result["price"];
 		$this->info = $result;
 		return $result;
@@ -401,14 +468,12 @@ class Products extends PbModel {
 		$sql = "SELECT company_id, `count` FROM (SELECT company_id,count(id) as `count` FROM {$this->table_prefix}products p WHERE p.created > ".($this->timestamp - $hours*3600)." AND `show`=1 GROUP BY company_id) as cc WHERE `count` > ".$count_p;		
 		//echo $sql;
 		$result = $this->dbstuff->GetArray($sql);
-		//var_dump($result);
 		
 		if(count($result))
 		{
 			foreach($result as $item)
 			{
 				$sql = "UPDATE {$this->table_prefix}products SET `show`=0 WHERE id IN (SELECT id FROM ( SELECT id FROM {$this->table_prefix}products WHERE created > ".($this->timestamp - $hours*3600)." AND `show`=1 AND company_id=".$item["company_id"]." ORDER BY created DESC LIMIT ".$count_p.", 200 ) tmp)";
-				//echo $sql;
 				$this->dbstuff->Execute($sql);
 			}
 		}
@@ -487,6 +552,41 @@ class Products extends PbModel {
 				$result['thumb'] = $result['imgsmall'];
 			}
 		
+	}
+	
+	function saveAdTypes($id, $types) {
+		uses("productadtype","productad");
+		$productadtype = new Productadtypes();
+		$productad = new Productads();
+		if(!$types) {
+			$types = array("-1");
+		}
+		
+		$sql = "DELETE FROM {$this->table_prefix}productads WHERE product_id=".$id." AND productadtype_id NOT IN (".implode(",",$types).")";
+		$this->dbstuff->Execute($sql);
+		
+		foreach($types as $type_id) {
+			if($type_id != -1) {
+				$count = $productad->findCount(null, array("product_id=".$id,"productadtype_id=".$type_id));
+				if($count == 0) {
+					$productad->save(array("product_id"=>$id,"productadtype_id"=>$type_id,"created"=>date("Y-m-d H:i:s")));
+				}
+			}
+		}
+	}
+	
+	function getAdTypes($id) {
+		uses("productadtype","productad");
+		$productadtype = new Productadtypes();
+		$productad = new Productads();
+		
+		$types = $productad->findAll("productadtype_id", null, array("product_id=".$id));
+		$a = array();
+		foreach($types as $item) {
+			$a[] = $item["productadtype_id"];
+		}
+		
+		return $a;
 	}
 }
 ?>

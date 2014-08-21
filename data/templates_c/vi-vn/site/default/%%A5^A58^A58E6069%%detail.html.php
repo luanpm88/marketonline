@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 10:34:47
+<?php /* Smarty version 2.6.27, created on 2014-08-21 14:56:46
          compiled from default%5Cproduct/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/detail.html', 51, false),array('function', 'formhash', 'default\\product/detail.html', 580, false),array('modifier', 'truncate', 'default\\product/detail.html', 739, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/detail.html', 51, false),array('function', 'formhash', 'default\\product/detail.html', 576, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -117,8 +117,6 @@ unset($_smarty_tpl_vars);
 						});
 					}
 					//$(\'#comments\').css("display","none");
-					
-					
 				}
 			});
 	}
@@ -174,8 +172,6 @@ unset($_smarty_tpl_vars);
 				}
 			    }
 		});
-		
-		
 	}
 	
     
@@ -275,7 +271,7 @@ unset($_smarty_tpl_vars);
 <div class="row">
     <div class="fifteen columns" id="page-title" style="padding-left: 110px;">
 	
-	<div class="super-main-category mainproductpage <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+	<div class="super-main-category mainproductpage <?php if ($this->_tpl_vars['item']['service']): ?>service<?php else: ?>product<?php endif; ?>">
 		<div class="show-but">
 			Chuyên mục chính			
 		</div>
@@ -429,7 +425,7 @@ images/detail_17.jpg" alt="" /></a><span><?php echo $this->_tpl_vars['_enlarge_i
 			<div class="summary">
 
 				    <div class="sum_top">
-					<?php if ($this->_tpl_vars['item']['service']): ?><service class="service_title"><span><?php echo $this->_tpl_vars['_services']; ?>
+					<?php if ($this->_tpl_vars['item']['service'] && $this->_tpl_vars['item']['industry_name']): ?><service class="service_title"><span><?php echo $this->_tpl_vars['_services']; ?>
 </span> <?php echo $this->_tpl_vars['item']['industry_name']; ?>
 </service><?php endif; ?>
 					<div class="top_left_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
@@ -504,8 +500,8 @@ if ($this->_foreach['form']['total'] > 0):
 				</form>
 
 				<a class="" title="" onclick="<?php if (! $this->_tpl_vars['FACE']): ?>goclicky(this, '<?php echo $this->_tpl_vars['F_URL']; ?>
-#welcomenew')<?php else: ?>goclicky_custom(this, '<?php echo $this->_tpl_vars['F_URL']; ?>
-#welcomenew', '<?php echo $this->_tpl_vars['FACE']['images']; ?>
+#welcome14')<?php else: ?>goclicky_custom(this, '<?php echo $this->_tpl_vars['F_URL']; ?>
+#welcome14', '<?php echo $this->_tpl_vars['FACE']['images']; ?>
 ', '<?php echo $this->_tpl_vars['FACE']['title']; ?>
 ', '<?php echo $this->_tpl_vars['FACE']['summary']; ?>
 ')<?php endif; ?>" href="javascript:void(0)">
@@ -930,82 +926,13 @@ unset($_smarty_tpl_vars);
 
 <h3 class="related_bottom_h3">Sản phẩm cùng loại</h3>
 <div class="related_products_bottom">	
-	<ul>
-		
-		<?php $_from = $this->_tpl_vars['bottom_related_products']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['levelvv'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['levelvv']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['keyvv'] => $this->_tpl_vars['itemvv']):
-        $this->_foreach['levelvv']['iteration']++;
-?>
-			<li class="">
-				<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['itemvv']['id']),'product_name' => ($this->_tpl_vars['itemvv']['name'])), $this);?>
-" title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
-">
-					<div class="img_box">
-						<img title="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
-" alt="<?php echo $this->_tpl_vars['itemvv']['name']; ?>
-" src="<?php echo $this->_tpl_vars['itemvv']['thumb']; ?>
-" />
-					</div>
-					<?php echo ((is_array($_tmp=$this->_tpl_vars['itemvv']['name'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 45) : smarty_modifier_truncate($_tmp, 45)); ?>
-
-				</a>
-				<?php if ($this->_tpl_vars['itemvv']['new_price'] || $this->_tpl_vars['itemvv']['price']): ?>
-					<?php if ($this->_tpl_vars['itemvv']['new_price'] != "" && $this->_tpl_vars['itemvv']['new_price'] != 0): ?>
-						<span class="price"><?php if ($this->_tpl_vars['itemvv']['price']): ?><span class="old_price"><?php echo $this->_tpl_vars['itemvv']['price']; ?>
- <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
-<?php endif; ?></span></span><?php endif; ?> <span class="amount"><?php echo $this->_tpl_vars['itemvv']['new_price']; ?>
-</span> <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
-<?php endif; ?></span></span> <?php if ($this->_tpl_vars['itemvv']['price_note']): ?><span class="noteprice">(<?php echo $this->_tpl_vars['itemvv']['price_note']; ?>
-)</span><?php endif; ?>
-					<?php else: ?>
-						<span class="price"><span class="amount"><?php echo $this->_tpl_vars['itemvv']['price']; ?>
-</span> <span class="price_unit">VNĐ<?php if ($this->_tpl_vars['itemvv']['price_unit']): ?>/<?php echo $this->_tpl_vars['itemvv']['price_unit']; ?>
-<?php endif; ?></span></span>
-					<?php endif; ?>
-				<?php endif; ?>
-			</li>
-		<?php endforeach; endif; unset($_from); ?>
-		
-	</ul>
+	
 </div>
 
 <div class="bottom_industry_list">
-	<h3><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-">Danh mục sản phẩm</a></h3>
-	<ul>
-		<?php $_from = $this->_tpl_vars['industries']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_0'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_0']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key0'] => $this->_tpl_vars['item0']):
-        $this->_foreach['level_0']['iteration']++;
-?>
-			<li class="level0 <?php if ($this->_tpl_vars['level_0']%4 == 0): ?>clear<?php endif; ?>">
-				<a class="level0" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 1,'industryid' => ($this->_tpl_vars['item0']['id']),'title' => ($this->_tpl_vars['item0']['name'])), $this);?>
-"><?php echo $this->_tpl_vars['item0']['name']; ?>
-</a>
-				<ul>
-					<?php $_from = $this->_tpl_vars['item0']['sub']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level_1_industry'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level_1_industry']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key_level1'] => $this->_tpl_vars['level1']):
-        $this->_foreach['level_1_industry']['iteration']++;
-?>
-						<li class="level1 <?php if ($this->_tpl_vars['key_level1'] > 4): ?>hide<?php endif; ?>">
-							<a class="level1" href="<?php echo smarty_function_the_url(array('module' => 'products','level' => 2,'industryid' => ($this->_tpl_vars['level1']['id']),'title' => ($this->_tpl_vars['level1']['name'])), $this);?>
-"><?php echo $this->_tpl_vars['level1']['name']; ?>
-</a>
-						</li>
-					<?php endforeach; endif; unset($_from); ?>
-					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
-				</ul>
-			</li>
-			<?php if ($this->_tpl_vars['level_0']++): ?><?php endif; ?>
-		<?php endforeach; endif; unset($_from); ?>
-		<li class="level0 more-item"><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-">Sản phẩm mới</a></li>
-		<li class="level0 more-item"><a href="<?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-#sale">Giảm giá/Khuyến mãi</a></li>
-	</ul>
+	
 </div>
+
 
 
 </div>
@@ -1038,6 +965,12 @@ if ($this->_foreach['level_1_industry']['total'] > 0):
 			}
 		}
 	});
+	
+	'; ?>
+getBottomRelatedProducts(<?php echo $this->_tpl_vars['item']['industry_id']; ?>
+,<?php echo $this->_tpl_vars['COMPANY']['member_id']; ?>
+);<?php echo '
+	getBottomIndustryList();
 </script>
 '; ?>
 

@@ -19,6 +19,7 @@
 
 <div id="body-wrapper" >
 <div id="body-wrapper-padding">
+	
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
     browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
@@ -334,7 +335,7 @@ Công ty Cổ phần Truyền thông và Tiếp thị BMN (BMN) là đơn vị h
 					</ul>
 
                                     </div>
-                                    <a href="index.php?do=product&level=1&industryid={$item0.id}"></a>
+                                    <a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}"></a>
                   </li>
 		  
 		  
@@ -368,7 +369,7 @@ Công ty Cổ phần Truyền thông và Tiếp thị BMN (BMN) là đơn vị h
 					</ul>
 
                                     </div>
-                                    <a href="index.php?do=product&level=1&industryid={$item0.id}"></a>
+                                    <a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}"></a>
                   </li>
 		  
 		  
@@ -403,7 +404,7 @@ Công ty Cổ phần Truyền thông và Tiếp thị BMN (BMN) là đơn vị h
 					</ul>
 
                                     </div>
-                                    <a href="index.php?do=product&level=1&industryid={$item0.id}"></a>
+                                    <a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}"></a>
                   </li>
 		  
 		  

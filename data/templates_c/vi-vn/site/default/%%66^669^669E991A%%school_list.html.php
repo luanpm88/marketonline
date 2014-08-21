@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 08:34:21
+<?php /* Smarty version 2.6.27, created on 2014-08-19 16:51:28
          compiled from default%5Cstudypost/school_list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\studypost/school_list.html', 54, false),array('function', 'pager', 'default\\studypost/school_list.html', 84, false),array('modifier', 'truncate', 'default\\studypost/school_list.html', 69, false),)), $this); ?>
@@ -33,13 +33,11 @@ unset($_smarty_tpl_vars);
 
     <a class="back" href="javascript:history.back()"></a>
     <div class="subtitle">
-        <?php echo $this->_tpl_vars['_job_head']; ?>
-
+        Học và Làm
     </div>
    
     
-	<h1 class="page-title"><?php echo $this->_tpl_vars['_job_head']; ?>
-</h1>
+	<h1 class="page-title">Trường</h1>
 
     
     <?php $_smarty_tpl_vars = $this->_tpl_vars;

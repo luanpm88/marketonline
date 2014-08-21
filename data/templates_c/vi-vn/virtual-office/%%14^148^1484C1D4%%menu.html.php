@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-09 11:26:15
+<?php /* Smarty version 2.6.27, created on 2014-08-13 15:47:58
          compiled from menu.html */ ?>
 <table class="menu_nav" >
 	<tr>
@@ -129,8 +129,12 @@ images/invoice.png"></th>
 images/invoice.png"></th>
 					  <td><a href="sellerorder.php"><?php echo $this->_tpl_vars['_sell_order']; ?>
 </a>
-						<?php if ($this->_tpl_vars['count_sellerorder']): ?><div class="unread"><span><?php echo $this->_tpl_vars['count_sellerorder']; ?>
-</span></div><?php endif; ?>
+						<?php if ($this->_tpl_vars['count_sellerorder']): ?>
+							<div class="unread">
+								<span><?php echo $this->_tpl_vars['count_sellerorder']; ?>
+</span>
+							</div>
+						<?php endif; ?>
 					  </td>
 					</tr>
 				</table></td>
@@ -219,14 +223,20 @@ images/invoice.png"></th>
 				  </tr>
 				  <tr>
 					<td align="center">
-					<table class="menu_nav_content" id="MenuAds">
-						<tr class="MenuItem30">
-							<th><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
+						<table class="menu_nav_content" id="MenuAds">
+							<tr class="MenuItem30">
+								<th><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
 images/news.gif" /></th>
-							<td><a href="banner.php"><?php echo $this->_tpl_vars['_site_advertising']; ?>
+								<td><a href="banner.php"><?php echo $this->_tpl_vars['_site_advertising']; ?>
 </a></td>
-						</tr>
-					</table></td>
+							</tr>
+							<tr class="MenuItem30_1">
+								<th><img src="<?php echo $this->_tpl_vars['office_theme_path']; ?>
+images/invoice.png" /></th>
+								<td><a href="banner.php?do=price_list">Bảng giá</a></td>
+							</tr>
+						</table>
+					</td>
 				  </tr>
 				</table>
 		<?php endif; ?>

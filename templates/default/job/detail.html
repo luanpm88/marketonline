@@ -108,7 +108,6 @@
 					    
 					    
 					    <div class="company-info">
-								
 								<div class="columns logo logoz">
 								    {if $companyinfo.membertype_id == 5}
 									<img src="{$companyinfo.logosmall}">
@@ -133,10 +132,29 @@
 		    </div>
 								
 								
+		    <div style="padding-left: 200px;margin: 10px 0 10px;clear: both">
+				<a style="margin-top: 10px; display: block; float: left;" class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}'){else}goclicky_custom(this, '{$F_URL}', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
+					<span class="at15t_facebookz">
+						<span class="">Share on facebook</span>
+					</span>
+				</a>
+				<div class="share_buts" style="margin-top: 10px; display: block; float: left;">
+					
+				  <!-- AddThis Button BEGIN -->
+				{literal}
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<!--<a class="addthis_button_facebook"></a>-->
+					<a class="addthis_button_twitter"></a>
+					<a class="addthis_button_google_plusone_share"></a>
+					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+				{/literal}
+				<!-- AddThis Button END -->
 								
-								
-								
-								
+		    </div>
+		    
 								<!--<span class="company-logo">
 						    <img height="100" width="200" border="0" src="http://images.vietnamworks.com/pictureofcompany/11/7984646.gif" class="logoEmployer" alt="Employer's logo - Công Ty TNHH Panasonic Appliances Việt Nam " style="float: left; margin: 20px;">&nbsp; </span>
 								      <h2 class="company-name" itemprop="name"><a href="http://www.vietnamworks.com/viec-lam-tai-cong-ty-tnhh-panasonic-appliances-viet-nam-e544254-vn" class="unlink">Công Ty TNHH Panasonic Appliances Việt Nam </a></h2>

@@ -27,7 +27,7 @@ $register_type = $_PB_CACHE['setting']['register_type'];
 $ip_reg_sep = $_PB_CACHE['setting']['ip_reg_sep'];
 $forbid_ip = $_PB_CACHE['setting']['forbid_ip'];
 $conditions = array();
-capt_check("capt_register");
+$capt_check = capt_check_2("capt_register");
 $tpl_file = "register";
 $member_reg_auth = $_PB_CACHE['setting']['new_userauth'];
 if (isset($_GET['action'])) {
@@ -105,7 +105,7 @@ if ($register_type=="close_register") {
 	setvar("IfInviteCode", true);
 	$check_invite_code = true;
 }
-if(isset($_POST['register'])){
+if(isset($_POST['register']) && $capt_check){
 	$is_company = false;
 	$if_need_check = false;
 	$register_type = trim($_POST['register']);
@@ -132,7 +132,7 @@ if(isset($_POST['register'])){
 		$member->params['data']['member']['status'] = 1;
 	}
 	
-	$referrer = $member->field("id", "username='".$member->params['data']['member']['referrer_id']."' OR email='".$member->params['data']['member']['referrer_id']."'");
+	if(trim($member->params['data']['member']['referrer_id']) != '') $referrer = $member->field("id", "username='".$member->params['data']['member']['referrer_id']."' OR email='".$member->params['data']['member']['referrer_id']."' OR space_name='".$member->params['data']['member']['referrer_id']."'");
 	if($referrer)
 	{
 		$member->params['data']['member']['referrer_id'] = $referrer;
@@ -191,6 +191,7 @@ if(isset($_POST['register'])){
 //setvar("sharing_username", $sharing_username);
 //echo $sharing_username;
 
+setvar("capt_check",$capt_check);
 setvar("sid",md5(uniqid($time_stamp)));
 setvar("agreement", $_PB_CACHE['setting']['agreement']);
 render($tpl_file);

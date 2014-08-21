@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 16:39:08
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:58:06
          compiled from default%5Cproduct/ajax.list.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajax.list.html', 12, false),)), $this); ?>
@@ -92,6 +92,7 @@ x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
 <?php else: ?>
 
 <?php if (! $this->_tpl_vars['TotalCount']): ?>
+
 <ul class="products_0">
 
 	<li class="empty-list">

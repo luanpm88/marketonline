@@ -18,17 +18,16 @@ var can_also_enter = "{lang can_also_enter}";
 <!--{literal}-->
 <script>
 	jQuery(document).ready(function($) {
-		$('.MenuItem12').addClass('mActive');
 
 		$("#Frm1").validate({
                     submitHandler: function(form) {
                         
                         var okk = true;
-                        if ($('#dataProductIndustryId1').val() == 0) {
+                        if ($('#dataProductIndustryId1').val() == 0 && $('#adzone').val() != "6") {
                                 okk = false;
                         }
                         //alert(!$('input[name="ad[source_url]"]').val() && !$('input[name="attach"]').val());
-                        if (!$('input[name="ad[source_url]"]').val() && !$('input[name="attach"]').val()) {
+                        if ($('input[name="ad[source_url]"]').val() == "" && $('input[name="attach"]').val() == "") {
                             okk = false;
                         }
                            
@@ -42,7 +41,7 @@ var can_also_enter = "{lang can_also_enter}";
                 })
                 
                 $('#save').click(function (){
-                        if ($('#dataProductIndustryId1').val() == 0)
+                        if ($('#dataProductIndustryId1').val() == 0 && $('#adzone').val() != "6")
                         {
                                 $("html, body").animate({ scrollTop: $('#dataIndustry').offset().top - 100 }, 100);
                                 setTimeout(function(){
@@ -59,6 +58,43 @@ var can_also_enter = "{lang can_also_enter}";
                                 }, 200);
                         }
                 });
+		
+				
+		$('#dataProductIndustryId1').change(function() {
+			//alert($(this).val());
+			$.ajax({
+				url: "../index.php?do=product&action=getIndustryPrice&industry_id="+$(this).val(),
+			}).done(function ( data ) {
+				if( console && console.log ) {
+				    $('.ad_price').html(data+"  VNĐ/tháng");
+				    if (data == "0" || data == "") {
+					$('.ad_price').parent().parent().hide();
+				    } else {
+					$('.ad_price').parent().parent().show();
+				    }
+				}
+			});
+		});
+		$('#adzone').change(function() {
+			var value = $(this).val();
+			$.ajax({
+				url: "../index.php?do=product&action=getAdzonePrice&adzone_id="+$(this).val(),
+			}).done(function ( data ) {
+				if( console && console.log ) {
+				    //$('.ad_price').html(data+"  VNĐ/tháng");
+				    if(value == '6') {
+					$('.adzone_price').html(data+"  VNĐ/tháng");
+					$('.adzone_price').parent().parent().show();
+					$('.industry_select').hide();
+				    } else {
+					$('.adzone_price').parent().parent().hide();
+					$('.industry_select').show();
+				    }
+				}
+			});
+		});
+		
+		$('#adzone').trigger("change");
 	});
 </script>
 <!--{/literal}-->
@@ -95,36 +131,42 @@ var can_also_enter = "{lang can_also_enter}";
 		<input class="infoTableInput2 required" name="ad[title]" value="{$item.title}" />                
         </td>
       </tr>
-      <tr>
-        <th class="paddingT15">{lang industry_product}:<font class="red">*</font></th>
+      
+      
+	<tr>
+		<th class="paddingT15">Loại quảng cáo:<font class="red">*</font></th>
+			<td colspan="2">
+
+				<select name="ad[adzone_id]" id="adzone" class="level_1 required" >
+					<option value="7" {if $smarty.get.adzone_id == "7"}selected="selected"{/if}>Trang chi tiết sản phẩm</option>
+					<option value="6" {if $smarty.get.adzone_id == "6"}selected="selected"{/if}>Trang chính sản phẩm</option>
+				</select>
+				<span style="display: none">(Đơn giá: <strong><span class="adzone_price"></span></strong>)</span>
+			</td>
+	</tr>
+      
+      
+	<tr class="industry_select">
+		<th class="paddingT15">{lang industry_product}:<font class="red">*</font></th>
 			<td colspan="2">
 
 				<div id="dataIndustry" class="ad_industry">
 								<select name="industry[id][1]" id="dataProductIndustryId1" class="level_1 required" ></select>
-								<select name="industry[id][2]" id="dataProductIndustryId2" class="level_2"></select>
+								<!--<select name="industry[id][2]" id="dataProductIndustryId2" class="level_2"></select>
 								<select name="industry[id][3]" id="dataProductIndustryId3" class="level_3" ></select>
-								<select name="industry[id][4]" id="dataProductIndustryId4" class="level_4" ></select>
+								<select name="industry[id][4]" id="dataProductIndustryId4" class="level_4" ></select>-->
+					<span style="display: none">(Đơn giá: <strong><span class="ad_price"></span></strong>)</span>
 				</div>
 
 			</td>
-		</tr>
+	</tr>
+	
       <tr>
         <th class="paddingT15" valign="top">Mô tả nội dung quảng cáo</th>
         <td class="paddingT15 wordSpacing5">
             <textarea style="width:100%;height:400px;" name="ad[description]" id="dataTradeContent">{$item.description}</textarea></td>
       </tr>
-      <tr style="display: none">
-        <th class="paddingT15"> {lang adzone}</th>
-        <td class="paddingT15 wordSpacing5">
-		<select name="ad[adzone_id]" id="ad_adzone_id">
-		<!--{foreach from=$Adzones item=z name=sel_adzone}-->
-		<option value="{$z.id}" {if $z.id eq $item.adzone_id or $z.id eq $smarty.get.adzone_id}selected{/if}>
-		{$z.name}
-		<!--{foreachelse}-->
-		<option value="0">{lang full_please}{lang adzone}
-		<!--{/foreach}-->
-		</select><label class="field_notice">{lang adzone_note}</label></td>
-      </tr>
+
       <tr>
         <th class="paddingT15">{lang ad_image}:</th>
         <td class="paddingT15 wordSpacing5 ad_image"><label for="Sourcetype1">
@@ -247,13 +289,21 @@ var industry_id4 = {$item.industry_id4|default:0} ;
 <!-- {literal} -->
 <script>
 jQuery(document).ready(function($) {
-	$("#ProductpriceCategory").val("{$item.category_id|default:0}")
+	$("#ProductpriceCategory").val("{$item.category_id|default:0}");
 })
 </script>
 <!-- {/literal} -->
 <script src="../scripts/multi_select.js" charset="{$charset}"></script>
 <script src="../scripts/script_area.js"></script>
 <script src="../scripts/script_industry.js"></script>
+
+<!-- {literal} -->
+<script>
+jQuery(document).ready(function($) {
+	setTimeout('$("#dataProductIndustryId1").val("{/literal}{$smarty.get.type}{literal}");$("#dataProductIndustryId1").trigger("change");',1000);
+})
+</script>
+<!-- {/literal} -->
 
 <!--{include file="footer.html"}-->
 

@@ -60,6 +60,7 @@ $php_self = pb_getenv('PHP_SELF');
 $base_script = basename($php_self);
 list($basefilename) = explode('.', $base_script);
 define('WEBROOT_DIR', basename(dirname(dirname(__FILE__))));
+
 if(!defined('URL')) {
 	$s = null;
 	if (pb_getenv('HTTPS')) {
@@ -72,8 +73,12 @@ if(!defined('URL')) {
 	}else{
 		$site_url = $hosts."/";
 	}
+	if($site_url == 'http://test/') {
+	    $site_url = 'http://test.marketonline.vn/';
+	}
 	define('URL', $site_url);	
 }
+
 $time_start = getmicrotime();
 $time_stamp = time();
 require(SOURCE_PATH. 'adodb'.DS.'adodb.inc.php');
@@ -205,25 +210,27 @@ if ($pb_userinfo) {
 		setvar("FACEShare", $FACE);
 		
 	}
+	
+	//Current membertype
+	$mem = $member->getInfoById(intval($pb_userinfo["pb_userid"]));
+	
+	if(!isset($mem["current_type"]) || $mem["current_type"] == "0")
+	{
+	    $mem["current_type"] = $mem["membertype_id"];
+	    $member->saveField("current_type", $mem["current_type"], intval($mem["id"]));    
+	}
+	if(isset($_GET["change_current_type"]))
+	{
+	    $mem["current_type"] = $_GET["change_current_type"];
+	    $member->saveField("current_type", $mem["current_type"], intval($mem["id"]));
+	}
+	
+	setvar('pb_userinfo', $mem);
+	//var_dump($member->read("*",intval($pb_userinfo["pb_userid"])));
 }
 
 
-//Current membertype
-$mem = $member->getInfoById(intval($pb_userinfo["pb_userid"]));
 
-if(!isset($mem["current_type"]) || $mem["current_type"] == "0")
-{
-    $mem["current_type"] = $mem["membertype_id"];
-    $member->saveField("current_type", $mem["current_type"], intval($mem["id"]));    
-}
-if(isset($_GET["change_current_type"]))
-{
-    $mem["current_type"] = $_GET["change_current_type"];
-    $member->saveField("current_type", $mem["current_type"], intval($mem["id"]));
-}
-
-setvar('pb_userinfo', $mem);
-//var_dump($member->read("*",intval($pb_userinfo["pb_userid"])));
 
 
 	
@@ -290,18 +297,17 @@ setvar("Friends", $space->getFriends($member->info['id']));
 setvar('F_URL', urlencode(selfURL()));
 setvar('F_URLunlen', selfURL());
 
-//Session
-if (session_id() == '' || $session == NULL) { 
-	require_once(LIB_PATH. "session_mysql.class.php");
-	$session = new PbSessions();
-	
 
+
+if (session_id() == '' || $session == NULL) { 
+    require_once(LIB_PATH. "session_mysql.class.php");
+    $session = new PbSessions();
 }
 
 if(!isset($_SESSION["customer_code"]))
 {
-		$date = new MyDateTime();
-		$_SESSION["customer_code"] = $_SERVER["REMOTE_ADDR"]."_".$date->getTimestamp();
+    $date = new MyDateTime();
+    $_SESSION["customer_code"] = session_id();
 }
 $customer_code = $_SESSION["customer_code"];
 
@@ -321,6 +327,24 @@ if(isset($_GET["un"]))
 }
 $sharing_username = $_SESSION["sharing_username"];
 
-
 setvar("FURI", $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+
+//chat sessions
+if(isset($_GET["change_current_type"]))
+{
+    $_SESSION["chatboxsnew"] = '';
+}
+$chatboxsnew = $_SESSION["chatboxsnew"];
+$chatboxsnew = explode(",", $chatboxsnew);
+setvar("chatboxsnew", $chatboxsnew);
+
+
+//flash
+if(isset($_SESSION['flash_title']) && isset($_SESSION['flash_message'])) {
+    $flash["title"] = $_SESSION['flash_title'];
+    $flash["message"] = $_SESSION['flash_message'];
+    
+    setvar("flash", $flash);
+}
+
 ?>

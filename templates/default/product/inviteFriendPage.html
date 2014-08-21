@@ -1,0 +1,128 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$company.shop_name`" nav_id="`$nav_id`"}-->
+
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+
+<div class="row">
+  <div class="fifteen columns" style="padding-left: 0">
+
+    <div class="fifteen columns connect_ptitle" id="page-title">
+        <a class="back" href="javascript:history.back()"></a>
+        <div class="subtitle">
+            Liên kết        </div>
+
+                <h1 class="page-title">
+          Mời bạn bè liên kết & theo dõi gian hàng
+          <strong>
+            <a style="padding-left: 0; margin-right: 10px" class="name" href="{if $company}{the_url module=space userid=`$pb_company.cache_spacename`}{/if}">		
+		{if $company}{$company.shop_name}{/if}
+	    </a>
+          </strong> </h1>
+
+        <!--<div class="breadcrumbs"><a href="http://localhost/marketonline/">Trang chính</a> <span class="delim">/</span><a href="index.php?do=product&action=connect">Sản phẩm</a> </div>-->
+
+      </div>
+
+  </div>
+</div>
+<br />
+
+<div class="row res_box res_done_box res_done_box_company" style="width:800px">
+   <!-- <h2>Xác minh tài khoản 'assass' tại MarketOnline.vn</h2>-->
+   <h2>
+    
+        Mời bạn bè liên kết & theo dõi gian hàng
+          <strong>
+            <a style="padding-left: 0; margin-right: 10px" class="name" href="{if $company}{the_url module=space userid=`$company.cache_spacename`}{/if}">		
+		{if $company}{$company.shop_name}{/if}
+	    </a>
+          </strong>
+    
+   </h2>
+<div class="success_box link_company_box" style="display: block;">
+    {if $info}<h4 style="border-bottom: solid 1px #ccc;padding-bottom:18px;margin: 0">
+                            
+                             {$info}
+                        
+                        </h4>
+	<div class="title-line-box">Nội dung chia sẻ</div>
+    <br style="clear:both" />
+    {/if}
+			<img class="" src="{$company.logosmall}" />
+			
+			<h4>
+                            <strong style="display: block;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: -13px;
+    margin-top: -5px;">{$company.name}</strong><br />
+                            {if $fb_description}{$fb_description|truncate:500}{/if}
+                        
+                        </h4>
+
+			
+			
+			
+			
+		 </div>
+			<div class="reg_foot" style="clear:both">
+				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}'){else}goclicky_custom(this, '{$F_URL}#welcome7', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
+					<span class="at15t_facebookz">
+					    <span class="">Share on facebook</span>
+					</span>
+				</a>
+				<div class="share_buts">
+					
+				  <!-- AddThis Button BEGIN -->
+				{literal}
+					<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+					<!--<a class="addthis_button_facebook"></a>-->
+					<a class="addthis_button_twitter"></a>
+					<a class="addthis_button_google_plusone_share"></a>
+					<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+					</div>
+					<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+				{/literal}
+				<!-- AddThis Button END -->
+			<div>
+
+
+</div>
+
+
+
+</div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+
+
+
+<!--{include file="`$theme_name`/footer.html"}-->
+
+
+

@@ -30,19 +30,19 @@
 		</p>
 		
 		<p>
-			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.mobile}
 		</p>
 		
 		<p>
-			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.email}
 		</p>
 		
 			
 		
 		<p>
-			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.address}
 		</p>
    
@@ -64,19 +64,19 @@
 		</p>
 		
 		<p>
-			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.receiver_mobile}
 		</p>
 		
 		<p>
-			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.receiver_email}
 		</p>
 		
 			
 		
 		<p>
-			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
 			{$Info.receiver_address}
 		</p>
    
@@ -95,23 +95,23 @@
 		
 		<p>
 			<span>{lang space_name}:<b class="red-bold"></b>&nbsp;</span>
-			{$Seller.space_name}
+			{$Seller.shop_name}
 		</p>
 		
 		<p>
-			<span>{lang mobile}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
 			{$Seller.mobile}
 		</p>
 		
 		<p>
-			<span>{lang email}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
 			{$Seller.email}
 		</p>
 		
 			
 		
 		<p>
-			<span>{lang address}<b class="red-bold"></b>&nbsp;</span>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
 			{$Seller.address}
 		</p>
    
@@ -122,7 +122,12 @@
 	      
             </div>
           </div>
-     <div class="blank"></div>
+     <div class="blank"></div>     
+	{if $Info.message}
+		<br />
+		<h3>Ghi chú từ khách:</h3>
+		<p>{$Info.message}</p>
+	{/if}
      <br />
      <h3>{lang product_list}</h3>
 	  <table class="news">

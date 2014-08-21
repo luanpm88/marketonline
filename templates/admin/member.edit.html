@@ -88,27 +88,33 @@
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[re_userpass]" id="dataReUserpass" value="" type="password" /></td>
       </tr>
       <tr>
+        <th class="paddingT15">Người giới thiệu<br />(Tên người dùng / Email)</th>
+        <td class="paddingT15 wordSpacing5">
+		<input name="parent_username" id="date1" value="{$item.parent_username}" />
+	</td>
+      </tr>
+      <tr>
         <th></th>
         <td class="ptb20">
-			<input class="formbtn" type="submit" name="save" value="{lang save}" />		</td>
+		<input class="formbtn" type="submit" name="save" value="{lang save}" />		</td>
       </tr>
     </table>
   </form>
 </div>
 <!--{literal}-->
 <script>
-Calendar.setup({
-	trigger    : "calendar-date1",
-	animation  : false,
-	inputField : "date1",
-	onSelect   : function() { this.hide() }
-});
-Calendar.setup({
-	trigger    : "calendar-date2",
-	animation  : false,
-	inputField : "date2",
-	onSelect   : function() { this.hide() }
-});
+	Calendar.setup({
+		trigger    : "calendar-date1",
+		animation  : false,
+		inputField : "date1",
+		onSelect   : function() { this.hide() }
+	});
+	Calendar.setup({
+		trigger    : "calendar-date2",
+		animation  : false,
+		inputField : "date2",
+		onSelect   : function() { this.hide() }
+	});
 </script>
 <!--{/literal}-->
 <!-- {include file="footer.html"} -->

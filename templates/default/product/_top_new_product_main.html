@@ -1,0 +1,53 @@
+{if $Count > 4}
+
+<div class="box"><div class="box_inner">
+<ul class="products_{$key}">
+<!--{loop $Products item level key}-->
+
+
+<li class="product{$item.isfirst} boxcols">
+	<div class="hidden-info-list-item">
+		<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">Xem chi tiết</a>
+		<!--Và liên hệ với nhà cung cấp<br />
+		<strong class='red'>{$item.shop_name}</strong>-->
+	</div>
+	
+	<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+
+		<div style="height: 200px;width: 200px; display: table-cell; vertical-align: middle;"><img width="225" height="" src="{$item.thumb}" class="attachment-shop_catalog wp-post-image" alt="{$item.name}"></div>
+		<a class="shop_info_product" href="{$item.shop_url}" title="">
+			<div>Xem gian hàng:</div>
+			<span>{$item.shop_name}</span>
+		</a>
+		<h3>{$item.name}</h3>
+		
+		{if $item.new_price || $item.price}
+			{if $item.new_price != "" && $item.new_price != 0}
+				<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+			{else}
+				<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+			{/if}
+		{/if}
+	</a>
+
+
+	<a style="display: none" onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
+	
+	<div class="product_tools">
+		<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
+		<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+		<!--{if $pb_username!=""}-->
+			<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
+		<!--{else}-->
+			<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
+		<!--{/if}-->
+	</div>
+
+</li>
+
+
+
+<!--{/loop}--></ul>
+</div></div>
+<br style="clear: both" />
+{/if}

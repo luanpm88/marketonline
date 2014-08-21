@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 16:38:21
+<?php /* Smarty version 2.6.27, created on 2014-08-15 10:31:53
          compiled from default%5Ccontact.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Liên hệ với chúng tôi")));
@@ -83,13 +83,74 @@ unset($_smarty_tpl_vars);
 <label><?php echo $this->_tpl_vars['_fax']; ?>
 </label> (84) 08.3947 0385<br />
 </p>
-
 </div>
+
+
+<h3>Hỗ trợ trực tuyến</h3>
+<div style="padding-left: 57px" class="support-contact">
+    <ul>
+        <?php $_from = $this->_tpl_vars['support_members']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
+    foreach ($_from as $this->_tpl_vars['item']):
+?>
+            <?php if (! $this->_tpl_vars['pb_userinfo']): ?>
+                <li class="<?php if ($this->_tpl_vars['item']['online']): ?>online<?php endif; ?> comment_but" href="#login-box" redirect="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+lien-he">
+                    <img src="<?php echo $this->_tpl_vars['item']['photo']; ?>
+" />
+                    <?php if ($this->_tpl_vars['item']['membertype_id'] == 6): ?>
+                        <h2 class="title"><?php echo $this->_tpl_vars['item']['first_name']; ?>
+ <?php echo $this->_tpl_vars['item']['last_name']; ?>
+ <div class="online_status">.</div></h2>
+                        <p class="content"><?php echo $this->_tpl_vars['item']['school_name']; ?>
+</p>
+                    <?php else: ?>
+                        <h2 class="title"><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+ <span class="online_status">.</span></h2>
+                        <p class="content"><?php if ($this->_tpl_vars['item']['first_name']): ?><?php echo $this->_tpl_vars['item']['first_name']; ?>
+ <?php echo $this->_tpl_vars['item']['last_name']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['item']['username']; ?>
+<?php endif; ?></p>
+                    <?php endif; ?>
+                    <!--<p class="timeinbox"><?php echo $this->_tpl_vars['item']['created']; ?>
+</p>-->
+                </li>
+            <?php else: ?>
+                <li class="<?php if ($this->_tpl_vars['item']['online']): ?>online<?php endif; ?>" onclick="getChatboxNew('<?php echo $this->_tpl_vars['item']['id']; ?>
+x<?php echo $this->_tpl_vars['item']['membertype_id']; ?>
+', false);">
+                    <img src="<?php echo $this->_tpl_vars['item']['photo']; ?>
+" />
+                    <?php if ($this->_tpl_vars['item']['membertype_id'] == 6): ?>
+                        <h2 class="title"><?php echo $this->_tpl_vars['item']['first_name']; ?>
+ <?php echo $this->_tpl_vars['item']['last_name']; ?>
+ <span class="online_status">.</span></h2>
+                        <p class="content"><?php echo $this->_tpl_vars['item']['school_name']; ?>
+</p>
+                    <?php else: ?>
+                        <h2 class="title"><?php echo $this->_tpl_vars['item']['shop_name']; ?>
+ <span class="online_status">.</span></h2>
+                        <p class="content"><?php if ($this->_tpl_vars['item']['first_name']): ?><?php echo $this->_tpl_vars['item']['first_name']; ?>
+ <?php echo $this->_tpl_vars['item']['last_name']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['item']['username']; ?>
+<?php endif; ?></p>
+                    <?php endif; ?>
+                    <!--<p class="timeinbox"><?php echo $this->_tpl_vars['item']['created']; ?>
+</p>-->
+                </li>
+            <?php endif; ?>
+        <?php endforeach; endif; unset($_from); ?>
+    </ul>
+</div>
+
+
 
 </div>
 
 <?php if ($this->_tpl_vars['success']): ?><p class="contact_success"><?php echo $this->_tpl_vars['_contact_success']; ?>
 </p><?php endif; ?>
+
+<?php if ($this->_tpl_vars['capt_check'] == false): ?><div class="capt-error contact-error">Mã bảo mật không đúng. Vui lòng nhập lại!</div><?php endif; ?>
+
     <div class="ten columns contactbox_right">
            <h3><?php echo $this->_tpl_vars['_contact_with_us']; ?>
 </h3>
@@ -101,20 +162,49 @@ unset($_smarty_tpl_vars);
             <div class="fields">
                 <label for="sender_name"><?php echo $this->_tpl_vars['_sender']; ?>
 </label>
-                <input type="text" class="text" name="sender_name" id="sender_name" />
+                <input type="text" class="text" name="sender_name" id="sender_name" value="<?php echo $this->_tpl_vars['post']['sender_name']; ?>
+" />
                 <label for="sender_email"><?php echo $this->_tpl_vars['_sender_email']; ?>
 </label>
-                <input id="sender_email" name="sender_email" class="text span4" type="text" />
+                <input id="sender_email" name="sender_email" class="text span4" type="text" value="<?php echo $this->_tpl_vars['post']['sender_email']; ?>
+" />
                 <label><?php echo $this->_tpl_vars['_subject']; ?>
 </label>
-                <input class="text span4"  type="text" name="letter_subject" id="letter_subject" />
+                <input class="text span4"  type="text" name="letter_subject" id="letter_subject" value="<?php echo $this->_tpl_vars['post']['letter_subject']; ?>
+" />
             </div>
             <label style="clear: both"><?php echo $this->_tpl_vars['_message']; ?>
 </label>
-            <textarea  name="letter_text" id="letter_text" cols="30" rows="10" placeholder="" tabindex="4"></textarea>
+            <textarea name="letter_text" id="letter_text" cols="30" rows="10" placeholder="" tabindex="4"><?php echo $this->_tpl_vars['post']['letter_text']; ?>
+</textarea>
             
         
-        
+            <?php if ($this->_tpl_vars['ifcapt']): ?>
+                <div id="res_captcha">
+                    <div class="left" style="padding-right: 120px">
+                            
+                            <span class="registercheck"><img class="registerpic" width="123" height="50" id="imgcaptcha" src="captcha.php?sid=<?php echo $this->_tpl_vars['sid']; ?>
+" alt="<?php echo $this->_tpl_vars['_unclear_see_numbers']; ?>
+" title="<?php echo $this->_tpl_vars['_unclear_see_numbers']; ?>
+" />
+                            
+                            <object type="application/x-shockwave-flash" data="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" height="19" width="19">
+                            <param name="movie" value="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" />
+                            </object>
+                            <a href="javascript:;"><img src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+images/gongqiu03.jpg" class="registerpic2" id="exchange_imgcapt" /></a>
+                            </span>
+                    </div>
+                    <div class="right">
+                            <label class="registerlabel" for="login_auth" style="margin-top: 5px;margin-bottom: 8px;">
+                              <?php echo $this->_tpl_vars['_code']; ?>
+<span>*</span>
+                            </label>
+                            <input class="" name="data[capt_service]" id="login_auth" type="text" value="" size="4" style="width:117px; margin-bottom: 5px;" tabindex="5">&nbsp;<font class="gray" style="float: left"><?php echo $this->_tpl_vars['_input_code']; ?>
+</font>
+                    </div>
+               </div>
+            <?php endif; ?>
         
         
         </div>

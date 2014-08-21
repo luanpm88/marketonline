@@ -1,0 +1,17 @@
+
+<div class="box"><div class="box_inner">
+<ul class="">
+<!--{loop $ads item level key}-->
+
+
+    <li class="product{$item.id} boxcols">
+        <a target="_blank" class="leftlogodetailz" href="{the_url module=ad id=`$item.id`}">
+                <img title="{$item.title}" alt="{$item.title}" src="{$item.src}" />
+                {if $item.description}<span class="description">{$item.description|truncate:100}</span>{/if}
+        </a>
+    </li>
+
+
+<!--{/loop}--></ul>
+</div></div>
+<br style="clear: both" />

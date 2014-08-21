@@ -51,6 +51,7 @@ jQuery(document).ready(function($) {
         <td class="paddingT15 wordSpacing5">
         <select name="data[industry][parent_id]" id="dataParentId">
         <option value="0">{lang no}</option>
+	
         {$CacheItems}
         </select>
        </td>
@@ -82,6 +83,13 @@ jQuery(document).ready(function($) {
 		</td>
       </tr>
       <tr>
+        <th class="paddingT15">Giá quảng cáo</th>
+        <td class="paddingT15 wordSpacing5">
+		<input class="infoTableInput2" name="data[industry][ad_price]" value="{$item.ad_price}" type="text" />
+		      
+		</td>
+      </tr>
+      <tr>
         <th class="paddingT15"> {lang whether_or}{lang show_it}{lang colon}</th>
         <td class="paddingT15 wordSpacing5"><!--{html_radios name="data[industry][available]" options=$AskAction checked=$item.available|default:1 separator=""}--></td>
       </tr>
@@ -104,7 +112,7 @@ jQuery(document).ready(function($) {
 <!-- {literal} -->
 <script>
 jQuery(document).ready(function($) {
-	$('#dataParentId').val("{$item.parent_id|default:0}");
+	//$('#dataParentId').val("{$item.parent_id|default:0}");
 	$('#dataTypeId').val("{$item.industrytype_id|default:0}");
 })
 </script>

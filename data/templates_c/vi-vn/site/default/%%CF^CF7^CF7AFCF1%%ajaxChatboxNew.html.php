@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 13:50:10
+<?php /* Smarty version 2.6.27, created on 2014-08-13 16:03:29
          compiled from default%5Cproduct/ajaxChatboxNew.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajaxChatboxNew.html', 6, false),)), $this); ?>
@@ -20,10 +20,25 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 		    <li class="chatloading"></li>
 		</ul>
 		<div class="notification"></div>
-	    </div>	    
+		<div class="typing" style="display: none">		
+		    <img width="40" height="40" src="<?php echo $this->_tpl_vars['member']['company_logo']; ?>
+" class="avatar">
+		    <span class="emotion">đang viết...</span>
+		    <!--<?php echo $this->_tpl_vars['chattitle']; ?>
+ đang viết...-->
+		</div>
+	    </div>
+	    
 	</div>
 	<div class="chat-form">
-	    <textarea class="post-content" name="chat[content]"></textarea>
+	    <a class="emotion-box-but" href="javascript:void(0)">show</a>
+	    <a class="chatimage-box-but" href="javascript:void(0)">image</a>
+	    <textarea id="chatboxarea<?php echo $this->_tpl_vars['chatid']; ?>
+" class="post-content" name="chat[content]"></textarea>
+	    
+	    
+	    <div style="display: none" class="emotion-box emotion"> >:) :)) /:) <):) :)] :) :(( :( ;;) ;) >:D< :D :-SS #:-S :-? >:P :P (:| :| :-/ :-* =(( ~X( B-) :-S =)) O:-) :-B =; 8-| L-) :oo :-$ [-( :O) 8-}
+<:-P :x =P~ #-o =D> @-) :^o :-w :-< :-O :> :-c X( :-h 8-> :bd o|^_^|o (y) </div>
 	</div>
     </div>
 </div>

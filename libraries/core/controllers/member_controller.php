@@ -66,7 +66,7 @@ class Member extends PbController {
 					}
 				}
 			}
-		}else{
+		} else {
 			flash();
 		}
 	}

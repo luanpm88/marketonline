@@ -19,6 +19,7 @@ class Attachment extends PbController {
     var $is_water_text;
     var $water_text_color;
     var $if_thumb = true;
+    var $if_thumb_smaller = false;
     var $if_thumb_middle = false;
     var $if_thumb_large = false;
     var $if_banner = false;
@@ -33,6 +34,7 @@ class Attachment extends PbController {
     var $insert_new = true;
     var $seperator = "*";
     var $small_scale = "80*80";
+    var $smaller_scale = "150*150";
     var $middle_scale = "220*220";
     var $large_scale = "800*600";
     var $banner_scale = "907*339";
@@ -155,6 +157,11 @@ class Attachment extends PbController {
 			        	$img->Thumb($width, $height, '.middle.jpg');
 			        }
 				
+				if($this->if_thumb_smaller) {
+					list($width, $height) = $this->getScale("smaller");
+			        	$img->Thumb($width, $height, '.smaller.jpg');
+				}
+				
 				if($this->if_offer_150_120)
 				{
 					$this->resizeImage($this->out_file_full_path, 150, 120, "small");					
@@ -185,6 +192,8 @@ class Attachment extends PbController {
 					$this->resizeImage($this->out_file_full_path, 300, 300, "small");
 					$this->resizeImage($this->out_file_full_path, 534, 273, "medium");
 				}
+				
+				
 		        }
 			if($this->if_school_banner)
 			{

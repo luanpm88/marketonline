@@ -1,0 +1,69 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition">
+ <p>{lang your_current_position} {lang trade_management} &raquo; {lang job}</p>
+</div>
+<div id="rightTop"> 
+    <h3>{lang job}</h3>
+    <ul class="subnav">
+		<li><a href="job.php">{lang management}</a></li>
+		<li><a class="" href="jobtype.php"><span>{lang position_classification}</span></a></li>
+        <li><a href="jobindust.php"><span>Quản lý Ngành nghề</span></a></li>
+        <li><a class="btn1" href="jobindust.php?do=edit">{lang add_or_edit}</a></li>
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="jobindust.php" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="id" value="{$item.id}" />
+  <input type="hidden" name="page" value="{$smarty.get.page}" />
+    <table class="infoTable">
+      
+	  <tbody id="DataMethod1">
+	    {if $smarty.get.id}
+      <input type="hidden" name="id" value="{$smarty.get.id}" />
+      <input type="hidden" name="page" value="{$smarty.request.page}" />
+      <tr>
+        <th class="paddingT15"> {lang category_name}{lang colon}</th>
+        <td class="paddingT15 wordSpacing5">
+	 <input style="width:500px;" class="infoTableInput2" name="data[jobtype][name]" value="{$item.name}" type="text" />
+	 <label class="field_notice">{lang top_category_name_not_support_special_sign}</label>
+	</td>
+      </tr>
+    {else}
+     <tr>
+        <th class="paddingT15"> {lang category_name}{lang colon}</th>
+        <td class="paddingT15 wordSpacing5">
+	 <input type="text" name="data[jobtype][name]" id="dataNames" />
+	 <label class="field_notice">{lang add_more_than_one_line_on_behalf_of_a_record}</label></td>
+      </tr>
+    {/if} 
+      <tr>
+        <th class="paddingT15"> Nhóm {lang colon}</th>
+        <td class="paddingT15 wordSpacing5">
+	 <input style="width:500px;" type="text" name="data[jobtype][group]" id="dataNames" value="{$item.group}" />
+	 <label class="field_notice">{lang add_more_than_one_line_on_behalf_of_a_record}</label></td>
+      </tr>
+
+
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="{lang save_and_pub}" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+<script>
+var parent_id = "{$item.parent_id|default:0}";
+</script>
+<!--{literal}-->
+<script>
+jQuery(document).ready(function($) {
+	$("#JobtypeParentId").val(parent_id);
+		$("#DataMethod").change( function() { 
+		$("#DataMethod1, #DataMethod2").toggle();
+	} 
+	);
+})
+</script>
+<!--{/literal}-->
+<!-- {include file="footer.html"} -->

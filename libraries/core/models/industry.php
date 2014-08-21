@@ -229,7 +229,7 @@ class Industries extends PbModel {
  		return $r;
  	}
  	
- 	function getTypeOptions()
+ 	function getTypeOptions($id = null)
  	{
  		$_PB_CACHE['industry'] = cache_read("industry");
  		$this->typeOptions = '';
@@ -241,17 +241,38 @@ class Industries extends PbModel {
  		}
  		unset($key, $val);
  		foreach ($_PB_CACHE['industry'][1] as $key=>$val) {
- 			$this->typeOptions.='<option value="'.$key.'" class="option-level0">';
+			if($key == $id) {
+				$selected = 'selected="selected"';
+			}
+			else
+			{
+				$selected = '';
+			}
+ 			$this->typeOptions.='<option '.$selected.' value="'.$key.'" class="option-level0">';
  			$this->typeOptions.=str_repeat('&nbsp;&nbsp;', 0) . $val;
  			$this->typeOptions.='</option>' . "\n";
  			foreach ($_PB_CACHE['industry'][2] as $key2=>$val2) {
+				if($key2 == $id) {
+				$selected = 'selected="selected"';
+				}
+				else
+				{
+					$selected = '';
+				}
  				if ($tmp_arr[$key2]['parent_id'] == $key) {
-		 			$this->typeOptions.='<option value="'.$key2.'" class="option-level1">';
+		 			$this->typeOptions.='<option '.$selected.' value="'.$key2.'" class="option-level1">';
 		 			$this->typeOptions.=str_repeat('&nbsp;&nbsp;', 1) . $val2;
 		 			$this->typeOptions.='</option>' . "\n";
 		 			foreach ($_PB_CACHE['industry'][3] as $key3=>$val3) {
+						if($key3 == $id) {
+						$selected = 'selected="selected"';
+						}
+						else
+						{
+							$selected = '';
+						}
 		 				if ($tmp_arr[$key3]['parent_id'] == $key2) {
-				 			$this->typeOptions.='<option value="'.$key3.'" class="option-level2">';
+				 			$this->typeOptions.='<option '.$selected.' value="'.$key3.'" class="option-level2">';
 				 			$this->typeOptions.=str_repeat('&nbsp;&nbsp;', 2) . $val3;
 				 			$this->typeOptions.='</option>' . "\n";
 		 				}
@@ -456,25 +477,27 @@ class Industries extends PbModel {
 	
 	function getCountProduct($ids, $member_id = null, $service = 0)
 	{
-		$member_condition = '';
-		if($member_id)
-		{
-			$member_condition .= " AND p.member_id='".$member_id."'";
-		}
-		
-		if($service == 1)
-		{
-			$member_condition .= " AND p.service=1";
-		}		
-		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p WHERE p.industry_id IN (".$ids.")".$member_condition;
-		
-		if($service == 2)
-		{
-			$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p WHERE p.industry_id IN (".$ids.")".$member_condition;
-		}
-		
- 		$result = $this->GetRow($sql);
-		return $result["COUNT(*)"];
+//#####		$member_condition = '';
+//		if($member_id)
+//		{
+//			$member_condition .= " AND p.member_id='".$member_id."'";
+//		}
+//		
+//		if($service == 1)
+//		{
+//			$member_condition .= " AND p.service=1";
+//		}		
+//		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p WHERE p.industry_id IN (".$ids.")".$member_condition;
+//		
+//		if($service == 2)
+//		{
+//			$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p WHERE p.industry_id IN (".$ids.")".$member_condition;
+//		}
+//		
+// 		$result = $this->GetRow($sql);
+//		return $result["COUNT(*)"];
+
+		return 0;
 	}
 	
 	function getCountProduct_3($ids, $member_id = null)
@@ -552,38 +575,48 @@ OR id =1
 	}
 	
 	
-	function findRelatedBanners($industry_id)
+	function findRelatedBanners($industry_id, $cat = 7)
 	{
-		uses("ad");
+		uses("ad","company");
 		$ads = new Adses();
-		$banners = array();
-		while(true)
+		$company = new Companies();
+		
+		$parent_a = $this->getParent($industry_id);
+		
+		//$banners = array();
+		//while(true)
+		//{
+		//	$industry = $this->read("id,level,parent_id", $industry_id);
+			$banners = $ads->findAll("Ads.*, m.space_name", array("LEFT JOIN ".$this->table_prefix."members m ON m.id = Ads.member_id"), array("Ads.industry_id IN (".implode(",",$parent_a).")","Ads.state='1'","Ads.status='1'","Ads.adzone_id=".$cat), "display_order,created DESC");
+		//	if(count($rows))
+		//	{
+		//		foreach($rows as $item)
+		//		{
+		//			$banners[] = $item;
+		//		}
+		//	}
+
+		//	if($industry["level"] != 1 && isset($industry["parent_id"]))
+		//	{
+		//		$industry_id = $industry["parent_id"];
+		//	}
+		//	else
+		//	{
+		//		break;
+		//	}
+		//}
+		foreach($banners as $key => $item)
 		{
-			$industry = $this->read("id,level,parent_id", $industry_id);
-			//var_dump($industry);
-			$rows = $ads->findAll("Ads.*, m.space_name", array("LEFT JOIN ".$this->table_prefix."members m ON m.id = Ads.member_id"), array("Ads.industry_id='".$industry_id."'","Ads.state='1'","Ads.status='1'"));
-			//var_dump($rows);
-			if(count($rows))
-			{
-				foreach($rows as $item)
-				{
-					$banners[] = $item;
-				}
-			}
+			$banners[$key]["image"] = pb_get_attachmenturl($item['source_url'], '', '');
+			$com = $company->getInfoByUserId($item['member_id']);
+			$banners[$key]["shop_name"] = $com["shop_name"];
 			
-			if($industry["level"] != 1 && isset($industry["parent_id"]))
-			{
-				$industry_id = $industry["parent_id"];
-			}
-			else
-			{
-				break;
-			}
+			$banners[$key]["description"] = strip_tags($item["description"]);
 		}
-		//var_dump($banners);
 		
 		return $banners;
 	}
+	
 	
 	function getTreeIndustry($industry_id)
 	{
@@ -739,6 +772,105 @@ OR id =1
 			//var_dump($area_a);
 		}
 		return $area_a;
+	}
+	
+	function updateIndustryChildren($id)
+	{
+		uses("industry");
+		
+		$industry = new Industries();
+		$industries = $industry->getCacheIndustry();
+
+			$area_a = array();
+			$area_a[] = $id;
+			foreach($industries as $key0 => $level0)
+			{
+				if($level0["id"] == $id)
+				{
+					foreach($level0['sub'] as $key1 => $level1)
+					{
+						$area_a[] = $level1["id"];
+						foreach($level1['sub'] as $key2 => $level2)
+						{
+							$area_a[] = $level2["id"];
+							foreach($level2['sub'] as $key3 => $level3)
+							{
+								$area_a[] = $level3["id"];								
+							}
+						}
+					}
+					break;
+				}
+				else
+				{
+					foreach($level0['sub'] as $key1 => $level1)
+					{
+						if($level1["id"] == $id)
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								$area_a[] = $level2["id"];
+								foreach($level2['sub'] as $key3 => $level3)
+								{
+									$area_a[] = $level3["id"];									
+								}
+							}
+							break;
+						}
+						else
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								if($level2["id"] == $id)
+								{
+									$area_a[] = $level2["id"];
+									//echo count($level2['sub']);
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										//echo $level3["id"];
+										$area_a[] = $level3["id"];										
+									}
+									//var_dump($area_a);
+									break;
+								}
+								else
+								{
+									foreach($level2['sub'] as $key3 => $level3)
+									{										
+										if($level3["id"] == $id)
+										{
+											$area_a[] = $level3["id"];											
+											break;
+										}										
+									}
+									
+								}
+							}
+						}
+					}
+					
+				}
+			}
+			//var_dump($area_a);
+			$result = implode(',', $area_a);
+			$industry->saveField('children', $result, (int)$id);
+		
+			return $result;
+			
+	}
+	
+	function getParent($industry_id) {
+		$parent = array();
+		$parent[] = $industry_id;
+		$parent[] = "-1";
+		
+		while($industry_id) {
+			$parent_id = $this->field("parent_id", array("id=".$industry_id));
+			if($parent_id) $parent[] = $parent_id;
+			$industry_id = $parent_id;
+		}
+		//var_dump($parent);
+		return $parent;
 	}
 }
 ?>

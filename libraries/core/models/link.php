@@ -77,7 +77,7 @@ class Links extends PbModel {
 		}
 	}
 	
-	function check($userid, $shopid)
+	function check($userid = null, $shopid = 0)
 	{
 		$follow = $this->field("*", array("member_id=".$userid, "shop_id=".$shopid));
 		if($follow)

@@ -1,9 +1,9 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 13:41:04
+<?php /* Smarty version 2.6.27, created on 2014-08-13 16:22:17
          compiled from default%5Cproduct/meminfo.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'default\\product/meminfo.html', 418, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
-$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['page_title']),'nav_id' => ($this->_tpl_vars['nav_id']))));
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => "Bổ sung thông tin mua hàng",'nav_id' => ($this->_tpl_vars['nav_id']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
@@ -343,7 +343,7 @@ unset($_smarty_tpl_vars);
 <b class="red-bold">*</b>&nbsp;</span>
 				<input type="text" maxlength="11" id="fullname" name="data[order][fullname]" class="bgWhite" value="<?php echo $this->_tpl_vars['pb_userinfo']['last_name']; ?>
  <?php echo $this->_tpl_vars['pb_userinfo']['first_name']; ?>
-" <?php if ($this->_tpl_vars['pb_userinfo']['fullname']): ?> readonly="readonly" <?php endif; ?>>
+" <?php if ($this->_tpl_vars['pb_userinfo']['first_name']): ?> readonly="readonly" <?php endif; ?>>
 			</p>
 			
 			<p>

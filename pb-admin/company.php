@@ -19,6 +19,7 @@ $page = new Pages();
 $area = new Areas();
 $industry = new Industries();
 $company = new Companies();
+$companytype = new Companytypes();
 $member = new Members();
 $conditions = array();
 $tpl_file = "company";
@@ -111,7 +112,7 @@ if (isset($_GET['do'])) {
 			$joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Company.member_id";
 			$conditions[]= "m.username like '%".$_GET['member']['username']."%'";
 		}
-		if (!empty($_GET['company']['name'])) $conditions[]= "Company.name like '%".$_GET['company']['name']."%'";
+		if (!empty($_GET['company']['name'])) $conditions[]= "(Company.name like '%".$_GET['company']['name']."%' OR Company.shop_name like '%".$_GET['company']['name']."%')";
 		if (!empty($_GET['FromDate']) && $_GET['FromDate']!="None" && $_GET['ToDate'] && $_GET['ToDate']!="None") {
 			$condition= "m.created BETWEEN ";
 			$condition.= Times::dateConvert($_GET['FromDate']);
@@ -146,12 +147,16 @@ if (isset($_GET['do'])) {
     	"EmployeeAmounts"=>$_PB_CACHE['employee_amount'],
     	"Genders"=>$_PB_CACHE['gender'])
     	);
+	
+	//GET ALL COMPANY TYPEs
+	setvar("companytypes", $companytype->findAll("*"));
+	
     	$tpl_file = "company.edit";
     	template($tpl_file);
     	exit;
     }
 }
-$fields = "Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,Company.area_id,industry_id,cache_credits";
+$fields = "Company.shop_name,Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,Company.area_id,industry_id,cache_credits";
 $total_amount = $pdb->CacheGetOne(120, "SELECT COUNT(id) AS amount FROM ".$tb_prefix."companies WHERE status='0'");
 $amount = $company->findCount(null, $conditions,"Company.id");
 $page->setPagenav($amount);

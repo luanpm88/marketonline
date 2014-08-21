@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-08 16:56:56
+<?php /* Smarty version 2.6.27, created on 2014-08-21 14:56:47
          compiled from default/header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 1169, false),array('function', 'formhash', 'default/header.html', 1253, false),array('modifier', 'default', 'default/header.html', 1264, false),array('modifier', 'date_format', 'default/header.html', 1278, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/header.html', 455, false),array('function', 'formhash', 'default/header.html', 1251, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -26,6 +26,23 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', '
 	<meta name ="keywords" content="Thị trường Mua Bán, Phân phối, Việc làm, Đầu tư, Tiêu dùng, Dịch vụ, Đăng sản phẩm, Đăng dịch vụ, Đăng tuyển dụng, Đơn xin việc, Đăng quảng cáo, Đăng rao vặt">
 <?php endif; ?>
 
+<?php if ($this->_tpl_vars['og_title']): ?>
+<meta property="og:title" content="<?php echo $this->_tpl_vars['og_title']; ?>
+"/>
+<?php endif; ?>
+<?php if ($this->_tpl_vars['og_url']): ?>
+<meta property="og:url" content="<?php echo $this->_tpl_vars['og_url']; ?>
+"/>
+<?php endif; ?>
+
+<?php if ($this->_tpl_vars['fb_title']): ?>
+<meta property="og:title" content="<?php echo $this->_tpl_vars['fb_title']; ?>
+"/>
+<?php endif; ?>
+<?php if ($this->_tpl_vars['fb_url']): ?>
+<meta property="og:url" content="<?php echo $this->_tpl_vars['fb_url']; ?>
+"/>
+<?php endif; ?>
 
 <?php if ($this->_tpl_vars['fb_description']): ?>
 <meta property="og:description" content="<?php echo $this->_tpl_vars['fb_description']; ?>
@@ -160,6 +177,8 @@ js/hashtable.js"></script>
 js/jquery.numberformatter.js"></script>
 
 
+
+
 <script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 js/jquery.qtip.min.js"></script>
 <link rel="stylesheet" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
@@ -172,7 +191,7 @@ css/jquery.qtip.min.css">
 js/tinymce/tinymce.min.js"></script>
 
 <script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-js/custom.js"></script>
+js/custom.js?v=1"></script>
 
    <!--[if IE]>
     <script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
@@ -197,7 +216,9 @@ js/select2/select2.min.js"></script>
 <script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 js/select2/select2_locale_vi.js"></script>
 	
-        
+<script type="text/javascript" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+js/jemotion/jemotion.js"></script>
+
 <link rel="stylesheet" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 css/editorcss.css">
         
@@ -215,9 +236,10 @@ css/editorcss.css">
     {
         $.ajax({
 	    url: "index.php?do=product&action=ajaxMainCategoryMenu&service='; ?>
-<?php echo $this->_tpl_vars['item']['service']; ?>
+<?php if ($_GET['do'] == 'company'): ?>company&membergroup_id=<?php echo $_GET['membergroup_id']; ?>
+<?php else: ?><?php echo $this->_tpl_vars['item']['service']; ?>
 <?php echo $_GET['action']; ?>
-<?php echo '",
+<?php endif; ?><?php echo '",
 	}).done(function ( data ) {
 	    if( console && console.log ) {
                 $(\'.super-main-category .main-cat-content\').html(data);
@@ -366,25 +388,7 @@ Kết bạn<?php echo '");
     }
    
  
- function getAnnounce(ann_count)
- {
-    $.ajax({
-			url: "index.php?do=product&action=getAnnounce",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				//alert(data);
-				$(\'#announce-frame\').prepend(data);
-				
-				$(\'#announce-frame .announce-box\').each(function(index){				    
-				    if (!$(this).hasClass("showed")) {
-					$(this).addClass("ann"+ann_count);
-					$(this).addClass("showed");
-					setTimeout(function(){$(".ann"+ann_count).fadeOut()}, 60000);					
-				    }				    
-				});
-			}
-		});
- }
+ 
  
  function goclicky(meh, url)
 {
@@ -523,16 +527,7 @@ function goclicky_custom(meh, url, images, title, summary)
             });
 	}
 	
-	function getInbox() {
-		//code
-		$.ajax({
-			url: "index.php?do=product&action=ajaxInbox",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$("#inbox_out").html(data);
-			}
-		});
-	}
+	
 	
 	function clearInbox() {
 		//code
@@ -555,6 +550,9 @@ function goclicky_custom(meh, url, images, title, summary)
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 	
+        var ROOT_URL = \''; ?>
+<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+<?php echo '\';
 	
 	$(document).ready(function() {
 		if (window.chrome) {
@@ -591,6 +589,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			\'frameHeight\': 400,
 			\'hideOnContentClick\': false
 		});
+                
                 
                 $("#guestbox-but").fancybox({
 			\'padding\': 0,
@@ -816,6 +815,21 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			}
 		});
                 
+                $("#underconstruction-info-but").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+                
                 $(\'.member-left-bottom-more\').fancybox();
                 
                 $(\'.change-group-leader-but\').fancybox();
@@ -853,10 +867,10 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 });	 
 		 $(\'.klbox\').css(\'display\', \'block\');
 		 
-		 $(\'.leftlogodetail img\').resizecrop({
-		   width:158,
-		   height:158
-		 });
+		 //$(\'.leftlogodetail img\').resizecrop({
+		 //  width:158,
+		 //  height:158
+		 //});
 		 $(\'.leftlogodetail img\').css("visibility","visible");
 		 
 		 $(\'.inner_slide .link_item img\').css(\'visibility\', \'visible\');
@@ -865,13 +879,6 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 
 		 //$(\'.res_done_box .success_box\').width($(\'.res_done_box h2\').width()-4);
 		 $(\'.res_done_box .success_box\').css(\'display\', \'block\');
-		 
-		 
-		 
-		 
-		 
-		 
-		 
 		 
 		 $(\'#detail_box_top .thumbnails img\').resizecrop({
 		   width:91,
@@ -918,13 +925,11 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		$(\'#inboxhome a.but\').click(function(event){$(\'#quick_inbox_content\').toggle();event.stopPropagation();});
 		
 		
-		
-		
-		if (window.location.hash == "#welcomenew") {
+		if (window.location.hash == "#welcome14" || window.location.hash == "#welcome13" || window.location.hash == "#welcome12" || window.location.hash == "#welcome11" || window.location.hash == "#welcome10" || window.location.hash == "#welcome9" || window.location.hash == "#welcome8" || window.location.hash == "#welcome7" || window.location.hash == "#welcome6" || window.location.hash == "#welcome5" || window.location.hash == "#welcome4" || window.location.hash == "#welcome3" || window.location.hash == "#welcomen" || window.location.hash == "#welcomenew" || window.location.hash == "#welcome" || window.location.hash == "#welcome1" || window.location.hash == "#welcome2" ) {
 			$(\'#welcomnew-info-but\').trigger("click");
 		}
 		
-		////		
+		////
 		$(\'.scroll-box .item img\').each(function() {
 		 
 		  $(this).attr("src", $(this).attr("rel"));
@@ -937,14 +942,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
                    
 		});
                 
-                //$(\'.img_item\').hover();		
-		$(\'.banner-school-info\').css("margin-top", -($(\'.banner-school-info\').height()+32));
-                if (!$(\'.inner_slider .img_item img\').length)
-                {
-                    $(\'.member-left-bottom\').addClass("small");
-                }
-                
-                 
+                $(\'.banner-school-info\').css("margin-top", -($(\'.banner-school-info\').height()+32));
                 
                 //cart product image
                 $(\'#cart img\').resizecrop({
@@ -989,7 +987,11 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
                     //$(\'#page-title h1.page-title\').css("visibility","visible");
                 });	
 		
-                
+                //if(!$.cookie("underconstruction"))
+                //{
+                //    $.cookie("underconstruction", true);
+                //    $("#underconstruction-info-but").trigger("click");
+                //}
                 
 	});
 	
@@ -1328,7 +1330,6 @@ _un.htmls', '<?php echo $this->_tpl_vars['FACEShare']['images']; ?>
 			
 			 <div class="content_inner">
 			 
-
 			  
 			 </div>
 
@@ -1360,156 +1361,6 @@ _un.htmls', '<?php echo $this->_tpl_vars['FACEShare']['images']; ?>
 	
 </div>
    
-   <div id="login-box" style="display: none">
-	
-	<div style="padding: 20px 20px 0px 20px;width: 320px">
-			
-			 <div class="content_inner" style="padding-bottom:10px;">
-			 
-			 
-			 
-			 
-			 
-			 
-			    <div class="wrapper">
-    <div class="content">
-        
-	<h1><?php echo $this->_tpl_vars['_login']; ?>
-</h1>
-	
-        <div class="loadingcon">
-        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
-            <input type="hidden" name="action" value="logging">
-	    <input type="hidden" name="type" value="<?php echo $this->_tpl_vars['Type']; ?>
-">
-	    <input type="hidden" name="redirect" value="<?php echo $this->_tpl_vars['F_URL']; ?>
-">
-	    <?php echo smarty_function_formhash(array(), $this);?>
-
-	    <input type="hidden" name="forward" value="<?php echo $this->_tpl_vars['_G']['forward']; ?>
-" />
-            <div class="loadingconleft">
-                
-				<?php if ($this->_tpl_vars['LoginError']): ?><?php echo $this->_tpl_vars['LoginError']; ?>
-<?php endif; ?>
-				<br />
-<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_user_name']; ?>
-
-                    </label>
-                    <label>
-                        <?php echo ((is_array($_tmp=@$this->_tpl_vars['pb_username'])) ? $this->_run_mod_handler('default', true, $_tmp, '`$_account_n_email_n_mobile`') : smarty_modifier_default($_tmp, '`$_account_n_email_n_mobile`')); ?>
-
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_member_type']; ?>
-
-                    </label>
-                    <label>
-                        <?php echo $this->_tpl_vars['member_info']['groupname']; ?>
-<img src="<?php echo $this->_tpl_vars['member_info']['groupimage']; ?>
-" />
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_your_last_login']; ?>
-<?php echo $this->_tpl_vars['_colon']; ?>
-
-                    </label>
-                    <label>
-                        <?php echo ((is_array($_tmp=$this->_tpl_vars['member_info']['last_login'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d %H:%M") : smarty_modifier_date_format($_tmp, "%Y-%m-%d %H:%M")); ?>
-
-                    </label>
-                    <br clear="all" />
-<?php else: ?>
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_user_name']; ?>
-
-                    </label>
-                    <label>
-                        <input type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="<?php echo $this->_tpl_vars['_account_n_email_n_mobile']; ?>
-" tabindex="1">&nbsp;
-                    </label>
-                    <label class="loadingname">
-                    <?php echo $this->_tpl_vars['_password']; ?>
-
-                    </label>
-                    <label>
-                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="<?php echo $this->_tpl_vars['_remember_password']; ?>
-">&nbsp;<?php echo $this->_tpl_vars['_remember_password']; ?>
-&nbsp;
-                    </label>
-                    <br clear="all" />
-                    
-                    <div class="clear"></div>
-                    <div class="login" id="btnLoginDiv">
-                       <input type="submit" name="log_in" value="<?php echo $this->_tpl_vars['_login']; ?>
-" id="wp-submit" class="submitbutton" />
-		       <div class="info_but_login">
-		       	<a href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
-getpasswd.php"><?php echo $this->_tpl_vars['_forget_password']; ?>
-</a><br />
-		       	<a href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
-register.php"><?php echo $this->_tpl_vars['_register']; ?>
-</a>
-		       </div>
-                    </div>
-		    
-		    
-		    <div class="box-res-con">
-                        <div class="inner-boxx">
-                            <h4><?php echo $this->_tpl_vars['_not_register_annouce']; ?>
-</h4><br />
-                            <?php if ($_GET['do'] == 'product'): ?>
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Company'), $this);?>
-'"><?php echo $this->_tpl_vars['_register']; ?>
-</button>
-                            <?php endif; ?>
-                            <?php if ($_GET['do'] == 'employee'): ?>
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employee'), $this);?>
-'"><?php echo $this->_tpl_vars['_register']; ?>
-</button>
-                            <?php endif; ?>
-                            <?php if ($_GET['do'] == 'job'): ?>
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Employer'), $this);?>
-'"><?php echo $this->_tpl_vars['_register']; ?>
-</button>
-                            <?php endif; ?>
-                            <?php if ($_GET['do'] == 'studypost'): ?>
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register','typename' => 'Learner'), $this);?>
-'"><?php echo $this->_tpl_vars['_register']; ?>
-</button>
-                            <?php endif; ?>
-                        </div>
-		    </div>
-<?php endif; ?>
-                    
-            </div>
-            
-        </form>
-        </div>
-    </div>
-</div>
-<script src="data/cache/<?php echo $this->_tpl_vars['JsLanguage']; ?>
-/locale.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
-"></script>
-<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
-<script language="javascript" src="scripts/validate.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
-"></script>
-<script>
-var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_mobile']; ?>
-";
-</script>
-			 
-			 
-			 
-			  
-			 </div>
-	</div>
-	
-</div>
    
    
    
@@ -1526,16 +1377,24 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 	
 </div>
    
-   
-   
-   
-   
-   
    <div id="announce-frame"></div>
    
    <div id="chat-frame">
     
+        
+            
    </div>
+   <div style="display:none">
+        <iframe name="uploadChatImage_frame" id="uploadChatImage_frame" style="display: none"></iframe>
+            <form target="uploadChatImage_frame" name="productaddfrm" id="uploadChatImage" method="post" action="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+index.php?do=product&action=uploadChatImage" enctype="multipart/form-data">
+              <?php echo smarty_function_formhash(array(), $this);?>
+
+              <input type="hidden" name="chatbox_id" value="" />
+              <p><input accept="image/*" type="file" name="uploadChatImage" id="uploadChatImage_but" onchange="$('#uploadChatImage').submit()" /></p>
+    
+            </form>
+    </div>
    
    <div id="history-list-frame">    
       <div class="content">
@@ -1555,7 +1414,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="welcomnew-info-but" href="#welcomnew-info" style="display: none">Hidden Clicker</a>
 <div id="welcomnew-info" style="display: none">
 	
-	<div style="padding: 20px 20px 20px 20px;width: 710px;max-height: 600px;overflow-x: hidden">
+	<div style="padding: 20px 20px 20px 20px;width: 800px;max-height: 600px;overflow-x: hidden">
 			
 			<?php echo $this->_tpl_vars['welcomnew_info']['message']; ?>
 
@@ -1581,26 +1440,23 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 
 <a id="guestbox-but" href="#guest-box" style="display: none">Hidden Clicker</a>
 <div id="guest-box" style="display: none">
-	
 	<div style="padding: 20px 20px 10px 20px;width: 320px">
-			
-			 <div class="content_inner" style="padding-bottom:10px;">
-                            <div class="login_pls">
-                                Vui lòng <a class="comment_but" href="#login-box">Đăng nhập/Đăng ký</a> để viết lời bình hoặc điền thông tin bên dưới:
-                            </div>
-                            <div class="guest_form">
-                                <label>Họ và Tên <span>*</span></label>
-                                <input name="box_guest_name" />
-                                <label>Email <span>*</span></label>
-                                <input name="box_guest_email" />
-                                <button>Gửi</button>
-                            </div>
-                            
-                         </div>
+            <div class="content_inner" style="padding-bottom:10px;">
+               <div class="login_pls">
+                   Vui lòng <a class="comment_but" href="#login-box">Đăng nhập/Đăng ký</a> để viết lời bình hoặc điền thông tin bên dưới:
+               </div>
+               <div class="guest_form">
+                   <label>Họ và Tên <span>*</span></label>
+                   <input name="box_guest_name" />
+                   <label>Email <span>*</span></label>
+                   <input name="box_guest_email" />
+                   <button>Gửi</button>
+               </div>
+            </div>
         </div>
 </div>
 
-<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['id'] == 757 || $this->_tpl_vars['pb_userinfo']['current_type']): ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['role'] == 'admin' || $this->_tpl_vars['pb_userinfo']['current_type']): ?>
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
@@ -1612,4 +1468,37 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="topcart-but" href="#show_top_cart" style="display: none">Hidden Clicker</a>
 <div id="show_top_cart">
     
-</div>
+</div>
+
+<?php if ($this->_tpl_vars['flash']['title']): ?>
+<a id="popup-announce" class="comment_but" href="#popup-announce-box" style="display: none">Hidden Clicker</a>
+<div id="popup-announce-box" style="display: none">
+	
+	<div style="padding: 20px 20px 10px 20px;width: 320px">
+            <h2><?php echo $this->_tpl_vars['flash']['title']; ?>
+</h2>
+            <div class="flash_message">
+                <?php echo $this->_tpl_vars['flash']['message']; ?>
+
+            </div>
+        </div>
+        
+</div>
+<?php echo '
+    <script>
+        $(document).ready(function() {
+            $(\'#popup-announce\').trigger("click");
+            $.ajax({
+	    url: "index.php?do=product&action=removeFlash",
+            });
+        });
+    </script>
+'; ?>
+
+<?php endif; ?>
+
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_header_includes.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>

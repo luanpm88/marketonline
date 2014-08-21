@@ -120,6 +120,32 @@ if (isset($_GET['do'])) {
 		}
 		header('Location: '.$_SERVER['HTTP_REFERER']);
 	}
+	if($do == "price_list") {
+		$industries = $industry->getCacheIndustry();
+		$stt = 1;
+		foreach($industries as $key => &$item)
+		{
+			$item = $industry->read("*", $key);
+			$ii = $industry->field("children", "id=".$key);
+			//echo $item["name"]."--".$industry->getCountProduct($ii)."<br />";
+			$item["count"] = $industry->getCountProduct($ii);
+			$item["stt"] = $stt;
+			$item['ad_price'] = number_format($item["ad_price"], 0, ',', '.');
+			
+			$stt++;
+		}
+		setvar("industries", $industries);
+		$tpl_file = "banner_price";
+		
+		//adzone 6
+		$adzone6 = $adzone->read("*", 6);
+		$adzone6["price"] = number_format($adzone6["price"], 0, ',', '.');
+		setvar("adzone6",$adzone6);
+		//var_dump($adzone6);
+		
+		template($tpl_file);
+		exit;
+	}
 }
 
 
@@ -134,9 +160,13 @@ if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['src'] = pb_get_attachmenturl($result[$i]['source_url'], '../', "");
 		$result[$i]['industry_names'] = $industry->disSubNames($result[$i]['industry_id'],' <span class="delim">/</span> ', false, "product");
+		
 	}
 	setvar("Items", $result);
 	setvar("ByPages", $page->pagenav);
 }
+
+
+
 template($tpl_file);
 ?>

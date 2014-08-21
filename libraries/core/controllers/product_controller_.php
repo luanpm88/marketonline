@@ -680,7 +680,7 @@ class Product extends PbController {
 			}
 		}
 		if ($info['state']!=1) {
-			flash("unvalid_product", '', 0);
+			flash("unvalid_product", '', 0, 'bbb');
 		}
 		if($info['status']!=1){
 			$tmp_key = intval($info['status']);

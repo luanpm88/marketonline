@@ -101,7 +101,11 @@
 					<tr class="MenuItem8">
 					  <th><img src="{$office_theme_path}images/invoice.png"></th>
 					  <td><a href="sellerorder.php">{lang sell_order}</a>
-						{if $count_sellerorder}<div class="unread"><span>{$count_sellerorder}</span></div>{/if}
+						{if $count_sellerorder}
+							<div class="unread">
+								<span>{$count_sellerorder}</span>
+							</div>
+						{/if}
 					  </td>
 					</tr>
 				</table></td>
@@ -174,12 +178,17 @@
 				  </tr>
 				  <tr>
 					<td align="center">
-					<table class="menu_nav_content" id="MenuAds">
-						<tr class="MenuItem30">
-							<th><img src="{$office_theme_path}images/news.gif" /></th>
-							<td><a href="banner.php">{lang site_advertising}</a></td>
-						</tr>
-					</table></td>
+						<table class="menu_nav_content" id="MenuAds">
+							<tr class="MenuItem30">
+								<th><img src="{$office_theme_path}images/news.gif" /></th>
+								<td><a href="banner.php">{lang site_advertising}</a></td>
+							</tr>
+							<tr class="MenuItem30_1">
+								<th><img src="{$office_theme_path}images/invoice.png" /></th>
+								<td><a href="banner.php?do=price_list">Bảng giá</a></td>
+							</tr>
+						</table>
+					</td>
 				  </tr>
 				</table>
 		<!--{/if}-->

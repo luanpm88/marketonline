@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-26 14:14:16
+<?php /* Smarty version 2.6.27, created on 2014-08-21 14:53:12
          compiled from default/product/_product_detail_rightbar_paid.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/product/_product_detail_rightbar_paid.html', 3, false),array('modifier', 'truncate', 'default/product/_product_detail_rightbar_paid.html', 3, false),)), $this); ?>

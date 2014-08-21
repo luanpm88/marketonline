@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 09:35:23
+<?php /* Smarty version 2.6.27, created on 2014-08-13 16:16:18
          compiled from default%5Cproduct/TopCartAjaxNew.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/TopCartAjaxNew.html', 26, false),)), $this); ?>
@@ -75,13 +75,13 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
         $this->_foreach['sticky_offer']['iteration']++;
 ?>
 							<tr>
-							<td class="offer_img" width="9%"><a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
+							<td class="offer_img" width="9%"><a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id']),'product_name' => ($this->_tpl_vars['sticky']['p_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><img src="<?php echo $this->_tpl_vars['sticky']['image']; ?>
 " border=0 alt="<?php echo $this->_tpl_vars['sticky']['title']; ?>
 "></a></td>
 							<td style="padding-top: 20px" class="title_link">
-								<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id'])), $this);?>
+								<a href="<?php echo smarty_function_the_url(array('module' => 'product','id' => ($this->_tpl_vars['sticky']['p_id']),'product_name' => ($this->_tpl_vars['sticky']['p_name'])), $this);?>
 " title="<?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 "><?php echo $this->_tpl_vars['sticky']['p_name']; ?>
 </a>
@@ -133,21 +133,20 @@ if ($this->_foreach['sticky_offer']['total'] > 0):
 							    </td>
 							</tr>
 							<tr>
-								<td colspan=6 align=right style="text-align: right;">
-									<?php if ($this->_tpl_vars['pb_username']): ?>										
-										<input name="checkout" class="checkout_but" onclick="window.location='index.php?do=product&action=meminfo&id=<?php echo $this->_tpl_vars['shop']['id']; ?>
+							    <td colspan=6 align=right style="text-align: right;">
+								<?php if ($this->_tpl_vars['pb_username']): ?>										
+								    <input name="checkout" class="checkout_but" onclick="window.location='index.php?do=product&action=meminfo&id=<?php echo $this->_tpl_vars['shop']['id']; ?>
 '"  type="button" value="<?php echo $this->_tpl_vars['_confirm_cart']; ?>
 " />
-									<?php endif; ?>
-									<?php if (! $this->_tpl_vars['pb_username']): ?>										
-										<input name="checkout" class="checkout_but" onclick="window.location='cartlogging.php?id=<?php echo $this->_tpl_vars['shop']['id']; ?>
-'"  type="button" value="<?php echo $this->_tpl_vars['_confirm_cart']; ?>
+								<?php endif; ?>
+								<?php if (! $this->_tpl_vars['pb_username']): ?>										
+								    <input href="#login-box" name="checkout" class="checkout_but comment_but" redirect="index.php?do=product&action=meminfo&id=<?php echo $this->_tpl_vars['shop']['id']; ?>
+"  type="button" value="<?php echo $this->_tpl_vars['_confirm_cart']; ?>
 " />
-									<?php endif; ?>
-									<input type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+								<?php endif; ?>
+								<input type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
 index.php?do=product&action=add_cart'" class="checkout_but" style="margin-right: 10px" value="Vào giỏ hàng" />
-								</td>
-								
+							    </td>
 							</tr>
 						
 					<?php endforeach; endif; unset($_from); ?>

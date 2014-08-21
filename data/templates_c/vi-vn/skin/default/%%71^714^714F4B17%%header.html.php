@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-10 16:37:30
+<?php /* Smarty version 2.6.27, created on 2014-08-21 12:22:35
          compiled from header.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'formhash', 'header.html', 1232, false),array('function', 'the_url', 'header.html', 1287, false),array('modifier', 'default', 'header.html', 1243, false),array('modifier', 'date_format', 'header.html', 1257, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'header.html', 317, false),array('function', 'formhash', 'header.html', 1196, false),)), $this); ?>
   <!DOCTYPE html>
 
 <!--[if lt IE 7]>
@@ -136,7 +136,7 @@ js/jquery.qtip.min.js"></script>
 css/jquery.qtip.min.css">
 
 <script src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
-js/custom.js"></script>
+js/custom.js?v=1"></script>
 
 <link rel="stylesheet" media="screen" type="text/css" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 css/colorpicker.css" />
@@ -146,6 +146,8 @@ js/nivo/nivo-slider.css" />
 <link rel="stylesheet" media="screen" type="text/css" href="<?php echo $this->_tpl_vars['theme_img_path']; ?>
 js/nivo/themes/default/default.css" />
 
+<script type="text/javascript" src="<?php echo $this->_tpl_vars['theme_img_path']; ?>
+js/jemotion/jemotion.js"></script>
 
 <!--<script src="http://marketonline.vn/scripts/mudim-0.9-r162.js"></script>-->
 
@@ -193,25 +195,7 @@ css/options.css' rel='stylesheet' type='text/css'>
     }
     
     
-      function getAnnounce(ann_count)
-	{
-	   $.ajax({
-			       url: "index.php?do=product&action=getAnnounce",
-		       }).done(function ( data ) {
-			       if( console && console.log ) {
-				       //alert(data);
-				       $(\'#announce-frame\').prepend(data);
-				       
-				       $(\'#announce-frame .announce-box\').each(function(index){				    
-					   if (!$(this).hasClass("showed")) {
-					       $(this).addClass("ann"+ann_count);
-					       $(this).addClass("showed");
-					       setTimeout(function(){$(".ann"+ann_count).fadeOut()}, 60000);					
-					   }				    
-				       });
-			       }
-		       });
-	}
+
     
     function inserCustomBGFile(url, image) {
 		$(\'#uploadIVbutton\').removeAttr(\'disabled\');
@@ -392,16 +376,6 @@ function goclicky(meh, url)
 		});
 	}
 	
-	function getInbox() {
-		//code
-		$.ajax({
-			url: "index.php?do=product&action=ajaxInbox",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$("#inbox_out").html(data);
-			}
-		});
-	}
 	var pos_searchlist = 300;
 	var ichatbox = new Array();
 	var companylogo = \''; ?>
@@ -409,6 +383,11 @@ function goclicky(meh, url)
 <?php else: ?> <?php if ($this->_tpl_vars['user_avatar']): ?> <?php echo $this->_tpl_vars['user_avatar']; ?>
  <?php else: ?> <?php echo $this->_tpl_vars['theme_img_path']; ?>
 image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
+        
+        var ROOT_URL = \''; ?>
+<?php echo smarty_function_the_url(array('module' => "root-url"), $this);?>
+<?php echo '\';
+        
 	$(document).ready(function() {
 		if (window.chrome) {
 			$("#f_language_bar").css("margin-top", "-1px");
@@ -417,9 +396,10 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		
 		$(\'.thumbnails a\').eq(4).css(\'margin-right\', \'0\');
 		
-		getCart();
-		getInbox();
-		getTopChat();
+		
+		'; ?>
+<?php if ($this->_tpl_vars['pb_username'] != ""): ?><?php echo 'getTopChat();'; ?>
+<?php endif; ?><?php echo '
 		//$(\'a.cart_link\').click(function(){
 		//	$(\'.item_rows\').toggle();
 		//});
@@ -549,17 +529,11 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		
 		if($(\'#content\').height() > $(\'#left-sidebar\').height())
 		{
-		      $(\'#left-sidebar\').css(\'min-height\',$(\'#content\').height()+45+"px");
-				}
+		    $(\'#left-sidebar\').css(\'min-height\',$(\'#content\').height()+45+"px");
+		}
 		
 		
-		//setInterval(funcio);
-		
-		getNewClicked(\''; ?>
-<?php echo $this->_tpl_vars['pb_company']['id']; ?>
-<?php echo '\');
-		
-		$(\'body\').click(function(){if($(\'.clicked_note_box\').css(\'display\') == \'block\') $(\'.clicked_note_box\').fadeOut("slow", refreshClickedCompany(\''; ?>
+        	$(\'body\').click(function(){if($(\'.clicked_note_box\').css(\'display\') == \'block\') $(\'.clicked_note_box\').fadeOut("slow", refreshClickedCompany(\''; ?>
 <?php echo $this->_tpl_vars['pb_company']['id']; ?>
 <?php echo '\'))});	
 		$(\'.staticon\').click(function(e){$(\'.over_air_box\').css("display","none");$(\'.clicked_note_box\').toggle();e.stopPropagation();});
@@ -953,7 +927,7 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 			 },
 			 onChange: function (hsb, hex, rgb) {
 				 $(\'#colorSelector9 div\').css(\'backgroundColor\', \'#\' + hex);
-				 $(\'.fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img\').css(\'border-color\', \'#\' + hex);
+				 $(\'#top_company_info, #topmenu img, .fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img\').css(\'border-color\', \'#\' + hex);
 				 $(\'.pagination span,.pagination a:hover\').css(\'background\', \'#\' + hex);
 				 $(\'#darkf\').css(\'border-top\', \'solid 1px #\' + hex);
 				$(\'#borderColor\').val(\'#\' + hex);
@@ -1075,39 +1049,8 @@ image/usericon.jpg  <?php endif; ?>  <?php endif; ?><?php echo '\';
 		 $(\'body\').click(function(){$(\'#quick_inbox_content\').fadeOut();$(\'#quick_message_content\').fadeOut()});
 		    $(\'#inboxhome a.but\').click(function(event){$(\'#quick_inbox_content\').toggle();event.stopPropagation();});
 		    
-		var ann_count = 0;
-		setInterval(function(){ getAnnounce(ann_count); ann_count++}, 15000);
 		
-		//chatbox get new arrival
-		//setInterval(function(){ updateChatbox(); }, 5000);
-		
-		//chatboxs
-		'; ?>
-
-		    <?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-		    
-			<?php echo '
-			    setInterval(function(){ updateChatboxNew(); }, 8000);
-			'; ?>
-
-		    
-		    
-			<?php $_from = $this->_tpl_vars['chatboxsnew']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['level'] = array('total' => count($_from), 'iteration' => 0);
-if ($this->_foreach['level']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['key'] => $this->_tpl_vars['item']):
-        $this->_foreach['level']['iteration']++;
-?>
-                            <?php if ($this->_tpl_vars['item'] != ''): ?>
-                                getChatboxNew("<?php echo $this->_tpl_vars['item']; ?>
-", true);
-                            <?php endif; ?>
-                        <?php endforeach; endif; unset($_from); ?>
-			
-		    <?php endif; ?>
-		
-		<?php echo '
-		
-		
+				
 		$(".comment_but").fancybox({
 			\'padding\': 0,
 			\'zoomOpacity\': true,
@@ -1214,6 +1157,28 @@ if ($this->_foreach['level']['total'] > 0):
 		   $(\'#topCart\').live("click",function() {
 		       showCart();
 		   });
+                   
+                   
+                $("#underconstruction-info-but").fancybox({
+			\'padding\': 0,
+			\'zoomOpacity\': true,
+			\'zoomSpeedIn\': 500,
+			\'zoomSpeedOut\': 500,
+			\'overlayOpacity\': 0.75,
+			\'frameWidth\': 530,
+			\'frameHeight\': 400,
+			\'hideOnContentClick\': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+                   
+                //if(!$.cookie("underconstruction"))
+                //{
+                //    $.cookie("underconstruction", true);
+                //    $("#underconstruction-info-but").trigger("click");
+                //}
 	});
 	
 	
@@ -1314,19 +1279,31 @@ $(window).resize(function() {
 <a id="hiddenclicker" href="#box_alert" style="display: none">Hidden Clicker</a>
 <div id="box_alert" style="display: none">
 	
-	<div style="padding: 20px;width: 300px">
-			<h4><?php echo $this->_tpl_vars['_added_to_cart']; ?>
-</h4>
-<br />
-			<p>
-				<a id="add_paragraph" title="Add" class="button button-blue" href="index.php?do=product&action=add_cart"><?php echo $this->_tpl_vars['_go_to_cart']; ?>
+	<div style="width:400px;">
+        <div class="fifteen columns" id="page-title" style="padding-left: 20px;margin-top: 5px;">
+        
+                <h1 class="page-title">
+                                <strong><?php echo $this->_tpl_vars['_cart']; ?>
+</strong>                    </h1>
+        
+                <div class="breadcrumbs" style="width:auto"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
+"><?php echo $this->_tpl_vars['_home_page']; ?>
+</a> <span class="delim">/</span><a href="index.php?do=product"><?php echo $this->_tpl_vars['_product_center']; ?>
+</a><span class="delim">/</span><?php echo $this->_tpl_vars['_cart']; ?>
+ </div>
+        
+            </div>
+                            <div class="qiugouleftcon carttable" style="padding: 20px">
+                                <p style="" class="no_pp" style="padding: 15px;"><?php echo $this->_tpl_vars['_added_to_cart']; ?>
+!
+                                    <br /><br />
+                                    <a id="add_paragraph" title="Vào giỏ hàng" class="button button-blue" href="javascript:void(0)" onclick="showCart()" style="margin-right: 10px;"><?php echo $this->_tpl_vars['_go_to_cart']; ?>
 </a>
-				&nbsp;
-				<a href="javascript:$.fancybox.close();"><?php echo $this->_tpl_vars['_close']; ?>
-</a>
-			</p>
-			
-	</div>
+                                    <a id="add_paragraph" title="Tiếp tục mua" class="button button-blue" href="javascript:void(0)" onclick="javascript:$.fancybox.close();">Tiếp tục mua</a>
+                                </p>
+                                
+                            </div>
+        </div>
 	
    </div>
 
@@ -1381,144 +1358,22 @@ $(window).resize(function() {
 </div>
 
 
-   <div id="login-box" style="display: none">
-	
-	<div style="padding: 20px 20px 0px 20px;width: 320px">
-			  
-			 <div class="content_inner" style="padding-bottom:10px;">
-			  
-			  
-			  
-			  
-			  
-			  
-			  <div class="wrapper">
-    <div class="content">
-        
-	<h1><?php echo $this->_tpl_vars['_login']; ?>
-</h1>
-	
-        <div class="loadingcon">
-        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
-            <input type="hidden" name="action" value="logging">
-	    <input type="hidden" name="type" value="<?php echo $this->_tpl_vars['Type']; ?>
-">
-	    <input type="hidden" name="redirect" value="<?php echo $this->_tpl_vars['F_URL']; ?>
-">
-	    <?php echo smarty_function_formhash(array(), $this);?>
-
-	    <input type="hidden" name="forward" value="<?php echo $this->_tpl_vars['_G']['forward']; ?>
-" />
-            <div class="loadingconleft">
-                
-				<?php if ($this->_tpl_vars['LoginError']): ?><?php echo $this->_tpl_vars['LoginError']; ?>
-<?php endif; ?>
-				<br />
-<?php if ($this->_tpl_vars['pb_username'] != ""): ?>
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_user_name']; ?>
-
-                    </label>
-                    <label>
-                        <?php echo ((is_array($_tmp=@$this->_tpl_vars['pb_username'])) ? $this->_run_mod_handler('default', true, $_tmp, '`$_account_n_email_n_mobile`') : smarty_modifier_default($_tmp, '`$_account_n_email_n_mobile`')); ?>
-
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_member_type']; ?>
-
-                    </label>
-                    <label>
-                        <?php echo $this->_tpl_vars['member_info']['groupname']; ?>
-<img src="<?php echo $this->_tpl_vars['member_info']['groupimage']; ?>
-" />
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_your_last_login']; ?>
-<?php echo $this->_tpl_vars['_colon']; ?>
-
-                    </label>
-                    <label>
-                        <?php echo ((is_array($_tmp=$this->_tpl_vars['member_info']['last_login'])) ? $this->_run_mod_handler('date_format', true, $_tmp, "%Y-%m-%d %H:%M") : smarty_modifier_date_format($_tmp, "%Y-%m-%d %H:%M")); ?>
-
-                    </label>
-                    <br clear="all" />
-<?php else: ?>
-					<label class="loadingname">
-                        <?php echo $this->_tpl_vars['_user_name']; ?>
-
-                    </label>
-                    <label>
-                        <input type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="<?php echo $this->_tpl_vars['_account_n_email_n_mobile']; ?>
-" tabindex="1">&nbsp;
-                    </label>
-                    <label class="loadingname">
-                    <?php echo $this->_tpl_vars['_password']; ?>
-
-                    </label>
-                    <label>
-                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="<?php echo $this->_tpl_vars['_remember_password']; ?>
-">&nbsp;<?php echo $this->_tpl_vars['_remember_password']; ?>
-&nbsp;
-                    </label>
-                    <br clear="all" />
-                    
-                    <div class="clear"></div>
-                    <div class="login" id="btnLoginDiv">
-                       <input type="submit" name="log_in" value="<?php echo $this->_tpl_vars['_login']; ?>
-" id="wp-submit" class="submitbutton" />
-		       <div class="info_but_login">
-		       	<a href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
-getpasswd.php"><?php echo $this->_tpl_vars['_forget_password']; ?>
-</a><br />
-		       	<a href="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
-register.php"><?php echo $this->_tpl_vars['_register']; ?>
-</a>
-		       </div>
-                    </div>
-		    
-		   <div class="box-res-con">
-		     <div class="inner-boxx">
-    <h4><?php echo $this->_tpl_vars['_not_register_annouce']; ?>
-</h4><br />
-    <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='<?php echo smarty_function_the_url(array('module' => 'register'), $this);?>
-'"><?php echo $this->_tpl_vars['_register']; ?>
-</button>
-</div>
-		    </div>
-<?php endif; ?>
-                    
-            </div>
-            
-        </form>
-        </div>
-    </div>
-</div>
-<script src="data/cache/<?php echo $this->_tpl_vars['JsLanguage']; ?>
-/locale.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
-"></script>
-<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
-<script language="javascript" src="scripts/validate.js" charset="<?php echo $this->_tpl_vars['charset']; ?>
-"></script>
-<script>
-var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_mobile']; ?>
-";
-</script>
-			 
-			 
-			 
-			  
-			 </div>
-	</div>
-	
-</div>
-
 <div id="announce-frame"></div>
    
       <div id="chat-frame">
     
    </div>
+      <div style="display:none">
+        <iframe name="uploadChatImage_frame" id="uploadChatImage_frame" style="display: none"></iframe>
+            <form target="uploadChatImage_frame" name="productaddfrm" id="uploadChatImage" method="post" action="<?php echo $this->_tpl_vars['WebRootUrl']; ?>
+index.php?do=product&action=uploadChatImage" enctype="multipart/form-data">
+              <?php echo smarty_function_formhash(array(), $this);?>
+
+              <input type="hidden" name="chatbox_id" value="" />
+              <p><input accept="image/*" type="file" name="uploadChatImage" id="uploadChatImage_but" onchange="$('#uploadChatImage').submit()" /></p>
+    
+            </form>
+    </div>
       
       
          <div id="history-list-frame">    
@@ -1549,7 +1404,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
 <a id="welcomnew-info-but" href="#welcomnew-info" style="display: none">Hidden Clicker</a>
 <div id="welcomnew-info" style="display: none">
 	
-	<div style="padding: 20px 20px 20px 20px;width: 750px;max-height: 600px;overflow-x: hidden">
+	<div style="padding: 20px 20px 20px 20px;width: 800px;max-height: 600px;overflow-x: hidden">
 			
 			<?php echo $this->_tpl_vars['welcomnew_info']['message']; ?>
 
@@ -1584,7 +1439,7 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
     
 </div>
 
-<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['id'] == 757 || $this->_tpl_vars['pb_userinfo']['current_type']): ?>
+<?php if ($this->_tpl_vars['pb_userinfo']['current_type'] == 6 || $this->_tpl_vars['pb_userinfo']['role'] == 'admin' || $this->_tpl_vars['pb_userinfo']['current_type']): ?>
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
@@ -1592,3 +1447,9 @@ var account_n_email_n_mobile = "<?php echo $this->_tpl_vars['_account_n_email_n_
     </div>
 </div>
 <?php endif; ?>
+
+<?php $_smarty_tpl_vars = $this->_tpl_vars;
+$this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/_header_includes.html", 'smarty_include_vars' => array()));
+$this->_tpl_vars = $_smarty_tpl_vars;
+unset($_smarty_tpl_vars);
+ ?>

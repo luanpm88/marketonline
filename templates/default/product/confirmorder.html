@@ -1,4 +1,4 @@
-<!--{include file="`$theme_name`/header.html" page_title="`$page_title`" nav_id="`$nav_id`"}-->
+<!--{include file="`$theme_name`/header.html" page_title="Xác nhận thông tin mua hàng" nav_id="`$nav_id`"}-->
 
 
 <div id="body-wrapper" >
@@ -35,9 +35,9 @@
 
     <div class="blank6"></div>
     
-    <div class="blockBStore">
+    <div class="blockBStore" style="float: left; width: 31%;margin-right:20px">
             <h3>{lang buyer_information}</h3>
-            <div class="contStore" style="clear: both;padding-right: 30px">
+            <div class="contStore" style="clear: both;">
               <div class="formProfile box-profile">		
 		
 		<p>
@@ -69,9 +69,9 @@
 	      
             </div>
           </div>
-    <div class="blockBStore">
+    <div class="blockBStore" style="float: left; width: 31%;margin-right:20px">
             <h3>{lang receiver_information}</h3>
-            <div class="contStore" style="clear: both;padding-right: 20px">
+            <div class="contStore" style="clear: both;">
               <div class="formProfile box-profile">		
 		
 		<p>
@@ -103,7 +103,40 @@
 	      
             </div>
           </div>
-    
+    <div class="blockBStore" style="float: left; width: 31%;margin-right:20px">
+            <h3>{lang seller}</h3>
+            <div class="contStore" style="clear: both;">
+              <div class="formProfile box-profile">		
+		
+		<p>
+			<span>{lang space_name}:<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.shop_name}
+		</p>
+		
+		<p>
+			<span>{lang mobile}:<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.mobile}
+		</p>
+		
+		<p>
+			<span>{lang email}:<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.email}
+		</p>
+		
+			
+		
+		<p>
+			<span>{lang address}:<b class="red-bold"></b>&nbsp;</span>
+			{$Seller.address}
+		</p>
+   
+                
+		
+                
+              </div>
+	      
+            </div>
+          </div>
     <div class="detailtopcon clearfix" style="clear: both;">
 		<h3>{lang products}</h3>
 		
@@ -116,11 +149,9 @@
 					<tr>
 						<th width="10%" style="text-align: center">{lang picture}</th>
 						<th style="text-align: center">{lang product}</th>
-						
 						<th style="text-align: center">{lang quantity}</th>
 						<th style="text-align: right;padding-right: 43px">{lang unit_price} (VNĐ)</th>
 						<th style="text-align: right;padding-right: 43px">{lang sum_price} (VNĐ)</th>					
-						
 					</tr>
 					
 						

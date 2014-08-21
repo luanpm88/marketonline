@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-03 15:08:20
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:37:42
          compiled from default%5Cproduct/ajaxViewedList.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/ajaxViewedList.html', 6, false),)), $this); ?>

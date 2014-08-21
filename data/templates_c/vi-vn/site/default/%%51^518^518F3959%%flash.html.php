@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-04-28 08:48:55
+<?php /* Smarty version 2.6.27, created on 2014-08-15 10:41:27
          compiled from default/flash.html */ ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['box_title']))));

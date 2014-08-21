@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 13:42:18
+<?php /* Smarty version 2.6.27, created on 2014-08-13 15:53:19
          compiled from default%5Cproduct/category.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/category.html', 571, false),array('modifier', 'default', 'default\\product/category.html', 1034, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\product/category.html', 576, false),array('modifier', 'default', 'default\\product/category.html', 1038, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -97,7 +97,7 @@ unset($_smarty_tpl_vars);
 						  
 						  if (industryid) {
 						      //getFilterProducts() in custom.js
-						      $(\'#ProductName\').val("");
+						      resetKeyword();
 						      ajaxListProduct(getFilterProducts());
 						  }
 						 
@@ -147,7 +147,7 @@ unset($_smarty_tpl_vars);
 						  
 						  if (industryid) {
 						     //getFilterProducts() in custom.js
-						     $(\'#ProductName\').val("");
+						     resetKeyword();
 						    ajaxListProduct(getFilterProducts());
 						  }
 						 
@@ -198,7 +198,7 @@ unset($_smarty_tpl_vars);
 				    $(\'#list_product_ajax\'+pos+\' ul\').append($(data).filter(".products_"+i).html());
 				}
 				
-				pos_pg = 15;
+				pos_pg = nnum_pp_page;
 				$(\'.product_list_loading\').css("display", "none");
 				
 				
@@ -276,7 +276,7 @@ unset($_smarty_tpl_vars);
 				    //alert(getMinHeight());
 				}
 				startscroll = true;
-				pos_pg += 15;
+				pos_pg += nnum_pp_page;
 				
 				$(\'.product_listing ul.products li.product img\').load(function() {
 				    $(this).parent().css("height", $(this).parent().height());
@@ -315,7 +315,7 @@ unset($_smarty_tpl_vars);
 				    //alert(getMinHeight());
 				}
 				startscroll = true;
-				pos_pg += 15;
+				pos_pg += nnum_pp_page;
 				
 				$(\'.product_listing ul.products li.product img\').load(function() {
 				    $(this).parent().css("height", $(this).parent().height());
@@ -351,32 +351,38 @@ unset($_smarty_tpl_vars);
 	var scroll = false;
 	
 	var page = 1;
-	var num_per_page = 45;
+	var num_per_page = 25;
 	$(document).ready(function() {
 	  
 	  if ($(\'#aq-block-5\').height())
 	    pos_searchlist = $(\'#aq-block-5\').height() + 440;
 	  else
-	    pos_searchlist = 271;
+	    pos_searchlist = 250;
 	       
-	      //Init level 4
-	       $(".hotnewlist").removeClass("active");
-	       $(\'#new_product_but\').addClass("active");
-	       industryid = '; ?>
+	      '; ?>
+<?php if ($_GET['level'] == 'search'): ?><?php echo '
+		orderby = \'all\';
+		industryid = '; ?>
 <?php echo $this->_tpl_vars['IndustryList']['id']; ?>
 <?php echo ';
-	       
-	      
-	      //getFilterProducts() in custom.js
-	      //ajaxListProduct(getFilterProducts());
-	      ajaxListProductPage(getFilterProducts(),1);
+		ajaxListProductPage(getFilterProducts(),1);
+	      '; ?>
+<?php else: ?><?php echo '
+		//Init level 4
+		$(".hotnewlist").removeClass("active");
+		$(\'#new_product_but\').addClass("active");
+		industryid = '; ?>
+<?php echo $this->_tpl_vars['IndustryList']['id']; ?>
+<?php echo ';
+		ajaxListProductPage(getFilterProducts(),1);
+	      '; ?>
+<?php endif; ?><?php echo '
 	      
 	      
 	      ajaxLoadMenu('; ?>
 <?php echo $this->_tpl_vars['IndustryList']['id']; ?>
 , <?php echo $this->_tpl_vars['p_level']+1; ?>
 <?php echo ', null)
-
 	 
 		$(\'#hot_product_but\').click(function () {
 			resetFilter();
@@ -479,13 +485,15 @@ unset($_smarty_tpl_vars);
 			
 			if (industryid) {
 			    //getFilterProducts() in custom.js
-			    $(\'#ProductName\').val("");
+			    resetKeyword();
 			    ajaxListProduct(getFilterProducts());
 			}
 		});
 		
 		$(\'a.all_p\').click(function() {
 		    industryid = 0;
+		    
+		    resetKeyword();
 		    
 		    $(\'.box-scroll ul li\').removeClass(\'active\');
 			
@@ -539,7 +547,9 @@ unset($_smarty_tpl_vars);
 	
 	
 	var startscroll = true;
-	var pos_pg = 15;
+	var nnum_pp_page = 15;
+	var pos_pg = nnum_pp_page;
+	
 
 	$(document).scroll(function(){		
 		if(($(document).height()-$(window).height()-$(document).scrollTop()) < 1000){
@@ -589,7 +599,7 @@ unset($_smarty_tpl_vars);
 		</div>
 		<a href="<?php if ($this->_tpl_vars['item']['service']): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
 <?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php endif; ?>">
+<?php endif; ?>" class="show-but current-but <?php if ($this->_tpl_vars['item']['service']): ?>service<?php else: ?>product<?php endif; ?>">
 			.			
 		</a>
 		<br style="clear:both" />
@@ -611,8 +621,6 @@ unset($_smarty_tpl_vars);
 "><?php echo $this->_tpl_vars['IndustryList']['level1_name']; ?>
 </a><span class="delim">/</span><?php echo $this->_tpl_vars['IndustryList']['name']; ?>
  </div>
-
-    
     
   </div>
 
@@ -780,7 +788,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 		</div>
 		<a href="<?php if ($_GET['action'] == 'services'): ?><?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
 <?php else: ?><?php echo smarty_function_the_url(array('module' => 'product_main'), $this);?>
-<?php endif; ?>" class="show-but current-but <?php if ($_GET['action'] == 'services'): ?>service<?php endif; ?>">
+<?php endif; ?>" class="show-but current-but <?php if ($_GET['action'] == 'services'): ?>service<?php else: ?>product<?php endif; ?>">
 			.			
 		</a>
 		<br style="clear:both" />
@@ -790,7 +798,6 @@ if ($this->_foreach['level_0']['total'] > 0):
 		</div>
 	</div>
     
-    <div class="subtitle">Sản phẩm</div>
     
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
@@ -809,7 +816,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 271px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 250px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>
@@ -1049,7 +1056,7 @@ if ($this->_foreach['spacelink']['total'] > 0):
         <?php echo $this->_tpl_vars['_product_list']; ?>
     </div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
-      <a id="new_product_but" class="hotnewlist active" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
+      <a id="new_product_but" class="hotnewlist" href="javascript:void(0)"><?php echo $this->_tpl_vars['_new_product']; ?>
 </a>&nbsp;&nbsp;&nbsp;&nbsp;
       
       <!-- for sale -->
@@ -1086,7 +1093,10 @@ unset($_smarty_tpl_vars);
     
   </div>
       
-      
+      <?php if ($_GET['level'] == 'search'): ?>
+	<h4 class="keyword_header"><?php echo $this->_tpl_vars['IndustryList']['name']; ?>
+</h4>
+      <?php endif; ?>
 
 	  
 	  <br class="clear" />

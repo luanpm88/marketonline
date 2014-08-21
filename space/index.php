@@ -5,27 +5,9 @@
  *
  *      @version $Revision: 2048 $
  */
+
 define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
-
-
-	////get chatboxs
-	$chatboxs = $session->read("chatboxs".session_id());
-	$chatboxs = explode(",", $chatboxs);
-	foreach($chatboxs as $key => $uuu)
-	{
-		$uuu = explode("_",$uuu);
-		$chatboxsx[$key]["userid"] = $uuu[0];
-		$chatboxsx[$key]["typeid"] = $uuu[1];
-	}
-	////$session->write("chatboxs".session_id(), NULL);
-	setvar("chatboxs", $chatboxsx);
-	
-	$chatboxsnew = $session->read("chatboxsnew".session_id());
-	//echo $chatboxs."ddfdfdf";
-	$chatboxsnew = explode(",", $chatboxsnew);
-	setvar("chatboxsnew", $chatboxsnew);
-
 
 $do = null;
 $space_actions = array(
@@ -74,5 +56,6 @@ if (isset($_GET['pos'])) {
 setvar("do", $do);
 
 require("common.inc.php");
+
 require($do.".inc.php");
 ?>

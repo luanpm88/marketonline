@@ -65,7 +65,6 @@ class DB_Sql {
 
 		/* establish connection, select database */
 		if ( 0 == $this->Link_ID ) {
-
 			$this->Link_ID=mysql_pconnect($Host, $User, $Password);
 			if (!$this->Link_ID) {
 				$this->halt("pconnect($Host, $User, \$Password) failed.");

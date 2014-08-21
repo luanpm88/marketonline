@@ -78,6 +78,19 @@
 		</td>
       </tr>
       <tr>
+        <th class="paddingT15">For Company Zone</th>
+        <td class="paddingT15 wordSpacing5">
+		<label for="Sourcetype1">
+			<input {if $item.company_zone}checked="checked"{/if} type="radio" name="adzone[company_zone]" id="Sourcetype1" value="1"/>
+			Yes
+		</label>
+		<label for="Sourcetype2">
+			<input {if !$item.company_zone}checked="checked"{/if} type="radio" name="adzone[company_zone]" id="Sourcetype2" value="0"/>
+			No
+		</label>
+          </td>
+      </tr>
+      <tr>
         <th></th>
         <td class="ptb20">
 			<input class="formbtn" type="submit" name="save" value="{lang publish}" />		</td>

@@ -221,6 +221,11 @@ class Job extends PbController {
 			setvar("area_string",$area_string);
 			setvar("companyinfo",$companyinfo);
 			setvar("item",$info);
+			
+			setvar('fb_title', "(Tuyển dụng) ".$companyinfo['name'].": ".$info['name']);
+			setvar('fb_image', $companyinfo['logobig']);
+			setvar("fb_description", mb_convert_encoding(preg_replace('/\s+/'," ",substr(trim(strip_tags($info["content"])),0, 1000)),"UTF-8"));
+			
 			render("job/detail", 1);
 		}
 	}

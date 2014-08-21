@@ -7,7 +7,7 @@
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
-uses("member","membergroup","typeoption");
+uses("member","membergroup","typeoption","link");
 require(LIB_PATH. 'time.class.php');
 require(PHPB2B_ROOT. 'libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
@@ -17,6 +17,7 @@ $typeoption = new Typeoption();
 $membergroup = new Membergroup();
 $member = new Members();
 $page = new Pages();
+$link = new Links();
 $tpl_file = "member";
 $conditions = array();
 setvar("MembergroupOptions", $membergroup->getUsergroups());
@@ -50,24 +51,24 @@ if (isset($_POST)) {
 			require_once(LIB_PATH. "excel_export.class.php");
 			$excel = new excel_xml();
 			$header_style = array(
-			'bold'       => 1,
-			'size'       => '10',
-			'color'      => '#FFFFFF',
-			'bgcolor'    => '#4F81BD'
+				'bold'       => 1,
+				'size'       => '10',
+				'color'      => '#FFFFFF',
+				'bgcolor'    => '#4F81BD'
 			);
 			$excel->add_style('header', $header_style);
 			$excel->add_row(array(
-			'User Name',
-			'Email',
-			'Member Type',
-			'Member Group',
-			'True Name',
-			'Gender',
-			'Telephone',
-			'Fax',
-			'Mobile',
-			'Address',
-			'Zipcode'
+				'User Name',
+				'Email',
+				'Member Type',
+				'Member Group',
+				'True Name',
+				'Gender',
+				'Telephone',
+				'Fax',
+				'Mobile',
+				'Address',
+				'Zipcode'
 			), 'header');
 			foreach ($result as $key=>$val) {
 				$excel->add_row(array(
@@ -132,6 +133,29 @@ if (isset($_POST['save'])) {
 	if (isset($_POST['data']['service_end_date'])) {
 		$vals['service_end_date'] = Times::dateConvert($_POST['data']['service_end_date']);
 	}
+	
+	$parent_id = $member->field("id", "username='".$_POST['parent_username']."' OR email='".$_POST['parent_username']."'");
+	if($parent_id)
+	{
+		$vals['referrer_id'] = $parent_id;
+	}
+	else
+	{
+		$vals['referrer_id'] = false;
+	}
+	//update link tables
+	if($vals['referrer_id'])
+	{
+		$link_exsit = $link->fields("*", array("member_id=".$member_id));
+		if($link_exsit) {
+			$link->saveField("parent_id",$vals['referrer_id'], intval($link_exsit["id"]));
+		}
+		else {
+			$link->save(array("parent_id"=>$vals['referrer_id'], "member_id"=>$member_id, "type_id"=>1, "created"=>date("Y-m-d H:i:s")));
+		}
+	}
+	//var_dump($vals['referrer_id']);
+	
 	if(!empty($member_id)){
 		$vals['modified'] = $time_stamp;
 		if (!empty($vals['space_name'])) {
@@ -155,7 +179,7 @@ if (isset($_GET['do'])) {
 	if ($do == "edit") {
 		$vals =  null;
 		if (!empty($id)){
-			$res = $pdb->GetRow("SELECT m.*,mf.* FROM {$tb_prefix}members m LEFT JOIN {$tb_prefix}memberfields mf ON m.id=mf.member_id WHERE m.id={$id}");
+			$res = $pdb->GetRow("SELECT link.parent_id, parent.username as parent_username, m.*,mf.* FROM {$tb_prefix}members m LEFT JOIN {$tb_prefix}memberfields mf ON m.id=mf.member_id LEFT JOIN {$tb_prefix}links link ON m.id=link.member_id LEFT JOIN {$tb_prefix}members parent ON parent.id=link.parent_id WHERE m.id={$id}");
 			if (empty($res)) {
 				flash("data_not_exists");
 			}
@@ -199,10 +223,13 @@ if (isset($_GET['do'])) {
 		$member->saveField("checkout", "0", $id);
 	}
 }
-$fields = "id,username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,last_ip,points,credits,membergroup_id,status,created AS pubdate,last_login,trusttype_ids,checkout";
+$fields = "c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";
 $amount = $member->findCount(null, $conditions);
 $page->setPagenav($amount);
 $joins[] = "LEFT JOIN {$tb_prefix}memberfields mf ON Member.id=mf.member_id";
+$joins[] = "LEFT JOIN {$tb_prefix}links link ON Member.id=link.member_id";
+$joins[] = "LEFT JOIN {$tb_prefix}members parent ON parent.id=link.parent_id";
+$joins[] = "LEFT JOIN {$tb_prefix}companies c ON Member.id=c.member_id";
 $result = $member->findAll($fields, $joins, $conditions, "Member.id DESC ",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

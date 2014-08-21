@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 10:34:04
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:37:37
          compiled from default%5Coffers/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\offers/level1.html', 721, false),array('modifier', 'default', 'default\\offers/level1.html', 1019, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\offers/level1.html', 721, false),array('modifier', 'default', 'default\\offers/level1.html', 1018, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -292,7 +292,7 @@ unset($_smarty_tpl_vars);
 	  if ($(\'#aq-block-5\').height())
 	    pos_searchlist = $(\'#aq-block-5\').height() + 440;
 	  else
-	    pos_searchlist = 271;
+	    pos_searchlist = 250;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -776,7 +776,6 @@ if ($this->_foreach['level_0']['total'] > 0):
 		</div>
 	</div>
     
-    <div class="subtitle">Thương mại</div>
     
 
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
@@ -796,7 +795,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 271px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 250px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>

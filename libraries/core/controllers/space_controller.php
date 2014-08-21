@@ -163,7 +163,7 @@ class Space extends PbController {
 		return $this->menu;
 	}
 	
-	function render($tpl_file, $ext = ".html")
+	function render($tpl_file = null, $ext = ".html")
 	{
 		global $smarty, $skin_path;
 		if(!file_exists($smarty->template_dir.$skin_path.DS.$tpl_file.$ext)){

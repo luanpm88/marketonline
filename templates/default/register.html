@@ -24,13 +24,13 @@ function getSharingUsername() {
 				//alert(data);
 				if(data != '')
 				{
-				  $('#dataMemberReferrerHidden').val(data);
-				  $('.noreferrer').remove();
+				  $('#dataMemberReferrer').val(data);
+				  //$('.noreferrer').remove();
 				}
 				else
 				{
-				  $('#dataMemberReferrerHidden').remove();
-				  $('.noreferrer').css("display", "block");
+				  //$('#dataMemberReferrerHidden').remove();
+				  //$('.noreferrer').css("display", "block");
 				}
 			}
   });
@@ -144,12 +144,12 @@ function getSharingUsername() {
 
 
 <div class="row">
-  
+  {if $capt_check == false}<div class="capt-error">Mã bảo mật không đúng. Vui lòng nhập lại!</div>{/if}
 <ul class="main_user_select">
   <li class="{if $smarty.get.typename == "Company"}active{/if}" rel="shop"><a href="javascript:void(0)">Tạo Gian hàng</a></li>
-  <li class="{if $smarty.get.typename == "Employee"}active{/if}" rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
-  <li class="{if $smarty.get.typename == "Employer"}active{/if}" rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
-  <li class="{if $smarty.get.typename == "Learner"}active{/if}" rel="learner"><a href="javascript:void(0)">Học tập</a></li>
+  <li class="{if $smarty.get.typename == "Employee" || $smarty.post.typename == "Employee"}active{/if}" rel="employee"><a href="javascript:void(0)">Xin Việc</a></li>
+  <li class="{if $smarty.get.typename == "Employer" || $smarty.post.typename == "Employer"}active{/if}" rel="employer"><a href="javascript:void(0)">Tuyển dụng</a></li>
+  <li class="{if $smarty.get.typename == "Learner" || $smarty.post.typename == "Learner"}active{/if}" rel="learner"><a href="javascript:void(0)">Học tập</a></li>
 </ul>
 
     <div class="four columns loginbox resbox">
@@ -161,6 +161,8 @@ function getSharingUsername() {
 	    
 	    
 	    <form name="regfrm" id="regfrm" method="post" action="" autocomplete="off">
+	      <input style="display:none">
+<input type="password" style="display:none">
             <!-- {formhash} -->
             <input type="hidden" name="register" value="{$_G.type}" />
             <!--<input type="hidden" name="typename" value="{$_G.typename|urldecode}" />-->
@@ -170,9 +172,9 @@ function getSharingUsername() {
 			{lang member_type_choose}:<span>*</span>
 			</label>
 			
-			<input type="radio" name="typename" value="Personal" /> Cá nhân |
-			<input type="radio" name="typename" value="Shop" /> Cửa hàng |
-			<input type="radio" name="typename" value="Company" /> Doanh nghiệp
+			<input type="radio" name="typename" value="Personal" {if $smarty.post.typename == "Personal"}checked="checked"{/if} /> Cá nhân |
+			<input type="radio" name="typename" value="Shop" {if $smarty.post.typename == "Shop"}checked="checked"{/if}/> Cửa hàng |
+			<input type="radio" name="typename" value="Company"  {if $smarty.post.typename == "Company"}checked="checked"{/if}/> Doanh nghiệp
 			
 			<input class="hidden_check" type="radio" name="typename" value="Employee" />
 			<input class="hidden_check" type="radio" name="typename" value="Employer" />
@@ -183,8 +185,7 @@ function getSharingUsername() {
 			<label class="registerlabel" for="dataMemberUsername">
 			{lang member_login_name}<span>*</span>
 			</label>
-			
-			<input placeholder="Tên đăng nhập (không phải tên Shop)" type="text" name="data[member][username]" id="dataMemberUsername" value="" tabindex="1"/>
+			<input placeholder="Tên đăng nhập (không phải tên Shop)" type="text" name="data[member][username]" id="dataMemberUsername" value="{$smarty.post.data.member.username}" tabindex="1"/>
 	    
 			<label class="lenglabel" id="membernameDiv">
 			
@@ -195,7 +196,7 @@ function getSharingUsername() {
 			{lang email}<span>*</span>
 			</label>
 
-			<input placeholder="E-mail để khách hàng liên hệ với bạn" type="text" name="data[member][email]" id="dataMemberEmail" value="" tabindex="2"/>
+			<input placeholder="E-mail để khách hàng liên hệ với bạn" type="text" name="data[member][email]" id="dataMemberEmail" value="{$smarty.post.data.member.email}" tabindex="2"/>
 
 			<label class="lenglabel" id="memberemailDiv">
 
@@ -206,7 +207,7 @@ function getSharingUsername() {
 			Nhập lại email<span>*</span>
 			</label>
 
-			<input placeholder="" type="text" name="confirm_email" id="dataMemberConfirmEmail" value="" tabindex="2"/>
+			<input placeholder="" type="text" name="confirm_email" id="dataMemberConfirmEmail" value="{$smarty.post.data.member.email}" tabindex="2"/>
 
 			<label class="lenglabel" id="memberemailDiv">
 
@@ -217,7 +218,7 @@ function getSharingUsername() {
 			{lang password}<span>*</span>
 			</label>
 
-			<input type="password" name="data[member][userpass]" id="memberpass" value="" tabindex="3">
+			<input type="password" autocomplete="off" name="data[member][userpass]" id="memberpass" value="" tabindex="3">
 
 			<label class="lenglabel">
 			
@@ -237,10 +238,10 @@ function getSharingUsername() {
 	    
 	    
 	    
-	      <input type="hidden" name="data[member][referrer_id]" id="dataMemberReferrerHidden" value="" tabindex="5"/>
+	      <!--<input type="hidden" name="data[member][referrer_id]" id="dataMemberReferrerHidden" value="{$smarty.post.data.member.referrer_id}" tabindex="5"/>-->
 	       
 	    
-	      <p class="noreferrer" style="display: none">
+	      <p class="noreferrer" style="">
 			  <label class="registerlabel" for="dataMemberUsername">
 			  {lang referrer_name}
 			  </label>

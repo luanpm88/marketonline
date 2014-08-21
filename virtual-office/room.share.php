@@ -5,7 +5,7 @@
  *
  *      @version $Revision: 2133 $
  */
-session_start();
+
 $office_theme_name = "";
 require(CACHE_LANG_PATH.'lang_office.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
@@ -50,6 +50,7 @@ if (empty($_SESSION['MemberID']) || empty($_SESSION['MemberName'])) {
 }
 $the_memberid = intval($_SESSION['MemberID']);
 $the_membername = $_SESSION['MemberName'];
+$pb_userinfo = $member->getInfoById($the_memberid);
 //if caches
 $cache_data = array();
 $pdb->Execute("DELETE FROM {$tb_prefix}membercaches WHERE expiration<".$time_stamp);
@@ -169,20 +170,7 @@ if($hasProfile && $hasCompany)
 	
 }
 
-	////get chatboxs
-	//var_dump($session);
-	$chatboxs = $session->read("chatboxs".session_id());
-	$chatboxs = explode(",", $chatboxs);
-	foreach($chatboxs as $key => $uuu)
-	{
-		$uuu = explode("_",$uuu);
-		$chatboxsx[$key]["userid"] = $uuu[0];
-		$chatboxsx[$key]["typeid"] = $uuu[1];
-	}
-	////$session->write("chatboxs".session_id(), NULL);
-	setvar("chatboxs", $chatboxsx);
-	
-	$chatboxsnew = $session->read("chatboxsnew".session_id());
+	$chatboxsnew = $_SESSION["chatboxsnew"];
 	//echo $chatboxs."ddfdfdf";
 	$chatboxsnew = explode(",", $chatboxsnew);
 	setvar("chatboxsnew", $chatboxsnew);

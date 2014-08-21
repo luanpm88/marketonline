@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 09:56:03
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:58:19
          compiled from ajaxannoucebox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('block', 'offer', 'ajaxannoucebox.html', 23, false),array('block', 'job', 'ajaxannoucebox.html', 99, false),array('block', 'companynews', 'ajaxannoucebox.html', 127, false),array('block', 'product', 'ajaxannoucebox.html', 145, false),array('modifier', 'truncate', 'ajaxannoucebox.html', 25, false),array('function', 'the_url', 'ajaxannoucebox.html', 147, false),)), $this); ?>

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-02 10:47:30
+<?php /* Smarty version 2.6.27, created on 2014-08-14 16:35:33
          compiled from default/job/jobsearchbox.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/job/jobsearchbox.html', 6, false),)), $this); ?>

@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2013-09-23 09:54:18
+<?php /* Smarty version 2.6.27, created on 2014-08-14 11:59:49
          compiled from adzone.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'adzone.html', 37, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'default', 'adzone.html', 40, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array()));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -40,6 +40,7 @@ unset($_smarty_tpl_vars);
 </th>
 		  <th><label for="idAll"><?php echo $this->_tpl_vars['_adzone']; ?>
 </label></th>
+		  <th>Company Zone</th>
 		  <th><?php echo $this->_tpl_vars['_advertisement']; ?>
  <?php echo $this->_tpl_vars['_record_amount']; ?>
 </th>
@@ -51,6 +52,7 @@ unset($_smarty_tpl_vars);
 </th>
 		  <th><?php echo $this->_tpl_vars['_calling_code']; ?>
 </th>
+		  <th>Thứ tự</th>
 		  <th><?php echo $this->_tpl_vars['_action']; ?>
 </th>
 		</tr>
@@ -71,6 +73,8 @@ if ($this->_foreach['adzone']['total'] > 0):
 		  <td><label for="item_<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo $this->_tpl_vars['item']['name']; ?>
 </label></td>
+		  <td><?php echo $this->_tpl_vars['item']['company_zone']; ?>
+</td>
 		  <td><a href="ad.php?do=search&adzone_id=<?php echo $this->_tpl_vars['item']['id']; ?>
 "><?php echo ((is_array($_tmp=@$this->_tpl_vars['item']['numbers'])) ? $this->_run_mod_handler('default', true, $_tmp, 0) : smarty_modifier_default($_tmp, 0)); ?>
 </a></td>
@@ -83,6 +87,9 @@ if ($this->_foreach['adzone']['total'] > 0):
 " title="<?php echo $this->_tpl_vars['_make_javascript_code']; ?>
 "><img src="<?php echo $this->_tpl_vars['admin_theme_path']; ?>
 images/export.gif" border="0" /></a></td>
+		  <td><input name="order[<?php echo $this->_tpl_vars['item']['id']; ?>
+]" value="<?php echo $this->_tpl_vars['item']['display_order']; ?>
+" style="text-align: right;width: 50px;margin-right: 20px;" /></td>
 		  <td class="handler">
            <ul id="handler_icon">
             <li><a class="btn_delete" href="adzone.php?id=<?php echo $this->_tpl_vars['item']['id']; ?>
@@ -117,6 +124,7 @@ images/export.gif" border="0" /></a></td>
     <div class="left paddingT15" id="batchAction">
       <input type="submit" name="del" value="<?php echo $this->_tpl_vars['_delete']; ?>
 " class="formbtn batchButton"/>
+      <input type="submit" name="saveorder" value="Lưu thứ tự" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks"><?php echo $this->_tpl_vars['ByPages']; ?>
 </div>

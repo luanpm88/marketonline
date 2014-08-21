@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-06-13 14:49:14
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:37:43
          compiled from default%5Cproduct/ajaxLoadMenuConnect.html */ ?>
 <div id="mapp" style="display: none"><?php echo $this->_tpl_vars['Map']; ?>
 </div>

@@ -8,6 +8,39 @@ jQuery(document).ready(function($) {
 })
 </script>
 <!--{/literal}-->
+
+
+<!--{literal}-->
+<script>
+	$(document).ready(function() {
+		$('.btn_paid').click(function() {			
+			if($(this).parent().find('input[name=months]').val() != '' && $(this).parent().find('input[name=amount]').val() != '') {
+				if(confirm('<!--{/literal}-->{lang checkout_confirm}<!--{literal}-->')) {
+					$('#paid_form input[name=id]').val($(this).parent().find('input[name=id]').val());
+					$('#paid_form input[name=months]').val($(this).parent().find('input[name=months]').val());
+					$('#paid_form input[name=amount]').val($(this).parent().find('input[name=amount]').val());
+					$('#paid_form').submit();
+				}
+			}
+			else
+			{
+				alert("Chọn số tháng và số tiền!");
+			}
+		});
+	});
+</script>
+<!--{/literal}-->
+
+<form id="paid_form" action="ad.php" method="get" style="position: absolute;top: -9000px">
+	<input type="hidden" name="do" value="paid" />
+	<input type="hidden" name="id" value="" />
+	<input placeholder="tháng" type="text" name="months" style="float: left;width: 35px;margin-right: 5px;text-align: right" />
+	<input placeholder="số tiền" type="text" name="amount" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
+	<a class="btn_paid check{$item.id}" href="#" title="{lang paid}" onclick="">{lang paid}</a>
+</form>
+
+
+
 <div id="currentPosition">
 	<p>{lang your_current_position} {lang ads} &raquo; {lang ads}</p>
 </div>
@@ -22,14 +55,42 @@ jQuery(document).ready(function($) {
     <div class="fontr"> 
         <form name="search_frm" id="SearchFrm" method="get"> 
         <input type="hidden" name="do" value="search" />
-             <div> 
-                <select class="querySelect" name="adzone_id" id="AdzoneId">
-				<option value="0">{lang pls_select}{lang adzone}</option>
-				<!--{foreach from=$Adzones item=item}-->
-                <option value="{$item.id}">{$item.name}</option>
-                <!--{/foreach}-->
-				</select>
-                <input type="submit" class="formbtn" value="{lang searching}" /> 
+             <div>
+		
+		<!--{if $company_zone == 1}-->
+			<select onchange="$('#SearchFrm').submit()" name="company_industry_id" id="">
+				<option value="">Chọn chuyên mục</option>
+				<!--{loop $CompanyTopLevel item level key}-->
+					<option value="{$item.id}" {if $item.id==$smarty.get.company_industry_id}selected="selected"{/if}>{$item.name}</option>
+				<!--{/loop}-->
+			</select>
+			<select onchange="$('#SearchFrm').submit()" name="membergroup_id" id="">
+				<option value="">Chọn Nhóm</option>
+				<option {if 1==$smarty.get.membergroup_id}selected="selected"{/if} value="1">Cửa hàng</option>
+				<option {if 2==$smarty.get.membergroup_id}selected="selected"{/if} value="2">Cá nhân</option>
+				<option {if 3==$smarty.get.membergroup_id}selected="selected"{/if} value="3">Công ty</option>
+			</select>
+		<!--{/if}-->
+		
+		<!--{if $smarty.get.adzone_id == 7}-->
+			<select onchange="$('#SearchFrm').submit()" name="industry_id" id="dataParentId">
+				<option value="0">Chọn chuyên mục</option>
+				<option value="-1" {if $smarty.get.industry_id=="-1"}selected="selected"{/if}>Tất cả</option>
+				{$CacheItems}
+			</select>
+		<!--{/if}-->
+                <select onchange="$('#SearchFrm').submit()" class="querySelect" name="adzone_id" id="AdzoneId">
+			<option value="0">{lang pls_select}{lang adzone}</option>
+			<!--{foreach from=$Adzones item=item}-->
+				<option {if $smarty.get.adzone_id == $item.id}selected="selected"{/if} value="{$item.id}">{$item.name}</option>
+			<!--{/foreach}-->
+		</select>
+		<select onchange="$('#SearchFrm').submit()" class="querySelect" name="status" id="AdStatus">
+			<option value="">Trạng thái</option>
+			<option {if $smarty.get.status == "1"}selected="selected"{/if} value="1">Đã kích hoạt</option>
+			<option {if $smarty.get.status == "0"}selected="selected"{/if} value="0">Chưa kích hoạt</option>
+		</select>
+                <!--<input type="submit" class="formbtn" value="{lang searching}" /> -->
             </div> 
         </form> 
     </div> 
@@ -40,40 +101,60 @@ jQuery(document).ready(function($) {
   <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
     <thead>
 		<tr>
-		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
-		  <th><label for="idAll">{lang the_title}</label></th>
-		  <th>{lang position}</th>
-		  <th>{lang if_online}</th>
-		  <th>{lang if_valid_n}</th>
-		  <th>{lang screenshot}</th>
-		  <th>{lang clicks}</th>
-		  <th>{lang action}</th>
+			<th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
+			<th>{lang screenshot}</th>
+			<th width="20%"><label for="idAll">{lang the_title}</label></th>
+			<th width="20%">{lang position}</th>
+			<th width="10%">state</th>
+			<th width="10%">status</th>		  
+			<th>Thứ tự</th>
+			<th style="text-align: center" width="5%">clicks</th>
+			<th>{lang action}</th>
 		</tr>
     </thead>
     <tbody>
 		<!--{foreach from=$Items item=item}-->
 		<tr class="tatr2">
 		  <td class="firstCell" style="padding-right: 20px"><input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}"></td>
+		  <td style="padding-right: 10px;">{if $item.is_image==1}<a href="{$item.src}" rel="lightbox"><img class="double-border" src="{$item.src}" width="150" /></a>{else}{$item.start_date|date_format:"%Y-%m-%d"}{lang arrive_to}{$item.end_date|date_format:"%Y-%m-%d"}{/if}</td>
 		  <td><label for="item_{$item.id}">{$item.title}</label>
-		  -- <a target="_blank" href="http://marketonline.vn/{$item.cache_spacename}">{$item.cache_spacename}</a>
-		  <br />{$item.industry_names}
+		  <br /><a target="_blank" href="http://marketonline.vn/{$item.cache_spacename}">{$item.cache_spacename}</a>
+		  <br /><small>{$item.industry_names}</small>
 		  <br />{$item.target_url}</td>
 		  <td><a title="{lang click_and_search}" href="ad.php?do=search&adzone_id={$item.adzone_id}">{$item.adzone}</a></td>
-		  <td>{$AdsStatus[$item.state]}</td>
-		  <td>{$AdsStatus[$item.status]}</td>
-		  <td>{if $item.is_image==1}<a href="{$item.src}" rel="lightbox"><img class="double-border" src="{$item.src}" width="150" /></a>{else}{$item.start_date|date_format:"%Y-%m-%d"}{lang arrive_to}{$item.end_date|date_format:"%Y-%m-%d"}{/if}</td>
-		  <td>{$item.clicked}</td>
+		  <td>
+			{if $item.state}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}
+		  </td>
+		  <td>
+			{if $item.status}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}
+		  </td>		  
+		  <td><input name="order[{$item.id}]" value="{$item.display_order}" style="text-align: right;width: 50px;margin-right: 20px;" /></td>
+		  <td style="text-align: center;color: red"><strong>{$item.clicked}</strong></td>
 		  <td class="handler">
           <ul id="handler_icon">
             <li><a class="btn_delete" href="ad.php?id={$item.id}&adzone_id={$item.adzone_id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>
             <li><a class="btn_edit" href="ad.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+		{if !$item.status}
+			<li style="height: auto;display: block;width:auto">
+				<input type="hidden" name="id" value="{$item.id}" />
+				<input placeholder="tháng" type="text" name="months" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
+				<input placeholder="số tiền" type="text" name="amount" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
+				<br /><a class="btn_paid check{$item.id}" href="#checkout" title="{lang paid}" onclick="">{lang paid}</a>
+			</li>
+		{elseif $item.lastcheck.id}
+			<li style="height: auto;display: block;width:auto">
+				Ngày thanh toán: <strong>{$item.lastcheck.created} +{$item.lastcheck.months}</strong><br/>				
+				Ngày hết hạn: <strong {if $item.lastcheck.warning}style="color:red"{/if}>{$item.lastcheck.deadline}</strong>
+				<br/>Amount: <br /> <strong>{$item.lastcheck.amount}</strong>
+			</li>
+		{/if}
           </ul>      
           </td>
 		</tr>
 		<!--{foreachelse}-->
-		<tr class="no_data info">
-		  <td colspan="7">{lang no_datas}</td>
-		</tr>
+			<tr class="no_data info">
+				<td colspan="7">{lang no_datas}</td>
+			</tr>
 		<!--{/foreach}-->
     </tbody>
 	</table>
@@ -82,6 +163,7 @@ jQuery(document).ready(function($) {
       <input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
       <input type="submit" name="down" value="{lang set_offline}" class="formbtn batchButton"/>
       <input type="submit" name="up" value="{lang set_online}" class="formbtn batchButton"/>
+      <input type="submit" name="saveorder" value="Lưu thứ tự" class="formbtn batchButton"/>
     </div>
     <div class="pageLinks">{$ByPages}</div>
     <div class="clear"/>

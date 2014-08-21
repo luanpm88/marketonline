@@ -11,35 +11,6 @@ $htmlize = true;
 require("libraries/common.inc.php");
 require("share.inc.php");
 
-
-	if(isset($_GET["change_current_type"]))
-	{
-	    $session->write('chatboxs'.session_id(), '');
-	    $session->write('chatboxsnew'.session_id(), '');
-	}
-	//$session->write("chatboxs".session_id(),'');
-	////get chatboxs
-	//echo $chatboxs."ddfdfdf";
-	$chatboxs = $session->read("chatboxs".session_id());
-	//echo $chatboxs."ddfdfdf";
-	$chatboxs = explode(",", $chatboxs);
-	foreach($chatboxs as $key => $uuu)
-	{
-		$uuu = explode("_",$uuu);
-		$chatboxsx[$key]["userid"] = $uuu[0];
-		$chatboxsx[$key]["typeid"] = $uuu[1];
-	}
-	////$session->write("chatboxs".session_id(), NULL);
-
-	
-	setvar("chatboxs", $chatboxsx);
-	
-	$chatboxsnew = $session->read("chatboxsnew".session_id());
-	//echo $chatboxs."ddfdfdf";
-	$chatboxsnew = explode(",", $chatboxsnew);
-	setvar("chatboxsnew", $chatboxsnew);
-
-
 if (!empty($_GET['do'])) {
 	$action = isset($_GET['action']) ?trim($_GET['action']) : 'index' ;
 	$do = $_GET['do'] == '' ? 'home' : htmlspecialchars(trim($_GET['do']));
@@ -87,110 +58,110 @@ if (!empty($_GET['do'])) {
 	$industrybd = new Industries();
 	$product = new Products();
 	
-			//Get industry level 1
-			$industries = $industrybd->getCacheIndustry();
-			
-			//$product = $product->getNewProduct(2);
-			$count0 = 0;
-			//$cats = array();
-			
-			//FACEBOOK IMAGEs
-			$fimages = array();
-			
-			foreach($industries as $key0 => $level0)
-			{
-				$cats = array();
-				$cats[] = $level0["id"];
-				
-				//$industries[$key0]["ppcount"] = $industrybd->read("count", $level0["id"]);
-				//$industries[$key0]["ppcount"] = $industries[$key0]["ppcount"]["count"];
-				
-				if($count1%6 == 1)
-				{
-					$industries[$key0]["break"] = 1;
-				}
-				else
-				{
-					$industries[$key0]["break"] = 0;
-				}
-				
-				if($count0%6 == 0 || $count0%6 == 5)
-				{
-					$maxitem = 11;
-				}
-				else
-				{
-					$maxitem = 3;
-				}
+	//Get industry level 1
+	$industries = $industrybd->getCacheIndustry();
+	
+	//$product = $product->getNewProduct(2);
+	$count0 = 0;
+	//$cats = array();
+	
+	//FACEBOOK IMAGEs
+	$fimages = array();
+	
+	foreach($industries as $key0 => $level0)
+	{
+		$cats = array();
+		$cats[] = $level0["id"];
+		
+		//$industries[$key0]["ppcount"] = $industrybd->read("count", $level0["id"]);
+		//$industries[$key0]["ppcount"] = $industries[$key0]["ppcount"]["count"];
+		
+		if($count1%6 == 1)
+		{
+			$industries[$key0]["break"] = 1;
+		}
+		else
+		{
+			$industries[$key0]["break"] = 0;
+		}
+		
+		if($count0%6 == 0 || $count0%6 == 5)
+		{
+			$maxitem = 11;
+		}
+		else
+		{
+			$maxitem = 3;
+		}
 
-				
-				
-				//getImage
-				//echo "sdfsdf";
-				//$rowi = $industrybd->getByID($key0);
-				//var_dump($rowi);
-				$industries[$key0]["image"] = pb_get_attachmenturl($industries[$key0]["picture"], "", "");
-				
-				if(preg_match('/nopicture/', $industries[$key0]["image"]))  $industries[$key0]["image"] = "";
-				
-				//FACEBOOK IMAGES
-				if($industries[$key0]["image"] != '' && $industries[$key0]["share_facebook"])
-				{
-					$fimages[] = $industries[$key0]["image"];
-				}
-				
-				$industries[$key0]["image"] = "http://marketonline.vn/".$industries[$key0]["image"];
-				
-				$kkc = 0;
-				foreach($level0['sub'] as $key1 => $level1)
-				{
-					$cats[] = $level1["id"];
-					
-					//$industries[$key0]["sub"][$key1]["ppcount"] = $industrybd->read("count", $level1["id"]);
-					//$industries[$key0]["sub"][$key1]["ppcount"] = $industries[$key0]["sub"][$key1]["ppcount"]["count"];
-					
-					foreach($level1['sub'] as $key2 => $level2)
-					{
-						$cats[] = $level2["id"];
-					}
-					
-					if($kkc > $maxitem)
-					{
-						unset($industries[$key0]["sub"][$key1]);
-					}
-					$kkc++;
-				}
-				//echo $level0["name"]."-".$maxitem."-";
-				
-				if($count0 == count($industries)-1)
-				{
-					$industries[$key0]["last"] = 1;
-					//echo $industries[$key0]["name"];
-				}
-				else
-				{
-					$industries[$key0]["last"] = 0;
-				}
-				
-				//Get images from new product
-				//$images = $product->getNewProductImages($cats, 2);
-				//if(count($images))
-				//{
-				//	$industries[$key0]["images"] = $images;
-				//}
-				//else
-				//{
-				//	$industries[$key0]["images"] = "";
-				//}
-				
-				
-				
-				//var_dump($industries[$key0]["images"]);
-				if($key0 != 19 && $key0 != 5 && $key0 != 3965) $count0++;
+		
+		
+		//getImage
+		//echo "sdfsdf";
+		//$rowi = $industrybd->getByID($key0);
+		//var_dump($rowi);
+		$industries[$key0]["image"] = pb_get_attachmenturl($industries[$key0]["picture"], "", "");
+		
+		if(preg_match('/nopicture/', $industries[$key0]["image"]))  $industries[$key0]["image"] = "";
+		
+		//FACEBOOK IMAGES
+		if($industries[$key0]["image"] != '' && $industries[$key0]["share_facebook"])
+		{
+			$fimages[] = $industries[$key0]["image"];
+		}
+		
+		$industries[$key0]["image"] = "http://marketonline.vn/".$industries[$key0]["image"];
+		
+		$kkc = 0;
+		foreach($level0['sub'] as $key1 => $level1)
+		{
+			$cats[] = $level1["id"];
+			
+			//$industries[$key0]["sub"][$key1]["ppcount"] = $industrybd->read("count", $level1["id"]);
+			//$industries[$key0]["sub"][$key1]["ppcount"] = $industries[$key0]["sub"][$key1]["ppcount"]["count"];
+			
+			foreach($level1['sub'] as $key2 => $level2)
+			{
+				$cats[] = $level2["id"];
 			}
-			//var_dump($industries);
-			//var_dump($industry);
-			setvar("IndustryList", $industries);
+			
+			if($kkc > $maxitem)
+			{
+				unset($industries[$key0]["sub"][$key1]);
+			}
+			$kkc++;
+		}
+		//echo $level0["name"]."-".$maxitem."-";
+		
+		if($count0 == count($industries)-1)
+		{
+			$industries[$key0]["last"] = 1;
+			//echo $industries[$key0]["name"];
+		}
+		else
+		{
+			$industries[$key0]["last"] = 0;
+		}
+		
+		//Get images from new product
+		//$images = $product->getNewProductImages($cats, 2);
+		//if(count($images))
+		//{
+		//	$industries[$key0]["images"] = $images;
+		//}
+		//else
+		//{
+		//	$industries[$key0]["images"] = "";
+		//}
+		
+		
+		
+		//var_dump($industries[$key0]["images"]);
+		if($key0 != 19 && $key0 != 5 && $key0 != 3965) $count0++;
+	}
+	//var_dump($industries);
+	//var_dump($industry);
+	setvar("IndustryList", $industries);
 			
 	//FACEBOOK SHARE
 	$FACE["title"] = 'MarketOnline.vn';

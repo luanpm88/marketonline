@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-09 13:04:46
+<?php /* Smarty version 2.6.27, created on 2014-08-13 15:47:57
          compiled from product_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'editor', 'product_edit.html', 13, false),array('function', 'formhash', 'product_edit.html', 332, false),array('function', 'html_options', 'product_edit.html', 546, false),array('function', 'html_radios', 'product_edit.html', 577, false),array('function', 'the_url', 'product_edit.html', 640, false),array('modifier', 'default', 'product_edit.html', 577, false),)), $this); ?>
@@ -393,7 +393,7 @@ unset($_smarty_tpl_vars);
 		<?php if ($this->_tpl_vars['getvar']['type']): ?><input type="hidden" name="data[product][service]" value="1" /><?php endif; ?>
 		<div class="hint"><?php echo $this->_tpl_vars['_must_input_with_star']; ?>
 </div>
-		<p class="notice"><?php echo $this->_tpl_vars['notice']; ?>
+		<p class="message"><?php echo $this->_tpl_vars['notice']; ?>
 </p>
        
        

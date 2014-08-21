@@ -1,0 +1,48 @@
+{literal}
+    <script>
+	    $(document).ready(function() {
+                
+                //CART
+                getCart();
+                
+                //INBOX ANNOUNCE
+		{/literal}{if $pb_username!=""}{literal}getInbox();{/literal}{/if}{literal}
+                var ann_count = 0;
+		setInterval(function(){
+			getAnnounce(ann_count);
+			getInbox();ann_count++}, 300000);
+                
+                //load main category tree
+                if($('.super-main-category').length > 0) loadMainCategoryMenu();
+                
+                loadViewedHistory();
+                
+                //CHATTING
+                {/literal}{if $pb_username!=""}{literal}getTopChat();{/literal}{/if}{literal}
+                
+                //chatboxs
+		{/literal}
+		    {if $pb_username!=""}
+                        {literal}
+                            setInterval(function(){ updateChatboxNew(); }, 15000);
+                        {/literal}
+                        
+                        {loop $chatboxsnew item level key}
+                            {if $item != ''}
+                                getChatboxNew("{$item}", true);
+                            {/if}
+                        {/loop}
+		    {/if}
+		{literal}                
+                
+                
+                //get chat friend list
+                {/literal}{if $pb_userinfo.id}getChatFriendList({$pb_userinfo.id});{/if}{literal}
+                {/literal}{if $pb_userinfo.id}setInterval('getChatFriendList({$pb_userinfo.id});',60000);{/if}{literal}
+                
+                //COMPANY CLICK COUNT
+                <!--{/literal}-->{if $pb_company.id}getNewClicked('{$pb_company.id}');{/if}<!--{literal}-->
+                
+            });
+    </script>
+{/literal}

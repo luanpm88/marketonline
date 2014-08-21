@@ -134,7 +134,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 		$attachment->if_watermark = false;
 		$attachment->if_thumb_middle = false;
 		$attachment->if_logo = true;
-		$attachment->rename_file = "company-".$time_stamp;
+		$attachment->rename_file = "company-".$time_stamp.rand(0,9000);
 		$attachment->upload_process();
 		
 		if($attachment->width > 150 && $attachment->height > 150)
@@ -168,16 +168,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 		$vals['cache_membergroupid'] = $memberinfo['membergroup_id'];
 		$company->save($vals, "update", $company_id, null, "member_id=".$the_memberid);
 		
-		
-			
-		
 		$company->updateCachename($company_id, $vals['shop_name']);
-		
-		//echo "sdfdsf";
-		//add default follow shop
-		//uses("follow");
-		//$follow = new Follows();
-		//$follow->addFollow($the_memberid, 1);
 	} else {
 		$vals['member_id'] = $the_memberid;
 		$vals['cache_membergroupid'] = $memberinfo['membergroup_id'];
@@ -211,7 +202,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 	$member->updateMemberCaches($the_memberid);
 	
 	//if(!$hasProfile)
-		//flash('success', 'index.php');
+		
 		if(!$upload_error)
 		{
 			if(isset($_POST["isnew"]))
@@ -226,7 +217,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 				}
 				else
 				{
-					pheader("location:company.php");
+					pheader("location:company.php?message=success");
 				}
 			}
 			

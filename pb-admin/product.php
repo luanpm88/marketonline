@@ -10,7 +10,8 @@ require(PHPB2B_ROOT.'./libraries/page.class.php');
 require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
-uses("product","attachment", "tag", "typeoption","area","industry","meta");
+uses("product","attachment", "tag", "typeoption","area","industry","meta","productadtype");
+$productadtype = new Productadtypes();
 $typeoption = new Typeoption();
 $area = new Areas();
 $meta = new Metas();
@@ -68,6 +69,10 @@ if (isset($_POST['save']) && !empty($_POST['data']['product']['name'])) {
 		$last_insert_key = "{$tb_prefix}product_id";
     	$id = $product->$last_insert_key;
 	}
+	
+	//var_dump($_POST['data']['productadtype']);
+	$product->saveAdTypes($id, $_POST['data']['productadtype']);
+	
 	//seo info
 	$meta->save('product', $id, $_POST['data']['meta']);
 	if (!$result) {
@@ -151,6 +156,18 @@ if (isset($_GET['do'])) {
 			$r2 = $area->disSubOptions($res['area_id'], "area_");
 			$seo = $meta->getSEOById($id, 'product');
 			$res = am($res, $r1, $r2, $seo);
+			
+			//product ad type
+			$productadtypes = $productadtype->findAll("*");
+			$current_types = $product->getAdTypes($id);
+			//var_dump($current_types);
+			foreach($productadtypes as &$item) {
+				if(in_array($item["id"],$current_types)) {
+					$item["check"] = 'checked="checked"';
+				}
+			}
+			//var_dump($productadtypes);
+			setvar("productadtypes",$productadtypes);
 			setvar("item",$res);
 			unset($res);
 		}
@@ -179,12 +196,17 @@ if (isset($_GET['do'])) {
 			$conditions[] = $condition;
 		}
 	}
+	if ($do == 'refresh') {
+		$product->saveField("created", $time_stamp, $id);
+		$product->saveField("`show`", 1, $id);
+	}
 }
 $amount = $product->findCount($joins, $conditions,"Product.id");
 unset($joins);
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
+$joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Product.member_id";
 $page->setPagenav($amount);
-$fields = "Product.id,Product.company_id AS CompanyID,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
+$fields = "m.username,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
 $result = $product->findAll($fields, $joins, $conditions,"Product.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

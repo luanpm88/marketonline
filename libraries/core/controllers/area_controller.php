@@ -11,7 +11,7 @@ class Area extends PbController {
 	function &getInstance() {
 		static $instance = array();
 		if (!$instance) {
-			$instance[0] =& new Area();
+			$instance[0] = new Area();
 		}
 		return $instance[0];
 	}

@@ -484,6 +484,66 @@ function smarty_function_the_url($params){
 					}
 				}
 				break;
+			case "ad":
+				if ($rewrite_able) {
+					$return = URL."index.php?do=product&action=adClick&id=".$id;
+				}else{
+					$return = URL."index.php?do=product&action=adClick&id=".$id;
+				}
+				break;
+			case "share_shop":
+				if ($rewrite_able) {
+					$return = URL.$space_name."/chia-se";
+				}else{
+					$return = URL."index.php?do=product&action=inviteFriendPage&space_name=".$space_name;
+				}
+				break;
+			case "companies":
+				if ($rewrite_able) {
+					$return = URL."thuong-hieu";
+					if($action){
+						$return = URL."index.php?do=company&action=".$action;
+						if($keyword) {
+							$return .= "&keyword=".$keyword;
+						}
+					}
+					else {
+						switch($membergroup_id) {
+							case "1":
+								$return = URL."thuong-hieu/cua-hang";
+								break;
+							case "2":
+								$return = URL."thuong-hieu/ca-nhan";
+								break;
+							case "3":
+								$return = URL."thuong-hieu/doanh-nghiep";
+								break;
+							default:
+								$return = URL."thuong-hieu/doanh-nghiep";
+								break;
+						}
+						if(isset($industryid)) {
+							$return = $return."/".$industryid."/".stringToURI($title);
+						}
+					}
+				}else{
+					$return = URL."index.php?do=company&membergroup_id=3";
+					if($action){
+						$return = URL."index.php?do=company&action=".$action;
+						if($keyword) {
+							$return .= "&keyword=".$keyword;
+						}
+					}
+					else {						
+						if(isset($membergroup_id)) {
+							$return = URL."index.php?do=company&membergroup_id=".$membergroup_id;
+						}
+						if(isset($industryid)) {
+							$return = URL."index.php?do=company&level=".$level."&industryid=".$industryid;
+						}
+					}
+				}
+				break;
 			default:
 				if (!empty($id)) {
 					if ($rewrite_able) {

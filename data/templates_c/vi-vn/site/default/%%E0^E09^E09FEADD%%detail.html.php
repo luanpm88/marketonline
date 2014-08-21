@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-01-14 11:06:40
+<?php /* Smarty version 2.6.27, created on 2014-08-14 16:51:18
          compiled from default%5Cemployee/detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('block', 'employee', 'default\\employee/detail.html', 276, false),array('function', 'the_url', 'default\\employee/detail.html', 279, false),array('function', 'pager', 'default\\employee/detail.html', 293, false),)), $this); ?>

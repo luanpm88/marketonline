@@ -19,6 +19,19 @@
 	<meta name ="keywords" content="Thị trường Mua Bán, Phân phối, Việc làm, Đầu tư, Tiêu dùng, Dịch vụ, Đăng sản phẩm, Đăng dịch vụ, Đăng tuyển dụng, Đơn xin việc, Đăng quảng cáo, Đăng rao vặt">
 {/if}
 
+<!--{if $og_title}
+<meta property="og:title" content="{$og_title}"/>
+{/if}
+{if $og_url}
+<meta property="og:url" content="{$og_url}"/>
+{/if}-->
+
+{if $fb_title}
+<meta property="og:title" content="{$fb_title}"/>
+{/if}
+{if $fb_url}
+<meta property="og:url" content="{$fb_url}"/>
+{/if}
 
 {if $fb_description}
 <meta property="og:description" content="{$fb_description}"/>
@@ -103,6 +116,8 @@
 <script src="{$theme_img_path}js/jquery.numberformatter.js"></script>
 
 
+
+
 <script src="{$theme_img_path}js/jquery.qtip.min.js"></script>
 <link rel="stylesheet" href="{$theme_img_path}css/jquery.qtip.min.css">
     
@@ -111,7 +126,7 @@
 <!-- Tiny MCE -->
 <script src="{$theme_img_path}js/tinymce/tinymce.min.js"></script>
 
-<script src="{$theme_img_path}js/custom.js"></script>
+<script src="{$theme_img_path}js/custom.js?v=1"></script>
 
    <!--[if IE]>
     <script src="{$theme_img_path}js/html5.js"></script>
@@ -130,7 +145,8 @@
 <script src="{$theme_img_path}js/select2/select2.min.js"></script>
 <script src="{$theme_img_path}js/select2/select2_locale_vi.js"></script>
 	
-        
+<script type="text/javascript" src="{$theme_img_path}js/jemotion/jemotion.js"></script>
+
 <link rel="stylesheet" href="{$theme_img_path}css/editorcss.css">
         
 <!--{literal}-->	
@@ -146,7 +162,7 @@
     function loadMainCategoryMenu()
     {
         $.ajax({
-	    url: "index.php?do=product&action=ajaxMainCategoryMenu&service={/literal}{$item.service}{$smarty.get.action}{literal}",
+	    url: "index.php?do=product&action=ajaxMainCategoryMenu&service={/literal}{if $smarty.get.do=='company'}company&membergroup_id={$smarty.get.membergroup_id}{else}{$item.service}{$smarty.get.action}{/if}{literal}",
 	}).done(function ( data ) {
 	    if( console && console.log ) {
                 $('.super-main-category .main-cat-content').html(data);
@@ -280,25 +296,7 @@
     }
    
  
- function getAnnounce(ann_count)
- {
-    $.ajax({
-			url: "index.php?do=product&action=getAnnounce",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				//alert(data);
-				$('#announce-frame').prepend(data);
-				
-				$('#announce-frame .announce-box').each(function(index){				    
-				    if (!$(this).hasClass("showed")) {
-					$(this).addClass("ann"+ann_count);
-					$(this).addClass("showed");
-					setTimeout(function(){$(".ann"+ann_count).fadeOut()}, 60000);					
-				    }				    
-				});
-			}
-		});
- }
+ 
  
  function goclicky(meh, url)
 {
@@ -435,16 +433,7 @@ function goclicky_custom(meh, url, images, title, summary)
             });
 	}
 	
-	function getInbox() {
-		//code
-		$.ajax({
-			url: "index.php?do=product&action=ajaxInbox",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$("#inbox_out").html(data);
-			}
-		});
-	}
+	
 	
 	function clearInbox() {
 		//code
@@ -463,6 +452,7 @@ function goclicky_custom(meh, url, images, title, summary)
 	
 	var companylogo = '<!--{/literal}-->{if $pb_company && $pb_userinfo.current_type != 6}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
 	
+        var ROOT_URL = '<!--{/literal}-->{the_url module=root-url}<!--{literal}-->';
 	
 	$(document).ready(function() {
 		if (window.chrome) {
@@ -499,6 +489,7 @@ function goclicky_custom(meh, url, images, title, summary)
 			'frameHeight': 400,
 			'hideOnContentClick': false
 		});
+                
                 
                 $("#guestbox-but").fancybox({
 			'padding': 0,
@@ -724,6 +715,21 @@ function goclicky_custom(meh, url, images, title, summary)
 			}
 		});
                 
+                $("#underconstruction-info-but").fancybox({
+			'padding': 0,
+			'zoomOpacity': true,
+			'zoomSpeedIn': 500,
+			'zoomSpeedOut': 500,
+			'overlayOpacity': 0.75,
+			'frameWidth': 530,
+			'frameHeight': 400,
+			'hideOnContentClick': false,
+			height: 500,
+			helpers: { 
+			      title: null
+			}
+		});
+                
                 $('.member-left-bottom-more').fancybox();
                 
                 $('.change-group-leader-but').fancybox();
@@ -761,10 +767,10 @@ function goclicky_custom(meh, url, images, title, summary)
 		 });	 
 		 $('.klbox').css('display', 'block');
 		 
-		 $('.leftlogodetail img').resizecrop({
-		   width:158,
-		   height:158
-		 });
+		 //$('.leftlogodetail img').resizecrop({
+		 //  width:158,
+		 //  height:158
+		 //});
 		 $('.leftlogodetail img').css("visibility","visible");
 		 
 		 $('.inner_slide .link_item img').css('visibility', 'visible');
@@ -773,13 +779,6 @@ function goclicky_custom(meh, url, images, title, summary)
 		 
 		 //$('.res_done_box .success_box').width($('.res_done_box h2').width()-4);
 		 $('.res_done_box .success_box').css('display', 'block');
-		 
-		 
-		 
-		 
-		 
-		 
-		 
 		 
 		 $('#detail_box_top .thumbnails img').resizecrop({
 		   width:91,
@@ -814,13 +813,11 @@ function goclicky_custom(meh, url, images, title, summary)
 		$('#inboxhome a.but').click(function(event){$('#quick_inbox_content').toggle();event.stopPropagation();});
 		
 		
-		
-		
-		if (window.location.hash == "#welcomenew") {
+		if (window.location.hash == "#welcome14" || window.location.hash == "#welcome13" || window.location.hash == "#welcome12" || window.location.hash == "#welcome11" || window.location.hash == "#welcome10" || window.location.hash == "#welcome9" || window.location.hash == "#welcome8" || window.location.hash == "#welcome7" || window.location.hash == "#welcome6" || window.location.hash == "#welcome5" || window.location.hash == "#welcome4" || window.location.hash == "#welcome3" || window.location.hash == "#welcomen" || window.location.hash == "#welcomenew" || window.location.hash == "#welcome" || window.location.hash == "#welcome1" || window.location.hash == "#welcome2" ) {
 			$('#welcomnew-info-but').trigger("click");
 		}
 		
-		////		
+		////
 		$('.scroll-box .item img').each(function() {
 		 
 		  $(this).attr("src", $(this).attr("rel"));
@@ -833,14 +830,7 @@ function goclicky_custom(meh, url, images, title, summary)
                    
 		});
                 
-                //$('.img_item').hover();		
-		$('.banner-school-info').css("margin-top", -($('.banner-school-info').height()+32));
-                if (!$('.inner_slider .img_item img').length)
-                {
-                    $('.member-left-bottom').addClass("small");
-                }
-                
-                 
+                $('.banner-school-info').css("margin-top", -($('.banner-school-info').height()+32));
                 
                 //cart product image
                 $('#cart img').resizecrop({
@@ -885,7 +875,11 @@ function goclicky_custom(meh, url, images, title, summary)
                     //$('#page-title h1.page-title').css("visibility","visible");
                 });	
 		
-                
+                //if(!$.cookie("underconstruction"))
+                //{
+                //    $.cookie("underconstruction", true);
+                //    $("#underconstruction-info-but").trigger("click");
+                //}
                 
 	});
 	
@@ -1198,7 +1192,6 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
 			
 			 <div class="content_inner">
 			 
-
 			  
 			 </div>
 
@@ -1229,119 +1222,6 @@ là Thị trường đáng tin cậy, đầy đủ và tiện lợi cho Quý kh�
 	
 </div>
    
-   <div id="login-box" style="display: none">
-	
-	<div style="padding: 20px 20px 0px 20px;width: 320px">
-			
-			 <div class="content_inner" style="padding-bottom:10px;">
-			 
-			 
-			 
-			 
-			 
-			 
-			    <div class="wrapper">
-    <div class="content">
-        
-	<h1>{lang login}</h1>
-	
-        <div class="loadingcon">
-        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
-            <input type="hidden" name="action" value="logging">
-	    <input type="hidden" name="type" value="{$Type}">
-	    <input type="hidden" name="redirect" value="{$F_URL}">
-	    <!-- {formhash} -->
-	    <input type="hidden" name="forward" value="{$_G.forward}" />
-            <div class="loadingconleft">
-                
-				{if $LoginError}{$LoginError}{/if}
-				<br />
-{if $pb_username!=""}
-					<label class="loadingname">
-                        {lang user_name}
-                    </label>
-                    <label>
-                        {$pb_username|default:'`$_account_n_email_n_mobile`'}
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        {lang member_type}
-                    </label>
-                    <label>
-                        {$member_info.groupname}<img src="{$member_info.groupimage}" />
-                    </label>
-                    <br clear="all" />
-					<label class="loadingname">
-                        {lang your_last_login}{lang colon}
-                    </label>
-                    <label>
-                        {$member_info.last_login|date_format:"%Y-%m-%d %H:%M"}
-                    </label>
-                    <br clear="all" />
-{else}
-					<label class="loadingname">
-                        {lang user_name}
-                    </label>
-                    <label>
-                        <input type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">&nbsp;
-                    </label>
-                    <label class="loadingname">
-                    {lang password}
-                    </label>
-                    <label>
-                        <input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}&nbsp;
-                    </label>
-                    <br clear="all" />
-                    
-                    <div class="clear"></div>
-                    <div class="login" id="btnLoginDiv">
-                       <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton" />
-		       <div class="info_but_login">
-		       	<a href="{$WebRootUrl}getpasswd.php">{lang forget_password}</a><br />
-		       	<a href="{$WebRootUrl}register.php">{lang register}</a>
-		       </div>
-                    </div>
-		    
-		    
-		    <div class="box-res-con">
-                        <div class="inner-boxx">
-                            <h4>{lang not_register_annouce}</h4><br />
-                            {if $smarty.get.do == "product"}
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Company"}'">{lang register}</button>
-                            {/if}
-                            {if $smarty.get.do == "employee"}
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Employee"}'">{lang register}</button>
-                            {/if}
-                            {if $smarty.get.do == "job"}
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Employer"}'">{lang register}</button>
-                            {/if}
-                            {if $smarty.get.do == "studypost"}
-                                <button class="single_add_to_cart_button button alt" type="button" onclick="window.location='{the_url module="register" typename="Learner"}'">{lang register}</button>
-                            {/if}
-                        </div>
-		    </div>
-{/if}
-                    
-            </div>
-            
-        </form>
-        </div>
-    </div>
-</div>
-<script src="data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
-<script language="javascript" src="scripts/jquery/jquery.validate.js"></script>
-<script language="javascript" src="scripts/validate.js" charset="{$charset}"></script>
-<script>
-var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
-</script>
-			 
-			 
-			 
-			  
-			 </div>
-	</div>
-	
-</div>
    
    
    
@@ -1358,16 +1238,22 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
 	
 </div>
    
-   
-   
-   
-   
-   
    <div id="announce-frame"></div>
    
    <div id="chat-frame">
     
+        
+            
    </div>
+   <div style="display:none">
+        <iframe name="uploadChatImage_frame" id="uploadChatImage_frame" style="display: none"></iframe>
+            <form target="uploadChatImage_frame" name="productaddfrm" id="uploadChatImage" method="post" action="{$WebRootUrl}index.php?do=product&action=uploadChatImage" enctype="multipart/form-data">
+              <!-- {formhash} -->
+              <input type="hidden" name="chatbox_id" value="" />
+              <p><input accept="image/*" type="file" name="uploadChatImage" id="uploadChatImage_but" onchange="$('#uploadChatImage').submit()" /></p>
+    
+            </form>
+    </div>
    
    <div id="history-list-frame">    
       <div class="content">
@@ -1386,7 +1272,7 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
 <a id="welcomnew-info-but" href="#welcomnew-info" style="display: none">Hidden Clicker</a>
 <div id="welcomnew-info" style="display: none">
 	
-	<div style="padding: 20px 20px 20px 20px;width: 710px;max-height: 600px;overflow-x: hidden">
+	<div style="padding: 20px 20px 20px 20px;width: 800px;max-height: 600px;overflow-x: hidden">
 			
 			{$welcomnew_info.message}
 			
@@ -1411,26 +1297,23 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
 
 <a id="guestbox-but" href="#guest-box" style="display: none">Hidden Clicker</a>
 <div id="guest-box" style="display: none">
-	
 	<div style="padding: 20px 20px 10px 20px;width: 320px">
-			
-			 <div class="content_inner" style="padding-bottom:10px;">
-                            <div class="login_pls">
-                                Vui lòng <a class="comment_but" href="#login-box">Đăng nhập/Đăng ký</a> để viết lời bình hoặc điền thông tin bên dưới:
-                            </div>
-                            <div class="guest_form">
-                                <label>Họ và Tên <span>*</span></label>
-                                <input name="box_guest_name" />
-                                <label>Email <span>*</span></label>
-                                <input name="box_guest_email" />
-                                <button>Gửi</button>
-                            </div>
-                            
-                         </div>
+            <div class="content_inner" style="padding-bottom:10px;">
+               <div class="login_pls">
+                   Vui lòng <a class="comment_but" href="#login-box">Đăng nhập/Đăng ký</a> để viết lời bình hoặc điền thông tin bên dưới:
+               </div>
+               <div class="guest_form">
+                   <label>Họ và Tên <span>*</span></label>
+                   <input name="box_guest_name" />
+                   <label>Email <span>*</span></label>
+                   <input name="box_guest_email" />
+                   <button>Gửi</button>
+               </div>
+            </div>
         </div>
 </div>
 
-{if $pb_userinfo.current_type == 6 || $pb_userinfo.id == 757 || $pb_userinfo.current_type}
+{if $pb_userinfo.current_type == 6 || $pb_userinfo.role == 'admin' || $pb_userinfo.current_type}
 <div class="chat_friend_list">
     <div class="chat_list_hooker">Bạn bè</div>
     <div class="main_list">
@@ -1443,3 +1326,29 @@ var account_n_email_n_mobile = "{lang account_n_email_n_mobile}";
 <div id="show_top_cart">
     
 </div>
+
+{if $flash.title}
+<a id="popup-announce" class="comment_but" href="#popup-announce-box" style="display: none">Hidden Clicker</a>
+<div id="popup-announce-box" style="display: none">
+	
+	<div style="padding: 20px 20px 10px 20px;width: 320px">
+            <h2>{$flash.title}</h2>
+            <div class="flash_message">
+                {$flash.message}
+            </div>
+        </div>
+        
+</div>
+{literal}
+    <script>
+        $(document).ready(function() {
+            $('#popup-announce').trigger("click");
+            $.ajax({
+	    url: "index.php?do=product&action=removeFlash",
+            });
+        });
+    </script>
+{/literal}
+{/if}
+
+<!--{include file="`$theme_name`/_header_includes.html"}-->

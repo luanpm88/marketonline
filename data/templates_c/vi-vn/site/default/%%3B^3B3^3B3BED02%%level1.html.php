@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-07 11:03:25
+<?php /* Smarty version 2.6.27, created on 2014-08-14 16:13:02
          compiled from default%5Cservices/level1.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\services/level1.html', 641, false),array('modifier', 'default', 'default\\services/level1.html', 924, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\services/level1.html', 641, false),array('modifier', 'default', 'default\\services/level1.html', 922, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => ($this->_tpl_vars['theme_name'])."/header.html", 'smarty_include_vars' => array('page_title' => ($this->_tpl_vars['IndustryList']['name']))));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -275,7 +275,7 @@ unset($_smarty_tpl_vars);
 	  if ($(\'#aq-block-5\').height())
 	    pos_searchlist = $(\'#aq-block-5\').height() + 440;
 	  else
-	    pos_searchlist = 271;
+	    pos_searchlist = 250;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -692,8 +692,6 @@ if ($this->_foreach['level_0']['total'] > 0):
 		</div>
 	</div>
 
-    <div class="subtitle">Dịch vụ</div>
-
     <div class="breadcrumbs"><a href="<?php echo $this->_tpl_vars['SiteUrl']; ?>
 "><?php echo $this->_tpl_vars['_home_page']; ?>
 </a> <span class="delim">/</span><a href="<?php echo smarty_function_the_url(array('module' => 'service_main'), $this);?>
@@ -711,7 +709,7 @@ if ($this->_foreach['level_0']['total'] > 0):
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 271px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 250px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="<?php echo $this->_tpl_vars['_search']; ?>

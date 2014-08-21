@@ -21,12 +21,12 @@
 <!--{/literal}-->
 
 
-<form id="paid_form" action="member.php" method="get">
+<form id="paid_form" action="member.php" method="get" style="position: absolute;top: -9000px">
 	<input type="hidden" name="do" value="paid" />
 	<input type="hidden" name="id" value="" />
 	<input placeholder="tháng" type="text" name="months" style="float: left;width: 35px;margin-right: 5px;text-align: right" />
 	<input placeholder="số tiền" type="text" name="amount" style="float: left;width: 100px;margin-right: 5px;text-align: right" />
-	<a class="btn_paid check{$item.id}" href="#" title="{lang paid}" onclick="">{lang paid}</a>
+	<a class="btn_paid check{$item.id}" href="#checkout" title="{lang paid}" onclick="">{lang paid}</a>
 </form>
 
 
@@ -90,8 +90,13 @@
 			<!--{foreach from=$Items item=item}-->
 			<tr class="tatr2">
 			  <td class="firstCell">{if $item.candelete}<input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}">{/if}</td>
-			  <td><label for="item_{$item.id}">{$item.username}</label><br><span style="color:gray;" title="{$item.NickName}"><small>{$item.NickName}</small></span></td>
-			  <td>{if $item.pubdate>$today_timestamp}<img src="{$admin_theme_path}images/new.gif" alt="{$item.pubdate|date_format:'%H:%M:%S'}"/>{else}{$item.pubdate|date_format:"%m-%d %H:%M"}{/if}&nbsp;</td>
+			  <td><label for="item_{$item.id}" class="">{$item.username}</label><br><span style="color:gray;" title="{$item.NickName}"><small>{$item.NickName}</small></span>
+			  
+			  <br /><small>Giới thiệu: <strong>{$item.parent_username}</strong></small>
+			  {if $item.shop_name}<br /><small>Shop: <a target="_blank" href="{the_url module=space userid=`$item.space_name`}"><strong>{$item.shop_name}</strong></a></small>{/if}
+			  
+			  </td>
+			  <td>{if $item.pubdate>$today_timestamp}<img src="{$admin_theme_path}images/new.gif" alt="{$item.pubdate|date_format:'%H:%M:%S'}"/><br />{$item.pubdate|date_format:"%m-%d %H:%M"}{else}{$item.pubdate|date_format:"%m-%d %H:%M"}{/if}&nbsp;</td>
 			  <td>{$MemberStatus[$item.status]}</td>
 			  <td>{$item.reg_ip}{iplocation ip="`$item.reg_ip`"}</td>
 			  <td><!-- {if $item.trust_image} -->{$item.trust_image}<!-- {/if} --></td>

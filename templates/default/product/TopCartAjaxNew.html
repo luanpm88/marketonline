@@ -49,9 +49,10 @@
 													
 							<!--{loop $shop.items sticky sticky_offer}-->
 							<tr>
-							<td class="offer_img" width="9%"><a href="{the_url module=product id=`$sticky.p_id`}" title="{$sticky.p_name}"><img src="{$sticky.image}" border=0 alt="{$sticky.title}"></a></td>
+							<td class="offer_img" width="9%"><a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}">
+							<img src="{$sticky.image}" border=0 alt="{$sticky.title}"></a></td>
 							<td style="padding-top: 20px" class="title_link">
-								<a href="{the_url module=product id=`$sticky.p_id`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
+								<a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}" title="{$sticky.p_name}">{$sticky.p_name}</a>
 							</td>
 							
 							<td style="padding-top: 20px" align="right">
@@ -92,16 +93,15 @@
 							    </td>
 							</tr>
 							<tr>
-								<td colspan=6 align=right style="text-align: right;">
-									{if $pb_username}										
-										<input name="checkout" class="checkout_but" onclick="window.location='index.php?do=product&action=meminfo&id={$shop.id}'"  type="button" value="{lang confirm_cart}" />
-									{/if}
-									{if !$pb_username}										
-										<input name="checkout" class="checkout_but" onclick="window.location='cartlogging.php?id={$shop.id}'"  type="button" value="{lang confirm_cart}" />
-									{/if}
-									<input type="button" onclick="window.location='{the_url module=root-url}index.php?do=product&action=add_cart'" class="checkout_but" style="margin-right: 10px" value="Vào giỏ hàng" />
-								</td>
-								
+							    <td colspan=6 align=right style="text-align: right;">
+								{if $pb_username}										
+								    <input name="checkout" class="checkout_but" onclick="window.location='index.php?do=product&action=meminfo&id={$shop.id}'"  type="button" value="{lang confirm_cart}" />
+								{/if}
+								{if !$pb_username}										
+								    <input href="#login-box" name="checkout" class="checkout_but comment_but" redirect="index.php?do=product&action=meminfo&id={$shop.id}"  type="button" value="{lang confirm_cart}" />
+								{/if}
+								<input type="button" onclick="window.location='{the_url module=root-url}index.php?do=product&action=add_cart'" class="checkout_but" style="margin-right: 10px" value="Vào giỏ hàng" />
+							    </td>
 							</tr>
 						
 					<!--{/loop}-->

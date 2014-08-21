@@ -93,32 +93,24 @@ class Spaces extends PbModel {
 			." FROM {$this->table_prefix}members s"
 			." LEFT JOIN {$this->table_prefix}links l ON l.member_id = s.id"
 			." LEFT JOIN {$this->table_prefix}companies c ON c.member_id = l.member_id"
-			." WHERE l.parent_id='{$member_id}' AND c.shop_name IS NOT NULL"
-			." OR s.id='{$member_id}' {$condition}"
+			." WHERE (l.parent_id='{$member_id}' OR s.id IN (SELECT parent_id FROM {$this->table_prefix}links r_l WHERE r_l.member_id='{$member_id}')) AND c.shop_name IS NOT NULL"
+			//." OR s.id='{$member_id}' {$condition}"
 			." ORDER BY s.created DESC {$limitstr}";
-		$result = $this->dbstuff->GetArray($sql);//set and get db cache
-		//echo $sql;
-		//var_dump($result);
-		//return $sql;
+			$result = $this->dbstuff->GetArray($sql);//set and get db cache
+			//var_dump($result);
 		
-			$returna = array();
+			//$returna = array();
 			for($i=0; $i<count($result); $i++){
-				//echo $result[$i]["shop_name"];
-				if($result[$i]["shop_name"])
-				{
-					$result[$i]["image"] = pb_get_attachmenturl($result[$i]['company_picture'], '', 'smaller');
+				$result[$i]["image"] = pb_get_attachmenturl($result[$i]['company_picture'], '', 'smaller');
 					
-					if($rewrite_able)
-						$result[$i]["link"] = URL.$result[$i]["space_name"];
-					else
-						$result[$i]["link"] = URL.'space/?userid='.$result[$i]["username"].'&do=';
-						
-					$returna[] = $result[$i];
-				}
+				if($rewrite_able)
+					$result[$i]["link"] = URL.$result[$i]["space_name"];
+				else
+					$result[$i]["link"] = URL.'space/?userid='.$result[$i]["username"].'&do=';
+
 			}
 
-		//var_dump($returna);
-		return $returna;
+		return $result;
 	}
 	
 	function getFriendsCount($member_id)
@@ -139,8 +131,8 @@ class Spaces extends PbModel {
 			." FROM {$this->table_prefix}members s"
 			." LEFT JOIN {$this->table_prefix}links l ON l.member_id = s.id"
 			." LEFT JOIN {$this->table_prefix}companies c ON c.member_id = l.member_id"
-			." WHERE l.parent_id='{$member_id}'"
-			." OR s.id='{$member_id}' {$condition}"
+			." WHERE (l.parent_id='{$member_id}' OR s.id IN (SELECT parent_id FROM {$this->table_prefix}links r_l WHERE r_l.member_id='{$member_id}')) AND c.shop_name IS NOT NULL"
+			//." OR s.id='{$member_id}' {$condition}"
 			." ORDER BY s.created DESC {$limitstr}";
 		$result = $this->dbstuff->GetArray($sql);//set and get db cache
 		

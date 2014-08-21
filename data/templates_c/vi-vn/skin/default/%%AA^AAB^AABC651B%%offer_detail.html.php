@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-04 14:14:23
+<?php /* Smarty version 2.6.27, created on 2014-08-19 15:23:21
          compiled from offer_detail.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'offer_detail.html', 151, false),array('function', 'formhash', 'offer_detail.html', 153, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'offer_detail.html', 41, false),array('function', 'formhash', 'offer_detail.html', 153, false),array('block', 'offer', 'offer_detail.html', 189, false),array('modifier', 'truncate', 'offer_detail.html', 203, false),array('modifier', 'pl', 'offer_detail.html', 204, false),)), $this); ?>
 <?php $_smarty_tpl_vars = $this->_tpl_vars;
 $this->_smarty_include(array('smarty_include_tpl_file' => "header.html", 'smarty_include_vars' => array('PageTitle' => ($this->_tpl_vars['Trade']['name']),'cur' => 'space_index')));
 $this->_tpl_vars = $_smarty_tpl_vars;
@@ -57,8 +57,7 @@ $(document).ready(function() {
 
 <h5 style="text-transform: none;font-size: 16px;"><a href="<?php echo $this->_tpl_vars['Menus']['offer']; ?>
 "><?php echo $this->_tpl_vars['_offer']; ?>
-</a> / <a href="<?php echo $this->_tpl_vars['Menus']['offer']; ?>
-&typeid=<?php echo $this->_tpl_vars['Type']['id']; ?>
+</a> / <a href="<?php echo smarty_function_the_url(array('module' => 'space','userid' => ($this->_tpl_vars['COMPANY']['cache_spacename']),'do' => 'offer','typeid' => ($this->_tpl_vars['Type']['id'])), $this);?>
 "><?php echo $this->_tpl_vars['Type']['name']; ?>
 </a></h5>
 <h3 style="padding: 0; margin: 0 0 0 0;height: auto;margin-bottom: 10px"><?php echo $this->_tpl_vars['Trade']['name']; ?>
@@ -270,6 +269,65 @@ image/usericon_big.png  <?php endif; ?> <?php endif; ?>" />
 					
 					</div>
 				</div>
+	
+	
+	
+	
+	
+	
+	<div class="works-list offer_list">
+
+<table width="98%" cellspacing="1">
+	<tbody><tr class="table_th" style="color: #fff;">
+	  <th width="15%" align="left"><?php echo $this->_tpl_vars['_picture']; ?>
+</th>
+	  <th width="52%" align="left"><?php echo $this->_tpl_vars['_title']; ?>
+</th>
+	  <th width="15%" align="left"><?php echo $this->_tpl_vars['_created_date']; ?>
+</th>
+	  <th width="15%" align="left"><?php echo $this->_tpl_vars['_contact']; ?>
+</th>
+	</tr>
+		
+		    <?php $this->_tag_stack[] = array('offer', array('name' => 'item','companyid' => ($this->_tpl_vars['COMPANY']['id']),'row' => 10,'typeid' => $this->_tpl_vars['Type']['id'])); $_block_repeat=true;smarty_block_offer($this->_tag_stack[count($this->_tag_stack)-1][1], null, $this, $_block_repeat);while ($_block_repeat) { ob_start(); ?>
+						
+						
+						
+						
+						
+						
+						<tr>
+								<td class="product" style="padding: 5px">
+										<div class="imgoutz">
+										<img alt="<?php echo $this->_tpl_vars['item']['title']; ?>
+" class="attachment-shop_catalog wp-post-image" src="<?php echo $this->_tpl_vars['item']['thumb']; ?>
+">
+										</div>
+								</td>
+						<td style="padding: 6px 10px;">
+								<a href="<?php echo $this->_tpl_vars['item']['url']; ?>
+" title="<?php echo $this->_tpl_vars['item']['title']; ?>
+"><?php echo ((is_array($_tmp=$this->_tpl_vars['item']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 40) : smarty_modifier_truncate($_tmp, 40)); ?>
+</a>
+								<p style="margin-bottom: 0;"><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['item']['content'])) ? $this->_run_mod_handler('pl', true, $_tmp) : smarty_modifier_pl($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, 350) : smarty_modifier_truncate($_tmp, 350)); ?>
+</p>
+						</td>
+						
+		
+
+						<td><?php echo $this->_tpl_vars['item']['pubdate']; ?>
+</td>
+						<td>
+								<a href="<?php echo $this->_tpl_vars['Menus']['contact']; ?>
+"><span class="im_pms"><?php echo $this->_tpl_vars['_send_message']; ?>
+</span></a>								
+						</td>
+				</tr>
+				<?php $_block_content = ob_get_contents(); ob_end_clean(); $_block_repeat=false;echo smarty_block_offer($this->_tag_stack[count($this->_tag_stack)-1][1], $_block_content, $this, $_block_repeat); }  array_pop($this->_tag_stack); ?>	
+				
+				      </tbody></table>
+		    </div>
+	
 	
 	
 </div>

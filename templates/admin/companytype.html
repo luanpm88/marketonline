@@ -1,32 +1,61 @@
 <!-- {include file="header.html"} -->
 <div id="currentPosition">
-	<p>{lang your_current_position} {lang trade_management} &raquo; {lang yellow_page}</p>
+	<p>{lang your_current_position} {lang ads} &raquo; {lang adzone}</p>
 </div>
 <div id="rightTop"> 
-    <h3>{lang yellow_page}</h3> 
+    <h3>Nhóm thương hiệu</h3>
     <ul class="subnav">
 		<li><a href="company.php">{lang management}</a></li>
         <li><a class="btn1" href="companytype.php"><span>{lang types}</span></a></li>
+	<li><a href="companytype.php?do=edit">{lang add_or_edit}</a></li>
         <li><a href="albumtype.php">{lang album_category}</a></li>
     </ul>
 </div>
-<div class="info">
-  <form method="post" id="EditFrm" name="edit_frm">
-  <input type="hidden" name="do" value="save" />
-    <table class="infoTable">
-      <tr>
-        <th class="paddingT15"> {lang one_line_one_category}</th>
-        <td class="paddingT15 wordSpacing5"><textarea style="width:250px;height:100px;" name="data[sort]" id="dataSort">{$sorts}</textarea>
-		<label class="field_notice">{lang press_enter_add_new}</label></td>
-      </tr>
-      <tr>
-        <th></th>
-        <td class="ptb20">
-			<input class="formbtn" type="submit" value="{lang save}" />
-		</td>
-
-      </tr>
-    </table>
-  </form>
+<div class="mrightTop"> 
+    <div class="fontl">{lang what_is_adzone}</div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
+    <thead>
+		<tr>
+		  <th width="5%" class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
+		  <th>Tên</th>
+		  <th>Thứ tự</th>
+		  <th>{lang action}</th>
+		</tr>
+    </thead>
+    <tbody>
+		<!--{foreach from=$Items item=item name=adzone}-->
+		<tr class="tatr2">
+		  <td class="firstCell"><input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}"></td>
+		  <td><label for="item_{$item.id}">{$item.name}</label></td>
+		  <td><input name="order[{$item.id}]" value="{$item.display_order}" style="text-align: right;width: 50px;margin-right: 20px;" /></td>
+		  <td class="handler">
+           <ul id="handler_icon">
+            <li><a class="btn_delete" href="companytype.php?id={$item.id}&do=del{$addParams}"  title="{lang delete}">{lang delete}</a></li>
+            <li><a class="btn_edit" href="companytype.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+            
+          </ul> 
+       </td>
+		  
+		</tr>
+		<!--{foreachelse}-->
+		<tr class="no_data info">
+		  <td colspan="8">{lang no_datas}</td>
+		</tr>
+		<!--{/foreach}-->
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="{lang action_zone}">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
+      <input type="submit" name="saveorder" value="Lưu thứ tự" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks">{$ByPages}</div>
+    <div class="clear"/>
+    </div>
+	</form>
 </div>
 <!-- {include file="footer.html"} -->

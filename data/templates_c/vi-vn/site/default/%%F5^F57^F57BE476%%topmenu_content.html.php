@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-07-02 13:36:14
+<?php /* Smarty version 2.6.27, created on 2014-08-13 14:37:38
          compiled from default/topmenu_content.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default/topmenu_content.html', 25, false),array('block', 'topmenuindustries', 'default/topmenu_content.html', 31, false),)), $this); ?>
@@ -17,7 +17,7 @@ image/logo-home.png" alt=""></a>
 		<?php else: ?>
 		    <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
 		<?php endif; ?>
-		
+
 		<!--<a href="contact"><?php echo $this->_tpl_vars['_contact_help']; ?>
 </a>-->
 	    </li>
@@ -91,6 +91,20 @@ image/trade_bg.png);'></span></a></span>
 "><span class="link-text">Nhà Phân phối</span></a></span></li>
 </ul>
 </li>
+<li class="menu-features" style=""><span class="menu-item-wrap">
+<a  href="<?php echo smarty_function_the_url(array('module' => 'companies'), $this);?>
+" style='background-color:#fe7477; background-size:cover; background-image:url();'>
+    <span class="link-text">Thương hiệu</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
+image/brand_bg.png);'></span></a></span>
+
+<ul>
+	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongHieu.php"><span class="link-text">Thương hiệu</span></a></span></li>
+	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="DoanhNghiep.php"><span class="link-text">Doanh nghiệp</span></a></span></li>
+	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="CuaHang.php"><span class="link-text">Shop</span></a></span></li>
+	
+</ul>
+
+</li>
 <li class="menu-shop" style="visibility: hidden;display: none">
     <span class="menu-item-wrap">
         <a  href="ThiTruong.php" style='background-color:#6cbe42; background-size:cover; background-image:url();'>
@@ -108,19 +122,8 @@ image/invest_bg.png);'></span></a></span>
 </ul>
 
 </li>
-<li class="menu-features" style="visibility: hidden"><span class="menu-item-wrap">
-<a  href="ThuongHieu.php" style='background-color:#fe7477; background-size:cover; background-image:url();'>
-    <span class="link-text">Thương hiệu</span><span class="arrow">&nbsp;</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>
-image/brand_bg.png);'></span></a></span>
 
-<ul>
-	<li class="menu-grid-items"><span class="menu-item-wrap"><a  href="ThuongHieu.php"><span class="link-text">Thương hiệu</span></a></span></li>
-	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="DoanhNghiep.php"><span class="link-text">Doanh nghiệp</span></a></span></li>
-	<li class="menu-left-sidebar"><span class="menu-item-wrap"><a  href="CuaHang.php"><span class="link-text">Shop</span></a></span></li>
-	
-</ul>
 
-</li>
 <li class="menu-contacts"><span class="menu-item-wrap"><a  href="<?php echo smarty_function_the_url(array('module' => 'jobs'), $this);?>
 " style='background-color:#83d328; background-size:cover; background-image:url();'>
 <span class="link-text">Học và Làm</span><span class='tile-icon' style='background-image:url(<?php echo $this->_tpl_vars['theme_img_path']; ?>

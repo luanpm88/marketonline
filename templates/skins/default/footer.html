@@ -121,6 +121,7 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 	<form action="{$SiteUrl}?do=product&action=changeSpaceStyle" method="POST">
 		<input type="hidden" name="com_id" value="{$COMPANY.id}" />
 		<input type="hidden" name="uri" value="{$FURI}" />
+			<h2 class="custom-style-box-title">Đổi màu trang cá nhân</h2>
 		    <h2>Màu sắc chung</h2>
 			<ul>
 				<li>
@@ -331,9 +332,10 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 					
 		}
 		
-		{/literal}{if $pb_userinfo.id}getChatFriendList({$pb_userinfo.id});{/if}{literal}
 	    });
     </script>
      {/literal}
+     
+<!--{include file="`$theme_name`/_footer_script.html"}-->
 </body>
 </html>

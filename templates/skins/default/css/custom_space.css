@@ -1873,7 +1873,7 @@ a.following
 }
 .offer-detail-comment form textarea
 {
-    width: 865px;
+    width: 700px;
     max-width: none;
 }
 .offer_list .product img
@@ -1942,4 +1942,32 @@ a.following
 }
 #header {
     padding-top: 42px !important;
+}
+.contact-error {
+    margin: 0 0 10px;
+    width: 450px;
+}
+.contact_success {
+    margin: 0 0 10px;
+    padding-left: 0;
+    width: 100%;
+}
+.contact_box {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+}
+.main_banner img {
+    border: none;
+}
+#top_company_info {
+    left: 1px;
+    width: 906px;
+}
+.custom-content h2 {
+    font-size: 18px;
+    color: #3b984c;
+}
+.custom-content h2.custom-style-box-title {
+    font-size: 20px;
+    text-align: center;
+    color: #333;
 }

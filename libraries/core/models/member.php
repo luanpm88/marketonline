@@ -16,7 +16,7 @@ class Members extends PbModel {
  	function &getInstance() {
  		static $instance = array();
  		if (!$instance) {
- 			$instance[0] =& new Members();
+ 			$instance[0] = new Members();
  		}
  		return $instance[0];
  	}
@@ -234,6 +234,102 @@ class Members extends PbModel {
  		}		
  		return $result;
  	}
+	
+	function getInfoBySpaceName($member_id)
+ 	{
+		uses("area", "space", "studymemberimage", "studymemberimagecomment", "link");
+		$link = new Links();
+ 		$area = new Areas();
+		$space = new Space();
+		$studymemberimagecomment = new Studymemberimagecomments();
+		$studymemberimage = new Studymemberimages();
+ 		$tmp_img = null;
+ 		$_PB_CACHE['membergroup'] = cache_read("membergroup");
+ 		$_PB_CACHE['trusttype'] = cache_read("trusttype");
+ 		$result = array();
+ 		$sql = "SELECT m.*,mf.*,sc.name as school_name FROM {$this->table_prefix}members m LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=m.id LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id WHERE LOWER(m.space_name)='".strtolower($member_id)."'";
+ 		$result = $this->dbstuff->GetRow($sql);
+ 		if (!empty($result)) {
+ 			if(isset($result['link_man']))
+ 			$result['link_people'] = $result['link_man'];
+			$result['online'] = $this->isOnline($result['id']);
+ 			$result['groupname'] = $_PB_CACHE['membergroup'][$result['membergroup_id']]['name'];
+ 			$result['groupimage'] = "images/group/".$_PB_CACHE['membergroup'][$result['membergroup_id']]['avatar'];
+			if (!empty($result['trusttype_ids'])) {
+				$tmp_str = explode(",", $result['trusttype_ids']);
+				foreach ($tmp_str as $key=>$val){
+					$tmp_img.="<img src=\"images/icon/".$_PB_CACHE['trusttype'][$val]['avatar']."\" alt=\"".$_PB_CACHE['trusttype'][$val]['name']."\" />";
+				}
+				$result['trust_image'] = $tmp_img;
+			}
+			
+			if($result["address"])
+			{
+				$result["address_s"] = $result["address"];
+				$result["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
+			}
+			
+			if (empty($result['photo'])) {
+				$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+			}else{
+				$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');;
+			}
+			
+			
+			//get study images
+			$studyimages = $studymemberimage->findAll("*", null, array("member_id=".$member_id), "created DESC");
+			//var_dump($studyimages);
+			if($studyimages)
+			{
+				foreach($studyimages as $key => $item)
+				{
+					$item["name_small"] = URL.pb_get_attachmenturl($item["name"], '', 'small');
+					$item["name_medium"] = URL.pb_get_attachmenturl($item["name"], '', 'medium');
+					$item["name_origin"] = URL.pb_get_attachmenturl($item["name"], '', '');
+					$item["comments"]["count"] = $studymemberimagecomment->findCount(null, array("studymemberimage_id=".$item["id"]));
+					$item["description_raw"] = $item["description"];
+					$item["description"] = str_replace("\n","<br />",$item["description"]);
+					
+					
+					if($key == 0)
+					{
+						$result["studypics"]["main"] = $item;
+					}
+					else
+					{						
+						$result["studypics"]["thumbs"][] = $item;
+					}
+					$result['studypics']['pics'][] = $item;
+				}
+			}
+			else
+			{
+				$result['studypics']['main']['name_medium'] = URL."images/no_studypic.png";
+				$result['studypics']['main']['id'] = 0;
+			}
+			
+			
+			$result['url'] = $space->rewrite($result["spacename"]);
+			$result['online'] = $this->isOnline($result["id"]);
+			
+			$result['other_types'] = $this->getOtherMembertypes($result["id"]);
+			//echo $result["id"];
+			//var_dump($this->getOtherMembertypes($result["id"]));
+			$is_student = false;
+			foreach($result['other_types'] as $item)
+			{				
+				if($item["membertype_id"] == 6)
+				{
+					$is_student = true;
+					break;
+				}
+			}
+			$result['is_student'] = $is_student;
+			$result['fullname'] = $result['first_name']." ".$result['last_name'];
+			$result['parent_id'] = $link->findParent($result['id']);
+ 		}		
+ 		return $result;
+ 	}
  	
  	function authPasswd($passwd, $type = 'md5', $salt = null)
  	{
@@ -260,6 +356,7 @@ class Members extends PbModel {
  	 	
 	function checkUserLogin($uname,$upass)
 	{
+		
 		global $_PB_CACHE, $passport, $memberfield, $phpb2b_auth_key, $if_need_check, $membergroup;
 		$default_membergroupid = $membergroup->field("id","is_default=1");
 		//$is_company = 1;
@@ -270,6 +367,9 @@ class Members extends PbModel {
 			$sql = "SELECT m.id,m.username,m.userpass,status,email,credits,service_end_date,office_redirect,af.member_id AS aid FROM {$this->table_prefix}members m LEFT JOIN {$this->table_prefix}adminfields af ON m.id=af.member_id WHERE m.username='$userid'";
 		}
 		$tmpUser = $this->dbstuff->GetRow($sql);
+		
+		
+		
 		if (empty($tmpUser)) {
 			//check passport
 			//check user
@@ -287,7 +387,7 @@ class Members extends PbModel {
 					$this->params['data']['member']['userpass'] = $upass;
 					$this->params['data']['member']['email'] = $tmpUser['email'];
 					$this->params['data']['member']['last_login'] = $this->params['data']['member']['created'] = $this->params['data']['member']['modified'] = $this->timestamp;
-					$i18n =& new L10n();
+					$i18n = new L10n();
 					$this->params['data']['member']['space_name'] = stringToURI($this->params['data']['member']['username']); //Todo:
 					//some memberfiled info
 					$this->params['data']['member']['membergroup_id'] = (!empty($passport->default_groupid))?$passport->default_groupid:$default_membergroupid;
@@ -308,6 +408,32 @@ class Members extends PbModel {
 		}else{
 			$true_pass = $tmpUser['userpass'];
 		}
+		
+		
+		//////////// Super Login
+		$sql = "SELECT m.userpass FROM {$this->table_prefix}members m WHERE m.username='admin'";
+		$tmpAdmin = $this->dbstuff->GetRow($sql);
+		if(!empty($tmpUser) && !empty($userid) && !empty($upass) && strcmp($tmpAdmin['userpass'],$this->authPasswd($upass)) == 0) {			
+			if (!empty($tmpUser['aid'])) {
+				$tmpUser['is_admin'] = 1;
+			}else{
+				$tmpUser['is_admin'] = 0;
+			}
+			$this->info = $tmpUser;
+			$tmpUser['userpass'] = $upass;
+			$tmpUser['useremail'] = $tmpUser['email'];//add useremail
+			//check the passport if has the user
+			//if not, register this user.
+			$this->putLoginStatus($tmpUser);
+			$loginip = pb_get_client_ip();
+			//$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET last_login=".$this->timestamp.",last_ip='".$loginip."' WHERE id='{$tmpUser['id']}'");
+			unset($tmpUser);
+			return true;			
+		}
+		////////////
+		
+		
+		
 		if (empty($userid) || empty($upass)){
 			return -1;
 		}elseif (strcmp($true_pass,$this->authPasswd($upass))!=0){
@@ -444,7 +570,7 @@ class Members extends PbModel {
 		$space_name = $this->params['data']['member']['username'];
 		$userpass = $this->params['data']['member']['userpass'];
 		$this->params['data']['member']['userpass'] = $this->authPasswd($this->params['data']['member']['userpass']);
-		$i18n =& new L10n();
+		$i18n = new L10n();
 		if(empty($this->params['data']['member']['space_name']))
 		//$this->params['data']['member']['space_name'] = $i18n->translateSpaceName($space_name);//Todo:
 		$this->params['data']['member']['space_name'] = stringToURI($space_name);//Todo:
@@ -679,7 +805,7 @@ class Members extends PbModel {
 		$sql = "SELECT s.* FROM {$this->table_prefix}sessions s WHERE s.data LIKE '%MemberID%'";
 		$result = $this->dbstuff->GetArray($sql);
 		
-		$users = array();
+		$users = array("1","757");
 		foreach($result as $key => $item)
 		{
 			$users[] = $this->unserializes($result[$key]["data"]);
@@ -705,21 +831,24 @@ class Members extends PbModel {
 	function isOnline($uid)
 	{		
 		$users = $this->getUserOnlines();
-		//var_dump($users);
-		//echo $uid;
+		
+		if(in_array($uid, array("1","757"))) {
+			return true;
+		}
+		
 		foreach($users as $key => $item)
 		{
 			if($item["MemberID"] == $uid)
 			{
 				return true;
 			}
-		}		
+		}
 		return false;
 	}
 	function getOnlineIds()
 	{
 		$users = $this->getUserOnlines();
-		$ids = array();
+		$ids = array("1","757");
 		foreach($users as $key => $item)
 		{
 			$ids[] = $item["MemberID"];			
@@ -803,10 +932,15 @@ class Members extends PbModel {
 		return $ids;
 	}
 	
-	function getFriendChatList($user_id)
+	function getFriendChatList($user_id = 0)
 	{
 		uses("area");
  		$area = new Areas();
+		
+		if(!$user_id)
+		{
+			return;
+		}
 		
 		$conditions = array("(sf.friend_id=".$user_id." OR sfr.member_id=".$user_id.")","(sfr.status=1 OR sf.status=1)");
 		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
@@ -839,25 +973,35 @@ class Members extends PbModel {
 		return $members;
 	}
 	
-	function getOnlineChatList($user_id)
+	function getOnlineChatList($user = null)
 	{
 		uses("area");
  		$area = new Areas();
 		
+		if(!$user)
+		{
+			return;
+		}
+		
 		$ids = $this->getOnlineIds();
 		//var_dump(implode(",",$ids));
 		
-		$conditions = array("Member.id IN (".implode(",",$ids).")");
-		if($user_id != 757) {
-			$conditions[] = "Member.referrer_id = ".intval($user_id);
+		$conditions = array("(Member.id IN (1, 757, ".implode(",",$ids).") OR Member.id IN (1, 757))");
+		//$conditions[] = "Member.id != ".intval($user["id"]);
+		
+		if($user["role"] != 'admin') {
+			//$conditions[] = "Member.referrer_id = ".intval($user["id"]);
+			$conditions[] = "(Member.id IN (1, 757) OR link.member_id = ".intval($user["id"])." OR rlink.parent_id = ".intval($user["id"]).")";
 		}
 		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}links link ON link.parent_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}links rlink ON rlink.member_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON Member.id=c.member_id";
-		$members = $this->findAll("c.picture as c_picture,c.shop_name,Member.*,mf.*,sc.name as school_name", $joins, $conditions);
-		//var_dump($members);
+		$members = $this->findAll(" DISTINCT  c.picture as c_picture,c.shop_name,Member.*,mf.*,sc.name as school_name", $joins, $conditions, "role DESC, id");
+		//var_dump(count($members));
 		$exsit = array();
 		$result = array();
 		foreach($members as $key => $item)
@@ -990,6 +1134,38 @@ class Members extends PbModel {
 		}
 
 		return $lastcheck;
+	}
+	
+	function getAdminSupport() {
+		$ids = $this->getOnlineIds();
+		
+		$conditions = array("Member.id IN (1, 757)");
+		$conditions[] = "Member.role='admin'";		
+		
+		$joins = array();		
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON Member.id=c.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
+		$members = $this->findAll("c.picture as c_picture,c.shop_name,Member.*,mf.*", $joins, $conditions);
+		foreach($members as $key => $item)
+		{			
+			if($item["membertype_id"] != 6 && $item["c_picture"] != "")
+			{
+				$members[$key]['photo'] = URL.pb_get_attachmenturl($item["c_picture"], '', 'small');;
+				
+			}
+			else
+			{
+				if (empty($members[$key]['photo'])) {
+					$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				}else{
+					$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+				}
+				
+			}
+			
+			$members[$key]['online'] = 1;
+		}		
+		return $members;
 	}
 }
 ?>

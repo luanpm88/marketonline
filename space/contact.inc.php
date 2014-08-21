@@ -5,25 +5,27 @@
  *
  *      @version $Revision: 2048 $
  */
-if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 
+if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(PHPB2B_ROOT."libraries/sendmail.inc.php");
 require(CACHE_LANG_PATH."lang_site.php");
 
+$capt_check = capt_check_2("capt_service");
 
-if(isset($_POST["sender_email"]) && $_POST["sender_email"]!="")
+if(isset($_POST["sender_email"]) && $_POST["sender_email"]!="" && $capt_check)
 {
-    //setvar("message", $_POST["letter_text"]);
-    $sended = pb_sendmail(array($company->info["email"], "Customer"), $_POST["letter_subject"], null, '<p>'.$arrTemplate["_name"].': '.$_POST["sender_name"].'</p>'.'<p>'.$arrTemplate["_email"].': '.$_POST["sender_email"].'</p>'.'<p>'.$arrTemplate["_subject"].': '.$_POST["letter_subject"].'</p>'.'<p>'.$arrTemplate["_message"].': '.$_POST["letter_text"].'</p>');
-    //echo $sended;
-    //if($sended)
-    //{
-        setvar("amessage", $sended);
-    //}
-    
-
+    $sended = pb_sendmail(array($company->info["email"], "Customer"), "Liên hệ từ khách hàng trên trang MarketOnline.vn", null, '<p><strong>'.$arrTemplate["_name"].'</strong>: '.$_POST["sender_name"].'</p>'.'<p><strong>'.$arrTemplate["_email"].'</strong>: '.$_POST["sender_email"].'</p>'.'<p><strong>'.$arrTemplate["_subject"].'</strong>: '.$_POST["letter_subject"].'</p>'.'<p><strong>'.$arrTemplate["_message"].'</strong>: '.$_POST["letter_text"].'</p>');
+    if($sended)
+    {
+        setvar("success", 1);
+    }
 }
-    //var_dump($company->info["email"]);
+else
+{
+    setvar("post", $_POST);
+}
 
+setvar("capt_check",$capt_check);
+setvar("sid",md5(uniqid($time_stamp)));
 $space->render("contact");
 ?>

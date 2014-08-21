@@ -19,6 +19,7 @@ class Offer extends PbController {
 		$this->loadModel("tradetype");
 		$this->loadModel("tag");
 		$this->loadModel("language");
+		$this->loadModel("announcement");
 	}
 	
 	function index()
@@ -594,7 +595,7 @@ class Offer extends PbController {
 		$trade_types = $trade->getTradeTypes();
 		$viewhelper->setTitle($trade_types[$info['type_id']]);
 		$viewhelper->setPosition($trade_types[$info['type_id']], "index.php?do=offer&action=lists&typeid=".$info['type_id']);
-		$trade_model->clicked($id);
+		//$trade_model->clicked($id);
 		if ($info['require_point']>0) {
 			//check member points
 			if (empty($pb_user)) {
@@ -1755,6 +1756,20 @@ class Offer extends PbController {
 			
 			$company_info = $this->company->getInfoById($Trade['company_id']);
 			setvar("fb_description", mb_convert_encoding(preg_replace('/\s+/'," ",substr(trim(strip_tags($Trade["content"])),0, 1000)),"UTF-8"));
+			
+			$welcomnew_info = $this->announcement->read("message", 7);
+			$welcomnew_info["message"] = str_replace("{shop}","<a href='http://marketonline.vn/".$company_info["cache_spacename"]."'>".$company_info["shop_name"]."</a>",$welcomnew_info["message"]);
+			setvar('welcomnew_info', $welcomnew_info);
+			
+			$Trade['content'] = str_replace('http://marketonline.vn/virtual-office/\&quot;http:/marketonline.vn',"",$Trade['content']);
+			$Trade['content'] = str_replace('\&quot;',"",$Trade['content']);
+			$Trade['content'] = str_replace('src=/marketonline.vn','src="',$Trade['content']);
+			
+			$Trade['content'] = cleanContent(stripslashes($Trade['content']));		
+		
+			//format html
+			$Trade['content'] = strip_tags($Trade['content'], "<p><br><strong><font><span><img><h2><h3><h4>");
+			
 			
 			setvar("comments_count", $comments_count);					
 			//var_dump($Trade);
