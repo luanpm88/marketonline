@@ -149,7 +149,7 @@ if(isset($_POST['register']) && $capt_check){
 		$exp_time = $time_stamp+1296000;
 		$tmp_username = $member->params['data']['member']['username'];
 		$hash = authcode("{$tmp_username}\t".$exp_time, "ENCODE");
-//		$hash = str_replace(array("+", "|"), array("|", "_"), $hash);
+		//$hash = str_replace(array("+", "|"), array("|", "_"), $hash);
 		$hash = rawurlencode($hash);
 		setvar("hash", $hash);
 		setvar("username", $tmp_username);
