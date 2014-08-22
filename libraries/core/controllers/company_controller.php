@@ -130,11 +130,24 @@ class Company extends PbController {
 	}
 	
 	function search() {
-		$result = $this->company->fullTextSearch($_GET["keyword"],0,40,true);
+		$num_per_page = 14;
+		$current_page = 1;
+		$url = URL."index.php?do=company&action=search&keyword=".$_GET["keyword"];
+		
+		if(isset($_GET["p"])) {
+			$current_page = intval($_GET["p"]);
+		}
+		
+		$offset = ($current_page-1)*$num_per_page;
+		
+		$result = $this->company->fullTextSearch($_GET["keyword"],$offset,$num_per_page,true);
+		foreach($result["result"] as &$item) {
+			$item["href"] = $this->company->url(array("module"=>"space","userid"=>$item["cache_spacename"]));
+		}
 		//var_dump($result);
 		setvar("list", $result["result"]);
 		setvar("count", $result["count"]);
-		setvar("pagination", pagination($result["count"], 10, 1));
+		setvar("pagination", pagination($url, $result["count"], $num_per_page, $current_page));
 		//render("company/search", 1);
 		//uses("ad");
 		//$ads = new Adses();

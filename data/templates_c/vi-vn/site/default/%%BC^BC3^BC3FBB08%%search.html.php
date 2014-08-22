@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.27, created on 2014-08-21 10:17:32
+<?php /* Smarty version 2.6.27, created on 2014-08-22 09:13:34
          compiled from default%5Ccompany/search.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'the_url', 'default\\company/search.html', 25, false),)), $this); ?>
@@ -85,7 +85,8 @@ unset($_smarty_tpl_vars);
 " method="get">
 		<input type="hidden" name="do" value="company" />
 		<input type="hidden" name="action" value="search" />
-		<input type="text" placeholder="Tìm kiếm" name="keyword" style="float: left">
+		<input value="<?php echo $_GET['keyword']; ?>
+" type="text" placeholder="Tìm kiếm" name="keyword" style="float: left">
 		<input type="submit" value="Tìm kiếm">
 	    </form>
 	</div>
@@ -98,18 +99,7 @@ unset($_smarty_tpl_vars);
                 </div>
                 <br style="clear:both" />
                 
-                <div class="pagination-list company-pagination">
-                    <ul>
-                        <li class="first"><a rel="1" href="javascript:void(0)">&lt;&lt;</a></li>
-                        <li class="prev"><a rel="4" href="javascript:void(0)">&lt;</a></li>
-                        <li class="num"><a rel="1" href="javascript:void(0)">1</a></li>
-                        <li class="num"><a rel="2" href="javascript:void(0)">2</a></li>
-                        <li class="num"><a rel="3" href="javascript:void(0)">3</a></li>
-                        <li class="next"><a rel="6" href="javascript:void(0)">&gt;</a></li>
-                        <li class="last"><a rel="42" href="javascript:void(0)">&gt;&gt;</a></li>
-                    </ul>
-                </div>
-                <br style="clear:both" />
+                
           
               <ul style="height: 230px;" class="filterable-grid">
                   

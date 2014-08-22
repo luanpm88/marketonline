@@ -1133,26 +1133,32 @@ function get_domain($url)
   }
   return false;
 }
-function pagination($total, $num_per_page, $current) {
+function pagination($url, $total, $num_per_page, $current) {
 	$pages = ceil($total/$num_per_page);
 	if($pages < 2) {
 		return "";
 	}
-	
+	$url = $url."&p=";
 	$result = '<ul>';
 	if($current != 1) {
-		$result .= '<li class="first"><a href="javascript:void(0)">&lt;&lt;</a></li>'
-			.'<li class="prev"><a href="javascript:void(0)">&lt;</a></li>';
+		$f_href = $url."1";
+		$p_href = $url.($current-1);
+		$result .= '<li class="first"><a href="'.$f_href.'">&lt;&lt;</a></li>'
+			.'<li class="prev"><a href="'.$p_href.'">&lt;</a></li>';
 	}
 	for($i=1;$i<=$pages;$i++) {
+		$class = "";
 		if($i == $current) {
-			$class='';
+			$class='active';
 		}
-		$result .= '<li class="num"><a rel="'.$i.'" href="javascript:void(0)">'.$i.'</a></li>';
+		$href = $url.$i;
+		$result .= '<li class="'.$class.'" class="num"><a rel="'.$i.'" href="'.$href.'">'.$i.'</a></li>';
 	}
 	if($current != $pages) {
-		$result .= '<li class="next"><a href="javascript:void(0)">&gt;</a></li>'
-                        .'<li class="last"><a href="javascript:void(0)">&gt;&gt;</a></li>';
+		$n_href = $url.($current+1);
+		$l_href = $url.$pages;
+		$result .= '<li class="next"><a href="'.$n_href.'">&gt;</a></li>'
+                        .'<li class="last"><a href="'.$l_href.'">&gt;&gt;</a></li>';
 	}	
 	$result .= '<ul>';
 	
