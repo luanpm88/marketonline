@@ -564,7 +564,7 @@ class Product extends PbController {
 			
 			foreach($fimages as $key => $img)
 			{				
-				$fimages[$key] = "http://marketonline.vn/".$img;
+				$fimages[$key] = URL.$img;
 			}
 			
 			setvar("fimages", $fimages);
@@ -664,7 +664,7 @@ class Product extends PbController {
 			$FACE["caption"] = urlencode($pb_company["shop_name"]);
 			$FACE["summary"] = urlencode(strip_tags($pb_company["description"]));
 			//$FACE["summary"] = urlencode("");
-			$FACE["images"] = '&p[images][0]='.urlencode("http://marketonline.vn/".$pb_company["image"]);
+			$FACE["images"] = '&p[images][0]='.urlencode(URL.$pb_company["image"]);
 			foreach($fimages as $key => $img)
 			{
 				//$FACE["images"] .= '&p[images]['.($key).']='.urlencode("http://marketonline.vn/".$img);
@@ -881,27 +881,27 @@ class Product extends PbController {
 		setvar("tile",$ttt);
 		
 		if($info['image'] && !preg_match('/http/', $info['image']))
-			setvar('fb_image', "http://marketonline.vn/".$info['image']);
+			setvar('fb_image', URL.$info['image']);
 		else
 			setvar('fb_image', $info['image']);
 			
 		if($info['image1'] && !preg_match('/http/', $info['image1']))
-			setvar('fb_image1', "http://marketonline.vn/".$info['image1']);
+			setvar('fb_image1', URL.$info['image1']);
 		else
 			setvar('fb_image1', $info['image1']);
 		
 		if($info['image2'] && !preg_match('/http/', $info['image2']))
-			setvar('fb_image2', "http://marketonline.vn/".$info['image2']);
+			setvar('fb_image2', URL.$info['image2']);
 		else
 			setvar('fb_image2', $info['image2']);
 			
 		if($info['image3'] && !preg_match('/http/', $info['image3']))
-			setvar('fb_image3', "http://marketonline.vn/".$info['image3']);
+			setvar('fb_image3', URL.$info['image3']);
 		else
 			setvar('fb_image3', $info['image3']);
 			
 		if($info['image4'] && !preg_match('/http/', $info['image4']))
-			setvar('fb_image4', "http://marketonline.vn/".$info['image4']);
+			setvar('fb_image4', URL.$info['image4']);
 		else
 			setvar('fb_image4', $info['image4']);
 		
@@ -929,7 +929,7 @@ class Product extends PbController {
 		setvar("online", $this->product->isOnline($info["member_id"]));
 		
 		$welcomnew_info = $this->announcement->read("message", 7);
-		$welcomnew_info["message"] = str_replace("{shop}","<a href='http://marketonline.vn/".$company_info["cache_spacename"]."'>".$company_info["shop_name"]."</a>",$welcomnew_info["message"]);
+		$welcomnew_info["message"] = str_replace("{shop}","<a href='".URL.$company_info["cache_spacename"]."'>".$company_info["shop_name"]."</a>",$welcomnew_info["message"]);
 		setvar('welcomnew_info', $welcomnew_info);
 		
 		
@@ -2117,7 +2117,7 @@ class Product extends PbController {
 				
 				$smsname = $info["fullname"];
 
-				$content = "<a href='http://marketonline.vn/virtual-office/sellerorder.php?do=view&id=".$info["id"]."'>".$smsname." đã đặt hàng</a>";
+				$content = "<a href='".URL."virtual-office/sellerorder.php?do=view&id=".$info["id"]."'>".$smsname." đã đặt hàng</a>";
 				$sms['content'] = mysql_real_escape_string($content);
 				$sms['title'] = mysql_real_escape_string("Lịch sửa mua hàng");
 				$sms['membertype_ids'] = '[1][2][3]';

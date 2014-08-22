@@ -110,7 +110,7 @@ if (!empty($_GET['do'])) {
 			$fimages[] = $industries[$key0]["image"];
 		}
 		
-		$industries[$key0]["image"] = "http://marketonline.vn/".$industries[$key0]["image"];
+		$industries[$key0]["image"] = URL.$industries[$key0]["image"];
 		
 		$kkc = 0;
 		foreach($level0['sub'] as $key1 => $level1)
@@ -172,9 +172,9 @@ if (!empty($_GET['do'])) {
 	{
 		//if(in_array($key, array(0,1,2,3,4)))
 		//{
-			$FACE["images"] .= '&p[images]['.($key).']='.urlencode("http://marketonline.vn/".$img);
-			$fimages[$key] = "http://marketonline.vn/".$img;
-			$imageface[] = "http://marketonline.vn/".$img;
+			$FACE["images"] .= '&p[images]['.($key).']='.urlencode(URL.$img);
+			$fimages[$key] = URL.$img;
+			$imageface[] = URL.$img;
 		//}
 	}
 	
