@@ -146,7 +146,7 @@ if(isset($_POST['register']) && $capt_check){
 	$updated = $member->Add();
 	if ($member_reg_auth == 1) {
 		$if_need_check = true;
-		$exp_time = $time_stamp+86400;
+		$exp_time = $time_stamp+1296000;
 		$tmp_username = $member->params['data']['member']['username'];
 		$hash = authcode("{$tmp_username}\t".$exp_time, "ENCODE");
 //		$hash = str_replace(array("+", "|"), array("|", "_"), $hash);
