@@ -10,7 +10,7 @@ $fb = new Facebook($config);
  echo "2";
 $params = array(
   // this is the main access token (facebook profile)
-  "access_token" => "CAAU9IYzT54IBAHZAxxr4U44xHHHiAzeZCNNyEip8b7ZBV1y9I8HkMUL896SxRnra1gcWyAhmXc2DG7cJAehVKMAK3gHZB8ulZA754jE0PqcqR7bVCPhy3l6lhUcQfvfP04D1YZA586ev8zJvDewDHHOIFOWtIMeGehIum40cfGW3bWgaNXlI0DT7IoHpwrZC5KlUcmnZCOCgKF1RiHdhvZBRR",
+  "access_token" => "CAAU9IYzT54IBALNhrf5UxjQOtujID7UbCdCOHyRfidWT1LZBYwiZAwOUCDlGQJPJR8gsMZB3ovSZCZAOyC1TGR55Ssl5ltKW2EQNvEIgI6BnZB1Tz1vPhi5rNZB5GusM78i7vMcJw2FSOYtvCrGxXrQPftDPx9pmW07EvZBBjuJGTZCmIKsqk0YMLrEfVBAMKpv2SFUzVH6WqxpQyBRKWjdaK",
   "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
   "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
   "picture" => "http://i.imgur.com/lHkOsiH.png",
