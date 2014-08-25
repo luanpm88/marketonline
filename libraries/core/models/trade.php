@@ -100,7 +100,6 @@ class Trades extends PbModel {
  			$result[$keys]['typename'] = $cache_types['offertype'][$values['type_id']];
 			$result[$keys]["name"] = fix_text_error($result[$keys]["name"]);
 			
-			
 			if($result[$keys]['default_pic'])
 			{
 				$pic_col = 'picture'.$result[$keys]['default_pic'];

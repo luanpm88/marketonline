@@ -10726,6 +10726,6 @@ input[name=redirect]
 .keyword-announce strong {
     color: #0064d2;
 }
-.company-pagination {
-    padding: 10px;
+.company-pagination ul {
+    margin: 10px;
 }
