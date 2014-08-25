@@ -1,6 +1,6 @@
 <?php
  echo "0";
-require_once("sdk/autoload.php"); // set the right path
+require_once("sdk/facebook.php"); // set the right path
  echo "1";
 $config = array();
 $config['appId'] = '1474589189465986';
