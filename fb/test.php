@@ -1,4 +1,5 @@
 <?php
+ echo "0";
 require_once("sdk/autoload.php"); // set the right path
  echo "1";
 $config = array();
