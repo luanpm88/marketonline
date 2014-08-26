@@ -20,7 +20,7 @@ $params = array (
 );
     echo "3";
 try {
-    $ret = $fb->api('/me/feed', 'POST', $params);
+    $ret = $fb->api('/100000235631026/feed', 'POST', $params);
     echo 'Successfully posted to Facebook Personal Profile';
 } catch(Exception $e) {
     echo $e->getMessage();
