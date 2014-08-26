@@ -40,7 +40,7 @@ $config['fileUpload'] = false; // optional
 $fb = new Facebook($config);
 
 // connect to database
-$conn = new mysqli("localhost", "root", "", "marketonline"); // configure appropriately
+$conn = new mysqli("localhost", "marketon_user", "aA456321@", "marketon_main"); // configure appropriately
 // check connection
 if ($conn->connect_error) {
   trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
@@ -49,9 +49,10 @@ if ($conn->connect_error) {
 mysqli_set_charset( $conn, 'utf8' );
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT trade.id, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'
+$sql = 'SELECT com.name as company_name, trade.id, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
     .' FROM pb_trades trade'
-    .' LIMIT 10';
+    .' LEFT JOIN pb_companies as com ON com.id = trade.company_id'
+    .' LIMIT 5';
 
 $rs = $conn->query($sql);
 if($rs === false) {
@@ -62,6 +63,8 @@ $rs->data_seek(0);
 $share_topics = array();
 while($res_s = $rs->fetch_assoc()) {
     //prepair content
+    $res["id"] = $res_s["id"];
+    $res["post_title"] = mb_convert_encoding($res_s["company_name"],"ASCII", "UTF8");
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["title"]);
     $res["content"]= strip_tags(str_replace('[:vi-vn]', '', $res_s["content"]));
     
@@ -74,12 +77,12 @@ while($res_s = $rs->fetch_assoc()) {
         $pic_col = 'picture';
     }
     
-    $res['image'] = "http://marketonline.vn/attachment/".$res_s[$pic_col];
+    if ($res_s[$pic_col]) $res['image'] = "http://marketonline.vn/attachment/".$res_s[$pic_col];
     $res['url'] = "http://marketonline.vn/thuong-mai/".$res_s['id']."/".stringToURI($res_s['title']);
     
     $share_topics[] = $res;
 }
-var_dump($share_topics);
+
 $rs->free();
 
 
@@ -87,63 +90,63 @@ $rs->free();
 
 
 
-
-//// AUTOMATIC POST EACH TOPIC TO FACEBOOK
-//foreach($share_topics as $share_topic) {
-// 
-//  if($share_topic['facebook_pubstatus'] == 0) {
-// 
-//    // define POST parameters
-//    $params = array(
-//      "access_token" => "YOUR_ACCESS_TOKEN", // configure appropriately
-//      "message" => $share_topic['facebook_post'],
-//      "link" => $share_topic['topic_url'],
-//      "name" => $share_topic['topic_title'],
-//      "caption" => "YOUR_SITE_URL", // configure appropriately
-//      "description" => $share_topic['topic_description']
-//    );
-// 
-//    if($share_topic['facebook_image']) {
-//      $params["picture"] = $share_topic['facebook_image'];
-//    }
-// 
-//    // check if topic successfully posted to Facebook
-//    try {
-//      $ret = $fb->api('/YOUR_FACEBOOK_ID/feed', 'POST', $params); // configure appropriately
-// 
-//      // mark topic as posted (ensure that it will be posted only once)
-//      $sql = 'UPDATE topics SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['topic_id'];
-//      if($conn->query($sql) === false) {
-//        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-//      }
-//      $result .= $share_topic['topic_id'] . ' ' . $share_topic['facebook_post'] . ' successfully posted to Facebook!' . $line_break;
-// 
-//    } catch(Exception $e) {
-//      $result .= $share_topic['topic_id'] . ' ' . $share_topic['facebook_post'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
-//    }
-// 
-//    sleep(3);
-//  }
-// 
-//}
-// 
-//if(php_sapi_name() == 'cli') {
-//  // keep log
-//  file_put_contents('test.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
-// 
-//  echo $result;
-// 
-//} else {
-//  $html = '<html><head>';
-//  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
-//  $html .= '</head>';
-//  $html .= '<body>';
-//  $html .= $result;
-//  $html .= '</body>';
-//  $html .= '</html>';
-//  
-//  echo $html;
-//}
+$result = '';
+// AUTOMATIC POST EACH TOPIC TO FACEBOOK
+foreach($share_topics as $share_topic) {
+ 
+  //if(!isset($share_topic['facebook_pubstatus']) && $share_topic['facebook_pubstatus'] == 0) {
+  if(true) {  
+    // define POST parameters
+    $params = array(
+      "access_token" => "CAAIZB2ZBLHg3wBAC0gAO4T6zZAXjFrcEpwEgyaZAgdYIuJlkAKANZCIMHhvuUIwEkvzwoKZBfLNVGKrNnBRAURBUccbnlWimiPD1gDjVZCqyybnxpQAR8FwH4oYz5ZAB7EJuJHZCUvQK68y79hTm8GsRDHNCZBxP0y7uKTibX5QhjZAOy50N4ilOeMRZBLx26tBZClxAepxeOG07ST0YX104C1K8ZA", // configure appropriately
+      "message" => $share_topic['post_title'],
+      "link" => $share_topic['url'],
+      "name" => $share_topic['title'],
+      "caption" => "http://marketonline.vn", // configure appropriately
+      "description" => $share_topic['content']
+    );
+ 
+    if($share_topic['image']) {
+      $params["picture"] = $share_topic['image'];
+    }
+ 
+    // check if topic successfully posted to Facebook
+    try {
+      $ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
+ 
+      //// mark topic as posted (ensure that it will be posted only once)
+      //$sql = 'UPDATE topics SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['topic_id'];
+      //if($conn->query($sql) === false) {
+      //  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      //}
+      $result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+ 
+    } catch(Exception $e) {
+      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
+    }
+ 
+    sleep(3);
+  }
+ 
+}
+ 
+if(php_sapi_name() == 'cli') {
+  // keep log
+  //file_put_contents('test.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
+ 
+  echo $result;
+ 
+} else {
+  $html = '<html><head>';
+  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
+  $html .= '</head>';
+  $html .= '<body>';
+  $html .= $result;
+  $html .= '</body>';
+  $html .= '</html>';
+  
+  echo $html;
+}
 
 
 
