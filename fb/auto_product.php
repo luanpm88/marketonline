@@ -48,13 +48,32 @@ $conn = new mysqli("localhost", "marketon_user", "aA456321@", "marketon_main"); 
 if ($conn->connect_error) {
   trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
 }
-
 mysqli_set_charset( $conn, 'utf8' );
 
+//get message template
+$sql = 'SELECT *'    
+    .' FROM pb_announcements'
+    .' WHERE id=21'
+    .' LIMIT 1';
+$mm = $conn->query($sql);
+if($mm === false) {
+  $user_error = 'Wrong SQL: ' . $sql . '<br>' . 'Error: ' . $conn->errno . ' ' . $conn->error;
+  trigger_error($user_error, E_USER_ERROR);
+}
+$mm->data_seek(0);
+$template = $mm->fetch_assoc();
+$message = Encoding::toUTF8($template["message"]);
+$message = strip_tags(str_replace("<br />","\n",$message));
+    
+    
+    
+
+
+
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.name as company_name, trade.id, trade.facebook_pubstatus, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
-    .' FROM pb_products trade'
-    .' LEFT JOIN pb_companies as com ON com.id = trade.company_id'
+$sql = 'SELECT com.cache_spacename, com.name as company_name, product.id, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+    .' FROM pb_products product'
+    .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' WHERE facebook_pubstatus=0'
     .' LIMIT 1';
 
@@ -69,9 +88,18 @@ while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
     $res["facebook_pubstatus"] = $res_s["facebook_pubstatus"];
-    $res["post_title"] = Encoding::toUTF8($res_s["company_name"]);//mb_convert_encoding($res_s["company_name"],"ASCII", "UTF8");
-    $res["title"]= str_replace('[:vi-vn]', '', $res_s["title"]);
+    $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
+    $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
     $res["content"]= strip_tags(str_replace('[:vi-vn]', '', $res_s["content"]));
+    
+    $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
+    $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
+    $message = str_replace("{ten_loai}","Sản phẩm",$message);
+    $message = str_replace("{ten_bai_viet}",$res["title"],$message);
+    $message = str_replace("{link_bai_viet}",$res['url'],$message);
+    $res["post_title"] = $message;//mb_convert_encoding($res_s["company_name"],"ASCII", "UTF8");
+    
+    
     
     if(isset($res_s['default_pic']))
     {
@@ -83,7 +111,7 @@ while($res_s = $rs->fetch_assoc()) {
     }
     
     if ($res_s[$pic_col]) $res['image'] = "http://marketonline.vn/attachment/".$res_s[$pic_col];
-    $res['url'] = "http://marketonline.vn/thuong-mai/".$res_s['id']."/".stringToURI($res_s['title']);
+    
     
     $share_topics[] = $res;
 }
@@ -120,7 +148,7 @@ foreach($share_topics as $share_topic) {
       $ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
  
       // mark topic as posted (ensure that it will be posted only once)
-      $sql = 'UPDATE pb_trades SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
+      $sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
       if($conn->query($sql) === false) {
         trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
@@ -154,27 +182,4 @@ if(php_sapi_name() == 'cli') {
 }
 
 
-
-
-
-
-
-//$params = array (
-//    //sthis is the main access token (facebook profile)
-//    "access_token" => "CAAIZB2ZBLHg3wBAC0gAO4T6zZAXjFrcEpwEgyaZAgdYIuJlkAKANZCIMHhvuUIwEkvzwoKZBfLNVGKrNnBRAURBUccbnlWimiPD1gDjVZCqyybnxpQAR8FwH4oYz5ZAB7EJuJHZCUvQK68y79hTm8GsRDHNCZBxP0y7uKTibX5QhjZAOy50N4ilOeMRZBLx26tBZClxAepxeOG07ST0YX104C1K8ZA",
-//    "message" => "Here is a blog post about auto posting on Facebook using PHP #php #facebook",
-//    "link" => "http://www.pontikis.net/blog/auto_post_on_facebook_with_php",
-//    "picture" => "http://i.imgur.com/lHkOsiH.png",
-//    "name" => "How to Auto Post on Facebook with PHP",
-//    "caption" => "www.pontikis.net",
-//    "description" => "Automatically post on Facebook with PHP using Facebook PHP SDK. How to create a Facebook app. Obtain and extend Facebook access tokens. Cron automation."
-//);
-//
-//
-//try {
-//    $ret = $fb->api('/100000235631026/feed', 'POST', $params);
-//    echo 'Successfully posted to Facebook Personal Profile';
-//} catch(Exception $e) {
-//    echo $e->getMessage();
-//}
 ?>
