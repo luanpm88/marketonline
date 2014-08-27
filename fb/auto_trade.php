@@ -102,7 +102,7 @@ foreach($share_topics as $share_topic) {
  
 if(php_sapi_name() == 'cli') {
   // keep log
-  file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/test.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
+  file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_trade.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
  
   echo $result;
  
