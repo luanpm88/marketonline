@@ -20,7 +20,8 @@
         $member->saveField("fb_access_token", $access_token, intval($user["id"]));
         
         $data = file_get_contents("https://graph.facebook.com/me/accounts?access_token=".$access_token);
-        echo $data;
+        
+        $member->saveField("fb_data", $data, intval($user["id"]));
     }
 
 ?>
