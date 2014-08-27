@@ -1,5 +1,9 @@
 <?php
-require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
+if($_SERVER['SERVER_NAME'] == "localhost") {
+	require_once('../configs/config.inc.php');
+} else {
+	require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
+}
 require_once('Encoding.php'); 
 use \ForceUTF8\Encoding;  // It's namespaced now.
 
