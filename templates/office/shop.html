@@ -446,8 +446,31 @@ jQuery(document).ready(function($) {
                 <td><input name="data[company][contact_email]" type="text" id="contact_email" value="{$item.contact_email}" size="32" class="required"></td>
               </tr>
 	      <tr>
-                <th>Facebook:</th>
-                <td><input placeholder="{lang facebook_note}" name="data[company][facebook]" type="text" id="contact_facebook" value="{$item.facebook}" style="width:432px;"></td>
+                <th>Facebook (Fan Page):</th>
+                <td><input placeholder="Nhập đường dẫn đến Fan Page của bạn" name="data[company][facebook]" type="text" id="contact_facebook" value="{$item.facebook}" style="width:432px;"></td>
+              </tr>
+	      <tr>
+                <th>Facebook (Trang cá nhân):</th>
+                <td><input placeholder="Nhập đường dẫn đến Trang cá nhân của bạn" name="data[company][facebook_personal]" type="text" id="contact_facebook_personal" value="{$item.facebook_personal}" style="width:432px;"></td>
+              </tr>
+	      
+	      <tr>
+                <th>Liên kết Facebook với MarketOnline.vn:</th>
+                <td>
+			{if $fb_data.data}
+				<p><strong style="font-size: 16px;">Trang liên kết: </strong></p>
+				<ul>
+					<!--{loop $fb_data.data itemc level_0 key0}-->
+						<li>{$itemc.name}</li>
+					<!--{/loop}-->
+				</ul>
+				<br />
+				<a target="_blank" href="https://www.facebook.com/dialog/oauth?client_id=562706590500767&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions">Tạo mới liên kết</a>
+			{else}
+				<a target="_blank" href="https://www.facebook.com/dialog/oauth?client_id=562706590500767&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions">Nhấn vào đây để liên kết với Facebook của bạn. MarketOnline hỗ trợ tự động cập nhật tin lên trang cá nhân và các trang fanpages của bạn</a>
+			{/if}
+			
+		</td>
               </tr>
 	      
 		</table>
