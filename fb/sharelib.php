@@ -36,12 +36,6 @@ if(php_sapi_name() == 'cli') {
 
 require_once("sdk/facebook.php"); // set the right path
 
-$config = array();
-$config['appId'] = '632064076907388';
-$config['secret'] = 'ad9ff0da7689970bff20c31ac770f90c';
-$config['fileUpload'] = false; // optional
-$fb = new Facebook($config);
-
 // connect to database
 //$conn = new mysqli("localhost", "marketon_user", "aA456321@", "marketon_main"); // configure appropriately
 $conn = new mysqli($dbhost, $dbuser, $dbpasswd, $dbname); // configure appropriately
@@ -50,6 +44,8 @@ if ($conn->connect_error) {
   trigger_error('Database connection failed: '  . $conn->connect_error, E_USER_ERROR);
 }
 mysqli_set_charset( $conn, 'utf8' );
+
+
 
 //get message template
 $sql = 'SELECT *'    
@@ -65,4 +61,29 @@ $mm->data_seek(0);
 $template = $mm->fetch_assoc();
 $message = Encoding::toUTF8($template["message"]);
 $message = strip_tags(str_replace("<br />","\n",$message));
+
+
+
+
+//GET FACEBOOK APP ACCESS
+//get message template
+$sql = 'SELECT *'    
+    .' FROM pb_members'
+    .' WHERE id=1'
+    .' LIMIT 1';
+$mm = $conn->query($sql);
+if($mm === false) {
+  $user_error = 'Wrong SQL: ' . $sql . '<br>' . 'Error: ' . $conn->errno . ' ' . $conn->error;
+  trigger_error($user_error, E_USER_ERROR);
+}
+$mm->data_seek(0);
+$admin = $mm->fetch_assoc();
+
+
+$config = array();
+$config['appId'] = $admin["fb_app_id"];
+$config['secret'] = $admin["fb_secret"];
+$fb_access_token = $admin["fb_access_token"];
+$config['fileUpload'] = false; // optional
+$fb = new Facebook($config);
 ?>
