@@ -552,19 +552,19 @@ function readURL(input) {
 								<th>Liên kết Facebook với MarketOnline.vn:</th>
 								<td>
 									{if $pb_userinfo.role == 'admin'}
-				{if $fb_data.data}
-					<p><strong style="font-size: 16px;">Trang liên kết: </strong></p>
-					<ul>
-						<!--{loop $fb_data.data itemc level_0 key0}-->
-							<li>{$itemc.name}</li>
-						<!--{/loop}-->
-					</ul>
-					<br />
-					<a href="https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions">Làm mới liên kết</a>
-				{else}
-					<a href="https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions">Nhấn vào đây để liên kết với Facebook của bạn. MarketOnline hỗ trợ tự động cập nhật tin lên trang cá nhân và các trang fanpages của bạn</a>
-				{/if}
-			{/if}
+										{if $fb_data}
+											<p><strong style="font-size: 16px;">Trang liên kết: </strong></p>
+											<ul>
+												<!--{loop $fb_data.data itemc level_0 key0}-->
+													<li>{$itemc.name}</li>
+												<!--{/loop}-->
+											</ul>
+											<br />
+											<a href="https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions">Làm mới liên kết</a>
+										{else}
+											<a href="https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions">Nhấn vào đây để liên kết với Facebook của bạn. MarketOnline hỗ trợ tự động cập nhật tin lên trang cá nhân và các trang fanpages của bạn</a>
+										{/if}
+									{/if}
 									
 								</td>
 							      </tr>
