@@ -1,5 +1,5 @@
 <?php
-require_once('../configs/config.inc.php');
+require_once($fb_sharelib_dir.'configs/config.inc.php');
 require_once('Encoding.php'); 
 use \ForceUTF8\Encoding;  // It's namespaced now.
 

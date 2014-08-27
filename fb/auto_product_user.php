@@ -70,7 +70,6 @@ $result = '';
 foreach($share_topics as $share_topic) {
  
   if($share_topic['facebook_pubstatus_user'] == 0) {
-  //if(true) {  
     // define POST parameters
     $params = array(
       "access_token" => $share_topic["fb_access_token"], // configure appropriately
