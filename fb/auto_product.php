@@ -86,7 +86,7 @@ foreach($share_topics as $share_topic) {
 	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
 	
 	//custom fanpage id
-	$fb->api('/527168870748335/feed', 'POST', $params);
+	//$fb->api('/527168870748335/feed', 'POST', $params);
       
 	//for fan page
 	$fb_data = json_decode($admin["fb_data"], true);

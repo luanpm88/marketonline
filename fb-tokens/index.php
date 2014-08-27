@@ -32,7 +32,7 @@
         
         echo $data."<br /><br /><br />";
         
-        //pheader("location: ../virtual-office/company.php");
+        pheader("location: ../virtual-office/company.php");
     }
 
 ?>
