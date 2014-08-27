@@ -1,5 +1,5 @@
 <?php
-if($_SERVER['SERVER_NAME'] == "localhost") {
+if(isset($_SERVER['SERVER_NAME'])) {
 	require_once('../configs/config.inc.php');
 } else {
 	require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
