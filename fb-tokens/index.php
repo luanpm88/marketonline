@@ -13,7 +13,7 @@
     
     if(isset($_GET["code"])) {
         $member->saveField("fb_code", $_GET["code"], intval($user["id"]));
-        
+        echo "testing";
         $access_string =  file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=".$admin["fb_app_id"]."&redirect_uri=http://marketonline.vn/fb-tokens/&client_secret=".$admin["fb_secret"]."&code=".$_GET["code"]);
         echo $access_string."<br /><br /><br />";
         $access_string = explode("=",$access_string);
