@@ -71,7 +71,7 @@ $message = strip_tags(str_replace("<br />","\n",$message));
 
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.cache_spacename, com.name as company_name, product.id, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' WHERE facebook_pubstatus=0'
@@ -92,9 +92,15 @@ while($res_s = $rs->fetch_assoc()) {
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
     $res["content"]= strip_tags(str_replace('[:vi-vn]', '', $res_s["content"]));
     
+    
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
     $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
-    $message = str_replace("{ten_loai}","Sản phẩm",$message);
+    if($res_s["service"] == 1) {
+	$ten_loai = "Dịch vụ";
+    } else {
+	$ten_loai = "Sản phẩm";
+    }
+    $message = str_replace("{ten_loai}",$ten_loai,$message);
     $message = str_replace("{ten_bai_viet}",$res["title"],$message);
     $message = str_replace("{link_bai_viet}",$res['url'],$message);
     $res["post_title"] = $message;//mb_convert_encoding($res_s["company_name"],"ASCII", "UTF8");
