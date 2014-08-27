@@ -17,7 +17,10 @@
         $access_string = explode("=",$access_string);
         $access_token = $access_string[1];
         
-        $member->saveField("fb_access_token", $access_token, intval($user["id"]));        
+        $member->saveField("fb_access_token", $access_token, intval($user["id"]));
+        
+        $data = file_get_contents("https://graph.facebook.com/me/accounts?access_token=".$access_token);
+        echo $data;
     }
 
 ?>
