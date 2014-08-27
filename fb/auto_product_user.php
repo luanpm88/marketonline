@@ -5,7 +5,7 @@ require_once('sharelib.php');
 
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -22,6 +22,7 @@ $share_topics = array();
 while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
+    $res["fb_access_token"] = $res_s["fb_access_token"];
     $res["facebook_pubstatus"] = $res_s["facebook_pubstatus"];
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
@@ -60,67 +61,67 @@ while($res_s = $rs->fetch_assoc()) {
 $rs->free();
 
 
-var_dump($share_topics);
+//var_dump($share_topics);
 
 
 
-//$result = '';
-//// AUTOMATIC POST EACH TOPIC TO FACEBOOK
-//foreach($share_topics as $share_topic) {
-// 
-//  if($share_topic['facebook_pubstatus'] == 0) {
-//  //if(true) {  
-//    // define POST parameters
-//    $params = array(
-//      "access_token" => $fb_access_token, // configure appropriately
-//      "message" => $share_topic['post_title'],
-//      "link" => $share_topic['url'],
-//      "name" => $share_topic['title'],
-//      "caption" => "http://marketonline.vn", // configure appropriately
-//      "description" => $share_topic['content']
-//    );
-// 
-//    if($share_topic['image']) {
-//      $params["picture"] = $share_topic['image'];
-//    }
-// 
-//    // check if topic successfully posted to Facebook
-//    try {
-//      $ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
-// 
-//      // mark topic as posted (ensure that it will be posted only once)
-//      $sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
-//      if($conn->query($sql) === false) {
-//        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-//      }
-//      $result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
-// 
-//    } catch(Exception $e) {
-//      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
-//    }
-// 
-//    sleep(3);
-//  }
-// 
-//}
-// 
-//if(php_sapi_name() == 'cli') {
-//  // keep log
-//  file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_product.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
-// 
-//  echo $result;
-// 
-//} else {
-//  $html = '<html><head>';
-//  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
-//  $html .= '</head>';
-//  $html .= '<body>';
-//  $html .= $result;
-//  $html .= '</body>';
-//  $html .= '</html>';
-//  
-//  echo $html;
-//}
+$result = '';
+// AUTOMATIC POST EACH TOPIC TO FACEBOOK
+foreach($share_topics as $share_topic) {
+ 
+  if($share_topic['facebook_pubstatus'] == 0) {
+  //if(true) {  
+    // define POST parameters
+    $params = array(
+      "access_token" => $share_topic["fb_access_token"], // configure appropriately
+      "message" => $share_topic['post_title'],
+      "link" => $share_topic['url'],
+      "name" => $share_topic['title'],
+      "caption" => "http://marketonline.vn", // configure appropriately
+      "description" => $share_topic['content']
+    );
+ 
+    if($share_topic['image']) {
+      $params["picture"] = $share_topic['image'];
+    }
+ 
+    // check if topic successfully posted to Facebook
+    try {
+      $ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
+ 
+      // mark topic as posted (ensure that it will be posted only once)
+      $sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
+      if($conn->query($sql) === false) {
+        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      }
+      $result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+ 
+    } catch(Exception $e) {
+      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
+    }
+ 
+    sleep(3);
+  }
+ 
+}
+ 
+if(php_sapi_name() == 'cli') {
+  // keep log
+  file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_product_user.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
+ 
+  echo $result;
+ 
+} else {
+  $html = '<html><head>';
+  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
+  $html .= '</head>';
+  $html .= '<body>';
+  $html .= $result;
+  $html .= '</body>';
+  $html .= '</html>';
+  
+  echo $html;
+}
 
 
 ?>
