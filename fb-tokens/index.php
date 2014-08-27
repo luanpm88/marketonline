@@ -14,16 +14,16 @@
         $member->saveField("fb_code", $_GET["code"], intval($user["id"]));
         
         $access_string =  file_get_contents("https://graph.facebook.com/oauth/access_token?client_id=".$user["fb_app_id"]."&redirect_uri=http://marketonline.vn/fb-tokens/&client_secret=".$user["fb_secret"]."&code=".$_GET["code"]);
-        $access_string = explode("=",$access_string);
-        $access_token = $access_string[1];
+        //$access_string = explode("=",$access_string);
+        //$access_token = $access_string[1];
+        var_dump($access_string);
+        //$member->saveField("fb_access_token", $access_token, intval($user["id"]));
         
-        $member->saveField("fb_access_token", $access_token, intval($user["id"]));
+        //$data = file_get_contents("https://graph.facebook.com/me/accounts?access_token=".$access_token);
+        //
+        //$member->saveField("fb_data", $data, intval($user["id"]));
         
-        $data = file_get_contents("https://graph.facebook.com/me/accounts?access_token=".$access_token);
-        
-        $member->saveField("fb_data", $data, intval($user["id"]));
-        
-        pheader("location: ../virtual-office/company.php");
+        //pheader("location: ../virtual-office/company.php");
     }
 
 ?>
