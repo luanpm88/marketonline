@@ -71,9 +71,10 @@ $message = strip_tags(str_replace("<br />","\n",$message));
 
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.cache_spacename, com.name as company_name, trade.id, trade.facebook_pubstatus, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
+$sql = 'SELECT type.name as type_name, com.cache_spacename, com.name as company_name, trade.id, trade.facebook_pubstatus, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
     .' FROM pb_trades trade'
     .' LEFT JOIN pb_companies as com ON com.id = trade.company_id'
+    .' LEFT JOIN pb_tradetypes as type ON type.id = trade.type_id'
     .' WHERE facebook_pubstatus=0'
     .' LIMIT 1';
 
@@ -94,7 +95,7 @@ while($res_s = $rs->fetch_assoc()) {
     
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
     $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
-    $message = str_replace("{ten_loai}","Nhu cầu",$message);
+    $message = str_replace("{ten_loai}",$res_s["type_name"],$message);
     $message = str_replace("{ten_bai_viet}",$res["title"],$message);
     $message = str_replace("{link_bai_viet}",$res['url'],$message);
     $res["post_title"] = $message;//mb_convert_encoding($res_s["company_name"],"ASCII", "UTF8");
