@@ -97,6 +97,7 @@ foreach($share_topics as $share_topic) {
  
     sleep(3);
   }
+  
 }
  
 if(php_sapi_name() == 'cli') {
