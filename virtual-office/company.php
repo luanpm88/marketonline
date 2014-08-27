@@ -293,7 +293,7 @@ if(!empty($companyinfo['name'])){
 		$companyinfo['tag'] = $tag->tag;
 	}
 	
-	$fb_data = $member->read("fb_data", $companyinfo["id"]);
+	$fb_data = $member->read("fb_data", $memberinfo["id"]);
 	$fb_data = $fb_data["fb_data"];
 	$fb_data = json_decode($fb_data, true);
 	
