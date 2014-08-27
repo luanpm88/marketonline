@@ -22,6 +22,8 @@
         $data = file_get_contents("https://graph.facebook.com/me/accounts?access_token=".$access_token);
         
         $member->saveField("fb_data", $data, intval($user["id"]));
+        
+        pheader("location: ../virtual-office/company.php");
     }
 
 ?>
