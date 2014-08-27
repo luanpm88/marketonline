@@ -1,8 +1,8 @@
 <?php
 
-try {
+if(file_exists('../configs/config.inc.php')) {
     require_once('../configs/config.inc.php');
-} catch (Exception $e) {
+} else {
     require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
 }
 
