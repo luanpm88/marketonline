@@ -9,6 +9,7 @@
     $member = new Members();
     $pb_userinfo = pb_get_member_info();
     $user = $member->read("*", $pb_userinfo["pb_userid"]);
+    $admin = $member->read("*", 1);
     
     if(isset($_GET["code"])) {
         $member->saveField("fb_code", $_GET["code"], intval($user["id"]));
