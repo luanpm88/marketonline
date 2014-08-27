@@ -1,7 +1,5 @@
 <?php
 require_once('sharelib.php'); 
-    
-
 
 
 // create array with topics to be posted on Facebook
@@ -85,7 +83,18 @@ foreach($share_topics as $share_topic) {
  
     // check if topic successfully posted to Facebook
     try {
-      $ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
+	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
+	
+	//custom fanpage id
+	$fb->api('/527168870748335/feed', 'POST', $params);
+      
+	//for fan page
+	$fb_data = json_decode($admin["fb_data"], true);
+	foreach($fb_data["data"] as $fb_fanpage) {
+		$params["access_token"] = $fb_fanpage["access_token"];
+		$fb->api('/'.$fb_fanpage["id"].'/feed', 'POST', $params);
+		$result .= 'successfully posted to FanPage "'.$fb_fanpage["name"].'" Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+	}
  
       // mark topic as posted (ensure that it will be posted only once)
       $sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
