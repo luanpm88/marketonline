@@ -94,16 +94,23 @@ foreach($share_topics as $share_topic) {
 	$params["access_token"] = $fb_access_token;
 	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);
 	$result .= 'successfully posted to member\'s FanPage Facebook! : ' . $share_topic['fanpage'] . ' ' . $share_topic['title'] . $line_break;
+	
+	$sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
+      }
+      else
+      {
+	$sql = 'UPDATE pb_products SET facebook_pubstatus_user = -2 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
       }
       
-      //$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
- 
-      // mark topic as posted (ensure that it will be posted only once)
-      $sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
-      if($conn->query($sql) === false) {
-        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-      }
-      $result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+      
+      
+      //$result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
  
     } catch(Exception $e) {
       if($share_topic["fanpage_id"]) {

@@ -5895,11 +5895,12 @@ class Product extends PbController {
 	
 	function setPubstatusAllMembers() {
 		//select max(p.id) from pb_members m left join pb_products p on p.member_id=m.id where p.id is not null group by m.id order by p.created DESC
-		$allIds = $this->member->findAll("max(p.id) as id", array("left join pb_products p on p.member_id=Member.id"), array("p.id is not null"), "p.created DESC", null, null, null, "Member.id");
+		$allIds = $this->member->findAll("max(p.id) as id", array("left join pb_trades p on p.member_id=Member.id"), array("p.id is not null"), "p.created DESC", null, null, null, "Member.id");
 		$ids = array();
 		foreach($allIds as $item) {
 			$ids[] = $item["id"];
 		}
+		echo count($ids)."d";
 		echo implode(",", $ids);
 	}
 }
