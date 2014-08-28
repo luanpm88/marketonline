@@ -105,6 +105,9 @@ foreach($share_topics as $share_topic) {
       $result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
  
     } catch(Exception $e) {
+      if($share_topic["fanpage_id"]) {
+	$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['fanpage'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
+      }
       $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
     }
  
