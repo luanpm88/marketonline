@@ -7,7 +7,7 @@ $sql = 'SELECT com.cache_spacename, com.name as company_name, product.id, produc
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' WHERE facebook_pubstatus=0'
-    .' LIMIT 5';
+    .' LIMIT 3';
 
 $rs = $conn->query($sql);
 if($rs === false) {
