@@ -89,7 +89,7 @@ foreach($share_topics as $share_topic) {
  
     // check if topic successfully posted to Facebook
     try {
-      //for fanpage of member
+      //for fanpage of member under admin info
       if($share_topic["fanpage_id"]) {
 	$params["access_token"] = $fb_access_token;
 	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);
