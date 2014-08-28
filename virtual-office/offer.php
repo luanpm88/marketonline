@@ -489,7 +489,7 @@ if (!empty($result)) {
 	    $space_controller->setBaseUrlByUserId($tmp_personalinfo["space_name"], "offer");
 	    $result[$i]['url'] = $space_controller->rewriteDetail("offer", $result[$i]['id']);
 	    
-	    //echo $result[$i]['default_pic'];
+		//echo $result[$i]['default_pic'];
 		if($result[$i]['default_pic'])
 		{
 			$col_pic = 'picture'.$result[$i]['default_pic'];
@@ -498,7 +498,6 @@ if (!empty($result)) {
 		{
 			$col_pic = 'picture';
 		}
-		//echo $result[$i][$col_pic]."-";
 		
 		$result[$i]['image'] = pb_get_attachmenturl($result[$i][$col_pic], '../', 'small');
 		$result[$i]['created'] = df($result[$i]['created'], "d-m-Y H:i");
