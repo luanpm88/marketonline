@@ -28,7 +28,7 @@ while($res_s = $rs->fetch_assoc()) {
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
     $res["content"]= strip_tags(str_replace('[:vi-vn]', '', $res_s["content"]));
-    $res["fanpage"] = "https://www.facebook.com/pages/Luan-Page/527168870748335?ref=hl";
+    $res["fanpage"] = $res_s["fanpage"];
     $res["fanpage_id"] = $companydb->findFacebookId($res["fanpage"]);
     
     
