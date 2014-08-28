@@ -173,6 +173,9 @@ $company->info['facebook_full'] = $company->info['facebook'];
 
 $company->info['facebook'] =  str_replace("http://", '', $company->info['facebook']);
 $company->info['facebook'] =  str_replace("https://", '', $company->info['facebook']);
+
+$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
+$company->info['facebook_personal'] =  str_replace("https://", '', $company->info['facebook_personal']);
 //echo $member->info['id']."sdsdsdsdsd";
 uaAssign(array(
 "SkinName"=>$skin_path,
