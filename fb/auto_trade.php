@@ -27,7 +27,7 @@ while($res_s = $rs->fetch_assoc()) {
     $res["facebook_pubstatus"] = $res_s["facebook_pubstatus"];
     $res['url'] = "http://marketonline.vn/thuong-mai/".$res_s['id']."/".stringToURI($res_s['title']);    
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["title"]);
-    $res["content"]= strip_tags(str_replace('[:vi-vn]', '', $res_s["content"]));
+    $res["content"]= substr(strip_tags(str_replace('[:vi-vn]', '', $res_s["content"])),0,9000);
     
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
     $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
