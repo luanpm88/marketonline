@@ -11,7 +11,7 @@ $sql = 'SELECT com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
     .' WHERE facebook_pubstatus_user=0 AND com.facebook != "" AND m.id != 1'
-    .' LIMIT 1';
+    .' LIMIT 5';
 
 $rs = $conn->query($sql);
 if($rs === false) {
