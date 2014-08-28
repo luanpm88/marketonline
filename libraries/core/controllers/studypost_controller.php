@@ -1262,7 +1262,7 @@ class Studypost extends PbController {
 		if(!empty($_POST["shop"]))
 		{
 			$add = rand($_POST["min_rand"],$_POST["max_rand"]);
-			$sql = "update pb_companies set clicked=clicked+".$add.", new_clicked=new_clicked+".$add." where clicked >= ".$_POST["min_rate"]." AND clicked <= ".$_POST["max_rate"]."";
+			$sql = "update pb_companies set clicked=clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}), new_clicked=new_clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}) where clicked >= ".$_POST["min_rate"]." AND clicked <= ".$_POST["max_rate"]."";
 			echo "Thành công...!!<br /><br />";
 			
 			$return = $this->company->dbstuff->Execute($sql);
@@ -1270,7 +1270,7 @@ class Studypost extends PbController {
 		if(!empty($_POST["offer"]))
 		{
 			$add = rand($_POST["offer_min_rand"],$_POST["offer_max_rand"]);
-			$sql = "update pb_trades set clicked=clicked+".$add." where clicked >= ".$_POST["offer_min_rate"]." AND clicked <= ".$_POST["offer_max_rate"]."";
+			$sql = "update pb_trades set clicked=clicked+FLOOR((RAND() * ({$_POST["offer_max_rand"]}-{$_POST["offer_min_rand"]}+1))+{$_POST["offer_min_rand"]}) where clicked >= ".$_POST["offer_min_rate"]." AND clicked <= ".$_POST["offer_max_rate"]."";
 			echo "Thành công...!!<br /><br />";
 			
 			$return = $this->trade->dbstuff->Execute($sql);
