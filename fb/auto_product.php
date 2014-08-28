@@ -22,7 +22,7 @@ while($res_s = $rs->fetch_assoc()) {
     $res["facebook_pubstatus"] = $res_s["facebook_pubstatus"];
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
-    $res["content"]= substr(strip_tags(str_replace('[:vi-vn]', '', $res_s["content"])),0,900);
+    $res["content"]= substr(strip_tags(str_replace('[:vi-vn]', '', $res_s["content"])),0,9000);
     
     
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
