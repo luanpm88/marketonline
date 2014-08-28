@@ -5892,5 +5892,15 @@ class Product extends PbController {
 		$string = "https://www.facebook.com/luanpm88?ref=hl";		
 		var_dump($this->company->findFacebookId($string));
 	}
+	
+	function setPubstatusAllMembers() {
+		//select max(p.id) from pb_members m left join pb_products p on p.member_id=m.id where p.id is not null group by m.id order by p.created DESC
+		$allIds = $this->member->findAll("max(p.id) as id", array("left join pb_products p on p.member_id=Member.id"), array("p.id is not null"), "p.created DESC", null, null, null, "Member.id");
+		$ids = array();
+		foreach($allIds as $item) {
+			$ids[] = $item["id"];
+		}
+		echo implode(",", $ids);
+	}
 }
 ?>
