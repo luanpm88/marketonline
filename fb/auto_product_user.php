@@ -106,6 +106,7 @@ foreach($share_topics as $share_topic) {
 	if($conn->query($sql) === false) {
 	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 	}
+	$result .= $result .= ' FAILED... invalid fanpage id'  . $share_topic['url'];
       }
       
       
