@@ -415,6 +415,12 @@ if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
         if(isset($companyinfo['name'])) {
         	$res['cache_companyname'] = $companyinfo['name'];
         }
+	
+	//random click
+	$rand = rand(5,25);
+	$res['clicked'] = $rand;
+	
+	
         $res = $trade->save($res);
         $new_id = $trade->table_name."_id";
         $new_id = $trade->$new_id;;
