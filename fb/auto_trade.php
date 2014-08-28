@@ -99,7 +99,9 @@ foreach($share_topics as $share_topic) {
   }
   
 }
- 
+
+if($result) $result .= "on: " . date("Y-m-d H:i:s") . $line_break;
+
 if(php_sapi_name() == 'cli') {
   // keep log
   if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_trade.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
