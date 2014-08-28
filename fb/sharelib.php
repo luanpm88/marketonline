@@ -1,37 +1,20 @@
 <?php
 
 if(file_exists('../configs/config.inc.php')) {
-    require_once('../configs/config.inc.php');
+    require_once('../configs/config.inc.php');    
+    require_once("../libraries/common.inc.php");
+    require_once("../share.inc.php");
+    require_once('../libraries/core/models/company.php');
 } else {
     require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
+    require_once("/home/marketon/domains/marketonline.vn/public_html/libraries/common.inc.php");
+    require_once("/home/marketon/domains/marketonline.vn/public_html/share.inc.php");
+    require_once('/home/marketon/domains/marketonline.vn/public_html/libraries/core/models/company.php');
 }
 
 require_once('Encoding.php'); 
 use \ForceUTF8\Encoding;  // It's namespaced now.
 
-function utf8_to_ascii($str) {
-	$chars = array(
-		'a' => array('ấ','ầ','ẩ','ẫ','ậ','Ấ','Ầ','Ẩ','Ẫ','Ậ','ắ','ằ','ẳ','ẵ','ặ','Ắ','Ằ','Ẳ','Ẵ','Ặ','á','à','ả','ã','ạ','â','ă','Á','À','Ả','Ã','Ạ','Â','Ă'),
-		'e' => array('ế','ề','ể','ễ','ệ','Ế','Ề','Ể','Ễ','Ệ','é','è','ẻ','ẽ','ẹ','ê','É','È','Ẻ','Ẽ','Ẹ','Ê'),
-		'i' => array('í','ì','ỉ','ĩ','ị','Í','Ì','Ỉ','Ĩ','Ị'),
-		'o' => array('ố','ồ','ổ','ỗ','ộ','Ố','Ồ','Ổ','Ô','Ộ','ớ','ờ','ở','ỡ','ợ','Ớ','Ờ','Ở','Ỡ','Ợ','ó','ò','ỏ','õ','ọ','ô','ơ','Ó','Ò','Ỏ','Õ','Ọ','Ô','Ơ'),
-		'u' => array('ứ','ừ','ử','ữ','ự','Ứ','Ừ','Ử','Ữ','Ự','ú','ù','ủ','ũ','ụ','ư','Ú','Ù','Ủ','Ũ','Ụ','Ư'),
-		'y' => array('ý','ỳ','ỷ','ỹ','ỵ','Ý','Ỳ','Ỷ','Ỹ','Ỵ'),
-		'd' => array('đ','Đ')
-	);
-	foreach ($chars as $key => $arr)
-		foreach ($arr as $val)
-		{
-			$str = str_replace($val,$key,strtolower($str));
-			$str = preg_replace("/ /", '-', $str);
-		}	
-	return $str;
-}
-
-function stringToURI($string)
-{
-	return preg_replace("/\-$/", '', preg_replace("/\-(\-)+/", '-', preg_replace("/[^A-Za-z0-9 \-]/", '', utf8_to_ascii($string))));
-}
 
 // determine script invocation (CLI or Web Server)
 if(php_sapi_name() == 'cli') {

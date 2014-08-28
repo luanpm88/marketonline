@@ -5865,5 +5865,32 @@ class Product extends PbController {
 		pb_sendmail(array("luanpm88@gmail.com", "Market Online"), "Market Online: ", null, "Kiem tra gui mail");
 		echo "ddd";
 	}
+		
+	function findFanpageId(){
+		//$companies = $this->company->findAll("facebook", null, array("facebook != ''"));
+		//foreach($companies as $com) {
+		//	$fid = '';
+		//	preg_match('/\d{13,}/', $com["facebook"], $match1);
+		//	preg_match('/facebook.com[^\/]*\/([^\/\?]+)/', $com["facebook"], $match2);
+		//	if(count($match1)) {
+		//		$fid = $match1[0];
+		//	} elseif (count($match2)) {
+		//		$fid = $match2[1];
+		//		
+		//		$content = file_get_contents("http://graph.facebook.com/?id=".$fid);
+		//		$content = json_decode($content, true);
+		//		$fid = $content["id"];
+		//	} else {
+		//		//echo $com["facebook"]."<br />";
+		//	}
+		//	
+		//	if($fid) {
+		//		//echo $fid."<br />";
+		//	}
+		//}
+		
+		$string = "https://www.facebook.com/luanpm88?ref=hl";		
+		var_dump($this->company->findFacebookId($string));
+	}
 }
 ?>

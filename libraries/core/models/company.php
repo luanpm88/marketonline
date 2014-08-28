@@ -637,5 +637,25 @@ class Companies extends PbModel {
 	function getParent($id) {
 		
 	}
+	
+	function findFacebookId($url) {
+		$fid = '';
+		preg_match('/\d{13,}/', $url, $match1);
+		preg_match('/facebook.com[^\/]*\/([^\/\?]+)/', $url, $match2);
+		if(count($match1)) {
+			$fid = $match1[0];
+		} elseif (count($match2)) {
+			$fid = $match2[1];			
+			$content = file_get_contents("http://graph.facebook.com/?id=".$fid);
+			$content = json_decode($content, true);
+			$fid = $content["id"];
+		}
+		
+		if($fid) {
+			return $fid;
+		} else {
+			return false;
+		}
+	}
 }
 ?>

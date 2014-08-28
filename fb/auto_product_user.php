@@ -1,11 +1,12 @@
 <?php
 require_once('sharelib.php'); 
     
+$companydb = new Companies();
 
-
+//var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -27,6 +28,8 @@ while($res_s = $rs->fetch_assoc()) {
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
     $res["content"]= strip_tags(str_replace('[:vi-vn]', '', $res_s["content"]));
+    $res["fanpage"] = "https://www.facebook.com/pages/Luan-Page/527168870748335?ref=hl";
+    $res["fanpage_id"] = $companydb->findFacebookId($res["fanpage"]);
     
     
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
@@ -86,7 +89,13 @@ foreach($share_topics as $share_topic) {
  
     // check if topic successfully posted to Facebook
     try {
-      $ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
+      //for fanpage of member
+      if($share_topic["fanpage_id"]) {
+	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);
+	$result .= 'successfully posted to member\'s FanPage Facebook! : ' . $share_topic['fanpage'] . ' ' . $share_topic['title'] . $line_break;
+      }
+      
+      //$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
  
       // mark topic as posted (ensure that it will be posted only once)
       $sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
