@@ -4,6 +4,11 @@
                 <td>
 			
 				{if $fb_data}
+				<p><strong style="font-size: 16px;">Trang cá nhân của bạn: </strong></p>
+					<ul>
+					  <li>{$fb_user.first_name} {$fb_user.last_name}</li>
+					</ul>
+					<br />
 					<p><strong style="font-size: 16px;">Fanpages của bạn: </strong></p>
 					<ul>
 						<!--{loop $fb_data.data itemc level_0 key0}-->
