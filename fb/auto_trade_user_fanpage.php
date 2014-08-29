@@ -68,45 +68,69 @@ var_dump($share_topics);
 
 
 
-//$result = '';
-//// AUTOMATIC POST EACH TOPIC TO FACEBOOK
-//foreach($share_topics as $share_topic) {
-// 
-//    $params = array(
-//      "access_token" => $share_topic["fb_access_token"], // configure appropriately
-//      "message" => $share_topic['post_title'],
-//      "link" => $share_topic['url'],
-//      "name" => $share_topic['title'],
-//      "caption" => "http://marketonline.vn", // configure appropriately
-//      "description" => $share_topic['content']
-//    );
-// 
-//    if($share_topic['image']) {
-//      $params["picture"] = $share_topic['image'];
-//    }
-//  
-//  
-//}
-//
-//if($result) $result .= date("Y-m-d H:i:s") . $line_break;
-//
-//if(php_sapi_name() == 'cli') {
-//  // keep log
-//  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_trade_user_wall.log', $result . str_repeat('-', 80) . PHP_EOL, FILE_APPEND);
-//
-//  echo $result;
-//  
-//} else {
-//  $html = '<html><head>';
-//  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
-//  $html .= '</head>';
-//  $html .= '<body>';
-//  $html .= $result;
-//  $html .= '</body>';
-//  $html .= '</html>';
-//  
-//  echo $html;
-//}
+$result = '';
+// AUTOMATIC POST EACH TOPIC TO FACEBOOK
+foreach($share_topics as $share_topic) {
+ 
+  $params = array(
+    "access_token" => $share_topic["fb_access_token"], // configure appropriately
+    "message" => $share_topic['post_title'],
+    "link" => $share_topic['url'],
+    "name" => $share_topic['title'],
+    "caption" => "http://marketonline.vn", // configure appropriately
+    "description" => $share_topic['content']
+  );
+
+  if($share_topic['image']) {
+    $params["picture"] = $share_topic['image'];
+  }
+  
+  //get fanpages
+  $account = $memberdb->getFacebookAccounts($share_topic["fb_access_token"]);
+  $fanpages = $account["data"];
+  
+  $fanpage_posted = $share_topic["facebook_pubstatus_user_fanpage"]? explode(",",$share_topic["facebook_pubstatus_user_fanpage"]) : array();
+  foreach($fanpages as $fanpage) {
+    if(!in_array($fanpage["id"], $fanpage_posted)) {
+      try {
+        $params["access_token"] = $fanpage["access_token"];
+        $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
+	
+	$fanpage_posted[] = $fanpage["id"];
+        
+        $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
+      } catch(Exception $e) {
+        
+        $result .= ' FAILED... (Cannot post to ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
+      }
+      
+      sleep(3);
+    }
+  }
+  
+  $tradedb->saveField("facebook_pubstatus_user_fanpage", implode(",",$fanpage_posted), intval($share_topic["id"]));
+  
+}
+
+if($result) $result .= date("Y-m-d H:i:s") . $line_break;
+
+if(php_sapi_name() == 'cli') {
+  // keep log
+  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_trade_user_fanpage.log', $result . str_repeat('-', 80) . PHP_EOL, FILE_APPEND);
+
+  echo $result;
+  
+} else {
+  $html = '<html><head>';
+  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
+  $html .= '</head>';
+  $html .= '<body>';
+  $html .= $result;
+  $html .= '</body>';
+  $html .= '</html>';
+  
+  echo $html;
+}
 
 
 ?>
