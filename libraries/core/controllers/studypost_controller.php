@@ -1266,7 +1266,7 @@ class Studypost extends PbController {
 		//	$settings = array();
 		//}
 		
-		uses("setting");
+		uses("setting"); 
 		$setting = new Settings();
 		$row = $setting->findAll("*", null, array("variable='auto_click_settings'"));
 		$settings = json_decode($row[0]["valued"], true);
