@@ -1259,13 +1259,21 @@ class Studypost extends PbController {
 	}	
 	function random_rate()
 	{
-		$setting_file = "fb/auto_click.setting";
-		$json = file_get_contents($setting_file);
-		$settings = json_decode($json, true);
+		//$setting_file = "fb/auto_click.setting";
+		//$json = file_get_contents($setting_file);
+		//$settings = json_decode($json, true);
+		//if(!$settings) {
+		//	$settings = array();
+		//}
+		
+		uses("setting");
+		$setting = new Settings();
+		$row = $setting->findAll("*", null, array("variable='auto_click_settings'"));
+		$settings = json_decode($row[0]["valued"], true);
 		if(!$settings) {
 			$settings = array();
 		}
-		
+		//var_dump($settings);
 		if(!empty($_POST["shop"]))
 		{
 			$settings["min_rand"] = $_POST["min_rand"];
@@ -1293,10 +1301,12 @@ class Studypost extends PbController {
 			//$return = $this->trade->dbstuff->Execute($sql);
 		}
 		
+		$setting->saveField("valued",json_encode($settings),intval($row[0]["id"]));
+		
 		//write configs file
 		setvar("setting",$settings);
 		
-		file_put_contents( $setting_file , json_encode($settings));
+		//file_put_contents( $setting_file , json_encode($settings));
 		
 		$this->render("studypost/random_rate");
 	}

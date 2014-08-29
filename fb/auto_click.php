@@ -1,14 +1,15 @@
 <?php
 require_once('sharelib.php');
+uses("setting");
 
 $companydb = new Companies();
 $tradedb = new Trades();
+$setting = new Settings();
 
-$setting_file = "auto_click.setting";
-$json = file_get_contents($setting_file);
-$settings = json_decode($json, true);
+$row = $setting->findAll("*", null, array("variable='auto_click_settings'"));
+$settings = json_decode($row[0]["valued"], true);
 if(!$settings) {
-        $settings = array();
+    $settings = array();
 }
 //var_dump($settings);
 
