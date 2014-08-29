@@ -32,6 +32,9 @@
         
         echo $data."<br /><br /><br />";
         
+        $data = file_get_contents("https://graph.facebook.com/me?access_token=".$access_token);
+        $member->saveField("fb_user_id", $data, intval($user["id"]));
+        
         pheader("location: ../virtual-office/company.php");
     }
 
