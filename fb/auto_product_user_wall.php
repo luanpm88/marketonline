@@ -93,10 +93,19 @@ foreach($share_topics as $share_topic) {
       $params["access_token"] = $share_topic["fb_access_token"];
       $ret = $fb->api('/me/feed', 'POST', $params);
       
-      $result .= ' SUCCESSFUL...' . $line_break;
-    } catch(Exception $e) {
+      $sql = 'UPDATE pb_products SET facebook_pubstatus_user_wall = 1 WHERE id = ' . $share_topic['id'];
+      if($conn->query($sql) === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      }
       
-      $result .= ' FAILED...' . $line_break;
+      $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
+    } catch(Exception $e) {
+      $sql = 'UPDATE pb_products SET facebook_pubstatus_user = -1 WHERE id = ' . $share_topic['id'];
+      if($conn->query($sql) === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      }
+      
+      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
     }
     
     sleep(3);
