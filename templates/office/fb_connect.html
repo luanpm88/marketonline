@@ -4,18 +4,14 @@
                 <td>
 			
 				{if $fb_data}
-				    <p>Chọn những trang mà bạn muốn tự động chia sẻ tin mới đăng của bạn lên Facebook:</p>
 				    <div class="fb_box">
-					<p><strong style="font-size: 16px;">Trang cá nhân của bạn: </strong></p>
+					<p><strong style="font-size: 16px;">Chọn những trang mà bạn muốn tự động chia sẻ tin mới đăng của bạn lên Facebook:: </strong></p>
 					<ul>
-					  <li><input type="checkbox" name="fb_post_wall" value="1" /> {$fb_user.first_name} {$fb_user.last_name}</li>
-					</ul>
-					<br />
-					<p><strong style="font-size: 16px;">Fanpages của bạn: </strong></p>
-					<ul>
-						<!--{loop $fb_data.data itemc level_0 key0}-->
-							<li><input type="checkbox" name="fb_post_fanpage[]" value="{$itemc.id}" /> {$itemc.name}</li>
-						<!--{/loop}-->
+					  <li><input type="checkbox" name="fb_post_wall" value="1" /> {$fb_user.first_name} {$fb_user.last_name} (Trang cá nhân)</li>
+					
+					  <!--{loop $fb_data.data itemc level_0 key0}-->
+						  <li><input type="checkbox" name="fb_post_fanpage[]" value="{$itemc.id}" /> {$itemc.name} (Fanpage)</li>
+					  <!--{/loop}-->
 					</ul>
 					<br />				    
 					<a href="https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions,read_friendlists">Làm mới liên kết</a>
