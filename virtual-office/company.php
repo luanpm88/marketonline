@@ -295,8 +295,6 @@ if(!empty($companyinfo['name'])){
 	
 	$fb_data = $member->read("*", $memberinfo["id"]);
 	$fb_data = $member->getFacebookAccounts($fb_data["fb_access_token"]);
-	$fb_data = $fb_data["fb_data"];
-	$fb_data = json_decode($fb_data, true);
 	
 	setvar("fb_data", $fb_data);
 	
