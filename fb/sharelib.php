@@ -5,11 +5,13 @@ if(file_exists('../configs/config.inc.php')) {
     require_once("../libraries/common.inc.php");
     require_once("../share.inc.php");
     require_once('../libraries/core/models/company.php');
+    require_once('../libraries/core/models/trade.php');
 } else {
     require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
     require_once("/home/marketon/domains/marketonline.vn/public_html/libraries/common.inc.php");
     require_once("/home/marketon/domains/marketonline.vn/public_html/share.inc.php");
     require_once('/home/marketon/domains/marketonline.vn/public_html/libraries/core/models/company.php');
+    require_once('/home/marketon/domains/marketonline.vn/public_html/libraries/core/models/trade.php');
 }
 
 require_once('Encoding.php'); 

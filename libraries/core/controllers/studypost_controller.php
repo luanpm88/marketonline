@@ -1259,7 +1259,12 @@ class Studypost extends PbController {
 	}	
 	function random_rate()
 	{
-		$settings = array();
+		$setting_file = "fb/auto_click.setting";
+		$json = file_get_contents($setting_file);
+		$settings = json_decode($json, true);
+		if(!$settings) {
+			$settings = array();
+		}
 		
 		if(!empty($_POST["shop"]))
 		{
@@ -1268,11 +1273,11 @@ class Studypost extends PbController {
 			$settings["min_rate"] = $_POST["min_rate"];
 			$settings["max_rate"] = $_POST["max_rate"];
 			
-			$add = rand($_POST["min_rand"],$_POST["max_rand"]);
-			$sql = "update pb_companies set clicked=clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}), new_clicked=new_clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}) where clicked >= ".$_POST["min_rate"]." AND clicked <= ".$_POST["max_rate"]."";
-			echo "Thành công...!!<br /><br />";
-			
-			$return = $this->company->dbstuff->Execute($sql);
+			//$add = rand($_POST["min_rand"],$_POST["max_rand"]);
+			//$sql = "update pb_companies set clicked=clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}), new_clicked=new_clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}) where clicked >= ".$_POST["min_rate"]." AND clicked <= ".$_POST["max_rate"]."";
+			//echo "Thành công...!!<br /><br />";
+			//
+			//$return = $this->company->dbstuff->Execute($sql);
 		}
 		if(!empty($_POST["offer"]))
 		{
@@ -1281,15 +1286,17 @@ class Studypost extends PbController {
 			$settings["offer_min_rate"] = $_POST["offer_min_rate"];
 			$settings["offer_max_rate"] = $_POST["offer_max_rate"];
 			
-			$add = rand($_POST["offer_min_rand"],$_POST["offer_max_rand"]);
-			$sql = "update pb_trades set clicked=clicked+FLOOR((RAND() * ({$_POST["offer_max_rand"]}-{$_POST["offer_min_rand"]}+1))+{$_POST["offer_min_rand"]}) where clicked >= ".$_POST["offer_min_rate"]." AND clicked <= ".$_POST["offer_max_rate"]."";
-			echo "Thành công...!!<br /><br />";
-			
-			$return = $this->trade->dbstuff->Execute($sql);
+			//$add = rand($_POST["offer_min_rand"],$_POST["offer_max_rand"]);
+			//$sql = "update pb_trades set clicked=clicked+FLOOR((RAND() * ({$_POST["offer_max_rand"]}-{$_POST["offer_min_rand"]}+1))+{$_POST["offer_min_rand"]}) where clicked >= ".$_POST["offer_min_rate"]." AND clicked <= ".$_POST["offer_max_rate"]."";
+			//echo "Thành công...!!<br /><br />";
+			//
+			//$return = $this->trade->dbstuff->Execute($sql);
 		}
 		
 		//write configs file
-		file_put_contents ( "../../../auto_click.setting" , json_encode($settings));
+		setvar("setting",$settings);
+		
+		file_put_contents( $setting_file , json_encode($settings));
 		
 		$this->render("studypost/random_rate");
 	}
