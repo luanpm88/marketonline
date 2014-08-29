@@ -98,7 +98,7 @@ foreach($share_topics as $share_topic) {
 	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
       
-      $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
+      $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Wall) : ' . $share_topic['url'] . $line_break;
     } catch(Exception $e) {
       $sql = 'UPDATE pb_products SET facebook_pubstatus_user = -1 WHERE id = ' . $share_topic['id'];
       if($conn->query($sql) === false) {
