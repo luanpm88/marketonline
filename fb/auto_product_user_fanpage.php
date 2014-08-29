@@ -94,18 +94,21 @@ foreach($share_topics as $share_topic) {
   $fanpages = $account["data"];
   
   $fanpage_posted = $share_topic["facebook_pubstatus_user_fanpage"]? explode(",",$share_topic["facebook_pubstatus_user_fanpage"]) : array();
-  foreach($fanpages as $fanpage) {    
-    //try {
-    //  $params["access_token"] = $fanpage["access_token"];
-    //  $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
-    //  
-    //  $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
-    //} catch(Exception $e) {
-    //  
-    //  $result .= ' FAILED... (Cannot post to ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
-    //}
-    //
-    //sleep(3);
+  foreach($fanpages as $fanpage) {
+    if(!in_array($fanpage["id"], $fanpage_posted)) {
+      echo $fanpage["id"];
+      //try {
+      //  $params["access_token"] = $fanpage["access_token"];
+      //  $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
+      //  
+      //  $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
+      //} catch(Exception $e) {
+      //  
+      //  $result .= ' FAILED... (Cannot post to ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
+      //}
+      //
+      //sleep(3);
+    }
   }
   var_dump($fanpage_posted);
 
