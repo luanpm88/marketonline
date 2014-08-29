@@ -1179,7 +1179,6 @@ class Members extends PbModel {
 	}	
 	function getFacebookUser($access_token) {
 		$data = file_get_contents("https://graph.facebook.com/me?access_token=".$access_token);
-		var_dump($data);
 		return json_decode($data, true);
 	}
 }
