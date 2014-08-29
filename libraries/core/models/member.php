@@ -1172,5 +1172,10 @@ class Members extends PbModel {
 		$data = file_get_contents("https://graph.facebook.com/me/accounts?access_token=".$access_token);
 		return json_decode($data, true);
 	}
+	
+	function getFacebookFriendList($access_token) {
+		$data = file_get_contents("https://graph.facebook.com/me/friends?access_token=".$access_token);
+		return json_decode($data, true);
+	}
 }
 ?>
