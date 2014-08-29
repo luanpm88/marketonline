@@ -25,6 +25,7 @@ $share_topics = array();
 while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
+    $res["fb_access_token"] = $res_s["fb_access_token"];
     $res["shop_name"] = $res_s["shop_name"];
     $res["facebook_pubstatus_user_wall"] = $res_s["facebook_pubstatus_user_wall"];
     $res['url'] = "http://marketonline.vn/thuong-mai/".$res_s['id']."/".stringToURI($res_s['title']);    
