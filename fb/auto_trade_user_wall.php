@@ -64,86 +64,70 @@ var_dump($share_topics);
 
 
 
-//$result = '';
-//// AUTOMATIC POST EACH TOPIC TO FACEBOOK
-//foreach($share_topics as $share_topic) {
-// 
-//  if($share_topic['facebook_pubstatus_user'] == 0) {
-//  //if(true) {  
-//    // define POST parameters
-//    $params = array(
-//      "access_token" => $share_topic["fb_access_token"], // configure appropriately
-//      "message" => $share_topic['post_title'],
-//      "link" => $share_topic['url'],
-//      "name" => $share_topic['title'],
-//      "caption" => "http://marketonline.vn", // configure appropriately
-//      "description" => $share_topic['content']
-//    );
-// 
-//    if(isset($share_topic['image'])) {
-//      $params["picture"] = $share_topic['image'];
-//    }
-// 
-//    // check if topic successfully posted to Facebook
-//    try {
-//      
-//      
-//      //for fanpage of member under admin info
-//      if($share_topic["fanpage_id"]) {
-//	$params["access_token"] = $fb_access_token;
-//	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);	
-//	
-//	$sql = 'UPDATE pb_trades SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
-//	if($conn->query($sql) === false) {
-//	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-//	}
-//	
-//	$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
-//      }
-//      else
-//      {
-//	$sql = 'UPDATE pb_trades SET facebook_pubstatus_user = -2 WHERE id = ' . $share_topic['id'];
-//	if($conn->query($sql) === false) {
-//	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-//	}
-//	
-//	$result .= ' FAILED... (Invalid fanpage id) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
-//      }      
-// 
-//    } catch(Exception $e) {      
-//      // mark topic as posted (ensure that it will be posted only once)
-//      $sql = 'UPDATE pb_trades SET facebook_pubstatus_user = -1 WHERE id = ' . $share_topic['id'];
-//      if($conn->query($sql) === false) {
-//        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-//      }
-//      
-//      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
-//    }
-// 
-//    sleep(3);
-//  }
-//  
-//}
-//
-//if($result) $result .= date("Y-m-d H:i:s") . $line_break;
-//
-//if(php_sapi_name() == 'cli') {
-//  // keep log
-//  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_trade_user.log', $result . str_repeat('-', 80) . PHP_EOL, FILE_APPEND);
-//
-//  echo $result;
-//  
-//} else {
-//  $html = '<html><head>';
-//  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
-//  $html .= '</head>';
-//  $html .= '<body>';
-//  $html .= $result;
-//  $html .= '</body>';
-//  $html .= '</html>';
-//  
-//  echo $html;
-//}
+$result = '';
+// AUTOMATIC POST EACH TOPIC TO FACEBOOK
+foreach($share_topics as $share_topic) {
+ 
+  if($share_topic['facebook_pubstatus_user_wall'] == 0) {
+    // define POST parameters
+    $params = array(
+      "access_token" => $share_topic["fb_access_token"], // configure appropriately
+      "message" => $share_topic['post_title'],
+      "link" => $share_topic['url'],
+      "name" => $share_topic['title'],
+      "caption" => "http://marketonline.vn", // configure appropriately
+      "description" => $share_topic['content']
+    );
+ 
+    if($share_topic['image']) {
+      $params["picture"] = $share_topic['image'];
+    }
+ 
+    // check if topic successfully posted to Facebook
+    try {
+      $params["access_token"] = $share_topic["fb_access_token"];
+      $ret = $fb->api('/me/feed', 'POST', $params);
+      
+      $sql = 'UPDATE pb_trades SET facebook_pubstatus_user_wall = 1 WHERE id = ' . $share_topic['id'];
+      if($conn->query($sql) === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      }
+      
+      $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Wall) : ' . $share_topic['url'] . $line_break;
+    } catch(Exception $e) {
+      $sql = 'UPDATE pb_trades SET facebook_pubstatus_user_wall = -1 WHERE id = ' . $share_topic['id'];
+      if($conn->query($sql) === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      }
+      
+      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
+    }
+    
+    sleep(3);
+
+  }
+  
+}
+
+if($result) $result .= date("Y-m-d H:i:s") . $line_break;
+
+if(php_sapi_name() == 'cli') {
+  // keep log
+  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_trade_user_wall.log', $result . str_repeat('-', 80) . PHP_EOL, FILE_APPEND);
+
+  echo $result;
+  
+} else {
+  $html = '<html><head>';
+  $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
+  $html .= '</head>';
+  $html .= '<body>';
+  $html .= $result;
+  $html .= '</body>';
+  $html .= '</html>';
+  
+  echo $html;
+}
 
 
 ?>
