@@ -1,10 +1,11 @@
 <?php
 require_once('sharelib.php'); 
 
-uses('member');
+uses('member','product');
 
 $companydb = new Companies();
 $memberdb = new Members();
+$productdb = new Products();
 
 //var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
@@ -111,7 +112,8 @@ foreach($share_topics as $share_topic) {
       sleep(3);
     }
   }
-  var_dump($fanpage_posted);
+  
+  $productdb->saveField("facebook_pubstatus_user_fanpage", implode(",",$fanpage_posted), intval($share_topic["id"]));
 
 }
 
