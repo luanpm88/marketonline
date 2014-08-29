@@ -90,7 +90,12 @@ foreach($share_topics as $share_topic) {
   }
 
   //get fanpages
-  var_dump($memberdb->getFacebookAccounts($share_topic["fb_access_token"]));
+  $account = $memberdb->getFacebookAccounts($share_topic["fb_access_token"]);
+  $fanpages = $account["data"];
+  
+  foreach($fanpages as $fanpage) {
+    echo $fanpage["id"]."<br />";
+  }
   
   // check if topic successfully posted to Facebook
   try {
