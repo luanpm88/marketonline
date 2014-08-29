@@ -6,7 +6,7 @@ $companydb = new Companies();
 //var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -23,6 +23,7 @@ $share_topics = array();
 while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
+    $res["shop_name"] = $res_s["shop_name"];
     $res["fb_access_token"] = $res_s["fb_access_token"];
     $res["facebook_pubstatus_user"] = $res_s["facebook_pubstatus_user"];
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
@@ -92,13 +93,14 @@ foreach($share_topics as $share_topic) {
       //for fanpage of member under admin info
       if($share_topic["fanpage_id"]) {
 	$params["access_token"] = $fb_access_token;
-	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);
-	$result .= 'successfully posted to member\'s FanPage Facebook! : ' . $share_topic['fanpage'] . ' ' . $share_topic['title'] . $line_break;
+	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);	
 	
 	$sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
 	if($conn->query($sql) === false) {
 	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 	}
+	
+	$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
       }
       else
       {
@@ -106,29 +108,18 @@ foreach($share_topics as $share_topic) {
 	if($conn->query($sql) === false) {
 	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 	}
-	$result .= $result .= ' FAILED... invalid fanpage id'  . $share_topic['url'];
-      }
-      
-      
-      
-      //$result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+	
+	$result .= ' FAILED... (Invalid fanpage id) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
+      }      
  
-    } catch(Exception $e) {
-//      if($share_topic["fanpage_id"]) {
-//	$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['fanpage'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
-//      }
-//      else
-//      {
-//	$result .= $result .= ' FAILED... invalid fanpage id'  . $share_topic['url'];
-//      }
-      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
-      
+    } catch(Exception $e) {     
       // mark topic as posted (ensure that it will be posted only once)
       $sql = 'UPDATE pb_products SET facebook_pubstatus_user = -1 WHERE id = ' . $share_topic['id'];
       if($conn->query($sql) === false) {
         trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
-      //$result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+      
+      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
     }
  
     sleep(3);
@@ -136,11 +127,11 @@ foreach($share_topics as $share_topic) {
  
 }
 
-if($result) $result .= "on: " . date("Y-m-d H:i:s") . $line_break;
+if($result) $result .= date("Y-m-d H:i:s") . $line_break;
 
 if(php_sapi_name() == 'cli') {
   // keep log
-  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_product_user.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
+  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_product_user.log', $result . str_repeat('-', 80) . PHP_EOL, FILE_APPEND);
  
   echo $result;
  

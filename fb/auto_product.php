@@ -85,15 +85,12 @@ foreach($share_topics as $share_topic) {
     try {
 	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
 	
-	//custom fanpage id
-	//$fb->api('/527168870748335/feed', 'POST', $params);
-      
 	//for fan page
 	$fb_data = json_decode($admin["fb_data"], true);
 	foreach($fb_data["data"] as $fb_fanpage) {
 		$params["access_token"] = $fb_fanpage["access_token"];
 		$fb->api('/'.$fb_fanpage["id"].'/feed', 'POST', $params);
-		$result .= 'successfully posted to FanPage "'.$fb_fanpage["name"].'" Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
+		$result .= ' SUCCESSFUL... (Posted to ['.$fb_fanpage["name"].'] Fanpage) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
 	}
  
       // mark topic as posted (ensure that it will be posted only once)
@@ -101,10 +98,11 @@ foreach($share_topics as $share_topic) {
       if($conn->query($sql) === false) {
         trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
-      $result .= 'successfully posted to Facebook! : ' . $share_topic['url'] . ' ' . $share_topic['title'] . $line_break;
- 
+      
+      $result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break; 
     } catch(Exception $e) {
-      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . ' ' . $share_topic['title'] . ' FAILED... (' . $e->getMessage() . ')' . $line_break;
+	
+      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
     }
  
     sleep(3);
@@ -112,11 +110,11 @@ foreach($share_topics as $share_topic) {
  
 }
 
-if($result) $result .= "on: " . date("Y-m-d H:i:s") . $line_break;
+if($result) $result .= date("Y-m-d H:i:s") . $line_break;
 
 if(php_sapi_name() == 'cli') {
   // keep log
-  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_product.log', $result . str_repeat('=', 80) . PHP_EOL, FILE_APPEND);
+  if($result) file_put_contents('/home/marketon/domains/marketonline.vn/public_html/fb/auto_product.log', $result . str_repeat('-', 80) . PHP_EOL, FILE_APPEND);
  
   echo $result;
  
