@@ -3405,3 +3405,8 @@ p.message {
     margin-bottom: 5px;
     text-align: center;
 }
+.fb_box {
+    padding: 10px;
+    background: #fff;
+    border: solid 1px #333;
+}
