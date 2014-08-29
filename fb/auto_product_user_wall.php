@@ -6,7 +6,7 @@ $companydb = new Companies();
 //var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_wall, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -25,7 +25,7 @@ while($res_s = $rs->fetch_assoc()) {
     $res["id"] = $res_s["id"];
     $res["shop_name"] = $res_s["shop_name"];
     $res["fb_access_token"] = $res_s["fb_access_token"];
-    $res["facebook_pubstatus_user"] = $res_s["facebook_pubstatus_user"];
+    $res["facebook_pubstatus_user_wall"] = $res_s["facebook_pubstatus_user_wall"];
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
     $res["content"]= substr(strip_tags(str_replace('[:vi-vn]', '', $res_s["content"])),0,9000);

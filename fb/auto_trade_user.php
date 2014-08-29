@@ -7,7 +7,7 @@ $companydb = new Companies();
 
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, type.name as type_name, com.cache_spacename, com.name as company_name, trade.id, trade.facebook_pubstatus, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
+$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, type.name as type_name, com.cache_spacename, com.name as company_name, trade.id, trade.facebook_pubstatus_user, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
     .' FROM pb_trades trade'
     .' LEFT JOIN pb_companies as com ON com.id = trade.company_id'
     .' LEFT JOIN pb_tradetypes as type ON type.id = trade.type_id'
