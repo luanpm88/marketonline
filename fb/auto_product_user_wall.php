@@ -6,7 +6,7 @@ $companydb = new Companies();
 //var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_wall, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.fb_post_wall, com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_wall, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -25,6 +25,7 @@ while($res_s = $rs->fetch_assoc()) {
     $res["id"] = $res_s["id"];
     $res["shop_name"] = $res_s["shop_name"];
     $res["fb_access_token"] = $res_s["fb_access_token"];
+    $res["fb_post_wall"] = $res_s["fb_post_wall"];
     $res["facebook_pubstatus_user_wall"] = $res_s["facebook_pubstatus_user_wall"];
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
@@ -87,29 +88,31 @@ foreach($share_topics as $share_topic) {
     if($share_topic['image']) {
       $params["picture"] = $share_topic['image'];
     }
- 
-    // check if topic successfully posted to Facebook
-    try {
-      $params["access_token"] = $share_topic["fb_access_token"];
-      $ret = $fb->api('/me/feed', 'POST', $params);
-      
-      $sql = 'UPDATE pb_products SET facebook_pubstatus_user_wall = 1 WHERE id = ' . $share_topic['id'];
-      if($conn->query($sql) === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-      }
-      
-      $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Wall) : ' . $share_topic['url'] . $line_break;
-    } catch(Exception $e) {
-      $sql = 'UPDATE pb_products SET facebook_pubstatus_user_wall = -1 WHERE id = ' . $share_topic['id'];
-      if($conn->query($sql) === false) {
-	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-      }
-      
-      $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
-    }
     
-    sleep(3);
-
+    if($share_topic["fb_post_wall"]) {
+      // check if topic successfully posted to Facebook
+      try {
+	$params["access_token"] = $share_topic["fb_access_token"];
+	$ret = $fb->api('/me/feed', 'POST', $params);
+	
+	$sql = 'UPDATE pb_products SET facebook_pubstatus_user_wall = 1 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
+	
+	$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Wall) : ' . $share_topic['url'] . $line_break;
+      } catch(Exception $e) {
+	$sql = 'UPDATE pb_products SET facebook_pubstatus_user_wall = -1 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
+	
+	$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
+      }
+      
+      sleep(3);
+    }
+      
   }
  
 }
