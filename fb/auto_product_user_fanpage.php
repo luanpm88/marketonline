@@ -120,6 +120,8 @@ foreach($share_topics as $share_topic) {
     $fanpage_posted[] = $fanpage["id"];
   }
   
+  if(!count($fanpages)) $fanpage_posted[] = "false";
+  
   $productdb->saveField("facebook_pubstatus_user_fanpage", implode(",",$fanpage_posted), intval($share_topic["id"]));
 
 }
