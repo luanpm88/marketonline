@@ -104,7 +104,7 @@ foreach($share_topics as $share_topic) {
 	  $params["access_token"] = $fanpage["access_token"];
 	  $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
 	  
-	  $fanpage_posted[] = $fanpage["id"];
+	  //$fanpage_posted[] = $fanpage["id"];
 	  
 	  $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
 	} catch(Exception $e) {
@@ -114,9 +114,10 @@ foreach($share_topics as $share_topic) {
 	
 	sleep(3);
       } else {
-	$fanpage_posted[] = $fanpage["id"];
-      }
+	
+      }      
     }
+    $fanpage_posted[] = $fanpage["id"];
   }
   
   $productdb->saveField("facebook_pubstatus_user_fanpage", implode(",",$fanpage_posted), intval($share_topic["id"]));
