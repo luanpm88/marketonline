@@ -107,6 +107,11 @@ foreach($share_topics as $share_topic) {
       }
       
       sleep(3);
+    } else {
+      $sql = 'UPDATE pb_trades SET facebook_pubstatus_user_wall = -1 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
     }
   }
   
