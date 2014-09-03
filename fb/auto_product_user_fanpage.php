@@ -10,7 +10,7 @@ $productdb = new Products();
 //var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_fanpage, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.fb_post_fanpage,com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_fanpage, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -28,6 +28,7 @@ while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
     $res["shop_name"] = $res_s["shop_name"];
+    $res["fb_post_fanpage"] = $res_s["fb_post_fanpage"];
     $res["fb_access_token"] = $res_s["fb_access_token"];
     $res["facebook_pubstatus_user_fanpage"] = $res_s["facebook_pubstatus_user_fanpage"];
     $res["title"]= str_replace('[:vi-vn]', '', $res_s["name"]);
@@ -95,8 +96,9 @@ foreach($share_topics as $share_topic) {
   $fanpages = $account["data"];
   
   $fanpage_posted = $share_topic["facebook_pubstatus_user_fanpage"]? explode(",",$share_topic["facebook_pubstatus_user_fanpage"]) : array();
+  $configs = explode(",", $share_topic['fb_post_fanpage']);
   foreach($fanpages as $fanpage) {
-    if(!in_array($fanpage["id"], $fanpage_posted)) {
+    if(!in_array($fanpage["id"], $fanpage_posted) && in_array($fanpage["id"], $configs)) {
       try {
         $params["access_token"] = $fanpage["access_token"];
         $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);

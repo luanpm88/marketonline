@@ -111,11 +111,7 @@ foreach($share_topics as $share_topic) {
       }
       
       sleep(3);
-    }
-    else
-    {
-      $result .= ' NO CONFIG... ' . $line_break;
-    }
+    }    
   }
  
 }
