@@ -36,8 +36,21 @@ else if($meminfo == 5)
 else $tpl_file = "person";
 
 if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == "save") {
+	//var_dump($_POST);
 	pb_submit_check('data');
 	$vals = $_POST['data']['company'];
+	
+	if($_POST["fb_post_wall"]) {
+		$vals["fb_post_wall"] = $_POST["fb_post_wall"];
+	} else {
+		$vals["fb_post_wall"] = 0;
+	}	
+	if($_POST["fb_post_fanpage"]) {
+		$vals["fb_post_fanpage"] = implode(",", $_POST["fb_post_fanpage"]);
+	} else {
+		$vals["fb_post_fanpage"] = "";
+	}
+	
 	$company->doValidation($vals);
 	if (!empty($company->validationErrors)) {
 		setvar("item", $vals);
@@ -297,6 +310,16 @@ if(!empty($companyinfo['name'])){
 	$access_token = $fb_data["fb_access_token"];
 	$fb_data = $member->getFacebookAccounts($access_token);	
 	$fb_user = $member->getFacebookUser($access_token);
+	
+	$fanpages = explode(",", $companyinfo["fb_post_fanpage"]);
+	foreach($fb_data["data"] as $kk => $item) {
+		if(in_array($item["id"],$fanpages)) {
+			$fb_data["data"][$kk]["checked"] = 1;
+		} else {
+			$fb_data["data"][$kk]["checked"] = 0;
+		}		
+	}
+	//var_dump($fb_data);
 	
 	setvar("fb_data", $fb_data);
 	setvar("fb_user", $fb_user);
