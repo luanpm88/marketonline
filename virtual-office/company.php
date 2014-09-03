@@ -252,6 +252,12 @@ if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "change_grouptyp
 	pheader("location:company.php");
 }
 
+if (isset($_GET['do']) && $_GET['do'] == "remove_facebook") {
+	$mem = $member->read("*", intval($memberinfo["id"]));
+	$member->saveField("fb_access_token", '', intval($memberinfo["id"]));
+	pheader("location:company.php");
+}
+
 if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "upgrade_company") {
 	$mem = $member->read("*", intval($memberinfo["id"]));
 	$memtype = $membertype->read("*", intval($_GET['id']));
