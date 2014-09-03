@@ -10,7 +10,7 @@ $tradedb = new Trades();
 
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, type.name as type_name, com.cache_spacename, com.name as company_name, trade.id, trade.facebook_pubstatus_user_fanpage, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
+$sql = 'SELECT com.fb_post_fanpage, com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, type.name as type_name, com.cache_spacename, com.name as company_name, trade.id, trade.facebook_pubstatus_user_fanpage, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
     .' FROM pb_trades trade'
     .' LEFT JOIN pb_companies as com ON com.id = trade.company_id'
     .' LEFT JOIN pb_tradetypes as type ON type.id = trade.type_id'
@@ -29,6 +29,7 @@ while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
     $res["fb_access_token"] = $res_s["fb_access_token"];
+    $res["fb_post_fanpage"] = $res_s["fb_post_fanpage"];
     $res["shop_name"] = $res_s["shop_name"];
     $res["facebook_pubstatus_user_fanpage"] = $res_s["facebook_pubstatus_user_fanpage"];
     $res['url'] = "http://marketonline.vn/thuong-mai/".$res_s['id']."/".stringToURI($res_s['title']);    
@@ -90,8 +91,9 @@ foreach($share_topics as $share_topic) {
   $fanpages = $account["data"];
   
   $fanpage_posted = $share_topic["facebook_pubstatus_user_fanpage"]? explode(",",$share_topic["facebook_pubstatus_user_fanpage"]) : array();
+  $configs = explode(",", $share_topic['fb_post_fanpage']);
   foreach($fanpages as $fanpage) {
-    if(!in_array($fanpage["id"], $fanpage_posted)) {
+    if(!in_array($fanpage["id"], $fanpage_posted) && in_array($fanpage["id"], $configs)) {
       try {
         $params["access_token"] = $fanpage["access_token"];
         $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
