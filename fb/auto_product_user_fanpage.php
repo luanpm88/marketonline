@@ -70,7 +70,7 @@ while($res_s = $rs->fetch_assoc()) {
 $rs->free();
 
 
-var_dump($share_topics);
+//var_dump($share_topics);
 
 
 
@@ -98,20 +98,24 @@ foreach($share_topics as $share_topic) {
   $fanpage_posted = $share_topic["facebook_pubstatus_user_fanpage"]? explode(",",$share_topic["facebook_pubstatus_user_fanpage"]) : array();
   $configs = explode(",", $share_topic['fb_post_fanpage']);
   foreach($fanpages as $fanpage) {
-    if(!in_array($fanpage["id"], $fanpage_posted) && in_array($fanpage["id"], $configs)) {
-      try {
-        $params["access_token"] = $fanpage["access_token"];
-        $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
+    if(!in_array($fanpage["id"], $fanpage_posted)) {
+      if(in_array($fanpage["id"], $configs)) {
+	try {
+	  $params["access_token"] = $fanpage["access_token"];
+	  $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
+	  
+	  $fanpage_posted[] = $fanpage["id"];
+	  
+	  $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
+	} catch(Exception $e) {
+	  
+	  $result .= ' FAILED... (Cannot post to ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
+	}
 	
+	sleep(3);
+      } else {
 	$fanpage_posted[] = $fanpage["id"];
-        
-        $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
-      } catch(Exception $e) {
-        
-        $result .= ' FAILED... (Cannot post to ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
       }
-      
-      sleep(3);
     }
   }
   
