@@ -66,7 +66,7 @@ while($res_s = $rs->fetch_assoc()) {
 $rs->free();
 
 
-var_dump($share_topics);
+//var_dump($share_topics);
 
 
 
@@ -111,7 +111,12 @@ foreach($share_topics as $share_topic) {
       }
       
       sleep(3);
-    }    
+    } else {
+      $sql = 'UPDATE pb_products SET facebook_pubstatus_user_wall = -1 WHERE id = ' . $share_topic['id'];
+      if($conn->query($sql) === false) {
+	trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+      }
+    }
   }
  
 }
