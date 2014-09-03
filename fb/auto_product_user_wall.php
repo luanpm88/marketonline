@@ -66,7 +66,7 @@ while($res_s = $rs->fetch_assoc()) {
 $rs->free();
 
 
-//var_dump($share_topics);
+var_dump($share_topics);
 
 
 
