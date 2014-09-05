@@ -3414,3 +3414,16 @@ p.message {
 .unvalid_message {
     color: red;
 }
+a.unvalid_edit {
+    background: none repeat scroll 0 0 #6cbe42;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    margin-top: 5px;
+    padding: 0 4px;
+    text-decoration: none;
+}
+.unvalid_edit:hover {
+    opacity: 0.9;
+}

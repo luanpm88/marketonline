@@ -540,7 +540,7 @@ $amount = $product->findCount(null, $conditions, "Product.id");
 
 $page->setPagenav($amount);
 
-$orderby = "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Product.created DESC";
+$orderby = "CASE WHEN valid_status = 0 THEN 1 WHEN valid_status = 3 THEN 2 ELSE 3 END ASC, Product.created DESC";
 if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	$orderby = $_GET['order_by'];
 	$o_arr = explode(' ', $_GET['order_by']);
@@ -578,6 +578,7 @@ if ($result) {
 		if($result[$i]['valid_status'] == 0) {
 			$string = '<img title="Không hợp lệ" src="../templates/office/images/unpublished.png">';
 			$string .= '<br /><span class="unvalid_message">'.$result[$i]['valid_status_message'].'</span>';
+			$string .= '<br /><a href="product.php?type='.$_GET["type"].'&do=edit&id='.$result[$i]['id'].'" class="unvalid_edit">Chỉnh sửa</a>';
 			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
 			$result[$i]['validation'] = $string;
 		}

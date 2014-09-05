@@ -374,7 +374,9 @@ if (!empty($result)) {
 		}
 		if($result[$i]['valid_status'] == 3) {
 			$string = '<img src="../templates/office/images/alert-icon.png">';
-			$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
+			$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a> / ';
+			$string .= '<a onclick="$(this).attr(\'href\', $(this).attr(\'href\')+\'&message=\'+$(\'.iipp'.$result[$i]["id"].'\').val());" href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a><br />';
+			$string .= '<input class="iipp'.$result[$i]["id"].'" size="30" name="message" placeholder="Nội dung cấm" />';
 			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
 			$result[$i]['validation'] = $string;
 		}

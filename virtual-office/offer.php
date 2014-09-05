@@ -486,7 +486,7 @@ if(isset($_POST['refresh'])){
 $amount = 0;
 $amount = $trade->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $trade->findAll("*", null, $conditions, "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Trade.submit_time DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
+$result = $trade->findAll("*", null, $conditions, "CASE WHEN valid_status = 0 THEN 1 WHEN valid_status = 3 THEN 2 ELSE 3 END ASC, Trade.submit_time DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 	    $result[$i]["price"] = number_format($result[$i]["price"], 0, ',', '.');;
@@ -520,6 +520,7 @@ if (!empty($result)) {
 		if($result[$i]['valid_status'] == 0) {
 			$string = '<img title="Không hợp lệ" src="../templates/office/images/unpublished.png">';
 			$string .= '<br /><span class="unvalid_message">'.$result[$i]['valid_status_message'].'</span>';
+			$string .= '<br /><a href="offer.php?do=edit&id='.$result[$i]['id'].'" class="unvalid_edit">Chỉnh sửa</a>';
 			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
 			$result[$i]['validation'] = $string;
 		}

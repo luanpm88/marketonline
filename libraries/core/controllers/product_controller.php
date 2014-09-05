@@ -720,7 +720,7 @@ class Product extends PbController {
 		//echo $_SESSION["viewed_list"];
 		
 		
-		if(empty($info) || !$info || $info["valid_status"] != 1){
+		if(empty($info) || !$info || $info["valid_status"] != 1) {
 			flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
 		}
 		if (isset($info['formattribute_ids'])) {
