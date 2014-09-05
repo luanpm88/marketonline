@@ -10,7 +10,7 @@ require(PHPB2B_ROOT.'./libraries/page.class.php');
 require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
-uses("product","attachment", "tag", "typeoption","area","industry","meta","productadtype");
+uses("message","product","attachment", "tag", "typeoption","area","industry","meta","productadtype");
 $productadtype = new Productadtypes();
 $typeoption = new Typeoption();
 $area = new Areas();
@@ -20,6 +20,7 @@ $attachment = new Attachment('pic');
 $tag = new Tags();
 $product = new Products();
 $page = new Pages();
+$message = new Messages();
 $conditions = array();
 $tpl_file = "product";
 setvar("CheckStatus", $typeoption->get_cache_type("common_status"));
@@ -200,20 +201,56 @@ if (isset($_GET['do'])) {
 		$product->saveField("created", $time_stamp, $id);
 		$product->saveField("`show`", 1, $id);
 	}
+	
+	if ($do=="valid" && $id) {
+		$product->saveField("valid_status", 1, intval($id));
+	}
+	if ($do=="unvalid" && $id) {
+		$iiffoo = $product->read("*", $id);
+		
+		$product->saveField("valid_status", 0, intval($id));
+		$product->saveField("valid_status_message", $_GET["message"], intval($id));
+		
+		$content = "<a href='".URL."virtual-office/product.php'>Sản phẩm '".$iiffoo["name"]."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_status_message"].")</a>";
+		$sms['content'] = mysql_real_escape_string($content);
+		$sms['title'] = mysql_real_escape_string("Sản phẩm không hợp lệ");
+		$sms['membertype_ids'] = '[1][2][3]';
+		$message->SendToUser(1, $iiffoo["member_id"], $sms);
+	}
 }
 $amount = $product->findCount($joins, $conditions,"Product.id");
 unset($joins);
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Product.member_id";
 $page->setPagenav($amount);
-$fields = "m.username,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
-$result = $product->findAll($fields, $joins, $conditions,"Product.id DESC",$page->firstcount,$page->displaypg);
+$fields = "m.username,Product.valid_status,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
+$result = $product->findAll($fields, $joins, $conditions,"CASE WHEN valid_status = 3 THEN 1 ELSE 2 END ASC, Product.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['pubdate'] = df($result[$i]['created']);
 		if(!empty($result[$i]['picture'])){
 			$result[$i]['image'] = pb_get_attachmenturl($result[$i]['ProductPicture'], "../", "small");
 		}
+		
+		if($result[$i]['valid_status'] == 1) {
+			$string = '<img src="../templates/office/images/published.png">';
+			$string .= '<a onclick="$(this).attr(\'href\', $(this).attr(\'href\')+\'&message=\'+$(\'.iipp'.$result[$i]["id"].'\').val());" href="product.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a><br />';
+			$string .= '<input class="iipp'.$result[$i]["id"].'" size="30" name="message" placeholder="Nội dung cấm" />';
+			$result[$i]['validation'] = $string;
+		}
+		if($result[$i]['valid_status'] == 0) {
+			$string = '<img src="../templates/office/images/unpublished.png">';
+			$string .= '<a href="product.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
+		if($result[$i]['valid_status'] == 3) {
+			$string = '<img src="../templates/office/images/alert-icon.png">';
+			$string .= '<a href="product.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
+		//$result[$i]['validation'] = "ss";
 	}
 }
 setvar("Items", $result);

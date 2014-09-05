@@ -278,6 +278,12 @@ if (isset($_POST['save'])) {
 			$item_ids = $form->Add($id,$_POST['data']['formitem'], $form_id, $form_type_id);
 			$product->params['data']['product']['modified'] = $time_stamp;
 			$product->params['data']['product']['formattribute_ids'] = $item_ids;
+			
+			$ppp = $product->read("valid_status", $id);
+			if($ppp["valid_status"] == 0) {
+				$product->params['data']['product']["valid_status"] = 3;
+			}
+			
 			$result = $product->save($product->params['data']['product'], "update", $id, null, $conditions);
 			
 			
@@ -500,6 +506,8 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 	{
 		$product->saveField("created", $time_stamp, intval($_GET["id"]));
 	}
+	
+	
 }
 if (isset($_GET['typeid']) && !empty($_GET['typeid'])) {
 	$conditions[] = "producttype_id = ".$_GET['typeid'];
@@ -532,7 +540,7 @@ $amount = $product->findCount(null, $conditions, "Product.id");
 
 $page->setPagenav($amount);
 
-$orderby = "Product.created DESC";
+$orderby = "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Product.created DESC";
 if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	$orderby = $_GET['order_by'];
 	$o_arr = explode(' ', $_GET['order_by']);
@@ -540,7 +548,7 @@ if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	setvar('sortOrder',$o_arr[1]);
 }
 
-$result = $product->findAll("ads,sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
+$result = $product->findAll("valid_status,valid_status_message,ads,sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
 if ($result) {
 	$i_count = count($result);
 	for ($i=0; $i<$i_count; $i++) {
@@ -560,6 +568,25 @@ if ($result) {
 		$result[$i]['image'] = pb_get_attachmenturl($result[$i][$col_pic], '../', 'small');
 		$result[$i]['created'] = df($result[$i]['created'], "d-m-Y H:i");
 		$result[$i]['row'] = $i%2;
+		
+		if($result[$i]['valid_status'] == 1) {
+			$string = '<img title="Hợp lệ" src="../templates/office/images/published.png">';
+			//$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>/';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
+		if($result[$i]['valid_status'] == 0) {
+			$string = '<img title="Không hợp lệ" src="../templates/office/images/unpublished.png">';
+			$string .= '<br /><span class="unvalid_message">'.$result[$i]['valid_status_message'].'</span>';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
+		if($result[$i]['valid_status'] == 3) {
+			$string = '<img title="Đang chờ duyệt" src="../templates/office/images/alert-icon.png">';
+			//$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
 	}
 }
 

@@ -12,6 +12,7 @@ class Products extends PbModel {
  	{
 		//var_dump($area_a);
  		$this->condition[] = "Product.status=1 ";
+		$this->condition[] = "Product.valid_status=1 ";
  		if (isset($_GET['industryid']) && $area_a == null) {
  			if (strpos($_GET['industryid'], ",")!==false) {
  				$this->condition[]= "Product.industry_id IN (".trim($_GET['industryid']).")";
@@ -490,7 +491,7 @@ class Products extends PbModel {
 		$sql = "SELECT p.*, b.name AS brand_name, i.name as industry_name FROM {$this->table_prefix}products p"
 			." LEFT JOIN {$this->table_prefix}brands b ON b.id = p.brand_id"
 			." LEFT JOIN {$this->table_prefix}industries i ON i.id = p.industry_id"
-			." WHERE i.id IN (".$industry["children"].") AND p.member_id=".$userid
+			." WHERE p.valid_status = 1 AND p.status = 1 AND i.id IN (".$industry["children"].") AND p.member_id=".$userid
 			." ORDER BY created DESC LIMIT 7";
 		$results = $this->dbstuff->GetArray($sql);
 		

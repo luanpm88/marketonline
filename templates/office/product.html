@@ -138,7 +138,8 @@
 		   {/if}
 		   
 		   <th style="text-align: left">{lang created_date}</th>
-                   <th style="text-align: left">{lang release}</th>
+                   <!--<th style="text-align: left">{lang release}</th>-->
+		   <th>Phê duyệt</th>
 		   
 		   
 		   
@@ -187,7 +188,8 @@
 		{/if}
 		
 		<td style="text-align: left">{$item.created}</td>
-                <td style="text-align: left"><a title="{lang as_release_supply_title}" href="offer.php?do=pro2offer&productid={$item.id}">{lang as_release_supply}</a>
+                <!--<td style="text-align: left"><a title="{lang as_release_supply_title}" href="offer.php?do=pro2offer&productid={$item.id}">{lang as_release_supply}</a>-->
+		<td>{$item.validation}</td>
 		    
 		    <!--<br /><a href="price.php?do=edit&productid={$item.id}">{lang prices}</a>--></td>
 		

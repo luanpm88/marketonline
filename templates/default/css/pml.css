@@ -10729,3 +10729,6 @@ input[name=redirect]
 .company-pagination ul {
     margin: 10px;
 }
+#quick_message_content p.timeinbox, #quick_inbox_content p.timeinbox {
+    min-height: 0;
+}

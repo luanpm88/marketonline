@@ -16,6 +16,7 @@ class Trades extends PbModel {
  	{
  		global $_PB_CACHE;
  		$this->condition[] = "status=1";
+		$this->condition[] = "valid_status=1";
 		
  		if (isset($_GET['q'])) {
  			$searchkeywords = urldecode($_GET['q']);
@@ -460,7 +461,7 @@ class Trades extends PbModel {
 	
 	function findByType($type_id)
 	{
-		$results = $this->findAll("*", null, array("type_id=".$type_id), "created DESC", 0, 7);
+		$results = $this->findAll("*", null, array("type_id=".$type_id,"status=1","valid_status=1"), "created DESC", 0, 7);
 		//var_dump(count($results));
 		foreach($results as &$result)
 		{

@@ -1634,7 +1634,7 @@ class Offer extends PbController {
 		if(isset($_GET["id"]))
 		{	
 			$Trade = $this->trade->read("Trade.*, type.name as type_name, type.alias_key", $_GET["id"], null, null, array("LEFT JOIN {$this->trade->table_prefix}tradetypes AS type ON type.id=Trade.type_id"));
-			if($Trade["status"] == 0) {
+			if($Trade["status"] == 0 || $Trade["valid_status"] != 1) {
 				flash($Trade["type_name"]." đã hết hạn", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"offer_main","offertype"=>$Trade["alias_key"])).'">Mời Quý khách xem '.$Trade["type_name"].' khác tại đây</a>');
 			}
 			

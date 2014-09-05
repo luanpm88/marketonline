@@ -3411,3 +3411,6 @@ p.message {
     border: solid 1px #333;
     width: 420px;
 }
+.unvalid_message {
+    color: red;
+}

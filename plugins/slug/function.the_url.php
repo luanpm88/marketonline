@@ -48,6 +48,9 @@ function smarty_function_the_url($params){
 							case "supply":
 								$offertype = "phan-phoi";
 								break;
+							case "partner":
+								$offertype = "tim-doi-tac";
+								break;
 							default:
 								break;
 						}

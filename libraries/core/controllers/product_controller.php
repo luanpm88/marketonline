@@ -720,7 +720,7 @@ class Product extends PbController {
 		//echo $_SESSION["viewed_list"];
 		
 		
-		if(empty($info) || !$info){
+		if(empty($info) || !$info || $info["valid_status"] != 1){
 			flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
 		}
 		if (isset($info['formattribute_ids'])) {
@@ -2356,7 +2356,7 @@ class Product extends PbController {
 		
 		$joins = array("LEFT JOIN {$this->product->table_prefix}companies c ON c.member_id = Message.from_member_id");
 		
-		$result = $pms->findAll("Message.*,c.picture", $joins, $conditions, "Message.created DESC", 0, $this->MESSAGE_ANNOUNCE_COUNT);
+		$result = $pms->findAll("Message.*,c.picture,c.cache_spacename", $joins, $conditions, "Message.created DESC", 0, $this->MESSAGE_ANNOUNCE_COUNT);
 		//echo count($result);
 		if (!empty($result)) {
 			for($i=0; $i<count($result); $i++){
@@ -2389,6 +2389,10 @@ class Product extends PbController {
 					}
 				}
 				$result[$i]["created"] = date('d-m-Y H:i',$result[$i]["created"]);
+				
+				if($result[$i]["cache_spacename"]) {
+					$result[$i]["logo_link"] = $pms->url(array("module"=>"space", "userid"=>$result[$i]["cache_spacename"]));
+				}
 				
 				//if(!isset($_GET["type"])) $pms->saveField("status", 1, intval($result[$i]["id"]));
 			}

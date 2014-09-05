@@ -8,6 +8,7 @@
 function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	global $_PB_CACHE;
 	$conditions[] = "t.status='1'";
+	$conditions[] = "t.valid_status='1'";
 	$param_count = count($smarty->_tag_stack);
 	if(empty($params['name'])) $params['name'] = "offer";
 	if (!class_exists("Trades")) {

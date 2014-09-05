@@ -54,6 +54,7 @@
 		  <th>{lang types}</th>
 		  <th>{lang cp_username}</th>
 		  <th>{lang checked_status}</th>
+		  <th>Phê duyệt</th>
 		  <th>{lang pub_date}</th>
 		  <th>{lang expire_date}</th>
 		  <th>{lang action}</th>
@@ -76,13 +77,15 @@
 		  </td>
 		  <td><a href="offer.php?do=search&type_id={$item.type_id}" style="text-decoration: none;">{$TradeTypes[$item.type_id]}</a></td>
 		  <td><a href="member.php?do=edit&id={$item.member_id}">{$item.username}</a></td>
-		  <td>{$CheckStatus[$item.status]}</td>
+		  <td>{$CheckStatus[$item.status]}
+		  </td>
+		  <td style="width: 200px;">{$item.validation}</td>
 		  <td class="pb_datetime">{$item.pubdate}<br><span style="color:gray;" title="{lang last_modified}"><small>{$item.moddate}</small></span></td>
 		  <td class="pb_datetime">{if $item.if_expire}<span style="color:red;" title="{$item.expdate}">{$item.if_expire}</span>{else}{$item.expdate}{/if}</td>
 		  <td class="handler">
            <ul id="handler_icon">
             <li><a class="btn_resend" href="offer.php?id={$item.id}&do=refresh{$addParams}" title="{lang trade_refresh}">{lang trade_refresh}</a></li>
-             <li><a class="btn_browse"  href="{$SiteUrl}index.php?do=offer&action=detail&id={$item.id}{$addParams}" target="_blank" title="{lang preview}">{lang preview}</a></li>
+             <li><a target="_blank" class="btn_browse"  href="{$item.preview_link}" target="_blank" title="{lang preview}">{lang preview}</a></li>
             <li><a class="btn_edit" href="offer.php?do=edit&id={$item.id}&type_id={$smarty.get.type_id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
           </ul>  
 		  

@@ -24,7 +24,7 @@
 		$productcomment = new Productcomments();
 	
 	
-	$conditions[] = "p.status=1 AND p.state=1";
+	$conditions[] = "p.status=1 AND p.state=1 AND valid_status=1";
 	if(isset($params['type'])) {
 		$type = explode(",", $params['type']);
 		$type = array_unique($type);

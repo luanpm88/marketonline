@@ -7,7 +7,7 @@
  */
 require("../libraries/common.inc.php");
 require(LIB_PATH .'time.class.php');
-uses("trade","tag","tradefield","attachment","keyword","membertype","setting","typeoption","area","industry","meta");
+uses("trade","tag","tradefield","attachment","keyword","membertype","setting","typeoption","area","industry","meta","message");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require("session_cp.inc.php");
 $attachment = new Attachment('pic');
@@ -25,6 +25,7 @@ $trade_controller = new Trade();
 $tpl_file = "offer";
 $conditions = array();
 $page = new Pages();
+$message = new Messages();
 $trade_names = $trade_controller->getTradeTypes();
 setvar("TradeTypes", $trade_names);
 setvar("CheckStatus", $check_status = explode(",",L('product_status', 'tpl')));
@@ -182,6 +183,22 @@ if(isset($_GET['do'])){
 			$conditions[]="Trade.ip_addr='".$_GET['ip']."'";
 		}
 	}
+	
+	if ($do=="valid" && $id) {
+		$trade->saveField("valid_status", 1, intval($id));
+	}
+	if ($do=="unvalid" && $id) {
+		$iiffoo = $trade->read("Trade.*, type.name as type_name, type.id as type_id", $id, null, null, array("LEFT JOIN {$trade->table_prefix}tradetypes type ON type.id=Trade.type_id "));
+		//var_dump($iiffoo);
+		$trade->saveField("valid_status", 0, intval($id));
+		$trade->saveField("valid_status_message", $_GET["message"], intval($id));
+		
+		$content = "<a href='".URL."virtual-office/offer.php?typeid=".$iiffoo["type_id"]."'>".$iiffoo["type_name"]." '".preg_replace('/\[.+\]/','',$iiffoo["title"])."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_status_message"].")</a>";
+		$sms['content'] = mysql_real_escape_string($content);
+		$sms['title'] = mysql_real_escape_string("Thông tin không hợp lệ");
+		$sms['membertype_ids'] = '[1][2][3]';
+		$message->SendToUser(1, $iiffoo["member_id"], $sms);
+	}
 }
 if (isset($_POST['urgent_batch'])) {
 	$ids = implode(",",$_POST['id']);
@@ -331,9 +348,9 @@ if(isset($_POST['save'])){
 }
 $amount = $trade->findCount(null, $conditions,"Trade.id");
 $page->setPagenav($amount);
-$fields = "Trade.member_id,m.username,Trade.company_id,Trade.adwords,Trade.highlight,Trade.type_id,Trade.status,Trade.id,Trade.title,Trade.clicked,Trade.if_urgent,Trade.submit_time AS pubdate,Trade.submit_time,Trade.modified,Trade.expire_time AS expdate,Trade.expire_time,Trade.picture as TradePicture,require_point,require_membertype,ip_addr as IP,Trade.if_commend";
+$fields = "Trade.valid_status,Trade.member_id,m.username,Trade.company_id,Trade.adwords,Trade.highlight,Trade.type_id,Trade.status,Trade.id,Trade.title,Trade.clicked,Trade.if_urgent,Trade.submit_time AS pubdate,Trade.submit_time,Trade.modified,Trade.expire_time AS expdate,Trade.expire_time,Trade.picture as TradePicture,require_point,require_membertype,ip_addr as IP,Trade.if_commend";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Trade.member_id";
-$result = $trade->findAll($fields,$joins, $conditions,"Trade.id DESC",$page->firstcount,$page->displaypg);
+$result = $trade->findAll($fields,$joins, $conditions,"CASE WHEN valid_status = 3 THEN 1 ELSE 2 END ASC, Trade.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['pubdate'] = df($result[$i]['pubdate']);
@@ -343,6 +360,26 @@ if (!empty($result)) {
 		if ($result[$i]['expire_time']<$time_stamp) {
 			$result[$i]['if_expire'] = L("has_expired", "tpl");
 		}
+		if($result[$i]['valid_status'] == 1) {
+			$string = '<img src="../templates/office/images/published.png">';
+			$string .= '<a onclick="$(this).attr(\'href\', $(this).attr(\'href\')+\'&message=\'+$(\'.iipp'.$result[$i]["id"].'\').val());" href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a><br />';
+			$string .= '<input class="iipp'.$result[$i]["id"].'" size="30" name="message" placeholder="Nội dung cấm" />';
+			$result[$i]['validation'] = $string;
+		}
+		if($result[$i]['valid_status'] == 0) {
+			$string = '<img src="../templates/office/images/unpublished.png">';
+			$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
+		if($result[$i]['valid_status'] == 3) {
+			$string = '<img src="../templates/office/images/alert-icon.png">';
+			$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
+			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
+			$result[$i]['validation'] = $string;
+		}
+		
+		$result[$i]['preview_link'] = $trade->url(array("module"=>"offers","id"=>$result[$i]["id"],"title"=>$result[$i]["title"]));
 	}
 	setvar("Items", $result);
 }

@@ -298,6 +298,9 @@
 	      else if (offertype == "supply") {
 		setTimeout('$("#new_offer_but_pp").trigger("click")',500);
 	      }
+	      else if (offertype == "partner") {
+		setTimeout('$("#new_offer_but_partner").trigger("click")',500);
+	      }
 	      else
 	      {
 		setTimeout('$("#new_offer_but").trigger("click")',500);
@@ -415,6 +418,22 @@
 			orderby = 'dateline';
 			offer = 1;
 			offertype = '10';
+			
+			//getFilterProducts() in custom.js
+			ajaxListProduct(getFilterProducts());
+			
+			
+			$('.col_products ul').html("");
+			$('.product_listing').addClass("offer_transform");
+		});
+		//for offer
+		$('#new_offer_but_partner').click(function () {
+			resetFilter();
+			$(".hotnewlist").removeClass("active");
+			$(this).addClass("active");
+			orderby = 'dateline';
+			offer = 1;
+			offertype = '16';
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -918,6 +937,7 @@
       <a id="new_offer_but_buy" class="hotnewlist" href="javascript:void(0)">Nhu cầu mua</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a id="new_offer_but_sell" class="hotnewlist" href="javascript:void(0)">Nhu cầu bán</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <a id="new_offer_but_pp" class="hotnewlist" href="javascript:void(0)">Phân phối</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <a id="new_offer_but_partner" class="hotnewlist" href="javascript:void(0)">Tìm đối tác</a>&nbsp;&nbsp;&nbsp;&nbsp;
       <!--<a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       <!--<a id="recentbuy_product_but" class="hotnewlist" href="#list">{lang recent_buy}</a>-->

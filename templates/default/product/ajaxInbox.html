@@ -11,7 +11,11 @@
             {/if}
             <!--{loop $Items item level key}-->
                 <li {if !$item.status}class="unread"{/if}>
-                    <img src="{$item.company_logo}" />
+		    {if $item.logo_link}
+			<a href="{$item.logo_link}"><img src="{$item.company_logo}" /></a>
+		    {else}
+			<img src="{$item.company_logo}" />
+		    {/if}
                     <!--<p class="title">{$item.title}</p>-->
                     <p class="content">{$item.content}</p>
                     <p class="timeinbox">{$item.created}</p>

@@ -18,7 +18,7 @@
      <div class="main_content">
      <div class="blank"></div>
 	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
-     <div class="offer_info_title"><h2>{lang business_information} ({lang raovat})</h2></div>
+     <div class="offer_info_title"><h2>{lang business_information}</h2></div>
      
      {if $notice}<p class="notice" style="margin-bottom: 0px;">{$notice}</p>{/if}
      
@@ -50,10 +50,11 @@
           <table class="bglist">
             <tr>
               <th width="9%">{lang sample_image}</th>
-              <th width="40%" style="text-align: left">{lang content}</th>
+              <th width="30%" style="text-align: left">{lang content}</th>
               <th>{lang due_date}</th>
-              <th width="7%">{lang published}</th>
-              <th width="17%">{lang operation}</th>
+              <th width="10%">{lang published}</th>
+	      <th width="21%">Phê duyệt</th>
+              <th style="text-align: left" width="10%">{lang operation}</th>
               <th>{lang choose}</th>
             </tr>
 			<!--{foreach from=$Items item=item}-->
@@ -86,8 +87,9 @@
 		    <!--{/if}-->
 	      
 	      </td>
-              <td><a href="offer.php?do=edit&id={$item.id}">{lang modify}</a><br />
-	      <!--{if $item.status==1}--><a href="offer.php?do=refresh&id={$item.id}" title="{lang extension_time}">{lang repeating}</a> /<!--{/if}--> <a href="offer.php?do=moderate&id={$item.id}"  onclick="return window.confirm('{lang you_should_pay_for_this}');">{lang bump_to_top}</a>
+	      <td>{$item.validation}</td>
+              <td style="text-align: left"><a href="offer.php?do=edit&id={$item.id}">{lang modify}</a><br />
+	      <!--{if $item.status==1 && false}--><a href="offer.php?do=refresh&id={$item.id}" title="{lang extension_time}">{lang repeating}</a> /<!--{/if}--> <a href="offer.php?do=moderate&id={$item.id}"  onclick="return window.confirm('{lang you_should_pay_for_this}');">{lang bump_to_top}</a>
 	      <br /><a href="{$item.url}" target="_blank">{lang preview}</a></td>
               <td><input name="tradeid[]" type="checkbox" id="id_{$item.id}" value="{$item.id}"></td>
             </tr>
