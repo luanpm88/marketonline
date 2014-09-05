@@ -3427,3 +3427,6 @@ a.unvalid_edit {
 .unvalid_edit:hover {
     opacity: 0.9;
 }
+.pending_message {
+    color: orange;
+}
