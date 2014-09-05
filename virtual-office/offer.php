@@ -526,6 +526,7 @@ if (!empty($result)) {
 		}
 		if($result[$i]['valid_status'] == 3) {
 			$string = '<img title="Đang chờ duyệt" src="../templates/office/images/alert-icon.png">';
+			$string .= '<br /><span class="pending_message">Đang chờ duyệt</span>';
 			//$string .= '<a href="offer.php?do=valid&id='.$result[$i]["id"].'">Duyệt</a>';
 			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
 			$result[$i]['validation'] = $string;
