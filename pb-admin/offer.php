@@ -195,7 +195,7 @@ if(isset($_GET['do'])){
 		
 		$content = "<a href='".URL."virtual-office/offer.php?typeid=".$iiffoo["type_id"]."'>".$iiffoo["type_name"]." '".preg_replace('/\[.+\]/','',$iiffoo["title"])."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_status_message"].")</a>";
 		$sms['content'] = mysql_real_escape_string($content);
-		$sms['title'] = mysql_real_escape_string("Thông tin không hợp lệ");
+		$sms['title'] = mysql_real_escape_string($iiffoo["type_name"]." không hợp lệ");
 		$sms['membertype_ids'] = '[1][2][3]';
 		$message->SendToUser(1, $iiffoo["member_id"], $sms);
 	}
