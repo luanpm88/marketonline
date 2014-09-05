@@ -206,10 +206,12 @@ if (isset($_GET['do'])) {
 		$product->saveField("valid_status", 1, intval($id));
 	}
 	if ($do=="unvalid" && $id) {
-		$iiffoo = $product->read("*", $id);
+		
 		
 		$product->saveField("valid_status", 0, intval($id));
 		$product->saveField("valid_status_message", $_GET["message"], intval($id));
+		
+		$iiffoo = $product->read("*", $id);
 		
 		if($iiffoo["service"]) {
 			$kindname = "Dịch vụ";

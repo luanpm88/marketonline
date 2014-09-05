@@ -188,10 +188,12 @@ if(isset($_GET['do'])){
 		$trade->saveField("valid_status", 1, intval($id));
 	}
 	if ($do=="unvalid" && $id) {
-		$iiffoo = $trade->read("Trade.*, type.name as type_name, type.id as type_id", $id, null, null, array("LEFT JOIN {$trade->table_prefix}tradetypes type ON type.id=Trade.type_id "));
+		
 		//var_dump($iiffoo);
 		$trade->saveField("valid_status", 0, intval($id));
 		$trade->saveField("valid_status_message", $_GET["message"], intval($id));
+		
+		$iiffoo = $trade->read("Trade.*, type.name as type_name, type.id as type_id", $id, null, null, array("LEFT JOIN {$trade->table_prefix}tradetypes type ON type.id=Trade.type_id "));
 		
 		$content = "<a href='".URL."virtual-office/offer.php?typeid=".$iiffoo["type_id"]."'>".$iiffoo["type_name"]." '".preg_replace('/\[.+\]/','',$iiffoo["title"])."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_status_message"].")</a>";
 		$sms['content'] = mysql_real_escape_string($content);
