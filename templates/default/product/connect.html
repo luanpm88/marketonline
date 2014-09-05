@@ -685,7 +685,7 @@
 		  
                     <h3><a href="javascript:void(0)" onclick="getLinksAll($(this))" id="go_list_all_links">{lang friend_links} : {$count_links}</a>
 		      <!--<a title="{lang add_link_help}" href="#add_link" class="top_plus">+</a>-->
-		      <a title="Chia sẻ để tăng thêm lượt truy cập cho gian hàng &quot;{$pb_company.shop_name}&quot; của bạn" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`"}" onclick="" class="top_plus linked">Mời bạn bè +</a>
+		      <a title="Chia sẻ để tăng thêm lượt truy cập cho gian hàng &quot;{$pb_company.shop_name}&quot; của bạn" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`}" onclick="" class="top_plus linked">Mời bạn bè +</a>
 		    </h3>
 
 		    
@@ -704,7 +704,7 @@
 
 			    <!--{/loop}-->
 			    {if $count_links < 9}
-				<a class="link_item add_link" href="#add_link" title="{lang add_link_help}">				    
+				<a class="link_item add_link" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`}" title="{lang add_link_help}">				    
 					<title>+</title>
 				</a>
 			    {/if}
