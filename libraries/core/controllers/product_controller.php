@@ -5859,7 +5859,7 @@ class Product extends PbController {
 			pheader("location:".$fb_url);
 		}
 		$info = $this->announcement->read("message", 20);
-		setvar("info", strip_tags($info["message"],"br"));
+		setvar("info", strip_tags($info["message"],"<br>"));
 		render("product/inviteFriendPage");
 	}
 	
