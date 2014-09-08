@@ -40,7 +40,12 @@
 			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}company.php?do=fanpage_select",
 		}).done(function ( data ) {
 			//alert(data);
-			if(data != "false") $('.fanpage_main').html(data);
+			if(data != "false") {
+				$('.fanpage_main').html(data);
+				$('.fanpage_row').show();
+			} else {
+				$('.fanpage_row').hide();
+			}
 			//$('#company_shop_name').trigger("keyup");
 		});
 	}
