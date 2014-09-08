@@ -90,7 +90,8 @@ foreach($share_topics as $share_topic) {
       
       //for fanpage of member under admin info
       if($share_topic["fanpage_id"]) {
-	$params["access_token"] = $fb_access_token;
+	//$params["access_token"] = $fb_access_token;
+	$params["access_token"] = "CAAEIS7GNlZAEBAIuVspU96lUMYTcqNfDG3JqMTooeN0hxmYQDAlVPI4ZB9uIBw8CERsaFrZCiqZCgU3OIqrXmsf1zfRvVGtIKlmW3qowuPqVn5PipgthXmVBJLScmdp52nYH7tDWz0BuJGJYaLFfHI2hSpDq24LLbQZAMVZCqrfjGHVGn8OuUM9Y9xolDS8zPWPgvqf2EROOW3Pi2KtskR";
 	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);	
 	
 	$sql = 'UPDATE pb_trades SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
