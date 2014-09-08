@@ -1,5 +1,11 @@
 {if $pb_userinfo.role == 'admin' || $pb_userinfo.role == 'facebook'}
 	      <tr>
+                <th>Facebook (Fan Page):</th>
+                <td class="fanpage_main">
+		  <input placeholder="Nhập đường dẫn đến Fan Page của bạn" name="data[company][facebook]" type="text" id="contact_facebook" value="{$item.facebook}" style="width:432px;">
+		</td>
+              </tr>
+	      <tr>
                 <th>Liên kết Facebook:</th>
                 <td class="facebook_connect">
 			<!--{include file="_fb_connect.html"}-->

@@ -297,6 +297,28 @@ if (isset($_GET['do']) && $_GET['do'] == "facebook_connect") {
 	exit;
 }
 
+if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
+	$fb_data = $member->read("*", $memberinfo["id"]);
+	$access_token = $fb_data["fb_access_token"];
+	$fb_data = $member->getFacebookAccounts($access_token);	
+	$fb_user = $member->getFacebookUser($access_token);
+	
+	//$fanpages = explode(",", $companyinfo["fb_fanpage_main"]);
+	foreach($fb_data["data"] as $kk => $item) {
+		if($item["id"] == $companyinfo["fb_fanpage_main"]) {
+			$fb_data["data"][$kk]["checked"] = 1;
+		} else {
+			$fb_data["data"][$kk]["checked"] = 0;
+		}
+	}
+	
+	setvar("fb_data", $fb_data);
+	setvar("fb_user", $fb_user);
+	
+	template("_fb_fanpage_select");
+	exit;
+}
+
 
 setvar("MainMarkets", $typeoption->get_cache_type("main_market"));
 if(!empty($companyinfo['name'])){
