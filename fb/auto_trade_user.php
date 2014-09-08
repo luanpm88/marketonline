@@ -12,7 +12,7 @@ $sql = 'SELECT com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_
     .' LEFT JOIN pb_companies as com ON com.id = trade.company_id'
     .' LEFT JOIN pb_tradetypes as type ON type.id = trade.type_id'
     .' LEFT JOIN pb_members as m ON m.id = trade.member_id'
-    .' WHERE facebook_pubstatus_user=0 AND com.facebook != "" AND m.id != 1'
+    .' WHERE facebook_pubstatus_user=0 AND com.facebook != "" AND m.id != 1 AND m.fb_access_token = ""'
     .' LIMIT 1';
 
 $rs = $conn->query($sql);
