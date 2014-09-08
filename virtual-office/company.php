@@ -306,7 +306,7 @@ if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
 	if(!count($fb_data["data"])) {
 		echo "false";
 	}
-	
+	//var_dump($companyinfo);
 	//$fanpages = explode(",", $companyinfo["fb_fanpage_main"]);
 	foreach($fb_data["data"] as $kk => $item) {
 		if($item["id"] == $companyinfo["fb_fanpage_main"]) {
