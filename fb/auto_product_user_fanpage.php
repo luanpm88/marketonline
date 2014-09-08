@@ -107,10 +107,10 @@ foreach($share_topics as $share_topic) {
 	  
 	  //$fanpage_posted[] = $fanpage["id"];
 	  
-	  $result .= ' SUCCESSFUL... (Posted to ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
+	  $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
 	} catch(Exception $e) {
 	  
-	  $result .= ' FAILED... (Cannot post to ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
+	  $result .= ' FAILED... (Cannot post to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
 	}
 	
 	sleep(3);
