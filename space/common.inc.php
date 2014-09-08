@@ -173,7 +173,7 @@ $company->info['facebook_full'] = $company->info['facebook'];
 if($company->info['fb_fanpage_main'] && $member->info['fb_access_token']) {
 	$company->info['facebook'] =  "https://www.facebook.com/pages/fanpage/".$company->info['fb_fanpage_main'];
 } else {
-	if(!$member->info['fb_access_token'] && $company->info['facebook']) {
+	if(false && $company->info['facebook']) {
 		$company->info['facebook'] =  str_replace("http://", 'https://', $company->info['facebook']);
 		$company->info['facebook'] =  str_replace("https://", 'https://', $company->info['facebook']);
 	}	
