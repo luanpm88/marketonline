@@ -173,16 +173,20 @@ $company->info['facebook_full'] = $company->info['facebook'];
 if($company->info['fb_fanpage_main'] && $member->info['fb_access_token']) {
 	$company->info['facebook'] =  "https://www.facebook.com/pages/fanpage/".$company->info['fb_fanpage_main'];
 } else {
-	$company->info['facebook'] =  str_replace("http://", 'https://', $company->info['facebook']);
-	$company->info['facebook'] =  str_replace("https://", 'https://', $company->info['facebook']);
+	if(!$member->info['fb_access_token'] && $company->info['facebook']) {
+		$company->info['facebook'] =  str_replace("http://", 'https://', $company->info['facebook']);
+		$company->info['facebook'] =  str_replace("https://", 'https://', $company->info['facebook']);
+	}	
 }
 
 if($member->info['fb_user_id'] && $member->info['fb_access_token']) {
 	$fb_user = json_decode($member->info['fb_user_id'], true);
 	$company->info['facebook_personal'] =  $fb_user["link"];
 } else {
-	$company->info['facebook_personal'] =  str_replace("http://", 'https://', $company->info['facebook_personal']);
-	$company->info['facebook_personal'] =  str_replace("https://", 'https://', $company->info['facebook_personal']);
+	if(!$member->info['fb_access_token'] && $company->info['facebook_personal']) {
+		$company->info['facebook_personal'] =  str_replace("http://", 'https://', $company->info['facebook_personal']);
+		$company->info['facebook_personal'] =  str_replace("https://", 'https://', $company->info['facebook_personal']);
+	}
 }
 
 //echo $member->info['id']."sdsdsdsdsd";
