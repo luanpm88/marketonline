@@ -303,6 +303,10 @@ if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
 	$fb_data = $member->getFacebookAccounts($access_token);	
 	$fb_user = $member->getFacebookUser($access_token);
 	
+	if(!count($fb_data["data"])) {
+		echo "false";
+	}
+	
 	//$fanpages = explode(",", $companyinfo["fb_fanpage_main"]);
 	foreach($fb_data["data"] as $kk => $item) {
 		if($item["id"] == $companyinfo["fb_fanpage_main"]) {
