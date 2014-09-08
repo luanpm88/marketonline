@@ -46,7 +46,7 @@ $current_uri = preg_replace('/do=refresh&id=\d*/','', $current_uri[1]);
 setvar("current_uri", $current_uri);
 
 //echo $pb_userinfo["fb_access_token"];
-var_dump($companyinfo);
+//var_dump($companyinfo);
 
 $rand = rand(9,17);
 $company->saveField("clicked",$companyinfo["clicked"]+$rand,intval($companyinfo["id"]));
