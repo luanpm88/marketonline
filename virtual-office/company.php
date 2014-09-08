@@ -308,9 +308,11 @@ if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
 	}
 	//var_dump($companyinfo);
 	//$fanpages = explode(",", $companyinfo["fb_fanpage_main"]);
+	$noselect = true;
 	foreach($fb_data["data"] as $kk => $item) {
 		if($item["id"] == $companyinfo["fb_fanpage_main"]) {
 			$fb_data["data"][$kk]["checked"] = 1;
+			$noselect = false;
 		} else {
 			$fb_data["data"][$kk]["checked"] = 0;
 		}
@@ -318,6 +320,7 @@ if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
 	
 	setvar("fb_data", $fb_data);
 	setvar("fb_user", $fb_user);
+	setvar("noselect", $noselect);
 	
 	template("_fb_fanpage_select");
 	exit;
