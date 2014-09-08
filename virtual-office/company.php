@@ -255,7 +255,9 @@ if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "change_grouptyp
 if (isset($_GET['do']) && $_GET['do'] == "remove_facebook") {
 	$mem = $member->read("*", intval($memberinfo["id"]));
 	$member->saveField("fb_access_token", '', intval($memberinfo["id"]));
-	pheader("location:company.php");
+	//pheader("location:company.php");
+	echo "<script>window.opener.updateFacebookConnect();window.close()</script>";
+	exit;
 }
 
 if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "upgrade_company") {
@@ -278,6 +280,15 @@ if (isset($_GET['do']) && $_GET['do'] == "facebook_connect") {
 	$access_token = $fb_data["fb_access_token"];
 	$fb_data = $member->getFacebookAccounts($access_token);	
 	$fb_user = $member->getFacebookUser($access_token);
+	
+	$fanpages = explode(",", $companyinfo["fb_post_fanpage"]);
+	foreach($fb_data["data"] as $kk => $item) {
+		if(in_array($item["id"],$fanpages)) {
+			$fb_data["data"][$kk]["checked"] = 1;
+		} else {
+			$fb_data["data"][$kk]["checked"] = 0;
+		}		
+	}
 	
 	setvar("fb_data", $fb_data);
 	setvar("fb_user", $fb_user);
