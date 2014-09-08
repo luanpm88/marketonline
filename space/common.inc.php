@@ -174,10 +174,10 @@ if($company->info['fb_fanpage_main'] && $member->info['fb_access_token']) {
 	$company->info['facebook'] =  "https://www.facebook.com/pages/fanpage/".$company->info['fb_fanpage_main'];
 	//$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
 } else {
-	$company->info['facebook'] =  str_replace("http://", '', $company->info['facebook']);
-	$company->info['facebook'] =  str_replace("https://", '', $company->info['facebook']);
-	$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
-	$company->info['facebook_personal'] =  str_replace("https://", '', $company->info['facebook_personal']);
+	$company->info['facebook'] =  str_replace("http://", 'https://', $company->info['facebook']);
+	$company->info['facebook'] =  str_replace("https://", 'https://', $company->info['facebook']);
+	$company->info['facebook_personal'] =  str_replace("http://", 'https://', $company->info['facebook_personal']);
+	$company->info['facebook_personal'] =  str_replace("https://", 'https://', $company->info['facebook_personal']);
 }
 
 //echo $member->info['id']."sdsdsdsdsd";

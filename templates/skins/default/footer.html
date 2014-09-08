@@ -26,11 +26,11 @@
 			{if $COMPANY.facebook || $COMPANY.facebook_personal}
 				<p>Facebook:
 					{if $COMPANY.facebook}
-						<a rel="nofollow" href="https://{$COMPANY.facebook}" target="_blank">Fanpage</a>
+						<a rel="nofollow" href="{$COMPANY.facebook}" target="_blank">Fanpage</a>
 					{/if}
 					{if $COMPANY.facebook_personal}
 						{if $COMPANY.facebook} / {/if}
-						<a rel="nofollow" href="https://{$COMPANY.facebook_personal}" target="_blank">Trang cá nhân</a>
+						<a rel="nofollow" href="{$COMPANY.facebook_personal}" target="_blank">Trang cá nhân</a>
 					{/if}
 				</p>
 			{/if}
