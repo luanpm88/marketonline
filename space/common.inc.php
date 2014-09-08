@@ -171,8 +171,9 @@ $company->info['description'] = str_replace('<a', '<a target="_blank" rel="nofol
 
 $company->info['facebook_full'] = $company->info['facebook'];
 if($company->info['fb_fanpage_main'] && $member->info['fb_access_token']) {
+	$fb_user = json_decode($member->info['fb_user_id'], true);
 	$company->info['facebook'] =  "https://www.facebook.com/pages/fanpage/".$company->info['fb_fanpage_main'];
-	//$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
+	$company->info['facebook_personal'] =  "https://www.facebook.com/profile.php?id=".$fb_user["id"];
 } else {
 	$company->info['facebook'] =  str_replace("http://", 'https://', $company->info['facebook']);
 	$company->info['facebook'] =  str_replace("https://", 'https://', $company->info['facebook']);
