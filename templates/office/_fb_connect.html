@@ -1,31 +1,29 @@
+			{if $fb_data}
+			    <div class="fb_box">
+				<p><strong style="font-size: 16px; margin-bottom: 5px; display: block">Chọn những trang mà bạn muốn tự động chia sẻ tin mới đăng của bạn lên Facebook: </strong></p>
+				<ul>
+				  <li><input {if $item.fb_post_wall}checked="checked"{/if} type="checkbox" name="fb_post_wall" value="1" /> {$fb_user.first_name} {$fb_user.last_name} (Trang cá nhân)</li>
 
-
-				{if $fb_data}
-				    <div class="fb_box">
-					<p><strong style="font-size: 16px; margin-bottom: 5px; display: block">Chọn những trang mà bạn muốn tự động chia sẻ tin mới đăng của bạn lên Facebook: </strong></p>
-					<ul>
-					  <li><input {if $item.fb_post_wall}checked="checked"{/if} type="checkbox" name="fb_post_wall" value="1" /> {$fb_user.first_name} {$fb_user.last_name} (Trang cá nhân)</li>
-
-					  <!--{loop $fb_data.data itemw level_0 key0}-->
-						  <li><input {if $itemw.checked}checked="checked"{/if} type="checkbox" name="fb_post_fanpage[]" value="{$itemw.id}" /> {$itemw.name} (Fanpage)</li>
-					  <!--{/loop}-->
-					</ul>
-					<br />
-					
-				    </div>
-				    <a class="button" href="#save" target="" style="" onclick="$('#CompanyFrm').submit()">Lưu</a>
-				    <!--<a class="button" href="http://marketonline.vn/" target="_blank" onclick="window.open('https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions,read_friendlists','myWin','resizable=1,status=1,scrollbars=1,location=1,directories=1,width=900,height=500');return false;">Làm mới liên kết</a>-->
-				    <a class="button" href="http://marketonline.vn/" target="_blank" onclick="window.open('http://marketonline.vn/virtual-office/company.php?do=remove_facebook','myWin','resizable=1,status=1,scrollbars=1,location=1,directories=1,width=900,height=500');return false;" style="margin-left: 10px;background-color: #aaa">Hủy kết nối với Facebook</a>
-				{else}
-				    <div class="fb_box">
-					<div class="fb_connect_message">
-					  Nhấn vào nút bên dưới để liên kết <span>Gian hàng của bạn</span> với Facebook của bạn.
-					  MarketOnline hỗ trợ bạn tự động cập nhật thông tin mới (sản phẩm, dịch vụ, thương mại, thị trường,... ) trên <span>Gian hàng của bạn</span> lên trang cá nhân và các trang fanpages của bạn.
-					  <div style="text-align: center;margin-top: 10px;">
-					    <a href="http://marketonline.vn/" target="_blank" onclick="window.open('https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions,read_friendlists','myWin','resizable=1,status=1,scrollbars=1,location=1,directories=1,width=900,height=500');return false;">
-					      <img src="{the_url module='root-url'}templates/office/images/facebook_connect.png" />
-					    </a>
-					  </div>
-					</div>
-				    </div>
-				{/if}
+				  <!--{loop $fb_data.data itemw level_0 key0}-->
+					  <li><input {if $itemw.checked}checked="checked"{/if} type="checkbox" name="fb_post_fanpage[]" value="{$itemw.id}" /> {$itemw.name} (Fanpage)</li>
+				  <!--{/loop}-->
+				</ul>
+				<br />
+				
+			    </div>
+			    <a class="button" href="#save" target="" style="" onclick="$('#CompanyFrm').submit()">Lưu</a>
+			    <!--<a class="button" href="http://marketonline.vn/" target="_blank" onclick="window.open('https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions,read_friendlists','myWin','resizable=1,status=1,scrollbars=1,location=1,directories=1,width=900,height=500');return false;">Làm mới liên kết</a>-->
+			    <a class="button" href="http://marketonline.vn/" target="_blank" onclick="window.open('http://marketonline.vn/virtual-office/company.php?do=remove_facebook','myWin','resizable=1,status=1,scrollbars=1,location=1,directories=1,width=900,height=500');return false;" style="margin-left: 10px;background-color: #aaa">Hủy kết nối với Facebook</a>
+			{else}
+			    <div class="fb_box">
+				<div class="fb_connect_message">
+				  Nhấn vào nút bên dưới để liên kết <span>Gian hàng của bạn</span> với Facebook của bạn.
+				  MarketOnline hỗ trợ bạn tự động cập nhật thông tin mới (sản phẩm, dịch vụ, thương mại, thị trường,... ) trên <span>Gian hàng của bạn</span> lên trang cá nhân và các trang fanpages của bạn.
+				  <div style="text-align: center;margin-top: 10px;">
+				    <a href="http://marketonline.vn/" target="_blank" onclick="window.open('https://www.facebook.com/dialog/oauth?client_id=290596171126161&redirect_uri=http://marketonline.vn/fb-tokens/&scope=manage_pages,publish_actions,read_friendlists','myWin','resizable=1,status=1,scrollbars=1,location=1,directories=1,width=900,height=500');return false;">
+				      <img src="{the_url module='root-url'}templates/office/images/facebook_connect.png" />
+				    </a>
+				  </div>
+				</div>
+			    </div>
+			{/if}

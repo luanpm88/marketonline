@@ -45,6 +45,8 @@ $current_uri = explode('?', $current_uri);
 $current_uri = preg_replace('/do=refresh&id=\d*/','', $current_uri[1]);
 setvar("current_uri", $current_uri);
 
+//echo $pb_userinfo["fb_access_token"];
+//var_dump($companyinfo);
 
 //get de qui
 function saveCustomIndustry(&$value,$val,$index,$industry_id = 0,$parent = 0)
@@ -98,6 +100,7 @@ function saveCustomIndustry(&$value,$val,$index,$industry_id = 0,$parent = 0)
 					"parent_industry_id"=>$industry_id,
 					"custom_parent_industry_id"=>$parent
 				));
+				
 				if($result)
 				{
 					$new_id = $producttype->table_name."_id";
@@ -283,6 +286,10 @@ if (isset($_POST['save'])) {
 			if($ppp["valid_status"] == 0) {
 				$product->params['data']['product']["valid_status"] = 3;
 			}
+			
+			$rand = rand(9,17);
+			$company->saveField("clicked",$companyinfo["clicked"]+$rand,$companyinfo["id"]);
+			$company->saveField("new_clicked",$companyinfo["new_clicked"]+$rand,$companyinfo["id"]);
 			
 			$result = $product->save($product->params['data']['product'], "update", $id, null, $conditions);
 			
