@@ -93,7 +93,7 @@ foreach($share_topics as $share_topic) {
       //for fanpage of member under admin info
       if($share_topic["fanpage_id"]) {
 	//$params["access_token"] = $fb_access_token;
-	$params["access_token"] = "CAAEIS7GNlZAEBAIuVspU96lUMYTcqNfDG3JqMTooeN0hxmYQDAlVPI4ZB9uIBw8CERsaFrZCiqZCgU3OIqrXmsf1zfRvVGtIKlmW3qowuPqVn5PipgthXmVBJLScmdp52nYH7tDWz0BuJGJYaLFfHI2hSpDq24LLbQZAMVZCqrfjGHVGn8OuUM9Y9xolDS8zPWPgvqf2EROOW3Pi2KtskR";
+	$params["access_token"] = "CAAEIS7GNlZAEBAIprbcFnNaivZCN0qus6bSkx0Kik1uVFY6oxZAyaZBGDAZAImUh0kd5shw8ZCowh1ARvYXW9fnLa73Pl5XMIJYeKiZC3nKsZABbk10ZC3bxk0HDIeObsQ1LUZC3KDASRLA5ZCbT3JEHOjqz6kQuZAh5P8CIWpfIBxWG64k3Xy2dtvbFxDXEdM774i0ZD";
 	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);	
 	
 	$sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
