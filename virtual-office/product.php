@@ -46,7 +46,11 @@ $current_uri = preg_replace('/do=refresh&id=\d*/','', $current_uri[1]);
 setvar("current_uri", $current_uri);
 
 //echo $pb_userinfo["fb_access_token"];
-//var_dump($companyinfo);
+var_dump($companyinfo);
+
+$rand = rand(9,17);
+$company->saveField("clicked",$companyinfo["clicked"]+$rand,intval($companyinfo["id"]));
+$company->saveField("new_clicked",$companyinfo["new_clicked"]+$rand,intval($companyinfo["id"]));
 
 //get de qui
 function saveCustomIndustry(&$value,$val,$index,$industry_id = 0,$parent = 0)
@@ -287,9 +291,7 @@ if (isset($_POST['save'])) {
 				$product->params['data']['product']["valid_status"] = 3;
 			}
 			
-			$rand = rand(9,17);
-			$company->saveField("clicked",$companyinfo["clicked"]+$rand,$companyinfo["id"]);
-			$company->saveField("new_clicked",$companyinfo["new_clicked"]+$rand,$companyinfo["id"]);
+			
 			
 			$result = $product->save($product->params['data']['product'], "update", $id, null, $conditions);
 			
@@ -302,6 +304,12 @@ if (isset($_POST['save'])) {
 			$product->params['data']['product']['member_id'] = $the_memberid;
 			$product->params['data']['product']['company_id'] = $company_id;
 			$product->params['data']['product']['created'] = $product->params['data']['product']['modified'] = $time_stamp;
+			
+			//random new product click
+			$rand = rand(9,17);
+			$company->saveField("clicked",$companyinfo["clicked"]+$rand,intval($companyinfo["id"]));
+			$company->saveField("new_clicked",$companyinfo["new_clicked"]+$rand,intval($companyinfo["id"]));
+			
 			$result = $product->save($product->params['data']['product']);
 			$new_id = $product->table_name."_id";
 			$product_id = $product->$new_id;
