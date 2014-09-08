@@ -48,9 +48,9 @@ setvar("current_uri", $current_uri);
 //echo $pb_userinfo["fb_access_token"];
 //var_dump($companyinfo);
 
-$rand = rand(9,17);
-$company->saveField("clicked",$companyinfo["clicked"]+$rand,intval($companyinfo["id"]));
-$company->saveField("new_clicked",$companyinfo["new_clicked"]+$rand,intval($companyinfo["id"]));
+//$rand = rand(9,17);
+//$company->saveField("clicked",$companyinfo["clicked"]+$rand,intval($companyinfo["id"]));
+//$company->saveField("new_clicked",$companyinfo["new_clicked"]+$rand,intval($companyinfo["id"]));
 
 //get de qui
 function saveCustomIndustry(&$value,$val,$index,$industry_id = 0,$parent = 0)
