@@ -80,7 +80,7 @@ foreach($share_topics as $share_topic) {
       "access_token" => $share_topic["fb_access_token"], // configure appropriately
       //"message" => $share_topic['post_title'],
       "message" => "",
-      "link" => $share_topic['url'],
+      "link" => $share_topic['url']."#welcome",
       "name" => $share_topic['title'],
       "caption" => "http://marketonline.vn", // configure appropriately
       "description" => $share_topic['content']
