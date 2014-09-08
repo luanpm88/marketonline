@@ -36,7 +36,7 @@
         $member->saveField("fb_user_id", $data, intval($user["id"]));
         
         //pheader("location: ../virtual-office/company.php");
-        echo "<script>alert(window.opener)</script>";
+        echo "<script>window.opener.updateFacebookConnect();window.close()</script>";
     }
 
 ?>
