@@ -40,7 +40,7 @@
 			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}company.php?do=fanpage_select",
 		}).done(function ( data ) {
 			//alert(data);
-			if(data != "false") {
+			if(data != 'false') {
 				$('.fanpage_main').html(data);
 				$('.fanpage_row').show();
 				$('.nofanpage_row').hide();
