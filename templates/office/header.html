@@ -1221,6 +1221,7 @@ $(document).ready(function() {
 	//if connect to facebook
 	{/literal}{if $smarty.get.action == connect_facebook}{literal}
 		$('.fb_connect_message a').trigger("click");
+		$("html, body").animate({ scrollTop: 600 }, 100);
 	{/literal}{/if}{literal}
 });
 
