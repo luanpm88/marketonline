@@ -43,8 +43,10 @@
 			if(data != "false") {
 				$('.fanpage_main').html(data);
 				$('.fanpage_row').show();
+				$('.nofanpage_row').hide();
 			} else {
 				$('.fanpage_row').hide();
+				$('.nofanpage_row').show();
 			}
 			//$('#company_shop_name').trigger("keyup");
 		});
