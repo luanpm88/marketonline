@@ -35,6 +35,16 @@
 <!--{literal}-->
 <script>
 	
+	function updateFanpageSelect() {
+		$.ajax({
+			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}company.php?do=fanpage_select",
+		}).done(function ( data ) {
+			//alert(data);
+			if(data != "false") $('.fanpage_main').html(data);
+			//$('#company_shop_name').trigger("keyup");
+		});
+	}
+	
 	function updateFacebookConnect() {
 		$.ajax({
 			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}company.php?do=facebook_connect",
@@ -42,6 +52,7 @@
 			//alert(data);
 			$('.facebook_connect').html(data);
 			$('#company_shop_name').trigger("keyup");
+			updateFanpageSelect();
 		});
 	}
 	
