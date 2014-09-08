@@ -305,6 +305,7 @@ if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
 	
 	if(!count($fb_data["data"])) {
 		echo "false";
+		exit;
 	}
 	//var_dump($companyinfo);
 	//$fanpages = explode(",", $companyinfo["fb_fanpage_main"]);
