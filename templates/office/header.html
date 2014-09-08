@@ -35,6 +35,16 @@
 <!--{literal}-->
 <script>
 	
+	function updateFacebookConnect() {
+		$.ajax({
+			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}company.php?do=facebook_connect",
+		}).done(function ( data ) {
+			//alert(data);
+			$('.facebook_connect').html(data);
+			$('#company_shop_name').trigger("keyup");
+		});
+	}
+	
 	function insertChatImage(image, box) {
 		$('#chat-frame #chat-box-'+box+' textarea').val("<div class='ajax-loader'>Đang tải ảnh...</div>");
 		postChatNew(box, image);
@@ -1178,6 +1188,16 @@ $(document).ready(function() {
 	    $.cookie("underconstruction", true);
 	    $("#underconstruction-info-but").trigger("click");
 	}
+	
+	//alert($('#company_shop_name').val().html());
+	$('#company_shop_name').keyup(function() {
+		if ($(this).val().trim() != '') {
+			$('.fb_connect_message span').html($(this).val().trim());
+		} else {
+			$('.fb_connect_message span').html("Gian hàng của bạn");
+		}
+	});
+	$('#company_shop_name').trigger("keyup");
 	
 });
 

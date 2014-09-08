@@ -118,6 +118,8 @@ jQuery(document).ready(function($) {
 	//$('#dataCompanyEconomicType').options(economic_type);
 	//$("#dataCompanyEconomicType")[0].options[option_economic_type].selected = true;
 	
+	
+	
 	$("#CompanyFrm").validate({
 	submitHandler: function(form) {
 		var result = true;
@@ -294,6 +296,8 @@ jQuery(document).ready(function($) {
 			});
 		}
 	<!--{/literal}-->{/if}<!--{literal}-->
+	
+	
 	
 })
 </script>
@@ -475,14 +479,14 @@ jQuery(document).ready(function($) {
                 <td><input name="data[company][contact_email]" type="text" id="contact_email" value="{$item.contact_email}" size="32" class="required"></td>
               </tr>
 	      
-	      <tr>
+	      <!--<tr>
                 <th>Facebook (Fan Page):</th>
                 <td><input placeholder="Nhập đường dẫn đến Fan Page của bạn" name="data[company][facebook]" type="text" id="contact_facebook" value="{$item.facebook}" style="width:432px;"></td>
               </tr>
 	      <tr>
                 <th>Facebook (Trang cá nhân):</th>
                 <td><input placeholder="Nhập đường dẫn đến Trang cá nhân của bạn" name="data[company][facebook_personal]" type="text" id="contact_facebook_personal" value="{$item.facebook_personal}" style="width:432px;"></td>
-              </tr>
+              </tr>-->
 	      
 	      
 	      <!--{include file="fb_connect.html"}-->

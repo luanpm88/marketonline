@@ -273,6 +273,19 @@ if (isset($_GET['do']) && !empty($_GET['id']) && $_GET['do'] == "upgrade_company
 	pheader("location:company.php");
 }
 
+if (isset($_GET['do']) && $_GET['do'] == "facebook_connect") {
+	$fb_data = $member->read("*", $memberinfo["id"]);
+	$access_token = $fb_data["fb_access_token"];
+	$fb_data = $member->getFacebookAccounts($access_token);	
+	$fb_user = $member->getFacebookUser($access_token);
+	
+	setvar("fb_data", $fb_data);
+	setvar("fb_user", $fb_user);
+	
+	template("_fb_connect");
+	exit;
+}
+
 
 setvar("MainMarkets", $typeoption->get_cache_type("main_market"));
 if(!empty($companyinfo['name'])){
