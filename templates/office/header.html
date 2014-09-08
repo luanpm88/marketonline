@@ -1217,6 +1217,11 @@ $(document).ready(function() {
 	});
 	$('#company_shop_name').trigger("keyup");
 	updateFanpageSelect();
+	
+	//if connect to facebook
+	{/literal}{if $smarty.get.action == connect_facebook}{literal}
+		$('.fb_connect_message a').trigger("click");
+	{/literal}{/if}{literal}
 });
 
 

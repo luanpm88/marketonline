@@ -18,6 +18,7 @@ if($rs === false) {
   $user_error = 'Wrong SQL: ' . $sql . '<br>' . 'Error: ' . $conn->errno . ' ' . $conn->error;
   trigger_error($user_error, E_USER_ERROR);
 }
+
 $rs->data_seek(0);
 $share_topics = array();
 while($res_s = $rs->fetch_assoc()) {
