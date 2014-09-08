@@ -170,12 +170,16 @@ $member->info['online'] = $member->isOnline($member->info['id']);
 $company->info['description'] = str_replace('<a', '<a target="_blank" rel="nofollow"', $company->info['description']);
 
 $company->info['facebook_full'] = $company->info['facebook'];
+if($company->info['fb_fanpage_main'] && $member->info['fb_access_token']) {
+	$company->info['facebook'] =  "https://www.facebook.com/pages/fanpage/".$company->info['fb_fanpage_main'];
+	//$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
+} else {
+	$company->info['facebook'] =  str_replace("http://", '', $company->info['facebook']);
+	$company->info['facebook'] =  str_replace("https://", '', $company->info['facebook']);
+	$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
+	$company->info['facebook_personal'] =  str_replace("https://", '', $company->info['facebook_personal']);
+}
 
-$company->info['facebook'] =  str_replace("http://", '', $company->info['facebook']);
-$company->info['facebook'] =  str_replace("https://", '', $company->info['facebook']);
-
-$company->info['facebook_personal'] =  str_replace("http://", '', $company->info['facebook_personal']);
-$company->info['facebook_personal'] =  str_replace("https://", '', $company->info['facebook_personal']);
 //echo $member->info['id']."sdsdsdsdsd";
 uaAssign(array(
 "SkinName"=>$skin_path,
