@@ -96,6 +96,7 @@ foreach($share_topics as $share_topic) {
 		$logs["title"] = $params['name']." (fanpage: ".$fb_fanpage["name"].")";
 		$logs["created"] = date("Y-m-d H:i:s");
 		$logs["message"] = $params['message'];
+		$logs["kind"] = "trade";
 		$sharelog->save($logs);
 		
 		
@@ -108,6 +109,7 @@ foreach($share_topics as $share_topic) {
 		$logs["created"] = date("Y-m-d H:i:s");
 		$logs["error_message"] = $e->getMessage();
 		$logs["message"] = $params['message'];
+		$logs["kind"] = "trade";
 		$sharelog->save($logs);
 	    
 	    $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;

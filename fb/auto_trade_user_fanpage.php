@@ -106,6 +106,7 @@ foreach($share_topics as $share_topic) {
 	$logs["title"] = $params['name'];
 	$logs["created"] = date("Y-m-d H:i:s");
 	$logs["message"] = $params['message'];
+	$logs["kind"] = "trade";
 	$sharelog->save($logs);
         
         $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
@@ -117,6 +118,7 @@ foreach($share_topics as $share_topic) {
 	$logs["created"] = date("Y-m-d H:i:s");
 	$logs["error_message"] = $e->getMessage();
 	$logs["message"] = $params['message'];
+	$logs["kind"] = "trade";
 	$sharelog->save($logs);
         
         $result .= ' FAILED... (Cannot post to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
