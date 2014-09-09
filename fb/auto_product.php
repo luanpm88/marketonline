@@ -85,12 +85,12 @@ foreach($share_topics as $share_topic) {
     try {
 	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
 	
-	$log["link"] = $params["link"];
-	$log["fb_page"] = $admin["fb_user"]["link"];
-	$log["type"] = "admin_wall";
-	$log["title"] = $share_topic['post_title'];
-	$log["created"] = date("Y-m-d H:i:s");
-	$sharelog->save($log);
+	$logs["link"] = $params["link"];
+	$logs["fb_page"] = $admin["fb_user"]["link"];
+	$logs["type"] = "admin_wall";
+	$logs["title"] = $share_topic['post_title'];
+	$logs["created"] = date("Y-m-d H:i:s");
+	$sharelog->save($logs);
 	
 	// mark topic as posted (ensure that it will be posted only once)
 	$sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
