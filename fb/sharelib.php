@@ -6,18 +6,20 @@ if(file_exists('../configs/config.inc.php')) {
     require_once("../share.inc.php");
     require_once('../libraries/core/models/company.php');
     require_once('../libraries/core/models/trade.php');
-    
+    require_once('../libraries/core/models/fbsharelog.php');
 } else {
     require_once('/home/marketon/domains/marketonline.vn/public_html/configs/config.inc.php');
     require_once("/home/marketon/domains/marketonline.vn/public_html/libraries/common.inc.php");
     require_once("/home/marketon/domains/marketonline.vn/public_html/share.inc.php");
     require_once('/home/marketon/domains/marketonline.vn/public_html/libraries/core/models/company.php');
     require_once('/home/marketon/domains/marketonline.vn/public_html/libraries/core/models/trade.php');
+    require_once('/home/marketon/domains/marketonline.vn/public_html/libraries/core/models/fbsharelog.php');
 }
 
 require_once('Encoding.php'); 
 use \ForceUTF8\Encoding;  // It's namespaced now.
 
+$sharelog = new Fbsharelogs();
 
 // determine script invocation (CLI or Web Server)
 if(php_sapi_name() == 'cli') {
@@ -78,4 +80,9 @@ $config['secret'] = $admin["fb_secret"];
 $fb_access_token = $admin["fb_access_token"];
 $config['fileUpload'] = false; // optional
 $fb = new Facebook($config);
+
+
+$admin["fb_user"] = json_decode($admin["fb_user_id"],true);
+//echo $admin["fb_user"]["link"];
+//echo date("Y-m-d H:i:s");
 ?>

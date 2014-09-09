@@ -83,23 +83,22 @@ foreach($share_topics as $share_topic) {
  
     // check if topic successfully posted to Facebook
     try {
-	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately
+	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
 	
-	////for fan page
-	//$fb_data = json_decode($admin["fb_data"], true);
-	//foreach($fb_data["data"] as $fb_fanpage) {
-	//	$params["access_token"] = $fb_fanpage["access_token"];
-	//	$fb->api('/'.$fb_fanpage["id"].'/feed', 'POST', $params);
-	//	$result .= ' SUCCESSFUL... (Posted to ['.$fb_fanpage["name"].'] Fanpage) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
-	//}
- 
-      // mark topic as posted (ensure that it will be posted only once)
-      $sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
-      if($conn->query($sql) === false) {
-        trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-      }
-      
-      $result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break; 
+	$log["link"] = $params["link"];
+	$log["fb_page"] = $admin["fb_user"]["link"];
+	$log["type"] = "admin_wall";
+	$log["title"] = $share_topic['post_title'];
+	$log["created"] = date("Y-m-d H:i:s");
+	$sharelog->save($log);
+	
+	// mark topic as posted (ensure that it will be posted only once)
+	$sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
+	
+	$result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break; 
     } catch(Exception $e) {
 	
       $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
