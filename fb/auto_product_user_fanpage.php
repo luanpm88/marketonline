@@ -106,6 +106,13 @@ foreach($share_topics as $share_topic) {
 	  $ret = $fb->api('/'.$fanpage["id"].'/feed', 'POST', $params);
 	  
 	  //$fanpage_posted[] = $fanpage["id"];
+	  $logs["link"] = $params["link"];
+	  $logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$fanpage["id"];
+	  $logs["type"] = "user_fanpage";
+	  $logs["title"] = $share_topic['post_title'];
+	  $logs["created"] = date("Y-m-d H:i:s");
+	  $sharelog->save($logs);
+	  
 	  
 	  $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
 	} catch(Exception $e) {

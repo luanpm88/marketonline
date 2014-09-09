@@ -6,7 +6,7 @@ $companydb = new Companies();
 //var_dump($fb->api('/100000235631026/permissions', 'GET', array("access_token" => $fb_access_token)));
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.fb_post_wall, com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_wall, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+$sql = 'SELECT com.fb_post_wall, com.shop_name as shop_name, com.facebook as fanpage, m.fb_access_token, m.fb_user_id, m.fb_data, com.cache_spacename, com.name as company_name, product.id, product.service, product.facebook_pubstatus_user_wall, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
     .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
     .' LEFT JOIN pb_members as m ON m.id = product.member_id'
@@ -25,6 +25,7 @@ while($res_s = $rs->fetch_assoc()) {
     //prepair content
     $res["id"] = $res_s["id"];
     $res["shop_name"] = $res_s["shop_name"];
+    $res["fb_user"] = json_decode($res_s["fb_user_id"],true);
     $res["fb_access_token"] = $res_s["fb_access_token"];
     $res["fb_post_wall"] = $res_s["fb_post_wall"];
     $res["facebook_pubstatus_user_wall"] = $res_s["facebook_pubstatus_user_wall"];
@@ -101,6 +102,13 @@ foreach($share_topics as $share_topic) {
 	if($conn->query($sql) === false) {
 	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 	}
+	
+	$logs["link"] = $params["link"];
+	$logs["fb_page"] = $share_topic["fb_user"]["link"];
+	$logs["type"] = "user_wall";
+	$logs["title"] = $share_topic['post_title'];
+	$logs["created"] = date("Y-m-d H:i:s");
+	$sharelog->save($logs);
 	
 	$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Wall) : ' . $share_topic['url'] . $line_break;
       } catch(Exception $e) {
