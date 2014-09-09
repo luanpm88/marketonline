@@ -37,7 +37,7 @@
 		  <td><a target="_blank" href="{$item.link}">Item Link</a></td>
 		  <td><a target="_blank" href="{$item.fb_page}">Facebook Link</a></td>
 		  <td>{$item.type}</td>
-		  <td>{$item.message}</td>
+		  <td>{$item.message|truncate:100}</td>
 		  <td>{$item.created}</td>
 		  <td>{$item.error_message}</td>
 		<!--{foreachelse}-->
