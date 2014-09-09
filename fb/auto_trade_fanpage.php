@@ -89,6 +89,15 @@ foreach($share_topics as $share_topic) {
 	foreach($fb_data["data"] as $fb_fanpage) {
 		$params["access_token"] = $fb_fanpage["access_token"];
 		$fb->api('/'.$fb_fanpage["id"].'/feed', 'POST', $params);
+		
+		$logs["link"] = $params["link"];
+		$logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$fb_fanpage["id"];
+		$logs["type"] = "admin_fanpage";
+		$logs["title"] = $params['message']." (fanpage: ".$fb_fanpage["name"].")";
+		$logs["created"] = date("Y-m-d H:i:s");
+		$sharelog->save($logs);
+		
+		
 		$result .= ' SUCCESSFUL... (Posted to ['.$fb_fanpage["name"].'] Fanpage) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
 	}
       

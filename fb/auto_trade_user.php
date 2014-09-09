@@ -98,6 +98,13 @@ foreach($share_topics as $share_topic) {
 	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 	}
 	
+	$logs["link"] = $params["link"];
+	$logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$share_topic["fanpage_id"];
+	$logs["type"] = "admin_user_fanpage";
+	$logs["title"] = $params['message'];
+	$logs["created"] = date("Y-m-d H:i:s");
+	$sharelog->save($logs);
+	
 	$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
       }
       else

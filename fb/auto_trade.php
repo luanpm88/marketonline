@@ -97,6 +97,14 @@ foreach($share_topics as $share_topic) {
       if($conn->query($sql) === false) {
         trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
+      
+      $logs["link"] = $params["link"];
+      $logs["fb_page"] = $admin["fb_user"]["link"];
+      $logs["type"] = "admin_wall";
+      $logs["title"] = $params['message'];
+      $logs["created"] = date("Y-m-d H:i:s");
+      $sharelog->save($logs);
+      
       $result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
  
     } catch(Exception $e) {
