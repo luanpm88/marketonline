@@ -1,0 +1,32 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition">
+	<p>{lang your_current_position} {lang trade_management} &raquo; {lang dictionary}</p>
+</div>
+<div id="rightTop"> 
+
+</div>
+<div class="mrightTop"> 
+    <div class="fontr"> 
+        <form name="search_frm" id="SearchFrm" method="get"> 
+             <div> 
+				{lang title_keywords} : <input class="queryInput" type="text" name="q" value="{$smarty.get.q}" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="{lang searching}" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <p>id: {$item.id}</p><br />
+  <p>Name: {$item.title}</p><br />
+  <p>Link: <a target="_blank" href="{$item.link}">{$item.link}</a></p><br />
+  <p>Face Link: <a target="_blank" href="{$item.fb_page}">{$item.fb_page}</a></p><br />
+  <p>Type: {$item.type}</p><br />
+  <p>Created: {$item.created}</p><br />
+  <p>Message: <br />{$item.message}</p><br />
+  <p>Error Message: <br />{$item.error_message}</p><br />
+  <br />
+  <br />
+  <a href="#back" onclick="window.history.back()"><<<<< BACK</a>
+</div>
+<!-- {include file="footer.html"} -->
