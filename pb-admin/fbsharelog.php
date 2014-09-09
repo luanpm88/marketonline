@@ -12,6 +12,8 @@ uses("fbsharelog");
 $logdb = new Fbsharelogs();
 $page = new Pages();
 
+$page->displaypg = 100;
+
 $conditions = array();
 
 $amount = $logdb->findCount(null, $conditions);
