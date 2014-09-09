@@ -719,9 +719,13 @@ class Product extends PbController {
 		$_SESSION["viewed_list"] = $oldsession."[".$id."]";
 		//echo $_SESSION["viewed_list"];
 		
-		$pb_userinfo = pb_get_member_info();
-		if((empty($info) || !$info || $info["valid_status"] != 1) && $pb_userinfo["pb_userid"] != 1) {
-			flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
+		
+		if(empty($info) || !$info || $info["valid_status"] != 1) {
+			$pb_userinfo = pb_get_member_info();
+			$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
+			if($member_info["role"] != "admin") {
+				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
+			}			
 		}
 		if (isset($info['formattribute_ids'])) {
 			$form_vars = $form->getAttributes(explode(",", $info['formattribute_ids']),2);
