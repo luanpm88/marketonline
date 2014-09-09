@@ -725,7 +725,9 @@ class Product extends PbController {
 			$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
 			if($member_info["role"] != "admin") {
 				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
-			}			
+			} else {
+				setvar("pending","Đang kiểm duyệt (".$info["valid_status_message"].")");
+			}
 		}
 		if (isset($info['formattribute_ids'])) {
 			$form_vars = $form->getAttributes(explode(",", $info['formattribute_ids']),2);

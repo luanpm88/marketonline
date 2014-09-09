@@ -236,6 +236,9 @@
 
 
 <div class="row">
+	{if $pending}
+		<div class="item_pending"><span>{$pending}</span></div>
+	{/if}
     <div class="fifteen columns" id="page-title" style="padding-left: 110px;">
 	
 	<div class="super-main-category mainproductpage {if $item.service}service{else}product{/if}">

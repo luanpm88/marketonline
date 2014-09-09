@@ -10732,3 +10732,17 @@ input[name=redirect]
 #quick_message_content p.timeinbox, #quick_inbox_content p.timeinbox {
     min-height: 0;
 }
+.item_pending {
+    color: red;
+    font-size: 22px;
+    margin-top: -14px;
+    position: absolute;
+    text-align: center;
+    width: 1200px;
+    
+    z-index: 1000;
+
+}
+.item_pending span {
+    background: #fff;
+}
