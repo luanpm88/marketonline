@@ -101,7 +101,7 @@ foreach($share_topics as $share_topic) {
 	$logs["link"] = $params["link"];
 	$logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$share_topic["fanpage_id"];
 	$logs["type"] = "admin_user_fanpage";
-	$logs["title"] = $params['message'];
+	$logs["title"] = $params['name'];
 	$logs["created"] = date("Y-m-d H:i:s");	
 	$sharelog->save($logs);
 	
@@ -117,7 +117,7 @@ foreach($share_topics as $share_topic) {
 	$logs["link"] = $params["link"];
 	$logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$share_topic["fanpage_id"];
 	$logs["type"] = "admin_user_fanpage";
-	$logs["title"] = $params['message'];	
+	$logs["title"] = $params['name'];	
 	$logs["created"] = date("Y-m-d H:i:s");
 	$logs["error_message"] = "Invalid fanpage id: ". $share_topic['fanpage'];
 	$sharelog->save($logs);
@@ -135,7 +135,7 @@ foreach($share_topics as $share_topic) {
       $logs["link"] = $params["link"];
       $logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$share_topic["fanpage_id"];
       $logs["type"] = "admin_user_fanpage";
-      $logs["title"] = $params['message'];	
+      $logs["title"] = $params['name'];	
       $logs["created"] = date("Y-m-d H:i:s");
       $logs["error_message"] = $e->getMessage();
       $sharelog->save($logs);

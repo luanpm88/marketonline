@@ -106,7 +106,7 @@ foreach($share_topics as $share_topic) {
 	$logs["link"] = $params["link"];
 	$logs["fb_page"] = $share_topic["fb_user"]["link"];
 	$logs["type"] = "user_wall";
-	$logs["title"] = $share_topic['post_title'];
+	$logs["title"] = $params['name'];
 	$logs["created"] = date("Y-m-d H:i:s");
 	$sharelog->save($logs);
 	
@@ -120,7 +120,7 @@ foreach($share_topics as $share_topic) {
 	$logs["link"] = $params["link"];
 	$logs["fb_page"] = $share_topic["fb_user"]["link"];
 	$logs["type"] = "user_wall";
-	$logs["title"] = $share_topic['post_title'];
+	$logs["title"] = $params['name'];
 	$logs["created"] = date("Y-m-d H:i:s");
 	$logs["error_message"] = $e->getMessage();
 	$sharelog->save($logs);
