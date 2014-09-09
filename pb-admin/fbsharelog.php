@@ -30,6 +30,11 @@ if (isset($_GET['do'])) {
 		template($tpl_file);
 		exit;
 	}
+	if ($do == "search") {
+		if(!empty($_GET['type'])){
+			$conditions = "type = '".$_GET['type']."'";
+		}
+	}
 }
 
 $amount = $logdb->findCount(null, $conditions);

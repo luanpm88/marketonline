@@ -7,10 +7,17 @@
 </div>
 <div class="mrightTop"> 
     <div class="fontr"> 
-        <form name="search_frm" id="SearchFrm" method="get"> 
-             <div> 
-				{lang title_keywords} : <input class="queryInput" type="text" name="q" value="{$smarty.get.q}" /> 
-                <input type="submit" name="search" id="Search" class="formbtn" value="{lang searching}" /> 
+        <form name="search_frm" id="SearchFrm" method="get" action="fbsharelog.php"> 
+        <input type="hidden" name="do" value="search" />
+             <div>				
+                <select class="querySelect" name="type" id="ProductStatus" onchange="$('#SearchFrm').submit()">
+			<option value="">Chọn loại</option>
+			<option {if $smarty.get.type=="admin_wall"}selected="selected"{/if} value="admin_wall">admin_wall</option>
+			<option {if $smarty.get.type=="admin_fanpage"}selected="selected"{/if} value="admin_fanpage">admin_fanpage</option>
+			<option {if $smarty.get.type=="admin_user_fanpage"}selected="selected"{/if} value="admin_user_fanpage">admin_user_fanpage</option>
+			<option {if $smarty.get.type=="user_wall"}selected="selected"{/if} value="user_wall">user_wall</option>
+			<option {if $smarty.get.type=="user_fanpage"}selected="selected"{/if} value="user_fanpage">user_fanpage</option>
+		</select>				
             </div> 
         </form> 
     </div> 
