@@ -109,6 +109,7 @@
 				<ul id="handler_icon">
 				  {if $item.candelete}<li><a class="btn_delete" href="member.php?id={$item.id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>{/if}
 				  <li><a class="btn_edit" href="member.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+				  <li><a class="btn_edit moderator-icon" href="member.php?do=set_moderator&id={$item.id}" title="Moderator">MOD</a></li>
 				  {if !$item.checkout}
 					<li style="width: auto">
 						<!--<form action="member.php" method="get">
@@ -120,7 +121,7 @@
 						<!--</form>-->
 					</li>
 				  {/if}
-				  <li><a class="btn_edit" href="member.php?do=set_moderator&id={$item.id}" title="{lang edit}">set moderator</a></li>
+				  
 				  <!--<li style="width: auto"><a class="btn_paid" href="member.php?do=unpaid&id={$item.id}{$addParams}" title="{lang unpaid}" onclick="return confirm('{lang delete_checkout_confirm}')">{lang unpaid}</a></li>-->
 				</ul>
 			</td>

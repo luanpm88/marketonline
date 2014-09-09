@@ -24,8 +24,8 @@ if (isset($_POST)) {
 		
 		$vals["manage_types"] = implode(",", $_POST['types']);
 		$vals["manage_industries"] = implode(",", $_POST['industries']);
-		
-		var_dump($vals);
+		$vals["rights"] = implode(",", $_POST['rights']);
+		$vals["status"] = $_POST["status"];
 		
 		$moderatordb->save($vals, "update", intval($id));
 	}
@@ -46,8 +46,8 @@ if (isset($_GET['do'])) {
 			//get industries with level == 2
 			$level1 = $industry->findAll("id,name",null,array("level=1"));
 			$current_industries = explode(",", $item["manage_industries"]);
-			foreach($level1 as $key => $item) {
-				$level2 = $industry->findAll("id,name",null,array("parent_id=".$item["id"]));
+			foreach($level1 as $key => $ii) {
+				$level2 = $industry->findAll("id,name",null,array("parent_id=".$ii["id"]));
 				foreach($level2 as $key2 => $item2) {
 					if(in_array($item2["id"],$current_industries)) {
 						$level2[$key2]["checked"] = 1;
@@ -59,12 +59,33 @@ if (isset($_GET['do'])) {
 			
 			//get types
 			$types = array(array("name"=>"product"),array("name"=>"service"),array("name"=>"trade"));
+			$current_types = explode(",", $item["manage_types"]);
+			foreach($types as $key => $ii) {
+				if(in_array($ii["name"],$current_types)) {
+					$types[$key]["checked"] = 1;
+				}
+			}
 			setvar("types", $types);
+			
+			//get rights
+			$rights = array(array("name"=>"valid"),array("name"=>"unvalid"));
+			$current_rights = explode(",", $item["rights"]);
+			foreach($rights as $key => $ii) {
+				if(in_array($ii["name"],$current_rights)) {
+					$rights[$key]["checked"] = 1;
+				}
+			}
+			setvar("rights", $rights);
 			
 			$tpl_file = "moderator.edit";
 			template($tpl_file);
 			exit;
 		}		
+	}
+	if ($do == "del") {
+		if(!empty($id)){
+			$moderatordb->del($id);
+		}
 	}
 }
 
@@ -78,6 +99,15 @@ $joins[] = "LEFT JOIN {$tb_prefix}members parent ON parent.id=link.parent_id";
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON m.id=c.member_id";
 
 $result = $moderatordb->findAll("m.space_name,c.shop_name,parent.username as parent_username,m.username, CONCAT(mf.first_name,' ',mf.last_name) AS NickName,Moderator.*", $joins, $conditions, "created DESC", $page->firstcount, $page->displaypg);
+foreach($result as $key => $item) {
+	$result[$key]["industries"] = $industry->findAll("id,name",null,array("id IN (".$item["manage_industries"].")"));
+	if($item["status"]) {
+		$string = '<img src="../templates/office/images/published.png">';
+	} else {
+		$string = '<img src="../templates/office/images/unpublished.png">';
+	}
+	$result[$key]["status_s"] = $string;
+}
 
 setvar("Items", $result);
 setvar("ByPages", $page->pagenav);

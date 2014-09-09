@@ -231,7 +231,7 @@ if (isset($_GET['do'])) {
 		if($current) {
 			pheader("location:moderator.php?do=edit&id=".$current["id"]);
 		} else {
-			$moderator->save(array("member_id"=>$id));
+			$moderator->save(array("member_id"=>$id,"created"=>date("Y-m-d H:i:s")));
 			$mod_id = $moderator->dbstuff->Insert_ID();
 			pheader("location:moderator.php?do=edit&id=".$mod_id);
 		}

@@ -44,16 +44,19 @@
 			  {if $item.shop_name}<br /><small>Shop: <a target="_blank" href="{the_url module=space userid=`$item.space_name`}"><strong>{$item.shop_name}</strong></a></small>{/if}
 			  
 			</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>{$item.manage_types}</td>
+			<td>
+				<!--{foreach from=$item.industries item=industry}-->
+					[{$industry.name}] 
+				<!--{/foreach}-->
+			</td>
+			<td>{$item.rights}</td>
+			<td>{$item.status_s}</td>
+			<td>{$item.created}</td>
 			<td class="handler">
-				<ul id="handler_icon">
-				  
+				<ul id="handler_icon">					
 					<li><a class="btn_edit" href="moderator.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
-				  
+					<li><a class="btn_delete" href="moderator.php?id={$item.id}&do=del" title="Loại khỏi danh sách Moderators">{lang delete}</a></li>
 				</ul>
 			</td>
 		<!--{foreachelse}-->

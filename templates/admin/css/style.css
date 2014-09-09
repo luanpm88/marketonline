@@ -306,3 +306,6 @@ img.double-border {
 	width:100% !important;
 	height: 600px !important;
 }
+.moderator-icon, .moderator-icon:hover {
+    background: url("../images/moderator-icon.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
+}
