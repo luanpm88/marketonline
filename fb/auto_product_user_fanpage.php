@@ -117,6 +117,15 @@ foreach($share_topics as $share_topic) {
 	  $result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage) : ' . $share_topic['url'] . $line_break;
 	} catch(Exception $e) {
 	  
+	  $logs["link"] = $params["link"];
+	  $logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$fanpage["id"];
+	  $logs["type"] = "user_fanpage";
+	  $logs["title"] = $share_topic['post_title'];
+	  $logs["created"] = date("Y-m-d H:i:s");
+	  $logs["error_message"] = $e->getMessage();
+	  
+	  $sharelog->save($logs);
+	  
 	  $result .= ' FAILED... (Cannot post to ['.$share_topic["shop_name"].'] ['.$fanpage["name"].'] Fanpage; ' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
 	}
 	

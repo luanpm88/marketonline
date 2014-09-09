@@ -117,6 +117,14 @@ foreach($share_topics as $share_topic) {
 	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
 	}
 	
+	$logs["link"] = $params["link"];
+	$logs["fb_page"] = $share_topic["fb_user"]["link"];
+	$logs["type"] = "user_wall";
+	$logs["title"] = $share_topic['post_title'];
+	$logs["created"] = date("Y-m-d H:i:s");
+	$logs["error_message"] = $e->getMessage();
+	$sharelog->save($logs);
+	
 	$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['url'] . $line_break;
       }
       

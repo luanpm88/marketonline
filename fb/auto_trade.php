@@ -108,6 +108,14 @@ foreach($share_topics as $share_topic) {
       $result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
  
     } catch(Exception $e) {
+      $logs["link"] = $params["link"];
+      $logs["fb_page"] = $admin["fb_user"]["link"];
+      $logs["type"] = "admin_wall";
+      $logs["title"] = $params['message'];
+      $logs["created"] = date("Y-m-d H:i:s");
+      $logs["error_message"] = $e->getMessage();
+      $sharelog->save($logs);
+      
       $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
     }
  
