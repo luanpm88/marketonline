@@ -1,0 +1,59 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition">
+	<p>{lang your_current_position} {lang trade_management} &raquo; {lang dictionary}</p>
+</div>
+<div id="rightTop"> 
+
+</div>
+<div class="mrightTop"> 
+    <div class="fontr"> 
+        <form name="search_frm" id="SearchFrm" method="get"> 
+             <div> 
+				{lang title_keywords} : <input class="queryInput" type="text" name="q" value="{$smarty.get.q}" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="{lang searching}" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
+    <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Link</th>
+		  <th>Facebook link</th>
+		  <th>Type</th>
+		  <th>message</th>
+		  <th>Created</th>
+		  <th>Error</th>
+		</tr>
+    </thead>
+    <tbody>
+		<!--{foreach from=$Items item=item}-->
+		<tr class="tatr2">
+		  <td>{$item.title}</td>
+		  <td><a target="_blank" href="{$item.link}">Item Link</a></td>
+		  <td><a target="_blank" href="{$item.fb_page}">Facebook Link</a></td>
+		  <td>{$item.type}</td>
+		  <td>{$item.message}</td>
+		  <td>{$item.created}</td>
+		  <td>{$item.error_message}</td>
+		<!--{foreachelse}-->
+		<tr class="no_data info">
+		  <td colspan="6">{lang no_datas}</td>
+		</tr>
+		<!--{/foreach}-->
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="{lang action_zone}">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks">{$ByPages}</div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<!-- {include file="footer.html"} -->
