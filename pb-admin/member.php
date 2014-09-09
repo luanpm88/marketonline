@@ -226,9 +226,17 @@ if (isset($_GET['do'])) {
 	
 	if($do=="set_moderator" && !empty($id))
 	{
-		$moderator->save(array("member_id"=>$id));
-		$mod_id = $moderator->dbstuff->Insert_ID();
-		pheader("location:moderator.php?do=edit&id=".$mod_id);
+		$current = $moderator->fields("*", array("member_id=".$id));
+		//var_dump($id);
+		if($current) {
+			pheader("location:moderator.php?do=edit&id=".$current["id"]);
+		} else {
+			$moderator->save(array("member_id"=>$id));
+			$mod_id = $moderator->dbstuff->Insert_ID();
+			pheader("location:moderator.php?do=edit&id=".$mod_id);
+		}
+		
+		
 	}
 }
 $fields = "c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";
