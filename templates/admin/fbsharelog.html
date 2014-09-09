@@ -33,7 +33,7 @@
     <tbody>
 		<!--{foreach from=$Items item=item}-->
 		<tr class="tatr2">
-		  <td>{$item.title}</td>
+		  <td><a href="fbsharelog.php?do=detail&id={$item.id}">{$item.title}</a></td>
 		  <td><a target="_blank" href="{$item.link}">Item Link</a></td>
 		  <td><a target="_blank" href="{$item.fb_page}">Facebook Link</a></td>
 		  <td>{$item.type}</td>

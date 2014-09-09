@@ -16,6 +16,22 @@ $page->displaypg = 100;
 
 $conditions = array();
 
+if (isset($_GET['do'])) {
+	$do = trim($_GET['do']);
+	if (!empty($_GET['id'])) {
+		$id = intval($_GET['id']);
+	}
+	if ($do == "detail") {
+		if(!empty($id)){
+			$item = $logdb->read("*", $id);
+			setvar("item", $item);
+		}		
+		$tpl_file = "fbsharelog.detail";
+		template($tpl_file);
+		exit;
+	}
+}
+
 $amount = $logdb->findCount(null, $conditions);
 $page->setPagenav($amount);
 $result = $logdb->findAll("*", null, $conditions, "created DESC", $page->firstcount, $page->displaypg);
