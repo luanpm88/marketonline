@@ -144,6 +144,10 @@ $menus = array(
                 'text'  => L("industry_dict", "tpl"),
                 'url'   => 'dict.php',
             ),
+            'fbsharelog' => array(
+                'text'  => "Facebook Share Logs",
+                'url'   => 'fbsharelog.php',
+            ),
                                     
         ),
     ),
