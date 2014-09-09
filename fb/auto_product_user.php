@@ -107,6 +107,7 @@ foreach($share_topics as $share_topic) {
 	$logs["type"] = "admin_user_fanpage";
 	$logs["title"] = $params['name'];
 	$logs["created"] = date("Y-m-d H:i:s");
+	$logs["message"] = $params['message'];
 	$sharelog->save($logs);
 	
 	
@@ -125,6 +126,7 @@ foreach($share_topics as $share_topic) {
 	$logs["title"] = $params['name'];
 	$logs["created"] = date("Y-m-d H:i:s");
 	$logs["error_message"] = "Invalid fanpage id: ". $share_topic['fanpage'];
+	$logs["message"] = $params['message'];
 	$sharelog->save($logs);
 	
 	$result .= ' FAILED... (Invalid fanpage id) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
@@ -143,6 +145,7 @@ foreach($share_topics as $share_topic) {
       $logs["title"] = $params['name'];
       $logs["created"] = date("Y-m-d H:i:s");
       $logs["error_message"] = $e->getMessage();
+      $logs["message"] = $params['message'];
       $sharelog->save($logs);
       
       $result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;

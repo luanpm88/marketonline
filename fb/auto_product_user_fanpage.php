@@ -111,6 +111,7 @@ foreach($share_topics as $share_topic) {
 	  $logs["type"] = "user_fanpage";
 	  $logs["title"] = $params['name'];
 	  $logs["created"] = date("Y-m-d H:i:s");
+	  $logs["message"] = $params['message'];
 	  $sharelog->save($logs);
 	  
 	  
@@ -123,6 +124,7 @@ foreach($share_topics as $share_topic) {
 	  $logs["title"] = $params['name'];
 	  $logs["created"] = date("Y-m-d H:i:s");
 	  $logs["error_message"] = $e->getMessage();
+	  $logs["message"] = $params['message'];
 	  
 	  $sharelog->save($logs);
 	  
