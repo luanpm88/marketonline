@@ -46,7 +46,7 @@
 		  <td>{$item.type}</td>
 		  <td>{$item.message|truncate:50}</td>
 		  <td>{$item.created}</td>
-		  <td>{if $item.error_message}<a href="fbsharelog.php?do=detail&id={$item.id}" title="{$item.erre_message}">ERROR</a>{/if}</td>
+		  <td>{if $item.error_message}<a href="fbsharelog.php?do=detail&id={$item.id}" title="{$item.error_message}">ERROR</a>{/if}</td>
 		<!--{foreachelse}-->
 		<tr class="no_data info">
 		  <td colspan="6">{lang no_datas}</td>
