@@ -88,7 +88,7 @@ foreach($share_topics as $share_topic) {
 	$logs["link"] = $params["link"];
 	$logs["fb_page"] = $admin["fb_user"]["link"];
 	$logs["type"] = "admin_wall";
-	$logs["title"] = $share_topic['post_title'];
+	$logs["title"] = $params['message'];
 	$logs["created"] = date("Y-m-d H:i:s");
 	$sharelog->save($logs);
 	
