@@ -1,0 +1,73 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition">
+	<p>{lang your_current_position} {lang trade_management} &raquo; {lang dictionary}</p>
+</div>
+<div id="rightTop"> 
+	<h3>Moderators</h3> 
+	<ul class="subnav">
+		<li><a class="btn1" href="moderator.php"><span>{lang management}</span></a></li>
+		<!--<li><a href="moderator.php?do=edit">{lang add_or_edit}</a></li>-->
+	</ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontr"> 
+        <form name="search_frm" id="SearchFrm" method="get" action="fbsharelog.php"> 
+        <input type="hidden" name="do" value="search" />
+		<div>				
+						
+	       </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
+    <thead>
+		<tr>
+		  <th>Name</th>
+		  <th>Types</th>
+		  <th>Industries</th>
+		  <th>Rights</th>
+		  <th>Status</th>
+		  <th>Created</th>
+		  <th>Actions</th>
+		</tr>
+    </thead>
+    <tbody>
+		<!--{foreach from=$Items item=item}-->
+		<tr class="tatr2">
+			<td>
+				<label for="item_{$item.id}" class="">{$item.username}</label><br><span style="color:gray;" title="{$item.NickName}"><small>{$item.NickName}</small></span>
+			  
+			  <br /><small>Giới thiệu: <strong>{$item.parent_username}</strong></small>
+			  {if $item.shop_name}<br /><small>Shop: <a target="_blank" href="{the_url module=space userid=`$item.space_name`}"><strong>{$item.shop_name}</strong></a></small>{/if}
+			  
+			</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td class="handler">
+				<ul id="handler_icon">
+				  
+					<li><a class="btn_edit" href="moderator.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+				  
+				</ul>
+			</td>
+		<!--{foreachelse}-->
+		<tr class="no_data info">
+			<td colspan="7">{lang no_datas}</td>
+		</tr>
+		<!--{/foreach}-->
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="{lang action_zone}">
+
+    <div class="pageLinks">{$ByPages}</div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<!-- {include file="footer.html"} -->
