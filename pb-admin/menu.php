@@ -172,13 +172,17 @@ $menus = array(
                 'text'  => L("pms", "tpl"),
                 'url'   => 'message.php',
             ),
-			 'adminer' => array(
+	    'adminer' => array(
                 'text'  => L("adminer", "tpl"),
                 'url'   => 'adminer.php',
             ),
-			 'adminer_passwd' => array(
+	    'adminer_passwd' => array(
                 'text'  => L("change_pass", "tpl"),
                 'url'   => 'adminer.php?do=password',
+            ),
+            'moderator' => array(
+                'text'  => "Moderators",
+                'url'   => 'moderator.php',
             ),
         ),
     ),

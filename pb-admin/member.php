@@ -7,7 +7,7 @@
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
-uses("member","membergroup","typeoption","link");
+uses("member","membergroup","typeoption","link","moderator");
 require(LIB_PATH. 'time.class.php');
 require(PHPB2B_ROOT. 'libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
@@ -16,6 +16,7 @@ $_PB_CACHE['trusttype'] = cache_read("trusttype");
 $typeoption = new Typeoption();
 $membergroup = new Membergroup();
 $member = new Members();
+$moderator = new Moderators();
 $page = new Pages();
 $link = new Links();
 $tpl_file = "member";
@@ -221,6 +222,13 @@ if (isset($_GET['do'])) {
 	if($do=="unpaid" && !empty($id))
 	{
 		$member->saveField("checkout", "0", $id);
+	}
+	
+	if($do=="set_moderator" && !empty($id))
+	{
+		$moderator->save(array("member_id"=>$id));
+		$mod_id = $moderator->dbstuff->Insert_ID();
+		pheader("location:moderator.php?do=edit&id=".$mod_id);
 	}
 }
 $fields = "c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";

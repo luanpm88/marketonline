@@ -10739,10 +10739,13 @@ input[name=redirect]
     position: absolute;
     text-align: center;
     width: 1200px;
-    
     z-index: 1000;
-
 }
 .item_pending span {
     background: #fff;
+}
+.chat_friend_list .main_list ul li.invite a {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 2px;
 }
