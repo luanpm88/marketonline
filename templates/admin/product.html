@@ -49,7 +49,8 @@
 		  <th></th>
 		  <th><label for="idAll">{lang product}{lang naming}</label></th>
 		  <th>{lang company_name}</th>
-		  <th>{lang switch_the_shelf}</th>
+		  <th>Hiển thị</th>
+		  <th>Trang ngoài</th>
 		  <th>{lang status}</th>
 		  <th>Phê duyệt</th>
 		  <th>{lang pub_date}</th>
@@ -73,7 +74,26 @@
 			<br /><small>Username: <strong>{$item.username}</strong></small>
 		  
 		  </td>
-		  <td>{$BooleanVars[$item.ProductState]}</td>
+		  <td>
+			{if $BooleanVars[$item.ProductState]}
+				<img src="../templates/office/images/published.png">
+			{else}
+				<img src="../templates/office/images/unpublished.png">
+			{/if}
+		  
+		  </td>
+		  <td>
+			{if $item.show}
+				<a href="product.php?id={$item.id}&do=show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="product.php?id={$item.id}&do=show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  
+		  </td>
 		  <td>{$CheckStatus[$item.ProductStatus]}</td>
 		  <td>{$item.validation}</td>
 		  <td class="pb_datetime">{$item.pubdate}</td>
@@ -88,7 +108,7 @@
 		</tr>
 		<!--{foreachelse}-->
 		<tr class="no_data info">
-		  <td colspan="7">{lang no_datas}</td>
+		  <td colspan="9">{lang no_datas}</td>
 		</tr>
 		<!--{/foreach}-->
     </tbody>

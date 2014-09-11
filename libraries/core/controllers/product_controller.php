@@ -5926,8 +5926,10 @@ class Product extends PbController {
 	function validation() {
 		$pb_userinfo = pb_get_member_info();
 		$permissions = $this->product->getPermisstions($_POST['id'], $pb_userinfo["pb_userid"]);
+		
 		//setvar("permissions",$permissions);
 		//var_dump($_SERVER['HTTP_REFERER']);
+		
 		//validations
 		if(isset($_POST["unvalid"])) {
 			//var_dump($_POST);

@@ -209,6 +209,8 @@ if (isset($_GET['do'])) {
 	
 	if ($do=="valid" && $id) {
 		$product->saveField("valid_status", 1, intval($id));
+		
+		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 	if ($do=="unvalid" && $id) {
 		
@@ -231,6 +233,13 @@ if (isset($_GET['do'])) {
 		$sms['title'] = mysql_real_escape_string($kindname." không hợp lệ");
 		$sms['membertype_ids'] = '[1][2][3]';
 		$message->SendToUser(1, $iiffoo["member_id"], $sms);
+		
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
+	//echo $_GET["value"];
+	if ($do=="show" && $id) {
+		$product->saveField("`show`", intval($_GET["value"]), intval($id));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 }
 $amount = $product->findCount($joins, $conditions,"Product.id");
@@ -238,7 +247,7 @@ unset($joins);
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Product.member_id";
 $page->setPagenav($amount);
-$fields = "Product.service, m.username,Product.valid_status,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
+$fields = "Product.service, Product.show, m.username,Product.valid_status,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
 $result = $product->findAll($fields, $joins, $conditions,$validation_order."Product.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

@@ -3,14 +3,14 @@
 	</tr>
 	<tr>
 	<td>
-		<!--{if $MEMBER.permissionsss}-->
+		<!--{if $MEMBER.permissionsz}-->
 			<table class="menu_width167">
 				<tr>
 					<td>
 						<table class="menu_nav title_nav">
 							<tr>
 								<td width="10"></td>
-								<td class="title_bar" onclick="if($('#MenuModerator').length>0) $('#MenuModerator').toggle();"><a name="menu_top"></a>Quản trị viên</td>
+								<td class="title_bar" onclick="if($('#MenuModerator').length>0) $('#MenuModerator').toggle();"><a name="menu_top"></a>Phần quản trị</td>
 								<td width="5"></td>
 							</tr>
 						</table>
@@ -21,19 +21,19 @@
 						<table class="menu_nav_content" id="MenuModerator">
 							<!--{foreach item=item from=$MEMBER.permissions key=right}-->
 								<!--{if $right=='product'}-->
-									<tr class="MenuItem1">
+									<tr class="MenuItem_{$right}">
 									      <th><img src="{$office_theme_path}images/hr.gif"></th>
 									      <td><a href="moderator.php?type={$right}">Sản phẩm</a></td>
 									</tr>								
 								<!--{/if}-->
 								<!--{if $right=='service'}-->
-									<tr class="MenuItem1">
+									<tr class="MenuItem_{$right}">
 									      <th><img src="{$office_theme_path}images/hr.gif"></th>
 									      <td><a href="moderator.php?type={$right}">Dịch vụ</a></td>
 									</tr>								
 								<!--{/if}-->
 								<!--{if $right=='trade'}-->
-									<tr class="MenuItem1">
+									<tr class="MenuItem_{$right}">
 									      <th><img src="{$office_theme_path}images/hr.gif"></th>
 									      <td><a href="moderator.php?type={$right}">Thương mại</a></td>
 									</tr>								
