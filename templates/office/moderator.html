@@ -123,21 +123,16 @@
                     <col width="75">
                     <col width="200">
                     <col width="60">
-			<col width="60">
-				{if $pb_userinfo.checkout}<col width="71">{/if}
+			
                     <col width="60">
 		    <col width="60">
                     <col width="82">
                 <tr>
                    <th width="9%">{lang sample_image}</th>
                    <th style="text-align: left">{lang content}</th>
-		   <th>{lang spcode}</th>
-                   <th>{lang published}</th>
-		   {if $pb_userinfo.checkout}
-			<th style="text-align: left">Quảng cáo</th>
-		   {/if}
+		   <th>{lang spcode}</th>                   
 		   
-		   <th style="text-align: left">{lang created_date}</th>
+		   <th style="text-align: left">Ngày kiểm tra</th>
                    <!--<th style="text-align: left">{lang release}</th>-->
 		   <th width="16%">Phê duyệt</th>
 		   
@@ -156,48 +151,21 @@
 			    </a>
 			</strong>
 			
-			<p>{$item.content|strip_tags|truncate:120}</p>
+			<p>{$item.content|strip_tags|truncate:80}</p>
 			{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
 		    </div>
                 </td>
 		<td>{$item.product_code}</td>
-                <td>
-		    <!--{if $item.state eq 1}-->
-			<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
-			    <img src="{$office_theme_path}images/published.png">
-			</a>
-		    <!--{else}-->
-			<a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}" title="{lang goods_on_shelves}">
-			    <img src="{$office_theme_path}images/unpublished.png">
-			</a>
-		    <!--{/if}-->
-		</td>
+                
 		
-		{if $pb_userinfo.checkout}
-			<td>
-				<!--{if $item.ads eq 1}-->
-				    <a href="{$smarty.server.PHP_SELF}?do=ads&type=down&id={$item.id}" title="Bỏ quảng cáo khỏi trang sản phẩm">
-					<img src="{$office_theme_path}images/published.png">
-				    </a>
-				<!--{else}-->
-				    <a href="{$smarty.server.PHP_SELF}?do=ads&type=up&id={$item.id}" title="Đặt làm quảng cáo trang sản phẩm">
-					<img src="{$office_theme_path}images/unpublished.png">
-				    </a>
-				<!--{/if}-->
-			</td>
-		{/if}
-		
-		<td style="text-align: left">{$item.created}</td>
+		<td style="text-align: left">{$item.valid_date}</td>
                 <!--<td style="text-align: left"><a title="{lang as_release_supply_title}" href="offer.php?do=pro2offer&productid={$item.id}">{lang as_release_supply}</a>-->
 		<td>{$item.validation}</td>
 		    
 		    <!--<br /><a href="price.php?do=edit&productid={$item.id}">{lang prices}</a>--></td>
 		
-                <td style="text-align: left">
-			<!--{if $pb_userinfo.role == "admin"}<a href="product.php?do=admin_refresh&id={$item.id}&{$current_uri}">Lên nhất (admin)</a><br />{/if}-->
-			<!--<a href="product.php?do=refresh&id={$item.id}&{$current_uri}">{lang bump_to_top}</a><br />-->
-			<a href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a><br /><a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">{lang click_preview}</a>
-			<!--<br /><a onclick="return confirm('{lang delete_confirm}')" href="{$smarty.server.PHP_SELF}?act=del&id={$item.id}">{lang delete}</a>-->
+                <td style="text-align: left">			
+			<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">Xem & Phê duyệt</a>			
 		</td>
                 </tr> 
               <!--{/foreach}-->

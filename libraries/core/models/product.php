@@ -661,7 +661,5 @@ class Products extends PbModel {
 		//var_dump($permissions);
 		return $permissions;
 	}
-	
-	
 }
 ?>

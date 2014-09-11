@@ -1632,10 +1632,26 @@ class Offer extends PbController {
 		}
 		
 		if(isset($_GET["id"]))
-		{	
+		{
+			
+			$pb_userinfo = pb_get_member_info();
+			$permissions = $this->trade->getPermisstions($_GET['id'], $pb_userinfo["pb_userid"]);
+			setvar("permissions",$permissions);
+			//var_dump($permissions);
+			
 			$Trade = $this->trade->read("Trade.*, type.name as type_name, type.alias_key", $_GET["id"], null, null, array("LEFT JOIN {$this->trade->table_prefix}tradetypes AS type ON type.id=Trade.type_id"));
+			
 			if($Trade["status"] == 0 || $Trade["valid_status"] != 1) {
-				flash($Trade["type_name"]." đã hết hạn", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"offer_main","offertype"=>$Trade["alias_key"])).'">Mời Quý khách xem '.$Trade["type_name"].' khác tại đây</a>');
+				if(!$permissions["valid"]) {
+					flash($Trade["type_name"]." đã hết hạn", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"offer_main","offertype"=>$Trade["alias_key"])).'">Mời Quý khách xem '.$Trade["type_name"].' khác tại đây</a>');
+				} else {
+					if($Trade["valid_status"] == 0) {
+						setvar("pending","<span class='unvalid'>Không hợp lệ (".$Trade["valid_message"].")</span>");
+					} elseif ($Trade["valid_status"] == 3) {
+						setvar("pending","<span class='pending'>Đang đợi kiểm duyệt (".$Trade["valid_message"].")</span>");
+					}				
+				}
+				
 			}
 			
 			$this->trade->clicked($customer_code, $Trade);
@@ -1782,6 +1798,42 @@ class Offer extends PbController {
 			
 			$this->render("offers/detail");
 		}
+	}
+	
+	function validation() {
+		$pb_userinfo = pb_get_member_info();
+		$permissions = $this->trade->getPermisstions($_POST['id'], $pb_userinfo["pb_userid"]);
+		
+		//setvar("permissions",$permissions);
+		//var_dump($_SERVER['HTTP_REFERER']);
+		
+		//validations
+		if(isset($_POST["unvalid"])) {
+			//var_dump($_POST);
+			
+			if($permissions["unvalid"]) {
+				$valids["valid_status"] = 0;
+				$valids["valid_message"] = $_POST['message'];
+				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
+				$valids["valid_date"] = date("Y-m-d H:i:s");
+				
+				$this->trade->save($valids,"update",intval($_POST['id']));
+			}
+		}
+		if(isset($_POST["valid"])) {
+			//var_dump($_POST);
+			
+			if($permissions["valid"]) {
+				$valids["valid_status"] = 1;
+				//$valids["valid_message"] = $_POST['message'];
+				//$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
+				$valids["valid_date"] = date("Y-m-d H:i:s");
+				
+				$this->trade->save($valids,"update",intval($_POST['id']));
+			}
+		}
+		
+		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 }
 ?>

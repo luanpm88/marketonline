@@ -83,6 +83,9 @@
 
 
 <div class="row">
+    {if $pending}
+		<div class="item_pending">{$pending}</div>
+	{/if}
   <div class="fifteen columns" style="padding-left: 0">
 
     <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
@@ -107,7 +110,32 @@
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=offer_main}">Thương mại</a> <span class="delim">/</span>{$Trade.industry_names}</div>
 
-    <h1 class="page-title">{$Trade.name}</h1>
+    <h1 class="page-title">{$Trade.name}
+	<div class="moderator_actions">
+			{if $permissions.unvalid}
+				<a href="#unvalid" class="unvalid" title="Bài viết không hợp lệ">Unvalid</a>
+				<div id="unvalid" style="display: none">
+					<form action="{the_url module='root-url'}index.php?do=offer&action=validation" onsubmit="{literal}if($('.mod_message').val().trim() != '') {return true} else {$('.mod_message').addClass('error');$('.mod_message').focus();return false}{/literal}" class="moderator_form" method="POST">
+						<label>Lý do không hợp lệ: </label>
+						<input type="hidden" name="id" value="{$Trade.id}" />
+						<input type="text" name="message" class="mod_message" />
+						<input type="submit" name="unvalid" value="Gửi" />
+					</form>
+				</div>
+			{/if}
+			{if $permissions.valid}
+				<a href="#valid" class="" title="Bài viết hợp lệ">Valid</a>
+				<div id="valid" style="display: none">
+					<form action="{the_url module='root-url'}index.php?do=offer&action=validation" class="moderator_form" method="POST">
+						<p>Xác nhận bài viết này hợp lệ?</p>
+						<input type="hidden" name="id" value="{$Trade.id}" />
+						<input type="submit" name="valid" value="Hợp lệ" />
+					</form>
+				</div>
+			{/if}
+		</div>
+    </h1>
+		
     
   </div>
 

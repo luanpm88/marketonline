@@ -495,6 +495,74 @@ class Trades extends PbModel {
 		$result['thumb'] = pb_get_attachmenturl($result[$pic_col], '', 'small', '150_120');
 		$result['url'] = $this->url(array("module"=>"offer", "id"=>$result['id']));
 	}
+	function getPermisstions($pid, $mid) {
+		uses("moderator","trade","industry","member");
+		$moderatordb = new Moderators();
+		$tradedb = new Trades();
+		$industrydb = new Industries();
+		$memberdb = new Members();
+		
+		$permissions = array("valid"=>false, "unvalid"=>false);
+		
+		$trade = $tradedb->read("id,industry_id,valid_status,valid_moderator", intval($pid));
+		$moderator = $moderatordb->fields("*", array("member_id = ".intval($mid),"status=1"));
+		$member_info = $memberdb->getInfoById($mid);
+		//var_dump($member_info["role"]);
+		
+		if(count($moderator)) {			
+			$types = explode(",",$moderator["manage_types"]);
+			$industries = explode(",",$moderator["manage_industries"]);
+			$rights = explode(",",$moderator["rights"]);
+			
+			$type = "trade";
+			
+			if(in_array($type,$types)) {
+				//var_dump($moderator);
+				
+				$industry = $industrydb->read("id,level,parent_id", intval($trade["industry_id"]));
+				if($industry["level"] == 2) {
+					$industry_id = $industry["id"];
+				} elseif ($industry["level"] == 3) {
+					$industry_id = $industry["parent_id"];
+				} elseif ($industry["level"] == 4) {
+					$industry = $industrydb->read("id,level,parent_id", intval($industry["parent_id"]));
+					$industry_id = $industry["parent_id"];
+				}
+				
+				//var_dump($permissions);
+				//var_dump($industries);
+				if(in_array($industry_id,$industries)) {
+					foreach($permissions as $key => $per) {
+						if(in_array($key,$rights)) {
+							$permissions[$key] = true;
+						}
+					}
+					if($permissions["unvalid"]) {
+						if($trade["valid_status"] == 0 || ($trade["valid_status"] == 3 && $trade["valid_moderator"] != $mid)) {
+							$permissions["unvalid"] = false;
+						}
+					}
+					if($permissions["valid"]) {
+						if($trade["valid_status"] == 1 || ($trade["valid_status"] == 3 && $trade["valid_moderator"] != $mid)) {
+							$permissions["valid"] = false;							
+						}
+					}					
+				}
+			}
+		}
+		
+		//for admin
+		//var_dump($trade["valid_status"]);
+		if($member_info["role"] == 'admin' && (in_array($trade["valid_status"],array(0,3)))) {
+			$permissions["valid"] = true;
+		}
+		if($member_info["role"] == 'admin' && (in_array($trade["valid_status"],array(1)))) {
+			$permissions["unvalid"] = true;
+		}
+		
+		//var_dump($permissions);
+		return $permissions;
+	}
 	
 }
 ?>
