@@ -9,7 +9,7 @@
 $office_theme_name = "";
 require(CACHE_LANG_PATH.'lang_office.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("member", "memberfield", "company", "job", "employee", "saleorder");
+uses("member", "memberfield", "company", "job", "employee", "saleorder","moderator");
 $job = new Jobs();
 $saleorder = new Saleorders();
 $employee = new Employees();
@@ -17,6 +17,7 @@ $member = new Members();
 $memberfield = new Memberfields();
 $company = new Companies();
 $company_controller = new Company();
+$moderator = new Moderators();
 $smarty->template_dir = PHPB2B_ROOT. "templates/office/";
 setvar("office_theme_path", "../templates/office/");
 $smarty->setCompileDir($viewhelper->office_dir.DS);
@@ -51,6 +52,7 @@ if (empty($_SESSION['MemberID']) || empty($_SESSION['MemberName'])) {
 $the_memberid = intval($_SESSION['MemberID']);
 $the_membername = $_SESSION['MemberName'];
 $pb_userinfo = $member->getInfoById($the_memberid);
+
 //if caches
 $cache_data = array();
 $pdb->Execute("DELETE FROM {$tb_prefix}membercaches WHERE expiration<".$time_stamp);
@@ -61,6 +63,8 @@ if (empty($result)) {
 	$cache_data = @unserialize($result['info']);
 }
 $memberinfo = $cache_data['member'];
+$memberinfo["permissions"] = $moderator->getTypePermisstions($pb_userinfo["id"]);
+
 $companyinfo = $cache_data['company'];
 $companyinfo["logo"] = pb_get_attachmenturl($companyinfo['picture'], '', 'small');
 $company_id = $companyinfo['id'];

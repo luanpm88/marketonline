@@ -3,24 +3,68 @@
 	</tr>
 	<tr>
 	<td>
+		<!--{if $MEMBER.permissionsss}-->
+			<table class="menu_width167">
+				<tr>
+					<td>
+						<table class="menu_nav title_nav">
+							<tr>
+								<td width="10"></td>
+								<td class="title_bar" onclick="if($('#MenuModerator').length>0) $('#MenuModerator').toggle();"><a name="menu_top"></a>Quản trị viên</td>
+								<td width="5"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr>
+					<td align="center">
+						<table class="menu_nav_content" id="MenuModerator">
+							<!--{foreach item=item from=$MEMBER.permissions key=right}-->
+								<!--{if $right=='product'}-->
+									<tr class="MenuItem1">
+									      <th><img src="{$office_theme_path}images/hr.gif"></th>
+									      <td><a href="moderator.php?type={$right}">Sản phẩm</a></td>
+									</tr>								
+								<!--{/if}-->
+								<!--{if $right=='service'}-->
+									<tr class="MenuItem1">
+									      <th><img src="{$office_theme_path}images/hr.gif"></th>
+									      <td><a href="moderator.php?type={$right}">Dịch vụ</a></td>
+									</tr>								
+								<!--{/if}-->
+								<!--{if $right=='trade'}-->
+									<tr class="MenuItem1">
+									      <th><img src="{$office_theme_path}images/hr.gif"></th>
+									      <td><a href="moderator.php?type={$right}">Thương mại</a></td>
+									</tr>								
+								<!--{/if}-->
+							<!--{/foreach}-->								  
+						</table>
+						
+						
+				       </td>
+				</tr>
+			</table>
+		<!--{/if}-->
+		
 		<!--{if $menu.offer}-->
 		
 			<!--{if $showEmployeeShop && $membertype_id != 5 && $membertype_id != 6}-->
 		
-				<table class="menu_width167">
+			<table class="menu_width167">
 				<tr>
-				  <td>
-			  <table class="menu_nav title_nav">
-					  <tr>
-						<td width="10"></td>
-						<td class="title_bar" onclick="if($('#MenuTrade').length>0) $('#MenuTrade').toggle();"><a name="menu_top"></a>{lang business_information}</td>
-						<td width="5"></td>
-					  </tr>
-				  </table>
-			  </td>
+					<td>
+						<table class="menu_nav title_nav">
+							<tr>
+								<td width="10"></td>
+								<td class="title_bar" onclick="if($('#MenuTrade').length>0) $('#MenuTrade').toggle();"><a name="menu_top"></a>{lang business_information}</td>
+								<td width="5"></td>
+							</tr>
+						</table>
+					</td>
 				</tr>
 				<tr>
-				  <td align="center">
+					<td align="center">
 					
 					
 					
@@ -50,7 +94,7 @@
 						
 				       </td>
 				</tr>
-			  </table>
+			</table>
 			
 			<!--{/if}-->
 		
