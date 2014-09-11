@@ -589,5 +589,73 @@ class Products extends PbModel {
 		
 		return $a;
 	}
+	
+	function getPermisstions($pid, $mid) {
+		uses("moderator","product","industry","member");
+		$moderatordb = new Moderators();
+		$productdb = new Products();
+		$industrydb = new Industries();
+		$memberdb = new Members();
+		
+		$permissions = array("valid"=>false, "unvalid"=>false);
+		
+		$product = $productdb->read("id,industry_id,service,valid_status,valid_moderator", intval($pid));
+		$moderator = $moderatordb->fields("*", array("member_id = ".intval($mid),"status=1"));
+		$member_info = $memberdb->getInfoById($mid);
+		//var_dump($member_info["role"]);
+		
+		if(count($moderator)) {			
+			$types = explode(",",$moderator["manage_types"]);
+			$industries = explode(",",$moderator["manage_industries"]);
+			$rights = explode(",",$moderator["rights"]);
+			
+			if($product["service"]) {
+				$type = 'service';
+			} else {
+				$type = 'product';
+			}
+			
+			if(in_array($type,$types)) {
+				//var_dump($moderator);
+				
+				$industry = $industrydb->read("id,level,parent_id", intval($product["industry_id"]));
+				if($industry["level"] == 2) {
+					$industry_id = $industry["id"];
+				} elseif ($industry["level"] == 3) {
+					$industry_id = $industry["parent_id"];
+				} elseif ($industry["level"] == 4) {
+					$industry = $industrydb->read("id,level,parent_id", intval($industry["parent_id"]));
+					$industry_id = $industry["parent_id"];
+				}
+				
+				//var_dump($industry_id);
+				//var_dump($industries);
+				if(in_array($industry_id,$industries)) {
+					foreach($permissions as $key => $per) {
+						if(in_array($key,$rights)) {
+							$permissions[$key] = true;
+						}
+					}
+					if($permissions["unvalid"]) {
+						if($product["valid_status"] == 0 || ($product["valid_status"] == 3) && $product["valid_moderator"] != $mid) {
+							$permissions["unvalid"] = false;
+						}
+					}
+					if($permissions["valid"]) {
+						if($product["valid_status"] == 1 || ($product["valid_status"] == 3) && $product["valid_moderator"] != $mid) {
+							$permissions["valid"] = false;							
+						}
+					}
+					
+					//for admin
+					if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(0,3)))) {
+						$permissions["valid"] = true;
+					}
+				}
+			}
+		}
+		//var_dump($permissions);
+		return $permissions;
+	}
 }
 ?>

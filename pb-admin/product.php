@@ -209,7 +209,7 @@ if (isset($_GET['do'])) {
 		
 		
 		$product->saveField("valid_status", 0, intval($id));
-		$product->saveField("valid_status_message", $_GET["message"], intval($id));
+		$product->saveField("valid_message", $_GET["message"], intval($id));
 		
 		$iiffoo = $product->read("*", $id);
 		
@@ -221,7 +221,7 @@ if (isset($_GET['do'])) {
 			$typeurl = "";
 		}
 		
-		$content = "<a href='".URL."virtual-office/product.php".$typeurl."'>".$kindname." '".$iiffoo["name"]."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_status_message"].")</a>";
+		$content = "<a href='".URL."virtual-office/product.php".$typeurl."'>".$kindname." '".$iiffoo["name"]."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_message"].")</a>";
 		$sms['content'] = mysql_real_escape_string($content);
 		$sms['title'] = mysql_real_escape_string($kindname." không hợp lệ");
 		$sms['membertype_ids'] = '[1][2][3]';

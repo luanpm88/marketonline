@@ -519,7 +519,7 @@ if (!empty($result)) {
 		}
 		if($result[$i]['valid_status'] == 0) {
 			$string = '<img title="Không hợp lệ" src="../templates/office/images/unpublished.png">';
-			$string .= '<br /><span class="unvalid_message">'.$result[$i]['valid_status_message'].'</span>';
+			$string .= '<br /><span class="unvalid_message">'.$result[$i]['valid_message'].'</span>';
 			$string .= '<br /><a href="offer.php?do=edit&id='.$result[$i]['id'].'" class="unvalid_edit">Chỉnh sửa</a>';
 			//$string .= '<a href="offer.php?do=unvalid&id='.$result[$i]["id"].'">Cấm</a>';
 			$result[$i]['validation'] = $string;

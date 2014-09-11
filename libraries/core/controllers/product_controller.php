@@ -690,6 +690,11 @@ class Product extends PbController {
 		$tag = new Tags();
 		$member = new Members();
 		$form = new Forms();
+		
+		$pb_userinfo = pb_get_member_info();
+		$permissions = $this->product->getPermisstions($_GET['id'], $pb_userinfo["pb_userid"]);
+		setvar("permissions",$permissions);
+		
 		$tmp_status = explode(",",L('product_status', 'tpl'));
 		$viewhelper->setPosition(L("product_center", 'tpl'), 'index.php?do=product');
 		$viewhelper->setTitle(L("product_center", 'tpl'));
@@ -721,12 +726,16 @@ class Product extends PbController {
 		
 		
 		if(empty($info) || !$info || $info["valid_status"] != 1) {
-			$pb_userinfo = pb_get_member_info();
-			$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
-			if($member_info["role"] != "admin") {
+			//$pb_userinfo = pb_get_member_info();
+			//$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
+			if(!$permissions["valid"]) {
 				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
 			} else {
-				setvar("pending","Đang kiểm duyệt (".$info["valid_status_message"].")");
+				if($info["valid_status"] == 0) {
+					setvar("pending","<span class='unvalid'>Không hợp lệ (".$info["valid_message"].")</span>");
+				} elseif ($info["valid_status"] == 3) {
+					setvar("pending","<span class='pending'>Đang đợi kiểm duyệt (".$info["valid_message"].")</span>");
+				}				
 			}
 		}
 		if (isset($info['formattribute_ids'])) {
@@ -5912,6 +5921,40 @@ class Product extends PbController {
 		}
 		echo count($ids)."d";
 		echo implode(",", $ids);
+	}
+	
+	function validation() {
+		$pb_userinfo = pb_get_member_info();
+		$permissions = $this->product->getPermisstions($_POST['id'], $pb_userinfo["pb_userid"]);
+		//setvar("permissions",$permissions);
+		//var_dump($_SERVER['HTTP_REFERER']);
+		//validations
+		if(isset($_POST["unvalid"])) {
+			//var_dump($_POST);
+			
+			if($permissions["unvalid"]) {
+				$valids["valid_status"] = 0;
+				$valids["valid_message"] = $_POST['message'];
+				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
+				$valids["valid_date"] = date("Y-m-d H:i:s");
+				
+				$this->product->save($valids,"update",intval($_POST['id']));
+			}
+		}
+		if(isset($_POST["valid"])) {
+			//var_dump($_POST);
+			
+			if($permissions["valid"]) {
+				$valids["valid_status"] = 1;
+				//$valids["valid_message"] = $_POST['message'];
+				//$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
+				$valids["valid_date"] = date("Y-m-d H:i:s");
+				
+				$this->product->save($valids,"update",intval($_POST['id']));
+			}
+		}
+		
+		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 }
 ?>

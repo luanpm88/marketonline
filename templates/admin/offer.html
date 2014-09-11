@@ -20,7 +20,13 @@
     <div class="fontr"> 
         <form name="search_frm" id="SearchFrm" method="get" action="offer.php"> 
         <input type="hidden" name="do" value="search" />
-             <div> 
+             <div>
+		Validation: 
+		<select name="validation" onchange="$('#SearchFrm').submit()">
+			<option value="">none</option>
+			<option {if $smarty.get.validation=='all'}selected="selected"{/if} value="all">All</option>
+			
+		</select>
                 <select class="querySelect" name="type_id">
 				<option value="0">{lang types}</option>
                 <!--{foreach from=$TradeTypes item=item key=key}-->

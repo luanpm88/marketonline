@@ -10733,19 +10733,62 @@ input[name=redirect]
     min-height: 0;
 }
 .item_pending {
-    color: red;
     font-size: 22px;
     margin-top: -14px;
     position: absolute;
     text-align: center;
     width: 1200px;
-    z-index: 1000;
+    z-index: 10000;
 }
 .item_pending span {
     background: #fff;
+    padding: 2px 20px;
+}
+.item_pending span.pending{
+    color: orange;
+}
+.item_pending span.unvalid{
+    color: red;
 }
 .chat_friend_list .main_list ul li.invite a {
     font-size: 16px;
     font-weight: bold;
     padding: 2px;
+}
+.moderator_actions {
+    display: inline-block;
+}
+.moderator_actions a {
+    background: url("../image/valid.png") no-repeat scroll 0 0 / 20px auto rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
+    text-indent: -9000px;
+    width: 20px;
+}
+.moderator_actions a.unvalid {
+    background: url("../image/unvalid.png") no-repeat scroll 0 0 / 20px auto rgba(0, 0, 0, 0);
+}
+.moderator_form {
+    padding: 20px;
+}
+.moderator_form label {
+    
+}
+.moderator_form input[type="text"] {
+    width: 300px;
+}
+.moderator_form input[type="submit"] {
+    background: none repeat scroll 0 0 #3b984c;
+    border: medium none;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+.moderator_form input.error {
+    border-color: red;
 }
