@@ -648,6 +648,8 @@ class Products extends PbModel {
 					}					
 				}
 			}
+		} else {
+			return false;
 		}
 		//for admin
 		if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(0,3)))) {
