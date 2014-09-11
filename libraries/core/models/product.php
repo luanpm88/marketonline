@@ -657,8 +657,43 @@ class Products extends PbModel {
 		if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(1)))) {
 			$permissions["unvalid"] = true;
 		}
+		
 		//var_dump($permissions);
 		return $permissions;
+	}
+	
+	function getTypePermisstions($mid) {
+		uses("moderator","product","industry","member");
+		$moderatordb = new Moderators();
+		$productdb = new Products();
+		$industrydb = new Industries();
+		$memberdb = new Members();
+		
+		$permissions = array("valid"=>false, "unvalid"=>false);
+				
+		$moderator = $moderatordb->fields("*", array("member_id = ".intval($mid),"status=1"));
+		$member_info = $memberdb->getInfoById($mid);
+		//var_dump($member_info["role"]);
+		
+		////for admin
+		//if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(0,3)))) {
+		//	$permissions["valid"] = true;
+		//}
+		//if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(1)))) {
+		//	$permissions["unvalid"] = true;
+		//}		
+		
+		if(count($moderator)) {
+			$types = explode(",",$moderator["manage_types"]);
+			$industries = explode(",",$moderator["manage_industries"]);
+			$rights = explode(",",$moderator["rights"]);
+			
+			if($product["service"]) {
+				$type = 'service';
+			} else {
+				$type = 'product';
+			}
+		}
 	}
 }
 ?>
