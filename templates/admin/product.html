@@ -16,9 +16,16 @@
 </div>
 <div class="mrightTop"> 
     <div class="fontr"> 
-        <form name="search_frm" id="SearchFrm" method="get" action="product.php"> 
+        <form name="search_frm" id="SearchFrm" method="get" action="product.php">
+		
         <input type="hidden" name="do" value="search" />
-             <div> 
+             <div>
+		Bài duyệt: 
+		<select name="validation" onchange="$('#SearchFrm').submit()">
+			<option value="">none</option>
+			<option {if $smarty.get.validation=='all'}selected="selected"{/if} value="all">All</option>
+			
+		</select>
 				{lang member_name}{lang colon} <input class="queryInput" type="text" name="username" value="{$smaty.get.username}" /> 
 				{lang company_name}{lang colon}<input class="queryInput" type="text" name="companyname" value="{$smaty.get.companyname}" /> 
                 <select class="querySelect" name="status" id="ProductStatus">

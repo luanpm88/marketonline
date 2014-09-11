@@ -196,6 +196,11 @@ if (isset($_GET['do'])) {
 			$condition.= Times::dateConvert($_GET['ToDate']);
 			$conditions[] = $condition;
 		}
+		
+		if(!empty($_GET['validation'])){
+			$conditions[]="valid_status!=1";
+			$validation_order = "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, ";
+		}
 	}
 	if ($do == 'refresh') {
 		$product->saveField("created", $time_stamp, $id);
@@ -234,7 +239,7 @@ $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Product.member_id";
 $page->setPagenav($amount);
 $fields = "Product.service, m.username,Product.valid_status,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
-$result = $product->findAll($fields, $joins, $conditions,"CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Product.id DESC",$page->firstcount,$page->displaypg);
+$result = $product->findAll($fields, $joins, $conditions,$validation_order."Product.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['pubdate'] = df($result[$i]['created']);

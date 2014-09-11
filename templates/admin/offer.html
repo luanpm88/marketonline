@@ -21,7 +21,7 @@
         <form name="search_frm" id="SearchFrm" method="get" action="offer.php"> 
         <input type="hidden" name="do" value="search" />
              <div>
-		Validation: 
+		Bài duyệt: 
 		<select name="validation" onchange="$('#SearchFrm').submit()">
 			<option value="">none</option>
 			<option {if $smarty.get.validation=='all'}selected="selected"{/if} value="all">All</option>

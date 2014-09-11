@@ -645,14 +645,16 @@ class Products extends PbModel {
 						if($product["valid_status"] == 1 || ($product["valid_status"] == 3) && $product["valid_moderator"] != $mid) {
 							$permissions["valid"] = false;							
 						}
-					}
-					
-					//for admin
-					if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(0,3)))) {
-						$permissions["valid"] = true;
-					}
+					}					
 				}
 			}
+		}
+		//for admin
+		if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(0,3)))) {
+			$permissions["valid"] = true;
+		}
+		if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(1)))) {
+			$permissions["unvalid"] = true;
 		}
 		//var_dump($permissions);
 		return $permissions;
