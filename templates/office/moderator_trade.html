@@ -1,0 +1,127 @@
+<!--{assign var="page_title" value="`$_business_information`"}-->
+<!--{include file="header.html"}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem_<!--{/literal}-->{$right}<!--{literal}-->').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>{lang business_information}</h2></div>
+     
+     {if $notice}<p class="notice" style="margin-bottom: 0px;">{$notice}</p>{/if}
+     
+      <table class="offer_count">
+        <tr>
+          <td class="orange"></td>
+          <td></td>
+        </tr>
+         <tr>
+          <td class="nntype">
+		
+		<a href="moderator_trade.php" {if !$TypeID}class="active"{/if}>Tất cả</a>
+	    
+	    <a href="moderator_trade.php?typeid=16" {if $TypeID == 16}class="active"{/if}>{lang supply_corp}</a>
+	    <a href="moderator_trade.php?typeid=14" {if $TypeID == 14}class="active"{/if}>{lang buy_offer}</a>
+	    <a href="moderator_trade.php?typeid=9" {if $TypeID == 9}class="active"{/if}>{lang sell_offer}</a>
+	    <a href="moderator_trade.php?typeid=10" {if $TypeID == 10}class="active"{/if}>{lang supply_offer}</a>
+	    
+	    
+	  </td>
+          <td class="height35"><a title="{lang release}{$ActionName}" href="offer.php?do=edit" class="btn_publish">{lang release_supply}</a></td>
+        </tr>
+      </table>      
+      <form name="listfrm" action="{$smarty.server.PHP_SELF}" method="post">
+	  <!-- {formhash} -->
+      <table class="offer_publish_list">
+        <tr>
+          <td>
+          <table class="bglist">
+            <tr>
+              <th width="9%">{lang sample_image}</th>
+              <th width="30%" style="text-align: left">{lang content}</th>
+              <th width="15%">{lang due_date}</th>
+              <th width="15%">{lang published}</th>
+	      <th width="15%">Phê duyệt</th>
+              <th style="text-align: left" width="15%">{lang operation}</th>
+              
+            </tr>
+			<!--{foreach from=$Items item=item}-->
+            <tr>
+              <td><img class="iiimg" style="margin: 3px;" src="{$item.image}" width=75></td>
+              <td style="text-align: left" valign="top">
+		<strong>
+			    
+				{$item.title|pl|truncate:100}
+
+			</strong>
+			
+			<p>{$item.content|pl|strip_tags|truncate:80}</p>
+			{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
+			
+	      
+	      
+	      </td>
+              <td><!--{if $item.expire_time<$TimeStamp}-->{lang has_expired}{else}{$item.expire_date}<!--{/if}--></td>
+              <td>
+		
+		    <!--{if $item.status eq 1}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
+			    <img src="{$office_theme_path}images/published.png">
+			</a>
+		    <!--{else}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}" title="{lang goods_on_shelves}">
+			    <img src="{$office_theme_path}images/unpublished.png">
+			</a>
+		    <!--{/if}-->
+	      
+	      </td>
+	      <td>{$item.validation}
+			{if $pb_userinfo.role=='admin'}
+				<br />
+				<span style="font-size: 13px;">Quản trị: {$item.mod_username}</span>
+			{/if}
+	      </td>
+              <td style="text-align: left">
+		<a href="{$item.url}" target="_blank">Xem & Phê duyệt</a>
+	      </td>
+              
+            </tr>
+			<!--{foreachelse}-->
+			<!--{/foreach}-->
+          </table></td>
+        </tr>
+
+        <tr>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>
+          <table class="room_pages">
+              <tr>
+                <td>{$ByPages}</td>
+              </tr>
+          </table>
+          </td>
+        </tr>
+      </table>
+      </form>
+      <!--<table class="attentions" >     
+          <tr>
+            <td class="bottom">{lang offer_post_attention}</td>
+          </tr>
+    </table>-->
+    </div>
+</div>
+<!--{include file="footer.html"}-->
