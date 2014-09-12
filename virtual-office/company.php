@@ -33,7 +33,7 @@ else if($memgroup == 2)
 	$tpl_file = "company";
 else if($memgroup == 3)
 	$tpl_file = "shop";
-else if($memgroup == 1)
+else
 	$tpl_file = "person";
 
 if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == "save") {
