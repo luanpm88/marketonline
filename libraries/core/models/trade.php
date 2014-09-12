@@ -556,7 +556,7 @@ class Trades extends PbModel {
 		if($member_info["role"] == 'admin' && (in_array($trade["valid_status"],array(0,3)))) {
 			$permissions["valid"] = true;
 		}
-		if($member_info["role"] == 'admin' && (in_array($trade["valid_status"],array(1)))) {
+		if($member_info["role"] == 'admin' && (in_array($trade["valid_status"],array(1,3)))) {
 			$permissions["unvalid"] = true;
 		}
 		

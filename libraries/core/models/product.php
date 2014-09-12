@@ -643,7 +643,7 @@ class Products extends PbModel {
 					}
 					if($permissions["valid"]) {
 						if($product["valid_status"] == 1 || ($product["valid_status"] == 3) && $product["valid_moderator"] != $mid) {
-							$permissions["valid"] = false;							
+							$permissions["valid"] = false;				
 						}
 					}					
 				}
