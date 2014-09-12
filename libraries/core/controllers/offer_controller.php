@@ -1641,9 +1641,9 @@ class Offer extends PbController {
 			//var_dump($permissions);
 			
 			$Trade = $this->trade->read("Trade.*, type.name as type_name, type.alias_key", $_GET["id"], null, null, array("LEFT JOIN {$this->trade->table_prefix}tradetypes AS type ON type.id=Trade.type_id"));
-			
+			//var_dump($Trade);
 			if($Trade["status"] == 0 || $Trade["valid_status"] != 1) {
-				if($permissions["valid"] || $Trade["valid_moderator"] == $pb_userinfo["pb_userid"]) {
+				if(!empty($Trade) && ($permissions["valid"] || $Trade["valid_moderator"] == $pb_userinfo["pb_userid"])) {
 					if($Trade["valid_status"] == 0) {
 						setvar("pending","<span class='unvalid'>Không hợp lệ (".$Trade["valid_message"].")</span>");
 					} elseif ($Trade["valid_status"] == 3) {
