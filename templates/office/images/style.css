@@ -3464,3 +3464,6 @@ a.unvalid_edit {
 .main_content {
     padding-bottom: 30px;
 }
+.wrap {
+    background: url("grey_dot_1px.png") repeat-y scroll 210px 1px rgba(0, 0, 0, 0);
+}
