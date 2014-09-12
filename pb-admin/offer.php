@@ -7,9 +7,10 @@
  */
 require("../libraries/common.inc.php");
 require(LIB_PATH .'time.class.php');
-uses("trade","tag","tradefield","attachment","keyword","membertype","setting","typeoption","area","industry","meta","message");
+uses("modlog","trade","tag","tradefield","attachment","keyword","membertype","setting","typeoption","area","industry","meta","message");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require("session_cp.inc.php");
+$modlog = new Modlogs();
 $attachment = new Attachment('pic');
 $area = new Areas();
 $meta = new Metas();
@@ -189,13 +190,30 @@ if(isset($_GET['do'])){
 	}
 	
 	if ($do=="valid" && $id) {
-		$trade->saveField("valid_status", 1, intval($id));
+		$mods["valid_status"] = 1;
+		//$mods["valid_message"] = $_GET["message"];
+		//$mods["valid_moderator"] = 1;
+		$mods["valid_date"] = date("Y-m-d H:i:s");		
+		$trade->save($mods,"update",intval($id));
+		//update modlog
+		$mods["valid_message"] = "Xác nhận";
+		$mods["type"] = "trade";
+		$mods["valid_moderator"] = 1;
+		$mods["item_id"] = $id;
+		$modlog->save($mods);
 	}
 	if ($do=="unvalid" && $id) {
 		
 		//var_dump($iiffoo);
-		$trade->saveField("valid_status", 0, intval($id));
-		$trade->saveField("valid_message", $_GET["message"], intval($id));
+		$mods["valid_status"] = 0;
+		$mods["valid_message"] = $_GET["message"];
+		$mods["valid_moderator"] = 1;
+		$mods["valid_date"] = date("Y-m-d H:i:s");		
+		$trade->save($mods,"update",intval($id));
+		//update modlog
+		$mods["type"] = "trade";
+		$mods["item_id"] = $id;
+		$modlog->save($mods);
 		
 		$iiffoo = $trade->read("Trade.*, type.name as type_name, type.id as type_id", $id, null, null, array("LEFT JOIN {$trade->table_prefix}tradetypes type ON type.id=Trade.type_id "));
 		

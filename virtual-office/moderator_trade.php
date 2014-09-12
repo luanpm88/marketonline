@@ -72,8 +72,8 @@ $page->setPagenav($amount);
 
 $joins = array();
 $joins[] = "LEFT JOIN {$trade->table_prefix}members AS m ON Trade.valid_moderator=m.id";
-$result = $trade->findAll("m.username as mod_username, Trade.*", $joins, $conditions, "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Trade.submit_time DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
-//var_dump($result);
+$result = $trade->findAll("m.username as mod_username, Trade.*", $joins, $conditions, "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Trade.valid_date DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
+
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 	    $result[$i]["price"] = number_format($result[$i]["price"], 0, ',', '.');;

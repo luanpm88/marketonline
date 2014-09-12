@@ -7,7 +7,7 @@
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
-uses("product","producttype","form","attachment","tag","brand","productcategory","area","industry");
+uses("modlog","product","producttype","form","attachment","tag","brand","productcategory","area","industry");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
 
@@ -23,6 +23,7 @@ $tag = new Tags();
 $form = new Forms();
 $product = new Products();
 $producttype = new Producttypes();
+$modlog = new Modlogs();
 if($pb_userinfo["role"] == 'admin') {
 	$conditions[]= "(valid_moderator != 0 OR valid_status != 1)";
 } else {
@@ -36,6 +37,53 @@ setvar("getvar", $_GET);
 
 //echo $_SERVER['HTTP_REFERER'];
 $tpl_file = "moderator";
+
+
+
+
+
+
+if (isset($_GET['do']) || isset($_GET['act'])) {
+	$do = trim($_GET['do']);
+	$action = null;
+	if(isset($_GET['action'])) $action = trim($_GET['action']);
+	if (isset($_GET['id'])) {
+		$id = intval($_GET['id']);
+	}
+	else
+	{
+		setvar("back_link", 0);
+	}
+	if ($do == "history" && $id) {		
+		$prod = $product->read("Product.*",$id);
+		
+		//LOGS
+		$condition = array("Modlog.item_id=".$id);		
+		$joins = array("LEFT JOIN {$modlog->table_prefix}members moderator ON moderator.id=Modlog.valid_moderator");
+		$joins[] = "LEFT JOIN {$modlog->table_prefix}products p ON p.id=Modlog.item_id";
+		$joins[] = "LEFT JOIN {$modlog->table_prefix}memberfields mf ON mf.member_id=moderator.id";
+		$logs = $modlog->findAll("mf.first_name, mf.last_name, p.name as item_name, Modlog.*",$joins,$condition,"Modlog.valid_date");
+		
+		$status_names = array(
+				1 => "Hợp lệ",
+				0 => "Không hợp lệ",
+				3 => "Chờ duyệt"
+			);
+		
+		setvar("right",$_GET["type"]);
+		setvar("status_names",$status_names);
+		setvar("item",$prod);
+		setvar("logs",$logs);
+		template("moderator.history");
+		exit;
+	}
+}
+
+
+
+
+
+
 
 if (isset($_GET['typeid']) && !empty($_GET['typeid'])) {
 	$conditions[] = "producttype_id = ".$_GET['typeid'];
@@ -67,7 +115,7 @@ $amount = $product->findCount(null, $conditions, "Product.id");
 
 $page->setPagenav($amount);
 
-$orderby = "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Product.created DESC";
+$orderby = "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Product.valid_date DESC";
 if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	$orderby = $_GET['order_by'];
 	$o_arr = explode(' ', $_GET['order_by']);

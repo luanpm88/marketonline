@@ -20,6 +20,7 @@ class Offer extends PbController {
 		$this->loadModel("tag");
 		$this->loadModel("language");
 		$this->loadModel("announcement");
+		$this->loadModel("modlog");
 	}
 	
 	function index()
@@ -1816,9 +1817,20 @@ class Offer extends PbController {
 				$valids["valid_status"] = 0;
 				$valids["valid_message"] = $_POST['message'];
 				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
-				$valids["valid_date"] = date("Y-m-d H:i:s");
-				
+				$valids["valid_date"] = date("Y-m-d H:i:s");			
 				$this->trade->save($valids,"update",intval($_POST['id']));
+				//update modlog
+				$valids["type"] = "trade";
+				$valids["item_id"] = $_POST['id'];
+				$this->modlog->save($valids);
+				
+				$iiffoo = $this->trade->read("Trade.*, type.name as type_name, type.id as type_id", $_POST['id'], null, null, array("LEFT JOIN {$this->trade->table_prefix}tradetypes type ON type.id=Trade.type_id "));
+		
+				$content = "<a href='".URL."virtual-office/offer.php?typeid=".$iiffoo["type_id"]."'>".$iiffoo["type_name"]." '".preg_replace('/\[.+\]/','',$iiffoo["title"])."' không hợp lệ. Vui lòng kiểm tra lại (".$iiffoo["valid_message"].")</a>";
+				$sms['content'] = mysql_real_escape_string($content);
+				$sms['title'] = mysql_real_escape_string($iiffoo["type_name"]." không hợp lệ");
+				$sms['membertype_ids'] = '[1][2][3]';
+				$this->message->SendToUser($pb_userinfo["pb_userid"], $iiffoo["member_id"], $sms);
 			}
 		}
 		if(isset($_POST["valid"])) {
@@ -1829,8 +1841,13 @@ class Offer extends PbController {
 				//$valids["valid_message"] = $_POST['message'];
 				//$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
 				$valids["valid_date"] = date("Y-m-d H:i:s");
-				
 				$this->trade->save($valids,"update",intval($_POST['id']));
+				//update modlog
+				$valids["valid_message"] = "Xác nhận";
+				$valids["type"] = "trade";
+				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
+				$valids["item_id"] = $_POST['id'];
+				$this->modlog->save($valids);				
 			}
 		}
 		

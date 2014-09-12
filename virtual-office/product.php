@@ -7,12 +7,13 @@
  */
 require("../libraries/common.inc.php");
 require("room.share.php");
-uses("product","producttype","form","attachment","tag","brand","productcategory","area","industry");
+uses("modlog","product","producttype","form","attachment","tag","brand","productcategory","area","industry");
 require(PHPB2B_ROOT.'libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
 
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
 check_permission("product");
+$modlog = new Modlogs();
 $area = new Areas();
 $industry = new Industries();
 $productcategory = new Productcategories();
@@ -286,10 +287,20 @@ if (isset($_POST['save'])) {
 			$product->params['data']['product']['modified'] = $time_stamp;
 			$product->params['data']['product']['formattribute_ids'] = $item_ids;
 			
-			$ppp = $product->read("valid_status", $id);
+			$ppp = $product->read("*", $id);
 			if($ppp["valid_status"] == 0) {
 				$product->params['data']['product']["valid_status"] = 3;
+				
+				$valids["valid_status"] = 3;
+				$valids["valid_date"] = date("Y-m-d H:i:s");
+				$valids["valid_message"] = "Đã sửa";
+				$valids["type"] = "product";
+				$valids["valid_moderator"] = $ppp["member_id"];
+				$valids["item_id"] = $id;
+				$modlog->save($valids);
 			}
+			
+			
 			
 			
 			

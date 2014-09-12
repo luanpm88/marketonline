@@ -3441,3 +3441,12 @@ a.unvalid_edit {
     padding: 5px !important;
     width: 161px;
 }
+.logs_status1 {
+    color: green;
+}
+.logs_status0 {
+    color: red;
+}
+.logs_status3 {
+    color: orange;
+}

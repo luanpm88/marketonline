@@ -438,6 +438,8 @@ class Members extends PbModel {
 			return -1;
 		}elseif (strcmp($true_pass,$this->authPasswd($upass))!=0){
 			return -3;
+		}elseif ($tmpUser['status'] == 3) {
+			return -5;
 		}elseif ($tmpUser['status'] !=1) {
 			return -4;
 		}else {
@@ -464,7 +466,7 @@ class Members extends PbModel {
 		if(strlen($uname)<1 || strlen($uname)>255) {
 			return false;
 		}
-		$sql = "SELECT m.id,m.username,m.userpass FROM {$this->table_prefix}members m WHERE m.username='{$uname}'";
+		$sql = "SELECT m.id,m.username,m.userpass FROM {$this->table_prefix}members m WHERE m.username='{$uname}' AND m.status > 1";
 		$uinfo = $this->dbstuff->GetRow($sql);
 		if (!empty($uinfo) && $uinfo!='') {
 			if($set) $this->info = $uinfo;

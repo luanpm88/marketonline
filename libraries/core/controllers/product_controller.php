@@ -25,6 +25,7 @@ class Product extends PbController {
 		$this->loadModel("language");
 		$this->loadModel("announcement");
 		$this->loadModel("adzone");
+		$this->loadModel("modlog");
 	}
 	
 	function index()
@@ -5940,8 +5941,11 @@ class Product extends PbController {
 				$valids["valid_message"] = $_POST['message'];
 				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
 				$valids["valid_date"] = date("Y-m-d H:i:s");				
-				
 				$this->product->save($valids,"update",intval($_POST['id']));
+				//update modlog
+				$valids["type"] = "product";
+				$valids["item_id"] = $_POST['id'];
+				$this->modlog->save($valids);
 				
 				$ppp = $this->product->read("*",intval($_POST['id']));
 				//send notification
@@ -5968,8 +5972,13 @@ class Product extends PbController {
 				//$valids["valid_message"] = $_POST['message'];
 				//$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
 				$valids["valid_date"] = date("Y-m-d H:i:s");
-				
 				$this->product->save($valids,"update",intval($_POST['id']));
+				//update modlog
+				$valids["valid_message"] = "Xác nhận";
+				$valids["type"] = "product";
+				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
+				$valids["item_id"] = $_POST['id'];
+				$this->modlog->save($valids);
 			}
 		}
 		

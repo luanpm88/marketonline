@@ -10,7 +10,7 @@ require(PHPB2B_ROOT.'./libraries/page.class.php');
 require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
-uses("message","product","attachment", "tag", "typeoption","area","industry","meta","productadtype");
+uses("modlog","message","product","attachment", "tag", "typeoption","area","industry","meta","productadtype");
 $productadtype = new Productadtypes();
 $typeoption = new Typeoption();
 $area = new Areas();
@@ -21,6 +21,7 @@ $tag = new Tags();
 $product = new Products();
 $page = new Pages();
 $message = new Messages();
+$modlog = new Modlogs();
 $conditions = array();
 $tpl_file = "product";
 setvar("CheckStatus", $typeoption->get_cache_type("common_status"));
@@ -208,17 +209,33 @@ if (isset($_GET['do'])) {
 	}
 	
 	if ($do=="valid" && $id) {
-		$product->saveField("valid_status", 1, intval($id));
+		$mods["valid_status"] = 1;
+		//$mods["valid_message"] = $_GET["message"];
+		//$mods["valid_moderator"] = 1;
+		$mods["valid_date"] = date("Y-m-d H:i:s");		
+		$product->save($mods,"update",intval($id));
+		//update modlog
+		$mods["valid_message"] = "Xác nhận";
+		$mods["type"] = "product";
+		$mods["valid_moderator"] = 1;
+		$mods["item_id"] = $id;
+		$modlog->save($mods);
 		
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 	if ($do=="unvalid" && $id) {
 		
 		
-		$product->saveField("valid_status", 0, intval($id));
-		$product->saveField("valid_message", $_GET["message"], intval($id));
-		$product->saveField("valid_moderator", 1, intval($id));
-		$product->saveField("valid_date", date("Y-m-d H:i:s"), intval($id));
+		//var_dump($iiffoo);
+		$mods["valid_status"] = 0;
+		$mods["valid_message"] = $_GET["message"];
+		$mods["valid_moderator"] = 1;
+		$mods["valid_date"] = date("Y-m-d H:i:s");		
+		$product->save($mods,"update",intval($id));		
+		//update modlog
+		$mods["type"] = "product";
+		$mods["item_id"] = $id;
+		$modlog->save($mods);
 		
 		$iiffoo = $product->read("*", $id);
 		

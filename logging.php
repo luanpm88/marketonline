@@ -97,6 +97,8 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 			$member->validationErrors[] = L('login_pwd_false');
 		}elseif ($checked == (-4)) {
 			$member->validationErrors[] = L('member_checking');
+		}elseif ($checked == (-5)) {
+			$member->validationErrors[] = "Tài khoản đã bị cấm.";
 		}else {
 			$member->validationErrors[] = L('login_faild');
 		}
