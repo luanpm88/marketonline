@@ -23,7 +23,7 @@ $tag = new Tags();
 $form = new Forms();
 $product = new Products();
 $producttype = new Producttypes();
-if($pb_userinfo["role"] != 'admin') {
+if($pb_userinfo["role"] == 'admin') {
 	$conditions[]= "(valid_date != '' OR valid_moderator != '')";
 } else {
 	$conditions[]= "valid_moderator = ".$the_memberid;

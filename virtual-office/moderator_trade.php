@@ -33,7 +33,7 @@ $trade_controller = new Trade();
 $space_controller = new Space();
 $typeoption = new Typeoption();
 $conditions = array();
-if($pb_userinfo["role"] != 'admin') {
+if($pb_userinfo["role"] == 'admin') {
 	$conditions[]= "(valid_date != '' OR valid_moderator != '')";
 } else {
 	$conditions[]= "valid_moderator = ".$the_memberid;
