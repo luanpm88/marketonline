@@ -24,7 +24,7 @@ $form = new Forms();
 $product = new Products();
 $producttype = new Producttypes();
 if($pb_userinfo["role"] == 'admin') {
-	$conditions[]= "valid_moderator != 0";
+	$conditions[]= "(valid_moderator != 0 OR valid_status != 1)";
 } else {
 	$conditions[]= "valid_moderator = ".$the_memberid;
 }
