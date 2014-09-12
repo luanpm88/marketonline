@@ -3450,3 +3450,11 @@ a.unvalid_edit {
 .logs_status3 {
     color: orange;
 }
+#footer_bkg {
+    background: #64a852;
+    color: #fff;
+    padding-bottom: 22px;
+}
+#footer_bkg a {
+    color: #fff;
+}
