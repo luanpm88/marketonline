@@ -34,7 +34,7 @@ $space_controller = new Space();
 $typeoption = new Typeoption();
 $conditions = array();
 if($pb_userinfo["role"] != 'admin') {
-	$conditions[]= "(valid_date != '' || valid_moderator != '')";
+	$conditions[]= "(valid_date != '' OR valid_moderator != '')";
 } else {
 	$conditions[]= "valid_moderator = ".$the_memberid;
 }
