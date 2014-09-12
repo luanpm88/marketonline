@@ -27,13 +27,14 @@ $companyfield = new Companyfields();
 $typeoption = new Typeoption();
 $membermembertype = new Membermembertypes();
 
-if($meminfo == 3)
-	$tpl_file = "shop";
-else if($meminfo == 2)
-	$tpl_file = "company";
-else if($meminfo == 5)
+if($meminfo == 5)
 	$tpl_file = "employer";
-else $tpl_file = "person";
+else if($memgroup == 2)
+	$tpl_file = "company";
+else if($memgroup == 3)
+	$tpl_file = "shop";
+else if($memgroup == 1)
+	$tpl_file = "person";
 
 if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == "save") {
 	//var_dump($_POST);
