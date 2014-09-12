@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
         <td class="paddingT15 wordSpacing5">
 		<select style="width:200px;" class="select2" name="types[]" multiple="multiple">
 			<!--{foreach from=$types item=ii}-->
-				<option {if $ii.checked}selected="selected"{/if} value="{$ii.name}">{$ii.name}</option>
+				<option {if $ii.checked}selected="selected"{/if} value="{$ii.name}">{$ii.name_s}</option>
 			<!--{/foreach}-->
 		</select>
 	</td>
@@ -64,7 +64,7 @@ jQuery(document).ready(function($) {
         <td class="paddingT15 wordSpacing5">
 		<select style="width:200px;" class="select2" name="rights[]" multiple="multiple">
 			<!--{foreach from=$rights item=ii}-->
-				<option {if $ii.checked}selected="selected"{/if} value="{$ii.name}">{$ii.name}</option>
+				<option {if $ii.checked}selected="selected"{/if} value="{$ii.name}">{$ii.name_s}</option>
 			<!--{/foreach}-->
 		</select>
 	</td>

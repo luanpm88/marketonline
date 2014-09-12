@@ -146,7 +146,7 @@
                 <td style='word-break: break-all' valign="top">
                     <div style="text-align:left;">
 			<strong>
-				<!--{$MEMBER.permissions.product.permissions.valid}-->
+				
 				{$item.name|truncate:80}
 
 			</strong>
@@ -165,7 +165,7 @@
 		    <!--<br /><a href="price.php?do=edit&productid={$item.id}">{lang prices}</a>--></td>
 		
                 <td style="text-align: left">			
-			<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">Xem & Phê duyệt</a>			
+			<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">Xem{if $MEMBER.permissions.product.permissions.valid} & Phê duyệt{/if}</a>			
 		</td>
                 </tr> 
               <!--{/foreach}-->

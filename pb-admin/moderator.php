@@ -58,7 +58,7 @@ if (isset($_GET['do'])) {
 			setvar("industries", $level1);
 			
 			//get types
-			$types = array(array("name"=>"product"),array("name"=>"service"),array("name"=>"trade"));
+			$types = array(array("name"=>"product","name_s"=>"Sản phẩm"),array("name"=>"service","name_s"=>"Dịch vụ"),array("name"=>"trade","name_s"=>"Thương mại"));
 			$current_types = explode(",", $item["manage_types"]);
 			foreach($types as $key => $ii) {
 				if(in_array($ii["name"],$current_types)) {
@@ -68,7 +68,7 @@ if (isset($_GET['do'])) {
 			setvar("types", $types);
 			
 			//get rights
-			$rights = array(array("name"=>"valid"),array("name"=>"unvalid"));
+			$rights = array(array("name"=>"valid","name_s"=>"Xác nhận"),array("name"=>"unvalid","name_s"=>"Kiểm duyệt"));
 			$current_rights = explode(",", $item["rights"]);
 			foreach($rights as $key => $ii) {
 				if(in_array($ii["name"],$current_rights)) {

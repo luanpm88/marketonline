@@ -729,7 +729,7 @@ class Product extends PbController {
 		if(empty($info) || !$info || $info["valid_status"] != 1) {
 			//$pb_userinfo = pb_get_member_info();
 			//$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
-			if($permissions["valid"] || $info["valid_moderator"] == $pb_userinfo["pb_userid"]) {
+			if($permissions["valid"] || $info["valid_moderator"] == $pb_userinfo["pb_userid"] || $info["member_id"] == $pb_userinfo["pb_userid"]) {
 				if($info["valid_status"] == 0) {
 					setvar("pending","<span class='unvalid'>Không hợp lệ (".$info["valid_message"].")</span>");
 				} elseif ($info["valid_status"] == 3) {
