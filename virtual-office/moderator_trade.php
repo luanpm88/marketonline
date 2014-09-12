@@ -33,7 +33,11 @@ $trade_controller = new Trade();
 $space_controller = new Space();
 $typeoption = new Typeoption();
 $conditions = array();
-$conditions[]= "valid_moderator = ".$the_memberid;
+if($pb_userinfo["role"] != 'admin') {
+	$conditions[]= "(valid_date != '' || valid_moderator != '')";
+} else {
+	$conditions[]= "valid_moderator = ".$the_memberid;
+}
 setvar("TradeTypes", $trade_controller->getTradeTypes());
 setvar("TradeNames", $trade_controller->getTradeTypeNames());
 $tmp_personalinfo = $memberinfo;
@@ -66,8 +70,8 @@ $amount = 0;
 $amount = $trade->findCount(null, $conditions);
 $page->setPagenav($amount);
 
-$joins = array("LEFT JOIN {$trade->table_prefix}moderators AS moderator ON moderator.member_id=Trade.valid_moderator");
-$joins[] = "LEFT JOIN {$trade->table_prefix}members AS m ON moderator.member_id=m.id";
+$joins = array();
+$joins[] = "LEFT JOIN {$trade->table_prefix}members AS m ON Trade.valid_moderator=m.id";
 $result = $trade->findAll("m.username as mod_username, Trade.*", $joins, $conditions, "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, Trade.submit_time DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
 //var_dump($result);
 if (!empty($result)) {

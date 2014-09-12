@@ -71,7 +71,11 @@ if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	setvar('sortOrder',$o_arr[1]);
 }
 
-$result = $product->findAll("valid_status,valid_date,valid_message,ads,sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
+$joins = array();
+$joins[] = "LEFT JOIN {$product->table_prefix}members AS m ON Product.valid_moderator=m.id";
+$result = $product->findAll("m.username as mod_username, Product.*", $joins, $conditions, $orderby, $page->firstcount, $page->displaypg);
+//var_dump($result);
+
 if ($result) {
 	$i_count = count($result);
 	for ($i=0; $i<$i_count; $i++) {
