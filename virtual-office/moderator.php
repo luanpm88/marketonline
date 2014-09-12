@@ -23,7 +23,11 @@ $tag = new Tags();
 $form = new Forms();
 $product = new Products();
 $producttype = new Producttypes();
-$conditions[] = "valid_moderator = ".$the_memberid;
+if($pb_userinfo["role"] != 'admin') {
+	$conditions[]= "(valid_date != '' OR valid_moderator != '')";
+} else {
+	$conditions[]= "valid_moderator = ".$the_memberid;
+}
 setvar("Countries", $countries = cache_read("country"));
 setvar("ProductSorts", $_PB_CACHE['productsort']);
 setvar("ProductTypes",$producttype->findAll('id,name', null, $conditions, "id DESC"));
