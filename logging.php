@@ -90,6 +90,7 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 			{
 				pheader('location: '.$goto_page);
 			}
+			
 			exit;
 		}elseif ($checked == (-2) ) {
 			$member->validationErrors[] = L('member_not_exists');

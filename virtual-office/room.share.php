@@ -65,6 +65,10 @@ if (empty($result)) {
 $memberinfo = $cache_data['member'];
 $memberinfo["permissions"] = $moderator->getTypePermisstions($pb_userinfo["id"]);
 
+if($pb_userinfo["status"] == 3) {
+	pheader("location: ../logging.php?action=logout&forward=dang-nhap");
+}
+
 $companyinfo = $cache_data['company'];
 $companyinfo["logo"] = pb_get_attachmenturl($companyinfo['picture'], '', 'small');
 $company_id = $companyinfo['id'];
