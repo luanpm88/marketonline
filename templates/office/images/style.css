@@ -3458,3 +3458,9 @@ a.unvalid_edit {
 #footer_bkg a {
     color: #fff;
 }
+#base_page_footer {
+    margin-top: 0;
+}
+.main_content {
+    padding-bottom: 30px;
+}
