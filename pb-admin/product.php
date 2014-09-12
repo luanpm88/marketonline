@@ -217,6 +217,8 @@ if (isset($_GET['do'])) {
 		
 		$product->saveField("valid_status", 0, intval($id));
 		$product->saveField("valid_message", $_GET["message"], intval($id));
+		$product->saveField("valid_moderator", 1, intval($id));
+		$product->saveField("valid_date", date("Y-m-d H:i:s"), intval($id));
 		
 		$iiffoo = $product->read("*", $id);
 		

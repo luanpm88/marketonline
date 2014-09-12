@@ -728,14 +728,14 @@ class Product extends PbController {
 		if(empty($info) || !$info || $info["valid_status"] != 1) {
 			//$pb_userinfo = pb_get_member_info();
 			//$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
-			if(!$permissions["valid"]) {
-				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
-			} else {
+			if($permissions["valid"] || ($permissions["unvalid"] && $info["valid_moderator"] == $pb_userinfo["pb_userid"])) {
 				if($info["valid_status"] == 0) {
 					setvar("pending","<span class='unvalid'>Không hợp lệ (".$info["valid_message"].")</span>");
 				} elseif ($info["valid_status"] == 3) {
 					setvar("pending","<span class='pending'>Đang đợi kiểm duyệt (".$info["valid_message"].")</span>");
-				}				
+				}
+			} else {
+				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');								
 			}
 		}
 		if (isset($info['formattribute_ids'])) {
@@ -5938,9 +5938,25 @@ class Product extends PbController {
 				$valids["valid_status"] = 0;
 				$valids["valid_message"] = $_POST['message'];
 				$valids["valid_moderator"] = $pb_userinfo["pb_userid"];
-				$valids["valid_date"] = date("Y-m-d H:i:s");
+				$valids["valid_date"] = date("Y-m-d H:i:s");				
 				
 				$this->product->save($valids,"update",intval($_POST['id']));
+				
+				$ppp = $this->product->read("*",intval($_POST['id']));
+				//send notification
+				if($ppp["service"]) {
+					$kindname = "Dịch vụ";
+					$typeurl = "?type=service";
+				} else {
+					$kindname = "Sản phẩm";
+					$typeurl = "";
+				}
+				
+				$content = "<a href='".URL."virtual-office/product.php".$typeurl."'>".$kindname." '".$ppp["name"]."' không hợp lệ. Vui lòng kiểm tra lại (".$ppp["valid_message"].")</a>";
+				$sms['content'] = mysql_real_escape_string($content);
+				$sms['title'] = mysql_real_escape_string($kindname." không hợp lệ");
+				$sms['membertype_ids'] = '[1][2][3]';
+				$this->message->SendToUser($pb_userinfo["pb_userid"], $ppp["member_id"], $sms);
 			}
 		}
 		if(isset($_POST["valid"])) {
