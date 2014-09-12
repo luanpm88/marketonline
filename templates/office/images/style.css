@@ -1831,7 +1831,7 @@ time .time {
     width: 194px;
 }
 #dataCustomIndustry input {
-    margin-left: -190px;
+    /*margin-left: -190px;*/
     position: absolute;
 }
 #dataCustomIndustry .i_item
@@ -3435,4 +3435,9 @@ a.unvalid_edit {
 }
 .fb_connect_message a:hover {
     opacity: 0.9;
+}
+#dataCustomIndustry input {
+    height: 14px;
+    padding: 5px !important;
+    width: 161px;
 }
