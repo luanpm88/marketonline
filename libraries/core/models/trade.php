@@ -529,7 +529,6 @@ class Trades extends PbModel {
 					$industry_id = $industry["parent_id"];
 				}
 				
-				//var_dump($permissions);
 				//var_dump($industries);
 				if(in_array($industry_id,$industries)) {
 					foreach($permissions as $key => $per) {
@@ -560,7 +559,6 @@ class Trades extends PbModel {
 			$permissions["unvalid"] = true;
 		}
 		
-		//var_dump($permissions);
 		return $permissions;
 	}
 	
