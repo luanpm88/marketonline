@@ -19,7 +19,7 @@ class Moderators extends PbModel {
 		$moderator = $moderatordb->fields("*", array("member_id = ".intval($mid),"status=1"));
 		$member_info = $memberdb->getInfoById($mid);
 		
-		if(count($moderator)) {
+		if(count($moderator) || $member_info["role"] == 'admin') {
 			$types = explode(",",$moderator["manage_types"]);
 			$industries = explode(",",$moderator["manage_industries"]);
 			$rights = explode(",",$moderator["rights"]);
