@@ -39,7 +39,7 @@ while($res_s = $rs->fetch_assoc()) {
     
     
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
-    $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
+    $message = str_replace("{ten_chu_the}",$res_s["shop_name"],$message);
     if($res_s["service"] == 1) {
 	$ten_loai = "Dịch vụ";
     } else {

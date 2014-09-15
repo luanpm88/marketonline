@@ -33,7 +33,7 @@ while($res_s = $rs->fetch_assoc()) {
     $res["fanpage_id"] = $companydb->findFacebookId($res["fanpage"]);
     
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
-    $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
+    $message = str_replace("{ten_chu_the}",$res_s["shop_name"],$message);
     $message = str_replace("{ten_loai}",$res_s["type_name"],$message);
     $message = str_replace("{ten_bai_viet}",$res["title"],$message);
     $message = str_replace("{link_bai_viet}",$res['url'],$message);
