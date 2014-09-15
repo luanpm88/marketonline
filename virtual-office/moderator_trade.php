@@ -11,7 +11,7 @@ require(PHPB2B_ROOT.'libraries/page.class.php');
 check_permission("offer");
 $tpl_file = "moderator_trade";
 $page = new Pages();
-uses("trade", "tradefield", "product","tag","attachment", "form", "typeoption", "point", "industry", "area", "space");
+uses("modlog", "trade", "tradefield", "product","tag","attachment", "form", "typeoption", "point", "industry", "area", "space");
 $attachment = new Attachment("pic");
 $attachment->if_offer_150_120 = true;
 $attachment1 = new Attachment('pic1');
@@ -32,6 +32,7 @@ $trade = new Trades();
 $trade_controller = new Trade();
 $space_controller = new Space();
 $typeoption = new Typeoption();
+$modlog = new Modlogs();
 $conditions = array();
 if($pb_userinfo["role"] == 'admin') {
 	$conditions[]= "valid_moderator != 0";
@@ -48,6 +49,52 @@ setvar("PhoneTypes", $typeoption->get_cache_type("phone_type"));
 setvar("ImTypes", $typeoption->get_cache_type("im_type"));
 setvar("OfferExpires",$expires);
 setvar("Countries", $countries = cache_read("country"));
+
+
+
+
+
+
+
+if (isset($_GET['do']) || isset($_GET['act'])) {
+	$do = trim($_GET['do']);
+	$action = null;
+	if(isset($_GET['action'])) $action = trim($_GET['action']);
+	if (isset($_GET['id'])) {
+		$id = intval($_GET['id']);
+	}
+	else
+	{
+		setvar("back_link", 0);
+	}
+	if ($do == "history" && $id) {		
+		$prod = $trade->read("Trade.*,type.name as type_name",$id,null,null,array("LEFT JOIN {$modlog->table_prefix}tradetypes type ON type.id=Trade.type_id"));
+		$prod["name"] = str_replace("[:vi-vn]","",$prod["title"]);
+		//LOGS
+		$condition = array("Modlog.item_id=".$id);		
+		$joins = array("LEFT JOIN {$modlog->table_prefix}members moderator ON moderator.id=Modlog.valid_moderator");
+		$joins[] = "LEFT JOIN {$modlog->table_prefix}trades p ON p.id=Modlog.item_id";
+		$joins[] = "LEFT JOIN {$modlog->table_prefix}memberfields mf ON mf.member_id=moderator.id";
+		$logs = $modlog->findAll("mf.first_name, mf.last_name, p.title as item_name, Modlog.*",$joins,$condition,"Modlog.valid_date");
+		
+		$status_names = array(
+				1 => "Hợp lệ",
+				0 => "Không hợp lệ",
+				3 => "Chờ duyệt"
+			);
+		
+		
+		setvar("right",$_GET["type"]);
+		setvar("status_names",$status_names);
+		setvar("item",$prod);
+		setvar("logs",$logs);
+		template("moderator.history");
+		exit;
+	}
+}
+
+
+
 
 
 
