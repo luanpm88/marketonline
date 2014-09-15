@@ -1833,6 +1833,7 @@ class Offer extends PbController {
 				$this->message->SendToUser($pb_userinfo["pb_userid"], $iiffoo["member_id"], $sms);
 			}
 		}
+		
 		if(isset($_POST["valid"])) {
 			//var_dump($_POST);
 			

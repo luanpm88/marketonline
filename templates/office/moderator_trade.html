@@ -52,7 +52,7 @@
               <th width="9%">{lang sample_image}</th>
               <th width="30%" style="text-align: left">{lang content}</th>
               <th width="15%">{lang due_date}</th>
-              <th width="15%">{lang published}</th>
+              <th width="15%">Ngày kiểm tra</th>
 	      <th width="15%">Phê duyệt</th>
               <th style="text-align: left" width="15%">{lang operation}</th>
               
@@ -73,7 +73,7 @@
 	      
 	      
 	      </td>
-              <td><!--{if $item.expire_time<$TimeStamp}-->{lang has_expired}{else}{$item.expire_date}<!--{/if}--></td>
+              <td>{$item.valid_date}</td>
               <td>
 		
 		    <!--{if $item.status eq 1}-->

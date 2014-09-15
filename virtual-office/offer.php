@@ -486,7 +486,7 @@ if(isset($_POST['refresh'])){
 $amount = 0;
 $amount = $trade->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $trade->findAll("*", null, $conditions, "CASE WHEN valid_status = 0 THEN 1 WHEN valid_status = 3 THEN 2 ELSE 3 END ASC, Trade.submit_time DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
+$result = $trade->findAll("*", null, $conditions, "CASE WHEN valid_status = 0 THEN 1 WHEN valid_status = 3 THEN 2 ELSE 3 END ASC, Trade.valid_date DESC,Trade.id DESC", $page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 	    $result[$i]["price"] = number_format($result[$i]["price"], 0, ',', '.');;
