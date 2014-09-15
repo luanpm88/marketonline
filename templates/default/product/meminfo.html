@@ -372,8 +372,7 @@ function checkConfirmOrderFields() {
 			<input value="{$pb_userinfo.receiver_email}" {if $pb_userinfo.receiver_email} disabled="disabled" {/if} type="text" name="data[order][receiver_email]" id="receiver_email" class="bgWhite" value="">
 		</p>
 		
-		<p>
-		
+		<p>		
 			<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
 			<input type="text" value="{$pb_userinfo.receiver_address}" {if $pb_userinfo.receiver_address} disabled="disabled" {/if} maxlength="120" name="data[order][receiver_address]" id="receiver_address" class="bgWhite" />
 		</p>
