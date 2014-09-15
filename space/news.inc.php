@@ -19,7 +19,12 @@ if (isset($_GET['nid'])) {
 			flash('data_not_exists', null, 0);
 		}
 		$tpl_file = "news_detail";
+		
+		//find images share
+		$fb_images = findImagesFromHTML($info["content"]);
+		
 		setvar("item",$info);
+		setvar("fb_images",$fb_images);
 		setvar("fb_current_page",1);
 		setvar("fb_no_logo",1);
 		setvar("fb_description",substr(strip_tags($info["content"]),0,9999));

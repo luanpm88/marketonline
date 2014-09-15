@@ -12,6 +12,20 @@
 {editor type="tiny_mce"}
 <!--{literal}-->
 <script>
+	function checkUploadEditorInput() {
+		//code
+		if($('#uploadEditorFile').val() == '')
+		{
+			$('#uploadEditorFile').css('border', 'solid 1px red');
+			return false;
+		} else
+		{
+			$('#uploadEditorFile').css('border', 'none');
+			$('#uploadIVbutton').attr('disabled','disabled');
+			$('#uploadIVbutton').attr('value','Đang tải...');
+			return true;
+		}
+	}
 	
 	function inserEditorFile(url, image) {
 		$('#uploadIVbutton').removeAttr('disabled');

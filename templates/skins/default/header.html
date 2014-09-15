@@ -19,7 +19,11 @@
     <meta property="og:image" content="{$COMPANY.logo_big}"/>
 {/if}
 
-
+{if $fb_images}
+    {foreach from=$fb_images item=image_url}
+        <meta property="og:image" content="{$image_url}"/>
+    {/foreach}
+{/if}
 
 
 {if $fb_description}

@@ -1164,4 +1164,10 @@ function pagination($url, $total, $num_per_page, $current) {
 	
 	return $result;
 }
+function findImagesFromHTML($html){
+	//var_dump($html);
+	preg_match_all('|\<img(.*)src\=[\'\"]([^\'\"]*)[\'\"]|i',$html,$matches);
+	$images = $matches[2];
+	return $images;
+}
 ?>
