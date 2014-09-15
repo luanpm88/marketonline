@@ -121,11 +121,11 @@
          <table class="bglist">
               <!-- product -->
                     <col width="75">
-                    <col width="200">
+                    <col width="150">
                     <col width="60">
 			
                     <col width="60">
-		    <col width="60">
+		    <col width="200">
                     <col width="82">
                 <tr>
                    <th width="9%">{lang sample_image}</th>
@@ -134,7 +134,7 @@
 		   
 		   <th style="text-align: left">Ngày kiểm tra</th>
                    <!--<th style="text-align: left">{lang release}</th>-->
-		   <th width="16%">Phê duyệt</th>
+		   <th width="30%">Phê duyệt</th>
 		   
 		   
 		   
@@ -163,7 +163,7 @@
 		<td>{$item.validation}
 			{if $pb_userinfo.role=='admin'}
 				<br />
-				<span style="font-size: 13px;">Quản trị: {$item.mod_username}</span>
+				<span style="font-size: 13px;">{$item.mod_username}</span>
 			{/if}
 		</td>
 		    
