@@ -76,10 +76,10 @@
               <td>{$item.valid_date}</td>
               
 	      <td>{$item.validation}
-			{if $pb_userinfo.role=='admin'}
+			
 				<br />
-				<span style="font-size: 13px;">Quản trị: {$item.mod_username}</span>
-			{/if}
+				<span style="font-size: 13px;">{$item.mod_username}</span>
+
 	      </td>
               <td style="text-align: left">
 			<a href="{the_url module=offers action=detail id=`$item.id` title=`$item.title`}" target="_blank">Xem{if $MEMBER.permissions.product.permissions.valid} & Phê duyệt{/if}</a>
