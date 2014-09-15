@@ -15,7 +15,7 @@
 <meta name ="keywords" content="{$TAG_STRING}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{if $COMPANY.logo}
+{if $COMPANY.logo && !$fb_no_logo}
     <meta property="og:image" content="{$COMPANY.logo_big}"/>
 {/if}
 

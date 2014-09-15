@@ -21,6 +21,7 @@ if (isset($_GET['nid'])) {
 		$tpl_file = "news_detail";
 		setvar("item",$info);
 		setvar("fb_current_page",1);
+		setvar("fb_no_logo",1);
 		setvar("fb_description",substr(strip_tags($info["content"]),0,9999));
 		$space->render($tpl_file);
 		exit;
