@@ -56,7 +56,7 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 	}
 	if ($do == "history" && $id) {		
 		$prod = $product->read("Product.*",$id);
-		
+		//var_dump($prod);
 		//LOGS
 		$condition = array("Modlog.item_id=".$id);		
 		$joins = array("LEFT JOIN {$modlog->table_prefix}members moderator ON moderator.id=Modlog.valid_moderator");
@@ -70,7 +70,16 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 				3 => "Chờ duyệt"
 			);
 		
+		if($_GET["type"] == 'service') {
+			$module = 'product';
+		} elseif($_GET["type"] == 'trade') {
+			$module = 'offers';
+		} else {
+			$module = 'product';
+		}
+		
 		setvar("right",$_GET["type"]);
+		setvar("module",$module);
 		setvar("status_names",$status_names);
 		setvar("item",$prod);
 		setvar("logs",$logs);

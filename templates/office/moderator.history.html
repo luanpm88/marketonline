@@ -72,8 +72,10 @@
      </h2></div>
      
      
-	<h2><span style="color: #333">{if $right == 'service'}Dịch vụ:{elseif $right == 'trade'}{$item.type_name}:{else}Sản phẩm:{/if}</span>
-	<strong style="font-weight: bold">{$item.name}</strong></h2>
+	<h2>
+		<span style="color: #333">{if $right == 'service'}Dịch vụ:{elseif $right == 'trade'}{$item.type_name}:{else}Sản phẩm:{/if}</span>
+		<a style="color:blue" target="_blank" href="{the_url service=`$item.service` module=`$module` id=`$item.id` product_name=`$item.name` title=`$item.name`}"><strong style="font-weight: bold">{$item.name}</strong></a>
+	</h2>
 	
 	<div class="history_content">
 		
@@ -85,13 +87,13 @@
 				<th>Người thực hiện</th>
 				
 			</tr>
-			<!--{foreach item=item from=$logs}-->
+			<!--{foreach item=itemz from=$logs}-->
 				<tr class="logs_status{$item.valid_status}">
-					<td style="text-align: left">{$item.valid_date}</td>
-					<td style="text-align: left">{$status_names[$item.valid_status]}</td>
-					<td style="text-align: left">{$item.valid_message}</td>
+					<td style="text-align: left">{$itemz.valid_date}</td>
+					<td style="text-align: left">{$status_names[$itemz.valid_status]}</td>
+					<td style="text-align: left">{$itemz.valid_message}</td>
 					<td>
-						{$item.first_name} {$item.last_name}
+						{$itemz.first_name} {$itemz.last_name}
 					</td>
 					
 				</tr>

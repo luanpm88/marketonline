@@ -85,6 +85,7 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		
 		
 		setvar("right",$_GET["type"]);
+		setvar("module","offers");
 		setvar("status_names",$status_names);
 		setvar("item",$prod);
 		setvar("logs",$logs);
