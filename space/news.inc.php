@@ -20,7 +20,7 @@ if (isset($_GET['nid'])) {
 		}
 		$tpl_file = "news_detail";
 		setvar("item",$info);
-		setvar("fb_current_page",$fb_current_page);
+		setvar("fb_current_page",1);
 		$space->render($tpl_file);
 		exit;
 	}
