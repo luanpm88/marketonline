@@ -98,7 +98,7 @@ class Service extends PbController {
 				}
 				if($this->service->save($vals)){
 					flash('thanks_for_advise', URL);
-				}else {
+				} else {
 					flash();
 				}
 			}

@@ -278,17 +278,17 @@ function checkConfirmOrderFields() {
 		{if $pb_company}
 			<p>
 				<span>{lang username}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" maxlength="11" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
+				<input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
 			</p>
 			
 			<p>
 				<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" maxlength="11" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_company.link_man}">
+				<input type="text" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_company.link_man}">
 			</p>
 			
 			<p>
 				<span>{lang mobile}<b class="red-bold">*</b>&nbsp;</span>
-				<input value="{$pb_company.contact_mobile}" type="text" maxlength="11" name="data[order][mobile]" id="mobile" class="bgWhite">
+				<input value="{$pb_company.contact_mobile}" type="text" name="data[order][mobile]" id="mobile" class="bgWhite">
 			</p>
 			
 			<p>
@@ -305,17 +305,17 @@ function checkConfirmOrderFields() {
 		{else}
 			<p>
 				<span>{lang username}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" maxlength="11" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
+				<input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
 			</p>
 			
 			<p>
 				<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" maxlength="11" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}" {if $pb_userinfo.first_name} readonly="readonly" {/if}>
+				<input type="text" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}" {if $pb_userinfo.first_name} readonly="readonly" {/if}>
 			</p>
 			
 			<p>
 				<span>{lang mobile}<b class="red-bold">*</b>&nbsp;</span>
-				<input value="{$pb_userinfo.mobile}" {if $pb_userinfo.mobile} readonly="readonly" {/if} type="text" maxlength="11" name="data[order][mobile]" id="mobile" class="bgWhite" value="{$pb_username}">
+				<input value="{$pb_userinfo.mobile}" {if $pb_userinfo.mobile} readonly="readonly" {/if} type="text" name="data[order][mobile]" id="mobile" class="bgWhite" value="{$pb_username}">
 			</p>
 			
 			<p>
@@ -359,12 +359,12 @@ function checkConfirmOrderFields() {
 		
 		<p>
 			<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
-			<input type="text" maxlength="11" id="receiver_fullname" name="data[order][receiver_fullname]" class="bgWhite" value="{$pb_userinfo.receiver_fullname}" {if $pb_userinfo.receiver_fullname} disabled="disabled" {/if}>
+			<input type="text" id="receiver_fullname" name="data[order][receiver_fullname]" class="bgWhite" value="{$pb_userinfo.receiver_fullname}" {if $pb_userinfo.receiver_fullname} disabled="disabled" {/if}>
 		</p>
 		
 		<p>
 			<span>{lang mobile}<b class="red-bold">*</b>&nbsp;</span>
-			<input value="{$pb_userinfo.receiver_mobile}" {if $pb_userinfo.receiver_mobile} disabled="disabled" {/if} type="text" maxlength="11" name="data[order][receiver_mobile]" id="receiver_mobile" class="bgWhite" value="{$pb_username}">
+			<input value="{$pb_userinfo.receiver_mobile}" {if $pb_userinfo.receiver_mobile} disabled="disabled" {/if} type="text" name="data[order][receiver_mobile]" id="receiver_mobile" class="bgWhite" value="{$pb_username}">
 		</p>
 		
 		<p>

@@ -5371,7 +5371,6 @@ class Product extends PbController {
 						}
 						
 						
-						
 						$cats = array();					
 						$cats[] = $level1["id"];
 						
