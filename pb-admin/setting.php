@@ -53,6 +53,9 @@ if (isset($_GET['do'])) {
 		case "basic_desc":
 			$tpl_file = "setting.basic.desc";
 			break;
+		case "basic_point":
+			$tpl_file = "setting.basic.point";
+			break;
 		case "attach":
 			require(LIB_PATH. "file.class.php");
 			$folder = new Files();

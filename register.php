@@ -14,7 +14,7 @@ require(LIB_PATH.'passport.class.php');
 require(CACHE_LANG_PATH."lang_emails.php");
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
 $passport = new Passports();
-uses("member","company","companyfield", "memberfield","membergroup","link");
+uses("point","member","company","companyfield","memberfield","membergroup","link");
 $cfg['reg_time_seperate'] = 3*60;
 $memberfield = new Memberfields();
 $member = new Members();
@@ -168,7 +168,6 @@ if(isset($_POST['register']) && $capt_check){
 		//update link tables
 		if($referrer)
 		{
-			
 			$link->save(array("parent_id"=>$referrer, "member_id"=>$last_member_id, "type_id"=>1, "created"=>date("Y-m-d H:i:s")));
 		}
 		else

@@ -7,6 +7,7 @@ class Company extends PbController {
 		
 		$this->loadModel("company");
 		$this->loadModel("industry");
+		$this->loadModel("point");
 		
 		$this->viewhelper = $viewhelper;
 	}
@@ -228,6 +229,10 @@ class Company extends PbController {
 			}
 		}
 		render($tpl_file, 1);
+	}
+	
+	function updatePoint() {
+		var_dump($this->point->actions);
 	}
 }
 ?>

@@ -4,6 +4,10 @@ class Points extends PbModel {
  	var $rules = array("every", "once", "daily", "weekly", "monthly", "yearly");
  	var $actions = array(
  		"logging"=>array("rule"=>"daily","do"=>"inc","point"=>1),
+		"invite"=>array("rule"=>"every","do"=>"inc","point"=>10),
+		"connect_facebook"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
+		"checkout"=>array("rule"=>"monthly","do"=>"inc","point"=>10),
+		"custom"=>array("rule"=>"every","do"=>"inc","point"=>0)
  	);
  	
  	function increase($point, $member_id)
