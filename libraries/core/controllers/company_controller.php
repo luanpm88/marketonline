@@ -233,6 +233,8 @@ class Company extends PbController {
 	
 	function updatePoint() {
 		var_dump($this->point->actions);
+		
+		//$mems = $this->
 	}
 }
 ?>

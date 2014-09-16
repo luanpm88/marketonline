@@ -11,13 +11,14 @@ class Points extends PbModel {
 		"custom"=>array("rule"=>"every","do"=>"inc","point"=>0)
  	);
 	
-	function Points(){
+	function Points() {
 		uses('setting');
 		$setting = new Settings();
 		
 		$this->actions['invite']['point'] = $setting->getValue('point_invite');
 		$this->actions['connect_facebook']['point'] = $setting->getValue('point_connect_facebook');
 		$this->actions['checkout']['point'] = $setting->getValue('point_checkout');
+		$this->actions['good_shop']['point'] = $setting->getValue('point_good_shop');
 		
 		parent::__construct();
 	}
@@ -47,15 +48,19 @@ class Points extends PbModel {
  				$conditions[] =  "action_name='".$action."'";
  				break;
  			case "daily":
+				$conditions[] =  "action_name='".$action."'";
  				$conditions[] = "created>".$today_timestamp;
  				break;
  			case "weekly":
+				$conditions[] =  "action_name='".$action."'";
  				$conditions[] = "created>".($this->timestamp-7*86400);
  				break;
  			case "monthly":
+				$conditions[] =  "action_name='".$action."'";
  				$conditions[] = "created>".($this->timestamp-30*86400);
  				break;
  			case "yearly":
+				$conditions[] =  "action_name='".$action."'";
  				$conditions[] = "created>".($this->timestamp-365*86400);
  				break;
  			default:
@@ -63,6 +68,7 @@ class Points extends PbModel {
  		}
  		$this->setCondition($conditions);
  		$result = $this->dbstuff->GetRow("SELECT action_name,points,created FROM {$this->table_prefix}pointlogs".$this->getCondition());
+		var_dump($result);
  		if (!empty($result)) {
  			return false;
  		}else{
