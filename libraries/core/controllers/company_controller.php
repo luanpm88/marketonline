@@ -123,7 +123,32 @@ class Company extends PbController {
 			
 			$zone["adses"] = $adses;
 		}
-		//var_dump($adses);
+		//var_dump($zones);
+		
+		
+		//FIND FFECTIVE COMPANIES
+		$com_conditions = array();
+		$com_joins = array("LEFT JOIN {$this->company->table_prefix}members m ON m.id=Company.member_id");
+		if(isset($_GET["industryid"])) {
+			$industryid = $_GET["industryid"];
+			$com_conditions[] = "((Company.industries LIKE '".$industryid."')"
+							." OR (Company.industries LIKE '%,".$industryid."')"
+							." OR (Company.industries LIKE '".$industryid.",%')"
+							." OR (Company.industries LIKE '%,".$industryid.",%'))";
+		}
+		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points DESC", 0, 14);
+		//$companies = $this->company->formatResult($companies);
+		//var_dump($companies);
+		foreach($companies as $key => $com) {
+			$companies[$key] = $ads->formatResult($com);
+		}
+		$com_zone["name"] = "Tiêu biểu";
+		$com_zone["adses"] = $companies;
+		//var_dump($com_zone["adses"]);
+		
+		array_unshift($zones, $com_zone);
+		
+		//var_dump($zones);
 		
 		setvar("list", $zones);
 		render("company/index", 1);
