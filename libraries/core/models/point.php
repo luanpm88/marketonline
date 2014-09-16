@@ -7,6 +7,7 @@ class Points extends PbModel {
 		"invite"=>array("rule"=>"every","do"=>"inc","point"=>10),
 		"connect_facebook"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
 		"checkout"=>array("rule"=>"monthly","do"=>"inc","point"=>10),
+		"good_shop"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
 		"custom"=>array("rule"=>"every","do"=>"inc","point"=>0)
  	);
 	
