@@ -284,9 +284,8 @@ class Adses extends PbModel {
 		
 		if(!empty($item['title'])) {
 			$item["name"] = $item["title"];
-		}
-		elseif(!$item["name"]) {
-			$item["name"] = $item["company_name"];
+		} else {
+			$item["name"] = $item["shop_name"];
 		}
 		if(!empty($item['target_url'])) {
 			$item["href"] = $item["target_url"];

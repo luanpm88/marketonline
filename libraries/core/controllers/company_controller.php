@@ -115,7 +115,7 @@ class Company extends PbController {
 
 		foreach($zones as &$zone) {
 			$zone_condition = array("Ads.adzone_id=".$zone["id"]);
-			$adses = $ads->findAll("c.cache_spacename, c.name as company_name, c.picture, Ads.*", $joins, array_merge($conditions, $zone_condition));
+			$adses = $ads->findAll("c.cache_spacename, c.shop_name as shop_name, c.picture, Ads.*", $joins, array_merge($conditions, $zone_condition));
 			
 			foreach($adses as &$item) {				
 				$item = $ads->formatResult($item);
@@ -136,6 +136,9 @@ class Company extends PbController {
 							." OR (Company.industries LIKE '".$industryid.",%')"
 							." OR (Company.industries LIKE '%,".$industryid.",%'))";
 		}
+		if(!empty($_GET['membergroup_id'])){
+ 			$com_conditions[] = "m.membergroup_id=".intval($_GET['membergroup_id']);
+ 		}
 		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points DESC", 0, 14);
 		//$companies = $this->company->formatResult($companies);
 		//var_dump($companies);
