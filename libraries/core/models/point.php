@@ -9,6 +9,17 @@ class Points extends PbModel {
 		"checkout"=>array("rule"=>"monthly","do"=>"inc","point"=>10),
 		"custom"=>array("rule"=>"every","do"=>"inc","point"=>0)
  	);
+	
+	function Points(){
+		uses('setting');
+		$setting = new Settings();
+		
+		$this->actions['invite']['point'] = $setting->getValue('point_invite');
+		$this->actions['connect_facebook']['point'] = $setting->getValue('point_connect_facebook');
+		$this->actions['checkout']['point'] = $setting->getValue('point_checkout');
+		
+		parent::__construct();
+	}
  	
  	function increase($point, $member_id)
  	{

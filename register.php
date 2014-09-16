@@ -21,6 +21,7 @@ $member = new Members();
 $membergroup = new Membergroups();
 $company = new Companies();
 $companyfield = new Companyfields();
+$point = new Points();
 $link = new Links();
 $check_invite_code = false;
 $register_type = $_PB_CACHE['setting']['register_type'];
@@ -169,6 +170,7 @@ if(isset($_POST['register']) && $capt_check){
 		if($referrer)
 		{
 			$link->save(array("parent_id"=>$referrer, "member_id"=>$last_member_id, "type_id"=>1, "created"=>date("Y-m-d H:i:s")));
+			$point->update("invite",intval($referrer));
 		}
 		else
 		{
