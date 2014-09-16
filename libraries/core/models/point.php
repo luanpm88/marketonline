@@ -68,7 +68,7 @@ class Points extends PbModel {
  		}
  		$this->setCondition($conditions);
  		$result = $this->dbstuff->GetRow("SELECT action_name,points,created FROM {$this->table_prefix}pointlogs".$this->getCondition());
-		var_dump($result);
+		//var_dump($result);
  		if (!empty($result)) {
  			return false;
  		}else{
