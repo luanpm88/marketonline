@@ -129,7 +129,7 @@ if(isset($_POST['register']) && $capt_check){
 	if($member_reg_auth=="1" || $member_reg_auth!=0 || !empty($_PB_CACHE['setting']['new_userauth'])){
 		$member->params['data']['member']['status'] = 0;
 		$if_need_check = true;
-	}else{
+	} else {
 		$member->params['data']['member']['status'] = 1;
 	}
 	

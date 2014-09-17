@@ -8,6 +8,7 @@ class Points extends PbModel {
 		"connect_facebook"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
 		"checkout"=>array("rule"=>"monthly","do"=>"inc","point"=>10),
 		"good_shop"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
+		//"thoi gian truy cap"=>
 		"custom"=>array("rule"=>"every","do"=>"inc","point"=>0)
  	);
 	
