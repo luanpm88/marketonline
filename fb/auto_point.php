@@ -25,7 +25,7 @@ foreach($rows as $member) {
         $pointdb->update("connect_facebook",intval($member["id"]));
     }
 }
-if(count($rows)) $result .= "Num of connect_facebook:" . count($rows) . $line_break;
+if(count($rows)) $result .= "Num of connect_facebook: " . count($rows) . $line_break;
 
 
 $conditions = array();
@@ -39,7 +39,7 @@ $rows = $memberdb->findAll("logs.max_date, Member.*", $joins, $conditions);
 foreach($rows as $member) {    
     $pointdb->update("checkout",intval($member["id"]));
 }
-if(count($rows)) $result .= "Num of checkout:" . count($rows) . $line_break;
+if(count($rows)) $result .= "Num of checkout: " . count($rows) . $line_break;
 
 
 //write log
