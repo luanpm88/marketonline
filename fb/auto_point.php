@@ -12,6 +12,7 @@ $joins = array();
 
 $result = "";
 
+//CONNECT FACEBOOK AUTO POINT
 $conditions = array();
 $joins = array();
 $joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='connect_facebook' GROUP BY member_id) logs ON logs.member_id=Member.id";
@@ -25,9 +26,10 @@ foreach($rows as $member) {
         $pointdb->update("connect_facebook",intval($member["id"]));
     }
 }
-if(count($rows)) $result .= "Num of connect_facebook: " . count($rows) . $line_break;
+if(count($rows)) $result .= "Num of connect_facebook updated: " . count($rows) . $line_break;
 
 
+//CHECKOUT AUTO POINT
 $conditions = array();
 $joins = array();
 $joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='checkout' GROUP BY member_id) logs ON logs.member_id=Member.id";
@@ -39,7 +41,80 @@ $rows = $memberdb->findAll("logs.max_date, Member.*", $joins, $conditions);
 foreach($rows as $member) {    
     $pointdb->update("checkout",intval($member["id"]));
 }
-if(count($rows)) $result .= "Num of checkout: " . count($rows) . $line_break;
+if(count($rows)) $result .= "Num of checkout updated: " . count($rows) . $line_break;
+
+
+
+
+
+
+
+
+//UPDATE GOOD SHOP MONTHLY & GOOD SHOP AUTO POINT
+//UPDATE GOOD SHOP MONTHLY
+//current good shop
+$recent_date = $memberdb->field("max(good_shop_date) as max_date",array("good_shop_status = 1","good_shop_moderator = 0"));
+$recent_date = strtotime($recent_date);
+
+if($recent_date < ($memberdb->timestamp-30*86400) || true) {
+        $companydb->dbstuff->Execute("UPDATE {$companydb->table_prefix}members SET good_shop_moderator=0 WHERE good_shop_moderator=1");
+        
+        
+        $joins = array();
+        $joins[] = "LEFT JOIN {$memberdb->table_prefix}companies c ON Member.id=c.member_id";
+        $conditions = array();
+        $conditions[] = "Member.good_shop_status = 1";
+        //$conditions[] = "Member.good_shop_moderator = 0";
+        //$conditions[] = $recent_date." < ".($memberdb->timestamp-30*86400);
+        
+        $rows = $memberdb->findAll("Member.id", $joins, $conditions, "c.vote_result DESC");
+        $off = array();
+        foreach($rows as $member) {
+            $off[] = $member["id"];
+        }
+        //var_dump($off);
+        $off_sql = "UPDATE {$companydb->table_prefix}members SET good_shop_status=0,good_shop_date='".date('Y-m-d H:i:s')."' WHERE id IN (".implode(",",$off).")";
+        $companydb->dbstuff->Execute($off_sql);
+        
+        //new good shop
+        $top_num = $setting->getValue('point_good_shop_top');
+        $joins = array();
+        $joins[] = "LEFT JOIN {$companydb->table_prefix}members m ON m.id=Company.member_id";
+        $conditions = array();
+        //$conditions[] = "m.good_shop_moderator = 0";
+        $conditions[] = "Company.vote_result > 0";
+        
+        $rows = $companydb->findAll("m.id,Company.vote_result", $joins, $conditions, "vote_result DESC",0,$top_num);
+        $on = array();
+        foreach($rows as $member) {
+            $on[] = $member["id"];
+        }
+        //var_dump($on);
+        $on_sql = "UPDATE {$companydb->table_prefix}members SET good_shop_status=1,good_shop_date='".date('Y-m-d H:i:s')."' WHERE id IN (".implode(",",$on).")";
+        $companydb->dbstuff->Execute($on_sql);
+}
+
+
+
+
+//GOOD SHOP AUTO POINT
+$conditions = array();
+$joins = array();
+$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='good_shop' GROUP BY member_id) logs ON logs.member_id=Member.id";
+$conditions[] = "(logs.max_date<".($memberdb->timestamp-30*86400)." OR logs.max_date IS NULL)";
+$conditions[] = "good_shop_status = 1";
+$rows = $memberdb->findAll("logs.max_date, Member.*", $joins, $conditions);
+foreach($rows as $member) {    
+    $pointdb->update("good_shop",intval($member["id"]));
+}
+if(count($rows)) $result .= "Num of good Shop updated: " . count($rows) . $line_break;
+
+
+
+
+
+
+
 
 
 //write log

@@ -10792,3 +10792,50 @@ input[name=redirect]
 .moderator_form input.error {
     border-color: red;
 }
+.shop_stars {
+    background: none repeat scroll 0 0 #efefef;
+    display: block;
+    float: left;
+    height: auto;
+    margin-top: -5px;
+    padding: 1px 5px;
+}
+.shop_stars .starshover {
+    display: block;
+    float: left;
+    margin-top: 3px;
+}
+.shop_stars label {
+    float: left;
+    font-size: 15px;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+.shop_stars .stars .result {
+    background: none repeat scroll 0 0 #fff;
+    display: none;
+    height: 20px;
+    margin-left: 10px;
+    padding: 1px 5px;
+    text-align: center;
+    width: 20px;
+}
+.shop_stars .stars .star.light {
+    background: url("../image/star.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
+}
+.shop_stars .stars .star {
+    background: url("../image/star_disable.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
+    height: 15px;
+    width: 18px;
+    padding-right: 5px;
+    margin: 0;
+}
+.follow_but a {    
+    margin-right: 10px;
+    margin-top: -5px;
+    float: left;
+}
+.post_star .star[rel="0"] {
+    background: url("../image/x-button.png") no-repeat scroll -1px -1px / 18px auto rgba(0, 0, 0, 0) !important;
+    width: 20px !important;
+}

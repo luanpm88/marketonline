@@ -6,7 +6,7 @@
  *      @version $Revision: 2075 $
  */
 require("../libraries/common.inc.php");
-uses("company","member","area","companytype", "attachment", "membergroup","industry");
+uses("shopvote","company","member","area","companytype", "attachment", "membergroup","industry");
 require(LIB_PATH .'time.class.php');
 require(LIB_PATH .'page.class.php');
 $_PB_CACHE['area'] = cache_read("area");
@@ -21,6 +21,7 @@ $industry = new Industries();
 $company = new Companies();
 $companytype = new Companytypes();
 $member = new Members();
+$shopvote = new Shopvotes();
 $conditions = array();
 $tpl_file = "company";
 setvar('Membergroups', $membergroup->getUsergroups('define'));
@@ -123,6 +124,10 @@ if (isset($_GET['do'])) {
 		if (!empty($_GET['industryid'])) $conditions[]= "Company.industry_id=".$_GET['industryid'];
 		if (isset($_GET['status']) && $_GET['status']>=0) $conditions[]= "Company.status=".$_GET['status'];
 		if ($_GET['companytype']) $conditions[]= "Company.type_id=".intval($_GET['companytype']);
+		
+		if(!empty($_GET['orderby'])) {
+			$orderby = $_GET['orderby'].' DESC, ';
+		}
 	}	
     if ($do == "edit") {
     	if(!empty($id)){
@@ -155,15 +160,60 @@ if (isset($_GET['do'])) {
     	template($tpl_file);
     	exit;
     }
+    
+    
+    
+	if ($do == "good_shop") {
+		if(!empty($id)){
+			$vals1["good_shop_status"] = $_GET["value"];
+			$vals1["good_shop_moderator"] = 1;
+			$vals1["good_shop_date"] = date('Y-m-d H:i:s');
+			
+			$member->save($vals1, 'update', intval($id));
+			pheader("location:".$_SERVER['HTTP_REFERER']);
+		}
+	}
+	
+	if ($do == "rate") {
+		if(!empty($id)){
+			$sql = "SELECT c.*,m.username,m.membergroup_id,m.credits FROM {$tb_prefix}companies c LEFT JOIN {$tb_prefix}members m ON c.member_id=m.id WHERE c.id=".$id;
+			$res = $pdb->GetRow($sql);
+			$r1 = $industry->disSubOptions($res['industry_id'], "industry_");
+			$r2 = $area->disSubOptions($res['area_id'], "area_");
+			$res = am($res, $r1, $r2);
+			setvar("item",$res);
+			
+			//LIST RATE
+			$joins1 = array();
+			$conds1 = array();
+			$conds1[] = 'c.id='.$id;
+			$joins1[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Shopvote.company_id";
+			$joins1[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Shopvote.member_id";
+			$joins1[] = "LEFT JOIN {$tb_prefix}memberfields mf ON mf.member_id=Shopvote.member_id";
+			
+			$shopvotes = $shopvote->findAll("mf.*,m.username,Shopvote.*",$joins1,$conds1);
+			//var_dump($shopvotes);
+			
+			setvar("shopvotes",$shopvotes);
+			$tpl_file = "company.rate";
+			template($tpl_file);
+			exit;
+		}
+	}
 }
-$fields = "Company.shop_name,Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,Company.area_id,industry_id,cache_credits";
+
+$fields = "m.good_shop_status,m.good_shop_moderator,Company.shop_name,Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,Company.area_id,industry_id,cache_credits";
 $total_amount = $pdb->CacheGetOne(120, "SELECT COUNT(id) AS amount FROM ".$tb_prefix."companies WHERE status='0'");
 $amount = $company->findCount(null, $conditions,"Company.id");
 $page->setPagenav($amount);
 $joins = array();
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Company.member_id";
 if(empty($lists)){
-    $lists = $company->findAll($fields,$joins,$conditions,"Company.id DESC",$page->firstcount,$page->displaypg);
+    $lists = $company->findAll($fields,$joins,$conditions,$orderby."Company.id DESC",$page->firstcount,$page->displaypg);
+    //var_dump($lists);
+    foreach($lists as $key => $i_com) {
+	$lists[$key]["rate"] = $shopvote->getResult($i_com["id"]);
+    }
 }
 setvar("Items", $lists);
 uaAssign(array("ByPages"=>$page->pagenav, "TotalAmount"=>$total_amount));

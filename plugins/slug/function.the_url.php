@@ -547,6 +547,13 @@ function smarty_function_the_url($params){
 					}
 				}
 				break;
+			case "rate_shop":
+				if ($rewrite_able) {
+					$return = URL."danh-gia-shop/".$space_name."/".$star;				
+				}else{
+					$return = URL."index.php?do=company&action=rating&star=".$star."&space_name=".$space_name;					
+				}
+				break;				
 			default:
 				if (!empty($id)) {
 					if ($rewrite_able) {

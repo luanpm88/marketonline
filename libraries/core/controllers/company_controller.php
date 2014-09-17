@@ -8,6 +8,7 @@ class Company extends PbController {
 		$this->loadModel("company");
 		$this->loadModel("industry");
 		$this->loadModel("point");
+		$this->loadModel("shopvote");
 		
 		$this->viewhelper = $viewhelper;
 	}
@@ -235,6 +236,14 @@ class Company extends PbController {
 		var_dump($this->point->actions);
 		
 		//$mems = $this->
+	}
+	
+	function rating() {
+		$pb_userinfo = pb_get_member_info();
+		if($pb_userinfo) {
+			$this->shopvote->update($pb_userinfo["pb_userid"], $_GET["space_name"],intval($_GET["star"]));;
+		}
+		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 }
 ?>

@@ -1025,6 +1025,51 @@ function goclicky(meh, url)
                 //    $.cookie("underconstruction", true);
                 //    $("#underconstruction-info-but").trigger("click");
                 //}
+                
+                $('.post_star .star').live("mouseover", function() {
+                    var rel = parseInt($(this).attr("rel"));
+                    $(this).parent().find('.star').each(function() {
+                        if (parseInt($(this).attr("rel")) <= rel) {
+                            $(this).addClass("light");
+                        }
+                        else
+                        {
+                            $(this).removeClass("light");
+                        }
+                    });
+                    $(this).parent().find('.result').html($(this).attr("rel"));
+                    $(this).parent().find('.result').show();
+                    if ($(this).attr("rel") == "0") {
+                        $(this).parent().find('.result').hide();
+                    }
+                });
+                
+                $('.post_star .star').live("mouseout", function() {
+                    $(this).parent().find('.star').removeClass('light');
+                    $(this).parent().find('.result').html($(this).parent().find('.over_points').attr("value"));
+                    if ($(this).parent().find('.result').attr("value") == "0") {
+                        $(this).parent().find('.result').hide();
+                    }
+                    
+                    $(this).parent().find('.star').each(function() {
+                        if (parseInt($(this).attr("rel")) <= parseInt($(this).parent().find('.over_points').attr("value"))) {
+                            $(this).addClass("light");
+                        }
+                    });           
+                });
+                
+                $('.post_star .star').live("click", function() {
+                    $(this).parent().find('.result').attr("value", $(this).attr('rel'));
+                    $(this).parent().find('.result').html($(this).attr('rel'));
+                    $(this).parent().find('.result').show();
+                    if ($(this).attr('rel') == "0") {
+                        $(this).parent().find('.result').html("");
+                    }
+                    
+                    $(this).parent().parent().find("input[name='comment[star]']").val($(this).attr('rel'));
+                    
+                    checkStatsEditor($(this).parent().parent().find('.editor textarea'));
+                });
 	});
 	
 	

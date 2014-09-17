@@ -8,9 +8,9 @@
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(CACHE_LANG_PATH.'lang_space.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("member","company","space","follow","industry","area", "producttype", "product", "announcement","tag");
+uses("shopvote","member","company","space","follow","industry","area", "producttype", "product", "announcement","tag");
 
-
+$shopvote = new Shopvotes();
 $tag = new Tags();
 $product = new Products();
 $producttype = new ProductTypes();
@@ -192,6 +192,13 @@ if($member->info['fb_user_id'] && $member->info['fb_access_token']) {
 	} else {
 		$company->info['facebook_personal'] = "";
 	}
+}
+
+//checking follow
+if($pb_userinfo["pb_userid"])
+{
+	$vote = $shopvote->getVote($pb_userinfo["pb_userid"], $company->info['id']);
+	$company->info['vote'] = $vote;
 }
 
 //echo $member->info['id']."sdsdsdsdsd";

@@ -53,6 +53,13 @@ jQuery(document).ready(function($) {
       </tr>
       
       <tr>
+        <th class="paddingT15"><label for="time_zone">SHOP đẹp (Lấy Top)</label></th>
+        <td class="paddingT15 wordSpacing5"><input name="data[setting][point_good_shop_top]" type="text" id="site_name" value="{$item.POINT_GOOD_SHOP_TOP|default:15}" class="infoTableInput" />SHOPs. 
+          <span class="gray">Số lượng shop điểm cao nhất làm SHOP Đẹp (VD: Top: 10, 15,...). Điểm tăng hàng tháng.</span>
+        </td>
+      </tr>
+      
+      <tr>
         <th></th>
         <td class="ptb20"><input class="formbtn" type="submit" name="savebasic" value="{lang submit}" />
           <input class="formbtn" type="reset" name="reset" value="{lang reset}" />
