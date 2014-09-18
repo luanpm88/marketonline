@@ -50,6 +50,7 @@
 		<select onchange="$('#SearchFrm').submit()" class="querySelect" name="orderby" id="orderby">
 			<option value="">Sắp xếp</option>
                 	<option {if $smarty.get.orderby=='points'}selected="selected"{/if} value="points">Điểm</option>
+			<option {if $smarty.get.orderby=='active_time'}selected="selected"{/if} value="active_time">Thời gian hoạt động</option>
 			
               	</select>
 				{lang cp_username} <input class="queryInput" type="text" name="member[name]" id="member_name" value="{$smarty.get.member.name}" /> 
