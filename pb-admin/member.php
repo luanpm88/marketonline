@@ -211,7 +211,7 @@ if (isset($_GET['do'])) {
 		}
 		
 		if(!empty($_GET['orderby'])) {
-			$orderby = $_GET['orderby'].' DESC, ';
+			$orderby = 'Member.'.$_GET['orderby'].' DESC, ';
 		}
 	}
 	if ($do=="del" && !empty($id)) {
