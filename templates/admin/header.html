@@ -11,12 +11,34 @@
 <script type="text/javascript" src="../scripts/jquery.js"></script>
 <script type="text/javascript" src="{$admin_theme_path}js/common.js"></script>
 <script type="text/javascript" src="../scripts/jquery/tablehover.js" ></script>
+<link rel="stylesheet" href="../templates/default/js/fancybox/jquery.fancybox.css">
+<script type='text/javascript' src='../templates/default/js/fancybox/jquery.fancybox.js'></script>
 <script>
 var SiteUrl = "{$SiteUrl}";
 var DeleteSure = "{lang delete_sure}";
 </script>
 <!--{literal}-->
 <script>
+    function check_input_plus_minus(form) {
+	var ok = true;
+	if (form.find('input[name=point]').val() == '') {
+	    ok = false;
+	    form.find('input[name=point]').addClass("error");
+	    form.find('input[name=point]').focus();
+	} else {
+	    form.find('input[name=point]').removeClass("error");
+	}
+	
+	if (form.find('input[name=description]').val() == '') {
+	    ok = false;
+	    form.find('input[name=description]').addClass("error");
+	    form.find('input[name=description]').focus();
+	} else {
+	    form.find('input[name=description]').removeClass("error");
+	}
+	
+	return ok;
+    }
 		
 		function inserEditorFile(url, image) {
 				$('#uploadIVbutton').removeAttr('disabled');
@@ -74,6 +96,18 @@ $(document).ready(function(){
 		    $(this).html(string);
 		});
 		
+		$('.plus-icon').fancybox();
+		$('.minus-icon').fancybox();
+		
+		$('.plus-icon').click(function() {
+		    $('#plus-form h1 strong').html($(this).attr('username'));
+		    $('#plus-form input[name=id]').val($(this).attr('rel'));
+		});
+		
+		$('.minus-icon').click(function() {
+		    $('#minus-form h1 strong').html($(this).attr('username'));
+		    $('#minus-form input[name=id]').val($(this).attr('rel'));
+		});
 });
 </script>
 <style type="text/css">

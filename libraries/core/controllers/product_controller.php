@@ -5983,5 +5983,9 @@ class Product extends PbController {
 		
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	
+	function checkActiveTime() {
+		
+	}
 }
 ?>

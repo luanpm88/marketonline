@@ -9,7 +9,8 @@ class Points extends PbModel {
 		"checkout"=>array("rule"=>"monthly","do"=>"inc","point"=>10),
 		"good_shop"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
 		//"thoi gian truy cap"=>
-		"custom"=>array("rule"=>"every","do"=>"inc","point"=>0)
+		"up"=>array("rule"=>"every","do"=>"inc","point"=>0),
+		"down"=>array("rule"=>"every","do"=>"dec","point"=>0)
  	);
 	
 	function Points() {
@@ -77,13 +78,16 @@ class Points extends PbModel {
  		}
  	}
  	
- 	function update($action, $member_id, $description = '')
+ 	function update($action, $member_id, $description = '', $cusom_point = 0)
  	{
  		if (array_key_exists($action, $this->actions) && !empty($member_id)) {
  			$rule = $this->actions[$action]['rule'];
  			$can_update = $this->checkIfCanUpdate($member_id, $rule, $action);
  			if($can_update){
  				$point = abs($this->actions[$action]['point']);
+				if($cusom_point) {
+					$point = $cusom_point;
+				}
 	 			switch ($this->actions[$action]['do']) {
 	 				case "inc":
 	 					$updated = $this->increase($point, $member_id);

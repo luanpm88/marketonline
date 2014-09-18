@@ -347,4 +347,8 @@ if(isset($_SESSION['flash_title']) && isset($_SESSION['flash_message'])) {
     setvar("flash", $flash);
 }
 
+if($pb_userinfo) {
+    $member->updateActiveTime($pb_userinfo["pb_userid"]);
+}
+
 ?>

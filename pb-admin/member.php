@@ -7,7 +7,7 @@
  */
 require("../libraries/common.inc.php");
 require("session_cp.inc.php");
-uses("member","membergroup","typeoption","link","moderator");
+uses("point","member","membergroup","typeoption","link","moderator");
 require(LIB_PATH. 'time.class.php');
 require(PHPB2B_ROOT. 'libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
@@ -19,6 +19,7 @@ $member = new Members();
 $moderator = new Moderators();
 $page = new Pages();
 $link = new Links();
+$point = new Points();
 $tpl_file = "member";
 $conditions = array();
 setvar("MembergroupOptions", $membergroup->getUsergroups());
@@ -208,6 +209,10 @@ if (isset($_GET['do'])) {
 		if ($_GET['groupid']>0) {
 			$conditions[] = "Member.membergroup_id=".intval($_GET['groupid']);
 		}
+		
+		if(!empty($_GET['orderby'])) {
+			$orderby = $_GET['orderby'].' DESC, ';
+		}
 	}
 	if ($do=="del" && !empty($id)) {
 		$member->Delete($id);
@@ -238,6 +243,18 @@ if (isset($_GET['do'])) {
 		
 		
 	}
+	
+	if($do=="point_up" && !empty($id) && !empty($_GET["point"]))
+	{
+		$point->update('up', intval($id), $_GET["description"], intval($_GET["point"]));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
+	
+	if($do=="point_down" && !empty($id) && !empty($_GET["point"]))
+	{
+		$point->update('down', intval($id), $_GET["description"], intval($_GET["point"]));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 $fields = "c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";
 $amount = $member->findCount(null, $conditions);
@@ -246,7 +263,7 @@ $joins[] = "LEFT JOIN {$tb_prefix}memberfields mf ON Member.id=mf.member_id";
 $joins[] = "LEFT JOIN {$tb_prefix}links link ON Member.id=link.member_id";
 $joins[] = "LEFT JOIN {$tb_prefix}members parent ON parent.id=link.parent_id";
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON Member.id=c.member_id";
-$result = $member->findAll($fields, $joins, $conditions, "Member.id DESC ",$page->firstcount,$page->displaypg);
+$result = $member->findAll($fields, $joins, $conditions, $orderby."Member.id DESC ",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$tmp_img = null;

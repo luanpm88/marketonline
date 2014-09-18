@@ -1183,5 +1183,41 @@ class Members extends PbModel {
 		$data = file_get_contents("https://graph.facebook.com/me?access_token=".$access_token);
 		return json_decode($data, true);
 	}
+	
+	function updateActiveTime($member_id) {
+		$min = 1*60;
+		$max = 15*60;
+		
+		$no_actions = array(
+				"updateChatboxNew",
+				"getChatFriendList",
+				"ajaxUpdateChatsNew",
+				"getTopCartAjax",
+				"ajaxInbox",
+				"getAnnounce"
+			);
+		
+		$member = $this->read("id,active_time,active_last", $member_id);
+		$active_last = strtotime($member["active_last"]);
+		if(!$active_last) {
+			$this->saveField("active_last",date('Y-m-d H:i:s'),intval($member_id));
+		} else {
+			$current_time_str = date('Y-m-d H:i:s');
+			$current_time = strtotime($current_time_str);
+			$plus_time = $current_time - $active_last;
+			//echo $member["active_time"];
+			
+			if(!in_array($_GET["action"],$no_actions)) {
+				if($plus_time >= $min && $plus_time <= $max) {
+					$vals["active_time"] = $member["active_time"] + $plus_time;
+					$vals["active_last"] = $current_time_str;
+					$this->save($vals,'update',intval($member_id));
+				} elseif($plus_time > $max) {
+					$vals["active_last"] = $current_time_str;
+					$this->save($vals,'update',intval($member_id));
+				}
+			}
+		}
+	}
 }
 ?>

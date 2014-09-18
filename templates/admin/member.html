@@ -46,7 +46,12 @@
     <div class="fontr"> 
         <form name="search_frm" id="SearchFrm" method="get"> 
         <input type="hidden" name="do" value="search" />
-             <div> 
+             <div>
+		<select onchange="$('#SearchFrm').submit()" class="querySelect" name="orderby" id="orderby">
+			<option value="">Sắp xếp</option>
+                	<option {if $smarty.get.orderby=='points'}selected="selected"{/if} value="points">Điểm</option>
+			
+              	</select>
 				{lang cp_username} <input class="queryInput" type="text" name="member[name]" id="member_name" value="{$smarty.get.member.name}" /> 
                 <select class="querySelect" name="groupid" id="Groupid">
 				<option value="-1">{lang membership_type}</option>
@@ -109,6 +114,14 @@
 				<ul id="handler_icon">
 				  {if $item.candelete}<li><a class="btn_delete" href="member.php?id={$item.id}&do=del{$addParams}" title="{lang delete}">{lang delete}</a></li>{/if}
 				  <li><a class="btn_edit" href="member.php?do=edit&id={$item.id}{$addParams}" title="{lang edit}">{lang edit}</a></li>
+				  <li><a username="{$item.username}" rel="{$item.id}" class="btn_edit plus-icon" href="#plus-form" title="Cộng điểm">
+					Cộng điểm
+					</a>
+					
+				  </li>
+				  <li><a username="{$item.username}" rel="{$item.id}" class="btn_edit minus-icon" href="#minus-form" title="Trừ điểm">
+					Trừ điểm
+				  </a></li>
 				  <li><a class="btn_edit moderator-icon" href="member.php?do=set_moderator&id={$item.id}" title="Moderator">MOD</a></li>
 				  {if !$item.checkout}
 					<li style="width: auto">
@@ -161,4 +174,28 @@
     </div>
 	</form>
 </div>
+
+<div id="plus-form" style="display: none">
+	<form method="GET" onsubmit="return check_input_plus_minus($(this))">
+		<h1>Cộng điểm thành viên: <strong>{$item.username}</strong></h1><br />
+		<input type="hidden" name="do" value="point_up" />
+		<input type="hidden" name="id" value="{$item.id}" />
+		<input type="text" name="description" style="width:300px;padding: 2px;" placeholder="Lý do cộng điểm" /><br /><br />
+		<input type="text" name="point" style="width:200px;padding: 2px;" placeholder="Nhập số điểm được cộng" /><br /><br />
+		<input type="submit" value="Cộng điểm" />
+	</form>
+</div>
+
+<div id="minus-form" style="display: none">
+	<form method="GET" onsubmit="return check_input_plus_minus($(this))">
+		<h1>Trừ điểm thành viên: <strong>{$item.username}</strong></h1><br />
+		<input type="hidden" name="do" value="point_down" />
+		<input type="hidden" name="id" value="{$item.id}" />
+		<input type="text" name="description" style="width:300px;padding: 2px;" placeholder="Lý do trừ điểm" /><br /><br />
+		<input type="text" name="point" style="width:200px;padding: 2px;" placeholder="Nhập số điểm bi trừ" /><br /><br />
+		<input type="submit" value="Trừ điểm" />
+	</form>
+</div>
+
+
 <!-- {include file="footer.html"} -->

@@ -309,6 +309,12 @@ img.double-border {
 .moderator-icon, .moderator-icon:hover {
     background: url("../images/moderator-icon.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
 }
+.plus-icon, .plus-icon:hover {
+    background: url("../images/plus.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
+}
+.minus-icon, .minus-icon:hover {
+    background: url("../images/minus.png") no-repeat scroll 0 1px rgba(0, 0, 0, 0);
+}
 .stars .star {
     background: url("../../default/image/star.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
     display: inline-block;
