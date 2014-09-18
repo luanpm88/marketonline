@@ -256,7 +256,7 @@ if (isset($_GET['do'])) {
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 }
-$fields = "c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";
+$fields = "Member.active_time,c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";
 $amount = $member->findCount(null, $conditions);
 $page->setPagenav($amount);
 $joins[] = "LEFT JOIN {$tb_prefix}memberfields mf ON Member.id=mf.member_id";

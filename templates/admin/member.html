@@ -82,7 +82,8 @@
 			  <th>{lang trust_type}</th>
 			  <th>{lang membergroup}</th>
 			  <th>{lang integral}</th>
-			  <th>trust_star</th>
+			  <!--<th>trust_star</th>-->
+			  <th>Active Time</th>
 			   
 			  <th width="20%">{lang action}</th>
 			</tr>
@@ -109,7 +110,8 @@
 			  <td><!-- {if $item.trust_image} -->{$item.trust_image}<!-- {/if} --></td>
 			  <td><!-- {if $item.membergroup_id} --><a href="member.php?do=search&groupid={$item.membergroup_id}"><img src="{$item.group_image}" border="0" alt="{$Membergroups[$item.membergroup_id].name}" /></a><!-- {/if} --></td>
 			  <td>{$item.points}</td>
-			  <td>{$item.credits}</td>
+			  <!--<td>{$item.credits}</td>-->
+			  <th>{$item.active_time}</th>
 			  
 			<td class="handler">
 				<ul id="handler_icon">
