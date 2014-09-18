@@ -282,6 +282,8 @@ if (!empty($result)) {
 		if (!empty($result[$i]['membergroup_id'])) {
 			$result[$i]['group_image'] = URL."images/group/".$member_groups[$result[$i]['membergroup_id']]['avatar'];
 		}
+		
+		$result[$i]['active_time'] = format_time($result[$i]['active_time']);
 	}
 	setvar("Items", $result);
 }

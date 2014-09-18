@@ -1170,4 +1170,18 @@ function findImagesFromHTML($html){
 	$images = $matches[2];
 	return $images;
 }
+function format_time($t,$f=':') // t = seconds, f = separator 
+{
+	$hour = floor($t/3600);
+	$minutes = ($t/60)%60;
+	$string = '';
+	if($hour) {
+		$string .= $hour." giờ ";
+	}
+	if($minutes) {
+		$string .= $minutes." phút";
+	}
+	//return sprintf("%02d %s %02d %s", floor($t/3600), "giờ", ($t/60)%60, "phút");
+	return $string;
+}
 ?>
