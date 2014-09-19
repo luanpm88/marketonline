@@ -197,8 +197,15 @@ if($member->info['fb_user_id'] && $member->info['fb_access_token']) {
 //checking follow
 if($pb_userinfo["pb_userid"])
 {
-	$vote = $shopvote->getVote($pb_userinfo["pb_userid"], $company->info['id']);
+	$vote = $shopvote->getResult($company->info['id']);
 	$company->info['vote'] = $vote;
+	//var_dump($vote);
+	
+	$user_vote = $shopvote->getVote($pb_userinfo["pb_userid"], $company->info['id']);
+	$company->info['user_vote'] = $user_vote;
+	
+	$vote_list = $shopvote->getList($company->info['id']);
+	$company->info['vote_list'] = $vote_list;
 }
 
 //echo $member->info['id']."sdsdsdsdsd";

@@ -2384,4 +2384,27 @@
 		    }
                 });
 		
+		$('.home_stars').each(function() {
+		    var string = '';
+		    var rate = parseFloat($(this).html());
+		    //alert(rate>3);
+		    for(var i=1;i<=5;i++) {
+			if (rate>i-1 && rate<i) {
+			    string += '<span class="star half">2</span>';
+			} else if (rate >= i) {
+			    string += '<span class="star full">1</span>';
+			} else {
+			    string += '<span class="star none">3</span>';
+			}
+		    }
+		    $(this).html(string);
+		});
+		
+		//$('.shop_stars .detail_box span.detail_pointer').click(function() {
+		//    $('.shop_stars .detail_box .vote_details').toggle();
+		//});
+		$('body').click(function(){$('.shop_stars .detail_box .vote_details').hide();});	
+		$('.shop_stars .detail_box span.detail_pointer').click(function(e){$('.shop_stars .detail_box .vote_details').toggle();e.stopPropagation();});
+		
+		
 	});

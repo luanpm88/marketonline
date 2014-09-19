@@ -10793,12 +10793,13 @@ input[name=redirect]
     border-color: red;
 }
 .shop_stars {
-    background: none repeat scroll 0 0 #efefef;
+    background: none repeat scroll 0 0 #3b984c;
     display: block;
     float: left;
     height: auto;
     margin-top: -5px;
     padding: 1px 5px;
+    position: relative;
 }
 .shop_stars .starshover {
     display: block;
@@ -10810,6 +10811,7 @@ input[name=redirect]
     font-size: 15px;
     margin-right: 5px;
     margin-top: 1px;
+    color: #fff !important;
 }
 .shop_stars .stars .result {
     background: none repeat scroll 0 0 #fff;
@@ -10821,7 +10823,7 @@ input[name=redirect]
     width: 20px;
 }
 .shop_stars .stars .star.light {
-    background: url("../image/star.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
+    background: url("../image/star_yellow_dark.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
 }
 .shop_stars .stars .star {
     background: url("../image/star_disable.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
@@ -10836,6 +10838,91 @@ input[name=redirect]
     float: left;
 }
 .post_star .star[rel="0"] {
-    background: url("../image/x-button.png") no-repeat scroll -1px -1px / 18px auto rgba(0, 0, 0, 0) !important;
+    background: url("../image/unvalid_small.png") no-repeat scroll -1px -1px / 18px auto rgba(0, 0, 0, 0) !important;
     width: 20px !important;
+}
+.shop_stars .detail_box {
+    float: left;
+}
+
+.shop_stars .detail_box span.detail_pointer {
+    background: url("../image/pointer_down_white.png") no-repeat scroll 6px 6px / 12px auto rgba(0, 0, 0, 0);
+    border-left: 1px solid rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    display: inline-block;
+    height: 23px;
+    margin-left: 5px;
+    text-indent: -9000px;
+    width: 21px;
+}
+.home_stars .star {
+    background: url("../../default/image/star_yellow_dark.png") no-repeat scroll 0 0 / 15px auto rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 15px;
+    text-indent: -9000px;
+    width: 15px;
+    margin-right: 2px;
+}
+.home_stars .star.half {
+	background-image: url("../image/star_yellow_half.png");
+}
+.home_stars .star.none {
+	background-image: url("../image/star_yellow.png");
+}
+.home_stars_box {
+    float: left;
+    padding: 3px;
+    color: #fff;
+}
+.vote_details {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #3b984c;
+    clear: both;
+    display: block;
+    left: 0;
+    padding: 7px;
+    position: absolute;
+    width: 300px;
+    display: none;
+}
+.vote_details .vote_details_item {
+    float: left;
+    margin-bottom: 7px;
+    width: 100%;
+}
+.vote_details .vote_details_item img.avatar {
+    float: left;
+    margin-right: 7px;
+}
+.vote_details .vote_details_item .stars {
+    margin-top: 5px;
+}
+.vote_details .vote_details_item .star.full {
+    background-image: url("../image/star_yellow_dark.png");
+}
+.vote_details .vote_details_item .star.half {
+    background-image: url("../image/star_yellow_helf.png");
+}
+.vote_details .vote_details_item .star.none {
+    background-image: url("../image/star_light.png");
+}
+.vote_details h5 {
+    border-bottom: 1px solid #aaa;
+    color: #333;
+    float: left;
+    font-family: Segoe UI;
+    font-size: 12px;
+    margin: 15px 0 10px;
+    padding-bottom: 4px;
+    width: 100%;
+}
+.vote_details h5:first-child {
+    margin-top: 0;
+}
+.vote_details .vote_details_scroll {
+    display: block;
+    float: left;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
 }

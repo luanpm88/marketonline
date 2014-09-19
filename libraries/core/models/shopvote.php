@@ -68,5 +68,20 @@ class Shopvotes extends PbModel {
 		
 		return array("count"=>$count,"sum"=>$sum,"result"=>$result);
 	}
+	
+	function getList($company_id) {
+		$conditions = array("Shopvote.company_id=".$company_id);
+		
+		$joins = array("LEFT JOIN {$this->table_prefix}members AS m ON m.id = Shopvote.member_id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Shopvote.member_id";
+		
+		$items = $this->findAll("m.photo,mf.first_name,mf.last_name,m.username,Shopvote.*",$joins,$conditions,"Shopvote.created DESC");
+		foreach($items as $key => $item) {
+			$items[$key]["avatar"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
+		}
+		//var_dump($items);
+		
+		return $items;
+	}
 }
 ?>
