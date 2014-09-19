@@ -75,7 +75,7 @@ class Shopvotes extends PbModel {
 		$joins = array("LEFT JOIN {$this->table_prefix}members AS m ON m.id = Shopvote.member_id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Shopvote.member_id";
 		
-		$items = $this->findAll("m.photo,mf.first_name,mf.last_name,m.username,Shopvote.*",$joins,$conditions,"Shopvote.created DESC");
+		$items = $this->findAll("m.photo,mf.first_name,mf.last_name,m.username,Shopvote.*",$joins,$conditions,"CASE WHEN m.id = 1 THEN 1 ELSE 2 END, Shopvote.created DESC");
 		foreach($items as $key => $item) {
 			$items[$key]["avatar"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
 		}
