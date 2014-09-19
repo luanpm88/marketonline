@@ -10901,10 +10901,13 @@ input[name=redirect]
     background-image: url("../image/star_yellow_dark.png");
 }
 .vote_details .vote_details_item .star.half {
-    background-image: url("../image/star_yellow_helf.png");
+    background-image: url("../image/star_yellow_half.png");
 }
 .vote_details .vote_details_item .star.none {
     background-image: url("../image/star_light.png");
+}
+.vote_details .vote_details_item .star.light.half {
+    background-image: url("../image/star_yellow_half.png");
 }
 .vote_details h5 {
     border-bottom: 1px solid #aaa;
