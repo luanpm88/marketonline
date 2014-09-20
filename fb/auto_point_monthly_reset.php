@@ -9,8 +9,14 @@ $setting = new Settings();
 $pointdb = new Points();
 
 
-$count = $pointdb->resetMonthlyPoint();
-if($count) $result = "Number of updated members: " . $count . $line_break;
+$all_members = $memberdb->findAll("id");
+foreach($all_members as $m) {
+    $pointdb->updateMonthlyPoint($m["id"]);
+}
+$result = "Updated all members monthly points" . $line_break;
+
+//$count = $pointdb->resetMonthlyPoint();
+//if($count) $result .= "Number of updated members: " . $count . $line_break;
 
 
 //write log

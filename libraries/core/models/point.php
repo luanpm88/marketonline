@@ -149,7 +149,7 @@ class Points extends PbModel {
 	function resetMonthlyPoint() {
 		uses('member');
 		$memberdb = new Members();
-		$members = $memberdb->findAll("id,points_monthly,points_storage", null, array("(MONTH(points_storage_updated) != MONTH(NOW()) OR YEAR(points_storage_updated) != YEAR(NOW()) OR points_storage_updated IS NULL) "),"points DESC");
+		$members = $memberdb->findAll("id,points_monthly,points_storage", null, array("(MONTH(points_storage_updated) < MONTH(NOW()) OR YEAR(points_storage_updated) != YEAR(NOW()) OR points_storage_updated IS NULL) "),"points DESC");
 		
 		//Put addition points to storage
 		foreach($members as $member) {
