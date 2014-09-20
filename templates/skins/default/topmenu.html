@@ -302,7 +302,15 @@
 									<a class="avatar" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
 										<img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.jpg  {/if}  {/if}" width="40" height="40" />
 									</a>
-									{if $pb_company}{$pb_company.shop_name}{else}{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}{/if}
+									{if $pb_company}
+										<a class="avatar" href="{the_url module=space userid=`$pb_company.cache_spacename`}">{$pb_company.shop_name}</a><br />
+									{else}
+										{if $pb_userinfo.first_name}
+											{$pb_userinfo.first_name} {$pb_userinfo.last_name}
+										{else}
+											{$pb_userinfo.username}
+										{/if}
+									{/if}
 									
 								</div>
 								<div class="stars">
@@ -315,6 +323,7 @@
 									
 									<div style="visibility:hidden" value="{$COMPANY.user_vote.rate}" class="over_points">{$COMPANY.user_vote.rate}</div>
 								</div>
+								{if $COMPANY.user_vote.rate}({$COMPANY.user_vote.created}){/if}
 							{else}
 								<div class="">
 									<img class="avatar" src="{$theme_img_path}image/usericon_big.jpg" width="40" height="40" />

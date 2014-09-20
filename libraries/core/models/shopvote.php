@@ -82,10 +82,10 @@ class Shopvotes extends PbModel {
 			if($item["picture"]) {
 				$items[$key]["avatar"] = '<img src="'.URL.pb_get_attachmenturl($item['picture'], '', 'small').'" />';
 			}
-			$items[$key]["avatar_link"] = '<a href="'.$this->url(array("module"=>"space","userid"=>$item["cache_spacename"])).'">'.$items[$key]["avatar"].'</a>';
+			$items[$key]["avatar_link"] = '<a class="avatar" href="'.$this->url(array("module"=>"space","userid"=>$item["cache_spacename"])).'">'.$items[$key]["avatar"].'</a>';
 			
 			if($item["shop_name"]) {
-				$name = $item["shop_name"];
+				$name = '<a class="avatar" href="'.$this->url(array("module"=>"space","userid"=>$item["cache_spacename"])).'">'.$item["shop_name"].'</a><br/>';
 			} else {
 				if ($item["first_name"]) {
 					$name = $item["first_name"]." ".$item["last_name"];

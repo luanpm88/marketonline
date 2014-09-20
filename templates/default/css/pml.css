@@ -10935,6 +10935,10 @@ input[name=redirect]
     margin: 0;
     padding: 0;
     width: auto;
+    color: #333;
+    font-size: 14px;
+}
+.vote_details_item a.avatar {
     background: none;
 }
 .vote_details_item img {
