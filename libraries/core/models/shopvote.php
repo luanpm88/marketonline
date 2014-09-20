@@ -69,18 +69,33 @@ class Shopvotes extends PbModel {
 		return array("count"=>$count,"sum"=>$sum,"result"=>$result);
 	}
 	
-	function getList($company_id) {
+	function getList($company_id, $member_id) {
 		$conditions = array("Shopvote.company_id=".$company_id);
-		
+		$conditions[] = "Shopvote.member_id!=".$member_id;
 		$joins = array("LEFT JOIN {$this->table_prefix}members AS m ON m.id = Shopvote.member_id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Shopvote.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies AS c ON c.member_id = m.id";
 		
-		$items = $this->findAll("m.photo,mf.first_name,mf.last_name,m.username,Shopvote.*",$joins,$conditions,"CASE WHEN m.id = 1 THEN 1 ELSE 2 END, Shopvote.created DESC");
+		$items = $this->findAll("c.cache_spacename,c.shop_name,c.picture,c.name as company_name,m.photo,mf.first_name,mf.last_name,m.username,Shopvote.*",$joins,$conditions,"CASE WHEN m.id = 1 THEN 1 ELSE 2 END, Shopvote.created DESC");
 		foreach($items as $key => $item) {
-			$items[$key]["avatar"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
+			$items[$key]["avatar"] = '<img src="'.URL.pb_get_attachmenturl($item['photo'], '', 'small').'" />';			
+			if($item["picture"]) {
+				$items[$key]["avatar"] = '<img src="'.URL.pb_get_attachmenturl($item['picture'], '', 'small').'" />';
+			}
+			$items[$key]["avatar_link"] = '<a href="'.$this->url(array("module"=>"space","userid"=>$item["cache_spacename"])).'">'.$items[$key]["avatar"].'</a>';
+			
+			if($item["shop_name"]) {
+				$name = $item["shop_name"];
+			} else {
+				if ($item["first_name"]) {
+					$name = $item["first_name"]." ".$item["last_name"];
+				} else {
+					$name = $item["username"];
+				}
+			}
+			$items[$key]["name"] = $name;
 		}
-		//var_dump($items);
-		
+	
 		return $items;
 	}
 }

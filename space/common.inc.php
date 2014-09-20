@@ -197,18 +197,15 @@ if($member->info['fb_user_id'] && $member->info['fb_access_token']) {
 //checking follow
 if($pb_userinfo["pb_userid"])
 {
-	$vote = $shopvote->getResult($company->info['id']);
-	$company->info['vote'] = $vote;
-	//var_dump($vote);
-	
 	$user_vote = $shopvote->getVote($pb_userinfo["pb_userid"], $company->info['id']);
-	$company->info['user_vote'] = $user_vote;
-	
-	$vote_list = $shopvote->getList($company->info['id']);
-	$company->info['vote_list'] = $vote_list;
+	$company->info['user_vote'] = $user_vote;	
 }
+$vote = $shopvote->getResult($company->info['id']);
+$company->info['vote'] = $vote;
+$vote_list = $shopvote->getList($company->info['id'], $pb_userinfo["pb_userid"]);
+$company->info['vote_list'] = $vote_list;
+//var_dump($vote_list);
 
-//echo $member->info['id']."sdsdsdsdsd";
 uaAssign(array(
 "SkinName"=>$skin_path,
 "ThemeName"=>$skin_path,

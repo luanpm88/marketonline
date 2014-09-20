@@ -245,8 +245,10 @@
 
 <div class="row" style="height:33px; margin-top: 2px;">
     <!--<div style="right: inherit; left: auto;float: left;padding: 10px 20px;font-size: 14px;margin-top: 6px;margin-bottom: -30px;" class="postitem">{lang post_product}</div>-->
-    <!--{if $pb_username!=""}-->
-	<div style="" class="postitem follow_but">
+    
+    <div style="" class="postitem follow_but">
+	<!--{if $pb_username!=""}-->
+	
 		{if !$Followed}
 			<a onclick="follow({$COMPANY.id}, this)" href="javascript:void(0)">{lang follow}</a>
 		{else}
@@ -255,8 +257,25 @@
 		
 		<a class="skin_chat_with_owner {if $MEMBER.online}online{/if}" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)" href="javascript:void(0)">Tin nhắn</a>
 		
-		{if $pb_userinfo}		
-			<div class="stats post_star shop_stars">
+				
+			
+
+	
+	<!--{else}-->
+	
+		{if !$Followed}
+		    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
+		{else}
+		    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
+		{/if}
+		
+		<a class="skin_chat_with_owner {if $MEMBER.online}online{/if} comment_but" href="#login-box">Tin nhắn</a>
+	
+	<!--{/if}-->
+	
+	
+	
+				<div class="stats post_star shop_stars">
 				<!-- <label>Đánh giá của bạn: </label><div class="starshover">
 					<div class="stars">
 						{if $COMPANY.vote.rate}<a  href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=0}" class="star cancel" rel="0" title="Hủy đánh giá"></a>{/if}
@@ -278,55 +297,60 @@
 					<div class="vote_details">
 						<h5>Đánh giá của bạn {if !$COMPANY.user_vote.rate}(Chưa đánh giá){/if}</h5>
 						<div class="vote_details_item">
-							<div class="">
-								<img class="avatar" src="{if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="40" height="40" />
-								{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
-							</div>
-							<div class="stars">
-								{if $COMPANY.user_vote.rate}<a  href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=0}" class="star cancel" rel="0" title="Hủy đánh giá"></a>{/if}
-								<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=1}" class="star{if $COMPANY.user_vote.rate >= 1} light{/if}" rel="1" title="1 sao"></a>
-								<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=2}" class="star{if $COMPANY.user_vote.rate >= 2} light{/if}" rel="2" title="2 sao"></a>
-								<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=3}" class="star{if $COMPANY.user_vote.rate >= 3} light{/if}" rel="3" title="3 sao"></a>
-								<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=4}" class="star{if $COMPANY.user_vote.rate >= 4} light{/if}" rel="4" title="4 sao"></a>
-								<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=5}" class="star{if $COMPANY.user_vote.rate >= 5} light{/if}" rel="5" title="5 sao"></a>
-								
-								<div style="visibility:hidden" value="{$COMPANY.user_vote.rate}" class="over_points">{$COMPANY.user_vote.rate}</div>
-							</div>
+							{if $pb_userinfo}
+								<div class="">
+									<a class="avatar" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
+										<img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.jpg  {/if}  {/if}" width="40" height="40" />
+									</a>
+									{if $pb_company}{$pb_company.shop_name}{else}{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}{/if}
+									
+								</div>
+								<div class="stars">
+									{if $COMPANY.user_vote.rate}<a  href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=0}" class="star cancel" rel="0" title="Hủy đánh giá"></a>{/if}
+									<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=1}" class="star{if $COMPANY.user_vote.rate >= 1} light{/if}" rel="1" title="1 sao"></a>
+									<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=2}" class="star{if $COMPANY.user_vote.rate >= 2} light{/if}" rel="2" title="2 sao"></a>
+									<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=3}" class="star{if $COMPANY.user_vote.rate >= 3} light{/if}" rel="3" title="3 sao"></a>
+									<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=4}" class="star{if $COMPANY.user_vote.rate >= 4} light{/if}" rel="4" title="4 sao"></a>
+									<a href="{the_url module=rate_shop space_name=`$COMPANY.cache_spacename` star=5}" class="star{if $COMPANY.user_vote.rate >= 5} light{/if}" rel="5" title="5 sao"></a>
+									
+									<div style="visibility:hidden" value="{$COMPANY.user_vote.rate}" class="over_points">{$COMPANY.user_vote.rate}</div>
+								</div>
+							{else}
+								<div class="">
+									<img class="avatar" src="{$theme_img_path}image/usericon_big.jpg" width="40" height="40" />
+									Khách
+								</div>
+								<div class="stars">									
+									<a href="#login-box" class="comment_but star{if $COMPANY.user_vote.rate >= 1} light{/if}" rel="1" title="1 sao"></a>
+									<a href="#login-box" class="comment_but star{if $COMPANY.user_vote.rate >= 2} light{/if}" rel="2" title="2 sao"></a>
+									<a href="#login-box" class="comment_but star{if $COMPANY.user_vote.rate >= 3} light{/if}" rel="3" title="3 sao"></a>
+									<a href="#login-box" class="comment_but star{if $COMPANY.user_vote.rate >= 4} light{/if}" rel="4" title="4 sao"></a>
+									<a href="#login-box" class="comment_but star{if $COMPANY.user_vote.rate >= 5} light{/if}" rel="5" title="5 sao"></a>
+								</div>
+							{/if}
 						</div>
 						<!--{if $COMPANY.vote_list}-->
 							<h5>Đánh giá khác</h5>
 							<div class="vote_details_scroll">
 								<!--{foreach from=$COMPANY.vote_list item=vote}-->
-									<!--{if $vote.member_id != $pb_userinfo.id}-->
-										<div class="vote_details_item">
-											<div class="">
-												<img class="avatar" src="{if $vote.avatar} {$vote.avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" width="40" height="40" />
-												{if $vote.first_name}{$vote.first_name} {$vote.last_name}{else}{$vote.username}{/if}
-											</div>
-											<div class="stars">
-												<div class="home_stars">{$vote.rate}</div>
-											</div>
+									<div class="vote_details_item">
+										<div class="">
+											{$vote.avatar_link}
+											{$vote.name}
 										</div>
-									<!--{/if}-->
+										<div class="stars">
+											<div class="home_stars">{$vote.rate}</div>
+										</div>
+									</div>
 								<!--{/foreach}-->
 							</div>
 						<!--{/if}-->
 					</div>
 				</div>
 			</div>
-		{/if}
-	</div>
-	<!--{else}-->
-	<div style="" class="postitem follow_but">
-		{if !$Followed}
-		    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang follow}</a>
-		{else}
-		    <a class="comment_but" href="#login-box" href="{$WebRootUrl}logging.php">{lang followed}</a>
-		{/if}
-		
-		<a class="skin_chat_with_owner {if $MEMBER.online}online{/if} comment_but" href="#login-box">Tin nhắn</a>
-	</div>
-    <!--{/if}-->
+	
+	
+    </div>
     
     <!--<div style="position: relative; margin-left: 10px;" class="postitem follow_but"><a onclick="getChatbox({$MEMBER.id}, false)" href="javascript:void(0)">Chat</a></div>-->
     

@@ -1219,5 +1219,9 @@ class Members extends PbModel {
 			}
 		}
 	}
+	
+	function formatInfo($info) {
+		
+	}
 }
 ?>

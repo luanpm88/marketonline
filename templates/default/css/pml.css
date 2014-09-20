@@ -10929,3 +10929,15 @@ input[name=redirect]
     overflow-y: auto;
     width: 100%;
 }
+.vote_details_item a {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: auto;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+.vote_details_item img {
+    width: 40px;
+    height: 40px;
+    margin-right: 7px;
+}
