@@ -323,7 +323,7 @@
 									
 									<div style="visibility:hidden" value="{$COMPANY.user_vote.rate}" class="over_points">{$COMPANY.user_vote.rate}</div>
 								</div>
-								{if $COMPANY.user_vote.rate}({$COMPANY.user_vote.created}){/if}
+								{if $COMPANY.user_vote.rate}<span style="float:right">({$COMPANY.user_vote.created})</span>{/if}
 							{else}
 								<div class="">
 									<img class="avatar" src="{$theme_img_path}image/usericon_big.jpg" width="40" height="40" />
@@ -348,7 +348,7 @@
 											{$vote.name}
 										</div>
 										<div class="stars">
-											<div class="home_stars">{$vote.rate}</div> ({$vote.created})
+											<div class="home_stars">{$vote.rate}</div> <span style="float:right">({$vote.created})</span>
 										</div>
 									</div>
 								<!--{/foreach}-->
