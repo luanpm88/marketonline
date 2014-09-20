@@ -211,7 +211,7 @@ foreach($vote_list as $ore => $vv) {
 $company->info['vote_list'] = $vote_list;
 //var_dump($vote_list);
 
-$point->updateMonthlyPoint($pb_userinfo["pb_userid"]);
+//$point->updateMonthlyPoint($pb_userinfo["pb_userid"]);
 //$point->resetMonthlyPoint();
 
 uaAssign(array(
