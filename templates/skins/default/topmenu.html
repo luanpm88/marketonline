@@ -8,11 +8,8 @@
 			url: "space/?userid=<!--{/literal}-->{$MEMBER.space_name}<!--{literal}-->&do=ajaxannoucebox",
 		}).done(function ( data ) {
 			if( console && console.log ) {
-				//alert(data);
 				$('#annouce_box').html(data);
-				//$('.tooltipz').tooltipster({fixedWidth: 300,
-				//    position: 'right'});
-			    }
+			}
 		});
 	
 	}

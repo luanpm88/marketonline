@@ -15,33 +15,38 @@ $result = "";
 //CONNECT FACEBOOK AUTO POINT
 $conditions = array();
 $joins = array();
-$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='connect_facebook' GROUP BY member_id) logs ON logs.member_id=Member.id";
-$conditions[] = "(logs.max_date<".($memberdb->timestamp-30*86400)." OR logs.max_date IS NULL)";
+//$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='connect_facebook' GROUP BY member_id) logs ON logs.member_id=Member.id";
+//$conditions[] = "((MONTH(FROM_UNIXTIME(logs.max_date)) = MONTH(NOW()) AND YEAR(FROM_UNIXTIME(logs.max_date)) = YEAR(NOW())) OR logs.max_date IS NULL)";
 $conditions[] = "fb_access_token != ''";
-$rows = $memberdb->findAll("logs.max_date,Member.*", $joins, $conditions);
+$rows = $memberdb->findAll("Member.id,Member.fb_access_token", $joins, $conditions);
+$countfb=0;
 foreach($rows as $member) {
-    $return =  file_get_contents("https://graph.facebook.com/me?access_token=".$member["fb_access_token"]);
-    $return = json_decode($return,true);
-    if($return["id"]) {
-        $pointdb->update("connect_facebook",intval($member["id"]));
+    //$return =  file_get_contents("https://graph.facebook.com/me?access_token=".$member["fb_access_token"]);
+    //$return = json_decode($return,true);
+    if($return["id"] || true) {        
+        if($pointdb->update("connect_facebook",intval($member["id"]))) {
+            $countfb++;
+        }
     }
 }
-if(count($rows)) $result .= "Num of connect_facebook updated: " . count($rows) . $line_break;
+if($countfb) $result .= "Num of connect_facebook updated: " . $countfb . $line_break;
 
 
 //CHECKOUT AUTO POINT
 $conditions = array();
 $joins = array();
-$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='checkout' GROUP BY member_id) logs ON logs.member_id=Member.id";
-$conditions[] = "(logs.max_date<".($memberdb->timestamp-30*86400)." OR logs.max_date IS NULL)";
-$conditions[] = "fb_access_token != ''";
-$rows = $memberdb->findAll("logs.max_date, Member.*", $joins, $conditions);
+//$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='checkout' GROUP BY member_id) logs ON logs.member_id=Member.id";
+//$conditions[] = "((MONTH(FROM_UNIXTIME(logs.max_date)) = MONTH(NOW()) AND YEAR(FROM_UNIXTIME(logs.max_date)) = YEAR(NOW())) OR logs.max_date IS NULL)";
+$conditions[] = "checkout = 1";
+$rows = $memberdb->findAll("Member.id", $joins, $conditions);
 //var_dump($rows);
-
+$countfb=0;
 foreach($rows as $member) {    
-    $pointdb->update("checkout",intval($member["id"]));
+    if($pointdb->update("checkout",intval($member["id"]))) {
+        $countfb++;
+    }
 }
-if(count($rows)) $result .= "Num of checkout updated: " . count($rows) . $line_break;
+if($countfb) $result .= "Num of checkout updated: " . $countfb . $line_break;
 
 
 
@@ -100,14 +105,17 @@ if($recent_date < ($memberdb->timestamp-30*86400) || true) {
 //GOOD SHOP AUTO POINT
 $conditions = array();
 $joins = array();
-$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='good_shop' GROUP BY member_id) logs ON logs.member_id=Member.id";
-$conditions[] = "(logs.max_date<".($memberdb->timestamp-30*86400)." OR logs.max_date IS NULL)";
+//$joins[] = "LEFT JOIN (SELECT member_id, MAX(created) AS max_date FROM {$memberdb->table_prefix}pointlogs pointlogs WHERE pointlogs.action_name='good_shop' GROUP BY member_id) logs ON logs.member_id=Member.id";
+//$conditions[] = "((MONTH(FROM_UNIXTIME(logs.max_date)) = MONTH(NOW()) AND YEAR(FROM_UNIXTIME(logs.max_date)) = YEAR(NOW())) OR logs.max_date IS NULL)";
 $conditions[] = "good_shop_status = 1";
-$rows = $memberdb->findAll("logs.max_date, Member.*", $joins, $conditions);
+$rows = $memberdb->findAll("Member.id", $joins, $conditions);
+$countfb=0;
 foreach($rows as $member) {    
-    $pointdb->update("good_shop",intval($member["id"]));
+    if($pointdb->update("good_shop",intval($member["id"]))) {
+        $countfb++;
+    }
 }
-if(count($rows)) $result .= "Num of good Shop updated: " . count($rows) . $line_break;
+if($countfb) $result .= "Num of good Shop updated: " . $countfb . $line_break;
 
 
 

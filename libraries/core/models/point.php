@@ -59,7 +59,7 @@ class Points extends PbModel {
  				break;
  			case "monthly":
 				$conditions[] =  "action_name='".$action."'";
- 				$conditions[] = "created>".($this->timestamp-30*86400);
+ 				$conditions[] = "(MONTH(FROM_UNIXTIME(created)) = MONTH(NOW()) AND YEAR(FROM_UNIXTIME(created)) = YEAR(NOW()))";
  				break;
  			case "yearly":
 				$conditions[] =  "action_name='".$action."'";
@@ -100,12 +100,38 @@ class Points extends PbModel {
 	 			}
 	 			$sql = "INSERT INTO {$this->table_prefix}pointlogs (member_id,action_name,points,description,ip_address,created) VALUE ({$member_id},'".$action."',".$point.",'".$description."','".pb_get_client_ip('str')."',".$this->timestamp.")";
 	 			$this->dbstuff->Execute($sql);
+				
+				return true;
  			}else{
- 				return;
+				//echo "ddd";
+ 				return false;
  			}
  		}else{
  			return;
  		}
  	}
+	
+	function updateMonthlyPoint($member_id) {
+		$max_point = 100;
+		
+		$actions = array("checkout","invite","connect_facebook","good_shop","up","down");
+		
+		$month = date('m');
+		$year = date('Y');
+		$begining_time = strtotime("{$year}-{$month}-01 00:00:00");
+		
+		//$member = $this->dbstuff->GetRow("SELECT * FROM {$this->table_prefix}members WHERE id=".$member_id);
+		
+		$conditions = array("member_id=".$member_id);
+		$conditions[] = "action_name IN ('".implode("','", $actions)."')";
+		$conditions[] = "created > {$begining_time}";
+		$point = $this->dbstuff->GetRow("SELECT sum(points) as point FROM {$this->table_prefix}pointlogs WHERE ".implode(" AND ",$conditions));
+		$point = $point["point"];
+		if($point > 100) {
+			$point = 100;
+		}
+		//var_dump($point);
+		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_monthly={$point} WHERE id={$member_id}");
+	}
 }
 ?>

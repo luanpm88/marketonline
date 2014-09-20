@@ -8,10 +8,11 @@
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(CACHE_LANG_PATH.'lang_space.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("shopvote","member","company","space","follow","industry","area", "producttype", "product", "announcement","tag");
+uses("point","shopvote","member","company","space","follow","industry","area", "producttype", "product", "announcement","tag");
 
 $shopvote = new Shopvotes();
 $tag = new Tags();
+$point = new Points();
 $product = new Products();
 $producttype = new ProductTypes();
 $area = new Areas();
@@ -209,6 +210,9 @@ foreach($vote_list as $ore => $vv) {
 }
 $company->info['vote_list'] = $vote_list;
 //var_dump($vote_list);
+
+$point->updateMonthlyPoint($pb_userinfo["pb_userid"]);
+
 
 uaAssign(array(
 "SkinName"=>$skin_path,
