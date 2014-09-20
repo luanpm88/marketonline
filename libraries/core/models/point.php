@@ -116,7 +116,7 @@ class Points extends PbModel {
  	}
 	
 	function getMonthlyPoint($member_id) {
-		$actions = array("from_storage","checkout","invite","connect_facebook","good_shop","up","down");
+		$actions = array("logging"."from_storage","checkout","invite","connect_facebook","good_shop","up","down");
 		
 		$month = date('m');
 		$year = date('Y');
