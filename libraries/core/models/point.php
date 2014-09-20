@@ -1,5 +1,6 @@
 <?php
 class Points extends PbModel {
+	var $max_point = 100;
  	var $name = "Point";
  	var $rules = array("every", "once", "daily", "weekly", "monthly", "yearly");
  	var $actions = array(
@@ -10,7 +11,8 @@ class Points extends PbModel {
 		"good_shop"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
 		//"thoi gian truy cap"=>
 		"up"=>array("rule"=>"every","do"=>"inc","point"=>0),
-		"down"=>array("rule"=>"every","do"=>"dec","point"=>0)
+		"down"=>array("rule"=>"every","do"=>"dec","point"=>0),
+		"from_storage"=>array("rule"=>"every","do"=>"inc","point"=>0)
  	);
 	
 	function Points() {
@@ -28,11 +30,13 @@ class Points extends PbModel {
  	function increase($point, $member_id)
  	{
  		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points=points+{$point} WHERE id={$member_id}");
+		$this->updateMonthlyPoint($member_id);
  	}
  	
  	function decrease($point, $member_id)
  	{
  		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points=points-{$point} WHERE id={$member_id}");
+		$this->updateMonthlyPoint($member_id);
  	}
  	
  	function checkIfCanUpdate($member_id, $rule, $action)
@@ -111,10 +115,8 @@ class Points extends PbModel {
  		}
  	}
 	
-	function updateMonthlyPoint($member_id) {
-		$max_point = 100;
-		
-		$actions = array("checkout","invite","connect_facebook","good_shop","up","down");
+	function getMonthlyPoint($member_id) {
+		$actions = array("from_storage","checkout","invite","connect_facebook","good_shop","up","down");
 		
 		$month = date('m');
 		$year = date('Y');
@@ -127,11 +129,55 @@ class Points extends PbModel {
 		$conditions[] = "created > {$begining_time}";
 		$point = $this->dbstuff->GetRow("SELECT sum(points) as point FROM {$this->table_prefix}pointlogs WHERE ".implode(" AND ",$conditions));
 		$point = $point["point"];
-		if($point > 100) {
-			$point = 100;
+		
+		if($point) {
+			return $point;
+		} else {
+			return 0;
 		}
-		//var_dump($point);
+		
+	}
+	
+	function updateMonthlyPoint($member_id) {		
+		$point = $this->getMonthlyPoint($member_id);
+		//if($point > $this->max_point) {
+		//	$point = $this->max_point;
+		//}
 		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_monthly={$point} WHERE id={$member_id}");
+	}
+	
+	function resetMonthlyPoint() {
+		uses('member');
+		$memberdb = new Members();
+		$members = $memberdb->findAll("id,points_monthly,points_storage", null, array("(MONTH(points_storage_updated) != MONTH(NOW()) OR YEAR(points_storage_updated) != YEAR(NOW()) OR points_storage_updated IS NULL) "),"points DESC");
+		
+		//Put addition points to storage
+		foreach($members as $member) {
+			$total = $member["points_monthly"]+$member["points_storage"];
+			
+			//reset to 0
+			if($member["points_monthly"] > $this->max_point) {
+				$store = $member["points_monthly"] - $this->max_point;
+				
+				$points_monthly = 0;
+				$storage = $member["points_storage"]+$store;
+			} else {
+				$points_monthly = 0;
+				$storage = $member["points_storage"];			
+			}
+			
+			//update from storage
+			if($storage > $this->max_point) {
+				$points_monthly = $this->max_point;
+				$storage = $storage - $this->max_point;
+			} else {
+				$points_monthly = $storage;
+				$storage = 0;
+			}
+			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_monthly={$points_monthly}, points_storage={$storage}, points_storage_updated = '".date('Y-m-d H:i:s')."' WHERE id=".$member["id"]);
+		}
+		
+		return count($members);
 	}
 }
 ?>
