@@ -201,5 +201,18 @@ class Points extends PbModel {
 		
 		return count($members);
 	}
+	
+	function getDetails($member_id) {
+		//echo "SELECT * FROM {$this->table_prefix}pointlogs log WHERE member_id=".$member_id." AND (MONTH(FROM_UNIXTIME(log.created)) = ".date('m')." AND YEAR(FROM_UNIXTIME(log.created)) = ".date('m').") ORDER BY log.created";
+		$logs = $this->dbstuff->GetArray("SELECT * FROM {$this->table_prefix}pointlogs log WHERE member_id=".$member_id." AND (MONTH(FROM_UNIXTIME(log.created)) = ".date('m')." AND YEAR(FROM_UNIXTIME(log.created)) = ".date('Y').") ORDER BY log.created");
+		
+		$total = 0;
+		foreach($logs as $key => $item) {
+			$logs[$key]["date"] = date('Y-m-d H:i:s',$item["created"]);
+			$total += $item["points"];
+		}
+		
+		return array("logs"=>$logs,"total"=>$total);
+	}
 }
 ?>

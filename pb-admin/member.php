@@ -255,6 +255,16 @@ if (isset($_GET['do'])) {
 		$point->update('down', intval($id), $_GET["description"], intval($_GET["point"]));
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	
+	if ($do == "monthlypoint") {
+		if (!empty($id)){
+			$logs = $point->getDetails($id);
+		}
+		setvar("logs",$logs);
+		$tpl_file = "member.monthlypoint";
+		template($tpl_file);
+		exit;
+	}
 }
 $fields = "Member.active_time,Member.points_monthly,c.shop_name,Member.space_name,parent.username as parent_username, Member.id,Member.username,CONCAT(mf.first_name,mf.last_name) AS NickName,mf.reg_ip,Member.last_ip,Member.points,Member.credits,Member.membergroup_id,Member.status,Member.created AS pubdate,Member.last_login,Member.trusttype_ids,Member.checkout";
 $amount = $member->findCount(null, $conditions);
