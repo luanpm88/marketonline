@@ -156,7 +156,7 @@ class Company extends PbController {
 		
 		
 		
-		setvar("list", $zones);
+		//setvar("list", $zones);
 		render("company/index", 1);
 	}
 	
