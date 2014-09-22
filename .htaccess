@@ -7,7 +7,7 @@ Options +Indexes
 RewriteEngine On
 
 RewriteRule ^privacy$ policy.html [L]
-RewriteRule ^thuong-hieu/?$ index.php?do=company&membergroup_id=3 [L]
+RewriteRule ^thuong-hieu/?$ index.php?do=company [L]
 RewriteRule ^thuong-hieu/cua-hang/?$ index.php?do=company&membergroup_id=1 [L]
 RewriteRule ^thuong-hieu/ca-nhan/?$ index.php?do=company&membergroup_id=2 [L]
 RewriteRule ^thuong-hieu/doanh-nghiep/?$ index.php?do=company&membergroup_id=3 [L]
