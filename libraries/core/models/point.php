@@ -29,13 +29,13 @@ class Points extends PbModel {
  	function increase($point, $member_id)
  	{
  		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points=points+{$point} WHERE id={$member_id}");
-		$this->updateMonthlyPoint($member_id);
+
  	}
  	
  	function decrease($point, $member_id)
  	{
  		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points=points-{$point} WHERE id={$member_id}");
-		$this->updateMonthlyPoint($member_id);
+		
  	}
  	
  	function checkIfCanUpdate($member_id, $rule, $action)
@@ -97,12 +97,15 @@ class Points extends PbModel {
 	 					break;
 	 				case "dec":
 	 					$updated = $this->decrease($point, $member_id);
+						$point = -$point;
 	 					break;
 	 				default:
 	 					break;
 	 			}
 	 			$sql = "INSERT INTO {$this->table_prefix}pointlogs (member_id,action_name,points,description,ip_address,created) VALUE ({$member_id},'".$action."',".$point.",'".$description."','".pb_get_client_ip('str')."',".$this->timestamp.")";
 	 			$this->dbstuff->Execute($sql);
+				
+				$this->updateMonthlyPoint($member_id);
 				return true;
  			}else{
  				return false;
@@ -203,7 +206,7 @@ class Points extends PbModel {
 	}
 	
 	function getDetails($member_id) {
-		//echo "SELECT * FROM {$this->table_prefix}pointlogs log WHERE member_id=".$member_id." AND (MONTH(FROM_UNIXTIME(log.created)) = ".date('m')." AND YEAR(FROM_UNIXTIME(log.created)) = ".date('m').") ORDER BY log.created";
+		// echo "SELECT * FROM {$this->table_prefix}pointlogs log WHERE member_id=".$member_id." AND (MONTH(FROM_UNIXTIME(log.created)) = ".date('m')." AND YEAR(FROM_UNIXTIME(log.created)) = ".date('m').") ORDER BY log.created";
 		$logs = $this->dbstuff->GetArray("SELECT * FROM {$this->table_prefix}pointlogs log WHERE member_id=".$member_id." AND (MONTH(FROM_UNIXTIME(log.created)) = ".date('m')." AND YEAR(FROM_UNIXTIME(log.created)) = ".date('Y').") ORDER BY log.created");
 		
 		$total = 0;
@@ -217,11 +220,10 @@ class Points extends PbModel {
 	
 	function updateAllMonthlyPoint() {
 		uses('member');
-		$memberdb = new Members();		
+		$memberdb = new Members();
 		$members = $memberdb->findAll("DISTINCT id,points_monthly,points_storage");
 		
 		foreach($members as $member) {
-			//echo $member["id"];
 			$point = $this->getMonthlyPoint($member["id"]);
 			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_monthly={$point} WHERE id=".$member["id"]);
 		}
