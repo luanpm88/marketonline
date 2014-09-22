@@ -106,7 +106,7 @@ if ($register_type=="close_register") {
 	setvar("IfInviteCode", true);
 	$check_invite_code = true;
 }
-if(isset($_POST['register']) && $capt_check){
+if(isset($_POST['register']) && $capt_check) {
 	$is_company = false;
 	$if_need_check = false;
 	$register_type = trim($_POST['register']);
@@ -175,6 +175,7 @@ if(isset($_POST['register']) && $capt_check){
 		else
 		{
 			$link->save(array("parent_id"=>757, "member_id"=>$last_member_id, "type_id"=>1, "created"=>date("Y-m-d H:i:s")));
+			$point->update("invite",intval(757));
 		}
 		
 		if (empty($_PB_CACHE['setting']['reg_filename'])) {

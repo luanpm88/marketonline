@@ -284,6 +284,8 @@ if (!empty($result)) {
 		}
 		
 		$result[$i]['active_time'] = format_time($result[$i]['active_time']);
+		
+		$result[$i]['points_monthly'] = $result[$i]['points_monthly'] > 100 ? 100 : $result[$i]['points_monthly']; 
 	}
 	setvar("Items", $result);
 }
