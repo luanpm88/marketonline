@@ -10959,11 +10959,11 @@ input[name=redirect]
 .company-container .works-list .half {
     height: 156px;
     width: 156px;
-    padding: 2px;
+    padding: 4px;
 }
 .company-container .filterable-grid .pic img {
-    height: 148px;
-    width: 148px;
+    height: 144px;
+    width: 144px;
 }
 .company-container .works-list .item {
     height: 210px;
