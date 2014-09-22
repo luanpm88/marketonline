@@ -18,6 +18,7 @@
 			<th>Lý do cộng điểm</th>
 			<th style="text-align: center">Số điểm</th>
 			<th>Thời gian</th>
+			<td>Lý do</td>
 		</tr>
 		<!--{foreach from=$logs.logs item=item key=key}-->
 			<tr>
@@ -27,6 +28,7 @@
 					{$item.points}
 				</td>
 				<td>{$item.date}</td>
+				<td>{$item.description}</td>
 			</tr>
 		<!--{/foreach}-->
 			<tr>
@@ -35,6 +37,7 @@
 					Tổng cộng: 
 				</td>
 				<td style="text-align: center"><strong>{$logs.total}</strong></td>
+				<td></td>
 				<td></td>
 			</tr>
 	</table>
