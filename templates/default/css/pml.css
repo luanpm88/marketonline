@@ -10959,6 +10959,7 @@ input[name=redirect]
 .company-container .works-list .half {
     height: 156px;
     width: 156px;
+    padding: 2px;
 }
 .company-container .filterable-grid .pic img {
     height: 148px;
