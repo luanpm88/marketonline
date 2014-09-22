@@ -111,7 +111,7 @@
 			  <td><!-- {if $item.trust_image} -->{$item.trust_image}<!-- {/if} --></td>
 			  <td><!-- {if $item.membergroup_id} --><a href="member.php?do=search&groupid={$item.membergroup_id}"><img src="{$item.group_image}" border="0" alt="{$Membergroups[$item.membergroup_id].name}" /></a><!-- {/if} --></td>
 			  <td>{$item.points}</td>
-			  <td>{$item.points_monthly}</td>
+			  <td style="text-align: center">{$item.points_monthly}</td>
 			  <!--<td>{$item.credits}</td>-->
 			  <td>{$item.active_time}</td>
 			  

@@ -8,15 +8,16 @@ $tradedb = new Trades();
 $setting = new Settings();
 $pointdb = new Points();
 
+////update and lock
+//$cc = $pointdb->lockMonthlyPoint();
+//$result = "Updated all members monthly points: " . $cc . $line_break;
 
-$all_members = $memberdb->findAll("id");
-foreach($all_members as $m) {
-    $pointdb->updateMonthlyPoint($m["id"]);
-}
-$result = "Updated all members monthly points" . $line_break;
-
+////reset
 //$count = $pointdb->resetMonthlyPoint();
 //if($count) $result .= "Number of updated members: " . $count . $line_break;
+
+$count =  $pointdb->resetMonthlyPointNew();
+if($count) $result .= "Number of updated members: " . $count . $line_break;
 
 
 //write log
