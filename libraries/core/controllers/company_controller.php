@@ -117,7 +117,11 @@ class Company extends PbController {
 
 		foreach($zones as &$zone) {
 			$zone_condition = array("Ads.adzone_id=".$zone["id"]);
-			$adses = $ads->findAll("c.cache_spacename, c.shop_name as shop_name, c.picture, Ads.*", $joins, array_merge($conditions, $zone_condition));
+			$count = $ads->findCount($joins, array_merge($conditions, $zone_condition), "c.cache_spacename");
+			//var_dump($count);
+			$count = intval($count/7)*7;
+			//var_dump($count);
+			$adses = $ads->findAll("c.cache_spacename, c.shop_name as shop_name, c.picture, Ads.*", $joins, array_merge($conditions, $zone_condition), "display_order", 0, $count);
 			
 			foreach($adses as &$item) {				
 				$item = $ads->formatResult($item);
