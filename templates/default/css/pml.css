@@ -10956,3 +10956,11 @@ input[name=redirect]
 .company-container .works-list .filterable-grid {
     width: 1240px;
 }
+.company-container .works-list .half {
+    height: 205px;
+    width: 205px;
+}
+.company-container .filterable-grid .pic img {
+    height: 205px;
+    width: 205px;
+}
