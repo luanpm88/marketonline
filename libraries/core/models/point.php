@@ -192,10 +192,10 @@ class Points extends PbModel {
 			
 			//echo $points_monthly."/".$storage."<br />";
 			
-			//$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_storage={$storage}, points_storage_updated = '".date('Y-m-d H:i:s')."' WHERE id=".$member["id"]);
-			//if($points_monthly) {
-			//	$this->update('from_storage',$member["id"],'',$points_monthly);				
-			//}
+			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_storage={$storage}, points_storage_updated = '".date('Y-m-d H:i:s')."' WHERE id=".$member["id"]);
+			if($points_monthly) {
+				$this->update('from_storage',$member["id"],'',$points_monthly);				
+			}
 			$this->updateMonthlyPoint($member["id"]);
 		}
 		
