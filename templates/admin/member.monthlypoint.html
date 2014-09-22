@@ -1,0 +1,56 @@
+<!-- {include file="header.html"} -->
+{fetch file="../scripts/date.js"}
+<div id="currentPosition">
+	<p>{lang your_current_position} {lang member_center} &raquo; {lang user_center}</p>
+</div>
+<div id="rightTop"> 
+    <h3>{lang member}</h3> 
+    <ul class="subnav">
+		<li><a href="member.php">{lang management}</a></li>
+        <li><a class="btn1" href="member.php?do=edit"><span>{lang add_or_edit}</span></a></li>
+        <li><a href="membertype.php">{lang sorts}</a></li>
+    </ul>
+</div>
+<div class="info">
+	<table width="" cellspacing="0" class="dataTable" summary="{lang data_zone}">
+		<tr>
+			<th>Lý do cộng điểm</th>
+			<th>Số điểm</th>
+			<th>Thời gian</th>
+		</tr>
+		<!--{foreach from=$logs.logs item=item}-->
+			<tr>
+				<td>{$item.action_name}</td>
+				<td>
+					{$item.points}
+				</td>
+				<td>{$item.date}</td>
+			</tr>
+		<!--{/foreach}-->
+			<tr>
+				
+				<td style="text-align: right">
+					Tổng cộng: 
+				</td>
+				<td><strong>{$logs.total}</strong></td><td></td>
+			</tr>
+	</table>
+	<a class="btn1" href="#" onclick="history.back()">Trở lại trang trước</a>
+</div>
+<!--{literal}-->
+<script>
+	Calendar.setup({
+		trigger    : "calendar-date1",
+		animation  : false,
+		inputField : "date1",
+		onSelect   : function() { this.hide() }
+	});
+	Calendar.setup({
+		trigger    : "calendar-date2",
+		animation  : false,
+		inputField : "date2",
+		onSelect   : function() { this.hide() }
+	});
+</script>
+<!--{/literal}-->
+<!-- {include file="footer.html"} -->
