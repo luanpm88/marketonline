@@ -151,7 +151,8 @@ class Company extends PbController {
 		$com_zone["adses"] = $companies;
 		//var_dump($com_zone["adses"]);
 		
-		array_unshift($zones, $com_zone);
+		//array_unshift($zones, $com_zone);
+		$zones[] = $com_zone;
 		
 		//var_dump($zones);
 		
