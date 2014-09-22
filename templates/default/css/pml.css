@@ -10951,16 +10951,19 @@ input[name=redirect]
     overflow: hidden;
 }
 .company-container .works-list .item {
-    margin-right: 39px;
+    margin-right: 19px;
 }
 .company-container .works-list .filterable-grid {
     width: 1240px;
 }
 .company-container .works-list .half {
-    height: 205px;
-    width: 205px;
+    height: 225px;
+    width: 225px;
 }
 .company-container .filterable-grid .pic img {
-    height: 205px;
-    width: 205px;
+    height: 225px;
+    width: 225px;
+}
+.company-container .works-list .item {
+    height: 290px;
 }
