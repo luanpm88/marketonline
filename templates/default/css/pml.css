@@ -10957,13 +10957,16 @@ input[name=redirect]
     width: 1240px;
 }
 .company-container .works-list .half {
-    height: 225px;
-    width: 225px;
+    height: 131px;
+    width: 131px;
 }
 .company-container .filterable-grid .pic img {
-    height: 225px;
-    width: 225px;
+    height: 131px;
+    width: 131px;
 }
 .company-container .works-list .item {
-    height: 290px;
+    height: 200px;
+}
+.company-container .works-list .item {
+    width: 131px;
 }
