@@ -14,25 +14,28 @@
 <div class="info">
 	<table width="" cellspacing="0" class="dataTable" summary="{lang data_zone}">
 		<tr>
+			<th width="1%" style="text-align: center;padding-left: 0;width:auto">STT</th>
 			<th>Lý do cộng điểm</th>
-			<th>Số điểm</th>
+			<th style="text-align: center">Số điểm</th>
 			<th>Thời gian</th>
 		</tr>
-		<!--{foreach from=$logs.logs item=item}-->
+		<!--{foreach from=$logs.logs item=item key=key}-->
 			<tr>
+				<td style="text-align: center">{$key+1}</td>
 				<td>{$item.action_name}</td>
-				<td>
+				<td style="text-align: center">
 					{$item.points}
 				</td>
 				<td>{$item.date}</td>
 			</tr>
 		<!--{/foreach}-->
 			<tr>
-				
+				<td></td>
 				<td style="text-align: right">
 					Tổng cộng: 
 				</td>
-				<td><strong>{$logs.total}</strong></td><td></td>
+				<td style="text-align: center"><strong>{$logs.total}</strong></td>
+				<td></td>
 			</tr>
 	</table>
 	<a class="btn1" href="#" onclick="history.back()">Trở lại trang trước</a>
