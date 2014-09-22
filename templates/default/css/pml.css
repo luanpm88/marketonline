@@ -10946,3 +10946,13 @@ input[name=redirect]
     height: 40px;
     margin-right: 7px;
 }
+.company-container .works-list .half {
+    border: 1px solid #aaa;
+    overflow: hidden;
+}
+.company-container .works-list .item {
+    margin-right: 39px;
+}
+.company-container .works-list .filterable-grid {
+    width: 1240px;
+}
