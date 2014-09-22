@@ -134,6 +134,14 @@ class Company extends PbController {
 		
 		//FIND EFFECTIVE MONTHLY COMPANIES
 		$com_conditions = array();
+		
+		$other_con = " > 8";
+		$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";
+		$com_conditions[] = "(Company.id IN (".
+						"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->company->table_prefix}companies AS cc"
+						." INNER JOIN {$this->company->table_prefix}products AS pp ON cc.id = pp.company_id"
+						." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
+		
 		$com_joins = array("LEFT JOIN {$this->company->table_prefix}members m ON m.id=Company.member_id");
 		if(isset($_GET["industryid"])) {
 			$industryid = $_GET["industryid"];
