@@ -246,5 +246,9 @@ class Company extends PbController {
 		}
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	
+	function updateAllMonthlyPoint() {
+		$this->point->updateAllMonthlyPoint();
+	}
 }
 ?>

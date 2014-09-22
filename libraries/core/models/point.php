@@ -214,5 +214,17 @@ class Points extends PbModel {
 		
 		return array("logs"=>$logs,"total"=>$total);
 	}
+	
+	function updateAllMonthlyPoint() {
+		uses('member');
+		$memberdb = new Members();		
+		$members = $memberdb->findAll("DISTINCT id,points_monthly,points_storage");
+		
+		foreach($members as $member) {
+			//echo $member["id"];
+			$point = $this->getMonthlyPoint($member["id"]);
+			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_monthly={$point} WHERE id=".$member["id"]);
+		}
+	}
 }
 ?>
