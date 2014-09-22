@@ -90,7 +90,7 @@ class Company extends PbController {
 		$joins[] = "LEFT JOIN {$ads->table_prefix}companies c ON c.id=Ads.company_id";
 		$joins[] = "LEFT JOIN {$ads->table_prefix}members m ON m.id=c.member_id";
 		
-		//GET CURRENT INDUSTRY		
+		//GET CURRENT INDUSTRY	
 		if(isset($_GET["industryid"])) {
 			$industryid = $_GET["industryid"];
 			
@@ -134,14 +134,14 @@ class Company extends PbController {
 		
 		//FIND EFFECTIVE MONTHLY COMPANIES
 		$com_conditions = array();
+		//check for nice shop with > 9 products
+		$other_con = " > 8";
+		$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";
+		$com_conditions[] = "(Company.id IN (".
+						"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->company->table_prefix}companies AS cc"
+						." INNER JOIN {$this->company->table_prefix}products AS pp ON cc.id = pp.company_id"
+						." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
 		
-		//$other_con = " > 8";
-		//$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";
-		//$com_conditions[] = "(Company.id IN (".
-		//				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->company->table_prefix}companies AS cc"
-		//				." INNER JOIN {$this->company->table_prefix}products AS pp ON cc.id = pp.company_id"
-		//				." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
-		//
 		
 		$com_joins = array("LEFT JOIN {$this->company->table_prefix}members m ON m.id=Company.member_id");
 		if(isset($_GET["industryid"])) {
@@ -188,6 +188,7 @@ class Company extends PbController {
 		setvar("list", $result["result"]);
 		setvar("count", $result["count"]);
 		setvar("pagination", pagination($url, $result["count"], $num_per_page, $current_page));
+		
 		//render("company/search", 1);
 		//uses("ad");
 		//$ads = new Adses();
@@ -211,6 +212,7 @@ class Company extends PbController {
 		//	$item = $ads->formatResult($item);
 		//}
 		//setvar("list", $adses);
+		
 		render("company/search", 1);
 	}
 	
