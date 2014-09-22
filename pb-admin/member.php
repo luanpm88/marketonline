@@ -260,7 +260,7 @@ if (isset($_GET['do'])) {
 		if (!empty($id)){
 			$logs = $point->getDetails($id);
 		}
-		setvar("logs",$logs);
+		//setvar("logs",$logs);
 		$tpl_file = "member.monthlypoint";
 		template($tpl_file);
 		exit;
