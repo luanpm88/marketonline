@@ -149,14 +149,14 @@ class Company extends PbController {
 		foreach($companies as $key => $com) {
 			$companies[$key] = $ads->formatResult($com);
 		}
-		$com_zone["name"] = "Tiêu biểu";
+		$com_zone["name"] = "Gian hàng Nổi bật";
 		$com_zone["adses"] = $companies;
 		
 		$zones[] = $com_zone;
 		
 		
 		
-		//setvar("list", $zones);
+		setvar("list", $zones);
 		render("company/index", 1);
 	}
 	
