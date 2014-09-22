@@ -128,7 +128,7 @@ class Company extends PbController {
 		//var_dump($zones);
 		
 		
-		//FIND FFECTIVE COMPANIES
+		//FIND EFFECTIVE MONTHLY COMPANIES
 		$com_conditions = array();
 		$com_joins = array("LEFT JOIN {$this->company->table_prefix}members m ON m.id=Company.member_id");
 		if(isset($_GET["industryid"])) {
@@ -141,20 +141,16 @@ class Company extends PbController {
 		if(!empty($_GET['membergroup_id'])){
  			$com_conditions[] = "m.membergroup_id=".intval($_GET['membergroup_id']);
  		}
-		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points DESC", 0, 14);
-		//$companies = $this->company->formatResult($companies);
-		//var_dump($companies);
+		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_monthly DESC, m.points DESC", 0, 70);
 		foreach($companies as $key => $com) {
 			$companies[$key] = $ads->formatResult($com);
 		}
 		$com_zone["name"] = "Tiêu biểu";
 		$com_zone["adses"] = $companies;
-		//var_dump($com_zone["adses"]);
 		
-		//array_unshift($zones, $com_zone);
 		$zones[] = $com_zone;
 		
-		//var_dump($zones);
+		
 		
 		setvar("list", $zones);
 		render("company/index", 1);
