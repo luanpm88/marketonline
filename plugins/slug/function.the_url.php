@@ -522,7 +522,7 @@ function smarty_function_the_url($params){
 								$return = URL."thuong-hieu/doanh-nghiep";
 								break;
 							default:
-								$return = URL."thuong-hieu/doanh-nghiep";
+								$return = URL."thuong-hieu";
 								break;
 						}
 						if(isset($industryid)) {
