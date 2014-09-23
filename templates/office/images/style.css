@@ -3489,7 +3489,7 @@ a.unvalid_edit {
 }
 .point_table td {
     border: solid 1px #aaa;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 .point_table tr th {
     border-right-color: #fff;
@@ -3501,7 +3501,20 @@ a.unvalid_edit {
 .point_table h2 {
     font-size: 18px;
 }
+.point_table_note {
+    margin-left: 10px;
+}
 .point_table_note, .point_table_note a {
     font-size: 16px;
     line-height: 22px;
+}
+.point_table_note a {
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    display: block;
+    margin-left: 210px;
+    margin-top: 10px;
+    padding: 8px 10px;
+    text-align: center;
+    width: 240px;
 }
