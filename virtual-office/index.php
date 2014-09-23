@@ -79,11 +79,11 @@ if (!empty($memberinfo)) {
 	
 	//get weekly activity
 	$activity_names = array(
-				"logging"=>"Hoạt động hàng ngày",
+				"logging"=>"Hoạt động tích cực",
 				"invite"=>"Mời bạn bè",
-				"connect_facebook"=>"Kết nối Facebook",
+				"connect_facebook"=>"Liên kết Facebook",
 				"checkout"=>"Thanh toán",
-				"good_shop"=>"SHOP đẹp",
+				"good_shop"=>"Gian hàng đẹp",
 				"up"=>"Cộng điểm",
 				"down"=>"Trừ điểm",
 				"from_storage"=>"Điểm tích lũy"
@@ -95,6 +95,9 @@ if (!empty($memberinfo)) {
 	}
 	setvar("weekly_logs",$logs);
 	setvar("activity_names",$activity_names);
+	
+	setvar( "week_start", date("d/m/Y", strtotime('sunday last week', time())) );
+	setvar( "week_end", date("d/m/Y", strtotime('saturday this week', time())) );
 	
 	template("index");
 }else{

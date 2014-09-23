@@ -9,8 +9,9 @@
 $office_theme_name = "";
 require(CACHE_LANG_PATH.'lang_office.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("point","member", "memberfield", "company", "job", "employee", "saleorder","moderator");
+uses("setting","point","member", "memberfield", "company", "job", "employee", "saleorder","moderator");
 $job = new Jobs();
+$setting = new Settings();
 $point = new Points();
 $saleorder = new Saleorders();
 $employee = new Employees();
@@ -194,4 +195,12 @@ if($hasProfile && $hasCompany)
 	
 //POINT
 //echo $point->resetWeeklyPointNew($the_memberid);
+
+//Setting
+$sets = $setting->findAll("variable,valued");
+$settings = array();
+foreach($sets as $set) {
+	$settings[$set["variable"]] = $set["valued"];
+}
+setvar("settings",$settings);
 ?>

@@ -3476,3 +3476,25 @@ a.unvalid_edit {
 #activity-result .red_pointer {
     
 }
+.bg_blue_link a {
+    color: blue;
+}
+.point_table {
+    margin-top: 20px;
+}
+.point_table tr th {
+    border: 1px solid #aaa;
+    height: 18px;
+    padding: 4px 5px;
+}
+.point_table td {
+    border: solid 1px #aaa;
+    margin-top: 20px;
+}
+.point_table tr th {
+    border-right-color: #fff;
+    border-bottom-color: #fff;
+}
+.point_table tr th:last-child {
+    border-right-color: #aaa;
+}
