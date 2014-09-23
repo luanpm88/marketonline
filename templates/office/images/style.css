@@ -3480,7 +3480,7 @@ a.unvalid_edit {
     color: blue;
 }
 .point_table {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 .point_table tr th {
     border: 1px solid #aaa;
@@ -3489,7 +3489,7 @@ a.unvalid_edit {
 }
 .point_table td {
     border: solid 1px #aaa;
-    margin-top: 40px;
+    margin-top: 20px;
 }
 .point_table tr th {
     border-right-color: #fff;
