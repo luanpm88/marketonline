@@ -42,8 +42,7 @@ $(document).ready(function() {
 	      <tr>
 		<td class="member_upgrade">{$group.name|pl}</td>
                 
-                </tr>
-              
+                </tr>              
              <tr>
                 <td><div id="progressbar"></div>&nbsp;
 		<!--{if $service_days>=100 && false}--><strong>{lang been_expired}<a href="../purchase.php?do=upgrade" target="_blank">{lang upgrade_now}</a></strong><!--{/if}-->
@@ -73,7 +72,45 @@ $(document).ready(function() {
                 <p class="message_home"><strong>{lang messages} </strong>{lang common_message} <em>{$pm.user|default:0}</em> {lang number} | {lang system_message} <em> {$pm.system|default:0}</em> {lang number} | {lang query_message} <em>{$pm.inquery|default:0}</em> {lang number}</p>
                 <!--<p class="collect"><strong>{lang favorites} </strong><a href="favor.php">{lang manage_favorite}</a></p>-->
               </div>
-           </div> 
+           </div>
+	   
+	   <div class="blank"></div>
+           <div class="count_info">
+
+              <h2 {if $pb_company.shop_name && ($pb_userinfo.logging_count==1 || $pb_userinfo.logging_count==3)}style="color:red"{/if}>Bảng kết quả hoạt động trong tuần</h2> 
+              <div class="count_info_content">
+		<table class="bglist" style="margin-top: 0">
+			<tr>
+				<th>STT</th>
+				<th style="text-align: left">Hoạt động</th>
+				<th>Điểm</th>
+				<th>Thời gian</th>
+				<th>Ghi chú</th>
+			</tr>
+			<!--{foreach from=$weekly_logs.logs item=item key=key}-->
+				<tr>
+					<td style="text-align: center">{$key+1}</td>
+					<td style="text-align: left">{$activity_names[$item.action_name]}</td>
+					<td style="text-align: center">
+						{$item.points}
+					</td>
+					<td>{$item.date}</td>
+					<td>{$item.description}</td>
+				</tr>
+			<!--{/foreach}-->
+			<tr>
+				<td></td>
+				<td style="text-align: right">
+					Tổng cộng: 
+				</td>
+				<td style="text-align: center"><strong>{$weekly_logs.total} </strong></td>
+				<td style="text-align: left">{if $weekly_logs.store}(Điểm tích lũy tuần: <strong>{$weekly_logs.store}</strong>){/if}</td>
+				<td></td>
+			</tr>
+		</table>
+              </div>
+           </div>
+	   
          </div>
 	
         <div class="main_content_right">

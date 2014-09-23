@@ -1223,5 +1223,10 @@ class Members extends PbModel {
 	function formatInfo($info) {
 		
 	}
+	
+	function loggingCount($member_id) {
+		$member = $this->read("id,logging_count",$member_id);
+		$this->saveField("logging_count",$member["logging_count"]+1,intval($member["id"]));
+	}
 }
 ?>

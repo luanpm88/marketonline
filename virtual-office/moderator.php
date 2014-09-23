@@ -39,10 +39,6 @@ setvar("getvar", $_GET);
 $tpl_file = "moderator";
 
 
-
-
-
-
 if (isset($_GET['do']) || isset($_GET['act'])) {
 	$do = trim($_GET['do']);
 	$action = null;

@@ -261,5 +261,8 @@ class Company extends PbController {
 	function updateAllMonthlyPoint() {
 		$this->point->updateAllMonthlyPoint();
 	}
+	function updateAllWeeklyPoint() {
+		$this->point->updateAllWeeklyPoint();
+	}
 }
 ?>

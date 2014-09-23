@@ -70,5 +70,11 @@ class Member extends PbController {
 			flash();
 		}
 	}
+	
+	function updateActivityAnnouceCount() {
+		$pb_userinfo = pb_get_member_info();
+		
+		$this->member->saveField("activity_announce_count",1,intval($pb_userinfo['pb_userid']));
+	}
 }
 ?>

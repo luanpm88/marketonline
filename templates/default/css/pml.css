@@ -10971,3 +10971,50 @@ input[name=redirect]
 .company-container .works-list .item {
     width: 156px;
 }
+.activity_announce {
+    background: none repeat scroll 0 0 red;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute;
+    right: 230px;
+    top: 43px;
+    z-index: 10000;
+    border: solid 3px #fff;
+}
+.activity_announce h4 {
+    
+}
+#activity-result {
+    position: relative;
+}
+.activity_announce .red_pointer {
+    background: url("../image/red_pointer.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    float: right;
+    height: 20px;
+    margin-right: -30px;
+    text-indent: -9000px;
+    width: 20px;
+}
+.glass_background {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 2000;
+}
+#settingbox.force_show {
+    display: block !important;
+}
+.verytopmenu_glass {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+    height: 42px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+#settingbox {
+    z-index: 1100;
+}

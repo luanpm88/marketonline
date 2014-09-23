@@ -51,6 +51,9 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 		if ($checked > 0) {
 			$tmp_memberinfo = $member->info;
 			$point->update("logging", $member->info['id']);
+			//logging counting
+			$member->loggingCount($member->info['id']);
+			
 			if (!empty($_REQUEST['forward'])) {
 				$referer = $_REQUEST['forward'];
 				if(!preg_match("/(\.php|[a-z]+(\-\d+)+\.html)/", $referer) || strpos($referer, 'logging.php')) {

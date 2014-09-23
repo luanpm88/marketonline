@@ -51,7 +51,7 @@
 			<option value="">Sắp xếp</option>
                 	<option {if $smarty.get.orderby=='points'}selected="selected"{/if} value="points">Điểm</option>
 			<option {if $smarty.get.orderby=='active_time'}selected="selected"{/if} value="active_time">Thời gian hoạt động</option>
-			<option {if $smarty.get.orderby=='points_monthly'}selected="selected"{/if} value="points_monthly">Điểm tháng</option>
+			<option {if $smarty.get.orderby=='points_weekly'}selected="selected"{/if} value="points_weekly">Điểm tuần</option>
               	</select>
 				{lang cp_username} <input class="queryInput" type="text" name="member[name]" id="member_name" value="{$smarty.get.member.name}" /> 
                 <select class="querySelect" name="groupid" id="Groupid">
@@ -82,7 +82,7 @@
 			  <th>{lang trust_type}</th>
 			  <th>{lang membergroup}</th>
 			  <th>{lang integral}</th>
-			  <th>Điểm tháng</th>
+			  <th>Điểm tuần</th>
 			  <!--<th>trust_star</th>-->
 			  <th>Active Time</th>
 			   
@@ -111,8 +111,8 @@
 			  <td><!-- {if $item.trust_image} -->{$item.trust_image}<!-- {/if} --></td>
 			  <td><!-- {if $item.membergroup_id} --><a href="member.php?do=search&groupid={$item.membergroup_id}"><img src="{$item.group_image}" border="0" alt="{$Membergroups[$item.membergroup_id].name}" /></a><!-- {/if} --></td>
 			  <td>{$item.points}</td>
-			  <td style="text-align: center">{$item.points_monthly} <br />
-				<a href="member.php?do=monthlypoint&id={$item.id}">(Xem chi tiết)</a>
+			  <td style="text-align: center">{$item.points_weekly} <br />
+				<a href="member.php?do=weeklypoint&id={$item.id}">(Xem chi tiết)</a>
 			  </td>
 			  <!--<td>{$item.credits}</td>-->
 			  <td>{$item.active_time}</td>

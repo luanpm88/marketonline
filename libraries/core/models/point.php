@@ -1,14 +1,15 @@
 <?php
 class Points extends PbModel {
 	var $max_point = 100;
+	var $max_point_weekly = 100;
  	var $name = "Point";
  	var $rules = array("every", "once", "daily", "weekly", "monthly", "yearly");
  	var $actions = array(
  		"logging"=>array("rule"=>"daily","do"=>"inc","point"=>1),
 		"invite"=>array("rule"=>"every","do"=>"inc","point"=>10),
-		"connect_facebook"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
-		"checkout"=>array("rule"=>"monthly","do"=>"inc","point"=>10),
-		"good_shop"=>array("rule"=>"monthly","do"=>"inc","point"=>5),
+		"connect_facebook"=>array("rule"=>"weekly","do"=>"inc","point"=>5),
+		"checkout"=>array("rule"=>"weekly","do"=>"inc","point"=>10),
+		"good_shop"=>array("rule"=>"weekly","do"=>"inc","point"=>5),
 		"up"=>array("rule"=>"every","do"=>"inc","point"=>0),
 		"down"=>array("rule"=>"every","do"=>"dec","point"=>0),
 		"from_storage"=>array("rule"=>"every","do"=>"inc","point"=>0)
@@ -22,6 +23,8 @@ class Points extends PbModel {
 		$this->actions['connect_facebook']['point'] = $setting->getValue('point_connect_facebook');
 		$this->actions['checkout']['point'] = $setting->getValue('point_checkout');
 		$this->actions['good_shop']['point'] = $setting->getValue('point_good_shop');
+		
+		$this->max_point_weekly = $setting->getValue('point_weekly_max');
 		
 		parent::__construct();
 	}
@@ -58,7 +61,7 @@ class Points extends PbModel {
  				break;
  			case "weekly":
 				$conditions[] =  "action_name='".$action."'";
- 				$conditions[] = "created>".($this->timestamp-7*86400);
+ 				$conditions[] = "YEARWEEK(FROM_UNIXTIME(created)) = YEARWEEK(CURRENT_DATE)";
  				break;
  			case "monthly":
 				$conditions[] =  "action_name='".$action."'";
@@ -106,6 +109,7 @@ class Points extends PbModel {
 	 			$this->dbstuff->Execute($sql);
 				
 				$this->updateMonthlyPoint($member_id);
+				$this->updateWeeklyPoint($member_id);
 				return true;
  			}else{
  				return false;
@@ -176,7 +180,6 @@ class Points extends PbModel {
 			//reset to 0
 			if($prev_point > $this->max_point) {
 				$store = $prev_point - $this->max_point;
-				
 				$points_monthly = 0;
 				$storage = $member["points_storage"]+$store;
 			} else {
@@ -192,9 +195,7 @@ class Points extends PbModel {
 				$points_monthly = $storage;
 				$storage = 0;
 			}
-			
-			//echo $points_monthly."/".$storage."<br />";
-			
+						
 			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_storage={$storage}, points_storage_updated = '".date('Y-m-d H:i:s')."' WHERE id=".$member["id"]);
 			if($points_monthly) {
 				$this->update('from_storage',$member["id"],'',$points_monthly);				
@@ -227,6 +228,88 @@ class Points extends PbModel {
 			$point = $this->getMonthlyPoint($member["id"]);
 			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_monthly={$point} WHERE id=".$member["id"]);
 		}
+	}
+	
+	function getWeeklyPoint($member_id, $last_week = false) {
+		$last_week_cond = "";
+		if($last_week) {
+			$last_week_cond = " - INTERVAL 7 DAY";
+		}
+		
+		$conditions = array("member_id=".$member_id);
+		$conditions[] = "YEARWEEK(FROM_UNIXTIME(created)) = YEARWEEK(CURRENT_DATE{$last_week_cond})";
+		$point = $this->dbstuff->GetRow("SELECT sum(points) as point FROM {$this->table_prefix}pointlogs WHERE ".implode(" AND ",$conditions));
+		
+		$point = $point["point"];
+		
+		if($point) {
+			return $point;
+		} else {
+			return 0;
+		}
+	}
+	function updateWeeklyPoint($member_id) {		
+		$point = $this->getWeeklyPoint($member_id);
+		$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_weekly={$point} WHERE id={$member_id}");
+	}
+	function getWeeklyDetails($member_id) {		
+		$logs = $this->dbstuff->GetArray("SELECT * FROM {$this->table_prefix}pointlogs log WHERE member_id=".$member_id." AND (YEARWEEK(FROM_UNIXTIME(created)) = YEARWEEK(CURRENT_DATE)) ORDER BY log.created");
+		
+		$total = 0;
+		foreach($logs as $key => $item) {
+			$logs[$key]["date"] = date('Y-m-d H:i:s',$item["created"]);
+			$total += $item["points"];
+		}
+		return array("logs"=>$logs,"total"=>$total);
+	}
+	function updateAllWeeklyPoint() {
+		uses('member');
+		$memberdb = new Members();
+		$members = $memberdb->findAll("DISTINCT id,points_weekly,points_storage");
+		
+		foreach($members as $member) {
+			$this->updateWeeklyPoint($member["id"]);
+		}
+	}
+	
+	function resetWeeklyPointNew() {
+		uses('member');
+		$memberdb = new Members();		
+		$members = $memberdb->findAll("DISTINCT id,points_weekly,points_weekly_store");
+		foreach($members as $member) {
+			$prev_point = $this->getWeeklyPoint($member["id"],true);
+			
+			$total = $prev_point+$member["points_weekly_store"];
+			
+			//reset to 0
+			if($prev_point > $this->max_point_weekly) {
+				$store = $prev_point - $this->max_point_weekly;
+				
+				$points_weekly = 0;
+				$storage = $member["points_weekly_store"]+$store;
+			} else {
+				$points_weekly = 0;
+				$storage = $member["points_weekly_store"];			
+			}
+			
+			
+			//update from storage
+			if($storage > $this->max_point_weekly) {
+				$points_weekly = $this->max_point_weekly;
+				$storage = $storage - $this->max_point_weekly;
+			} else {
+				$points_weekly = $storage;
+				$storage = 0;
+			}
+			
+			$this->dbstuff->Execute("UPDATE {$this->table_prefix}members SET points_weekly_store={$storage}, points_weekly_updated = '".date('Y-m-d H:i:s')."' WHERE id=".$member["id"]);
+			if($points_weekly) {
+				$this->update('from_storage',$member["id"],'',$points_weekly);				
+			}
+			$this->updateWeeklyPoint($member["id"]);
+		}
+		
+		return count($members);
 	}
 }
 ?>

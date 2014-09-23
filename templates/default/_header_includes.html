@@ -80,4 +80,39 @@
 		
 	</div>
 {/if}
-   
+
+{if $pb_company.shop_name && $pb_userinfo.activity_announce_count==0}
+	<div class="glass_background">.</div>
+	<div id="activity-result" class="row" style="display: none">
+	    <div class="activity_announce">
+		Vào trang quản lý để xem kết quả hoạt động Gian hàng <strong>{$pb_company.shop_name}</strong> trong tuần
+		<span class="red_pointer">.</span>
+	    </div>    
+	</div>
+	
+	<!--{literal}-->
+		<script>
+			$(document).ready(function() {
+				//$("#activity-result-but").trigger("click");
+				$('#settingbox').addClass("force_show");
+				$('#activity-result').show();
+				
+				$('#topmenu_outer').append('<div class="verytopmenu_glass"></div>');
+				//$('body').click(function(){$('#settingbox').show();});
+				
+				$.ajax({
+					url: "index.php?do=member&action=updateActivityAnnouceCount",
+				}).done(function ( data ) {
+					if( console && console.log ) {
+						
+					}
+				});
+			});
+			
+			$(document).scroll(function() {
+				//$("#activity-result-but").trigger("click");
+				$('.activity_announce').css("top",$('#settingbox').offset().top+6);
+			});
+		</script>
+	<!--{/literal}-->
+{/if}

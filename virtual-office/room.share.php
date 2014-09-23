@@ -9,8 +9,9 @@
 $office_theme_name = "";
 require(CACHE_LANG_PATH.'lang_office.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("member", "memberfield", "company", "job", "employee", "saleorder","moderator");
+uses("point","member", "memberfield", "company", "job", "employee", "saleorder","moderator");
 $job = new Jobs();
+$point = new Points();
 $saleorder = new Saleorders();
 $employee = new Employees();
 $member = new Members();
@@ -190,4 +191,7 @@ if($hasProfile && $hasCompany)
 	$conds[] = "Saleorder.read=0";
 	$count_sellerorder = $saleorder->findCount(array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id","LEFT JOIN pb_memberfields as mf ON Member.id = mf.member_id"), $conds, "Saleorder.id");
 	setvar("count_sellerorder", $count_sellerorder);
+	
+//POINT
+//echo $point->resetWeeklyPointNew($the_memberid);
 ?>

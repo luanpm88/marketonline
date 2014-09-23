@@ -1802,14 +1802,11 @@ class Product extends PbController {
 			$rows = $area->getStates($state_parent);
 			
 			//echo "dg dfg d";
-			//var_dump($rows);
-			//echo "<select>";
 			foreach($rows as $row)
 			{
 				//echo $row['id'];
 				echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
 			}
-			//echo "</select>";
 		}
 	}
 	
@@ -1852,7 +1849,6 @@ class Product extends PbController {
 			{			
 				$result = $cartitem->add($_GET["id"], $session_cart_id);
 			}
-			//echo $cartitem->checkExist($_GET["id"], $session_cart_id)."gsdgs";
 		}
 		
 		if(isset($_GET["task"]))

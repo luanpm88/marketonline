@@ -77,9 +77,24 @@ if (!empty($memberinfo)) {
 	$group['image'] = $g['avatar'];
 	setvar("group", $group);
 	
-	
-	
-	
+	//get weekly activity
+	$activity_names = array(
+				"logging"=>"Hoạt động hàng ngày",
+				"invite"=>"Mời bạn bè",
+				"connect_facebook"=>"Kết nối Facebook",
+				"checkout"=>"Thanh toán",
+				"good_shop"=>"SHOP đẹp",
+				"up"=>"Cộng điểm",
+				"down"=>"Trừ điểm",
+				"from_storage"=>"Điểm tích lũy"
+			);
+	$logs = $point->getWeeklyDetails($the_memberid);
+	if($logs["total"]>$point->max_point_weekly) {
+		$logs["store"] = $logs["total"]-$point->max_point_weekly;
+		$logs["total"] = $point->max_point_weekly;
+	}
+	setvar("weekly_logs",$logs);
+	setvar("activity_names",$activity_names);
 	
 	template("index");
 }else{

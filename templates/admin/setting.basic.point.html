@@ -34,28 +34,35 @@ jQuery(document).ready(function($) {
       <tr>
         <th class="paddingT15"><label for="time_zone">Kết nối facebook</label></th>
         <td class="paddingT15 wordSpacing5"><input name="data[setting][point_connect_facebook]" type="text" id="site_name" value="{$item.POINT_CONNECT_FACEBOOK|default:5}" class="infoTableInput" />
-          <span class="gray">Tăng điểm khi đang kết nối facebook (Điểm tăng hàng tháng)</span>
+          <span class="gray">Tăng điểm khi đang kết nối facebook (Điểm tăng hàng tuần)</span>
         </td>
       </tr>
       
       <tr>
         <th class="paddingT15"><label for="time_zone">Thanh toán</label></th>
         <td class="paddingT15 wordSpacing5"><input name="data[setting][point_checkout]" type="text" id="site_name" value="{$item.POINT_CHECKOUT|default:10}" class="infoTableInput" />
-          <span class="gray">Tăng điểm khi thanh toán và đang còn hạn (Điểm tăng hàng tháng)</span>
+          <span class="gray">Tăng điểm khi thanh toán và đang còn hạn (Điểm tăng hàng tuần)</span>
         </td>
       </tr>
       
       <tr>
         <th class="paddingT15"><label for="time_zone">SHOP đẹp</label></th>
         <td class="paddingT15 wordSpacing5"><input name="data[setting][point_good_shop]" type="text" id="site_name" value="{$item.POINT_GOOD_SHOP|default:5}" class="infoTableInput" />
-          <span class="gray">Tăng điểm khi là SHOP đẹp (Điểm tăng hàng tháng)</span>
+          <span class="gray">Tăng điểm khi là SHOP đẹp (Điểm tăng hàng tuần)</span>
         </td>
       </tr>
       
       <tr>
         <th class="paddingT15"><label for="time_zone">SHOP đẹp (Lấy Top)</label></th>
         <td class="paddingT15 wordSpacing5"><input name="data[setting][point_good_shop_top]" type="text" id="site_name" value="{$item.POINT_GOOD_SHOP_TOP|default:15}" class="infoTableInput" />SHOPs. 
-          <span class="gray">Số lượng shop điểm cao nhất làm SHOP Đẹp (VD: Top: 10, 15,...). Điểm tăng hàng tháng.</span>
+          <span class="gray">Số lượng shop điểm cao nhất làm SHOP Đẹp (VD: Top: 10, 15,...). Điểm tăng hàng tuần.</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <th class="paddingT15"><label for="time_zone">Điểm tối đa hàng tuần</label></th>
+        <td class="paddingT15 wordSpacing5"><input name="data[setting][point_weekly_max]" type="text" id="site_name" value="{$item.POINT_WEEKLY_MAX|default:100}" class="infoTableInput" /> 
+          <span class="gray"></span>
         </td>
       </tr>
       
