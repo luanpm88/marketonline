@@ -3501,3 +3501,6 @@ a.unvalid_edit {
 .point_table h2 {
     font-size: 18px;
 }
+.point_table_note {
+    font-size: 16px;
+}
