@@ -3498,3 +3498,6 @@ a.unvalid_edit {
 .point_table tr th:last-child {
     border-right-color: #aaa;
 }
+.point_table h2 {
+    font-size: 18px;
+}
