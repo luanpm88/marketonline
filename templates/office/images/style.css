@@ -3501,6 +3501,7 @@ a.unvalid_edit {
 .point_table h2 {
     font-size: 18px;
 }
-.point_table_note {
+.point_table_note, .point_table_note a {
     font-size: 16px;
+    line-height: 18px;
 }
