@@ -52,14 +52,17 @@
       <div class="row" style="margin: 0">
 	<div style="margin-top: 0px;padding-left: 4px;" class="fifteen columns">
       
-	  <span style="margin-right: 20px" class="icon back"></span>
-	      <h2 class="block-title">
+	  
+	      <h2 class="block-title company_listing_h2">
 		  <span>
 		      <a class="{if $smarty.get.membergroup_id==3}active{/if}" href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>&nbsp;&nbsp;&nbsp;
 		      <a class="{if $smarty.get.membergroup_id==1}active{/if}" href="{the_url module='companies' membergroup_id='1' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cửa hàng</a>&nbsp;&nbsp;&nbsp;
 		      <a class="{if $smarty.get.membergroup_id==2}active{/if}" href="{the_url module='companies' membergroup_id='2' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cá nhân</a>
 		  </span>
 	      </h2>
+	      <a class="list_nottt" href="{the_url module=root-url}/virtual-office">
+		Danh sách thương hiệu đạt được các điều kiện
+	      </a>
 	</div>
       </div>
       

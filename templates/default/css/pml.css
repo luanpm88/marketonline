@@ -10957,19 +10957,19 @@ input[name=redirect]
     width: 1240px;
 }
 .company-container .works-list .half {
-    height: 156px;
-    width: 156px;
+    height: 152px;
+    width: 152px;
     padding: 4px;
 }
 .company-container .filterable-grid .pic img {
-    height: 146px;
-    width: 146px;
+    height: 142px;
+    width: 142px;
 }
 .company-container .works-list .item {
     height: 210px;
 }
 .company-container .works-list .item {
-    width: 156px;
+    width: 152px;
 }
 .activity_announce {
     background: none repeat scroll 0 0 red;
@@ -11017,4 +11017,37 @@ input[name=redirect]
 }
 #settingbox {
     z-index: 1100;
+}
+.company-container .company_listing_h2 a {
+    font-size: 22px;
+    color: #484e50;
+}
+.company-container .company_listing_h2 a {
+    font-size: 22px;
+    color: #484e50;
+}
+.company-container h2.block-title {
+    padding-left: 4px;
+    font-size: 22px;
+}
+.list_nottt {
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    margin-left: 863px;
+    padding: 7px 16px;
+    position: absolute;
+    z-index: 100;
+}
+.list_nottt:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+.company-container .works-list h3 a {
+    font-weight: bold;
+}
+.banner_top {
+    right: 288px;
+    width: 140px;
 }
