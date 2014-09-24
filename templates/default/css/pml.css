@@ -11062,6 +11062,9 @@ input[name=redirect]
 }
 .activity_announce {
     top: 48px;
-    font-weight: normal;
+    font-weight: 700;
     font-size: 16px;
+}
+.activity_announce strong {
+    text-transform: uppercase;
 }
