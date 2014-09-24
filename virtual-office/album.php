@@ -21,7 +21,7 @@ if (!$company->Validate($companyinfo)) {
 	flash("pls_complete_company_info", "company.php", 0);
 }
 if (isset($_POST['do'])) {
-	//pb_submit_check('album');
+	pb_submit_check('album');
 	$vals = $_POST['album'];
 	$vals['title'] = $title = trim($vals['title']);
 	$vals['description'] = $description = trim($vals['description']);
