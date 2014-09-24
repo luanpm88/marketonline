@@ -11071,6 +11071,6 @@ input[name=redirect]
 #searchleft_innerbox input[type="text"] {
     width: 535px;
 }
-.company-container .searchleft_innerbox {
+.company-container #searchleft_innerbox {
     width: 580px;
 }
