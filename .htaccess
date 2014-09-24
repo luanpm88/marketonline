@@ -15,6 +15,7 @@ RewriteRule ^thuong-hieu/cua-hang/([0-9]+)/(.*)$ index.php?do=company&membergrou
 RewriteRule ^thuong-hieu/ca-nhan/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=2&industryid=$1 [L]
 RewriteRule ^thuong-hieu/doanh-nghiep/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=3&industryid=$1 [L]
 RewriteRule ^danh-gia-shop/(.*)/([0-9]+)$ index.php?do=company&action=rating&star=$2&space_name=$1 [L]
+RewriteRule ^thuong-hieu/([0-9]+)/(.*)$ index.php?do=company&industryid=$1 [L]
 
 
 RewriteRule ^dang-san-pham?$ redirect.php?url=/virtual-office/product.php?do=edit [L]
