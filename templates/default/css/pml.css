@@ -11044,7 +11044,7 @@ input[name=redirect]
     z-index: 100;
 }
 .list_nottt:hover {
-    text-decoration: underline;
+    opacity: 0.9;
     color: #fff;
 }
 .company-container .works-list h3 a {
