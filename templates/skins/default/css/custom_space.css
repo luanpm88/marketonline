@@ -1739,6 +1739,11 @@ h1.other_album
     right: -20px;
     z-index: 2000;
     cursor: pointer;
+    font-size: 24px;
+    height: 40px;
+    line-height: 14px;
+    text-indent: -2px;
+    width: 40px;
 }
 .album_close:hover{
     color: #fff;
