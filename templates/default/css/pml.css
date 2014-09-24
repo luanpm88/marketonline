@@ -11068,3 +11068,9 @@ input[name=redirect]
 .activity_announce strong {
     text-transform: uppercase;
 }
+#searchleft_innerbox input[type="text"] {
+    width: 535px;
+}
+.company-container .searchleft_innerbox {
+    width: 580px;
+}
