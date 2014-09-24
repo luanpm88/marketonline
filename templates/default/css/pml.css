@@ -11074,11 +11074,13 @@ input[name=redirect]
 .company-container #searchleft_innerbox {
     width: 580px !important;
 }
-.album_close.video {
+.album_close {
     font-size: 24px;
     height: 40px;
     line-height: 14px;
-    margin-right: 250px;
     text-indent: -2px;
     width: 40px;
+}
+.album_close.video {
+    margin-right: 250px;
 }
