@@ -9,7 +9,7 @@ class Attachment extends PbController {
     var $out_file_name;
     var $out_file_path;
     var $out_file_full_path;
-    var $max_file_size    = 50024000;
+    var $max_file_size    = 500024000;
     var $upload_url;
     var $file_full_url;
     var $upload_dir;
@@ -282,7 +282,7 @@ class Attachment extends PbController {
 			$upload->the_file = $_FILES[$this->upload_form_field]['name'];
 			$upload->http_error = $_FILES[$this->upload_form_field]['error'];
 			
-			$this->max_file_size = 30000000;
+			$this->max_file_size = 300000000;
 			if (in_array($file_ext, $this->imgext)){
 	 			$this->is_image = 1;	 			
 	 		}

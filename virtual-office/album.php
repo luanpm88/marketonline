@@ -11,6 +11,7 @@ require(LIB_PATH. 'page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
 uses("attachment", "album");
 check_permission("album");
+
 $attachment_controller = new Attachment('pic');
 $attachment = new Attachments();
 $album = new Albums();
@@ -20,13 +21,25 @@ if (!$company->Validate($companyinfo)) {
 	flash("pls_complete_company_info", "company.php", 0);
 }
 if (isset($_POST['do'])) {
-	pb_submit_check('album');
+	//pb_submit_check('album');
 	$vals = $_POST['album'];
 	$vals['title'] = $title = trim($vals['title']);
 	$vals['description'] = $description = trim($vals['description']);
 	$now_album_amount = $attachment->findCount(null, "created>".$today_start." AND member_id=".$the_memberid);
 	$id = intval($_POST['id']);
 	if (!empty($_FILES['pic']['name'])) {
+		$image_allowed =  array('gif','png','jpg');
+		$video_allowed =  array('mp4','mpeg','avi','mkv');
+		$filename = $_FILES['pic']['name'];
+		$ext = pathinfo($filename, PATHINFO_EXTENSION);
+		if(in_array($ext,$image_allowed)) {
+			$type = 'image';
+		} elseif(in_array($ext,$video_allowed)) {
+			$type = 'video';
+		} else {
+			$type = "error";
+		}
+
 		$type_id = 1;
 		$attachment_controller->upload_dir = "album".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
 		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1):"album-".$the_memberid."-".$id;
@@ -49,7 +62,7 @@ if (isset($_POST['do'])) {
 		if (empty($_FILES['pic']['name'])) {
 			flash("failed");
 		}
-		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."')";
+		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."')";
 	}
 	$result = $pdb->Execute($sql);
 	if (!$result) {
