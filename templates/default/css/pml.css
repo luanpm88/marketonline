@@ -11072,5 +11072,5 @@ input[name=redirect]
     width: 535px;
 }
 .company-container #searchleft_innerbox {
-    width: 580px;
+    width: 580px !important;
 }
