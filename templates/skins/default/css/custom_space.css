@@ -1739,7 +1739,7 @@ h1.other_album
     right: -20px;
     z-index: 2000;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 24px !important;
     height: 40px;
     line-height: 14px;
     text-indent: -2px;
