@@ -77,12 +77,12 @@ jQuery(document).ready(function($) {
        
        <div id="image_box">
 		<!--{if $item.image}-->
-			<a href="{$item.image}" id="uploadpic_hover" rel="lightbox"><img id="uploadpic" src="{$item.image}.small.jpg" alt="{$item.title}" width="80" height="80" border="0" /></a>
+			<a href="{$item.image}" id="uploadpic_hover" rel="lightbox"><img id="uploadpic" src="{$item.image}" alt="{$item.title}" width="80" height="80" border="0" /></a>
 		<!--{/if}-->
 		<span class="gray" style="padding-bottom: 5px;display: block">
                   {lang image_size_format_provision}</span>
 		{if $item.id}<h2>
-			Thay hình khác:
+			Thay hình ảnh/videos khác:
 		</h2>{/if}
 		<input name="pic" type="file" id="uploadfile" style="width: 240px;" onchange="preview()" />
                 

@@ -33,7 +33,29 @@ jQuery(document).ready(function($) {
 	{if $MEMBER.membergroup_id == 1}{lang album_shop}{/if}
 	{if $MEMBER.membergroup_id == 2}{lang album_person}{/if}
      </h2></div>
-      <div class="hint"><span class="btn_hint"><a href="album.php?do=edit" class="btn_publish">{lang update_album} {$membertype_name}</a></span></div>
+     
+     
+     <table class="offer_count">
+        <tbody><tr>
+          <td class="orange"></td>
+          <td></td>
+        </tr>
+         <tr>
+          <td width="68%" class="nntype">
+		
+		<a class="{if !$smarty.get.type}active{/if}" href="album.php">Tất cả</a>
+	    
+	    <a class="{if $smarty.get.type=='image'}active{/if}" href="album.php?type=image">Hình ảnh</a>
+	    <a class="{if $smarty.get.type=='video'}active{/if}" href="album.php?type=video">Videos</a>
+	    
+	    
+	  </td>
+          <td class="height35"><a href="album.php?do=edit" class="btn_publish">{lang update_album}</a></td>
+        </tr>
+      </tbody></table>
+     
+     
+
       <br />
 	<table cellspacing="0" id="dataTable" class="datas">
 		<thead>

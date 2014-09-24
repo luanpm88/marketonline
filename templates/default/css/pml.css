@@ -11074,3 +11074,6 @@ input[name=redirect]
 .company-container #searchleft_innerbox {
     width: 580px !important;
 }
+.album_close.video {
+    margin-right: 250px;
+}

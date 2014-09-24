@@ -14,12 +14,16 @@ uses("attachment", "album");
 uses("album");
 $album = new Albums();
 $joins[] = "LEFT JOIN {$tb_prefix}attachments a ON a.id=Album.attachment_id";
-$result = $album->findAll("a.title,a.description,Album.id,a.attachment as thumb,a.id as a_id", $joins, "Album.member_id='".$member->info['id']."'", "Album.id desc");
+$result = $album->findAll("Album.type, a.title,a.description,Album.id,a.attachment as thumb,a.id as a_id", $joins, "Album.member_id='".$member->info['id']."'", "Album.id desc");
 if (!empty($result)) {
 	$count = count($result);
 	for($i=0; $i<$count; $i++){
 		$result[$i]['image'] = URL. pb_get_attachmenturl($result[$i]['thumb'], '', 'small');
 		$result[$i]['middleimage'] = URL. pb_get_attachmenturl($result[$i]['thumb']);
+		if($result[$i]['type']=='video') {
+			$result[$i]['image'] = URL."templates/default/image/video_icon.png";
+			$result[$i]['source'] = URL."attachment/".$result[$i]['thumb'];
+		}
 	}
 }
 //var_dump($result);

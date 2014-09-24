@@ -1929,7 +1929,7 @@ select option {
 }
 #image_box img
 {
-    width: 100%;
+    max-width: 50%;
 }
 .pic_title {
     padding-left: 2px;

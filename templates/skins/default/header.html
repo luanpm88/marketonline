@@ -207,28 +207,45 @@ function goclicky(meh, url)
 	{
 	    item.parent().prepend("<div class='img-after'></div>");
 	    //alert(p_id);
-	    $.ajax({
-			url: "index.php?do=product&action=loadAlbumDetail&id="+a_id+"&user="+u_id,
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				$('.img-after').remove();
-				//$('#album-detail-but').trigger('click');
-				//$('.staticon span').remove();
-				//$('.staticon div').remove();
-				//$('.staticon').append(data);
-				//$('#com_album li a img').removeClass("loading");
-				$('#showAlbumDetail').html(data);
-				$('#showAlbumDetail').css('display','block');
-				$('h1.other_album').css('display','block');
-				//$('#com_album').css('display','none');
-				$("html, body").animate({ scrollTop: 500 }, 500);
-				
-				$('.album_close').click(function(){
-						$('#showAlbumDetail').fadeOut();
-						$('h1.other_album').fadeOut();
-				});
-			}
-		});
+            if (item.attr('type')=='video') {
+                $('.img-after').remove();
+                var htm = '<h1>'+item.attr('title')+'</h1>'
+                        + '<div class="album_close video">x</div><video controls width="640" height="360">'
+                        +'<source src="'+item.attr('rel')+'" type="video/mp4" />'
+                        +'Your browser does not support the video tag.</video>';
+                $('#showAlbumDetail').html(htm);
+                $('#showAlbumDetail').show();
+                $('h1.other_album').css('display','block');
+                $("html, body").animate({ scrollTop: 500 }, 500);
+                
+                $('.album_close').click(function(){
+                                $('#showAlbumDetail').fadeOut();
+                                $('h1.other_album').fadeOut();
+                });
+            } else {
+                $.ajax({
+                            url: "index.php?do=product&action=loadAlbumDetail&id="+a_id+"&user="+u_id,
+                    }).done(function ( data ) {
+                            if( console && console.log ) {
+                                    $('.img-after').remove();
+                                    //$('#album-detail-but').trigger('click');
+                                    //$('.staticon span').remove();
+                                    //$('.staticon div').remove();
+                                    //$('.staticon').append(data);
+                                    //$('#com_album li a img').removeClass("loading");
+                                    $('#showAlbumDetail').html(data);
+                                    $('#showAlbumDetail').css('display','block');
+                                    $('h1.other_album').css('display','block');
+                                    //$('#com_album').css('display','none');
+                                    $("html, body").animate({ scrollTop: 500 }, 500);
+                                    
+                                    $('.album_close').click(function(){
+                                                    $('#showAlbumDetail').fadeOut();
+                                                    $('h1.other_album').fadeOut();
+                                    });
+                            }
+                    });
+            }
 	}
 	
 	
