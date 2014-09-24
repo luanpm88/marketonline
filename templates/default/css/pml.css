@@ -11068,6 +11068,3 @@ input[name=redirect]
 .activity_announce strong {
     text-transform: uppercase;
 }
-#main-nav ul li a.current_nav span {
-    border-bottom: 4px solid red;
-}

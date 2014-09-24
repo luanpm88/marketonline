@@ -3518,3 +3518,6 @@ a.unvalid_edit {
     text-align: center;
     width: 340px;
 }
+#main-nav ul li a.current_nav span {
+    border-bottom: 4px solid red;
+}
