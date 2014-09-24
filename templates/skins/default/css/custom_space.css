@@ -1971,3 +1971,6 @@ a.following
     text-align: center;
     color: #333;
 }
+.verytopmenu_glass {
+    z-index: 2000;
+}

@@ -11054,3 +11054,12 @@ input[name=redirect]
     right: 288px;
     width: 140px;
 }
+.pointer_topmenu {
+    right: 5px;
+}
+#settingbox {
+    margin-top: 37px;
+}
+.activity_announce {
+    top: 48px;
+}
