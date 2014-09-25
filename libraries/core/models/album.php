@@ -28,8 +28,8 @@ class Albums extends PbModel {
 		
 		//exec("ffmpeg -i album-757-118.mp4 -ss 00:00:5.435 -f image2 -vframes 1 album-757-118.mp4.thumb.png",$output,$vars);
 		
-		exec("ffmpeg -i {$file} -ss 0{$realMinutes}:{$realSeconds}:1 -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
-		echo "ffmpeg -i {$file} -ss 0{$realMinutes}:{$realSeconds}:1 -f image2 -vframes 1 {$file}.thumb.png";
+		exec("ffmpeg -i {$file} -ss {$realMinutes}:{$realSeconds}:1.0 -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
+		echo "ffmpeg -i {$file} -ss {$realMinutes}:{$realSeconds}:1.0 -f image2 -vframes 1 {$file}.thumb.png";
 		var_dump($output);
 		var_dump($vars);
 		
