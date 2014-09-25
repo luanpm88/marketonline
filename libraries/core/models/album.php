@@ -16,19 +16,10 @@ class Albums extends PbModel {
 
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
-		var_dump($time);
-		$durationInSeconds = $duration[0]*3600 + $duration[1]*60+ round($duration[2]);
-		$durationMiddle = $durationInSeconds/2;
+		$duration[2] = intval($duration[2]);
 		
-		// recalculte to minutes and seconds
-		$minutes = $durationMiddle/60;
-		$realMinutes = floor($minutes);
-		$realSeconds = round(($minutes-$real_minutes)*60);
 		
-		var_dump($realMinutes);
-		var_dump($realSeconds);
-		
-		exec("ffmpeg -i {$file} -ss 00:{$realMinutes}:{$realSeconds} -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
+		exec("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
 		var_dump($output);
 		var_dump($vars);
 	}
