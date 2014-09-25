@@ -83,7 +83,8 @@ if (isset($_GET['do'])) {
 	}
 	if($do=="del" && !empty($id)) {
 		//get attach info
-		$album_info = $pdb->GetRow("SELECT * FROM {$tb_prefix}albums ab WHERE ab.member_id=".$the_memberid." AND ab.id={$id}");
+		$album_info = $pdb->GetRow("SELECT att.attachment,ab.* FROM {$tb_prefix}albums ab LEFT JOIN {$tb_prefix}attachments att ON att.id=ab.attachment_id WHERE ab.member_id=".$the_memberid." AND ab.id={$id}");
+		$attachment_controller->deleteBySource($album_info["attachment"]);
 		$attachment->del($album_info['attachment_id'], "member_id=".$the_memberid);
 		$result = $album->del(intval($id), "member_id=".$the_memberid);
 	}
