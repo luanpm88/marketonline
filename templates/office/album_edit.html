@@ -43,10 +43,13 @@ var can_also_enter = "{lang can_also_enter}";
 			percent.html(percentVal);
 		    },
 		    complete: function(xhr) {
-			window.location = "album.php";
+			//window.location = "album.php";
 			//alert("done");
 		    }
 		});
+		
+		
+		
 		
 		
 	});
@@ -110,16 +113,30 @@ jQuery(document).ready(function($) {
 
        <div>{lang title}<font class="red">*</font>: <input style="padding: 4px;margin-bottom: 10px;" type="text" id="albumTitle" name="album[title]" value="{$item.title}" /></div>
        
-       
-       <div id="image_box">
-		<!--{if $item.image}-->
+       <!--{if $item.image}-->
 			<a href="{$item.image}" id="uploadpic_hover" rel="lightbox"><img id="uploadpic" src="{$item.image}" alt="{$item.title}" width="80" height="80" border="0" /></a>
-		<!--{/if}-->
-		<span class="gray" style="padding-bottom: 5px;display: block">
-                  {lang image_size_format_provision}</span>
+	<!--{/if}-->
+		
+	{if $item.type == 'video'}
+		<div class="video_thumb">
+			<h2>
+				Hình đại diện cho video:
+			</h2>
+			 <input name="video_thumb" type="file" id="video_thumb" style="width: 240px;" />
+		</div>
+	{/if}
+		
+		
+       <div id="image_box">
+		
+		
 		{if $item.id}<h2>
 			Thay hình ảnh/videos khác:
 		</h2>{/if}
+		
+		<span class="gray" style="padding-bottom: 5px;display: block">
+                  {lang image_size_format_provision}</span>
+		
 		<input name="pic" type="file" id="uploadfile" style="width: 240px;" onchange="preview()" />
                 
 		<div class="progress">
@@ -129,6 +146,8 @@ jQuery(document).ready(function($) {
 			<div id="status"></div>
 	
        </div>
+	
+	
        
        
        

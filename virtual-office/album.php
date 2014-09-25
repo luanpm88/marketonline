@@ -13,6 +13,7 @@ uses("attachment", "album");
 check_permission("album");
 
 $attachment_controller = new Attachment('pic');
+$attachment_controller2 = new Attachment('video_thumb');
 $attachment = new Attachments();
 $album = new Albums();
 $tpl_file = "album";
@@ -49,6 +50,23 @@ if (isset($_POST['do'])) {
 		$attachment_controller->rename_file = $attach_id;
 		$attachment_controller->upload_process($type_id);
 	}
+	
+	if (!empty($_FILES['video_thumb']['name'])) {
+		
+		$att = $album->read("att.attachment,Album.*",$id,null,null,array("LEFT JOIN {$tb_prefix}attachments att ON att.id=Album.attachment_id"));
+		$parts = explode("/",$att["attachment"]);
+		$dirr = $parts[0]."/".$parts[1]."/".$parts[2];
+		$att_id = $parts[3].".thumb";
+
+		
+		$attachment_controller2->if_thumb = false;
+		$attachment_controller2->upload_dir = $dirr;
+		$attachment_controller2->rename_file = $att_id;
+		$attachment_controller2->upload_process(1);
+		
+		echo $attachment_controller2->id;
+	}
+	
 	if (!empty($id)) {
 		if (empty($attachment_controller->id)) {
 			$attachment_id = $pdb->GetOne("SELECT attachment_id FROM {$tb_prefix}albums WHERE id=".$id);

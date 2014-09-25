@@ -1925,6 +1925,7 @@ select option {
 }
 #image_box {
     float: left;
+    margin-top: 20px;
     width: 100%;
 }
 #image_box img
@@ -3533,4 +3534,10 @@ a.unvalid_edit {
     display: block;
     height: 20px;
     width: 0;
+}
+
+.video_thumb {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 20px;
 }
