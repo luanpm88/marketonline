@@ -135,7 +135,7 @@ if(isset($_GET["type"])) {
 $amount = $album->findCount($joins, $conditions, "Album.id");
 $page->setPagenav($amount);
 $res = $pdb->GetAll("SELECT * from {$tb_prefix}albums");
-$result = $album->findAll("Album.album_id,Album.attachment_id,Album.type,Attachment.title,Attachment.modified,Attachment.description,Attachment.attachment,Album.id", $joins, $conditions, "Album.id DESC", $page->firstcount, $page->displaypg);
+$result = $album->findAll("Album.thumb_id,Album.attachment_id,Album.type,Attachment.title,Attachment.modified,Attachment.description,Attachment.attachment,Album.id", $joins, $conditions, "Album.id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['image'] = pb_get_attachmenturl($result[$i]['attachment'], '../', "small");
