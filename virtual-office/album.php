@@ -117,6 +117,9 @@ if (isset($_GET['do'])) {
 				if($album_info['type']=='video') {
 					$album_info['image'] = URL."attachment/".$album_info['attachment'].".thumb.png?v=".$album_info['modified'];
 				}
+				if($album_info['thumb_id']) {
+					$album_info['image'] = URL."attachment/".$album_info['attachment'].".thumb.jpg?v=".$album_info['modified'];
+				}
 			}
 			setvar("item", $album_info);
 		}
