@@ -3556,6 +3556,6 @@ a.unvalid_edit {
     display: block;
 }
 .video-overlay:hover .vv-oo {
-    background-image: url("../../default/image/play-icon.png");
+    background-image: url("../../default/image/play-icon-red.png");
     
 }
