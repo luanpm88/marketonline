@@ -16,7 +16,7 @@ class Albums extends PbModel {
 
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
-		$duration[2] = intval($duration[2]);
+		$duration[2] = intval($duration[2]/2);
 		
 		
 		exec("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
