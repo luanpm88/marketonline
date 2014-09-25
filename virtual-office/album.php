@@ -118,7 +118,7 @@ if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['image'] = pb_get_attachmenturl($result[$i]['attachment'], '../', "small");
 		if($result[$i]['type']=='video') {
-			$result[$i]['image'] = URL."templates/default/image/video_icon.png";
+			$result[$i]['image'] = URL."attachmen/".$result[$i]['attachment'].".thumb.png";
 		}
 	}
 	setvar("Items", $result);
