@@ -3542,7 +3542,7 @@ a.unvalid_edit {
     margin-top: 20px;
 }
 .vv-oo {
-    background: url("../image/play-icon.png") no-repeat scroll 50% 50% / 50px auto rgba(0, 0, 0, 0);
+    background: url("../../default/image/play-icon.png") no-repeat scroll 50% 50% / 50px auto rgba(0, 0, 0, 0);
     display: block;
     height: 100%;
     left: 0;
