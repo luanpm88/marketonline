@@ -194,18 +194,19 @@ class Attachment extends PbController {
 					$this->resizeImage($this->out_file_full_path, 534, 273, "medium");
 				}
 				
-				if($this->if_video_thumb)
-				{
-					uses('album');
-					$albumdb = new Albums();
-					
-					//$albumdb->screenshot($this->attachment_dir.DS.$this->upload_dir.DS.$this->rename_file);
-					echo $this->attachment_dir.DS.$this->upload_dir.DS.$this->rename_file;
-				}
+				
 				
 				
 				
 		        }
+			if($this->if_video_thumb)
+			{
+				uses('album');
+				$albumdb = new Albums();
+				
+				//$albumdb->screenshot($this->attachment_dir.DS.$this->upload_dir.DS.$this->rename_file);
+				echo $this->attachment_dir.DS.$this->upload_dir.DS.$this->rename_file;
+			}
 			if($this->if_school_banner)
 			{
 				$this->resizeImage($this->out_file_full_path, 1000, 375, "banner");
