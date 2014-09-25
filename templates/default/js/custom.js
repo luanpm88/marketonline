@@ -2406,5 +2406,5 @@
 		$('body').click(function(){$('.shop_stars .detail_box .vote_details').hide();});	
 		$('.shop_stars .detail_box span.detail_pointer').click(function(e){$('.shop_stars .detail_box .vote_details').toggle();e.stopPropagation();});
 		
-		
+		$('.video-overlay').append('<span class="vv-oo"></span>');
 	});
