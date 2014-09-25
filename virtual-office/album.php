@@ -36,6 +36,7 @@ if (isset($_POST['do'])) {
 			$type = 'image';
 		} elseif(in_array($ext,$video_allowed)) {
 			$type = 'video';
+			$attachment_controller->if_video_thumb = true;
 		} else {
 			$type = "error";
 		}
