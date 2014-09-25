@@ -9,7 +9,7 @@ class Albums extends PbModel {
 	
 	function screenshot($file) {
 		echo $file;
-		echo shell_exec("ffmpeg -i ../../../".$file." -ss 00:00:5.435 -f image2 -vframes 1 ../../../".$file.".thumb.png");
+		var_dump(shell_exec("ffmpeg -i ../../../".$file." -ss 00:00:5.435 -f image2 -vframes 1 ../../../".$file.".thumb.png"));
 		echo "ffmpeg -i ../../../".$file." -ss 00:00:5.435 -f image2 -vframes 1 ../../../".$file.".thumb.png";
 	}
 }
