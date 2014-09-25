@@ -42,7 +42,7 @@ if (isset($_POST['do'])) {
 
 		$type_id = 1;
 		$attachment_controller->upload_dir = "album".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
-		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1):"album-".$the_memberid."-".$id."-".strtotime(date());
+		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1)."-".strtotime(date()):"album-".$the_memberid."-".$id."-".strtotime(date());
 		$attachment_controller->title = $title;
 		$attachment_controller->description = $description;
 		$attachment_controller->rename_file = $attach_id;
