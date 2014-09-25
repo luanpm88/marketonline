@@ -20,9 +20,15 @@ class Albums extends PbModel {
 		$duration[1] = intval($duration[1]/2);
 		$duration[0] = intval($duration[0]/2);
 		
+		$total = $duration[0]*3600+$duration[0]*60+$duration[0];
+		$middle = intval($total/2);
 		
-		exec("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
-		var_dump("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png");
+		$hour = intval($middle/3600);
+		$minute = intval(($middle/60)%60);
+		$second = intval($middle%60);
+		
+		exec("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
+		var_dump("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png");
 		//var_dump($vars);
 	}
 }
