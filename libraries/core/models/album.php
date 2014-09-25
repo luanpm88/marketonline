@@ -27,7 +27,7 @@ class Albums extends PbModel {
 		var_dump($realMinutes);
 		var_dump($realSeconds);
 		
-		exec("ffmpeg -i {$file} -ss {$realMinutes}:{$realSeconds}:5.435 -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
+		exec("ffmpeg -i {$file} -ss 00:00:5.435 -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
 		var_dump($output);
 		var_dump($vars);
 	}
