@@ -5984,7 +5984,7 @@ class Product extends PbController {
 		
 	}
 	function testScreenshot() {
-		exec("ls", $out);
+		echo exec("whoami", $out);
 		var_dump($out);
 	}
 }
