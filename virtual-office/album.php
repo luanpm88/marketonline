@@ -28,6 +28,7 @@ if (isset($_POST['do'])) {
 	$vals['description'] = $description = trim($vals['description']);
 	$now_album_amount = $attachment->findCount(null, "created>".$today_start." AND member_id=".$the_memberid);
 	$id = intval($_POST['id']);
+	$thumb_id = 0;
 	if (!empty($_FILES['pic']['name'])) {
 		$image_allowed =  array('gif','png','jpg');
 		$video_allowed =  array('mp4','mpeg','avi','mkv');
@@ -49,6 +50,8 @@ if (isset($_POST['do'])) {
 		$attachment_controller->description = $description;
 		$attachment_controller->rename_file = $attach_id;
 		$attachment_controller->upload_process($type_id);
+		
+		$thumb_id = 0;
 	}
 	
 	if (!empty($_FILES['video_thumb']['name'])) {
@@ -64,7 +67,7 @@ if (isset($_POST['do'])) {
 		$attachment_controller2->rename_file = $att_id;
 		$attachment_controller2->upload_process(1);
 		
-		echo $attachment_controller2->id;
+		$thumb_id = $attachment_controller2->id;
 	}
 	
 	if (!empty($id)) {
@@ -73,7 +76,7 @@ if (isset($_POST['do'])) {
 		}else{
 			$attachment_id = $attachment_controller->id;
 		}
-		$sql = "UPDATE {$tb_prefix}attachments a,{$tb_prefix}albums ab SET a.title='".$title."',a.description='".$description."',ab.attachment_id={$attachment_id},type_id='".$vals['type_id']."' WHERE ab.id={$id} AND a.id=".$attachment_id;
+		$sql = "UPDATE {$tb_prefix}attachments a,{$tb_prefix}albums ab SET a.title='".$title."',a.description='".$description."',ab.attachment_id={$attachment_id},type_id='".$vals['type_id']."',ab.thumb_id={$thumb_id} WHERE ab.id={$id} AND a.id=".$attachment_id;
 	}else{
 		if ($g['max_album'] && $now_album_amount>=$g['max_album']) {
 			flash('one_day_max');
@@ -81,7 +84,7 @@ if (isset($_POST['do'])) {
 		if (empty($_FILES['pic']['name'])) {
 			flash("failed");
 		}
-		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."')";
+		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type,thumb_id) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."',".$thumb_id.")";
 	}
 	$result = $pdb->Execute($sql);
 	if (!$result) {
