@@ -348,6 +348,7 @@ class Attachment extends PbController {
  		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".small.jpg");
 		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".smaller.jpg");
 		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".square.jpg");
+		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".thumb.png");
  		$file_ext = fileext($src);
  		$orignal_filename = str_replace($file_ext, ".orignal".$file_ext, $src);
  		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$orignal_filename);
