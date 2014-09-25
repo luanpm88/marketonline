@@ -66,10 +66,12 @@ if (isset($_POST['do'])) {
 	}
 	$result = $pdb->Execute($sql);
 	if (!$result) {
-		flash();
+		//flash();
 	}else{
 		//flash("success", "album.php");
-		header('Location: '.$_SERVER['REQUEST_URI']);
+		//header('Location: '.$_SERVER['REQUEST_URI']);
+		echo "done";
+		exit;
 	}
 }
 setvar("AlbumTypes", $_PB_CACHE['albumtype']);

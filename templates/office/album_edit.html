@@ -9,10 +9,43 @@ var can_also_enter = "{lang can_also_enter}";
 </script>
 <!--{editor type="tiny_mce"}-->
 
+
+<script src="http://malsup.github.com/jquery.form.js"></script>
+
+
+
 <!--{literal}-->
 <script>
 	jQuery(document).ready(function($) {
 		$('.MenuItem12').addClass('mActive');
+		
+		
+		var bar = $('.bar');
+		var percent = $('.percent');
+		var status = $('#status');
+	    
+		$('#upload_frm').ajaxForm({
+		    beforeSend: function() {
+			status.empty();
+			var percentVal = '0%';
+			bar.css("width",percentVal);
+			percent.html(percentVal);
+			
+			$('html,body').animate({
+				scrollTop: $("#image_box").offset().top},
+				'slow');
+		    },
+		    uploadProgress: function(event, position, total, percentComplete) {
+			var percentVal = percentComplete + '%';
+			bar.width(percentVal);
+			percent.html(percentVal);
+		    },
+		    complete: function(xhr) {
+			window.location = "album.php"; 
+		    }
+		});
+		
+		
 	});
 </script>
 <!--{/literal}-->
@@ -65,9 +98,9 @@ jQuery(document).ready(function($) {
      
      
      <div id="product_edit_box">
+			
      
-     
-	  <form name="edit_frm" method="post" action="album.php" enctype="multipart/form-data" onsubmit="$('#BtnSubmit').attr('disabled',true);">
+	  <form id="upload_frm" name="edit_frm" method="post" action="album.php" enctype="multipart/form-data" onsubmit="$('#BtnSubmit').attr('disabled',true);">
 	  <!-- {formhash} -->
 	  <input type="hidden" name="id" value="{$item.id}">
 	  <input type="hidden" name="do" value="save">
@@ -86,7 +119,11 @@ jQuery(document).ready(function($) {
 		</h2>{/if}
 		<input name="pic" type="file" id="uploadfile" style="width: 240px;" onchange="preview()" />
                 
-	
+		<div class="progress">
+				<div class="bar-box"><div class="bar"></div ></div >
+				<div class="percent">0%</div >
+			</div>
+			<div id="status"></div>
 	
        </div>
        
