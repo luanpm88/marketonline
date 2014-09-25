@@ -3541,3 +3541,20 @@ a.unvalid_edit {
     margin-left: 20px;
     margin-top: 20px;
 }
+.vv-oo {
+    background: url("../image/play-icon.png") no-repeat scroll 50% 50% / 80px auto rgba(0, 0, 0, 0);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    opacity: 0.9;
+}
+.video-overlay {
+    position: relative;
+}
+.video-overlay:hover .vv-oo {
+    background-image: url("../image/play-icon-red.png");
+    
+}
