@@ -5985,8 +5985,8 @@ class Product extends PbController {
 	}
 	function testScreenshot() {
 		var_dump(php_uname());
-		echo shell_exec("ls /home/marketon/");
-		var_dump($out);
+		$output = shell_exec("ls 2>&1");
+		var_dump($output);
 	}
 }
 ?>
