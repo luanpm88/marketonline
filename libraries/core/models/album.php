@@ -10,9 +10,7 @@ class Albums extends PbModel {
 	function screenshot($file) {
 		//exec("ffmpeg -i album-757-118.mp4 -ss 00:00:5.435 -f image2 -vframes 1 album-757-118.mp4.thumb.png",$output,$vars);
 		$file = "/home/marketon/domains/marketonline.vn/public_html/".$file;
-		exec("ffmpeg -i {$file} -ss 00:00:5.435 -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
-		var_dump($output);
-		var_dump($vars);
+		
 		
 		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");   
 
@@ -28,6 +26,10 @@ class Albums extends PbModel {
 		
 		var_dump($realMinutes);
 		var_dump($realSeconds);
+		
+		exec("ffmpeg -i {$file} -ss {$realMinutes}:{$realSeconds}:5.435 -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
+		var_dump($output);
+		var_dump($vars);
 	}
 }
 ?>
