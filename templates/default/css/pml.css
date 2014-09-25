@@ -11085,5 +11085,15 @@ video {
     background: #333;
 }
 .vv-oo {
-    
+    background: url("../image/play-icon.png") no-repeat scroll 50% 50% / 100px auto rgba(0, 0, 0, 0);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.video-overlay:hover .vv-oo {
+    background-image: url("../image/play-icon-red.png");
 }
