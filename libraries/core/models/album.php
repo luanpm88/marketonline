@@ -13,10 +13,12 @@ class Albums extends PbModel {
 		
 		
 		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");   
-		echo $time;
+		//echo $time;
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
 		$duration[2] = intval($duration[2]/2);
+		$duration[1] = intval($duration[1]/2);
+		$duration[0] = intval($duration[0]/2);
 		
 		
 		exec("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
