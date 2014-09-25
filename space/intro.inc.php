@@ -24,7 +24,7 @@ if (!empty($result)) {
 			$result[$i]['image'] = URL."attachment/".$result[$i]['thumb'].".thumb.png?v=".$result[$i]['modified'];
 			$result[$i]['source'] = URL."attachment/".$result[$i]['thumb']."?v=".$result[$i]['modified'];
 			if($result[$i]['thumb_id']) {
-				$result[$i]['image'] = URL."attachment/".$result[$i]['attachment'].".thumb.jpg?v=".$result[$i]['modified'];
+				$result[$i]['image'] = URL."attachment/".$result[$i]['thumb'].".thumb.jpg?v=".$result[$i]['modified'];
 			}
 		}
 	}
