@@ -3553,6 +3553,7 @@ a.unvalid_edit {
 }
 .video-overlay {
     position: relative;
+    display: block;
 }
 .video-overlay:hover .vv-oo {
     background-image: url("../image/play-icon-red.png");
