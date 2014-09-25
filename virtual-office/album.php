@@ -89,11 +89,11 @@ if (isset($_GET['do'])) {
 	}
 	if ($do=="edit") {
 		if (!empty($id)) {
-			$album_info = $pdb->GetRow("SELECT ab.type,a.title,a.description,ab.id,a.attachment,ab.type_id FROM {$tb_prefix}attachments a  LEFT JOIN {$tb_prefix}albums ab ON a.id=ab.attachment_id WHERE a.member_id=".$the_memberid." AND a.id={$id}");
+			$album_info = $pdb->GetRow("SELECT ab.type,a.title,a.modified,a.description,ab.id,a.attachment,ab.type_id FROM {$tb_prefix}attachments a  LEFT JOIN {$tb_prefix}albums ab ON a.id=ab.attachment_id WHERE a.member_id=".$the_memberid." AND a.id={$id}");
 			if (!empty($album_info['attachment'])) {
 				$album_info['image'] = pb_get_attachmenturl($album_info['attachment'], "../", "small");
 				if($album_info['type']=='video') {
-					$album_info['image'] = URL."attachment/".$album_info['attachment'].".thumb.png";
+					$album_info['image'] = URL."attachment/".$album_info['attachment'].".thumb.png?v=".$album_info['modified'];
 				}
 			}
 			setvar("item", $album_info);
@@ -113,12 +113,12 @@ if(isset($_GET["type"])) {
 $amount = $album->findCount($joins, $conditions, "Album.id");
 $page->setPagenav($amount);
 $res = $pdb->GetAll("SELECT * from {$tb_prefix}albums");
-$result = $album->findAll("Album.attachment_id,Album.type,Attachment.title,Attachment.description,Attachment.attachment,Album.id", $joins, $conditions, "Album.id DESC", $page->firstcount, $page->displaypg);
+$result = $album->findAll("Album.attachment_id,Album.type,Attachment.title,Attachment.modified,Attachment.description,Attachment.attachment,Album.id", $joins, $conditions, "Album.id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['image'] = pb_get_attachmenturl($result[$i]['attachment'], '../', "small");
 		if($result[$i]['type']=='video') {
-			$result[$i]['image'] = URL."attachment/".$result[$i]['attachment'].".thumb.png";
+			$result[$i]['image'] = URL."attachment/".$result[$i]['attachment'].".thumb.png?v=".$result[$i]['modified'];
 		}
 	}
 	setvar("Items", $result);
