@@ -11076,5 +11076,8 @@ input[name=redirect]
 }
 
 .album_close.video {
-    margin-right: 250px;
+    margin-right: 128px;
+}
+#showAlbumDetail {
+    text-align: center;
 }
