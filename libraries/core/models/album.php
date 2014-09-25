@@ -16,9 +16,6 @@ class Albums extends PbModel {
 		//echo $time;
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
-		$duration[2] = intval($duration[2]/2);
-		$duration[1] = intval($duration[1]/2);
-		$duration[0] = intval($duration[0]/2);
 		
 		$total = $duration[0]*3600+$duration[0]*60+$duration[0];
 		$middle = intval($total/2);
