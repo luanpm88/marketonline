@@ -40,7 +40,7 @@ if (isset($_POST['do'])) {
 		} else {
 			$type = "error";
 		}
-
+		//echo $attachment_controller->if_video_thumb;
 		$type_id = 1;
 		$attachment_controller->upload_dir = "album".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
 		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1):"album-".$the_memberid."-".$id;

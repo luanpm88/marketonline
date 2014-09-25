@@ -8,7 +8,8 @@ class Albums extends PbModel {
  	}
 	
 	function screenshot($file) {
-		echo exec("ffmpeg -i ".$file." -ss 00:00:5.435 -f image2 -vframes 1 ".$file.".thumb.png", $out, $err);
+		//echo $file;
+		exec("ffmpeg -i ".$file." -ss 00:00:5.435 -f image2 -vframes 1 ".$file.".thumb.png", $out, $err);
 	}
 }
 ?>
