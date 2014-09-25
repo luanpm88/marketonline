@@ -11093,7 +11093,9 @@ video {
     top: 0;
     width: 100%;
 }
-
+.video-overlay {
+    position: relative;
+}
 .video-overlay:hover .vv-oo {
     background-image: url("../image/play-icon-red.png");
 }
