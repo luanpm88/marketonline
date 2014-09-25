@@ -5987,6 +5987,7 @@ class Product extends PbController {
 		var_dump(php_uname());
 		$output = shell_exec("ls 2>&1");
 		var_dump($output);
+		phpinfo();
 	}
 }
 ?>
