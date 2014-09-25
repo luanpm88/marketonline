@@ -5983,5 +5983,9 @@ class Product extends PbController {
 	function checkActiveTime() {
 		
 	}
+	function testScreenshot() {
+		exec("ls", $out);
+		var_dump($out);
+	}
 }
 ?>
