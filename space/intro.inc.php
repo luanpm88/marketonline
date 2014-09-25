@@ -14,7 +14,7 @@ uses("attachment", "album");
 uses("album");
 $album = new Albums();
 $joins[] = "LEFT JOIN {$tb_prefix}attachments a ON a.id=Album.attachment_id";
-$result = $album->findAll("Album.type, a.modified, a.title,a.description,Album.id,a.attachment as thumb,a.id as a_id", $joins, "Album.member_id='".$member->info['id']."'", "Album.id desc");
+$result = $album->findAll("Album.type, Album.thumb_id, a.modified, a.title,a.description,Album.id,a.attachment as thumb,a.id as a_id", $joins, "Album.member_id='".$member->info['id']."'", "Album.id desc");
 if (!empty($result)) {
 	$count = count($result);
 	for($i=0; $i<$count; $i++){
@@ -23,6 +23,9 @@ if (!empty($result)) {
 		if($result[$i]['type']=='video') {
 			$result[$i]['image'] = URL."attachment/".$result[$i]['thumb'].".thumb.png?v=".$result[$i]['modified'];
 			$result[$i]['source'] = URL."attachment/".$result[$i]['thumb']."?v=".$result[$i]['modified'];
+			if($result[$i]['thumb_id']) {
+				$result[$i]['image'] = URL."attachment/".$result[$i]['attachment'].".thumb.jpg?v=".$result[$i]['modified'];
+			}
 		}
 	}
 }
