@@ -11081,3 +11081,6 @@ input[name=redirect]
 #showAlbumDetail {
     text-align: center;
 }
+video {
+    background: #333;
+}
