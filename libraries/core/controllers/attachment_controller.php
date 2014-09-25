@@ -26,6 +26,7 @@ class Attachment extends PbController {
     var $if_school_banner = false;
     var $if_offer_150_120 = false;    
     var $if_logo = false;
+    var $if_video_thumb = false;
     var $if_product_square = false;
     var $rename_file;
     var $if_orignal = false;
@@ -192,6 +193,16 @@ class Attachment extends PbController {
 					$this->resizeImage($this->out_file_full_path, 300, 300, "small");
 					$this->resizeImage($this->out_file_full_path, 534, 273, "medium");
 				}
+				
+				if($this->if_video_thumb)
+				{
+					uses('album');
+					$albumdb = new Albums();
+					
+					//$albumdb->screenshot($this->attachment_dir.DS.$this->upload_dir.DS.$this->rename_file);
+					echo $this->attachment_dir.DS.$this->upload_dir.DS.$this->rename_file;
+				}
+				
 				
 				
 		        }
