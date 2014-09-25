@@ -93,7 +93,7 @@ if (isset($_GET['do'])) {
 			if (!empty($album_info['attachment'])) {
 				$album_info['image'] = pb_get_attachmenturl($album_info['attachment'], "../", "small");
 				if($album_info['type']=='video') {
-					$album_info['image'] = URL."templates/default/image/video_icon.png";
+					$album_info['image'] = URL."attachment/".$album_info['attachment'].".thumb.png";
 				}
 			}
 			setvar("item", $album_info);
