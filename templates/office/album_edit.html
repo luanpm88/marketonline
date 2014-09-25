@@ -34,6 +34,8 @@ var can_also_enter = "{lang can_also_enter}";
 			$('html,body').animate({
 				scrollTop: $("#image_box").offset().top},
 				'slow');
+			
+			$('#save').hide();
 		    },
 		    uploadProgress: function(event, position, total, percentComplete) {
 			var percentVal = percentComplete + '%';
