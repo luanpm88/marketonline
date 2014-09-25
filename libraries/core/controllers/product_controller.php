@@ -5983,7 +5983,7 @@ class Product extends PbController {
 	function checkActiveTime() {
 		
 	}
-	function testScreenshot() {
+	function testScreenshot($file) {
 		var_dump(php_uname());
 		echo exec("ls", $out, $err);
 		var_dump($out);

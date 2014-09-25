@@ -42,7 +42,7 @@ if (isset($_POST['do'])) {
 
 		$type_id = 1;
 		$attachment_controller->upload_dir = "album".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
-		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1)."-".strtotime(date('Y-m-d H:i:s')):"album-".$the_memberid."-".$id."-".strtotime(date('Y-m-d H:i:s'));
+		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1):"album-".$the_memberid."-".$id;
 		$attachment_controller->title = $title;
 		$attachment_controller->description = $description;
 		$attachment_controller->rename_file = $attach_id;
@@ -62,7 +62,7 @@ if (isset($_POST['do'])) {
 		if (empty($_FILES['pic']['name'])) {
 			flash("failed");
 		}
-		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."')";
+		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type,created) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."',".strtotime(date('Y-m-d H:i:s')).")";
 	}
 	$result = $pdb->Execute($sql);
 	if (!$result) {
