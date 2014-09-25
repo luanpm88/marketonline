@@ -142,7 +142,7 @@ if (!empty($result)) {
 		if($result[$i]['type']=='video') {
 			$result[$i]['image'] = URL."attachment/".$result[$i]['attachment'].".thumb.png?v=".$result[$i]['modified'];
 		}
-		if($result[$i]['album_id']) {
+		if($result[$i]['thumb_id']) {
 			$result[$i]['image'] = URL."attachment/".$result[$i]['attachment'].".thumb.jpg?v=".$result[$i]['modified'];
 		}
 	}
