@@ -62,7 +62,7 @@ if (isset($_POST['do'])) {
 		if (empty($_FILES['pic']['name'])) {
 			flash("failed");
 		}
-		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type,created) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."',".strtotime(date('Y-m-d H:i:s')).")";
+		$sql = "INSERT INTO {$tb_prefix}albums (member_id,attachment_id,type_id,type) VALUES (".$the_memberid.",'".$attachment_controller->id."','".$vals['type_id']."','".$type."')";
 	}
 	$result = $pdb->Execute($sql);
 	if (!$result) {
