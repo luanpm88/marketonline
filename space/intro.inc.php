@@ -21,8 +21,8 @@ if (!empty($result)) {
 		$result[$i]['image'] = URL. pb_get_attachmenturl($result[$i]['thumb'], '', 'small');
 		$result[$i]['middleimage'] = URL. pb_get_attachmenturl($result[$i]['thumb']);
 		if($result[$i]['type']=='video') {
-			$result[$i]['image'] = URL."templates/default/image/video_icon.png";
-			$result[$i]['source'] = URL."attachment/".$result[$i]['thumb'];
+			$result[$i]['image'] = URL."attachment/".$result[$i]['thumb'].".thumb.png?v=".$result[$i]['modified'];
+			$result[$i]['source'] = URL."attachment/".$result[$i]['thumb']."?v=".$result[$i]['modified'];
 		}
 	}
 }
