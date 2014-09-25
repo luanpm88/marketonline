@@ -20,8 +20,8 @@ class Albums extends PbModel {
 		
 		
 		exec("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
-		var_dump($output);
-		var_dump($vars);
+		var_dump("ffmpeg -i {$file} -ss ".implode(":",$duration)." -f image2 -vframes 1 {$file}.thumb.png");
+		//var_dump($vars);
 	}
 }
 ?>
