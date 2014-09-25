@@ -15,7 +15,8 @@ class Albums extends PbModel {
 		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");   
 
 		// duration in seconds; half the duration = middle
-		$duration = explode(":",$time);   
+		$duration = explode(":",$time);
+		var_dump($time);
 		$durationInSeconds = $duration[0]*3600 + $duration[1]*60+ round($duration[2]);
 		$durationMiddle = $durationInSeconds/2;
 		
