@@ -5985,9 +5985,9 @@ class Product extends PbController {
 	}
 	function testScreenshot() {
 		var_dump(php_uname());
-		$output = shell_exec("ls 2>&1");
-		var_dump($output);
-		phpinfo();
+		echo exec("whoami", $out, $err);
+		var_dump($out);
+		var_dump($err);
 	}
 }
 ?>
