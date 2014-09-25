@@ -1,7 +1,7 @@
 <?php
 class Product extends PbController {
 	var $name = "Product";
-	var $CHAT_COUNT = 100;
+	var $CHAT_COUNT = 200;
 	var $MESSAGE_ANNOUNCE_COUNT = 20;
 	var $CHAT_ANNOUNCE_COUNT = 20;
 	
