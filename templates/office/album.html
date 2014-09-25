@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
           
 		    <!--{foreach from=$Items item=item}-->
 		    <tr>
-		    <td><a rel="lightbox" id="uploadpic_hover" href="{$item.image}" class="cboxElement {if $item.type='video'}video-overlay{/if}"><img id="uploadpic" class="img_album" src="{$item.image}" alt="" border="0" width="160" style="padding: 6px; border: 1px solid #CCC; background-color: #FFF;"/></a></td>
+		    <td><a rel="lightbox" id="uploadpic_hover" href="{$item.image}" class="cboxElement {if $item.type=='video'}video-overlay{/if}"><img id="uploadpic" class="img_album" src="{$item.image}" alt="" border="0" width="160" style="padding: 6px; border: 1px solid #CCC; background-color: #FFF;"/></a></td>
 		    <td valign="top">
 			    <p><strong>{$item.title}</strong></p>
 		      <p>{$item.description|strip_tags|truncate:310}</p>
