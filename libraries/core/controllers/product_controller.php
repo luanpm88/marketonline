@@ -5983,9 +5983,9 @@ class Product extends PbController {
 	function checkActiveTime() {
 		
 	}
-	function testScreenshot($file) {
+	function testScreenshot() {
 		var_dump(php_uname());
-		echo exec("ls", $out, $err);
+		echo exec("ffmpeg -i attachment/album/201409/25/album-757-118.mp4 -ss 00:00:5.435 -f image2 -vframes 1 attachment/album/201409/25/album-757-118.mp4.thumb.png", $out, $err);
 		var_dump($out);
 		var_dump($err);
 	}
