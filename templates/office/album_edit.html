@@ -111,7 +111,7 @@ jQuery(document).ready(function($) {
 	  <input type="hidden" name="id" value="{$item.id}">
 	  <input type="hidden" name="do" value="save">
 
-       <div>{lang title}<font class="red">*</font>: <input style="padding: 4px;margin-bottom: 10px;" type="text" id="albumTitle" name="album[title]" value="{$item.title}" /></div>
+       <div>{lang title}<!--<font class="red">*</font>-->: <input style="padding: 4px;margin-bottom: 10px;" type="text" id="albumTitle" name="album[title]" value="{$item.title}" /></div>
        
        <!--{if $item.image}-->
 			<a href="{$item.image}" id="uploadpic_hover" rel="lightbox"><img id="uploadpic" src="{$item.image}" alt="{$item.title}" width="300" height="300" border="0" /></a>
@@ -185,7 +185,7 @@ jQuery(document).ready(function($) {
           </tr>-->
        </table>
        
-       <h3 style="clear: both; padding-top: 20px;">{lang description}<font class="red">*</font></h3>
+       <h3 style="clear: both; padding-top: 20px;">{lang description}<!--<font class="red">*</font>--></h3>
 		 <p>
                     <textarea name="album[description]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 400px" class="required">{$item.description}</textarea>
                 </p>
