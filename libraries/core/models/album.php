@@ -13,7 +13,7 @@ class Albums extends PbModel {
 		$file = "..".DS.$file;
 		
 		
-		$time =  exec('ffmpeg -y -i '.$file.' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//');
+		$time =  exec('ffmpeg -i '.$file.' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//');
 		// echo 'ffmpeg -i '.$file.' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//';
 		// var_dump($time);
 		// duration in seconds; half the duration = middle
@@ -28,7 +28,7 @@ class Albums extends PbModel {
 		
 		//@unlink($file);
 		
-		exec("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
+		exec("ffmpeg -y -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
 		//var_dump("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png");
 		//var_dump($vars);
 	}
