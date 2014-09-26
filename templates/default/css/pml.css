@@ -11097,7 +11097,28 @@ video {
 .video-overlay {
     position: relative;
 }
-.video-overlay:hover .vv-oo {
+.video-overlay:hover .vv-oo, .video-overlay .vv-oo.active {
     background-image: url("../image/play-icon-red.png");
     
+}
+.company-container {
+    position: relative;
+}
+.company-container .album .item {
+    width: 221px;
+    height: 290px;
+}
+.company-container .album .half {
+    height: 221px;
+    width: 221px;
+}
+.company-container .album .filterable-grid .pic img {
+    height: 211px;
+    width: 211px;
+}
+.company-container .album .filterable-grid .pic span img {
+    height: auto;
+    width: auto;
+    max-width: none;
+    max-height: none;
 }

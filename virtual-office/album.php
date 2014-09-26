@@ -36,6 +36,7 @@ if (isset($_POST['do'])) {
 		$ext = pathinfo($filename, PATHINFO_EXTENSION);
 		if(in_array($ext,$image_allowed)) {
 			$type = 'image';
+			$attachment_controller->if_product_square = true;
 		} elseif(in_array($ext,$video_allowed)) {
 			$type = 'video';
 			$attachment_controller->if_video_thumb = true;
@@ -62,7 +63,7 @@ if (isset($_POST['do'])) {
 		$att_id = $parts[3].".thumb";
 
 		
-		$attachment_controller2->if_thumb = false;
+		$attachment_controller2->if_product_square = true;
 		$attachment_controller2->upload_dir = $dirr;
 		$attachment_controller2->rename_file = $att_id;
 		$attachment_controller2->upload_process(1);

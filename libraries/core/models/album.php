@@ -13,7 +13,8 @@ class Albums extends PbModel {
 		$file = "..".DS.$file;
 		
 		
-		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");   
+		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");
+		//echo "ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//";
 		//var_dump($time);
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
@@ -28,6 +29,36 @@ class Albums extends PbModel {
 		exec("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
 		//var_dump("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png");
 		//var_dump($vars);
+	}
+	
+	function Search($type=null) {
+		$num_per_page = 35;
+		$offset = 0;
+		$conditions = array();
+		$joins = array();
+		
+		if($type) {
+			$conditions[] = "type='".$type."'";
+		}
+		
+		$joins[] = "LEFT JOIN {$this->table_prefix}attachments att ON att.id=Album.attachment_id";
+		
+		$list = $this->findAll("att.modified,att.title,att.modified,att.attachment,Album.*",$joins,$conditions,"att.modified DESC",$offset,$num_per_page);
+		foreach($list as $key => $item) {
+			$list[$key]['href'] = pb_get_attachmenturl($item['attachment'], '', "");
+			$list[$key]['image'] = pb_get_attachmenturl($item['attachment'], '', "small");
+			if($list[$key]['type']=='video') {
+				$list[$key]['image'] = URL."attachment/".$item['attachment'].".thumb.png?v=".$item['modified'];
+				$list[$key]['source'] = URL."attachment/".$item['attachment']."?v=".$item['modified'];
+				$list[$key]['href'] = $list[$key]['source'];
+			}
+			if($list[$key]['thumb_id']) {
+				$list[$key]['image'] = URL."attachment/".$item['attachment'].".thumb.jpg?v=".$item['modified'];
+			}
+			
+		}
+		
+		return $list;
 	}
 }
 ?>

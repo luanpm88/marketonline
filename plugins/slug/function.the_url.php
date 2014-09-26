@@ -553,7 +553,15 @@ function smarty_function_the_url($params){
 				}else{
 					$return = URL."index.php?do=company&action=rating&star=".$star."&space_name=".$space_name;					
 				}
-				break;				
+				break;
+			case "album":
+				if ($rewrite_able) {
+					$return = URL."index.php?do=album&type=image";
+				}else{
+					$return = URL."index.php?do=album&type=image";
+					//http://marketonline.vn/beta/index.php?do=product&level=1&industryid=1
+				}
+				break;
 			default:
 				if (!empty($id)) {
 					if ($rewrite_able) {

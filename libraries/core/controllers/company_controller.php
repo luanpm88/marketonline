@@ -164,7 +164,7 @@ class Company extends PbController {
 		$zones[] = $com_zone;
 		
 		
-		
+		setvar("PageTitle", "Thương hiệu - MarketOnline.vn");
 		setvar("list", $zones);
 		render("company/index", 1);
 	}

@@ -2407,4 +2407,10 @@
 		$('.shop_stars .detail_box span.detail_pointer').click(function(e){$('.shop_stars .detail_box .vote_details').toggle();e.stopPropagation();});
 		
 		$('.video-overlay').append('<span class="vv-oo"></span>');
+		$('.album_a_block').hover(function(){$(this).parent().find('.vv-oo').addClass('active')},function(){$(this).parent().find('.vv-oo').removeClass('active')});
+		$('.company-container .album .filterable-grid .pic img').resizecrop({
+			width:211,
+			height:211		   
+		});
+		$('.album_fancy').fancybox();
 	});
