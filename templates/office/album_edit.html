@@ -25,27 +25,27 @@ var can_also_enter = "{lang can_also_enter}";
 		var status = $('#status');
 	    
 		$('#upload_frm').ajaxForm({
-		    beforeSend: function() {
-			status.empty();
-			var percentVal = '0%';
-			bar.css("width",percentVal);
-			percent.html(percentVal);
-			
-			$('html,body').animate({
-				scrollTop: $("#image_box").offset().top},
-				'slow');
-			
-			$('#save').hide();
-		    },
-		    uploadProgress: function(event, position, total, percentComplete) {
-			var percentVal = percentComplete + '%';
-			bar.width(percentVal);
-			percent.html(percentVal);
-		    },
-		    complete: function(xhr) {
-			window.location = "album.php";
-			//alert("done");
-		    }
+			beforeSend: function() {
+				status.empty();
+				var percentVal = '0%';
+				bar.css("width",percentVal);
+				percent.html(percentVal);
+				
+				$('html,body').animate({
+					scrollTop: $("#image_box").offset().top},
+					'slow');
+				
+				$('#save').hide();
+			},
+			uploadProgress: function(event, position, total, percentComplete) {
+				var percentVal = percentComplete + '%';
+				bar.width(percentVal);
+				percent.html(percentVal);
+			},
+			complete: function(xhr) {
+				//window.location = "album.php";
+				//alert("done");
+			}
 		});
 		
 		

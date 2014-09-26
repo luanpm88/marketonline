@@ -13,9 +13,9 @@ class Albums extends PbModel {
 		$file = "..".DS.$file;
 		
 		
-		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");
-		//echo "ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//";
-		//var_dump($time);
+		$time =  exec('ffmpeg -i '.$file.' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//');
+		// echo 'ffmpeg -i '.$file.' 2>&1 | grep "Duration" | cut -d " " -f 4 | sed s/,//';
+		// var_dump($time);
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
 		
@@ -42,8 +42,10 @@ class Albums extends PbModel {
 		}
 		
 		$joins[] = "LEFT JOIN {$this->table_prefix}attachments att ON att.id=Album.attachment_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members m ON m.id=Album.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.member_id=Album.member_id";
 		
-		$list = $this->findAll("att.modified,att.title,att.modified,att.attachment,Album.*",$joins,$conditions,"att.modified DESC",$offset,$num_per_page);
+		$list = $this->findAll("c.shop_name,m.space_name,att.modified,att.title,att.modified,att.attachment,Album.*",$joins,$conditions,"att.modified DESC",$offset,$num_per_page);
 		foreach($list as $key => $item) {
 			$list[$key]['href'] = pb_get_attachmenturl($item['attachment'], '', "");
 			$list[$key]['image'] = pb_get_attachmenturl($item['attachment'], '', "small");
