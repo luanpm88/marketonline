@@ -8,12 +8,13 @@ class Albums extends PbModel {
  	}
 	
 	function screenshot($file) {
+		//echo getcwd();
 		//exec("ffmpeg -i album-757-118.mp4 -ss 00:00:5.435 -f image2 -vframes 1 album-757-118.mp4.thumb.png",$output,$vars);
-		$file = "/home/marketon/domains/marketonline.vn/public_html/".$file;
+		$file = "..".DS.$file;
 		
 		
 		$time =  exec("ffmpeg -i {$file} 2>&1 | grep 'Duration' | cut -d ' ' -f 4 | sed s/,//");   
-		//echo $time;
+		//var_dump($time);
 		// duration in seconds; half the duration = middle
 		$duration = explode(":",$time);
 		
@@ -25,7 +26,7 @@ class Albums extends PbModel {
 		$second = $middle%60;
 		
 		exec("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png",$output,$vars);
-		var_dump("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png");
+		//var_dump("ffmpeg -i {$file} -ss {$hour}:{$minute}:{$second} -f image2 -vframes 1 {$file}.thumb.png");
 		//var_dump($vars);
 	}
 }
