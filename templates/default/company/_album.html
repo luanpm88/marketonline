@@ -5,16 +5,13 @@
 
 		
 		
-            
-		<!--{if $videos}-->
-			<div class="works-list album">
-				<h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Videos</a></h3>
-				
-				
-				
-				<ul style="height: 230px;" class="filterable-grid">
-				      
-					<!--{loop $videos item level key}-->
+		<!--{loop $albumtypes type level key}-->
+			<!--{if $type.videos}-->
+				<div class="works-list album">
+					<h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">{$type.name}</a></h3>
+
+					<ul style="height: 230px;" class="filterable-grid">					      
+						<!--{loop $type.videos item level key}-->
 							<li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
 								<div class="half odd">
 									<div class="pic video-overlay"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.image}"></div>
@@ -33,11 +30,11 @@
 									</div>
 								</div>
 							</li>
-					<!--{/loop}-->
-					
-				</ul>
-			</div>
-		<!--{/if}-->
+						<!--{/loop}-->
+					</ul>
+				</div>
+			<!--{/if}-->
+		<!--{/loop}-->
 		
 		<!--{if $images}-->
 			<div class="works-list album">

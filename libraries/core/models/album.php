@@ -34,7 +34,7 @@ class Albums extends PbModel {
 		//var_dump($vars);
 	}
 	
-	function Search($type=null) {
+	function Search($type=null,$type_id=null) {
 		$num_per_page = 25;
 		$num_per_row = 5;
 		$offset = 0;
@@ -44,7 +44,9 @@ class Albums extends PbModel {
 		if($type) {
 			$conditions[] = "type='".$type."'";
 		}
-		
+		if($type_id) {
+			$conditions[] = "Album.type_id='".$type_id."'";
+		}
 		$joins[] = "LEFT JOIN {$this->table_prefix}attachments att ON att.id=Album.attachment_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members m ON m.id=Album.member_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.member_id=Album.member_id";
