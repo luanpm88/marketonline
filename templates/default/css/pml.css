@@ -11165,5 +11165,13 @@ video {
     padding-left: 200px;
 }
 .pin-video {
-    
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: right;
+    padding: 5px 10px;
+}
+.pin-video:hover {
+    opacity: 0.6;
 }
