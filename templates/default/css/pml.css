@@ -11151,3 +11151,9 @@ video {
 .album_detail_page .member-title {
     padding: 10px !important;
 }
+.album_detail_page .right-offerbox .member-title p {
+    font-size: 13px !important;
+}
+.album_detail_page .right-offerbox .member-title label {
+    font-size: 13px !important;
+}
