@@ -7,6 +7,7 @@ class Album extends PbController {
 		
 		$this->loadModel("company");
 		$this->loadModel("album");
+		$this->loadModel("albumtype");
 		$this->loadModel("attachmentcomment");
 		$this->loadModel("attachment");
 		
@@ -16,6 +17,8 @@ class Album extends PbController {
 	function index() {
 		$images = $this->album->Search('image');
 		$videos = $this->album->Search('video');
+		
+		$albumtypes = $this->albumtype->findAll("*");
 		
 		setvar("images",$images);
 		setvar("videos",$videos);
@@ -61,7 +64,7 @@ class Album extends PbController {
 			setvar("item",$item);
 			setvar("company",$company);
 			setvar('fb_image', $item['image']);
-			setvar('fb_description', $item['description']);
+			setvar('fb_description', strip_tags($item['description']));
 			setvar("PageTitle", $item["title"]." - MarketOnline.vn");
 			render("album/detail", 1);
 		}		
