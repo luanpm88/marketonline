@@ -42,7 +42,7 @@ class Album extends PbController {
 				flash("Hình ảnh/videos đã bị xóa", '', 0, '', '<a class="link_underline" href="'.$this->album->url(array("module"=>"album")).'">Mời Quý khách xem hình ảnh/videos khác tại đây</a>');
 			}
 			
-			$company = $this->company->getInfoByUserId($item["company_id"]);
+			$company = $this->company->getInfoByUserId($item["member_id"]);
 			
 			$images = $this->album->Search('image');
 			$videos = $this->album->Search('video');
