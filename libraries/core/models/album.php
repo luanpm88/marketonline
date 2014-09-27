@@ -56,6 +56,7 @@ class Albums extends PbModel {
 		}
 		
 		$list = $this->findAll($this->fields,$joins,$conditions,"att.clicked DESC,att.modified DESC",$offset,$num_per_page);
+		var_dump($list);
 		foreach($list as $key => $item) {
 			$list[$key] = $this->formatItem($item);
 		}
