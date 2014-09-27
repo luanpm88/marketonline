@@ -11175,3 +11175,7 @@ video {
 .pin-video:hover {
     opacity: 0.6;
 }
+.album_detail_wrapper #top-social {
+    margin-bottom: -47px;
+    padding-top: 19px;
+}
