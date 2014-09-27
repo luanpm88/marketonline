@@ -22,7 +22,6 @@
 				<ul style="height: 230px;" class="filterable-grid">
 				      
 					<!--{loop $videos item level key}-->
-						{if $item.id!='h'}
 							<li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
 								<div class="half odd">
 									<div class="pic video-overlay"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.image}"></div>
@@ -41,7 +40,6 @@
 									</div>
 								</div>
 							</li>
-						{/if}
 					<!--{/loop}-->
 					
 				</ul>
