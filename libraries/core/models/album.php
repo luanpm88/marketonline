@@ -1,7 +1,7 @@
 <?php
 class Albums extends PbModel {
  	var $name = "Album";
-	var $fields = "c.id as company_id,c.shop_name,m.space_name,att.modified,att.title,att.modified,att.attachment,Album.*";
+	var $fields = "c.id as company_id,c.shop_name,m.space_name,att.modified,att.title,att.modified,att.description,att.attachment,Album.*";
 
  	function Albums()
  	{
