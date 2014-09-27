@@ -53,7 +53,7 @@ class Albums extends PbModel {
 		
 		$count = $this->findCount($joins,$conditions,"Album.id");
 		if(($count-$offset) < $num_per_page) {
-			$num_per_page = intval($count/$num_per_row)*$num_per_row;
+			//$num_per_page = intval($count/$num_per_row)*$num_per_row;
 			//echo $num_per_page;
 		}
 		
