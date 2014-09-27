@@ -126,7 +126,7 @@
 					    <img title="{$item.title}" src="{$item.source}" />
 					</a>
 				    {else}
-					<video controls width="778" height="544">
+					<video poster="{$item.image}" controls width="778" height="544">
                                             <source src="{$item.source}" type="video/mp4" />
 					    Your browser does not support the video tag.
                                         </video>
@@ -208,7 +208,7 @@
 				<br style="clear: both" />
 				<br />
 				
-				<div class="pin-video" onclick="$(document).scrollTop( 145 );">Định vị video</div>
+				<div class="pin-video" onclick="$(document).scrollTop( 187 );">Định vị video</div>
 				
 				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcome15'){else}goclicky_custom(this, '{$F_URL}#welcome15', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
 					<span class="at15t_facebookz">
