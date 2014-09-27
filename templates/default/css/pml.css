@@ -11157,3 +11157,10 @@ video {
 .album_detail_page .right-offerbox .member-title label {
     font-size: 13px !important;
 }
+.album_detail_page .right-offerbox .member-title p label {
+    margin-left: -58px;
+    width: 49px;
+}
+.album_detail_page .right-offerbox .member-title p {
+    padding-left: 200px;
+}
