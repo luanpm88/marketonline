@@ -31,34 +31,28 @@
 			<div class="main-cat-content"></div>
 		</div>
 	</div>
-    
-    
-
+	
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=offer_main}">Thương hiệu</a></div>
-
-    <h1 class="page-title">Thương hiệu {if $industry}- {$industry.name}{/if}</h1>
     
-  </div>
+	<h1 class="page-title">Thương hiệu {if $industry}- {$industry.name}{/if}</h1>
+    
+    </div>
 
   </div>
 </div>
 
 
-
 <div class="row company-container">
 		
-	
-	
       <div class="row" style="margin: 0">
 	<div style="margin-top: 0px;padding-left: 4px;position: relative" class="fifteen columns">
       
-	  
 	      <h2 class="block-title company_listing_h2">
 		  <span>
-		      <a class="{if $smarty.get.membergroup_id==3}active{/if}" href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>&nbsp;&nbsp;&nbsp;
-		      <a class="{if $smarty.get.membergroup_id==1}active{/if}" href="{the_url module='companies' membergroup_id='1' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cửa hàng</a>&nbsp;&nbsp;&nbsp;
-		      <a class="{if $smarty.get.membergroup_id==2}active{/if}" href="{the_url module='companies' membergroup_id='2' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cá nhân</a>&nbsp;&nbsp;&nbsp;
-		      <a class="{if $smarty.get.do==album}active{/if}" href="{the_url module='album' type='image'}">Hình ảnh/Videos</a>
+			<a class="{if $smarty.get.membergroup_id==3}active{/if}" href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>&nbsp;&nbsp;&nbsp;
+			<a class="{if $smarty.get.membergroup_id==1}active{/if}" href="{the_url module='companies' membergroup_id='1' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cửa hàng</a>&nbsp;&nbsp;&nbsp;
+			<a class="{if $smarty.get.membergroup_id==2}active{/if}" href="{the_url module='companies' membergroup_id='2' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cá nhân</a>&nbsp;&nbsp;&nbsp;
+			<a class="{if $smarty.get.do==album}active{/if}" href="{the_url module='album' type='image'}">Hình ảnh/Videos</a>
 		  </span>
 	      </h2>
 	      

@@ -9,13 +9,14 @@ require("../libraries/common.inc.php");
 require("room.share.php");
 require(LIB_PATH. 'page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
-uses("attachment", "album");
+uses("attachment", "album", "albumtype");
 check_permission("album");
 
 $attachment_controller = new Attachment('pic');
 $attachment_controller2 = new Attachment('video_thumb');
 $attachment = new Attachments();
 $album = new Albums();
+$albumtype = new Albumtypes();
 $tpl_file = "album";
 $page = new Pages();
 if (!$company->Validate($companyinfo)) {
@@ -37,7 +38,7 @@ if (isset($_POST['do'])) {
 		if(in_array($ext,$image_allowed)) {
 			$type = 'image';
 			$attachment_controller->if_product_square = true;
-		} elseif(in_array($ext,$video_allowed)) {
+		} elseif (in_array($ext,$video_allowed)) {
 			$type = 'video';
 			$attachment_controller->if_video_thumb = true;
 		} else {
@@ -124,6 +125,7 @@ if (isset($_GET['do'])) {
 				}
 			}
 			setvar("item", $album_info);
+			setvar("albumtypes", $albumtype->findAll("*"));
 		}
 		$tpl_file = "album_edit";
 		template($tpl_file);
