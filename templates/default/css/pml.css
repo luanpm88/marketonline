@@ -5747,7 +5747,7 @@ body {
 }
 .tiled-menu li ul
 {
-    margin-top: 0;
+    margin-top: -6px;
 }
 .register_right {
     width: 62% !important;
@@ -11121,4 +11121,34 @@ video {
     width: auto;
     max-width: none;
     max-height: none;
+}
+.album_detail_page .right-offerbox {
+    width: 400px;
+    height: 550px;
+}
+.album_detail_page #searchleft_innerbox {
+    margin-top: 0 !important;
+    margin-right: 10px;
+}
+.album_detail_page .list_nottt {
+    right: 23px;
+    top: 44px;
+}
+.album_detail_page .offer_content_inner .left-offerbox {
+    width: 780px;
+    height: 550px;
+    background: #333;
+}
+.album_detail_page .detail-comments form textarea {
+    width: 320px;
+}
+.album_detail_page .offer_content_inner .left-offerbox a img {
+    max-height: 548px;
+    max-width: 778px;
+}
+.album_detail_page .detail-comments .comments_list {
+    max-height: 160px;
+}
+.album_detail_page .member-title {
+    padding: 10px !important;
 }

@@ -631,7 +631,7 @@ class PbModel extends Overloadable
 
 		if(!$trade["clicked_logs"])
 		{			
-			$logs[] = array($code => $time_stamp);
+			$logs[] = array($code => $time_stamp,"ip"=>$_SERVER['REMOTE_ADDR']);
 			$this->saveField("clicked", $trade["clicked"]+1,intval($trade["id"]));
 			$added = true;
 			

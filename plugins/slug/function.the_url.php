@@ -557,9 +557,14 @@ function smarty_function_the_url($params){
 			case "album":
 				if ($rewrite_able) {
 					$return = URL."thuong-hieu/hinh-anh-video";
+					if($id) {
+						$return = URL."thuong-hieu/hinh-anh-video/".$id."/".stringToURI($title);
+					}
 				}else{
 					$return = URL."index.php?do=album";
-					//http://marketonline.vn/beta/index.php?do=product&level=1&industryid=1
+					if($id) {
+						$return = URL."index.php?do=album&action=detail&id=".$id;
+					}
 				}
 				break;
 			default:

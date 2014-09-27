@@ -654,8 +654,6 @@
 				    //$('.offer_content_inner .left-offerbox span.next').trigger("click");
 				  });
 				  
-				  
-				  
 				  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
                                   
                                   if ($('.left-offerbox img').length < 2) {
@@ -665,8 +663,8 @@
 				$('.pic_description_item').each(function() {
 				    loadSchoolpicComment($(this).find('.detail-comments'));
 				});
-//				  
-//				  $('#comment').val($.cookie("comment_tpm"));
+				  
+				  $('#comment').val($.cookie("comment_tpm"));
 			}
 		});
 	}
@@ -1641,8 +1639,6 @@
 				if( console && console.log ) {
 					//alert(data);
 					$('.detail-comments .comments_list').html(data);
-					//
-					
 					
 					$(".detail-comments .comments_list").mCustomScrollbar({
 						autoHideScrollbar:true,
@@ -2413,4 +2409,5 @@
 			height:211		   
 		});
 		$('.album_fancy').fancybox();
+		$('.album_detail_a_image').fancybox();
 	});

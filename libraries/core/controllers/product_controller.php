@@ -26,6 +26,8 @@ class Product extends PbController {
 		$this->loadModel("announcement");
 		$this->loadModel("adzone");
 		$this->loadModel("modlog");
+		$this->loadModel("attachment");
+		$this->loadModel("album");
 	}
 	
 	function index()
@@ -3412,7 +3414,7 @@ class Product extends PbController {
 				
 				//send message to owner
 				$sms['content'] = mysql_real_escape_string("<strong>".$val["guest_name"]." (".$val["guest_email"].")</strong> đã bình luận cho rao vặt <a onclick='getOfferDetail(".$p["id"].", 1)' href='javascript:void(0)'>".$p["name"]."</a> của bạn:<br />'".$_POST["data"]["content"]."'");
-				$sms['title'] = mysql_real_escape_string($val["guest_name"]. " đã bình luận cho sản phẩm ".$p["name"]." của bạn");
+				$sms['title'] = mysql_real_escape_string($val["guest_name"]. " đã bình luận cho rao vặt ".$p["name"]." của bạn");
 				$sms['membertype_ids'] = '[1][2][3]';
 				$result = $this->message->SendToUser(0, $p["member_id"], $sms);
 			}
@@ -3459,6 +3461,97 @@ class Product extends PbController {
 		
 		setvar("comments", $comments);
 		$this->render("product/offercomments");
+	}
+	
+	function postattachmentcomment()
+	{		
+		$pb_userinfo = pb_get_member_info();
+		uses('attachmentcomment','company','space');
+		$attachmentcomment = new Attachmentcomments();
+		$space_controller = new Space();
+		$company = new Companies();
+		
+		$memberfield = $this->memberfield->fields("*", array("member_id=".$pb_userinfo['pb_userid']));
+		
+		if(isset($_POST["data"]))
+		{
+			pb_submit_check('data');
+			if($pb_userinfo){
+				$val["member_id"] = $pb_userinfo['pb_userid'];
+				$com = $company->getInfoByUserId($val["member_id"]);
+				//$com_from = $company->getInfoByUserId($val["member_id"]);
+				$val["company_id"] = $com["id"];
+				
+				$p = $this->album->getInfoById(intval($_POST["data"]["id"]));
+				
+				$space_controller->setBaseUrlByUserId($p["member_id"], "offer");
+				$url = $space_controller->rewriteDetail("offer", $p['id']);		
+				
+				if($pb_userinfo['pb_userid'] != $p["member_id"]) {
+					//send message to owner
+					$sms['content'] = mysql_real_escape_string("<a href='".$space_controller->rewrite($com['cache_spacename'])."'>".$memberfield["first_name"]." ".$memberfield["last_name"]."</a> đã bình luận cho hình ảnh/videos <a href='".$p["href"]."'>".pb_lang_split($p["title"])."</a> của bạn:<br />".$_POST["data"]["content"]."'");
+					$sms['title'] = mysql_real_escape_string($pb_userinfo['pb_username']. " đã bình luận cho hình ảnh/video ".$p["title"]." của bạn");
+					$sms['membertype_ids'] = '[1][2][3]';
+					$result = $this->message->SendToUser($pb_userinfo['pb_userid'], $p["member_id"], $sms);
+					//var_dump($pb_userinfo['pb_userid']);
+				}
+			}
+			else
+			{
+				$val["guest_name"] = $_POST["data"]["guest_name"];
+				$val["guest_email"] = $_POST["data"]["guest_email"];
+				
+				$p = $this->album->read("*", intval($_POST["data"]["id"]));				
+				
+				//send message to owner
+				$sms['content'] = mysql_real_escape_string("<strong>".$val["guest_name"]." (".$val["guest_email"].")</strong> đã bình luận cho hình ảnh/videos <a href='".$p["href"]."'>".$p["title"]."</a> của bạn:<br />'".$_POST["data"]["content"]."'");
+				$sms['title'] = mysql_real_escape_string($val["guest_name"]. " đã bình luận cho hình ảnh/video ".$p["title"]." của bạn");
+				$sms['membertype_ids'] = '[1][2][3]';
+				$result = $this->message->SendToUser(0, $p["member_id"], $sms);
+			}
+			
+			$val["attachment_id"] = $_POST["data"]["id"];
+			$val["content"] = $_POST["data"]["content"];
+			$val["created"] = date('Y-m-d H:i:s');
+			$attachmentcomment->save($val);
+			
+			
+		}
+		
+		if(isset($_POST["id"]))
+		{
+			$val["attachment_id"] = intval($_POST["id"]);
+		}
+		
+		$comments = $attachmentcomment->findAll("Attachmentcomment.*,m.username,m.space_name,mf.first_name,mf.last_name, c.picture as company_logo", array("LEFT JOIN {$attachmentcomment->table_prefix}members m ON Attachmentcomment.member_id=m.id", "LEFT JOIN {$attachmentcomment->table_prefix}memberfields mf ON Attachmentcomment.member_id=mf.member_id", "LEFT JOIN {$attachmentcomment->table_prefix}companies c ON Attachmentcomment.company_id=c.id"), array("attachment_id=".$val["attachment_id"]), "Attachmentcomment.created DESC");
+		//var_dump($comments);
+		foreach($comments as $key => $item)
+		{
+			if($item["company_logo"])
+			{
+				$comments[$key]["company_logo"] = pb_get_attachmenturl($item["company_logo"], '', 'smaller');
+			}
+			else
+			{
+				$member = $this->member->read("photo", $item["member_id"]);
+				if($member["photo"])
+				{
+					$comments[$key]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
+				}
+				else
+				{
+					$comments[$key]["company_logo"] = URL."templates/default/image/usericon_big.png";
+				}
+			}
+			
+			$comments[$key]["created"] = df(strtotime($comments[$key]["created"]), 'd-m-Y H:i');
+		}
+		
+		
+		
+		
+		setvar("comments", $comments);
+		$this->render("product/attachmentcomments");
 	}
 	
 	function getAnnounce()
@@ -5701,6 +5794,10 @@ class Product extends PbController {
 		}
 		
 		if(isset($_GET["service"]) && $_GET["service"] == "company") {
+			$module = "companies";
+		}
+		
+		if(isset($_GET["service"]) && $_GET["service"] == "detail") {
 			$module = "companies";
 		}
 		
