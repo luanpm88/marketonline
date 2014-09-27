@@ -11179,3 +11179,6 @@ video {
     margin-bottom: -47px;
     padding-top: 19px;
 }
+.album_detail_wrapper .offer_detail_page {
+    padding-top: 0;
+}
