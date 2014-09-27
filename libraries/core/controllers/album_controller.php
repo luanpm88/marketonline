@@ -60,7 +60,7 @@ class Album extends PbController {
 			
 			setvar("item",$item);
 			setvar("company",$company);
-			setvar('fb_image', $item['href']);
+			setvar('fb_image', $item['image']);
 			setvar("PageTitle", $item["title"]." - MarketOnline.vn");
 			render("album/detail", 1);
 		}		
