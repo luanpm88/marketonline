@@ -208,7 +208,9 @@
 				<br style="clear: both" />
 				<br />
 				
-				<div class="pin-video" onclick="$(document).scrollTop( 187 );">Định vị video</div>
+				{if $item.type=='video'}
+				    <div class="pin-video" onclick="$(document).scrollTop( 187 );">Định vị video</div>
+				{/if}
 				
 				<a class="" title="" onclick="{if !$FACE}goclicky(this, '{$F_URL}#welcome15'){else}goclicky_custom(this, '{$F_URL}#welcome15', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">
 					<span class="at15t_facebookz">
