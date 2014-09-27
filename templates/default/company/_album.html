@@ -11,31 +11,7 @@
 	    </form>
 	</div>
 		
-		<!--{if $images}-->
-			<div class="works-list album">
-			    <h3 style="margin-bottom: 20px;"><a href="#">Hình ảnh</a></h3>
-			    
-			    
-			    
-			      <ul style="height: 230px;" class="filterable-grid">
-				  
-				  <!--{loop $images item level key}-->
-				      <li data-type="dentity motion sites web-design " data-id="id-1" class="item">
-					  <div class="half odd">
-						    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.image}"></div>
-						    <a rel="image_group" class="album_fancy" title="{$item.title}" href="{$item.href}"></a>
-					  </div>
-					    <div class="description-bottom">
-						    <div class="title">				      
-							    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
-						    </div>
-					    </div>
-				      </li>
-				  <!--{/loop}-->
-				    
-			      </ul>
-			</div>
-		<!--{/if}-->
+		
             
 		<!--{if $videos}-->
 			<div class="works-list album">
@@ -67,5 +43,31 @@
 					<!--{/loop}-->
 					
 				</ul>
+			</div>
+		<!--{/if}-->
+		
+		<!--{if $images}-->
+			<div class="works-list album">
+			    <h3 style="margin-bottom: 20px;"><a href="#">Hình ảnh</a></h3>
+			    
+			    
+			    
+			      <ul style="height: 230px;" class="filterable-grid">
+				  
+				  <!--{loop $images item level key}-->
+				      <li data-type="dentity motion sites web-design " data-id="id-1" class="item">
+					  <div class="half odd">
+						    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.image}"></div>
+						    <a rel="image_group" class="album_fancy" title="{$item.title}" href="{$item.href}"></a>
+					  </div>
+					    <div class="description-bottom">
+						    <div class="title">				      
+							    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+						    </div>
+					    </div>
+				      </li>
+				  <!--{/loop}-->
+				    
+			      </ul>
 			</div>
 		<!--{/if}-->
