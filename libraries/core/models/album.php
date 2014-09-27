@@ -60,6 +60,7 @@ class Albums extends PbModel {
 		foreach($list as $key => $item) {
 			$list[$key] = $this->formatItem($item);
 		}
+		var_dump($list);
 		
 		return $list;
 	}
