@@ -38,7 +38,7 @@ class Albums extends PbModel {
 		$num_per_page = 25;
 		$num_per_row = 5;
 		$offset = 0;
-		$conditions = array();
+		$conditions = array("Album.state=1");
 		$joins = array();
 		
 		if($type) {

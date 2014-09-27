@@ -62,6 +62,7 @@ jQuery(document).ready(function($) {
 		<tr>
 			<td width="10%">{lang picture}</td>
 			<td>{lang details}</td>
+			<td width="8%">{lang published}</td>
 			<td width="11%">{lang operation}</td>
 		</tr>
 		</thead>
@@ -73,6 +74,17 @@ jQuery(document).ready(function($) {
 		    <td valign="top">
 			    <p><strong>{$item.title}</strong></p>
 		      <p>{$item.description|strip_tags|truncate:310}</p>
+		    </td>
+		    <td style="text-align: center">
+			<!--{if $item.state eq 1}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
+			    <img src="{$office_theme_path}images/published.png">
+			</a>
+		    <!--{else}-->
+			<a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}" title="{lang goods_on_shelves}">
+			    <img src="{$office_theme_path}images/unpublished.png">
+			</a>
+		    <!--{/if}-->
 		    </td>
 				  <td><a href="album.php?do=edit&id={$item.attachment_id}">{lang modify}</a><br /><a onClick="return window.confirm('{lang ok_image_delete}')" href="album.php?do=del&id={$item.id}">{lang delete}</a></td>
 		    </tr>
