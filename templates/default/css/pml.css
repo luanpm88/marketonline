@@ -11183,3 +11183,6 @@ video {
 .album_detail_wrapper .offer_detail_page {
     padding-top: 0;
 }
+.album_detail_page .offer_content_inner {
+    margin-bottom: 20px;
+}
