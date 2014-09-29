@@ -10,7 +10,6 @@ class Products extends PbModel {
  	
  	function initSearch()
  	{
-		//var_dump($area_a);
  		$this->condition[] = "Product.status=1 ";
 		$this->condition[] = "Product.valid_status=1 ";
  		if (isset($_GET['industryid']) && $area_a == null) {
@@ -123,7 +122,23 @@ class Products extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Product.brand_id";
 		
  		$result = $this->findAll($fields."m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, null, $this->orderby, $firstcount, $displaypg);
- 		while(list($keys,$values) = each($result)){
+ 		$result = $this->formatItems($result);
+ 		return $result;
+ 	}
+	
+	function formatItems($result) {
+		global $cache_types;
+ 		uses("space","industry","area","productcomment");
+ 		$space = new Space();
+ 		$area = new Areas();
+ 		$industry = new Industries();
+		$productcomment = new Productcomments();
+ 		$cache_options = cache_read('typeoption');
+ 		$area_s = $space->array_multi2single($area->getCacheArea());
+ 		$industry_s = $space->array_multi2single($area->getCacheArea());
+		
+		while(list($keys,$values) = each($result)){
+			
  			$result[$keys]['typename'] = $cache_types['productsort'][$values['sort_id']];
 			//get default picture
 			if($values['default_pic'])
@@ -154,10 +169,13 @@ class Products extends PbModel {
 			$result[$keys]["shop_url"] = $space->setBaseUrlByUserId($result[$keys]['cache_spacename'], 'index');
 			$result[$keys]["comments_count"] = $productcomment->findCount(null, array("product_id=".$result[$keys]["id"]));
 			$result[$keys]["name"] = fix_text_error($result[$keys]["name"]);
-		
+			
+			//{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}
+			$result[$keys]["href"] = $this->url(array("module"=>"product","product_name"=>$values['name'],"id"=>$values['id'],"service"=>$values['service']));
  		}
- 		return $result;
- 	}
+		
+		return $result;
+	}
 	
 	function getTopProducts()
 	{
@@ -628,8 +646,6 @@ class Products extends PbModel {
 					$industry_id = $industry["parent_id"];
 				}
 				
-				//var_dump($industry_id);
-				//var_dump($industries);
 				if(in_array($industry_id,$industries)) {
 					foreach($permissions as $key => $per) {
 						if(in_array($key,$rights)) {
@@ -657,9 +673,32 @@ class Products extends PbModel {
 		if($member_info["role"] == 'admin' && (in_array($product["valid_status"],array(1,3)))) {
 			$permissions["unvalid"] = true;
 		}
-		
-		//var_dump($permissions);
+
 		return $permissions;
+	}
+	
+	function getByArea($params=array(), $offset=0, $count=15) {
+		if($params["area_id"]) {
+			//echo $params["area_id"];
+			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
+		}
+		if($params["areatype_id"]) {
+			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
+		}
+		if($params["service"]) {
+			$conditions[] = "Product.service=1";
+		}
+		$joins = array();
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Product.company_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Product.brand_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id";
+		
+		$result = $this->findAll("a.name,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC", $offset, $count);
+		$result = $this->formatItems($result);
+		
+		return $result;
 	}
 }
 ?>

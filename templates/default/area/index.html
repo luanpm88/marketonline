@@ -1,0 +1,160 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$PageTitle`" nav_id="`$nav_id`"}-->
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+<div class="row">
+  <div class="fifteen columns" style="padding-left: 0">
+
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
+
+    <div class="super-main-category mainproductpage area">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{the_url module='areas'}" class="show-but current-but market">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content"></div>
+		</div>
+	</div>
+	
+    <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=areas}">Thị trường</a></div>
+    
+	<h1 class="page-title">Thị trường {if $industry}- {$industry.name}{/if}</h1>
+    
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row company-container areas-container">
+    <ul class="areas_tree">	
+	<!--{loop $areatypes type level key}-->
+	    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}"><a class="level1" href="{the_url module=areas areatype_id=`$type.id`}">{$type.name}</a>
+		<!--{if $type.areas}-->
+		    <ul>					      
+			<!--{loop $type.areas item level key}-->
+			    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name`}">{$item.name}</a></li>
+			<!--{/loop}-->
+		    </ul>
+		<!--{/if}-->
+	    </li>
+	<!--{/loop}-->
+    </ul>
+    
+    <!--{if $products}-->
+	<div class="works-list album">
+	    <h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Sản phẩm</a></h3>
+	    <ul class="filterable-grid">					      
+		<!--{loop $products item level key}-->
+		    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+			<div class="half odd">
+			    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+			    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+			</div>
+			<div class="description-bottom">
+			    <div class="title">				      
+				    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+			    </div>
+			</div>
+		    </li>
+		<!--{/loop}-->
+	    </ul>
+	</div>
+    <!--{/if}-->
+    
+    <!--{if $services}-->
+	<div class="works-list album">
+	    <h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Dịch vụ</a></h3>
+	    <ul class="filterable-grid">					      
+		<!--{loop $services item level key}-->
+		    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+			<div class="half odd">
+			    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+			    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+			</div>
+			<div class="description-bottom">
+			    <div class="title">				      
+				    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+			    </div>
+			</div>
+		    </li>
+		<!--{/loop}-->
+	    </ul>
+	</div>
+    <!--{/if}-->
+    
+    <!--{if $trades}-->
+	<div class="works-list album">
+	    <h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Thương mại</a></h3>
+	    <ul class="filterable-grid">					      
+		<!--{loop $trades item level key}-->
+		    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+			<div class="half odd">
+			    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+			    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+			</div>
+			<div class="description-bottom">
+			    <div class="title">				      
+				    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+			    </div>
+			</div>
+		    </li>
+		<!--{/loop}-->
+	    </ul>
+	</div>
+    <!--{/if}-->
+    
+    <!--{if $companies}-->
+	<div class="works-list album">
+	    <h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Thương hiệu</a></h3>
+	    <ul class="filterable-grid">					      
+		<!--{loop $companies item level key}-->
+		    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+			<div class="half odd">
+			    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+			    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+			</div>
+			<div class="description-bottom">
+			    <div class="title">				      
+				    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+			    </div>
+			</div>
+		    </li>
+		<!--{/loop}-->
+	    </ul>
+	</div>
+    <!--{/if}-->
+    
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+  </div>
+
+
+
+<!--{include file="`$theme_name`/footer.html"}-->
+
+
+

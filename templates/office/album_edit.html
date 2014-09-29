@@ -19,13 +19,13 @@ var can_also_enter = "{lang can_also_enter}";
 	jQuery(document).ready(function($) {
 		$('.MenuItem12').addClass('mActive');
 		
-		
 		var bar = $('.bar');
 		var percent = $('.percent');
 		var status = $('#status');
 	    
 		$('#upload_frm').ajaxForm({
 			beforeSend: function() {
+				$('.upload-status').show();
 				status.empty();
 				var percentVal = '0%';
 				bar.css("width",percentVal);
@@ -47,9 +47,6 @@ var can_also_enter = "{lang can_also_enter}";
 				//alert("done");
 			}
 		});
-		
-		
-		
 		
 		
 	});
@@ -115,55 +112,56 @@ jQuery(document).ready(function($) {
     float: left;
     text-align: right;
     padding: 5px;
-    width: 80px;">{lang title}:</span><!--<font class="red">*</font>--> <input style="padding: 4px;margin-bottom: 10px;" type="text" id="albumTitle" name="album[title]" value="{$item.title}" /></div>
+    width: 100px;">{lang title}:</span><!--<font class="red">*</font>--> <input style="padding: 4px;margin-bottom: 10px;" type="text" id="albumTitle" name="album[title]" value="{$item.title}" /></div>
        
 	<span style="display: block;
     float: left;
     text-align: right;
     padding: 5px;
-    width: 80px;">{lang categories}: </span>
+    width: 100px;">{lang categories}: </span>
         <select name="album[type_id]">
 		{html_options options=$AlbumTypes selected=$item.type_id}
         </select>
        
-       <!--{if $item.image}-->
-			<a href="{$item.image}" id="uploadpic_hover" rel="lightbox"><img id="uploadpic" src="{$item.image}" alt="{$item.title}" width="300" height="300" border="0" /></a>
+	<!--{if $item.image}-->
+		<div style="margin-top: 20px;padding-left: 110px;">
+			
+				 <a style="float: left" href="{$item.image}" id="uploadpic_hover" rel="lightbox"><img id="uploadpic" src="{$item.image}" alt="{$item.title}" width="300" height="300" border="0" /></a>
+			
+				 
+			 {if $item.type == 'video'}
+				 <div class="video_thumb" style="float:left;margin-top: 273px">
+					 
+					 <input onclick="$('#video_thumb').trigger('click')" type="button" value="Thay hình đại diện cho video" /> <span class="thumb_file_name"></span>
+					  <input onchange="$('.thumb_file_name').html($(this).val())" style="position: absolute;top: -9000px" name="video_thumb" type="file" id="video_thumb" style="width: 240px;" />
+				 </div>
+			 {/if}
+		</div>
 	<!--{/if}-->
 		
-	{if $item.type == 'video'}
-		<div class="video_thumb">
-			<h2>
-				Hình đại diện cho video:
-			</h2>
-			 <input name="video_thumb" type="file" id="video_thumb" style="width: 240px;" />
-		</div>
-	{/if}
+       <div id="image_box">		
 		
 		
-       <div id="image_box">
 		
-		
-		{if $item.id}<h2>
-			Thay hình ảnh/videos khác:
-		</h2>{/if}
-		
-		<span class="gray" style="padding-bottom: 5px;display: block">
-                  {lang image_size_format_provision}</span>
-		
-		<input name="pic" type="file" id="uploadfile" style="width: 240px;" onchange="preview()" />
+		<span style="display: block;
+    float: left;
+    text-align: right;
+    padding: 5px;
+    width: 100px;">Hình ảnh/Video:</span>
+			<input onclick="$('#custom_uploadfile').trigger('click')" type="button" value="{if $item.id}Thay hình ảnh/videos khác{else}Tải Hình ảnh/Video{/if}" /> <span class="file_name"></span>
+			<input onchange="$('.file_name').html($(this).val())" style="position: absolute;top: -9000px" name="pic" value="" type="file" id="custom_uploadfile" style="width: 240px;" />
                 
-		<div class="progress">
-				<div class="bar-box"><div class="bar"></div ></div >
-				<div class="percent">0%</div >
+			<div class="upload-status" style="display: none">
+				<div class="progress">
+					<div class="bar-box"><div class="bar"></div ></div >
+					<div class="percent">0%</div >
+				</div>
+				<div id="status"></div>
 			</div>
-			<div id="status"></div>
 	
        </div>
 	
 	
-       
-       
-       
        
        <table class="offer_info_content album_edit_box" style="display: none">
           <!--<tr>
@@ -206,24 +204,23 @@ jQuery(document).ready(function($) {
        
 	
 	  
-	  <br style="clear: both" />
-       <input style="margin-top: 20px;margin-right: -12px" name="save" type="submit" id="save" value=" {lang confirm_submit} ">
+	<br style="clear: both" />
+	<input style="margin-top: 20px;margin-right: -12px" name="save" type="submit" id="save" value=" {lang confirm_submit} ">
 	 </form>
 	  
-	  <div id="uploadImageVideo" style="margin-top: -390px;">
+	  <!--<div id="uploadImageVideo" style="margin-top: -390px;">
 		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
 		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
 			<input type="hidden" name="do" value="product" />
 			<input type="hidden" name="action" value="uploadEditorFile" />
 			
-			
 			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
-       onclick ="javascript:document.getElementById('imagefile').click();">
+				onclick="javascript:document.getElementById('imagefile').click();">
       
 			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
 			
 		</form>
-	</div>
+	</div>-->
 	  
      </div>
 	  

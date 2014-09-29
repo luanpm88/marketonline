@@ -93,6 +93,13 @@ class Trades extends PbModel {
 		}
 		
  		$result = $this->findAll($fields."Trade.*,content AS digest", null, null, $this->orderby, $firstcount, $displaypg);
+ 		$result = $this->formatItems($result);
+		
+ 		return $result;
+ 	}
+	
+	function formatItems($result) {
+		global $viewhelper, $cache_types;
  		while(list($keys,$values) = each($result)){
  			$result[$keys]['pubdate'] = df($values['submit_time']);
  			$result[$keys]['title'] = pb_lang_split($values['title']);
@@ -112,9 +119,12 @@ class Trades extends PbModel {
 			
  			$result[$keys]['thumb'] = pb_get_attachmenturl($values[$pic_col], '', 'small', '150_120');
  			$result[$keys]['url'] = $this->url(array("module"=>"offer", "id"=>$values['id']));
+			
+			$result[$keys]["href"] = $this->url(array("module"=>"offers","title"=>$values['title'],"action"=>"detail","id"=>$values['id']));
  		}
- 		return $result;
- 	}
+		return $result;
+	}
+	
 	function SearchCount()
  	{
  		$result = $this->findCount();
@@ -560,6 +570,26 @@ class Trades extends PbModel {
 		}
 		
 		return $permissions;
+	}
+	
+	function getByArea($params=array(), $offset=0, $count=15) {
+		if($params["area_id"]) {
+			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
+		}
+		if($params["areatype_id"]) {
+			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
+		}
+		$joins = array();
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Trade.company_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Trade.brand_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Trade.member_id";
+		
+		$result = $this->findAll("Trade.*,content AS digest", $joins, $conditions, "Trade.created DESC", $offset, $count);
+		$result = $this->formatItems($result);
+		
+		return $result;
 	}
 	
 }

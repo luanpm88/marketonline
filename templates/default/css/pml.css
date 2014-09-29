@@ -11186,3 +11186,77 @@ video {
 .album_detail_page .offer_content_inner {
     margin-bottom: 20px;
 }
+.super-main-category.area .show-but.current-but {
+    background: url("../image/TT_bg.png") repeat scroll -7px -10px / 54px auto #6cbe42;
+}
+.areas_tree {
+    width: 100px;
+    position: relative;
+    float: left;
+    margin-bottom: 40px;
+}
+.areas_tree li.level1 {
+    display: block;
+    float: left;
+    
+}
+.areas_tree li a.level1 {
+    background: none repeat scroll 0 0 #aaa;
+    color: #fff;
+    float: left;
+    font-size: 16px;
+    padding: 5px 10px;
+    text-align: center;
+    width: 120px;
+    border: 1px solid #aaa;
+}
+.areas_tree ul {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #aaa;
+    display: none;
+    left: 100px;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    width: 1060px;
+}
+.areas_tree ul li.level2 {
+    display: block;
+    float: left;
+    width: 20%;
+}
+.areas_tree ul li a.level2 {
+    float: left;
+    font-size: 14px;
+    padding: 5px 10px;
+    width: 100%;
+}
+.areas_tree ul li.level2.active a.level2 {
+    background: #aaa;
+    color: #fff;
+}
+.areas_tree ul li a.level2:hover {
+    color: #fff;
+    background: #aaa;
+}
+.areas-container {
+    padding: 10px;
+}
+.areas_tree li.level1:hover a.level1, .areas_tree li.level1.active a.level1 {
+    background: #fff;
+    border: solid 1px #aaa;
+    border-right: none;
+    color: #333;
+}
+.areas_tree li.level1:hover ul {
+    display: block;
+    z-index: 5;
+}
+.areas_tree li.level1.active ul {
+    display: block;
+    z-index: 1;
+}
+.areas-container .works-list {
+    margin-top: 20px;
+    padding: 0;
+}

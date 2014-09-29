@@ -19,6 +19,14 @@ RewriteRule ^danh-gia-shop/(.*)/([0-9]+)$ index.php?do=company&action=rating&sta
 RewriteRule ^thuong-hieu/([0-9]+)/(.*)$ index.php?do=company&industryid=$1 [L]
 RewriteRule ^thuong-hieu/hinh-anh-video/([0-9]+)/(.*)$ index.php?do=album&action=detail&id=$1 [L]
 
+RewriteRule ^thi-truong/?$ index.php?do=area [L]
+RewriteRule ^thi-truong/mien-nam/?$ index.php?do=area&areatype_id=1 [L]
+RewriteRule ^thi-truong/mien-trung/?$ index.php?do=area&areatype_id=2 [L]
+RewriteRule ^thi-truong/mien-bac/?$ index.php?do=area&areatype_id=3 [L]
+RewriteRule ^thi-truong/mien-nam/([0-9]+)/(.*)$ index.php?do=area&areatype_id=1&area_id=$1 [L]
+RewriteRule ^thi-truong/mien-trung/([0-9]+)/(.*)$ index.php?do=area&areatype_id=2&area_id=$1 [L]
+RewriteRule ^thi-truong/mien-bac/([0-9]+)/(.*)$ index.php?do=area&areatype_id=3&area_id=$1 [L]
+
 RewriteRule ^dang-san-pham?$ redirect.php?url=/virtual-office/product.php?do=edit [L]
 RewriteRule ^dang-dich-vu?$ redirect.php?url=/virtual-office/product.php?do=edit\%26type=service [L]
 RewriteRule ^lien-he/?$ contact.php [L]

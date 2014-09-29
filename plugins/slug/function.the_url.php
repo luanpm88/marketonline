@@ -567,6 +567,39 @@ function smarty_function_the_url($params){
 					}
 				}
 				break;
+			case "areas":
+				if ($rewrite_able) {
+					$return = URL."thi-truong";
+					if($areatype_id) {
+						
+						switch($areatype_id) {
+							case "1":
+								$tails = "/mien-nam";
+								break;
+							case "2":
+								$tails = "/mien-trung";
+								break;
+							case "3":
+								$tails = "/mien-bac";
+								break;
+							default:
+								$tails = "";
+								break;
+							
+						}						
+						$return = URL."thi-truong".$tails;
+						
+						if($area_id) {
+							$return = URL."thi-truong".$tails."/".$area_id."/".stringToURI($title);;
+						}
+					}
+				}else{
+					$return = URL."index.php?do=area";
+					if($areatype_id) {
+						$return = URL."index.php?do=area&areatype_id=".$areatype_id;
+					}
+				}
+				break;
 			default:
 				if (!empty($id)) {
 					if ($rewrite_able) {

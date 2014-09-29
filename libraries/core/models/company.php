@@ -634,6 +634,52 @@ class Companies extends PbModel {
 		}		
 	}
 	
+	function formatItems($results) {
+		uses("area","space");
+ 		$area = new Areas();
+		$space = new Spaces();
+		
+		foreach($results as $key => $result)
+		{
+			if($results)
+			{
+				$results[$key]["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
+				
+				list(,$telcode, $telzone, $tel) = $this->splitPhone($result['tel']);
+				list(,$faxcode, $faxzone, $fax) = $this->splitPhone($result['fax']);
+				if($telcode != '000' && $telzone != '' && $tel != '')
+				{
+					$results[$key]['tel'] = '('.$telcode.') '.$telzone.'.'.substr($tel, 0, 4)." ".substr($tel, 4);
+				}
+				else
+				{
+					$results[$key]['tel'] = '';
+				}
+				if($faxcode != '000' && $faxzone != '' && $fax != '')
+				{
+					$results[$key]['fax'] = '('.$faxcode.') '.$faxzone.'.'.substr($fax, 0, 4)." ".substr($fax, 4);
+				}
+				else
+				{
+					$results[$key]['fax'] = '';
+				}
+				
+				if (empty($result['picture'])) {
+					$results[$key]['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+				}else{
+					$results[$key]['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
+				}
+				
+				$results[$key]['url'] = $this->url(array("module"=>"space","userid"=>$result["cache_spacename"])); //$space->rewrite($result["cache_spacename"]);
+				$results[$key]['href'] = $results[$key]['url'];
+				$results[$key]['thumb'] = $results[$key]['logo'];
+				$results[$key]['title'] = $results[$key]['name'];
+			}
+		}
+		
+		return $results;
+	}
+	
 	function getParent($id) {
 		
 	}
@@ -656,6 +702,25 @@ class Companies extends PbModel {
 		} else {
 			return false;
 		}
+	}
+	
+	function getByArea($params=array(), $offset=0, $count=15) {
+		if($params["area_id"]) {
+			//echo $params["area_id"];
+			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
+		}
+		if($params["areatype_id"]) {
+			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
+		}
+		$joins = array();
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=Company.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Company.member_id";
+		
+		$result = $this->findAll("Company.*", $joins, $conditions, "m.points_weekly DESC, m.active_time DESC", $offset, $count);
+		$result = $this->formatItems($result);
+		
+		return $result;
 	}
 }
 ?>
