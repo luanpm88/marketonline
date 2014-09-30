@@ -155,6 +155,7 @@ if (isset($_GET['do'])) {
 	}
 }
 $joins[] = "LEFT JOIN {$tb_prefix}attachments Attachment ON Album.attachment_id=Attachment.id";
+$joins[] = "LEFT JOIN {$tb_prefix}albumtypes at ON at.id=Album.type_id";
 $conditions[] = "Attachment.member_id=".$the_memberid;
 
 if(isset($_GET["type"])) {
@@ -164,7 +165,7 @@ if(isset($_GET["type"])) {
 $amount = $album->findCount($joins, $conditions, "Album.id");
 $page->setPagenav($amount);
 $res = $pdb->GetAll("SELECT * from {$tb_prefix}albums");
-$result = $album->findAll("Album.thumb_id,Album.state,Album.attachment_id,Album.type,Attachment.title,Attachment.modified,Attachment.description,Attachment.attachment,Album.id", $joins, $conditions, "Album.id DESC", $page->firstcount, $page->displaypg);
+$result = $album->findAll("at.name as type_name,Album.thumb_id,Album.state,Album.attachment_id,Album.type,Attachment.title,Attachment.modified,Attachment.description,Attachment.attachment,Album.id", $joins, $conditions, "Album.id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$result[$i]['image'] = pb_get_attachmenturl($result[$i]['attachment'], '../', "small");
