@@ -67,6 +67,20 @@ jQuery(document).ready(function($) {
       </tr>
       
       <tr>
+        <th style="border-top: solid 1px #333" class="paddingT15"><label for="time_zone">Thời gian hiển thị sản phẩm mới</label></th>
+        <td style="border-top: solid 1px #333" class="paddingT15 wordSpacing5"><input name="data[setting][new_product_hours]" type="text" id="site_name" value="{$item.NEW_PRODUCT_HOURS|default:3}" class="infoTableInput" /> 
+          <span class="gray">Đơn vị: giờ</span>
+        </td>
+      </tr>
+      
+      <tr style="">
+        <th class="paddingT15"><label for="time_zone">Số bài hiển thị sản phẩm mới</label></th>
+        <td class="paddingT15 wordSpacing5"><input name="data[setting][new_product_count]" type="text" id="site_name" value="{$item.NEW_PRODUCT_COUNT|default:5}" class="infoTableInput" /> 
+          <span class="gray">Đơn vị: sản phẩm</span>
+        </td>
+      </tr>
+      
+      <tr>
         <th></th>
         <td class="ptb20"><input class="formbtn" type="submit" name="savebasic" value="{lang submit}" />
           <input class="formbtn" type="reset" name="reset" value="{lang reset}" />

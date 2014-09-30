@@ -28,12 +28,15 @@ class Product extends PbController {
 		$this->loadModel("modlog");
 		$this->loadModel("attachment");
 		$this->loadModel("album");
+		//$this->loadModel("setting");
 	}
 	
 	function index()
 	{
-		//setFlash("huhu","hehe");
-		$this->product->updateShowProducts(3, 5);
+		uses('setting');
+		$setting = new Settings();
+		//echo $setting->getValue('new_product_count');
+		$this->product->updateShowProducts($setting->getValue('new_product_hours'), $setting->getValue('new_product_count'));
 		
 		$data = array();
 		$_PB_CACHE['industry'] = cache_read("industry");
