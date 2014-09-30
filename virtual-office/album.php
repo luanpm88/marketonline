@@ -101,6 +101,8 @@ if (isset($_POST['do'])) {
 		exit;
 	}
 }
+//$AlbumTypes = $albumtype->findAll("*",null,null,"display_order");
+//var_dump($AlbumTypes);
 setvar("AlbumTypes", $_PB_CACHE['albumtype']);
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
