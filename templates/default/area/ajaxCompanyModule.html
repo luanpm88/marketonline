@@ -1,0 +1,29 @@
+                <h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Thương hiệu</a>
+		    <div class="subtab-area">
+			<ul>
+			    <li><a class="{if $smarty.get.membergroup_id==3}active{/if}" rel="3" href="javascript:void(0)">Công ty</a></li>
+			    <li><a class="{if $smarty.get.membergroup_id==2}active{/if}" rel="2" href="javascript:void(0)">Cá nhân</a></li>
+			    <li><a class="{if $smarty.get.membergroup_id==1}active{/if}" rel="1" href="javascript:void(0)">Cửa hàng</a></li>
+			    
+			</ul>
+		    </div>
+		</h3>
+                <!--{if $companies}-->
+                    <ul class="filterable-grid">					      
+                        <!--{loop $companies item level key}-->
+                            <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+                                <div class="half odd">
+                                    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+                                    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+                                </div>
+                                <div class="description-bottom">
+                                    <div class="title">				      
+                                            <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+                                    </div>
+                                </div>
+                            </li>
+                        <!--{/loop}-->
+                    </ul>
+                <!--{else}-->
+                    <p>Chưa có thương hiệu nào trong mục này.</p>
+                <!--{/if}-->

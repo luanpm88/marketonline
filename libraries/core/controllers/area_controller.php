@@ -64,19 +64,56 @@ class Area extends PbController {
 		$services = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1));
 		setvar("services",$services);
 		
-		//get trades by areas
-		$trades = $this->trade->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		setvar("trades",$trades);
+		////get trades by areas
+		//$trades = $this->trade->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
+		//setvar("trades",$trades);
 		
-		//get companies by areas
-		$companies = $this->company->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		setvar("companies",$companies);
+		////get companies by areas
+		//$companies = $this->company->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
+		//setvar("companies",$companies);
 		
 		//get jobs by areas
 		$jobs = $this->job->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
 		setvar("jobs",$jobs);
 		
 		render("area/index", 1);
+	}
+	
+	function ajaxTradeModule() {
+		//GETs
+		if(isset($_GET["area_id"])){
+			$area_id = $_GET["area_id"];
+		}
+		if(isset($_GET["areatype_id"])){
+			$areatype_id = $_GET["areatype_id"];
+		}
+		if(isset($_GET["type_id"])){
+			$type_id = $_GET["type_id"];
+		}
+		
+		$trades = $this->trade->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id));
+		setvar("trades",$trades);
+		
+		render("area/ajaxTradeModule", 1);
+	}
+	
+	function ajaxCompanyModule() {
+		//GETs
+		if(isset($_GET["area_id"])){
+			$area_id = $_GET["area_id"];
+		}
+		if(isset($_GET["areatype_id"])){
+			$areatype_id = $_GET["areatype_id"];
+		}
+		if(isset($_GET["membergroup_id"])){
+			$membergroup_id = $_GET["membergroup_id"];
+		}
+		
+		//get companies by areas
+		$companies = $this->company->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id));
+		setvar("companies",$companies);
+		
+		render("area/ajaxCompanyModule", 1);
 	}
 }
 ?>

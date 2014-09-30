@@ -11257,6 +11257,54 @@ video {
     z-index: 1;
 }
 .areas-container .works-list {
-    margin-top: 20px;
+    display: inline-block;
+    margin-top: 40px;
     padding: 0;
+}
+.areas-container .works-list:first-child {
+    margin-top: 10px;
+}
+.areas-container .subtab-area {
+    float: left;
+    margin-top: 10px;
+}
+.areas-container .subtab-area ul {
+    
+}
+.areas-container .subtab-area ul li {
+    list-style: none;
+    float: left;
+    border-right: solid 1px #aaa;
+}
+.areas-container .subtab-area ul li:last-child {
+    border-right: none;
+}
+.areas-container .subtab-area ul li a {
+    color: #555;
+    display: block;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+    line-height: 18px;
+}
+.areas-container .subtab-area ul li a:hover, .areas-container .subtab-area ul li a.active {
+    color: #0064d2;
+}
+.album a.main_a {
+    float: left;
+    margin-right: 15px;
+}
+.album h3 {
+    float: left;
+    width: 100%;
+}
+.company-container .works-list h3 a {
+    font-weight: normal;
+}
+.company-container .works-list h3 a {
+    font-family: "Segoe UI";
+    font-size: 28px;
+}
+.area-module.loading {
+    opacity: 0.5;
 }

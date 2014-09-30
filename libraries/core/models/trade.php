@@ -579,6 +579,9 @@ class Trades extends PbModel {
 		if($params["areatype_id"]) {
 			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
 		}
+		if($params["type_id"]) {
+			$conditions[] = "Trade.type_id=".$params["type_id"];
+		}
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Trade.company_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
