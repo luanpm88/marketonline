@@ -32,7 +32,7 @@ var can_also_enter = "{lang can_also_enter}";
 				percent.html(percentVal);
 				
 				$('html,body').animate({
-					scrollTop: $("#image_box").offset().top},
+					scrollTop: $("#product_edit_box").offset().top},
 					'slow');
 				
 				$('#save').hide();
@@ -43,7 +43,7 @@ var can_also_enter = "{lang can_also_enter}";
 				percent.html(percentVal);
 			},
 			complete: function(xhr) {
-				window.location = "album.php";
+				//window.location = "album.php";
 				//alert("done");
 			}
 		});
@@ -138,29 +138,31 @@ jQuery(document).ready(function($) {
 			 {/if}
 		</div>
 	<!--{/if}-->
-		
-       <div id="image_box">		
-		
-		
-		
-		<span style="display: block;
-    float: left;
-    text-align: right;
-    padding: 5px;
-    width: 100px;">Hình ảnh/Video:</span>
-			<input onclick="$('#custom_uploadfile').trigger('click')" type="button" value="{if $item.id}Thay hình ảnh/videos khác{else}Tải hình ảnh/Video{/if}" /> <span class="file_name"></span>
-			<input onchange="$('.file_name').html($(this).val())" style="position: absolute;top: -9000px" name="pic" value="" type="file" id="custom_uploadfile" style="width: 240px;" />
-                
-			<div class="upload-status" style="display: none">
-				<div class="progress">
-					<div class="bar-box"><div class="bar"></div ></div >
-					<div class="percent">0%</div >
-				</div>
-				<div id="status"></div>
-			</div>
 	
-       </div>
 	
+	{if !$item.id}	
+		<div id="image_box">		
+			 
+			 
+			 
+			 <span style="display: block;
+	     float: left;
+	     text-align: right;
+	     padding: 5px;
+	     width: 100px;">Hình ảnh/Video:</span>
+				 <input onclick="$('#custom_uploadfile').trigger('click')" type="button" value="{if $item.id}Thay hình ảnh/videos khác{else}Tải hình ảnh/Video{/if}" /> <span class="file_name"></span>
+				 <input onchange="$('.file_name').html($(this).val())" style="position: absolute;top: -9000px" name="pic" value="" type="file" id="custom_uploadfile" style="width: 240px;" />
+			 
+				 <div class="upload-status" style="display: none">
+					 <div class="progress">
+						 <div class="bar-box"><div class="bar"></div ></div >
+						 <div class="percent">0%</div >
+					 </div>
+					 <div id="status"></div>
+				 </div>
+		 
+		</div>
+	{/if}
 	
        
        <table class="offer_info_content album_edit_box" style="display: none">
@@ -168,12 +170,12 @@ jQuery(document).ready(function($) {
             <th class="circle_left"><font class="red">*</font>{lang show_title}</th>
             <td class="circle_right"><input type="text" id="albumTitle" name="album[title]" value="{$item.title}" /></td>
           </tr>-->
-          <tr>
+          <!--<tr>
             <th>{lang categories}</th>
             <td><select name="album[type_id]">
 				{html_options options=$AlbumTypes selected=$item.type_id}
             </select></td>
-          </tr>
+          </tr>-->
           <!--<tr>
             <th><font class="red">&nbsp; </font>{lang simple_description}</th>
             <td><textarea name="album[description]" id="Content" cols="60" rows="8" wrap="VIRTUAL">{$item.description}</textarea><div id="txtTips"></div></td>

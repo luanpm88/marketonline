@@ -25,6 +25,7 @@ if (!$company->Validate($companyinfo)) {
 if (isset($_POST['do'])) {
 	pb_submit_check('album');
 	$vals = $_POST['album'];
+	//var_dump($_POST['album']);
 	$vals['title'] = $title = trim($vals['title']);
 	$vals['description'] = $description = trim($vals['description']);
 	$now_album_amount = $attachment->findCount(null, "created>".$today_start." AND member_id=".$the_memberid);
