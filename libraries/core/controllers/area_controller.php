@@ -75,7 +75,6 @@ class Area extends PbController {
 		//get jobs by areas
 		$jobs = $this->job->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
 		setvar("jobs",$jobs);
-		var_dump($jobs);
 		
 		render("area/index", 1);
 	}

@@ -37,6 +37,7 @@ if (isset($_POST['do'])) {
 		$ext = pathinfo($filename, PATHINFO_EXTENSION);
 		if(in_array($ext,$image_allowed)) {
 			$type = 'image';
+			$type_id = 2;
 			$attachment_controller->if_product_square = true;
 		} elseif (in_array($ext,$video_allowed)) {
 			$type = 'video';
@@ -45,7 +46,7 @@ if (isset($_POST['do'])) {
 			$type = "error";
 		}
 		//echo $attachment_controller->if_video_thumb;
-		$type_id = 1;
+		
 		
 		$attachment_controller->upload_dir = "album".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
 		$attach_id = (empty($id))?"album-".$the_memberid."-".($album->getMaxId()+1):"album-".$the_memberid."-".$id;
