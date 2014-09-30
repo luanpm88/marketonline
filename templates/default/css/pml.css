@@ -11228,7 +11228,7 @@ video {
 .areas_tree ul li a.level2 {
     float: left;
     font-size: 14px;
-    padding: 5px 10px;
+    padding: 5px 9px;
     width: 100%;
 }
 .areas_tree ul li.level2.active a.level2 {
@@ -11307,4 +11307,7 @@ video {
 }
 .area-module.loading {
     opacity: 0.5;
+}
+.areas_tree ul li.level2 {
+    width: 12.5%;
 }
