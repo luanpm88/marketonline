@@ -76,7 +76,7 @@ jQuery(document).ready(function($) {
 			    <p><strong>{$item.title}</strong></p>
 		      <p>{$item.description|strip_tags|truncate:310}</p>
 		    </td>
-		    <td>{$item.type_name}</td>
+		    <td style="text-align: center">{$item.type_name}</td>
 		    <td style="text-align: center">
 			<!--{if $item.state eq 1}-->
 			<a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}" title="{lang web_down_shelves}">
