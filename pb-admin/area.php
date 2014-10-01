@@ -21,6 +21,7 @@ $condition = null;
 $conditions = array();
 $tpl_file = "area";
 $page = new Pages();
+$page->displaypg = 100;
 $cache_items = $_PB_CACHE['area'];
 setvar("Types", $_PB_CACHE['areatype']);
 setvar("AskAction", $typeoption->get_cache_type("common_option"));
@@ -208,7 +209,7 @@ if (isset($_GET['do'])) {
 }
 $amount = $area->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $area->findAll("id,name,name as title,highlight,parent_id,areatype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order ASC,id ASC", $page->firstcount, $page->displaypg);
+$result = $area->findAll("id,name,name as title,highlight,parent_id,areatype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order ASC,areatype_id,id ASC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$tmp_name = array();
