@@ -211,11 +211,22 @@ class Schools extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=sc.area_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		
-		$result = $memberdb->findAll("Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
-		//$result = $memberdb->formatItems($result);
+		$result = $memberdb->findAll("mf.last_name,mf.first_name,Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
+		$result = $this->formatStudentItems($result);
 		
-		var_dump($result);
+		//var_dump($result);
 		
+		return $result;
+	}
+	
+	function formatStudentItems($result) {
+		foreach($result as $key => $item) {
+			$item["thumb"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
+			$item["title"] = $item["first_name"]." ".$item["last_name"];
+			//{the_url module=studypost action=memberpage id=`$item.id` title=`$item.fullname`}
+			$item["href"] = $this->url(array("module"=>"studypost","action"=>"memberpage","id"=>$item["id"],"title"=>$item["title"]));
+			$result[$key] = $item;
+		}
 		return $result;
 	}
 }

@@ -12,6 +12,7 @@ class Area extends PbController {
 		$this->loadModel("company");
 		$this->loadModel("job");
 		$this->loadModel("school");
+		$this->loadModel("studygroup");
 	}
 	
 	function getNames()
@@ -167,9 +168,8 @@ class Area extends PbController {
 		if($_GET["type"]=='student') {
 			$list = $this->school->getStudentByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
 		} else if($_GET["type"]=='subject') {
-			
+			$list = $this->studygroup->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
 		} else {
-			//get services by areas
 			$list = $this->school->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));			
 		}		
 		setvar("list",$list);
