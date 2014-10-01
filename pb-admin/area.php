@@ -209,7 +209,7 @@ if (isset($_GET['do'])) {
 }
 $amount = $area->findCount(null, $conditions);
 $page->setPagenav($amount);
-$result = $area->findAll("id,name,name as title,highlight,parent_id,areatype_id,top_parentid,level,display_order", null, $conditions, "level ASC,display_order ASC,areatype_id,id ASC", $page->firstcount, $page->displaypg);
+$result = $area->findAll("id,name,name as title,highlight,parent_id,areatype_id,top_parentid,level,display_order", null, $conditions, "level ASC,areatype_id,display_order ASC,id ASC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 		$tmp_name = array();
