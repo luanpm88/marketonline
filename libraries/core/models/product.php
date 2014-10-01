@@ -677,7 +677,7 @@ class Products extends PbModel {
 		return $permissions;
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {
+	function getByArea($params=array(), $offset=0, $count=15) {		
 		if($params["area_id"]) {
 			//echo $params["area_id"];
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
@@ -688,6 +688,15 @@ class Products extends PbModel {
 		if($params["service"]) {
 			$conditions[] = "Product.service=1";
 		}
+		
+		//Conditions for new product show
+		$conditions[] = "Product.state = 1";
+		$conditions[] = "Product.valid_status = 1";
+		$other_con = " > 8";
+		$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
+		$conditions[] = "(c.id IN (".
+				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
+		
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Product.company_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";

@@ -715,6 +715,15 @@ class Companies extends PbModel {
 		if($params["membergroup_id"]) {
 			$conditions[] = "m.membergroup_id=".$params["membergroup_id"];
 		}
+		
+		//Conditions for effective company
+		$other_con = " > 8";
+		$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";
+		$conditions[] = "(Company.id IN (".
+				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc"
+				." INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id"
+				." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
+		
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=Company.area_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";

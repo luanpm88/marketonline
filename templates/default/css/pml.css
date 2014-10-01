@@ -11215,10 +11215,11 @@ video {
     border: 1px solid #aaa;
     display: none;
     left: 100px;
-    padding: 10px;
+    padding: 7px;
     position: absolute;
     top: 0;
     width: 1060px;
+    height: 113px;
 }
 .areas_tree ul li.level2 {
     display: block;
@@ -11230,14 +11231,15 @@ video {
     font-size: 14px;
     padding: 5px 9px;
     width: 100%;
+    color: #333;
 }
 .areas_tree ul li.level2.active a.level2 {
-    background: #aaa;
+    background: #3b984c;
     color: #fff;
 }
 .areas_tree ul li a.level2:hover {
     color: #fff;
-    background: #aaa;
+    background: #3b984c;
 }
 .areas-container {
     padding: 10px;
@@ -11305,9 +11307,22 @@ video {
     font-family: "Segoe UI";
     font-size: 28px;
 }
-.area-module.loading {
+.area-module.area-module-loading {
+    background: url("../image/ajax-loading.gif") no-repeat scroll 1155px 10px / 24px auto transparent;
     opacity: 0.5;
 }
 .areas_tree ul li.level2 {
     width: 12.5%;
+}
+.area-module.starting {
+    background: url("../image/ajax-loading.gif") no-repeat scroll 50px center / 24px auto transparent;
+    display: block;
+    height: 50px;
+    width: 100%;
+}
+.company-container .album .filterable-grid .pic span img {
+    width: auto;
+    height: auto;
+}
+.tiled-menu li ul li {
 }

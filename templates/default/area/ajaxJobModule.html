@@ -1,16 +1,16 @@
-                <h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Thương mại</a>
-		    <div class="subtab-area">
+                <h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Việc làm</a>
+		    <!--<div class="subtab-area">
 			<ul>
 			    <li><a class="{if $smarty.get.type_id==14}active{/if}" rel="14" href="javascript:void(0)">Nhu cầu mua</a></li>
 			    <li><a class="{if $smarty.get.type_id==9}active{/if}" rel="9" href="javascript:void(0)">Nhu cầu bán</a></li>
 			    <li><a class="{if $smarty.get.type_id==10}active{/if}" rel="10" href="javascript:void(0)">Nhà phân phối</a></li>
 			    <li><a class="{if $smarty.get.type_id==16}active{/if}" rel="16" href="javascript:void(0)">Tìm đối tác</a></li>
 			</ul>
-		    </div>
+		    </div>-->
 		</h3>
-                <!--{if $trades}-->
+                <!--{if $jobs}-->
                     <ul class="filterable-grid">					      
-                        <!--{loop $trades item level key}-->
+                        <!--{loop $jobs item level key}-->
                             <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
                                 <div class="half odd">
                                     <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>

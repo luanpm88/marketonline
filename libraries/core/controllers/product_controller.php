@@ -1283,6 +1283,7 @@ class Product extends PbController {
 			//Search for products
 			$this->product->initSearch();
 			$this->product->condition[] = "Product.state = 1";
+			$this->product->condition[] = "Product.valid_status = 1";
 			
 			//
 			if(empty($_GET['q'])) $this->product->condition[] = "Product.show = 1";
@@ -3644,7 +3645,6 @@ class Product extends PbController {
 		$pb_userinfo = pb_get_member_info();
 		
 		
-		
 		global $viewhelper, $session;
 		
 		$chatboxs = $_SESSION["chatboxs"];
@@ -4569,9 +4569,6 @@ class Product extends PbController {
 			$conditions[] = "((".implode(" OR ", $conditions_temp).") AND Product.state=1)";
 					
 			$tree[$key0]["count"] = $this->product->findCount_left(null, $conditions,"id");
-			
-			
-			
 			
 		}
 		

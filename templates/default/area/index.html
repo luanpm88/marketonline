@@ -3,63 +3,71 @@
 
 <!--{literal}-->	
 <script type="application/x-javascript">
-    function ajaxCompanyModule(membergroup_id) {
-	var type = '';
-	if (typeof(membergroup_id)!='undefined') {
-	    type = '&membergroup_id='+membergroup_id;
-	}
-	
-	$('.company_module').addClass("loading");
-	$.ajax({
-		url: "index.php?do=area&action=ajaxCompanyModule&area_id=<!--{/literal}-->{$smarty.get.area_id}<!--{literal}-->&areatype_id=<!--{/literal}-->{$smarty.get.areatype_id}<!--{literal}-->"+type,
-	}).done(function ( data ) {
-	    if( console && console.log ) {
-		if(data != '')
-		{
-		    $('.company_module').html(data);
-		    $('.company_module').show();
-		    $('.company_module').removeClass("loading");
-		}
-	    }
-	});
-    }
     
-    function ajaxTradeModule(type_id) {
+    function ajaxLoadModule(boxid, ajax_function, param_name, param_value) {
 	var type = '';
-	if (typeof(type_id)!='undefined') {
-	    type = '&type_id='+type_id;
+	if (typeof(param_value)!='undefined') {
+	    type = '&'+param_name+'='+param_value;
 	}
-	
-	$('.trade_module').addClass("loading");
+	var box = $('.'+boxid);
+	box.addClass("area-module-loading");
 	$.ajax({
-		url: "index.php?do=area&action=ajaxTradeModule&area_id=<!--{/literal}-->{$smarty.get.area_id}<!--{literal}-->&areatype_id=<!--{/literal}-->{$smarty.get.areatype_id}<!--{literal}-->"+type,
+		url: "index.php?do=area&action="+ajax_function+"&area_id=<!--{/literal}-->{$smarty.get.area_id}<!--{literal}-->&areatype_id=<!--{/literal}-->{$smarty.get.areatype_id}<!--{literal}-->"+type,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		if(data != '')
 		{
-		    $('.trade_module').html(data);
-		    $('.trade_module').show();
-		    $('.trade_module').removeClass("loading");
+		    box.html(data);
+		    box.show();
+		    box.removeClass("area-module-loading");
+		    box.removeClass("starting");
+		    //alert(box.find('.pic span').length);
+		    if (!box.find('.pic span').length) {
+			box.find('.pic img').resizecrop({
+			    width:211,
+			    height:211		   
+			});
+		    }
 		}
 	    }
 	});
     }
     
     $(document).ready(function() {
-	ajaxTradeModule();
+	ajaxLoadModule("trade_module", "ajaxTradeModule");
 	$('.trade_module .subtab-area ul li a').live("click", function() {
-	    ajaxTradeModule($(this).attr("rel"));
+	    ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id", $(this).attr("rel"));
 	});
 	$('.trade_module a.main_a').live("click", function() {
-	    ajaxTradeModule();
+	    ajaxLoadModule("trade_module", "ajaxTradeModule");
 	});
 	
-	ajaxCompanyModule();
+	ajaxLoadModule("company_module", "ajaxCompanyModule");
 	$('.company_module .subtab-area ul li a').live("click", function() {
-	    ajaxCompanyModule($(this).attr("rel"));
+	   ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(this).attr("rel"));
 	});
 	$('.company_module a.main_a').live("click", function() {
-	    ajaxCompanyModule();
+	    ajaxLoadModule("company_module", "ajaxCompanyModule");
+	});
+	
+	ajaxLoadModule("product_module", "ajaxProductModule");
+	$('.product_module a.main_a').live("click", function() {
+	    ajaxLoadModule("product_module", "ajaxProductModule");
+	});
+	
+	ajaxLoadModule("service_module", "ajaxServiceModule");
+	$('.service_module a.main_a').live("click", function() {
+	    ajaxLoadModule("service_module", "ajaxServiceModule");
+	});
+	
+	ajaxLoadModule("school_module", "ajaxSchoolModule");
+	$('.school_module a.main_a').live("click", function() {
+	    ajaxLoadModule("school_module", "ajaxSchoolModule");
+	});
+	
+	ajaxLoadModule("job_module", "ajaxJobModule");
+	$('.job_module a.main_a').live("click", function() {
+	    ajaxLoadModule("job_module", "ajaxJobModule");
 	});
     });
 </script>
@@ -123,59 +131,32 @@
     
     <div>
 	
-	    <div class="works-list album area-module company_module">
+	    <div class="works-list album area-module company_module starting">
 		
 	    </div>
 	
-	<!--{if $products}-->
-	    <div class="works-list album">
-		<h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Sản phẩm</a></h3>
-		<ul class="filterable-grid">					      
-		    <!--{loop $products item level key}-->
-			<li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
-			    <div class="half odd">
-				<div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
-				<a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
-			    </div>
-			    <div class="description-bottom">
-				<div class="title">				      
-					<h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
-				</div>
-			    </div>
-			</li>
-		    <!--{/loop}-->
-		</ul>
-	    </div>
-	<!--{/if}-->
-	
-	<!--{if $services}-->
-	    <div class="works-list album">
-		<h3 style="margin-bottom: 20px;"><a href="javascript:void(0)">Dịch vụ</a></h3>
-		<ul class="filterable-grid">					      
-		    <!--{loop $services item level key}-->
-			<li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
-			    <div class="half odd">
-				<div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
-				<a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
-			    </div>
-			    <div class="description-bottom">
-				<div class="title">				      
-					<h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
-				</div>
-			    </div>
-			</li>
-		    <!--{/loop}-->
-		</ul>
-	    </div>
-	<!--{/if}-->
-	
-	
-	    <div class="works-list album area-module trade_module" style="display: none">
+
+	    <div class="works-list album area-module product_module starting">
 		
 	    </div>
 
 	
+	    <div class="works-list album area-module service_module starting">
+		
+	    </div>
+	
+	
+	    <div class="works-list album area-module trade_module starting">
+		
+	    </div>
+
+	    <div class="works-list album area-module school_module starting">
+		
+	    </div>
 	    
+	    <div class="works-list album area-module job_module starting">
+		
+	    </div>
 
     </div>
     

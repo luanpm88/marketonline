@@ -31,7 +31,7 @@ class Jobs extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Job.member_id";
 		
-		$result = $this->findAll("Job.*,Job.name as title,c.name AS companyname,c.cache_spacename AS userid, m.membertype_id", $joins, $conditions, "Job.created DESC", $offset, $count);
+		$result = $this->findAll("Job.*,Job.name as title,c.name AS companyname,c.picture AS company_picture,c.cache_spacename AS userid, m.membertype_id", $joins, $conditions, "Job.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		
 		return $result;
@@ -74,6 +74,15 @@ class Jobs extends PbModel {
 			if (isset($params['infolen'])) {
 				if(isset($item['content'])) $item['content'] = mb_substr(pb_strip_spaces($item['content']),0, $params['infolen']);
 			}
+			
+			if (empty($item['company_picture'])) {
+				$item['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+			}else{
+				$item['logo'] = URL.pb_get_attachmenturl($item['company_picture'], '', 'smaller');
+			}
+			
+			$item['thumb'] = $item['logo'];
+			$item['href'] = $item['url'];
 			
 			$result[$key] = $item;
 		}		

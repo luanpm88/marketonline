@@ -1,0 +1,21 @@
+		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Dịch vụ</a></h3>
+		
+		<!--{if $services}-->
+		    <ul class="filterable-grid">					      
+			<!--{loop $services item level key}-->
+			    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+				<div class="half odd">
+				    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+				    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+				</div>
+				<div class="description-bottom">
+				    <div class="title">				      
+					    <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+				    </div>
+				</div>
+			    </li>
+			<!--{/loop}-->
+		    </ul>
+		<!--{else}-->
+                    <p>Chưa có dịch vụ nào trong mục này.</p>
+                <!--{/if}-->

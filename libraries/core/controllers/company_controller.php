@@ -14,7 +14,6 @@ class Company extends PbController {
 	}
 	
 	function index() {
-		//echo $_GET["keyword"]."zzzzz";
 		//GET TOP INDUSTRY TILES
 		$industries = $this->industry->getCacheIndustry();		
 		$count0 = 0;
@@ -26,9 +25,7 @@ class Company extends PbController {
 			if($count0%6 == 0 || $count0%6 == 5)
 			{
 				$maxitem = 11;
-			}
-			else
-			{
+			} else {
 				$maxitem = 3;
 			}
 			
@@ -58,7 +55,6 @@ class Company extends PbController {
 				{
 					unset($industries[$key0]["sub"][$key1]);
 				}
-				
 			}
 			
 			if($count0 == count($industries)-1)
@@ -109,12 +105,13 @@ class Company extends PbController {
 							." OR (Ads.industries LIKE '%,".$industryid.",%')"
 					."))";
 		}
-		if(!empty($_GET['membergroup_id'])){
+		
+		if(!empty($_GET['membergroup_id'])) {
  			$conditions[] = "(m.membergroup_id='".intval($_GET['membergroup_id'])."' OR Ads.membergroup_id='".intval($_GET['membergroup_id'])."')";
  		}
 		
 		$zones = $adzones->findAll("*", null, array("company_zone=1"), "display_order");
-
+		
 		foreach($zones as &$zone) {
 			$zone_condition = array("Ads.adzone_id=".$zone["id"]);
 			$count = $ads->findCount($joins, array_merge($conditions, $zone_condition), "c.cache_spacename");
@@ -130,7 +127,6 @@ class Company extends PbController {
 			$zone["adses"] = $adses;
 		}
 		//var_dump($zones);
-		
 		
 		//FIND EFFECTIVE WEEKLY COMPANIES
 		$com_conditions = array();
@@ -246,8 +242,6 @@ class Company extends PbController {
 	
 	function updatePoint() {
 		var_dump($this->point->actions);
-		
-		//$mems = $this->
 	}
 	
 	function rating() {
@@ -261,6 +255,7 @@ class Company extends PbController {
 	function updateAllMonthlyPoint() {
 		$this->point->updateAllMonthlyPoint();
 	}
+	
 	function updateAllWeeklyPoint() {
 		$this->point->updateAllWeeklyPoint();
 	}

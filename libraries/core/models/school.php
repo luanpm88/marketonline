@@ -161,5 +161,37 @@ class Schools extends PbModel {
 		}
 		return $ids;
 	}
+	
+	function getByArea($params=array(), $offset=0, $count=15) {		
+		if($params["area_id"]) {
+			//echo $params["area_id"];
+			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
+		}
+		if($params["areatype_id"]) {
+			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
+		}		
+		
+		$joins = array();
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=School.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = School.member_id";
+		
+		$result = $this->findAll("School.*", $joins, $conditions, "School.created DESC", $offset, $count);
+		$result = $this->formatItems($result);
+		
+		//var_dump($result);
+		
+		return $result;
+	}
+	
+	function formatItems($result) {
+		foreach($result as $key => $item) {
+			$item["thumb"] = pb_get_attachmenturl($item['logo'], '', 'small');
+			$item["title"] = $item["name"];
+			$item["href"] = $this->url(array("module"=>"studypost","action"=>"school","id"=>$item["id"],"title"=>$item["name"]));
+			$result[$key] = $item;
+		}
+		return $result;
+	}
 }
 ?>
