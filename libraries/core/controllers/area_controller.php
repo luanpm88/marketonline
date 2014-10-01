@@ -164,10 +164,15 @@ class Area extends PbController {
 			$areatype_id = $_GET["areatype_id"];
 		}
 		
-		//get services by areas
-		$schools = $this->school->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		setvar("schools",$schools);
-		
+		if($_GET["type"]=='student') {
+			$list = $this->school->getStudentByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
+		} else if($_GET["type"]=='subject') {
+			
+		} else {
+			//get services by areas
+			$list = $this->school->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));			
+		}		
+		setvar("list",$list);
 		render("area/ajaxSchoolModule", 1);
 	}
 	

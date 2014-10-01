@@ -1,8 +1,17 @@
-		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Trường học</a></h3>
+		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Trường học</a>
 		
-		<!--{if $schools}-->
+		    <div class="subtab-area">
+			<ul>
+			    <li><a class="{if $smarty.get.type=='subject'}active{/if}" rel="subject" href="javascript:void(0)">Môn học</a></li>
+			    <li><a class="{if $smarty.get.type=='student'}active{/if}" rel="student" href="javascript:void(0)">Học viên</a></li>
+			</ul>
+		    </div>
+		
+		</h3>
+		
+		<!--{if $list}-->
 		    <ul class="filterable-grid">					      
-			<!--{loop $schools item level key}-->
+			<!--{loop $list item level key}-->
 			    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
 				<div class="half odd">
 				    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>

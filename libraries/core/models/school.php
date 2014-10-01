@@ -193,5 +193,30 @@ class Schools extends PbModel {
 		}
 		return $result;
 	}
+	
+	function getStudentByArea($params=array(), $offset=0, $count=15) {
+		uses("member");
+		$memberdb = new Members();
+		
+		if($params["area_id"]) {
+			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
+		}
+		if($params["areatype_id"]) {
+			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
+		}		
+		
+		$joins = array();		
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON Member.id = mf.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = mf.school_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=sc.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		
+		$result = $memberdb->findAll("Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
+		//$result = $memberdb->formatItems($result);
+		
+		var_dump($result);
+		
+		return $result;
+	}
 }
 ?>

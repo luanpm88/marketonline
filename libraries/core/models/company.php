@@ -667,7 +667,7 @@ class Companies extends PbModel {
 				if (empty($result['picture'])) {
 					$results[$key]['logo'] = URL.pb_get_attachmenturl('', '', 'small');
 				}else{
-					$results[$key]['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
+					$results[$key]['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
 				}
 				
 				$results[$key]['url'] = $this->url(array("module"=>"space","userid"=>$result["cache_spacename"])); //$space->rewrite($result["cache_spacename"]);
