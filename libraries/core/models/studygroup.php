@@ -256,8 +256,6 @@ class Studygroups extends PbModel {
 		$result = $this->findAll("sc.name as school_name, su.name as subject_name,Studygroup.*", $joins, $conditions, "Studygroup.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		
-		//var_dump($result);
-		
 		return $result;
 	}
 	
