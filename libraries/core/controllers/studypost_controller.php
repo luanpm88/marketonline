@@ -138,7 +138,7 @@ class Studypost extends PbController {
 		//$studyposts = $this->studypost->
 		//get list group
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
-		
+		echo "debug";
 		if(isset($_GET["id"]))
 		{
 			$school_id = $_GET["id"];
@@ -153,7 +153,7 @@ class Studypost extends PbController {
 		
 		//get current school
 		$school = $this->school->getInfoById($school_id, $pb_userinfo["pb_userid"]);
-		
+		echo "debug";
 		//get school list
 		$school_list = $this->school->getList();
 		
