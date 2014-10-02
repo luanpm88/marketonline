@@ -280,8 +280,7 @@ class Product extends PbController {
 									//else
 									//{
 									//	$level1["sub"][$key2]["images"] = "";
-									//}
-									
+									//}									
 								}
 								$IndustryList = $level1;
 							}
@@ -971,6 +970,10 @@ class Product extends PbController {
 		//ad product
 		$ad_product = $this->product->getAdRightBarProduct();
 		
+		//area
+		$company_area = $this->area->disSubNames($company_info["area_id"], " / ", false, "product");
+		setvar("company_area", $company_area);
+		
 		//title url for facebook
 		setvar("og_title", $info["title"]);
 		//{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}
@@ -1264,6 +1267,7 @@ class Product extends PbController {
 				
 				$aaaa = explode(' / ', $aaaa);
 				if($aaaa[1]) $products[$key]['area_names'] = $aaaa[1];
+				
 			}
 			
 			setvar("TotalCount", $count);
