@@ -582,6 +582,8 @@ class Trades extends PbModel {
 		if($params["type_id"]) {
 			$conditions[] = "Trade.type_id=".$params["type_id"];
 		}
+		
+		$conditions[] = "Trade.status=1";
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Trade.company_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
