@@ -673,7 +673,7 @@ class Companies extends PbModel {
 				$results[$key]['url'] = $this->url(array("module"=>"space","userid"=>$result["cache_spacename"])); //$space->rewrite($result["cache_spacename"]);
 				$results[$key]['href'] = $results[$key]['url'];
 				$results[$key]['thumb'] = $results[$key]['logo'];
-				$results[$key]['title'] = $results[$key]['name'];
+				$results[$key]['title'] = $results[$key]['shop_name'];
 			}
 		}
 		
