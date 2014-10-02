@@ -11362,12 +11362,17 @@ video {
     
 }
 .areas-container .shop_info_product span {
-    font-size: 11px;
-    width: 149px;    
+    font-size: 12px;
+    width: 151px;
+    left: 1px;
+    margin-top: 6px;
+    padding-left: 1px;
+    padding-bottom: 6px;
+    padding-top: 6px;
 }
 .areas-container .shop_info_product div {
-    font-size: 11px;
+    font-size: 12px;
     height: auto;
-    margin: -14px 2px;
-    padding: 1px 2px;
+    margin: -13px 1px;
+    padding: 2px;
 }
