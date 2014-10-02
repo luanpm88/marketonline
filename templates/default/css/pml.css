@@ -11207,18 +11207,18 @@ video {
     font-size: 16px;
     padding: 5px 10px;
     text-align: center;
-    width: 120px;
+    width: 150px;
     border: 1px solid #aaa;
 }
 .areas_tree ul {
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #aaa;
     display: none;
-    left: 100px;
+    left: 130px;
     padding: 7px;
     position: absolute;
     top: 0;
-    width: 1060px;
+    width: 1030px;
     height: 113px;
 }
 .areas_tree ul li.level2 {
@@ -11229,7 +11229,7 @@ video {
 .areas_tree ul li a.level2 {
     float: left;
     font-size: 14px;
-    padding: 5px 9px;
+    padding: 5px;
     width: 100%;
     color: #333;
 }
