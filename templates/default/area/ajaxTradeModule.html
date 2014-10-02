@@ -12,6 +12,12 @@
                     <ul class="filterable-grid">					      
                         <!--{loop $trades item level key}-->
                             <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+				
+				<a class="shop_info_product" href="{$item.shop_url}" title="">
+					<div>Xem gian hàng:</div>
+					<span>{$item.shop_name}</span>
+				</a>
+				
                                 <div class="half odd">
                                     <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
                                     <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>

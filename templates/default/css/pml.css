@@ -11342,3 +11342,32 @@ video {
     height: auto;
     width: auto;
 }
+.areas-container .works-list .item a.shop_info_product {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: rgb(51, 51, 51);
+    display: none;
+    float: left;
+    height: 33px;
+    margin: 120px 0 0;
+    position: absolute;
+    text-indent: 0;
+    width: 100%;
+    z-index: 100;
+}
+.areas-container .works-list .item:hover a.shop_info_product {
+    display: block;
+}
+.areas-container .works-list .item:hover a.shop_info_product {
+    
+}
+.areas-container .shop_info_product span {
+    font-size: 11px;
+    width: 149px;    
+}
+.areas-container .shop_info_product div {
+    font-size: 11px;
+    height: auto;
+    margin: -14px 2px;
+    padding: 1px 2px;
+}

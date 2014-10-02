@@ -589,7 +589,7 @@ class Trades extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Trade.brand_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Trade.member_id";
 		
-		$result = $this->findAll("Trade.*,content AS digest", $joins, $conditions, "Trade.created DESC", $offset, $count);
+		$result = $this->findAll("c.shop_name,Trade.*,content AS digest", $joins, $conditions, "Trade.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		
 		return $result;
