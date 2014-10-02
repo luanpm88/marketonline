@@ -138,7 +138,7 @@ class Studypost extends PbController {
 		//$studyposts = $this->studypost->
 		//get list group
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
-		echo "debug";
+		
 		if(isset($_GET["id"]))
 		{
 			$school_id = $_GET["id"];
@@ -164,7 +164,7 @@ class Studypost extends PbController {
 		setvar("groups",$groups);
 		setvar("groups_count",count($groups));
 		setvar("school", $school);
-		setvar("school_list", $school_list);echo "debug";
+		setvar("school_list", $school_list);
 		render("studypost/school");
 	}
 	
