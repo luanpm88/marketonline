@@ -46,9 +46,13 @@ class Area extends PbController {
 		//get area
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
+			$area = $this->area->read("*",$area_id);
+			$area_name = "/".$area["name"];
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
+			$areatype = $this->areatype->read("*",$areatype_id);
+			$areatype_name = $areatype["name"];
 		}
 		
 		//get areas with level 2
@@ -78,6 +82,7 @@ class Area extends PbController {
 		//$jobs = $this->job->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
 		//setvar("jobs",$jobs);
 		
+		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
 		render("area/index", 1);
 	}
 	
