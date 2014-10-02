@@ -11260,7 +11260,7 @@ video {
 }
 .areas-container .works-list {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 0px;
     padding: 0;
 }
 .areas-container .works-list:first-child {
