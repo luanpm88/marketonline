@@ -214,8 +214,6 @@ class Schools extends PbModel {
 		$result = $memberdb->findAll("mf.last_name,mf.first_name,Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
 		$result = $this->formatStudentItems($result);
 		
-		//var_dump($result);
-		
 		return $result;
 	}
 	
