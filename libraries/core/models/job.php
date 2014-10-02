@@ -15,7 +15,7 @@ class Jobs extends PbModel {
 		return $results;
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {
+	function getByArea($params=array(), $offset=0, $row=3, $num=7) {
 		if($params["area_id"]) {
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
 		}
@@ -31,6 +31,7 @@ class Jobs extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Job.member_id";
 		
+		$count = $row*$num;
 		$result = $this->findAll("Job.*,Job.name as title,c.name AS companyname,c.picture AS company_picture,c.cache_spacename AS userid, m.membertype_id", $joins, $conditions, "Job.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		

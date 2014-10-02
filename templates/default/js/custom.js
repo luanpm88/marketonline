@@ -2412,4 +2412,6 @@
 		$('.album_detail_a_image').fancybox();
 		
 		
+		
+		
 	});

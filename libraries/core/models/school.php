@@ -162,7 +162,7 @@ class Schools extends PbModel {
 		return $ids;
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {		
+	function getByArea($params=array(), $offset=0, $row=3, $num=7) {		
 		if($params["area_id"]) {
 			//echo $params["area_id"];
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
@@ -176,6 +176,7 @@ class Schools extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = School.member_id";
 		
+		$count = $row*$num;
 		$result = $this->findAll("School.*", $joins, $conditions, "School.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		
@@ -194,7 +195,7 @@ class Schools extends PbModel {
 		return $result;
 	}
 	
-	function getStudentByArea($params=array(), $offset=0, $count=15) {
+	function getStudentByArea($params=array(), $offset=0, $row=3, $num=7) {
 		uses("member");
 		$memberdb = new Members();
 		
@@ -205,12 +206,14 @@ class Schools extends PbModel {
 			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
 		}		
 		
+		$conditions[] = "mf.school_id!=0";
 		$joins = array();		
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON Member.id = mf.member_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = mf.school_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=sc.area_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		
+		$count = $row*$num;
 		$result = $memberdb->findAll("mf.last_name,mf.first_name,Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
 		$result = $this->formatStudentItems($result);
 		

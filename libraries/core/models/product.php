@@ -677,7 +677,7 @@ class Products extends PbModel {
 		return $permissions;
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {		
+	function getByArea($params=array(), $offset=0, $row=3, $num=7) {		
 		if($params["area_id"]) {
 			//echo $params["area_id"];
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
@@ -704,6 +704,7 @@ class Products extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Product.brand_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id";
 		
+		$count = $row*$num;
 		$result = $this->findAll("a.name,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		

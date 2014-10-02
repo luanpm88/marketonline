@@ -11326,3 +11326,19 @@ video {
 }
 .tiled-menu li ul li {
 }
+.areas-container .album .item {
+    height: 240px;
+    width: 153px;
+}
+.areas-container .album .half {
+    height: 153px;
+    width: 153px;
+}
+.areas-container .album .filterable-grid .pic img {
+    height: 153px;
+    width: 153px;
+}
+.areas-container .album .filterable-grid .pic span img {
+    height: auto;
+    width: auto;
+}

@@ -238,7 +238,7 @@ class Studygroups extends PbModel {
 		return $members;
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {		
+	function getByArea($params=array(), $offset=0, $row=3, $num=7) {		
 		if($params["area_id"]) {
 			//echo $params["area_id"];
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
@@ -253,6 +253,7 @@ class Studygroups extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}subjects su ON su.id=Studygroup.subject_id";
 		
+		$count = $row*$num;
 		$result = $this->findAll("sc.name as school_name, su.name as subject_name,Studygroup.*", $joins, $conditions, "Studygroup.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		

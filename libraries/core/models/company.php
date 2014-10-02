@@ -704,7 +704,7 @@ class Companies extends PbModel {
 		}
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {
+	function getByArea($params=array(), $offset=0, $row=3, $num=7) {
 		if($params["area_id"]) {
 			//echo $params["area_id"];
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
@@ -729,6 +729,7 @@ class Companies extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Company.member_id";
 		
+		$count = $row*$num;
 		$result = $this->findAll("Company.*", $joins, $conditions, "m.points_weekly DESC, m.active_time DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		
