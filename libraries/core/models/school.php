@@ -179,10 +179,10 @@ class Schools extends PbModel {
 		$count = $row*$num;
 		$result = $this->findAll("School.*", $joins, $conditions, "School.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
-		
+		$count = $this->findCount($joins, $conditions, "School.id");
 		//var_dump($result);
 		
-		return $result;
+		return array("result"=>$result,"count"=>$count);
 	}
 	
 	function formatItems($result) {
@@ -216,8 +216,9 @@ class Schools extends PbModel {
 		$count = $row*$num;
 		$result = $memberdb->findAll("mf.last_name,mf.first_name,Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
 		$result = $this->formatStudentItems($result);
+		$count = $memberdb->findCount($joins, $conditions, "Member.id");
 		
-		return $result;
+		return array("result"=>$result,"count"=>$count);
 	}
 	
 	function formatStudentItems($result) {

@@ -1,6 +1,11 @@
+		<div class="areas-module-controls">
+		    <a href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham'}">Xem thêm</a>
+		</div>
+		
 		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Sản phẩm</a></h3>
 		
 		<!--{if $products}-->
+		{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
 		    <ul class="filterable-grid">					      
 			<!--{loop $products item level key}-->
 			    <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
@@ -23,6 +28,12 @@
 			    </li>
 			<!--{/loop}-->
 		    </ul>
+		{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
 		<!--{else}-->
                     <p class="no-content">Chưa có sản phẩm nào trong mục này.</p>
                 <!--{/if}-->
+		
+		{if $smarty.get.p}
+		    <div id="cccount" style="display: none">{$count}</div>
+		    <div id="pppage" style="display: none">{$smarty.get.p}</div>
+		{/if}

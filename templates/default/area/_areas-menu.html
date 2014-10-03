@@ -1,0 +1,13 @@
+    <ul class="areas_tree">	
+	<!--{loop $areatypes type level key}-->
+	    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}"><a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type`}">{$type.name}</a>
+		<!--{if $type.areas}-->
+		    <ul>					      
+			<!--{loop $type.areas item level key}-->
+			    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type`}">{$item.name}</a></li>
+			<!--{/loop}-->
+		    </ul>
+		<!--{/if}-->
+	    </li>
+	<!--{/loop}-->
+    </ul>

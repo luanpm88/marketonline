@@ -592,6 +592,10 @@ function smarty_function_the_url($params){
 						if($area_id) {
 							$return = URL."thi-truong".$tails."/".$area_id."/".stringToURI($title);;
 						}
+						
+					}
+					if($type) {
+							$return = $return."/".$type;
 					}
 				}else{
 					$return = URL."index.php?do=area";

@@ -572,7 +572,7 @@ class Trades extends PbModel {
 		return $permissions;
 	}
 	
-	function getByArea($params=array(), $offset=0, $count=15) {
+	function getByArea($params=array(), $offset=0, $row=3, $num=7) {
 		if($params["area_id"]) {
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
 		}
@@ -591,10 +591,12 @@ class Trades extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Trade.brand_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Trade.member_id";
 		
+		$count = $row*$num;
 		$result = $this->findAll("c.shop_name,Trade.*,content AS digest", $joins, $conditions, "Trade.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
-		
-		return $result;
+		$count = $this->findCount($joins, $conditions, "Trade.id");
+		//var_dump($count);
+		return array("result"=>$result,"count"=>$count);
 	}
 	
 }

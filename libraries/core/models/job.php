@@ -33,9 +33,10 @@ class Jobs extends PbModel {
 		
 		$count = $row*$num;
 		$result = $this->findAll("Job.*,Job.name as title,c.name AS companyname,c.picture AS company_picture,c.cache_spacename AS userid, m.membertype_id", $joins, $conditions, "Job.created DESC", $offset, $count);
+		$count = $this->findCount($joins, $conditions, "Job.id");
 		$result = $this->formatItems($result);
 		
-		return $result;
+		return array("result"=>$result,"count"=>$count);
 	}
 	
 	function formatItems($result) {

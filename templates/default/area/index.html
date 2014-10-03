@@ -6,36 +6,21 @@
 	display: none;
     }
 </style>
-<script type="application/x-javascript">
+<script type="application/x-javascript">   
     
-    function ajaxLoadModule(boxid, ajax_function, param_name, param_value) {
-	var type = '';
-	if (typeof(param_value)!='undefined') {
-	    type = '&'+param_name+'='+param_value;
-	}
-	var box = $('.'+boxid);
-	box.addClass("area-module-loading");
-	$.ajax({
-		url: "index.php?do=area&action="+ajax_function+"&area_id=<!--{/literal}-->{$smarty.get.area_id}<!--{literal}-->&areatype_id=<!--{/literal}-->{$smarty.get.areatype_id}<!--{literal}-->"+type,
-	}).done(function ( data ) {
-	    if( console && console.log ) {
-		if(data != '')
-		{
-		    box.html(data);
-		    box.show();
-		    box.removeClass("area-module-loading");
-		    box.removeClass("starting");
-		    //alert(box.find('.pic span').length);
-		    if (!box.find('.pic span').length) {
-			box.find('.pic img').resizecrop({
-			    width:143,
-			    height:143		   
-			});
-		    }
-		}
-	    }
-	});
-    }
+    {/literal}
+	{if $smarty.get.area_id}
+	    var AREA_ID = {$smarty.get.area_id};
+	{else}
+	    var AREA_ID = '';
+	{/if}
+	
+	{if $smarty.get.area_id}
+	    var AREATYPE_ID = {$smarty.get.areatype_id};
+	{else}
+	    var AREATYPE_ID = '';
+	{/if}
+    {literal}
     
     $(document).ready(function() {
 	ajaxLoadModule("trade_module", "ajaxTradeModule");
@@ -122,40 +107,35 @@
 
 
 <div class="row company-container areas-container">
-    <ul class="areas_tree">	
-	<!--{loop $areatypes type level key}-->
-	    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}"><a class="level1" href="{the_url module=areas areatype_id=`$type.id`}">{$type.name}</a>
-		<!--{if $type.areas}-->
-		    <ul>					      
-			<!--{loop $type.areas item level key}-->
-			    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name`}">{$item.name}</a></li>
-			<!--{/loop}-->
-		    </ul>
-		<!--{/if}-->
-	    </li>
-	<!--{/loop}-->
-    </ul>
     
-    <div>
+    <!--{include file="`$theme_name`/area/_areas-menu.html"}-->    
+    
+    
+    <div>	    
 	    <div class="works-list album area-module school_module starting">
 		
 	    </div>
-	
+	    
+	    
 	    <div class="works-list album area-module company_module starting">
 		
 	    </div>
-
+	    
+	    
 	    <div class="works-list album area-module product_module starting">
 		
 	    </div>
-	
+	    
+	    
 	    <div class="works-list album area-module service_module starting">
 		
 	    </div>	
-	
+	    
+	    
 	    <div class="works-list album area-module trade_module starting">
 		
 	    </div>    
+	    
 	    
 	    <div class="works-list album area-module job_module starting">
 		

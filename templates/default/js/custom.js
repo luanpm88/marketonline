@@ -1,3 +1,42 @@
+    function ajaxLoadModule(boxid, ajax_function, param_name, param_value, page) {
+	var type = '';
+	var pages = '';
+	if (typeof(param_value)!='undefined' && param_value!='') {
+	    type = '&'+param_name+'='+param_value;
+	}
+	if (typeof(page)!='undefined' && page!='') {
+	    pages = '&p='+page;
+	}
+	var box = $('.'+boxid);
+	box.addClass("area-module-loading");
+	$.ajax({
+		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+type+pages,
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+		if(data != '')
+		{
+		    box.html(data);
+		    box.show();
+		    box.removeClass("area-module-loading");
+		    box.removeClass("starting");
+		    //alert(box.find('.pic span').length);
+		    if (!box.find('.pic span').length) {
+			box.find('.pic img').resizecrop({
+			    width:143,
+			    height:143
+			});
+		    }
+		    
+		    //paging
+		    if($(data).filter('#cccount').html()) {
+			//alert($(data).filter('#cccount').html());
+			pagination($(data).filter('#cccount').html(), $(data).filter('#pppage').html())
+		    }
+		}
+	    }
+	});
+    }
+    
     function insertChatImage(image, box) {
 	$('#chat-frame #chat-box-'+box+' textarea').val("<div class='ajax-loader'>Đang tải ảnh...</div>");
 	postChatNew(box, image);

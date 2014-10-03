@@ -695,8 +695,7 @@ class Companies extends PbModel {
 			$content = file_get_contents("http://graph.facebook.com/?id=".$fid);
 			$content = json_decode($content, true);
 			$fid = $content["id"];
-		}
-		
+		}		
 		if($fid) {
 			return $fid;
 		} else {
@@ -706,7 +705,6 @@ class Companies extends PbModel {
 	
 	function getByArea($params=array(), $offset=0, $row=3, $num=7) {
 		if($params["area_id"]) {
-			//echo $params["area_id"];
 			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
 		}
 		if($params["areatype_id"]) {
@@ -731,9 +729,10 @@ class Companies extends PbModel {
 		
 		$count = $row*$num;
 		$result = $this->findAll("Company.*", $joins, $conditions, "m.points_weekly DESC, m.active_time DESC", $offset, $count);
+		$count = $this->findCount($joins, $conditions, "Company.id");
 		$result = $this->formatItems($result);
 		
-		return $result;
+		return array("result"=>$result,"count"=>$count);
 	}
 }
 ?>

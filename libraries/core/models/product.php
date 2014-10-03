@@ -706,9 +706,10 @@ class Products extends PbModel {
 		
 		$count = $row*$num;
 		$result = $this->findAll("a.name,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC", $offset, $count);
+		$count = $this->findCount($joins, $conditions, "Product.id");
 		$result = $this->formatItems($result);
 		
-		return $result;
+		return array("result"=>$result,"count"=>$count);
 	}
 }
 ?>
