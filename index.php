@@ -57,6 +57,7 @@ if (!empty($_GET['do'])) {
 }else{
 	require('libraries/core/models/industry.php');
 	require('libraries/core/models/product.php');
+	//require('libraries/core/models/announcement.php');
 	$industrybd = new Industries();
 	$product = new Products();
 	
@@ -190,6 +191,19 @@ if (!empty($_GET['do'])) {
 	setvar("count_fimages", count($imageface));
 	
 	setvar("tet2014", false);
+	
+	//announce
+	
+	
+	$dksd = $announcement->read("message",23);
+	setvar("dksd", $dksd["message"]);
+	
+	$qltv = $announcement->read("message",24);
+	setvar("qltv", $qltv["message"]);
+	
+	$baomat = $announcement->read("message",25);
+	setvar("baomat", $baomat["message"]);
+	
 	
 	render("index");
 }

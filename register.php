@@ -196,5 +196,17 @@ if(isset($_POST['register']) && $capt_check) {
 setvar("capt_check",$capt_check);
 setvar("sid",md5(uniqid($time_stamp)));
 setvar("agreement", $_PB_CACHE['setting']['agreement']);
+
+	//announce
+	
+	$dksd = $announcement->read("message",23);
+	setvar("dksd", $dksd["message"]);
+	
+	$qltv = $announcement->read("message",24);
+	setvar("qltv", $qltv["message"]);
+	
+	$baomat = $announcement->read("message",25);
+	setvar("baomat", $baomat["message"]);
+
 render($tpl_file);
 ?>

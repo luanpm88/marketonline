@@ -353,4 +353,7 @@ if($pb_userinfo) {
 
 setvar("pb_setting",$_PB_CACHE['setting']);
 
+	$gioithieu = $announcement->read("message",22);
+	setvar("gioithieu", $gioithieu["message"]);
+
 ?>
