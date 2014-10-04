@@ -123,7 +123,7 @@ class Studypost extends PbController {
 				$learner_list[$key]["friended"] = $this->studyfriend->check($user["id"], $mem["id"]);
 				$learner_list[$key]["friending"] = $friend_request = $this->studyfriend->getFriendRequest($user["id"], $mem["id"]);
 			}
-			//var_dump($learner_list);
+			var_dump($learner_list);
 			setvar("learner_list", $learner_list);
 			render("studypost/learner_list");
 		}
