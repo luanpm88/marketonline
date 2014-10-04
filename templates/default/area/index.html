@@ -92,11 +92,29 @@
 		<br style="clear:both" />
 		<div class="main-cat-content-out">
 			<span class="pointer_topmenuz">.</span>
-			<div class="main-cat-content"></div>
+			<div class="main-cat-content">
+			    <!--{include file="`$theme_name`/area/_main_menu.html"}-->
+			</div>
 		</div>
 	</div>
 	
-    <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=areas}">Thị trường</a></div>
+    <div class="breadcrumbs">
+	<a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span>
+	<a href="{the_url module=areas}">Thị trường</a>
+	
+	{if $areatype}
+	    <span class="delim">/</span>
+	    {if $area}
+		<a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
+	    {else}
+		{$areatype.name}
+	    {/if}
+	{/if}
+	{if $area}
+	    <span class="delim">/</span> {$area.name}
+	{/if}
+    
+    </div>
     
 	<h1 class="page-title">Thị trường {if $industry}- {$industry.name}{/if}</h1>
     

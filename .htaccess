@@ -35,6 +35,14 @@ RewriteRule ^thi-truong/mien-nam/([0-9]+)/([\-a-z]+)/([\-a-z]+)/?$ index.php?do=
 RewriteRule ^thi-truong/mien-trung/([0-9]+)/([\-a-z]+)/([\-a-z]+)/?$ index.php?do=area&&action=listing&areatype_id=2&area_id=$1&type=$3 [L]
 RewriteRule ^thi-truong/mien-bac/([0-9]+)/([\-a-z]+)/([\-a-z]+)/?$ index.php?do=area&&action=listing&areatype_id=3&area_id=$1&type=$3 [L]
 
+RewriteRule ^thi-truong/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&action=listing&type=$1&industry_id=$2 [L]
+RewriteRule ^thi-truong/mien-nam/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&action=listing&areatype_id=1&type=$1&industry_id=$2 [L]
+RewriteRule ^thi-truong/mien-trung/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&action=listing&areatype_id=2&type=$1&industry_id=$2 [L]
+RewriteRule ^thi-truong/mien-bac/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&action=listing&areatype_id=3&type=$1&industry_id=$2 [L]
+RewriteRule ^thi-truong/mien-nam/([0-9]+)/([\-a-z]+)/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&&action=listing&areatype_id=1&area_id=$1&type=$3&industry_id=$4 [L]
+RewriteRule ^thi-truong/mien-trung/([0-9]+)/([\-a-z]+)/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&&action=listing&areatype_id=2&area_id=$1&type=$3&industry_id=$4 [L]
+RewriteRule ^thi-truong/mien-bac/([0-9]+)/([\-a-z]+)/([\-a-z]+)/([0-9]+)/([\-a-z]+)/?$ index.php?do=area&&action=listing&areatype_id=3&area_id=$1&type=$3&industry_id=$4 [L]
+
 RewriteRule ^dang-san-pham?$ redirect.php?url=/virtual-office/product.php?do=edit [L]
 RewriteRule ^dang-dich-vu?$ redirect.php?url=/virtual-office/product.php?do=edit\%26type=service [L]
 RewriteRule ^lien-he/?$ contact.php [L]

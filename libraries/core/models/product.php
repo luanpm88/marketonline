@@ -689,6 +689,10 @@ class Products extends PbModel {
 			$conditions[] = "Product.service=1";
 		}
 		
+		if($params["industries"]) {
+			$conditions[] = "Product.industry_id IN (".implode(",",$params["industries"]).")";
+		}
+		
 		//Conditions for new product show
 		$conditions[] = "Product.state = 1";
 		$conditions[] = "Product.valid_status = 1";

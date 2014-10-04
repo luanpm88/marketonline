@@ -13,6 +13,7 @@ class Area extends PbController {
 		$this->loadModel("job");
 		$this->loadModel("school");
 		$this->loadModel("studygroup");
+		$this->loadModel("industry");
 	}
 	
 	function getNames()
@@ -56,6 +57,11 @@ class Area extends PbController {
 			$areatype_name = "/".$areatype["name"];
 			setvar("areatype",$areatype);
 		}
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industry = $this->industry->read("*",$industry_id);
+			setvar("industry",$industry);
+		}
 		
 		//get areas with level 2
 		foreach($areatypes as $key => $areatype) {
@@ -69,86 +75,86 @@ class Area extends PbController {
 		switch($type) {
 			case 'thuong-hieu':
 				$script = '
-						ajaxLoadModule("company_module", "ajaxCompanyModule","","",1);
+						ajaxLoadModule("company_module", "ajaxCompanyModule","membergroup_id",type,1,"'.$industry_id.'");
 						$(".company_module .subtab-area ul li a").live("click", function() {
-						   ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(this).attr("rel"),1);
+						   ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(this).attr("rel"),1,"'.$industry_id.'");
 						});
 						$(".company_module a.main_a").live("click", function() {
-						    ajaxLoadModule("company_module", "ajaxCompanyModule","","",1);
+						    ajaxLoadModule("company_module", "ajaxCompanyModule","","",1,"'.$industry_id.'");
 						});
 					';
 				$container = '<div class="works-list album area-module company_module starting"></div>';
-				$paging = 'ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"));';
+				$paging = 'ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Thương hiệu";
 				break;
 			case 'san-pham':
 				$script = '
-						ajaxLoadModule("product_module", "ajaxProductModule","","",1);
+						ajaxLoadModule("product_module", "ajaxProductModule","","",1,"'.$industry_id.'");
 						$(".product_module .subtab-area ul li a").live("click", function() {
-						   ajaxLoadModule("product_module", "ajaxProductModule","","",1);
+						   ajaxLoadModule("product_module", "ajaxProductModule","","",1,"'.$industry_id.'");
 						});
 						$(".product_module a.main_a").live("click", function() {
-						    ajaxLoadModule("product_module", "ajaxProductModule","","",1);
+						    ajaxLoadModule("product_module", "ajaxProductModule","","",1,"'.$industry_id.'");
 						});
 					';
 				$container = '<div class="works-list album area-module product_module starting"></div>';
-				$paging = 'ajaxLoadModule("product_module", "ajaxProductModule","","",$(this).attr("rel"));';
+				$paging = 'ajaxLoadModule("product_module", "ajaxProductModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Sản Phẩm";
 				break;
 			case 'dich-vu':
 				$script = '
-						ajaxLoadModule("service_module", "ajaxServiceModule","","",1);
+						ajaxLoadModule("service_module", "ajaxServiceModule","","",1,"'.$industry_id.'");
 						$(".service_module .subtab-area ul li a").live("click", function() {
-						   ajaxLoadModule("service_module", "ajaxServiceModule","","",1);
+						   ajaxLoadModule("service_module", "ajaxServiceModule","","",1,"'.$industry_id.'");
 						});
 						$(".service_module a.main_a").live("click", function() {
-						    ajaxLoadModule("service_module", "ajaxServiceModule","","",1);
+						    ajaxLoadModule("service_module", "ajaxServiceModule","","",1,"'.$industry_id.'");
 						});
 					';
 				$container = '<div class="works-list album area-module service_module starting"></div>';
-				$paging = 'ajaxLoadModule("service_module", "ajaxServiceModule","","",$(this).attr("rel"));';
+				$paging = 'ajaxLoadModule("service_module", "ajaxServiceModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Dịch vụ";
 				break;
 			case 'viec-lam':
 				$script = '
-						ajaxLoadModule("job_module", "ajaxJobModule","","",1);
+						ajaxLoadModule("job_module", "ajaxJobModule","","",1,"'.$industry_id.'");
 						$(".job_module .subtab-area ul li a").live("click", function() {
-						   ajaxLoadModule("job_module", "ajaxJobModule","","",1);
+						   ajaxLoadModule("job_module", "ajaxJobModule","","",1,"'.$industry_id.'");
 						});
 						$(".job_module a.main_a").live("click", function() {
-						    ajaxLoadModule("job_module", "ajaxJobModule","","",1);
+						    ajaxLoadModule("job_module", "ajaxJobModule","","",1,"'.$industry_id.'");
 						});
 					';
 				$container = '<div class="works-list album area-module job_module starting"></div>';
-				$paging = 'ajaxLoadModule("job_module", "ajaxJobModule","","",$(this).attr("rel"));';
+				$paging = 'ajaxLoadModule("job_module", "ajaxJobModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Việc làm";
 				break;
 			case 'thuong-mai':
 				$script = '
-						ajaxLoadModule("trade_module", "ajaxTradeModule","","",1);
+						ajaxLoadModule("trade_module", "ajaxTradeModule","type_id",type,1,"'.$industry_id.'");
 						$(".trade_module .subtab-area ul li a").live("click", function() {
-						   ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id",$(this).attr("rel"),1);
+						   ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id",$(this).attr("rel"),1,"'.$industry_id.'");
 						});
 						$(".trade_module a.main_a").live("click", function() {
-						    ajaxLoadModule("trade_module", "ajaxTradeModule","","",1);
+						    ajaxLoadModule("trade_module", "ajaxTradeModule","","",1,"'.$industry_id.'");
 						});
 					';
 				$container = '<div class="works-list album area-module trade_module starting"></div>';
-				$paging = 'ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"));';
+				$paging = 'ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Thương mại";
 				break;
 			case 'hoc-tap':
 				$script = '
-						ajaxLoadModule("school_module", "ajaxSchoolModule","","",1);
+						ajaxLoadModule("school_module", "ajaxSchoolModule","type",type,1,"'.$industry_id.'");
 						$(".school_module .subtab-area ul li a").live("click", function() {
-						   ajaxLoadModule("school_module", "ajaxSchoolModule", "type",$(this).attr("rel"),1);
+						   ajaxLoadModule("school_module", "ajaxSchoolModule", "type",$(this).attr("rel"),1,"'.$industry_id.'");
 						});
 						$(".school_module a.main_a").live("click", function() {
-						    ajaxLoadModule("school_module", "ajaxSchoolModule","","",1);
+						    ajaxLoadModule("school_module", "ajaxSchoolModule","","",1,"'.$industry_id.'");
 						});
 					';
 				$container = '<div class="works-list album area-module school_module starting"></div>';
-				$paging = 'ajaxLoadModule("school_module", "ajaxSchoolModule", "type",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"));';
+				$paging = 'ajaxLoadModule("school_module", "ajaxSchoolModule", "type",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Học tập";
 				break;
 			default:
@@ -158,6 +164,19 @@ class Area extends PbController {
 		setvar("container",$container);
 		setvar("paging",$paging);
 		setvar("PageTypeName",$PageTypeName);
+		setvar("type",$type);
+		
+		//
+		if($industry_id) {
+			$industry_tree = $this->findIndustryTree($industry_id);
+			//var_dump($industry_tree);
+			setvar("industry_tree",$industry_tree);
+		}
+		
+		
+		$industries = $this->industry->getCacheIndustry();
+		setvar("industries",$industries);
+		
 		
 		if($PageTypeName) $ttypename = $PageTypeName." - ";
 		setvar("PageTitle",$ttypename."Thị trường ".$area_name.$areatype_name.", Việt Nam - MarketOnline.vn");
@@ -231,13 +250,17 @@ class Area extends PbController {
 		if(isset($_GET["type_id"])){
 			$type_id = $_GET["type_id"];
 		}
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industries = $this->getAreas($industry_id);
+		}
 		
 		//paging
 		if(isset($_GET["p"])){
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
-		$trades = $this->trade->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
+		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		setvar("trades",$trades["result"]);
 		setvar("count",$trades["count"]);
 		
@@ -263,6 +286,10 @@ class Area extends PbController {
 		if(isset($_GET["membergroup_id"])){
 			$membergroup_id = $_GET["membergroup_id"];
 		}
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industries = $this->getAreas($industry_id);
+		}
 		
 		//paging
 		if(isset($_GET["p"])){
@@ -270,7 +297,7 @@ class Area extends PbController {
 		}
 		
 		//get companies by areas
-		$companies = $this->company->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		$companies = $this->company->getByArea(array("industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
 		setvar("companies",$companies["result"]);
 		setvar("count",$companies["count"]);
 		
@@ -296,6 +323,10 @@ class Area extends PbController {
 		if(isset($_GET["membergroup_id"])){
 			$membergroup_id = $_GET["membergroup_id"];
 		}
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industries = $this->getAreas($industry_id);
+		}
 		
 		//paging
 		if(isset($_GET["p"])){
@@ -303,7 +334,7 @@ class Area extends PbController {
 		}
 		
 		//get products by areas
-		$products = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
+		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
 		
 		if($products["count"] > $row*$num*70) {
@@ -332,6 +363,10 @@ class Area extends PbController {
 		}
 		if(isset($_GET["membergroup_id"])){
 			$membergroup_id = $_GET["membergroup_id"];
+		}		
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industries = $this->getAreas($industry_id);
 		}
 		
 		//paging
@@ -340,7 +375,7 @@ class Area extends PbController {
 		}
 		
 		//get services by areas
-		$services = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
+		$services = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
 		setvar("services",$services["result"]);
 		if($services["count"] > $row*$num*70) {
 			$services["count"] = $row*$num*70;
@@ -421,6 +456,138 @@ class Area extends PbController {
 		setvar("count",$jobs["count"]);
 		
 		render("area/ajaxJobModule", 1);
+	}
+	
+	function getAreas($industry_id) {
+		$area_a = array();
+		$_GET['industryid'] = $industry_id;
+		if (isset($_GET['industryid']) && $_GET['industryid'] != 0) {
+			//Get industry level 1
+			$industries = $this->industry->getCacheIndustry();
+			
+			$area_a[] = $_GET['industryid'];
+			
+			if (isset($_GET['type']) && $_GET['type'] == 'service' && !isset($_GET['service_page'])) {
+				$citem = $this->industry->read("*", $_GET['industryid'], null, array('id'=>$_GET['industryid']));
+				//var_dump($citem);
+				//echo $citem["top_parentid"];
+				if($citem["top_parentid"])
+				{
+					$area_a[] = $citem["top_parentid"];
+					$_GET['industryid'] = $citem["top_parentid"];
+				}
+			}	
+			
+			foreach($industries as $key0 => $level0)
+			{
+				if($level0["id"] == $_GET['industryid'])
+				{
+					foreach($level0['sub'] as $key1 => $level1)
+					{
+						$area_a[] = $level1["id"];
+						foreach($level1['sub'] as $key2 => $level2)
+						{
+							$area_a[] = $level2["id"];
+							foreach($level2['sub'] as $key3 => $level3)
+							{
+								$area_a[] = $level3["id"];
+								foreach($level3['sub'] as $key4 => $level4)
+								{												
+									$area_a[] = $level4["id"];												
+								}
+							}
+						}
+					}
+					break;
+				}
+				else
+				{
+					foreach($level0['sub'] as $key1 => $level1)
+					{
+						if($level1["id"] == $_GET['industryid'])
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								$area_a[] = $level2["id"];
+								foreach($level2['sub'] as $key3 => $level3)
+								{
+									$area_a[] = $level3["id"];
+									foreach($level3['sub'] as $key4 => $level4)
+									{												
+										$area_a[] = $level4["id"];												
+									}
+								}
+							}
+							break;
+						}
+						else
+						{
+							foreach($level1['sub'] as $key2 => $level2)
+							{
+								if($level2["id"] == $_GET['industryid'])
+								{
+									$area_a[] = $level2["id"];
+									//echo count($level2['sub']);
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										//echo $level3["id"];
+										$area_a[] = $level3["id"];
+										foreach($level3['sub'] as $key4 => $level4)
+										{												
+											$area_a[] = $level4["id"];												
+										}
+									}
+									//var_dump($area_a);
+									break;
+								}
+								else
+								{
+									foreach($level2['sub'] as $key3 => $level3)
+									{
+										
+										if($level3["id"] == $_GET['industryid'])
+										{
+											$area_a[] = $level3["id"];
+											foreach($level3['sub'] as $key4 => $level4)
+											{												
+												$area_a[] = $level4["id"];												
+											}
+											break;
+										}
+										else
+										{
+											foreach($level3['sub'] as $key4 => $level4)
+											{
+												
+												if($level4["id"] == $_GET['industryid'])
+												{
+													$area_a[] = $level4["id"];
+													break;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return $area_a;
+	}
+	function findIndustryTree($industry_id) {
+		$industries = array();
+		$industry = $this->industry->read("id,name,parent_id",$industry_id);
+		$industry["last"] = 1;
+		$industries[] = $industry;
+		
+		while($industry["parent_id"]) {
+			$industry = $this->industry->read("id,name,parent_id",$industry["parent_id"]);
+			array_unshift($industries,$industry);
+		}
+		
+		return $industries;
 	}
 }
 ?>

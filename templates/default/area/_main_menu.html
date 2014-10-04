@@ -1,0 +1,101 @@
+{if $smarty.get.type=='viec-lam' || $smarty.get.type=='hoc-tap'}
+    <div class="menu_industry_list menu_areas">
+        <ul class="toptoptop">
+            <li class="level0">
+                <a class="level0" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='hoc-tap'}">
+                    Trường học
+                    <i></i>
+                </a>
+                <ul style="display: none">					
+                    <li class="level1">
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='hoc-tap'}#subject">
+                            Môn học
+                        </a>
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='hoc-tap'}#student">
+                            Học viên
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0">
+                <a class="level0" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}">
+                    Thương hiệu
+                    <i></i>
+                </a>
+                <ul style="display: none">					
+                    <li class="level1">
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}#3">
+                            Công ty
+                        </a>
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}#2">
+                            Cá nhân
+                        </a>
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}#1">
+                            Cửa hàng
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0">
+                <a class="level0" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham'}">
+                    Sản phẩm
+                </a>	    
+            </li>
+            <li class="level0">
+                <a class="level0" href="">
+                    Dịch vụ
+                </a>	    
+            </li>
+            <li class="level0">
+                <a class="level0" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai'}">
+                    Thương mại
+                    <i></i>
+                </a>
+                <ul style="display: none">					
+                    <li class="level1">
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai'}#14">
+                            Nhu cầu mua
+                        </a>
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai'}#9">
+                            Nhu cầu bán
+                        </a>
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai'}#10">
+                            Nhà phân phối
+                        </a>
+                        <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai'}#16">
+                            Tìm đối tác
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0">
+                <a class="level0" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='viec-lam'}">
+                    Việc làm
+                </a>	    
+            </li>
+        </ul>
+    </div>
+{else}
+    <div class="menu_industry_list">
+            <ul class="toptoptop">
+                    <!--{loop $industries item0 level_0 key0}-->
+                            <li class="level0 {if $level_0%4 == 0}clear{/if}">
+                                    <a class="level0" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type=`$type` industry_id=`$item0.id` industry_name=`$item0.name`}">{$item0.name}
+                                        {if $type!="thuong-hieu"}<i></i>{/if}
+                                    </a>
+                                    
+                                    {if $type!="thuong-hieu"}
+                                        <ul style="display: none">
+                                            <!--{loop $item0.sub level1 level_1_industry key_level1}-->
+                                                    <li class="level1">
+                                                            <a class="level1" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type=`$type` industry_id=`$level1.id` industry_name=`$level1.name`}">{$level1.name}</a>
+                                                    </li>
+                                            <!--{/loop}-->
+                                        </ul>
+                                    {/if}
+                            </li>
+                            {if $level_0++}{/if}
+                    <!--{/loop}-->
+            </ul>
+    </div>
+{/if}

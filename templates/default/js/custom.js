@@ -1,16 +1,20 @@
-    function ajaxLoadModule(boxid, ajax_function, param_name, param_value, page) {
+    function ajaxLoadModule(boxid, ajax_function, param_name, param_value, page, industry_id) {
 	var type = '';
 	var pages = '';
+	var industry_s = '';
 	if (typeof(param_value)!='undefined' && param_value!='') {
 	    type = '&'+param_name+'='+param_value;
 	}
 	if (typeof(page)!='undefined' && page!='') {
 	    pages = '&p='+page;
 	}
+	if (typeof(industry_id)!='undefined' && industry_id!='') {
+	    industry_s = '&industry_id='+industry_id;
+	}
 	var box = $('.'+boxid);
 	box.addClass("area-module-loading");
 	$.ajax({
-		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+type+pages,
+		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+type+pages+industry_s,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		if(data != '')

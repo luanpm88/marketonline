@@ -713,6 +713,14 @@ class Companies extends PbModel {
 		if($params["membergroup_id"]) {
 			$conditions[] = "m.membergroup_id=".$params["membergroup_id"];
 		}
+		if($params["industry_id"]) {
+			$$industryid = $params["industry_id"];
+			$conditions[] = "((Company.industries LIKE '".$industryid."')"
+							." OR (Company.industries LIKE '%,".$industryid."')"
+							." OR (Company.industries LIKE '".$industryid.",%')"
+							." OR (Company.industries LIKE '%,".$industryid.",%'))";
+		}
+		
 		
 		//Conditions for effective company
 		$other_con = " > 8";

@@ -162,11 +162,13 @@
     function loadMainCategoryMenu()
     {
         $.ajax({
-	    url: "index.php?do=product&action=ajaxMainCategoryMenu&service={/literal}{if $smarty.get.do=='company'}company&membergroup_id={$smarty.get.membergroup_id}{else}{$item.service}{$smarty.get.action}{/if}{literal}",
+	    url: "index.php?do=product&action=ajaxMainCategoryMenu{/literal}{if $smarty.get.do=='area'}&pos=area&areatype={$smarty.get.action}&type={$smarty.get.type}{/if}&service={if $smarty.get.do=='company'}company&membergroup_id={$smarty.get.membergroup_id}{else}{$item.service}{$smarty.get.action}{/if}{literal}",
 	}).done(function ( data ) {
 	    if( console && console.log ) {
-                $('.super-main-category .main-cat-content').html(data);
-                $('.menu_industry_list ul li.level0 ul').height($('.toptoptop').height());
+                if (data.trim()!='') {
+                    $('.super-main-category .main-cat-content').html(data);
+                    $('.menu_industry_list ul li.level0 ul').height($('.toptoptop').height());
+                }
             }
         });
     }
@@ -177,13 +179,16 @@
 	    url: "index.php?do=product&action=getTopCartAjaxNew",
 	}).done(function ( data ) {
 	    if( console && console.log ) {
-                $('#show_top_cart').html(data);
-                $('#topcart-but').trigger("click");
-                //cart product image
-                $('#cart img').resizecrop({
-		   width:200,
-		   height:200
-		});
+                //if (data.trim()!='') {
+                    $('#show_top_cart').html(data);
+                    $('#topcart-but').trigger("click");
+                    //cart product image
+                    $('#cart img').resizecrop({
+                       width:200,
+                       height:200
+                    });
+                //}
+                
             }
         });
     }

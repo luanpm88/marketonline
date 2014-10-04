@@ -65,6 +65,14 @@
     var num_per_page = 21;
     var page = 1;
     $(document).ready(function() {
+	
+	
+	var type = window.location.hash.substring(1);
+	if (type!='') {
+	    //alert("ss");
+	    $('.areas-container .subtab-area ul li a[rel='+type+']').trigger('click');
+	}
+	
 	{/literal}{$script}{literal}
     });
 </script>
@@ -97,7 +105,9 @@
 		<br style="clear:both" />
 		<div class="main-cat-content-out">
 			<span class="pointer_topmenuz">.</span>
-			<div class="main-cat-content"></div>
+			<div class="main-cat-content">
+			    <!--{include file="`$theme_name`/area/_main_menu.html"}-->
+			</div>
 		</div>
 	</div>
 	
@@ -109,10 +119,25 @@
 	    <span class="delim">/</span> <a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
 	{/if}
 	{if $area}
-	    <span class="delim">/</span> <a href="{the_url module=areas areatype_id=`$type.id` area_id=`$area.id` title=`$area.name` type=`$smarty.get.type`}">{$area.name}</a>
+	    <span class="delim">/</span> <a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name`}">{$area.name}</a>
 	{/if}
 	{if $PageTypeName}
-	    <span class="delim">/</span> {$PageTypeName}
+	    <span class="delim">/</span>
+	    {if $industry_tree}
+		<a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name` type=`$type`}">{$PageTypeName}</a>
+	    {else}
+		{$PageTypeName}
+	    {/if}
+	{/if}
+	{if $industry_tree}
+	    <!--{loop $industry_tree item level key}-->
+		<span class="delim">/</span>
+		{if $item.last}
+		    {$item.name}
+		{else}
+		    <a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name` type=`$type` industry_id=`$item.id` industry_name=`$item.name`}">{$item.name}</a>
+		{/if}
+	    <!--{/loop}-->
 	{/if}
     </div>
     
@@ -124,7 +149,7 @@
 </div>
 
 
-<div class="row company-container areas-container">
+<div class="row company-container areas-container areas-listing">
     
     <!--{include file="`$theme_name`/area/_areas-menu.html"}--> 
     <div>

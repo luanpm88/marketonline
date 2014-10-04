@@ -595,7 +595,10 @@ function smarty_function_the_url($params){
 						
 					}
 					if($type) {
-							$return = $return."/".$type;
+						$return = $return."/".$type;
+						if($industry_id) {
+							$return = $return."/".$industry_id."/".stringToURI($industry_name);
+						}
 					}
 				}else{
 					$return = URL."index.php?do=area";

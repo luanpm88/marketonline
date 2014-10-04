@@ -9371,7 +9371,7 @@ table tbody tr td {
 .menu_industry_list ul li.level0:hover a i {
     background: url("../image/left-pointer-red.png") repeat scroll 0 4px rgba(0, 0, 0, 0);
 }
-.menu_industry_list ul li.level0:hover a.level0, .menu_industry_list ul li.level1:hover a.level1 {
+.menu_industry_list ul li.level0:hover a.level0, .menu_industry_list ul li.level1 a.level1:hover {
     background: #fff;
     font-weight: bold;
     color: red;
@@ -11308,7 +11308,7 @@ video {
     font-size: 28px;
 }
 .area-module.area-module-loading {
-    background: url("../image/ajax-loading.gif") no-repeat scroll 940px 10px / 24px auto transparent;
+    background: url("../image/ajax-loading.gif") no-repeat scroll 940px 7px / 24px auto transparent;
     opacity: 0.5;
 }
 .areas_tree ul li.level2 {
@@ -11393,18 +11393,22 @@ p.no-content {
 .areas-module-controls {
     clear: both;
     display: block;
-    position: relative;
+    float: right;
+    margin-left: 840px;
+    padding-right: 20px;
+    position: absolute;
+    width: 30%;
     z-index: 100;
 }
 .areas-module-controls a {
     background: none repeat scroll 0 0 #3b984c;
     color: #fff;
     display: block;
-    padding: 5px 10px;
-    position: absolute;
-    right: 0;
+    float: right;
+    margin-left: 10px;
     margin-top: 5px;
-    margin-right: 20px;
+    padding: 5px 10px;
+    right: 0;
 }
 .areas-module-controls a:hover {
     opacity: 0.6;
@@ -11416,4 +11420,16 @@ p.no-content {
 }
 .areas-container .works-list .filterable-grid {
     clear: both;
+}
+.menu_areas ul li.level0 a {
+    width: 145px;
+}
+.menu_areas ul li.level0 ul {
+    left: 124px;
+}
+.areas-listing .module-more-but {
+    display: none;
+}
+#top-social {
+    width: auto;
 }
