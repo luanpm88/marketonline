@@ -48,7 +48,7 @@ class Employee extends PbController {
 		}
 		
 		$amount = $this->employee->findCount(null, $conditions,"id");
-		echo $amount;
+		//echo $amount;
 		setvar("paging", array('total'=>$amount));
 		setvar("count", $amount);
 		
