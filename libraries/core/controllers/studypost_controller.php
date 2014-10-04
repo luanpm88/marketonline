@@ -99,7 +99,7 @@ class Studypost extends PbController {
 		elseif($type == "learner")
 		{
 			$conditions = array();
-			
+			echo "ddd";
 			$keyword = '';
 			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
 			{
