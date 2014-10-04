@@ -5,7 +5,7 @@
    <div id="base_page_footer">
   <div class="footer_content">
    <p>{lang have_problem_send_email}{mailto text="`$service_email`" address="`$service_email`" encode="javascript"}</p> 
-   <p>{lang customer_hotline}{$service_tel} - {lang phone}: {$sale_tel}</p>
+   <p>{lang customer_hotline}{$pb_setting.owner_hotline} - {lang phone}: {$pb_setting.owner_phone}</p>
    <!-- {if $company_name} --><p>Copyright &copy; {$_G.site_name}</p><!-- {/if} -->
 </div>
 </div>

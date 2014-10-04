@@ -351,4 +351,6 @@ if($pb_userinfo) {
     $member->updateActiveTime($pb_userinfo["pb_userid"]);
 }
 
+setvar("pb_setting",$_PB_CACHE['setting']);
+
 ?>
