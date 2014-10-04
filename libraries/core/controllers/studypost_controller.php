@@ -27,7 +27,7 @@ class Studypost extends PbController {
 
 	function index()
 	{
-		echo "ddd";
+		
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
