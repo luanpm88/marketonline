@@ -27,7 +27,7 @@ class Studypost extends PbController {
 
 	function index()
 	{
-		
+		echo "ddd";
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
@@ -99,7 +99,7 @@ class Studypost extends PbController {
 		elseif($type == "learner")
 		{
 			$conditions = array();
-			echo "ddd";
+			
 			$keyword = '';
 			if(isset($_GET["keyword"]) && $_GET["keyword"] != "")
 			{
