@@ -11310,7 +11310,7 @@ video {
     font-size: 28px;
 }
 .area-module.area-module-loading {
-    background: url("../image/ajax-loading.gif") no-repeat scroll 910px 7px / 24px auto transparent;
+    background: url("../image/ajax-loading.gif") no-repeat scroll 900px 7px / 24px auto transparent;
     opacity: 0.5;
 }
 .areas_tree ul li.level2 {
