@@ -54,17 +54,18 @@
   <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
     <thead>
 		<tr>
-		  <th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
-		  <th></th>
-		  <th><label for="idAll">{lang the_title}</label></th>
-		  <th>{lang types}</th>
-		  <th>{lang cp_username}</th>
-		  <th>{lang checked_status}</th>
-		  <th>Thị trường</th>
-		  <th>Phê duyệt</th>
-		  <th>{lang pub_date}</th>
-		  <th>{lang expire_date}</th>
-		  <th>{lang action}</th>
+			<th class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
+			<th></th>
+			<th><label for="idAll">{lang the_title}</label></th>
+			<th>{lang types}</th>
+			<th>{lang cp_username}</th>
+			<th>{lang checked_status}</th>
+			<th>Thị trường</th>
+			<th>Phê duyệt</th>
+			<th>{lang pub_date}</th>
+			<th>{lang expire_date}</th>
+			<th>{lang action}</th>
+			
 		</tr>
     <thead>
     <tfoot>
@@ -85,7 +86,7 @@
 		  <td><a href="offer.php?do=search&type_id={$item.type_id}" style="text-decoration: none;">{$TradeTypes[$item.type_id]}</a></td>
 		  <td><a href="member.php?do=edit&id={$item.member_id}">{$item.username}</a></td>
 		  <td>{$CheckStatus[$item.status]}
-		  </td>
+		  </td>		  
 		  <td>
 			{if $item.area_show}
 				<a href="offer.php?id={$item.id}&do=area_show&value=0" title="Tắt">
@@ -118,17 +119,17 @@
 	</table>
 	<div id="dataFuncs" title="{lang action_zone}">
     <div class="left paddingT15" id="batchAction">
-      <input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
-      <input type="submit" name="commend" value="{lang commend}" class="formbtn batchButton"/>
-      <input type="submit" name="urgent_batch" value="{lang set_urgent}" class="formbtn batchButton"/>
-      <input type="submit" name="cancel_urgent_batch" value="{lang cancle} {lang urgent}" class="formbtn batchButton"/>
-      <input type="submit" name="refresh" value="{lang trade_refresh}" class="formbtn batchButton"/>
-      <input type="submit" name="export" value="{lang data_export}" class="formbtn batchButton"/>
-	  <select name="status_batch" id="StatusBatch" onchange="$('#ListFrm').submit();">
-      	<option value="-1">{lang set_status}</option>
-        <option value="0">{lang check_invalid}</option>
-        <option value="1">{lang check_passed}</option>
-      </select>
+		<input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
+		<input type="submit" name="commend" value="{lang commend}" class="formbtn batchButton"/>
+		<input type="submit" name="urgent_batch" value="{lang set_urgent}" class="formbtn batchButton"/>
+		<input type="submit" name="cancel_urgent_batch" value="{lang cancle} {lang urgent}" class="formbtn batchButton"/>
+		<input type="submit" name="refresh" value="{lang trade_refresh}" class="formbtn batchButton"/>
+		<input type="submit" name="export" value="{lang data_export}" class="formbtn batchButton"/>
+		<select name="status_batch" id="StatusBatch" onchange="$('#ListFrm').submit();">
+			<option value="-1">{lang set_status}</option>
+			<option value="0">{lang check_invalid}</option>
+			<option value="1">{lang check_passed}</option>
+		</select>
 		</div>
 		<div class="clear"/>
     </div>
