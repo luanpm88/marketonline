@@ -699,7 +699,7 @@ class Products extends PbModel {
 		$conditions[] = 'Product.area_show=1';
 		$other_con = " > 8";
 		$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
-		$conditions[] = "(c.id IN (".
+		$conditions[] = "(c.new_product_show=1 AND c.id IN (".
 			"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 AND pp.state=1 AND pp.valid_status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
 		
 		$joins = array();

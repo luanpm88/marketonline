@@ -269,6 +269,8 @@ if (isset($_GET['do'])) {
 		$product->saveField("area_show", intval($_GET["value"]), intval($id));
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	
+	
 }
 $amount = $product->findCount($joins, $conditions,"Product.id");
 unset($joins);
