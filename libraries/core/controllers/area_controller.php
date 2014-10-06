@@ -173,10 +173,8 @@ class Area extends PbController {
 			setvar("industry_tree",$industry_tree);
 		}
 		
-		
 		$industries = $this->industry->getCacheIndustry();
 		setvar("industries",$industries);
-		
 		
 		if($PageTypeName) $ttypename = $PageTypeName." - ";
 		setvar("PageTitle",$ttypename."Thị trường ".$area_name.$areatype_name.", Việt Nam - MarketOnline.vn");
