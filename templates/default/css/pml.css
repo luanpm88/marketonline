@@ -11437,5 +11437,9 @@ p.no-content {
 #vietbando_map {
     width: 500px;
     height: 500px;
+}
+.vietbando_outer {
+    width: 500px;
+    height: 500px;
     clear: both;
 }
