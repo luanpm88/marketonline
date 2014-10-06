@@ -11236,10 +11236,12 @@ video {
 .areas_tree ul li.level2.active a.level2 {
     background: #3b984c;
     color: #fff;
+    text-align: center;
 }
 .areas_tree ul li a.level2:hover {
     color: #fff;
     background: #3b984c;
+    text-align: center;
 }
 .areas-container {
     padding: 10px;
