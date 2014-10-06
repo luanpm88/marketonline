@@ -11443,3 +11443,6 @@ p.no-content {
     height: 500px;
     clear: both;
 }
+.dragmap div:first-child {
+    position: inherit;
+}
