@@ -2,11 +2,10 @@
     {
 	if (VBrowserIsCompatible())
 	{
-	   var map = new VMap(document.getElementById('vietbando_map'));
-	   var pt = new VLatLng(10.8152328, 106.680505);
-	   map.setCenter(pt, 4);
-	   var marker = new VMarker(pt, new VIcon());
-	   map.addOverlay(marker);
+	    var map = new VMap(document.getElementById('container'));
+	    var pt = new VLatLng(10.8152328, 106.680505);
+	    map.setCenter(pt, 4);
+	    map.openInfoWindow(map.getCenter(), 'Hello, Vietbando');
 	}
     }
     
