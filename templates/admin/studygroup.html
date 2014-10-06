@@ -38,11 +38,11 @@
 		  <td>{$item.school_name}</td>
 		  <td style="text-align: center">
 			{if $item.area_show}
-				<a href="studygroup.php?id={$item.id}&do=show&value=0" title="Tắt">
+				<a href="studygroup.php?id={$item.id}&do=area_show&value=0" title="Tắt">
 					<img src="../templates/office/images/published.png">
 				</a>
 			{else}
-				<a href="studygroup.php?id={$item.id}&do=show&value=1" title="Bật">
+				<a href="studygroup.php?id={$item.id}&do=area_show&value=1" title="Bật">
 					<img src="../templates/office/images/unpublished.png">
 				</a>
 			{/if}

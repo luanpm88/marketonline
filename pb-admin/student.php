@@ -22,7 +22,7 @@ if (isset($_GET['do'])) {
 	if (!empty($_GET['id'])) {
 		$id = intval($_GET['id']);
 	}
-	if ($do=="show" && $id) {
+	if ($do=="area_show" && $id) {
 		$member->saveField("area_show", intval($_GET["value"]), intval($id));
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
