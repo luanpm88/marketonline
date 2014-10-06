@@ -169,7 +169,9 @@ class Schools extends PbModel {
 		}
 		if($params["areatype_id"]) {
 			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
-		}		
+		}
+		
+		$conditions[] = 'School.area_show=1';
 		
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=School.area_id";
@@ -207,6 +209,7 @@ class Schools extends PbModel {
 		}		
 		
 		$conditions[] = "mf.school_id!=0";
+		$conditions[] = 'Member.area_show=1';
 		$joins = array();		
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON Member.id = mf.member_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = mf.school_id";

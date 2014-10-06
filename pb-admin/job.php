@@ -39,6 +39,10 @@ if (isset($_GET['do'])) {
 		template($tpl_file);
 		exit;
 	}
+	if ($do=="area_show" && $id) {
+		$job->saveField("area_show", intval($_GET["value"]), intval($id));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 if (isset($_POST['pb_action'])) {
 	if (!empty($_POST['id'])) {
@@ -54,7 +58,7 @@ if(isset($_POST['del'])){
 		$job->del($_POST['id']);
 	}
 }
-$fields = "Job.id,Job.name as jobname,Job.created,Job.status as jobstatus, c.name as companyname,m.username";
+$fields = "Job.area_show,Job.id,Job.name as jobname,Job.created,Job.status as jobstatus, c.name as companyname,m.username";
 $sql = "SELECT count(id) AS Amount FROM {$tb_prefix}jobs";
 $amount = $pdb->GetOne($sql);
 $joins = "LEFT JOIN {$tb_prefix}companies c ON Job.company_id=c.id LEFT JOIN {$tb_prefix}members m ON Job.member_id=m.id";

@@ -245,7 +245,9 @@ class Studygroups extends PbModel {
 		}
 		if($params["areatype_id"]) {
 			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
-		}		
+		}
+		
+		$conditions[] = 'Studygroup.area_show=1';
 		
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON sc.id=Studygroup.school_id";

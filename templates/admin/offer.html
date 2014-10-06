@@ -60,6 +60,7 @@
 		  <th>{lang types}</th>
 		  <th>{lang cp_username}</th>
 		  <th>{lang checked_status}</th>
+		  <th>Thị trường</th>
 		  <th>Phê duyệt</th>
 		  <th>{lang pub_date}</th>
 		  <th>{lang expire_date}</th>
@@ -84,6 +85,17 @@
 		  <td><a href="offer.php?do=search&type_id={$item.type_id}" style="text-decoration: none;">{$TradeTypes[$item.type_id]}</a></td>
 		  <td><a href="member.php?do=edit&id={$item.member_id}">{$item.username}</a></td>
 		  <td>{$CheckStatus[$item.status]}
+		  </td>
+		  <td>
+			{if $item.area_show}
+				<a href="offer.php?id={$item.id}&do=area_show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="offer.php?id={$item.id}&do=area_show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
 		  </td>
 		  <td style="width: 200px;">{$item.validation}</td>
 		  <td class="pb_datetime">{$item.pubdate}<br><span style="color:gray;" title="{lang last_modified}"><small>{$item.moddate}</small></span></td>

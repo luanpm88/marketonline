@@ -31,6 +31,7 @@
 		  <th><label for="idAll">{lang the_title}</label></th>
 		  <th>{lang company_name}</th>
 		  <th>{lang if_valid_n}</th>
+		  <th>Thị trường</th>
 		  <th>{lang pub_date}</td>
 		  <th>{lang action}</th>
 		</tr>
@@ -42,6 +43,17 @@
 		  <td><label for="item_{$item.id}">{$item.jobname}</label>{if $item.pubdate>=$today_timestamp}&nbsp;<img src="{$admin_theme_path}images/new.gif" />{/if}</td>
 		  <td>{$item.companyname}</td>
 		  <td>{$CheckStatus[$item.jobstatus]}</td>
+		  <td>
+			{if $item.area_show}
+				<a href="job.php?id={$item.id}&do=area_show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="job.php?id={$item.id}&do=area_show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  </td>
 		  <td class="pb_datetime">{$item.pubdate}</td>
 		  <td class="handler">
            <ul id="handler_icon">

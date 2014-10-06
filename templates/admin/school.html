@@ -1,0 +1,68 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition">
+	<p>{lang your_current_position} {lang setting_global} &raquo; Trường học</p>
+</div>
+<div id="rightTop"> 
+    <h3>Trường học</h3> 
+    <ul class="subnav">
+		<li><a class="btn1" href="school.php"><span>{lang management}</span></a></li>
+    </ul>
+</div>
+<div class="mrightTop"> 
+    <div class="fontr"> 
+        <form name="search_frm" id="SearchFrm" method="get">
+        <input type="hidden" name="do" value="search" />
+             <div> 
+				{lang title_keywords} : <input class="queryInput" type="text" name="q" value="{$smarty.get.q}" /> 
+                <input type="submit" name="search" id="Search" class="formbtn" value="{lang searching}" /> 
+            </div> 
+        </form> 
+    </div> 
+    <div class="fontr"></div> 
+</div> 
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="announce.php" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
+    <thead>
+		<tr>		  
+		  <th><label for="idAll">{lang the_title}</label></th>
+		  <th>Quản lý</th>
+		  <th style="text-align: center">Thị trường</th>
+		  <th>{lang action}</th>
+		</tr>
+    </thead>
+    <tbody>
+		<!--{foreach from=$Items item=item}-->
+		<tr class="tatr2">
+		  <td>{$item.name}</td>
+		  <td>{$item.username}</td>
+		  <td style="text-align: center">
+			{if $item.area_show}
+				<a href="school.php?id={$item.id}&do=show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="school.php?id={$item.id}&do=show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  </td>
+		  <td></td>
+		</tr>
+		<!--{foreachelse}-->
+		<tr class="no_data info">
+		  <td colspan="3">{lang no_datas}</td>
+		</tr>
+		<!--{/foreach}-->
+    </tbody>
+	</table>
+	<div id="dataFuncs" title="{lang action_zone}">
+    <div class="left paddingT15" id="batchAction">
+      <input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
+    </div>
+    <div class="pageLinks">{$ByPages}</div>
+    <div class="clear"/>
+    </div>
+	</form>
+</div>
+<!-- {include file="footer.html"} -->

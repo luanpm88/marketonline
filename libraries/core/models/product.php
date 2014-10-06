@@ -696,6 +696,7 @@ class Products extends PbModel {
 		//Conditions for new product show
 		$conditions[] = "Product.state = 1";
 		$conditions[] = "Product.valid_status = 1";
+		$conditions[] = 'Product.area_show=1';
 		$other_con = " > 8";
 		$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
 		$conditions[] = "(c.id IN (".

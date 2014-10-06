@@ -25,6 +25,9 @@ class Jobs extends PbModel {
 		if($params["service"]) {
 			$conditions[] = "Product.service=1";
 		}
+		
+		$conditions[] = "Job.area_show=1";
+		
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Job.company_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";

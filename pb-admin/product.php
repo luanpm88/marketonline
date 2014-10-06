@@ -260,13 +260,18 @@ if (isset($_GET['do'])) {
 		$product->saveField("`show`", intval($_GET["value"]), intval($id));
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	
+	if ($do=="area_show" && $id) {
+		$product->saveField("area_show", intval($_GET["value"]), intval($id));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 $amount = $product->findCount($joins, $conditions,"Product.id");
 unset($joins);
 $joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Product.company_id";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Product.member_id";
 $page->setPagenav($amount);
-$fields = "Product.service, Product.show, m.username,Product.valid_status,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
+$fields = "Product.area_show, Product.service, Product.show, m.username,Product.valid_status,Product.id,Product.company_id AS CompanyID,c.cache_spacename,c.shop_name,c.id AS CID,c.name AS companyname,Product.name AS ProductName,Product.status AS ProductStatus,Product.created,Product.ifcommend as Ifcommend, Product.state as ProductState,Product.picture as ProductPicture ";
 $result = $product->findAll($fields, $joins, $conditions,$validation_order."Product.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){

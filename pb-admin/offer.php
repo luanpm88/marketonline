@@ -223,6 +223,11 @@ if(isset($_GET['do'])){
 		$sms['membertype_ids'] = '[1][2][3]';
 		$message->SendToUser(1, $iiffoo["member_id"], $sms);
 	}
+	
+	if ($do=="area_show" && $id) {
+		$trade->saveField("area_show", intval($_GET["value"]), intval($id));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 if (isset($_POST['urgent_batch'])) {
 	$ids = implode(",",$_POST['id']);
@@ -372,7 +377,7 @@ if(isset($_POST['save'])){
 }
 $amount = $trade->findCount(null, $conditions,"Trade.id");
 $page->setPagenav($amount);
-$fields = "Trade.valid_status,Trade.member_id,m.username,Trade.company_id,Trade.adwords,Trade.highlight,Trade.type_id,Trade.status,Trade.id,Trade.title,Trade.clicked,Trade.if_urgent,Trade.submit_time AS pubdate,Trade.submit_time,Trade.modified,Trade.expire_time AS expdate,Trade.expire_time,Trade.picture as TradePicture,require_point,require_membertype,ip_addr as IP,Trade.if_commend";
+$fields = "Trade.area_show,Trade.valid_status,Trade.member_id,m.username,Trade.company_id,Trade.adwords,Trade.highlight,Trade.type_id,Trade.status,Trade.id,Trade.title,Trade.clicked,Trade.if_urgent,Trade.submit_time AS pubdate,Trade.submit_time,Trade.modified,Trade.expire_time AS expdate,Trade.expire_time,Trade.picture as TradePicture,require_point,require_membertype,ip_addr as IP,Trade.if_commend";
 $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Trade.member_id";
 $result = $trade->findAll($fields,$joins, $conditions,$validation_order."Trade.id DESC",$page->firstcount,$page->displaypg);
 if (!empty($result)) {

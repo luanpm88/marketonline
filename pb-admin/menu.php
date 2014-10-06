@@ -113,8 +113,20 @@ $menus = array(
                 'url'   => 'market.php',
             ),
             'job' => array(
-                'text'  => L("job", "tpl"),
+                'text'  => "Việc làm/".L("job", "tpl"),
                 'url'   => 'job.php',
+            ),
+            'school' => array(
+                'text'  => "Trường học",
+                'url'   => 'school.php',
+            ),
+            'student' => array(
+                'text'  => "Học viên",
+                'url'   => 'student.php',
+            ),
+            'studygroup' => array(
+                'text'  => "Môn học",
+                'url'   => 'studygroup.php',
             ),
             'fair' => array(
                 'text'  => L("fair", "tpl"),

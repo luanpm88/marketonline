@@ -51,6 +51,7 @@
 		  <th>{lang cp_username}</th>
 		  <th>{lang trust_star}</th>
 		  <th>{lang checked_status}</th>
+		  <th style="text-align: center">Thị trường</th>
 		  <!--<th>{lang in_area}</th>
 		  <th>{lang in_industry}</th>-->
 			<th width="11%" style="text-align: center">Điểm (Người)</th>
@@ -76,6 +77,17 @@
 		  <td><a href="member.php?do=edit&id={$item.member_id}" title="{$item.NickName}">{$item.username}</a>[{$AllMembergroups[$item.membergroup_id]}]</td>
 		  <td>{$item.cache_credits}</td>
 		  <td>{$CheckStatus[$item.CompanyStatus]}</td>
+		  <td style="text-align: center">
+			{if $item.area_show}
+				<a href="company.php?id={$item.id}&do=area_show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="company.php?id={$item.id}&do=area_show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  </td>
 		  <!--<td>{$Areas[1][$item.area_id1]}{$Areas[2][$item.area_id2]}</td>
 		  <td>{$Industries[1][$item.industry_id1]}{$Industries[2][$item.industry_id2]}</td>-->
 			

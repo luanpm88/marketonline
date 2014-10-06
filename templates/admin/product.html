@@ -52,6 +52,7 @@
 		  <th>Hiển thị</th>
 		  <th>Trang ngoài</th>
 		  <th>{lang status}</th>
+		  <th>Thị trường</th>
 		  <th>Phê duyệt</th>
 		  <th>{lang pub_date}</th>
 		  <th>{lang action}</th>
@@ -95,6 +96,17 @@
 		  
 		  </td>
 		  <td>{$CheckStatus[$item.ProductStatus]}</td>
+		  <td>
+			{if $item.area_show}
+				<a href="product.php?id={$item.id}&do=area_show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="product.php?id={$item.id}&do=area_show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  </td>
 		  <td>{$item.validation}</td>
 		  <td class="pb_datetime">{$item.pubdate}</td>
 		  <td class="handler">
