@@ -709,7 +709,7 @@ class Products extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id";
 		
 		$count = $row*$num;
-		$result = $this->findAll("a.name,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.clickeds DESC, Product.created DESC", $offset, $count);
+		$result = $this->findAll("a.name,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.clicked DESC, Product.created DESC", $offset, $count);
 		$count = $this->findCount($joins, $conditions, "Product.id");
 		$result = $this->formatItems($result);
 		

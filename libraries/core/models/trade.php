@@ -419,7 +419,6 @@ class Trades extends PbModel {
 			." LEFT JOIN {$this->table_prefix}industries i ON i.id = p.industry_id"
 			." WHERE p.id=".$product_id;
 		$Trade = $this->dbstuff->GetRow($sql);
-		//var_dump($result);
 		
 		if($Trade)
 		{
@@ -595,7 +594,7 @@ class Trades extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Trade.member_id";
 		
 		$count = $row*$num;
-		$result = $this->findAll("c.shop_name,Trade.*,content AS digest", $joins, $conditions, "Trade.clickeds DESC, Trade.created DESC", $offset, $count);
+		$result = $this->findAll("c.shop_name,Trade.*,content AS digest", $joins, $conditions, "Trade.clicked DESC, Trade.created DESC", $offset, $count);
 		$result = $this->formatItems($result);
 		$count = $this->findCount($joins, $conditions, "Trade.id");
 		//var_dump($count);
