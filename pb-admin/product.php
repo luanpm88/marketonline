@@ -202,6 +202,10 @@ if (isset($_GET['do'])) {
 			$conditions[]="valid_status!=1";
 			$validation_order = "CASE WHEN valid_status = 3 THEN 1 WHEN valid_status = 0 THEN 2 ELSE 3 END ASC, ";
 		}
+		
+		if(!empty($_GET['item_id'])) {
+			$conditions[]= "Product.id=".intval($_GET['item_id']);
+		}
 	}
 	if ($do == 'refresh') {
 		$product->saveField("created", $time_stamp, $id);

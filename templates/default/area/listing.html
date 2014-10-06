@@ -10,7 +10,8 @@
     
     function pagination(total, p) {
 	    page = p;
-
+	    var num_per_page = row*num_per_row;
+	    
 	    var pages = Math.ceil(total/num_per_page);
 	    
 	    $('.pagination-list').html("");
@@ -62,7 +63,8 @@
 	{/if}
     {literal}
     
-    var num_per_page = 21;
+    var row = 25;
+    var num_per_row = 7;
     var page = 1;
     $(document).ready(function() {
 	

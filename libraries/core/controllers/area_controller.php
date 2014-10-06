@@ -234,6 +234,13 @@ class Area extends PbController {
 		$row = 3;
 		$num = 7;
 		
+		if(isset($_GET["row"])) {
+			$row = intval($_GET["row"]);
+		}
+		if(isset($_GET["num_per_row"])) {
+			$num = intval($_GET["num_per_row"]);
+		}
+		
 		//GETs
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -269,6 +276,13 @@ class Area extends PbController {
 		$offset = 0;
 		$row = 3;
 		$num = 7;
+		
+		if(isset($_GET["row"])) {
+			$row = intval($_GET["row"]);
+		}
+		if(isset($_GET["num_per_row"])) {
+			$num = intval($_GET["num_per_row"]);
+		}
 		
 		//GETs
 		if(isset($_GET["area_id"])){
@@ -306,6 +320,13 @@ class Area extends PbController {
 		$offset = 0;
 		$row = 3;
 		$num = 7;
+		
+		if(isset($_GET["row"])) {
+			$row = intval($_GET["row"]);
+		}
+		if(isset($_GET["num_per_row"])) {
+			$num = intval($_GET["num_per_row"]);
+		}
 		
 		//GETs
 		if(isset($_GET["area_id"])){
@@ -348,6 +369,13 @@ class Area extends PbController {
 		$row = 3;
 		$num = 7;
 		
+		if(isset($_GET["row"])) {
+			$row = intval($_GET["row"]);
+		}
+		if(isset($_GET["num_per_row"])) {
+			$num = intval($_GET["num_per_row"]);
+		}
+		
 		//GETs
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -388,6 +416,13 @@ class Area extends PbController {
 		$row = 3;
 		$num = 7;
 		
+		if(isset($_GET["row"])) {
+			$row = intval($_GET["row"]);
+		}
+		if(isset($_GET["num_per_row"])) {
+			$num = intval($_GET["num_per_row"]);
+		}
+		
 		//GETs
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -426,6 +461,13 @@ class Area extends PbController {
 		$offset = 0;
 		$row = 3;
 		$num = 7;
+		
+		if(isset($_GET["row"])) {
+			$row = intval($_GET["row"]);
+		}
+		if(isset($_GET["num_per_row"])) {
+			$num = intval($_GET["num_per_row"]);
+		}
 		
 		//GETs
 		if(isset($_GET["area_id"])){

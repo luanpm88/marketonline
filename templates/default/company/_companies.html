@@ -1,4 +1,4 @@
-        <a target="_blank" class="list_nottt" href="{the_url module=root-url}/virtual-office">
+        <a target="_blank" class="list_nottt" href="{the_url module=root-url}virtual-office">
 		Tiêu chuẩn thương hiệu
 	</a>
 
@@ -17,26 +17,25 @@
 	    <div class="works-list">
 		<h3 style="margin-bottom: 20px;"><a href="#">{$item0.name}</a></h3>
 		
-		
-		
-		  <ul style="height: 230px;" class="filterable-grid">
-		      
-		      <!--{loop $item0.adses item level key}-->
-			  <li data-type="dentity motion sites web-design " data-id="id-1" class="item">
-			      <div class="half odd">
-				  <div class="pic"><img title="{$item.name}" alt="{$item.name}" style="margin:0 0;" src="{$item.logo}"></div>
-				  
-				  <a target="_blank" title="{$item.name}" href="{$item.href}"></a>
-			      </div>
-				<div class="description-bottom">
-				      <div class="title">				      
-					  <h4><a target="_blank" title="{$item.name}" href="{$item.href}">{$item.name}</a></h4>
-				      </div>
-				</div>
-			  </li>
-		      <!--{/loop}-->
 			
-		  </ul>
+			<ul style="height: 230px;" class="filterable-grid">
+			    
+				<!--{loop $item0.adses item level key}-->
+					<li data-type="dentity motion sites web-design " data-id="id-1" class="item">
+						<div class="half odd">
+						    <div class="pic"><img title="{$item.name}" alt="{$item.name}" style="margin:0 0;" src="{$item.logo}"></div>
+						    
+						    <a target="_blank" title="{$item.name}" href="{$item.href}"></a>
+						</div>
+						<div class="description-bottom">
+						      <div class="title">				      
+							  <h4><a target="_blank" title="{$item.name}" href="{$item.href}">{$item.name}</a></h4>
+						      </div>
+						</div>
+					</li>
+				<!--{/loop}-->
+			      
+			</ul>
 	    </div>
 	{/if}
     <!--{/loop}-->

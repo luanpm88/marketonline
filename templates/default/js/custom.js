@@ -2,6 +2,8 @@
 	var type = '';
 	var pages = '';
 	var industry_s = '';
+	var row_s = '';
+	var num_per_row_s = '';
 	if (typeof(param_value)!='undefined' && param_value!='') {
 	    type = '&'+param_name+'='+param_value;
 	}
@@ -11,10 +13,16 @@
 	if (typeof(industry_id)!='undefined' && industry_id!='') {
 	    industry_s = '&industry_id='+industry_id;
 	}
+	if (typeof(row)!='undefined' && row!='') {
+	    row_s = '&row='+row;
+	}
+	if (typeof(num_per_row)!='undefined' && num_per_row!='') {
+	    num_per_row_s = '&num_per_row='+num_per_row;
+	}
 	var box = $('.'+boxid);
 	box.addClass("area-module-loading");
 	$.ajax({
-		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+type+pages+industry_s,
+		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+type+pages+industry_s+row_s+num_per_row_s,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		if(data != '')
