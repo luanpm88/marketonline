@@ -1,3 +1,15 @@
+    function loadMap()
+    {
+	if (VBrowserIsCompatible())
+	{
+	   var map = new VMap(document.getElementById('vietbando_map'));
+	   var pt = new VLatLng(10.8152328, 106.680505);
+	   map.setCenter(pt, 4);
+	   var marker = new VMarker(pt, new VIcon());
+	   map.addOverlay(marker);
+	}
+    }
+    
     function ajaxLoadModule(boxid, ajax_function, param_name, param_value, page, industry_id) {
 	var type = '';
 	var pages = '';
