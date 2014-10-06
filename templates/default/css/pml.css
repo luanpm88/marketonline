@@ -11442,7 +11442,8 @@ p.no-content {
     width: 500px;
     height: 500px;
     clear: both;
+    margin: auto;
 }
 .dragmap div:first-child {
-    position: inherit;
+    position: relative !important;
 }
