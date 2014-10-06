@@ -11434,3 +11434,8 @@ p.no-content {
 #top-social {
     width: auto;
 }
+#vietbando_map {
+    width: 500px;
+    height: 500px;
+    clear: both;
+}
