@@ -41,7 +41,7 @@
 	    lng = 107.5341796875;
 	}
 	if (typeof(zoom)=='undefined') {
-	    zoom = 4;
+	    zoom = 5;
 	}
 	if (VBrowserIsCompatible())
 	{

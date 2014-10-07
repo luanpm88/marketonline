@@ -196,6 +196,10 @@ $menus = array(
                 'text'  => "Moderators",
                 'url'   => 'moderator.php',
             ),
+            'chat' => array(
+                'text'  => "Chats",
+                'url'   => 'chat.php',
+            )
         ),
     ),
     'advertising' => array(

@@ -11444,6 +11444,6 @@ p.no-content {
     height: 500px;
     width: 100%;
 }
-#right_detail_banner img {
+#right_detail_banner img, #job-sidebar img {
     max-width: 100%;
 }
