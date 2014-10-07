@@ -11191,10 +11191,11 @@ video {
     background: url("../image/TT_bg.png") repeat scroll -7px -10px / 54px auto #6597cf;
 }
 .areas_tree {
-    width: 100px;
-    position: relative;
     float: left;
     margin-bottom: 40px;
+    position: absolute;
+    width: 100px;
+    z-index: 100;
 }
 .areas_tree li.level1 {
     display: block;
@@ -11435,12 +11436,14 @@ p.no-content {
     width: auto;
 }
 #vietbando_map {
-    width: 500px;
+    width: 1180px;
     height: 500px;
 }
 .vietbando_outer {
-    width: 500px;
+    background: none repeat scroll 0 0 #aaa;
     height: 500px;
-    clear: both;
-    margin: auto;
+    width: 100%;
+}
+#right_detail_banner img {
+    max-width: 100%;
 }
