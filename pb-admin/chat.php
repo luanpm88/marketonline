@@ -13,7 +13,7 @@ require(CACHE_COMMON_PATH."cache_type.php");
 uses("chat");
 $chat = new Chats();
 $page = new Pages();
-$page->displaypg = 300;
+$page->displaypg = 120;
 
 $tpl_file = 'chat';
 
