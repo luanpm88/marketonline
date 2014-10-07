@@ -56,8 +56,8 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = "/".$areatype["name"];
 			
-			$areas_by_areatype = $this->area->findAll("map_lat,map_lng",null,array("areatype_id=".$areatype_id));
-			var_dump($areas_by_areatype);
+			//$areas_by_areatype = $this->area->findAll("map_lat,map_lng",null,array("level=2"));
+			//var_dump($areas_by_areatype);
 			
 			setvar("areatype",$areatype);
 		}
@@ -177,8 +177,7 @@ class Area extends PbController {
 			setvar("industry_tree",$industry_tree);
 		}
 		
-		$areas_by_areatype = $this->area->findAll("*",null,array("areatype_id=".$areatype_id));
-		setvar("areas_by_areatype",$areas_by_areatype);
+		
 		
 		if($PageTypeName) $ttypename = $PageTypeName." - ";
 		setvar("PageTitle",$ttypename."Thị trường ".$area_name.$areatype_name.", Việt Nam - MarketOnline.vn");
@@ -200,7 +199,7 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = $areatype["name"];
 			
-			$areas_by_areatype = $this->area->findAll("*",null,array("areatype_id=".$areatype_id));
+			$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
 			setvar("areas_by_areatype",$areas_by_areatype);
 			
 			setvar("areatype",$areatype);

@@ -1,10 +1,9 @@
-    function addAreaMarker(lat,lng,html) {
+    function addAreaMarker(lat,lng,html,url) {	
 	var point = new VLatLng(lat,lng);
 	var marker = new VMarker(point);
 	map.addOverlay(marker);
 	VEvent.addListener(marker, 'click', function(obj, latlng) {
-            //obj.openInfoWindow('Bạn vừa click lên marker');
-	    alert("dd");
+	    window.location=url;
         });
 	VEvent.addListener(marker, 'mouseover', function(obj) {
 	    obj.openInfoWindow(html);
