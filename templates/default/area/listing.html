@@ -75,20 +75,8 @@
 	    $('.areas-container .subtab-area ul li a[rel='+type+']').trigger('click');
 	}
 	
-	{/literal}{$script}{literal}
+	{/literal}{$script}{literal}	
 	
-	//load Map
-	{/literal}
-	    {if $area.map_lat}
-		{if $area.map_zoom}
-		    loadMap({$area.map_lat},{$area.map_lng},{$area.map_zoom});
-		{else}
-		    loadMap({$area.map_lat},{$area.map_lng},11);
-		{/if}
-	    {else}
-		loadMap();
-	    {/if}
-	{literal}
     });
 </script>
 <!--{/literal}-->

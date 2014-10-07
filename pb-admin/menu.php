@@ -196,10 +196,10 @@ $menus = array(
                 'text'  => "Moderators",
                 'url'   => 'moderator.php',
             ),
-            //'chat' => array(
-            //    'text'  => "Chats",
-            //    'url'   => 'chat.php',
-            //)
+            'chat' => array(
+                'text'  => "Chats",
+                'url'   => 'chat.php',
+            )
         ),
     ),
     'advertising' => array(
@@ -231,7 +231,7 @@ $menus = array(
     ),
     'transaction' => array(
         'text'      => L("transaction", "tpl"),
-        'subtext'	=> L("transaction", "tpl"),
+        'subtext'   => L("transaction", "tpl"),
         'default'   => 'goods',
         'children'  => array(
             'goods' => array(
@@ -256,19 +256,19 @@ $menus = array(
         'text'      => L("templet", "tpl"),
         'default'   => 'language',
         'children'  => array(
-			 'language' => array(
+	    'language' => array(
                 'text'  => L("templet_language", "tpl"),
                 'url'   => 'language.php',
             ),
-			 'skin' => array(
+	    'skin' => array(
                 'text'  => L("company_templet", "tpl"),
                 'url'   => 'templet.php?type=user',
             ),
-			 'system' => array(
+	    'system' => array(
                 'text'  => L("system_templet", "tpl"),
                 'url'   => 'templet.php?type=system',
             ),
-			 'nav' => array(
+	    'nav' => array(
                 'text'  => L("nav", "tpl"),
                 'url'   => 'nav.php',
             ),
@@ -282,7 +282,7 @@ $menus = array(
                 'text'  => L("cache", "tpl"),
                 'url'   => 'htmlcache.php',
             ),
-			'log' => array(
+	    'log' => array(
                 'text'  => L("log_browse", "tpl"),
                 'url'   => 'log.php',
             ),
@@ -290,19 +290,19 @@ $menus = array(
                 'text'  => L("database", "tpl"),
                 'url'   => 'db.php',
             ),
-			'passport' => array(
+	    'passport' => array(
                 'text'  => L("passport", "tpl"),
                 'url'   => 'passport.php',
             ),
-			'checkfile' => array(
-			     'text'  =>L("check_file", "tpl"),
-				 'url'   =>'checkfile.php',
-		    ),
-           'payment' => array(
+	    'checkfile' => array(
+		'text'  =>L("check_file", "tpl"),
+		'url'   =>'checkfile.php',
+	    ),
+            'payment' => array(
                 'text'  => L("payment_method", "tpl"),
                 'url'   => 'payment.php',
             ),
-			'note' => array(
+	    'note' => array(
                 'text'  => L("my_notes", "tpl"),
                 'url'   => 'adminnote.php',
             ),

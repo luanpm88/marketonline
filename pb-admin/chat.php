@@ -22,7 +22,8 @@ $joins = array();
 
 if (isset($_POST)) {
 	if (isset($_POST['del'])) {
-		$chat->del($_POST['id']);
+		//$chat->del($_POST['id']);
+		var_dump($_POST['id']);
 	}
 }
 

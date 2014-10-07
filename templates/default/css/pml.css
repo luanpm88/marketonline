@@ -11447,3 +11447,6 @@ p.no-content {
 #right_detail_banner img, #job-sidebar img {
     max-width: 100%;
 }
+.vietbando_outer img {
+    max-width: none;
+}

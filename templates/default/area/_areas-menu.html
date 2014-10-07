@@ -12,7 +12,40 @@
 	<!--{/loop}-->
     </ul>
 
-    <!--<div class="vietbando_outer" {if $smarty.get.area_id || $smarty.get.areatype_id}style="margin-top: 113px"{/if}>
+   <!-- <div class="vietbando_outer" {if $smarty.get.area_id || $smarty.get.areatype_id}style="margin-top: 113px"{/if}>
 	<div id="vietbando_map"></div>
     </div>
     <br style="clear: both;" />-->
+    
+    
+<!--{literal}-->
+<script type="application/x-javascript">    
+    $(document).ready(function() {	
+	//load Map
+	{/literal}
+	    {if $area.map_lat}
+		{if $area.map_zoom}
+		    loadMap({$area.map_lat},{$area.map_lng},{$area.map_zoom});
+		{else}
+		    loadMap({$area.map_lat},{$area.map_lng},11);
+		{/if}
+	    {elseif $areatype.map_lat}
+		{if $areatype.map_zoom}
+		    loadMap({$areatype.map_lat},{$areatype.map_lng},{$areatype.map_zoom});
+		{else}
+		    loadMap({$areatype.map_lat},{$areatype.map_lng},6);
+		{/if}
+                
+                {loop $areas_by_areatype aaa levela keya}
+                    {if $aaa.map_lat}
+                        addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}')
+                    {/if}
+                {/loop}
+                
+	    {else}
+		loadMap();
+	    {/if}
+	{literal}
+    });
+</script>
+<!--{/literal}-->

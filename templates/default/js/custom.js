@@ -9,7 +9,7 @@
 	VEvent.addListener(marker, 'mouseover', function(obj) {
 	    obj.openInfoWindow(html);
 	});
-	VEvent.addListener(marker21, 'mouseout', function(obj) {
+	VEvent.addListener(marker, 'mouseout', function(obj) {
 	    obj.closeInfoWindow();
 	});
     }
