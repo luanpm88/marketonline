@@ -3557,5 +3557,57 @@ a.unvalid_edit {
 }
 .video-overlay:hover .vv-oo {
     background-image: url("../../default/image/play-icon-red.png");
+}
+.map_input {
     
+}
+.map_input .map_link {
+    
+}
+#map-input .overlay {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.1);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    text-indent: -9000px;
+    top: 0;
+    width: 100%;
+}
+#map-input .content {
+    background: none repeat scroll 0 0 #333;
+    display: block;
+    height: 90%;
+    left: 5%;
+    position: fixed;
+    top: 5%;
+    width: 90%;
+    z-index: 100;
+}
+#map-input .content .map {
+    width: 100%;
+    height: 100%;
+}
+#map-input .controls {
+    bottom: 10px;
+    position: absolute;
+    right: 0;
+    z-index: 200;
+}
+#map-input .controls a {
+    background: none repeat scroll 0 0 #fff;
+    border: 2px solid #3b984c;
+    margin-right: 5px;
+    padding: 5px 10px;
+}
+#map-input .controls a.close {
+}
+#map-input .controls a.save {
+}
+#map-input .controls a:hover {
+    text-decoration: none;
+    background: #3b984c;
+    color: #fff;
+}
+.hide_map .overlay, .hide_map .content {
+    top: -9000px !important;
 }

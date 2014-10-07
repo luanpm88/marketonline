@@ -629,5 +629,13 @@ class Area extends PbController {
 		
 		return $industries;
 	}
+	function ajaxUpdateAreaLatLng() {
+		$area = $this->area->read("map_lat,map_lng,map_zoom",$_GET["id"]);
+		if($area["map_lat"] && $area["map_lng"]) {
+			echo json_encode($area);
+		} else {
+			echo "none";
+		}
+	}
 }
 ?>

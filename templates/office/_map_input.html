@@ -1,0 +1,131 @@
+<input type="hidden" name="data[company][map_lat]" value="{$item.map_lat}" />
+<input type="hidden" name="data[company][map_lng]" value="{$item.map_lng}" />
+<div class="map_input" style="display: none">
+    <a class="map_link" href="#map-input">Xác định vị trí trên bản đồ</a>
+    <div id="map-input" class="hide_map">
+        <div class="overlay">.</div>
+        <div class="content">
+            <div id="map" class="map">
+                
+            </div>
+            <div class="controls">
+                <a class="save" href="#save">Lưu vị trí</a>
+                <a class="close" href="#close">Đóng</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--{literal}-->
+<script>
+    function updateLatLng(lat,lng) {
+        c_lat = lat;
+        c_lng = lng;
+    }
+    
+    function addMarker(lat,lng) {
+        var latlng = new VLatLng(lat, lng);
+        if (marker != null)
+            map.removeOverlay(marker);
+        marker = new VMarker(latlng);
+        marker.enableDragging();
+        map.addOverlay(marker);
+        updateLatLng(lat,lng);
+    }
+    
+    function ajaxUpdateAreaLatLng(area_id) {
+        //alert(area_id);
+        $.ajax({
+			url: "../index.php?do=area&action=ajaxUpdateAreaLatLng&id="+area_id,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+                            if(data!='none') {
+                                var area = JSON.parse(data);
+                                s_lat = area.map_lat;
+                                s_lng = area.map_lng;
+                                
+                                addMarker(s_lat,s_lng);
+                            }
+                        }
+        });
+    }
+    function loadMap(lat,lng,zoom)
+    {
+	if (typeof(lat)=='undefined' || lat==0 || lat=='') {
+	    lat = 16.0458134537522;
+	}
+	if (typeof(lng)=='undefined' || lng==0 || lng=='') {
+	    lng = 107.5341796875;
+	}
+	if (typeof(zoom)=='undefined' || zoom==0 || zoom=='') {
+	    zoom = 4;
+	}
+	if (VBrowserIsCompatible())
+	{            
+	    map = new VMap(document.getElementById('map'));
+	    var pt = new VLatLng(lat, lng);
+	    map.setCenter(pt, zoom);
+                        
+            VEvent.addListener(map, 'click', function(overlay, pt) {
+                if (pt == null) return;
+                addMarker(pt.latitude,pt.longitude);
+                
+                VEvent.addListener(marker, 'click', function(o, p) {
+                    updateLatLng(p.latitude,p.longitude);
+                });
+                
+            });
+	}
+    }
+
+    var map;
+    var c_lat=0;
+    var c_lng=0;    
+    var c_zoom=0;
+    var s_lat=0;
+    var s_lng=0;
+    var s_zoom=12;
+    var marker=null;
+    $(document).ready(function() {
+        
+        {/literal}
+            {if $item.map_lat && $item.map_lng}
+                s_lat={$item.map_lat};
+                s_lng={$item.map_lng};
+            {/if}
+        {literal}
+        
+        loadMap(c_lat,c_lng);
+        
+        setTimeout("if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) ajaxUpdateAreaLatLng($('#dataCompanyAreaId2').val())",2000);
+            
+        
+        $('#map-input .controls a.close').click(function() {
+            $('#map-input').addClass('hide_map');
+        });
+        $('#map-input .controls a.save').click(function() {
+            if(c_lat && c_lng) {
+                $('input[name="data[company][map_lat]"]').val(c_lat);
+                $('input[name="data[company][map_lng]"]').val(c_lng);
+                
+                s_lat = c_lat;
+                s_lng = c_lng;
+            }
+            
+            $('#map-input .controls a.close').trigger('click');
+        });
+        $('.map_input .map_link').click(function() {
+            if(s_lat!='' && s_lng!='') {
+                map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
+                addMarker(s_lat,s_lng);
+            }
+            
+            $('#map-input').removeClass('hide_map');
+        });
+        
+        $('#dataCompanyAreaId2').live("change",function() {
+            ajaxUpdateAreaLatLng($(this).val());
+        });
+    });
+</script>
+<!--{/literal}-->

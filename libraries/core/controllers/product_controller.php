@@ -6118,5 +6118,6 @@ class Product extends PbController {
 		var_dump($out);
 		var_dump($err);
 	}
+	
 }
 ?>
