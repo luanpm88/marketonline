@@ -41,7 +41,7 @@ if (isset($_GET['do'])) {
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
 	if ($do == "search") {
-		if (isset($_GET['q'])) $conditions[]= "(LOWER(LTRIM(RTRIM(sender.username)))='".strtolower(trim($_GET['q']))."' OR LOWER(LTRIM(RTRIM(receiver.username)))='".strtolower(trim($_GET['q']))."')";		
+		if (isset($_GET['q'])) $conditions[]= "(LOWER(LTRIM(RTRIM(Chat.cache_from_username)))='".strtolower(trim($_GET['q']))."' OR LOWER(LTRIM(RTRIM(Chat.cache_to_username)))='".strtolower(trim($_GET['q']))."')";		
 	}
 }
 
