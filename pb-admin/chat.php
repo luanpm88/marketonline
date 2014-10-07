@@ -50,7 +50,6 @@ $joins[] = "LEFT JOIN {$member->table_prefix}memberfields psender ON psender.mem
 $joins[] = "LEFT JOIN {$member->table_prefix}members receiver ON receiver.id = Chat.to_member_id";
 $joins[] = "LEFT JOIN {$member->table_prefix}memberfields preceiver ON preceiver.member_id = Chat.to_member_id";
 
-
 $amount = $chat->findCount($joins, $conditions,"Chat.id");
 $page->setPagenav($amount);
 
