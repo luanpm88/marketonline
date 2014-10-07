@@ -28,6 +28,7 @@ jQuery(document).ready(function($) {
 </div>
 <div class="info">
   <form method="post" action="area.php" id="EditFrm" name="edit_frm">
+	<input type="hidden" name="referrer" value="{$referrer}" />
     <table class="infoTable">
     {if $smarty.get.id}
       <input type="hidden" name="id" value="{$smarty.get.id}" />
@@ -79,6 +80,18 @@ jQuery(document).ready(function($) {
       <tr>
         <th class="paddingT15"> {lang display_order}</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[area][display_order]" type="text" value="{$item.display_order|default:0}"></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> MAP: Latitude</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[area][map_lat]" type="text" value="{$item.map_lat}"></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> MAP: Longitude</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[area][map_lng]" type="text" value="{$item.map_lng}"></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> MAP: Zoom</th>
+        <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="data[area][map_zoom]" type="text" value="{$item.map_zoom}"></td>
       </tr>
       <tr>
         <th></th>

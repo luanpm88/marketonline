@@ -11444,6 +11444,3 @@ p.no-content {
     clear: both;
     margin: auto;
 }
-.dragmap div:first-child {
-    position: relative !important;
-}

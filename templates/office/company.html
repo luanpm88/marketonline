@@ -408,7 +408,12 @@ jQuery(document).ready(function($) {
 							</tr>
 							<tr>
 								<th>{lang address}<font class="red">*</font> </th>
-								<td><input placeholder="Số Tên đường, Phường/Xã" name="data[company][address]" type="text" id="address" value="{$item.address}" class="required"> </td>
+								<td>
+									<input placeholder="Số Tên đường, Phường/Xã" name="data[company][address]" type="text" id="address" value="{$item.address}" class="required">
+								
+									<!--{include file="_map_input.html"}-->
+								
+								</td>
 							</tr>
 							<tr class="tel_area">
 										<th>{lang contact_phone}<font class="red">*</font></th>

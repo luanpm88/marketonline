@@ -1,11 +1,57 @@
-    function loadMap()
+    function addAreaMarker(lat,lng,html) {
+	var point = new VLatLng(lat,lng);
+	var marker = new VMarker(point);
+	map.addOverlay(marker);
+	VEvent.addListener(marker, 'click', function(obj, latlng) {
+            //obj.openInfoWindow('Bạn vừa click lên marker');
+	    alert("dd");
+        });
+	VEvent.addListener(marker, 'mouseover', function(obj) {
+	    obj.openInfoWindow(html);
+	});
+	VEvent.addListener(marker21, 'mouseout', function(obj) {
+	    obj.closeInfoWindow();
+	});
+    }
+    
+    function getlatlng(pt)
     {
+	if (map != null)
+	{
+	    console.log(pt);
+	    if (pt.latitude == 0 && pt.longitude == 0)
+		alert("Không tìm thấy.");
+	    else
+	    {
+		var marker = new VMarker(pt, new VIcon());
+		map.addOverlay(marker);
+		map.setCenter(pt, 12);
+		map.openInfoWindow(pt, 'Hồ Chí Minh');
+	    }
+	}
+    }
+    
+    var map;
+    function loadMap(lat,lng,zoom)
+    {
+	if (typeof(lat)=='undefined') {
+	    lat = 16.0458134537522;
+	}
+	if (typeof(lng)=='undefined') {
+	    lng = 107.5341796875;
+	}
+	if (typeof(zoom)=='undefined') {
+	    zoom = 4;
+	}
 	if (VBrowserIsCompatible())
 	{
-	    var map = new VMap(document.getElementById('container'));
-	    var pt = new VLatLng(10.8152328, 106.680505);
-	    map.setCenter(pt, 4);
-	    map.openInfoWindow(map.getCenter(), 'Hello, Vietbando');
+	    map = new VMap(document.getElementById('vietbando_map'));
+	    var pt = new VLatLng(lat, lng);
+	    map.setCenter(pt, zoom);
+	    //map.openInfoWindow(map.getCenter(), '<strong>Hello</strong>, Vietbando');
+	    
+	    //var client = new VClientGeocoder();
+	    //client.getLatLng('444/4 CMT8, F11, quận 3, ho chi minh', 'getlatlng');
 	}
     }
     

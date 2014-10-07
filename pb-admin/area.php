@@ -138,6 +138,8 @@ if (isset($_POST['save'])) {
 //			$cache->cache_path = PHPB2B_ROOT."data".DS."cache".DS.$key.DS;
 //		}
 	}
+	
+	pheader("location:".$_POST['referrer']);
 }
 if (isset($_GET['do'])) {
 	$do = trim($_GET['do']);
@@ -191,6 +193,7 @@ if (isset($_GET['do'])) {
 			setvar("item", $res);
 		}
 		$tpl_file = "area.edit";
+		setvar('referrer',$_SERVER['HTTP_REFERER']);
 		template($tpl_file);
 		exit;
 	}
