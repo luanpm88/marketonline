@@ -37,18 +37,19 @@
         //alert(area_id);
         $.ajax({
 			url: "../index.php?do=area&action=ajaxUpdateAreaLatLng&id="+area_id,
-		}).done(function ( data ) {
-			if( console && console.log ) {
-                            if(data!='none') {
-                                var area = JSON.parse(data);
-                                s_lat = area.map_lat;
-                                s_lng = area.map_lng;
-                                
-                                addMarker(s_lat,s_lng);
-                            }
-                        }
+        }).done(function ( data ) {
+            if( console && console.log ) {
+                if(data!='none') {
+                    var area = JSON.parse(data);
+                    s_lat = area.map_lat;
+                    s_lng = area.map_lng;
+                    
+                    addMarker(s_lat,s_lng);
+                }
+            }
         });
     }
+    
     function loadMap(lat,lng,zoom)
     {
 	if (typeof(lat)=='undefined' || lat==0 || lat=='') {
@@ -73,7 +74,6 @@
                 VEvent.addListener(marker, 'click', function(o, p) {
                     updateLatLng(p.latitude,p.longitude);
                 });
-                
             });
 	}
     }
@@ -87,7 +87,6 @@
     var s_zoom=12;
     var marker=null;
     $(document).ready(function() {
-        
         {/literal}
             {if $item.map_lat && $item.map_lng}
                 s_lat={$item.map_lat};
