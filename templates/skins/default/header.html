@@ -901,11 +901,13 @@ function goclicky(meh, url)
 		//    }
 		//}, 100);
 		
-		$('ul.products li.product a img').resizecrop({
-		   width:290,
-		   height:290,
-		   vertical:"top"
-		});
+                {/literal}{$image_crop_script}{literal}
+                
+		//$('ul.products li.product a img').resizecrop({
+		//   width:290,
+		//   height:290,
+		//   vertical:"top"
+		//});
 		
 		$('.bxslider').nivoSlider();
 		
@@ -1087,6 +1089,8 @@ function goclicky(meh, url)
                     
                     checkStatsEditor($(this).parent().parent().find('.editor textarea'));
                 });
+                
+                $('.cols_number').select2();
 	});
 	
 	
@@ -1161,6 +1165,10 @@ $(window).resize(function() {
 	
 	{$styles_string}
 	
+        
+        
+        
+
 
 </head>
 

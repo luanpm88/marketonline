@@ -133,6 +133,20 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 		<input type="hidden" name="com_id" value="{$COMPANY.id}" />
 		<input type="hidden" name="uri" value="{$FURI}" />
 			<h2 class="custom-style-box-title">Đổi màu trang cá nhân</h2>
+			<!--<h2>Hiển thị</h2>
+			<ul>
+				<li>
+					<label>Số cột sản phẩm</label>
+					<select class="cols_number" name="style[cols_number]">
+						<option {if $styling.cols_number==6}selected="selected"{/if} value="1">1</option>
+						<option {if $styling.cols_number==2}selected="selected"{/if} value="2">2</option>
+						<option {if $styling.cols_number==3}selected="selected"{/if} value="3">3</option>
+						<option {if $styling.cols_number==4}selected="selected"{/if} value="4">4</option>
+						<option {if $styling.cols_number==5}selected="selected"{/if} value="5">5</option>
+						<option {if $styling.cols_number==6}selected="selected"{/if} value="6">6</option>
+					</select>
+				</li>
+			</ul>-->
 		    <h2>Màu sắc chung</h2>
 			<ul>
 				<li>
@@ -340,7 +354,7 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 				 $("#browser-info-but").trigger('click');
 				}
 		
-					
+				
 		}
 		
 	    });

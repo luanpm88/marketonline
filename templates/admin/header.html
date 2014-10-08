@@ -44,13 +44,13 @@ var DeleteSure = "{lang delete_sure}";
 				$('#uploadIVbutton').removeAttr('disabled');
 				$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
 				if (image) {
-					tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='../attachment/"+url+"' />");
+					tinyMCE.activeEditor.execCommand('mceInsertContent', false, "<img src='{/literal}{the_url module=root-url}{literal}attachment/"+url+"' />");
 				}
 				else
 				{
 						alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
 						tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
-												+'<source src="../attachment/'+url+'" type="video/mp4" />'
+												+'<source src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" type="video/mp4" />'
 												+'Your browser does not support the video tag.</video>');
 				}
 		}

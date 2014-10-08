@@ -1103,7 +1103,7 @@ function cleanContent($content)
 		
 		
 	//format html
-	$content = strip_tags($content, "<p><br><strong><font><span><img><h2><h3><h4><ul><li>");
+	$content = strip_tags($content, "<tr><table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4><ul><li>");
 	
 	return $content;
 }

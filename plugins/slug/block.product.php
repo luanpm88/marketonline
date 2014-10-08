@@ -143,7 +143,7 @@
 	if (isset($params['limit'])) {
 		$mysql_limit = " ".trim($params['limit']);
 	}
-	$sql = "SELECT m.membertype_id,p.*,p.id as productid,p.name as names,p.name as title,cache_companyname as companyname,p.order as porder FROM {$product->table_prefix}products p INNER JOIN {$product->table_prefix}members m ON m.id = p.member_id ".$product->getCondition()."{$orderby}".$mysql_limit;
+	$sql = "SELECT c.custom_style,m.membertype_id,p.*,p.id as productid,p.name as names,p.name as title,cache_companyname as companyname,p.order as porder FROM {$product->table_prefix}products p INNER JOIN {$product->table_prefix}members m ON m.id = p.member_id INNER JOIN {$product->table_prefix}companies c ON c.id = p.company_id ".$product->getCondition()."{$orderby}".$mysql_limit;
 	//echo $sql;
 
 	if(empty($smarty->blockvars[$param_count])) {
@@ -151,10 +151,12 @@
 		if(!$smarty->blockvars[$param_count]) return $repeat = false;
 	}
 	
-	
+	//styling
+	//var_dump($smarty->blockvars[$param_count]);
 	
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {	      
-	      
+		     if($item["custom_style"]) $styling = json_decode($item["custom_style"],true);
+		     //var_dump($styling);
 		$repeat = true;
 		$item['rownum'] = $key;
 		$item['iteration'] = ++$key;
@@ -186,10 +188,18 @@
 		$item['price'] = number_format($item["price"], 0, ',', '.');
 		$item['new_price'] = number_format($item["new_price"], 0, ',', '.');
 		
-		//
+		//		
+		$cols_number = 3;
+		//echo $styling["cols_number"];
+		if(isset($styling["cols_number"])) {
+		     $cols_number = intval($styling["cols_number"]);
+		}
+		//echo $cols_number."sssss";
 		$item['pos'] = '';
-		if(($key-1)%3 == 0) $item['pos'] = 'first';
-		if(($key-1)%3 == 2) $item['pos'] = 'last';
+		if(($key-1)%$cols_number == 0) $item['pos'] = 'first';
+		if(($key-1)%$cols_number == $cols_number-1) $item['pos'] = 'last';
+		
+		
 		
 		$smarty->assign($params['name'], $item);
 	}

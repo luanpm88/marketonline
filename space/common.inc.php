@@ -546,11 +546,59 @@ $styles_string = "<style>";
 		$styles_string .= ".pagination span,.pagination a:hover{background:".$styles["borderColor"]."}";
 		$styles_string .= "#darkf{border-top:solid 1px ".$styles["borderColor"]."}";
 	}
+	
+	$image_crop_script = "$('ul.products li.product a img').resizecrop({
+		width:290,
+		height:290,
+		vertical:'top'
+	});";
+	if(!empty($styles["cols_number"]))
+	{
+		if($styles["cols_number"]==1) {
+			$img_width = 907;
+			$img_height = 450;
+			$img_align = "center";
+		}
+		if($styles["cols_number"]==2) {
+			$img_width = 448;
+			$img_height = 290;
+			$img_align = "center";
+		}
+		if($styles["cols_number"]==3) {
+			$img_width = 295;
+			$img_height = 295;
+			$img_align = "top";
+		}
+		if($styles["cols_number"]==4) {
+			$img_width = 219;
+			$img_height = 219;
+			$img_align = "top";
+		}		
+		if($styles["cols_number"]==5) {
+			$img_width = 173;
+			$img_height = 173;
+			$img_align = "top";
+		}
+		
+		$styles_string .= "ul.new_products li.product {width:".$img_width."px}";
+		$styles_string .= ".u_p_img_box {height:".$img_height."px}";
+		$image_crop_script = "$('ul.products li.product a img').resizecrop({
+			width:".($img_width-6).",
+			height:".($img_height-6).",
+			vertical:'".$img_align."'
+		});";
+	}
+	setvar("image_crop_script",$image_crop_script);
+	
 //}
 $styles_string .= "</style>";
 //echo $styles_string;
 setvar('styles_string', $styles_string);
 
+
+//styling
+if(!($styles["cols_number"])) $styles["cols_number"] = 3;
+setvar('styling', $styles);
 
 $styles["body-wrapper"]["backgroundColor"] = $styles["body-wrapper"]["background-color"];
 $styles["body-wrapper"]["backgroundImage"] = $styles["body-wrapper"]["background-image"];

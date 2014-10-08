@@ -853,7 +853,7 @@ class Product extends PbController {
 		$info['content'] = cleanContent(stripslashes($info['content']));		
 		
 		//format html
-		$info['content'] = strip_tags($info['content'], "<p><br><strong><font><span><img><h2><h3><h4>");
+		//$info['content'] = strip_tags($info['content'], "<table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4>");
 		
 		if($info['default_pic'])
 		{

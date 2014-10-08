@@ -1,20 +1,26 @@
+    var infowinn = 0;
     function addAreaMarker(lat,lng,html,url) {
 	var point = new VLatLng(lat,lng);
 	var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
-	var marker = new VMarker(point, icon, new VSize(32, 32), false);
+	var marker = new VMarker(point, icon, new VSize(6, 6), false);
 	map.addOverlay(marker);
 	//marker.openInfoWindow(html);
 	VEvent.addListener(marker, 'click', function(obj, latlng) {
 	    window.location=url;
+	    //obj.openInfoWindow(html);
         });
 	VEvent.addListener(marker, 'mouseover', function(obj) {
 	    var ic = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_8.gif");
 	    obj.setIcon(ic);
-	    obj.openInfoWindow(html);
+	    if(infowinn < 1) {
+		obj.openInfoWindow(html);
+		infowinn++;
+	    }
 	});
 	VEvent.addListener(marker, 'mouseout', function(obj) {
 	    obj.setIcon(icon);
 	    obj.closeInfoWindow();
+	    infowinn = 0;
 	});
     }
     
