@@ -19,8 +19,10 @@
 	});
 	VEvent.addListener(marker, 'mouseout', function(obj) {
 	    obj.setIcon(icon);
-	    obj.closeInfoWindow();
-	    infowinn = 0;
+	    //if(infowinn >= 1) {
+		obj.closeInfoWindow();
+		infowinn = 0;
+	    //}
 	});
     }
     
