@@ -14,7 +14,7 @@ option_position = "{$item.option_position|default:0}";
 option_economic_type = "{$item.option_economic_type|default:0}";
 </script>
 
-<!--{editor type="tiny_mce"}-->
+<!--{editor type="tiny_mce_new"}-->
 <!--{literal}-->
 <script>
 	jQuery(document).ready(function($) {
@@ -452,6 +452,8 @@ jQuery(document).ready(function($) {
 		
 		<h3>{lang thungo_shop}</h3>
 		 <p>
+			<input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+						onclick ="javascript:document.getElementById('imagefile').click();">
                     <textarea name="data[company][description]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 600px">{$item.description}</textarea>
                 </p>
 		 
@@ -471,8 +473,7 @@ jQuery(document).ready(function($) {
 			<input type="hidden" name="action" value="uploadEditorFile" />
 			
 			
-			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
-       onclick ="javascript:document.getElementById('imagefile').click();">
+			
       
 			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
 			

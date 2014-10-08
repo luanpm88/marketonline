@@ -12,10 +12,10 @@
 	<!--{/loop}-->
     </ul>
 
-    <!--<div class="vietbando_outer" {if $smarty.get.area_id || $smarty.get.areatype_id}style="margin-top: 113px"{/if}>
+    <div class="vietbando_outer" {if $smarty.get.area_id || $smarty.get.areatype_id}style="margin-top: 113px"{/if}>
 	<div id="vietbando_map"></div>
     </div>
-    <br style="clear: both;" />-->
+    <br style="clear: both;" />
     
     
 <!--{literal}-->
@@ -41,11 +41,18 @@
                         addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
                     {/if}
                 {/loop}
-                
 	    {else}
 		loadMap();
+                
+                {loop $areas_by_areatype aaa levela keya}
+                    {if $aaa.map_lat}
+                        addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
+                    {/if}
+                {/loop}
 	    {/if}
 	{literal}
+        
+        {/literal}{$companies_map_script}{literal}
     });
 </script>
 <!--{/literal}-->

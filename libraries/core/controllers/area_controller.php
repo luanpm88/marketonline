@@ -56,8 +56,8 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = "/".$areatype["name"];
 			
-			//$areas_by_areatype = $this->area->findAll("map_lat,map_lng",null,array("level=2"));
-			//var_dump($areas_by_areatype);
+			$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
+			setvar("areas_by_areatype",$areas_by_areatype);
 			
 			setvar("areatype",$areatype);
 		}
@@ -90,6 +90,11 @@ class Area extends PbController {
 				$container = '<div class="works-list album area-module company_module starting"></div>';
 				$paging = 'ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Thương hiệu";
+				
+				//get positions on map
+				$companies_map_script = $this->getMapCompany();
+				setvar("companies_map_script",$companies_map_script);
+				
 				break;
 			case 'san-pham':
 				$script = '
@@ -104,6 +109,10 @@ class Area extends PbController {
 				$container = '<div class="works-list album area-module product_module starting"></div>';
 				$paging = 'ajaxLoadModule("product_module", "ajaxProductModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Sản Phẩm";
+				
+				//get positions on map
+				$companies_map_script = $this->getMapCompany();
+				setvar("companies_map_script",$companies_map_script);
 				break;
 			case 'dich-vu':
 				$script = '
@@ -118,6 +127,10 @@ class Area extends PbController {
 				$container = '<div class="works-list album area-module service_module starting"></div>';
 				$paging = 'ajaxLoadModule("service_module", "ajaxServiceModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Dịch vụ";
+				
+				//get positions on map
+				$companies_map_script = $this->getMapCompany();
+				setvar("companies_map_script",$companies_map_script);
 				break;
 			case 'viec-lam':
 				$script = '
@@ -146,6 +159,11 @@ class Area extends PbController {
 				$container = '<div class="works-list album area-module trade_module starting"></div>';
 				$paging = 'ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Thương mại";
+				
+				//get positions on map
+				$companies_map_script = $this->getMapCompany();
+				setvar("companies_map_script",$companies_map_script);
+				
 				break;
 			case 'hoc-tap':
 				$script = '
@@ -193,17 +211,23 @@ class Area extends PbController {
 			$area = $this->area->read("*",$area_id);
 			$area_name = "/".$area["name"];
 			setvar("area",$area);
+			
+			//get companies in map
+			$companies = $this->company->getByArea(array("for_map"=>true,"industry_id"=>$_GET["industry_id"],"area_id"=>$_GET["area_id"],"areatype_id"=>$_GET["areatype_id"],"membergroup_id"=>$_GET["membergroup_id"]),0,10,10);
+			//var_dump($companies["count"]);
+			//setvar("companies",$companies["result"]);
+			$companies_map_script = $this->getMapCompany();
+			setvar("companies_map_script",$companies_map_script);
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = $areatype["name"];
-			
-			$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
-			setvar("areas_by_areatype",$areas_by_areatype);
-			
 			setvar("areatype",$areatype);
 		}
+		
+		$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
+		setvar("areas_by_areatype",$areas_by_areatype);
 		
 		//get areas with level 2
 		foreach($areatypes as $key => $areatype) {
@@ -643,6 +667,34 @@ class Area extends PbController {
 		} else {
 			echo "none";
 		}
+	}
+	
+	function getMapCompany() {
+		if(isset($_GET["area_id"])){
+			$companies = $this->company->getByArea(array("for_map"=>true,"industry_id"=>$_GET["industry_id"],"area_id"=>$_GET["area_id"],"areatype_id"=>$_GET["areatype_id"],"membergroup_id"=>$_GET["membergroup_id"]),0,10,10);
+			//var_dump($companies["count"]);
+			//setvar("companies",$companies["result"]);
+			$companies_map_script = '';
+			foreach($companies["result"] as $com) {
+				$html = '<div class=map_box_info>';
+					$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
+					
+					$html .= '<p>';
+						$html .= '<strong>'.$com["shop_name"].'</strong>';
+						$html .= '<br />'.$com["address"];						
+						$more = array();
+						if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
+						if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
+						if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
+						if(!empty($more)) $html .= implode(", ",$more);					
+					$html .= '</p>';
+				$html .= '</div>';
+				
+				$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
+			}
+		}
+		
+		return $companies_map_script;
 	}
 }
 ?>

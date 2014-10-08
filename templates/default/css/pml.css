@@ -11450,3 +11450,14 @@ p.no-content {
 .vietbando_outer img {
     max-width: none;
 }
+.map_com_thumb {
+    width: 80px;
+    float: left;
+    margin-right: 5px;
+}
+.map_box_info img {
+    
+}
+.map_box_info p {
+    max-width: 95%;
+}

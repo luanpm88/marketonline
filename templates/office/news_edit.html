@@ -9,7 +9,7 @@
 </script>
 <!--{/literal}-->
 
-{editor type="tiny_mce"}
+{editor type="tiny_mce_new"}
 <!--{literal}-->
 <script>
 	function checkUploadEditorInput() {
@@ -128,6 +128,8 @@ jQuery(document).ready(function($) {
 					<!--{if $smarty.get.action eq "view"}-->
 					{$item.Content}
 					{else}
+					<input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+						onclick ="javascript:document.getElementById('imagefile').click();">
 					<textarea id="coon" style="width: 875px; height: 600px" name="content" cols="55" rows="10" wrap="VIRTUAL">{$item.Content}</textarea>
 					<!--{/if}-->
 					<font color="#FF3300"><br>
@@ -147,8 +149,7 @@ jQuery(document).ready(function($) {
 			<input type="hidden" name="action" value="uploadEditorFile" />
 			
 			
-			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
-       onclick ="javascript:document.getElementById('imagefile').click();">
+			
       
 			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
 			

@@ -713,6 +713,9 @@ class Companies extends PbModel {
 		if($params["membergroup_id"]) {
 			$conditions[] = "m.membergroup_id=".$params["membergroup_id"];
 		}
+		if($params["for_map"]) {
+			$conditions[] = "(Company.map_lat!='' AND Company.map_lng!='')";
+		}
 		if($params["industry_id"]) {
 			$$industryid = $params["industry_id"];
 			$conditions[] = "((Company.industries LIKE '".$industryid."')"

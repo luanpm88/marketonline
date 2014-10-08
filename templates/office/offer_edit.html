@@ -9,7 +9,7 @@
 var SiteUrl = "{$SiteUrl}";
 var enter_title = "{lang enter_title}";
 </script>
-{editor type="tiny_mce"}
+{editor type="tiny_mce_new"}
 
 
 <!--{literal}-->
@@ -594,12 +594,14 @@ jQuery(document).ready(function($) {
 	</div>
 			 
 			 <br style="clear:both"><br />
-		<table>
+		<table width="100%">
 			<tr>
                         
                         <td class="">
 				<h3 style="font-size: 16px;margin-bottom: 5px;">{lang details_n}<font class="red">*</font></h3>
 							<div id="tabs-ta">
+								<input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+						onclick ="javascript:document.getElementById('imagefile').click();">
 							<!-- {pl frm="textarea" values=$item.content style="width:926px;height:550px" rows="8" wrap="VIRTUAL" class="required"} -->
 							</div>
 						<!--<br /><font color="#FF3300">{lang attention_explain}<br>-->
@@ -629,8 +631,7 @@ jQuery(document).ready(function($) {
 			<input type="hidden" name="action" value="uploadEditorFile" />
 			
 			
-			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
-       onclick ="javascript:document.getElementById('imagefile').click();">
+			
       
 			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
 			

@@ -1,16 +1,19 @@
 <input type="hidden" name="data[company][map_lat]" value="{$item.map_lat}" />
 <input type="hidden" name="data[company][map_lng]" value="{$item.map_lng}" />
 <div class="map_input" style="display: none">
-    <a class="map_link" href="#map-input">Xác định vị trí trên bản đồ</a>
+    <a class="map_link" href="#map-inputs" title="Xác định vị trí trên bản đồ">
+	
+    </a>
+    <div class="small_map_outer"><div class="small_map" id="small-map"></div></div>
     <div id="map-input" class="hide_map">
         <div class="overlay">.</div>
         <div class="content">
             <div id="map" class="map">
                 
             </div>
-            <div class="controls">
-                <a class="save" href="#save">Lưu vị trí</a>
-                <a class="close" href="#close">Đóng</a>
+            <div class="controls">                
+                <a class="close" href="#close">Đóng</a><a class="save" href="#save">Lưu vị trí</a>
+		<p>Dùng lăn chuột để phóng to/thu nhỏ bản đồ. Nhấn vào bản đồ hoặc kéo thả con trỏ vào vị trí mong muốn.</p>
             </div>
         </div>
     </div>
@@ -27,7 +30,8 @@
         var latlng = new VLatLng(lat, lng);
         if (marker != null)
             map.removeOverlay(marker);
-        marker = new VMarker(latlng);
+	var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
+        marker = new VMarker(latlng,icon);
         marker.enableDragging();
         map.addOverlay(marker);
         updateLatLng(lat,lng);
@@ -45,6 +49,7 @@
                     s_lng = area.map_lng;
                     
                     addMarker(s_lat,s_lng);
+		    map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
                 }
             }
         });
@@ -77,8 +82,35 @@
             });
 	}
     }
+    
+    function loadSmallMap(lat,lng,zoom)
+    {
+	if (typeof(lat)=='undefined' || lat==0 || lat=='') {
+	    lat = 16.0458134537522;
+	}
+	if (typeof(lng)=='undefined' || lng==0 || lng=='') {
+	    lng = 107.5341796875;
+	}
+	if (typeof(zoom)=='undefined' || zoom==0 || zoom=='') {
+	    zoom = 4;
+	}
+	if (VBrowserIsCompatible())
+	{            
+	    small_map = new VMap(document.getElementById('small-map'));
+	    var pt = new VLatLng(lat, lng);
+	    small_map.setCenter(pt, zoom);
+	    if (s_lat && s_lng) {
+		var latlng = new VLatLng(s_lat, s_lng);
+		//if (small_marker != null)
+		//    small_map.removeOverlay(small_marker);
+		var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
+		small_marker = new VMarker(latlng,icon);
+		small_map.addOverlay(small_marker);
+	    }		
+	}
+    }
 
-    var map;
+    var map,small_map;
     var c_lat=0;
     var c_lng=0;    
     var c_zoom=0;
@@ -86,6 +118,7 @@
     var s_lng=0;
     var s_zoom=12;
     var marker=null;
+    var small_marker=null;
     $(document).ready(function() {
         {/literal}
             {if $item.map_lat && $item.map_lng}
@@ -94,9 +127,9 @@
             {/if}
         {literal}
         
-        loadMap(c_lat,c_lng);
+        //loadMap(c_lat,c_lng);
         
-        setTimeout("if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) ajaxUpdateAreaLatLng($('#dataCompanyAreaId2').val())",2000);
+        //setTimeout("if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) ajaxUpdateAreaLatLng($('#dataCompanyAreaId2').val())",2000);
             
         
         $('#map-input .controls a.close').click(function() {
@@ -107,24 +140,47 @@
                 $('input[name="data[company][map_lat]"]').val(c_lat);
                 $('input[name="data[company][map_lng]"]').val(c_lng);
                 
+		$('.map_link').html("Thay đổi vị trí trên bản đồ");
+		
                 s_lat = c_lat;
                 s_lng = c_lng;
+		
+		loadSmallMap(s_lat,s_lng,s_zoom);
             }
             
             $('#map-input .controls a.close').trigger('click');
         });
         $('.map_input .map_link').click(function() {
-            if(s_lat!='' && s_lng!='') {
+            //if(s_lat!='' && s_lng!='') {
+            //
+            //
+            //    map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
+            //    addMarker(s_lat,s_lng);
+            //}
+            $('#map-input').removeClass('hide_map');
+	    
+	    if ($('#map div').length == 0) {
+		loadMap(c_lat,c_lng);
+		if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) {
+		    ajaxUpdateAreaLatLng($('#dataCompanyAreaId2').val());
+		}
+	    }		
+	    
+	    if(s_lat!='' && s_lng!='') {
                 map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
                 addMarker(s_lat,s_lng);
             }
-            
-            $('#map-input').removeClass('hide_map');
         });
         
         $('#dataCompanyAreaId2').live("change",function() {
             ajaxUpdateAreaLatLng($(this).val());
         });
+	
+	if (s_lat!='' && s_lng!='') {
+	    loadSmallMap(s_lat,s_lng,s_zoom);
+	} else {
+	    loadSmallMap(s_lat,s_lng);
+	}
     });
 </script>
 <!--{/literal}-->

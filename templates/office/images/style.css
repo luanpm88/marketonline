@@ -2528,7 +2528,7 @@ label[for="linkman"]
     width: 422px;
 }
 .editor_imagevideo {
-    margin-left: 442px;
+    margin-left: 490px;
     margin-top: 38px;
     position: absolute;
     z-index: 2000;
@@ -3559,7 +3559,7 @@ a.unvalid_edit {
     background-image: url("../../default/image/play-icon-red.png");
 }
 .map_input {
-    
+    position: relative;
 }
 .map_input .map_link {
     
@@ -3590,7 +3590,8 @@ a.unvalid_edit {
 #map-input .controls {
     bottom: 10px;
     position: absolute;
-    right: 0;
+    right: 4px;
+    width: 100%;
     z-index: 200;
 }
 #map-input .controls a {
@@ -3598,6 +3599,7 @@ a.unvalid_edit {
     border: 2px solid #3b984c;
     margin-right: 5px;
     padding: 5px 10px;
+    float: right;
 }
 #map-input .controls a.close {
 }
@@ -3610,4 +3612,32 @@ a.unvalid_edit {
 }
 .hide_map .overlay, .hide_map .content {
     top: -9000px !important;
+}
+.small_map_outer {
+    width: 100%;
+    height: 100px;
+    background: #aaa;
+    margin-top: 5px;
+}
+.small_map {
+    width: 527px;
+    height: 100px;
+}
+.map_input .map_link {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    text-indent: -9000px;
+}
+.map_input .map_link:hover {
+    background: rgba(0,0,0,0.3);
+}
+#map-input .controls p {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+    color: #fff;
+    float: left;
+    font-weight: bold;
+    margin: 14px 0 0 14px;
+    padding: 2px 20px;
 }
