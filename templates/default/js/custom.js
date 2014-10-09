@@ -12,10 +12,10 @@
 	VEvent.addListener(marker, 'mouseover', function(obj) {
 	    var ic = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_8.gif");
 	    obj.setIcon(ic);
-	    if(infowinn < 1) {
+	    //if(infowinn < 1) {
 		obj.openInfoWindow(html);
 		infowinn++;
-	    }
+	    //}
 	});
 	VEvent.addListener(marker, 'mouseout', function(obj) {
 	    obj.setIcon(icon);
