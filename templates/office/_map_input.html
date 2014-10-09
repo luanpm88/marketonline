@@ -35,7 +35,7 @@
 	if($("#dataCompanyAreaId3").val() != '0') {
 	  district = $("#dataCompanyAreaId3 option:selected").text();
 	}
-	if($("#address").val() != '') {
+	if($("#address").val() != '' && district != '') {
 	  address = $("#address").val();
 	}
 	var full_address = address + ', ' + district + ', ' + city + ', ' + country;
@@ -45,15 +45,15 @@
 	    url: "http://maps.google.com/maps/api/geocode/json?address="+full_address+"&sensor=false",
         }).done(function ( data ) {
             if( console && console.log ) {
-                if(data!='none') {
+                if(data.results.length) {
 			//console.log(data.results[0].geometry.location.lat);
 			//var returnval = JSON.parse(data);
                     	s_lat = data.results[0].geometry.location.lat;
                     	s_lng = data.results[0].geometry.location.lng;
-                    
+			//alert(s_lat);
                     	if(maptype=='big') {
 			    addMarker(s_lat,s_lng);
-			    map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
+			    map.setCenter(new VLatLng(s_lat, s_lng),s_zoom+2);
 			} else if (maptype=='small') {
 			    small_map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
 			    if (s_lat && s_lng) {
@@ -78,6 +78,12 @@
     
     function addMarker(lat,lng) {
         var latlng = new VLatLng(lat, lng);
+	
+	if ($('#map div').length == 0) {
+		loadMap(lat,lng,s_zoom);
+		map.setCenter(new VLatLng(s_lat, s_lng),s_zoom+2);
+	}
+	
         if (marker != null)
             map.removeOverlay(marker);
 	var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
@@ -166,7 +172,7 @@
     var c_zoom=0;
     var s_lat=0;
     var s_lng=0;
-    var s_zoom=12;
+    var s_zoom=13;
     var marker=null;
     var small_marker=null;
     $(document).ready(function() {
@@ -208,20 +214,21 @@
             $('#map-input').removeClass('hide_map');
 	    
 	    if ($('#map div').length == 0) {
-		loadMap(c_lat,c_lng);
-		if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) {
-		    getPositionByAddress("big");
+		//loadMap(c_lat,c_lng);
+		if (!s_lat && !s_lng) {
+		    setTimeout('getPositionByAddress("big")',2000);
 		}
 	    }		
 	    
 	    if(s_lat!='' && s_lng!='') {
-                map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
+                
                 addMarker(s_lat,s_lng);
             }
         });
         
-        $('#dataCompanyAreaId2').live("change",function() {
+        $('#dataCompanyAreaId1,#dataCompanyAreaId2,#dataCompanyAreaId3,#address').live("change",function() {
             getPositionByAddress("big");
+	    getPositionByAddress("small");
         });
 	
 	if (s_lat!='' && s_lng!='') {
