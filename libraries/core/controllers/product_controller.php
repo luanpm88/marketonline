@@ -6119,5 +6119,27 @@ class Product extends PbController {
 		var_dump($err);
 	}
 	
+	function updateCompanyPosition() {
+		$com = $this->company->read("id,map_lat,map_lng,area_id,address",$_GET["id"]);
+		//var_dump($com);
+		
+		
+		if($com["area_id"] && ($com["map_lat"] == '' || $com["map_lng"] == '')) {
+			$ffaddress = $com["address"].", ".$this->area->getFullName($com["area_id"]);
+			$latlng = $this->area->getLatLngByAddress($ffaddress);
+			$vals['map_lat'] = $latlng["lat"];
+			$vals['map_lng'] = $latlng["lng"];
+			
+			$this->company->save($vals,'update',intval($com["id"]));
+			
+			echo "ok (".$vals['map_lat'].",".$vals['map_lng'].")";
+		}
+	}
+	
+	function updateCompaniesPosition() {
+		$coms = $this->company->findAll("id,name",null,null,"created DESC");
+		setvar("coms",$coms);
+		render("product/updateCompaniesPosition");
+	}
 }
 ?>
