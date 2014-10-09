@@ -93,7 +93,7 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 <script type='text/javascript' src='{$theme_img_path}js/site.js'></script>
 <script type='text/javascript' src='{$theme_img_path}js/farbtastic.js'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.tooltipster.js'></script>
-<script type='text/javascript' src='{$theme_img_path}js/gmap3.min.js?ver%5B0%5D=jquery'></script>
+<!--<script type='text/javascript' src='{$theme_img_path}js/gmap3.min.js?ver%5B0%5D=jquery'></script>-->
 <script type='text/javascript' src='{$theme_img_path}js/jquery.validate.min.js?ver%5B0%5D=jquery'></script>
 <!--<script type='text/javascript' src='{$theme_img_path}js/custom_style.js'></script>-->
 <script type='text/javascript' src='{$theme_img_path}js/scrolling.js'></script>
@@ -132,8 +132,10 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 	<form action="{$SiteUrl}?do=product&action=changeSpaceStyle" method="POST">
 		<input type="hidden" name="com_id" value="{$COMPANY.id}" />
 		<input type="hidden" name="uri" value="{$FURI}" />
+		
+		<div class="scrollbox">
 			<h2 class="custom-style-box-title">Đổi màu trang cá nhân</h2>
-			<!--<h2>Hiển thị</h2>
+			<h2>Hiển thị</h2>
 			<ul>
 				<li>
 					<label>Số cột sản phẩm</label>
@@ -143,10 +145,10 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 						<option {if $styling.cols_number==3}selected="selected"{/if} value="3">3</option>
 						<option {if $styling.cols_number==4}selected="selected"{/if} value="4">4</option>
 						<option {if $styling.cols_number==5}selected="selected"{/if} value="5">5</option>
-						<option {if $styling.cols_number==6}selected="selected"{/if} value="6">6</option>
+						
 					</select>
 				</li>
-			</ul>-->
+			</ul>
 		    <h2>Màu sắc chung</h2>
 			<ul>
 				<li>
@@ -322,9 +324,11 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 					<div id="colorSelector8"><div style="background-color: #D2F0CA;"></div></div>
 				</li>
 			</ul>
-			
+		</div>
+		<div class="controls">
 			<input type="submit" name="save" value="Lưu thay đổi" />
 			<input type="submit" name="reset" value="Trở lại Giao diện gốc" />
+		</div>
 	</form>	 
    
  </div>
@@ -356,6 +360,11 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 		
 				
 		}
+		
+		$('#custom-style-box .custom-content .scrollbox').mCustomScrollbar({
+					    autoHideScrollbar:true,
+					    theme:"light-thin"
+				    });
 		
 	    });
     </script>

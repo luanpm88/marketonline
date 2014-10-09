@@ -1986,3 +1986,25 @@ a.following
     margin-top: 4px !important;
     width: 50px;
 }
+#custom-style-box {
+    left: -295px;
+}
+#custom-style-box .custom-content {
+    max-height: 550px;
+    overflow: hidden;
+    width: 290px;
+}
+#custom-style-box .custom-content .scrollbox {
+    max-height: 491px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#custom-style-box .custom-content .controls {
+    background: none repeat scroll 0 0 #fff;
+    margin-left: -10px;
+    padding: 5px;
+    text-align: center;
+}
+#custom-style-box .custom-content .controls input {
+    font-size: 13px;
+}
