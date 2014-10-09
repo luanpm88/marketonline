@@ -1,8 +1,9 @@
     var infowinn = 0;
+    var marker;
     function addAreaMarker(lat,lng,html,url) {
 	var point = new VLatLng(lat,lng);
 	var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
-	var marker = new VMarker(point, icon, new VSize(6, 6), false);
+	marker = new VMarker(point, icon, new VSize(6, 6), false);
 	map.addOverlay(marker);
 	//marker.openInfoWindow(html);
 	VEvent.addListener(marker, 'click', function(obj, latlng) {
