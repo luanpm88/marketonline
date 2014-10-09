@@ -125,6 +125,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 	$vals['email'] = $vals['email'];
 	
 	
+	
 	//save tag
 	$vals['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
 	$vals['keywords_string'] = $tag->getTagsByIds($vals['tag_ids'], true);
@@ -176,6 +177,16 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 	//}
     $vals['industry_id'] = PbController::getMultiId($_POST['industry']['id']);
     $vals['area_id'] = PbController::getMultiId($_POST['area']['id']);
+    
+    
+	//get lat lng
+	$ffaddress = $vals["address"].", ".$area->getFullName($vals["area_id"]);
+	$latlng = $area->getLatLngByAddress($ffaddress);
+	$vals['map_lat'] = $latlng["lat"];
+	$vals['map_lng'] = $latlng["lng"];
+	
+	
+	
 	if(!empty($company_id)){
 		$vals['modified'] = $time_stamp;
 		$vals['cache_membergroupid'] = $memberinfo['membergroup_id'];
@@ -231,6 +242,7 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 				else
 				{
 					pheader("location:company.php?message=success");
+					
 				}
 			}
 			

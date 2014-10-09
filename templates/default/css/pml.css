@@ -11462,7 +11462,7 @@ p.no-content {
     max-width: 95%;
 }
 
-.vietbando_outer, #vietbando_map, #vietbando_map div, #vietbando_map img, #vietbando_map span, #vietbando_map a {
+.vietbando_outer, #vietbando_map, #vietbando_map div, #vietbando_map img, #vietbando_map span, #vietbando_map a  {
     transition: none !important;
     -webkit-transition: none !important;
     -moz-transition: none !important;

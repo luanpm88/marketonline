@@ -312,5 +312,12 @@ class Areas extends PbModel {
 		}
 		return 0;
 	}
+	
+	function getLatLngByAddress($address) {
+		//$ffaddress = $vals["address"].", ".$area->getFullName($vals["area_id"]);
+		$googlereturn = file_get_contents("http://maps.google.com/maps/api/geocode/json?address=".urlencode($address)."&sensor=false");
+		$googlereturn = json_decode( $googlereturn, true );
+		return array("lat"=>$googlereturn["results"][0]["geometry"]["location"]["lat"],"lng"=>$googlereturn["results"][0]["geometry"]["location"]["lng"]);
+	}
 }
 ?>

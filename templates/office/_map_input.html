@@ -21,6 +21,56 @@
 
 <!--{literal}-->
 <script>
+    function getPositionByAddress(maptype) {
+	var country = '';
+	var district = '';
+	var city = '';
+	var address = '';
+	if($("#dataCompanyAreaId1").val() != '0') {
+	  country = $("#dataCompanyAreaId1 option:selected").text();
+	}
+	if($("#dataCompanyAreaId2").val() != '0') {
+	  city = $("#dataCompanyAreaId2 option:selected").text();
+	}
+	if($("#dataCompanyAreaId3").val() != '0') {
+	  district = $("#dataCompanyAreaId3 option:selected").text();
+	}
+	if($("#address").val() != '') {
+	  address = $("#address").val();
+	}
+	var full_address = address + ', ' + district + ', ' + city + ', ' + country;
+	full_address = encodeURIComponent(full_address);
+	
+	$.ajax({
+	    url: "http://maps.google.com/maps/api/geocode/json?address="+full_address+"&sensor=false",
+        }).done(function ( data ) {
+            if( console && console.log ) {
+                if(data!='none') {
+			//console.log(data.results[0].geometry.location.lat);
+			//var returnval = JSON.parse(data);
+                    	s_lat = data.results[0].geometry.location.lat;
+                    	s_lng = data.results[0].geometry.location.lng;
+                    
+                    	if(maptype=='big') {
+			    addMarker(s_lat,s_lng);
+			    map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
+			} else if (maptype=='small') {
+			    small_map.setCenter(new VLatLng(s_lat, s_lng),s_zoom);
+			    if (s_lat && s_lng) {
+				var latlng = new VLatLng(s_lat, s_lng);
+				//if (small_marker != null)
+				//    small_map.removeOverlay(small_marker);
+				var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
+				small_marker = new VMarker(latlng,icon);
+				small_map.addOverlay(small_marker);
+			    }
+			}
+			//alert(data.results[0].geometry.location.lat);
+                }
+            }
+        });
+    }
+    
     function updateLatLng(lat,lng) {
         c_lat = lat;
         c_lng = lng;
@@ -128,8 +178,6 @@
         {literal}
         
         //loadMap(c_lat,c_lng);
-        
-        //setTimeout("if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) ajaxUpdateAreaLatLng($('#dataCompanyAreaId2').val())",2000);
             
         
         $('#map-input .controls a.close').click(function() {
@@ -162,7 +210,7 @@
 	    if ($('#map div').length == 0) {
 		loadMap(c_lat,c_lng);
 		if ($('#dataCompanyAreaId2').val()!=null && !s_lat && !s_lng) {
-		    ajaxUpdateAreaLatLng($('#dataCompanyAreaId2').val());
+		    getPositionByAddress("big");
 		}
 	    }		
 	    
@@ -173,13 +221,18 @@
         });
         
         $('#dataCompanyAreaId2').live("change",function() {
-            ajaxUpdateAreaLatLng($(this).val());
+            getPositionByAddress("big");
         });
 	
 	if (s_lat!='' && s_lng!='') {
 	    loadSmallMap(s_lat,s_lng,s_zoom);
 	} else {
-	    loadSmallMap(s_lat,s_lng);
+	    if($("#dataCompanyAreaId1").val() != '0') {
+		loadSmallMap(s_lat,s_lng);
+		setTimeout('getPositionByAddress("small")',2000);
+	    } else {
+		loadSmallMap(s_lat,s_lng);
+	    }
 	}
     });
 </script>
