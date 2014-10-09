@@ -194,6 +194,9 @@
 		if(isset($styling["cols_number"])) {
 		     $cols_number = intval($styling["cols_number"]);
 		}
+		if($cols_number <= 2) {
+		     $item['thumb'] = pb_get_attachmenturl($item[$col_pic], '', 'big');
+		}
 		//echo $cols_number."sssss";
 		$item['pos'] = '';
 		if(($key-1)%$cols_number == 0) $item['pos'] = 'first';
