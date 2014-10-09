@@ -180,10 +180,13 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
     
     
 	//get lat lng
-	$ffaddress = $vals["address"].", ".$area->getFullName($vals["area_id"]);
-	$latlng = $area->getLatLngByAddress($ffaddress);
-	$vals['map_lat'] = $latlng["lat"];
-	$vals['map_lng'] = $latlng["lng"];
+	if($vals['map_lat'] == '' ||  $vals['map_lng'] == '') {
+		$ffaddress = $vals["address"].", ".$area->getFullName($vals["area_id"]);
+		$latlng = $area->getLatLngByAddress($ffaddress);
+		$vals['map_lat'] = $latlng["lat"];
+		$vals['map_lng'] = $latlng["lng"];
+	}
+	
 	
 	
 	
