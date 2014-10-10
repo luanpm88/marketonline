@@ -11,13 +11,13 @@
 	$param_count = count($smarty->_tag_stack);
 	if(empty($params['name'])) $params['name'] = "product";
 	if (class_exists("Products")) {
-		$product = new Products();
-		$product_controller = new Product();
-	}else{
-		uses("product", "productcomment");
-		$product = new Products();
-		$product_controller = new Product();
-		$productcomment = new Productcomments();
+		     $product = new Products();
+		     $product_controller = new Product();
+	} else {
+		     uses("product", "productcomment");
+		     $product = new Products();
+		     $product_controller = new Product();
+		     $productcomment = new Productcomments();
 	}
 	
 	      uses("productcomment");

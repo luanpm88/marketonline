@@ -19,7 +19,8 @@
 	    //}
 	});
 	VEvent.addListener(marker, 'mouseout', function(obj) {
-	    obj.setIcon(icon);
+	    var iconout = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
+	    obj.setIcon(iconout);
 	    //if(infowinn >= 1) {
 		obj.closeInfoWindow();
 		infowinn = 0;
