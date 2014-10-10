@@ -2008,3 +2008,6 @@ a.following
 #custom-style-box .custom-content .controls input {
     font-size: 13px;
 }
+.space_wrapper ul.products li.product:hover {
+    border-color: red;
+}
