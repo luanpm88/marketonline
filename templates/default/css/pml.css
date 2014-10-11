@@ -11492,3 +11492,6 @@ p.no-content {
 .product_detail_page.full_width #detail_box_top .images {
     width: 390px;
 }
+#tab-description img {
+    display:block;
+}
