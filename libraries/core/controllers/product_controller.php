@@ -882,21 +882,28 @@ class Product extends PbController {
 			list($width, $height, $type, $attr) = getimagesize(str_replace(' ', "%20", $info['d_image']));
 		}		
 		//var_dump($width .$height. $type. $attr);
+		
+		if($info["display_type"]==1) {
+			$wwwi = 546;
+		} else {
+			$wwwi = 370;
+		}
+		setvar("wwwi",$wwwi);
 		setvar("width",$width);
 		setvar("height",$height);
-		setvar("theight",round($height/($width/370),0));
+		setvar("theight",round($height/($width/$wwwi),0));
 		
-		if($width/370>3)
+		if($width/$wwwi>3)
 		{
 			$ttt = 3;
 		}
-		else if($width/370<1.4)
+		else if($width/$wwwi<1.4)
 		{
 			$ttt = 1.4;
 		}
 		else
 		{
-			$ttt = $width/370;
+			$ttt = $width/$wwwi;
 		}
 		
 		setvar("tile",$ttt);

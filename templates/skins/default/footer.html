@@ -93,7 +93,7 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 <script type='text/javascript' src='{$theme_img_path}js/site.js'></script>
 <script type='text/javascript' src='{$theme_img_path}js/farbtastic.js'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.tooltipster.js'></script>
-<!--<script type='text/javascript' src='{$theme_img_path}js/gmap3.min.js?ver%5B0%5D=jquery'></script>-->
+<script type='text/javascript' src='{$theme_img_path}js/gmap3.min.js?ver%5B0%5D=jquery'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.validate.min.js?ver%5B0%5D=jquery'></script>
 <!--<script type='text/javascript' src='{$theme_img_path}js/custom_style.js'></script>-->
 <script type='text/javascript' src='{$theme_img_path}js/scrolling.js'></script>
@@ -166,12 +166,120 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 					<input name="style[footerColor]" id="footerColor" type="hidden" />
 					<input name="style[footerTextColor]" id="footerTextColor" type="hidden" />
 					
-					<div id="colorSelector"><div style="background-color: #ffffff;"></div></div>
+					<div id="colorSelector" class="id_colorpicker id_colorpicker_bg"><div style="background-color: #ffffff;"></div></div>
 					<div id="backgroundSelector"><img src="{$theme_img_path}images/bg_selector.png"/>
 						<div class="bg-custom-pictures">
 							
 							
-							<div class="pattern-select">
+							
+						</div>
+					</div>
+				</li>
+				<li>
+					<label>Màu chữ:</label>
+					<div id="colorSelector2" class="id_colorpicker id_colorpicker_bg2"><div style="background-color: #333333;"></div></div>
+				</li>
+				<li>
+					<label>Màu tiêu đề:</label>
+					<div id="colorSelector3" class="id_colorpicker id_colorpicker_bg3"><div style="background-color: #1F9ED9;"></div></div>
+				</li>
+				<li>
+					<label>Màu liên kết:</label>
+					<div id="colorSelector4" class="id_colorpicker id_colorpicker_bg4"><div style="background-color: #117FB2;"></div></div>
+				</li>
+				<li>
+					<label>Màu viền:</label>
+					<div id="colorSelector9" class="id_colorpicker id_colorpicker_bg9"><div style="background-color: #aaaaaa;"></div></div>
+				</li>
+				
+			</ul>
+			
+			
+			<h2>Thanh Menu chính</h2>
+			<ul>
+				<li>
+					<label>Màu nền chính:</label>
+					<div id="colorSelector5" class="id_colorpicker id_colorpicker_bg5"><div style="background-color: #4BC14B;"></div></div>
+				</li>
+				<li>
+					<label>Màu chữ:</label>
+					<div id="colorSelector7" class="id_colorpicker id_colorpicker_bg7"><div style="background-color: #ffffff;"></div></div>
+				</li>
+			</ul>
+			
+			<h2>Cuối trang (footer)</h2>
+			<ul>
+				<li>
+					<label>Màu nền:</label>
+					<div id="colorSelector6" class="id_colorpicker id_colorpicker_bg6"><div style="background-color: #64A852;"></div></div>
+				</li>
+				<li>
+					<label>Màu chữ:</label>
+					<div id="colorSelector8" class="id_colorpicker id_colorpicker_bg8"><div style="background-color: #D2F0CA;"></div></div>
+				</li>
+			</ul>
+		</div>
+		<div class="controls">
+			<input type="submit" name="save" value="Lưu thay đổi" />
+			<input type="submit" name="reset" value="Trở lại Giao diện gốc" />
+		</div>
+	</form>	 
+   
+ </div>
+ <div class="custom-button"><img alt="" src="{$WebRootUrl}templates/skins/default/image/settings-left.png" id="appear_iconz"></div>
+</div>
+<!--{/if}-->
+ {literal}
+     <script>
+	function ajustColorTool() {
+		var class_name = $('.colorpicker').eq(0).attr('class').split(" ")[1];
+			if(typeof(class_name)!='undefined'){
+			  //alert(class_name);
+			  var toppos = $('.id_'+class_name).offset().top;
+			  //alert($('.id_colorpicker_bg').offset().top);
+			  $('.colorpicker').css("top",toppos+"px");
+			}
+			$('.pattern-select').css("top",$('#colorSelector').offset().top+"px");
+	}
+	
+	    $(document).ready(function() {
+		if ($.browser.msie && parseFloat($.browser.version) <= 10 || parseFloat($.browser.version) == 11) {
+		
+				//cookie
+				 var date = new Date();
+				 var minutes = 60;
+				 date.setTime(date.getTime() + (minutes * 60 * 1000));
+				$.cookie.settings = {
+				    path : "/",
+				    expires : date
+				};
+				 
+				//$.cookie("welcome", "cookie_value");
+				//$.cookie("cookie_name2", "cookie_value2");
+				//alert($.cookie("welcome"));
+				if (typeof($.cookie("browserx")) == 'undefined') {
+				 //code
+				 $.cookie("browserx", true);
+				 $("#browser-info-but").trigger('click');
+				}
+		
+				
+		}
+		
+		$('#custom-style-box .custom-content .scrollbox').mCustomScrollbar({
+					    autoHideScrollbar:true,
+					    theme:"light-thin"
+				    });
+		
+
+			
+		setInterval('ajustColorTool()',100);
+	    });
+    </script>
+     {/literal}
+     
+     
+     <div class="pattern-select">
 								<div class="custom_bg">
 									<div style="border: 1px solid #FFFFFF;
     float: left;
@@ -278,97 +386,8 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 									<img alt="" rel="{$theme_img_path}images/custombg/h6.jpg" src="{$theme_img_path}images/custombg/thumb/h6.jpg">
 								</div>
 							</div>
-						</div>
-					</div>
-				</li>
-				<li>
-					<label>Màu chữ:</label>
-					<div id="colorSelector2"><div style="background-color: #333333;"></div></div>
-				</li>
-				<li>
-					<label>Màu tiêu đề:</label>
-					<div id="colorSelector3"><div style="background-color: #1F9ED9;"></div></div>
-				</li>
-				<li>
-					<label>Màu liên kết:</label>
-					<div id="colorSelector4"><div style="background-color: #117FB2;"></div></div>
-				</li>
-				<li>
-					<label>Màu viền:</label>
-					<div id="colorSelector9"><div style="background-color: #aaaaaa;"></div></div>
-				</li>
-				
-			</ul>
-			
-			
-			<h2>Thanh Menu chính</h2>
-			<ul>
-				<li>
-					<label>Màu nền chính:</label>
-					<div id="colorSelector5"><div style="background-color: #4BC14B;"></div></div>
-				</li>
-				<li>
-					<label>Màu chữ:</label>
-					<div id="colorSelector7"><div style="background-color: #ffffff;"></div></div>
-				</li>
-			</ul>
-			
-			<h2>Cuối trang (footer)</h2>
-			<ul>
-				<li>
-					<label>Màu nền:</label>
-					<div id="colorSelector6"><div style="background-color: #64A852;"></div></div>
-				</li>
-				<li>
-					<label>Màu chữ:</label>
-					<div id="colorSelector8"><div style="background-color: #D2F0CA;"></div></div>
-				</li>
-			</ul>
-		</div>
-		<div class="controls">
-			<input type="submit" name="save" value="Lưu thay đổi" />
-			<input type="submit" name="reset" value="Trở lại Giao diện gốc" />
-		</div>
-	</form>	 
-   
- </div>
- <div class="custom-button"><img alt="" src="{$WebRootUrl}templates/skins/default/image/settings-left.png" id="appear_iconz"></div>
-</div>
-<!--{/if}-->
- {literal}
-     <script>
-	    $(document).ready(function() {
-		if ($.browser.msie && parseFloat($.browser.version) <= 10 || parseFloat($.browser.version) == 11) {
-		
-				//cookie
-				 var date = new Date();
-				 var minutes = 60;
-				 date.setTime(date.getTime() + (minutes * 60 * 1000));
-				$.cookie.settings = {
-				    path : "/",
-				    expires : date
-				};
-				 
-				//$.cookie("welcome", "cookie_value");
-				//$.cookie("cookie_name2", "cookie_value2");
-				//alert($.cookie("welcome"));
-				if (typeof($.cookie("browserx")) == 'undefined') {
-				 //code
-				 $.cookie("browserx", true);
-				 $("#browser-info-but").trigger('click');
-				}
-		
-				
-		}
-		
-		$('#custom-style-box .custom-content .scrollbox').mCustomScrollbar({
-					    autoHideScrollbar:true,
-					    theme:"light-thin"
-				    });
-		
-	    });
-    </script>
-     {/literal}
+     
+     
      
 <!--{include file="`$theme_name`/_footer_script.html"}-->
 </body>

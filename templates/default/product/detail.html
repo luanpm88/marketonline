@@ -224,7 +224,7 @@
 
 
 <div id="body-wrapper" >
-<div id="body-wrapper-padding" class="product_detail_page">
+<div id="body-wrapper-padding" class="product_detail_page{if $item.display_type} full_width{/if}">
 
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
@@ -359,13 +359,12 @@
 						{/if}
 					{if $item.picture4 && $item.d_image != $item.image4}<a href="{$item.image4}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
 						<img width="200" height="200" src="{$item.imgsmall4}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
-						{/if}
-						
+					{/if}
 				</div>
 			</div>
 			
 		    </td>
-		    <td style="width: 34%">
+		    <td style="width: {if $item.display_type}29%{else}34%{/if}">
 			
 			<div class="summary">
 

@@ -590,10 +590,10 @@ function goclicky(meh, url)
 		    $('#background_color').val("<!--{/literal}-->{$styles.backgroundColor}<!--{literal}-->");
 		<!--{/literal}-->{/if}<!--{literal}-->
 		 
-		$('#body-wrapper-padding').click(function(){if($('.pattern-select').css('display') == 'block') $('.pattern-select').fadeOut("slow")});	
+		$('#body-wrapper').click(function(){if($('.pattern-select').css('display') == 'block') $('.pattern-select').fadeOut("slow")});	
 		$('#backgroundSelector img').eq(0).click(function(e){$('.pattern-select').toggle();e.stopPropagation();});
 		
-		$('#backgroundSelector .pattern-example img').click(function(){
+		$('.pattern-example img').click(function(){
 		    $('#background_image').val("url('"+$(this).attr("rel")+"')");
 		    $('#body-wrapper').css('backgroundImage', "url('"+$(this).attr("rel")+"')");
 		    if($(this).attr("rel") != "")

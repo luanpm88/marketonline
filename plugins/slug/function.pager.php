@@ -168,7 +168,7 @@ function smarty_function_pager($params, &$smarty)
       $total_record = $rowcount;
       $total_page = ceil($total_record / $limit)-1;// the last page is not the pos section,should out.
       $page = floor($pos/$limit);
-      $group_pages = 3;
+      $group_pages = 10;
       if($page>1){                   // show page number for paging left
       	$prev_begin = ($page-$group_pages)<=0?1:($page-$group_pages);
       	$prev_end = ($page-1)<=0?1:($page-1);

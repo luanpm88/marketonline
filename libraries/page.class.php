@@ -19,6 +19,7 @@ class Pages extends PbController {
 	var $previouspage_link = "javascript:;";
 	var $page_option = array(10,20,30);
 	var $is_rewrite = false;
+	var $display_group_num = 11;
 	
 	function Pages() {
 		$this->_url = pb_getenv('PHP_SELF');
@@ -71,7 +72,7 @@ class Pages extends PbController {
 			$params = '?';
 		}
 		if($page>1){
-			$prev_begin = ($page-5)<=0?1:($page-5);
+			$prev_begin = ($page-$display_group_num)<=0?1:($page-$display_group_num);
 			$prev_end = ($page-1)<=0?1:($page-1);
 			$prevs = range($prev_begin, $prev_end);
 			$previous_page = $page-1;
@@ -86,7 +87,7 @@ class Pages extends PbController {
 		$pagenav.="<span class='current'>{$page}</span>";
 		if($page<$lastpg){
 			$next_begin = ($page+1)>$lastpg?$lastpg:($page+1);
-			$next_end = ($page+5)>$lastpg?$lastpg:($page+5);
+			$next_end = ($page+$display_group_num)>$lastpg?$lastpg:($page+$display_group_num);
 			$nexts = range($next_begin, $next_end);
 			$next_page = $page+1;
 			$this->nextpage_link = $this->_url."{$params}page={$next_page}";

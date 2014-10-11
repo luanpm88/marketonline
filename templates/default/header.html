@@ -788,14 +788,21 @@ function goclicky_custom(meh, url, images, title, summary)
 		 $('.res_done_box .success_box').css('display', 'block');
 		 
 		 $('#detail_box_top .thumbnails img').resizecrop({
-		   width:91,
-		   height:91
+                    <!--{/literal}-->
+                        {if $item.display_type}
+                            width:135,
+                            height:135
+                        {else}
+                            width:91,
+                            height:91
+                        {/if}
+                    <!--{literal}-->
 		 });
 		 $('#detail_box_top .thumbnails img').css("visibility","visible");
 		 
 		{/literal}{if $theight}{literal}
                     $('#example2').etalage({
-                        thumb_image_width: 370,
+                        thumb_image_width: <!--{/literal}-->{$wwwi}<!--{literal}-->,
                         thumb_image_height: <!--{/literal}-->{$theight}<!--{literal}-->,
                         source_image_width: <!--{/literal}-->{$width}<!--{literal}-->,
                         source_image_height: <!--{/literal}-->{$height}<!--{literal}-->,

@@ -16,6 +16,15 @@
 
 <!--{literal}-->
 <script>
+	
+	function changeDisplayType(pid,type) {
+		$.ajax({
+			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}product.php?do=change_display&id="+pid+"&type="+type,
+		}).done(function ( data ) {
+			//alert(data);
+			
+		});
+	}
     
     function submitForm() {
 	if ($('#cat_id').val() != '0') {
@@ -125,8 +134,9 @@
                     <col width="60">
 			<col width="60">
 				{if $pb_userinfo.checkout}<col width="71">{/if}
-                    <col width="60">
+                    {if $pb_userinfo.checkout}<col width="60">{/if}
 		    <col width="60">
+			<col width="60">
                     <col width="82">
                 <tr>
                    <th width="9%">{lang sample_image}</th>
@@ -135,11 +145,12 @@
                    <th>{lang published}</th>
 		   {if $pb_userinfo.checkout}
 			<th style="text-align: left">Quảng cáo</th>
+			<th>Chế độ</th>
 		   {/if}
 		   
 		   <th style="text-align: left">{lang created_date}</th>
                    <!--<th style="text-align: left">{lang release}</th>-->
-		   <th width="16%">Phê duyệt</th>
+		   <th width="14%">Phê duyệt</th>
 		   
 		   
 		   
@@ -184,6 +195,10 @@
 					<img src="{$office_theme_path}images/unpublished.png">
 				    </a>
 				<!--{/if}-->
+			</td>
+			<td style="text-align: left">
+					<input onclick="changeDisplayType({$item.id},0)" type="radio" {if !$item.display_type}checked="checked"{/if} name="display_type{$item.id}" value="0" /> Chuẩn
+					<input onclick="changeDisplayType({$item.id},1)" type="radio" {if $item.display_type}checked="checked"{/if} name="display_type{$item.id}" value="1" /> Toàn màn hình
 			</td>
 		{/if}
 		

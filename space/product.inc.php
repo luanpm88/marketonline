@@ -91,7 +91,7 @@ if (isset($_GET['typeid'])) {
 }
 
 $amount = $product->findCount(null, $conditions,"id");
-//echo $amount."ssds";
+if($amount > 300) $amount = 300;
 
 if (isset($_GET['new']) && $_GET['new'] == 1) {
 	$conditions[]= "ifnew=1";

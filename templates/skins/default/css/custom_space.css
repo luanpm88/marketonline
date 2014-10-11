@@ -1288,49 +1288,40 @@ aside .widget {
 }
 .colorpicker_bg
 {
-    position: fixed !important;
-    top: 85px !important;
-    left: 230px !important;     
+    left: 230px !important;
+   
 }
 .colorpicker_bg2 {
     left: 230px !important;
-    position: fixed !important;
-    top: 127px !important;
+
 }
 .colorpicker_bg3 {
     left: 230px !important;
-    position: fixed !important;
-    top: 169px !important;
+
 }
 .colorpicker_bg4 {
     left: 230px !important;
-    position: fixed !important;
-    top: 211px !important;
+
 }
 .colorpicker_bg5 {
     left: 230px !important;
-    position: fixed !important;
-    top: 228px !important;
+
 }
 .colorpicker_bg6 {
     left: 230px !important;
-    position: fixed !important;
-    top: 364px !important;
+
 }
 .colorpicker_bg7 {
     left: 230px !important;
-    position: fixed !important;
-    top: 269px !important;
+
 }
 .colorpicker_bg8 {
     left: 230px !important;
-    position: fixed !important;
-    top: 406px !important;
+
 }
 .colorpicker_bg9 {
     left: 230px !important;
-    position: fixed !important;
-    top: 200px !important;
+
 }
 ul.new_products li.product {
     width: 219px;
@@ -2010,4 +2001,21 @@ a.following
 }
 .space_wrapper ul.products li.product:hover {
     border-color: red;
+}
+#custom-style-box .custom-content {
+    overflow: inherit;
+}
+.custom_bg input {
+    line-height: 16px;
+}
+.pattern-select {
+    background: none repeat scroll 0 0 #57bae8;
+    display: none;
+    overflow: hidden;
+    padding: 7px 4px 7px 7px;
+    width: 277px;
+    left: 268px;
+    z-index: 10000;
+    background: #88bd7a;
+    position: absolute;
 }
