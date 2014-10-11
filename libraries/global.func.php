@@ -1089,6 +1089,9 @@ function utf8_to_ascii($str) {
 
 function cleanContent($content)
 {
+	//if (strpos($content,'<video') !== false) {
+	//	return $content = strip_tags($content, "<video><object><source><tr><table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4><ul><li>");
+	//}
 	$content = str_replace("&quot;",'"',$content);
 	$content = str_replace("\\",'"',$content);
 	
@@ -1103,7 +1106,7 @@ function cleanContent($content)
 		
 		
 	//format html
-	$content = strip_tags($content, "<tr><table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4><ul><li>");
+	$content = strip_tags($content, "<video><object><source><tr><table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4><ul><li>");
 	
 	return $content;
 }
