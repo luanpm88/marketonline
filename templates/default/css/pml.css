@@ -11483,7 +11483,8 @@ p.no-content {
 .product_detail_page.full_width #product_desc .eleven, .row .eleven {
     width: 897px;
 }
-.product_detail_page.full_width div.product div.images div.thumbnails a, #content div.product div.images div.thumbnails a {
+.product_detail_page.full_width div.product div.images div.thumbnails a,
+#content div.product div.images div.thumbnails a {
     width: 135px;
 }
 .product_detail_page.full_width #three_box_detail tr td.imgg {
@@ -11503,6 +11504,6 @@ p.no-content {
 }
 #tab-description video {
     background: none repeat scroll 0 0 #fff;
-    height: auto;
+    height: 390px;
     width: 100%;
 }
