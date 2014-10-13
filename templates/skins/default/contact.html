@@ -143,14 +143,18 @@
 	      <!--{literal}-->
             <script type="text/javascript">
         jQuery(document).ready(function () {
-          jQuery("#map").gmap3(
-              { action:'addMarker',
-                address:"<!--{/literal}-->{$COMPANY.address}<!--{literal}-->",
-                map:{
-                  center:true,
-                  zoom:14,
-                  scrollwheel: false
-                }})
+          //jQuery("#map").gmap3(
+          //    { action:'addMarker',
+          //      address:"<!--{/literal}-->{$COMPANY.address}<!--{literal}-->",
+          //      map:{
+          //        center:true,
+          //        zoom:14,
+          //        scrollwheel: false
+          //      }})
+	  
+	  {/literal}	  
+	    initMapWithLatLng({$COMPANY.map_lat},{$COMPANY.map_lng});	  
+	  {literal}
         });
       </script>
         

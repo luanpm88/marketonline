@@ -273,7 +273,11 @@ var woocommerce_params = {"countries":"{\"AU\":{\"ACT\":\"Australian Capital Ter
 		
 
 			
-		setInterval('ajustColorTool()',100);
+		{/literal}
+			{if $pb_username==$MEMBER.username}
+				setInterval('ajustColorTool()',100);
+			{/if}
+		{literal}
 	    });
     </script>
      {/literal}

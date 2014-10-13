@@ -1,73 +1,73 @@
-    var infowinn = 0;
-    var marker;
-    function addAreaMarker(lat,lng,html,url) {
-	var point = new VLatLng(lat,lng);
-	var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
-	marker = new VMarker(point, icon, new VSize(6, 6), false);
-	map.addOverlay(marker);
-	//marker.openInfoWindow(html);
-	VEvent.addListener(marker, 'click', function(obj, latlng) {
-	    window.location=url;
-	    //obj.openInfoWindow(html);
-        });
-	VEvent.addListener(marker, 'mouseover', function(obj) {
-	    var ic = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_8.gif");
-	    obj.setIcon(ic);
-	    //if(infowinn < 1) {
-		obj.openInfoWindow(html);
-		infowinn++;
-	    //}
-	});
-	VEvent.addListener(marker, 'mouseout', function(obj) {
-	    var iconout = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
-	    obj.setIcon(iconout);
-	    //if(infowinn >= 1) {
-		obj.closeInfoWindow();
-		infowinn = 0;
-	    //}
-	});
-    }
-    
-    function getlatlng(pt)
-    {
-	if (map != null)
-	{
-	    console.log(pt);
-	    if (pt.latitude == 0 && pt.longitude == 0)
-		alert("Không tìm thấy.");
-	    else
-	    {
-		var marker = new VMarker(pt, new VIcon());
-		map.addOverlay(marker);
-		map.setCenter(pt, 12);
-		map.openInfoWindow(pt, 'Hồ Chí Minh');
-	    }
-	}
-    }
-    
-    var map;
-    function loadMap(lat,lng,zoom)
-    {
-	if (typeof(lat)=='undefined') {
-	    lat = 16.0458134537522;
-	}
-	if (typeof(lng)=='undefined') {
-	    lng = 107.5341796875;
-	}
-	if (typeof(zoom)=='undefined') {
-	    zoom = 5;
-	}
-	if (VBrowserIsCompatible())
-	{
-	    map = new VMap(document.getElementById('vietbando_map'));
-	    var pt = new VLatLng(lat, lng);
-	    map.setCenter(pt, zoom);
-	    //map.openInfoWindow(map.getCenter(), '<strong>Hello</strong>, Vietbando');
-	    
-	    //var client = new VClientGeocoder();
-	    //client.getLatLng('444/4 CMT8, F11, quận 3, ho chi minh', 'getlatlng');
-	}
-    }
+//    var infowinn = 0;
+//    var marker;
+//    function addAreaMarker(lat,lng,html,url) {
+//	var point = new VLatLng(lat,lng);
+//	var icon = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
+//	marker = new VMarker(point, icon, new VSize(6, 6), false);
+//	map.addOverlay(marker);
+//	//marker.openInfoWindow(html);
+//	VEvent.addListener(marker, 'click', function(obj, latlng) {
+//	    window.location=url;
+//	    //obj.openInfoWindow(html);
+//        });
+//	VEvent.addListener(marker, 'mouseover', function(obj) {
+//	    var ic = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_8.gif");
+//	    obj.setIcon(ic);
+//	    //if(infowinn < 1) {
+//		obj.openInfoWindow(html);
+//		infowinn++;
+//	    //}
+//	});
+//	VEvent.addListener(marker, 'mouseout', function(obj) {
+//	    var iconout = new VIcon("http://maps.vietbando.com/maps/images/mymap_icon/point_7.gif");
+//	    obj.setIcon(iconout);
+//	    //if(infowinn >= 1) {
+//		obj.closeInfoWindow();
+//		infowinn = 0;
+//	    //}
+//	});
+//    }
+//    
+//    function getlatlng(pt)
+//    {
+//	if (map != null)
+//	{
+//	    console.log(pt);
+//	    if (pt.latitude == 0 && pt.longitude == 0)
+//		alert("Không tìm thấy.");
+//	    else
+//	    {
+//		var marker = new VMarker(pt, new VIcon());
+//		map.addOverlay(marker);
+//		map.setCenter(pt, 12);
+//		map.openInfoWindow(pt, 'Hồ Chí Minh');
+//	    }
+//	}
+//    }
+//    
+//    var map;
+//    function loadMap(lat,lng,zoom)
+//    {
+//	if (typeof(lat)=='undefined') {
+//	    lat = 16.0458134537522;
+//	}
+//	if (typeof(lng)=='undefined') {
+//	    lng = 107.5341796875;
+//	}
+//	if (typeof(zoom)=='undefined') {
+//	    zoom = 5;
+//	}
+//	if (VBrowserIsCompatible())
+//	{
+//	    map = new VMap(document.getElementById('vietbando_map'));
+//	    var pt = new VLatLng(lat, lng);
+//	    map.setCenter(pt, zoom);
+//	    //map.openInfoWindow(map.getCenter(), '<strong>Hello</strong>, Vietbando');
+//	    
+//	    //var client = new VClientGeocoder();
+//	    //client.getLatLng('444/4 CMT8, F11, quận 3, ho chi minh', 'getlatlng');
+//	}
+//    }
     
     function ajaxLoadModule(boxid, ajax_function, param_name, param_value, page, industry_id) {
 	var type = '';

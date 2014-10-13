@@ -11504,6 +11504,13 @@ p.no-content {
 }
 #tab-description video {
     background: none repeat scroll 0 0 #fff;
+    display: block;
     height: 390px;
-    width: 100%;
+    margin: 0 auto;
+    width: auto;
+}
+#GoogleMap {
+    background: none repeat scroll 0 0 #57bae8;
+    height: 530px;
+    margin-bottom: 30px;
 }
