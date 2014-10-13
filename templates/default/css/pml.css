@@ -11501,3 +11501,8 @@ p.no-content {
 .product_detail_page.full_width .bottom-address .bottom-address-left {
     width: 896px;
 }
+#tab-description video {
+    background: none repeat scroll 0 0 #fff;
+    height: auto;
+    width: 100%;
+}
