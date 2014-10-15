@@ -11458,6 +11458,9 @@ p.no-content {
     float: left;
     margin-right: 5px;
 }
+.map_box_info {
+    max-width: 450px;
+}
 .map_box_info img {
     
 }
