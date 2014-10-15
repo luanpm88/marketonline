@@ -132,7 +132,7 @@
                 
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
-                        addMarkerByLatLng({$aaa.map_lat},{$aaa.map_lng},map,'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
+                        addMarkerByLatLng({$aaa.map_lat},{$aaa.map_lng},map,'{$aaa.name} <span style="color:#fff">...</span>','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
                         //addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
                     {/if}
                 {/loop}
