@@ -319,5 +319,9 @@ class Areas extends PbModel {
 		$googlereturn = json_decode( $googlereturn, true );
 		return array("lat"=>$googlereturn["results"][0]["geometry"]["location"]["lat"],"lng"=>$googlereturn["results"][0]["geometry"]["location"]["lng"]);
 	}
+	
+	function getMainThreeBanner() {
+		
+	}
 }
 ?>

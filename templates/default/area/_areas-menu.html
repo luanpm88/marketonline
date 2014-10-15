@@ -1,4 +1,6 @@
-    <ul class="areas_tree">	
+<!--{editor type="tiny_mce_new"}-->
+    
+    <ul class="areas_tree" style="display: none">	
 	<!--{loop $areatypes type level key}-->
 	    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}"><a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
 		<!--{if $type.areas}-->
@@ -11,8 +13,96 @@
 	    </li>
 	<!--{/loop}-->
     </ul>
+    
+    <div class="area-left-info">
+        <div class="top-menu">
+            <div class="path">
+                {if $areatype}
+                    {if $area}
+                        <a class="level1" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>
+                    {else}
+                        {$areatype.name}
+                    {/if}
+                {else}
+                    Chọn khu vực
+                {/if}
+                {if $area}
+                    / {$area.name}
+                {/if}
+                <span class="pointer">.</span>
+            </div>
+            <ul style="display: none">
+                <!--{loop $areatypes type level key}-->
+                    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
+                        <a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
+                    </li>
+                <!--{/loop}-->                
+            </ul>
+        </div>
+        <div class="bottom-content">
+            <!--{if $areatype && !$area}-->
+                <div class="city_box">
+                    <h2>Tỉnh/Thành</h2>
+                    <!--{loop $areatypes type level key}-->                
+                        <!--{if $type.id==$areatype.id}-->
+                            <ul class="city_list">					      
+                                <!--{loop $type.areas item level key}-->
+                                    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
+                                <!--{/loop}-->
+                            </ul>
+                        <!--{/if}-->
+                    <!--{/loop}-->
+                </div>
+            <!--{/if}-->
+            
+            {if $main_ades}
+                <div class="main_three_ades" style="display: none">
+                    <ul>
+                        <!--{loop $main_ades ad levelad keyad}-->
+                            <li><a href="{$ad.target_url}"><img src="{$ad.source_url}" title="{$ad.title}" /></a></li>
+                            <li><a href="#"><img src="{$ad.source_url}" title="{$ad.title}" /></a></li>
+                            <li><a href="#"><img src="{$ad.source_url}" title="{$ad.title}" /></a></li>
+                        <!--{/loop}-->
+                    </ul>
+                </div>
+            {/if}
+            
+            {if $area}
+                <div class="area_info" style="display: none">
+                    <div class="info_content">
+                        <h2>Vị trí địa lý - {$area.name}</h2>
+                        {if $area_info.content}
+                            {$area_info.content}
+                        {else}
+                            <p>Chưa có thông tin...</p>   
+                        {/if}
+                    </div>
+                    
+                    <div class="actions">
+                        {if $pb_userinfo}
+                            <a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>
+                        {else}
+                            <a class="comment_but" href="#login-box">Cập nhật thông tin</a>
+                        {/if}
+                    </div>
+                    <div id="area-info-form" class="areahide">
+                        <div class="content">
+                            <h2>Vị trí địa lý - {$area.name} <span style="color: #333">/ Viết bởi: {$pb_userinfo.fullname}</span></h2>
+                            <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreaInfo">
+                                <input type="hidden" name="area_id" value="{$area.id}" />
+                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:300px;" name="content">{$area_info_by_member.content}</textarea></div>
+                                <input class="but_area" type="submit" value="Cập nhật" />
+                                <a class="but_area close" href="javascript:void(0)">Đóng</a>
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            {/if}
+        </div>
+    </div>
 
-    <div class="vietbando_outer" {if $smarty.get.area_id || $smarty.get.areatype_id}style="margin-top: 113px"{/if}>
+    <div class="vietbando_outer">
 	<div id="vietbando_map"></div>
     </div>
     <br style="clear: both;" />
@@ -22,7 +112,90 @@
 <script type="application/x-javascript">    
     $(document).ready(function() {	
 	//load Map
-	
+	{/literal}
+	    {if $area.map_lat}
+		{if $area.map_zoom}
+                    initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,{$area.map_zoom});
+		    //loadMap({$area.map_lat},{$area.map_lng},{$area.map_zoom});
+		{else}
+                    initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,12);
+		    //loadMap({$area.map_lat},{$area.map_lng},11);
+		{/if}
+	    {elseif $areatype.map_lat}
+		{if $areatype.map_zoom}
+                    initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,{$areatype.map_zoom});
+		    //loadMap({$areatype.map_lat},{$areatype.map_lng},{$areatype.map_zoom});
+		{else}
+                    initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,6);
+		    //loadMap({$areatype.map_lat},{$areatype.map_lng},6);
+		{/if}
+                
+                {loop $areas_by_areatype aaa levela keya}
+                    {if $aaa.map_lat}
+                        addMarkerByLatLng({$aaa.map_lat},{$aaa.map_lng},map,'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
+                        //addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
+                    {/if}
+                {/loop}
+	    {else}
+		initMapWithLatLng(null,null,"vietbando_map",false,5)
+                
+                {loop $areas_by_areatype aaa levela keya}
+                    {if $aaa.map_lat}
+                        addMarkerByLatLng({$aaa.map_lat},{$aaa.map_lng},map,'{$aaa.name}','{the_url module=areas areatype_id=`$aaa.areatype_id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
+                        //addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$aaa.areatype_id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
+                    {/if}
+                {/loop}
+	    {/if}
+	{literal}
+        
+        {/literal}{$companies_map_script}{literal}
+        
+        //toggle top menu
+        $('body').click(function(){
+            $('.area-left-info .top-menu ul').fadeOut();
+        });
+	$('.area-left-info .top-menu .path').click(function(event){
+            $('.area-left-info .top-menu ul').toggle();event.stopPropagation();
+        });
+        
+        $('.main_three_ades ul li a img').resizecrop({
+            width:298,
+            height:134
+        });
+        
+        $('.area_info .actions a.post_area_info').click(function() {            
+            if( $('#area-info-form').hasClass("areahide")) {
+                $('#area-info-form').removeClass("areahide");
+            } else {
+                $('#area-info-form').addClass("areahide");
+            }
+        });
+        
+        $('.area_info .content a.close').click(function(){ $('.area_info .actions a.post_area_info').trigger('click') });
+        
+        if (window.location.hash == "#thanks") {
+            alert("Cám ơn Quý Khách đã cập nhật thông tin tại MarketOnline.vn");
+        }
+        
+        //$('#post-area-info-form').ajaxForm({
+        //        beforeSend: function() {
+        //            
+        //        },
+        //        uploadProgress: function(event, position, total, percentComplete) {
+        //            //var percentVal = percentComplete + '%';
+        //            //bar.width(percentVal);
+        //            //percent.html(percentVal);
+        //        },
+        //        complete: function(xhr) {                        
+        //            if(xhr.responseText=="ok") {
+        //                alert("Cám ơn Quý Khách đã cập nhật thông tin tại MarketOnline.vn");
+        //                $('textarea[name=content]').html(tinyMCE.activeEditor.getContent());
+        //                $('.area_info .content a.close').trigger("click");                        
+        //            } else {
+        //                alert("Vui lòng điền nội dung");
+        //            }
+        //        }
+        //});
     });
 </script>
 <!--{/literal}-->

@@ -11436,13 +11436,16 @@ p.no-content {
     width: auto;
 }
 #vietbando_map {
-    width: 1180px;
+    width: 860px;
     height: 500px;
 }
 .vietbando_outer {
     background: none repeat scroll 0 0 #aaa;
+    float: right;
     height: 500px;
-    width: 100%;
+    overflow: hidden;
+    width: 860px;
+    margin-bottom: 30px;
 }
 #right_detail_banner img, #job-sidebar img {
     max-width: 100%;
@@ -11513,4 +11516,160 @@ p.no-content {
     background: none repeat scroll 0 0 #57bae8;
     height: 530px;
     margin-bottom: 30px;
+}
+.area-left-info {
+    border: 1px solid #aaa;
+    float: left;
+    height: 500px;
+    padding: 10px;
+    width: 320px;
+}
+.area-left-info .top-menu {
+    position: relative;
+}
+.area-left-info .top-menu .path {
+    border: 1px solid #aaa;
+    font-size: 18px;
+    padding: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+.area-left-info .top-menu .path .pointer {
+    background: url("../image/arrow_down.png") no-repeat scroll 4px 8px / 12px auto #fff;
+    display: block;
+    float: right;
+    text-indent: -9000px;
+    width: 22px;
+}
+.area-left-info .top-menu .path a {
+    color: #3b984c;
+}
+.area-left-info .top-menu .path a:hover {
+    text-decoration: underline;
+}
+.area-left-info .top-menu .path:hover .pointer {
+    opacity: 0.5;
+}
+.area-left-info .top-menu ul {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #aaa;
+    padding: 5px 0;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+.area-left-info .top-menu ul li {
+    list-style: none outside none;
+}
+.area-left-info .top-menu ul li a {
+    display: block;
+    font-size: 16px;
+    margin: 0;
+    padding: 5px;
+    color: #333;
+}
+.area-left-info .top-menu ul li a:hover {
+    background: #3b984c;
+    color: #fff;
+}
+.area-left-info .bottom-content .city_list {
+    
+}
+.area-left-info .bottom-content .city_list li {
+    list-style: none;
+    float:left;
+    width: 50%;
+}
+.area-left-info .bottom-content .city_list li a {
+    display: block;
+    padding: 5px;
+    color: #333;
+    font-size: 14px;
+}
+.area-left-info .bottom-content .city_list li a:hover {
+    background: #3b984c;
+    color: #fff;
+}
+.area-left-info .bottom-content .city_box h2, .area_info h2 {
+    color: #3b984c;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0 5px;
+}
+.main_three_ades {
+    margin-top: 20px;
+}
+.main_three_ades ul {
+    
+}
+.main_three_ades ul li {
+    list-style: none outside none;
+    margin-bottom: 10px;
+}
+.main_three_ades ul li a {
+    
+}
+.main_three_ades ul li a img {
+    height: 134px;
+    width: 298px;
+}
+.main_three_ades ul li a span img {
+    width: auto;
+    height: auto;
+}
+.area_info p {
+    margin-bottom: 10px;
+}
+.area_info .actions a {
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    float: right;
+    padding: 5px 10px;
+}
+.area_info .actions a:hover {
+    opacity: 0.6;
+}
+#area-info-form {
+    padding: 20px;
+}
+#area-info-form {
+    background: none repeat scroll 0 0 #fff;
+    height: 500px;
+    left: 329px;
+    padding: 20px;
+    position: absolute;
+    top: 10px;
+    width: 861px;
+    z-index: 100;
+    border: solid 1px #aaa;
+}
+.areahide {
+    left: -90000px !important;
+}
+#area-info-form .content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+#area-info-form .content input[type="submit"], .but_area {
+    background: none repeat scroll 0 0 #3b984c;
+    border: medium none;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 20px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+#area-info-form .content input[type=submit]:hover, .but_area:hover {
+    color: #fff;
+    opacity: 0.6;
+}
+.area_info .info_content {
+    height: 410px;
+    margin-bottom: 6px;
+    overflow: hidden;
 }

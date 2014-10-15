@@ -6,6 +6,7 @@ class Area extends PbController {
 	function Area()
 	{
 		$this->loadModel("area");
+		$this->loadModel("areainfo");
 		$this->loadModel("areatype");
 		$this->loadModel("product");
 		$this->loadModel("trade");
@@ -42,6 +43,7 @@ class Area extends PbController {
 	}
 	
 	function listing() {
+		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*");
 		//var_dump($_GET);
 		//get area
@@ -50,13 +52,25 @@ class Area extends PbController {
 			$area = $this->area->read("*",$area_id);
 			$area_name = $area["name"];
 			setvar("area",$area);
+			
+			//get area info by member
+			$area_info_by_member = $this->getAreaInfoByMember($area_id,$pb_userinfo["pb_userid"]);
+			if(!empty($area_info_by_member)) {
+				setvar("area_info_by_member",$area_info_by_member);
+			}
+			
+			//area info
+			$area_info = $this->getAreaInfo($area_id);
+			if($area_info) {
+				setvar("area_info",$area_info);
+			}
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = "/".$areatype["name"];
 			
-			$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
+			$areas_by_areatype = $this->getAreasByAreatype();
 			setvar("areas_by_areatype",$areas_by_areatype);
 			
 			setvar("areatype",$areatype);
@@ -195,7 +209,10 @@ class Area extends PbController {
 			setvar("industry_tree",$industry_tree);
 		}
 		
-		
+		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
+			$main_ades = $this->getMainThreeBanners();
+			setvar("main_ades",$main_ades);
+		}
 		
 		if($PageTypeName) $ttypename = $PageTypeName." - ";
 		setvar("PageTitle",$ttypename."Thị trường ".$area_name.$areatype_name.", Việt Nam - MarketOnline.vn");
@@ -203,6 +220,7 @@ class Area extends PbController {
 	}
 	
 	function index() {
+		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*");
 		
 		//get area
@@ -218,6 +236,18 @@ class Area extends PbController {
 			//setvar("companies",$companies["result"]);
 			$companies_map_script = $this->getMapCompany();
 			setvar("companies_map_script",$companies_map_script);
+			
+			//get area info by member
+			$area_info_by_member = $this->getAreaInfoByMember($area_id,$pb_userinfo["pb_userid"]);
+			if(!empty($area_info_by_member)) {
+				setvar("area_info_by_member",$area_info_by_member);
+			}
+			
+			//area info
+			$area_info = $this->getAreaInfo($area_id);
+			if($area_info) {
+				setvar("area_info",$area_info);
+			}
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
@@ -226,7 +256,7 @@ class Area extends PbController {
 			setvar("areatype",$areatype);
 		}
 		
-		$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
+		$areas_by_areatype = $this->getAreasByAreatype();
 		setvar("areas_by_areatype",$areas_by_areatype);
 		
 		//get areas with level 2
@@ -255,6 +285,13 @@ class Area extends PbController {
 		////get jobs by areas
 		//$jobs = $this->job->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
 		//setvar("jobs",$jobs);
+		
+		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
+			$main_ades = $this->getMainThreeBanners();
+			setvar("main_ades",$main_ades);
+		}
+		
+		
 		
 		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
 		render("area/index", 1);
@@ -696,6 +733,66 @@ class Area extends PbController {
 		}
 		
 		return $companies_map_script;
+	}
+	
+	function getAreasByAreatype() {
+		if(isset($_GET["areatype_id"])){
+			$areas_by_areatype = $this->area->findAll("*",null,array("level=2","areatype_id=".$_GET["areatype_id"]));
+		} else {
+			$areas_by_areatype = $this->area->findAll("*",null,array("level=2"));
+		}
+		
+		return $areas_by_areatype;
+	}
+	
+	function getMainThreeBanners() {
+		uses("ad");
+		$ads = new Adses();
+		
+		$ades = $ads->findAll("*",null,array("Ads.adzone_id=9","Ads.status=1","Ads.state=1"));
+		//var_dump($ades);
+		return $ades;
+	}
+	
+	function postAreaInfo() {
+		$pb_userinfo = pb_get_member_info();
+		
+		if(isset($_POST["area_id"]) && isset($_POST["content"]) && trim(strip_tags($_POST["content"]))!='') {
+			$exsit = $this->areainfo->findAll("*",null,array("member_id=".$pb_userinfo["pb_userid"],"area_id=".$_POST["area_id"]));
+			
+			$vals["created"] = date("Y-m-d H:i:s");
+			$vals["content"] = $_POST["content"];
+			if(empty($exsit)) {
+				$vals["member_id"] = $pb_userinfo["pb_userid"];				
+				$vals["area_id"] = $_POST["area_id"];
+				$vals["status"] = 0;
+				
+				$this->areainfo->save($vals);
+			} else {
+				$this->areainfo->save($vals,'update',intval($exsit[0]["id"]));
+			}
+			
+			
+			
+			header('Location: '.$_SERVER['HTTP_REFERER'].'#thanks');
+			echo "ok";
+			return;
+		}
+		echo "failed";
+	}
+	
+	function getAreaInfoByMember($area_id,$member_id) {
+		$exsit = $this->areainfo->fields("*",array("member_id=".$member_id,"area_id=".$area_id));
+		return $exsit;
+	}
+	
+	function getAreaInfo($area_id) {
+		$exsit = $this->areainfo->findAll("*",null,array("status=1"),"created DESC",0,1);
+		if(count($exsit)) {
+			return $exsit[0];
+		} else {
+			return false;
+		}
 	}
 }
 ?>
