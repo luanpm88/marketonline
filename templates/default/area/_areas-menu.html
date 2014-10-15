@@ -18,17 +18,11 @@
         <div class="top-menu">
             <div class="path">
                 {if $areatype}
-                    {if $area}
-                        <a class="level1" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>
-                    {else}
-                        {$areatype.name}
-                    {/if}
+                    {$areatype.name}
                 {else}
-                    Chọn khu vực
+                    Việt Nam
                 {/if}
-                {if $area}
-                    / {$area.name}
-                {/if}
+                
                 <span class="pointer">.</span>
             </div>
             <ul style="display: none">
@@ -42,7 +36,7 @@
         <div class="bottom-content">
             <!--{if $areatype && !$area}-->
                 <div class="city_box">
-                    <h2>Tỉnh/Thành</h2>
+                    <h3>Tỉnh/Thành</h3>
                     <!--{loop $areatypes type level key}-->                
                         <!--{if $type.id==$areatype.id}-->
                             <ul class="city_list">					      
@@ -52,11 +46,34 @@
                             </ul>
                         <!--{/if}-->
                     <!--{/loop}-->
+		    <a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+                </div>
+            <!--{/if}-->
+	    
+	    <!--{if $areatype && $area}-->
+                <div class="city_box">
+                    <h3 {if $area.level==3}style="background: none"{/if}>
+                        <a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>
+			{if $area.level==3} /
+			    <a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">
+				{$parent_area.name}
+			    </a>
+			{/if}
+                        / {$area.name}
+		    </h3>
+		    {if $area.level==2}
+			<ul class="city_list">					      
+				    <!--{loop $districts item level key}-->
+					<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
+				    <!--{/loop}-->
+			</ul>
+			<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+		    {/if}
                 </div>
             <!--{/if}-->
             
-            {if $main_ades}
-                <div class="main_three_ades" style="display: none">
+            {if $main_ades && false}
+                <div class="main_three_ades">
                     <ul>
                         <!--{loop $main_ades ad levelad keyad}-->
                             <li><a href="{$ad.target_url}"><img src="{$ad.source_url}" title="{$ad.title}" /></a></li>
@@ -67,8 +84,8 @@
                 </div>
             {/if}
             
-            {if $area}
-                <div class="area_info">
+            {if $area && false}
+                <div class="area_info" style="display: none">
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$area.name}</h2>
                         {if $area_info.content}
@@ -128,24 +145,25 @@
 	    {if $area.map_lat}
 		{if $area.map_zoom}
                     initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,{$area.map_zoom});
-		    //loadMap({$area.map_lat},{$area.map_lng},{$area.map_zoom});
 		{else}
                     initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,12);
-		    //loadMap({$area.map_lat},{$area.map_lng},11);
+		{/if}
+	    {elseif $parent_area.map_lat}
+		{if $area.map_zoom}
+                    initMapWithLatLng({$parent_area.map_lat},{$parent_area.map_lng},"vietbando_map",false,{$parent_area.map_zoom});
+		{else}
+                    initMapWithLatLng({$parent_area.map_lat},{$parent_area.map_lng},"vietbando_map",false,12);
 		{/if}
 	    {elseif $areatype.map_lat}
 		{if $areatype.map_zoom}
                     initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,{$areatype.map_zoom});
-		    //loadMap({$areatype.map_lat},{$areatype.map_lng},{$areatype.map_zoom});
 		{else}
                     initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,6);
-		    //loadMap({$areatype.map_lat},{$areatype.map_lng},6);
 		{/if}
                 
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
                         addMarkerByLatLng({$aaa.map_lat},{$aaa.map_lng},map,'{$aaa.name} <span style="color:#fff">...</span>','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
-                        //addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$areatype.id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
                     {/if}
                 {/loop}
 	    {else}
@@ -154,7 +172,6 @@
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
                         addMarkerByLatLng({$aaa.map_lat},{$aaa.map_lng},map,'{$aaa.name} <span style="color:#fff">...</span>','{the_url module=areas areatype_id=`$aaa.areatype_id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
-                        //addAreaMarker({$aaa.map_lat},{$aaa.map_lng},'{$aaa.name}','{the_url module=areas areatype_id=`$aaa.areatype_id` area_id=`$aaa.id` title=`$aaa.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}');
                     {/if}
                 {/loop}
 	    {/if}
@@ -218,6 +235,22 @@
             zoomInfoOut();
             $('#area-info-form').addClass("areahide");
         });
+	
+	$('.area-left-info .bottom-content .city_box .hide_but').click(function() {
+	    $('.area-left-info .bottom-content .city_list').hide();
+	    $(this).hide();
+	    $('.area_info').show();
+	});
+	$('.area-left-info .bottom-content .city_box h3').click(function() {
+	    $('.area_info,.area-left-info .bottom-content .city_list,.area-left-info .bottom-content .city_box .hide_but').toggle();
+	    
+	});
+	
+	$('.area-left-info .bottom-content .city_list').mCustomScrollbar({
+	    autoHideScrollbar:true,
+	    theme:"light-thin",
+	    scrollSpeed: 40
+	});
     });
 </script>
 <!--{/literal}-->

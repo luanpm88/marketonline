@@ -11576,7 +11576,10 @@ p.no-content {
     color: #fff;
 }
 .area-left-info .bottom-content .city_list {
-    
+    float: left;
+    margin-bottom: 5px;
+    max-height: 390px;
+    overflow: auto;
 }
 .area-left-info .bottom-content .city_list li {
     list-style: none;
@@ -11672,8 +11675,11 @@ p.no-content {
     color: #fff;
     opacity: 0.6;
 }
+.area_info {
+    clear: both;
+}
 .area_info .info_content {
-    height: 410px;
+    height: 382px;
     margin-bottom: 6px;
     overflow: hidden;
 }
@@ -11706,4 +11712,36 @@ p.no-content {
     height: 452px;
     margin-bottom: 6px;
     overflow: auto;
+}
+.area-left-info .bottom-content .city_box {
+    float: left;
+}
+.area-left-info .bottom-content .city_box .hide_but {
+    background: url("../image/up.png") no-repeat scroll center center / 17px auto transparent;
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 24px;
+    text-indent: -9000px;
+    width: 24px;
+    opacity: 0.7
+}
+.area-left-info .bottom-content .city_box .hide_but:hover {
+    opacity: 1;
+}
+.area-left-info .bottom-content .city_box h3 {
+    background: url("../image/arrow_down.png") no-repeat scroll right 5px / 9px auto #fff;
+    color: #333;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 10px 0 5px;
+    padding-right: 18px;
+}
+.area-left-info .bottom-content .city_box h3 a {
+    color: #3b984c;
+}
+.area-left-info .bottom-content .city_box h3 a:hover {
+    text-decoration: underline;
 }
