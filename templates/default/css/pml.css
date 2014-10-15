@@ -11666,6 +11666,7 @@ p.no-content {
     padding: 5px 10px;
     margin-right: 10px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 #area-info-form .content input[type=submit]:hover, .but_area:hover {
     color: #fff;
@@ -11675,4 +11676,34 @@ p.no-content {
     height: 410px;
     margin-bottom: 6px;
     overflow: hidden;
+}
+.area_info .actions a.areazoom {
+    background: url("../image/zoomin.png") no-repeat scroll 0 0 / 26px auto transparent;
+    height: 26px;
+    margin-left: 10px;
+    text-indent: -9000px;
+    width: 26px;
+    opacity: 0.6;
+}
+.area_info .actions a.areazoom.out {
+    background: url("../image/zoomout.png") no-repeat scroll 0 0 / 26px auto transparent;
+}
+.area_info .actions a.areazoom:hover {
+    opacity: 1;
+}
+.area_info.full_areabox {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #aaa;
+    height: 500px;
+    left: 10px;
+    padding: 0px 15px 15px 15px;
+    position: absolute;
+    top: 10px;
+    width: 1180px;
+    z-index: 100;
+}
+.area_info.full_areabox .info_content {
+    height: 452px;
+    margin-bottom: 6px;
+    overflow: auto;
 }

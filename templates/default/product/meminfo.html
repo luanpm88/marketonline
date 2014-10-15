@@ -16,7 +16,7 @@ function checkConfirmOrderFields() {
 	//$("#receiver_mobile").val($("#mobile").val());
 	//$("#receiver_address").val($("#address").val());
 	
-	if($("#email").val() == "")
+	if($("#email").val().trim() == "")
 	{
 		$("#email").addClass('error');
 		valid = false;
@@ -26,7 +26,7 @@ function checkConfirmOrderFields() {
 		$("#email").removeClass('error');
 	}
 	
-	if($("#fullname").val() == "")
+	if($("#fullname").val().trim() == "")
 	{
 		$("#fullname").addClass('error');
 		valid = false;
@@ -36,7 +36,7 @@ function checkConfirmOrderFields() {
 		$("#fullname").removeClass('error');
 	}
 	
-	if($("#mobile").val() == "")
+	if($("#mobile").val().trim() == "")
 	{
 		$("#mobile").addClass('error');
 		valid = false;
@@ -46,7 +46,7 @@ function checkConfirmOrderFields() {
 		$("#mobile").removeClass('error');
 	}
 	
-	if($("#address").val() == "")
+	if($("#address").val().trim() == "")
 	{
 		$("#address").addClass('error');
 		valid = false;

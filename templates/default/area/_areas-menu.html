@@ -68,7 +68,7 @@
             {/if}
             
             {if $area}
-                <div class="area_info" style="display: none">
+                <div class="area_info">
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$area.name}</h2>
                         {if $area_info.content}
@@ -79,18 +79,20 @@
                     </div>
                     
                     <div class="actions">
+                        <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
                         {if $pb_userinfo}
                             <a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>
                         {else}
                             <a class="comment_but" href="#login-box">Cập nhật thông tin</a>
                         {/if}
+                        
                     </div>
                     <div id="area-info-form" class="areahide">
                         <div class="content">
                             <h2>Vị trí địa lý - {$area.name} <span style="color: #333">/ Viết bởi: {$pb_userinfo.fullname}</span></h2>
                             <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreaInfo">
                                 <input type="hidden" name="area_id" value="{$area.id}" />
-                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:300px;" name="content">{$area_info_by_member.content}</textarea></div>
+                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:300px;max-height: 300px" name="content">{$area_info_by_member.content}</textarea></div>
                                 <input class="but_area" type="submit" value="Cập nhật" />
                                 <a class="but_area close" href="javascript:void(0)">Đóng</a>
                             </form>
@@ -109,7 +111,17 @@
     
     
 <!--{literal}-->
-<script type="application/x-javascript">    
+<script type="application/x-javascript">
+    function zoomInfoIn() {
+        $('.area_info').addClass("full_areabox");
+        $('.area_info .actions a.areazoom').removeClass("in");
+        $('.area_info .actions a.areazoom').addClass("out");
+    }
+    function zoomInfoOut() {
+        $('.area_info').removeClass("full_areabox");
+        $('.area_info .actions a.areazoom').removeClass("out");
+        $('.area_info .actions a.areazoom').addClass("in");
+    }
     $(document).ready(function() {	
 	//load Map
 	{/literal}
@@ -169,6 +181,7 @@
             } else {
                 $('#area-info-form').addClass("areahide");
             }
+            zoomInfoOut();
         });
         
         $('.area_info .content a.close').click(function(){ $('.area_info .actions a.post_area_info').trigger('click') });
@@ -196,6 +209,15 @@
         //            }
         //        }
         //});
+        
+        $('.area_info .actions a.areazoom.in').live("click",function() {
+            zoomInfoIn();
+            $('#area-info-form').addClass("areahide");
+        });
+        $('.area_info .actions a.areazoom.out').live("click",function() {
+            zoomInfoOut();
+            $('#area-info-form').addClass("areahide");
+        });
     });
 </script>
 <!--{/literal}-->
