@@ -6143,8 +6143,35 @@ class Product extends PbController {
 		}
 	}
 	
+	function updateAreaPosition() {
+		$com = $this->area->read("id,map_lat,map_lng,name",$_GET["id"]);
+		//var_dump($com);
+		
+		
+		if(($com["map_lat"] == '' || $com["map_lng"] == '')) {
+			$ffaddress = $this->area->getFullName($com["id"]);
+			//$ffaddress = substr($ffaddress,2,strlen($ffaddress)-2);
+			$latlng = $this->area->getLatLngByAddress($ffaddress);
+			$vals['map_lat'] = $latlng["lat"];
+			$vals['map_lng'] = $latlng["lng"];
+			
+			$this->area->save($vals,'update',intval($com["id"]));
+			
+			echo "ok (".$vals['map_lat'].",".$vals['map_lng'].")";
+		}
+	}
+	
+	function updateAreasPosition() {
+		$coms = $this->area->findAll("id,name",null,array("level=3"),"created DESC");
+		foreach($coms as $key => $com) {
+			$coms[$key]["address"] = $this->area->getFullName($com["id"]);
+		}
+		setvar("coms",$coms);
+		render("product/updateAreasPosition");
+	}
+	
 	function updateCompaniesPosition() {
-		$coms = $this->company->findAll("id,name",null,null,"created DESC");
+		$coms = $this->company->findAll("id,name",null,null,"created DESC");		
 		setvar("coms",$coms);
 		render("product/updateCompaniesPosition");
 	}

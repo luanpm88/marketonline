@@ -1,0 +1,51 @@
+<!--{include file="`$theme_name`/header.html" page_title="Giỏ hàng `$page_title`" nav_id="`$nav_id`"}-->
+
+{literal}
+    <script type="application/x-javascript">
+	function updatePos(cid,item) {
+	    $.ajax({
+		url: "index.php?do=product&action=updateAreaPosition&id="+cid,
+	    }).done(function ( data ) {
+		if( console && console.log ) {
+		    //alert(data);
+		    if (data != '') {
+			item.find('span').html(data);
+		    }
+		    updatePos(item.next().attr("rel"),item.next());
+		}
+	    });
+	}
+	$(document).ready(function() {
+	    updatePos($('.uupp div').eq(0).attr("rel"),$('.uupp div').eq(0));	    
+	});
+    </script>
+{/literal}
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<div class="uupp">
+<!--{loop $coms item level key}-->
+    <div rel="{$item.id}">
+	{$item.id}: {$item.address} <span style="font-weight: bold;color: green"></span>
+    </div>
+<!--{/loop}-->
+</div>
+
+</div>
+  </div>
+	
+	
+	
+	
+<script>
+$("#SearchFrm").attr("action","{the_url module=search}");
+$("#hdModule").val("product");
+$("#topMenuProduct").addClass("lcur");
+</script>
+<!--{include file="`$theme_name`/footer.html"}-->

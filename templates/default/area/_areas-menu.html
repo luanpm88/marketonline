@@ -53,19 +53,19 @@
 	    <!--{if $areatype && $area}-->
                 <div class="city_box">
                     <h3 {if $area.level==3}style="background: none"{/if}>
-                        <a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>
-			{if $area.level==3} /
+                        <!--<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>-->
+			{if $area.level==3}
 			    <a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">
 				{$parent_area.name}
-			    </a>
+			    </a> <span style="font-weight:normal"> / </span>
 			{/if}
-                        / {$area.name}
+                        {$area.name}
 		    </h3>
 		    {if $area.level==2}
 			<ul class="city_list">					      
-				    <!--{loop $districts item level key}-->
-					<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
-				    <!--{/loop}-->
+			    <!--{loop $districts item level key}-->
+				<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
+			    <!--{/loop}-->
 			</ul>
 			<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
 		    {/if}
@@ -146,7 +146,7 @@
 		{if $area.map_zoom}
                     initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,{$area.map_zoom});
 		{else}
-                    initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,12);
+                    initMapWithLatLng({$area.map_lat},{$area.map_lng},"vietbando_map",false,10+{$area.level});
 		{/if}
 	    {elseif $parent_area.map_lat}
 		{if $area.map_zoom}
