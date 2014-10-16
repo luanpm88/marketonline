@@ -259,6 +259,10 @@ class Area extends PbController {
 				setvar("area_info",$area_info);
 			}
 			
+			//get all area infos
+			$area_infos = $this->getAreaInfosByArea($area_id);
+			setvar("area_infos",$area_infos);
+			
 			//listing district
 			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
 			setvar("districts",$districts);
@@ -763,7 +767,7 @@ class Area extends PbController {
 		uses("ad");
 		$ads = new Adses();
 		
-		$ades = $ads->findAll("*",null,array("Ads.adzone_id=9","Ads.status=1","Ads.state=1"));
+		$ades = $ads->findAll("*",null,array("Ads.adzone_id=9","Ads.status=1","Ads.state=1"),"Ads.display_order");
 		//var_dump($ades);
 		return $ades;
 	}
@@ -801,12 +805,35 @@ class Area extends PbController {
 	}
 	
 	function getAreaInfo($area_id) {
-		$exsit = $this->areainfo->findAll("*",null,array("status=1"),"created DESC",0,1);
+		$exsit = $this->areainfo->findAll("*",null,array("status=1","area_id=".$area_id),"created DESC",0,1);
 		if(count($exsit)) {
 			return $exsit[0];
 		} else {
 			return false;
 		}
+	}
+	
+	function getAreaInfosByArea($id) {
+		$conditions = array("Areainfo.area_id=".$id);
+		$joins = array("LEFT JOIN {$this->areainfo->table_prefix}areas AS a ON a.id=Areainfo.area_id");
+		$joins[] = "LEFT JOIN {$this->areainfo->table_prefix}members AS m ON m.id=Areainfo.member_id";
+		$joins[] = "LEFT JOIN {$this->areainfo->table_prefix}memberfields AS mf ON mf.member_id=Areainfo.member_id";
+		$items = $this->areainfo->findAll("Areainfo.id,mf.first_name,mf.last_name",$joins,$conditions,"Areainfo.created DESC");
+		
+		return $items;
+	}
+	
+	function getAreaInfoContent() {
+		$area = $this->areainfo->read("*",intval($_GET["id"]));
+		echo $area["content"];
+	}
+	
+	function saveAreaInfoDefault() {
+		$info = $this->areainfo->read("*",intval($_GET["id"]));
+		
+		$sql = "update ".$this->areainfo->getTable()." set status=0 where area_id=".$info["area_id"];
+		$this->areainfo->dbstuff->Execute($sql);
+		$this->areainfo->saveField("status",1,intval($_GET["id"]));
 	}
 }
 ?>

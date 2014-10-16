@@ -139,3 +139,9 @@
       }
     });
   }
+  
+  function resetMap() {
+    var latlng = new google.maps.LatLng(init_lat,init_lng);
+    map.setCenter(latlng)
+    map.setZoom(init_zoom);
+  }
