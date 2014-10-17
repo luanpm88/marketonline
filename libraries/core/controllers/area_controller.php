@@ -7,6 +7,7 @@ class Area extends PbController {
 	{
 		$this->loadModel("area");
 		$this->loadModel("areainfo");
+		$this->loadModel("areatypeinfo");
 		$this->loadModel("areatype");
 		$this->loadModel("product");
 		$this->loadModel("trade");
@@ -272,6 +273,22 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = $areatype["name"];
 			setvar("areatype",$areatype);
+			
+			//get area info by member
+			$areatype_info_by_member = $this->getAreatypeInfoByMember($areatype_id,$pb_userinfo["pb_userid"]);
+			if(!empty($areatype_info_by_member)) {
+				setvar("areatype_info_by_member",$areatype_info_by_member);
+			}
+			
+			//area info
+			$areatype_info = $this->getAreatypeInfo($areatype_id);
+			if($areatype_info) {
+				setvar("areatype_info",$areatype_info);
+			}
+			
+			//get all area infos
+			$areatype_infos = $this->getAreatypeInfosByArea($areatype_id);
+			setvar("areatype_infos",$areatype_infos);
 		}
 		
 		$areas_by_areatype = $this->getAreasByAreatype();
@@ -834,6 +851,70 @@ class Area extends PbController {
 		$sql = "update ".$this->areainfo->getTable()." set status=0 where area_id=".$info["area_id"];
 		$this->areainfo->dbstuff->Execute($sql);
 		$this->areainfo->saveField("status",1,intval($_GET["id"]));
+	}
+	
+	function postAreatypeInfo() {
+		$pb_userinfo = pb_get_member_info();
+		
+		if(isset($_POST["areatype_id"]) && isset($_POST["content"]) && trim(strip_tags($_POST["content"]))!='') {
+			$exsit = $this->areatypeinfo->findAll("*",null,array("member_id=".$pb_userinfo["pb_userid"],"areatype_id=".$_POST["areatype_id"]));
+			
+			$vals["created"] = date("Y-m-d H:i:s");
+			$vals["content"] = $_POST["content"];
+			if(empty($exsit)) {
+				$vals["member_id"] = $pb_userinfo["pb_userid"];				
+				$vals["areatype_id"] = $_POST["areatype_id"];
+				$vals["status"] = 0;
+				
+				$this->areatypeinfo->save($vals);
+			} else {
+				$this->areatypeinfo->save($vals,'update',intval($exsit[0]["id"]));
+			}
+			
+			
+			
+			header('Location: '.$_SERVER['HTTP_REFERER'].'#thanks');
+			echo "ok";
+			return;
+		}
+		echo "failed";
+	}
+	
+	function getAreatypeInfoByMember($areatype_id,$member_id) {
+		$exsit = $this->areatypeinfo->fields("*",array("member_id=".$member_id,"areatype_id=".$areatype_id));
+		return $exsit;
+	}
+	
+	function getAreatypeInfo($areatype_id) {
+		$exsit = $this->areatypeinfo->findAll("*",null,array("status=1","areatype_id=".$areatype_id),"created DESC",0,1);
+		if(count($exsit)) {
+			return $exsit[0];
+		} else {
+			return false;
+		}
+	}
+	
+	function getAreatypeInfosByArea($id) {
+		$conditions = array("Areatypeinfo.areatype_id=".$id);
+		$joins = array("LEFT JOIN {$this->areainfo->table_prefix}areatypes AS a ON a.id=Areatypeinfo.areatype_id");
+		$joins[] = "LEFT JOIN {$this->areainfo->table_prefix}members AS m ON m.id=Areatypeinfo.member_id";
+		$joins[] = "LEFT JOIN {$this->areainfo->table_prefix}memberfields AS mf ON mf.member_id=Areatypeinfo.member_id";
+		$items = $this->areatypeinfo->findAll("Areatypeinfo.id,mf.first_name,mf.last_name",$joins,$conditions,"Areatypeinfo.created DESC");
+		
+		return $items;
+	}
+	
+	function getAreatypeInfoContent() {
+		$area = $this->areatypeinfo->read("*",intval($_GET["id"]));
+		echo $area["content"];
+	}
+	
+	function saveAreatypeInfoDefault() {
+		$info = $this->areatypeinfo->read("*",intval($_GET["id"]));
+		
+		$sql = "update ".$this->areatypeinfo->getTable()." set status=0 where areatype_id=".$info["areatype_id"];
+		$this->areatypeinfo->dbstuff->Execute($sql);
+		$this->areatypeinfo->saveField("status",1,intval($_GET["id"]));
 	}
 }
 ?>

@@ -111,8 +111,8 @@ language : \"{$language}\"
 				    relative_urls: false,
 				    remove_script_host: false,
 				menubar: false,
+				content_css : "/mycontent.css",
 				toolbar_items_size: "small",
-			
 				style_formats: [
 					{title: "Bold text", inline: "b"},
 					{title: "Red text", inline: "span", styles: {color: "#ff0000"}},

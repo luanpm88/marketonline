@@ -11603,7 +11603,7 @@ p.no-content {
     margin: 10px 0 5px;
 }
 .main_three_ades {
-    margin-top: 10px;
+    margin-top: 12px;
     float: left;
 }
 .main_three_ades ul {
@@ -11619,7 +11619,7 @@ p.no-content {
     float: left;
 }
 .main_three_ades ul li a img {
-    height: 141px;
+    height: 148px;
     width: 298px;
 }
 .main_three_ades ul li a span img {
@@ -11640,13 +11640,10 @@ p.no-content {
     opacity: 0.6;
 }
 #area-info-form {
-    padding: 20px;
-}
-#area-info-form {
     background: none repeat scroll 0 0 #fff;
     height: 520px;
     left: 329px;
-    padding: 20px;
+    padding: 10px;
     position: absolute;
     top: 10px;
     width: 861px;
@@ -11657,23 +11654,23 @@ p.no-content {
     left: -90000px !important;
 }
 #area-info-form .content h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 0px;
 }
 #area-info-form .content input[type="submit"], .but_area {
     background: none repeat scroll 0 0 #3b984c;
     border: medium none;
     color: #fff;
+    cursor: pointer;
     display: block;
-    float: left;
+    float: right;
     font-size: 14px;
     height: 30px;
     line-height: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
     margin-top: 10px;
     padding: 5px 10px;
-    margin-right: 10px;
-    cursor: pointer;
-    margin-bottom: 10px;
 }
 #area-info-form .content input[type=submit]:hover, .but_area:hover {
     color: #fff;
@@ -11683,7 +11680,7 @@ p.no-content {
     clear: both;
 }
 .area_info .info_content {
-    height: 382px;
+    height: 408px;
     margin-bottom: 6px;
     overflow: hidden;
 }
@@ -11713,7 +11710,7 @@ p.no-content {
     z-index: 100;
 }
 .area_info.full_areabox .info_content {
-    height: 452px;
+    height: 478px;
     margin-bottom: 6px;
     overflow: auto;
 }
@@ -11792,7 +11789,7 @@ p.no-content {
 .area-left-info .bottom-content .area_info_item_content {
     border: 1px solid #aaa;
     clear: both;
-    height: 360px;
+    height: 381px;
     overflow: auto;
     padding: 5px;
 }
@@ -11809,18 +11806,15 @@ element.style {
     color: #fff;
 }
 .area_info .actions .area_valid_controls a {
-    float: left;
-    margin-left: 0;
-    margin-right: 10px;
     margin-top: 11px;
 }
-.area_info .actions .area_valid_controls .save_default {
+.area_info .actions .area_valid_controls .save_default, .area_info .actions .area_valid_controls .save_default_type {
     background: #6597cf;
 }
 .area_info .actions .area_valid_controls .close {
     
 }
-/*.fix_pos {
+.fix_pos {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
     color: #fff;
     font-size: 14px;
@@ -11840,4 +11834,12 @@ element.style {
 }
 .vietbando_outer:hover .fix_pos {
     display: block;
-}*/
+}
+#post-area-info-form iframe {
+    /*height: 322px !important;*/
+}
+div.mce-edit-area {
+    height: 342px;
+    overflow: auto;
+    background: #fff !important;
+}

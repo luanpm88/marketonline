@@ -76,13 +76,13 @@
                 <div class="main_three_ades">
                     <ul>
                         <!--{loop $main_ades ad levelad keyad}-->
-                            <li><a href="{$ad.target_url}"><img src="{$ad.source_url}" title="{$ad.title}" /></a></li>			    
+                            <li><a target="_blank" href="{$ad.target_url}"><img src="{$ad.source_url}" title="{$ad.title}" /></a></li>			    
                         <!--{/loop}-->
                     </ul>
                 </div>
             {/if}
             
-            {if $area && false}
+            {if $area}
                 <div class="area_info"{if $area.level < 3} style="display: none"{/if}>
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$area.name}</h2>
@@ -103,7 +103,7 @@
                             <a class="comment_but" href="#login-box">Cập nhật thông tin</a>
                         {/if}
                         
-			{if ($pb_userinfo.area_moderator || true) && $area_infos}
+			{if ($pb_userinfo.area_moderator || true) && $area_infos && false}
 			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
 			    <div class="validation" style="display: none">
 				<h2>Vị trí địa lý - {$area.name} <span style="color: #333"></h2>
@@ -118,8 +118,8 @@
 				    {if $area_info.content}{$area_info.content}{/if}
 				</div>
 				<div class="area_valid_controls">
-				    <a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
-				    <a class="close" href="javascript:void(0)">Đóng</a>
+				    <a class="close" href="javascript:void(0)">Đóng</a><a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
+				    
 				</div>
 			    </div>
 			{/if}
@@ -130,7 +130,65 @@
                             <h2>Vị trí địa lý - {$area.name} <span style="color: #333">/ Viết bởi: {$pb_userinfo.fullname}</span></h2>
                             <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreaInfo">
                                 <input type="hidden" name="area_id" value="{$area.id}" />
-                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:300px;max-height: 300px" name="content">{$area_info_by_member.content}</textarea></div>
+                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:322px;max-height: 322px" name="content">{$area_info_by_member.content}</textarea></div>
+                                <a class="but_area close" href="javascript:void(0)">Đóng</a><input class="but_area" type="submit" value="Cập nhật" />
+                                
+                            </form>
+                        </div>
+                    </div>
+                        
+                </div>
+            {/if}
+	    
+	    {if $areatype && !$area}
+                <div class="area_info" style="display: none">
+                    <div class="info_content">
+                        <h2>Vị trí địa lý - {$areatype.name}</h2>
+                        {if $areatype_info.content}
+                            {$areatype_info.content}
+                        {else}
+                            <p>Chưa có thông tin...</p>   
+                        {/if}
+                    </div>
+                    
+                    <div class="actions">
+                        {if $areatype_info}
+			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
+			{/if}
+                        {if $pb_userinfo}
+                            <a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>
+                        {else}
+                            <a class="comment_but" href="#login-box">Cập nhật thông tin</a>
+                        {/if}
+                        
+			{if ($pb_userinfo.area_moderator || true) && $areatype_infos && false}
+			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+			    <div class="validation" style="display: none">
+				<h2>Vị trí địa lý - {$areatype.name} <span style="color: #333"></h2>
+				<ul>
+				    <!--{loop $areatype_infos ii levelii keyii}-->
+					<li class="areatype_info_item{if $ii.id==$areatype_info.id} active current{/if}" rel="{$ii.id}">
+					    {$ii.first_name} {$ii.last_name}
+					</li>
+				    <!--{/loop}-->
+				</ul>
+				<div class="area_info_item_content">
+				    {if $areatype_info.content}{$areatype_info.content}{/if}
+				</div>
+				<div class="area_valid_controls">
+				    <a class="save_default_type" href="javascript:void(0)">Chọn bài viết</a>
+				    <a class="close" href="javascript:void(0)">Đóng</a>
+				</div>
+			    </div>
+			{/if}
+			
+                    </div>
+                    <div id="area-info-form" class="areahide">
+                        <div class="content" style="">
+                            <h2>Vị trí địa lý - {$areatype.name} <span style="color: #333">/ Viết bởi: {$pb_userinfo.fullname}</span></h2>
+                            <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreatypeInfo">
+                                <input type="hidden" name="areatype_id" value="{$areatype.id}" />
+                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:322px;max-height: 322px" name="content">{$areatype_info_by_member.content}</textarea></div>
                                 <input class="but_area" type="submit" value="Cập nhật" />
                                 <a class="but_area close" href="javascript:void(0)">Đóng</a>
                             </form>
@@ -144,13 +202,22 @@
 
     <div class="vietbando_outer">
 	<div id="vietbando_map"></div>
-	<!--<div class="fix_pos" onclick="resetMap()">Định vị</div>-->
+	<div class="fix_pos" onclick="resetMap()">Định vị</div>
     </div>
     <br style="clear: both;" />
     
     
 <!--{literal}-->
 <script type="application/x-javascript">
+    function saveAreatypeInfoDefault(aid) {
+	    $.ajax({
+		    url: "index.php?do=area&action=saveAreatypeInfoDefault&id="+aid,
+	    }).done(function ( data ) {
+		    if( console && console.log ) {
+			location.reload(); 
+		    }
+	    });
+    }
     
     function saveAreaInfoDefault(aid) {
 	    $.ajax({
@@ -223,6 +290,9 @@
                 {/loop}
 	    {else}
 		initMapWithLatLng(null,null,"vietbando_map",false,5)
+		init_lat = 16.0458134537522;
+		init_lng = 107.5341796875;
+		init_zoom = 5;
                 
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
@@ -244,7 +314,7 @@
         
         $('.main_three_ades ul li a img').resizecrop({
             width:298,
-            height:141
+            height:148
         });
         
         $('.area_info .actions a.post_area_info').click(function() {            
@@ -317,7 +387,7 @@
 	    $('#area-info-form').addClass("areahide"); 
 	});
 	
-	$('.area-left-info .bottom-content .validation ul li').click(function() {
+	$('.area-left-info .bottom-content .validation ul li.area_info_item').click(function() {
 	    $('.area-left-info .bottom-content .validation ul li').removeClass("active");
 	    $(this).addClass("active");
 	    var aid = $(this).attr("rel");
@@ -330,10 +400,29 @@
 	    });
 	});
 	
+	$('.area-left-info .bottom-content .validation ul li.areatype_info_item').click(function() {
+	    $('.area-left-info .bottom-content .validation ul li').removeClass("active");
+	    $(this).addClass("active");
+	    var aid = $(this).attr("rel");
+	    $.ajax({
+		    url: "index.php?do=area&action=getAreatypeInfoContent&id="+aid,
+	    }).done(function ( data ) {
+		    if( console && console.log ) {
+			$('.area_info_item_content').html(data);
+		    }
+	    });
+	});
+	
 	$('.area_info .actions .area_valid_controls .save_default').click(function() {
 	    $(this).html("Đang xử lý...");
 	    var aid = $('.area-left-info .bottom-content .validation ul li.active').attr("rel");
 	    saveAreaInfoDefault(aid);
+	});
+	
+	$('.area_info .actions .area_valid_controls .save_default_type').click(function() {
+	    $(this).html("Đang xử lý...");
+	    var aid = $('.area-left-info .bottom-content .validation ul li.active').attr("rel");
+	    saveAreatypeInfoDefault(aid);
 	});
 	
 	$('.area_info .actions .area_valid_controls .close').click(function() {
