@@ -85,7 +85,13 @@
             {if $area}
                 <div class="area_info"{if $area.level < 3} style="display: none"{/if}>
                     <div class="info_content">
-                        <h2>Vị trí địa lý - {$area.name}</h2>
+                        <h2>Vị trí địa lý - {$area.name}
+			    {if $pb_userinfo}
+				<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
+			    {else}
+				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
+			    {/if}
+			</h2>
                         {if $area_info.content}
                             {$area_info.content}
                         {else}
@@ -98,15 +104,14 @@
 			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
 			{/if}
                         {if $pb_userinfo}
-                            <a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>
+                            <!--<a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>-->
                         {else}
-                            <a class="comment_but" href="#login-box">Cập nhật thông tin</a>
+                            <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
-                        
-			{if ($pb_userinfo.area_moderator || true) && $area_infos && false}
+			{if $pb_userinfo.role == 'admin' && $area_infos && false}
 			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
 			    <div class="validation" style="display: none">
-				<h2>Vị trí địa lý - {$area.name} <span style="color: #333"></h2>
+				<h2>Vị trí địa lý - {$area.name}</h2>
 				<ul>
 				    <!--{loop $area_infos ii levelii keyii}-->
 					<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
@@ -143,7 +148,14 @@
 	    {if $areatype && !$area}
                 <div class="area_info" style="display: none">
                     <div class="info_content">
-                        <h2>Vị trí địa lý - {$areatype.name}</h2>
+                        <h2>Vị trí địa lý - {$areatype.name}
+			    {if $pb_userinfo}
+				<a class="h2_area_post_but" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
+			    {else}
+				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
+			    {/if}
+			    
+			</h2>
                         {if $areatype_info.content}
                             {$areatype_info.content}
                         {else}
@@ -156,15 +168,15 @@
 			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
 			{/if}
                         {if $pb_userinfo}
-                            <a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>
+                            <!--<a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>-->
                         {else}
-                            <a class="comment_but" href="#login-box">Cập nhật thông tin</a>
+                            <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
-                        
-			{if ($pb_userinfo.area_moderator || true) && $areatype_infos && false}
+			    
+			{if $pb_userinfo.role == 'admin' && $areatype_infos && false}
 			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
 			    <div class="validation" style="display: none">
-				<h2>Vị trí địa lý - {$areatype.name} <span style="color: #333"></h2>
+				<h2>Vị trí địa lý - {$areatype.name}</h2>
 				<ul>
 				    <!--{loop $areatype_infos ii levelii keyii}-->
 					<li class="areatype_info_item{if $ii.id==$areatype_info.id} active current{/if}" rel="{$ii.id}">
@@ -181,7 +193,6 @@
 				</div>
 			    </div>
 			{/if}
-			
                     </div>
                     <div id="area-info-form" class="areahide">
                         <div class="content" style="">
@@ -189,8 +200,8 @@
                             <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreatypeInfo">
                                 <input type="hidden" name="areatype_id" value="{$areatype.id}" />
                                 <div style="border-bottom: solid 1px #aaa"><textarea style="height:322px;max-height: 322px" name="content">{$areatype_info_by_member.content}</textarea></div>
-                                <input class="but_area" type="submit" value="Cập nhật" />
                                 <a class="but_area close" href="javascript:void(0)">Đóng</a>
+				<input class="but_area" type="submit" value="Cập nhật" />
                             </form>
                         </div>
                     </div>
@@ -317,7 +328,7 @@
             height:148
         });
         
-        $('.area_info .actions a.post_area_info').click(function() {            
+        $('.area_info .actions a.post_area_info,a.h2_area_post_button').click(function() {            
             if( $('#area-info-form').hasClass("areahide")) {
                 $('#area-info-form').removeClass("areahide");
             } else {
@@ -367,11 +378,10 @@
 	$('.area-left-info .bottom-content .city_box .hide_but').click(function() {
 	    $('.area-left-info .bottom-content .city_list').hide();
 	    $(this).hide();
-	    $('.area_info').show();
+	    $('.area_info').show();	    
 	});
 	$('.area-left-info .bottom-content .city_box h3').click(function() {
 	    $('.area_info,.area-left-info .bottom-content .city_list,.area-left-info .bottom-content .city_box .hide_but').toggle();
-	    
 	});
 	
 	$('.area-left-info .bottom-content .city_list').mCustomScrollbar({
@@ -428,6 +438,14 @@
 	$('.area_info .actions .area_valid_controls .close').click(function() {
 	    $('.validate_area_but').trigger("click");
 	});
+	
+	{/literal}
+	    {if !$area_info.content && !$areatype_info.content}
+		$('.area-left-info .bottom-content .validation ul li').eq(0).trigger("click");
+	    {/if}
+	{literal}
+	
+	
     });
 </script>
 <!--{/literal}-->

@@ -11188,7 +11188,7 @@ video {
     margin-bottom: 20px;
 }
 .super-main-category.area .show-but.current-but {
-    background: url("../image/TT_bg.png") repeat scroll -7px -10px / 54px auto #6597cf;
+    background: url("../image/TT_bg.png") repeat scroll -7px -10px / 54px auto #92b9fd;
 }
 .areas_tree {
     float: left;
@@ -11445,7 +11445,7 @@ p.no-content {
     height: 520px;
     overflow: hidden;
     width: 860px;
-    margin-bottom: 10px;
+    margin-bottom: 38px;
 }
 #right_detail_banner img, #job-sidebar img {
     max-width: 100%;
@@ -11578,7 +11578,7 @@ p.no-content {
 .area-left-info .bottom-content .city_list {
     float: left;
     margin-bottom: 5px;
-    max-height: 390px;
+    max-height: 410px;
     overflow: auto;
 }
 .area-left-info .bottom-content .city_list li {
@@ -11682,7 +11682,14 @@ p.no-content {
 .area_info .info_content {
     height: 408px;
     margin-bottom: 6px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.area_info .info_content * {
+    max-width: 300px;
+}
+.area_info.full_areabox .info_content * {
+    max-width: inherit;
 }
 .area_info .actions a.areazoom {
     background: url("../image/zoomin.png") no-repeat scroll 0 0 / 26px auto transparent;
@@ -11817,16 +11824,16 @@ element.style {
 .fix_pos {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
     color: #fff;
+    display: none;
     font-size: 14px;
     font-weight: bold;
-    height: 20px;
-    line-height: 18px;
-    margin-top: -20px;
+    height: 27px;
+    line-height: 24px;
+    margin-top: -27px;
     padding: 0 10px;
     position: absolute;
     text-align: right;
     width: 860px;
-    display: none;
 }
 .fix_pos:hover {
     cursor: pointer;
@@ -11838,8 +11845,22 @@ element.style {
 #post-area-info-form iframe {
     /*height: 322px !important;*/
 }
-div.mce-edit-area {
+.area_info div.mce-edit-area {
     height: 342px;
     overflow: auto;
-    background: #fff !important;
+    background: #f5f5f5 !important;
 }
+#area-info-form .content input[type="submit"] {
+    background: none repeat scroll 0 0 #6597cf;
+}
+.h2_area_post_but {
+    background: url("../image/studygroup.png") no-repeat scroll 0 0 / 24px auto rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    float: right;
+    height: 24px;
+    margin-top: -2px;
+    text-indent: -9000px;
+    width: 24px;
+}
+/*url("../image/studygroup.png") no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)*/
