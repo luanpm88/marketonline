@@ -11578,7 +11578,7 @@ p.no-content {
 .area-left-info .bottom-content .city_list {
     float: left;
     margin-bottom: 5px;
-    max-height: 410px;
+    max-height: 420px;
     overflow: auto;
 }
 .area-left-info .bottom-content .city_list li {
