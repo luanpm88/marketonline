@@ -11725,7 +11725,7 @@ p.no-content {
     float: left;
 }
 .area-left-info .bottom-content .city_box .hide_but {
-    background: url("../image/up.png") no-repeat scroll center center / 17px auto transparent;
+    background: url("../image/up.png") no-repeat scroll top center / 17px auto transparent;
     cursor: pointer;
     display: block;
     float: right;
