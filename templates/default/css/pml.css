@@ -11864,3 +11864,8 @@ element.style {
     width: 24px;
 }
 /*url("../image/studygroup.png") no-repeat scroll 0 0 / 42px auto rgba(0, 0, 0, 0)*/
+.area_info .mce-panel {
+    background-color: #e1f1fc !important;
+    background-image: linear-gradient(to bottom, #d7edfc, #f0f7fc) !important;
+    background-repeat: repeat-x !important;
+}
