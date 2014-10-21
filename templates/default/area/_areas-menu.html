@@ -1,10 +1,9 @@
 <!--{editor type="tiny_mce_new"}-->
-    
     <ul class="areas_tree" style="display: none">	
 	<!--{loop $areatypes type level key}-->
 	    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}"><a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
 		<!--{if $type.areas}-->
-		    <ul>					      
+		    <ul>
 			<!--{loop $type.areas item level key}-->
 			    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
 			<!--{/loop}-->
@@ -13,7 +12,6 @@
 	    </li>
 	<!--{/loop}-->
     </ul>
-    
     <div class="area-left-info">
         <div class="top-menu">
             <div class="path">
@@ -22,7 +20,6 @@
                 {else}
                     Việt Nam
                 {/if}
-                
                 <span class="pointer">.</span>
             </div>
             <ul style="display: none">
@@ -49,7 +46,6 @@
 		    <a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
                 </div>
             <!--{/if}-->
-	    
 	    <!--{if $areatype && $area}-->
                 <div class="city_box">
                     <h3 {if $area.level==3}style="background: none"{/if}>
@@ -71,7 +67,6 @@
 		    {/if}
                 </div>
             <!--{/if}-->
-            
             {if $main_ades}
                 <div class="main_three_ades">
                     <ul>
@@ -81,7 +76,6 @@
                     </ul>
                 </div>
             {/if}
-            
             {if $area}
                 <div class="area_info"{if $area.level < 3} style="display: none"{/if}>
                     <div class="info_content">
@@ -98,7 +92,6 @@
                             <p>Chưa có thông tin...</p>   
                         {/if}
                     </div>
-                    
                     <div class="actions">
                         {if $area_info}
 			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
@@ -108,7 +101,7 @@
                         {else}
                             <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
-			{if $pb_userinfo.role == 'admin' && $area_infos && false}
+			{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
 			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
 			    <div class="validation" style="display: none">
 				<h2>Vị trí địa lý - {$area.name}</h2>
@@ -123,8 +116,8 @@
 				    {if $area_info.content}{$area_info.content}{/if}
 				</div>
 				<div class="area_valid_controls">
-				    <a class="close" href="javascript:void(0)">Đóng</a><a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
-				    
+				    <a class="close" href="javascript:void(0)">Đóng</a>
+				    <a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
 				</div>
 			    </div>
 			{/if}
@@ -135,16 +128,27 @@
                             <h2>Vị trí địa lý - {$area.name} <span style="color: #333">/ Viết bởi: {$pb_userinfo.fullname}</span></h2>
                             <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreaInfo">
                                 <input type="hidden" name="area_id" value="{$area.id}" />
-                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:322px;max-height: 322px" name="content">{$area_info_by_member.content}</textarea></div>
-                                <a class="but_area close" href="javascript:void(0)">Đóng</a><input class="but_area" type="submit" value="Cập nhật" />
-                                
+                                <div style="border-bottom: solid 1px #aaa">
+                                    <input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+					onclick ="javascript:document.getElementById('imagefile').click();">
+                                    <textarea style="height:322px;max-height: 322px" name="content">{$area_info_by_member.content}</textarea>
+                                </div>
+                                <a class="but_area close" href="javascript:void(0)">Đóng</a>
+				<input class="but_area" type="submit" value="Cập nhật" />
                             </form>
+                            <div id="uploadImageVideo">
+				<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+				<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+				    <input type="hidden" name="do" value="product" />
+				    <input type="hidden" name="action" value="uploadEditorFile" />
+				    <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+				</form>
+                            </div>
                         </div>
                     </div>
                         
                 </div>
             {/if}
-	    
 	    {if $areatype && !$area}
                 <div class="area_info" style="display: none">
                     <div class="info_content">
@@ -154,7 +158,6 @@
 			    {else}
 				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
 			    {/if}
-			    
 			</h2>
                         {if $areatype_info.content}
                             {$areatype_info.content}
@@ -162,7 +165,6 @@
                             <p>Chưa có thông tin...</p>   
                         {/if}
                     </div>
-                    
                     <div class="actions">
                         {if $areatype_info}
 			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
@@ -172,8 +174,7 @@
                         {else}
                             <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
-			    
-			{if $pb_userinfo.role == 'admin' && $areatype_infos && false}
+			{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $areatype_infos}
 			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
 			    <div class="validation" style="display: none">
 				<h2>Vị trí địa lý - {$areatype.name}</h2>
@@ -188,8 +189,8 @@
 				    {if $areatype_info.content}{$areatype_info.content}{/if}
 				</div>
 				<div class="area_valid_controls">
-				    <a class="save_default_type" href="javascript:void(0)">Chọn bài viết</a>
 				    <a class="close" href="javascript:void(0)">Đóng</a>
+				    <a class="save_default_type" href="javascript:void(0)">Chọn bài viết</a>				    
 				</div>
 			    </div>
 			{/if}
@@ -199,13 +200,24 @@
                             <h2>Vị trí địa lý - {$areatype.name} <span style="color: #333">/ Viết bởi: {$pb_userinfo.fullname}</span></h2>
                             <form id="post-area-info-form" method="post" action="{the_url module=root-url}index.php?do=area&action=postAreatypeInfo">
                                 <input type="hidden" name="areatype_id" value="{$areatype.id}" />
-                                <div style="border-bottom: solid 1px #aaa"><textarea style="height:322px;max-height: 322px" name="content">{$areatype_info_by_member.content}</textarea></div>
+                                <div style="border-bottom: solid 1px #aaa">
+				    <input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+						onclick ="javascript:document.getElementById('imagefile').click();">
+				    <textarea style="height:322px;max-height: 322px" name="content">{$areatype_info_by_member.content}</textarea>
+				</div>
                                 <a class="but_area close" href="javascript:void(0)">Đóng</a>
 				<input class="but_area" type="submit" value="Cập nhật" />
                             </form>
+			    <div id="uploadImageVideo">
+				<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+				<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+				    <input type="hidden" name="do" value="product" />
+				    <input type="hidden" name="action" value="uploadEditorFile" />
+				    <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+				</form>
+                            </div>
                         </div>
                     </div>
-                        
                 </div>
             {/if}
         </div>
@@ -220,24 +232,55 @@
     
 <!--{literal}-->
 <script type="application/x-javascript">
+    
+    function inserEditorFile(url, image) {
+	$('#uploadIVbutton').removeAttr('disabled');
+	$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+	if (image) {
+	    tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<img src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" />');
+	}
+	else
+	{
+	    alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+	    tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+									+'<source src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" type="video/mp4" />'
+									+'Your browser does not support the video tag.</video>');
+	}		
+    }
+    
+    function checkUploadEditorInput() {
+            //code
+            if($('#uploadEditorFile').val() == '')
+            {
+		$('#uploadEditorFile').css('border', 'solid 1px red');
+		return false;
+            } else
+            {
+		$('#uploadEditorFile').css('border', 'none');
+		$('#uploadIVbutton').attr('disabled','disabled');
+		$('#uploadIVbutton').attr('value','Đang tải...');
+		return true;
+            }
+    }
+    
     function saveAreatypeInfoDefault(aid) {
-	    $.ajax({
-		    url: "index.php?do=area&action=saveAreatypeInfoDefault&id="+aid,
-	    }).done(function ( data ) {
-		    if( console && console.log ) {
-			location.reload(); 
-		    }
-	    });
+	$.ajax({
+	    url: "index.php?do=area&action=saveAreatypeInfoDefault&id="+aid,
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+		location.reload(); 
+	    }
+	});
     }
     
     function saveAreaInfoDefault(aid) {
-	    $.ajax({
-		    url: "index.php?do=area&action=saveAreaInfoDefault&id="+aid,
-	    }).done(function ( data ) {
-		    if( console && console.log ) {
-			location.reload(); 
-		    }
-	    });
+	$.ajax({
+	    url: "index.php?do=area&action=saveAreaInfoDefault&id="+aid,
+	}).done(function ( data ) {
+	    if( console && console.log ) {
+		location.reload(); 
+	    }
+	});
     }
     
     function hideAll() {
@@ -402,11 +445,11 @@
 	    $(this).addClass("active");
 	    var aid = $(this).attr("rel");
 	    $.ajax({
-		    url: "index.php?do=area&action=getAreaInfoContent&id="+aid,
+		url: "index.php?do=area&action=getAreaInfoContent&id="+aid,
 	    }).done(function ( data ) {
-		    if( console && console.log ) {
-			$('.area_info_item_content').html(data);
-		    }
+		if( console && console.log ) {
+		    $('.area_info_item_content').html(data);
+		}
 	    });
 	});
 	
@@ -415,11 +458,11 @@
 	    $(this).addClass("active");
 	    var aid = $(this).attr("rel");
 	    $.ajax({
-		    url: "index.php?do=area&action=getAreatypeInfoContent&id="+aid,
+		url: "index.php?do=area&action=getAreatypeInfoContent&id="+aid,
 	    }).done(function ( data ) {
-		    if( console && console.log ) {
-			$('.area_info_item_content').html(data);
-		    }
+		if( console && console.log ) {
+		    $('.area_info_item_content').html(data);
+		}
 	    });
 	});
 	

@@ -84,8 +84,9 @@
 			  <th>{lang integral}</th>
 			  <th>Điểm tuần</th>
 			  <!--<th>trust_star</th>-->
+			  
 			  <th>Active Time</th>
-			   
+			   <th>Quản lý khu vực</th>
 			  <th width="20%">{lang action}</th>
 			</tr>
 		</thead>
@@ -116,6 +117,18 @@
 			  </td>
 			  <!--<td>{$item.credits}</td>-->
 			  <td>{$item.active_time}</td>
+			  
+			  <td style="text-align: center">
+				{if $item.area_moderator}
+					<a href="member.php?id={$item.id}&do=area_moderator&value=0" title="Tắt">
+						<img src="../templates/office/images/published.png" />
+					</a>
+				{else}
+					<a href="member.php?id={$item.id}&do=area_moderator&value=1" title="Bật">
+						<img src="../templates/office/images/unpublished.png" />
+					</a>
+				{/if}
+			  </td>
 			  
 			<td class="handler">
 				<ul id="handler_icon">

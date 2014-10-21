@@ -11869,3 +11869,18 @@ element.style {
     background-image: linear-gradient(to bottom, #d7edfc, #f0f7fc) !important;
     background-repeat: repeat-x !important;
 }
+.editor_imagevideo {
+    background: none repeat scroll 0 0 #efefef;
+    border: 1px solid #aaa;
+    cursor: pointer;
+    font-size: 14px;
+    height: 25px;
+    margin: 31px 0 0 482px;
+    padding: 1px 10px;
+    position: absolute;
+    z-index: 100;
+}
+.editor_imagevideo:hover {
+    color: #fff;
+    background: #3b984c;
+}

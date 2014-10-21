@@ -6,6 +6,7 @@ class Area extends PbController {
 	function Area()
 	{
 		$this->loadModel("area");
+		$this->loadModel("member");
 		$this->loadModel("areainfo");
 		$this->loadModel("areatypeinfo");
 		$this->loadModel("areatype");
@@ -846,9 +847,17 @@ class Area extends PbController {
 	}
 	
 	function saveAreaInfoDefault() {
+		
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo['pb_userid']);
+		
+		if($user["role"] != "admin" && !$user["area_moderator"]) {
+			return;
+		}
+		
 		$info = $this->areainfo->read("*",intval($_GET["id"]));
 		
-		$sql = "update ".$this->areainfo->getTable()." set status=0 where area_id=".$info["area_id"];
+		$sql = "update ".$this->areainfo->getTable()." set status=0,area_moderator=".$pb_userinfo['pb_userid']." where area_id=".$info["area_id"];
 		$this->areainfo->dbstuff->Execute($sql);
 		$this->areainfo->saveField("status",1,intval($_GET["id"]));
 	}
@@ -910,9 +919,16 @@ class Area extends PbController {
 	}
 	
 	function saveAreatypeInfoDefault() {
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo['pb_userid']);
+		
+		if($user["role"] != "admin" && !$user["area_moderator"]) {
+			return;
+		}
+		
 		$info = $this->areatypeinfo->read("*",intval($_GET["id"]));
 		
-		$sql = "update ".$this->areatypeinfo->getTable()." set status=0 where areatype_id=".$info["areatype_id"];
+		$sql = "update ".$this->areatypeinfo->getTable()." set status=0,area_moderator=".$pb_userinfo['pb_userid']." where areatype_id=".$info["areatype_id"];
 		$this->areatypeinfo->dbstuff->Execute($sql);
 		$this->areatypeinfo->saveField("status",1,intval($_GET["id"]));
 	}
