@@ -11665,12 +11665,12 @@ p.no-content {
     display: block;
     float: right;
     font-size: 14px;
-    height: 30px;
-    line-height: 20px;
+    height: 24px;
+    line-height: 21px;
     margin-bottom: 10px;
     margin-left: 10px;
     margin-top: 10px;
-    padding: 5px 10px;
+    padding: 0px 10px;
 }
 #area-info-form .content input[type=submit]:hover, .but_area:hover {
     color: #fff;
@@ -11846,12 +11846,12 @@ element.style {
     /*height: 322px !important;*/
 }
 .area_info div.mce-edit-area {
-    height: 342px;
+    height: 348px;
     overflow: auto;
     background: #f5f5f5 !important;
 }
 #area-info-form .content input[type="submit"] {
-    background: none repeat scroll 0 0 #6597cf;
+    
 }
 .h2_area_post_but {
     background: url("../image/studygroup.png") no-repeat scroll 0 0 / 24px auto rgba(0, 0, 0, 0);
@@ -11883,4 +11883,78 @@ element.style {
 .editor_imagevideo:hover {
     color: #fff;
     background: #3b984c;
+}
+.product_listing.areapage {
+    background: none repeat scroll 0 0 #fff;
+    margin: 0;
+    padding: 0;
+}
+.product_listing.areapage ul.products {
+    width: 1190px !important;
+}
+.product_listing.areapage ul.products li.product {
+    float: left;
+    margin-right: 10px !important;
+    width: 160px !important;
+    margin-top: 0 !important;
+}
+.product_listing.areapage ul.products li.product .price .amount {
+    font-size: 18px;
+}
+.product_listing.areapage ul.products li.product .price {
+    display: block;
+    width: 100%;
+    padding-top: 5px;
+    line-height: 18px;
+}
+.product_listing.areapage ul.products li.product h3 {
+    border: medium none;
+    height: 41px;
+    overflow: hidden;
+    width: auto;
+    width: 100%;
+}
+.product_listing.areapage ul.products li.product .price_unit, .product_listing.areapage ul.products li.product .old_price {
+    height: 29px;
+    clear: both;
+    font-size: 14px;
+    font-weight: normal;
+}
+.product_listing.areapage .shop_info_product {
+    margin-left: 0;
+    width: 157px;
+    margin-top: -28px !important;
+    height: 30px;
+    margin-left: 1px;
+    padding-bottom: 0 !important;
+}
+.product_listing.areapage .shop_info_product div {
+    margin-top: -15px;
+}
+.product_listing.areapage .shop_info_product span {
+    width: 154px;
+    margin-top: 2px;
+}
+.product_listing.areapage ul.products li.product img {
+    width: 158px;
+    height: 158px;
+    padding: 2px;
+}
+.product_listing.areapage ul.products li.product span img {
+    width: auto;
+    height: auto;
+}
+.fixedheight_box {
+    clear: both;
+    display: block;
+    height: 66px;
+    overflow: hidden;
+}
+.product_listing.areapage ul.products li.product a {
+    margin-top: 3px;
+    font-size:11px;
+}
+.product_listing.areapage ul.products li.product .product_tools {
+    margin-left: 5px;
+    margin-right: 5px;
 }

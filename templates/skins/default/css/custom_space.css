@@ -1515,7 +1515,7 @@ ul.products li.product {
     display: block;
 }
 .price_title {
-    min-height: 96px;
+    min-height: 110px;
 }
 ul.products li.product .price
 {

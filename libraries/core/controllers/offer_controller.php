@@ -1642,18 +1642,22 @@ class Offer extends PbController {
 			
 			$Trade = $this->trade->read("Trade.*, type.name as type_name, type.alias_key", $_GET["id"], null, null, array("LEFT JOIN {$this->trade->table_prefix}tradetypes AS type ON type.id=Trade.type_id"));
 			//var_dump($Trade);
-			if($Trade["status"] == 0 || $Trade["valid_status"] != 1) {
-				if(!empty($Trade) && ($permissions["valid"] || $Trade["valid_moderator"] == $pb_userinfo["pb_userid"])) {
-					if($Trade["valid_status"] == 0) {
-						setvar("pending","<span class='unvalid'>Không hợp lệ (".$Trade["valid_message"].")</span>");
-					} elseif ($Trade["valid_status"] == 3) {
-						setvar("pending","<span class='pending'>Đang đợi kiểm duyệt (".$Trade["valid_message"].")</span>");
+			if(!$Trade) {
+				flash($Trade["type_name"]."Thị trường đã hết hàng", '', 0, '', '<a class="link_underline" href="'.URL.'">Mời Quý khách xem thị trường trực tuyến khác tại đây</a>');
+			} else {
+				if($Trade["status"] == 0 || $Trade["valid_status"] != 1) {
+					if(!empty($Trade) && ($permissions["valid"] || $Trade["valid_moderator"] == $pb_userinfo["pb_userid"])) {
+						if($Trade["valid_status"] == 0) {
+							setvar("pending","<span class='unvalid'>Không hợp lệ (".$Trade["valid_message"].")</span>");
+						} elseif ($Trade["valid_status"] == 3) {
+							setvar("pending","<span class='pending'>Đang đợi kiểm duyệt (".$Trade["valid_message"].")</span>");
+						}
+					} else {
+						flash($Trade["type_name"]." đã hết hạn", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"offer_main","offertype"=>$Trade["alias_key"])).'">Mời Quý khách xem '.$Trade["type_name"].' khác tại đây</a>');
+										
 					}
-				} else {
-					flash($Trade["type_name"]." đã hết hạn", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"offer_main","offertype"=>$Trade["alias_key"])).'">Mời Quý khách xem '.$Trade["type_name"].' khác tại đây</a>');
-									
+					
 				}
-				
 			}
 			
 			$this->trade->clicked($customer_code, $Trade);
