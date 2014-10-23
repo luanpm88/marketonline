@@ -741,7 +741,10 @@ class Product extends PbController {
 					setvar("pending","<span class='pending'>Đang đợi kiểm duyệt (".$info["valid_message"].")</span>");
 				}
 			} else {
-				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');								
+				$iindus = $this->industry->read("*",$info["industry_id"]);
+				$mmodul = "products";
+				if($info["service"]) $mmodul = "services";
+				flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>$mmodul,"industryid"=>$info["industry_id"],"level"=>$iindus["level"],"title"=>$iindus["name"])).'">Mời Quý khách xem sản phẩm khác tại đây</a>');								
 			}
 		}
 		if (isset($info['formattribute_ids'])) {
@@ -779,7 +782,11 @@ class Product extends PbController {
 			}
 		}
 		if ($info['state']!=1) {
-			flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>"product_main")).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
+			//var_dump($info);
+			$iindus = $this->industry->read("*",$info["industry_id"]);
+			$mmodul = "products";
+			if($info["service"]) $mmodul = "services";
+			flash("unvalid_product", '', 0, '', '<a class="link_underline" href="'.$this->product->url(array("module"=>$mmodul,"industryid"=>$info["industry_id"],"level"=>$iindus["level"],"title"=>$iindus["name"])).'">Mời Quý khách xem sản phẩm khác tại đây</a>');
 		}
 		if($info['status']!=1){
 			$tmp_key = intval($info['status']);

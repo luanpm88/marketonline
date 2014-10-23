@@ -22,6 +22,7 @@ class Album extends PbController {
 		//var_dump($albumtypes);
 		foreach($albumtypes as $key => $albumtype) {
 			$albumtypes[$key]["videos"] = $this->album->Search('video', $albumtype["id"]);
+			//var_dump($albumtypes[$key]["videos"]);
 		}
 		setvar("albumtypes",$albumtypes);
 		setvar("images",$images);

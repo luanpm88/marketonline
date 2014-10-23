@@ -89,7 +89,7 @@ class Albums extends PbModel {
 			
 		}
 		if($item['thumb_id']) {
-			$item = URL."attachment/".$item['attachment'].".thumb.jpg?v=".$item['modified'];
+			$item['image'] = URL."attachment/".$item['attachment'].".thumb.jpg?v=".$item['modified'];
 		}
 		
 		return $item;

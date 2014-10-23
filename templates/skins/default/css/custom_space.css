@@ -2019,3 +2019,14 @@ a.following
     background: #88bd7a;
     position: absolute;
 }
+.admin_product_page .ppiitteemm {
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    display: block;
+    float: right;
+    margin-bottom: 15px;
+    margin-right: 12px;
+    margin-top: -31px;
+    padding: 5px 10px;
+    position: inherit;
+}

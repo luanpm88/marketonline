@@ -155,18 +155,19 @@
 	//var_dump($smarty->blockvars[$param_count]);
 	
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {	      
-		     if($item["custom_style"]) $styling = json_decode($item["custom_style"],true);
-		     //var_dump($styling);
-		$repeat = true;
-		$item['rownum'] = $key;
-		$item['iteration'] = ++$key;
-		$url = smarty_function_the_url(array("module"=>"product", "id"=>$item['id'], "product_name"=>$item['name']));
-		$item['url'] = $url;
-		$item['name'] = $item['names'] = $item['title'] = pb_lang_split($item['name']);
-		if (isset($params['titlelen'])) {
-	    	$item['names'] = $item['title'] = mb_substr($item['name'], 0, $params['titlelen']);
-	    	$item['companynames'] = mb_substr($item['companyname'], 0, $params['titlelen']);
-		}
+	      if($item["custom_style"]) $styling = json_decode($item["custom_style"],true);
+	      //var_dump($styling);
+	      
+	      $repeat = true;
+	      $item['rownum'] = $key;
+	      $item['iteration'] = ++$key;
+	      $url = smarty_function_the_url(array("module"=>"product", "id"=>$item['id'], "product_name"=>$item['name']));
+	      $item['url'] = $url;
+	      $item['name'] = $item['names'] = $item['title'] = pb_lang_split($item['name']);
+	      if (isset($params['titlelen'])) {
+		     $item['names'] = $item['title'] = mb_substr($item['name'], 0, $params['titlelen']);
+		     $item['companynames'] = mb_substr($item['companyname'], 0, $params['titlelen']);
+	      }
 		$item['company'] = $item['companyname'];
 		$item['link'] = '<a title="'.$item['name'].'" href="'.$url.'">'.$item['names'].'</a>';
 		$item['hits'] = number_format($item['clicked']);

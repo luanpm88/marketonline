@@ -188,10 +188,10 @@ if($hasProfile && $hasCompany)
 	
 	//count seller order
 	$conds = array();
-	$conds[] = "Saleorder.seller_id=".$the_memberid;
+	$conds[] = "Saleorder.seller_id=".$memberinfo["id"];
 	$conds[] = "Saleorder.read=0";
-	$count_sellerorder = $saleorder->findCount(array("LEFT JOIN pb_members as Member ON Member.id = Saleorder.buyer_id","LEFT JOIN pb_memberfields as mf ON Member.id = mf.member_id"), $conds, "Saleorder.id");
-	setvar("count_sellerorder", $count_sellerorder);
+	$count_sellerorder_new = $saleorder->findCount(null, $conds, "Saleorder.id");
+	setvar("count_sellerorder_new", $count_sellerorder_new);
 	
 //POINT
 //echo $point->resetWeeklyPointNew($the_memberid);

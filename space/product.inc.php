@@ -91,11 +91,23 @@ if (isset($_GET['typeid'])) {
 }
 
 $amount = $product->findCount(null, $conditions,"id");
-if($amount > 300) $amount = 300;
 
 if (isset($_GET['new']) && $_GET['new'] == 1) {
 	$conditions[]= "ifnew=1";
 }
+
+//for ten lines product
+if($company->info["custom_style"]) {
+    $styling = json_decode($company->info["custom_style"],true);    
+    if(!$styling["cols_number"]) {
+	$styling["cols_number"] = 3;
+    }    
+}
+$tto = $styling["cols_number"]*10*10;
+if($amount > $tto) $amount = $tto;
+setvar("num_per_page",$styling["cols_number"]*10);
+//var_dump($styling["cols_number"]);
+//var_dump($company->info["custom_style"]);
 
 //var_dump($conditions);
 setvar("indus_array", $indus_array);

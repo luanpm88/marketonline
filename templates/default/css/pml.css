@@ -11958,3 +11958,28 @@ element.style {
     margin-left: 5px;
     margin-right: 5px;
 }
+.areas-container .subtab-area ul li a.active {
+    border-bottom: 2px solid red;
+    padding-bottom: 3px;
+}
+.company-container .works-list .companylayout .description-bottom {
+    background: none repeat scroll 0 0 #83d328;
+    margin-top: 3px;
+    padding: 1px 5px;
+    width: 100%;
+}
+.company-container .works-list .companylayout {
+    display: block;
+    float: left;
+}
+.company-container .works-list .companylayout li:hover .description-bottom {
+    background: none repeat scroll 0 0 #fe7477;
+}
+.company-container .works-list .companylayout .description-bottom a {
+    line-height: 18px;
+    color: #fff;
+}
+.company-container .works-list .companylayout li {
+    height: auto;
+    margin-bottom: 18px;
+}

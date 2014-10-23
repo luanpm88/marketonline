@@ -69,7 +69,7 @@
 			<ul class="products new_products">
 				
 
-				<!-- {pb:product name="item" companyid="`$COMPANY.id`" industryid=`$indus_array` customid=`$custom_array` row=30 orderz=`$smarty.get.order`} -->
+				<!-- {pb:product name="item" companyid="`$COMPANY.id`" industryid=`$indus_array` customid=`$custom_array` row=`$num_per_page` orderz=`$smarty.get.order`} -->
 						
 					
 				
@@ -128,7 +128,7 @@
 		<div class="clear"></div>
 
 
-						<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=30} --></div></p>
+						<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=`$num_per_page`} --></div></p>
 
 		</div>
 </div>
