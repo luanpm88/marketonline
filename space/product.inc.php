@@ -97,11 +97,14 @@ if (isset($_GET['new']) && $_GET['new'] == 1) {
 }
 
 //for ten lines product
+
 if($company->info["custom_style"]) {
     $styling = json_decode($company->info["custom_style"],true);    
     if(!$styling["cols_number"]) {
 	$styling["cols_number"] = 3;
     }    
+} else {
+    $styling["cols_number"] = 3;
 }
 $tto = $styling["cols_number"]*10*10;
 if($amount > $tto) $amount = $tto;
