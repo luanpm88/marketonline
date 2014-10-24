@@ -149,7 +149,7 @@ class Company extends PbController {
 		if(!empty($_GET['membergroup_id'])){
  			$com_conditions[] = "m.membergroup_id=".intval($_GET['membergroup_id']);
  		}
-		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_weekly DESC, m.active_time DESC", 0, 70);
+		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_weekly DESC, m.active_time DESC", 0, 72);
 		foreach($companies as $key => $com) {
 			$companies[$key] = $ads->formatResult($com);
 		}
