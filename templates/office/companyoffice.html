@@ -1,0 +1,79 @@
+<!--{assign var="page_title" value="Chi nhánh"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<!--{literal}-->
+<script>
+jQuery(document).ready(function($) {
+	$('a[rel*=lightbox]').colorbox({maxWidth:600,opacity:0.1});
+})
+</script>
+<!--{/literal}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem10_1').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     <div class="offer_info_title"><h2>
+	Chi nhánh
+     </h2></div>
+     
+     
+     <a href="companyoffice.php?do=edit" style="float: right;" class="btn_publish">Thêm chi nhánh</a>
+     
+     
+
+      <br />
+	<table cellspacing="0" id="dataTable" class="datas">
+		<thead>
+		<tr>
+			<td>Chi nhánh</td>
+			<td>Người liên hệ</td>
+			<td width="11%">{lang operation}</td>
+		</tr>
+		</thead>
+		<tbody>
+          
+			<!--{foreach from=$Items item=item}-->
+			<tr>
+				<td>
+					<strong>{$item.name}</strong><br />
+					{$item.address}<br />
+					Điện thoại: {$item.phone} - Fax: {$item.fax} <br />
+					E-mail: {$item.email}	- Website: {$item.website}	
+				</td>
+				<td>
+					{if $item.contact_name}Tên: {$item.contact_name}<br />{/if}
+					{if $item.contact_position}Chức vụ: {$item.contact_position}<br />{/if}
+					{if $item.contact_mobile}Di động: {$item.contact_mobile}<br />{/if}
+					{if $item.contact_email}Email: {$item.contact_email}<br />{/if}
+				</td>
+				<td>
+					<a href="companyoffice.php?do=edit&id={$item.id}">{lang modify}</a><br />
+					<a onClick="return window.confirm('Bạn muốn xóa chi nhánh này?')" href="companyoffice.php?do=del&id={$item.id}">{lang delete}</a>
+				</td>
+			</tr>
+			<!--{foreachelse}-->
+				<tr><td style="padding: 10px;" colspan="7"><div align="center">Chưa có chi nhánh</div></td></tr>
+			<!--{/foreach}-->
+	  
+		</tbody>
+	</table>
+	<div id="footer" style="margin-top: 40px;">{$ByPages}</div>
+</div>
+</div>
+<!--{include file="footer.html"}-->
