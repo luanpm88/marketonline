@@ -393,7 +393,7 @@ class Studypost extends PbController {
 		}
 		
 		$studyposts = $this->studypost->findAll("*", null, $conditions, "created DESC limit ".$load_pos.", ".$load_num);
-		//var_dump($studyposts);
+		var_dump($studyposts);
 		
 		foreach($studyposts as $key => $item)
 		{
