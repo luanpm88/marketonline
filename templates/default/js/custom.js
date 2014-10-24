@@ -105,8 +105,8 @@
 		    //alert(box.find('.pic span').length);
 		    if (!box.find('.pic span').length) {
 			box.find('.pic img').resizecrop({
-			    width:143,
-			    height:143
+			    width:box.find('.pic img').width(),
+			    height:box.find('.pic img').height()
 			});
 		    }
 		    

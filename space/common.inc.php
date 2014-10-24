@@ -8,7 +8,7 @@
 if(!defined('IN_PHPB2B')) exit('Not A Valid Entry Point');
 require(CACHE_LANG_PATH.'lang_space.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("point","shopvote","member","company","space","follow","industry","area", "producttype", "product", "announcement","tag");
+uses("companyoffice","point","shopvote","member","company","space","follow","industry","area", "producttype", "product", "announcement","tag");
 
 $shopvote = new Shopvotes();
 $tag = new Tags();
@@ -19,6 +19,7 @@ $area = new Areas();
 $member = new Members();
 $space = new Space();
 $company = new Companies();
+$companyoffice = new Companyoffices();
 $follow = new Follows();
 $industry = new Industries();
 $announcement = new Announcements();
@@ -623,4 +624,9 @@ setvar('welcomnew_info', $welcomnew_info);
 setvar("fb_description", strip_tags($COMPANY_CURRENT["description"]));
 
 setvar("theme_name", "../../default");
+
+
+//get Offices
+$offices = $companyoffice->findByCompany($company->info["id"]);
+setvar("offices",$offices);
 ?>

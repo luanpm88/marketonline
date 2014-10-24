@@ -116,6 +116,7 @@ class Area extends PbController {
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
 				setvar("companies_map_script",$companies_map_script);
+				setvar("num_per_row",6);
 				
 				break;
 			case 'san-pham':
@@ -379,7 +380,7 @@ class Area extends PbController {
 	function ajaxCompanyModule() {
 		$offset = 0;
 		$row = 3;
-		$num = 7;
+		$num = 6;
 		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);

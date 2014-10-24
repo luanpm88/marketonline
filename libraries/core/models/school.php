@@ -153,8 +153,8 @@ class Schools extends PbModel {
 	{
 		$sql = "SELECT m.id FROM {$this->table_prefix}members m LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=m.id LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id WHERE mf.school_id='{$school_id}'";
  		$result = $this->dbstuff->GetArray($sql);
-		
-		$ids = array();
+		//var_dump($result);
+		$ids = array("-1");
 		foreach($result as $row)
 		{
 			$ids[] = $row["id"];

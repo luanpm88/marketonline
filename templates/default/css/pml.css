@@ -11964,13 +11964,16 @@ element.style {
 }
 .company-container .works-list .companylayout .description-bottom {
     background: none repeat scroll 0 0 #83d328;
-    margin-top: 3px;
-    padding: 1px 5px;
-    width: 100%;
+    margin: 2px;
+    padding: 1px;
+    width: 174px;
 }
 .company-container .works-list .companylayout {
+    background: none repeat scroll 0 0 #edf4ef;
     display: block;
     float: left;
+    padding: 12px 12px 0 12px;
+    width: 1180px;
 }
 .company-container .works-list .companylayout li:hover .description-bottom {
     background: none repeat scroll 0 0 #fe7477;
@@ -11980,6 +11983,30 @@ element.style {
     color: #fff;
 }
 .company-container .works-list .companylayout li {
+    border: 1px solid #aaa;
     height: auto;
-    margin-bottom: 18px;
+    margin-bottom: 5px;
+    width: 180px;
+    background: #fff;
+    margin-right: 15px;
+}
+.company-container .works-list .companylayout li .half {
+    border: none;
+    width: 179px;
+    height: 179px;
+    padding: 2px;
+}
+.company-container .works-list .companylayout li .pic img {
+    width: 179px;
+    height: 179px;
+}
+.company-container .works-list .companylayout .description-bottom h4 a {
+    font-size: 11px;
+    text-align: center;
+}
+.company-container .works-list .companylayout li:last-child {
+    margin-right: 0;
+}
+.company_module {
+    margin-bottom: 40px;
 }

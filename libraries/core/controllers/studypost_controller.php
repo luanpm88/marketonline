@@ -336,6 +336,7 @@ class Studypost extends PbController {
 				{
 					//get member ids from school
 					$member_ids = $this->school->getMemberIds($_GET["id"]);
+					//($member_ids);
 					$conditions[] = "group_id = 0";
 					$conditions[] = "(school_id = ".$_GET["id"]." OR member_id IN (".implode(',',$member_ids)."))";
 					
@@ -345,6 +346,7 @@ class Studypost extends PbController {
 				{
 					//get member ids from school
 					$member_ids = $this->school->getMemberIds($_GET["id"]);
+					
 					$friend_ids = $this->member->getFriendIds($user["id"]);
 					if(count($friend_ids))
 					{
@@ -391,6 +393,7 @@ class Studypost extends PbController {
 		}
 		
 		$studyposts = $this->studypost->findAll("*", null, $conditions, "created DESC limit ".$load_pos.", ".$load_num);
+		//var_dump($studyposts);
 		
 		foreach($studyposts as $key => $item)
 		{
