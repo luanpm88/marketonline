@@ -336,7 +336,7 @@ class Studypost extends PbController {
 				{
 					//get member ids from school
 					$member_ids = $this->school->getMemberIds($_GET["id"]);
-					var_dump($member_ids);
+					//var_dump($member_ids);
 					$conditions[] = "group_id = 0";
 					$conditions[] = "(school_id = ".$_GET["id"]." OR member_id IN (".implode(',',$member_ids)."))";
 					
