@@ -11963,7 +11963,7 @@ element.style {
     padding-bottom: 3px;
 }
 .company-container .works-list .companylayout .description-bottom {
-    background: none repeat scroll 0 0 #83d328;
+    background: none repeat scroll 0 0 #fff;
     margin: 2px;
     padding: 1px;
     width: 174px;
@@ -11977,15 +11977,19 @@ element.style {
 }
 .company-container .works-list .companylayout li:hover .description-bottom {
     background: none repeat scroll 0 0 #fe7477;
+    color: #fff;
 }
 .company-container .works-list .companylayout .description-bottom a {
     line-height: 18px;
+    color: #333;
+}
+.company-container .works-list .companylayout li:hover .description-bottom a {
     color: #fff;
 }
 .company-container .works-list .companylayout li {
     border: 1px solid #aaa;
     height: auto;
-    margin-bottom: 5px;
+    margin-bottom: 12px;
     width: 180px;
     background: #fff;
     margin-right: 15px;
