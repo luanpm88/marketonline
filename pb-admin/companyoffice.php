@@ -32,24 +32,19 @@ if (isset($_GET['do'])) {
 	if (!empty($_GET['id'])) {
 		$id = intval($_GET['id']);
 	}
-	if ($do=="area_show" && $id) {
-		$member->saveField("area_show", intval($_GET["value"]), intval($id));
-		pheader("location:".$_SERVER['HTTP_REFERER']);
-	}
-	
 	if ($do == "del" && !empty($id)) {
-		$chat->del($id);
+		$companyoffice->del($id);
 		pheader("location:".$_SERVER['HTTP_REFERER']);
-	}
-	if ($do == "search") {
-		if (isset($_GET['q'])) $conditions[]= "(LOWER(LTRIM(RTRIM(Chat.cache_from_username)))='".strtolower(trim($_GET['q']))."' OR LOWER(LTRIM(RTRIM(Chat.cache_to_username)))='".strtolower(trim($_GET['q']))."')";		
 	}
 }
 
 $amount = $companyoffice->findCount($joins, $conditions,"Companyoffice.id");
 $page->setPagenav($amount);
 
-$result = $companyoffice->findAll("Companyoffice.*", $joins, $conditions,"Companyoffice.created DESC",$page->firstcount,$page->displaypg);
+$joins[] = "LEFT JOIN {$tb_prefix}companies c ON c.id=Companyoffice.company_id";
+$joins[] = "LEFT JOIN {$tb_prefix}members m ON c.member_id=m.id";
+
+$result = $companyoffice->findAll("c.shop_name,m.space_name,m.username,Companyoffice.*", $joins, $conditions,"Companyoffice.created DESC",$page->firstcount,$page->displaypg);
 foreach($result as $key => $office) {	
 	$result[$key] = $companyoffice->formatResult($office);
 }

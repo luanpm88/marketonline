@@ -2274,7 +2274,7 @@
                     }
                 })
                 
-                $('.title_more_school_button').fancybox();
+                //$('.title_more_school_button').fancybox();
                 
                 
                 $('.member-pics-album .thumbs .prev').addClass('ihide');

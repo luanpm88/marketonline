@@ -108,10 +108,10 @@ $menus = array(
                 'text'  => L("yellow_page", "tpl"),
                 'url'   => 'company.php',
             ),
-            //'companyoffice' => array(
-            //    'text'  => "-- Chi nhánh",
-            //    'url'   => 'companyoffice.php',
-            //),
+            'companyoffice' => array(
+                'text'  => "-- Chi nhánh",
+                'url'   => 'companyoffice.php',
+            ),
             'market' => array(
                 'text'  => L("pro_market", "tpl"),
                 'url'   => 'market.php',

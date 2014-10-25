@@ -9546,7 +9546,7 @@ table tbody tr td {
     color: #484e50;
     font-size: 18px;
     font-weight: 400;
-    margin: 0 0 3px;
+    margin: 0 0 8px;
     font-weight: bold;
 }
 .studypost_box {
@@ -12013,4 +12013,53 @@ element.style {
 }
 .company_module {
     margin-bottom: 40px;
+}
+.company-container .album_new_page .item {
+    border: 1px solid #cccdcc;
+    height: 245px;
+    width: 221px;
+    margin-bottom: 18px;
+}
+.company-container .album_new_page .half {
+    border: 0 solid #3b984c;
+}
+.company-container .album_new_page .description-bottom {
+    height: 23px;
+    margin-top: -7px;
+    overflow: hidden;
+    padding: 0 4px;
+    width: 100%;
+}
+.company-container .album_new_page .description-bottom h4 a {
+    color: #777;
+}
+.member-left .member-left-top {
+    padding: 5px 5px 5px 10px;
+}
+.member-left-bottom p {
+    margin-bottom: 0;
+}
+.member-left-bottom {
+    background: none repeat scroll 0 0 #fff;
+}
+.study-member-box {
+    border-bottom: 0 solid #aaa;
+}
+#facelike_col2 {
+    border-right: none;
+}
+.col2-bottom-right .school_list {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    padding: 5px;
+}
+.col2-bottom-right {
+    width: 257px;
+}
+#member-left-bottom-content {
+    padding: 10px;
+}
+#member-left-bottom-content p {
+    margin-bottom: 0;
 }

@@ -64,6 +64,8 @@ if (isset($_POST['do']) && !empty($_POST['data']['company']) && $_POST['do'] == 
 	
 	$vals["company_id"] = $company_id;
 	
+	$vals["created"] = date("Y-m-d H:i:s");
+	
 	//var_dump($vals);
 	
 	if (!empty($_POST["id"])) {
