@@ -12063,3 +12063,35 @@ element.style {
 #member-left-bottom-content p {
     margin-bottom: 0;
 }
+.company-container .video_new_page .half {
+    border: none;
+    padding: 0;
+}
+.company-container .video_new_page .item {
+    width: 219px;
+    height: 194px;
+}
+.company-container .video_new_page .half {
+    height: 123px;
+    width: 219px;
+}
+.company-container .video_new_page .description-bottom {
+    width: 100%;
+}
+.company-container .video_new_page .description-bottom h4 a {
+    line-height: 17px;
+    color: #0064d2;
+}
+.company-container .video_new_page .description-bottom .title {
+    margin-top: -3px;
+    width: 100%;
+    color: #888;
+}
+.company-container .video_new_page .description-bottom h4 {
+    margin: 3px 0 0 0;    
+}
+.company-container .video_new_page .description-bottom .title .shop_link {
+    color: #888;
+    display: block;
+    position: inherit;
+}

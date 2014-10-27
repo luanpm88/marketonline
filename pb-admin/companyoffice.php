@@ -36,6 +36,11 @@ if (isset($_GET['do'])) {
 		$companyoffice->del($id);
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	if ($do == "search") {		
+		if (!empty($_GET['q'])) {
+			$conditions[] = "LOWER(m.username) LIKE '%".strtolower(trim($_GET['q']))."%'";
+		}
+	}
 }
 
 $amount = $companyoffice->findCount($joins, $conditions,"Companyoffice.id");
