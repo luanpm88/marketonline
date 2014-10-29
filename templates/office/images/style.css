@@ -3692,3 +3692,6 @@ a.unvalid_edit {
 #dataTable tr td .note_box, #dataTable tr td .note_box a {
     color: #000;
 }
+#dataTable tr td {
+    border-color: #ccc !important;
+}
