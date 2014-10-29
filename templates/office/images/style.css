@@ -3679,3 +3679,6 @@ a.unvalid_edit {
 .note_box ol {
     margin-left: 30px;
 }
+#dataTable tr td .note_box, #dataTable tr td .note_box a {
+    color: #333;
+}
