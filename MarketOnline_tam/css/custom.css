@@ -1,0 +1,33 @@
+.demo-item .info.marketonline {
+    color: #fff;
+    background: #63a940;
+}
+.demo-item .info.kdtt {
+    color: #fff;
+    background: #e53238;
+}
+.demo-item {
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.4);
+}
+.demo-item .info h3 {
+    font-family: "Calibri";
+    font-size: 22px !important;
+    margin-bottom: 0 !important;
+}
+.demo-item .info {
+    text-align: center;
+    padding: 1px 20px !important;
+}
+.demo-item .info p {
+    font-size: 18px;
+}
+.info-footer {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.info-footer p {
+    margin-bottom: 0;
+}
+a:active, a:hover, a:focus {
+    text-decoration: none !important;
+}
