@@ -61,6 +61,7 @@
 				{if $item.status==3}row_error{/if}
 				{if $item.status==4}row_current{/if}
 				{if $item.status==5}row_pause{/if}
+				{if $item.status==5}row_idea{/if}
 			">
 				<td>
 					<input style="width: 25px;text-align: center" type="text" name="order[{$item.id}]" value="{$item.display_order}" />
@@ -87,6 +88,7 @@
 						<option {if $item.status==3}selected="selected"{/if} value="3">Chưa khả thi</option>
 						<option {if $item.status==4}selected="selected"{/if} value="4">Đang triển khai</option>
 						<option {if $item.status==5}selected="selected"{/if} value="5">Tạm dừng</option>
+						<option {if $item.status==6}selected="selected"{/if} value="6">Ý tưởng</option>
 					</select>
 					<!--<input onclick="changeStatus({$item.id},0)" {if $item.status==0}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="0" /> Mới
 					<input onclick="changeStatus({$item.id},4)" {if $item.status==4}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="4" /> Đang triển khai
