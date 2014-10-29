@@ -35,10 +35,15 @@ if (isset($_POST['do'])) {
 	$vals = $_POST["album"];
 	
 	if($_POST['id']) {
+		$task->updateOrder($_POST['id'],$vals["display_order"]);
 		$vals["modified"] = date('Y-m-d H:i:s');
 		$task->save($vals,"update",$_POST['id']);
 	} else {
-		$vals["display_order"] = $max_order[0]["maxnum"]+1;
+		if(!$vals["display_order"]) {
+			$vals["display_order"] = $max_order[0]["maxnum"]+1;
+		} else {
+			$task->updateOrder("-1",$vals["display_order"]);
+		}
 		$vals["created"] = date('Y-m-d H:i:s');
 		$vals["modified"] = date('Y-m-d H:i:s');
 		$task->save($vals);
@@ -51,7 +56,8 @@ if (isset($_GET['do'])) {
 		$id = intval($_GET['id']);
 	}
 	if($do=="del" && !empty($id)) {
-		$task->del(intval($id));
+		$task->updateOrder($_POST['id'],-1);
+		$task->del(intval($id));		
 	}
 	if ($do=="edit") {
 		if (!empty($id)) {
