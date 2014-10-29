@@ -26,8 +26,9 @@ class Companyoffices extends PbModel {
 	}
 	
 	function formatResult($item) {
-		uses("company");
+		uses("company","area");
 		$company = new Companies();
+		$area = new Areas();
 		
 		list(,$telcode, $telzone, $tel) = $company->splitPhone($item['phone']);
 		list(,$faxcode, $faxzone, $fax) = $company->splitPhone($item['fax']);
@@ -48,8 +49,9 @@ class Companyoffices extends PbModel {
 			$item['fax'] = '';
 		}
 		
+		$item["address_full"] = $item["address"].", ".$area->getFullName($item["area_id"]);
+		
 		return $item;
-
 	}
 
 }

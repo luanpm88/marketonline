@@ -443,6 +443,12 @@
 				  <th><img src="{$office_theme_path}images/password.gif"></th>
 				  <td><a href="changepass.php">{lang change_password}</a></td>
 				</tr>
+				<!--{if $pb_userinfo.role=="admin"}-->
+					<tr class="MenuItem19_1"> 
+					  <th><img src="{$office_theme_path}images/invoice.png"></th>
+					  <td><a href="task.php">Tiến độ phát triển</a></td>
+					</tr>
+				<!--{/if}-->
 				<!--<tr> 
 				  <th><img src="{$office_theme_path}images/code.gif"></th>
 				  <td><a href="invite.php">{lang our_invitation_code}</a></td>

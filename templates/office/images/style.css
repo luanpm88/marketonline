@@ -3641,3 +3641,41 @@ a.unvalid_edit {
     margin: 14px 0 0 14px;
     padding: 2px 20px;
 }
+#dataTable tr.row_new td, #dataTable tr.row_new td a, #dataTable tr.row_new td select {
+    color: #333;
+}
+#dataTable tr.row_done td, #dataTable tr.row_done td a, #dataTable tr.row_done td select {
+    color: green;
+}
+#dataTable tr.row_old td, #dataTable tr.row_old td a, #dataTable tr.row_old td select {
+    color: #aaa;
+}
+#dataTable tr.row_error td, #dataTable tr.row_error td a, #dataTable tr.row_error td select {
+    color: blue;
+}
+#dataTable tr.row_current td, #dataTable tr.row_current td a, #dataTable tr.row_current td select {
+    color: #9403aa;
+}
+#dataTable tr.row_pause td, #dataTable tr.row_pause td a, #dataTable tr.row_pause td select {
+    color: #ec9b00;
+}
+.ttaass tr td {
+    font-size: 12px;
+}
+.task_status option {
+    width: auto !important;
+}
+.note_box {
+    background: none repeat scroll 0 0 #f9f9f9;
+    border: 1px solid #333;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    display: none;
+    margin-left: -700px;
+    margin-top: 5px;
+    padding: 10px;
+    position: absolute;
+    width: 928px;
+}
+.note_box ol {
+    margin-left: 30px;
+}

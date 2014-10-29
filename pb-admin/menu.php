@@ -132,6 +132,10 @@ $menus = array(
                 'text'  => "Môn học",
                 'url'   => 'studygroup.php',
             ),
+            'sponsor' => array(
+                'text'  => "Nhà tài trợ",
+                'url'   => 'sponsor.php',
+            ),
             'fair' => array(
                 'text'  => L("fair", "tpl"),
                 'url'   => 'fair.php',

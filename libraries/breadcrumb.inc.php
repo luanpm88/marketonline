@@ -12,7 +12,7 @@ function bread_compare($a, $b){
 
 function bread_array($breads, $seperate = " &gt; ")
 {
-	$bread = array();
+    $bread = array();
     uasort($breads, "bread_compare");
     foreach ($breads as $key=>$val){
         if(!empty($val['url'])) {

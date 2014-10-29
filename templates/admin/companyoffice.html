@@ -35,7 +35,7 @@
     </thead>
     <tfoot>
 			<tr>
-			  <th colspan="11"><div class="pageLinks">{$ByPages}</div></th>
+			  <th colspan="6"><div class="pageLinks">{$ByPages}</div></th>
 			</tr>
 		<tfoot>
     <tbody>
@@ -45,7 +45,7 @@
 			<td class="firstCell"><input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}"></td>
 			<td>
 				<strong>{$item.name}</strong><br />
-					{$item.address}<br />
+					{$item.address_full}<br />
 					Điện thoại: {$item.phone} - Fax: {$item.fax} <br />
 					E-mail: {$item.email}	- Website: {$item.website}
 			</td>
