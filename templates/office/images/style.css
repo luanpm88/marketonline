@@ -3643,21 +3643,27 @@ a.unvalid_edit {
 }
 #dataTable tr.row_new td, #dataTable tr.row_new td a, #dataTable tr.row_new td select, #dataTable tr.row_new td input[type="text"] {
     color: #333;
+    border: #333;
 }
 #dataTable tr.row_done td, #dataTable tr.row_done td a, #dataTable tr.row_done td select, #dataTable tr.row_done td input[type="text"] {
     color: green;
+    border: green;
 }
 #dataTable tr.row_old td, #dataTable tr.row_old td a, #dataTable tr.row_old td select, #dataTable tr.row_old td input[type="text"] {
     color: #aaa;
+    border: #aaa;
 }
 #dataTable tr.row_error td, #dataTable tr.row_error td a, #dataTable tr.row_error td select, #dataTable tr.row_error td input[type="text"] {
     color: blue;
+    border: blue;
 }
 #dataTable tr.row_current td, #dataTable tr.row_current td a, #dataTable tr.row_current td select, #dataTable tr.row_current td input[type="text"] {
     color: #9403aa;
+    border: #9403aa;
 }
 #dataTable tr.row_pause td, #dataTable tr.row_pause td a, #dataTable tr.row_pause td select, #dataTable tr.row_pause td input[type="text"] {
     color: #ec9b00;
+    border: #ec9b00;
 }
 .ttaass tr td {
     font-size: 12px;
