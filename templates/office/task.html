@@ -1,0 +1,110 @@
+<!--{assign var="page_title" value="`$_company_album`"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+
+<!--{literal}-->
+<script>
+	
+	function changeStatus(pid,status) {
+		$.ajax({
+			url: "{/literal}{the_url module='root-url'}virtual-office/{literal}task.php?do=status&id="+pid+"&status="+status,
+		}).done(function ( data ) {
+			window.location.reload();			
+		});
+	}
+	
+</script>
+<!--{/literal}-->
+
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem19_1').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+
+     <a style="float: right" href="task.php?do=edit" class="btn_publish">+</a>
+     <br style="clear: both" />
+<form name="typefrm" id="TypeFrm" method="post" action="">
+	
+	<table cellspacing="0" id="dataTable" class="datas ttaass">
+		<thead>
+		<tr>
+			<td width="2%">STT</td>
+			<td>Nội dung</td>			
+			<td width="5%">Hình</td>
+			<td width="5%">Note</td>
+			<td style="width:120px">Trạng thái</td>
+			<td width="1%"></td>
+		</tr>
+		</thead>
+		<tbody>
+          
+		    <!--{foreach from=$Items item=item key=key}-->
+			<tr class="
+				{if $item.status==0}row_new{/if}
+				{if $item.status==1}row_done{/if}
+				{if $item.status==2}row_old{/if}
+				{if $item.status==3}row_error{/if}
+				{if $item.status==4}row_current{/if}
+				{if $item.status==5}row_pause{/if}
+			">
+				<td>
+					<input style="width: 25px;text-align: center" type="text" name="order[{$item.id}]" value="{$item.display_order}" />
+				</td>
+				<td>{$item.name}</td>
+				<td>
+					{if $item.image}
+						<a target="_blank" href="{$item.link}">Link</a>
+					{/if}
+				</td>
+				<td>
+					{if $item.note}
+						<a href="#" onclick="$('.note_{$item.id}').toggle()">Note</a>
+						<div class="note_box note_{$item.id}">
+							{$item.note}
+						</div>
+					{/if}
+				</td>
+				<td style="font-size: 11px;">
+					<select onchange="changeStatus({$item.id},$(this).val())" class="task_status" style="width: 122px !important">
+						<option {if $item.status==0}selected="selected"{/if} value="0">Mới</option>
+						<option {if $item.status==1}selected="selected"{/if} value="1">Hoàn thành</option>
+						<option {if $item.status==2}selected="selected"{/if} value="2">Xong</option>
+						<option {if $item.status==3}selected="selected"{/if} value="3">Chưa khả thi</option>
+						<option {if $item.status==4}selected="selected"{/if} value="4">Đang triển khai</option>
+						<option {if $item.status==5}selected="selected"{/if} value="5">Tạm dừng</option>
+					</select>
+					<!--<input onclick="changeStatus({$item.id},0)" {if $item.status==0}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="0" /> Mới
+					<input onclick="changeStatus({$item.id},4)" {if $item.status==4}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="4" /> Đang triển khai
+					<input onclick="changeStatus({$item.id},5)" {if $item.status==5}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="5" /> Tạm dừng<br />
+					<input onclick="changeStatus({$item.id},1)" {if $item.status==1}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="1" /> Hoàn thành
+					<input onclick="changeStatus({$item.id},2)" {if $item.status==2}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="2" /> Xong
+					<input onclick="changeStatus({$item.id},3)" {if $item.status==3}checked="checked"{/if} type="radio" name="status[{$item.id}]" value="3" /> Chưa khả thi-->
+				</td>
+				<td><a href="task.php?do=edit&id={$item.id}">Sửa</a>/<a href="task.php?do=del&id={$item.id}">Xóa</a></td>
+			</tr>
+		    
+		    <!--{/foreach}-->
+	  
+		</tbody>
+	</table>
+
+	<input type="submit" value="Sắp xếp" name="save_order" />
+</form>
+	<div id="footer" style="margin-top: 40px;">{$ByPages}</div>
+</div>
+</div>
+<!--{include file="footer.html"}-->

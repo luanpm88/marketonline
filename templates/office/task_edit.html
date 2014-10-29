@@ -1,0 +1,103 @@
+<!--{assign var="page_title" value="`$_company_album`"}-->
+<!--{include file="header.html"}-->
+<script src="{$SiteUrl}scripts/jquery/jquery.colorbox.js" type="text/javascript"></script>
+<link href="{$SiteUrl}scripts/jquery/colorbox/colorbox.css" media="screen" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/jquery.textbox.js" charset="{$charset}"></script>
+<script>
+var allows_maximum_input = "{lang allows_maximum_input}";
+var can_also_enter = "{lang can_also_enter}";
+</script>
+<!--{editor type="tiny_mce_new"}-->
+<!--{literal}-->
+<script>
+	jQuery(document).ready(function($) {
+		$('.MenuItem19_1').addClass('mActive');
+	});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+     <div class="main_content">
+     <div class="blank"></div>
+	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+     
+     
+
+     
+     
+     <div id="product_edit_box">
+			
+     
+	  <form id="upload_frm" name="edit_frm" method="post" action="task.php" enctype="multipart/form-data" onsubmit="$('#BtnSubmit').attr('disabled',true);">
+	  <!-- {formhash} -->
+	  <input type="hidden" name="id" value="{$item.id}">
+	  <input type="hidden" name="do" value="save">
+
+	<div>
+		<span style="display: block;
+			float: left;
+			text-align: right;
+			padding: 5px;
+			width: 100px;">{lang title}:</span>
+		<input style="padding: 4px;margin-bottom: 10px;width:80%" type="text" id="albumTitle" name="album[name]" value="{$item.name}" />
+	</div>
+	<div>
+		<span style="display: block;
+			float: left;
+			text-align: right;
+			padding: 5px;
+			width: 100px;">Image:</span>
+		<input style="padding: 4px;margin-bottom: 10px;width:80%" type="text" id="albumTitle" name="album[image]" value="{$item.image}" />
+	</div>
+	<div>
+		<span style="display: block;
+			float: left;
+			text-align: right;
+			padding: 5px;
+			width: 100px;">Note:</span>
+		<br style="clear: both" />
+		<!--<input style="padding: 4px;margin-bottom: 10px;width:80%" type="text" id="albumTitle" name="album[note]" value="{$item.note}" />-->
+		<textarea style="padding: 4px;margin-bottom: 10px" name="album[note]"></textarea>
+	</div>
+	<div>
+		<span style="display: block;
+			float: left;
+			text-align: right;
+			padding: 5px;
+			width: 100px;">Order:</span>
+		<input style="padding: 4px;margin-bottom: 10px;width:80%" type="text" id="albumTitle" name="album[display_order]" value="{$item.display_order}" />
+		
+	</div>
+	
+	
+	
+	
+		<input style="margin-top: 20px;margin-right: -12px" name="save" type="submit" id="save" value=" {lang confirm_submit} ">
+	 </form>
+	  
+	  <!--<div id="uploadImageVideo" style="margin-top: -390px;">
+		<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+		<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+			<input type="hidden" name="do" value="product" />
+			<input type="hidden" name="action" value="uploadEditorFile" />
+			
+			<input id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
+				onclick="javascript:document.getElementById('imagefile').click();">
+      
+			<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+			
+		</form>
+	</div>-->
+	  
+     </div>
+	  
+	  
+	  
+	</div>
+  </div>
+<!--{include file="footer.html"}-->

@@ -1,0 +1,161 @@
+<!-- {include file="header.html"} -->
+<link href="../scripts/jquery/colorpicker.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../scripts/jquery/colorpicker.js"></script>
+<script src="../templates/default/js/select2/select2.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="../templates/default/js/select2/select2.css" />
+<script>
+var arr = [{$colors}];
+</script>
+<!--{literal}-->
+<script>
+jQuery(document).ready(function($) {
+	$.fn.colorPicker.defaultColors = arr;
+	$('#color1').colorPicker();
+	$( ".select2" ).select2();
+})
+</script>
+<!--{/literal}-->
+
+<div id="currentPosition"> 
+	<p>{lang your_current_position} {lang setting_global} &raquo; Nhà tài trợ:</p>
+</div>
+<div id="rightTop"> 
+    <h3>{lang area}</h3> 
+    <ul class="subnav">
+		<li><a href="sponsor.php">{lang management}</a></li>
+		<li><a class="btn1" href="sponsor.php?do=edit"><span>{lang add_or_edit}</span></a></li>
+    </ul>
+</div>
+<div class="info">
+  <form enctype="multipart/form-data" method="post" action="sponsor.php" id="EditFrm" name="edit_frm">
+	<input type="hidden" name="referrer" value="{$referrer}" />
+	{if $smarty.get.id}
+		<input type="hidden" name="id" value="{$smarty.get.id}" />
+		<input type="hidden" name="page" value="{$smarty.get.page}" />      
+	{/if}
+	<table class="infoTable">
+    
+		<tr>
+			<th class="paddingT15"> Tên:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][name]" value="{$item.name}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Thể loại:</th>
+			<td class="paddingT15 wordSpacing5">
+				<select style="width:500px;" class="select2" name="types[]" multiple="multiple">
+					<!--{foreach from=$types item=ii}-->
+						<option {if $ii.checked}selected="selected"{/if} value="{$ii.name}">{$ii.name_s}</option>
+					<!--{/foreach}-->
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Khu vực:</th>
+			<td class="paddingT15 wordSpacing5">
+				<span id="dataArea">
+					<select name="area[id][1]" id="dataMarketAreaId1" class="level_1" style="width:120px;" ></select>
+					<select name="area[id][2]" id="dataMarketAreaId2" class="level_2" style="width:120px;"></select>
+					<select name="area[id][3]" id="dataMarketAreaId3" class="level_3" style="width:120px;"></select>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Địa chỉ:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][address]" value="{$item.address}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Điện thoại:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][phone]" value="{$item.phone}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Fax:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][fax]" value="{$item.fax}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Email:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][email]" value="{$item.email}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Website:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][website]" value="{$item.website}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Logo:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input accept="image/*" id="com_pic" style="" name="pic" type="file" id="Picture" size="32" onchange="">
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Người liên hệ:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][contact_name]" value="{$item.contact_name}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Di động liên hệ:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][contact_mobile]" value="{$item.contact_mobile}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Vị trí:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][contact_position]" value="{$item.contact_position}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Email liên hệ:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][contact_email]" value="{$item.contact_email}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Facebook:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][facebook]" value="{$item.facebook}" />
+			</td>
+		</tr>
+		<tr>
+			<th class="paddingT15"> Facebook Fanpage:</th>
+			<td class="paddingT15 wordSpacing5">
+				<input style="width:500px" name="data[sponsor][facebook_fanpage]" value="{$item.facebook_fanpage}" />
+			</td>
+		</tr>
+		
+		
+		<tr>
+			<th></th>
+			<td class="ptb20">
+				<input class="formbtn" type="submit" name="save" value="{lang save}" />
+			</td>
+		</tr>
+	</table>
+  </form>
+</div>
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+</script>
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+<!-- {include file="footer.html"} -->

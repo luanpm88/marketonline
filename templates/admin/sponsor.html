@@ -1,0 +1,79 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition">
+	<p>{lang your_current_position} {lang setting_global} &raquo; Nhà tài trợ</p>
+</div>
+<div id="rightTop"> 
+    <h3>Trường học</h3> 
+    <ul class="subnav">
+		<li><a class="btn1" href="sponsor.php"><span>Danh sách</span></a></li>
+		<li><a class="" href="sponsor.php?do=edit"><span>{lang add_or_edit}</span></a></li>
+    </ul>
+</div>
+
+<div class="tdare">
+  <form name="list_frm" id="ListFrm" action="chat.php" method="post">
+  <table width="100%" cellspacing="0" class="dataTable" summary="{lang data_zone}">
+    <thead>
+		<tr>
+			<th width="4%" class="firstCell"><input type="checkbox" name="idAll" id="idAll" onclick="pbCheckAll(this,'id[]');" title="{lang select_switch}"></th>
+			<th width="3%">Logo</th>
+			<th>Thông tin</th>
+			<th>Liên hệ</th>
+			<th>Thời gian</th>
+			<th width="3%">Actions</th>
+		</tr>
+    </thead>
+	<tfoot>
+		<tr>
+			<th colspan="6"><div class="pageLinks">{$ByPages}</div></th>
+		</tr>
+	<tfoot>
+    <tbody>
+		<!--{foreach from=$Items item=item}-->
+		<tr class="tatr2">
+			
+			<td class="firstCell"><input type="checkbox" name="id[]" value="{$item.id}" onclick="pbCheckItem(this,'idAll');" id="item_{$item.id}" title="{$item.id}"></td>
+			<td><img style="margin-right: 10px;" width="70" height="70" src="../attachment/{$item.logo}" /></td>
+			<td>
+				<strong>{$item.name}</strong><br />
+					{$item.address_full}<br />
+					Điện thoại: {$item.phone} - Fax: {$item.fax} <br />
+					E-mail: {$item.email}	- Website: {$item.website}
+			</td>
+			<td>
+				{if $item.contact_name}Tên: {$item.contact_name}<br />{/if}
+					{if $item.contact_position}Chức vụ: {$item.contact_position}<br />{/if}
+					{if $item.contact_mobile}Di động: {$item.contact_mobile}<br />{/if}
+					{if $item.contact_email}Email: {$item.contact_email}<br />{/if}
+			</td>
+			<td>{$item.created}</td>
+				<td class="handler">
+			<ul id="handler_icon">
+				<li><a class="btn_edit" href="sponsor.php?do=edit&id={$item.id}" title="{lang edit}">{lang edit}</a></li> 
+			  <li><a class="btn_delete" href="sponsor.php?id={$item.id}&do=del" title="{lang delete}">{lang delete}</a></li>
+			  
+			</ul>  
+		  </td>
+		</tr>
+		
+		<!--{foreachelse}-->
+		<tr class="no_data info">
+		  <td colspan="6">{lang no_datas}</td>
+		</tr>
+		<!--{/foreach}-->
+    </tbody>
+	</table>
+  
+  
+  <div id="dataFuncs" title="{lang action_zone}">
+    <div class="left paddingT15" id="batchAction">
+		<input type="submit" name="del" value="{lang delete}" class="formbtn batchButton"/>
+		
+    </div>
+    <div class="clear"/>
+    </div>
+  
+	
+	</form>
+</div>
+<!-- {include file="footer.html"} -->
