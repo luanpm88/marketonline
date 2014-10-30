@@ -2531,7 +2531,7 @@
 			height:123		   
 		});
 		$('.company-container .album.album_new_page .filterable-grid .pic img').resizecrop({
-			width:219,
+			width:211,
 			height:146		   
 		});
 		$('.album_fancy').fancybox();
