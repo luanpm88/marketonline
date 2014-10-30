@@ -523,7 +523,7 @@ $styles_string = "<style>";
 	
 	if(!empty($styles["menuBgColor"]))
 	{
-		$styles_string .= ".table_th,.recent-tabs-widget .tabs dd a:hover, .recent-tabs-widget .tabs dd.active a,.recent-tabs-widget .tabs a{background:".$styles["menuBgColor"]."}";
+		$styles_string .= ".tree_bound h3,.table_th,.recent-tabs-widget .tabs dd a:hover, .recent-tabs-widget .tabs dd.active a,.recent-tabs-widget .tabs a{background:".$styles["menuBgColor"]."}";
 	}
 	
 	if(!empty($styles["footerColor"]))
@@ -543,41 +543,41 @@ $styles_string = "<style>";
 	
 	if(!empty($styles["borderColor"]))
 	{
-		$styles_string .= "#top_company_info, #topmenu img, .fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img{border-color:".$styles["borderColor"]."}";
+		$styles_string .= ".space_content #content,.leftbar_space .widget.widget_recent_products,#top_company_info, #topmenu img, .fb_boxx,.logoz,.childcat,#header #recent_products-3,#topmenu span,#left-sidebar,.space_content,aside .widget,ul.new_products li.product,ul.products li.product a img, div.product div.images img, #content div.product div.images img{border-color:".$styles["borderColor"]."}";
 		$styles_string .= ".pagination span,.pagination a:hover{background:".$styles["borderColor"]."}";
 		$styles_string .= "#darkf{border-top:solid 1px ".$styles["borderColor"]."}";
 	}
 	
 	$image_crop_script = "$('ul.products li.product a img').resizecrop({
-		width:290,
-		height:290,
+		width:281,
+		height:281,
 		vertical:'top'
 	});";
 	if(!empty($styles["cols_number"]))
 	{
 		if($styles["cols_number"]==1) {
-			$img_width = 907;
+			$img_width = 883;
 			$img_height = 450;
 			$img_align = "center";
 		}
 		if($styles["cols_number"]==2) {
-			$img_width = 448;
+			$img_width = 436;
 			$img_height = 290;
 			$img_align = "center";
 		}
 		if($styles["cols_number"]==3) {
-			$img_width = 295;
-			$img_height = 295;
+			$img_width = 287;
+			$img_height = 287;
 			$img_align = "top";
 		}
 		if($styles["cols_number"]==4) {
-			$img_width = 219;
-			$img_height = 219;
+			$img_width = 213;
+			$img_height = 213;
 			$img_align = "top";
 		}		
 		if($styles["cols_number"]==5) {
-			$img_width = 173;
-			$img_height = 173;
+			$img_width = 168;
+			$img_height = 168;
 			$img_align = "top";
 		}
 		

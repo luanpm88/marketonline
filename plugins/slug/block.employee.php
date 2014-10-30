@@ -12,7 +12,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	if (class_exists("Employees")) {
 		$job = new Employees();
 	}else{
-		uses("job");
+		uses("employee");
 		$job = new Employees();
 	}
 	if (!class_exists('Space')) {

@@ -607,6 +607,13 @@ function smarty_function_the_url($params){
 					}
 				}
 				break;
+			case "study-home":
+				if ($rewrite_able) {
+					$return = URL."hoc-va-lam";					
+				}else{
+					$return = URL."index.php?do=studypost&action=home";
+				}
+				break;
 			default:
 				if (!empty($id)) {
 					if ($rewrite_able) {

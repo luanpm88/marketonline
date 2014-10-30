@@ -1504,7 +1504,7 @@ ul.products li.product {
     background: transparent !important;
 }
 #header #recent_products-3, .childcat {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.2);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
 }
 .bx-controls-direction
 {
@@ -1526,7 +1526,7 @@ ul.new_products {
     margin-right: -1px;
 }
 ul.new_products li.product {
-    width: 295px;
+    width: 287px;
 }
 ul.new_products li.product a img {
     width: auto;
@@ -2029,4 +2029,69 @@ a.following
     margin-top: -31px;
     padding: 5px 10px;
     position: inherit;
+    box-shadow: 0 1px 3px 0 #ddd;
+}
+.scrollbarleft ul li.plevel1 {
+    background: url("../image/list-circle.png") no-repeat scroll 1px 5px / 9px auto rgba(0, 0, 0, 0);
+}
+.scrollbarleft ul li.plevel2 {
+    background: url("../image/space_pointer_menu.png") no-repeat scroll 15px 4px / 18px auto rgba(0, 0, 0, 0);
+}
+.scrollbarleft ul li.plevel3 {
+    background: url("../image/space_pointer_menu_2.png") no-repeat scroll 28px 5px / 15px auto rgba(0, 0, 0, 0);
+    padding-left: 44px !important;
+}
+.space_wrapper #left-sidebar {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+}
+.tree_bound h3 {
+    background: none repeat scroll 0 0 #4bc14b;
+    color: #fff !important;
+    margin: 0 5px 10px 0px !important;
+    opacity: 0.8;
+    padding: 0 0 3px 2px !important;
+    width: 249px;
+    
+}
+.scrollbarleft {
+    padding-left: 5px;
+}
+.space_wrapper #left-sidebar {
+    background: none;
+    padding-top: 0;
+}
+.leftbar_space .widget.widget_recent_products {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid #bbb;
+    width: 260px;
+    padding: 5px;
+    box-shadow: 0 1px 3px 0 #ddd;
+}
+.space_content {
+    border-top: none;
+}
+#left-sidebar {
+    border-right: none;
+}
+.space_content #content {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
+    border: 1px solid #bbb;
+    display: block;
+    float: right;
+    margin-bottom: 20px;
+    padding-right: 10px;
+    padding-top: 2px;
+    width: 905px !important;
+    box-shadow: 0 1px 3px 0 #ddd;
+}
+#left-sidebar ul li {
+    width: 236px;
+}
+.fb_boxx {
+    height: 312px;
+    margin-bottom: 20px;
+    padding: 5px 8px 10px 13px;
+    width: 261px;
+    background: #fff;
+    box-shadow: 0 1px 3px 0 #ddd;
 }

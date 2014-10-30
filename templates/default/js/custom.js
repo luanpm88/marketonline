@@ -2526,9 +2526,13 @@
 		
 		$('.video-overlay').append('<span class="vv-oo"></span>');
 		$('.album_a_block').hover(function(){$(this).parent().find('.vv-oo').addClass('active')},function(){$(this).parent().find('.vv-oo').removeClass('active')});
-		$('.company-container .album .filterable-grid .pic img').resizecrop({
+		$('.company-container .album.video_new_page .filterable-grid .pic img').resizecrop({
 			width:219,
 			height:123		   
+		});
+		$('.company-container .album.album_new_page .filterable-grid .pic img').resizecrop({
+			width:219,
+			height:146		   
 		});
 		$('.album_fancy').fancybox();
 		$('.album_detail_a_image').fancybox();

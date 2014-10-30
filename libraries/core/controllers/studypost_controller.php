@@ -1313,5 +1313,12 @@ class Studypost extends PbController {
 		
 		$this->render("studypost/random_rate");
 	}
+	
+	function home() {
+		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
+		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
+		
+		$this->render("studypost/home");
+	}
 }
 ?>
