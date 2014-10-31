@@ -12220,8 +12220,12 @@ element.style {
     margin-bottom: 30px;
 }
 .company-container .works-list .companylayout {
-    padding: 30px 12px 0;
+    padding: 0px 12px 0;
 }
 .company-container .works-list .companylayout li {
     border: 1px solid #ddd;
+}
+.company-container .works-list .companylayout li {
+    margin-bottom: 21px;
+    margin-top: 21px;
 }
