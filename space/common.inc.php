@@ -500,8 +500,13 @@ $styles_string = "<style>";
 	foreach($styles["body-wrapper"] as $key => $value)
 	{
 		if(!empty($value)) $styles_string .= $key.":".str_replace('\\', '', $value).";";
+		
 	}	
 	$styles_string .= "}";
+	//var_dump($styles["body-wrapper"]);
+	if(!empty($styles["body-wrapper"]["background-color"]) || !empty($styles["body-wrapper"]["background-image"])) {
+		$styles_string .= ".space_content #content {background: rgba(255, 255, 255, 0.5)}";
+	}
 	
 	if(!empty($styles["textColor"]))
 	{
@@ -524,6 +529,7 @@ $styles_string = "<style>";
 	if(!empty($styles["menuBgColor"]))
 	{
 		$styles_string .= ".tree_bound h3,.table_th,.recent-tabs-widget .tabs dd a:hover, .recent-tabs-widget .tabs dd.active a,.recent-tabs-widget .tabs a{background:".$styles["menuBgColor"]."}";
+		
 	}
 	
 	if(!empty($styles["footerColor"]))

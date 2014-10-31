@@ -156,6 +156,7 @@
 			$('#body-wrapper').css('backgroundImage', "url('<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime()+"')");
 			$('.custom_bg img').attr("src", "<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime());
 			$('#uploadIVbutton').removeAttr('disabled');
+                        $('.space_content #content').css("background", "rgba(255, 255, 255, 0.5)");
 		}
 			
 	}
@@ -584,6 +585,7 @@ function goclicky(meh, url)
 			 onChange: function (hsb, hex, rgb) {
 				 $('#colorSelector div, #body-wrapper').css('backgroundColor', '#' + hex);
 				 $('#background_color').val('#' + hex);
+                                 $('.space_content #content').css("background", "rgba(255, 255, 255, 0.5)");
 			 }
 		 });
 		<!--{/literal}-->{if $styles.backgroundColor}<!--{literal}-->
@@ -707,6 +709,7 @@ function goclicky(meh, url)
 			 onChange: function (hsb, hex, rgb) {
 				 $('#colorSelector5 div').css('backgroundColor', '#' + hex);
 				 $('.tree_bound h3,.table_th,.recent-tabs-widget .tabs dd a:hover, .recent-tabs-widget .tabs dd.active a,.recent-tabs-widget .tabs a').css('background', '#' + hex);
+                                 
 				$('#menuBgColor').val('#' + hex);
 			 }
 		 });

@@ -2098,3 +2098,6 @@ a.following
 .space_content #content {
     border: solid 0px #ddd;
 }
+.space_content #content {
+    background: none repeat scroll 0 0 #edf4ef;
+}
