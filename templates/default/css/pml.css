@@ -12232,6 +12232,6 @@ element.style {
 .company-container {
     margin-bottom: 50px;
 }
-.module_employee_area a {
+.module-intro-list ul li .module_employee_area a {
     display: inline;
 }
