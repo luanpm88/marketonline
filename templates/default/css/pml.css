@@ -12169,7 +12169,9 @@ element.style {
     font-size: 16px;
     font-weight: bold;
     margin: 0 0 5px;
+    padding-bottom: 10px;
     text-transform: uppercase;
+    box-shadow: 0 5px 5px -2px rgba(0, 0, 0, 0.1);
 }
 .module-intro-list ul {
     
