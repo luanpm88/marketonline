@@ -12251,7 +12251,11 @@ element.style {
 .hocvalam_modules {
     margin-top: 20px;
 }
+.study-mod {
+    float: left;
+}
 .study-module {
     border-top: 4px solid #83d328;
     padding-top: 10px;
+    
 }
