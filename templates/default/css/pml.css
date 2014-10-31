@@ -12150,7 +12150,7 @@ element.style {
     float: right;
 }
 .module-intro-box {
-    padding: 10px 10px 10px 0;
+    padding: 0 10px 0 0;
 }
 .module-intro-box img {
     margin-bottom: 5px;
@@ -12253,6 +12253,7 @@ element.style {
 }
 .study-mod {
     float: left;
+    margin-bottom: 30px;
 }
 .study-module {
     border-top: 4px solid #83d328;
@@ -12278,7 +12279,8 @@ element.style {
     color: red;
 }
 .logo-listing {
-    
+    float: left;
+    margin-bottom: 10px;
 }
 .logo-listing ul {
     
@@ -12311,6 +12313,7 @@ element.style {
     float: left;
     padding: 5px;
     width: 100%;
+    margin-bottom: 10px;
 }
 .module-title h2 {
     margin-bottom: 0;
@@ -12332,4 +12335,47 @@ element.style {
 }
 .module-title .more:hover {
     color: red;
+}
+.rowx {
+    clear: both;
+    float: left;
+    margin-bottom: 10px;
+}
+.module-intro-box p {
+    margin-bottom: 0;
+}
+.one-column {
+    width: 100%;
+}
+.logo-listing.cols3 ul li {
+    width: 240px;
+}
+.logo-listing.cols3 ul li img {
+    height: 170px;
+    width: 240px;
+}
+.logo-listing ul {
+    margin-top: 20px;
+    float: left;
+}
+.logo-listing ul.first-row {
+    margin-top: 0;
+}
+.logo-listing.cols3 ul li a {
+    display: block;
+    height: 170px;
+}
+.logo-listing.cols3 ul li .logo-title {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.9);
+    border-top: 1px solid #ddd;
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 19px;
+    margin: -36px 0 0 1px;
+    overflow: hidden;
+    padding: 6px;
+    position: absolute;
+    width: 238px;
+    z-index: 100;
 }
