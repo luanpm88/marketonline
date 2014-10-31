@@ -12175,7 +12175,7 @@ element.style {
     
 }
 .module-intro-list ul li {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ddd;
     display: block;
     padding: 5px 0;
     float: left;
@@ -12209,7 +12209,7 @@ element.style {
     height: 2000px;
 }
 .module-intro-list ul li a {
-    color: #999;
+    color: #888;
     display: block;
     font-family: Segoe UI Light;
     font-size: 14px;
