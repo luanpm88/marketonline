@@ -2101,3 +2101,6 @@ a.following
 .space_content #content {
     background: none repeat scroll 0 0 #edf4ef;
 }
+.space_wrapper ul.products li.product {
+    box-shadow: none;
+}
