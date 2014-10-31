@@ -12259,3 +12259,48 @@ element.style {
     padding-top: 10px;
     
 }
+.module-intro-article h3 {
+    font-size: 24px;
+    line-height: 28px;
+}
+.module-intro-article .content {
+    font-size: 15px;
+}
+.module-intro-article .content .more {
+    color: #333;
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.module-intro-article .content .more:hover {
+    color: red;
+}
+.logo-listing {
+    
+}
+.logo-listing ul {
+    
+}
+.logo-listing ul li {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 140px;
+}
+.logo-listing ul li:last-child {
+    margin-right: 0;
+}
+.logo-listing ul li a {
+    color: #333;
+}
+.logo-listing ul li a:hover {
+    color: red;
+}
+.logo-listing ul li a img {
+    border: 1px solid #ddd;
+}
+.logo-listing ul li a span {
+    display: block;
+    line-height: 18px;
+}
