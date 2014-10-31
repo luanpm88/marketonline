@@ -94,14 +94,14 @@
 			    </div>
 			    
 			    
-			    <h3>Hồ sơ mới</h3>
+			    <h3>Hồ sơ ứng viên</h3>
 			    <ul>
 				<!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
 				
 				    <li>
 					<a href="{the_url module='employees' id=`$job.id`}"><strong>{$job.expected_position|truncate:30}</strong></a>
-					<a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">{$job.joblevel}</a>
-					<div href="" style="float: right">{$job.areas}</div>
+					<br /><a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">{$job.joblevel}</a>
+					<div class="module_employee_area" href="" style="float: right">{$job.areas}</div>
 					
 				    </li>
 				    
