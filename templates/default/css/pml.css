@@ -12216,3 +12216,9 @@ element.style {
 .company-container .works-list .half {
     padding: 0;
 }
+.company-container .album_new_page .item {
+    margin-bottom: 30px;
+}
+.company-container .works-list .companylayout {
+    padding: 30px 12px 0;
+}
