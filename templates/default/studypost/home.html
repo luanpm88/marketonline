@@ -59,7 +59,7 @@
     <div class="fifteen columns">
 	<div class="two-column">
 	    <div class="column first-column studyhome-left">
-		<div class="two-column">
+		<div class="two-column study-module">
 		    <div class="column first-column">
 			<div class="module-intro-box">
 			    <img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
@@ -112,42 +112,17 @@
 		    </div>	    
 		</div>
 		
-		<div class="two-column">
+		<div class="two-column study-module">
 		    <div class="column first-column">
 			<div class="module-intro-box">
 			    <img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
-			    <h2>Giới thiệu hồ sơ ứng viên</h2>
+			    <h2>Tuyển dụng</h2>
 			    <p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
 			</div>
 		    </div>
 		    <div class="column second-column">
 			<div class="module-intro-list">
-			    
-			    <div id="job-learn" style="position: absolute;left:-9000px">
-				<form action="{the_url module="root-url"}" method="get">
-						<input type="hidden" name="do" value="employee" />
-						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
-						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
-						<input type="hidden" name="type" value="{$smarty.get.type}" />
-						
-						<select name="indust" style="float: left;margin-right: 5px;">
-							<option value="0">Tất cả ngành nghề</option>
-							{$JobindustOptions}							
-						</select>
-						
-						<select name="area" style="float: left;margin-right: 5px;">
-							<option value="0">Tất cả địa điểm</option>
-							{$AreaOptions}
-						</select>
-						
-						<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="{$keyword}"/>
-						
-						<input type="submit" value="Tìm kiếm" />
-				</form>
-			    </div>
-			    
-			    
-			    <h3>Hồ sơ ứng viên</h3>
+			    <h3>Tuyển dụng</h3>
 			    <ul>
 				<!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
 				

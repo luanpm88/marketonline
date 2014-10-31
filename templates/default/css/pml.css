@@ -12162,7 +12162,7 @@ element.style {
     font-size: 14px;
 }
 .module-intro-list {
-    padding: 10px;
+    padding: 10px 0 10px 10px;
 }
 .module-intro-list h3 {
     font-family: "Segoe UI";
@@ -12250,4 +12250,8 @@ element.style {
 }
 .hocvalam_modules {
     margin-top: 20px;
+}
+.study-module {
+    border-top: 4px solid #ddd;
+    padding-top: 10px;
 }
