@@ -2103,4 +2103,5 @@ a.following
 }
 .space_wrapper ul.products li.product {
     box-shadow: none;
+    border-color: #ddd;
 }
