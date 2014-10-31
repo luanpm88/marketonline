@@ -12135,7 +12135,7 @@ element.style {
     
 }
 .two-column .column {
-    border: 1px solid #aaa;    
+    border: 0px solid #aaa;    
     padding: 0;
 }
 .two-column .first-column {
@@ -12150,7 +12150,7 @@ element.style {
     float: right;
 }
 .module-intro-box {
-    padding: 10px;
+    padding: 10px 10px 10px 0;
 }
 .module-intro-box img {
     margin-bottom: 5px;
