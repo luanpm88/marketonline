@@ -12260,8 +12260,9 @@ element.style {
     
 }
 .module-intro-article h3 {
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 10px;
 }
 .module-intro-article .content {
     font-size: 15px;
@@ -12303,4 +12304,32 @@ element.style {
 .logo-listing ul li a span {
     display: block;
     line-height: 18px;
+}
+.module-title {
+    background: none repeat scroll 0 0 whitesmoke;
+    display: block;
+    float: left;
+    padding: 5px;
+    width: 100%;
+}
+.module-title h2 {
+    margin-bottom: 0;
+    line-height: 22px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    float:left;
+}
+.module-intro-box h2 {
+    font-size: 22px;
+    
+}
+.module-title .more {
+    color: #888;
+    float: right;
+    line-height: 22px;
+    padding-right: 5px;
+}
+.module-title .more:hover {
+    color: red;
 }
