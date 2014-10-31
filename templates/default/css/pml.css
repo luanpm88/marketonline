@@ -10960,7 +10960,7 @@ input[name=redirect]
 .company-container .works-list .half {
     height: 152px;
     width: 152px;
-    padding: 4px;
+    padding: 0;
 }
 .company-container .filterable-grid .pic img {
     height: 142px;
@@ -12209,4 +12209,10 @@ element.style {
 }
 .company-container .album_new_page .item {
     height: 180px;
+}
+.space_content #content {
+    background: none repeat scroll 0 0 #edf4ef;
+}
+.company-container .works-list .half {
+    padding: 0;
 }
