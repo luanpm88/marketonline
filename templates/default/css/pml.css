@@ -12282,6 +12282,9 @@ element.style {
     float: left;
     margin-bottom: 0px;
 }
+.logo-listing .first-row {
+    margin-bottom: 0;
+}
 .logo-listing ul {
     
 }
