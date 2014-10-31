@@ -12280,7 +12280,7 @@ element.style {
 }
 .logo-listing {
     float: left;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
 }
 .logo-listing ul {
     
@@ -12340,6 +12340,9 @@ element.style {
     clear: both;
     float: left;
     margin-bottom: 10px;
+}
+.rowx .second-row {
+    margin-bottom: 0;
 }
 .module-intro-box p {
     margin-bottom: 0;
