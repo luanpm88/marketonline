@@ -12222,3 +12222,6 @@ element.style {
 .company-container .works-list .companylayout {
     padding: 30px 12px 0;
 }
+.company-container .works-list .companylayout li {
+    border: 1px solid #ddd;
+}
