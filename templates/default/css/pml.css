@@ -12165,9 +12165,11 @@ element.style {
     padding: 10px;
 }
 .module-intro-list h3 {
-    font-family: "Segoe UI Light";
-    font-size: 18px;
+    font-family: "Segoe UI";
+    font-size: 16px;
+    font-weight: bold;
     margin: 0 0 5px;
+    text-transform: uppercase;
 }
 .module-intro-list ul {
     
@@ -12192,7 +12194,10 @@ element.style {
     color: red;
 }
 .module-intro-list ul li a strong {
-    color: #3b984c;
+    color: #333;
+    font-family: Segoe UI;
+    font-weight: normal;
+    font-size: 15px;
 }
 .two-column .column.studyhome-left {
     width: 63%;
@@ -12202,6 +12207,12 @@ element.style {
 }
 .study-home-leftbar {
     height: 2000px;
+}
+.module-intro-list ul li a {
+    color: #999;
+    display: block;
+    font-family: Segoe UI Light;
+    font-size: 14px;
 }
 .company-container .album.album_new_page .half {
     height: 157px;
