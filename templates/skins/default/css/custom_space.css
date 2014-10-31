@@ -2086,11 +2086,11 @@ a.following
     width: 236px;
 }
 .fb_boxx {
-    height: 312px;
+    background: none repeat scroll 0 0 #f4f6f5;
+    height: auto;
     margin-bottom: 20px;
-    padding: 5px 8px 10px 13px;
+    padding: 13px;
     width: 261px;
-    background: #fff;
 }
 #left-sidebar {
     padding-top: 0;
