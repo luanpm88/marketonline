@@ -156,7 +156,7 @@
 			$('#body-wrapper').css('backgroundImage', "url('<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime()+"')");
 			$('.custom_bg img').attr("src", "<!--{/literal}-->{$WebRootUrl}<!--{literal}-->attachment/"+url+"?"+d.getTime());
 			$('#uploadIVbutton').removeAttr('disabled');
-                        $('.space_content #content').css("background", "rgba(255, 255, 255, 0.5)");
+                        $('.fb_boxx,.space_content #content').css("background", "rgba(255, 255, 255, 0.5)");
 		}
 			
 	}
@@ -585,7 +585,7 @@ function goclicky(meh, url)
 			 onChange: function (hsb, hex, rgb) {
 				 $('#colorSelector div, #body-wrapper').css('backgroundColor', '#' + hex);
 				 $('#background_color').val('#' + hex);
-                                 $('.space_content #content').css("background", "rgba(255, 255, 255, 0.5)");
+                                 $('.fb_boxx,.space_content #content').css("background", "rgba(255, 255, 255, 0.5)");
 			 }
 		 });
 		<!--{/literal}-->{if $styles.backgroundColor}<!--{literal}-->

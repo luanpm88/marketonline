@@ -505,7 +505,7 @@ $styles_string = "<style>";
 	$styles_string .= "}";
 	//var_dump($styles["body-wrapper"]);
 	if(!empty($styles["body-wrapper"]["background-color"]) || !empty($styles["body-wrapper"]["background-image"])) {
-		$styles_string .= ".space_content #content {background: rgba(255, 255, 255, 0.5)}";
+		$styles_string .= ".fb_boxx,.space_content #content {background: rgba(255, 255, 255, 0.5)}";
 	}
 	
 	if(!empty($styles["textColor"]))
