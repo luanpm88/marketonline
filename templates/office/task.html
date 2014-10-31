@@ -62,6 +62,7 @@
 				{if $item.status==4}row_current{/if}
 				{if $item.status==5}row_pause{/if}
 				{if $item.status==6}row_idea{/if}
+				{if $item.status==7}row_invalid{/if}
 			">
 				<td>
 					<input style="width: 25px;text-align: center" type="text" name="order[{$item.id}]" value="{$item.display_order}" />
@@ -84,6 +85,7 @@
 					<select onchange="changeStatus({$item.id},$(this).val())" class="task_status" style="width: 122px !important">
 						<option {if $item.status==0}selected="selected"{/if} value="0">Mới</option>
 						<option {if $item.status==1}selected="selected"{/if} value="1">Hoàn thành</option>
+						<option {if $item.status==7}selected="selected"{/if} value="7">Chỉnh lại</option>
 						<option {if $item.status==2}selected="selected"{/if} value="2">Kết thúc</option>
 						<option {if $item.status==3}selected="selected"{/if} value="3">Chưa khả thi</option>
 						<option {if $item.status==4}selected="selected"{/if} value="4">Đang triển khai</option>

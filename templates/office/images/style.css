@@ -3669,6 +3669,10 @@ a.unvalid_edit {
     color: #9403aa;
     border-color: #9403aa;
 }
+#dataTable tr.row_invalid td, #dataTable tr.row_invalid td a, #dataTable tr.row_invalid td select, #dataTable tr.row_invalid td input[type="text"] {
+    color: orange;
+    border-color: orange;
+}
 .ttaass tr td {
     font-size: 12px;
 }
