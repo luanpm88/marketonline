@@ -12108,6 +12108,9 @@ element.style {
 }
 .study-home-title h1 a {
     color: #555;
+    font-size: 19px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 .study-home-title h1 a:hover {
     color: #000;
