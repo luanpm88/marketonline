@@ -12422,7 +12422,9 @@ element.style {
     width: 100%;
 }
 .tiles-list ul li:last-child {
-    border: none;
+    border: medium none;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 .tiles-list ul li a {
     color: #333;
@@ -12456,4 +12458,7 @@ element.style {
     color: #3b984c;
     font-family: Segoe UI Light;
     font-weight: bold;
+}
+.first-column .tiles-list ul {
+    margin-bottom: 0;
 }
