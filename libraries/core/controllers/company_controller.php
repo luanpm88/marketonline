@@ -86,6 +86,9 @@ class Company extends PbController {
 		$joins[] = "LEFT JOIN {$ads->table_prefix}companies c ON c.id=Ads.company_id";
 		$joins[] = "LEFT JOIN {$ads->table_prefix}members m ON m.id=c.member_id";
 		
+		//on/off thuong hieu
+		$conditions[] = "c.companypage_show=1";
+		
 		//GET CURRENT INDUSTRY	
 		if(isset($_GET["industryid"])) {
 			$industryid = $_GET["industryid"];
