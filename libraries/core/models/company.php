@@ -725,7 +725,6 @@ class Companies extends PbModel {
 		}
 		
 		$conditions[] = 'Company.area_show=1';
-		$conditions[] = 'Company.companypage_show=1';
 		
 		//Conditions for effective company
 		$other_con = " > 8";
