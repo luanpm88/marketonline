@@ -133,7 +133,7 @@ class Company extends PbController {
 		
 		//FIND EFFECTIVE WEEKLY COMPANIES
 		$com_conditions = array();
-		$com_conditions[] = "c.companypage_show=1";
+		$com_conditions[] = "Company.companypage_show=1";
 		//check for nice shop with > 9 products
 		$other_con = " > 8";
 		$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";
