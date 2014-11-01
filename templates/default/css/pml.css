@@ -12446,3 +12446,7 @@ element.style {
 .second-column .tiles-list {
     padding-left: 5px;
 }
+.tiles-list ul li .add_friend {
+    color: #3b984c;
+    float: right
+}
