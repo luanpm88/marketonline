@@ -53,6 +53,7 @@
 		  <th>{lang checked_status}</th>
 		  <th style="text-align: center">Thị trường</th>
 		  <th style="text-align: center">SP mới</th>
+		  <th style="text-align: center">Trang TH</th>
 		  <!--<th>{lang in_area}</th>
 		  <th>{lang in_industry}</th>-->
 			<th width="11%" style="text-align: center">Điểm (Người)</th>
@@ -96,6 +97,17 @@
 				</a>
 			{else}
 				<a href="company.php?id={$item.id}&do=new_product_show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  </td>
+		  <td style="text-align: center">
+			{if $item.companypage_show}
+				<a href="company.php?id={$item.id}&do=companypage_show&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="company.php?id={$item.id}&do=companypage_show&value=1" title="Bật">
 					<img src="../templates/office/images/unpublished.png">
 				</a>
 			{/if}

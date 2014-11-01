@@ -56,7 +56,7 @@ if (isset($_GET['do'])) {
 		$id = intval($_GET['id']);
 	}
 	if($do=="del" && !empty($id)) {
-		$task->updateOrder($_POST['id'],-1);
+		$task->updateOrder($id,-1);
 		$task->del(intval($id));		
 	}
 	if ($do=="edit") {

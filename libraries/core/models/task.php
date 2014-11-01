@@ -10,7 +10,7 @@ class Tasks extends PbModel {
 	function updateOrder($id,$order) {
 		$task = $this->read("*",$id);
 		
-		if($order=="-1") {			
+		if($order == -1) {			
 			$sql = "update ".$this->getTable()." set display_order=display_order-1 where display_order>".$task["display_order"];
 			$this->dbstuff->Execute($sql);
 			return;

@@ -210,9 +210,14 @@ if (isset($_GET['do'])) {
 		$company->saveField("new_product_show", intval($_GET["value"]), intval($id));
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	
+	if ($do=="companypage_show" && $id) {
+		$company->saveField("companypage_show", intval($_GET["value"]), intval($id));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 
-$fields = "Company.new_product_show,Company.area_show,m.good_shop_status,m.good_shop_moderator,Company.shop_name,Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,Company.area_id,industry_id,cache_credits";
+$fields = "Company.companypage_show,Company.new_product_show,Company.area_show,m.good_shop_status,m.good_shop_moderator,Company.shop_name,Company.id,m.space_name,Company.cache_spacename,m.membergroup_id,m.credits,member_id,m.username,Company.name AS CompanyName,Company.status AS CompanyStatus,Company.created AS pubdate,Company.if_commend,Company.area_id,industry_id,cache_credits";
 $total_amount = $pdb->CacheGetOne(120, "SELECT COUNT(id) AS amount FROM ".$tb_prefix."companies WHERE status='0'");
 $amount = $company->findCount(null, $conditions,"Company.id");
 $page->setPagenav($amount);
