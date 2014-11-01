@@ -12395,6 +12395,11 @@ element.style {
     text-transform: uppercase;
     font-weight: bold;
 }
+.logo-title-bottom p {
+    margin-bottom: 0;
+    line-height: 16px;
+    font-family: "Segoe UI Light";
+}
 .two-column {
     width: 100%;
 }
