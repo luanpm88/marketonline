@@ -12253,7 +12253,7 @@ element.style {
 }
 .study-mod {
     float: left;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .study-module {
     border-top: 4px solid #83d328;
@@ -12361,8 +12361,9 @@ element.style {
     width: 240px;
 }
 .logo-listing ul {
-    margin-top: 20px;
     float: left;
+    margin-bottom: 0;
+    margin-top: 20px;
 }
 .logo-listing ul.first-row {
     margin-top: 0;
