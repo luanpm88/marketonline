@@ -12395,3 +12395,54 @@ element.style {
     text-transform: uppercase;
     font-weight: bold;
 }
+.two-column {
+    width: 100%;
+}
+.two-column.width50 .column {
+    width: 50%;
+}
+.tiles-list {
+    
+}
+.tiles-list ul {
+    float: left;
+}
+.tiles-list ul li {
+    border-bottom: 1px dotted #ddd;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+}
+.tiles-list ul li:last-child {
+    border: none;
+}
+.tiles-list ul li a {
+    color: #333;
+}
+.tiles-list ul li a:hover {
+    color: red;
+}
+.tiles-list ul li a.title {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.tiles-list ul li img {
+    float: left;
+    margin-right: 10px;
+    width: 80px;
+}
+.tiles-list ul li p {
+    margin-bottom: 0;
+}
+.tiles-list ul li .more_info {
+    font-family: "Segoe UI Light";
+    color: #888;
+}
+.first-column .tiles-list {
+    padding-right: 5px;
+}
+.second-column .tiles-list {
+    padding-left: 5px;
+}
