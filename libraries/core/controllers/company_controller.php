@@ -87,7 +87,7 @@ class Company extends PbController {
 		$joins[] = "LEFT JOIN {$ads->table_prefix}members m ON m.id=c.member_id";
 		
 		//on/off thuong hieu
-		$conditions[] = "c.companypage_show=1";
+		
 		
 		//GET CURRENT INDUSTRY	
 		if(isset($_GET["industryid"])) {
@@ -133,6 +133,7 @@ class Company extends PbController {
 		
 		//FIND EFFECTIVE WEEKLY COMPANIES
 		$com_conditions = array();
+		$com_conditions[] = "c.companypage_show=1";
 		//check for nice shop with > 9 products
 		$other_con = " > 8";
 		$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";

@@ -12385,10 +12385,10 @@ element.style {
     width: 238px;
     z-index: 100;
 }
-.logo-listing.cols3-title-bottom ul li {
+.logo-listing.title-bottom ul li {
     height: auto;
 }
-.logo-listing.cols3-title-bottom ul li a {
+.logo-listing.title-bottom ul li a {
     height: auto;
 }
 .logo-title-bottom .main_title {
