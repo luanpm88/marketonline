@@ -19,10 +19,16 @@
         <form name="search_frm" id="SearchFrm" method="get"> 
         <input type="hidden" name="do" value="search" />
              <div>
+		Lọc: <select onchange="$('#SearchFrm').submit()" class="querySelect" name="filter" id="filter">
+			<option value="0">Tất cả</option>
+                	<option {if $smarty.get.filter=='companypage_show'}selected="selected"{/if} value="companypage_show">Bị off Trang TH</option>
+              	</select>
+		
 		<select onchange="$('#SearchFrm').submit()" class="querySelect" name="orderby" id="orderby">
 			<option value="">Sắp xếp</option>
                 	<option {if $smarty.get.orderby=='vote_result'}selected="selected"{/if} value="vote_result">Điểm đánh giá</option>
 			<option {if $smarty.get.orderby=='good_shop_status'}selected="selected"{/if} value="good_shop_status">Shop đẹp</option>
+			
               	</select>
 		
                 <select class="querySelect" name="companytype" id="companytype">

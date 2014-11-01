@@ -128,6 +128,10 @@ if (isset($_GET['do'])) {
 		if(!empty($_GET['orderby'])) {
 			$orderby = $_GET['orderby'].' DESC, ';
 		}
+		
+		if($_GET['filter']=='companypage_show') {
+			$conditions[]= "Company.companypage_show=0";
+		}
 	}	
     if ($do == "edit") {
     	if(!empty($id)){
