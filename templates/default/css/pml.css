@@ -12625,15 +12625,16 @@ element.style {
     float: left;
 }
 .tiles-list.top-info .col1 {
-    width: 60%;
+    width: 65%;
+    border-right: 1px solid #ddd;
 }
-.tiles-list.top-info .col2 {
-    border-left: 1px solid #ddd;
+.tiles-list.top-info .col2 {    
     padding-left: 10px;
-    width: 40%;
+    width: 35%;
+    text-align: right;
 }
 .tiles-list.top-info .col1 img {
-    width:50px;
+    width: 65px;
     float: left;
     margin-right: 5px;
     height: auto;
@@ -12652,13 +12653,15 @@ element.style {
 }
 .tiles-list.top-info ul li .info {
     float: left;
-    margin-bottom: 10px;
-    width: 100%;
+    margin-bottom: 8px;
+    width: 100%;    
 }
 .tiles-list.top-info ul li .info .price {
     font-weight: bold;
     font-size: 18px;
     text-align: right;
+    line-height: 23px;
+    margin-top: 2px;
 }
 .tiles-list.top-info ul li .info .old_price {
     font-size: 16px;
