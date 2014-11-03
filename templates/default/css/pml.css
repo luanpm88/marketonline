@@ -12689,9 +12689,17 @@ element.style {
 .module-intro-list h3 a.more:hover {
     color: red;
 }
-.studyhome-top-banner {
+.studyhome-banner {
     margin-bottom: 17px;
 }
-.studyhome-top-banner .banner {
+.studyhome-banner .banner {
     text-align: center;
+}
+.studyhome-banner .banner a img.banner_468_60 {
+    width: 468px;
+    height: 60px;
+    margin-right: 17px;
+}
+.studyhome-banner .banner a:last-child img {
+    margin-right: 0;
 }
