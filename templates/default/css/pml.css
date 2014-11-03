@@ -12324,7 +12324,7 @@ element.style {
     float: left;
     margin: 0;
     padding: 7px;
-    width: 743px;
+    width: 100%;
 }
 .module-title h2 {
     margin-bottom: 0;
@@ -12543,4 +12543,18 @@ element.style {
 .logo-listing.cols3-leftbar ul li:last-child {
     width: 125px;
     margin-right: 0;
+}
+.module-intro-list.full-width {
+    padding-left: 0;
+}
+.paddingtop0 {
+    padding-top: 0;
+}
+.module-intro-list ul li img {
+    float: right;
+    margin-left: 10px;
+    width: 65px;
+}
+.module-intro-list ul li:last-child {
+    border-bottom: none;
 }
