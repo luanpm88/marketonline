@@ -12265,7 +12265,6 @@ element.style {
     background: none repeat scroll 0 0 #fff;
     float: left;
     padding: 10px;
-    width: 743px;
 }
 .study-module {
     padding-top: 10px;
@@ -12508,6 +12507,8 @@ element.style {
     float: left;
     margin-bottom: 17px;
     overflow: hidden;
+    background: #fff;
+    width: 100%;
 }
 
 .box-border-study {
@@ -12523,5 +12524,11 @@ element.style {
     overflow: hidden;
 }
 .study-home-leftbar .study-mod {
+    width: 100%;
+}
+.studybanner-home {
+    padding: 10px;
+}
+.banner-one-line img {
     width: 100%;
 }
