@@ -16,8 +16,8 @@
 
 
 
-<div class="row">
-  <div class="fifteen columns">
+<div class="study_menu_top">
+  <div class="fifteen columns menu_bg">
 	<div class="study-home-title">
 	    <h1>
 		<a href="{the_url module='study-home'}">Học và Làm</a>
@@ -54,564 +54,577 @@
 </div>
 
 
-
+<div class="studyhome-page">
+    
+    
 <div class="row hocvalam_modules">
-    <div class="fifteen columns">
+    <div class="fifteen columns inner_hocvalam">
 	<div class="two-column">
 	    <div class="column first-column studyhome-left">
 		
-		
-		<div class="two-column study-mod study-module-first">
-		    <div class="column first-column">
-			<div class="module-intro-box">
-			    <img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
-			    <h2>Tuyển dụng</h2>
-			    <p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
-			</div>
-		    </div>
-		    <div class="column second-column">
-			<div class="module-intro-list">
-			    <h3>Tuyển dụng</h3>
-			    <ul>
-				<!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
-				
-				    <li>
-					<a href="{the_url module='employees' id=`$job.id`}"><strong>Tuyển CTV bán hàng cho shop online. Không...</strong></a>
-					<a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">Phương Shop</a>
-					<div class="module_employee_area" href="" style="float: right">{$job.areas}</div>
-					
-				    </li>
-				    
-				<!-- {/employee} -->
-				
-			    </ul>
-			</div>		
-		    </div>	    
-		</div>
-		
-		
-		
-		<div class="two-column study-mod study-module">
-		    <div class="column first-column">
-			<div class="module-intro-box">
-			    <img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
-			    <h2>Giới thiệu hồ sơ ứng viên</h2>
-			    <p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
-			</div>
-		    </div>
-		    <div class="column second-column">
-			<div class="module-intro-list">
-			    
-			    <div id="job-learn" style="position: absolute;left:-9000px">
-				<form action="{the_url module="root-url"}" method="get">
-				    <input type="hidden" name="do" value="employee" />
-				    {if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
-				    {if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
-				    <input type="hidden" name="type" value="{$smarty.get.type}" />
-				    
-				    <select name="indust" style="float: left;margin-right: 5px;">
-					    <option value="0">Tất cả ngành nghề</option>
-					    {$JobindustOptions}							
-				    </select>
-				    
-				    <select name="area" style="float: left;margin-right: 5px;">
-					    <option value="0">Tất cả địa điểm</option>
-					    {$AreaOptions}
-				    </select>
-				    
-				    <input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="{$keyword}"/>
-				    
-				    <input type="submit" value="Tìm kiếm" />
-				</form>
+		<div class="module-box">
+		    <div class="two-column study-mod study-module-first">
+			<div class="column first-column">
+			    <div class="module-intro-box">
+				<img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
+				<h2>Tuyển dụng</h2>
+				<p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
 			    </div>
-			    
-			    
-			    <h3>Hồ sơ ứng viên</h3>
-			    <ul>
-				<!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
-				
-				    <li>
-					<a href="{the_url module='employees' id=`$job.id`}"><strong>{$job.expected_position|truncate:30}</strong></a>
-					<a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">{$job.joblevel}</a>
-					<div class="module_employee_area" href="" style="float: right">{$job.areas}</div>
-					
-				    </li>
+			</div>
+			<div class="column second-column">
+			    <div class="module-intro-list">
+				<h3>Tuyển dụng</h3>
+				<ul>
+				    <!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
 				    
-				<!-- {/employee} -->
-				
-			    </ul>
-			</div>		
-		    </div>	    
+					<li>
+					    <a href="{the_url module='employees' id=`$job.id`}"><strong>Tuyển CTV bán hàng cho shop online. Không...</strong></a>
+					    <a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">Phương Shop</a>
+					    <div class="module_employee_area" href="" style="float: right">{$job.areas}</div>
+					    
+					</li>
+					
+				    <!-- {/employee} -->
+				    
+				</ul>
+			    </div>		
+			</div>	    
+		    </div>
 		</div>
 		
 		
-		
-		
-		<div class="two-rowx study-mod ">
-		    <div class="rowx first-row">
-			<div class="module-title">
-			    <h2>Trường học</h2>
-			    <a class="more" href="#">Danh sách trường</a>
+		<div class="module-box">
+		    <div class="two-column study-mod study-module">
+			<div class="column first-column">
+			    <div class="module-intro-box">
+				<img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
+				<h2>Giới thiệu hồ sơ ứng viên</h2>
+				<p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
+			    </div>
 			</div>
-			<div class="two-column">
-			    <div class="column first-column">
-				<div class="module-intro-box">
-				    <img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
-				    
+			<div class="column second-column">
+			    <div class="module-intro-list">
+				
+				<div id="job-learn" style="position: absolute;left:-9000px">
+				    <form action="{the_url module="root-url"}" method="get">
+					<input type="hidden" name="do" value="employee" />
+					{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
+					{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
+					<input type="hidden" name="type" value="{$smarty.get.type}" />
+					
+					<select name="indust" style="float: left;margin-right: 5px;">
+						<option value="0">Tất cả ngành nghề</option>
+						{$JobindustOptions}							
+					</select>
+					
+					<select name="area" style="float: left;margin-right: 5px;">
+						<option value="0">Tất cả địa điểm</option>
+						{$AreaOptions}
+					</select>
+					
+					<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="{$keyword}"/>
+					
+					<input type="submit" value="Tìm kiếm" />
+				    </form>
 				</div>
-			    </div>
-			    <div class="column second-column">
-				<div class="module-intro-article">
-				    <h3>Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên - TNUT</h3>
-				    <div class="content">
-					Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng ...
-					<a class="more" href="#">Xem thêm...</a>
-				    </div>				    
-				</div>		
-			    </div>	    
-			</div>
+				
+				
+				<h3>Hồ sơ ứng viên</h3>
+				<ul>
+				    <!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
+				    
+					<li>
+					    <a href="{the_url module='employees' id=`$job.id`}"><strong>{$job.expected_position|truncate:30}</strong></a>
+					    <a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">{$job.joblevel}</a>
+					    <div class="module_employee_area" href="" style="float: right">{$job.areas}</div>
+					    
+					</li>
+					
+				    <!-- {/employee} -->
+				    
+				</ul>
+			    </div>		
+			</div>	    
 		    </div>
-		    <div class="rowx second-row">
-			<div class="logo-listing">
-			    <ul class="first-row">
-				<li>
-				    <a href="">
-					<img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
-					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
-					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
-					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
-					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
-					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				    </a>
-				</li>
-			    </ul>
-			</div>
-		    </div>
-
 		</div>
 		
-		<div class="one-column study-mod study-module-none">
+		<div class="module-box">
+		    <div class="module-title">
+			<h2>Trường học</h2>
+			<a class="more" href="#">Danh sách trường</a>
+		    </div>
+		    <div class="two-rowx study-mod ">
+			<div class="rowx first-row">
+			    
+			    <div class="two-column">
+				<div class="column first-column">
+				    <div class="module-intro-box">
+					<img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
+					
+				    </div>
+				</div>
+				<div class="column second-column">
+				    <div class="module-intro-article">
+					<h3>Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên - TNUT</h3>
+					<div class="content">
+					    Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng ...
+					    <a class="more" href="#">Xem thêm...</a>
+					</div>				    
+				    </div>		
+				</div>	    
+			    </div>
+			</div>
+			<div class="rowx second-row">
+			    <div class="logo-listing">
+				<ul class="first-row">
+				    <li>
+					<a href="">
+					    <img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
+					    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+					</a>
+				    </li>
+				    <li>
+					<a href="">
+					    <img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
+					    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+					</a>
+				    </li>
+				    <li>
+					<a href="">
+					    <img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
+					    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+					</a>
+				    </li>
+				    <li>
+					<a href="">
+					    <img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
+					    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+					</a>
+				    </li>
+				    <li>
+					<a href="">
+					    <img src="http://marketonline.vn//attachment/school/201407/15/school-logo-14.jpg.small.jpg" />
+					    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+					</a>
+				    </li>
+				</ul>
+			    </div>
+			</div>
+    
+		    </div>
+		</div>
+		
+		
+		<div class="module-box">
 		    <div class="module-title">
 			<h2>Trung tâm</h2>
 			<a class="more" href="#">Danh sách trung tâm</a>
 		    </div>
-		    <div class="logo-listing cols3">
-			<ul class="first-row">
-			    <li>
-				<a href="">
-				    <img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
-				    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
-				    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
-				    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				</a>
-			    </li>
-			    
-			</ul>
-			<ul>
-			    <li>
-				<a href="">
-				    <img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
-				    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
-				    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
-				    <span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
-				</a>
-			    </li>
-			    
-			</ul>
+		    <div class="one-column study-mod study-module-none">		    
+			<div class="logo-listing cols3">
+			    <ul class="first-row">
+				<li>
+				    <a href="">
+					<img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
+					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
+					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
+					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+				    </a>
+				</li>
+				
+			    </ul>
+			    <ul>
+				<li>
+				    <a href="">
+					<img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
+					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
+					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="http://3.bp.blogspot.com/-KGflJ1jdhv4/UKjq5adWsQI/AAAAAAAAAig/d860UANfCxQ/s1600/TOEIC+banner-02.jpg" />
+					<span class="logo-title">Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên</span>
+				    </a>
+				</li>
+				
+			    </ul>
+			</div>
 		    </div>
 		</div>
 		
 		
-		
-		<div class="one-column study-mod study-module-none">
+		<div class="module-box">
 		    <div class="module-title">
 			<h2>Môn học</h2>
 			<a class="more" href="#">Danh sách Môn học</a>
 		    </div>
-		    <div class="logo-listing cols3 title-bottom">
-			<ul class="first-row">
-			    <li>
-				<a href="">
-				    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-				    <span class="logo-title-bottom">
-					<span class="main_title">Toán học</span>
-					Đại học Bách Khoa
-				    </span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-				    <span class="logo-title-bottom">
-					<span class="main_title">Toán học</span>
-					Đại học Bách Khoa
-				    </span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-				    <span class="logo-title-bottom">
-					<span class="main_title">Toán học</span>
-					Đại học Bách Khoa
-				    </span>
-				</a>
-			    </li>
-			    
-			</ul>
-			<ul>
-			    <li>
-				<a href="">
-				    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-				    <span class="logo-title-bottom">
-					<span class="main_title">Toán học</span>
-					Đại học Bách Khoa
-				    </span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-				    <span class="logo-title-bottom">
-					<span class="main_title">Toán học</span>
-					Đại học Bách Khoa
-				    </span>
-				</a>
-			    </li>
-			    <li>
-				<a href="">
-				    <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-				    <span class="logo-title-bottom">
-					<span class="main_title">Toán học</span>
-					Đại học Bách Khoa
-				    </span>
-				</a>
-			    </li>
-			    
-			</ul>
+		    <div class="one-column study-mod study-module-none">
+			
+			<div class="logo-listing cols3 title-bottom">
+			    <ul class="first-row">
+				<li>
+				    <a href="">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
+					<span class="logo-title-bottom">
+					    <span class="main_title">Toán học</span>
+					    Đại học Bách Khoa
+					</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
+					<span class="logo-title-bottom">
+					    <span class="main_title">Toán học</span>
+					    Đại học Bách Khoa
+					</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
+					<span class="logo-title-bottom">
+					    <span class="main_title">Toán học</span>
+					    Đại học Bách Khoa
+					</span>
+				    </a>
+				</li>
+				
+			    </ul>
+			    <ul>
+				<li>
+				    <a href="">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
+					<span class="logo-title-bottom">
+					    <span class="main_title">Toán học</span>
+					    Đại học Bách Khoa
+					</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
+					<span class="logo-title-bottom">
+					    <span class="main_title">Toán học</span>
+					    Đại học Bách Khoa
+					</span>
+				    </a>
+				</li>
+				<li>
+				    <a href="">
+					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
+					<span class="logo-title-bottom">
+					    <span class="main_title">Toán học</span>
+					    Đại học Bách Khoa
+					</span>
+				    </a>
+				</li>
+				
+			    </ul>
+			</div>
 		    </div>
 		</div>
 		
-		
-		<div class="one-column study-mod study-module-none">
+		<div class="module-box">
 		    <div class="module-title">
 			<h2>Giảng viên</h2>
 			<a class="more" href="#">Danh sách Giảng viên</a>
 		    </div>
-		    <div class="logo-listing title-bottom">
-			<ul class="first-row">
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			</ul>
-			<ul>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    
-			</ul>
+		    <div class="one-column study-mod study-module-none">
 			
-			<ul>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    <li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
-				    <span class="logo-title-bottom">
-					<a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
-					<p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
-				    </span>
-				
-			    </li>
-			    
-			</ul>
-			
-		    </div>
-		</div>
-		
-		
-		<div class="module-title">
-		    <h2>Học viên</h2>
-		    <a class="more" href="#">Danh sách Học viên</a>
-		</div>
-		<div class="two-column study-mod study-module-none width50">
-		    <div class="column first-column">
-			<div class="tiles-list">
-			    <ul>
+			<div class="logo-listing title-bottom">
+			    <ul class="first-row">
 				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-			    </ul>
-			</div>
-		    </div>
-		    <div class="column second-column">
-			<div class="tiles-list">
-			    <ul>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-				<li>
-				    <a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-				    <a class="title" href="">Đặng Ngọc Tiến</a>
-				    <p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-				    <p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-				    <div class="controls">
-					<a class="add_friend" href="">Kết bạn</a>
-				    </div>
-				</li>
-			    </ul>
-			</div>
-		    </div>	    
-		</div>
-		
-		
-		
-		
-		<div class="two-column study-mod study-module">
-		    <div class="column first-column">
-			<div class="module-intro-box">
-			    <img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
-			    <h2>Nokia Lumia 730 Dual SIM Công ty</h2>
-			    <p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
-			</div>
-		    </div>
-		    <div class="column second-column">
-			<div class="module-intro-list">
-			    <h3>Tin tức</h3>
-			    <ul>
-				<!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
-				
-				    <li>
-					<a href="{the_url module='employees' id=`$job.id`}"><strong>Tuyển CTV bán hàng cho shop online. Không...</strong></a>
-					<a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">Tiêu điểm</a>
-					<div class="module_employee_area" href="" style="float: right"><a href="">31/10/2014</a></div>
-				    </li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
 				    
-				<!-- {/employee} -->
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+			    </ul>
+			    <ul>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
 				
 			    </ul>
-			</div>		
-		    </div>	    
+			    
+			    <ul>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				<li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
+					<span class="logo-title-bottom">
+					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
+					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
+					</span>
+				    
+				</li>
+				
+			    </ul>
+			    
+			</div>
+		    </div>
+		</div>
+		    
+		
+		<div class="module-box">
+		
+		    <div class="module-title">
+			<h2>Học viên</h2>
+			<a class="more" href="#">Danh sách Học viên</a>
+		    </div>
+		    <div class="two-column study-mod study-module-none width50">
+			<div class="column first-column">
+			    <div class="tiles-list">
+				<ul>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				</ul>
+			    </div>
+			</div>
+			<div class="column second-column">
+			    <div class="tiles-list">
+				<ul>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				</ul>
+			    </div>
+			</div>	    
+		    </div>
 		</div>
 		
+		
+		<div class="module-box">
+		    <div class="two-column study-mod study-module">
+			<div class="column first-column">
+			    <div class="module-intro-box">
+				<img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
+				<h2>Nokia Lumia 730 Dual SIM Công ty</h2>
+				<p>Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu Vài dòng giới thiệu ...</p>
+			    </div>
+			</div>
+			<div class="column second-column">
+			    <div class="module-intro-list">
+				<h3>Tin tức</h3>
+				<ul>
+				    <!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
+				    
+					<li>
+					    <a href="{the_url module='employees' id=`$job.id`}"><strong>Tuyển CTV bán hàng cho shop online. Không...</strong></a>
+					    <a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)" style="float: left">Tiêu điểm</a>
+					    <div class="module_employee_area" href="" style="float: right"><a href="">31/10/2014</a></div>
+					</li>
+					
+				    <!-- {/employee} -->
+				    
+				</ul>
+			    </div>		
+			</div>	    
+		    </div>
+		</div>
 		
 		
 	    </div>
@@ -628,6 +641,7 @@
 
 
 
+</div>
 
 <script>
 var app_language = '{$AppLanguage}';
