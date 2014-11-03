@@ -12592,3 +12592,26 @@ element.style {
 .studyhome-tabs .contents {
     
 }
+.tiles-list.inner-text-image ul {
+    margin-bottom: 5px;
+}
+.tiles-list.inner-text-image ul li {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.tiles-list.inner-text-image ul li img {
+    width: 190px;
+}
+.tiles-list.inner-text-image ul li .info {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    display: block;
+    float: left;
+    height: 72px;
+    margin-top: -72px;
+    padding: 5px;
+    width: 190px;
+    color:#fff;
+}
+.tiles-list.inner-text-image ul li .info a {
+    color: #fff;
+}
