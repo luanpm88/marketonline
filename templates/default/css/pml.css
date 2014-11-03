@@ -12536,3 +12536,7 @@ element.style {
 .logo-listing ul:last-child {
     margin-bottom: 5px;
 }
+.logo-listing.cols3-leftbar ul li {
+    width: 125px;
+    margin-left: 11px;
+}
