@@ -12669,3 +12669,13 @@ element.style {
     margin-top: 1px;
     text-align: right;
 }
+.studyhome-product-list {
+    
+}
+.studyhome-product-list .list-item {
+    border-top: 1px solid #ddd;
+    float: left;
+}
+.studyhome-product-list .list-item:first-child {
+    border-top: none;
+}
