@@ -12323,6 +12323,7 @@ element.style {
 }
 .module-title {
     background: none repeat scroll 0 0 #f4f9f6;
+    border-bottom: 1px solid #eee;
     display: block;
     float: left;
     margin: 0;
@@ -12474,7 +12475,8 @@ element.style {
     margin-bottom: 0;
 }
 .study-home-leftbar {
-    margin-left: 10px;
+    background: none repeat scroll 0 0 #fff;
+    margin-left: 20px;
 }
 .study_menu_top {
     clear: both;
@@ -12505,7 +12507,7 @@ element.style {
     border-style: solid;
     border-width: 1px;
     float: left;
-    margin-bottom: 10px;
+    margin-bottom: 17px;
     overflow: hidden;
 }
 
