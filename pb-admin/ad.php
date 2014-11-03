@@ -22,7 +22,7 @@ $typeoption = new Typeoption();
 $industry = new Industries();
 $conditions = array();
 setvar("AdsStatus", $typeoption->get_cache_type("common_option"));
-setvar("Adzones",$adzone->findAll("id,name",null, null,"id desc"));
+setvar("Adzones",$adzone->findAll("id,name",null, null,"name"));
 if (isset($_POST['save'])) {
 	$vals = $_POST['ad'];
 	if(isset($_POST['id'])){
