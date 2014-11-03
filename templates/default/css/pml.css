@@ -12211,7 +12211,7 @@ element.style {
     width: 37%;
 }
 .study-home-leftbar {
-    height: 2000px;
+    height: 6000px;
 }
 .module-intro-list ul li a {
     color: #888;
@@ -12252,11 +12252,15 @@ element.style {
     display: inline;
 }
 .hocvalam_modules {
+    margin-top: 0px;
+}
+.study-module-first {
     margin-top: 20px;
 }
 .study-mod {
     float: left;
     margin-bottom: 40px;
+    padding-right: 20px;
 }
 .study-module {
     border-top: 4px solid #83d328;
@@ -12295,7 +12299,7 @@ element.style {
     display: block;
     float: left;
     margin-right: 10px;
-    width: 140px;
+    width: 136px;
 }
 .logo-listing ul li:last-child {
     margin-right: 0;
@@ -12317,9 +12321,10 @@ element.style {
     background: none repeat scroll 0 0 whitesmoke;
     display: block;
     float: left;
-    padding: 5px;
-    width: 100%;
     margin-bottom: 10px;
+    margin-right: -20px;
+    padding: 5px 20px 5px 5px;
+    width: 743px;
 }
 .module-title h2 {
     margin-bottom: 0;
@@ -12357,7 +12362,7 @@ element.style {
     width: 100%;
 }
 .logo-listing.cols3 ul li {
-    width: 240px;
+    width: 234px;
 }
 .logo-listing.cols3 ul li img {
     height: 170px;
@@ -12464,4 +12469,8 @@ element.style {
 }
 .first-column .tiles-list ul {
     margin-bottom: 0;
+}
+.study-home-leftbar {
+    background: #333;
+    margin-left: 0;
 }
