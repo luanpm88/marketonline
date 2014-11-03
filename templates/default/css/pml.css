@@ -12615,3 +12615,54 @@ element.style {
 .tiles-list.inner-text-image ul li .info a {
     color: #fff;
 }
+
+.tiles-list.top-info {
+    padding: 10px;
+    float: left;
+    width: 100%;
+}
+.tiles-list.top-info .col {
+    float: left;
+}
+.tiles-list.top-info .col1 {
+    width: 60%;
+}
+.tiles-list.top-info .col2 {
+    border-left: 1px solid #ddd;
+    padding-left: 10px;
+    width: 40%;
+}
+.tiles-list.top-info .col1 img {
+    width:50px;
+    float: left;
+    margin-right: 5px;
+    height: auto;
+}
+.tiles-list.top-info .col1 .col-content {
+    float: left;
+    width: 100%;
+}
+.tiles-list.top-info ul {
+    margin-bottom: 0;
+}
+.tiles-list.top-info ul li img {
+    width: 100%;
+    height: 250px;
+    border: solid 1px #ddd;
+}
+.tiles-list.top-info ul li .info {
+    float: left;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.tiles-list.top-info ul li .info .price {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: right;
+}
+.tiles-list.top-info ul li .info .old_price {
+    font-size: 16px;
+    line-height: 16px;
+    margin-top: 1px;
+    text-align: right;
+}
