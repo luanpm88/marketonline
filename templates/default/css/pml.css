@@ -12558,3 +12558,37 @@ element.style {
 .module-intro-list ul li:last-child {
     border-bottom: none;
 }
+.studyhome-tabs {
+    
+}
+.studyhome-tabs ul.tabsz {    
+    float: left;
+    height: auto;
+    margin: 10px 0;
+    width: 100%;
+}
+.studyhome-tabs ul.tabsz li {
+    display: block;
+    float: left;
+    border-bottom: 2px solid #ddd;
+}
+.studyhome-tabs ul.tabsz li a {
+    color: #aaa;
+    float: left;
+    font-size: 18px;
+    height: auto;
+    line-height: normal;
+    margin-left: 9px;
+    margin-right: 9px;
+    padding: 5px 0;
+    text-align: left;
+}
+.studyhome-tabs ul.tabsz li.active {
+    border-color: red;
+}
+.studyhome-tabs ul.tabsz li.active a, .studyhome-tabs ul.tabsz li:hover a {
+    color: #333;
+}
+.studyhome-tabs .contents {
+    
+}
