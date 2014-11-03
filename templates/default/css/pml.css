@@ -12695,10 +12695,20 @@ element.style {
 .studyhome-banner .banner {
     text-align: center;
 }
+.studyhome-banner .banner a img {
+    margin-right: 17px;
+}
+.studyhome-banner .banner a img.banner_728_90 {
+    width: 728px;
+    height: 90px;
+}
 .studyhome-banner .banner a img.banner_468_60 {
     width: 468px;
     height: 60px;
-    margin-right: 17px;
+}
+.studyhome-banner .banner a img.banner_300_100 {
+    width: 300px;
+    height: 100px;
 }
 .studyhome-banner .banner a:last-child img {
     margin-right: 0;
