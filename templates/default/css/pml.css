@@ -12679,3 +12679,13 @@ element.style {
 .studyhome-product-list .list-item:first-child {
     border-top: none;
 }
+.module-intro-list h3 a.more {
+    float: right;
+    font-weight: normal;
+    text-transform: none;
+    color: #777;
+    font-size: 14px;
+}
+.module-intro-list h3 a.more:hover {
+    color: red;
+}
