@@ -12689,3 +12689,9 @@ element.style {
 .module-intro-list h3 a.more:hover {
     color: red;
 }
+.studyhome-top-banner {
+    margin-bottom: 17px;
+}
+.studyhome-top-banner .banner {
+    text-align: center;
+}
