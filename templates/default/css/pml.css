@@ -12474,9 +12474,8 @@ element.style {
     margin-left: 17px;
 }
 .study_menu_top {
-    clear: both;
     float: left;
-    margin-top: 39px;
+    margin-top: 32px;
     width: 100%;
 }
 .study_menu_top .menu_bg {
