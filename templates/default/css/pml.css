@@ -12496,9 +12496,16 @@ element.style {
     padding-top: 20px;
 }
 .module-box {
-    border: 1px solid #fafafa;
-    border-radius: 2px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-image: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
     float: left;
     margin-bottom: 30px;
+    overflow: hidden;
 }
