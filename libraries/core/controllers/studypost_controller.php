@@ -1329,9 +1329,12 @@ class Studypost extends PbController {
 		$article_jobs = $ad->getByZone(11);
 		setvar("article_job",$article_jobs[0]);
 		
+		//get school list for school module
+		$module_schools = $this->school->getList(null,0,5);
+		setvar("module_schools", $module_schools);
 		//get article for school module
-		$article_schools = $this->school->getList(null,0,5);
-		setvar("article_schools", $article_schools);
+		$article_schools = $ad->getByZone(12);
+		setvar("article_school",$article_schools[0]);
 		
 		$this->render("studypost/home");
 	}
