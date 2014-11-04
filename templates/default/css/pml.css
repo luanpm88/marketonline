@@ -12721,8 +12721,10 @@ element.style {
     height: 242px;
     width: 386px;
     max-width: none;
+    visibility: hidden;
 }
 .module-intro-box span img {
     height: auto;
     width: auto;
+    visibility: visible;
 }
