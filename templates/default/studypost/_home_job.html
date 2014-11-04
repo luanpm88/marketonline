@@ -2,7 +2,13 @@
 		    <div class="two-column study-mod study-module-first">
 			<div class="column first-column">
 			    <div class="module-intro-box">
-				<img width="100%" src="{$article_job.logo}" />
+                                {if !$article_job.target_url}
+                                    <img width="100%" src="{$article_job.logo}" />
+                                {else}
+                                    <a target="_blank" href="{$article_job.target_url}">
+                                        <img width="100%" src="{$article_job.logo}" />
+                                    </a>
+                                {/if}
 				<h2>{$article_job.name}</h2>
 				{$article_job.description}
 			    </div>
