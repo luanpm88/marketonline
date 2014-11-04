@@ -119,7 +119,7 @@ class Schools extends PbModel {
 			$order_by_score = "score DESC,";
 		}
 		
-		$school_list = $this->findAll("*".$keyword_str, null, $conditions, $order_by_score."created DESC");
+		$school_list = $this->findAll("*".$keyword_str, null, $conditions, $order_by_score."created DESC",$firstcount,$displaypg);
 		foreach($school_list as $key => $item)
 		{
 			$school_list[$key]["logo"] = pb_get_attachmenturl($item['logo'], '', 'small');

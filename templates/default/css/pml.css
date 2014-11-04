@@ -12485,7 +12485,6 @@ element.style {
 .study_menu_top .menu_bg {
     background: none repeat scroll 0 0 #fff;
     border-bottom: 1px solid #aaa;
-    border-top: 1px solid #aaa;
 }
 .inner_hocvalam {
     padding: 0;
@@ -12728,4 +12727,19 @@ element.style {
     height: auto;
     width: auto;
     visibility: visible;
+}
+.second-column .module-intro-article h3 {
+    margin-top: 0;
+}
+.super-main-category.study-home {
+    padding-left: 10px;
+}
+#page-title.study-home {
+    padding-left: 70px !important;
+}
+.study_menu_top {
+    margin-top: 0;
+}
+.super-main-category .show-but.current-but.study-home {
+    background: url("../image/job_bg.png") repeat scroll -7px -10px / 54px auto #83d328;
 }

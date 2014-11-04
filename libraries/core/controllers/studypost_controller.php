@@ -1321,13 +1321,17 @@ class Studypost extends PbController {
 		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
 		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
 		
-		//get ads for employee
+		//get ads for employee module
 		$article_employees = $ad->getByZone(10);
 		setvar("article_employee",$article_employees[0]);
 		
-		//get ads for employee
+		//get ads for employee module
 		$article_jobs = $ad->getByZone(11);
 		setvar("article_job",$article_jobs[0]);
+		
+		//get article for school module
+		$article_schools = $this->school->getList(null,0,5);
+		setvar("article_schools", $article_schools);
 		
 		$this->render("studypost/home");
 	}
