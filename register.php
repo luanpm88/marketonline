@@ -205,7 +205,7 @@ setvar("agreement", $_PB_CACHE['setting']['agreement']);
 	
 	$qltv = $announcement->read("message",24);
 	setvar("qltv", $qltv["message"]);
-	setvar("qltv_raw", substr(trim(strip_tags($qltv["message"])),38,1000));
+	setvar("qltv_raw", substr(trim(strip_tags($qltv["message"])),40,1000));
 	
 	$baomat = $announcement->read("message",25);
 	setvar("baomat", $baomat["message"]);
