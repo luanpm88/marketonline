@@ -1,0 +1,43 @@
+                <div class="module-box">
+		    <div class="module-title">
+			<h2>Trường học</h2>
+			<a class="more" href="#">Danh sách trường</a>
+		    </div>
+		    <div class="two-rowx study-mod ">
+			<div class="rowx first-row">
+			    
+			    <div class="two-column">
+				<div class="column first-column">
+				    <div class="module-intro-box">
+					<img width="100%" src="http://marketonline.vn/attachment/2013/11/18/industry-new-4.png.small.jpg" />
+					
+				    </div>
+				</div>
+				<div class="column second-column">
+				    <div class="module-intro-article">
+					<h3>Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên - TNUT</h3>
+					<div class="content">
+					    Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng Giới thiệu trường hiện đại gọn gàng ...
+					    <a class="more" href="#">Xem thêm...</a>
+					</div>				    
+				    </div>		
+				</div>	    
+			    </div>
+			</div>
+			<div class="rowx second-row">
+			    <div class="logo-listing">
+				<ul class="first-row">
+                                    <!--{loop $article_schools item level key}-->
+                                        <li>
+                                            <a href="{the_url module=studypost action=school id=`$item.id` title=`$item.name`}">
+                                                <img src="{the_url module=root-url}{$item.logo}" />
+                                                <span class="logo-title">{$item.name}</span>
+                                            </a>
+                                        </li>
+                                    <!--{/loop}-->				    
+				</ul>
+			    </div>
+			</div>
+    
+		    </div>
+		</div>
