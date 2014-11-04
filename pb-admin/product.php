@@ -208,8 +208,15 @@ if (isset($_GET['do'])) {
 		}
 	}
 	if ($do == 'refresh') {
-		$product->saveField("created", $time_stamp, $id);
-		$product->saveField("`show`", 1, $id);
+		$valss["created"] = $time_stamp;
+		$valss["`show`"] = 1;
+		$valss["facebook_pubstatus"] = 0;
+		$valss["facebook_pubstatus_user"] = 0;
+		$valss["facebook_pubstatus_user_wall"] = 0;
+		$valss["facebook_pubstatus_user_fanpage"] = 0;
+		$valss["facebook_pubstatus_fanpage"] = 0;
+		
+		$product->save($valss, "update", intval($id));
 	}
 	
 	if ($do=="valid" && $id) {

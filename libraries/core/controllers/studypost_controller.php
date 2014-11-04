@@ -1336,6 +1336,14 @@ class Studypost extends PbController {
 		$article_schools = $ad->getByZone(12);
 		setvar("article_school",$article_schools[0]);
 		
+		//get group list for school module
+		$module_groups = $this->studygroup->getList(null, null, false, array(),$keyword,0,6);
+		setvar("module_groups", $module_groups);
+		
+		//get learner list for school module
+		$module_learners = $this->member->getStudyList($conditions, $keyword,0,10);
+		setvar("module_learners", $module_learners);
+		
 		$this->render("studypost/home");
 	}
 }

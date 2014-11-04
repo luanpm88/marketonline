@@ -17,8 +17,12 @@
 <script type="application/x-javascript">
     $(document).ready(function() {
 	$('.module-intro-box img').resizecrop({
-	    width:386,
-	    height:242
+	    width:$('.module-intro-box img').width(),
+	    height:$('.module-intro-box img').height()
+	});
+	$('.logo-listing.cols3 ul li img').resizecrop({
+	    width:$('.logo-listing.cols3 ul li img').width(),
+	    height:$('.logo-listing.cols3 ul li img').height()
 	});
     });
 </script>
@@ -197,77 +201,7 @@
 		    </div>
 		</div>
 		
-		<div class="module-box">
-		    <div class="module-title">
-			<h2>Môn học</h2>
-			<a class="more" href="#">Danh sách Môn học</a>
-		    </div>
-		    <div class="one-column study-mod study-module-none">
-			
-			<div class="logo-listing cols3 title-bottom">
-			    <ul class="first-row">
-				<li>
-				    <a href="">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-					<span class="logo-title-bottom">
-					    <span class="main_title">Toán học</span>
-					    Đại học Bách Khoa
-					</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-					<span class="logo-title-bottom">
-					    <span class="main_title">Toán học</span>
-					    Đại học Bách Khoa
-					</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-					<span class="logo-title-bottom">
-					    <span class="main_title">Toán học</span>
-					    Đại học Bách Khoa
-					</span>
-				    </a>
-				</li>
-				
-			    </ul>
-			    <ul>
-				<li>
-				    <a href="">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-					<span class="logo-title-bottom">
-					    <span class="main_title">Toán học</span>
-					    Đại học Bách Khoa
-					</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-					<span class="logo-title-bottom">
-					    <span class="main_title">Toán học</span>
-					    Đại học Bách Khoa
-					</span>
-				    </a>
-				</li>
-				<li>
-				    <a href="">
-					<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-2PQJfWnKP7DvrFkkW4AS0tWw45l-BIyyIRnJzOXI_e3n0B3f-A" />
-					<span class="logo-title-bottom">
-					    <span class="main_title">Toán học</span>
-					    Đại học Bách Khoa
-					</span>
-				    </a>
-				</li>
-				
-			    </ul>
-			</div>
-		    </div>
-		</div>
+		<!--{include file="`$theme_name`/studypost/_home_group.html"}-->
 		
 		<div class="studyhome-banner studyhome-banner-pos1">
 		    <div class="banner">
@@ -294,7 +228,6 @@
 					    <a href=""><span class="main_title">GS.TS. Phạm Văn Hai</span></a>
 					    <p><a href="">Khoa học máy tính</a>, <a href="">Toán A2</a></p>
 					</span>
-				    
 				</li>
 				<li>
 					<a href=""><img src="http://marketonline.vn/attachment/2014/05/31/member-ava-1495.jpg.small.jpg" /></a>
@@ -429,117 +362,7 @@
 		    </div>
 		</div>
 		
-		<div class="module-box">
-		
-		    <div class="module-title">
-			<h2>Học viên</h2>
-			<a class="more" href="#">Danh sách Học viên</a>
-		    </div>
-		    <div class="two-column study-mod study-module-none width50">
-			<div class="column first-column">
-			    <div class="tiles-list">
-				<ul>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				</ul>
-			    </div>
-			</div>
-			<div class="column second-column">
-			    <div class="tiles-list">
-				<ul>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				    <li>
-					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
-					<a class="title" href="">Đặng Ngọc Tiến</a>
-					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
-					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
-					<div class="controls">
-					    <a class="add_friend" href="">Kết bạn</a>
-					</div>
-				    </li>
-				</ul>
-			    </div>
-			</div>	    
-		    </div>
-		</div>
+		<!--{include file="`$theme_name`/studypost/_home_learner.html"}-->		
 		
 		<div class="studyhome-banner studyhome-banner-pos1">
 		    <div class="banner">
@@ -733,17 +556,13 @@
 					<span class="logo-title-bottom">
 					    <a href=""><span class="main_title">Kitty's Shop</span></a>
 					</span>
-				    
 				</li>
 				<li>
 					<a href=""><img src="http://marketonline.vn/attachment/2014/09/03/company-logo-1385.jpg.small.jpg" /></a>
 					<span class="logo-title-bottom">
 					    <a href=""><span class="main_title">Kitty's Shop</span></a>
 					</span>
-				    
 				</li>
-				
-				
 			    </ul>
 			    
 			</div>

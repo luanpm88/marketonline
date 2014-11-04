@@ -201,12 +201,15 @@ setvar("agreement", $_PB_CACHE['setting']['agreement']);
 	
 	$dksd = $announcement->read("message",23);
 	setvar("dksd", $dksd["message"]);
+	setvar("dksd_raw", substr(trim(strip_tags($dksd["message"])),29,1000));
 	
 	$qltv = $announcement->read("message",24);
 	setvar("qltv", $qltv["message"]);
+	setvar("qltv_raw", substr(trim(strip_tags($qltv["message"])),38,1000));
 	
 	$baomat = $announcement->read("message",25);
 	setvar("baomat", $baomat["message"]);
+	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 
 render($tpl_file);
 ?>

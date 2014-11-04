@@ -866,7 +866,7 @@ class Members extends PbModel {
 		
 		return $ids;
 	}	
-	function getStudyList($conds = array(), $keyword = '')
+	function getStudyList($conds = array(), $keyword = '', $offset = null, $num = null)
 	{
 		uses("area");
  		$area = new Areas();
@@ -890,7 +890,7 @@ class Members extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}membermembertypes mmt ON mmt.member_id=Member.id";
 				
-		$members = $this->findAll("Member.*,mf.*,sc.name as school_name".$keyword_str, $joins, $conditions, $order_by_score);
+		$members = $this->findAll("Member.*,mf.*,sc.name as school_name".$keyword_str, $joins, $conditions, $order_by_score,$offset,$num);
 		
 		foreach($members as $key => $result)
 		{

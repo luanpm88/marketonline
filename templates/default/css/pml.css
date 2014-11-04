@@ -12759,3 +12759,15 @@ element.style {
 .main-items-header {
     margin-left: 41px;
 }
+.logo-listing.cols3 ul li img {
+    visibility: hidden;
+}
+.logo-listing.cols3 ul li span img {
+    width: auto;
+    height: auto;
+    max-width: none;
+    visibility: visible;
+}
+.logo-listing ul li a span.logo-title-bottom {
+    padding-top: 3px;
+}
