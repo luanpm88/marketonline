@@ -12743,3 +12743,10 @@ element.style {
 .super-main-category .show-but.current-but.study-home {
     background: url("../image/job_bg.png") repeat scroll -7px -10px / 54px auto #83d328;
 }
+.module-title.title-small {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+.module-title.title-small h4 {
+    font-size: 16px;
+}
