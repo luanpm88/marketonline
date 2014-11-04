@@ -296,5 +296,14 @@ class Adses extends PbModel {
 		
 		return $item;
 	}
+	
+	function getByZone($zone_id) {
+		$result = $this->findAll("*", null, array("adzone_id=".$zone_id));
+		foreach($result as $key => $item) {
+			$result[$key] = $this->formatResult($item);
+		}
+		
+		return $result;
+	}
 }
 ?>

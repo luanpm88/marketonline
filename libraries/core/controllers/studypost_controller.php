@@ -1315,8 +1315,15 @@ class Studypost extends PbController {
 	}
 	
 	function home() {
+		uses("ad");
+		$ad = new Adses();
+		
 		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
 		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
+		
+		//get ads for employee
+		$article_employees = $ad->getByZone(10);
+		setvar("article_employee",$article_employees[0]);
 		
 		$this->render("studypost/home");
 	}

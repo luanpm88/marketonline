@@ -12335,8 +12335,11 @@ element.style {
     float:left;
 }
 .module-intro-box h2 {
+    float: left;
     font-size: 22px;
-    
+    margin-bottom: 7px;
+    margin-top: 10px;
+    width: 100%;
 }
 .module-title .more {
     color: #888;
@@ -12712,4 +12715,13 @@ element.style {
 }
 .studyhome-banner .banner a:last-child img {
     margin-right: 0;
+}
+.module-intro-box img {
+    height: 242px;
+    width: 386px;
+    max-width: none;
+}
+.module-intro-box span img {
+    height: auto;
+    width: auto;
 }
