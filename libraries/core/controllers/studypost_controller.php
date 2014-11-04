@@ -1325,6 +1325,10 @@ class Studypost extends PbController {
 		$article_employees = $ad->getByZone(10);
 		setvar("article_employee",$article_employees[0]);
 		
+		//get ads for employee
+		$article_jobs = $ad->getByZone(11);
+		setvar("article_job",$article_jobs[0]);
+		
 		$this->render("studypost/home");
 	}
 }

@@ -123,7 +123,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		$string = "";
 		foreach($item["areas"] as $a => $b)
 		{
-			$string .= '<a class="job_city_link" href="javascript:void(0)" rel="'.$b["id"].'">'.$b["name"].'</a>';
+			$string .= '<a class="job_city_link" onclick="$(\'#job-learn input[name=do]\').val(\'employee\')" href="javascript:void(0)" rel="'.$b["id"].'">'.$b["name"].'</a>';
 			if($a < count($item["areas"])-1) $string .= ', ';
 		}
 		$item["areas"] = $string;

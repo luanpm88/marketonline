@@ -3699,3 +3699,7 @@ a.unvalid_edit {
 #dataTable tr td {
     border-color: #ccc !important;
 }
+.note_box ul li {
+    list-style: inherit;
+    margin-left: 40px;
+}
