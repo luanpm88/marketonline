@@ -355,6 +355,6 @@ setvar("pb_setting",$_PB_CACHE['setting']);
 
 	$gioithieu = $announcement->read("message",22);
 	setvar("gioithieu", $gioithieu["message"]);
-	setvar("gioithieu_raw", substr(trim(strip_tags($gioithieu["message"])),12,1000));
+	setvar("gioithieu_raw", substr(trim(strip_tags($gioithieu["message"])),15,1000));
 
 ?>
