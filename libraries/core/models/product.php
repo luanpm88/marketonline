@@ -115,7 +115,7 @@ class Products extends PbModel {
 			$fields = "MATCH (Product.name) AGAINST ('".$searchkeywords."') AS score, MATCH (Product.content) AGAINST ('".$searchkeywords."') AS score1, ";
 			$fields .= "MATCH (b.name) AGAINST ('".$searchkeywords."') AS score2, ";
 			$fields .= "MATCH (Product.product_code) AGAINST ('".$searchkeywords."') AS score3, ";
-			$this->orderby = '(score*6 + score1 + score2*3 + score3*4) DESC';
+			$this->orderby = '(score*10 + score1 + score2*3 + score3*4) DESC';
 		}
 		
 		$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
