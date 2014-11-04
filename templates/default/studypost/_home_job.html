@@ -4,13 +4,19 @@
 			    <div class="module-intro-box">
                                 {if !$article_job.target_url}
                                     <img width="100%" src="{$article_job.logo}" />
+				    <h2>{$article_job.name}</h2>
                                 {else}
                                     <a target="_blank" href="{$article_job.target_url}">
                                         <img width="100%" src="{$article_job.logo}" />
                                     </a>
+				    
+				    <h2><a target="_blank" href="{$article_job.target_url}">{$article_job.name}</a></h2>
                                 {/if}
-				<h2>{$article_job.name}</h2>
+				
 				{$article_job.description}
+				{if $article_job.target_url}
+                                    <a target="_blank" class="more" href="{$article_job.target_url}">Xem thêm...</a>
+                                {/if}
 			    </div>
 			</div>
 			<div class="column second-column">
