@@ -1,0 +1,25 @@
+                <div class="module-box">
+		    <div class="module-title">
+			<h2>Môn học</h2>
+			<a class="more" href="{the_url module='studypost' type='group'}">Danh sách Môn học</a>
+		    </div>
+		    <div class="one-column study-mod study-module-none">
+			
+			<div class="logo-listing cols3 title-bottom">
+			    <ul class="first-row">
+				<!--{loop $module_groups item level key}-->
+				    <li>
+					<a href="{the_url module=studypost action=group id=`$item.id` title=`$item.subject_name`}">
+					    <img src="{$item.logo}" />
+					    <span class="logo-title-bottom">
+						<span class="main_title">{$item.subject_name}</span>
+						{$item.school_name}
+					    </span>
+					</a>
+				    </li>
+				    {if $key%3==2}</ul><ul>{/if}
+				<!--{/loop}-->				
+			    </ul>			    
+			</div>
+		    </div>
+		</div>

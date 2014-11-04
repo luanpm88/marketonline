@@ -1,0 +1,115 @@
+                <div class="module-box">
+		
+		    <div class="module-title">
+			<h2>Học viên</h2>
+			<a class="more" href="{the_url module='studypost' type='learner'}">Danh sách Học viên</a>
+		    </div>
+		    <div class="two-column study-mod study-module-none width50">
+			<div class="column first-column">
+			    <div class="tiles-list">
+				<ul>
+                                    <!--{loop $module_learners item level key}-->
+                                        <li>
+                                            <a href="{the_url module=studypost action=memberpage id=`$item.id` title=`$item.fullname`}">
+                                                <img src="{$item.photo}">
+                                            </a>
+                                            <a class="title" href="{the_url module=studypost action=memberpage id=`$item.id` title=`$item.fullname`}">{$item.first_name} {$item.last_name}</a>
+                                            <p><a href="" title="{$item.school_name}">{$item.school_name}</a></p>
+                                            {if $item.address_short}<p class="more_info">{$item.address_short}</p>{/if}
+                                            <div class="controls">
+                                                <a class="add_friend" href="">Kết bạn</a>
+                                            </div>
+                                        </li>
+                                    <!--{/loop}-->
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				</ul>
+			    </div>
+			</div>
+			<div class="column second-column">
+			    <div class="tiles-list">
+				<ul>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				    <li>
+					<a href=""><img src="http://marketonline.vn/attachment/2014/07/15/member-ava-1249.jpg.small.jpg"></a>
+					<a class="title" href="">Đặng Ngọc Tiến</a>
+					<p><a href="" title="Đại Học Kỹ Thuật Công Nghiệp Thái Nguyên More">Đại Học Kỹ Thuật Công Nghiệp Thái...</a></p>
+					<p class="more_info">Tp Thái Nguyên, Thái Nguyên, Việt Nam</p>
+					<div class="controls">
+					    <a class="add_friend" href="">Kết bạn</a>
+					</div>
+				    </li>
+				</ul>
+			    </div>
+			</div>	    
+		    </div>
+		</div>
