@@ -12751,11 +12751,11 @@ element.style {
     font-size: 16px;
 }
 .super-main-category .show-but {
-    background: url("../image/show-menu-icon.png") repeat scroll -5px -5px / 49px auto #3b984c;
-    height: 39px;
-    width: 39px;
-    margin-top: -9px;
+    background: url("../image/show-menu-icon.png") repeat scroll -5px -5px / 43px auto #3b984c;
+    height: 32px;
+    width: 32px;
+    margin-top: -3px;
 }
 .main-items-header {
-    margin-left: 48px;
+    margin-left: 41px;
 }
