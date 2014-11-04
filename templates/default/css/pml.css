@@ -12771,3 +12771,9 @@ element.style {
 .logo-listing ul li a span.logo-title-bottom {
     padding-top: 3px;
 }
+.second-column .module-intro-article h3 a {
+    color: #333;
+}
+.second-column .module-intro-article h3 a:hover {
+    color: red;
+}

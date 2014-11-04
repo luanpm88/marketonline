@@ -1318,6 +1318,9 @@ class Studypost extends PbController {
 		uses("ad");
 		$ad = new Adses();
 		
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		
 		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
 		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
 		
@@ -1342,6 +1345,12 @@ class Studypost extends PbController {
 		
 		//get learner list for school module
 		$module_learners = $this->member->getStudyList($conditions, $keyword,0,10);
+		foreach($module_learners as $key => $mem)
+		{
+			$module_learners[$key]["is_friend"] = $this->studyfriend->isFriend($user["id"], $mem["id"]);
+			$module_learners[$key]["friended"] = $this->studyfriend->check($user["id"], $mem["id"]);
+			$module_learners[$key]["friending"] = $friend_request = $this->studyfriend->getFriendRequest($user["id"], $mem["id"]);
+		}
 		setvar("module_learners", $module_learners);
 		
 		$this->render("studypost/home");

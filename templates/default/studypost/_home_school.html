@@ -19,7 +19,16 @@
 				</div>
 				<div class="column second-column">
 				    <div class="module-intro-article">
-					<h3>{$article_school.name}</h3>
+					<h3>
+					    {if !$article_school.target_url}
+						{$article_school.name}
+					    {else}
+						<a target="_blank" href="{$article_school.target_url}">
+						    {$article_school.name}
+						</a>
+					    {/if}
+					    
+					</h3>
 					<div class="content">
 					    {$article_school.description}
 					    {if $article_school.target_url}

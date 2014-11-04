@@ -896,6 +896,7 @@ class Members extends PbModel {
 		{
 			$result["address_s"] = $result["address"];
 			$result["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
+			$result["address_short"] = $area->getFullName($result["area_id"]);
 			
 			$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');
 

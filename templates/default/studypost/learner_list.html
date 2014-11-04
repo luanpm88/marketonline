@@ -79,9 +79,9 @@
 					    {if $pb_userid != $item.id && !$item.friending && !$item.is_friend}
 						<!--{if $pb_username!=""}-->
 							{if !$item.friended}
-								<a onclick="studyfriend({$item.id}, this)" href="javascript:void(0)">Kết bạn</a>
+							    <a onclick="studyfriend({$item.id}, this)" href="javascript:void(0)">Kết bạn</a>
 							{else}
-								<a onclick="studyfriend({$item.id}, this)" class="del_addfriend" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+							    <a onclick="studyfriend({$item.id}, this)" class="del_addfriend" href="javascript:void(0)" title="Hủy lời mời">Đã gửi lời mời kết bạn</a>
 							{/if}
 						<!--{else}-->
 							{if !$item.friended}
