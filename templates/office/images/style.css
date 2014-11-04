@@ -3662,16 +3662,16 @@ a.unvalid_edit {
     border-color: red;
 }
 #dataTable tr.row_pause td, #dataTable tr.row_pause td a, #dataTable tr.row_pause td select, #dataTable tr.row_pause td input[type="text"] {
-    color: #ec9b00;
-    border-color: #ec9b00;
+    color: blue;
+    border-color: blue;
 }
 #dataTable tr.row_idea td, #dataTable tr.row_idea td a, #dataTable tr.row_idea td select, #dataTable tr.row_idea td input[type="text"] {
     color: #9403aa;
     border-color: #9403aa;
 }
 #dataTable tr.row_invalid td, #dataTable tr.row_invalid td a, #dataTable tr.row_invalid td select, #dataTable tr.row_invalid td input[type="text"] {
-    color: blue;
-    border-color: blue;
+    color: orange;
+    border-color: orange;
 }
 .ttaass tr td {
     font-size: 12px;
