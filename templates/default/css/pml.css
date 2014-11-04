@@ -12479,12 +12479,13 @@ element.style {
 }
 .study_menu_top {
     float: left;
-    margin-top: 32px;
+    margin-top: 38px;
     width: 100%;
 }
 .study_menu_top .menu_bg {
     background: none repeat scroll 0 0 #fff;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #aaa;
+    border-top: 1px solid #aaa;
 }
 .inner_hocvalam {
     padding: 0;
