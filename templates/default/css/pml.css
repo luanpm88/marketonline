@@ -12606,6 +12606,12 @@ element.style {
 }
 .tiles-list.inner-text-image ul li img {
     width: 190px;
+    height: 190px;
+}
+.tiles-list.inner-text-image ul li span img {
+    width: auto;
+    height: auto;
+    max-width: none;
 }
 .tiles-list.inner-text-image ul li .info {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
