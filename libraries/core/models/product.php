@@ -172,6 +172,8 @@ class Products extends PbModel {
 			
 			//{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}
 			$result[$keys]["href"] = $this->url(array("module"=>"product","product_name"=>$values['name'],"id"=>$values['id'],"service"=>$values['service']));
+			
+			$result[$keys]['company_logo'] = pb_get_attachmenturl($values["company_logo"], '', 'small');
  		}
 		
 		return $result;
@@ -713,6 +715,58 @@ class Products extends PbModel {
 		$result = $this->findAll("a.name,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.clicked DESC, Product.created DESC", $offset, $count);
 		$count = $this->findCount($joins, $conditions, "Product.id");
 		$result = $this->formatItems($result);
+		
+		return array("result"=>$result,"count"=>$count);
+	}
+	
+	function getStudentProducts($service = 0,$offset = null, $num = null) {
+		global $cache_types;
+ 		uses("space","industry","area","productcomment");
+ 		$space = new Space();
+ 		$area = new Areas();
+ 		$industry = new Industries();
+		$productcomment = new Productcomments();
+ 		$cache_options = cache_read('typeoption');
+ 		$area_s = $space->array_multi2single($area->getCacheArea());
+ 		$industry_s = $space->array_multi2single($area->getCacheArea());
+		
+		
+		$conditions = array("Product.status=1","Product.state=1","Product.valid_status=1");
+		
+		if($service) $conditions[] = "Product.service=1";
+		
+		$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
+		
+ 		$result = $this->findAll("m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created",$offset,$num);
+ 		$result = $this->formatItems($result);
+		
+		//$count = $this->findCount($joins, $conditions, "Product.id");
+		
+		return array("result"=>$result,"count"=>$count);
+	}
+	
+	function getStudentDiscountProducts($service = 0,$offset = null, $num = null) {
+		global $cache_types;
+ 		uses("space","industry","area","productcomment");
+ 		$space = new Space();
+ 		$area = new Areas();
+ 		$industry = new Industries();
+		$productcomment = new Productcomments();
+ 		$cache_options = cache_read('typeoption');
+ 		$area_s = $space->array_multi2single($area->getCacheArea());
+ 		$industry_s = $space->array_multi2single($area->getCacheArea());
+		
+		
+		$conditions = array("Product.status=1","Product.state=1","Product.valid_status=1","Product.new_price>0");
+		
+		if($service) $conditions[] = "Product.service=1";
+		
+		$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
+		
+ 		$result = $this->findAll("c.picture as company_logo,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC",$offset,$num);
+ 		$result = $this->formatItems($result);
+		
+		//$count = $this->findCount($joins, $conditions, "Product.id");
 		
 		return array("result"=>$result,"count"=>$count);
 	}

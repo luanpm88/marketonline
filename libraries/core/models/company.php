@@ -746,5 +746,30 @@ class Companies extends PbModel {
 		
 		return array("result"=>$result,"count"=>$count);
 	}
+	
+	function getStudentShops($offset = null, $num = null) {
+		$conditions = array();
+		
+		$conditions[] = "mf.school_id!=0";
+		//Conditions for effective company
+		$other_con = " > 0";
+		$company_has_logo = ""; //"AND Company.picture != '' AND Company.banners IS NOT NULL";
+		$conditions[] = "(Company.id IN (".
+				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc"
+				." INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id"
+				." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
+		
+		$joins = array();
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=Company.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Company.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Company.member_id";
+		
+		$result = $this->findAll("Company.*", $joins, $conditions, "m.points_weekly DESC, m.active_time DESC", $offset, $num);
+		//$count = $this->findCount($joins, $conditions, "Company.id");
+		$result = $this->formatItems($result);
+		
+		return array("result"=>$result,"count"=>$count);
+	}
 }
 ?>

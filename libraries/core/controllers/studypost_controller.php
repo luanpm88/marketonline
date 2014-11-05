@@ -7,6 +7,7 @@ class Studypost extends PbController {
 		$this->loadModel("studypost");
 		$this->loadModel("company");
 		$this->loadModel("trade");
+		$this->loadModel("product");
 		$this->loadModel("studypostcomment");
 		$this->loadModel("member");
 		$this->loadModel("memberfield");
@@ -1366,6 +1367,21 @@ class Studypost extends PbController {
 		setvar("ads_left_8", $ad->getByZone(21));
 		setvar("ads_right", $ad->getByZone(22));
 		
+		//get student shops
+		$student_shops = $this->company->getStudentShops(0, 15);
+		setvar("student_shops", $student_shops["result"]);
+		
+		//get student service
+		$student_services = $this->product->getStudentProducts(1, 0, 6);
+		setvar("student_services", $student_services["result"]);
+		
+		//get student products
+		$student_trades = $this->trade->getStudentTrades(0, 6);
+		setvar("student_trades", $student_trades);
+		
+		//get student service
+		$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 3);
+		setvar("student_discount_products", $student_discount_products["result"]);
 		
 		$this->render("studypost/home");
 	}

@@ -1,0 +1,23 @@
+                    <div class="module-box">
+			<div class="module-title">
+			    <h2>Gian hàng sinh viên</h2>
+			    <a class="more" href="#">Xem tất cả</a>
+			</div>
+			<div class="one-column study-mod study-module-none">
+			
+			    <div class="logo-listing title-bottom cols3-leftbar">
+				<ul class="first-row">
+                                    <!--{loop $student_shops item level key}-->
+                                        <li>
+					    <a href="{the_url module=space userid=`$item.cache_spacename`}"><img src="{$item.logo}" /></a>
+					    <span class="logo-title-bottom">
+						<a href="{the_url module=space userid=`$item.cache_spacename`}"><span class="main_title">{$item.shop_name}</span></a>
+					    </span>
+                                        </li>
+                                        {if $key%3==2}</ul><ul>{/if}
+                                    <!--{/loop}-->				    
+				</ul>
+				
+			    </div>
+			</div>
+		    </div>

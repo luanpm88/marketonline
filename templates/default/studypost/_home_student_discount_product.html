@@ -1,0 +1,48 @@
+<div class="module-box">
+			<div class="module-title">
+			    <h2>Hàng giảm giá</h2>
+			    <a class="more" href="#">Xem Tất cả</a>
+			</div>
+			<div class="studyhome-product-list">
+                            <!--{loop $student_discount_products item level key}-->
+                                <div class="list-item">
+                                    <div class="one-column">
+                                        <div class="tiles-list top-info">
+                                            <ul>
+                                                <li>
+                                                    <div class="info">
+                                                        <div class="col col1">
+                                                            <div class="col-content">
+                                                                <a class="title" href="{the_url module='space' userid=`$item.cache_spacename`}">
+                                                                    <img src="{$item.company_logo}" />
+                                                                </a>
+                                                                <a class="title" href="">{$item.shop_name}</a>
+                                                                <p><a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" title="{$item.name}">{$item.name|truncate:30}</a></p>
+                                                                <p style="float: right;padding-right: 5px;">30/11/2014</p>
+                                                                <p style="float: left">Số lượng: <strong>14</strong></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col col2">
+                                                            <div class="col-content">							
+                                                                <p class="old_price">{$item.price} VNĐ</p>
+                                                                <p class="price">{$item.new_price} VNĐ</p>
+                                                                <p class="">{$item.price_note}</p>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                    <a class="" href=""><img class="main_img" src="{$item.thumb}"></a>
+                                                    
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+			    <!--{/loop}-->
+                            
+			    
+			    
+			</div>
+			    
+		    </div>

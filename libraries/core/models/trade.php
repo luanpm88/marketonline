@@ -121,6 +121,9 @@ class Trades extends PbModel {
  			$result[$keys]['url'] = $this->url(array("module"=>"offer", "id"=>$values['id']));
 			
 			$result[$keys]["href"] = $this->url(array("module"=>"offers","title"=>$values['title'],"action"=>"detail","id"=>$values['id']));
+			
+			$result[$keys]["price"] = number_format($result[$keys]["price"], 0, ',', '.');
+			$result[$keys]["new_price"] = number_format($result[$keys]["new_price"], 0, ',', '.');
  		}
 		return $result;
 	}
@@ -600,6 +603,35 @@ class Trades extends PbModel {
 		$count = $this->findCount($joins, $conditions, "Trade.id");
 		//var_dump($count);
 		return array("result"=>$result,"count"=>$count);
+	}
+	
+	function getStudentTrades($offset=null,$num=null) {
+		uses("tradetype");
+		$tradetype = new Tradetypes();
+		
+		$result = $tradetype->findAll("*",null,array("level=2"),"display_order");
+		array_unshift($result,array("id"=>0,"name"=>"Tiêu biểu","short_name"=>"Tiêu biểu"));
+		
+		$conditions = array("Trade.status=1","Trade.valid_status=1"); //,"mf.school_id!=0");
+			
+		$joins = array();
+		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Trade.company_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}tradetypes tt ON tt.id=Trade.type_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}brands AS b ON b.id = Trade.brand_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Trade.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Trade.member_id";
+		
+		foreach($result as $key => $item) {
+			if($item["id"]) $conditions_more = array("Trade.type_id=".$item["id"]);
+			
+			$trades = $this->findAll("tt.short_name,c.shop_name,Trade.*,content AS digest", $joins, array_merge($conditions_more,$conditions), "Trade.clicked DESC, Trade.created DESC", $offset, $num);
+			$trades = $this->formatItems($trades);
+			
+			$result[$key]["trades"] = $trades;
+		}
+		return $result;
 	}
 	
 }

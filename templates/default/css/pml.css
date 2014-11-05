@@ -12312,6 +12312,7 @@ element.style {
 }
 .logo-listing ul li a img {
     border: 1px solid #ddd;
+    width: 100%;
 }
 .logo-listing ul li a span {
     display: block;
@@ -12784,4 +12785,33 @@ element.style {
 }
 .module-intro-box .more:hover {
     color: red;
+}
+.studyhome-tabs .contents .tab-content.boxhide {
+    position: absolute;
+    left: -90000px;
+}
+.module-intro-list ul li img {
+    width: 65px;
+    height: 65px;
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+.module-intro-list ul li span img {
+    width: auto;
+    height: auto;
+    max-width: none;
+}
+.module-intro-list ul li span {
+    float: right;
+    margin-left: 10px;
+}
+.tiles-list.top-info ul li span {
+    border: solid 1px #ddd;
+}
+.tiles-list.top-info ul li span img.main_img {
+    width: auto;
+    height: auto;
+    max-width: none;
+    border: none;
 }

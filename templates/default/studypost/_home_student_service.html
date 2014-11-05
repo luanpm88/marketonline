@@ -1,0 +1,48 @@
+                    <div class="module-box">
+			<div class="module-title">
+			    <h2>Dịch vụ sinh viên</h2>
+			    <a class="more" href="#">Xem Tất cả</a>
+			</div>
+			<div class="two-column study-mod study-module-none width50">
+			    <div class="column first-column">
+				<div class="tiles-list inner-text-image">
+				    <ul>
+					<!--{loop $student_services item level key}-->
+                                            {if $key < 3}
+                                                <li>
+                                                    <a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+                                                        <img src="{$item.thumb}">
+                                                    </a>
+                                                    <div class="info">
+                                                        <a class="title" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">{$item.shop_name}</a>
+                                                        <p>{$item.name}</p>
+                                                        
+                                                    </div>
+                                                </li>
+                                            {/if}
+                                        <!--{/loop}-->
+				    </ul>
+				</div>
+			    </div>
+			    <div class="column second-column">
+				<div class="tiles-list inner-text-image">
+				    <ul>
+					<!--{loop $student_services item level key}-->
+                                            {if $key >= 3}
+                                                <li>
+                                                    <a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+                                                        <img src="{$item.thumb}">
+                                                    </a>
+                                                    <div class="info">
+                                                        <a class="title" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">{$item.shop_name}</a>
+                                                        <p>{$item.name}</p>
+                                                        
+                                                    </div>
+                                                </li>
+                                            {/if}
+                                        <!--{/loop}-->
+				    </ul>
+				</div>
+			    </div>	    
+			</div>
+		    </div>
