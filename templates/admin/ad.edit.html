@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
       <tr>
         <th class="paddingT15"> {lang ads}{lang title}{lang colon}</th>
         <td class="paddingT15 wordSpacing5">          
-		<input class="infoTableInput2" name="ad[title]" value="{$item.title}" /><label class="field_notice">{lang ad_show_title}</label>        </td>
+		<input style="width: 50%" class="infoTableInput2" name="ad[title]" value="{$item.title}" /><label class="field_notice">{lang ad_show_title}</label>        </td>
       </tr>
       <tr>
         <th class="paddingT15"> {lang ads}{lang description_n}</th>
@@ -84,6 +84,19 @@ jQuery(document).ready(function($) {
 		<select name="ad[adzone_id]" id="ad_adzone_id">
 		<!--{foreach from=$Adzones item=z name=sel_adzone}-->
 		<option value="{$z.id}" {if $z.id eq $item.adzone_id or $z.id eq $smarty.get.adzone_id}selected{/if}>
+		{$z.name}
+		<!--{foreachelse}-->
+		<option value="0">{lang full_please}{lang adzone}
+		<!--{/foreach}-->
+		</select></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> Kích thước</th>
+        <td class="paddingT15 wordSpacing5">
+		<select name="ad[adsize_id]" id="ad_adzone_id">
+			<option value="">Chọn kích thước</option>
+		<!--{foreach from=$adsizes item=z name=sel_adzone}-->
+		<option value="{$z.id}" {if $z.id eq $item.adsize_id or $z.id eq $smarty.get.adsize_id}selected{/if}>
 		{$z.name}
 		<!--{foreachelse}-->
 		<option value="0">{lang full_please}{lang adzone}

@@ -288,17 +288,19 @@ class Adses extends PbModel {
 			$item["name"] = $item["shop_name"];
 		}
 		if(!empty($item['target_url'])) {
-			$item["href"] = $item["target_url"];
+			$item["href"] = $item["target_url"];		
 		}
 		else {
 			$item["href"] = $this->url(array("module"=>"space", "userid"=>$item["cache_spacename"]));
 		}
 		
+		$item["target_url"] = $this->url(array("module"=>"ad","id"=>$item["id"]));
+		
 		return $item;
 	}
 	
 	function getByZone($zone_id) {
-		$result = $this->findAll("*", null, array("adzone_id=".$zone_id), "created DESC");
+		$result = $this->findAll("s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", array("LEFT JOIN {$this->table_prefix}adsizes s ON s.id=Ads.adsize_id"), array("Ads.adzone_id=".$zone_id), "Ads.display_order");
 		foreach($result as $key => $item) {
 			$result[$key] = $this->formatResult($item);
 		}

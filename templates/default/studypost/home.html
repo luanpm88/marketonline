@@ -90,15 +90,17 @@
 
 <div class="studyhome-page">
     
-    <div class="studyhome-banner studyhome-top-banner">
-	<div class="banner">
-	    <a href="" target="_blank">
-		<img class="banner_468_60" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-	    </a><a>
-		<img class="banner_468_60" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-	    </a>
+    {if $ads_top}
+	<div class="studyhome-banner studyhome-top-banner">
+	    <div class="banner">
+		<!--{loop $ads_top item level key}-->
+		    <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+			<img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+		    </a>
+		<!--{/loop}-->
+	    </div>
 	</div>
-    </div>
+    {/if}
     
     
 <div class="row hocvalam_modules">
@@ -108,37 +110,45 @@
 		
 		<!--{include file="`$theme_name`/studypost/_home_job.html"}-->
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a><a>
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_1}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_1 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<!--{include file="`$theme_name`/studypost/_home_employee.html"}-->
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_728_90" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_2}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_2 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<!--{include file="`$theme_name`/studypost/_home_school.html"}-->
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a><a>
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_3}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_3 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<div class="module-box">
 		    <div class="module-title">
@@ -193,25 +203,31 @@
 		    </div>
 		</div>
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_728_90" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_4}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_4 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<!--{include file="`$theme_name`/studypost/_home_group.html"}-->
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a><a>
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_5}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_5 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<div class="module-box">
 		    <div class="module-title">
@@ -354,25 +370,31 @@
 		    </div>
 		</div>
 		    
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_728_90" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_6}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_6 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<!--{include file="`$theme_name`/studypost/_home_learner.html"}-->		
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a><a>
-			    <img class="banner_300_100" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_7}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_7 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		<div class="module-box">
 		    <div class="two-column study-mod study-module">
@@ -406,33 +428,40 @@
 		    </div>
 		</div>
 		
-		<div class="studyhome-banner studyhome-banner-pos1">
-		    <div class="banner">
-			<a href="" target="_blank">
-			    <img class="banner_728_90" src="{the_url module=root-url}images/banner/studyhome-top-banner.png" />
-			</a>
+		{if $ads_left_8}
+		    <div class="studyhome-banner studyhome-top-banner">
+			<div class="banner">
+			    <!--{loop $ads_left_8 item level key}-->
+				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+				    <img {if $item.size_width && $item.size_height}style="width:{$item.size_width}px;height:{$item.size_height}px;"{/if} class="{$item.size_name}" src="{$item.logo}" />
+				</a>
+			    <!--{/loop}-->
+			</div>
 		    </div>
-		</div>
+		{/if}
 		
 		
 	    </div>
 	    <div class="column second-column studyhome-right">
 		<div class="study-home-leftbar">
-		    <div class="module-box">
-			<div class="module-title title-small">
-			    <h4>Quảng cáo</h4>
-			</div>
-			<div class="studybanner-home">
-			    <div class="banner-one-line">
-				<img src="https://zaragilesdesigns.files.wordpress.com/2012/05/40th-anniversary-carnival-banner.jpg" />
-				<img src="http://www.nostomachforcancer.org/wp-content/uploads/2013/08/nsfc_scam_banner_50percent.jpg" />
-				<img src="https://zaragilesdesigns.files.wordpress.com/2012/05/40th-anniversary-carnival-banner.jpg" />
-				<img src="http://www.nostomachforcancer.org/wp-content/uploads/2013/08/nsfc_scam_banner_50percent.jpg" />
-				<img src="https://zaragilesdesigns.files.wordpress.com/2012/05/40th-anniversary-carnival-banner.jpg" />
-				
+		    
+		    {if $ads_right}
+			<div class="module-box">
+			    <div class="module-title title-small">
+				<h4>Quảng cáo</h4>
+			    </div>
+			    <div class="studybanner-home">
+				<div class="banner-one-line">
+				    <!--{loop $ads_right item level key}-->
+					<a href="{$item.target_url}" target="_blank" title="{$item.name}">
+					    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+					</a>
+				    <!--{/loop}-->
+				</div>
 			    </div>
 			</div>
-		    </div>
+		    {/if}
+		    
 		    
 		    <div class="module-box">
 			<div class="module-title">

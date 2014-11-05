@@ -1353,6 +1353,20 @@ class Studypost extends PbController {
 		}
 		setvar("module_learners", $module_learners);
 		
+		//get ads in
+		$ads_top = $ad->getByZone(13);
+		setvar("ads_top", $ads_top);
+		setvar("ads_left_1", $ad->getByZone(14));
+		setvar("ads_left_2", $ad->getByZone(15));
+		setvar("ads_left_3", $ad->getByZone(16));
+		setvar("ads_left_4", $ad->getByZone(17));
+		setvar("ads_left_5", $ad->getByZone(18));
+		setvar("ads_left_6", $ad->getByZone(19));
+		setvar("ads_left_7", $ad->getByZone(20));
+		setvar("ads_left_8", $ad->getByZone(21));
+		setvar("ads_right", $ad->getByZone(22));
+		
+		
 		$this->render("studypost/home");
 	}
 }

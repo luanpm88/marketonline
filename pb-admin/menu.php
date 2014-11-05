@@ -231,6 +231,10 @@ $menus = array(
                 'text'  => L("adzone", "tpl"),
                 'url'   => 'adzone.php',
             ),
+                         'adsize' => array(
+                'text'  => "Kích thước quảng cáo",
+                'url'   => 'adsize.php',
+            ),
 			 'friendlink' => array(
                 'text'  => L("friend_links", "tpl"),
                 'url'   => 'friendlink.php',

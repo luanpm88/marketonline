@@ -329,10 +329,11 @@ class PbModel extends Overloadable
 			//var_dump($insertsql);
 			$new_id = false;
 		}else {
-			$insertsql = $this->dbstuff->GetInsertSQL($rs,$record);
+			$insertsql = $this->dbstuff->GetInsertSQL($rs,$record);			
 			$new_id = true;
-		}
+		}		
 		if($insertsql) $result = $this->dbstuff->Execute($insertsql);
+		
 		if (!$result || empty($result)) {
 			return false;
 		}else {

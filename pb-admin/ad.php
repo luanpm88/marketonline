@@ -10,11 +10,12 @@ require("session_cp.inc.php");
 require(LIB_PATH .'time.class.php');
 require(LIB_PATH .'page.class.php');
 require(LIB_PATH .'xml.class.php');
-uses("adzone","ad","attachment","typeoption","industry");
+uses("adsize","adzone","ad","attachment","typeoption","industry");
 $tpl_file = "ad";
 $attachment = new Attachment('attach','company');
 $company = new Companies();
 $adzone = new Adzones();
+$adsize = new Adsizes();
 $ads = new Adses();
 $page = new Pages();
 $page->displaypg = 20;
@@ -141,6 +142,8 @@ if (isset($_GET['do'])){
 		//var_dump($industries_array);
 		setvar("industries_checkbox", $industries_checkbox);
 		
+		//get ad sizes
+		setvar("adsizes",$adsize->findAll("*"));
 		
 		template($tpl_file);
 		exit;
