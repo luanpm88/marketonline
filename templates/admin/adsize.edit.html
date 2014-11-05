@@ -1,0 +1,43 @@
+<!-- {include file="header.html"} -->
+<div id="currentPosition"> 
+	<p>{lang your_current_position} {lang ads} &raquo; Kích thước quảng cáo</p>
+</div>
+<div id="rightTop"> 
+    <h3>Kích thước quảng cáo</h3> 
+    <ul class="subnav">
+		<li><a href="adsize.php">{lang management}</a></li>
+        <li><a class="btn1" href="adsize.php?do=edit"><span>{lang add_or_edit}</span></a></li>
+        
+    </ul>
+</div>
+<div class="info">
+  <form method="post" action="adsize.php" id="EditFrm" name="edit_frm">
+  <input type="hidden" name="id" value="{$id}">
+  <input type="hidden" name="page" value="{$smarty.get.page}" />
+    <table class="infoTable">
+      <tr>
+        <th class="paddingT15"> {lang the_title}{lang colon}</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="adsize[name]" value="{$item.name}" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> Chiều rộng{lang colon}</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="adsize[width]" value="{$item.width}" /></td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> Chiều cao{lang colon}</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input class="infoTableInput2" name="adsize[height]" value="{$item.height}" /></td>
+      </tr>
+      
+      <tr>
+        <th></th>
+        <td class="ptb20">
+			<input class="formbtn" type="submit" name="save" value="{lang publish}" />		</td>
+      </tr>
+    </table>
+  </form>
+</div>
+
+<!-- {include file="footer.html"} -->
