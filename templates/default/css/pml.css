@@ -12817,10 +12817,10 @@ element.style {
     float: right;
     margin-left: 10px;
 }
-.tiles-list.top-info ul li span {
+.tiles-list.top-info ul li span.main_img {
     border: solid 1px #ddd;
 }
-.tiles-list.top-info ul li span img.main_img {
+.tiles-list.top-info ul li span.main_img img {
     width: auto;
     height: auto;
     max-width: none;
