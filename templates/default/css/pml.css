@@ -12608,6 +12608,9 @@ element.style {
     width: 190px;
     height: 190px;
 }
+.tiles-list.inner-text-image ul li span {
+    border: solid 1px #ddd;
+}
 .tiles-list.inner-text-image ul li span img {
     width: auto;
     height: auto;
@@ -12615,13 +12618,15 @@ element.style {
 }
 .tiles-list.inner-text-image ul li .info {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    color: #fff;
     display: block;
     float: left;
     height: 72px;
     margin-top: -72px;
     padding: 5px;
+    position: absolute;
     width: 190px;
-    color:#fff;
+    z-index: 10;
 }
 .tiles-list.inner-text-image ul li .info a {
     color: #fff;
