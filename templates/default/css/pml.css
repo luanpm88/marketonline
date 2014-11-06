@@ -12865,3 +12865,6 @@ element.style {
 .company-container h2.block-title {
     margin-bottom: 15px;
 }
+.module-intro-article .content p {
+    font-size: 14px;
+}
