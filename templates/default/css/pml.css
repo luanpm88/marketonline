@@ -11039,7 +11039,7 @@ input[name=redirect]
     color: #fff;
     display: block;
     font-size: 16px;
-    padding: 7px 16px;
+    padding: 4px 16px;
     position: absolute;
     right: 13px;
     z-index: 100;
@@ -12837,4 +12837,28 @@ element.style {
 }
 .studyhome-banner .banner a:last-child span {
     margin-right: 0;
+}
+.company-container h2.block-title {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+.company-container .company_listing_h2 a {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.company-container .works-list h3 a {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.company-container #searchleft_innerbox {
+    margin-top: -31px !important;
+    position: absolute;
+    right: 0;
+}
+.compnay-container .works-list h3 {
+    margin-bottom: 12px !important;
+}
+.list_nottt {
+    margin-top: 6px;
 }
