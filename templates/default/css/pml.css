@@ -12886,8 +12886,12 @@ element.style {
 .module-intro-list p.more_content {
     display: block;
     font-size: 15px;
-    height: 24px;
-    margin-bottom: 0;
-    overflow: hidden;
+    height: 19px;
     line-height: 18px;
+    margin-bottom: 2px;
+    overflow: hidden;
+}
+.st_price a {
+    font-weight: bold;
+    color: #0064d2 !important;
 }
