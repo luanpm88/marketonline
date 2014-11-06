@@ -25,13 +25,14 @@
 				    <a class="more" href="{the_url module='jobs'}">Danh sách</a>
 				</h3>
 				<ul>
-				    <!-- {job row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
+				    <!-- {job row=4 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
 				    
 					<li>
 					    <a title="{$job.title}" href="{the_url module='jobs' id=`$job.id` title=`$job.name`}"><strong>{$job.title|truncate:45}</strong></a>
-					    <a target="_blank" style="float: left" href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a>
+					    <a target="_blank" href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a>
+					    <div class="light" style="float: left">{$job.expired_dates}</div>
 					    <div class="module_employee_area" href="" style="float: right">
-                                                <a class="job_city_link" onclick="$('#job-learn input[name=do]').val('job')" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a>
+                                                <a class="job_city_link light" onclick="$('#job-learn input[name=do]').val('job')" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a>
                                             </div>					    
 					</li>
 					

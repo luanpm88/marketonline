@@ -12212,7 +12212,7 @@ element.style {
 .two-column .column.studyhome-right {
     width: 37%;
 }
-.module-intro-list ul li a {
+.module-intro-list ul li .light {
     color: #888;
     display: block;
     font-family: Segoe UI Light;
@@ -12393,11 +12393,11 @@ element.style {
     float: left;
     height: 30px;
     line-height: 19px;
-    margin: -36px 0 0 1px;
+    margin: -30px 0 0;
     overflow: hidden;
     padding: 6px;
     position: absolute;
-    width: 238px;
+    width: 231px;
     z-index: 100;
 }
 .logo-listing.title-bottom ul li {
@@ -12513,7 +12513,6 @@ element.style {
     background: #fff;
     width: 100%;
 }
-
 .box-border-study {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
