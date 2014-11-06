@@ -12538,6 +12538,12 @@ element.style {
 .banner-one-line a:last-child img {
     margin-bottom: 0;
 }
+.banner-one-line a span {
+    margin-bottom: 17px;
+}
+.banner-one-line a:last-child span {
+    margin-bottom: 0;
+}
 .logo-listing ul:last-child {
     margin-bottom: 5px;
 }
