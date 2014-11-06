@@ -1380,7 +1380,7 @@ class Studypost extends PbController {
 		setvar("student_trades", $student_trades);
 		
 		//get student service
-		$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 3);
+		$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 6);
 		setvar("student_discount_products", $student_discount_products["result"]);
 		
 		$this->render("studypost/home");
