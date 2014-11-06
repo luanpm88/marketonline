@@ -11070,10 +11070,10 @@ input[name=redirect]
     text-transform: uppercase;
 }
 #searchleft_innerbox input[type="text"] {
-    width: 535px;
+    width: 355px;
 }
 .company-container #searchleft_innerbox {
-    width: 580px !important;
+    width: 400px !important;
 }
 
 .album_close.video {
