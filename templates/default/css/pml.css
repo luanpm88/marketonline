@@ -12564,7 +12564,7 @@ element.style {
 .module-intro-list ul li img {
     float: right;
     margin-left: 10px;
-    width: 65px;
+    width: 134px;
 }
 .module-intro-list ul li:last-child {
     border-bottom: none;
@@ -12808,8 +12808,8 @@ element.style {
     left: -90000px;
 }
 .module-intro-list ul li img {
-    width: 65px;
-    height: 65px;
+    width: 80px;
+    height: 80px;
     margin: 0;
     padding: 0;
     float: none;
