@@ -12852,7 +12852,7 @@ element.style {
     text-transform: uppercase;
 }
 .company-container #searchleft_innerbox {
-    margin-top: -31px !important;
+    margin-top: -42px !important;
     position: absolute;
     right: 0;
 }
@@ -12860,5 +12860,7 @@ element.style {
     margin-bottom: 12px !important;
 }
 .list_nottt {
-    margin-top: 6px;
+}
+.company-container h2.block-title {
+    margin-bottom: 15px;
 }
