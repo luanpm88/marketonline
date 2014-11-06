@@ -12871,3 +12871,9 @@ element.style {
     font-size: 15px;
     line-height: 20px;
 }
+.module-intro-list ul li a {
+    font-size: 15px;
+}
+.module-intro-list ul li a strong {
+    font-weight: bold;
+}
