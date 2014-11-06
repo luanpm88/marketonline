@@ -12212,7 +12212,7 @@ element.style {
 .two-column .column.studyhome-right {
     width: 37%;
 }
-.module-intro-list ul li .light {
+.module-intro-list ul li .light, .module-intro-list ul li .light a {
     color: #888;
     display: block;
     font-family: Segoe UI Light;
