@@ -51,7 +51,7 @@
 				<a class="more" href="{the_url module='employees'}">Danh sách</a>
 				</h3>
 				<ul>
-				    <!-- {employee row=5 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
+				    <!-- {employee row=6 status=1 showed=1 searched=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$smarty.get.area`} -->
 					<li>
 					    <a href="{the_url module='employees' id=`$job.id` title=`$job.expected_position`}"><strong>{$job.expected_position|truncate:30}</strong></a>
 					    <a class="joblevel_link" rel="{$job.joblevel_id}" onclick="$('#job-learn input[name=do]').val('employee')" href="javascript:void(0)" style="float: left">{$job.joblevel}</a>
