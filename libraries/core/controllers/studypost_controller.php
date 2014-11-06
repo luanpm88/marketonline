@@ -1375,8 +1375,8 @@ class Studypost extends PbController {
 		$student_services = $this->product->getStudentProducts(1, 0, 6);
 		setvar("student_services", $student_services["result"]);
 		
-		//get student products
-		$student_trades = $this->trade->getStudentTrades(0, 6);
+		//get student trades
+		$student_trades = $this->trade->getStudentTrades(0, 10);
 		setvar("student_trades", $student_trades);
 		
 		//get student service
