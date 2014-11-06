@@ -12877,3 +12877,6 @@ element.style {
 .module-intro-list ul li a strong {
     font-weight: bold;
 }
+.module-title .more {
+    font-size: 15px;
+}
