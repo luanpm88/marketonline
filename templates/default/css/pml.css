@@ -12217,6 +12217,7 @@ element.style {
     display: block;
     font-family: Segoe UI Light;
     font-size: 14px;
+    line-height: 18px;
 }
 .company-container .album.album_new_page .half {
     height: 157px;
