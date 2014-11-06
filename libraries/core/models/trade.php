@@ -628,7 +628,7 @@ class Trades extends PbModel {
 		foreach($result as $key => $item) {
 			if($item["id"]) $conditions_more = array("Trade.type_id=".$item["id"]);
 			
-			$trades = $this->findAll("tt.short_name,c.shop_name,Trade.*,content AS digest", $joins, array_merge($conditions_more,$conditions), "Trade.clicked DESC, Trade.created DESC", $offset, $num);
+			$trades = $this->findAll("tt.short_name,tt.name as type_name,c.shop_name,Trade.*,content AS digest", $joins, array_merge($conditions_more,$conditions), "Trade.clicked DESC, Trade.created DESC", $offset, $num);
 			$trades = $this->formatItems($trades);
 			
 			$result[$key]["trades"] = $trades;

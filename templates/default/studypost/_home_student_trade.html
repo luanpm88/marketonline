@@ -23,7 +23,7 @@
                                                             <a title="{$itemc.title}" href="{the_url module=offers action=detail id=`$itemc.id` title=`$itemc.title`}"><strong>{$itemc.title|truncate:55}</strong></a>
 							    <p class="more_content">{$itemc.content_raw|truncate:80}</p>
 							    
-                                                            <a class="light" rel="" href="javascript:void(0)" style="float: left">{$itemc.title}</a>
+                                                            <a class="light" rel="" href="javascript:void(0)" style="float: left">{$itemc.type_name}</a>
 							    
                                                             <div class="module_employee_area light" href="" style="float: right"><a href="">
                                                                 {if $itemc.new_price != "" && $itemc.new_price != 0}
