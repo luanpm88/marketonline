@@ -128,8 +128,8 @@
 	{/literal}{loop $adsizes item level key}{literal}
 		{/literal}{if $item.width && $item.height}{literal}
 			.banner_{/literal}{$item.width}{literal}_{/literal}{$item.height}{literal} {
-				width: {/literal}{$item.width}px{literal},
-				height: {/literal}{$item.height}px{literal}
+				width: {/literal}{$item.width}px{literal};
+				height: {/literal}{$item.height}px{literal};
 			}
 		{/literal}{/if}{literal}
 	{/literal}{/loop}{literal}
