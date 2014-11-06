@@ -170,7 +170,8 @@ if (isset($_PB_CACHE['setting']['time_offset'])){
 		@date_default_timezone_set('Asia/Ho_Chi_Minh');
 	}
 }
-uses("company", "announcement", "member");
+uses("company", "announcement", "member","adsize");
+$adsize = new Adsizes();
 $company = new Companies();
 $member = new Members();
 $announcement = new Announcements();
@@ -356,5 +357,9 @@ setvar("pb_setting",$_PB_CACHE['setting']);
 	$gioithieu = $announcement->read("message",22);
 	setvar("gioithieu", $gioithieu["message"]);
 	setvar("gioithieu_raw", substr(trim(strip_tags($gioithieu["message"])),15,1000));
+	
+	
+//banner size
+setvar("adsizes",$adsize->findAll("*"));
 
 ?>

@@ -12826,3 +12826,9 @@ element.style {
     max-width: none;
     border: none;
 }
+.studyhome-banner .banner a span {
+    margin-right: 17px;
+}
+.studyhome-banner .banner a:last-child span {
+    margin-right: 0;
+}

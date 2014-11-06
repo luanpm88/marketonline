@@ -40,6 +40,13 @@
 	    height:$('.tiles-list.top-info ul li img.main_img').height()
 	});
 	
+	$('.studyhome-banner .banner a img').each(function() {
+	    $(this).resizecrop({
+		      width:$(this).width(),
+		      height:$(this).height()
+		  });
+	});
+	
 	$('.studyhome-tabs ul.tabsz li a').click(function() {	    
 	    $('.studyhome-tabs .contents .tab-content').addClass("boxhide");
 	    $('.studyhome-tabs .contents .tab-content.tab-'+$(this).attr("rel")).removeClass("boxhide");
@@ -119,7 +126,7 @@
 	    <div class="banner">
 		<!--{loop $ads_top item level key}-->
 		    <a href="{$item.target_url}" target="_blank" title="{$item.name}">
-			<img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+			<img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 		    </a>
 		<!--{/loop}-->
 	    </div>
@@ -139,7 +146,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_1 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -153,7 +160,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_2 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -167,7 +174,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_3 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -232,7 +239,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_4 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -246,7 +253,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_5 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -399,7 +406,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_6 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -413,7 +420,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_7 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -457,7 +464,7 @@
 			<div class="banner">
 			    <!--{loop $ads_left_8 item level key}-->
 				<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-				    <img {if $item.size_width && $item.size_height}style="width:{$item.size_width}px;height:{$item.size_height}px;"{/if} class="{$item.size_name}" src="{$item.logo}" />
+				    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 				</a>
 			    <!--{/loop}-->
 			</div>
@@ -478,7 +485,7 @@
 				<div class="banner-one-line">
 				    <!--{loop $ads_right item level key}-->
 					<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-					    <img style="width:{$item.size_width}px;height:{$item.size_height}px;" class="{$item.size_name}" src="{$item.logo}" />
+					    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
 					</a>
 				    <!--{/loop}-->
 				</div>
