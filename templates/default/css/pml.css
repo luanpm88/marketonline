@@ -12846,7 +12846,7 @@ element.style {
     font-size: 18px;
     text-transform: uppercase;
 }
-.company-container .works-list h3 a {
+.company-container .works-list.compage h3 a {
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
