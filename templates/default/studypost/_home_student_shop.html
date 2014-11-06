@@ -1,7 +1,9 @@
                     <div class="module-box">
 			<div class="module-title">
 			    <h2>Gian hàng sinh viên</h2>
-			    <!--<a class="more" href="{the_url module=companies student=1}">Xem tất cả</a>-->
+			    {if $pb_setting.company_student_feature}
+				<a class="more" href="{the_url module=companies student=1}">Xem tất cả</a>
+			    {/if}
 			</div>
 			<div class="one-column study-mod study-module-none">
 			

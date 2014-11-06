@@ -18,12 +18,17 @@ jQuery(document).ready(function($) {
 		<li><a href="setting.php?do=basic"><span>{lang basic_setting}</span></a></li>
 		<li><a href="setting.php?do=basic_contact">{lang contact_method}</a></li>
 		<li><a href="setting.php?do=basic_desc">{lang site_desc}</a></li>
-		<li><a class="btn1" href="setting.php?do=basic_point">Điểm thành viên</a></li>
+		<li><a class="btn1" href="setting.php?do=basic_point">**Cấu hình chung**</a></li>
 	</ul>
 </div>
 <div class="info">
   <form method="post">
     <table class="infoTable">
+	<tr>
+		<th colspan="2" style="padding-top: 20px;">
+			<h1>TĂNG ĐIỂM HÀNG THÁNG</h1>
+		</th>
+	</tr>
       <tr>
         <th class="paddingT15"><label for="time_zone">Mời bạn bè</label></th>
         <td class="paddingT15 wordSpacing5"><input name="data[setting][point_invite]" type="text" id="site_name" value="{$item.POINT_INVITE|default:10}" class="infoTableInput" />
@@ -67,8 +72,14 @@ jQuery(document).ready(function($) {
       </tr>
       
       <tr>
-        <th style="border-top: solid 1px #333" class="paddingT15"><label for="time_zone">Thời gian hiển thị sản phẩm mới</label></th>
-        <td style="border-top: solid 1px #333" class="paddingT15 wordSpacing5"><input name="data[setting][new_product_hours]" type="text" id="site_name" value="{$item.NEW_PRODUCT_HOURS|default:3}" class="infoTableInput" /> 
+		<th colspan="2" style="padding-top: 20px;border-top: solid 1px #333">
+			<h1>SẢN PHẨM MỚI</h1>
+		</th>
+	</tr>
+      
+      <tr>
+        <th class="paddingT15"><label for="time_zone">Thời gian hiển thị sản phẩm mới</label></th>
+        <td class="paddingT15 wordSpacing5"><input name="data[setting][new_product_hours]" type="text" id="site_name" value="{$item.NEW_PRODUCT_HOURS|default:3}" class="infoTableInput" /> 
           <span class="gray">Đơn vị: giờ</span>
         </td>
       </tr>
@@ -81,8 +92,14 @@ jQuery(document).ready(function($) {
       </tr>
       
       <tr>
-        <th style="border-top: solid 1px #333" class="paddingT15"><label for="time_zone">Tên Công ty</label></th>
-        <td style="border-top: solid 1px #333" class="paddingT15 wordSpacing5"><input name="data[setting][owner_name]" type="text" id="site_name" value="{$item.OWNER_NAME}" class="infoTableInput" /> 
+		<th colspan="2" style="padding-top: 20px;border-top: solid 1px #333">
+			<h1>THÔNG TIN CÔNG TY</h1>
+		</th>
+	</tr>
+      
+      <tr>
+        <th class="paddingT15"><label for="time_zone">Tên Công ty</label></th>
+        <td class="paddingT15 wordSpacing5"><input name="data[setting][owner_name]" type="text" id="site_name" value="{$item.OWNER_NAME}" class="infoTableInput" /> 
           <span class="gray">Đơn vị: giờ</span>
         </td>
       </tr>
@@ -128,6 +145,24 @@ jQuery(document).ready(function($) {
         <th class="paddingT15"><label for="time_zone">Email</label></th>
         <td class="paddingT15 wordSpacing5"><input name="data[setting][owner_email]" type="text" id="site_name" value="{$item.OWNER_EMAIL}" class="infoTableInput" /> 
           <span class="gray"></span>
+        </td>
+      </tr>
+      
+      
+      <tr>
+		<th colspan="2" style="padding-top: 20px;border-top: solid 1px #333">
+			<h1>BẬT TẮT CHỨC NĂNG</h1>
+		</th>
+	</tr>
+      
+      <tr>
+        <th class="paddingT15"><label for="time_zone">Chức năng sinh viên trang Thương hiệu</label></th>
+        <td class="paddingT15 wordSpacing5">
+		<input {if $item.COMPANY_STUDENT_FEATURE}checked="checked"{/if} style="width:auto" type="radio" name="data[setting][company_student_feature]" type="text" id="" value="1" class="infoTableInput" />
+		Hiện
+		<input {if !$item.COMPANY_STUDENT_FEATURE}checked="checked"{/if} style="width:auto" type="radio" name="data[setting][company_student_feature]" type="text" id="" value="0" class="infoTableInput" />
+		Ẩn
+		
         </td>
       </tr>
       
