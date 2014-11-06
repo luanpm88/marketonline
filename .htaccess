@@ -7,17 +7,18 @@ Options +Indexes
 RewriteEngine On
 
 RewriteRule ^privacy$ policy.html [L]
-RewriteRule ^thuong-hieu/?$ index.php?do=company [L]
-RewriteRule ^thuong-hieu/hinh-anh-video/?$ index.php?do=album [L]
-RewriteRule ^thuong-hieu/cua-hang/?$ index.php?do=company&membergroup_id=1 [L]
-RewriteRule ^thuong-hieu/ca-nhan/?$ index.php?do=company&membergroup_id=2 [L]
-RewriteRule ^thuong-hieu/doanh-nghiep/?$ index.php?do=company&membergroup_id=3 [L]
-RewriteRule ^thuong-hieu/cua-hang/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=1&industryid=$1 [L]
-RewriteRule ^thuong-hieu/ca-nhan/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=2&industryid=$1 [L]
-RewriteRule ^thuong-hieu/doanh-nghiep/([0-9]+)/(.*)$ index.php?do=company&membergroup_id=3&industryid=$1 [L]
+RewriteRule ^thuong-hieu/?(sinh-vien)?/?$ index.php?do=company&student=$1 [L]
+RewriteRule ^thuong-hieu/hinh-anh-video/?(sinh-vien)?/?$ index.php?do=album&student=$1 [L]
+RewriteRule ^thuong-hieu/cua-hang/?(sinh-vien)/??$ index.php?do=company&membergroup_id=1&student=$1 [L]
+RewriteRule ^thuong-hieu/ca-nhan/?(sinh-vien)?/?$ index.php?do=company&membergroup_id=2&student=$1 [L]
+RewriteRule ^thuong-hieu/doanh-nghiep/?(sinh-vien)?/?$ index.php?do=company&membergroup_id=3&student=$1 [L]
+RewriteRule ^thuong-hieu/cua-hang/([0-9]+)/([\-a-z0-9]+)/?(sinh-vien)?/?$ index.php?do=company&membergroup_id=1&industryid=$1&student=$3 [L]
+RewriteRule ^thuong-hieu/ca-nhan/([0-9]+)/([\-a-z0-9]+)/?(sinh-vien)?/?$ index.php?do=company&membergroup_id=2&industryid=$1&student=$3 [L]
+RewriteRule ^thuong-hieu/doanh-nghiep/([0-9]+)/([\-a-z0-9]+)/?(sinh-vien)?/?$ index.php?do=company&membergroup_id=3&industryid=$1&student=$3 [L]
+RewriteRule ^thuong-hieu/([0-9]+)/([\-a-z0-9]+)/?(sinh-vien)?/?$ index.php?do=company&industryid=$1&student=$3 [L]
+RewriteRule ^thuong-hieu/hinh-anh-video/([0-9]+)/(.*)(sinh-vien)?/?$ index.php?do=album&action=detail&id=$1&student=$3 [L]
+
 RewriteRule ^danh-gia-shop/(.*)/([0-9]+)$ index.php?do=company&action=rating&star=$2&space_name=$1 [L]
-RewriteRule ^thuong-hieu/([0-9]+)/(.*)$ index.php?do=company&industryid=$1 [L]
-RewriteRule ^thuong-hieu/hinh-anh-video/([0-9]+)/(.*)$ index.php?do=album&action=detail&id=$1 [L]
 
 RewriteRule ^thi-truong/?$ index.php?do=area [L]
 RewriteRule ^thi-truong/mien-nam/?$ index.php?do=area&areatype_id=1 [L]

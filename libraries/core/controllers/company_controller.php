@@ -14,6 +14,7 @@ class Company extends PbController {
 	}
 	
 	function index() {
+		//var_dump($_GET);
 		//GET TOP INDUSTRY TILES
 		$industries = $this->industry->getCacheIndustry();		
 		$count0 = 0;
@@ -85,6 +86,7 @@ class Company extends PbController {
 		
 		$joins[] = "LEFT JOIN {$ads->table_prefix}companies c ON c.id=Ads.company_id";
 		$joins[] = "LEFT JOIN {$ads->table_prefix}members m ON m.id=c.member_id";
+		$joins[] = "LEFT JOIN {$ads->table_prefix}memberfields mf ON mf.member_id=c.member_id";
 		
 		//on/off thuong hieu
 		
@@ -107,6 +109,10 @@ class Company extends PbController {
 							." OR (Ads.industries LIKE '".$industryid.",%')"
 							." OR (Ads.industries LIKE '%,".$industryid.",%')"
 					."))";
+		}
+		
+		if(!empty($_GET["student"])) {
+			$conditions[] = "mf.school_id!=0";
 		}
 		
 		if(!empty($_GET['membergroup_id'])) {
@@ -134,8 +140,15 @@ class Company extends PbController {
 		//FIND EFFECTIVE WEEKLY COMPANIES
 		$com_conditions = array();
 		$com_conditions[] = "Company.companypage_show=1";
+		
 		//check for nice shop with > 9 products
 		$other_con = " > 8";
+		
+		if(!empty($_GET["student"])) {
+			$com_conditions[] = "mf.school_id!=0";
+			$other_con = " > 0";
+		}
+		
 		$company_has_logo = "AND Company.picture != '' AND Company.banners IS NOT NULL";
 		$com_conditions[] = "(Company.id IN (".
 						"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->company->table_prefix}companies AS cc"
@@ -143,6 +156,8 @@ class Company extends PbController {
 						." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
 				
 		$com_joins = array("LEFT JOIN {$this->company->table_prefix}members m ON m.id=Company.member_id");
+		$com_joins[] = "LEFT JOIN {$this->company->table_prefix}memberfields mf ON mf.member_id=Company.member_id";
+		
 		if(isset($_GET["industryid"])) {
 			$industryid = $_GET["industryid"];
 			$com_conditions[] = "((Company.industries LIKE '".$industryid."')"

@@ -528,6 +528,9 @@ function smarty_function_the_url($params){
 						if(isset($industryid)) {
 							$return = $return."/".$industryid."/".stringToURI($title);
 						}
+						if(!empty($student)) {
+							$return = $return."/sinh-vien";
+						}
 					}
 				}else{
 					$return = URL."index.php?do=company&membergroup_id=3";
