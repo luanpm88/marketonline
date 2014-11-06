@@ -124,6 +124,8 @@ class Trades extends PbModel {
 			
 			$result[$keys]["price"] = number_format($result[$keys]["price"], 0, ',', '.');
 			$result[$keys]["new_price"] = number_format($result[$keys]["new_price"], 0, ',', '.');
+			
+			$result[$keys]["content_raw"] = strip_tags($result[$keys]["content"]);
  		}
 		return $result;
 	}
