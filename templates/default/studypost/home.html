@@ -47,6 +47,13 @@
 		  });
 	});
 	
+	$('.banner-one-line img').each(function() {
+	    $(this).resizecrop({
+		      width:$(this).width(),
+		      height:$(this).height()
+		  });
+	});
+	
 	$('.studyhome-tabs ul.tabsz li a').click(function() {	    
 	    $('.studyhome-tabs .contents .tab-content').addClass("boxhide");
 	    $('.studyhome-tabs .contents .tab-content.tab-'+$(this).attr("rel")).removeClass("boxhide");

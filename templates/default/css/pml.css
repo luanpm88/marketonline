@@ -12535,7 +12535,7 @@ element.style {
     width: 100%;
     margin-bottom: 10px;
 }
-.banner-one-line img:last-child {
+.banner-one-line a:last-child img {
     margin-bottom: 0;
 }
 .logo-listing ul:last-child {
