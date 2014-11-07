@@ -12895,3 +12895,10 @@ element.style {
     font-weight: bold;
     color: #0064d2 !important;
 }
+.studyhome-top-banner {
+    background: none repeat scroll 0 0 #f8f8f8;
+    margin-bottom: 8px;
+    margin-top: -12px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}

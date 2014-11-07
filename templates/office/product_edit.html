@@ -526,6 +526,20 @@ jQuery(document).ready(function($) {
 						<input placeholder="{lang market_note}" name="data[product][market]" type="text" id="dataProductMarket" value="{$item.market}" class="required"></font>					   
 					   </td>
 				</tr>
+				{if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
+					<tr>
+						<th>Sinh viên </th>
+						<td class="tdright">
+							<input style="display: block;
+    float: left;
+    margin-right: 5px;
+    margin-top: 6px;
+    min-width: 0;
+    width: auto;" {if $item.for_student}checked="checked"{/if} type="checkbox" value="1" name="data[product][for_student]" />
+							Dịch vụ dành cho sinh viên
+						</td>
+					</tr>
+				{/if}
 				<!--<tr>
 				  <th>{lang area_tt}{lang colon}</th>
 				  <td class="tdright">

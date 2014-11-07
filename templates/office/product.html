@@ -130,9 +130,12 @@
          <table class="bglist">
               <!-- product -->
                     <col width="75">
-                    <col width="200">
+                    <col width="180">
                     <col width="60">
 			<col width="60">
+			
+			{if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}<col width="71">{/if}
+			
 				{if $pb_userinfo.checkout}<col width="71">{/if}
                     {if $pb_userinfo.checkout}<col width="60">{/if}
 		    <col width="60">
@@ -143,6 +146,9 @@
                    <th style="text-align: left">{lang content}</th>
 		   <th>{lang spcode}</th>
                    <th>{lang published}</th>
+		   {if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
+			<th>Sinh viên</th>
+		   {/if}
 		   {if $pb_userinfo.checkout}
 			<th style="text-align: left">Quảng cáo</th>
 			<th>Chế độ</th>
@@ -183,6 +189,20 @@
 			</a>
 		    <!--{/if}-->
 		</td>
+		
+		{if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
+			<td>
+				<!--{if $item.for_student eq 1}-->
+					<a href="{$smarty.server.PHP_SELF}?do=for_student&value=0&id={$item.id}" title="">
+					    <img src="{$office_theme_path}images/published.png">
+					</a>
+				<!--{else}-->
+					<a href="{$smarty.server.PHP_SELF}?do=for_student&value=1&id={$item.id}" title="">
+					    <img src="{$office_theme_path}images/unpublished.png">
+					</a>
+				<!--{/if}-->
+			</td>
+		{/if}
 		
 		{if $pb_userinfo.checkout}
 			<td>

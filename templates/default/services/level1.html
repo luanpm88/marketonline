@@ -133,7 +133,7 @@
 	      $('.product_list_loading').height($('.product_listing').height());
 		$('.product_list_loading').css("display", "block");
 		$.ajax({
-			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1"+filter,
+			url: "index.php?do=product&leftbar=1&student={/literal}{$smarty.get.student}{literal}&action=listAjax&service_page=1"+filter,
 			beforeSend: function ( xhr ) {
 				//xhr.overrideMimeType("text/plain; charset=x-user-defined");
 				$('#list_product_ajax').html('<div class="loading">'+$('#loading').html()+'</div>');
@@ -215,7 +215,7 @@
 	function ajaxListProductScroll(filter) {
 	  
 		$.ajax({
-			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1"+filter,
+			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1&student={/literal}{$smarty.get.student}{literal}"+filter,
 		}).done(function ( data ) {
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 200));

@@ -241,6 +241,11 @@ if (isset($_POST['save'])) {
 		$product->params['data']['product']['picture4'] = $_POST['linkpic4'];
 	}
 	
+	if(empty($_POST['data']['product']['for_student'])) {
+		$product->params['data']['product']['for_student']=0;
+	}
+	//var_dump($_POST['data']['product']['for_student']);
+	
     	$form_type_id = 2;
     	$form_id = 1;
 		$product->params['data']['product']['tag_ids'] = $tag->setTagId($_POST['data']['tag']);
@@ -540,6 +545,13 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		exit;
 	}
 	
+	if ($do == "for_student") {		
+		if (!empty($id)) {
+			$updated = $pdb->Execute("UPDATE {$tb_prefix}products SET for_student=".$_GET["value"]." WHERE id={$id} AND member_id={$the_memberid}");
+		}
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
+	
 	
 }
 if (isset($_GET['typeid']) && !empty($_GET['typeid'])) {
@@ -581,7 +593,7 @@ if (isset($_GET['order_by']) && !empty($_GET['order_by'])) {
 	setvar('sortOrder',$o_arr[1]);
 }
 
-$result = $product->findAll("Product.display_type,valid_status,valid_message,ads,sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
+$result = $product->findAll("Product.for_student,Product.display_type,valid_status,valid_message,ads,sort_id,id,default_pic,price,name,picture,picture1,picture2,picture3,picture4,content,created,status,state,created,Product.order,Product.product_code", null, $conditions, $orderby, $page->firstcount, $page->displaypg);
 if ($result) {
 	$i_count = count($result);
 	for ($i=0; $i<$i_count; $i++) {

@@ -1084,6 +1084,7 @@ class Product extends PbController {
 		}
 		
 		
+		
 		$area_a = array();
 		if (isset($_GET['industryid']) && $_GET['industryid'] != 0) {
 			//Get industry level 1
@@ -1377,6 +1378,9 @@ class Product extends PbController {
 				}			
 			}
 			
+			if(!empty($_GET["student"])) {
+				$this->product->condition[] = "Product.for_student=1";
+			}
 			
 			//var_dump($this->product->condition);
 			//testing code ne
@@ -4996,6 +5000,7 @@ class Product extends PbController {
 	
 	function services()
 	{
+		//var_dump($_GET);
 		//update show product
 		$this->product->updateShowProducts(3, 5);
 		

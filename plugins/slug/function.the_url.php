@@ -28,9 +28,15 @@ function smarty_function_the_url($params){
 				break;
 			case 'service_main':
 				if ($rewrite_able) {
-					$return = URL."dich-vu";					
+					$return = URL."dich-vu";
+					if(!empty($student)) {
+						$return = $return."/sinh-vien";
+					}
 				}else{
 					$return = URL."index.php?do=product&action=services";
+					if(!empty($student)) {
+						$return = $return."&student=sinh-vien";
+					}
 				}
 				break;
 			case 'offer_main':
@@ -119,8 +125,15 @@ function smarty_function_the_url($params){
 					if($service == "1") $rootname = "dich-vu";
 					
 					$return = URL.$rootname."/".$id."/".stringToURI($product_name);
+					
+					if(!empty($student)) {
+						$return = $return."/sinh-vien";
+					}
 				}else{
 					$return = URL."index.php?do=".$module."&action=detail&id=".$id;
+					if(!empty($student)) {
+						$return = $return."&student=sinh-vien";
+					}
 				}
 				break;
 			case "company":
@@ -416,15 +429,24 @@ function smarty_function_the_url($params){
 			case "services":
 				if ($rewrite_able) {
 					$return = URL."dich-vu/".$level."/".$industryid."/".stringToURI($title);
+					if(!empty($student)) {
+						$return = $return."/sinh-vien";
+					}
 					if($level == "search")
 					{
 						$return = URL."index.php?do=product&action=services&level=search&tag=".$tag;
+						if(!empty($student)) {
+							$return = $return."&student=sinh-vien";
+						}
 					}
 				}else{
 					$return = URL."index.php?do=product&action=services&level=".$level."&industryid=".$industryid;
 					if($level == "search")
 					{
 						$return = URL."index.php?do=product&action=services&level=search&tag=".$tag;
+						if(!empty($student)) {
+							$return = $return."&student=sinh-vien";
+						}
 					}
 				}
 				break;
@@ -546,6 +568,9 @@ function smarty_function_the_url($params){
 						}
 						if(isset($industryid)) {
 							$return = URL."index.php?do=company&level=".$level."&industryid=".$industryid;
+						}
+						if(!empty($student)) {
+							$return = $return."&student=sinh-vien";
 						}
 					}
 				}
