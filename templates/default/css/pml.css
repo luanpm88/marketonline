@@ -12928,9 +12928,9 @@ element.style {
     border-color: #ccc;
     border-style: solid;
     border-width: 1px 1px 0;
-    height: 39px;
+    height: 35px;
     margin-top: 5px;
-    padding: 11px 10px;
+    padding: 10px;
 }
 .school-top-left-info img {
     border: 1px solid #ddd;
@@ -12945,4 +12945,8 @@ element.style {
 }
 .studypost_form .bottom-control {
     border-top: 1px solid #ccc;
+}
+.studypost_form .bottom-control {
+    height: 35px;
+    padding: 0px 5px;
 }
