@@ -12960,3 +12960,6 @@ element.style {
 .school_list ul li.active {
     background: none;
 }
+.col2-bottom-right .school_list {
+    padding: 10px;
+}
