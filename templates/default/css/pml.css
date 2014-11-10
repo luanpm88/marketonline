@@ -12931,3 +12931,7 @@ element.style {
     margin-top: 5px;
     padding: 5px;
 }
+.school-top-left-info img {
+    border: 1px solid #ddd;
+    padding: 0;
+}
