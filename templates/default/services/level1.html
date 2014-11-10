@@ -650,7 +650,7 @@
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=service_main}">Dịch vụ</a></div>
 
-    <h1 class="page-title">{$IndustryList.name}</h1>
+    <h1 class="page-title">{$IndustryList.name}{if $smarty.get.student} - Sinh viên{/if}</h1>
     
   </div>
 
@@ -813,7 +813,7 @@
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        Thị trường dịch vụ    </div>
+        Thị trường dịch vụ{if $smarty.get.student} - Sinh viên{/if}</div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)">{lang new_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
