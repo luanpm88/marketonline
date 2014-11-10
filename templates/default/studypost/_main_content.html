@@ -362,7 +362,7 @@
                                 var content = ed.getContent();
                                 showPlaceHolder(ed);
                                 onChangeEditor(ed, main);
-                                $(item).parents('.editor-inner-box').find('.bottom-control').hide();
+                                setTimeout("$('.editor-inner-box .bottom-control').hide();",1000);
                             });
                         },
                         

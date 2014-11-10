@@ -12951,7 +12951,7 @@ element.style {
     padding: 0px 5px;
 }
 .editor-inner-box {
-    border: solid 0px #ccc;
+    border-bottom: solid 1px #ccc;
     margin-top: 5px;
 }
 .school_list ul li {
@@ -12963,6 +12963,7 @@ element.style {
 .col2-bottom-right .school_list {
     padding: 10px;
 }
-.bottom-control {
+.studypost_form .bottom-control {
     display: none;
+    border-bottom: none;
 }
