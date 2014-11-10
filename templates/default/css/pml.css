@@ -12954,3 +12954,6 @@ element.style {
     border: solid 1px #ccc;
     margin-top: 5px;
 }
+.school_list ul li.active {
+    margin-left: 0;
+}
