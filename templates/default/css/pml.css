@@ -12620,10 +12620,11 @@ element.style {
     display: block;
     float: left;
     height: 72px;
+    margin-left: 1px;
     margin-top: -72px;
     padding: 5px;
     position: absolute;
-    width: 190px;
+    width: 188px;
     z-index: 10;
 }
 .tiles-list.inner-text-image ul li .info a {

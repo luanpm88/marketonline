@@ -133,7 +133,7 @@
 	      $('.product_list_loading').height($('.product_listing').height());
 		$('.product_list_loading').css("display", "block");
 		$.ajax({
-			url: "index.php?do=product&leftbar=1&student={/literal}{$smarty.get.student}{literal}&action=listAjax&service_page=1"+filter,
+			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1"+filter,
 			beforeSend: function ( xhr ) {
 				//xhr.overrideMimeType("text/plain; charset=x-user-defined");
 				$('#list_product_ajax').html('<div class="loading">'+$('#loading').html()+'</div>');
@@ -201,6 +201,9 @@
 	    //for other product
 	    other = 0;
 	    
+	    //for student
+	    var student = 0;
+	    
 	    //for sale
 	    sale = 0;
 	    
@@ -215,7 +218,7 @@
 	function ajaxListProductScroll(filter) {
 	  
 		$.ajax({
-			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1&student={/literal}{$smarty.get.student}{literal}"+filter,
+			url: "index.php?do=product&leftbar=1&action=listAjax&service_page=1"+filter,
 		}).done(function ( data ) {
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 200));
@@ -249,6 +252,9 @@
 	var industryid = 0;
 	var service = 0;
 	
+	//for student
+	var student = 0;
+	
 	//for other product
 	var other = 0;
 	
@@ -276,8 +282,13 @@
 	      
 	      //getFilterProducts() in custom.js
 	      //ajaxListProduct(getFilterProducts());
-	      setTimeout('$("#new_service_but").trigger("click")',500);
-	      
+	      {/literal}
+		{if $smarty.get.student}
+		  setTimeout('$("#student_but").trigger("click")',500);
+		{else}
+		  setTimeout('$("#new_service_but").trigger("click")',500);
+		{/if}      
+	      {literal}
 	      
 	      ajaxLoadMenu(<!--{/literal}-->{$IndustryList.id}, {$p_level+1}<!--{literal}-->, null)
 
@@ -356,6 +367,18 @@
 			$(this).addClass("active");
 			orderby = 'dateline';
 			sale = 1;
+			
+			//getFilterProducts() in custom.js
+			ajaxListProduct(getFilterProducts());
+		});
+		
+		//for student
+		$('#student_but').click(function () {
+			resetFilter();
+			$(".hotnewlist").removeClass("active");
+			$(this).addClass("active");
+			orderby = 'dateline';
+			student = 1;
 			
 			//getFilterProducts() in custom.js
 			ajaxListProduct(getFilterProducts());
@@ -650,7 +673,7 @@
 
     <div class="breadcrumbs"><a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span><a href="{the_url module=service_main}">Dịch vụ</a></div>
 
-    <h1 class="page-title">{$IndustryList.name}{if $smarty.get.student} - Sinh viên{/if}</h1>
+    <h1 class="page-title">{$IndustryList.name}</h1>
     
   </div>
 
@@ -813,7 +836,7 @@
 
     
     <div class="subtitle loplo" style="margin-top: 8px;">
-        Thị trường dịch vụ{if $smarty.get.student} - Sinh viên{/if}</div>
+        Thị trường dịch vụ</div>
     <h1 style="font-size: 18px;margin: 0;padding-top: 0px;" class="page-titlez mainhotnew">
       <!--<a id="new_product_but" class="hotnewlist" href="javascript:void(0)">{lang new_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
@@ -829,6 +852,10 @@
       <a id="new_service_but" class="hotnewlist active" href="javascript:void(0)">{lang services}</a>&nbsp;&nbsp;&nbsp;&nbsp;
       
       <a id="sale_product_but" class="hotnewlist" href="javascript:void(0)">Giảm giá/Khuyến mãi</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      
+      {if $pb_setting.service_student_feature}
+	<a id="student_but" class="hotnewlist" href="javascript:void(0)">Dành cho sinh viên</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      {/if}
       
       <!-- for offer -->
       <!--<a id="new_offer_but" class="hotnewlist" href="javascript:void(0)">{lang raovat}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->

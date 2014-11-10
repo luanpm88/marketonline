@@ -1,7 +1,9 @@
                     <div class="module-box">
 			<div class="module-title">
 			    <h2>Dịch vụ sinh viên</h2>
-			    <a target="_blank" class="more" href="{the_url module=service_main student=1}">Xem Tất cả</a>
+			    {if $pb_setting.service_student_feature}
+				<a target="_blank" class="more" href="{the_url module=service_main student=1}">Xem Tất cả</a>
+			    {/if}
 			</div>
 			<div class="two-column study-mod study-module-none width50">
 			    <div class="column first-column">
