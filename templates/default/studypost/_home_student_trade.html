@@ -1,7 +1,9 @@
 <div class="module-box">
 			<div class="module-title">
 			    <h2>Nhu cầu sinh viên</h2>
-			    <a target="_blank" class="more" href="{the_url module=offer_main student=1}">Xem Tất cả</a>
+			    {if $pb_setting.trade_student_feature}
+						<a target="_blank" class="more" href="{the_url module=offer_main student=1}">Xem Tất cả</a>
+			{/if}
 			</div>
 			<div class="one-column study-mod study-module paddingtop0">
 			    <div class="studyhome-tabs">
