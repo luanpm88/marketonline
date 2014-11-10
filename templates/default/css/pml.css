@@ -12498,19 +12498,11 @@ element.style {
     margin-bottom: -10px;
 }
 .module-box {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-    border-image: none;
-    border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
     float: left;
     margin-bottom: 17px;
     overflow: hidden;
-    background: #fff;
     width: 100%;
 }
 .box-border-study {
