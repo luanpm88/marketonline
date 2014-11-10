@@ -614,8 +614,8 @@ class Trades extends PbModel {
 		$result = $tradetype->findAll("*",null,array("level=2"),"display_order");
 		array_unshift($result,array("id"=>0,"name"=>"Tiêu biểu","short_name"=>"Tiêu biểu"));
 		
-		$conditions = array("Trade.status=1","Trade.valid_status=1"); //,"mf.school_id!=0");
-			
+		$conditions = array("Trade.status=1","Trade.valid_status=1","Trade.for_student!=0");
+		
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Trade.company_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
@@ -625,8 +625,11 @@ class Trades extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Trade.member_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Trade.member_id";
 		
+		
+		
 		foreach($result as $key => $item) {
-			if($item["id"]) $conditions_more = array("Trade.type_id=".$item["id"]);
+			$conditions_more = array();
+			if($item["id"]) $conditions_more[] = "Trade.type_id=".$item["id"];
 			
 			$trades = $this->findAll("tt.short_name,tt.name as type_name,c.shop_name,Trade.*,content AS digest", $joins, array_merge($conditions_more,$conditions), "Trade.clicked DESC, Trade.created DESC", $offset, $num);
 			$trades = $this->formatItems($trades);

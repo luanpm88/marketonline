@@ -1247,6 +1247,9 @@ class Product extends PbController {
 				
 			}
 			
+			if(!empty($_GET["student"])) {
+				$this->trade->condition[] = "Trade.for_student=1";
+			}
 			
 			$products = $this->trade->Search($pos_pg, $num_per_page);
 			$count = $this->trade->SearchCount();
