@@ -355,11 +355,14 @@
                                 if(main) $("#studypost-content_ifr").contents().find("body").addClass("pdb20");
                                 if(main) $("#studypost-content_ifr").css("min-height", "80px");
                                 if(main) hideEditStudypostForm();
+                                
+                                $(item).parents('.editor-inner-box').find('.bottom-control').show();
                             });
                             ed.on('blur', function(e) {
                                 var content = ed.getContent();
                                 showPlaceHolder(ed);
                                 onChangeEditor(ed, main);
+                                $(item).parents('.editor-inner-box').find('.bottom-control').hide();
                             });
                         },
                         
