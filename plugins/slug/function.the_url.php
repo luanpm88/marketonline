@@ -62,6 +62,10 @@ function smarty_function_the_url($params){
 						}
 						$return = URL."thuong-mai/".$offertype;
 					}
+					if(!empty($student)) {
+						$return = $return."/sinh-vien";
+					}
+					
 				}else{
 					$return = URL."index.php?do=product&action=offers";
 					if($offertype)
