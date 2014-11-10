@@ -50,9 +50,12 @@
           <table class="bglist">
             <tr>
               <th width="9%">{lang sample_image}</th>
-              <th width="30%" style="text-align: left">{lang content}</th>
-              <th>{lang due_date}</th>
+              <th width="25%" style="text-align: left">{lang content}</th>
+              <th>Thời hạn</th>
               <th width="10%">{lang published}</th>
+		{if $pb_userinfo.checkout || $pb_userinfo.school_id}
+			<th width="10%">Sinh viên</th>	      
+		{/if}
 	      <th width="21%">Phê duyệt</th>
               <th style="text-align: left" width="10%">{lang operation}</th>
               <th>{lang choose}</th>
@@ -87,6 +90,23 @@
 		    <!--{/if}-->
 	      
 	      </td>
+	      
+		{if $pb_userinfo.checkout || $pb_userinfo.school_id}
+			<td>
+		
+				<!--{if $item.for_student eq 1}-->
+				    <a href="{$smarty.server.PHP_SELF}?do=for_student&value=0&id={$item.id}" title="{lang web_down_shelves}">
+					<img src="{$office_theme_path}images/published.png">
+				    </a>
+				<!--{else}-->
+				    <a href="{$smarty.server.PHP_SELF}?do=for_student&value=1&id={$item.id}" title="{lang goods_on_shelves}">
+					<img src="{$office_theme_path}images/unpublished.png">
+				    </a>
+				<!--{/if}-->
+			  
+			</td>
+		{/if}
+	      
 	      <td>{$item.validation}</td>
               <td style="text-align: left"><a href="offer.php?do=edit&id={$item.id}">{lang modify}</a><br />
 	      <!--{if $item.status==1}--><a href="offer.php?do=refresh&id={$item.id}" title="{lang extension_time}">Làm mới</a><br /><!--{/if}-->

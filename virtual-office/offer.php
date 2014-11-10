@@ -290,12 +290,24 @@ if (isset($_GET['do'])) {
     		flash("success");
     	}
     }
+    
+	if ($do == "for_student") {		
+		if (!empty($id)) {
+			$updated = $pdb->Execute("UPDATE {$tb_prefix}trades SET for_student=".$_GET["value"]." WHERE id={$id} AND member_id={$the_memberid}");
+		}
+		header('Location: '.$_SERVER['HTTP_REFERER']);
+	}
 }
 if (isset($_POST['do']) && !empty($_POST['data']['trade'])) {
 	pb_submit_check('data');
 	if(!empty($_POST['data']['multi'])) $_POST['data']['trade']['title'] = pb_lang_merge($_POST['data']['multi']);
 	$_POST['data']['trade']['content'] = pb_lang_merge($_POST['data']['multita']);
     $res = $_POST['data']['trade'];
+    
+    
+	if(empty($_POST['data']['trade']['for_student'])) {
+		$res['for_student']=0;
+	}
     
     //price
     $res['price'] = str_replace(".", "", $res['price']);

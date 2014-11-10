@@ -491,6 +491,21 @@ jQuery(document).ready(function($) {
 					<!--{/if}-->
 					
 					
+					{if $pb_userinfo.checkout || $pb_userinfo.school_id}
+					<tr>
+						<th>Sinh viên </th>
+						<td class="tdright">
+							<input style="display: block;
+								float: left;
+								margin-right: 5px;
+								margin-top: 6px;
+								min-width: 0;
+								width: auto;" {if $item.for_student}checked="checked"{/if} type="checkbox" value="1" name="data[trade][for_student]" />
+							Dành cho sinh viên
+						</td>
+					</tr>
+				{/if}
+					
 				<tr>
 					   <th>{lang market}</th>
 					   <td class="tdright"><font color="#666666">
