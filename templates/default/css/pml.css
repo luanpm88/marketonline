@@ -12937,3 +12937,9 @@ element.style {
     padding: 0;
     
 }
+.textarea-content iframe {
+    min-height: 45px !important;
+}
+.mce-stack-layout-item {
+    border-top: none !important;
+}
