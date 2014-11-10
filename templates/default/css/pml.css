@@ -12929,7 +12929,7 @@ element.style {
     border-style: solid;
     border-width: 1px 1px 0;
     height: 35px;
-    margin-top: 5px;
+    margin-top: 0;
     padding: 10px;
 }
 .school-top-left-info img {
@@ -12938,7 +12938,7 @@ element.style {
     
 }
 .textarea-content iframe {
-    min-height: 45px !important;
+    min-height: 50px !important;
 }
 .mce-stack-layout-item {
     border-top: none !important;
@@ -12949,4 +12949,8 @@ element.style {
 .studypost_form .bottom-control {
     height: 35px;
     padding: 0px 5px;
+}
+.editor-inner-box {
+    border: solid 1px #ccc;
+    margin-top: 5px;
 }
