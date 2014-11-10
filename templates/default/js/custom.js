@@ -1801,7 +1801,7 @@
 	    //for sale
 	    if(sale != 0) ff += "&type=sale";
 	    //for student
-	    if(student != 0) ff += "&student=1";
+	    if(typeof(student) != 'undefined') if(student != 0) ff += "&student=1";
 	    
 	    if(typeof(offertype) != 'undefined') ff += "&offertype="+offertype;
             
