@@ -47,20 +47,22 @@
                           
                         </form>
                         
-                        <div class="logo_out_hover">
-                            {if $pb_userid == 1030 || $pb_userid == $school.leader_id}
-                                <a class="changesschoollogo" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">
-                                    {if $school.logo_origin}
-                                        Thay logo
-                                    {else}
-                                        Thêm logo
-                                    {/if}
-                                </a>
-                            {/if}
-                            <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}"><img src="{$school.logo}" /></a>
+                        <div class="school_logo_box">
+                            <div class="logo_out_hover">
+                                {if $pb_userid == 1030 || $pb_userid == $school.leader_id}
+                                    <a class="changesschoollogo" onclick="$('#changelogo-but').trigger('click')" href="javascript:void(0)">
+                                        {if $school.logo_origin}
+                                            Thay logo
+                                        {else}
+                                            Thêm logo
+                                        {/if}
+                                    </a>
+                                {/if}
+                                <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}"><img src="{$school.logo}" /></a>
+                            </div>
+                            
+                            <h1><a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">{$school.name}</a></h1>
                         </div>
-                        
-                    <h1><a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">{$school.name}</a></h1>                    
                 </div>
                 
                 <div class="school_list" style="display: none">

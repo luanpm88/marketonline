@@ -12911,3 +12911,15 @@ element.style {
     border-bottom: 2px solid #ddd;
     
 }
+.school_logo_box {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+.col2-bottom-left {
+    width: 659px;
+}
+.col2-bottom-right {
+    float: right;
+    margin-left: auto;
+}
