@@ -12902,3 +12902,6 @@ element.style {
     padding-bottom: 8px;
     padding-top: 8px;
 }
+.module-title {
+    background: #cbded0;
+}

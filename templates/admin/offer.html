@@ -62,6 +62,7 @@
 			<th>{lang cp_username}</th>
 			<th>{lang checked_status}</th>
 			<th>Thị trường</th>
+			<th>Sinh viên</th>
 			<th>Phê duyệt</th>
 			<th>{lang pub_date}</th>
 			<th>{lang expire_date}</th>
@@ -95,6 +96,17 @@
 				</a>
 			{else}
 				<a href="offer.php?id={$item.id}&do=area_show&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
+		  </td>
+		  <td>
+			{if $item.for_student}
+				<a href="offer.php?id={$item.id}&do=for_student&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="offer.php?id={$item.id}&do=for_student&value=1" title="Bật">
 					<img src="../templates/office/images/unpublished.png">
 				</a>
 			{/if}
