@@ -12930,8 +12930,10 @@ element.style {
     border-width: 1px 1px 0;
     margin-top: 5px;
     padding: 5px;
+    height: auto;
 }
 .school-top-left-info img {
     border: 1px solid #ddd;
     padding: 0;
+    
 }
