@@ -12954,6 +12954,9 @@ element.style {
     border: solid 1px #ccc;
     margin-top: 5px;
 }
-.school_list ul li.active {
+.school_list ul li {
     margin-left: 0;
+}
+.school_list ul li.active {
+    background: none;
 }
