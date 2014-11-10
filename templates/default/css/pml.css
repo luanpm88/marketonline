@@ -12902,6 +12902,9 @@ element.style {
     padding-bottom: 8px;
     padding-top: 8px;
 }
-.module-title {
-    background: #e0ece3;
+.module-box {
+    margin-bottom: 25px;
+}
+.studyhome-banner {
+    margin-bottom: 25px;
 }
