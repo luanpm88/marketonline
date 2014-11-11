@@ -13183,3 +13183,7 @@ element.style {
 .studypost_box {
     padding: 12px 12px 0;
 }
+.studypost_box .box_content .inner-content p, .studypost_box .comment_item .comment_content {
+    font-size: 11pt !important;
+    line-height: 20px;
+}
