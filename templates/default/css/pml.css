@@ -13199,3 +13199,6 @@ element.style {
 .study-home-title ul li a {
     border-left: none;
 }
+.outpage_box, #facelike_col2 {
+    background: none repeat scroll 0 0 #e6f0e9;
+}
