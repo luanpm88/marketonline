@@ -1,0 +1,36 @@
+<div class="study_menu_top">
+  <div class="fifteen columns menu_bg">
+	<div class="study-home-title">
+	    <!--<h1>
+		<a href="{the_url module='study-home'}">Học và Làm</a>
+	    </h1>-->
+	    <ul>
+		<li class="{if $smarty.get.do == "job"}active{/if}">
+		    <a href="{the_url module='jobs'}">Tuyển dụng</a>
+		</li>
+		<li class="{if $smarty.get.do == "employee"}active{/if}">
+		    <a href="{the_url module='employees'}">Hồ sơ ứng viên</a>
+		</li>
+		<li class="{if $smarty.get.do == "studypost" && !$smarty.get.type}active{/if}">
+		    <a href="{the_url module='studypost'}">Trường học</a>
+		</li>
+		<!--<li>
+		    <a href="#none">Trung tâm</a>
+		</li>-->
+		<li class="{if $smarty.get.do == "studypost" && $smarty.get.type == "group"}active{/if}">
+		    <a href="{the_url module='studypost' type='group'}">Môn học</a>
+		</li>
+		<!--<li>
+		    <a href="#">Giảng viên</a>
+		</li>-->
+		<li class="{if $smarty.get.do == "studypost" && $smarty.get.type == "learner"}active{/if}">
+		    <a href="{the_url module='studypost' type='learner'}">Học viên</a>
+		</li>		
+		<!--<li>
+		    <a href="#">Tin tức</a>
+		</li>-->
+	    </ul>
+	</div>
+  
+  </div>
+</div>
