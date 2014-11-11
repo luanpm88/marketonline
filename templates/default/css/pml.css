@@ -13183,3 +13183,6 @@ element.style {
     font-size: 11pt !important;
     line-height: 20px;
 }
+.menu-features-list li a {
+    font-size: 15px;
+}
