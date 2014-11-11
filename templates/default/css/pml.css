@@ -13199,6 +13199,10 @@ element.style {
 .study-home-title ul li a {
     border-left: none;
 }
-.outpage_box, #facelike_col2 {
+.outpage_box, #facelike_col2, .facelike_postform {
     background: none repeat scroll 0 0 #e6f0e9;
+}
+.studypost-content-placeholder p {
+    font-size: 11pt;
+    margin-left: 5px;
 }

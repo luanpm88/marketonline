@@ -6,6 +6,7 @@ body {
     padding-bottom: 10px !important;
     padding-top: 5px;
     line-height: 21px;
+    margin-top: 0;
 }
 p
 {
@@ -14,8 +15,7 @@ p
 img {
     margin-top: 10px;
 }
-img.mce-object
-{
+img.mce-object {
     display: block;
     margin: auto;
 }
