@@ -13151,3 +13151,36 @@ element.style {
 .module-box .kknotri p {
     width: 90px;
 }
+.studypost_box .box_content {
+    clear: both;
+    margin-left: 0;
+    margin-top: 10px;
+}
+.studypost_box .box_header {
+    height: 50px;
+}
+.studypost_box .stats {
+    margin-left: 0;
+}
+.stats_content textarea {
+    max-width: none;
+    min-width: 0;
+    width: 597px;
+}
+.studypost_box .box_header p {
+    margin: 0;
+}
+.studypost_box .box_header h2 {
+    margin-top: -4px;
+}
+.studypost_box .box_header img {
+    margin-top: 4px;
+}
+.studypost_box .box_content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.studypost_box .box_content .inner-content p, .studypost_box .comment_item .comment_content {
+    font-size: 15px;
+    line-height: 20px;
+}
