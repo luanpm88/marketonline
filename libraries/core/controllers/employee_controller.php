@@ -299,6 +299,9 @@ class Employee extends PbController {
 	
 	function detail()
 	{
+		uses("ad");
+		$ad = new Adses();
+		
 		if (isset($_GET['id'])) {
 			$id = intval($_GET['id']);
 		}
@@ -442,6 +445,8 @@ class Employee extends PbController {
 		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));		
 		setvar("JobProficiencies", $JobProficiencies);
 		
+		setvar("ads_top", $ad->getByZone(34));
+		setvar("ads_right", $ad->getByZone(35));
 			
 		render("employee/detail", 1);
 	}

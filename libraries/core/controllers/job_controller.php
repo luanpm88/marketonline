@@ -203,6 +203,9 @@ class Job extends PbController {
 	
 	function detail()
 	{
+		uses("ad");
+		$ad = new Adses();
+		
 		$id = intval(($_GET['id']));
 		//echo $id."sdfsdf";
 		
@@ -254,6 +257,9 @@ class Job extends PbController {
 			setvar('fb_title', "(Tuyển dụng) ".$companyinfo['name'].": ".$info['name']);
 			setvar('fb_image', $companyinfo['logobig']);
 			setvar("fb_description", mb_convert_encoding(preg_replace('/\s+/'," ",substr(trim(strip_tags($info["content"])),0, 1000)),"UTF-8"));
+			
+			setvar("ads_top", $ad->getByZone(33));
+			setvar("ads_right", $ad->getByZone(36));
 			
 			render("job/detail", 1);
 		}
