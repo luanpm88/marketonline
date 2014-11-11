@@ -28,6 +28,8 @@ class Studypost extends PbController {
 
 	function index()
 	{
+		uses("ad");
+		$ad = new Adses();
 		
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
@@ -43,6 +45,27 @@ class Studypost extends PbController {
 		setvar("type",$type);		
 		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
 		setvar("SchoolsOptions", $this->school->getOptions('['.$_GET['school'].']'));
+		
+		////#################for rightbar#########
+		
+		//setvar("ads_right", $ad->getByZone(22));
+		////get student shops
+		//$student_shops = $this->company->getStudentShops(0, 15);
+		//setvar("student_shops", $student_shops["result"]);
+		//
+		////get student service
+		//$student_services = $this->product->getStudentProducts(1, 0, 6);
+		////var_dump($student_services);
+		//setvar("student_services", $student_services["result"]);
+		//
+		////get student trades
+		//$student_trades = $this->trade->getStudentTrades(0, 10);
+		//setvar("student_trades", $student_trades);
+		//
+		////get student product
+		//$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 2);		
+		//setvar("student_discount_products", $student_discount_products["result"]);
+		////######################################
 		
 		if($type == "school")
 		{
@@ -66,6 +89,10 @@ class Studypost extends PbController {
 			
 			$school_list = $this->school->getList($conditions, $page->firstcount, $page->displaypg,$keyword);
 			setvar("school_list", $school_list);
+			
+			setvar("ads_top", $ad->getByZone(25));
+			setvar("ads_right", $ad->getByZone(30));
+			
 			render("studypost/school_list");
 		}
 		elseif($type == "group")
@@ -95,6 +122,10 @@ class Studypost extends PbController {
 			}
 			//var_dump($group_list);
 			setvar("group_list", $group_list);
+			
+			setvar("ads_top", $ad->getByZone(26));
+			setvar("ads_right", $ad->getByZone(31));
+			
 			render("studypost/group_list");
 		}
 		elseif($type == "learner")
@@ -126,6 +157,10 @@ class Studypost extends PbController {
 			}
 			//var_dump($learner_list);
 			setvar("learner_list", $learner_list);
+			
+			setvar("ads_top", $ad->getByZone(27));
+			setvar("ads_right", $ad->getByZone(32));
+			
 			render("studypost/learner_list");
 		}
 		
@@ -1365,8 +1400,10 @@ class Studypost extends PbController {
 		setvar("ads_left_6", $ad->getByZone(19));
 		setvar("ads_left_7", $ad->getByZone(20));
 		setvar("ads_left_8", $ad->getByZone(21));
-		setvar("ads_right", $ad->getByZone(22));
 		
+		
+		//#################for rightbar#########
+		setvar("ads_right", $ad->getByZone(22));
 		//get student shops
 		$student_shops = $this->company->getStudentShops(0, 15);
 		setvar("student_shops", $student_shops["result"]);
@@ -1383,6 +1420,7 @@ class Studypost extends PbController {
 		//get student product
 		$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 6);		
 		setvar("student_discount_products", $student_discount_products["result"]);
+		//######################################
 		
 		$this->render("studypost/home");
 	}

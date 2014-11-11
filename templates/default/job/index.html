@@ -10,6 +10,7 @@
 </div><![endif]-->
 
 
+
 <!--{include file="`$theme_name`/topmenu.html"}-->
 
 
@@ -30,7 +31,7 @@
 	<h1 class="page-title">{lang job_head}</h1>
 
     
-    <!--{include file="`$theme_name`/job/postitem.html"}-->
+    
     
     
 
@@ -43,77 +44,160 @@
   </div>
 </div>
 
+<!--{include file="`$theme_name`/studypost/_top_menu.html"}-->
 
-
-<div class="row">
-    
-    <!--{include file="`$theme_name`/job/jobsearchbox.html"}-->
-    
-</div>
-
-<div class="row">
-	<div id="job-content">
-		<div id="TopWorkCategory">
-			<h4>Đối tượng tuyển dụng</h4>
-		      <ul class="list-hot-cat">
-				<li rel="0" {if !$smarty.get.type}class="active"{/if}><a href="javascript:void(0)">Tất cả</a></li>
-				<!-- {get from="type" name="jobtype" var="Items"} -->
-				<!-- {if $Items|@count eq 0} -->
-				<!-- {get var="IndustryList" from="industry"} -->
-				<!-- {else} -->
-				<!-- {assign var="IndustryList" value=`$Items`} -->
-				<!-- {/if} -->
-				<!--{foreach from=$IndustryList item=industry_item name=IndustryList}-->
-					<li {if $smarty.get.type == $industry_item.id}class="active"{/if} rel="{$industry_item.id}"><a href="javascript:void(0)">{$industry_item.name}</a></li>			 
-				<!--{/foreach}-->
-			
-		      </ul>
+<div class="studyhome-page">
+    {if $ads_top}
+	<div class="studyhome-banner studyhome-top-banner">
+	    <div class="banner">
+		<!--{loop $ads_top item level key}-->
+		    <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+			<img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+		    </a>
+		<!--{/loop}-->
+	    </div>
+	</div>
+    {/if}
+    <div class="row hocvalam_modules">
+	<div class="fifteen columns inner_hocvalam">	    
+	    <div class="two-column">
+		<div class="column first-column studyhome-left">
+		    <div class="module-box">
+			<div class="module-title">
+			    <h2>Tìm kiếm</h2>
+			    <!--<a class="more" href="#">Danh sách trung tâm</a>-->
+			</div>
+			<div class="study-mod">
+			    <!--{include file="`$theme_name`/job/jobsearchbox.html"}-->
+			</div>
+		    </div>
+		    <div class="module-box">
+			<div class="module-title">
+			    <h2>Đối tượng tuyển dụng</h2>
+			    <!--<a class="more" href="#">Danh sách trung tâm</a>-->
+			</div>
+			<div class="study-mod">
+			    <div id="TopWorkCategory">
+					  <ul class="list-hot-cat">
+						    <li rel="0" {if !$smarty.get.type}class="active"{/if}><a href="javascript:void(0)">Tất cả</a></li>
+						    <!-- {get from="type" name="jobtype" var="Items"} -->
+						    <!-- {if $Items|@count eq 0} -->
+						    <!-- {get var="IndustryList" from="industry"} -->
+						    <!-- {else} -->
+						    <!-- {assign var="IndustryList" value=`$Items`} -->
+						    <!-- {/if} -->
+						    <!--{foreach from=$IndustryList item=industry_item name=IndustryList}-->
+							    <li {if $smarty.get.type == $industry_item.id}class="active"{/if} rel="{$industry_item.id}"><a href="javascript:void(0)">{$industry_item.name}</a></li>			 
+						    <!--{/foreach}-->
+					    
+					  </ul>
+				    </div>
+			</div>
+		    </div>
+		    <div class="module-box">
+			<div class="module-title">
+			    <h2>Danh sách tuyển dụng</h2>
+			    <!--<a class="more" href="#">Danh sách trung tâm</a>-->
+			</div>
+			<div class="study-mod">
+			    <div id="job-content">
+				    
+				    
+				    
+				    
+				    <div class="works-list">
+					    <table width="98%" style="">
+					      <tbody><tr class="job-table-list-head">
+						<th width="40%" align="left">Tên công việc</th>
+						<th width="30%" align="left">Nhà tuyển dụng</th>
+						<th width="18%" align="left">Nơi làm việc</th>
+						<!--<th width="15%" align="left">Mức lương</th>-->
+						<th width="" align="left">Hạn nộp</th>
+					      </tr>
+						    
+					    <!-- {job row=20 status=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$area_string`} -->
+						<tr>
+						    <td><a href="{the_url module='jobs' id=`$job.id` title=`$job.name`}">{$job.name}</td>
+						    <td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
+						    <td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
+						    <!--<td>{$job.salary}</td>-->
+						    <td>{$job.expired_dates}</td>
+						</tr>				
+					    <!-- {/job} -->
+					    
+					    </tbody></table>
+					    
+					    <div id="pagenav">
+						    <p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+					    </div>
+					    
+					      
+					  </div>
+				    
+				    
+				    
+			    </div>
+			</div>
+		    </div>
 		</div>
-		
-		
-		
-		<div class="works-list">
-			<h3>Danh sách tuyển dụng</h3>
-			<table width="98%" style="">
-			  <tbody><tr class="job-table-list-head">
-			    <th width="40%" align="left">Tên công việc</th>
-			    <th width="35%" align="left">Nhà tuyển dụng</th>
-			    <th width="15%" align="left">Nơi làm việc</th>
-			    <!--<th width="15%" align="left">Mức lương</th>-->
-			    <th width="15%" align="left">Hạn nộp</th>
-			  </tr>
-				
-			<!-- {job row=20 status=1 start=`$smarty.get.pos` keyword=`$smarty.get.keyword` indust=`$smarty.get.indust` type=`$smarty.get.type` area=`$area_string`} -->
-			    <tr>
-				<td><a href="{the_url module='jobs' id=`$job.id` title=`$job.name`}">{$job.name}</td>
-				<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
-				<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
-				<!--<td>{$job.salary}</td>-->
-				<td>{$job.expired_dates}</td>
-			    </tr>				
-			<!-- {/job} -->
+		<div class="column second-column studyhome-right">
+		    <div class="study-home-leftbar">
+			{if $ads_right}
+			    <div class="module-box">
+				<div class="module-title title-small">
+				    <h4>Quảng cáo</h4>
+				</div>
+				<div class="studybanner-home">
+				    <div class="banner-one-line">
+					<!--{loop $ads_right item level key}-->
+					    <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+						<img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+					    </a>
+					<!--{/loop}-->
+				    </div>
+				</div>
+			    </div>
+			{/if}
 			
-			</tbody></table>
+			    <div class="module-box">
+				<div class="module-title">
+				    <h2>Kiến thức bổ sung</h2>
+				</div>
+				<div class="study-mod">
+				    <ul class="menu menu-features-list">
+					{announce row=10 typeid=3}
+					    {if $announce.status}
+						    <li{if !$announce.read} class="notread"{/if}><a target="_blank" href="{the_url module='announce' id=`$announce.id`}">{$announce.title}</a></li>
+					    {/if}
+					{/announce}
+				    </ul>
+				</div>
+			    </div>
 			
-			<div id="pagenav">
-				<p><div class="pagination"><!-- {pager rowcount=`$paging.total` limit=20} --></div></p>
+			<div class="module-box">
+			    <div class="module-title">
+				<h2>Tài liệu khác</h2>
+			    </div>
+			    <div class="study-mod">
+				<ul class="menu menu-features-list">
+				    {announce row=10 typeid=4}
+					    {if $announce.status}
+						    <li{if !$announce.read} class="notread"{/if}><a target="_blank" href="{the_url module='announce' id=`$announce.id`}">{$announce.title}</a></li>
+					    {/if}
+				    {/announce}
+				</ul>
+			    </div>
 			</div>
 			
-			  
-		      </div>
-		
-		
-		
+			
+		    </div>
+		</div>
+	    </div>
 	</div>
-	<div id="job-sidebar">
-		
-		<!--{include file="`$theme_name`/job/rightbar.html"}-->	
-		
-	</div>
+    </div>
 </div>
 
-
-
+<!--{include file="`$theme_name`/job/postitem_.html"}-->
 
 
 

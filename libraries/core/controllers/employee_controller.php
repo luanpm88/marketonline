@@ -18,10 +18,14 @@ class Employee extends PbController {
 		$this->loadModel("employeeeducation");
 		$this->loadModel("employeereference");
 		$this->loadModel("language");
+		$this->loadModel("product");
+		$this->loadModel("trade");
 	}
 	
 	function index()
 	{
+		uses("ad");
+		$ad = new Adses();
 		//$this->employee->updateStatus();
 		
 		$conditions[] = "Employee.status=1";
@@ -60,6 +64,28 @@ class Employee extends PbController {
 		$JobProficiencies = cache_read('typeoption', 'job_proficiency');
 		//var_dump($JobProficiencies);
 		setvar("JobProficiencies", $JobProficiencies);
+		
+		//#################for rightbar#########
+		setvar("ads_top", $ad->getByZone(24));
+		setvar("ads_right", $ad->getByZone(29));
+		////get student shops
+		//$student_shops = $this->company->getStudentShops(0, 15);
+		//setvar("student_shops", $student_shops["result"]);
+		//
+		////get student service
+		//$student_services = $this->product->getStudentProducts(1, 0, 6);
+		////var_dump($student_services);
+		//setvar("student_services", $student_services["result"]);
+		//
+		////get student trades
+		//$student_trades = $this->trade->getStudentTrades(0, 10);
+		//setvar("student_trades", $student_trades);
+		//
+		////get student product
+		//$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 2);		
+		//setvar("student_discount_products", $student_discount_products["result"]);
+		//######################################
+		
 		render("employee/index");
 	}
 	

@@ -13,58 +13,7 @@
 <!--{include file="`$theme_name`/topmenu.html"}-->
 
 
-<!--{literal}-->	
-<script type="application/x-javascript">
-    $(document).ready(function() {
-	$('.module-intro-box img').resizecrop({
-	    width:$('.module-intro-box img').width(),
-	    height:$('.module-intro-box img').height()
-	});
-	$('.logo-listing.cols3 ul li img').resizecrop({
-	    width:$('.logo-listing.cols3 ul li img').width(),
-	    height:$('.logo-listing.cols3 ul li img').height()
-	});
-	
-	$('.module-intro-list ul li img').resizecrop({
-	    width:$('.module-intro-list ul li img').width(),
-	    height:$('.module-intro-list ul li img').height()
-	});
-	
-	$('.tiles-list.inner-text-image ul li img').resizecrop({
-	    width:$('.tiles-list.inner-text-image ul li img').width(),
-	    height:$('.tiles-list.inner-text-image ul li img').height()
-	});
-	
-	$('.tiles-list.top-info ul li img.main_img').resizecrop({
-	    width:$('.tiles-list.top-info ul li img.main_img').width(),
-	    height:$('.tiles-list.top-info ul li img.main_img').height()
-	});
-	
-	$('.studyhome-banner .banner a img').each(function() {
-	    $(this).resizecrop({
-		      width:$(this).width(),
-		      height:$(this).height()
-		  });
-	});
-	
-	$('.banner-one-line img').each(function() {
-	    $(this).resizecrop({
-		      width:$(this).width(),
-		      height:$(this).height()
-		  });
-	});
-	
-	$('.studyhome-tabs ul.tabsz li a').click(function() {	    
-	    $('.studyhome-tabs .contents .tab-content').addClass("boxhide");
-	    $('.studyhome-tabs .contents .tab-content.tab-'+$(this).attr("rel")).removeClass("boxhide");
-	    
-	    $('.studyhome-tabs ul.tabsz li').removeClass("active");
-	    $(this).parent().addClass("active");
-	});
-	$('.studyhome-tabs ul.tabsz li a').eq(0).trigger("click");
-    });
-</script>
-<!--{/literal}-->
+
 
 
 <div class="row">
@@ -88,42 +37,7 @@
   </div>
 </div>
 
-<div class="study_menu_top">
-  <div class="fifteen columns menu_bg">
-	<div class="study-home-title">
-	    <!--<h1>
-		<a href="{the_url module='study-home'}">Học và Làm</a>
-	    </h1>-->
-	    <ul>
-		<li class="{if $smarty.get.do == "job"}active{/if}">
-		    <a href="{the_url module='jobs'}">Tuyển dụng</a>
-		</li>
-		<li class="{if $smarty.get.do == "employee"}active{/if}">
-		    <a href="{the_url module='employees'}">Hồ sơ ứng viên</a>
-		</li>
-		<li class="{if $smarty.get.do == "studypost" && !$smarty.get.type}active{/if}">
-		    <a href="{the_url module='studypost'}">Trường học</a>
-		</li>
-		<li>
-		    <a href="#none">Trung tâm</a>
-		</li>
-		<li class="{if $smarty.get.do == "studypost" && $smarty.get.type == "group"}active{/if}">
-		    <a href="{the_url module='studypost' type='group'}">Môn học</a>
-		</li>
-		<li>
-		    <a href="#">Giảng viên</a>
-		</li>
-		<li class="{if $smarty.get.do == "studypost" && $smarty.get.type == "learner"}active{/if}">
-		    <a href="{the_url module='studypost' type='learner'}">Học viên</a>
-		</li>		
-		<li>
-		    <a href="#">Tin tức</a>
-		</li>
-	    </ul>
-	</div>
-  
-  </div>
-</div>
+<!--{include file="`$theme_name`/studypost/_top_menu.html"}-->
 
 
 <div class="studyhome-page">
@@ -489,33 +403,8 @@
 	    <div class="column second-column studyhome-right">
 		<div class="study-home-leftbar">
 		    
-		    {if $ads_right}
-			<div class="module-box">
-			    <div class="module-title title-small">
-				<h4>Quảng cáo</h4>
-			    </div>
-			    <div class="studybanner-home">
-				<div class="banner-one-line">
-				    <!--{loop $ads_right item level key}-->
-					<a href="{$item.target_url}" target="_blank" title="{$item.name}">
-					    <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
-					</a>
-				    <!--{/loop}-->
-				</div>
-			    </div>
-			</div>
-		    {/if}
 		    
-		    <!--{include file="`$theme_name`/studypost/_home_student_shop.html"}-->
-		    
-		    <!--{include file="`$theme_name`/studypost/_home_student_trade.html"}-->
-		    
-		    <!--{include file="`$theme_name`/studypost/_home_student_service.html"}-->
-		    
-		    <!--{include file="`$theme_name`/studypost/_home_student_discount_product.html"}-->
-		    
-		    
-		    
+		    <!--{include file="`$theme_name`/studypost/_home_rightbar.html"}-->
 		    
 		    
 		</div>

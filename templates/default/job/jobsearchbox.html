@@ -1,14 +1,6 @@
+
 <div id="job-search-box">
 		<div class="job-search-tab">
-			<ul>
-				<!--<li><a href="#box_underi" rel="job-learn" class="notyet">Học tập</a></li>-->
-				
-				<li class="tabgroup1 {if $smarty.get.do == "employee"}active{/if}"><a href="{the_url module='employees'}" rel="job-learn" class="">Hồ sơ ứng viên</a></li>
-				<li class="tabgroup2 {if $smarty.get.do == "job"}active{/if}"><a href="{the_url module='jobs'}" rel="job-learn">Việc làm</a></li>
-				<li class="tabgroup3 {if $smarty.get.do == "studypost" && !$smarty.get.type}active{/if}"><a href="{the_url module='studypost'}" rel="job-study">Trường</a></li>
-				<li class="tabgroup3 {if $smarty.get.do == "studypost" && $smarty.get.type == "group"}active{/if}"><a href="{the_url module='studypost' type='group'}" rel="job-study">Môn học</a></li>
-				<li class="tabgroup3 {if $smarty.get.do == "studypost" && $smarty.get.type == "learner"}active{/if}"><a href="{the_url module='studypost' type='learner'}" rel="job-study">Học viên</a></li>
-			</ul>
 			<div class="tab-content">
 				<div id="job-learn" class="tab-item active">
 						
@@ -19,19 +11,19 @@
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
 						<input type="hidden" name="type" value="{$smarty.get.type}" />
 						
-						<select name="indust" style="float: left;margin-right: 5px;">
+						<select class="first_select" name="indust" style="float: left;margin-right: 5px;">
 							<option value="0">Tất cả ngành nghề</option>
 							{$JobindustOptions}							
 						</select>
 						
-						<select name="area" style="float: left;margin-right: 5px;">
+						<select class="second_select" name="area" style="float: left;margin-right: 5px;">
 							<option value="0">Tất cả địa điểm</option>
 							{$AreaOptions}
 						</select>
 						
 						<input type="text" placeholder="Nhập chức danh, vị trí công việc,..." name="keyword" value="{$keyword}"/>
 						
-						<input type="submit" value="Tìm kiếm" />
+						<input class="search-icon-button" type="submit" value="Tìm kiếm" />
 					</form>
 				{else}
 					<form action="{the_url module="root-url"}" method="get" onsubmit="return checkSelectStudypostType()">
@@ -39,8 +31,8 @@
 						{if $smarty.get.total_count}<input type="hidden" name="total_count" value="{$smarty.get.total_count}" />{/if}
 						{if $smarty.get.pos}<input type="hidden" name="pos" value="{$smarty.get.pos}" />{/if}
 						
-						<select name="type" style="float: left;margin-right: 5px;">
-						    <option value="">Chọn: Trường / Môn học / Học viên</option>
+						<select class="first_select" name="type" style="float: left;margin-right: 5px;">
+						    <option value="">Trường/Môn học/Học viên</option>
 						    <option {if $type == 'school'}selected="selected"{/if} value="school">Trường</option>
 						    <option {if $type == 'group'}selected="selected"{/if} value="group">Môn học</option>
 						    <option {if $type == 'learner'}selected="selected"{/if} value="learner">Học viên</option>						    
@@ -48,14 +40,14 @@
 						
 						
 						
-						<select name="area" style="float: left;margin-right: 5px;">
+						<select class="second_select" name="area" style="float: left;margin-right: 5px;">
 							<option value="">Tất cả địa điểm</option>
 							{$AreaOptions}
 						</select>
 						
 						<input type="text" placeholder="Từ khóa tìm kiếm..." name="keyword" value="{$keyword}"/>
 						
-						<input type="submit" value="Tìm kiếm" />
+						<input class="search-icon-button" type="submit" value="Tìm kiếm" />
 					</form>
 				    {/if}
 				</div>				

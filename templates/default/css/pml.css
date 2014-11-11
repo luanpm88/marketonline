@@ -12133,7 +12133,7 @@ element.style {
 }
 .study-home-title ul li:first-child a {
 }
-.study-home-title ul li a:hover {
+.study-home-title ul li a:hover, .study-home-title ul li.active a {
     border-bottom: 2px solid red;
 }
 .two-column {
@@ -12966,4 +12966,142 @@ element.style {
 .studypost_form .bottom-control {
     display: none;
     border-bottom: none;
+}
+#job-search-box {
+    padding: 0;
+}
+#job-search-box .job-search-tab .tab-content #job-learn {
+    border: none;
+    padding: 0;
+}
+#job-search-box .job-search-tab .tab-content #job-learn {
+    height: auto;
+}
+#job-search-box .job-search-tab .tab-content input[type="text"] {
+    margin: 0;
+}
+#job-search-box .select2-container .select2-choice {
+    height: 31px;
+    line-height: 28px;
+}
+#job-search-box .job-search-tab .tab-content input[type="text"] {
+    height: 31px;
+    line-height: 28px;
+}
+#job-search-box .job-search-tab .tab-content input[type="submit"] {
+    margin: 0;
+    height: 31px;
+}
+#job-search-box .job-search-tab .tab-content input[type="submit"]:hover {
+    opacity: 0.8;
+}
+#job-content {
+    width: auto;
+}
+#TopWorkCategory {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+#TopWorkCategory ul {
+    border: medium none;
+}
+#TopWorkCategory ul li {
+    width: 240px;
+}
+#pagenav {
+    height: auto;
+}
+.works-list table {
+    margin-bottom: 0;
+}
+#job-content {
+    margin: 0;
+    width: 100%;
+}
+.study-mod {
+    width: 100%;
+}
+#TopWorkCategory .list-hot-cat {
+    padding: 0;
+    margin: 0;
+}
+#job-search-box .job-search-tab .tab-content input[type="text"] {
+    width: 280px;
+}
+#job-search-box .job-search-tab .tab-content select {
+    height: 31px;
+}
+.study-home-title ul li a {
+    margin-bottom: -2px;
+    padding: 7px 20px;
+}
+#job-content table {
+    border-color: #eee;
+}
+.menu-features-list {
+    margin-bottom: 0
+}
+.menu-features-list li {
+    list-style: none;
+}
+.menu-features-list li a {
+    border-bottom: 1px dotted #ddd;
+    color: #333;
+    display: block;
+    font-size: 14px;
+    padding: 6px 0;
+}
+.menu-features-list li:last-child a {
+    border-bottom: none;
+}
+.menu-features-list li a:hover {
+    color: red;
+}
+.studyhome-page {
+    margin-bottom: -10px;
+}
+#other-school-list ul li, .studypage-content #other-school-list ul li {
+    margin: 0 10px 10px 0;
+    width: 48.6%;
+}
+.study-mod .group_list {
+    margin: 10px 0 0 0;
+}
+.studypage-content {
+    border-width: 0;
+    padding: 0;
+}
+.school_list_box img {
+    margin-right: 8px;
+}
+
+#job-search-box .job-search-tab .tab-content input[type="submit"].search-icon-button, .search-icon-button {
+    background: url("../image/search-icon.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background-position: 5px 5px;
+    font-size: 18px;
+    font-weight: normal;
+    height: 30px;
+    margin-left: -0;
+    margin-top: 0;
+    padding-left: 25px;
+    padding-right: 0;
+    position: absolute;
+    right: 0;
+    text-indent: -3000px !important;
+    width: auto;
+    z-index: 1000;
+    
+}
+#job-search-box .job-search-tab .tab-content select.first_select {
+    width: 200px;
+}
+#job-search-box .job-search-tab .tab-content select.second_select {
+    width: 200px;
+}
+#job-search-box .select2-container .select2-choice {
+    width: 200px;
+}
+.select2-container .select2-choice > .select2-chosen {
+    color: #3b984c;
+    font-weight: bold;
 }

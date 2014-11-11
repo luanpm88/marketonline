@@ -9,10 +9,15 @@ class Job extends PbController {
 		$this->loadModel("jobtype");
 		$this->loadModel("area");
 		$this->loadModel("company");
+		$this->loadModel("product");
+		$this->loadModel("trade");
 	}
 
 	function index()
 	{
+		uses("ad");
+		$ad = new Adses();
+		
 		$this->job->updateStatus();
 		
 		$conditions[] = "Job.status=1";
@@ -46,6 +51,30 @@ class Job extends PbController {
 		
 		$salaries = cache_read('typeoption', 'salary');
 		setvar("Salary", $salaries);
+		
+		
+		//#################for rightbar#########
+		setvar("ads_top", $ad->getByZone(23));
+		setvar("ads_right", $ad->getByZone(28));
+		////get student shops
+		//$student_shops = $this->company->getStudentShops(0, 15);
+		//setvar("student_shops", $student_shops["result"]);
+		//
+		////get student service
+		//$student_services = $this->product->getStudentProducts(1, 0, 6);
+		////var_dump($student_services);
+		//setvar("student_services", $student_services["result"]);
+		//
+		////get student trades
+		//$student_trades = $this->trade->getStudentTrades(0, 10);
+		//setvar("student_trades", $student_trades);
+		//
+		////get student product
+		//$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 3);		
+		//setvar("student_discount_products", $student_discount_products["result"]);
+		//######################################
+		
+		
 		render("job/index");
 	}
 

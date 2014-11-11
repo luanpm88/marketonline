@@ -8,15 +8,16 @@
 		</div>
 		
 		<section class="widget-1 widget-first widget widget_nav_menu job-left-section" id="nav_menu-2"><div class="widget-inner">
-			<h3>Kiến thức bổ sung</h3><ul class="menu" id="menu-features-list">
-
+			<h3>Kiến thức bổ sung</h3>
+			<ul class="menu" id="menu-features-list">
 			{announce row=10 typeid=3}
 				{if $announce.status}
 					<li{if !$announce.read} class="notread"{/if}><a target="_blank" href="{the_url module='announce' id=`$announce.id`}">{$announce.title}</a></li>
 				{/if}
 			{/announce}
 		    
-		    </ul></div>
+		    </ul>
+		</div>
 		</section>
 		
 		<section class="widget-1 widget-first widget widget_nav_menu job-left-section" id="nav_menu-2"><div class="widget-inner">

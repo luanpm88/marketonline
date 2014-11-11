@@ -1260,8 +1260,8 @@ class Product extends PbController {
 				$products[$key]["content"] = strip_tags(pb_lang_split($item['content']));
 				$products[$key]["created"] = date('d/m/Y H:i', $item['created']);
 				$products[$key]["enddate"] = date('d/m/Y', $item['created']+($item['expire_days']*24*3600));
-				$products[$key]["price"] = number_format($item["price"], 0, ',', '.');
-				$products[$key]["old_price"] = number_format($item["old_price"], 0, ',', '.');
+				//$products[$key]["price"] = number_format($item["price"], 0, ',', '.');
+				//$products[$key]["old_price"] = number_format($item["old_price"], 0, ',', '.');
 				$products[$key]["name"] = fix_text_error($products[$key]["name"]);
 				
 				//get space_name
