@@ -13145,3 +13145,6 @@ element.style {
 .hocvalam_modules.innerpage .module-box {
     margin-bottom: 14px;
 }
+.module-box .kknotri p {
+    max-width: 100px;
+}
