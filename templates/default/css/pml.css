@@ -13105,3 +13105,7 @@ element.style {
     color: #3b984c;
     font-weight: bold;
 }
+#job-content .TableInfo  {
+    width: auto;
+    margin-bottom: 0;
+}
