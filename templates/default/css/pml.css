@@ -13206,3 +13206,11 @@ element.style {
     font-size: 11pt;
     margin-left: 5px;
 }
+.studypost_box {
+    position: relative;
+}
+.studypost_box .box_controls {
+    margin-top: -5px;
+    position: absolute;
+    right: 10px;
+}
