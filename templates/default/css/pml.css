@@ -13109,3 +13109,26 @@ element.style {
     width: auto;
     margin-bottom: 0;
 }
+#job-content .TableInfo {
+    margin-bottom: 0;
+    padding: 0 !important;
+    width: auto;
+    border-color: #ddd !important;
+}
+#job-content .company-info .left_com_info {
+    float: right;
+    max-width: 505px;
+}
+.margintop10 {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.works-list a {
+    color: #333;
+}
+.works-list a:hover {
+    color: red;
+}
+#TopWorkCategory ul li a {
+    color: #333;
+}
