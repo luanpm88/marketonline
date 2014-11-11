@@ -13026,7 +13026,7 @@ element.style {
     margin: 0;
 }
 #job-search-box .job-search-tab .tab-content input[type="text"] {
-    width: 280px;
+    width: 290px;
 }
 #job-search-box .job-search-tab .tab-content select {
     height: 31px;
@@ -13067,10 +13067,12 @@ element.style {
 .study-mod .group_list {
     margin: 10px 0 0 0;
 }
+
 .studypage-content {
     border-width: 0;
     padding: 0;
 }
+
 .school_list_box img {
     margin-right: 8px;
 }
@@ -13089,8 +13091,7 @@ element.style {
     right: 0;
     text-indent: -3000px !important;
     width: auto;
-    z-index: 1000;
-    
+    z-index: 1000;    
 }
 #job-search-box .job-search-tab .tab-content select.first_select {
     width: 200px;
@@ -13131,4 +13132,16 @@ element.style {
 }
 #TopWorkCategory ul li a {
     color: #333;
+}
+.hocvalam_modules.innerpage .two-column .column.studyhome-right {
+    width: 36%;
+}
+.hocvalam_modules.innerpage .two-column .column.studyhome-left {
+    width: 64%;
+}
+.hocvalam_modules.innerpage .study-home-leftbar {
+    margin-left: 10px;
+}
+.hocvalam_modules.innerpage .module-box {
+    margin-bottom: 14px;
 }
