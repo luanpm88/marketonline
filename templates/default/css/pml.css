@@ -13146,7 +13146,7 @@ element.style {
     margin-bottom: 14px;
 }
 .module-box .kknotri {
-    width: 100%;
+    width: 100% !important;
 }
 .module-box .kknotri p {
     width: 90px;
