@@ -1,0 +1,94 @@
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.page {
+    padding-top: 70px;
+    background: #efefef;
+}
+.profile-picture {
+    float: left;
+    margin-right: 15px;
+    width: 115px;
+}
+.profile-box {
+}
+.profile-box h2 {
+    
+}
+.profile-box .info-lines p {
+    margin-bottom: 5px;
+    padding-left: 130px;
+}
+.profile-box .info-lines p:last-child {
+    margin-bottom: 0;
+}
+.profile-box .info-lines p label {
+    float: left;
+    margin: 0 0 0 -120px;
+    padding-right: 15px;
+    text-align: right;
+    width: 120px;
+}
+.profile-box .school-name {
+}
+.profile-album {    
+}
+.profile-album ul {    
+}
+.profile-album ul li {    
+}
+.profile-album ul li img {    
+}
+.border-box {
+    background: none repeat scroll 0 0 #fff;
+    float: left;
+    margin-bottom: 20px;
+    padding: 15px;
+    width: 100%;
+}
+h2.top-name {
+    margin-top: 0;
+}
+.info-lines {
+    clear: both;
+    padding-top: 10px;
+}
+p.controls {
+    margin: 15px 0 0 0;
+}
+.album-main-image img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+.album-main-image {
+    float: right;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+.top-info {
+    background: #fff;
+}
+.top-info .border-box {
+    margin-bottom: 0;
+}
+.profile-banner-col {
+  padding: 0;
+}
+.top-info {
+    margin-bottom: 20px;
+    margin-left: -5px;
+    margin-right: -5px;
+    overflow: hidden;
+}
+.top-info .border-box {
+  padding-left: 0;
+}
+.mce-path {
+  visibility: hidden !important;
+}
+.mce-menubar, .mce-toolbar-grp {
+  display: none !important;
+}
