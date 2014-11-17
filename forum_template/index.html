@@ -6,13 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Đặng Tiến Ngọc - MarketOnline</title>
-
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="bootstrap/css/custom.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
+    
+    <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+      tinymce.init({
+        selector: "textarea",
+        plugins: "table,wordcount",
+        language: "vi_VN",
+        placeholder: "something...",
+        content_css: "bootstrap/css/bootstrap.min.css,css/custom_editor.css"
+      });
+    </script>
 
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -88,23 +101,7 @@
           
           <!-- Example row of columns -->
           <div class="row">
-            <div class="col-md-4">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Panel title</h3>
-                </div>
-                <div class="panel-body">
-                  <h2 class="top-name">Heading</h2>
-                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                  
-                </div>
-                
-                <div class="panel-footer">
-                  <a role="button" href="#" class="btn btn-default">View details »</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="panel panel-primary">
                 <div class="panel-heading">
                   <h3 class="panel-title">Panel title</h3>
@@ -144,9 +141,24 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>              
+            </div>
+            <div class="col-md-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Panel title</h3>
+                </div>
+                <div class="panel-body">
+                  <!--<div id="placeholder" style="position: relative; top: 20px;">My Placeholder</div>-->
+                  <textarea></textarea>                  
+                </div>
+                
+                <div class="panel-footer">
+                  <a role="button" href="#" class="btn btn-default">View details »</a>
+                </div>
               </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <div class="panel panel-success">
                 <div class="panel-heading">
                   <h3 class="panel-title">Panel title</h3>
