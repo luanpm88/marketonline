@@ -1,0 +1,94 @@
+@media (min-width: 1200px) {
+  .span12, .container {
+    width: 1200px;
+  }
+}
+.page {
+    padding-top: 70px;
+    background: #efefef;
+}
+.profile-picture {
+    float: left;
+    margin-right: 15px;
+    width: 115px;
+}
+.profile-box {
+}
+.profile-box h2 {
+    
+}
+.profile-box .info-lines p {
+    margin-bottom: 5px;
+    padding-left: 130px;
+}
+.profile-box .info-lines p:last-child {
+    margin-bottom: 0;
+}
+.profile-box .info-lines p label {
+    float: left;
+    margin: 0 0 0 -120px;
+    padding-right: 15px;
+    text-align: right;
+    width: 120px;
+}
+.profile-box .school-name {
+}
+.profile-album {    
+}
+.profile-album ul {    
+}
+.profile-album ul li {    
+}
+.profile-album ul li img {    
+}
+.border-box {
+    background: none repeat scroll 0 0 #fff;
+    float: left;
+    margin-bottom: 20px;
+    padding: 15px;
+    width: 100%;
+}
+h2.top-name {
+    margin-top: 0;
+}
+.info-lines {
+    clear: both;
+    padding-top: 10px;
+}
+p.controls {
+    margin: 15px 0 0 0;
+}
+.album-main-image img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+.album-main-image {
+    float: right;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+.top-info {
+    background: #fff;
+}
+.top-info .border-box {
+    margin-bottom: 0;
+}
+@media (max-width:992px){
+    .album-main-image {
+      position: inherit;
+    }
+}
+.profile-banner-col {
+  padding: 0;
+}
+.top-info {
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
+}
+.top-info .border-box {
+  padding-left: 0;
+}

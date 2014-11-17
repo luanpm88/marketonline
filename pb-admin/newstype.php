@@ -64,7 +64,7 @@ if (isset($_GET['do'])) {
 }
 $amount = $newstype->findCount(null, $conditions);
 $page->setPagenav($amount);
-$sql = "SELECT nt.*,(SELECT count(n.id)) AS news_amount FROM ".$tb_prefix."newstypes nt LEFT JOIN ".$tb_prefix."newses n ON n.type_id=nt.id GROUP BY nt.id ORDER BY nt.id DESC LIMIT $page->firstcount,$page->displaypg";
+$sql = "SELECT nt.*,(SELECT count(n.id)) AS news_amount FROM ".$tb_prefix."newstypes nt LEFT JOIN ".$tb_prefix."newses n ON n.type_id=nt.id WHERE nt.level_id=1 GROUP BY nt.id ORDER BY nt.id DESC LIMIT $page->firstcount,$page->displaypg";
 $newstype_list = $pdb->GetArray($sql);
 setvar("Items",$newstype_list);
 uaAssign(array("ByPages"=>$page->pagenav));
