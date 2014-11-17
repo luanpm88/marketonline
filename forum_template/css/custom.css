@@ -89,6 +89,18 @@ p.controls {
 .mce-path {
   visibility: hidden !important;
 }
-.mce-menubar, .mce-toolbar-grp {
+.main-text-editor.hide-control .mce-menubar {
+  display: none !important;
+}
+.main-text-editor.hide-control .mce-toolbar-grp {
+  display: none !important;
+}
+.main-text-editor.hide-control .mce-edit-area {
+  border-top: 0;
+}
+.main-text-editor.hide-control .mce-statusbar {
+  display: none;
+}
+.main-text-editor.hide-control .mce-tinymce {
   display: none !important;
 }
