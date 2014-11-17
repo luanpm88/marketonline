@@ -102,5 +102,5 @@ p.controls {
   display: none;
 }
 .main-text-editor.hide-control .mce-tinymce {
-  display: none !important;
+  border-color: #ddd;
 }

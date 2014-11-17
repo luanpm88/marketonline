@@ -20,11 +20,16 @@
     <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
       tinymce.init({
-        selector: "textarea",
+        selector: "#main-editor",
         plugins: "table,wordcount",
         language: "vi_VN",
         placeholder: "something...",
-        content_css: "bootstrap/css/bootstrap.min.css,css/custom_editor.css"
+        content_css: "bootstrap/css/bootstrap.min.css,css/custom_editor.css",
+        setup: function(editor) {
+          editor.on('focus', function(e) {
+            console.log('focus event', e);
+          });
+        }
       });
     </script>
 
@@ -152,7 +157,7 @@
                 <div class="panel-body">
                   <!--<div id="placeholder" style="position: relative; top: 20px;">My Placeholder</div>-->
                   <div class="main-text-editor hide-control">
-                    <textarea></textarea>  
+                    <textarea id="main-editor"></textarea>  
                   </div>                
                 </div>
                 
