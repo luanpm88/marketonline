@@ -22,11 +22,20 @@
       $(document).ready(function() {
         tinymce.init({
           selector: "#main-editor",
-          plugins: "table,wordcount",
-          menubar: "insert tools table format edit",
           language: "vi_VN",
-          placeholder: "something...",
+          
+          menubar: "tools table format",
+          plugins: [
+              "image,table"
+          ],
+          toolbar: "image undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
+
+
+
           content_css: "bootstrap/css/bootstrap.min.css,css/custom_editor.css",
+          relative_urls : false,
+          remove_script_host : false,
+          convert_urls : true,
           setup: function(editor) {           
             editor.on('focus', function(e) {
               var editor_box = $('#main-editor').parents('.main-text-editor');
