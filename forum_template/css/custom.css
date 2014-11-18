@@ -131,7 +131,7 @@ p.controls {
   background: transparent !important;
 }
 .main-text-editor.hide-control #main-editor_ifr {
-  height: 50px !important;
+  height: 60px !important;
 }
 .main-text-editor.hide-control .placeholder {
   display: block;
