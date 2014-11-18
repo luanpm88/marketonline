@@ -92,7 +92,7 @@ p.controls {
 .main-text-editor .placeholder {
     color: #888;
     display: none;
-    left: 26px;
+    left: 15px;
     position: absolute;
     top: 11px;
 }
@@ -162,3 +162,27 @@ p.controls {
 .mce-btn, .mce-panel {
   background-image: none !important;
 }
+.text-editor {
+  position: relative;
+}
+.sub-info-meta {
+    color: #888;
+    float: right;
+    font-size: 85%;
+    margin-bottom: 0;
+    margin-right: -5px;
+    margin-top: -5px;
+}
+.friendlist .thumbnail {
+    border: 1px solid #ddd;
+    border-radius: 0;
+    padding: 0;
+}
+.widget .list-group { margin-bottom: 0;margin-top: 10px }
+.widget .panel-title { display:inline }
+.widget .label-info { float: right; }
+.widget li.list-group-item {border-radius: 0;border: 1px solid #ddd;}
+.widget li.list-group-item:hover { background-color: rgba(0,0,0,.02); }
+.widget .mic-info { color: #888;font-size: 85%; margin-bottom: 5px; }
+.widget .action { margin-top:10px; }
+.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
