@@ -19,17 +19,31 @@
     
     <script type="text/javascript" src="tinymce/tinymce.min.js"></script>
     <script type="text/javascript">
-      tinymce.init({
-        selector: "#main-editor",
-        plugins: "table,wordcount",
-        language: "vi_VN",
-        placeholder: "something...",
-        content_css: "bootstrap/css/bootstrap.min.css,css/custom_editor.css",
-        setup: function(editor) {
-          editor.on('focus', function(e) {
-            console.log('focus event', e);
-          });
-        }
+      $(document).ready(function() {
+        tinymce.init({
+          selector: "#main-editor",
+          plugins: "table,wordcount",
+          menubar: "insert tools table format edit",
+          language: "vi_VN",
+          placeholder: "something...",
+          content_css: "bootstrap/css/bootstrap.min.css,css/custom_editor.css",
+          setup: function(editor) {           
+            editor.on('focus', function(e) {
+              var editor_box = $('#main-editor').parents('.main-text-editor');
+              editor_box.removeClass('hide-control');
+            });
+            editor.on('blur', function(e) {
+              var editor_box = $('#main-editor').parents('.main-text-editor');
+              editor_box.addClass('hide-control');
+              if(tinyMCE.get('main-editor').getContent() != "") {
+                editor_box.find('.placeholder').hide();
+              } else {
+                editor_box.find('.placeholder').show();
+              }
+            });
+            
+          }
+        });
       });
     </script>
 
@@ -150,19 +164,22 @@
               </div>              
             </div>
             <div class="col-md-6">
-              <div class="panel panel-default">
+              <div class="panel panel-default main-text-editor hide-control">
                 <!--<div class="panel-heading">
                   <h3 class="panel-title">Panel title</h3>
                 </div>-->
                 <div class="panel-body">
-                  <!--<div id="placeholder" style="position: relative; top: 20px;">My Placeholder</div>-->
-                  <div class="main-text-editor hide-control">
+                  
+                  <div class="text-editor">
+                    <div class="placeholder">Đăng tải thông tin cho trang của bạn...</div>
                     <textarea id="main-editor"></textarea>  
                   </div>                
                 </div>
                 
                 <div class="panel-footer">
-                  <a role="button" href="#" class="btn btn-default">View details »</a>
+                  <div class="controls">
+                    <a role="button" href="#" class="btn btn-default">Đăng</a>
+                  </div>
                 </div>
               </div>
             </div>

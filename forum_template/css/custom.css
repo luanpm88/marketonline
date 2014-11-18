@@ -89,6 +89,25 @@ p.controls {
 .mce-path {
   visibility: hidden !important;
 }
+.main-text-editor .placeholder {
+    color: #888;
+    display: none;
+    left: 26px;
+    position: absolute;
+    top: 11px;
+}
+.main-text-editor .mce-panel {
+  border-color: #ddd;
+}
+.main-text-editor .panel-body {
+  padding: 0;
+}
+.main-text-editor .mce-tinymce {
+  border: 0;
+}
+.main-text-editor.hide-control .panel-footer {
+  display: none !important;
+}
 .main-text-editor.hide-control .mce-menubar {
   display: none !important;
 }
@@ -102,5 +121,44 @@ p.controls {
   display: none;
 }
 .main-text-editor.hide-control .mce-tinymce {
-  border-color: #ddd;
+  background: transparent !important;
+  background-image: none !important;
+}
+.main-text-editor.hide-control .mce-container-body {
+  background: transparent !important;
+}
+.main-text-editor.hide-control div.mce-edit-area {
+  background: transparent !important;
+}
+.main-text-editor.hide-control #main-editor_ifr {
+  height: 50px !important;
+}
+.main-text-editor.hide-control .placeholder {
+  display: block;
+}
+.main-text-editor .mce-statusbar {
+    border: 0 none;
+    height: 0;
+}
+.main-text-editor .mce-statusbar .mce-container-body {
+    height: 0;
+}
+.main-text-editor i.mce-i-resize {
+    color: #333;
+    margin-top: 54px;
+}
+.main-text-editor .mce-wordcount {
+    left: 0;
+    top: 10px;
+    width: 50%;
+}
+.panel-footer .controls {
+  text-align: right;
+}
+.main-text-editor i.mce-i-resize {
+    color: #333;
+    margin-top: 55px;
+}
+.mce-btn, .mce-panel {
+  background-image: none !important;
 }
