@@ -186,3 +186,11 @@ p.controls {
 .widget .mic-info { color: #888;font-size: 85%; margin-bottom: 5px; }
 .widget .action { margin-top:10px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+
+.comment-line img {
+    float: left;
+    margin-left: -60px;
+}
+.comment-line {
+  padding-left: 70px;
+}
