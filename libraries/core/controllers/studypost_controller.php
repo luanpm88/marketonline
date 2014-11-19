@@ -653,7 +653,7 @@ class Studypost extends PbController {
 		setvar("school_list", $school_list);
 		setvar("member", $member);
 		
-		render("studypost/memberpage");
+		render("mordern/studypost/memberpage");
 	}
 	
 	function ajaxFollow()
