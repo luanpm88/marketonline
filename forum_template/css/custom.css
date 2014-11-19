@@ -228,7 +228,7 @@ p.controls {
 .list-group.nopadding .list-group-item.school-list .controls {
   margin-top: 5px;
 }
-.list-group .list-group-item:last-child {
+.list-group.nopadding .list-group-item:last-child {
   border-bottom: 0;
   padding-bottom: 0 !important;
   margin-bottom: 0;
