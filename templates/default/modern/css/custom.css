@@ -243,3 +243,7 @@ p.controls {
 .list-group.leftbar .badge {
   background: #b92c28;
 }
+.sub-info-heading {
+    font-size: 85%;
+    color: #555;
+}
