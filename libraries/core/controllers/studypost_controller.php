@@ -593,6 +593,8 @@ class Studypost extends PbController {
 	
 	function memberpage()
 	{
+		setvar("theme_name","mordern");
+		
 		if(!isset($_GET["id"]))
 		{
 			flash("data_not_exists", '', 0);
@@ -652,6 +654,7 @@ class Studypost extends PbController {
 		setvar("school", $school);
 		setvar("school_list", $school_list);
 		setvar("member", $member);
+		
 		render("studypost/memberpage");
 	}
 	
