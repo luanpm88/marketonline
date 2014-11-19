@@ -18,17 +18,13 @@
 }
 .profile-box .info-lines p {
     margin-bottom: 5px;
-    padding-left: 130px;
+    padding-left: 26px;
 }
-.profile-box .info-lines p:last-child {
-    margin-bottom: 0;
-}
-.profile-box .info-lines p label {
-    float: left;
-    margin: 0 0 0 -120px;
-    padding-right: 15px;
-    text-align: right;
-    width: 120px;
+.profile-box .info-lines p span {
+    display: inline-block;
+    font-size: 16px;
+    margin-left: -22px;
+    width: 18px;
 }
 .profile-box .school-name {
 }

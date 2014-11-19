@@ -1,7 +1,6 @@
 <?php
 require_once('sharelib.php'); 
 
-
 // create array with topics to be posted on Facebook
 $sql = 'SELECT com.cache_spacename, com.shop_name as company_name, product.id, product.service, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
     .' FROM pb_products product'
@@ -39,14 +38,14 @@ while($res_s = $rs->fetch_assoc()) {
     
     
     
-    if(isset($res_s['default_pic']))
-    {
-        $pic_col = 'picture'.$res_s['default_pic'];
-    }
-    else
-    {
-        $pic_col = 'picture';
-    }
+      if(isset($res_s['default_pic']))
+      {
+	  $pic_col = 'picture'.$res_s['default_pic'];
+      }
+      else
+      {
+	  $pic_col = 'picture';
+      }
     
     if ($res_s[$pic_col]) $res['image'] = "http://marketonline.vn/attachment/".$res_s[$pic_col];
     
