@@ -31,7 +31,7 @@
 </script>
 <!--{/literal}-->
 
-<div class="outpage_box">{$theme_name}
+<div class="outpage_box">
     <div class="row">
         <div class="study-member-box">
             <div class="member-right">
@@ -40,7 +40,6 @@
                         {if $pb_userid == $member.id && $member.studypics.main.id}
                             <a onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_studypic id=`$member.studypics.main.id`}" class="del_main_pic" rel="{$member.studypics.main.id}">x</a>
                         {/if}
-                        
                         
                             <img class="avatar" src="{$member.studypics.main.name_medium}" width="400" height="400" onclick="getStudypictureDetail({$member.id}, {$member.studypics.main.id})" />
 
