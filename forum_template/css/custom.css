@@ -191,3 +191,16 @@ p.controls {
 .comment-line {
   padding-left: 60px;
 }
+.friendlist .col-md-4 {
+  padding: 0 5px 5px 0 ;
+}
+.friendlist {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.friendlist .row {
+  padding: 5px 0 0 5px;
+}
+.friendlist .col-md-4 .thumbnail {
+  margin-bottom: 0;
+}
