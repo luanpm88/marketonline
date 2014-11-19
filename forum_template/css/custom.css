@@ -184,10 +184,10 @@ p.controls {
 
 .comment-line img {
     float: left;
-    margin-left: -50px;
+    margin-left: -55px;
 }
 .comment-line {
-  padding-left: 60px;
+    padding-left: 70px;
 }
 .friendlist .col-md-4 {
   padding: 0 5px 5px 0 ;
@@ -207,4 +207,17 @@ p.controls {
 }
 .main-text-editor .panel-heading {
   padding: 7px 15px;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
+{
+  background-color: #ddd;
+}
+.list-group.nopadding .list-group-item {
+  padding: 0 0 10px 0;
+  margin-bottom: 10px;
+  border: 0;
+}
+.list-group .list-group-item img {
+  float: left;
+  margin-right: 10px;
 }
