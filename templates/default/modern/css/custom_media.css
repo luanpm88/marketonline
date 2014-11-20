@@ -1,30 +1,80 @@
+@media (min-width: 768px) {
+  .login-name {
+    display: inline;
+  }
+  .top-search-form {
+    width: 62%;
+  }
+  #top-search-input {
+    width: 86%;
+  }
+}
+@media (min-width: 992px) {
+  .login-name {
+    display: none;
+  }
+  .top-search-form {
+    width: 36%;
+  }
+  #top-search-input {
+    width: 82%;
+  }
+}
 @media (min-width: 1200px) {
   .span12, .container {
-    width: 1200px;
+    width: 1180px;
+  }
+  .login-name {
+    display: inline;
+  }
+  .top-search-form {
+    width: 35%;
+  }
+  #top-search-input {
+    width: 84%;
   }
 }
 @media (min-width: 1300px) {
   .span12, .container {
-    width: 1300px;
+    width: 1280px;
+  }
+  .login-name {
+    display: inline;
+  }
+  .top-search-form {
+    width: 41%;
+  }
+  #top-search-input {
+    width: 87%;
   }
 }
-@media (max-width:992px){
-    .album-main-image {
-      position: inherit;
-    }
-    .top-search-form {
-      width: 50%;
-    }
-    #top-search-input {
-      width: 76%;
-    }
+@media (max-width:991px){
+  .album-main-image {
+    position: inherit;
+  }    
 }
 @media (max-width:767px){
   .top-search-form {
     width: 100%;
   }
   #top-search-input {
-    width: 78%;
-    margin-left: 44px;
+    width: 74%;
+    margin-left: 49px;
+  }  
+  /*.second-top-bar {
+      margin-left: 110px;
+      margin-top: 5px;
+      position: absolute;
+      top: 0;
+      display: block;
   }
+  .second-top-bar > li {
+    display: block;
+    float: left;
+    margin-right: 0;
+    position: relative;
+  }
+  .navbar-inverse .second-top-bar li.navli-icon a {
+    padding: 10px 10px 13px;
+  }*/
 }

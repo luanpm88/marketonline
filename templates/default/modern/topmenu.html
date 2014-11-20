@@ -7,12 +7,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{the_url module=root-url}">
             <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
           </a>
           <div class="btn-group top-main-cats">
             <button class="btn btn-default current-top-menu" type="button">
-              <img class="img_product_icon" src="http://marketonline.vn/templates/default/image/product_bg.png" />
+              <img class="img_product_icon" src="{the_url module=root-url}templates/default/image/product_bg.png" />
             </button>
             <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
               <span class="caret"></span>
@@ -21,31 +21,31 @@
             <ul role="menu" class="dropdown-menu">
               <li>
                 <a href="#">
-                  <img class="img_icon img_product_icon" src="http://marketonline.vn/templates/default/image/product_bg.png" />
+                  <img class="img_icon img_product_icon" src="{the_url module=root-url}templates/default/image/product_bg.png" />
                   Sản phẩm
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img class="img_icon img_service_icon" src="http://marketonline.vn/templates/default/image/service_bg.png" />
+                  <img class="img_icon img_service_icon" src="{the_url module=root-url}templates/default/image/service_bg.png" />
                   Dịch vụ
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img class="img_icon img_trade_icon" src="http://marketonline.vn/templates/default/image/trade_bg.png" />
+                  <img class="img_icon img_trade_icon" src="{the_url module=root-url}templates/default/image/trade_bg.png" />
                   Thương mại
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img class="img_icon img_company_icon" src="http://marketonline.vn/templates/default/image/brand_bg.png" />
+                  <img class="img_icon img_company_icon" src="{the_url module=root-url}templates/default/image/brand_bg.png" />
                   Thương hiệu
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img class="img_icon img_study_icon" src="http://marketonline.vn/templates/default/image/job_bg.png" />
+                  <img class="img_icon img_study_icon" src="{the_url module=root-url}templates/default/image/job_bg.png" />
                   Học và Làm
                 </a>
               </li>
@@ -64,18 +64,18 @@
                 <div class="input-group">
                   <div class="input-group-btn top-search-type">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                      <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
-                    <span class="caret"></span></button>
+                      <span aria-hidden="true" class="glyphicon glyphicon-home"></span>
+                      <span class="caret"></span></button>
                     <ul class="dropdown-menu" role="menu">
                       <li>
                         <a href="#">
-                          <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
+                          <span aria-hidden="true" class="glyphicon glyphicon-home"></span>
                           Tìm kiếm gian hàng
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <span aria-hidden="true" class="glyphicon glyphicon-user"></span>
+                          <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
                           Tìm kiếm sản phẩm
                         </a>
                       </li>                      
@@ -86,7 +86,7 @@
             </div>
             <!--<button type="submit" class="btn btn-default">Submit</button>-->
           </form>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right second-top-bar">
             <li class="navli-icon top-cart">
               <a href="#">
                 <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
@@ -95,7 +95,7 @@
             <li class="login-info">
               <a href="#">
                 <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
-                Shop Market Online
+                <span class="login-name">Shop Market Online</span>
               </a>
             </li>
             <li class="navli-icon">
@@ -114,11 +114,25 @@
               </a>
             </li>
             <li><a href="#">Trang chủ</a></li>
-            <li class="navli-icon top-setting">
+            <li>
+              <div class="btn-group top-setting-button">
+                <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                  <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu">
+                  <li><a href="#">Trang quản lý</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Shop Market Online</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Đăng xuất</a></li>
+                </ul>
+              </div>
+            </li>
+            <!--<li class="navli-icon top-setting">
               <a href="#">
                 <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
               </a>
-            </li>
+            </li>-->
           </ul>
         </div><!-- /.nav-collapse -->
       </div>
