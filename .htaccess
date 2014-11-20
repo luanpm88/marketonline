@@ -7,6 +7,7 @@ Options +Indexes
 RewriteEngine On
 
 RewriteRule ^privacy$ policy.html [L]
+RewriteRule ^modern_demo/?$ index.php?do=studypost&action=modern_demo [L]
 RewriteRule ^thuong-hieu/?(sinh-vien)?/?$ index.php?do=company&student=$1 [L]
 RewriteRule ^thuong-hieu/hinh-anh-video/?(sinh-vien)?/?$ index.php?do=album&student=$1 [L]
 RewriteRule ^thuong-hieu/cua-hang/?(sinh-vien)?/?$ index.php?do=company&membergroup_id=1&student=$1 [L]
