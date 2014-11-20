@@ -14,19 +14,27 @@
     background: #3b984c;
 }
 .top-search-form {
-    width: 30%;
+    width: 36%;
 }
 .top-search-form .form-group {
     width: 100%;
 }
-#top-search-input {
+.top-search-form .input-group {
     width: 100%;
-    border: 0;
+}
+#top-search-input {
+    border: 0 none;
+    float: left;
     height: 32px;
+    width: 74%;
+}
+.top-search-form .input-group-btn {
+    float: left
 }
 .top-search-form .dropdown-toggle {
     border: 0;
 }
+
 .page {
     padding-top: 70px;
     background: #e8e8e8;
@@ -282,7 +290,8 @@ p.controls {
     font-size: 18px;
 }
 .navbar-inverse .navbar-nav > li.login-info > a {
-
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .login-info img {
     float: left;
@@ -290,4 +299,13 @@ p.controls {
     width: 30px;
     border: solid 1px rgba(255,255,255,0.6);
     margin-right: 7px;
+}
+.top-search-type ul.dropdown-menu li a span {
+    font-size: 18px;
+}
+.top-search-type button {
+    font-size: 18px;
+    padding-bottom: 1px;
+    padding-top: 5px;
+    height: 32px;
 }

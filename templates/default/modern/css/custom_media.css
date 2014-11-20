@@ -12,4 +12,19 @@
     .album-main-image {
       position: inherit;
     }
+    .top-search-form {
+      width: 50%;
+    }
+    #top-search-input {
+      width: 76%;
+    }
+}
+@media (max-width:767px){
+  .top-search-form {
+    width: 100%;
+  }
+  #top-search-input {
+    width: 78%;
+    margin-left: 44px;
+  }
 }
