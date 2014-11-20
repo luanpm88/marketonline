@@ -360,14 +360,14 @@ p.controls {
 .current-top-menu {
     padding: 1px;
 }
-.current-top-menu .img_product_icon {
+.current-top-menu .img_icon_sm {
     width: 33px;
 }
 .top-main-cats .dropdown-menu li a {
     padding-left: 8px;
 }
 .top-main-cats button.dropdown-toggle {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.6);
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
 }
 .top-main-cats:hover button.dropdown-toggle {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 1);
@@ -404,6 +404,21 @@ p.controls {
 .top-setting-button.open .dropdown-toggle span {
     color: #333;
 }
-.dropdown-menu {
-    border-radius: 0;
+.navbar-fixed-top {
+    border-width: 0;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse .navbar-toggle {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.navbar-inverse .navbar-nav li.top-chat-menu a span {
+    font-size: 22px;
+}
+.navbar-inverse .navbar-nav li.top-chat-menu a {
+    padding: 13px 10px 14px;
+}
+.list-group-item .controls {
+    margin-top: 5px;
 }
