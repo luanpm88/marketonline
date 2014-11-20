@@ -14,10 +14,10 @@
     display: none;
   }
   .top-search-form {
-    width: 36%;
+    width: 35%;
   }
   #top-search-input {
-    width: 82%;
+    width: 81%;
   }
 }
 @media (min-width: 1200px) {

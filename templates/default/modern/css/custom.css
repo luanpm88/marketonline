@@ -422,3 +422,6 @@ p.controls {
 .list-group-item .controls {
     margin-top: 5px;
 }
+.navbar-fixed-top .navbar-header {
+    min-width: 108px;
+}
