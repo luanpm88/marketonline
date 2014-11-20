@@ -61,20 +61,8 @@
     width: 74%;
     margin-left: 49px;
   }  
-  /*.second-top-bar {
-      margin-left: 110px;
-      margin-top: 5px;
-      position: absolute;
-      top: 0;
-      display: block;
+  .second-top-bar {
+      display: inline-block
   }
-  .second-top-bar > li {
-    display: block;
-    float: left;
-    margin-right: 0;
-    position: relative;
-  }
-  .navbar-inverse .second-top-bar li.navli-icon a {
-    padding: 10px 10px 13px;
-  }*/
+  
 }

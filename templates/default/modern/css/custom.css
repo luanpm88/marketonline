@@ -327,8 +327,9 @@ p.controls {
     height: 33px;
 }
 .top-main-cats {
-    margin-top: 7px;
+    float: left;
     margin-right: 10px;
+    margin-top: 7px;
 }
 .top-main-cats button {
     border: 0 none;
@@ -369,7 +370,7 @@ p.controls {
 .top-main-cats button.dropdown-toggle {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
 }
-.top-main-cats:hover button.dropdown-toggle {
+.top-main-cats button.dropdown-toggle:hover {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 1);
 }
 .top-setting-button {
@@ -424,4 +425,28 @@ p.controls {
 }
 .navbar-fixed-top .navbar-header {
     min-width: 108px;
+}
+.second-top-bar ul {
+}
+.second-top-bar {
+    float: right;
+    height: 45px;
+    margin-right: 40px;
+    width: auto;
+    display: none;
+}
+.second-top-bar li {
+    float: left;
+}
+.second-top-bar li a {
+    
+}
+.second-top-bar li a span {
+    
+}
+.second-top-bar li a {
+    padding-top: 7px !important;
+}
+.second-top-bar .login-name {
+    display: none;
 }

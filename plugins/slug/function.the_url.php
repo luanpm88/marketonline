@@ -15,8 +15,11 @@ function smarty_function_the_url($params){
 			case 'login':
 				if ($rewrite_able) {
 					$return = URL."dang-nhap";
-				}else{
-					$return = URL."logging.php";
+					if($redirect) {
+						$return = URL."logging.php?redirect=".$redirect;
+					}
+				}else {
+					$return = URL."logging.php?redirect=".$redirect;
 				}
 				break;
 			case 'product_main':
