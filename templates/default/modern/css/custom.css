@@ -14,10 +14,10 @@
     background: #3b984c;
 }
 .navbar-inverse .navbar-brand img {
-    border: 1px solid rgba(255,255,255,0.8);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     margin-left: -5px;
-    margin-top: -10px;
-    width: 40px;
+    margin-top: -8px;
+    width: 35px;
 }
 .top-search-form {
     width: 36%;
