@@ -483,6 +483,7 @@ p.controls {
     border: 0 none;
     border-radius: 0 0 4px 4px;
     min-height: 40px;
+    border-top: solid 1px #ddd;
 }
 .main-menu .navbar-nav > li > a {
     padding-bottom: 10px;
