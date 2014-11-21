@@ -396,7 +396,8 @@ p.controls {
     color: rgba(255, 255, 255, 1);
 }
 .navbar-inverse .navbar-brand img {
-    border-color: rgba(255, 255, 255, 0.6);
+    background-color: #fff;
+    border-color: #fff;
 }
 .navbar-inverse .navbar-brand img:hover {
     border-color: rgba(255, 255, 255, 1);
