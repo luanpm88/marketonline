@@ -370,12 +370,13 @@ p.controls {
     padding-left: 8px;
 }
 .top-main-cats button.dropdown-toggle {
-    background: #3b984c;
-    border: 1px solid rgba(255, 255, 255, 0.85);
+    background: none repeat scroll 0 0 #3b984c;
+    border: 1px solid #f8f8f8;
     color: rgba(255, 255, 255, 0.85);
     height: 35px;
-    width: 36px;
+    margin-left: 0 !important;
     padding: 6px 0 !important;
+    width: 36px;
 }
 .top-main-cats button.dropdown-toggle:hover {
     border: 1px solid rgba(255, 255, 255, 1);
