@@ -373,6 +373,7 @@ p.controls {
     color: rgba(255, 255, 255, 0.85);
     height: 35px;
     width: 36px;
+    padding: 6px 0 !important;
 }
 .top-main-cats button.dropdown-toggle:hover {
     border: 1px solid rgba(255, 255, 255, 1);
