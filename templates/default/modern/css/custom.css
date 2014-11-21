@@ -359,7 +359,7 @@ p.controls {
     background: #83d328;
 }
 .current-top-menu {
-    padding: 1px;
+    padding: 0;
 }
 .current-top-menu .img_icon_sm {
     width: 33px;
@@ -368,10 +368,15 @@ p.controls {
     padding-left: 8px;
 }
 .top-main-cats button.dropdown-toggle {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.8);
+    background: #3b984c;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.85);
+    height: 35px;
+    width: 36px;
 }
 .top-main-cats button.dropdown-toggle:hover {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);
 }
 .top-setting-button {
     margin-right: 9px;
@@ -461,4 +466,11 @@ p.controls {
 }
 .navbar-left li:first-child a {
     padding-right: 0;
+}
+.top-logo {
+    margin-right: 10px;
+}
+.top-menu-icon-button {
+    font-size: 24px;
+    margin-top: -3px;
 }
