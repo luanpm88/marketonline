@@ -57,8 +57,10 @@
     background: #e8e8e8;
 }
 .profile-picture {
+    border-radius: 0;
     float: left;
     margin-right: 15px;
+    padding: 0;
     width: 115px;
 }
 .profile-box {
