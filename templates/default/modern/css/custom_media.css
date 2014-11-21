@@ -28,7 +28,7 @@
     display: inline;
   }
   .top-search-form {
-    width: 35%;
+    width: 39%;
   }
   #top-search-input {
     width: 84%;
@@ -64,5 +64,13 @@
   .second-top-bar {
       display: inline-block
   }
-  
+  .mobile-hide {
+    display: none !important;
+  }
+  .mobile-top-menu {
+    display: block;
+  }
+  .top-logo {
+    display: none;
+  }
 }

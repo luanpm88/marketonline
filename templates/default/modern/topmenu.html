@@ -1,16 +1,21 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
+          <div class="mobile-top-menu">
+            <a class="navbar-brand mobile-logo" href="{the_url module=root-url}">
+              <img alt="50x50" src="{the_url module=root-url}images/LOGO_35.png" />
+            </a>
+          </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{the_url module=root-url}">
+          <a class="navbar-brand top-logo" href="{the_url module=root-url}">
             <img alt="50x50" src="{the_url module=root-url}images/LOGO_35.png" />
           </a>
-          <div class="btn-group top-main-cats">
+          <!--<div class="btn-group top-main-cats">
             <button class="btn btn-default current-top-menu" type="button">
               <img class="img_icon_sm img_study_icon" src="{the_url module=root-url}templates/default/image/job_bg.png" />
             </button>
@@ -52,7 +57,7 @@
               
             </ul>
             
-          </div>
+          </div>-->
           
           
           <div class="second-top-bar">
@@ -63,12 +68,7 @@
                       <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
                     </a>
                   </li>
-                  <li class="login-info">
-                    <a href="#">
-                      <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
-                      <span class="login-name">Shop Market Online</span>
-                    </a>
-                  </li>
+                  
                   <li class="navli-icon">
                     <a href="#">
                       <span aria-hidden="true" class="glyphicon glyphicon-signal"></span>
@@ -84,6 +84,13 @@
                       <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>
                     </a>
                   </li>
+                  <li class="login-info">
+                    <a href="#">
+                      <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
+                      <span class="login-name">Shop Market Online</span>
+                    </a>
+                  </li>
+                  <li><a href="#">Trang chủ</a></li>
                   
               <!--{else}-->
           
@@ -153,12 +160,7 @@
                     <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
                   </a>
                 </li>
-                <li class="login-info mobile-hide">
-                  <a href="#">
-                    <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
-                    <span class="login-name">Shop Market Online</span>
-                  </a>
-                </li>
+                
                 <li class="navli-icon mobile-hide">
                   <a href="#">
                     <span aria-hidden="true" class="glyphicon glyphicon-signal"></span>
@@ -174,7 +176,13 @@
                     <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>
                   </a>
                 </li>
-                <li><a href="#">Trang chủ</a></li>
+                <li class="login-info mobile-hide">
+                  <a href="#">
+                    <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
+                    <span class="login-name">Shop Market Online</span>
+                  </a>
+                </li>
+                <li class="mobile-hide"><a href="#">Trang chủ</a></li>
                 <li>
                   <div class="btn-group top-setting-button">
                     <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">

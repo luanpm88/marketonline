@@ -424,16 +424,16 @@ p.controls {
     margin-top: 5px;
 }
 .navbar-fixed-top .navbar-header {
-    min-width: 108px;
 }
 .second-top-bar ul {
+    float: right;
 }
 .second-top-bar {
+    display: none;
     float: right;
     height: 45px;
     margin-right: 40px;
-    width: auto;
-    display: none;
+    width: 65%;
 }
 .second-top-bar li {
     float: left;
@@ -449,4 +449,10 @@ p.controls {
 }
 .second-top-bar .login-name {
     display: none;
+}
+.mobile-top-menu {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    display: none;
+    height: 49px;
+    width: 100%;
 }
