@@ -482,6 +482,7 @@ p.controls {
 .main-menu {
     border: 0 none;
     border-radius: 0 0 4px 4px;
+    min-height: 40px;
 }
 .main-menu .navbar-nav > li > a {
     padding-bottom: 10px;
