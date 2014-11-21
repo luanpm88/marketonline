@@ -476,3 +476,14 @@ p.controls {
     font-size: 24px;
     margin-top: -3px;
 }
+.top-info {
+    margin-bottom: 0;
+}
+.main-menu {
+    border: 0 none;
+    border-radius: 0 0 4px 4px;
+}
+.main-menu .navbar-nav > li > a {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
