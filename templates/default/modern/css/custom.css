@@ -456,3 +456,9 @@ p.controls {
     height: 49px;
     width: 100%;
 }
+.navbar-inverse .navbar-nav li.top-cart a span {
+    font-size: 20px;
+}
+.navbar-left li:first-child a {
+    padding-right: 0;
+}
