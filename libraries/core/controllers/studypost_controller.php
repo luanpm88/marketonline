@@ -1429,5 +1429,9 @@ class Studypost extends PbController {
 	function modern_demo() {
 		$this->render("modern/index");
 	}
+	
+	function modern_demo_group() {
+		$this->render("modern/group");
+	}
 }
 ?>
