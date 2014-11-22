@@ -527,3 +527,22 @@ p.controls {
 .navbar-fixed-top {
     min-width: 340px;
 }
+.info-left-logo-box {
+    float: right;
+    width: 53%;
+}
+.info-left-logo-box {
+    
+}
+.info-left-logo-box ul {
+    
+}
+.info-left-logo-box ul li {
+    height: 39px;
+    padding: 8px 15px;
+}
+.group_controls {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
