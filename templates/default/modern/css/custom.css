@@ -537,7 +537,7 @@ p.controls {
 .info-left-logo-box ul {
     
 }
-.info-left-logo-box ul li {
+.logo50 .list-group li {
     height: 39px;
     padding: 8px 15px;
 }
@@ -545,4 +545,7 @@ p.controls {
     float: left;
     width: 100%;
     margin-bottom: 20px;
+}
+.logo50 img {
+    margin-right: 10px;
 }
