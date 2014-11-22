@@ -609,3 +609,20 @@ p.controls {
 .school_banner img {
     width: 100%;
 }
+.school-info-box {
+    
+}
+.school-info-box .logo {
+    
+}
+.school-info-box .logo img {
+    width: 100px;
+}
+.school-logo-box {
+    padding: 0 0 15px 0;
+    text-align: center;
+}
+.school-logo-box img {
+    width: 180px;
+    float: none;
+}
