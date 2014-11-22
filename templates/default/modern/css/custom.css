@@ -601,3 +601,11 @@ p.controls {
 .banner-group-info p {
     margin: 0;
 }
+.school_banner {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+.school_banner img {
+    width: 100%;
+}

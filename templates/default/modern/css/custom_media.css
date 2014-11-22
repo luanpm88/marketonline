@@ -52,6 +52,9 @@
   .album-main-image img {
     position: inherit;
   }
+  .page {
+    padding-top: 120px;
+  }
 }
 @media (max-width:767px){
   .top-search-form {
@@ -83,8 +86,6 @@
     margin-right: 0;
     margin-top: 8px;
   }
-  .page {
-    padding-top: 120px;
-  }
+  
   
 }
