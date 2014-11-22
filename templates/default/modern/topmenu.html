@@ -5,6 +5,79 @@
             <a class="navbar-brand mobile-logo" href="{the_url module=root-url}">
               <img alt="50x50" src="{the_url module=root-url}images/LOGO_35_trans.png" />
             </a>
+            <div class="btn-group top-main-cats">
+              <button class="btn btn-default current-top-menu" type="button">
+                
+              </button>
+              <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                <span aria-hidden="true" class="glyphicon glyphicons show_lines top-menu-icon-button"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul role="menu" class="dropdown-menu">
+                <li>
+                  <a href="#">
+                    <img class="img_icon img_product_icon" src="{the_url module=root-url}templates/default/image/product_bg.png" />
+                    Sản phẩm
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="img_icon img_service_icon" src="{the_url module=root-url}templates/default/image/service_bg.png" />
+                    Dịch vụ
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="img_icon img_trade_icon" src="{the_url module=root-url}templates/default/image/trade_bg.png" />
+                    Thương mại
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="img_icon img_company_icon" src="{the_url module=root-url}templates/default/image/brand_bg.png" />
+                    Thương hiệu
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <img class="img_icon img_study_icon" src="{the_url module=root-url}templates/default/image/job_bg.png" />
+                    Học và Làm
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </div>
+            
+            <form class="navbar-left top-search-form" role="search">
+              <div class="form-group">
+                <!--<input id="top-search-input" style="" type="text" class="form-control" placeholder="Tên Gian hàng/Công ty/Chủ nhân/Email/...">-->
+                  <div class="input-group">
+                    <div class="input-group-btn top-search-type">
+                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <span aria-hidden="true" class="glyphicon glyphicons shop"></span>
+                        <span class="caret"></span></button>
+                      <ul class="dropdown-menu" role="menu">
+                        <li>
+                          <a href="#">
+                            <span aria-hidden="true" class="glyphicon glyphicons shop"></span>
+                            Tìm kiếm gian hàng
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#">
+                            <span aria-hidden="true" class="glyphicon glyphicons fins"></span>
+                            Tìm kiếm sản phẩm
+                          </a>
+                        </li>                      
+                      </ul>
+                    </div><!-- /btn-group -->
+                    <input id="top-search-input" placeholder="Tên Gian hàng/Công ty/Chủ nhân/Email/..." type="text" class="form-control">
+                  </div><!-- /input-group -->
+              </div>
+              <!--<button type="submit" class="btn btn-default">Submit</button>-->
+            </form>
+            
           </div>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -12,10 +85,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand top-logo" href="{the_url module=root-url}">
+          <a class="navbar-brand top-logo mobile-hide" href="{the_url module=root-url}">
             <img alt="50x50" src="{the_url module=root-url}images/LOGO_35_trans.png" />
           </a>
-          <div class="btn-group top-main-cats">
+          <div class="btn-group top-main-cats mobile-hide">
             <button class="btn btn-default current-top-menu" type="button">
               
             </button>
@@ -61,14 +134,35 @@
           
           
           <div class="second-top-bar">
+            
+            
+            
+            
+            
+            <!--{if $pb_username!=""}-->
+            
+                    <div class="btn-group top-setting-button">
+                      <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
+                        <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
+                      </button>
+                      <ul role="menu" class="dropdown-menu">
+                        <li><a href="#">Trang quản lý</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Shop Market Online</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Đăng xuất</a></li>
+                      </ul>
+                    </div>
+            
+            <!--{/if}-->
+            
             <ul class="nav navbar-nav navbar-right">
               <!--{if $pb_username!=""}-->
                   <li class="navli-icon top-cart">
                     <a href="#">
-                      <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
+                      <span aria-hidden="true" class="glyphicon glyphicons shopping_cart"></span>
                     </a>
-                  </li>
-                  
+                  </li>                  
                   <li class="navli-icon">
                     <a href="#">
                       <span aria-hidden="true" class="glyphicon glyphicon-signal"></span>
@@ -114,6 +208,7 @@
               <!--{/if}-->
               
             </ul>
+            
         </div>
           
         </div>
@@ -139,7 +234,7 @@
                       </li>
                       <li>
                         <a href="#">
-                          <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
+                          <span aria-hidden="true" class="glyphicon glyphicons fins"></span>
                           Tìm kiếm sản phẩm
                         </a>
                       </li>                      
@@ -157,7 +252,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="navli-icon top-cart mobile-hide">
                   <a href="#">
-                    <span aria-hidden="true" class="glyphicon glyphicon-shopping-cart"></span>
+                    <span aria-hidden="true" class="glyphicon glyphicons shopping_cart"></span>
                   </a>
                 </li>
                 

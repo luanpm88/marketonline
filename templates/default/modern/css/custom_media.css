@@ -55,10 +55,11 @@
 }
 @media (max-width:767px){
   .top-search-form {
-    width: 100%;
+    width: 70%;
+    min-width: 284px;
   }
   #top-search-input {
-    width: 74%;
+    width: 81%;
     margin-left: 49px;
   }  
   .second-top-bar {
@@ -70,7 +71,19 @@
   .mobile-top-menu {
     display: block;
   }
-  .top-logo {
+  .navbar-fixed-top .dropdown-menu a {
+    padding-right: 20px;
+  }
+  .navbar-inverse .navbar-toggle {
     display: none;
+  }
+  .top-setting-button {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+    margin-top: 8px;
+  }
+  .page {
+    padding-top: 120px;
   }
 }
