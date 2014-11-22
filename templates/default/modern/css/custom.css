@@ -549,3 +549,53 @@ p.controls {
 .logo50 img {
     margin-right: 10px;
 }
+.banner-group-info {
+    position: absolute;
+    bottom: 0;
+    position: 
+}
+.album-main-image {
+    float: right;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.album-main-image img {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    width: 100%;
+}
+.profile-banner-col {
+    height: 100%;
+    padding: 0;
+    position: static;
+}
+.banner-group-info {
+    bottom: 0;
+    height: 100%;
+    position: absolute;
+}
+.top-info {
+    position: relative;
+}
+.banner-group-info {
+    bottom: 0;
+    color: #fff;
+    height: auto;
+    padding: 15px;
+    position: absolute;
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+.banner-group-info h2 {
+    margin: 0 0 5px;
+    text-transform: uppercase;
+}
+.banner-group-info h3 {
+    margin: 0 0 5px;
+    text-transform: uppercase;
+}
+.banner-group-info p {
+    margin: 0;
+}

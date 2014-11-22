@@ -49,9 +49,9 @@
   }
 }
 @media (max-width:991px){
-  .album-main-image {
+  .album-main-image img {
     position: inherit;
-  }    
+  }
 }
 @media (max-width:767px){
   .top-search-form {
@@ -86,4 +86,5 @@
   .page {
     padding-top: 120px;
   }
+  
 }
