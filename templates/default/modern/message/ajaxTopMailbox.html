@@ -1,0 +1,41 @@
+        <ul>
+	    {if !$Items}
+                <li style="text-align: center">Hiện chưa có thông tin nào</li>
+            {/if}
+            <!--{loop $Items item level key}-->
+                <li {if !$item.status}class="unread"{/if}>
+		    {if $item.logo_link}
+			<a href="{$item.logo_link}">
+			    <img src="{$item.company_logo}" />
+			</a>
+		    {else}
+			<img src="{$item.company_logo}" />
+		    {/if}
+                    <p class="content">{$item.content}</p>
+                    <p class="timeinbox mic-info">{$item.created}</p>
+                </li>
+		<li {if !$item.status}class="unread"{/if}>
+		    {if $item.logo_link}
+			<a href="{$item.logo_link}">
+			    <img src="{$item.company_logo}" />
+			</a>
+		    {else}
+			<img src="{$item.company_logo}" />
+		    {/if}
+                    <p class="content">{$item.content}</p>
+                    <p class="timeinbox mic-info">{$item.created}</p>
+                </li>
+		<li {if !$item.status}class="unread"{/if}>
+		    {if $item.logo_link}
+			<a href="{$item.logo_link}">
+			    <img src="{$item.company_logo}" />
+			</a>
+		    {else}
+			<img src="{$item.company_logo}" />
+		    {/if}
+                    <p class="content">{$item.content}</p>
+                    <p class="timeinbox mic-info">{$item.created}</p>
+                </li>
+            <!--{/loop}-->
+	</ul>
+

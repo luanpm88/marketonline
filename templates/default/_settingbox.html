@@ -12,7 +12,7 @@
                         {/if}
                     {/if}
 
-		    <!--{loop $pb_userinfo.other_types typeitem typeitem_0 typeitemkey0}-->
+		    {loop $pb_userinfo.other_types typeitem typeitem_0 typeitemkey0}
 			{if $typeitem.membertype_id == 6}
                             <li {if $pb_userinfo.current_type == $typeitem.membertype_id}class="active"{/if}>                                
                                 <a href="{the_url module=studypost action=school change_current_type=`$typeitem.membertype_id`}">
@@ -20,11 +20,9 @@
                                 </a>
                             </li>
                         {/if}
-		    <!--{/loop}-->
+		    {/loop}
 		    
-		    		    
 		    {if $pb_userinfo.current_type == 6}
-			<!--<li class="sline">.</li>-->
 			<li>
 			    <a href="{the_url module=studypost}">Diễn đàn Dạy và Học</a>
 			</li>

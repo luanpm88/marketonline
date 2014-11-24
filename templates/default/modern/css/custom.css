@@ -54,7 +54,7 @@
 }
 .page {
     padding-top: 70px;
-    background: #e8e8e8;
+    background: #d9e7dd; /*#e8e8e8;*/
 }
 .profile-picture {
     border-radius: 0;
@@ -299,16 +299,16 @@ p.controls {
     font-size: 85%;
     margin-top: 2px;
 }
-.navbar-inverse .navbar-nav li.navli-icon a {
+.navbar-inverse li.navli-icon a.main-but {
     padding-top: 14px;
     padding-bottom: 13px;
     padding-left: 10px;
     padding-right: 10px;
 }
-.navbar-inverse .navbar-nav li.navli-icon a span {
+.navbar-inverse li.navli-icon a.main-but span {
     font-size: 18px;
 }
-.navbar-inverse .navbar-nav > li.login-info > a {
+.navbar-inverse > li.login-info > a {
     padding-left: 10px;
     padding-right: 0;
 }
@@ -428,10 +428,10 @@ p.controls {
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
     background-color: rgba(255, 255, 255, 0.3);
 }
-.navbar-inverse .navbar-nav li.top-chat-menu a span {
+.navbar-inverse .navbar-nav li.top-chat-menu a.main-but span {
     font-size: 22px;
 }
-.navbar-inverse .navbar-nav li.top-chat-menu a {
+.navbar-inverse .navbar-nav li.top-chat-menu a.main-but {
     padding: 13px 10px 14px;
 }
 .list-group-item .controls {
@@ -451,14 +451,11 @@ p.controls {
 .second-top-bar li {
     float: left;
 }
-.second-top-bar li a {
-    
+.second-top-bar li a.main-but {
+    padding-top: 15px;
 }
 .second-top-bar li a span {
     
-}
-.second-top-bar li a {
-    padding-top: 7px !important;
 }
 .second-top-bar .login-name {
     display: none;
@@ -469,11 +466,10 @@ p.controls {
     height: 50px;
     width: 100%;
 }
-.navbar-inverse .navbar-nav li.top-cart a span {
+.navbar-inverse li.top-cart a.main-but span {
     font-size: 24px;
 }
 .navbar-left li:first-child a {
-    padding-right: 0;
 }
 .top-logo {
     margin-right: 10px;
@@ -501,14 +497,14 @@ p.controls {
 .top-search-type .glyphicon {
     padding-right: 2px;
 }
-.navbar-inverse .navbar-nav li.top-cart a {
+.navbar-inverse li.top-cart a.main-but {
     padding: 13px 10px 13px;
 }
 .second-top-bar {
     margin-right: 10px;
     height: 49px;
 }
-.navbar-inverse .navbar-nav li.top-cart a {
+.navbar-inverse li.top-cart a.main-but {
     margin-top: -3px;
 }
 .top-logo {
@@ -625,4 +621,60 @@ p.controls {
 .school-logo-box img {
     width: 180px;
     float: none;
+}
+button.nobutton {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 18px;
+    padding: 14px 10px 10px;
+    border-radius: 0;
+}
+button.nobutton:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    color: rgba(255, 255, 255, 1);
+}
+.second-top-bar .navbar-right {
+    margin-top: 0;
+}
+.second-top-bar li a.main-but {
+    color: rgba(255, 255, 255, 0.85);
+}
+.second-top-bar li a.main-but:hover {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 1);
+}
+.top_mailbox_content {
+    min-width: 250px;
+}
+.top_mailbox_content ul {
+    padding: 0;
+}
+.navbar-fixed-top .top_mailbox_content ul li {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    min-height: 60px;
+    padding: 10px 15px;
+}
+.navbar-fixed-top .top_mailbox_content ul li:last-child {
+    border-bottom: 0;
+}
+.navbar-fixed-top .top_mailbox_content ul li a {
+    padding: 0;
+}
+.navbar-fixed-top .top_mailbox_content ul li img {
+    float: left;
+    height: 40px;
+    margin-right: 7px;
+    width: 40px;
+}
+.navbar-fixed-top .top_mailbox_content ul li p {
+    margin: 0;
+}
+.top_mailbox_content .mic-info {
+    color: #888;
+    font-size: 85%;
+    margin-bottom: 5px;
+    text-align: right;
 }

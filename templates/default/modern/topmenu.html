@@ -5,49 +5,8 @@
             <a class="navbar-brand mobile-logo" href="{the_url module=root-url}">
               <img alt="50x50" src="{the_url module=root-url}images/LOGO_35_trans.png" />
             </a>
-            <div class="btn-group top-main-cats">
-              <button class="btn btn-default current-top-menu" type="button">
-                
-              </button>
-              <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-                <span aria-hidden="true" class="glyphicon glyphicons show_lines top-menu-icon-button"></span>
-                <span class="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul role="menu" class="dropdown-menu">
-                <li>
-                  <a href="#">
-                    <img class="img_icon img_product_icon" src="{the_url module=root-url}templates/default/image/product_bg.png" />
-                    Sản phẩm
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img class="img_icon img_service_icon" src="{the_url module=root-url}templates/default/image/service_bg.png" />
-                    Dịch vụ
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img class="img_icon img_trade_icon" src="{the_url module=root-url}templates/default/image/trade_bg.png" />
-                    Thương mại
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img class="img_icon img_company_icon" src="{the_url module=root-url}templates/default/image/brand_bg.png" />
-                    Thương hiệu
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img class="img_icon img_study_icon" src="{the_url module=root-url}templates/default/image/job_bg.png" />
-                    Học và Làm
-                  </a>
-                </li>
-                
-              </ul>
-              
-            </div>
+            
+            <!--{include file="`$theme_name`/modern/_top_main_cats_menu.html"}-->
             
             <form class="navbar-left top-search-form" role="search">
               <div class="form-group">
@@ -88,120 +47,59 @@
           <a class="navbar-brand top-logo mobile-hide" href="{the_url module=root-url}">
             <img alt="50x50" src="{the_url module=root-url}images/LOGO_35_trans.png" />
           </a>
-          <div class="btn-group top-main-cats mobile-hide">
-            <button class="btn btn-default current-top-menu" type="button">
-              
-            </button>
-            <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-              <span aria-hidden="true" class="glyphicon glyphicons show_lines top-menu-icon-button"></span>
-              <span class="sr-only">Toggle Dropdown</span>
-            </button>
-            <ul role="menu" class="dropdown-menu">
-              <li>
-                <a href="#">
-                  <img class="img_icon img_product_icon" src="{the_url module=root-url}templates/default/image/product_bg.png" />
-                  Sản phẩm
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img class="img_icon img_service_icon" src="{the_url module=root-url}templates/default/image/service_bg.png" />
-                  Dịch vụ
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img class="img_icon img_trade_icon" src="{the_url module=root-url}templates/default/image/trade_bg.png" />
-                  Thương mại
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img class="img_icon img_company_icon" src="{the_url module=root-url}templates/default/image/brand_bg.png" />
-                  Thương hiệu
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <img class="img_icon img_study_icon" src="{the_url module=root-url}templates/default/image/job_bg.png" />
-                  Học và Làm
-                </a>
-              </li>
-              
-            </ul>
-            
-          </div>
+          
+          <!--{include file="`$theme_name`/modern/_top_main_cats_menu.html" class=" mobile-hide"}-->
           
           
           <div class="second-top-bar">
             
+            <!--{include file="`$theme_name`/modern/_top_setting_menu.html"}-->
             
             
-            
-            
-            <!--{if $pb_username!=""}-->
-            
-                    <div class="btn-group top-setting-button">
-                      <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-                        <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
-                      </button>
-                      <ul role="menu" class="dropdown-menu">
-                        <li><a href="#">Trang quản lý</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Shop Market Online</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">Đăng xuất</a></li>
-                      </ul>
-                    </div>
-            
-            <!--{/if}-->
-            
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-right">
+                
               <!--{if $pb_username!=""}-->
                   <li class="navli-icon top-cart">
-                    <a href="#">
-                      <span aria-hidden="true" class="glyphicon glyphicons shopping_cart"></span>
+                    <a class="main-but" href="#">
+                        <span aria-hidden="true" class="glyphicon glyphicons shopping_cart"></span>
                     </a>
                   </li>                  
                   <li class="navli-icon">
-                    <a href="#">
+                    <a class="main-but" href="#">
                       <span aria-hidden="true" class="glyphicon glyphicon-signal"></span>
                     </a>
                   </li>
                   <li class="navli-icon top-chat-menu">
-                    <a href="#">
+                    <a class="main-but" href="#">
                       <span aria-hidden="true" class="glyphicon glyphicons conversation"></span>
                     </a>
                   </li>
                   <li class="navli-icon">
-                    <a href="#">
-                      <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>
-                    </a>
+                    <!--{include file="`$theme_name`/modern/_top_mailbox.html"}-->
                   </li>
                   <li class="login-info">
-                    <a href="#">
-                      <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
-                      <span class="login-name">Shop Market Online</span>
-                    </a>
+                    <!--{include file="`$theme_name`/modern/_top_page_link.html"}-->  
                   </li>
-                  <li><a href="#">Trang chủ</a></li>
+                  <li>
+                    <!--{include file="`$theme_name`/modern/_top_home_link.html"}-->
+                  </li>
                   
               <!--{else}-->
           
-                    <li class="navli-icon top-cart">
-                      <a href="{the_url module=login redirect=`$current_address_encoded`}">
+                    <li class="navli-icon">
+                      <a class="main-but" href="{the_url module=login redirect=`$current_address_encoded`}">
                         Đăng nhập
                       </a>
                     </li>
-                    <li class="navli-icon top-cart">
+                    <li class="navli-icon">
                       {if $smarty.get.do == "employee"}
-                          <a href="{the_url module=register typename=Employee}">{lang register_now}</a>	    
+                          <a class="main-but" href="{the_url module=register typename=Employee}">{lang register_now}</a>	    
                       {elseif $smarty.get.do == "job"}
-                          <a href="{the_url module=register typename=Employer}">{lang register_now}</a>	    
+                          <a class="main-but" href="{the_url module=register typename=Employer}">{lang register_now}</a>	    
                       {elseif $smarty.get.do == "studypost"}
-                          <a href="{the_url module=register typename=Learner}">{lang register_now}</a>
+                          <a class="main-but" href="{the_url module=register typename=Learner}">{lang register_now}</a>
                       {else}
-                          <a href="{the_url module=register}">{lang register_now}</a>
+                          <a class="main-but" href="{the_url module=register}">{lang register_now}</a>
                       {/if}
                     </li>
               
@@ -214,8 +112,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li class=""><a href="#">Liên hệ</a></li>
-            <li><a href="#about">Trợ giúp</a></li>
+            <li class=""><a href="{the_url module=root-url}lien-he">Liên hệ / Trợ giúp</a></li>
           </ul>
           <form class="navbar-form navbar-left top-search-form" role="search">
             <div class="form-group">
@@ -249,74 +146,56 @@
           
           <!--{if $pb_username!=""}-->
 
-              <ul class="nav navbar-nav navbar-right">
+              <ul class="nav navbar-nav navbar-right">                
                 <li class="navli-icon top-cart mobile-hide">
-                  <a href="#">
+                  <a class="main-but" href="#">
                     <span aria-hidden="true" class="glyphicon glyphicons shopping_cart"></span>
                   </a>
                 </li>
                 
                 <li class="navli-icon mobile-hide">
-                  <a href="#">
+                  <a class="main-but" href="#">
                     <span aria-hidden="true" class="glyphicon glyphicon-signal"></span>
                   </a>
                 </li>
                 <li class="navli-icon mobile-hide top-chat-menu">
-                  <a href="#">
+                  <a class="main-but" href="#">
                     <span aria-hidden="true" class="glyphicon glyphicons conversation"></span>
                   </a>
                 </li>
-                <li class="navli-icon mobile-hide">
-                  <a href="#">
-                    <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>
-                  </a>
+                <li class="navli-icon mobile-hide">                  
+                    <!--{include file="`$theme_name`/modern/_top_mailbox.html"}-->
                 </li>
                 <li class="login-info mobile-hide">
-                  <a href="#">
-                    <img alt="50x50" src="http://marketonline.vn/attachment/2014/02/12/company-logo-479.jpg.small.jpg" />
-                    <span class="login-name">Shop Market Online</span>
-                  </a>
+                    <!--{include file="`$theme_name`/modern/_top_page_link.html"}-->                               
                 </li>
-                <li class="mobile-hide"><a href="#">Trang chủ</a></li>
-                <li>
-                  <div class="btn-group top-setting-button">
-                    <button aria-expanded="false" data-toggle="dropdown" class="btn btn-default dropdown-toggle" type="button">
-                      <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
-                    </button>
-                    <ul role="menu" class="dropdown-menu">
-                      <li><a href="#">Trang quản lý</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Shop Market Online</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#">Đăng xuất</a></li>
-                    </ul>
-                  </div>
+                <li class="mobile-hide">
+                    <!--{include file="`$theme_name`/modern/_top_home_link.html"}-->                                    
                 </li>
-                <!--<li class="navli-icon top-setting">
-                  <a href="#">
-                    <span aria-hidden="true" class="glyphicon glyphicon-cog"></span>
-                  </a>
-                </li>-->
+                <li>                  
+                  <!--{include file="`$theme_name`/modern/_top_setting_menu.html"}-->                  
+                </li>
+
               </ul>
           
           <!--{else}-->
           
           
             <ul class="nav navbar-nav navbar-right">
-                <li class="navli-icon top-cart">
-                  <a href="{the_url module=login redirect=`$current_address_encoded`}">
+                <li class="navli-icon">
+                  <a class="main-but" href="{the_url module=login redirect=`$current_address_encoded`}">
                     Đăng nhập
                   </a>
                 </li>
-                <li class="navli-icon top-cart">
+                <li class="navli-icon">
                   {if $smarty.get.do == "employee"}
-                      <a href="{the_url module=register typename=Employee}">{lang register_now}</a>	    
+                      <a class="main-but" href="{the_url module=register typename=Employee}">{lang register_now}</a>	    
                   {elseif $smarty.get.do == "job"}
-                      <a href="{the_url module=register typename=Employer}">{lang register_now}</a>	    
+                      <a class="main-but" href="{the_url module=register typename=Employer}">{lang register_now}</a>	    
                   {elseif $smarty.get.do == "studypost"}
-                      <a href="{the_url module=register typename=Learner}">{lang register_now}</a>
+                      <a class="main-but" href="{the_url module=register typename=Learner}">{lang register_now}</a>
                   {else}
-                      <a href="{the_url module=register}">{lang register_now}</a>
+                      <a class="main-but" href="{the_url module=register}">{lang register_now}</a>
                   {/if}
                 </li>
             </ul>

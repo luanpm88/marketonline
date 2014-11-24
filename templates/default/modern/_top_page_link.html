@@ -1,0 +1,15 @@
+                {if $pb_userinfo.current_type == 6}
+                    <a class="main-but" href="{the_url module=studypost action=memberpage id=`$pb_userinfo.id` title=`$pb_userinfo.fullname`}">
+                        <img alt="50x50" src="{if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" />
+                        <span class="login-name">
+                          {if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
+                        </span>
+                    </a>
+                  {else}
+                    <a class="main-but" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
+                        <img alt="50x50" src="{if $pb_company}{the_url module=root-url}{$pb_company.image}{else} {if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" />
+                        <span class="login-name">
+                          {if $pb_company}{$pb_company.shop_name}{else}{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}{/if}
+                        </span>
+                    </a>
+                  {/if}     

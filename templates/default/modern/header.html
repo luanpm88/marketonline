@@ -24,40 +24,60 @@
     
     {literal}
     <script type="text/javascript">
-      $(document).ready(function() {
-        tinymce.init({
-          selector: "#main-editor",
-          language: "vi_VN",
-          
-          menubar: "",
-          plugins: [
-              "image,table,wordcount"
-          ],
-          toolbar: "table image | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
-
-
-
-          content_css: "{/literal}{the_url module=root-url}{$theme_img_path}{literal}modern/bootstrap/css/bootstrap.min.css,{/literal}{the_url module=root-url}{$theme_img_path}{literal}modern/css/custom_editor.css",
-          relative_urls : false,
-          remove_script_host : false,
-          convert_urls : true,
-          setup: function(editor) {           
-            editor.on('focus', function(e) {
-              var editor_box = $('#main-editor').parents('.main-text-editor');
-              editor_box.removeClass('hide-control');
+        var ROOT_URL = '{/literal}{the_url module=root-url}{literal}';
+        
+        var getInbox_xhr;
+        function ajaxTopMailbox() {
+            if(getInbox_xhr && getInbox_xhr.readystate != 4){
+                    getInbox_xhr.abort();
+            }
+            //code
+            getInbox_xhr = $.ajax({
+                    url: ROOT_URL+"index.php?do=message&action=ajaxTopMailbox",
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                        $(".top_mailbox_content").html(data);
+                    }
             });
-            editor.on('blur', function(e) {
-              var editor_box = $('#main-editor').parents('.main-text-editor');
-              editor_box.addClass('hide-control');
-              if(tinyMCE.get('main-editor').getContent() != "") {
-                editor_box.find('.placeholder').hide();
-              } else {
-                editor_box.find('.placeholder').show();
+        }
+        
+        $(document).ready(function() {
+            tinymce.init({
+              selector: "#main-editor",
+              language: "vi_VN",
+              
+              menubar: "",
+              plugins: [
+                  "image,table,wordcount"
+              ],
+              toolbar: "table image | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
+    
+    
+    
+              content_css: "{/literal}{the_url module=root-url}{$theme_img_path}{literal}modern/bootstrap/css/bootstrap.min.css,{/literal}{the_url module=root-url}{$theme_img_path}{literal}modern/css/custom_editor.css",
+              relative_urls : false,
+              remove_script_host : false,
+              convert_urls : true,
+              setup: function(editor) {           
+                editor.on('focus', function(e) {
+                  var editor_box = $('#main-editor').parents('.main-text-editor');
+                  editor_box.removeClass('hide-control');
+                });
+                editor.on('blur', function(e) {
+                  var editor_box = $('#main-editor').parents('.main-text-editor');
+                  editor_box.addClass('hide-control');
+                  if(tinyMCE.get('main-editor').getContent() != "") {
+                    editor_box.find('.placeholder').hide();
+                  } else {
+                    editor_box.find('.placeholder').show();
+                  }
+                });
+                
               }
-            });
-            
-          }
         });
+        
+        
+        
       });
     </script>
     {/literal}

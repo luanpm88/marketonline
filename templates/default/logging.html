@@ -57,7 +57,7 @@ label.error {
         <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
             <input type="hidden" name="action" value="logging">
 	    <input type="hidden" name="type" value="{$Type}">
-	    <!--<input type="hidden" name="redirect" value="{$smarty.get.redirect}">-->
+	    <input type="hidden" name="redirect" value="{$smarty.get.redirect}">
 		
 	    <!-- {formhash} -->
 	    <input type="hidden" name="forward" value="{$_G.forward}" />

@@ -84,7 +84,7 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 				else $goto_page = $viewhelper->office_dir."/personal.php";
 			}	
 			
-			if(isset($_POST["redirect"]))
+			if(!empty($_POST["redirect"]))
 			{
 				pheader('location: '.urldecode($_POST["redirect"]));
 			}
