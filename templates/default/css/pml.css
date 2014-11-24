@@ -10433,7 +10433,7 @@ input[name=redirect]
     line-height: 21px;
 }
 .super-main-category .show-but.current-but {
-    background: url("../image/product_bg.png") repeat scroll -7px -9px / 54px auto rgba(108, 190, 66, 0.95);
+    background: url("../image/product_bg.png") repeat scroll -7px -9px / 54px auto #1acfac;
     height: 39px;
     width: 39px;
 }
@@ -10449,7 +10449,7 @@ input[name=redirect]
     width: 39px;
 }
 .super-main-category .show-but.current-but.product {
-    background: url("../image/product_bg.png") repeat scroll -7px -9px / 54px auto rgba(108, 190, 66, 0.95);
+    background: url("../image/product_bg.png") repeat scroll -7px -9px / 54px auto #1acfac;
 }
 .super-main-category.mainproductpage .main-items-header .itemmain {
     display: none !important;
@@ -10458,7 +10458,7 @@ input[name=redirect]
     margin-top: 84px;
 }
 .super-main-category.mainproductpage.product .current-but {
-    background: url("../image/product_bg.png") repeat scroll -7px -10px / 54px auto rgba(108, 190, 66, 0.95);
+    background: url("../image/product_bg.png") repeat scroll -7px -10px / 54px auto #1acfac;
     height: 39px;
     width: 39px;
 }
