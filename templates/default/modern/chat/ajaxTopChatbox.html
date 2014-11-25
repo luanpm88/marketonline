@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+	    <h3 class="panel-title">Tin nhắn</h3>                  
+	</div>
+	<div class="panel-body">
+	    <ul>
+		{if !$Items}
+		    <li class="noitem" style="text-align: center">
+			Hiện chưa có thông tin nào
+		    </li>
+		{/if}
+		<!--{loop $Items item level key}-->
+		    <li class="item" {if !$item.status}class="unread"{/if}>
+			<img src="{$item.company_logo}" />
+			<p class="title"><strong>{$item.name}</strong></p>
+			<p class="content chat-line">{$item.content}</p>
+			<p class="timeinbox mic-info">{$item.created}</p>
+		    </li>		    
+		<!--{/loop}-->
+	    </ul>
+	</div>
+	<div class="panel-footer">
+	    <a class="" href="{the_url module=root-url}virtual-office/pms.php">Xem thêm</a>                  
+	</div>
+    </div>
+
+
