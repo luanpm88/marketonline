@@ -42,7 +42,8 @@ if (!empty($_GET['do'])) {
 		"employee",
 		"studypost",
 		"album",
-		"area"
+		"area",
+		"chatc"
 	);
 	if(in_array($do, $secure_c) && file_exists($c_file)){
 		include_once($c_file);

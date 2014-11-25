@@ -24,6 +24,7 @@
 }
 .top-search-form {
     width: 36%;
+    float: left;
 }
 .top-search-form .form-group {
     width: 100%;
@@ -54,7 +55,7 @@
 }
 .page {
     padding-top: 70px;
-    background: #e6f0e9; /*#e8e8e8;*/
+    background: #d7e3da; /*#e8e8e8;*/
 }
 .profile-picture {
     border-radius: 0;
@@ -428,10 +429,10 @@ p.controls {
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
     background-color: rgba(255, 255, 255, 0.3);
 }
-.navbar-inverse .navbar-nav li.top-chat-menu a.main-but span {
+.navbar-inverse li.top-chat-menu a.main-but span {
     font-size: 22px;
 }
-.navbar-inverse .navbar-nav li.top-chat-menu a.main-but {
+.navbar-inverse li.top-chat-menu a.main-but {
     padding: 13px 10px 14px;
 }
 .list-group-item .controls {
@@ -439,7 +440,7 @@ p.controls {
 }
 .navbar-fixed-top .navbar-header {
 }
-.second-top-bar ul {
+.second-top-bar ul.nav {
     float: right;
 }
 .second-top-bar {
@@ -491,7 +492,7 @@ p.controls {
     padding-bottom: 10px;
     padding-top: 10px;
 }
-.navbar-fixed-top .dropdown-menu a {
+.navbar-fixed-top .dropdown-menu li a {
     padding-right: 40px;
 }
 .top-search-type .glyphicon {
@@ -527,11 +528,9 @@ p.controls {
     float: right;
     width: 53%;
 }
-.info-left-logo-box {
-    
+.info-left-logo-box {    
 }
-.info-left-logo-box ul {
-    
+.info-left-logo-box ul {    
 }
 .logo50 .list-group li {
     height: 39px;
@@ -605,11 +604,9 @@ p.controls {
 .school_banner img {
     width: 100%;
 }
-.school-info-box {
-    
+.school-info-box {    
 }
-.school-info-box .logo {
-    
+.school-info-box .logo {    
 }
 .school-info-box .logo img {
     width: 100px;
@@ -645,36 +642,77 @@ button.nobutton:hover {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     color: rgba(255, 255, 255, 1);
 }
-.top_mailbox_content {
-    min-width: 250px;
+.navbar-fixed-top .toogle_list_box {
+    min-width: 350px;
 }
-.top_mailbox_content ul {
+.navbar-fixed-top .toogle_list_box ul {
     padding: 0;
 }
-.navbar-fixed-top .top_mailbox_content ul li {
+.navbar-fixed-top .toogle_list_box ul li {
     border-bottom: 1px solid #ddd;
     display: block;
     min-height: 60px;
+    padding: 10px 15px 23px;
+    position: relative;
+}
+.navbar-fixed-top .toogle_list_box ul li.noitem {
+    min-height: inherit;
     padding: 10px 15px;
 }
-.navbar-fixed-top .top_mailbox_content ul li:last-child {
+.navbar-fixed-top .toogle_list_box ul li.loading {
+    border: solid 1px #ddd;
+}
+.navbar-fixed-top .toogle_list_box ul li:last-child {
     border-bottom: 0;
 }
-.navbar-fixed-top .top_mailbox_content ul li a {
+.navbar-fixed-top .toogle_list_box ul li:hover {
+    background-color: #f8f8f8;
+}
+.navbar-fixed-top .toogle_list_box ul li a {
     padding: 0;
 }
-.navbar-fixed-top .top_mailbox_content ul li img {
+.navbar-fixed-top .toogle_list_box ul li img {
     float: left;
     height: 40px;
     margin-right: 7px;
     width: 40px;
 }
-.navbar-fixed-top .top_mailbox_content ul li p {
+.navbar-fixed-top .toogle_list_box ul li p {
     margin: 0;
 }
-.top_mailbox_content .mic-info {
-    color: #888;
+.navbar-fixed-top .toogle_list_box .mic-info {
+    color: #aaa;
     font-size: 85%;
-    margin-bottom: 5px;
+    position: absolute;
+    bottom: 3px;
+    right: 10px;
+}
+.toogle_list_box {
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 0;
+}
+.navbar-fixed-top .toogle_list_box .panel {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.navbar-fixed-top .toogle_list_box .panel-body {
+    padding: 0 0 0 0;
+}
+.navbar-fixed-top .toogle_list_box .panel-footer {
     text-align: right;
+}
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+.top-search-form .form-group {
+    margin-bottom: 0;
+}
+.navbar-fixed-top .nav > li.login-info > a {
+    padding-right: 0;
+}
+.top-chatbox button.nobutton {
+    font-size: 22px;
+    padding-bottom: 5px;
 }

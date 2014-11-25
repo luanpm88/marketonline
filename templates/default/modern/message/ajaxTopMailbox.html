@@ -1,41 +1,32 @@
-        <ul>
-	    {if !$Items}
-                <li style="text-align: center">Hiện chưa có thông tin nào</li>
-            {/if}
-            <!--{loop $Items item level key}-->
-                <li {if !$item.status}class="unread"{/if}>
-		    {if $item.logo_link}
-			<a href="{$item.logo_link}">
+    <div class="panel panel-default">
+	<div class="panel-heading">
+	    <h3 class="panel-title">Hộp thư</h3>                  
+	</div>
+	<div class="panel-body">
+	    <ul>
+		{if !$Items}
+		    <li class="noitem" style="text-align: center">
+			Hiện chưa có thông tin nào
+		    </li>
+		{/if}
+		<!--{loop $Items item level key}-->
+		    <li class="item" {if !$item.status}class="unread"{/if}>
+			{if $item.logo_link}
+			    <a href="{$item.logo_link}">
+				<img src="{$item.company_logo}" />
+			    </a>
+			{else}
 			    <img src="{$item.company_logo}" />
-			</a>
-		    {else}
-			<img src="{$item.company_logo}" />
-		    {/if}
-                    <p class="content">{$item.content}</p>
-                    <p class="timeinbox mic-info">{$item.created}</p>
-                </li>
-		<li {if !$item.status}class="unread"{/if}>
-		    {if $item.logo_link}
-			<a href="{$item.logo_link}">
-			    <img src="{$item.company_logo}" />
-			</a>
-		    {else}
-			<img src="{$item.company_logo}" />
-		    {/if}
-                    <p class="content">{$item.content}</p>
-                    <p class="timeinbox mic-info">{$item.created}</p>
-                </li>
-		<li {if !$item.status}class="unread"{/if}>
-		    {if $item.logo_link}
-			<a href="{$item.logo_link}">
-			    <img src="{$item.company_logo}" />
-			</a>
-		    {else}
-			<img src="{$item.company_logo}" />
-		    {/if}
-                    <p class="content">{$item.content}</p>
-                    <p class="timeinbox mic-info">{$item.created}</p>
-                </li>
-            <!--{/loop}-->
-	</ul>
+			{/if}
+			<p class="content">{$item.content}</p>
+			<p class="timeinbox mic-info">{$item.created}</p>
+		    </li>		    
+		<!--{/loop}-->
+	    </ul>
+	</div>
+	<div class="panel-footer">
+	    <a class="" href="{the_url module=root-url}virtual-office/pms.php">Xem thêm</a>                  
+	</div>
+    </div>
+	
 

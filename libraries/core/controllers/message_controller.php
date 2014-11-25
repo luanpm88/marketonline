@@ -2,6 +2,8 @@
 class Message extends PbController {
 	var $name = "Message";
 	
+	var $MESSAGE_ANNOUNCE_COUNT = 20;
+	
 	function Message()
 	{
 		$this->loadModel("product");
@@ -25,8 +27,7 @@ class Message extends PbController {
 		$this->loadModel("modlog");
 		$this->loadModel("attachment");
 		$this->loadModel("album");
-	}
-	
+	}	
 	function add()
 	{
 		global $pb_user, $smarty, $administrator_id;
@@ -50,8 +51,7 @@ class Message extends PbController {
 				$smarty->flash('feedback_already_submit', null, 0);
 			}
 		}
-	}
-	
+	}	
 	function ajaxTopMailbox()
 	{
 		uses("message");

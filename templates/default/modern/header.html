@@ -26,17 +26,32 @@
     <script type="text/javascript">
         var ROOT_URL = '{/literal}{the_url module=root-url}{literal}';
         
-        var getInbox_xhr;
+        var ajaxTopMailbox_xhr;
         function ajaxTopMailbox() {
-            if(getInbox_xhr && getInbox_xhr.readystate != 4){
-                    getInbox_xhr.abort();
+            if(ajaxTopMailbox_xhr && ajaxTopMailbox_xhr.readystate != 4){
+                    ajaxTopMailbox_xhr.abort();
             }
             //code
-            getInbox_xhr = $.ajax({
+            ajaxTopMailbox_xhr = $.ajax({
                     url: ROOT_URL+"index.php?do=message&action=ajaxTopMailbox",
             }).done(function ( data ) {
                     if( console && console.log ) {
                         $(".top_mailbox_content").html(data);
+                    }
+            });
+        }
+        
+        var ajaxTopChatbox_xhr;
+        function ajaxTopChatbox() {
+            if(ajaxTopChatbox_xhr && ajaxTopChatbox_xhr.readystate != 4){
+                    ajaxTopChatbox_xhr.abort();
+            }
+            //code
+            ajaxTopChatbox_xhr = $.ajax({
+                    url: ROOT_URL+"index.php?do=chatc&action=ajaxTopChatbox",
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                        $(".top_chatbox_content").html(data);
                     }
             });
         }
@@ -73,7 +88,8 @@
                   }
                 });
                 
-              }
+            }
+            
         });
         
         
