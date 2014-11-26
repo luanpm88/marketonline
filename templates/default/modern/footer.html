@@ -1,8 +1,19 @@
-
+    
+    <div id="chat-frame"></div>
+    <div style="display:none">
+        <iframe name="uploadChatImage_frame" id="uploadChatImage_frame" style="display: none"></iframe>
+            <form target="uploadChatImage_frame" name="productaddfrm" id="uploadChatImage" method="post" action="{$WebRootUrl}index.php?do=product&action=uploadChatImage" enctype="multipart/form-data">
+              <!-- {formhash} -->
+              <input type="hidden" name="chatbox_id" value="" />
+              <p><input accept="image/*" type="file" name="uploadChatImage" id="uploadChatImage_but" onchange="$('#uploadChatImage').submit()" /></p>
+    
+            </form>
+    </div>
+    
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
     <script src="{the_url module=root-url}{$theme_img_path}modern/bootstrap/js/bootstrap.min.js"></script>
     
     {literal}
@@ -11,6 +22,23 @@
                 //AUO SCRIPTS
                 //Load Top Mailbox
                 ajaxTopMailbox();
+                //Load Top Chat
+                ajaxTopChatbox();
+                
+                //chatboxs
+		{/literal}
+		    {if $pb_username!=""}
+                        {literal}
+                            setInterval(function(){ updateChatboxNew(); }, 15000);
+                        {/literal}
+                        
+                        {loop $chatboxsnew item level key}
+                            {if $item != ''}
+                                getChatboxNew("{$item}", true);
+                            {/if}
+                        {/loop}
+		    {/if}
+		{literal}
             });
         </script>
     {/literal}

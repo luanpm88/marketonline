@@ -10,18 +10,18 @@
 		    </li>
 		{/if}
 		<!--{loop $Items item level key}-->
-		    <li class="item" {if !$item.status}class="unread"{/if}>
+		    <li onclick="getChatboxNew('{$item.chatid}x{$item.membertype_id}', false);" class="item" {if !$item.status}class="unread"{/if}>
 			<img src="{$item.company_logo}" />
 			<p class="title"><strong>{$item.name}</strong></p>
-			<p class="content chat-line">{$item.content}</p>
+			<p class="content chat-line">{$item.content|truncate:42}</p>
 			<p class="timeinbox mic-info">{$item.created}</p>
 		    </li>		    
 		<!--{/loop}-->
 	    </ul>
 	</div>
-	<div class="panel-footer">
+	<!--<div class="panel-footer">
 	    <a class="" href="{the_url module=root-url}virtual-office/pms.php">Xem thêm</a>                  
-	</div>
+	</div>-->
     </div>
 
 
