@@ -1069,6 +1069,7 @@ button.nobutton:hover {
 .top-search-result-box .list-group li img {
     width: 60px;
     height: 60px;
+    overflow: hidden;
 }
 .top-search-result-box .list-group li a {
     color: #333;
