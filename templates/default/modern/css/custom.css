@@ -1067,9 +1067,10 @@ button.nobutton:hover {
     background-color: #f8f8f8;
 }
 .top-search-result-box .list-group li img {
-    width: 60px;
+    color: rgba(0, 0, 0, 0);
     height: 60px;
     overflow: hidden;
+    width: 60px;
 }
 .top-search-result-box .list-group li a {
     color: #333;
