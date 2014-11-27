@@ -19,45 +19,50 @@
     {literal}
         <script type="text/javascript">        
             $(document).ready(function() {
-                //AUO SCRIPTS
-                //Load Top Mailbox
-                ajaxTopMailbox();
-                //Load Top Chat
-                ajaxTopChatbox();
                 
-                //chatboxs
-		{/literal}
-		    {if $pb_username!=""}
-                        {literal}
-                            setInterval(function(){ updateChatboxNew(); }, 15000);
-                        {/literal}
-                        
-                        {loop $chatboxsnew item level key}
-                            {if $item != ''}
-                                getChatboxNew("{$item}", true);
-                            {/if}
-                        {/loop}
-		    {/if}
-		{literal}
+                {/literal}{if $pb_userinfo}{literal}
                 
-                
-                //COMPANY CLICK COUNT
-                {/literal}
-                    {if $pb_company.id}
-                        getTopCompanyStatistic('{$pb_company.id}');
-                    {/if}
-                {literal}
-                
-                $('.top_statistic').click(function() {
+                    //AUO SCRIPTS
+                    //Load Top Mailbox
+                    ajaxTopMailbox();
+                    //Load Top Chat
+                    ajaxTopChatbox();
+                    
+                    //chatboxs
                     {/literal}
-                        {if $pb_company.id}
-                            refreshTopCompanyStatistic('{$pb_company.id}');
+                        {if $pb_username!=""}
+                            {literal}
+                                setInterval(function(){ updateChatboxNew(); }, 15000);
+                            {/literal}
+                            
+                            {loop $chatboxsnew item level key}
+                                {if $item != ''}
+                                    getChatboxNew("{$item}", true);
+                                {/if}
+                            {/loop}
                         {/if}
                     {literal}
-                });
-                
-                //GET TOP CART
-                getTopCart();
+                    
+                    
+                    //COMPANY CLICK COUNT
+                    {/literal}
+                        {if $pb_company.id}
+                            getTopCompanyStatistic('{$pb_company.id}');
+                        {/if}
+                    {literal}
+                    
+                    $('.top_statistic').click(function() {
+                        {/literal}
+                            {if $pb_company.id}
+                                refreshTopCompanyStatistic('{$pb_company.id}');
+                            {/if}
+                        {literal}
+                    });
+                    
+                    //GET TOP CART
+                    getTopCart();
+                    
+                {/literal}{/if}{literal}
             });
         </script>
     {/literal}
