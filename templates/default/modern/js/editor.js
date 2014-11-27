@@ -60,7 +60,7 @@
                 });
               
                 //WHEN HIDE CONTROLS AND PLACEHOLDER FOR MAIN FORM
-                $("body").on("click", "body", function (e)
+                $("body").on("click", ".page", function (e)
                 {
                     if (!main_editor_form.is(e.target) // if the target of the click isn't the container...
                         && main_editor_form.has(e.target).length === 0) // ... nor a descendant of the container
