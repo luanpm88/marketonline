@@ -62,13 +62,16 @@
                 //WHEN HIDE CONTROLS AND PLACEHOLDER FOR MAIN FORM
                 $(document).mouseup(function (e)
                 {
-                    if (!$('.mce-resizehandle').is(e.target) && $('.mce-resizehandle').has(e.target).length === 0
-                        && !main_editor_box.is(e.target) // if the target of the click isn't the container...
+                    if (!main_editor_box.is(e.target) // if the target of the click isn't the container...
                         && main_editor_box.has(e.target).length === 0) // ... nor a descendant of the container
                     {                        
                         //TOGGLE PLACEHOLDER
                         hideMainEditor();
                     }
+                });
+                
+                $('.mce-resizehandle').mouseup(function() {
+                    main_editor_box.removeClass('hide-control');
                 });
               
           }
