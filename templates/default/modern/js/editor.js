@@ -62,7 +62,7 @@
                 //WHEN HIDE CONTROLS AND PLACEHOLDER FOR MAIN FORM
                 $(document).mouseup(function (e)
                 {
-                    if (!main_editor_box.find('.mce-i-resize').is(e.target)
+                    if (!main_editor_box.find('.mce-flow-layout-item').is(e.target)
                         && !main_editor_box.is(e.target) // if the target of the click isn't the container...
                         && main_editor_box.has(e.target).length === 0) // ... nor a descendant of the container
                     {                        
