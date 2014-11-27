@@ -36,6 +36,9 @@
                 editor.on('focus', function(e) {
                     main_editor_box.removeClass('hide-control');
                 });
+                editor.on('click', function(e) {
+                    main_editor_box.removeClass('hide-control');
+                });
                 //UPDATE TEXTAREA REAL TIME
                 editor.on('keyup', function(e) {
                     main_textarea.val(tinyMCE.get(main_editor).getContent());
