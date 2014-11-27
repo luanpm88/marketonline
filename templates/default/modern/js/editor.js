@@ -43,20 +43,17 @@
                 editor.on('keyup', function(e) {
                     main_textarea.val(tinyMCE.get(main_editor).getContent());
                     
-                    if (checkInputLength(tinyMCE.get(main_editor).getContent())) {
-                        main_editor_box.find('.send-button').addClass("btn-primary");
-                    } else {
-                        main_editor_box.find('.send-button').removeClass("btn-primary");
-                    }
+                    checkMainEditorInputLength();
                 });
                 editor.on('click', function(e) {
                     main_textarea.val(tinyMCE.get(main_editor).getContent());
                     
-                    if (checkInputLength(tinyMCE.get(main_editor).getContent())) {
-                        main_editor_box.find('.send-button').addClass("btn-primary");
-                    } else {
-                        main_editor_box.find('.send-button').removeClass("btn-primary");
-                    }
+                    checkMainEditorInputLength();
+                });
+                $('#'+main_editor+'_ifr').on('click', function(e) {
+                    main_textarea.val(tinyMCE.get(main_editor).getContent());
+                    
+                    checkMainEditorInputLength();
                 });
               
                 //WHEN HIDE CONTROLS AND PLACEHOLDER FOR MAIN FORM
@@ -100,11 +97,18 @@
         
     }
     
-    function checkInputLength(value) {
+    function checkMainEditorInputLength() {
         var ok = true;
-
+        var value = tinyMCE.get(main_editor).getContent();
+        
         if (value.replace(/<\/?[^>]+(>|$)/g, "").trim().split(" ").length < 10) {
             ok = false;
+        }
+        
+        if (ok) {
+            main_editor_box.find('.send-button').addClass("btn-primary");
+        } else {
+            main_editor_box.find('.send-button').removeClass("btn-primary");
         }
         
         return ok;
