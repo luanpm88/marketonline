@@ -242,7 +242,8 @@
         });
             
             
-        //TOP SEARCH ACTIONS
+        //--------------TOP SEARCH ACTIONS------------------------//
+        
         $('.top-search-form .dropdown-menu li').click(function() {
             $('.top-search-type').removeClass("shop","fins");
             $('.top-search-type').addClass($(this).attr("icon-rel"));
@@ -250,8 +251,7 @@
             $('.top-search-input').attr("placeholder",$(this).attr("holder-rel"));
             
             goSearch();
-        });
-            
+        });            
         $('.top-search-input').on("keyup", function(event){
             $('.top-search-input').val($(this).val());
             goSearch();
@@ -262,7 +262,8 @@
         $('.page').on("click", function(event){
             $('.top-search-result-box').hide();
         });
-                
+        
+        ///////////////////////////////////////////////////////////
             
             
             
