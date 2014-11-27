@@ -196,7 +196,7 @@ p.controls {
 }
 .main-text-editor i.mce-i-resize {
     color: #333;
-    margin-top: 54px;
+    margin-top: 0;
 }
 .main-text-editor .mce-wordcount {
     left: 0;
