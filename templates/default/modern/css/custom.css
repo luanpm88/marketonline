@@ -573,6 +573,14 @@ p.controls {
     position: absolute;
 }
 .top-info {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd;
+    border-image: none;
+    border-style: solid;
+    border-width: 1px 1px 0;
     position: relative;
 }
 .banner-group-info {
