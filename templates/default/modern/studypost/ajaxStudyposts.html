@@ -1,0 +1,63 @@
+<!--{if $List}-->
+    <!--{loop $List item level_0 key}-->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="panel panel-default post-box post-box-{$item.id}">
+                <div class="panel-heading">                  
+                  <div class="media post-item">
+                    <p class="sub-info-meta">
+                      <span aria-hidden="true" class="glyphicon glyphicon-calendar"></span>
+                      {$item.date}</p>
+                    <a href="#" class="media-left">
+                      <img src="{$item.member.photo}" class="avatar">
+                    </a>
+                    <div class="media-body">
+                      <h4 class="media-heading">{$item.member.first_name} {$item.member.last_name}</h4>
+                      <a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
+                      <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>
+                      
+                      <!--<div class="controls">
+                        <a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
+                        <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>
+                      </div>-->
+                      
+                    </div>
+                  </div>
+                    {if $item.member.id == $pb_userinfo.id}
+                        <div class="action">
+                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </button>
+                            <!--<button type="button" class="btn btn-success btn-xs" title="Approved">
+                                <span class="glyphicon glyphicon-ok"></span>
+                            </button>-->
+                            <button onclick="if(confirm('Bạn có chắc muốn xóa bài viết này?')) delStudypost({$item.id});" type="button" class="btn btn-danger btn-xs" title="Delete">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                        </div>
+                    {/if}
+                </div>
+                <div class="panel-body">
+                  
+                  {$item.content}
+                       
+                </div>
+                
+                <div class="panel-footer widget">
+                  
+                    
+                </div>
+              </div>
+            
+            
+            
+            
+    <!--{/loop}-->
+<!--{/if}-->

@@ -28,11 +28,62 @@
     
     <script type="text/javascript" src="{the_url module=root-url}{$theme_img_path}modern/js/jquery.cookie.js"></script>
     
+    <script type="text/javascript" src="{the_url module=root-url}{$theme_img_path}modern/js/jquery.form.js"></script>
+    
+    <script type="text/javascript" src="{the_url module=root-url}{$theme_img_path}modern/js/editor.js"></script>
+    
     {literal}
     <script type="text/javascript">
-        var ROOT_URL = '{/literal}{the_url module=root-url}{literal}';
-        var ichatbox = new Array();        
+        var ROOT_URL = '{/literal}{the_url module=root-url}{literal}';                
         var on_page = 1;
+        
+        function delStudypost(id) {
+            ajaxSearch_xhr = $.ajax({
+                url: ROOT_URL+"index.php?do=studypost&action=delete&id="+id
+	    }).done(function ( data ) {
+                if (data == "ok") {
+                    $(".post-box-"+id).fadeOut();
+                }
+                getStudyposts();
+            });
+        }
+        
+        
+        
+        var studyposts_page = 0;
+        var studyposts_scroll = false;
+        var studyposts_end = false;
+        
+            function getStudypostsScroll() {
+                if (studyposts_scroll && !studyposts_end) {
+                    studyposts_scroll = false;
+                    $.ajax({
+                        url: ROOT_URL+"index.php?do=studypost&action=ajaxStudyposts&type=memberpage&id=1249&page="+studyposts_page
+                    }).done(function ( data ) {
+                        $('.list_studypost').append(data);
+                        studyposts_page++;
+                        studyposts_scroll = true;
+                        
+                        if (data.trim() == '') {
+                            studyposts_end = true;
+                        }
+                    });
+                }                
+            }
+            function getStudyposts() {
+                studyposts_page = 0;
+                studyposts_scroll = false;
+                studyposts_end = false;
+                
+                $.ajax({
+                    url: ROOT_URL+"index.php?do=studypost&action=ajaxStudyposts&type=memberpage&id=1249&page="+studyposts_page
+                }).done(function ( data ) {
+                    $('.list_studypost').html(data);
+                    studyposts_page++;
+                    studyposts_scroll = true;
+                });
+            }
+        
         
         var keytimeout;
         function goSearch() {
@@ -52,15 +103,15 @@
 	}
         
         //full text search
-        var ajaxSearch_xhr;
-	function fullTextSearch(keyword) {
+        var fullTextSearch_xhr;
+	function fullTextSearch_xhr(keyword) {
             var search_type = $('.top-search-type').attr("rel");
             
-	    if(ajaxSearch_xhr && ajaxSearch_xhr.readystate != 4){
-		ajaxSearch_xhr.abort();
+	    if(fullTextSearch_xhr && fullTextSearch_xhr.readystate != 4){
+		fullTextSearch_xhr.abort();
 	    }
         
-		ajaxSearch_xhr = $.ajax({
+		fullTextSearch_xhr = $.ajax({
 		    url: ROOT_URL+"index.php?do=product&action=ajaxModernSearch&type="+search_type+"&keyword="+encodeURIComponent(keyword)
 		}).done(function ( data ) {
 		    if( console && console.log ) {
@@ -208,43 +259,9 @@
         
         
         
-        
-    
     $(document).ready(function() {
-        tinymce.init({
-            selector: "#main-editor",
-            language: "vi_VN",
-            
-            menubar: "",
-            plugins: [
-                "image,table,wordcount"
-            ],
-            toolbar: "table image | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
-  
-  
-  
-            content_css: "{/literal}{the_url module=root-url}{$theme_img_path}{literal}modern/bootstrap/css/bootstrap.min.css,{/literal}{the_url module=root-url}{$theme_img_path}{literal}modern/css/custom_editor.css",
-            relative_urls : false,
-            remove_script_host : false,
-            convert_urls : true,
-            setup: function(editor) {           
-              editor.on('focus', function(e) {
-                var editor_box = $('#main-editor').parents('.main-text-editor');
-                editor_box.removeClass('hide-control');
-              });
-              editor.on('blur', function(e) {
-                var editor_box = $('#main-editor').parents('.main-text-editor');
-                editor_box.addClass('hide-control');
-                if(tinyMCE.get('main-editor').getContent() != "") {
-                  editor_box.find('.placeholder').hide();
-                } else {
-                  editor_box.find('.placeholder').show();
-                }
-              });
-              
-          }
         
-        });
+        loadMainEditor();
             
             
         //--------------TOP SEARCH ACTIONS------------------------//
@@ -269,16 +286,21 @@
         });
         
         ///////////////////////////////////////////////////////////
-            
-            
-            
-            
-            
-            
         
+            
+        getStudyposts();
         
         
     });
+    
+    var gap_bottom;
+    $(document).scroll(function() {
+        gap_bottom = $('.page').height() - $('.navbar-fixed-top').offset().top;
+        if (gap_bottom < 1000) {
+            getStudypostsScroll();
+        }
+    });
+        
     </script>
     {/literal}
     

@@ -96,7 +96,8 @@ RewriteRule ^(.*)hoc-va-lam/hoc-vien$ index.php?do=studypost&type=learner [L]
 
 RewriteRule ^(.*)hoc-va-lam/truong/([0-9]+)/(.*)$ index.php?do=studypost&action=school&id=$2 [L]
 RewriteRule ^(.*)hoc-va-lam/nhom/([0-9]+)/(.*)$ index.php?do=studypost&action=group&id=$2 [L]
-RewriteRule ^(.*)hoc-va-lam/hoc-vien/([0-9]+)/(.*)$ index.php?do=studypost&action=memberpage&id=$2 [L]
+RewriteRule ^(.*)hoc-va-lam/hoc-vien/([0-9]+)/([\_\-a-zA-Z0-9%]+)$ index.php?do=studypost&action=memberpage&id=$2 [L]
+RewriteRule ^(.*)hoc-va-lam/hoc-vien/([0-9]+)/([\_\-a-zA-Z0-9%]+)/modern$ index.php?do=studypost&action=memberpage&id=$2&modern=1 [L]
 
 RewriteRule ^(.*)jobs$ index.php?do=job [L]
 

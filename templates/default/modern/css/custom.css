@@ -55,7 +55,7 @@
     height: 49px;
 }
 .page {
-    padding-top: 70px;
+    padding-top: 60px;
     background: #edf4ef; /*#e8e8e8;*/
 }
 .profile-picture {
@@ -348,10 +348,10 @@ p.controls {
     width: 50px;
 }
 .img_product_icon {
-    background: rgba(108, 190, 66, 1);
+    background: #1acfac;
 }
 .img_service_icon {
-    background: #ffaa31;
+    background: #ffa544;
 }
 .img_trade_icon {
     background: #57BAE8;
@@ -360,7 +360,7 @@ p.controls {
     background: #fe7477;
 }
 .img_study_icon {
-    background: #83d328;
+    background: #7ad04d;
 }
 .current-top-menu {
     padding: 0;
@@ -1129,4 +1129,12 @@ button.nobutton:hover {
     background: none repeat scroll 0 0 #fafafa;
     color: #333;
     text-decoration: none;
+}
+.list_studypost .post-box .media-left .avatar {
+    width: 50px;
+}
+
+.post-box .panel-heading .action {
+    float: right;
+    margin-top: -22px;
 }

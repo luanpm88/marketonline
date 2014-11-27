@@ -1,4 +1,6 @@
-function insertAtCaret(areaId,text) {
+        var ichatbox = new Array();
+        
+        function insertAtCaret(areaId,text) {
             var txtarea = document.getElementById(areaId);
             var scrollPos = txtarea.scrollTop;
             var strPos = 0;

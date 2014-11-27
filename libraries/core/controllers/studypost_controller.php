@@ -350,6 +350,8 @@ class Studypost extends PbController {
 		{
 			$this->studypostcomment->delAll("studypost_id = ".$item["id"]);
 			$this->studypost->del(intval($item["id"]));
+			
+			echo "ok";
 		}
 	}
 	
@@ -653,8 +655,12 @@ class Studypost extends PbController {
 		setvar("school_list", $school_list);
 		setvar("member", $member);
 		
-		//render("modern/studypost/memberpage");
-		render("studypost/memberpage");
+		if($_GET["modern"]) {
+			render("modern/studypost/memberpage");
+		} else {
+			render("studypost/memberpage");
+		}
+		
 	}
 	
 	function ajaxFollow()
@@ -1437,6 +1443,136 @@ class Studypost extends PbController {
 	
 	function modern_demo_school() {
 		$this->render("modern/school");
+	}
+	
+	function modern_post() {
+		pb_submit_check('data');
+		
+		$pb_userinfo = pb_get_member_info();
+		
+		if($pb_userinfo && $_POST["action"] == "memberpage" && isset($_POST["id"])) {
+			$studypost = $_POST["data"]["studypost"];
+			
+			$studypost["member_id"] = $pb_userinfo["pb_userid"];
+			$studypost["memberpage_id"] = $_POST["id"];
+			$studypost["created"] = date("Y-m-d H:i:s");
+			$studypost["modified"] = date("Y-m-d H:i:s");
+			
+			$is_valid = true;
+			
+			if($is_valid) {
+				$this->studypost->save($studypost);
+				echo "ok";
+			}
+			
+		}
+	}
+	
+	function ajaxStudyposts()
+	{
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById(intval($pb_userinfo["pb_userid"]));
+		
+		$conditions = array();
+		
+		if(isset($_GET["type"]))
+		{
+			if($_GET["type"] == "school")
+			{
+				if(!isset($_GET["id"]))
+				{
+					$_GET["id"] = $user["school_id"];
+				}
+				if($_GET["id"] != $user["school_id"])
+				{
+					//get member ids from school
+					$member_ids = $this->school->getMemberIds($_GET["id"]);
+					//var_dump($member_ids);
+					$conditions[] = "group_id = 0";
+					$conditions[] = "(school_id = ".$_GET["id"]." OR member_id IN (".implode(',',$member_ids)."))";
+					
+					//var_dump($conditions);
+				}
+				else
+				{
+					//get member ids from school
+					$member_ids = $this->school->getMemberIds($_GET["id"]);
+					
+					$friend_ids = $this->member->getFriendIds($user["id"]);
+					if(count($friend_ids))
+					{
+						$cond_friends = " OR member_id IN (".implode(',',$friend_ids).")"
+							." OR member_id IN (".implode(',',$friend_ids).")";
+					}
+					//var_dump($friend_ids);
+					$conditions[] = "group_id = 0";
+					$conditions[] = "(school_id = ".$_GET["id"]
+								.$cond_friends
+								." OR member_id IN (".implode(',',$member_ids).")"
+							.")";
+				}
+			}
+			else if($_GET["type"] == "group" && isset($_GET["id"]))
+			{
+				$conditions[] = "group_id = ".intval($_GET["id"]);
+				$this->studygroup->viewed($item["group_id"], $user["id"]);
+			}
+			else if($_GET["type"] == "memberpage" && isset($_GET["id"]))
+			{
+				$conditions[] = "memberpage_id = ".intval($_GET["id"]);
+			}
+			else
+			{
+				$conditions[] = "FALSE";
+			}
+		}
+		else
+		{
+			$conditions[] = "FALSE";
+		}
+		
+		$load_pos = 0;
+		$load_num = 10;
+		if(isset($_GET["page"]))
+		{
+			$load_pos = $_GET["page"]*$load_num;
+		}
+
+		if(isset($_GET["load_num"]))
+		{
+			$load_num = $_GET["load_num"];
+		}	
+		
+		$studyposts = $this->studypost->findAll("*", null, $conditions, "created DESC limit ".$load_pos.", ".$load_num);
+		
+		
+		foreach($studyposts as $key => $item)
+		{
+			$studyposts[$key]["member"] = $this->member->getInfoById(intval($item["member_id"]));
+			
+			//load comment			
+			$comments = $this->studypostcomment->loadComments($item["id"]);
+			$comments = $comments["comments"];
+			
+			foreach($comments as $vv => $itemvv)
+			{
+				$comments[$vv]["content"] =  str_replace(array("\r\n","\r","\n"), "<br />", $itemvv["content"]);
+			}
+			
+			$studyposts[$key]["comments"] = $comments;
+			$studyposts[$key]["more"] = $comments["more"];
+			
+			//check commented
+			$comment_with_star = $this->studypostcomment->findCommentWithStar($item["id"],$user["id"]);
+			
+			$studyposts[$key]["comment_with_star"] = $comment_with_star;
+			
+			$studyposts[$key]["date"] = date("Y-m-d",strtotime($item["created"])).", lúc ".date("H:i",strtotime($item["created"]))." am";
+		}
+		
+		setvar("List", $studyposts);
+		
+		render("modern/studypost/ajaxStudyposts");
 	}
 }
 ?>

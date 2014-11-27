@@ -1,0 +1,30 @@
+        <form method="post" id="main_editor_form" action="{the_url module=studypost action=modern_post}">
+            <!-- {formhash} -->
+            <input type="hidden" name="do" value="{$smarty.get.do}" />
+            <input type="hidden" name="action" value="{$smarty.get.action}" />
+            
+            <input type="hidden" name="id" value="{$smarty.get.id}" />
+            
+            <div class="panel panel-default main-text-editor hide-control">
+                <div class="panel-heading">
+                  <ul class="nav nav-pills">
+                    <li class="active" role="presentation"><a href="#">Viết bài</a></li>
+                    <li role="presentation"><a href="#">Đăng hình ảnh/video</a></li>
+                    
+                  </ul>
+                </div>
+                <div class="panel-body">
+                  
+                  <div class="text-editor">
+                    <div class="placeholder">Đăng tải thông tin cho trang của bạn...</div>
+                    <textarea name="data[studypost][content]" id="main-editor"></textarea>  
+                  </div>                
+                </div>
+                
+                <div class="panel-footer">
+                  <div class="controls">
+                    <a role="button" class="btn btn-default send-button">Đăng</a>
+                  </div>
+                </div>
+            </div>
+        </form>
