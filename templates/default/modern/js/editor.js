@@ -71,7 +71,7 @@
                 });
                 
                 $('.mce-resizehandle').mouseup(function() {
-                    main_editor_box.removeClass('hide-control');
+                    alert("ddd");
                 });
               
           }
