@@ -40,7 +40,12 @@
                 $('.top-search-result-box .panel-body').html('<div class="no-search-top search-loading">Loading</div>');
                 $('.top-search-result-box').show();
                 
-                fullTextSearch( $('.top-search-input').val() );
+                clearTimeout(keytimeout);
+	    
+                keytimeout = setTimeout(function(){
+                    fullTextSearch( $('.top-search-input').val() );
+                }, 500);
+                
             } else {
                 $('.top-search-result-box').hide();
             }
