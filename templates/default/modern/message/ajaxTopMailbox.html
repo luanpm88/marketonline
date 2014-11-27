@@ -1,6 +1,10 @@
     <div class="panel panel-default">
 	<div class="panel-heading">
-	    <h3 class="panel-title">Hộp thư</h3>                  
+	    <h3 class="panel-title">Hộp thư		
+		{if $Count}
+			<span class="badge pull-right">{$Count}</span>
+		{/if}    
+	    </h3>                  
 	</div>
 	<div class="panel-body">
 	    <ul>
@@ -28,5 +32,12 @@
 	    <a class="" href="{the_url module=root-url}virtual-office/pms.php">Xem thêm</a>                  
 	</div>
     </div>
-	
+    
+    {literal}
+	<script>
+	    {/literal}{if $Count}{literal}
+		$('.top-mailbox-menu .badge_outer .badge').html('{/literal}{$Count}{literal}');
+	    {/literal}{/if}{literal}
+	</script>
+    {/literal}
 

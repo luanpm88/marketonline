@@ -1,0 +1,47 @@
+                        {if $list}
+                            <ul class="list-group">
+                                <!--{loop $list item level key}-->
+                                    {if $item.shop_name}
+                                        <li class="list-group-item">
+                                            <a title="{$item.name}" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+                                                <img alt="{$item.name}" title="{$item.name}" class="img-responsive" src="{$item.thumb}" style="">
+                                                <h4>{$item.name}</h4>
+                                                <p class="more_info">
+                                                    {$item.shop_name}
+                                                </p>
+                                                <p>
+                                                    {if $item.new_price || $item.price}
+                                                        {if $item.new_price != "" && $item.new_price != 0}
+                                                                <span class="price">
+                                                                    
+                                                                    <span class="amount">
+                                                                        {$item.new_price}
+                                                                    </span>
+                                                                    <span class="price_unit">
+                                                                        VNĐ{if $item.price_unit}/{$item.price_unit}{/if}
+                                                                    </span>
+                                                                    {if $item.price}
+                                                                    <!--<span class="old_price">
+                                                                        {$item.price}
+                                                                        <span class="price_unit">
+                                                                            VNĐ{if $item.price_unit}/{$item.price_unit}{/if}
+                                                                        </span>
+                                                                    </span>-->
+                                                                    {/if}
+                                                                </span>
+                                                        {else}
+                                                                <span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+                                                        {/if}
+                                                    {/if}
+                                                </p>
+                                            </a>
+                                        </li>
+                                    {/if}
+                                <!--{/loop}-->
+                            </ul>
+                            <a class="top-search-more" href="{the_url module=root-url}index.php?do=product&level=search&keyword={$smarty.get.keyword}">
+                                Xem thêm...
+                            </a>
+                        {else}
+                            <div class="no-search-top">Không có sản phẩm phù hợp</div>
+                        {/if}

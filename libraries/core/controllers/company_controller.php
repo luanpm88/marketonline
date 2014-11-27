@@ -277,5 +277,36 @@ class Company extends PbController {
 	function updateAllWeeklyPoint() {
 		$this->point->updateAllWeeklyPoint();
 	}
+	
+	function ajaxTopCompanyStatistic()
+	{
+		if(isset($_GET["id"]))
+		{
+			$com = $this->company->read("new_clicked, new_clicked_date", $_GET["id"]);
+			if($com["new_clicked"]) echo '<span class="outcount"><span>'.$com["new_clicked"].'</span></span>';
+			if($com["new_clicked_date"])
+				echo '<div class="clicked_note_box over_air_box">Có <strong>'.$com["new_clicked"].'</strong> lượt khách mới truy cập<br />Từ ngày '.date('d-m-Y', strtotime($com["new_clicked_date"])).' lúc '.date('H:i', strtotime($com["new_clicked_date"])).'</div>';
+			else
+				echo '<div class="clicked_note_box over_air_box">Chưa có thống kê</div>';
+		}
+		else
+		{
+			echo false;
+		}
+	}
+	function refreshTopCompanyStatistic()
+	{
+		//echo intval($_GET["id"]);
+		if(isset($_GET["id"]))
+		{
+			$this->company->saveField("new_clicked", 0, intval($_GET["id"]));
+			$this->company->saveField("new_clicked_date", date('d-m-Y H:i:s'), intval($_GET["id"]));
+			echo '<div class="clicked_note_box over_air_box">Có <strong>0</strong> lượt khách mới truy cập<br />Từ ngày '.date('d-m-Y').' lúc '.date('H:i').'</div>';
+		}
+		else
+		{
+			echo false;
+		}
+	}
 }
 ?>

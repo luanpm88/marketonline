@@ -39,6 +39,25 @@
                         {/loop}
 		    {/if}
 		{literal}
+                
+                
+                //COMPANY CLICK COUNT
+                {/literal}
+                    {if $pb_company.id}
+                        getTopCompanyStatistic('{$pb_company.id}');
+                    {/if}
+                {literal}
+                
+                $('.top_statistic').click(function() {
+                    {/literal}
+                        {if $pb_company.id}
+                            refreshTopCompanyStatistic('{$pb_company.id}');
+                        {/if}
+                    {literal}
+                });
+                
+                //GET TOP CART
+                getTopCart();
             });
         </script>
     {/literal}

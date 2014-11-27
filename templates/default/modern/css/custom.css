@@ -36,7 +36,8 @@
     border: 0 none;
     float: left;
     height: 33px;
-    width: 74%;
+    width: 99%;
+    margin-left: 0;
 }
 .top-search-form .input-group-btn {
     float: left
@@ -320,10 +321,10 @@ p.controls {
     border: solid 1px rgba(255,255,255,0.6);
     margin-right: 0;
 }
-.top-search-type ul.dropdown-menu li a span {
+.top-search-form ul.dropdown-menu li a span {
     font-size: 18px;
 }
-.top-search-type button {
+.top-search-form button {
     font-size: 18px;
     padding-bottom: 1px;
     padding-top: 5px;
@@ -518,7 +519,7 @@ p.controls {
     left: auto;
     right: 0;
 }
-.mobile-top-menu .top-search-form {
+.top-search-form {
     padding-top: 8px;
 }
 .navbar-fixed-top {
@@ -722,7 +723,7 @@ button.nobutton:hover {
 .navbar-fixed-top .btn-group.top-chatbox > button.nobutton {
     font-size: 22px;
     padding-bottom: 5px;
-    padding-top: 6px;
+    padding-top: 7px;
 }
 .toogle_list_box .panel-body {
     max-height: 320px;
@@ -966,4 +967,156 @@ button.nobutton:hover {
 }
 .typing img {
     margin-right: 10px;
+}
+.chat-ava-load {
+    display: block;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-left: -50px;
+    font-size: 20px;
+    padding: 10px;
+    border: solid 1px #ddd;
+    background: #f8f8f8;
+}
+.navli-icon .btn-group .badge_outer {
+    display: block;
+    font-size: 18px;
+    margin-left: 1px;
+    margin-top: -7px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}
+.navli-icon .btn-group .badge {
+    background: #b92c28;
+}
+.navli-icon .btn-group .badge_outer .badge {
+    float: none !important;
+    font-size: 11px;
+    padding: 3px 5px;
+}
+.navbar-fixed-top .toogle_list_box ul li {
+    background-color: #f8f8f8;
+}
+.navbar-fixed-top .toogle_list_box ul li.unread {
+    background-color: #fff;
+}
+.clicked_note_box {
+    padding: 10px 15px;
+}
+.navbar-fixed-top .top_statistic_content {
+    min-width: 0;
+    width: 255px;
+}
+.navbar-fixed-top .top_cart .shopping_cart {
+    font-size: 24px;
+    margin-top: -2px;
+}
+.navli-icon .top_cart .badge_outer {
+    margin-left: -11px;
+}
+.top-search-form .input-group-btn .glyphicon {
+    margin-right: 5px;
+}
+.top-search-form {
+    position: relative;
+    padding-left: 49px;
+}
+.top-search-form .dropdown-toggle {
+    margin-left: -49px;
+}
+.top-search-result-box {
+    margin-left: -49px;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+.top-search-result-box .panel-body {
+    padding: 0;
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: 4px 4px 0 0;
+}
+.top-search-result-box .panel-heading {
+    padding: 5px 10px;
+}
+.top-search-result-box .panel-title {
+    font-size: 14px;
+}
+.top-search-result-box .list-group {
+    margin-bottom: 0;
+}
+.top-search-result-box .list-group li {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color -moz-use-text-color #ddd;
+    border-image: none;
+    border-style: none none dotted;
+    border-width: medium medium 1px;
+    margin: 0;
+    padding: 10px 15px;
+}
+.top-search-result-box .list-group li:last-child {
+    border-bottom: 0;
+}
+.top-search-result-box .list-group li:hover {
+    background-color: #f8f8f8;
+}
+.top-search-result-box .list-group li img {
+    width: 60px;
+}
+.top-search-result-box .list-group li a {
+    color: #333;
+    display: block;
+    height: 60px;
+    overflow: hidden;
+}
+.top-search-result-box .list-group li a:hover {
+    text-decoration: none;
+}
+.top-search-result-box .list-group li p {
+    margin: 0;
+}
+.top-search-result-box .list-group li h4 {
+    font-size: 18px;
+    height: 21px;
+    margin: 0;
+    overflow: hidden;
+}
+.top-search-result-box .list-group li .more_info {
+
+}
+.search-loading {
+    height: 50px;
+    text-indent: -9000px;
+    width: 100%;
+    background: url("../images/ajax-loader.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.no-search-top {
+    padding: 20px;
+    text-align: center;
+}
+.top-search-form .input-group-btn .dropdown-menu {
+    margin-left: -49px;
+}
+.top-search-more {
+    background: none repeat scroll 0 0 #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    bottom: -11px;
+    padding: 5px 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #333;
+    left: 0;
+}
+.top-search-more:hover {
+    background: none repeat scroll 0 0 #fafafa;
+    color: #333;
+    text-decoration: none;
 }

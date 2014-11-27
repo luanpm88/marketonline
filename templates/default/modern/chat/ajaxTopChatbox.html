@@ -1,6 +1,10 @@
 <div class="panel panel-default">
 	<div class="panel-heading">
-	    <h3 class="panel-title">Tin nhắn</h3>                  
+	    <h3 class="panel-title">Tin nhắn
+		{if $Count}
+			<span class="badge pull-right">{$Count}</span>
+		{/if}
+	    </h3>                  
 	</div>
 	<div class="panel-body">
 	    <ul>
@@ -10,7 +14,7 @@
 		    </li>
 		{/if}
 		<!--{loop $Items item level key}-->
-		    <li onclick="getChatboxNew('{$item.chatid}x{$item.membertype_id}', false);" class="item" {if !$item.status}class="unread"{/if}>
+		    <li {if !$item.read}class="unread" read="0"{/if} onclick="getChatboxNew('{$item.chatid}x{$item.membertype_id}', false);" class="item"  chat-id="{$item.id}" mem="{$item.chatid}">
 			<img src="{$item.company_logo}" />
 			<p class="title"><strong>{$item.name}</strong></p>
 			<p class="content chat-line">{$item.content|truncate:42}</p>
@@ -23,5 +27,11 @@
 	    <a class="" href="{the_url module=root-url}virtual-office/pms.php">Xem thêm</a>                  
 	</div>-->
     </div>
-
+    {literal}
+	<script>
+	    {/literal}{if $Count}{literal}
+		$('.top-chat-menu .badge_outer .badge').html('{/literal}{$Count}{literal}');
+	    {/literal}{/if}{literal}
+	</script>
+    {/literal}
 

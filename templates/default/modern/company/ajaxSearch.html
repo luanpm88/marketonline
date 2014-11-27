@@ -1,0 +1,19 @@
+                        {if $list}
+                            <ul class="list-group">
+                                <!--{loop $list item level key}-->
+                                    {if $item.shop_name}
+                                        <li class="list-group-item">
+                                            <a title="{$item.shop_name|strip_tags}" href="{the_url module=space userid=`$item.cache_spacename`}">
+                                                <img alt="{$item.shop_name|strip_tags}" title="{$item.shop_name}" class="img-responsive" src="{$item.logo}" style="">
+                                                <h4>{$item.shop_name|strip_tags}</h4>
+                                                <p class="more_info">
+                                                    {$item.name|strip_tags} ({$item.last_name} {$item.first_name})
+                                                </p>
+                                            </a>
+                                        </li>
+                                    {/if}
+                                <!--{/loop}-->
+                            </ul>
+                        {else}
+                            <div class="no-search-top">Không có gian hàng phù hợp</div>
+                        {/if}

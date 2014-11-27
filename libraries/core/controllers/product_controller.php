@@ -4893,7 +4893,7 @@ class Product extends PbController {
 							$mem = $this->member->read("photo", $result[$i]["from_member_id"]);
 							if($mem["photo"])
 							{
-								$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
+								$result[$i]["company_logo"] = URL.$pps[1].pb_get_attachmenturl($mem["photo"], '', 'small');
 							}
 							else
 							{
@@ -6189,6 +6189,119 @@ class Product extends PbController {
 		$coms = $this->company->findAll("id,name",null,null,"created DESC");		
 		setvar("coms",$coms);
 		render("product/updateCompaniesPosition");
+	}
+	
+	function ajaxTopCart()
+	{
+		global $viewhelper, $session;
+		uses("cart", "cartitem");
+		$cartitem = new Cartitems();
+		$cart = new Carts();
+		
+		$session_cart_id = $_SESSION["cart_id"];
+		//echo $session_cart_id;
+		
+		//create cart if empty
+		if(!$session_cart_id)
+		{
+			$cart->params['data']['cart']['created'] = strtotime(date("Y-m-d H:i:s"));
+			$result = $cart->add();		
+			$key = $cart->table_name."_id";
+			$_SESSION["cart_id"] = $cart->$key;			
+			$session_cart_id = $cart->$key;
+		}
+		
+		if(isset($_GET["id"]))
+		{
+			//add item			
+			$cartitem->params['data']['cartitem']['cart_id'] = $session_cart_id;
+			$cartitem->params['data']['cartitem']['product_id'] = $_GET["id"];
+			
+			
+			
+			if(isset($_GET["amount"]))
+			{
+				//echo $_GET["amount"];
+				$result = $cartitem->add($_GET["id"], $session_cart_id, '', $_GET["amount"]);
+			}
+			else
+			{			
+				$result = $cartitem->add($_GET["id"], $session_cart_id);
+			}
+			//echo $cartitem->checkExist($_GET["id"], $session_cart_id)."gsdgs";
+		}
+		
+		if(isset($_GET["task"]))
+		{
+			if($_GET["task"] == "update")
+			{
+				//var_dump($_GET['product']);
+				foreach($_GET['product'] as $key => $value)
+				{
+					//echo $value;
+					$cartitem->updateQuantity($key, $value);
+				}
+			}			
+			else if($_GET["task"] == "remove" && isset($_GET["cartitemid"]))
+			{
+				$cartitem->Remove($_GET["cartitemid"]);
+			}
+		}
+		
+		$datas = $cartitem->getStickyDatas($session_cart_id);
+		$count = 0;
+		foreach($datas as $key => &$item)
+		{
+			$item["total"] = number_format($item["total"], 0, ',', '.');
+			//echo $item["total"];
+			foreach($item["items"] as $key2 => $item2)
+			{
+				$item["items"][$key2]["p_price"] = number_format($item2["p_price"], 0, ',', '.');
+				$item["items"][$key2]["p_total"] = number_format($item2["p_price"]*$item2["quantity"], 0, ',', '.');
+				$count += $item2["quantity"];
+			}
+		}
+		
+		
+		setvar("StickyItems", $datas);
+		setvar("total", $cartitem->total);
+		setvar("count", $count);
+
+		//$viewhelper->setPosition("Cart");
+		$this->render("product/TopCartAjax");
+	}
+	
+	function ajaxModernSearch()
+	{
+		if(isset($_GET["keyword"]))
+		{
+			$keyword = $_GET["keyword"];
+		}
+		else
+		{
+			return;
+		}
+		
+		if(isset($_GET["type"]) && $_GET["type"] == "shop")
+		{
+			//
+			$result = $this->company->fullTextSearch($keyword);
+			
+			//var_dump($result);
+			setvar("list", $result);
+			$this->render("modern/company/ajaxSearch");
+		}
+		else
+		{
+			$_GET["q"] = $keyword;
+			//
+			$this->product->initSearch();
+			$result = $this->product->Search(0, 40);
+			
+			//var_dump($result);
+			setvar("list", $result);
+			$this->render("modern/product/ajaxSearch");
+		}
 	}
 }
 ?>

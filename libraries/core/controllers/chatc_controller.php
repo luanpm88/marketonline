@@ -195,6 +195,7 @@ class Chatc extends PbController {
 		setvar("Items_count", $this->chat->findCount($joins, $conditions, "Chat.id"));
 		setvar("CHAT_ANNOUNCE_COUNT",$this->CHAT_ANNOUNCE_COUNT);
 		setvar("Count", $this->chat->findCount(null, array("(Chat.to_member_id=".$pb_userinfo["pb_userid"]." AND Chat.from_member_id!=".$pb_userinfo["pb_userid"].")","Chat.read=0")));
+		
 		$this->render("modern/chat/ajaxTopChatbox");
 	}
 }
