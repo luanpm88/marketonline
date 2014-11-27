@@ -69,10 +69,6 @@
                         hideMainEditor();
                     }
                 });
-                
-                $('.mce-resizehandle').mouseup(function() {
-                    alert("ddd");
-                });
               
           }
         
