@@ -6317,5 +6317,19 @@ class Product extends PbController {
 			$return = $this->product->save($vals,"update", intval($item["product_id"]));
 		}
 	}
+	
+	function resetFBShareTrade() {
+		$sql = "select p.max_id as product_id from pb_members m left join ( select member_id, max(id) as max_id from pb_trades group by member_id order by created DESC ) p on p.member_id=m.id where p.max_id is not null order by m.id";
+		$return = $this->trade->dbstuff->GetArray($sql);
+		foreach($return as $item) {
+			$vals["facebook_pubstatus"] = 0;
+			$vals["facebook_pubstatus_user"] = 0;
+			$vals["facebook_pubstatus_user_wall"] = 0;
+			$vals["facebook_pubstatus_user_fanpage"] = 0;
+			$vals["facebook_pubstatus_fanpage"] = 0;
+			
+			$return = $this->trade->save($vals,"update", intval($item["product_id"]));
+		}
+	}
 }
 ?>
