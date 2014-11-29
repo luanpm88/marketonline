@@ -151,7 +151,7 @@ class Members extends PbModel {
  		$_PB_CACHE['membergroup'] = cache_read("membergroup");
  		$_PB_CACHE['trusttype'] = cache_read("trusttype");
  		$result = array();
- 		$sql = "SELECT m.*,mf.*,sc.name as school_name FROM {$this->table_prefix}members m LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=m.id LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id WHERE m.id='{$member_id}'";
+ 		$sql = "SELECT m.*,mf.*,sc.area_id as school_area_id,sc.name as school_name FROM {$this->table_prefix}members m LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=m.id LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id WHERE m.id='{$member_id}'";
  		$result = $this->dbstuff->GetRow($sql);
  		if (!empty($result)) {
  			if(isset($result['link_man']))
@@ -231,6 +231,8 @@ class Members extends PbModel {
 			$result['is_student'] = $is_student;
 			$result['fullname'] = $result['first_name']." ".$result['last_name'];
 			$result['parent_id'] = $link->findParent($result['id']);
+			
+			$result['school_area'] = $area->getFullName($result["school_area_id"]);
  		}		
  		return $result;
  	}
@@ -890,7 +892,7 @@ class Members extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}membermembertypes mmt ON mmt.member_id=Member.id";
 				
-		$members = $this->findAll("Member.*,mf.*,sc.name as school_name".$keyword_str, $joins, $conditions, $order_by_score,$offset,$num);
+		$members = $this->findAll("Member.*,mf.*,sc.area_id as school_area_id,sc.name as school_name".$keyword_str, $joins, $conditions, $order_by_score,$offset,$num);
 		
 		foreach($members as $key => $result)
 		{
@@ -903,6 +905,8 @@ class Members extends PbModel {
 			$result['online'] = $this->isOnline($result["id"]);
 			
 			$result['fullname'] = $result['first_name']." ".$result['last_name'];
+			
+			$result['school_area'] = $area->getFullName($result["school_area_id"]);
 			
 			$members[$key] = $result;	
 		}

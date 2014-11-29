@@ -101,21 +101,21 @@
               
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <a href="#" class="sub-info-heading pull-right">Danh sách trường</a>
+                    <!--<a href="#" class="sub-info-heading pull-right">Danh sách trường</a>-->
                   <h3 class="panel-title">Đang theo học</h3>                  
                 </div>
                 <div class="panel-body">
                           <ul class="list-group nopadding">
                             <li class="list-group-item school-list">
                               
-                                <img src="holder.js/80x80" class="img-responsive" alt="" />
-                                <a href="#">Đại Học Thái Nguyên</a>
+                                <img src="{the_url module=root-url}/{$school.logo}" style="width:80px;height:80px" class="img-responsive" alt="" />
+                                <a href="#">{$member.school_name}</a>
                                 <div class="mic-info">
-                                  TP.Hồ Chí Minh, Việt Nam
+                                    {$member.school_area}
                                 </div>
-                                <div class="controls">
+                                <!--<div class="controls">
                                   <a class="btn btn-xs btn-primary" href="#">Xem thông tin</a>
-                                </div>
+                                </div>-->
                                 
                             </li>
                             
@@ -129,56 +129,30 @@
                 </div>
                 <div class="panel-body">
                           <ul class="list-group nopadding leftbar">
-                            <li class="list-group-item">
-                              <span class="badge pull-right">3</span>
-                                <img src="holder.js/40x40" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>                                
-                                
-                            </li>
-                            <li class="list-group-item">
-                              
-                                <img src="holder.js/40x40" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>                                
-                                
-                            </li>
-                            <li class="list-group-item">
-                              <span class="badge pull-right">1</span>
-                                <img src="holder.js/40x40" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>                                
-                                
-                            </li>
-                            <li class="list-group-item">
-                              <span class="badge pull-right">30</span>
-                                <img src="holder.js/40x40" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>                                
-                                
-                            </li>
-                            <li class="list-group-item">
-                              <span class="badge pull-right">100</span>
-                                <img src="holder.js/40x40" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>                                
-                                
-                            </li>
+                            
+                            <!--{loop $joined_groups group level_group group_key}-->
+                            
+                                <li class="list-group-item">
+                                    {if $group.new_count && false}
+                                         <span class="badge pull-right">{$group.new_count}</span>
+                                    {/if}
+                                   
+                                    <img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" />
+                                    <a href="#">{$group.subject_name}</a>
+                                    <div class="mic-info">
+                                        {$group.school_name}
+                                    </div>                                       
+                                </li>
+                            
+                                                
+                            <!--{/loop}-->
+                            
+                            
                           </ul>
                 </div>
               </div>
               
-              <div class="panel panel-default">
+              <!--<div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Bạn bè</h3>
                 </div>
@@ -231,7 +205,7 @@
                     </div>
                   </div>
                 </div>                
-              </div>
+              </div>-->
               
               
               
@@ -250,112 +224,54 @@
               
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <a href="#" class="sub-info-heading pull-right">Xem tất cả</a>
+                  <!--<a href="#" class="sub-info-heading pull-right">Xem tất cả</a>-->
                   <h3 class="panel-title">Môn học</h3>                  
                 </div>
                 <div class="panel-body">
                           <ul class="list-group nopadding">
-                            <li class="list-group-item">
+                            
+                            <!--{loop $groups group level_group group_key}-->
+                            
+                                <li class="list-group-item">
                               
-                                <img src="holder.js/50x50" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>
-                                <div class="controls">
-                                  
-                                  <a class="btn-xs pull-right" href="#">
-                                  <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
-                                  <span class="badge pull-right">15</span></a>
-                                  <span class="pull-right">&nbsp;/&nbsp;</span>
-                                  <a class="btn-xs pull-right" href="#">Tham gia</a>
-                                  
-                                  
-                                </div>
-                                
-                            </li>
-                            <li class="list-group-item">
-                              
-                                <img src="holder.js/50x50" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>
-                                <div class="controls">
-                                  
-                                  <a class="btn-xs pull-right" href="#">
-                                  <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
-                                  <span class="badge pull-right">15</span></a>
-                                  <span class="pull-right">&nbsp;/&nbsp;</span>
-                                  <a class="btn-xs pull-right" href="#">Tham gia</a>
-                                  
-                                  
-                                </div>
-                                
-                            </li>
-                            <li class="list-group-item">
-                              
-                                <img src="holder.js/50x50" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>
-                                <div class="controls">
-                                  
-                                  <a class="btn-xs pull-right" href="#">
-                                  <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
-                                  <span class="badge pull-right">15</span></a>
-                                  <span class="pull-right">&nbsp;/&nbsp;</span>
-                                  <a class="btn-xs pull-right" href="#">Tham gia</a>
-                                  
-                                  
-                                </div>
-                                
-                            </li>
-                            <li class="list-group-item">
-                              
-                                <img src="holder.js/50x50" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>
-                                <div class="controls">
-                                  
-                                  <a class="btn-xs pull-right" href="#">
-                                  <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
-                                  <span class="badge pull-right">15</span></a>
-                                  <span class="pull-right">&nbsp;/&nbsp;</span>
-                                  <a class="btn-xs pull-right" href="#">Tham gia</a>
-                                  
-                                  
-                                </div>
-                                
-                            </li>
-                            <li class="list-group-item">
-                              
-                                <img src="holder.js/50x50" class="img-responsive" alt="" />
-                                <a href="#">Toán học</a>
-                                <div class="mic-info">
-                                  Đại Học Thái Nguyên
-                                </div>
-                                <div class="controls">
-                                  
-                                  <a class="btn-xs pull-right" href="#">
-                                  <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
-                                  <span class="badge pull-right">15</span></a>
-                                  <span class="pull-right">&nbsp;/&nbsp;</span>
-                                  <a class="btn-xs pull-right" href="#">Tham gia</a>
-                                  
-                                  
-                                </div>
-                                
-                            </li>
+                                    <img src="{the_url mocule=root-url}{$group.logo}" class="img-responsive" alt="" />
+                                    <a href="#">{$group.subject_name}</a>
+                                    <div class="mic-info">
+                                        {$group.school_name}
+                                    </div>
+                                    <div class="controls">
+                                      
+                                        <a style="color: #333;" class="btn-xs pull-right" href="#">
+                                            <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
+                                            <span class="badge pull-right">{$group.member_count}</span>
+                                        </a>
+                                            <span class="pull-right">&nbsp;/&nbsp;</span>
+                                            {if $group.joined && !$group.status}
+                                                <a class="btn-xs pull-right" href="#">
+                                                    Chờ duyệt
+                                                </a>
+                                            {else}
+                                                <a class="btn-xs pull-right" href="#">
+                                                    Tham gia
+                                                </a>
+                                            {/if}
+                                        
+                                      
+                                      
+                                    </div>
+                                    
+                                </li>
+                            
+                            <!--{/loop}-->
+                            
+                            
+                            
                           </ul>
                 </div>
                 
               </div>
               
-              <div class="panel panel-success">
+              <!--<div class="panel panel-success">
                 <div class="panel-heading">
                   <h3 class="panel-title">Thống kê</h3>
                 </div>
@@ -380,7 +296,7 @@
                   </ul>
                 </div>
               </div>
-              
+              -->
               
               
               

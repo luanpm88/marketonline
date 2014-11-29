@@ -41,18 +41,15 @@
                 });
                 //UPDATE TEXTAREA REAL TIME
                 editor.on('keyup', function(e) {
-                    main_textarea.val(tinyMCE.get(main_editor).getContent());
-                    
+                    main_textarea.val(tinyMCE.get(main_editor).getContent());                    
                     checkMainEditorInputLength();
                 });
                 editor.on('click', function(e) {
-                    main_textarea.val(tinyMCE.get(main_editor).getContent());
-                    
+                    main_textarea.val(tinyMCE.get(main_editor).getContent());                    
                     checkMainEditorInputLength();
                 });
                 $('#'+main_editor+'_ifr').on('click', function(e) {
-                    main_textarea.val(tinyMCE.get(main_editor).getContent());
-                    
+                    main_textarea.val(tinyMCE.get(main_editor).getContent());                    
                     checkMainEditorInputLength();
                 });
               

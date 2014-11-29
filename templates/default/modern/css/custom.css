@@ -187,12 +187,17 @@ p.controls {
 .main-text-editor.hide-control .placeholder {
   display: block;
 }
-.main-text-editor .mce-statusbar {
+.main-text-editor .mce-statusbar, .edit-box .mce-statusbar{
     border: 0 none;
     height: 0;
 }
-.main-text-editor .mce-statusbar .mce-container-body {
+.main-text-editor .mce-statusbar .mce-container-body, .edit-box .mce-statusbar .mce-container-body {
     height: 0;
+}
+.edit-box .mce-wordcount {
+    left: -10px;
+    margin-top: 28px;
+    width: 100px;
 }
 .main-text-editor i.mce-i-resize {
     color: #333;
@@ -1135,4 +1140,20 @@ button.nobutton:hover {
 .post-box .panel-heading .action {
     float: right;
     margin-top: -22px;
+}
+.list-group.leftbar .list-group-item {
+    padding-left: 50px;
+}
+.list-group.leftbar .list-group-item img {
+    width: 40px;
+    height: 40px;
+    margin-left: -50px;
+}
+.list-group.nopadding .list-group-item {
+    padding-left: 60px;
+}
+.list-group.nopadding .list-group-item img {
+    width: 50px;
+    height: 50px;
+    margin-left: -60px;
 }

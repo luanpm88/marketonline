@@ -1450,20 +1450,41 @@ class Studypost extends PbController {
 		
 		$pb_userinfo = pb_get_member_info();
 		
-		if($pb_userinfo && $_POST["action"] == "memberpage" && isset($_POST["id"])) {
+		if(isset($_POST["post_id"])) {
+			$post = $this->studypost->read("member_id",$_POST["post_id"]);
 			$studypost = $_POST["data"]["studypost"];
-			
-			$studypost["member_id"] = $pb_userinfo["pb_userid"];
-			$studypost["memberpage_id"] = $_POST["id"];
-			$studypost["created"] = date("Y-m-d H:i:s");
+		
+			$studypost["id"] = $_POST["post_id"];
 			$studypost["modified"] = date("Y-m-d H:i:s");
 			
-			$is_valid = true;
+			$is_valid = $post["member_id"]==$pb_userinfo["pb_userid"];
 			
 			if($is_valid) {
-				$this->studypost->save($studypost);
+				$this->studypost->save($studypost,"update",intval($studypost["id"]));
 				echo "ok";
 			}
+			return;
+		}
+		
+		if($pb_userinfo && $_POST["action"] == "memberpage" && isset($_POST["id"])) {
+			
+			if(true) {
+				$studypost = $_POST["data"]["studypost"];
+				$studypost["member_id"] = $pb_userinfo["pb_userid"];
+				$studypost["memberpage_id"] = $_POST["id"];
+				$studypost["created"] = date("Y-m-d H:i:s");
+				$studypost["modified"] = date("Y-m-d H:i:s");
+				
+				$is_valid = true;
+				
+				if($is_valid) {
+					$this->studypost->save($studypost);
+					echo "ok";
+				}
+			}
+			
+			
+			
 			
 		}
 	}

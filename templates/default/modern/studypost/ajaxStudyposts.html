@@ -9,7 +9,7 @@
             
             
             
-            <div class="panel panel-default post-box post-box-{$item.id}">
+            <div class="panel panel-default post-box post-box-{$item.id}" rel="{$item.id}">
                 <div class="panel-heading">                  
                   <div class="media post-item">
                     <p class="sub-info-meta">
@@ -32,7 +32,7 @@
                   </div>
                     {if $item.member.id == $pb_userinfo.id}
                         <div class="action">
-                            <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                            <button type="button" class="btn btn-primary btn-xs edit-button" title="Edit">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </button>
                             <!--<button type="button" class="btn btn-success btn-xs" title="Approved">
@@ -46,7 +46,37 @@
                 </div>
                 <div class="panel-body">
                   
-                  {$item.content}
+                    <div class="content">
+                        {$item.content}
+                    </div>
+                    
+                    <div class="edit-box" style="display: none;">
+                        
+                        <form method="post" id="editor_form_{$item.id}" action="{the_url module=studypost action=modern_post}">
+                            <!-- {formhash} -->
+                            <input type="hidden" name="do" value="{$smarty.get.do}" />
+                            <input type="hidden" name="action" value="{$smarty.get.action}" />
+                            
+                            <input type="hidden" name="id" value="{$smarty.get.id}" />
+                            
+                            <input type="hidden" name="post_id" value="{$item.id}" />
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                  
+                                  <div class="text-editor">
+                                    <textarea name="data[studypost][content]" class="editor-{$item.id}" id="editor-{$item.id}">{$item.content}</textarea>  
+                                  </div>                
+                                </div>
+                                
+                                <div class="panel-footer">
+                                  <div class="controls">
+                                    <a role="button" class="btn btn-default send-button">Đăng</a>
+                                  </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                        
                 </div>
                 
