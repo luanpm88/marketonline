@@ -665,7 +665,7 @@ class Studypost extends PbController {
 		if($_GET["modern"]) {
 			render("modern/studypost/memberpage");
 		} else {
-			render("studypost/memberpage");
+			render("modern/studypost/memberpage");
 		}
 		
 	}
