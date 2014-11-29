@@ -195,8 +195,8 @@ p.controls {
     height: 0;
 }
 .edit-box .mce-wordcount {
-    left: -10px;
-    margin-top: 28px;
+    left: 0;
+    margin-top: 14px;
     width: 100px;
 }
 .main-text-editor i.mce-i-resize {
@@ -1156,4 +1156,13 @@ button.nobutton:hover {
     width: 50px;
     height: 50px;
     margin-left: -60px;
+}
+.post-box .edit-box .text-editor {
+    margin: -16px;
+}
+.post-box .edit-box .mce-tinymce {
+    border-top: none;
+}
+.post-box .edit-box .mce-container {
+    border-color: #ddd;
 }
