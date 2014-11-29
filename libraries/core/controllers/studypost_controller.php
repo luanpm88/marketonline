@@ -570,9 +570,11 @@ class Studypost extends PbController {
 			$sms['membertype_ids'] = '[6]';
 					
 			$result = $this->message->SendToUser($user['id'], $group["leader_id"], $sms);
+			$_SESSION["flash_info"] = "Bạn đã xin tham gia nhóm <strong>".$group["subject_name"]."</strong> tại trường <strong>".$group["school_name"]."</strong>. Vui lòng chờ trưởng nhóm duyệt.";
 		}
 		//setFlash("Thành công", "<p>Bạn đã xin tham gia nhóm thành công. Đang đợi trưởng nhóm duyệt.</p>");
-		pheader("location:index.php?do=studypost&action=group&id=".$_GET["id"]);
+		
+		pheader("location:".$_SERVER["HTTP_REFERER"]);
 	}
 	
 	function leave_group()
@@ -614,6 +616,7 @@ class Studypost extends PbController {
 		}
 		
 		$groups = $this->studygroup->getList($school_id, $pb_userinfo["pb_userid"], true);
+		
 		$joined_groups = $this->studygroup->getList(null, $member["id"]);
 		
 		//get current school
@@ -646,6 +649,10 @@ class Studypost extends PbController {
 		$school = $this->school->getInfoById($member["school_id"], $member["id"]);
 		
 		$groups = $this->studygroup->getList($member["school_id"], $member["id"], true);
+		foreach($groups as $key => $group)
+		{
+			$groups[$key]["joined"] = $this->studygroupmember->belongToGroup($group["id"],$user["id"]);
+		}
 		
 		setvar("belongToMemberpage", $user["id"] == $member["id"]);
 		setvar("joined_groups",$joined_groups);

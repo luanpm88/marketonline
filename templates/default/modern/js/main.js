@@ -6,7 +6,6 @@ $(document).ready(function() {
         box.find('.edit-box').toggle();
         
         if (!box.find('.mce-tinymce').length) {
-            alert("ssss");
             showEditor("editor-"+box.attr("rel"));
         }
     });
@@ -78,7 +77,8 @@ function initAjaxForm(name) {
         },
         complete: function(xhr) {
             if (xhr.responseText == "ok") {
-                getStudyposts();
+                //getStudyposts();
+                location.reload(); 
             }
         }
     });

@@ -20,13 +20,15 @@
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading">{$item.member.first_name} {$item.member.last_name}</h4>
-                      <a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
-                      <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>
+                      <!--<a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
+                      <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
                       
-                      <!--<div class="controls">
-                        <a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
-                        <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>
-                      </div>-->
+                      <div class="controls">
+                        {if $pb_userinfo.id!=$item.member.id}
+                            <a role="button" href="#chat" onclick="getChatboxNew('{$item.member.id}x6', false);" class="btn btn-xs btn-success">Nhắn tin</a>
+                        {/if}
+                        <!--<a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
+                      </div>
                       
                     </div>
                   </div>

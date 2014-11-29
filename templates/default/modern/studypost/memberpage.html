@@ -5,7 +5,7 @@
     <div class="page">
         <div class="container">
           <!-- Example row of columns -->
-          <div class="row top-info">
+          <div class="row top-info"  style="border-bottom: solid 1px #ddd">
             <div class="col-md-6">
               <div class="border-box">
                 <div class="profile-box">
@@ -20,9 +20,12 @@
                         </h4>
                     {/if}
                   <p class="controls">
-                    <a class="btn btn-sm btn-default">+ Kết bạn</a>
+                    {if $pb_userinfo.id!=$member.id}
+                            <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-success">Nhắn tin</a>
+                    {/if}
+                    <!--<a class="btn btn-sm btn-default">+ Kết bạn</a>
                     <a class="btn btn-sm btn-success">Tin nhắn</a>
-                    <a class="btn btn-sm btn-primary">Theo dõi</a>
+                    <a class="btn btn-sm btn-primary">Theo dõi</a>-->
                   </p>
                   <div class="info-lines">
                     <div class="row">
@@ -71,8 +74,14 @@
             </div>
           </div>
           
-          <div class="row">
-            <div class="col-md-12">
+          
+          
+          
+          
+          
+          
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12" style="display: none">
               <nav class="navbar navbar-default main-menu" role="navigation">
                 <div class="container-fluid">
               
@@ -95,6 +104,9 @@
             </div>
           </div>
           
+          
+          <!--{include file="`$theme_name`/modern/_flash.html"}-->
+          
           <!-- Example row of columns -->
           <div class="row">
             <div class="col-md-3">
@@ -108,8 +120,10 @@
                           <ul class="list-group nopadding">
                             <li class="list-group-item school-list">
                               
-                                <img src="{the_url module=root-url}/{$school.logo}" style="width:80px;height:80px" class="img-responsive" alt="" />
-                                <a href="#">{$member.school_name}</a>
+                                <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
+                                    <img src="{the_url module=root-url}/{$school.logo}" style="width:80px;height:80px" class="img-responsive" alt="" />
+                                </a>
+                                <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">{$member.school_name}</a>
                                 <div class="mic-info">
                                     {$member.school_area}
                                 </div>
@@ -137,8 +151,8 @@
                                          <span class="badge pull-right">{$group.new_count}</span>
                                     {/if}
                                    
-                                    <img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" />
-                                    <a href="#">{$group.subject_name}</a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}"><img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" /></a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">{$group.subject_name}</a>
                                     <div class="mic-info">
                                         {$group.school_name}
                                     </div>                                       
@@ -234,8 +248,8 @@
                             
                                 <li class="list-group-item">
                               
-                                    <img src="{the_url mocule=root-url}{$group.logo}" class="img-responsive" alt="" />
-                                    <a href="#">{$group.subject_name}</a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}"><img src="{the_url mocule=root-url}{$group.logo}" class="img-responsive" alt="" /></a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">{$group.subject_name}</a>
                                     <div class="mic-info">
                                         {$group.school_name}
                                     </div>
@@ -247,11 +261,11 @@
                                         </a>
                                             <span class="pull-right">&nbsp;/&nbsp;</span>
                                             {if $group.joined && !$group.status}
-                                                <a class="btn-xs pull-right" href="#">
+                                                <a class="btn-xs pull-right" href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
                                                     Chờ duyệt
                                                 </a>
                                             {else}
-                                                <a class="btn-xs pull-right" href="#">
+                                                <a class="btn-xs pull-right" href="{the_url module=studypost action=join_group id=`$group.id`}">
                                                     Tham gia
                                                 </a>
                                             {/if}

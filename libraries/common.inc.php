@@ -364,4 +364,9 @@ setvar("adsizes",$adsize->findAll("*"));
 
 setvar("current_address_encoded",urlencode("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"));
 
+if(isset($_SESSION["flash_info"])) {
+    setvar("flash_info",$_SESSION["flash_info"]);
+    unset($_SESSION["flash_info"]);
+}
+
 ?>
