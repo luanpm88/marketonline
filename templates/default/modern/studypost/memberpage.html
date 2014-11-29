@@ -151,7 +151,9 @@
                                          <span class="badge pull-right">{$group.new_count}</span>
                                     {/if}
                                    
-                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}"><img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" /></a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                        <img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" />
+                                    </a>
                                     <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">{$group.subject_name}</a>
                                     <div class="mic-info">
                                         {$group.school_name}
@@ -248,8 +250,12 @@
                             
                                 <li class="list-group-item">
                               
-                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}"><img src="{the_url mocule=root-url}{$group.logo}" class="img-responsive" alt="" /></a>
-                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">{$group.subject_name}</a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                        <img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" />
+                                    </a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                        {$group.subject_name}
+                                    </a>
                                     <div class="mic-info">
                                         {$group.school_name}
                                     </div>
