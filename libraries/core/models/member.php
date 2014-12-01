@@ -190,6 +190,7 @@ class Members extends PbModel {
 					$item["name_small"] = URL.pb_get_attachmenturl($item["name"], '', 'small');
 					$item["name_medium"] = URL.pb_get_attachmenturl($item["name"], '', 'medium');
 					$item["name_origin"] = URL.pb_get_attachmenturl($item["name"], '', '');
+					$item["name_wide"] = URL.pb_get_attachmenturl($item["name"], '', 'wide');
 					$item["comments"]["count"] = $studymemberimagecomment->findCount(null, array("studymemberimage_id=".$item["id"]));
 					$item["description_raw"] = $item["description"];
 					$item["description"] = str_replace("\n","<br />",$item["description"]);

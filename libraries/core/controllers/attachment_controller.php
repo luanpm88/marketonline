@@ -192,6 +192,7 @@ class Attachment extends PbController {
 				{
 					$this->resizeImage($this->out_file_full_path, 300, 300, "small");
 					$this->resizeImage($this->out_file_full_path, 534, 273, "medium");
+					$this->resizeImage($this->out_file_full_path, 728, 350, "wide");
 				}
 				
 				
@@ -350,6 +351,7 @@ class Attachment extends PbController {
 		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".square.jpg");
 		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".thumb.png");
 		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".thumb.jpg");
+		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$src.".wide.jpg");
  		$file_ext = fileext($src);
  		$orignal_filename = str_replace($file_ext, ".orignal".$file_ext, $src);
  		@unlink(PHPB2B_ROOT. $this->attachment_dir.DS.$orignal_filename);

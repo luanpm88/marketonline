@@ -589,6 +589,9 @@ function pb_get_attachmenturl($src, $path = '', $size = '', $force = false, $nos
 	global $attachment_dir, $attachment_url;
 	$default_thumb_img = 'images/nopicture_small.gif';
 	switch ($size) {
+		case "wide":
+			$scope = ".".$size;
+			break;
 		case "smaller":
 			$scope = ".".$size;
 			break;
