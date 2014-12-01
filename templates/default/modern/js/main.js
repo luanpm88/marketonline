@@ -101,7 +101,7 @@ function initAjaxForm(name) {
                             {
                                 $(but).removeClass("friending");
                                 $(but).addClass("friendpendding");
-                                $(but).attr("title", "");
+                                $(but).attr("title", "Hủy lời mời");
                                 $(but).html("Đã gửi lời mời kết bạn");
                                 $('.friend_menu_items').addClass("active");
                             }
@@ -109,7 +109,7 @@ function initAjaxForm(name) {
                             {
                                 $(but).removeClass("friending");
                                 $(but).removeClass("friendpendding");
-                                $(but).attr("title", "");
+                                $(but).attr("title", "Kết bạn");
                                 $(but).html("+ Kết bạn");
                                 $('.friend_menu_items').removeClass("active");
                             }
