@@ -1469,6 +1469,7 @@ class Studypost extends PbController {
 			
 			if($is_valid) {
 				$this->studypost->save($studypost,"update",intval($studypost["id"]));
+				$_SESSION["flash_success"] = "Bài viết đã được sửa!";
 				echo "ok";
 			}
 			return;
@@ -1486,7 +1487,7 @@ class Studypost extends PbController {
 				$is_valid = true;
 				
 				if($is_valid) {
-					$this->studypost->save($studypost);
+					$this->studypost->save($studypost);					
 					echo "ok";
 				}
 			}

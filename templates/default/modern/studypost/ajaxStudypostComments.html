@@ -60,6 +60,13 @@
                             <input type="hidden" name="comment[star]" value="" />
                             <table>
                                 <tr>
+                                    <td colspan=3">
+                                        {if !$comment_with_star}
+                                            <div class="point_rate postable" rel="10"></div>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td valign="top">
                                         {if $pb_userinfo.current_type == 6}                                            
                                             <img class="comment_ava" alt="50x50" src="{if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" />
@@ -68,9 +75,7 @@
                                         {/if}
                                     </td>
                                     <td valign="top" width="100%"><textarea name="comment[content]"></textarea>
-                                        {if !$comment_with_star}
-                                            <div class="point_rate postable" rel="10"></div>
-                                        {/if}
+                                        
                                     </td>
                                     <td valign="top">
                                         <a class="post_comment btn btn-sm btn-default send-button">Đăng</a>
