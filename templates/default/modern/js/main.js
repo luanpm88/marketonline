@@ -13,8 +13,75 @@ $(document).ready(function() {
     
     $('body').on("click",".post-box a.view_more",function(){
         $(this).attr("rel-page",parseInt($(this).attr("rel-page"))+1);
-        loadStudyPostCommnets($(this).attr("rel-id"), $(this).attr("rel-page"));
+        loadStudyPostComments($(this).attr("rel-id"), $(this).attr("rel-page"));
+        $(this).removeClass("btn-primary");
+    });
+    $('body').on("keyup",".comment-edit-box textarea",function(){
+        var box = $(this).parents(".comment-edit-box");
+        checkCommentEditor(box);
+    });
+    $('body').on("click",".comment-edit-box .stars",function(){
+        var box = $(this).parents(".comment-edit-box");
+        checkCommentEditor(box);
+    });
+    $('body').on("click",".comment-edit-box .send-button.btn-primary",function() {
+        $(this).parents("form").submit();
+        $(this).removeClass("btn-primary");
+    });
+    
+    $('body').on("mouseover",".postable .stars .star",function() {
+        var box = $(this).parents(".stars");
         
+        var prev_item = $(this);
+        var next_item = $(this).next();
+        
+        while(prev_item.hasClass("item")) {
+            prev_item.removeClass("glyphicon-star-empty");
+            prev_item.addClass("glyphicon-star");
+            
+            prev_item = prev_item.prev();
+        }
+        
+        while(next_item.hasClass("item")) {
+            next_item.removeClass("glyphicon-star");
+            next_item.addClass("glyphicon-star-empty");
+            
+            next_item = next_item.next();
+        }
+        
+        box.find('.point').html($(this).attr("rel"));
+    });
+    
+    $('body').on("click",".postable .stars .star",function() {
+        var box = $(this).parents(".comment-edit-box");
+        
+        box.find('input[name="comment[star]"]').val($(this).attr("rel"));
+    });
+    
+    $('body').on("mouseout",".postable .stars",function() {
+        var box = $(this).parents(".comment-edit-box");
+        var value = box.find('input[name="comment[star]"]').val();
+        
+        var item = box.find('.stars .star[rel='+value+']');
+        
+        var prev_item = item;
+        var next_item = item.next();
+        
+        while(prev_item.hasClass("item")) {
+            prev_item.removeClass("glyphicon-star-empty");
+            prev_item.addClass("glyphicon-star");
+            
+            prev_item = prev_item.prev();
+        }
+        
+        while(next_item.hasClass("item")) {
+            next_item.removeClass("glyphicon-star");
+            next_item.addClass("glyphicon-star-empty");
+            
+            next_item = next_item.next();
+        }
+        
+        box.find('.point').html(value);
     });
 });
 
@@ -124,7 +191,7 @@ function initAjaxForm(name) {
             });
     }
     
-    function loadStudyPostCommnets(studypost_id, page)
+    function loadStudyPostComments(studypost_id, page)
     {
         var v_page = "";
         if (typeof page != "undefined") {
@@ -134,30 +201,75 @@ function initAjaxForm(name) {
         $.ajax({   
             url: ROOT_URL+"index.php?do=studypost&action=ajaxStudypostComments&studypost_id="+studypost_id+"&page="+v_page,
             success: function(data){
-                if(!page) {
-                    $('.post-box-'+studypost_id+' .panel-footer').html(data);
+                if(page==0) {
+                    $('.post-box-'+studypost_id+' .comment-container').html(data);
+                    $('.sudypostcomment_form').ajaxForm({
+                        beforeSend: function() {                
+                        },
+                        uploadProgress: function(event, position, total, percentComplete) {
+                        },
+                        complete: function(xhr) {
+                            loadStudyPostComments(xhr.responseText,0);
+                        }
+                    });
                 } else {
-                    $('.post-box-'+studypost_id+' .panel-footer .list-group').append($("<div>").html(data).find('.list-group').html());
-                    
+                    $('.post-box-'+studypost_id+' .comment-container .list-group').append($("<div>").html(data).find('.list-group').html());
+                    $('.post-box-'+studypost_id+' a.view_more').addClass("btn-primary");
                     if (!$("<div>").html(data).find('.view_more').length) {
                         $('.post-box-'+studypost_id+' a.view_more').remove();
                     }
-                    
-                    renderStars(".point_rate");
                 }
+                renderStars(".point_rate");
             }   
         });  
     }
     
     function renderStars(name) {
-        var html = '<div class="stars">'
-        var num = parseInt($(name).attr("rel"));
-        
-        for(var i=0;i<num;i++) {
-            html += '<span rel="'+i+'" class="star glyphicon glyphicon-star"></span>';
+        $(name).each(function() {
+            var html = '<div class="stars">'
+            var num = parseInt($(this).attr("rel"));
+            var value = num;
+            var class_name = "glyphicon-star";
+            
+            if ($(this).hasClass("postable")) {
+                html += '<span rel="" class="star star-cancel glyphicon glyphicon-remove-sign"></span>';
+                class_name = "glyphicon-star-empty";
+                value = "";
+            }
+            
+            for(var i=0;i<num;i++) {
+                html += '<span rel="'+(i+1)+'" class="star item glyphicon '+class_name+'"></span>';
+            }
+            
+            html += ' <span class="point">'+value+'</span></div>';
+            
+            $(this).html(html);
+        });            
+    }
+    
+    function checkWordCount(value, count) {
+        if (value.replace(/<\/?[^>]+(>|$)/g, "").trim().split(" ").length < count) {
+            return false;
+        } else {
+            return true;
         }
-        
-        html += '</div>';
-        
-        $(name).html(html);
+    }
+    
+    function deleteStudypostcomment(id,box_id)
+    {
+        $.ajax({   
+            url: ROOT_URL+"index.php?do=studypost&action=deleteComment&id="+id,
+            success: function(data){
+                loadStudyPostComments(box_id,0);
+            }
+        });
+    }
+    
+    function checkCommentEditor(box) {
+        var value = box.find('textarea').val();
+        if (checkWordCount(value, 5) || box.find('input[name="comment[star]"]').val() != '') {
+            box.find('.send-button').addClass("btn-primary");
+        } else {
+            box.find('.send-button').removeClass("btn-primary");
+        }
     }

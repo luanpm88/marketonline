@@ -53,10 +53,10 @@ class Studypostcomments extends PbModel {
 			$nums = 4;
 		}
 		
-		if($page) {
+		if($page>0) {
 			$limit = $page*$nums;
 		}
-		
+
 		$studypost_id = intval($studypost_id);
 		$comment_conditions = array("studypost_id = ".$studypost_id);
 		$comments = $this->findAll("*", null, $comment_conditions, "created DESC limit ".$limit.", ".$nums);
@@ -94,7 +94,7 @@ class Studypostcomments extends PbModel {
 			$reverse_comments[] = $comments[count($comments)-$commnet_key-1];
 		}
 		
-		return array("more" => $more, "comments" => $reverse_comments, "count"=>$count_all);
+		return array("more" => $more, "comments" => $reverse_comments, "count"=>$count_all, "normal_comments" => $comments);
 	}
 	
 	function findCommentWithStar($studypost_id, $member_id)

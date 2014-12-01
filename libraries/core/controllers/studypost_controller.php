@@ -477,7 +477,6 @@ class Studypost extends PbController {
 		//	flash("data_not_exists", '', 0);
 		//}
 		$comment = $_POST["comment"];
-
 		if($pb_userinfo["pb_userid"] && !empty($comment["studypost_id"]) && (!empty($comment["content"]) || !empty($comment["star"])))
 		{
 			pb_submit_check('comment');
@@ -491,8 +490,10 @@ class Studypost extends PbController {
 			if(count($comment_with_star)) {
 				$comment["star"] = 0;
 			}
+			
 			$this->studypostcomment->save($comment);
 			//pheader("location:".$_SERVER["HTTP_REFERER"]);
+			echo $comment["studypost_id"];
 		}
 	}
 	
@@ -1605,18 +1606,25 @@ class Studypost extends PbController {
 	
 	function ajaxStudypostComments()
 	{
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById(intval($pb_userinfo["pb_userid"]));
+		
 		if(isset($_GET["studypost_id"]))
 		{
 			//load comment			
-			$comments_a = $this->studypostcomment->loadComments($_GET["studypost_id"], $_GET["count"], $_GET["page"]);
+			$comments_a = $this->studypostcomment->loadComments($_GET["studypost_id"], "", $_GET["page"]);
 			
-			$comments = $comments_a["comments"];
+			$comments = $comments_a["normal_comments"];
 			
 			foreach($comments as $key => $item)
 			{
 				$comments[$key]["content"] =  str_replace(array("\r\n","\r","\n"), "<br />", $item["content"]);
 			}
 			
+			//check commented
+			$comment_with_star = $this->studypostcomment->findCommentWithStar($_GET["studypost_id"],$user["id"]);
+			
+			setvar("comment_with_star", $comment_with_star);
 			setvar("more", $comments_a["more"]);
 			setvar("count", $comments_a["count"]);
 			setvar("comments", $comments);
