@@ -9,6 +9,13 @@ $(document).ready(function() {
             showEditor("editor-"+box.attr("rel"));
         }
     });
+    
+    
+    $('body').on("click",".post-box a.view_more",function(){
+        $(this).attr("rel-page",parseInt($(this).attr("rel-page"))+1);
+        loadStudyPostCommnets($(this).attr("rel-id"), $(this).attr("rel-page"));
+        
+    });
 });
 
 function showEditor(name) {
@@ -115,4 +122,27 @@ function initAjaxForm(name) {
                             }
                         }                        
             });
+    }
+    
+    function loadStudyPostCommnets(studypost_id, page)
+    {
+        var v_page = "";
+        if (typeof page != "undefined") {
+            v_page = page;
+        }
+        
+        $.ajax({   
+            url: ROOT_URL+"index.php?do=studypost&action=ajaxStudypostComments&studypost_id="+studypost_id+"&page="+v_page,
+            success: function(data){
+                if(!page) {
+                    $('.post-box-'+studypost_id+' .panel-footer').html(data);
+                } else {
+                    $('.post-box-'+studypost_id+' .panel-footer .list-group').append($("<div>").html(data).find('.list-group').html());
+                    
+                    if (!$("<div>").html(data).find('.view_more').length) {
+                        $('.post-box-'+studypost_id+' a.view_more').remove();
+                    }
+                }
+            }   
+        });  
     }

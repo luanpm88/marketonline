@@ -1602,5 +1602,26 @@ class Studypost extends PbController {
 		
 		render("modern/studypost/ajaxStudyposts");
 	}
+	
+	function ajaxStudypostComments()
+	{
+		if(isset($_GET["studypost_id"]))
+		{
+			//load comment			
+			$comments_a = $this->studypostcomment->loadComments($_GET["studypost_id"], $_GET["count"], $_GET["page"]);
+			
+			$comments = $comments_a["comments"];
+			
+			foreach($comments as $key => $item)
+			{
+				$comments[$key]["content"] =  str_replace(array("\r\n","\r","\n"), "<br />", $item["content"]);
+			}
+			
+			setvar("more", $comments_a["more"]);
+			setvar("count", $comments_a["count"]);
+			setvar("comments", $comments);
+			render("modern/studypost/ajaxStudypostComments");
+		}
+	}
 }
 ?>

@@ -37,7 +37,7 @@ class Studypostcomments extends PbModel {
 		return $time_add;
  	}
 	
-	function loadComments($studypost_id, $count = "")
+	function loadComments($studypost_id, $count = "", $page=0)
 	{
 		uses("member");
 		$member = new Members();
@@ -51,6 +51,10 @@ class Studypostcomments extends PbModel {
 		{
 			$limit = 0;
 			$nums = 4;
+		}
+		
+		if($page) {
+			$limit = $page*$nums;
 		}
 		
 		$studypost_id = intval($studypost_id);
@@ -69,6 +73,17 @@ class Studypostcomments extends PbModel {
 			$more = true;
 		}
 		
+		if($page) {
+			if($count_all <= $nums*($page+1))
+			{
+				$more = false;
+			}
+			else
+			{
+				$more = true;
+			}
+		}
+		
 		foreach($comments as $comment_key => $comment)
 		{
 			$comments[$comment_key]["member"] = $member->getInfoById(intval($comment["member_id"]));
@@ -79,7 +94,7 @@ class Studypostcomments extends PbModel {
 			$reverse_comments[] = $comments[count($comments)-$commnet_key-1];
 		}
 		
-		return array("more" => $more, "comments" => $reverse_comments);
+		return array("more" => $more, "comments" => $reverse_comments, "count"=>$count_all);
 	}
 	
 	function findCommentWithStar($studypost_id, $member_id)
