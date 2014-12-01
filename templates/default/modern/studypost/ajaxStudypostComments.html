@@ -1,0 +1,36 @@
+                    <span class="glyphicon glyphicon-comment"></span>
+                    <h3 class="panel-title">
+                        Bình luận</h3>
+                    <span class="label label-info">
+                        {$count}</span>
+                        
+                        <!--{if $comments}-->
+                            <ul class="list-group">
+                                <!--{loop $comments comment level_comment comment_key}-->
+                          
+                                    <li class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-12 comment-line">
+                                              <img src="{$comment.member.photo}" class="img-responsive" alt="" />
+                                                <div>                                            
+                                                    <div class="mic-info">
+                                                        <strong>{$comment.member.first_name} {$comment.member.last_name}</strong> <span class="pull-right">{$comment.created}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="comment-text">
+                                                    {$comment.content}
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </li>
+                                    
+                                <!--{/loop}-->
+                            </ul>
+                        <!--{/if}-->
+                        
+                        {if $more}
+                            <a href="#more" class="view_more btn btn-primary btn-sm btn-block" role="button" rel-id="{$smarty.get.studypost_id}" rel-page="0">
+                                <span class="glyphicon glyphicon-refresh"></span> Xem thêm
+                            </a>
+                        {/if}
