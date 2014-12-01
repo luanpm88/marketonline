@@ -64,8 +64,10 @@
     margin-right: 15px;
     padding: 0;
     width: 115px;
+    height: 115px;
 }
 .profile-box {
+    position: relative;
 }
 .profile-box h2 {
     
@@ -1165,4 +1167,44 @@ button.nobutton:hover {
 }
 .post-box .edit-box .mce-container {
     border-color: #ddd;
+}
+.alert-controls {
+    margin-left: 10px;
+    display: inline-block;
+}
+.float-hide {
+    position: absolute !important;
+    left: -9000px !important;
+}
+.edit-image-button {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    font-size: 20px;
+    padding: 2px 5px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 101;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.edit-image-button:hover {
+    opacity: 1;
+}
+.edit-image-button a:hover {
+    text-decoration:  none;
+}
+.edit-image-button a.but {
+    color: #333;
+}
+.edit-image-button.small {
+    right: auto;
+    left: 10px;
+    font-size: 14px;
+    padding: 2px 5px;
+}
+.edit-image-button.memberpage-logo {
+    left: 80px;
+    right: auto;
+    top: 80px;
 }

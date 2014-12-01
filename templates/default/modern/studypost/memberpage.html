@@ -8,12 +8,30 @@
             <div class="row">
                 <div class="col-md-12">
                     
-                        <div role="alert" class="alert alert-info">
+                        <div role="alert" class="alert alert-success">
                             <strong style="">Xin chào các bạn! </strong>Mời các bạn tham gia thử nghiệm cùng chúng tôi!
                         </div>
 
                 </div>
             </div>
+            
+            {if $friend_request}
+            
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                            <div role="alert" class="alert alert-info">
+                                <strong>{$member.first_name} {$member.last_name}</strong> muốn kết bạn với bạn. Bạn có chấp nhận lời mời kết bạn không?
+                                <div class="alert-controls">
+                                    <a class="btn btn-primary" href="{the_url module=studypost action=acceptFriend id=`$member.id`}">Đồng ý</a>
+                                    <a class="btn btn-default" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">Từ chối</a>
+                                </div>
+                            </div>
+    
+                    </div>
+                </div>
+
+            {/if}
             
           <!-- Example row of columns -->
           <div class="row top-info"  style="border-bottom: solid 1px #ddd">
@@ -23,6 +41,18 @@
                     <a href="{the_url module=studypost action=memberpage id=`$member.id` title=`$member.fullname`}">
                         <img alt="{$member.first_name} {$member.last_name}" class="profile-picture img-thumbnail" src="{if $member.photo} {$member.photo} {else} {$theme_img_path}image/usericon.jpg  {/if}">
                     </a>
+                    {if $pb_userid == $member.id}
+                        <div title="Thay ảnh đại diện" class="edit-image-button small memberpage-logo">
+                            <a class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#changelogo-but').trigger('click')"></a>
+                        </div>
+                        <form style="display: none" name="productaddfrm" id="Frm2_logo" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_logo_home" enctype="multipart/form-data">
+                          <!-- {formhash} -->
+                          <input type="hidden" name="uri" value="{$FURI}" />
+                        
+                          <p><input type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+                          
+                        </form>
+                    {/if}
                   <h2 class="top-name profile-name">{$member.first_name} {$member.last_name}</h2>
                     
                     {if $member.school_name}                        
@@ -33,6 +63,11 @@
                   <p class="controls">
                     {if $pb_userinfo.id!=$member.id}
                             <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-success">Nhắn tin</a>
+                    {/if}
+                    {if !$Friended}
+                        <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember">Kết bạn</a>
+                    {else}
+                        <a onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
                     {/if}
                     <!--<a class="btn btn-sm btn-default">+ Kết bạn</a>
                     <a class="btn btn-sm btn-success">Tin nhắn</a>
@@ -80,7 +115,28 @@
             </div>
             <div class="col-md-6 profile-banner-col">
               <div class="album-main-image">
-                <img class="avatar" src="{$member.studypics.main.name_origin}" />                
+                    <a href="{$member.studypics.main.name_origin}" class="fancybox">
+                        <img class="avatar" src="{$member.studypics.main.name_origin}" />
+                    </a>
+                    
+                    {if $pb_userid == $member.id}
+                        <div class="edit-image-button">
+                            <a title="Thay banner đại diện" class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#uploadpics-but').trigger('click')"></a>
+                        </div>
+                        <div id="upload_logo" class="float-hide">
+                            <div class="upload_logo">                                    
+                                <form id="uploadpics_form" method="post" action="{$WebRootUrl}index.php?do=studypost&action=upload_picture" enctype="multipart/form-data">
+                                  <!-- {formhash} -->
+                                
+                                
+                                  <p><input accept="image/*" type="file" name="upload_picture" id="uploadpics-but" onchange="$('#uploadpics_form').submit()" /></p>
+                                  
+                                  
+                                  <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
+                                </form>
+                            </div>
+                        </div>
+                    {/if}
               </div>                  
             </div>
           </div>

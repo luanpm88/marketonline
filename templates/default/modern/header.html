@@ -34,6 +34,11 @@
     
     <script type="text/javascript" src="{the_url module=root-url}{$theme_img_path}modern/js/main.js"></script>
     
+    
+    <script type="text/javascript" src="{the_url module=root-url}{$theme_img_path}modern/js/fancybox/jquery.fancybox.js"></script>
+    <link href="{the_url module=root-url}{$theme_img_path}modern/js/fancybox/jquery.fancybox.css" rel="stylesheet">
+    
+    
     {literal}
     <script type="text/javascript">
         var ROOT_URL = '{/literal}{the_url module=root-url}{literal}';
@@ -120,44 +125,7 @@
 		    if( console && console.log ) {
                         
                         $('.top-search-result-box .panel-body').html(data);
-                        
-			//if (data != "") {
-			//	$('#TopSearch .search_result').html(data);
-			//	$('#TopSearch .search_result').css("display", "block");
-			//	
-			//	$('#TopSearch .search_result ul li:first-child').addClass("active");
-			//	
-			//	$('#TopSearch .search_result ul li').hover(function () {
-			//	    $('#TopSearch .search_result ul li:first-child').removeClass("active");
-			//	    $(this).addClass("active");
-			//	},function () {
-			//	    $('#TopSearch .search_result ul li').removeClass("active");
-			//	    $('#TopSearch .search_result ul li:first-child').addClass("active");
-			//	});
-			//	
-			//	//cart product image
-			//	$('#TopSearch .search_result ul.shop img').resizecrop({
-			//	   width:50,
-			//	   height:50
-			//	});
-			//	$('#TopSearch .search_result ul.product img').resizecrop({
-			//	   width:74,
-			//	   height:74
-			//	});
-			//	
-			//	if(!$('#TopSearch .search-scroll').hasClass("mCustomScrollbar"))
-			//	{
-			//	    $('#TopSearch .search-scroll').mCustomScrollbar({
-			//		autoHideScrollbar:true,
-			//		theme:"light-thin",
-			//		scrollSpeed: 40
-			//	    });
-			//	}
-			//    }
-			//    else
-			//    {
-			//	$('#TopSearch .search_result').css("display", "none");
-			//    }
+			
 		    }
 		});
 	}
@@ -292,6 +260,8 @@
         
             
         getStudyposts();
+        
+        $(".fancybox").fancybox();
         
         
     });
