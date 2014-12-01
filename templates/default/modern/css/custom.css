@@ -1208,3 +1208,6 @@ button.nobutton:hover {
     right: auto;
     top: 80px;
 }
+.glyphicon.check-color {
+    color: green;
+}

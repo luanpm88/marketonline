@@ -87,3 +87,32 @@ function initAjaxForm(name) {
         $('#'+name).parents('form').find('.send-button').removeClass("btn-primary");
     });
 }
+
+    function studyfriend(friendid, but) {
+            $(but).addClass("friending");
+            var temp = $(but).html();
+            $(but).html("Đang xử lý...");
+            $.ajax({
+                    url: ROOT_URL+"index.php?do=studypost&action=ajaxFriend&friendid="+friendid,
+            }).done(function ( data ) {
+                    if( console && console.log ) {
+                            //alert(data);
+                            if(data == "1")
+                            {
+                                $(but).removeClass("friending");
+                                $(but).addClass("friendpendding");
+                                $(but).attr("title", "");
+                                $(but).html("Đã gửi lời mời kết bạn");
+                                $('.friend_menu_items').addClass("active");
+                            }
+                            else
+                            {
+                                $(but).removeClass("friending");
+                                $(but).removeClass("friendpendding");
+                                $(but).attr("title", "");
+                                $(but).html("+ Kết bạn");
+                                $('.friend_menu_items').removeClass("active");
+                            }
+                        }                        
+            });
+    }

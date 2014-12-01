@@ -61,14 +61,27 @@
                         </h4>
                     {/if}
                   <p class="controls">
+                    
+                    {if $pb_userid != $member.id && !$friend_request && !$is_friend}
+                        {if !$Friended}
+                            <a title="Kết bạn" onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember btn btn-sm btn-default">+ Kết bạn</a>
+                        {else}
+                            <a title="Hủy lời mời" onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember btn btn-sm btn-default" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                        {/if}
+                    {elseif $is_friend}
+                        <a class=" btn btn-sm btn-default" href="javascript:void(0)">
+                            <span class="glyphicon glyphicon-ok check-color"></span>
+                            Bạn bè
+                        </a>
+                    {/if}
+                    
                     {if $pb_userinfo.id!=$member.id}
                             <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-success">Nhắn tin</a>
                     {/if}
-                    {if !$Friended}
-                        <a onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember">Kết bạn</a>
-                    {else}
-                        <a onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
-                    {/if}
+                    
+                    
+                        
+                    
                     <!--<a class="btn btn-sm btn-default">+ Kết bạn</a>
                     <a class="btn btn-sm btn-success">Tin nhắn</a>
                     <a class="btn btn-sm btn-primary">Theo dõi</a>-->
