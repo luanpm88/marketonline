@@ -9,6 +9,7 @@
                                 <!--{loop $comments comment level_comment comment_key}-->
                           
                                     <li class="list-group-item">
+                                        
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12 comment-line">
                                               <img src="{$comment.member.photo}" class="img-responsive" alt="" />
@@ -18,6 +19,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="comment-text">
+                                                    {if $comment.star}
+                                                        <div class="point_rate" rel="{$comment.star}"></div>
+                                                    {/if}
                                                     {$comment.content}
                                                 </div>
                                                 

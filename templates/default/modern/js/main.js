@@ -142,7 +142,22 @@ function initAjaxForm(name) {
                     if (!$("<div>").html(data).find('.view_more').length) {
                         $('.post-box-'+studypost_id+' a.view_more').remove();
                     }
+                    
+                    renderStars(".point_rate");
                 }
             }   
         });  
+    }
+    
+    function renderStars(name) {
+        var html = '<div class="stars">'
+        var num = parseInt($(name).attr("rel"));
+        
+        for(var i=0;i<num;i++) {
+            html += '<span rel="'+i+'" class="star glyphicon glyphicon-star"></span>';
+        }
+        
+        html += '</div>';
+        
+        $(name).html(html);
     }
