@@ -1465,6 +1465,8 @@ class Studypost extends PbController {
 			$studypost["id"] = $_POST["post_id"];
 			$studypost["modified"] = date("Y-m-d H:i:s");
 			
+			
+			
 			$is_valid = $post["member_id"]==$pb_userinfo["pb_userid"];
 			
 			if($is_valid) {
@@ -1484,6 +1486,16 @@ class Studypost extends PbController {
 				$studypost["created"] = date("Y-m-d H:i:s");
 				$studypost["modified"] = date("Y-m-d H:i:s");
 				
+				if(!empty($_POST["post_files"]) && $_POST["post_type"]=='files') {
+					//files
+					$files = $_POST["post_files"];
+					foreach($files as $key => $f) {
+						$parts = explode("/attachment/",$f);
+						$files[$key] = $parts[1];
+					}
+					$studypost["files"] = implode(",",$files);
+				}
+				
 				$is_valid = true;
 				
 				if($is_valid) {
@@ -1491,10 +1503,6 @@ class Studypost extends PbController {
 					echo "ok";
 				}
 			}
-			
-			
-			
-			
 		}
 	}
 	
@@ -1579,6 +1587,22 @@ class Studypost extends PbController {
 		foreach($studyposts as $key => $item)
 		{
 			$studyposts[$key]["member"] = $this->member->getInfoById(intval($item["member_id"]));
+			
+			
+			if($item["files"]) {
+				$images_array = array();
+				$images = explode(",",$item["files"]);
+				foreach($images as $img) {
+					$item["url"] = URL.'attachment/'.$img;
+					$item["thumb"] = str_replace('/images/','/images/thumbnail/',$item["url"]);
+					
+					$images_array[] = $item;
+				}
+				$studyposts[$key]["images"] = $images_array;
+				$studyposts[$key]["images_count"] = count($images_array);
+				//var_dump($studyposts[$key]["images"]);
+			}
+			
 			
 			//load comment			
 			$comments = $this->studypostcomment->loadComments($item["id"]);

@@ -13,30 +13,33 @@
                 <div class="panel-heading">                  
                   <div class="media post-item">
                     <p class="sub-info-meta">
-                      <span aria-hidden="true" class="glyphicon glyphicon-calendar"></span>
-                      {$item.date}</p>
+                        <span aria-hidden="true" class="glyphicon glyphicon-calendar"></span>
+                            {$item.date}
+                    </p>
                     <a href="#" class="media-left">
                       <img src="{$item.member.photo}" class="avatar">
                     </a>
                     <div class="media-body">
-                      <h4 class="media-heading">{$item.member.first_name} {$item.member.last_name}</h4>
-                      <!--<a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
-                      <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
-                      
-                      <div class="controls">
-                        {if $pb_userinfo.id!=$item.member.id}
-                            <a role="button" href="#chat" onclick="getChatboxNew('{$item.member.id}x6', false);" class="btn btn-xs btn-success">Nhắn tin</a>
-                        {/if}
-                        <!--<a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
-                      </div>
+                        <h4 class="media-heading">{$item.member.first_name} {$item.member.last_name}</h4>
+                        <!--<a role="button" href="#" class="btn btn-xs btn-success">Nhắn tin</a>
+                        <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
+                        
+                        <div class="controls">
+                          {if $pb_userinfo.id!=$item.member.id}
+                              <a role="button" href="#chat" onclick="getChatboxNew('{$item.member.id}x6', false);" class="btn btn-xs btn-success">Nhắn tin</a>
+                          {/if}
+                          <!--<a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
+                        </div>
                       
                     </div>
                   </div>
                     {if $item.member.id == $pb_userinfo.id}
                         <div class="action">
-                            <button type="button" class="btn btn-primary btn-xs edit-button" title="Edit">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </button>
+                            {if !$item.images}
+                                <button type="button" class="btn btn-primary btn-xs edit-button" title="Edit">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                            {/if}
                             <!--<button type="button" class="btn btn-success btn-xs" title="Approved">
                                 <span class="glyphicon glyphicon-ok"></span>
                             </button>-->
@@ -47,10 +50,23 @@
                     {/if}
                 </div>
                 <div class="panel-body">
-                  
-                    <div class="content">
-                        {$item.content}
-                    </div>
+                    
+                    {if $item.images}
+                        {if $item.files_description}
+                            <p>{$item.files_description}</p>
+                        {/if}
+                        <div class="images-box imges-size-{$item.images_count}">
+                            {loop $item.images image img_level img_key}
+                                <a class="img-key-{$img_key} fancybox img-cropping" rel="image-group-{$item.id}" href="{$image.url}">
+                                    <!--<img src="{$image.thumb}" />-->
+                                </a>
+                            {/loop}
+                        </div>
+                    {else}
+                        <div class="content">
+                            {$item.content}
+                        </div>
+                    {/if}
                     
                     <div class="edit-box" style="display: none;">
                         

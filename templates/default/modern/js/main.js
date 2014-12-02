@@ -83,6 +83,15 @@ $(document).ready(function() {
         
         box.find('.point').html(value);
     });
+    
+    
+    
+    
+    
+    
+    
+    
+
 });
 
 function showEditor(name) {
@@ -130,7 +139,7 @@ function checkEditorInputLength(name) {
     
     var box = $("#"+name).parents(".post-box");
     
-    if (value.replace(/<\/?[^>]+(>|$)/g, "").trim().split(" ").length < 10) {
+    if (value.replace(/<\/?[^>]+(>|$)/g, "").trim().split(" ").length < 2) {
         ok = false;
     }
     
@@ -220,6 +229,8 @@ function initAjaxForm(name) {
                     }
                 }
                 renderStars(".point_rate");
+                
+                cropping();
             }   
         });  
     }
@@ -241,7 +252,7 @@ function initAjaxForm(name) {
                 html += '<span rel="'+(i+1)+'" class="star item glyphicon '+class_name+'"></span>';
             }
             
-            html += ' <span class="point">'+value+'</span></div>';
+            html += ' <span class="point badge">'+value+'</span></div>';
             
             $(this).html(html);
         });            
@@ -267,9 +278,54 @@ function initAjaxForm(name) {
     
     function checkCommentEditor(box) {
         var value = box.find('textarea').val();
-        if (checkWordCount(value, 5) || box.find('input[name="comment[star]"]').val() != '') {
+        if (checkWordCount(value, 2) || box.find('input[name="comment[star]"]').val() != '') {
             box.find('.send-button').addClass("btn-primary");
         } else {
             box.find('.send-button').removeClass("btn-primary");
         }
     }
+    
+    function cropping() {
+        $('.imges-size-1 a').each(function() {
+            $(this).css('height',$(this).width()*(13/18));
+            
+            $(this).css('background-image','url('+$(this).attr("href")+')');
+            if($(this).width() > $(this).height()) {
+              $(this).css('background-size',$(this).width()+'px auto');
+            } else {
+              $(this).css('background-size','auto '+$(this).height()+'px');
+            }
+            $(this).css('background-repeat','no-repeat');
+            $(this).css('background-position','center center');
+        });
+        
+        $('.imges-size-2 a').each(function() {
+            $(this).css('height',$(this).width()*(18/13));
+            
+            $(this).css('background-image','url('+$(this).attr("href")+')');
+            if($(this).width() > $(this).height()) {
+              $(this).css('background-size',$(this).width()+'px auto');
+            } else {
+              $(this).css('background-size','auto '+$(this).height()+'px');
+            }
+            $(this).css('background-repeat','no-repeat');
+            $(this).css('background-position','center center');
+        });
+        
+        $('.imges-size-3 a').each(function() {
+            $(this).css('height',$(this).width());
+            
+            $(this).css('background-image','url('+$(this).attr("href")+')');
+            if($(this).width() > $(this).height()) {
+              $(this).css('background-size',$(this).width()+'px auto');
+            } else {
+              $(this).css('background-size','auto '+$(this).height()+'px');
+            }
+            $(this).css('background-repeat','no-repeat');
+            $(this).css('background-position','center center');
+        });
+    }
+    $(window).resize(function() {
+        cropping();
+    });
+    

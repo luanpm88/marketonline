@@ -261,7 +261,7 @@ p.controls {
 .friendlist .col-md-4 .thumbnail {
   margin-bottom: 0;
 }
-.main-text-editor .panel-heading .nav > li > a {
+.panel-heading .nav > li > a {
   padding: 2px 10px;
 }
 .main-text-editor .panel-heading {
@@ -1262,4 +1262,112 @@ button.nobutton:hover {
 .comment-line .mic-info .action {
     margin-right: 10px;
     margin-top: -5px;
+}
+.uploader-box {
+    padding: 20px;
+}
+#files div {
+    float: left;
+    margin-right: 15px;
+    text-align: center;
+    width: 100px;
+    word-wrap: break-word;
+}
+#files div:last-child {
+    margin-right: 0;
+}
+.form-tab {
+    display: none;
+}
+.form-tab.active {
+    display: block;
+}
+.text-editor-box {
+    border: 0 none;
+    margin: -15px;
+}
+
+.uploader-box {
+    border: 0 none;
+    margin: -15px;
+    padding: 0;
+}
+.stars .point {
+    float: left;
+    font-size: 11px;
+    height: 16px;
+    margin-left: 5px;
+    padding: 2px;
+    width: 16px;
+}
+.stars .star {
+    float: left;
+}
+.postable {
+    float: left;
+    height: 15px;
+    margin-bottom: 10px;
+}
+.postable .stars .point {
+    margin-top: 2px;
+}
+
+.imges-size-1 {
+    float: left;
+    width: 100%;
+}
+.imges-size-1 a {
+    display: block;
+    min-height: 1px;
+    width: 100%;
+}
+
+
+.imges-size-2 {
+    float: left;
+    width: 100%;
+}
+.imges-size-2 a {
+    display: block;
+    float: left;
+    min-height: 1px;
+    width: 49%;
+}
+.imges-size-2 .img-key-0 {
+    
+}
+.imges-size-2 .img-key-1 {
+    float: right
+}
+
+.imges-size-3 {
+    float: left;
+    width: 100%;
+}
+.imges-size-3 a {
+    display: block;
+    float: left;
+    min-height: 1px;
+    width: 32.3%;
+    margin-right: 1.55%;
+}
+.imges-size-3 .img-key-0 {
+    
+}
+.imges-size-3 .img-key-2 {
+    float: right;
+    margin-right: 0;
+}
+.uploader-box textarea {
+    width: 100%;
+    border: solid 1px #ddd;
+    padding: 10px;
+}
+#files {
+    float: left;
+    padding-bottom: 20px;
+    width: 100%;
+}
+#files span,#files br {
+    display: none
 }

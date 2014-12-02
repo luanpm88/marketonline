@@ -1,30 +1,108 @@
-        <form method="post" id="main_editor_form" action="{the_url module=studypost action=modern_post}">
-            <!-- {formhash} -->
-            <input type="hidden" name="do" value="{$smarty.get.do}" />
-            <input type="hidden" name="action" value="{$smarty.get.action}" />
+        
             
-            <input type="hidden" name="id" value="{$smarty.get.id}" />
-            
-            <div class="panel panel-default main-text-editor hide-control">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                   <ul class="nav nav-pills">
-                    <li class="active" role="presentation"><a href="#">Viết bài</a></li>
-                    <li role="presentation"><a href="#">Đăng hình ảnh/video</a></li>
+                    <li type-name="article" class="active" role="presentation" rel="text-editor-box"><a href="#article">Viết bài</a></li>
+                    <li type-name="files" role="presentation" rel="uploader-box"><a href="#upload">Đăng hình ảnh/video</a></li>
                     
                   </ul>
                 </div>
                 <div class="panel-body">
-                  
-                  <div class="text-editor">
-                    <div class="placeholder">Viết gì đó cho trang này...</div>
-                    <textarea name="data[studypost][content]" id="main-editor"></textarea>  
-                  </div>                
+                    <form method="post" id="main_editor_form" action="{the_url module=studypost action=modern_post}">
+                        <!-- {formhash} -->
+                        <input type="hidden" name="do" value="{$smarty.get.do}" />
+                        <input type="hidden" name="action" value="{$smarty.get.action}" />
+                        
+                        <input type="hidden" name="post_type" value="article" />
+                        
+                        <input type="hidden" name="id" value="{$smarty.get.id}" />
+                                            <div class="panel panel-default form-tab uploader-box">
+                                                    
+                                                <div class="panel-body">
+                                                    
+                                                        
+                                                        <div class="">
+                                                            <div class="upload-controls">
+                                                                <!-- The fileinput-button span is used to style the file input field as button -->
+                                                                <span class="btn btn-success fileinput-button">
+                                                                    <i class="glyphicon glyphicon-plus"></i>
+                                                                    <span>Chọn hình ảnh...</span>
+                                                                    <!-- The file input field used as target for the file upload widget -->
+                                                                    <input id="fileupload" type="file" name="files[]" multiple>
+                                                                </span>
+                                                                <br>
+                                                                <br>
+                                                                <!-- The global progress bar -->
+                                                                <div id="progress" class="progress">
+                                                                    <div class="progress-bar progress-bar-success"></div>
+                                                                </div>
+                                                            </div>
+                                                            <!-- The container for the uploaded files -->
+                                                            <div id="files" class="files"></div>
+                                                        </div>
+
+                                                        <h4>Mô tả:</h4>
+                                                        <textarea name="data[studypost][files_description]"></textarea>
+                                                </div>
+                                                
+                                                
+                                                <div class="panel-footer">
+                                                  <div class="controls">
+                                                    <a role="button" class="btn btn-default upload-button">Đăng</a>
+                                                  </div>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                            
+                                                <div class="panel panel-default main-text-editor hide-control form-tab text-editor-box active">
+                                                    
+                                                        <div class="panel-body">                         
+                                                            <div class="text-editor">
+                                                              <div class="placeholder">Viết gì đó cho trang này...</div>
+                                                              <textarea name="data[studypost][content]" id="main-editor"></textarea>  
+                                                            </div>              
+                                                        </div>
+                                                    
+                                                    
+                                                    <div class="panel-footer">
+                                                      <div class="controls">
+                                                        <a role="button" class="btn btn-default send-button">Đăng</a>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                    </form>
                 </div>
-                
-                <div class="panel-footer">
-                  <div class="controls">
-                    <a role="button" class="btn btn-default send-button">Đăng</a>
-                  </div>
-                </div>
+
             </div>
-        </form>
+        
+        
+        
+<!-- Generic page styles -->
+<!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+<link rel="stylesheet" href="{the_url module=root-url}uploader/css/jquery.fileupload.css">
+        
+
+<!-- The jQuery UI widget factory, can be omitted if jQuery UI is already included -->
+<script src="{the_url module=root-url}uploader/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<!-- The Canvas to Blob plugin is included for image resizing functionality -->
+<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+<!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="{the_url module=root-url}uploader/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="{the_url module=root-url}uploader/js/jquery.fileupload.js"></script>
+<!-- The File Upload processing plugin -->
+<script src="{the_url module=root-url}uploader/js/jquery.fileupload-process.js"></script>
+<!-- The File Upload image preview & resize plugin -->
+<script src="{the_url module=root-url}uploader/js/jquery.fileupload-image.js"></script>
+<!-- The File Upload audio preview plugin -->
+<script src="{the_url module=root-url}uploader/js/jquery.fileupload-audio.js"></script>
+<!-- The File Upload video preview plugin -->
+<script src="{the_url module=root-url}uploader/js/jquery.fileupload-video.js"></script>
+<!-- The File Upload validation plugin -->
+<script src="{the_url module=root-url}uploader/js/jquery.fileupload-validate.js"></script>
