@@ -58,7 +58,7 @@
                         <div class="images-box imges-size-{$item.images_count}">
                             {loop $item.images image img_level img_key}
                                 <a class="img-key-{$img_key} fancybox img-cropping" rel="image-group-{$item.id}" href="{$image.url}">
-                                    <!--<img src="{$image.thumb}" />-->
+                                    <img style="position: absolute;left: -90000px;" src="{$image.thumb}" />
                                 </a>
                             {/loop}
                         </div>

@@ -303,7 +303,7 @@ function initAjaxForm(name) {
             $(this).css('height',$(this).width()*(18/13));
             
             $(this).css('background-image','url('+$(this).attr("href")+')');
-            if($(this).width() > $(this).height()) {
+            if($(this).find('img').width()*(18/13) < $(this).find('img').height()) {
               $(this).css('background-size',$(this).width()+'px auto');
             } else {
               $(this).css('background-size','auto '+$(this).height()+'px');
