@@ -368,6 +368,13 @@ if(isset($_SESSION["flash_info"])) {
     setvar("flash_info",$_SESSION["flash_info"]);
     unset($_SESSION["flash_info"]);
 }
-
+if(isset($_SESSION["flash_success"])) {
+    setvar("flash_success",$_SESSION["flash_success"]);
+    unset($_SESSION["flash_success"]);
+}
+if(isset($_SESSION["flash_error"])) {
+    setvar("flash_error",$_SESSION["flash_error"]);
+    unset($_SESSION["flash_error"]);
+}
 
 ?>

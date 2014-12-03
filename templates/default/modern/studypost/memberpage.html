@@ -5,6 +5,8 @@
     <div class="page">
         <div class="container">
             
+            <!--{include file="`$theme_name`/modern/_flash.html"}-->
+            
             <div class="row">
                 <div class="col-md-12">
 
@@ -49,7 +51,7 @@
                           <!-- {formhash} -->
                           <input type="hidden" name="uri" value="{$FURI}" />
                         
-                          <p><input type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+                          <p><input accept="image/*" type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
                           
                         </form>
                     {/if}
@@ -69,7 +71,7 @@
                             <a title="Hủy lời mời" onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember btn btn-sm btn-default" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
                         {/if}
                     {elseif $is_friend}
-                        <a class=" btn btn-sm btn-default" href="javascript:void(0)">
+                        <a title="Nhấn để hủy kết bạn" class=" btn btn-sm btn-default" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">
                             <span class="glyphicon glyphicon-ok check-color"></span>
                             Bạn bè
                         </a>
@@ -128,9 +130,11 @@
             </div>
             <div class="col-md-6 profile-banner-col">
               <div class="album-main-image">
-                    <a href="{$member.studypics.main.name_origin}" class="fancybox">
-                        <img class="avatar" src="{$member.studypics.main.name_origin}" />
-                    </a>
+                    {if $member.studypics.main.name_origin}
+                        <a href="{$member.studypics.main.name_origin}" class="fancybox">
+                            <img class="avatar" src="{$member.studypics.main.name_origin}" />
+                        </a>
+                    {/if}
                     
                     {if $pb_userid == $member.id}
                         <div class="edit-image-button">
@@ -185,7 +189,7 @@
           </div>
           
           
-          <!--{include file="`$theme_name`/modern/_flash.html"}-->
+          
           
           <!-- Example row of columns -->
           <div class="row">
@@ -268,32 +272,32 @@
               
                 <!--{include file="`$theme_name`/modern/studypost/_other_groups.html"}--> 
               
-              <!--<div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Thống kê</h3>
+                <!--<div class="panel panel-success">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Thống kê</h3>
+                  </div>
+                  <div class="panel-body">
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <span class="badge">14</span>
+                        Sản phẩm
+                      </li>
+                      <li class="list-group-item">
+                        <span class="badge">2</span>
+                        Nhu cầu
+                      </li>
+                      <li class="list-group-item">
+                        <span class="badge">1</span>
+                        Dịch vụ
+                      </li>
+                      <li class="list-group-item">
+                        <span class="badge">13</span>
+                        Bài viết
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-                <div class="panel-body">
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                      <span class="badge">14</span>
-                      Sản phẩm
-                    </li>
-                    <li class="list-group-item">
-                      <span class="badge">2</span>
-                      Nhu cầu
-                    </li>
-                    <li class="list-group-item">
-                      <span class="badge">1</span>
-                      Dịch vụ
-                    </li>
-                    <li class="list-group-item">
-                      <span class="badge">13</span>
-                      Bài viết
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              -->
+                -->
               
               
               
@@ -302,9 +306,7 @@
           
           <hr>
     
-          <footer>
-            <p>&copy; Company 2014</p>
-          </footer>
+          
         </div> <!-- /container -->        
     </div>
 

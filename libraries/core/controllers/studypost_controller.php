@@ -264,7 +264,8 @@ class Studypost extends PbController {
 		setvar("group",$group);
 		setvar("school", $school);
 		setvar("school_list", $school_list);
-		render("studypost/group");
+		render("modern/studypost/group");
+		//render("studypost/group");
 	}
 	
 	function post()
@@ -297,7 +298,7 @@ class Studypost extends PbController {
 		{
 			$valid = true;
 		}
-		elseif($user["id"] == 1030)
+		elseif($user["role"] == "admin")
 		{
 			$valid = true;
 		}
@@ -576,7 +577,7 @@ class Studypost extends PbController {
 			$sms['membertype_ids'] = '[6]';
 					
 			$result = $this->message->SendToUser($user['id'], $group["leader_id"], $sms);
-			$_SESSION["flash_info"] = "Bạn đã xin tham gia nhóm <strong>".$group["subject_name"]."</strong> tại trường <strong>".$group["school_name"]."</strong>. Vui lòng chờ trưởng nhóm duyệt.";
+			$_SESSION["flash_info"] = "Bạn đã xin tham gia nhóm <strong>".$group["subject_name"]."</strong> tại trường <strong>".$group["school_name"]."</strong>. Vui lòng chờ trưởng nhóm duyệt";
 		}
 		//setFlash("Thành công", "<p>Bạn đã xin tham gia nhóm thành công. Đang đợi trưởng nhóm duyệt.</p>");
 		
@@ -598,7 +599,7 @@ class Studypost extends PbController {
 			$this->studygroupmember->del(intval($exsit["id"]));
 		}
 		
-		pheader("location:index.php?do=studypost&action=school");
+		pheader("location:".$_SERVER["HTTP_REFERER"]);
 	}
 	
 	function memberpage()
@@ -1249,10 +1250,11 @@ class Studypost extends PbController {
 	function group_accept()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		$group = $this->studygroup->read("*", $_GET["group_id"]);
 		
-		if($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
+		if($user["role"] == "admin" || $pb_userinfo["pb_userid"] == $group["leader_id"])
 		{
 			$gm = $this->studygroupmember->field("id",array("member_id=".$_GET["id"],"studygroup_id=".$_GET["group_id"]));
 			//var_dump($gm);
@@ -1264,10 +1266,11 @@ class Studypost extends PbController {
 	function group_reject()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		$group = $this->studygroup->read("*", $_GET["group_id"]);
 		
-		if($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
+		if($user["role"] == "admin" || $pb_userinfo["pb_userid"] == $group["leader_id"])
 		{
 			$gm = $this->studygroupmember->field("id",array("member_id=".$_GET["id"],"studygroup_id=".$_GET["group_id"]));
 			//var_dump($gm);
@@ -1279,19 +1282,22 @@ class Studypost extends PbController {
 	function changeGroupLeader()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		$group = $this->studygroup->read("*", $_GET["group_id"]);
 
-		if($pb_userinfo["pb_userid"] == 1030)
+		if($user["role"] == "admin")
 		{
 			$newleader = $this->member->fields("*",array("username='".$_GET["username"]."'"));
 			if(!empty($newleader))
 			{
 				$this->studygroup->saveField("leader_id", $newleader["id"],intval($_GET["group_id"]));
+				$_SESSION["flash_success"] = "Đã thay quản trị nhóm";
 				pheader("location:".$_SERVER["HTTP_REFERER"]);
 			}
 			else
 			{
-				echo "<meta charset='utf-8'>Tên người dùng không tồn tại..!<br /><br /><a href='#' onclick='history.go(-1)'>Quay trởi lại</a>";
+				$_SESSION["flash_error"] = "Tên người dùng không tồn tại";
+				pheader("location:".$_SERVER["HTTP_REFERER"]);				
 			}
 		}
 		
@@ -1308,9 +1314,10 @@ class Studypost extends PbController {
 	function update_group_info()
 	{
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		$group = $this->studygroup->read("*", $_POST["group_id"]);
 
-		if ($pb_userinfo["pb_userid"] == 1030 || $pb_userinfo["pb_userid"] == $group["leader_id"])
+		if ($user["role"] == "admin" || $pb_userinfo["pb_userid"] == $group["leader_id"])
 		{
 			$this->studygroup->saveField($_POST["type"], $_POST["group-info-content"], intval($_POST["group_id"]));
 		}
@@ -1462,6 +1469,7 @@ class Studypost extends PbController {
 		pb_submit_check('data');
 		
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById(intval($pb_userinfo["pb_userid"]));
 		
 		if(isset($_POST["post_id"])) {
 			$post = $this->studypost->read("member_id",$_POST["post_id"]);
@@ -1474,9 +1482,11 @@ class Studypost extends PbController {
 			
 			$is_valid = $post["member_id"]==$pb_userinfo["pb_userid"];
 			
+			
+			
 			if($is_valid) {
 				$this->studypost->save($studypost,"update",intval($studypost["id"]));
-				$_SESSION["flash_success"] = "Bài viết đã được sửa!";
+				$_SESSION["flash_success"] = "Bài viết đã được sửa";
 				echo "ok";
 			}
 			return;
@@ -1502,10 +1512,16 @@ class Studypost extends PbController {
 				}
 				
 				$is_valid = true;
+				if($pb_userinfo["pb_userid"] != $_POST["id"] && !$this->studyfriend->isFriend($pb_userinfo["pb_userid"], $_POST["id"])) {
+					$is_valid = false;
+					$error_message = "Chỉ có chủ nhân hoặc bạn bè của chủ nhân mới có thể đăng bài";
+				}
 				
 				if($is_valid) {
 					$this->studypost->save($studypost);					
 					echo "ok";
+				} else {
+					echo $error_message;
 				}
 			}
 			
@@ -1528,10 +1544,16 @@ class Studypost extends PbController {
 				}
 				
 				$is_valid = true;
+				if(!$this->studygroupmember->belongToGroup($studypost["group_id"], $user["id"], 1)) {
+					$is_valid = false;
+					$error_message = "Bạn không phải là thành viên của nhóm";
+				}
 				
 				if($is_valid) {
 					$this->studypost->save($studypost);					
 					echo "ok";
+				} else {
+					echo $error_message;
 				}
 			}
 		}

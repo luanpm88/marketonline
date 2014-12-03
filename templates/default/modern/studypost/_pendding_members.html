@@ -1,0 +1,47 @@
+{if ($pb_userinfo.role == 'admin' || $pb_userid == $group_leader.id) && $waiting_list}
+    <div class="panel panel-default">
+                <div class="panel-heading">
+                  <!--<a href="#" class="sub-info-heading pull-right">Xem tất cả</a>-->
+                  <h3 class="panel-title">Thành viên chờ duyệt</h3>                  
+                </div>
+                <div class="panel-body">
+                          <ul class="list-group nopadding">
+                            
+                            <!--{loop $waiting_list mem level_group group_key}-->
+                            
+                                <li class="list-group-item">
+                              
+                                    <a href="{the_url module=studypost action=memberpage id=`$mem.info.id` title=`$mem.fullname`}">
+                                        <img src="{$mem.info.photo}" class="img-responsive" alt="" />
+                                    </a>
+                                    <a href="{the_url module=studypost action=memberpage id=`$mem.info.id` title=`$mem.fullname`}">
+                                        {$mem.info.first_name} {$mem.info.last_name}
+                                    </a>
+                                    <div class="mic-info">
+                                        {$mem.info.school_name}
+                                    </div>
+                                    <div class="controls">
+                                      
+                                        
+                                        
+                                        <a class="btn-xs btn-default pull-right" href="{the_url module=studypost action=group_reject id=`$mem.info.id` group_id=`$mem.studygroup_id`}">
+                                            Bỏ qua
+                                        </a>
+                                        <span class="pull-right">&nbsp;&nbsp;</span>
+                                        <a class="btn-xs btn-primary pull-right" href="{the_url module=studypost action=group_accept id=`$mem.info.id` group_id=`$mem.studygroup_id`}">
+                                            Duyệt
+                                        </a>
+                                      
+                                    </div>
+                                    
+                                </li>
+                            
+                            <!--{/loop}-->
+                            
+                            
+                            
+                          </ul>
+                </div>
+                
+    </div>
+{/if}

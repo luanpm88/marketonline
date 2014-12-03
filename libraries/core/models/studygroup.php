@@ -105,7 +105,7 @@ class Studygroups extends PbModel {
 			
 			$pb_userinfo = pb_get_member_info();
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
-			
+			//echo $groups[$key]["new_count"];
 			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
 			$groups[$key]["logo"] = URL.pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
 			
@@ -194,6 +194,7 @@ class Studygroups extends PbModel {
 		$joins = array("RIGHT JOIN {$this->table_prefix}studygroupviews AS stv ON stv.studygroup_id = Studypost.group_id");
 		
 		$count = $studypost->findCount($joins, $conditions, "Studypost.id");
+		//echo $count;
 		return $count;
 	}
 	

@@ -86,6 +86,10 @@ $(document).ready(function() {
     
     
     
+    //clear inbox
+    $('body').on("click",".top-mailbox-menu button",function(){
+        clearInbox();
+    });
     
     
     
@@ -329,7 +333,21 @@ function initAjaxForm(name) {
             $(this).css('background-position','center center');
         });
     }
+    
+    function clearInbox() {
+		//code
+		$.ajax({
+			url: ROOT_URL+"index.php?do=product&action=ajaxClearInbox",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				
+			}
+		});
+    }
+    
     $(window).resize(function() {
         cropping();
     });
+    
+    
     

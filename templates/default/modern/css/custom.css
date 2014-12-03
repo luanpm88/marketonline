@@ -730,7 +730,7 @@ button.nobutton:hover {
     margin-bottom: 0;
 }
 .navbar-fixed-top .nav > li.login-info > a {
-    padding-right: 15px;
+    padding-right: 0px;
 }
 .navbar-fixed-top .btn-group.top-chatbox > button.nobutton {
     font-size: 22px;
@@ -1295,10 +1295,10 @@ button.nobutton:hover {
 .stars .point {
     float: left;
     font-size: 11px;
-    height: 16px;
+    height: 18px;
     margin-left: 5px;
-    padding: 2px;
-    width: 16px;
+    padding: 4px 3px;
+    width: 18px;
 }
 .stars .star {
     float: left;
@@ -1375,4 +1375,7 @@ button.nobutton:hover {
     margin: -5px -5px -25px;
 }
 .edit-box .panel {
+}
+.alert .close-but {
+    
 }

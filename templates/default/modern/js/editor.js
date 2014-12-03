@@ -89,6 +89,8 @@
                         resetUploadForm();
                         $('.uploader-box textarea').val("");
                     }
+                } else {
+                    alert(xhr.responseText);
                 }
             }
         });

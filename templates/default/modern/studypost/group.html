@@ -5,6 +5,10 @@
     
     <div class="page">
         <div class="container">
+            
+            <!--{include file="`$theme_name`/modern/_flash.html"}-->
+            
+            
           <!-- Example row of columns -->
           <div class="row top-info" style="border-bottom: solid 1px #ddd">
             <div class="col-md-3">
@@ -16,6 +20,21 @@
                                 <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
                                     <img alt="{$group.subject_name} - {$group.school_name}" class="profile-picture img-thumbnail" src="{$group.logo}">
                                 </a>
+                                
+                                {if $pb_userinfo.role == 'admin' || $pb_userid == $group_leader.id}
+                                    <div title="Thay ảnh đại diện" class="edit-image-button small memberpage-logo">
+                                        <a class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#changelogo-but').trigger('click')"></a>
+                                    </div>
+                                    <form style="display: none" name="productaddfrm" id="Frm2_logo" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_group_logo" enctype="multipart/form-data">
+                                        <!-- {formhash} -->
+                                        <input type="hidden" name="group_id" value="{$group.id}" />
+                                        <input type="hidden" name="uri" value="{$FURI}" />
+                                      
+                                        <p><input accept="image/*" type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+                                        
+                                    </form>
+                                {/if}
+                                    
                             </td>
                             <td width=58%">
                                 <ul class="list-group">
@@ -39,9 +58,19 @@
                     
                   
                     <div class="group_controls">
-                      <a class="btn btn-sm btn-default">+ Tham gia</a>
-                      <a class="btn btn-sm btn-success">Tin nhắn</a>
-                      <a class="btn btn-sm btn-primary">Theo dõi</a>
+                        {if $belongToGroup}                        
+                            <a class="btn btn-sm btn-default" href="{the_url module=studypost action=leave_group id=`$group.id`}">- Rời khỏi nhóm</a>                            
+                        {else}
+                            {if $isWaitingValid}
+                                <a title="Hủy yêu cầu tham gia" class="btn btn-sm btn-default" href="{the_url module=studypost action=leave_group id=`$group.id`}">
+                                    Chờ duyệt
+                                </a>
+                            {else}
+                                <a class="btn btn-sm btn-default" href="{the_url module=studypost action=join_group id=`$group.id`}">+ Tham gia</a>
+                            {/if}                            
+                        {/if}
+                      <!--<a class="btn btn-sm btn-success">Tin nhắn</a>
+                      <a class="btn btn-sm btn-primary">Theo dõi</a>-->
                     </div>
                     
                   <div class="info-lines">
@@ -51,7 +80,33 @@
                         <p>
                           <span aria-hidden="true" class="glyphicon glyphicon-user"></span> Quản trị viên:
                           <a href="{the_url module=studypost action=memberpage id=`$group_leader.id` title=`$group_leader.fullname`}">{$group_leader.first_name} {$group_leader.last_name}</a>
+                          
+                            {if $pb_userinfo.role == 'admin'}
+                                <a class="change-group-leader-but fancybox glyphicon glyphicon-pencil" href="#change-group-leader-form">
+                                    
+                                </a>
+                                <div id="change-group-leader-form" style="display: none;padding: 0 10px;">
+                                    <h3>Thay quản lý nhóm</h3>
+                                    <form action="{the_url module=root-url}index.php">
+                                        <input type="hidden" value="studypost" name="do" />
+                                        <input type="hidden" value="changeGroupLeader" name="action" />
+                                        <input type="hidden" value="{$group.id}" name="group_id" />
+                                        <input style="
+    float: left;
+    height: 35px;
+    margin-right: 10px;
+    padding: 0 10px;
+" type="text" value="" name="username" placeholder="Tên người dùng" />
+                                        <input type="submit" class="button-style btn btn-primary" value="Thay Quản lý" />
+                                    </form>
+                                </div>
+                            {/if}
+                          
+                          
                         </p>
+                        
+                        
+                        
                       </div>
                       <div class="col-xs-12 col-md-12">
                         <p>
@@ -71,12 +126,33 @@
             </div>
             <div class="col-md-9 profile-banner-col">
               <div class="album-main-image">
-                    <img src="{$item.banner}" />
+                    {if $group.banners}
+                        <!--{loop $group.banners item level key}-->
+                            {if $key==0}
+                                <img src="{the_url module=root-url}{$item.banner}" />
+                            {/if}
+                        <!--{/loop}-->
+                    {/if}
+                    
+                    {if $pb_userinfo.role == 'admin' || $pb_userid == $group_leader.id}
+                        <div class="edit-image-button">
+                            <a title="Thay banner đại diện" class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#changebanner-but').trigger('click')"></a>
+                        </div>
+                        <form style="display: none" name="productaddfrm" id="Frm2_banner" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_group_banner" enctype="multipart/form-data">
+                          <!-- {formhash} -->
+                          <input type="hidden" name="group_id" value="{$group.id}" />
+                          <input type="hidden" name="uri" value="{$FURI}" />
+                        
+                          <p><input accept="image/*" type="file" name="upload_logo" id="changebanner-but" onchange="$('#Frm2_banner').submit()" /></p>
+                          
+                        </form>                            
+                    {/if}
+                    
               </div>
                 <div class="banner-school-info banner-group-info">
-                            <h2>{$group.subject_name}</h2>
-                            <h3>{$group.school_name}</h3>
-                            <p>{$school.address}</p>
+                    <h2>{$group.subject_name}</h2>
+                    <h3>{$group.school_name}</h3>
+                    <p>{$school.address}</p>
                 </div>
             </div>
             
@@ -144,12 +220,13 @@
           </div>
           
           
-          <!--{include file="`$theme_name`/modern/_flash.html"}-->
+          
           
           <!-- Example row of columns -->
           <div class="row">
             <div class="col-md-3">
-            
+                
+                    <!--{include file="`$theme_name`/modern/studypost/_school_info.html"}-->
               
                     <!--{include file="`$theme_name`/modern/studypost/_joined_groups.html"}-->
               
@@ -163,34 +240,19 @@
               
             </div>
             <div class="col-md-3">
+                
+                <!--{include file="`$theme_name`/modern/studypost/_pendding_members.html"}-->
               
                 <!--{include file="`$theme_name`/modern/studypost/_other_groups.html"}-->
+                
+                
+                
+                
+                
+                
+                
               
-              <div class="panel panel-success">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Thống kê</h3>
-                </div>
-                <div class="panel-body">
-                  <ul class="list-group">
-                    <li class="list-group-item">
-                      <span class="badge">14</span>
-                      Sản phẩm
-                    </li>
-                    <li class="list-group-item">
-                      <span class="badge">2</span>
-                      Nhu cầu
-                    </li>
-                    <li class="list-group-item">
-                      <span class="badge">1</span>
-                      Dịch vụ
-                    </li>
-                    <li class="list-group-item">
-                      <span class="badge">13</span>
-                      Bài viết
-                    </li>
-                  </ul>
-                </div>
-              </div>
+             
               
               
               
@@ -199,10 +261,9 @@
           </div>
           
           <hr>
-    
-          <footer>
-            <p>&copy; Company 2014</p>
-          </footer>
+            
+            
+          
         </div> <!-- /container -->        
     </div>
 
