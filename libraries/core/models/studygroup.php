@@ -107,7 +107,7 @@ class Studygroups extends PbModel {
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
 			
 			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
-			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
+			$groups[$key]["logo"] = URL.pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
 			
 			$groups[$key]["address"] = $item["school_address"].", ".$area->getFullName($item["school_area_id"]);
 			
@@ -119,10 +119,11 @@ class Studygroups extends PbModel {
 	
 	function getInfoById($id)
 	{
-		uses("studygroupmember", "studygroupimage", "studygroupimagecomment");
+		uses("studypost","studygroupmember", "studygroupimage", "studygroupimagecomment");
 		$studygroupmember = new Studygroupmembers();
 		$studygroupimage = new Studygroupimages();
 		$studygroupimagecomment = new Studygroupimagecomments();
+		$studypost = new Studyposts();
 		
 		$conditions = array();
 		if($id) $conditions[] = "Studygroup.id = ".intval($id);
@@ -132,6 +133,7 @@ class Studygroups extends PbModel {
 		$joins[] = "RIGHT JOIN {$this->table_prefix}studygroupmembers AS sgm ON sgm.studygroup_id = Studygroup.id";
 		
 		$groups = $this->findAll("Studygroup.*, sc.name AS school_name, su.name AS subject_name", $joins, $conditions);
+		
 		foreach($groups as $key => $item)
 		{
 			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
@@ -140,20 +142,20 @@ class Studygroups extends PbModel {
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
 			
 			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
-			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
+			$groups[$key]["logo"] = URL.pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
 			
 			//get banners
 			$banners = $studygroupimage->findAll("*", null, array("group_id=".$id), "created DESC");
 			
 			if(count($banners))
 			{
-				foreach($banners as $kk => $item)
+				foreach($banners as $kk => $b)
 				{
-					$banners[$kk]["image"] = pb_get_attachmenturl($item['name'], '', '');
-					$banners[$kk]["banner"] = pb_get_attachmenturl($item['name'], '', 'banner');
-					$banners[$kk]["description_raw"] = $item["description"];
-					$banners[$kk]["description"] = str_replace("\n","<br />",$item["description"]);
-					$banners[$kk]["comments"]["count"] = $studygroupimagecomment->findCount(null, array("studygroupimage_id=".$item["id"]));
+					$banners[$kk]["image"] = pb_get_attachmenturl($b['name'], '', '');
+					$banners[$kk]["banner"] = pb_get_attachmenturl($b['name'], '', 'banner');
+					$banners[$kk]["description_raw"] = $b["description"];
+					$banners[$kk]["description"] = str_replace("\n","<br />",$b["description"]);
+					$banners[$kk]["comments"]["count"] = $studygroupimagecomment->findCount(null, array("studygroupimage_id=".$b["id"]));
 				}
 				$groups[$key]["banners"] = $banners;
 			}
@@ -166,6 +168,11 @@ class Studygroups extends PbModel {
 			
 			$groups[$key]["banner_origin"] = $groups[$key]["banner"];
 			$groups[$key]["banner"] = pb_get_attachmenturl($groups[$key]['banner'], '', 'banner');
+			
+			//count articles
+			$groups[$key]["studypost_count"] = $studypost->findCount(null, array("group_id = ".$item["id"]));
+			//var_dump($_GET["id"]);
+			
 			
 		}
 		return $groups[0];

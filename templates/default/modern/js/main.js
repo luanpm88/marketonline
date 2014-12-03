@@ -287,10 +287,11 @@ function initAjaxForm(name) {
     
     function cropping() {
         $('.imges-size-1 a').each(function() {
-            $(this).css('height',$(this).width()*(13/18));
+            var scale = 13/18;
+            $(this).css('height',$(this).width()*scale);
             
             $(this).css('background-image','url('+$(this).attr("href")+')');
-            if($(this).width() > $(this).height()) {
+            if($(this).find('img').width()*scale < $(this).find('img').height()) {
               $(this).css('background-size',$(this).width()+'px auto');
             } else {
               $(this).css('background-size','auto '+$(this).height()+'px');
@@ -300,10 +301,12 @@ function initAjaxForm(name) {
         });
         
         $('.imges-size-2 a').each(function() {
-            $(this).css('height',$(this).width()*(18/13));
+            var scale = 18/13;
+            
+            $(this).css('height',$(this).width()*scale);
             
             $(this).css('background-image','url('+$(this).attr("href")+')');
-            if($(this).find('img').width()*(18/13) < $(this).find('img').height()) {
+            if($(this).find('img').width()*scale < $(this).find('img').height()) {
               $(this).css('background-size',$(this).width()+'px auto');
             } else {
               $(this).css('background-size','auto '+$(this).height()+'px');
@@ -313,10 +316,11 @@ function initAjaxForm(name) {
         });
         
         $('.imges-size-3 a').each(function() {
-            $(this).css('height',$(this).width());
+            var scale = 1;
+            $(this).css('height',$(this).width()*scale);
             
             $(this).css('background-image','url('+$(this).attr("href")+')');
-            if($(this).find('img').width() < $(this).find('img').height()) {
+            if($(this).find('img').width()*scale < $(this).find('img').height()) {
               $(this).css('background-size',$(this).width()+'px auto');
             } else {
               $(this).css('background-size','auto '+$(this).height()+'px');

@@ -97,6 +97,7 @@ class Schools extends PbModel {
 		$school["banner"] = pb_get_attachmenturl($school['banner'], '', 'banner');
 		//$school["address"] = pb_get_attachmenturl($school['banner'], '', 'banner');
 		$school["address"] = $school["address"].", ".$area->getFullName($school["area_id"]);
+		$school["area"] = $area->getFullName($school["area_id"]);
 		//var_dump($school["area_id"]);
 		
 		

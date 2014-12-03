@@ -234,6 +234,8 @@ class Members extends PbModel {
 			$result['parent_id'] = $link->findParent($result['id']);
 			
 			$result['school_area'] = $area->getFullName($result["school_area_id"]);
+			
+					
  		}		
  		return $result;
  	}

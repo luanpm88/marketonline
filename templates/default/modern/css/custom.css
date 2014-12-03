@@ -56,7 +56,7 @@
 }
 .page {
     padding-top: 60px;
-    background: #e3ece5; /*#e8e8e8;*/
+    background: #e7eee9; /*#e8e8e8;*/
 }
 .profile-picture {
     border-radius: 0;
@@ -1220,7 +1220,7 @@ button.nobutton:hover {
 }
 .stars .star {
     color: #f0ad4e;
-    margin-right: 1px;
+    padding-right: 1px;
 }
 .postable {
     margin-bottom: 5px;
@@ -1370,4 +1370,9 @@ button.nobutton:hover {
 }
 #files span,#files br {
     display: none
+}
+.edit-box {
+    margin: -5px -5px -25px;
+}
+.edit-box .panel {
 }

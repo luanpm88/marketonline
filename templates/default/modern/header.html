@@ -43,6 +43,7 @@
     <script type="text/javascript">
         var ROOT_URL = '{/literal}{the_url module=root-url}{literal}';
         var GET_ID = '{/literal}{$smarty.get.id}{literal}';
+        var ACTION = '{/literal}{$smarty.get.action}{literal}';
         var on_page = 1;
         
         function delStudypost(id) {
@@ -66,7 +67,7 @@
                 if (studyposts_scroll && !studyposts_end) {
                     studyposts_scroll = false;
                     $.ajax({
-                        url: ROOT_URL+"index.php?do=studypost&action=ajaxStudyposts&type=memberpage&id="+GET_ID+"&page="+studyposts_page
+                        url: ROOT_URL+"index.php?do=studypost&action=ajaxStudyposts&type="+ACTION+"&id="+GET_ID+"&page="+studyposts_page
                     }).done(function ( data ) {
                         $('.list_studypost').append(data);
                         studyposts_page++;
@@ -84,7 +85,7 @@
                 studyposts_end = false;
                 
                 $.ajax({
-                    url: ROOT_URL+"index.php?do=studypost&action=ajaxStudyposts&type=memberpage&id="+GET_ID+"&page="+studyposts_page
+                    url: ROOT_URL+"index.php?do=studypost&action=ajaxStudyposts&type="+ACTION+"&id="+GET_ID+"&page="+studyposts_page
                 }).done(function ( data ) {
                     $('.list_studypost').html(data);
                     studyposts_page++;

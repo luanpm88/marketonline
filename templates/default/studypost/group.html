@@ -106,7 +106,9 @@
                                 <!--{loop $group.banners item level key}-->
                                     <li>
                                         {if $pb_userid == 1030 || $pb_userid == $group_leader.id}<a class="del_schoolbanner" onclick="return confirm('Bạn có chắc muốn xóa hình này!')" href="{the_url module=studypost action=del_studygroupbanner id=`$item.id`}">x</a>{/if}
-                                        <a href="javascript:void(0)" onclick="getStudygrouppictureDetail({$group.id},{$item.id})"><img src="{$item.banner}" /></a>
+                                        <a href="javascript:void(0)" onclick="getStudygrouppictureDetail({$group.id},{$item.id})">
+                                            <img src="{$item.banner}" />
+                                        </a>
                                     </li>
                                 <!--{/loop}-->
                             {/if}

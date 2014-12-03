@@ -206,6 +206,8 @@ class Studypost extends PbController {
 	
 	function group()
 	{
+		global $customer_code;
+		
 		$pb_userinfo = pb_get_member_info();
 		//cleanEditorFile
 		//$studyposts = $this->studypost->
@@ -214,6 +216,9 @@ class Studypost extends PbController {
 		
 		//		
 		$group = $this->studygroup->getInfoById(intval($_GET["id"]));
+		
+		//clicked
+		$this->studygroup->clicked($customer_code, $group);
 		
 		if($group["school_id"])
 		{
@@ -1483,6 +1488,32 @@ class Studypost extends PbController {
 				$studypost = $_POST["data"]["studypost"];
 				$studypost["member_id"] = $pb_userinfo["pb_userid"];
 				$studypost["memberpage_id"] = $_POST["id"];
+				$studypost["created"] = date("Y-m-d H:i:s");
+				$studypost["modified"] = date("Y-m-d H:i:s");
+				
+				if(!empty($_POST["post_files"]) && $_POST["post_type"]=='files') {
+					//files
+					$files = $_POST["post_files"];
+					foreach($files as $key => $f) {
+						$parts = explode("/attachment/",$f);
+						$files[$key] = $parts[1];
+					}
+					$studypost["files"] = implode(",",$files);
+				}
+				
+				$is_valid = true;
+				
+				if($is_valid) {
+					$this->studypost->save($studypost);					
+					echo "ok";
+				}
+			}
+			
+		} elseif ($pb_userinfo && $_POST["action"] == "group" && isset($_POST["id"])) {
+			if(true) {
+				$studypost = $_POST["data"]["studypost"];
+				$studypost["member_id"] = $pb_userinfo["pb_userid"];
+				$studypost["group_id"] = $_POST["id"];
 				$studypost["created"] = date("Y-m-d H:i:s");
 				$studypost["modified"] = date("Y-m-d H:i:s");
 				
