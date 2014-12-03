@@ -1,0 +1,32 @@
+        {if $joined_groups}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Môn học</h3>
+                </div>
+                <div class="panel-body">
+                          <ul class="list-group nopadding leftbar">
+                            
+                            <!--{loop $joined_groups group level_group group_key}-->
+                            
+                                <li class="list-group-item">
+                                    {if $group.new_count && false}
+                                         <span class="badge pull-right">{$group.new_count}</span>
+                                    {/if}
+                                   
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                        <img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" />
+                                    </a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">{$group.subject_name}</a>
+                                    <div class="mic-info">
+                                        {$group.school_name}
+                                    </div>                                       
+                                </li>
+                            
+                                                
+                            <!--{/loop}-->
+                            
+                            
+                          </ul>
+                </div>
+            </div>
+        {/if}

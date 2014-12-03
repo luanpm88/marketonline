@@ -1,0 +1,25 @@
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <!--<a href="#" class="sub-info-heading pull-right">Danh sách trường</a>-->
+                    <h3 class="panel-title">Đang theo học</h3>                  
+                  </div>
+                  <div class="panel-body">
+                            <ul class="list-group nopadding">
+                              <li class="list-group-item school-list">
+                                
+                                  <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
+                                      <img src="{the_url module=root-url}/{$school.logo}" style="width:80px;height:80px" class="img-responsive" alt="" />
+                                  </a>
+                                  <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">{$member.school_name}</a>
+                                  <div class="mic-info">
+                                      {$member.school_area}
+                                  </div>
+                                  <!--<div class="controls">
+                                    <a class="btn btn-xs btn-primary" href="#">Xem thông tin</a>
+                                  </div>-->
+                                  
+                              </li>
+                              
+                            </ul>
+                  </div>
+                </div>

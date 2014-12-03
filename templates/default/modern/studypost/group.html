@@ -1,0 +1,209 @@
+<!--{include file="`$theme_name`/modern/header.html" page_title="`$group.subject_name` - `$group.school_name`"}-->
+
+<!--{include file="`$theme_name`/modern/topmenu.html"}-->
+
+    
+    <div class="page">
+        <div class="container">
+          <!-- Example row of columns -->
+          <div class="row top-info" style="border-bottom: solid 1px #ddd">
+            <div class="col-md-3">
+              <div class="border-box" style="padding-right: 0;">
+                <div class="profile-box">
+                    <table class="logo50">
+                        <tr>
+                            <td valign="top" width="42%">
+                                <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                    <img alt="{$group.subject_name} - {$group.school_name}" class="profile-picture img-thumbnail" src="{$group.logo}">
+                                </a>
+                            </td>
+                            <td width=58%">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                      <span class="badge">{$group.member_count}</span>
+                                      Thành viên
+                                    </li>
+                                    <li class="list-group-item">
+                                      <span class="badge">{$group.clicked}</span>
+                                      Lượt xem
+                                    </li>
+                                    <li class="list-group-item">
+                                      <span class="badge">{$group.studypost_count}</span>
+                                      Bài viết
+                                    </li>
+                                  </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    
+                  
+                    <div class="group_controls">
+                      <a class="btn btn-sm btn-default">+ Tham gia</a>
+                      <a class="btn btn-sm btn-success">Tin nhắn</a>
+                      <a class="btn btn-sm btn-primary">Theo dõi</a>
+                    </div>
+                    
+                  <div class="info-lines">
+                    <div class="row">                      
+                      
+                      <div class="col-xs-12 col-md-12">
+                        <p>
+                          <span aria-hidden="true" class="glyphicon glyphicon-user"></span> Quản trị viên:
+                          <a href="{the_url module=studypost action=memberpage id=`$group_leader.id` title=`$group_leader.fullname`}">{$group_leader.first_name} {$group_leader.last_name}</a>
+                        </p>
+                      </div>
+                      <div class="col-xs-12 col-md-12">
+                        <p>
+                          <span aria-hidden="true" class="glyphicon glyphicon-phone"></span> {$group_leader.mobile}
+                        </p>
+                      </div>
+                      <div class="col-xs-12 col-md-12">
+                        <p>
+                          <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span> <a href="mailto:{$group_leader.email}">{$group_leader.email}</a>
+                        </p>
+                      </div>    
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-9 profile-banner-col">
+              <div class="album-main-image">
+                    <img src="{$item.banner}" />
+              </div>
+                <div class="banner-school-info banner-group-info">
+                            <h2>{$group.subject_name}</h2>
+                            <h3>{$group.school_name}</h3>
+                            <p>{$school.address}</p>
+                </div>
+            </div>
+            
+          </div>
+          
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12" style="display: none">
+              <nav class="navbar navbar-default main-menu" role="navigation">
+                <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <!--<div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                  </div>-->
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Lich sử học <span class="sr-only">(current)</span></a></li>                      
+                      <li><a href="#">Ghi chú</a></li>
+                      <li><a href="#">Đề xuất</a></li>
+                      <li><a href="#">Khám phá</a></li>
+                      <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>-->
+                    </ul>
+                    <!--<form class="navbar-form navbar-left" role="search">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>-->
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#">Người theo dõi</a></li>
+                      <li><a href="#">Bạn bè đề xuất</a></li>
+                      <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                        </ul>
+                      </li>-->
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+            </div>
+          </div>
+          
+          
+          <!--{include file="`$theme_name`/modern/_flash.html"}-->
+          
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-3">
+            
+              
+                    <!--{include file="`$theme_name`/modern/studypost/_joined_groups.html"}-->
+              
+              
+            </div>
+            <div class="col-md-6">
+                
+                <!--{include file="`$theme_name`/modern/_main_form.html"}-->
+                <div class="list_studypost"></div>
+              
+              
+            </div>
+            <div class="col-md-3">
+              
+                <!--{include file="`$theme_name`/modern/studypost/_other_groups.html"}-->
+              
+              <div class="panel panel-success">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Thống kê</h3>
+                </div>
+                <div class="panel-body">
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <span class="badge">14</span>
+                      Sản phẩm
+                    </li>
+                    <li class="list-group-item">
+                      <span class="badge">2</span>
+                      Nhu cầu
+                    </li>
+                    <li class="list-group-item">
+                      <span class="badge">1</span>
+                      Dịch vụ
+                    </li>
+                    <li class="list-group-item">
+                      <span class="badge">13</span>
+                      Bài viết
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              
+              
+              
+            </div>
+          </div>
+          
+          <hr>
+    
+          <footer>
+            <p>&copy; Company 2014</p>
+          </footer>
+        </div> <!-- /container -->        
+    </div>
+
+<!--{include file="`$theme_name`/modern/footer.html"}-->

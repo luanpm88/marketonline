@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+                <div class="panel-heading">
+                  <!--<a href="#" class="sub-info-heading pull-right">Xem tất cả</a>-->
+                  <h3 class="panel-title">Môn học</h3>                  
+                </div>
+                <div class="panel-body">
+                          <ul class="list-group nopadding">
+                            
+                            <!--{loop $groups group level_group group_key}-->
+                            
+                                <li class="list-group-item">
+                              
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                        <img src="{the_url module=root-url}{$group.logo}" class="img-responsive" alt="" />
+                                    </a>
+                                    <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                        {$group.subject_name}
+                                    </a>
+                                    <div class="mic-info">
+                                        {$group.school_name}
+                                    </div>
+                                    <div class="controls">
+                                      
+                                        <a style="color: #333;" class="btn-xs pull-right" href="#">
+                                            <span aria-hidden="true" class="glyphicon glyphicons group"></span>&nbsp;&nbsp;
+                                            <span class="badge pull-right">{$group.member_count}</span>
+                                        </a>
+                                            <span class="pull-right">&nbsp;/&nbsp;</span>
+                                            {if $group.joined && !$group.status}
+                                                <a class="btn-xs pull-right" href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
+                                                    Chờ duyệt
+                                                </a>
+                                            {else}
+                                                <a class="btn-xs pull-right" href="{the_url module=studypost action=join_group id=`$group.id`}">
+                                                    Tham gia
+                                                </a>
+                                            {/if}
+                                        
+                                      
+                                      
+                                    </div>
+                                    
+                                </li>
+                            
+                            <!--{/loop}-->
+                            
+                            
+                            
+                          </ul>
+                </div>
+                
+              </div>
