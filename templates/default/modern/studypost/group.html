@@ -132,6 +132,8 @@
                                 <img src="{the_url module=root-url}{$item.banner}" />
                             {/if}
                         <!--{/loop}-->
+                    {else}
+                        <img class="avatar" src="{the_url module=root-url}images/bg_study.png" />
                     {/if}
                     
                     {if $pb_userinfo.role == 'admin' || $pb_userid == $group_leader.id}

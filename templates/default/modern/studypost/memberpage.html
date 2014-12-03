@@ -134,6 +134,8 @@
                         <a href="{$member.studypics.main.name_origin}" class="fancybox">
                             <img class="avatar" src="{$member.studypics.main.name_origin}" />
                         </a>
+                    {else}
+                        <img class="avatar" src="{the_url module=root-url}images/bg_study.png" />
                     {/if}
                     
                     {if $pb_userid == $member.id}
