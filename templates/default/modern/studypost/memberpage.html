@@ -48,7 +48,7 @@
                             <a class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#changelogo-but').trigger('click')"></a>
                         </div>
                         <form style="display: none" name="productaddfrm" id="Frm2_logo" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_logo_home" enctype="multipart/form-data">
-                          <!-- {formhash} -->
+                         
                           <input type="hidden" name="uri" value="{$FURI}" />
                         
                           <p><input accept="image/*" type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
@@ -145,7 +145,7 @@
                         <div id="upload_logo" class="float-hide">
                             <div class="upload_logo">                                    
                                 <form id="uploadpics_form" method="post" action="{$WebRootUrl}index.php?do=studypost&action=upload_picture" enctype="multipart/form-data">
-                                  <!-- {formhash} -->
+                                  
                                 
                                 
                                   <p><input accept="image/*" type="file" name="upload_picture" id="uploadpics-but" onchange="$('#uploadpics_form').submit()" /></p>
