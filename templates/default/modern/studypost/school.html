@@ -1,0 +1,181 @@
+<!--{include file="`$theme_name`/modern/header.html" page_title="`$school.name` - Học và Làm - MarketOnline.vn"}-->
+
+<!--{include file="`$theme_name`/modern/topmenu.html"}-->
+
+    
+    <div class="page">
+        <div class="container">
+          <!-- Example row of columns -->
+          <div class="row top-info">
+            <div class="col-md-3">
+              <div class="border-box" style="padding-right: 0;">
+                <div class="profile-box">
+                    <div class="school-logo-box">
+                        <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
+                            <img alt="{$school.name}" class="profile-picture img-thumbnail" src="{the_url module=root-url}{$school.logo}" />
+                        </a>
+                        
+                        {if $pb_userinfo.role == 'admin' || $pb_userid == $school.leader_id}
+                            <div title="Thay ảnh đại diện" class="edit-image-button small bottom-right memberpage-logo">
+                                <a class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#changelogo-but').trigger('click')"></a>
+                            </div>
+                            <form style="display: none" name="productaddfrm" id="Frm2_logo" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_school_logo" enctype="multipart/form-data">
+                                <input type="hidden" name="school_id" value="{$school.id}" />
+                                <input type="hidden" name="uri" value="{$FURI}" />
+                              
+                                <p><input type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+                                
+                            </form>
+                        {/if}
+                        
+                    </div>
+                  
+                    <div class="group_controls" style="text-align: center">
+                      <a class="btn btn-sm btn-default">+ Tham gia</a>
+                      <a class="btn btn-sm btn-success">Tin nhắn</a>
+                      <a class="btn btn-sm btn-primary">Theo dõi</a>
+                    </div>
+                    
+                  <div class="info-lines">
+                    <div class="row">                      
+                      
+                      <div class="col-xs-12 col-md-12">
+                        <p>
+                          <span aria-hidden="true" class="glyphicon glyphicon-user"></span> Quản trị viên: <a href="#">Phong Nguyễn</a>
+                        </p>
+                      </div>
+                      <div class="col-xs-12 col-md-12">
+                        <p>
+                          <span aria-hidden="true" class="glyphicon glyphicon-phone"></span> 090 613 7307
+                        </p>
+                      </div>
+                      <div class="col-xs-12 col-md-12">
+                        <p>
+                          <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span> marketonline.hoctap@gmail.com
+                        </p>
+                      </div>    
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-9 profile-banner-col">
+              <div class="album-main-image">
+                <!--{loop $school.banners item level key}-->
+                    {if $key==0}
+                        <a class="fancybox" href="{the_url module=root-url}{$item.banner}">
+                            <img src="{the_url module=root-url}{$item.banner}" />
+                        </a>
+                    {/if}
+                <!--{/loop}-->
+                
+                {if $pb_userinfo.role == 'admin' || $pb_userid == $school.leader_id}
+                    <div class="edit-image-button">
+                            <a title="Thay banner đại diện" class="but glyphicon glyphicon-pencil" href="javascript::void(0)" onclick="$('#changebanner-but').trigger('click')"></a>
+                    </div>
+                    <form style="display: none" name="productaddfrm" id="Frm2_banner" method="post" action="{$WebRootUrl}index.php?do=studypost&action=change_school_banner" enctype="multipart/form-data">
+
+                      <input type="hidden" name="school_id" value="{$school.id}" />
+                      <input type="hidden" name="uri" value="{$FURI}" />
+                    
+                      <p><input type="file" name="upload_logo" id="changebanner-but" onchange="$('#Frm2_banner').submit()" /></p>
+                      
+                    </form>
+                    
+                {/if}
+                
+              </div>
+                <div class="banner-school-info banner-group-info">
+                    <h2>{$school.name}</h2>
+                    <p>{$school.address}</p>
+                </div>
+            </div>
+            
+          </div>
+          
+          <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-12" style="display: none">
+              <nav class="navbar navbar-default main-menu" role="navigation">
+                <div class="container-fluid">
+
+              
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Lich sử học <span class="sr-only">(current)</span></a></li>                      
+                      <li><a href="#">Ghi chú</a></li>
+                      <li><a href="#">Đề xuất</a></li>
+                      <li><a href="#">Khám phá</a></li>
+                      <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">One more separated link</a></li>
+                        </ul>
+                      </li>-->
+                    </ul>
+                    <!--<form class="navbar-form navbar-left" role="search">
+                      <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                      </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                    </form>-->
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#">Người theo dõi</a></li>
+                      <li><a href="#">Bạn bè đề xuất</a></li>
+                      <!--<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Action</a></li>
+                          <li><a href="#">Another action</a></li>
+                          <li><a href="#">Something else here</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Separated link</a></li>
+                        </ul>
+                      </li>-->
+                    </ul>
+                  </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+              </nav>
+            </div>
+          </div>
+          
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-3">
+              
+                <!--{include file="`$theme_name`/modern/studypost/_joined_groups.html"}-->
+              
+              
+              
+            </div>
+            <div class="col-md-6">
+              
+              
+                <!--{include file="`$theme_name`/modern/_main_form.html"}-->
+                <div class="list_studypost"></div>
+              
+              
+            </div>
+            <div class="col-md-3">
+              
+                <!--{include file="`$theme_name`/modern/studypost/_other_groups.html"}-->
+              
+            </div>
+          </div>
+          
+          <hr>
+    
+          <footer>
+            <p>&copy; Company 2014</p>
+          </footer>
+        </div> <!-- /container -->        
+    </div>
+
+<!--{include file="`$theme_name`/modern/footer.html"}-->

@@ -629,8 +629,9 @@ p.controls {
     text-align: center;
 }
 .school-logo-box img {
-    width: 180px;
     float: none;
+    height: 160px;
+    width: 160px;
 }
 .navbar-fixed-top .btn-group > .btn.nobutton {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -1378,4 +1379,17 @@ button.nobutton:hover {
 }
 .alert .close-but {
     
+}
+.edit-image-button.bottom-right {
+    left: auto;
+    right: 10px;
+    top: auto;
+    bottom: 10px;
+}
+.school-logo-box {
+    position: relative;
+    margin: 0 auto;
+    width: 160px;
+    padding: 0;
+    margin-bottom: 15px;
 }

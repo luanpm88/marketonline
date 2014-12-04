@@ -898,6 +898,8 @@ class Studypost extends PbController {
 	{
 		uses("attachment");
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo['pb_userid']);
+		
 		$attachment = new Attachment('upload_logo');
 
 	
@@ -917,10 +919,13 @@ class Studypost extends PbController {
 	{
 		uses("attachment");
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo['pb_userid']);
 		$attachment_banner = new Attachment('upload_logo');
 
-	
-		if ($pb_userinfo["pb_userid"]) {
+		//get current school
+		$school = $this->school->getInfoById($_POST["school_id"]);
+		
+		if ($user["role"]=='admin' || $school["leader_id"]==$user["id"]) {
 			$attachment_banner->upload_dir = "school".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
 			$attachment_banner->if_watermark = false;
 			$attachment_banner->if_school_banner = true;
@@ -948,10 +953,13 @@ class Studypost extends PbController {
 	{
 		uses("attachment");
 		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo['pb_userid']);
 		$attachment_logo = new Attachment('upload_logo');
-
+		
+		//get current school
+		$school = $this->school->getInfoById($_POST["school_id"]);
 	
-		if ($pb_userinfo["pb_userid"]) {
+		if ($user["role"]=='admin' || $school["leader_id"]==$user["id"]) {
 			$attachment_logo->upload_dir = "school".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
 			$attachment_logo->if_watermark = false;
 			$attachment_logo->if_logo = true;
@@ -1492,24 +1500,27 @@ class Studypost extends PbController {
 			return;
 		}
 		
+		
+		$studypost = $_POST["data"]["studypost"];
+		$studypost["member_id"] = $pb_userinfo["pb_userid"];
+		
+		$studypost["created"] = date("Y-m-d H:i:s");
+		$studypost["modified"] = date("Y-m-d H:i:s");
+		
+		if(!empty($_POST["post_files"]) && $_POST["post_type"]=='files') {
+			//files
+			$files = $_POST["post_files"];
+			foreach($files as $key => $f) {
+				$parts = explode("/attachment/",$f);
+				$files[$key] = $parts[1];
+			}
+			$studypost["files"] = implode(",",$files);
+		}
+		
 		if($pb_userinfo && $_POST["action"] == "memberpage" && isset($_POST["id"])) {
 			
 			if(true) {
-				$studypost = $_POST["data"]["studypost"];
-				$studypost["member_id"] = $pb_userinfo["pb_userid"];
 				$studypost["memberpage_id"] = $_POST["id"];
-				$studypost["created"] = date("Y-m-d H:i:s");
-				$studypost["modified"] = date("Y-m-d H:i:s");
-				
-				if(!empty($_POST["post_files"]) && $_POST["post_type"]=='files') {
-					//files
-					$files = $_POST["post_files"];
-					foreach($files as $key => $f) {
-						$parts = explode("/attachment/",$f);
-						$files[$key] = $parts[1];
-					}
-					$studypost["files"] = implode(",",$files);
-				}
 				
 				$is_valid = true;
 				if($pb_userinfo["pb_userid"] != $_POST["id"] && !$this->studyfriend->isFriend($pb_userinfo["pb_userid"], $_POST["id"])) {
@@ -1527,26 +1538,29 @@ class Studypost extends PbController {
 			
 		} elseif ($pb_userinfo && $_POST["action"] == "group" && isset($_POST["id"])) {
 			if(true) {
-				$studypost = $_POST["data"]["studypost"];
-				$studypost["member_id"] = $pb_userinfo["pb_userid"];
 				$studypost["group_id"] = $_POST["id"];
-				$studypost["created"] = date("Y-m-d H:i:s");
-				$studypost["modified"] = date("Y-m-d H:i:s");
-				
-				if(!empty($_POST["post_files"]) && $_POST["post_type"]=='files') {
-					//files
-					$files = $_POST["post_files"];
-					foreach($files as $key => $f) {
-						$parts = explode("/attachment/",$f);
-						$files[$key] = $parts[1];
-					}
-					$studypost["files"] = implode(",",$files);
-				}
 				
 				$is_valid = true;
 				if(!$this->studygroupmember->belongToGroup($studypost["group_id"], $user["id"], 1)) {
 					$is_valid = false;
 					$error_message = "Bạn không phải là thành viên của nhóm";
+				}
+				
+				if($is_valid) {
+					$this->studypost->save($studypost);					
+					echo "ok";
+				} else {
+					echo $error_message;
+				}
+			}
+		} elseif ($pb_userinfo && $_POST["action"] == "school" && isset($_POST["id"])) {
+			if(true) {
+				$studypost["school_id"] = $_POST["id"];
+				
+				$is_valid = true;
+				if($user["role"]!='admin' && $studypost["school_id"] != $user["school_id"]) {
+					$is_valid = false;
+					$error_message = "Bạn không phải là quản lý trường";
 				}
 				
 				if($is_valid) {
