@@ -15,7 +15,7 @@
 		{/if}
 		<!--{loop $Items item level key}-->
 		    <li {if !$item.read}class="unread" read="0"{/if} onclick="getChatboxNew('{$item.chatid}x{$item.membertype_id}', false);" class="item"  chat-id="{$item.id}" mem="{$item.chatid}">
-			<img src="ss{$item.company_logo}" />
+			<img src="{$item.company_logo}" />
 			<p class="title"><strong>{$item.name}</strong></p>
 			<p class="content chat-line">{$item.content|truncate:42}</p>
 			<p class="timeinbox mic-info">{$item.created}</p>
