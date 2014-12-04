@@ -1484,7 +1484,7 @@ class Studypost extends PbController {
 	}
 	
 	function modern_post() {
-		pb_submit_check('data');
+		
 		
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById(intval($pb_userinfo["pb_userid"]));
@@ -1516,7 +1516,7 @@ class Studypost extends PbController {
 			return;
 		}
 		
-		
+		pb_submit_check('data');
 		$studypost = $_POST["data"]["studypost"];
 		$studypost["member_id"] = $pb_userinfo["pb_userid"];
 		
