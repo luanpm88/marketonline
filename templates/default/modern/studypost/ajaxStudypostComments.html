@@ -69,9 +69,9 @@
                                 <tr>
                                     <td valign="top">
                                         {if $pb_userinfo.current_type == 6}                                            
-                                            <img class="comment_ava" alt="50x50" src="{if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}" />
+                                            <img class="comment_ava" alt="50x50" src="{if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {the_url module=root-url}{$theme_img_path}image/usericon.jpg  {/if}" />
                                         {else}
-                                            <img class="comment_ava" alt="50x50" src="{if $pb_company}{the_url module=root-url}{$pb_company.image}{else} {if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" />
+                                            <img class="comment_ava" alt="50x50" src="{if $pb_company}{the_url module=root-url}{$pb_company.image}{else} {if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {the_url module=root-url}{$theme_img_path}image/usericon.jpg  {/if}  {/if}" />
                                         {/if}
                                     </td>
                                     <td valign="top" width="100%"><textarea name="comment[content]"></textarea>

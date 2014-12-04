@@ -1015,7 +1015,7 @@ class Members extends PbModel {
 		$exsit = array();
 		$result = array();
 		foreach($members as $key => $item)
-		{		
+		{
 			$members[$key]['link_people'] = $members[$key]['link_man'];
  			
 			if($members[$key]["address"])
@@ -1252,7 +1252,7 @@ class Members extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
-		$members = $this->findAll(" DISTINCT  Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		$members = $this->findAll(" DISTINCT Member.*,mf.*,sc.name as school_name", $joins, $conditions);
 		//var_dump($members);
 		foreach($members as $key => $item)
 		{
