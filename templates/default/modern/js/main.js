@@ -115,7 +115,7 @@ function showEditor(name) {
   
   
   
-            content_css: ROOT_URL+"templates/default/modern/bootstrap/css/bootstrap.min.css,"+ROOT_URL+"templates/default/modern/css/custom_editor.css",
+            content_css: ROOT_URL+"templates/default/modern/bootstrap/css/bootstrap.min.css,"+ROOT_URL+"templates/default/modern/css/custom_editor.css,"+ROOT_URL+"templates/default/modern/css/custom.css",
             relative_urls : false,
             remove_script_host : false,
             convert_urls : true,
