@@ -1394,3 +1394,16 @@ button.nobutton:hover {
     padding: 0;
     margin-bottom: 15px;
 }
+.post-box .comment-container {
+    padding-top: 5px;
+}
+.post-box .comment-edit-box {
+    margin-top: 5px;
+}
+.post-box .comment-container .list-group {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+.comment_count {
+    font-size: 90%;
+}
