@@ -1422,3 +1422,6 @@ button.nobutton:hover {
 .chat-title span:hover:before {
     color: #d43f3a;
 }
+.post-box .content p {
+    margin-bottom: 3px;
+}
