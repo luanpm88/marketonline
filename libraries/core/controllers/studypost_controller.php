@@ -495,7 +495,7 @@ class Studypost extends PbController {
 		
 		if($pb_userinfo["pb_userid"] && !empty($comment["studypost_id"]) && (!empty($comment["content"]) || !empty($comment["star"])))
 		{
-			pb_submit_check('comment');
+			//pb_submit_check('comment');
 			$comment["member_id"] = $pb_userinfo["pb_userid"];
 			$comment["created"] = date("Y-m-d H:i:s");
 			$comment["modified"] = date("Y-m-d H:i:s");
