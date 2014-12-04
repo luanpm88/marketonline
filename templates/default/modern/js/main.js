@@ -92,7 +92,11 @@ $(document).ready(function() {
     });
     
     
-    
+    //
+    $('body').on("click",".panel_view_all",function() {
+        $(this).parent().parent().find('.list-group li').removeClass('hide');
+        $(this).hide();
+    });
     
     
 

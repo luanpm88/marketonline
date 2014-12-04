@@ -1,6 +1,6 @@
 <div class="panel panel-default">
                 <div class="panel-heading">
-                  <!--<a href="#" class="sub-info-heading pull-right">Xem tất cả</a>-->
+                  <a href="#viewall" class="sub-info-heading pull-right panel_view_all">Xem tất cả</a>
                   <h3 class="panel-title">Môn học</h3>                  
                 </div>
                 <div class="panel-body">
@@ -8,7 +8,7 @@
                             
                             <!--{loop $groups group level_group group_key}-->
                             
-                                <li class="list-group-item">
+                                <li class="list-group-item{if $group_key>4} hide{/if}">
                               
                                     <a href="{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}">
                                         <img src="{$group.logo}" class="img-responsive" alt="" />
