@@ -55,8 +55,9 @@
     height: 49px;
 }
 .page {
+    background: none repeat scroll 0 0 #e7eee9;
+    min-height: 1000px;
     padding-top: 60px;
-    background: #e7eee9; /*#e8e8e8;*/
 }
 .profile-picture {
     border-radius: 0;
