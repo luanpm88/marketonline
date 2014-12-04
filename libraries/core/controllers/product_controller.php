@@ -4893,7 +4893,7 @@ class Product extends PbController {
 							$mem = $this->member->read("photo", $result[$i]["from_member_id"]);
 							if($mem["photo"])
 							{
-								$result[$i]["company_logo"] = URL.$pps[1].pb_get_attachmenturl($mem["photo"], '', 'small');
+								$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
 							}
 							else
 							{
