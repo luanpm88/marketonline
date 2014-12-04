@@ -2417,14 +2417,14 @@ class Product extends PbController {
 				}
 				if($result[$i]["picture"] && $result[$i]["membertype_ids"] != '[6]')
 				{
-					$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
+					$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 				}
 				else
 				{
 					$member = $this->member->read("photo", $result[$i]["from_member_id"]);
 					if($member["photo"])
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($member["photo"], '', 'small');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
 					}
 					else
 					{
@@ -3373,14 +3373,14 @@ class Product extends PbController {
 		{
 			if($item["company_logo"])
 			{
-				$comments[$key]["company_logo"] = URL.pb_get_attachmenturl($item["company_logo"], '', 'smaller');
+				$comments[$key]["company_logo"] = pb_get_attachmenturl($item["company_logo"], '', 'smaller');
 			}
 			else
 			{
 				$member = $this->member->read("photo", $item["member_id"]);
 				if($member["photo"])
 				{
-					$comments[$key]["company_logo"] = URL.pb_get_attachmenturl($member["photo"], '', 'small');
+					$comments[$key]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
 				}
 				else
 				{
@@ -3466,14 +3466,14 @@ class Product extends PbController {
 		{
 			if($item["company_logo"])
 			{
-				$comments[$key]["company_logo"] = URL.pb_get_attachmenturl($item["company_logo"], '', 'smaller');
+				$comments[$key]["company_logo"] = pb_get_attachmenturl($item["company_logo"], '', 'smaller');
 			}
 			else
 			{
 				$member = $this->member->read("photo", $item["member_id"]);
 				if($member["photo"])
 				{
-					$comments[$key]["company_logo"] = URL.pb_get_attachmenturl($member["photo"], '', 'small');
+					$comments[$key]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
 				}
 				else
 				{
@@ -3557,14 +3557,14 @@ class Product extends PbController {
 		{
 			if($item["company_logo"])
 			{
-				$comments[$key]["company_logo"] = URL.pb_get_attachmenturl($item["company_logo"], '', 'smaller');
+				$comments[$key]["company_logo"] = pb_get_attachmenturl($item["company_logo"], '', 'smaller');
 			}
 			else
 			{
 				$member = $this->member->read("photo", $item["member_id"]);
 				if($member["photo"])
 				{
-					$comments[$key]["company_logo"] = URL.pb_get_attachmenturl($member["photo"], '', 'small');
+					$comments[$key]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
 				}
 				else
 				{
@@ -3614,14 +3614,14 @@ class Product extends PbController {
 				
 				if($result[$i]["picture"])
 				{
-					$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], "");
+					$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], "");
 				}
 				else
 				{
 					$member = $this->member->read("photo", $result[$i]["from_member_id"]);
 					if($member["photo"])
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($member["photo"], '', 'small');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
 					}
 					else
 					{
@@ -3796,14 +3796,14 @@ class Product extends PbController {
 		//var_dump($com);
 				if($com["picture"])
 				{
-					$picture = URL.pb_get_attachmenturl($com["picture"], "");
+					$picture = pb_get_attachmenturl($com["picture"], "");
 				}
 				else
 				{
 					$member = $this->member->read("photo", $pb_userinfo['pb_userid']);
 					if($member["photo"])
 					{
-						$picture = URL.pb_get_attachmenturl($member["photo"], '', 'small');
+						$picture = pb_get_attachmenturl($member["photo"], '', 'small');
 					}
 					else
 					{
@@ -3845,14 +3845,14 @@ class Product extends PbController {
 				
 				if($result[$i]["picture"])
 				{
-					$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'small');
+					$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'small');
 				}
 				else
 				{
 					$mem = $this->member->read("photo", $result[$i]["from_member_id"]);
 					if($mem["photo"])
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($mem["photo"], '', 'small');
 					}
 					else
 					{
@@ -4015,13 +4015,13 @@ class Product extends PbController {
 					
 					if($result[$i]["picture"] && $pps[1] != 6)
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 					}
 					else
 					{						
 						if($mem["photo"])
 						{
-							$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
+							$result[$i]["company_logo"] = pb_get_attachmenturl($mem["photo"], '', 'small');
 						}
 						else
 						{
@@ -4067,13 +4067,13 @@ class Product extends PbController {
 					
 					if($result[$i]["picture_2"] && $pps[1] != 6)
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture_2"], '', 'smaller');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture_2"], '', 'smaller');
 					}
 					else
 					{						
 						if($mem["photo"])
 						{
-							$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
+							$result[$i]["company_logo"] = pb_get_attachmenturl($mem["photo"], '', 'small');
 						}
 						else
 						{
