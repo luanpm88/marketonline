@@ -10,8 +10,16 @@
             <div class="col-md-3">
               <div class="border-box" style="padding-right: 0;">
                 <div class="profile-box">
-                    <div class="school-logo-box">
+                    <h1 class="school_logo_name">
                         <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
+                            {$school.name}
+                        </a>
+                    </h1>
+                    <div class="school-logo-box">
+                        
+                        
+                        <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
+                            
                             <img alt="{$school.name}" class="profile-picture img-thumbnail" src="{the_url module=root-url}{$school.logo}" />
                         </a>
                         
@@ -29,29 +37,32 @@
                         {/if}
                         
                     </div>
-                  
-                    <div class="group_controls" style="text-align: center">
+                    
+                    
+                    <!--<div class="group_controls" style="text-align: center">
                       <a class="btn btn-sm btn-default">+ Tham gia</a>
                       <a class="btn btn-sm btn-success">Tin nhắn</a>
                       <a class="btn btn-sm btn-primary">Theo dõi</a>
-                    </div>
+                    </div>-->
                     
                   <div class="info-lines">
                     <div class="row">                      
                       
                       <div class="col-xs-12 col-md-12">
                         <p>
-                          <span aria-hidden="true" class="glyphicon glyphicon-user"></span> Quản trị viên: <a href="#">Phong Nguyễn</a>
+                          <span aria-hidden="true" class="glyphicon glyphicon-user"></span> Quản trị viên:
+                          <a href="{the_url module=studypost action=memberpage id=`$leader.id` title=`$leader.fullname`}">{$leader.first_name} {$leader.last_name}</a>
                         </p>
                       </div>
                       <div class="col-xs-12 col-md-12">
                         <p>
-                          <span aria-hidden="true" class="glyphicon glyphicon-phone"></span> 090 613 7307
+                          <span aria-hidden="true" class="glyphicon glyphicon-phone"></span> {$leader.mobile}
                         </p>
                       </div>
                       <div class="col-xs-12 col-md-12">
                         <p>
-                          <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span> marketonline.hoctap@gmail.com
+                          <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>
+                          <a href="mailto:{$leader.email}">{$leader.email}</a>
                         </p>
                       </div>    
                     </div>

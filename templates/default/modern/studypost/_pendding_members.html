@@ -11,10 +11,10 @@
                             
                                 <li class="list-group-item">
                               
-                                    <a href="{the_url module=studypost action=memberpage id=`$mem.info.id` title=`$mem.fullname`}">
+                                    <a href="{the_url module=studypost action=memberpage id=`$mem.info.id` title="`$mem.info.first_name` `$mem.info.last_name`"">
                                         <img src="{$mem.info.photo}" class="img-responsive" alt="" />
                                     </a>
-                                    <a href="{the_url module=studypost action=memberpage id=`$mem.info.id` title=`$mem.fullname`}">
+                                    <a href="{the_url module=studypost action=memberpage id=`$mem.info.id` title="`$mem.info.first_name` `$mem.info.last_name`"}">
                                         {$mem.info.first_name} {$mem.info.last_name}
                                     </a>
                                     <div class="mic-info">

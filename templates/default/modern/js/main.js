@@ -222,7 +222,11 @@ function initAjaxForm(name) {
                         uploadProgress: function(event, position, total, percentComplete) {
                         },
                         complete: function(xhr) {
-                            loadStudyPostComments(xhr.responseText,0);
+                            if (xhr.responseText=="not_logging") {
+                                alert("Lỗi! Bạn chưa đăng nhập!");
+                            } else {
+                                loadStudyPostComments(xhr.responseText,0);
+                            }                            
                         }
                     });
                 } else {

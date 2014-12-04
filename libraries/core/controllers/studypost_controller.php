@@ -196,12 +196,16 @@ class Studypost extends PbController {
 		$belongToSchool = $user["school_id"] == $school["id"]?true:false;
 		setvar("belongToSchool",$belongToSchool);
 		
+		//get leader
+		$school_leader = $this->member->getInfoById($school["leader_id"]);
+		setvar("leader",$school_leader);
+		
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
 		setvar("groups_count",count($groups));
 		setvar("school", $school);
 		setvar("school_list", $school_list);
-		render("studypost/school");
+		render("modern/studypost/school");
 	}
 	
 	function group()
@@ -483,6 +487,12 @@ class Studypost extends PbController {
 		//	flash("data_not_exists", '', 0);
 		//}
 		$comment = $_POST["comment"];
+		
+		if(!$pb_userinfo["pb_userid"]) {
+			echo "not_logging";
+			return;
+		}
+		
 		if($pb_userinfo["pb_userid"] && !empty($comment["studypost_id"]) && (!empty($comment["content"]) || !empty($comment["star"])))
 		{
 			pb_submit_check('comment');
@@ -1478,6 +1488,12 @@ class Studypost extends PbController {
 		
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById(intval($pb_userinfo["pb_userid"]));
+		
+		
+		if(!$pb_userinfo) {
+			echo "Lỗi! Bạn chưa đăng nhập!";
+			return;
+		}
 		
 		if(isset($_POST["post_id"])) {
 			$post = $this->studypost->read("member_id",$_POST["post_id"]);
