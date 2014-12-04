@@ -17,10 +17,10 @@
 		    <li class="item" {if !$item.status}class="unread"{/if}>
 			{if $item.logo_link}
 			    <a href="{$item.logo_link}">
-				<img src="{the_url module=root-url}{$item.company_logo}" />
+				<img src="{$item.company_logo}" />
 			    </a>
 			{else}
-			    <img src="{the_url module=root-url}{$item.company_logo}" />
+			    <img src="{$item.company_logo}" />
 			{/if}
 			<p class="content">{$item.content}</p>
 			<p class="timeinbox mic-info">{$item.created}</p>
