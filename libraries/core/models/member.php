@@ -1236,5 +1236,46 @@ class Members extends PbModel {
 		$member = $this->read("id,logging_count",$member_id);
 		$this->saveField("logging_count",$member["logging_count"]+1,intval($member["id"]));
 	}
+	
+	function getFriendList($user_id = 0)
+	{
+		uses("area");
+ 		$area = new Areas();
+		
+		if(!$user_id)
+		{
+			return;
+		}
+		
+		$conditions = array("(sf.friend_id=".$user_id." OR sfr.member_id=".$user_id.")","(sfr.status=1 OR sf.status=1)");
+		$joins = array("LEFT JOIN {$this->table_prefix}studyfriends sf ON sf.member_id=Member.id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}studyfriends sfr ON sfr.friend_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
+		$members = $this->findAll("Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		//var_dump($members);
+		foreach($members as $key => $item)
+		{
+			$members[$key]['link_people'] = $members[$key]['link_man'];
+ 			
+			if($members[$key]["address"])
+			{
+				$members[$key]["address_s"] = $members[$key]["address"];
+				$members[$key]["address"] = $members[$key]["address"].", ".$area->getFullName($members[$key]["area_id"]);
+			}
+			
+			if (empty($members[$key]['photo'])) {
+				$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+			}else{
+				$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+			}
+			
+			
+			$members[$key]['online'] = $this->isOnline($members[$key]["id"]);
+
+		}
+		//var_dump($members);
+		return $members;
+	}
 }
 ?>

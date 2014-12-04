@@ -671,6 +671,11 @@ class Studypost extends PbController {
 			$groups[$key]["joined"] = $this->studygroupmember->belongToGroup($group["id"],$user["id"]);
 		}
 		
+		//Get friend list
+		$friends = $this->member->getFriendList($member["id"]);
+		//var_dump($friends);
+		setvar("friends",$friends);
+		
 		setvar("belongToMemberpage", $user["id"] == $member["id"]);
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
