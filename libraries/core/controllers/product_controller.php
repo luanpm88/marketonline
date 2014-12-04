@@ -2417,14 +2417,14 @@ class Product extends PbController {
 				}
 				if($result[$i]["picture"] && $result[$i]["membertype_ids"] != '[6]')
 				{
-					$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
+					$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 				}
 				else
 				{
 					$member = $this->member->read("photo", $result[$i]["from_member_id"]);
 					if($member["photo"])
 					{
-						$result[$i]["company_logo"] = pb_get_attachmenturl($member["photo"], '', 'small');
+						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($member["photo"], '', 'small');
 					}
 					else
 					{
