@@ -97,7 +97,7 @@ class Chatc extends PbController {
 					{						
 						if($mem["photo"])
 						{
-							$result[$i]["company_logo"] = pb_get_attachmenturl($mem["photo"], '', 'small');
+							$result[$i]["company_logo"] = URL.pb_get_attachmenturl($mem["photo"], '', 'small');
 						}
 						else
 						{
