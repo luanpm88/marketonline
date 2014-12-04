@@ -1413,7 +1413,7 @@ button.nobutton:hover {
 }
 .school_logo_name {
     font-size: 16px;
-    margin: 0 0 7px 0;
+    margin: 0;
     text-transform: uppercase;
     font-weight: 700;
     line-height: normal;

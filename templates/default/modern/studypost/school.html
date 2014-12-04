@@ -10,11 +10,7 @@
             <div class="col-md-3">
               <div class="border-box" style="padding-right: 0;">
                 <div class="profile-box">
-                    <h1 class="school_logo_name">
-                        <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
-                            {$school.name}
-                        </a>
-                    </h1>
+                    
                     <div class="school-logo-box">
                         
                         
@@ -38,6 +34,11 @@
                         
                     </div>
                     
+                    <h1 class="school_logo_name">
+                        <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
+                            {$school.name}
+                        </a>
+                    </h1>
                     
                     <!--<div class="group_controls" style="text-align: center">
                       <a class="btn btn-sm btn-default">+ Tham gia</a>
@@ -73,13 +74,17 @@
             </div>
             <div class="col-md-9 profile-banner-col">
               <div class="album-main-image">
-                <!--{loop $school.banners item level key}-->
-                    {if $key==0}
-                        <a class="fancybox" href="{the_url module=root-url}{$item.banner}">
-                            <img src="{the_url module=root-url}{$item.banner}" />
-                        </a>
-                    {/if}
-                <!--{/loop}-->
+                {if $school.banners}
+                    <!--{loop $school.banners item level key}-->
+                        {if $key==0}
+                            <a class="fancybox" href="{the_url module=root-url}{$item.banner}">
+                                <img src="{the_url module=root-url}{$item.banner}" />
+                            </a>
+                        {/if}
+                    <!--{/loop}-->
+                {else}
+                    <img class="avatar" src="{the_url module=root-url}images/bg_study.png" />
+                {/if}
                 
                 {if $pb_userinfo.role == 'admin' || $pb_userid == $school.leader_id}
                     <div class="edit-image-button">
