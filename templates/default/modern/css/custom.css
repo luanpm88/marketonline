@@ -1406,4 +1406,5 @@ button.nobutton:hover {
 }
 .comment_count {
     font-size: 90%;
+    padding: 3px 6px;
 }
