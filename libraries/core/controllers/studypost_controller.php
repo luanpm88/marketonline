@@ -1798,7 +1798,7 @@ class Studypost extends PbController {
 		$parse = parse_url($url);
 		print $parse['host'];
 		
-		setvar("host",$setvar("item",$post));
+		setvar("host",$parse['host']);
 		setvar("item",$post);
 		render("modern/studypost/share");
 	}
