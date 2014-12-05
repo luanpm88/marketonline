@@ -1,8 +1,9 @@
     {if $friends}
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span class="badge pull-right">{$friend_count}</span>
-                  <h3 class="panel-title">Bạn bè</h3>
+                <div class="panel-heading heading-with-count">
+                    <!--<a target="_blank" class="invite-friend-but pull-right" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`"}">+ Mời bạn bè</a>-->
+                    
+                  <h3 class="panel-title">Bạn bè &nbsp;&nbsp;<span class="badge">{$friend_count}</span></h3>
                 </div>
                 <div class="panel-body friendlist">
                   <div class="row">

@@ -1445,7 +1445,7 @@ button.nobutton:hover {
 }
 .chat_friend_list {
     position: fixed;
-    top: 70px;
+    top: 60px;
     width: 300px;
     z-index: 99;
     right: 0;
@@ -1455,6 +1455,7 @@ button.nobutton:hover {
     color: #fff;
     border-radius: 0;
     border-color: #3b984c;
+    border-bottom: 0;
 }
 .chat_friend_list.chat-hide {
     right: -300px;
@@ -1514,4 +1515,24 @@ button.nobutton:hover {
 .chat-toggle:hover {
     background: #3b984c;
     color: #fff;
+}
+.invite-friend-but {
+    color: #333;
+    font-size: 85%;
+    font-weight: 700;
+    line-height: 20px;
+}
+.invite-friend-but:hover {
+    color: #333;
+}
+.chat-sidebar-content .invite-friend-but, .chat-sidebar-content .invite-friend-but:hover {
+    color: #fff;
+}
+.heading-with-count .badge {
+    margin-top: -2px;
+}
+.heading-with-count .badge {
+    display: inline-block;
+    line-height: 14px;
+    margin-bottom: -5px;
 }

@@ -3,41 +3,37 @@
             {if $members}
                 <div class="panel panel-default sidebar-chat-list">
                     <div class="panel-heading">
-                        <span class="badge pull-right">{$count}</span>
-                        Bạn bè
+                        <!--<a target="_blank" class="invite-friend-but pull-right" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`"}">+ Mời bạn bè</a>-->
+                        Bạn bè &nbsp;&nbsp;<span class="badge">{$count}</span>
                     </div>
                     <div class="panel-body">
                       
                         <ul class="list-group">
                             
-                            
                             <!--{loop $members item level key}-->
-                                        <li class="list-group-item chat-status-but {if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x6', false);">
-                                            <span class="chat-status pull-right">.</span>
-                                            <img src="{$item.photo}" />
-                                            <h2 class="title">{$item.first_name} {$item.last_name}</h2>
-                                            <p class="content">{$item.school_name}</p>
-                                        </li>
+                                <li class="list-group-item chat-status-but {if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x6', false);">
+                                    <span class="chat-status pull-right">.</span>
+                                    <img src="{$item.photo}" />
+                                    <h2 class="title">{$item.first_name} {$item.last_name}</h2>
+                                    <p class="content">{$item.school_name}</p>
+                                </li>
                             <!--{/loop}-->
-                            
                             
                         </ul>
                            
                     </div>
-                    
                    
                 </div>
             {/if}
             
             <div class="panel panel-default sidebar-chat-list">
                 <div class="panel-heading">
-                    <span class="badge pull-right">{$count_online_list}</span>
-                    Đang trực tuyến
+                    <a target="_blank" class="invite-friend-but pull-right" href="{the_url module='share_shop' space_name="`$pb_userinfo.space_name`"}">+ Mời bạn bè</a>
+                    Đang trực tuyến &nbsp;&nbsp;<span class="badge">{$count_online_list}</span>
                 </div>
                 <div class="panel-body">
-                  
+                    
                     <ul class="list-group">
-                        
                         
                         <!--{loop $online_list item level key}-->
                                     <li class="list-group-item chat-status-but {if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x6', false);">
@@ -52,8 +48,6 @@
                                         {/if}
                                     </li>
                         <!--{/loop}-->
-                        
-                        
                         
                     </ul>
                        
