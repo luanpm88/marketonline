@@ -1790,6 +1790,8 @@ class Studypost extends PbController {
 		}
 		
 		$post["content_raw"] = trim(strip_tags($post["content"]));
+		$post["member"] = $this->member->getInfoById($post["member_id"]);
+		$post["group"] = $this->studygroup->getInfoById($post["studygroup_id"]);
 		
 		setvar("item",$post);
 		render("modern/studypost/share");

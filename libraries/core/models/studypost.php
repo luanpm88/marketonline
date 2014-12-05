@@ -59,5 +59,9 @@ class Studyposts extends PbModel {
 			$studypostview->save($val);
 		}
 	}
+	
+	function getInfoByID() {
+		
+	}
 }
 ?>
