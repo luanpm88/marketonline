@@ -1,0 +1,22 @@
+        {if $learners}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="badge pull-right">{$learner_count}</span>
+                  <h3 class="panel-title">Thành viên</h3>
+                </div>
+                <div class="panel-body friendlist">
+                  <div class="row">
+                                
+                    <!--{loop $learners mem level_mem key}-->
+                    <div class="col-xs-4 col-sm-3 col-md-4">
+                            <a title="{$mem.fullname}" class="thumbnail" href="{the_url module=studypost action=memberpage id=`$mem.id` title=`$mem.fullname`}">
+                              <img alt="100x100" src="{$mem.photo}">
+                            </a>
+                    </div>
+                    <!--{/loop}-->
+                                
+                    
+                  </div>
+                </div>                
+            </div>
+        {/if}
