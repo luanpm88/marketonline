@@ -103,7 +103,13 @@
         $(this).hide();
     });
     
-    
+    $('body').on("click",".chat-toggle",function() {
+        if($(".chat_friend_list").hasClass("chat-hide")) {
+            $(".chat_friend_list").removeClass("chat-hide");
+        } else {
+            $(".chat_friend_list").addClass("chat-hide");
+        }
+    });
 
 });
 

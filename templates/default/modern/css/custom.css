@@ -1445,10 +1445,13 @@ button.nobutton:hover {
 }
 .chat_friend_list {
     position: fixed;
-    right: 0;
     top: 70px;
     width: 300px;
     z-index: 99;
+    right: 0;
+}
+.chat_friend_list.chat-hide {
+    right: -300px;
 }
 .sidebar-chat-list .panel-body {
     padding: 0;
@@ -1486,4 +1489,18 @@ button.nobutton:hover {
 }
 .chat-sidebar-content .panel:last-child {
     margin-bottom: 0;
+}
+.chat-toggle {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #3b984c;
+    cursor: pointer;
+    font-size: 28px;
+    left: -42px;
+    padding: 5px;
+    position: absolute;
+}
+.chat-toggle:hover {
+    opacity: 0.85;
 }
