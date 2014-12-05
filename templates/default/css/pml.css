@@ -7533,8 +7533,10 @@ ul.products li.product .price .amount
 }
 .school_list ul li a.head-title span {
     display: block;
-    text-transform: uppercase;
+    height: 20px;
     line-height: 22px;
+    overflow: hidden;
+    text-transform: uppercase;
 }
 #topmenu .main_banner {
     display: block;
