@@ -1496,11 +1496,11 @@ button.nobutton:hover {
     border-radius: 5px;
     color: #3b984c;
     cursor: pointer;
-    font-size: 28px;
+    font-size: 21px;
     left: -42px;
-    padding: 5px;
-    position: absolute;
     opacity: 0.85;
+    padding: 8px;
+    position: absolute;
 }
 .chat-toggle:hover {
     opacity: 1;
