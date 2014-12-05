@@ -45,7 +45,7 @@
   }
   .chat_friend_list {
     position: fixed;
-    top: 130px;
+    top: 110px;
   }
 }
 @media (max-width:767px){

@@ -384,7 +384,7 @@ function initAjaxForm(name) {
     }
     
     function autoSidebarChatHeight() {
-        $('.chat-sidebar-content').css("max-height",$(window).height()-100);
+        $('.chat-sidebar-content').css("max-height",$(window).height()-150);
     }
     
     
