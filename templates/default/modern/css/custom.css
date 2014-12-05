@@ -1189,7 +1189,7 @@ button.nobutton:hover {
     position: absolute;
     right: 10px;
     top: 10px;
-    z-index: 101;
+    z-index: 98;
     opacity: 0.6;
     cursor: pointer;
 }
@@ -1504,12 +1504,12 @@ button.nobutton:hover {
 .chat-toggle {
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #3b984c;
-    border-radius: 40px;
+    border-radius: 5px;
     color: #3b984c;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 21px;
     left: -42px;
-    padding: 10px;
+    padding: 8px;
     position: absolute;
 }
 .chat-toggle:hover {
