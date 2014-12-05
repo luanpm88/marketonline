@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>{$item.name}</title>
+</head>
+
+<body>
+
+{loop $item.images image img_level img_key}
+    <img src="{$image.url}" />
+{/loop}
+
+{$item.content}
+
+</body>
+</html>

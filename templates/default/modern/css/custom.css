@@ -236,7 +236,7 @@ p.controls {
 }
 .widget .list-group { margin-bottom: 0;margin-top: 10px }
 .widget .panel-title { display:inline }
-.widget .label-info { float: right; }
+.widget .label-info { float: none; }
 .widget li.list-group-item {border-radius: 0;border: 1px solid #ddd;}
 .widget li.list-group-item:hover { background-color: rgba(0,0,0,.02); }
 .widget .mic-info { color: #888;font-size: 85%; margin-bottom: 5px; }

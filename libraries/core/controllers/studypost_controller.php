@@ -696,6 +696,8 @@ class Studypost extends PbController {
 		setvar("school_list", $school_list);
 		setvar("member", $member);
 		
+		
+		
 		if($_GET["modern"]) {
 			render("modern/studypost/memberpage");
 		} else {
@@ -1770,6 +1772,26 @@ class Studypost extends PbController {
 		setvar("count_online_list", count($online_list));
 		setvar("count",count($members));
 		$this->render("modern/studypost/ajaxChatList");
+	}
+	
+	function share() {
+		$post = $this->studypost->read("Studypost.*",intval($_GET["id"]));
+		if($post["files"]) {
+			$images_array = array();
+			$images = explode(",",$post["files"]);
+			foreach($images as $img) {
+				$item["url"] = URL.'attachment/'.$img;
+				$item["thumb"] = str_replace('/images/','/images/thumbnail/',$item["url"]);
+				
+				$images_array[] = $item;
+			}
+			$post["images"] = $images_array;
+			$post["images_count"] = count($images_array);			
+		}
+		
+		
+		setvar("item",$post);
+		render("modern/studypost/share");
 	}
 }
 ?>
