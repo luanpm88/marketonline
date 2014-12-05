@@ -43,6 +43,10 @@
   .page {
     padding-top: 110px;
   }
+  .chat_friend_list {
+    position: fixed;
+    top: 130px;
+  }
 }
 @media (max-width:767px){
   .top-search-form {

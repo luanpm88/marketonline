@@ -1450,6 +1450,12 @@ button.nobutton:hover {
     z-index: 99;
     right: 0;
 }
+.chat_friend_list .panel-heading {
+    background: #3b984c;
+    color: #fff;
+    border-radius: 0;
+    border-color: #3b984c;
+}
 .chat_friend_list.chat-hide {
     right: -300px;
 }
@@ -1480,28 +1486,32 @@ button.nobutton:hover {
 }
 .chat-sidebar-content {
     background: none repeat scroll 0 0 #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #3b984c;
     overflow: auto;
     padding: 0;
 }
 .chat-sidebar-content .panel {
     border: 0;
 }
+.chat-sidebar-content .panel-default > .panel-heading .badge {
+    background-color: #fff;
+    color: #3b984c;
+}
 .chat-sidebar-content .panel:last-child {
     margin-bottom: 0;
 }
 .chat-toggle {
     background: none repeat scroll 0 0 #fff;
-    border: 1px solid #ddd;
+    border: 1px solid #3b984c;
     border-radius: 5px;
     color: #3b984c;
     cursor: pointer;
     font-size: 21px;
     left: -42px;
-    opacity: 0.85;
     padding: 8px;
     position: absolute;
 }
 .chat-toggle:hover {
-    opacity: 1;
+    background: #3b984c;
+    color: #fff;
 }
