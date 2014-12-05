@@ -74,6 +74,11 @@
                     getTopCart();
                     
                 {/literal}{/if}{literal}
+                
+                
+                //get chat friend list
+                {/literal}{if $pb_userinfo.id}getChatList({$pb_userinfo.id});{/if}{literal}
+                {/literal}{if $pb_userinfo.id}setInterval('getChatList({$pb_userinfo.id});',60000);{/if}{literal}
             });
         </script>
     {/literal}
