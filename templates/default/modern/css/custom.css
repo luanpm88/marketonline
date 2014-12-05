@@ -953,7 +953,7 @@ button.nobutton:hover {
     width: 14px;
 }
 .chat-title h2 a.online:before {
-    background: none repeat scroll 0 0 #5cb85c;
+    background: none repeat scroll 0 0 #66ff33;
 }
 .unread_count {
     position: absolute;
@@ -1535,4 +1535,24 @@ button.nobutton:hover {
     display: inline-block;
     line-height: 14px;
     margin-bottom: -5px;
+}
+.chat-title {
+    background: #3b984c;
+}
+.chat-title:hover {
+    background: #3b984c;
+    color: #fff;
+    opacity: 0.95;
+}
+.chat-title h2 a {
+    color: #fff;
+}
+.chat-box .glyphicon-remove:before {
+    color: #fff;
+}
+.chat-form textarea {
+    border: 0;
+}
+.chat-form {
+    background: #fff;
 }
