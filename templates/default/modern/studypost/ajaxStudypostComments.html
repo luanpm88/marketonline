@@ -13,10 +13,14 @@
                                         
                                         <div class="row">
                                             <div class="col-xs-12 col-md-12 comment-line">
-                                              <img src="{$comment.member.photo}" class="img-responsive" alt="" />
+                                                <a href="{the_url module=studypost action=memberpage id=`$comment.member.id` title=`$comment.member.fullname`}">
+                                                    <img src="{$comment.member.photo}" class="img-responsive" alt="" />
+                                                </a>
                                                 <div>                                            
                                                     <div class="mic-info">
-                                                        <strong>{$comment.member.first_name} {$comment.member.last_name}</strong>
+                                                        <a href="{the_url module=studypost action=memberpage id=`$comment.member.id` title=`$comment.member.fullname`}">
+                                                            <strong>{$comment.member.first_name} {$comment.member.last_name}</strong>
+                                                        </a>
                                                         
                                                         <span class="pull-right">{$comment.created}</span>
                                                         
@@ -67,7 +71,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td valign="top">
+                                    <td valign="top">                                        
                                         {if $pb_userinfo.current_type == 6}                                            
                                             <img class="comment_ava" alt="50x50" src="{if $user_avatar} {the_url module=root-url}{$user_avatar} {else} {the_url module=root-url}{$theme_img_path}image/usericon.jpg  {/if}" />
                                         {else}

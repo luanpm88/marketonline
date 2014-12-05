@@ -66,19 +66,21 @@
                     
                     {if $pb_userid != $member.id && !$friend_request && !$is_friend}
                         {if !$Friended}
-                            <a title="Kết bạn" onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember btn btn-sm btn-default">+ Kết bạn</a>
+                            <a title="Kết bạn" onclick="studyfriend({$member.id}, this)" href="javascript:void(0)" class="kkkmember btn btn-sm btn-info">+ Kết bạn</a>
                         {else}
-                            <a title="Hủy lời mời" onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember btn btn-sm btn-default" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
+                            <a title="Hủy lời mời" onclick="studyfriend({$member.id}, this)" class="del_addfriend kkkmember btn btn-sm btn-info" href="javascript:void(0)">Đã gửi lời mời kết bạn</a>
                         {/if}
                     {elseif $is_friend}
-                        <a title="Nhấn để hủy kết bạn" class=" btn btn-sm btn-default" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">
+                        <a title="Nhấn để hủy kết bạn" class=" btn btn-sm btn-info" href="{the_url module=studypost action=rejectFriend id=`$member.id`}">
                             <span class="glyphicon glyphicon-ok check-color"></span>
                             Bạn bè
                         </a>
                     {/if}
                     
                     {if $pb_userinfo.id!=$member.id}
-                            <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-success">Nhắn tin</a>
+                            <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-default chat-status-but {if $member.online}online{/if}">
+                                <span class="chat-status">.</span>Nhắn tin
+                            </a>
                     {/if}
                     
                     
@@ -202,7 +204,9 @@
                 <!--{include file="`$theme_name`/modern/studypost/_joined_groups.html"}-->
                 
                 <!--{include file="`$theme_name`/modern/studypost/_friend_list.html"}-->
-              
+                
+                
+                
               <!--<div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title">Bạn bè</h3>

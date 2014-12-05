@@ -1,13 +1,18 @@
-$(document).ready(function() {
-    $('body').on("click", ".post-box .edit-button", function() {
-        var box = $(this).parents('.post-box');
-        
-        box.find('.content').toggle();
-        box.find('.edit-box').toggle();
-        
-        if (!box.find('.mce-tinymce').length) {
-            showEditor("editor-"+box.attr("rel"));
+    $(document).ready(function() {
+        $('body').on("click", ".post-box .edit-button", function() {
+            var box = $(this).parents('.post-box');
+            
+            box.find('.content').toggle();
+            box.find('.edit-box').toggle();
+            
+            if (!box.find('.mce-tinymce').length) {
+                showEditor("editor-"+box.attr("rel"));
         }
+    });
+        
+    $(window).resize(function() {
+        cropping();
+        autoSidebarChatHeight();
     });
     
     
@@ -353,9 +358,29 @@ function initAjaxForm(name) {
 		});
     }
     
-    $(window).resize(function() {
-        cropping();
-    });
+    var getChatList_xhr;
+    function getChatList(id) {	    
+        
+        
+        if(getChatList_xhr && getChatList_xhr.readystate != 4){
+            getChatList_xhr.abort();
+        }
+        getChatList_xhr = $.ajax({
+            url: ROOT_URL+"index.php?do=studypost&action=ajaxChatList&id="+id			
+        }).done(function ( data ) {
+            if( console && console.log ) {
+                
+                $('.chat_friend_list').html(data);
+                //alert(data);
+                autoSidebarChatHeight();
+            }
+        });
+    }
+    
+    function autoSidebarChatHeight() {
+        $('.chat-sidebar-content').css("max-height",$(window).height()-100);
+    }
+    
     
     
     

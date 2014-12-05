@@ -1756,5 +1756,20 @@ class Studypost extends PbController {
 			render("modern/studypost/ajaxStudypostComments");
 		}
 	}
+	
+	function ajaxChatList() {
+		$pb_userinfo = pb_get_member_info();
+		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
+		if(isset($_GET["id"]))
+		{
+			$members = $this->member->getFriendChatList($_GET["id"]);
+			$online_list = $this->member->getOnlineChatList($user);
+		}
+		setvar("members",$members);
+		setvar("online_list",$online_list);
+		setvar("count_online_list", count($online_list));
+		setvar("count",count($members));
+		$this->render("modern/studypost/ajaxChatList");
+	}
 }
 ?>
