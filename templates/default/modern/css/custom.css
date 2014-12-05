@@ -1500,7 +1500,8 @@ button.nobutton:hover {
     left: -42px;
     padding: 5px;
     position: absolute;
+    opacity: 0.85;
 }
 .chat-toggle:hover {
-    opacity: 0.85;
+    opacity: 1;
 }
