@@ -1272,6 +1272,52 @@ class Members extends PbModel {
 			
 			
 			$members[$key]['online'] = $this->isOnline($members[$key]["id"]);
+			$members[$key]['fullname'] = $item['first_name']." ".$item['last_name'];
+
+		}
+		//var_dump($members);
+		return $members;
+	}
+	
+	function getLearners($group_id = null)
+	{
+		uses("area");
+ 		$area = new Areas();
+		
+		if(!$group_id)
+		{
+			return;
+		}
+		
+		if($group_id) {
+			$conditions = array("gm.studygroup_id=".$group_id,"gm.status=1");
+		}
+		
+		
+		$joins[] = "LEFT JOIN {$this->table_prefix}studygroupmembers gm ON gm.member_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields mf ON mf.member_id=Member.id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools sc ON mf.school_id=sc.id";
+		$members = $this->findAll("Member.*,mf.*,sc.name as school_name", $joins, $conditions);
+		//var_dump($members);
+		foreach($members as $key => $item)
+		{
+			$members[$key]['link_people'] = $members[$key]['link_man'];
+ 			
+			if($members[$key]["address"])
+			{
+				$members[$key]["address_s"] = $members[$key]["address"];
+				$members[$key]["address"] = $members[$key]["address"].", ".$area->getFullName($members[$key]["area_id"]);
+			}
+			
+			if (empty($members[$key]['photo'])) {
+				$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+			}else{
+				$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+			}
+			
+			
+			$members[$key]['online'] = $this->isOnline($members[$key]["id"]);
+			$members[$key]['fullname'] = $item['first_name']." ".$item['last_name'];
 
 		}
 		//var_dump($members);

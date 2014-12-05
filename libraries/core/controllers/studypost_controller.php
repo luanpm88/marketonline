@@ -200,6 +200,12 @@ class Studypost extends PbController {
 		$school_leader = $this->member->getInfoById($school["leader_id"]);
 		setvar("leader",$school_leader);
 		
+		//get students
+		$learners = $this->school->getStudents($school["id"]);
+		setvar("learners",$learners["result"]);
+		setvar("learner_count",$learners["count"]);
+		//var_dump($learners);
+		
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
 		setvar("groups_count",count($groups));
@@ -255,6 +261,11 @@ class Studypost extends PbController {
 		
 		//get leader
 		$group_leader = $this->member->getInfoById($group["leader_id"]);
+		
+		//get learners
+		$learners = $this->member->getLearners($group["id"]);
+		setvar("learners", $learners);
+		setvar("learner_count",count($learners));
 		
 		//get waiting list
 		$waiting_list = $this->studygroup->getWaitingList($group["id"]);
@@ -675,6 +686,7 @@ class Studypost extends PbController {
 		$friends = $this->member->getFriendList($member["id"]);
 		//var_dump($friends);
 		setvar("friends",$friends);
+		setvar("friend_count",count($friends));
 		
 		setvar("belongToMemberpage", $user["id"] == $member["id"]);
 		setvar("joined_groups",$joined_groups);

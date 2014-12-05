@@ -101,7 +101,7 @@ class Studygroups extends PbModel {
 		$groups = $this->findAll("sgm.status, Studygroup.*, sc.name AS school_name, sc.address AS school_address, sc.area_id AS school_area_id, su.name AS subject_name".$keyword_str, $joins, $conditions, $order_by_score, $offset, $num, null, "Studygroup.id");
 		foreach($groups as $key => $item)
 		{
-			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"]));
+			$groups[$key]["member_count"] = $studygroupmember->findCount(null, array("studygroup_id = ".$item["id"],"status=1"));
 			
 			$pb_userinfo = pb_get_member_info();
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
@@ -280,6 +280,10 @@ class Studygroups extends PbModel {
 			$result[$key] = $item;
 		}
 		return $result;
+	}
+	
+	function getLearners() {
+		
 	}
 
 }

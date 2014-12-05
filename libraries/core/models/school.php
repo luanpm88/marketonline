@@ -231,9 +231,34 @@ class Schools extends PbModel {
 			$item["title"] = $item["first_name"]." ".$item["last_name"];
 			//{the_url module=studypost action=memberpage id=`$item.id` title=`$item.fullname`}
 			$item["href"] = $this->url(array("module"=>"studypost","action"=>"memberpage","id"=>$item["id"],"title"=>$item["title"]));
+			$item["fullname"] = $item["first_name"]." ".$item["last_name"];
+			$item["photo"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
 			$result[$key] = $item;
 		}
 		return $result;
+	}
+	
+	function getStudents($school_id) {
+		uses("member");
+		$memberdb = new Members();
+		
+		if($school_id) {
+			$conditions[] = "mf.school_id=".$school_id;
+		}
+			
+
+		$joins = array();		
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON Member.id = mf.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}schools AS sc ON sc.id = mf.school_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=sc.area_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
+		
+		$count = $row*$num;
+		$result = $memberdb->findAll("mf.last_name,mf.first_name,Member.*", $joins, $conditions, "Member.created DESC", $offset, $count);
+		$result = $this->formatStudentItems($result);
+		$count = $memberdb->findCount($joins, $conditions, "Member.id");
+		
+		return array("result"=>$result,"count"=>$count);
 	}
 }
 ?>
