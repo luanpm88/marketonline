@@ -8,6 +8,11 @@
     {loop $item.images image img_level img_key}
         <meta property="og:image" content="{$image.url}"/>
     {/loop}
+    
+    
+    {if $item.files_description}
+        <meta name ="description" content="{$item.files_description}" />
+    {/if}
 </head>
 
 <body>
