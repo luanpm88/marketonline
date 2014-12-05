@@ -1801,7 +1801,12 @@ class Studypost extends PbController {
 		print $parse['host'];
 		
 		if($parse['host']) {
-			pheader("location:http://marketonline.vn");
+			if($post["group"]) {
+				//{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}
+				$url = $this->studypost->url(array("module"=>"studypost","action"=>"group","id"=>$post["group"]["id"],"title"=>$post["group"]["subject_name"]));
+				pheader("location:".$url);
+			}
+			
 		}
 		
 		setvar("host",$parse['host']);
