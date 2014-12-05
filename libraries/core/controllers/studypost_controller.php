@@ -1794,6 +1794,9 @@ class Studypost extends PbController {
 		$post["group"] = $this->studygroup->getInfoById($post["studygroup_id"]);
 		
 		echo $_SERVER["HTTP_REFERER"];
+		$url = $_SERVER["HTTP_REFERER"];
+		$parse = parse_url($url);
+		print $parse['host'];
 		
 		setvar("item",$post);
 		render("modern/studypost/share");
