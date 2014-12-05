@@ -1775,6 +1775,8 @@ class Studypost extends PbController {
 	}
 	
 	function share() {
+		
+		
 		$post = $this->studypost->read("Studypost.*",intval($_GET["id"]));
 		if($post["files"]) {
 			$images_array = array();
@@ -1797,6 +1799,10 @@ class Studypost extends PbController {
 		$url = $_SERVER["HTTP_REFERER"];
 		$parse = parse_url($url);
 		print $parse['host'];
+		
+		if($parse['host']) {
+			pheader("location:http://marketonline.vn");
+		}
 		
 		setvar("host",$parse['host']);
 		setvar("item",$post);
