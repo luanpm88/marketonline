@@ -12,6 +12,8 @@
     
     {if $item.files_description}
         <meta name ="description" content="{$item.files_description}" />
+    {elseif $item.content_raw}
+        <meta name ="description" content="{$item.content_raw}" />
     {/if}
 </head>
 
@@ -21,7 +23,7 @@
     <img src="{$image.url}" />
 {/loop}
 
-{$item.content}
+{$item.content_raw}
 
 </body>
 </html>

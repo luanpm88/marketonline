@@ -1789,6 +1789,7 @@ class Studypost extends PbController {
 			$post["images_count"] = count($images_array);			
 		}
 		
+		$post["content_raw"] = trim(strip_tags($post["content"]));
 		
 		setvar("item",$post);
 		render("modern/studypost/share");
