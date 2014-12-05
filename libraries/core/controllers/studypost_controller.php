@@ -1793,7 +1793,7 @@ class Studypost extends PbController {
 		$post["member"] = $this->member->getInfoById($post["member_id"]);
 		$post["group"] = $this->studygroup->getInfoById($post["studygroup_id"]);
 		
-		echo $_SERVER["HTTP_REFERER"];
+		//echo $_SERVER["HTTP_REFERER"];
 		$url = $_SERVER["HTTP_REFERER"];
 		$parse = parse_url($url);
 		print $parse['host'];
