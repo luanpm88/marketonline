@@ -1,0 +1,64 @@
+        <div class="chat-sidebar-content">
+            {if $members}
+                <div class="panel panel-default sidebar-chat-list">
+                    <div class="panel-heading">
+                        <span class="badge pull-right">{$count}</span>
+                        Bạn bè
+                    </div>
+                    <div class="panel-body">
+                      
+                        <ul class="list-group">
+                            
+                            
+                            <!--{loop $members item level key}-->
+                                        <li class="list-group-item chat-status-but {if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x6', false);">
+                                            <span class="chat-status pull-right">.</span>
+                                            <img src="{$item.photo}" />
+                                            <h2 class="title">{$item.first_name} {$item.last_name}</h2>
+                                            <p class="content">{$item.school_name}</p>
+                                        </li>
+                            <!--{/loop}-->
+                            
+                            
+                        </ul>
+                           
+                    </div>
+                    
+                   
+                </div>
+            {/if}
+            
+            <div class="panel panel-default sidebar-chat-list">
+                <div class="panel-heading">
+                    <span class="badge pull-right">{$count_online_list}</span>
+                    Đang trực tuyến
+                </div>
+                <div class="panel-body">
+                  
+                    <ul class="list-group">
+                        
+                        
+                        <!--{loop $online_list item level key}-->
+                                    <li class="list-group-item chat-status-but {if $item.online}online{/if}" onclick="getChatboxNew('{$item.id}x6', false);">
+                                        <span class="chat-status pull-right">.</span>
+                                        <img src="{$item.photo}" />
+                                        {if $item.membertype_id == 6}
+                                            <h2 class="title">{$item.first_name} {$item.last_name}</h2>
+                                            <p class="content">{$item.school_name}</p>
+                                        {else}
+                                            <h2 class="title">{$item.shop_name}</h2>
+                                            <p class="content">{if $item.first_name}{$item.first_name} {$item.last_name}{if !$item.shop_name} ({$item.username}){/if}{else}{$item.username}{/if}</p>
+                                        {/if}
+                                    </li>
+                        <!--{/loop}-->
+                        
+                        
+                        
+                    </ul>
+                       
+                </div>
+                
+                
+            </div>
+        </div>
+            
