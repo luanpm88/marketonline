@@ -126,7 +126,7 @@ class Studygroups extends PbModel {
 		$studypost = new Studyposts();
 		
 		$conditions = array();
-		if($id) $conditions[] = "Studygroup.id = ".intval($id);
+		$conditions[] = "Studygroup.id = ".intval($id);
 		
 		$joins = array("RIGHT JOIN {$this->table_prefix}schools AS sc ON sc.id = Studygroup.school_id");
 		$joins[] = "RIGHT JOIN {$this->table_prefix}subjects AS su ON su.id = Studygroup.subject_id";

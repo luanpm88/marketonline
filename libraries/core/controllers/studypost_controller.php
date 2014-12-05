@@ -1794,7 +1794,7 @@ class Studypost extends PbController {
 		$post["content_raw"] = trim(strip_tags($post["content"]));
 		$post["member"] = $this->member->getInfoById($post["member_id"]);
 		$post["group"] = $this->studygroup->getInfoById($post["studygroup_id"]);
-		
+		var_dump($post);
 		//echo $_SERVER["HTTP_REFERER"];
 		$url = $_SERVER["HTTP_REFERER"];
 		$parse = parse_url($url);
@@ -1804,6 +1804,10 @@ class Studypost extends PbController {
 			if($post["group"]) {
 				//{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}
 				$url = $this->studypost->url(array("module"=>"studypost","action"=>"group","id"=>$post["group"]["id"],"title"=>$post["group"]["subject_name"]));
+				pheader("location:".$url);
+			} else {
+				//{the_url module=studypost action=memberpage id=`$mem.id` title=`$mem.fullname`}
+				$url = $this->studypost->url(array("module"=>"studypost","action"=>"memberpage","id"=>$post["member"]["id"],"title"=>$post["member"]["fullname"]));
 				pheader("location:".$url);
 			}
 			
