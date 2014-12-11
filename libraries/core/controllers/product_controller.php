@@ -33,7 +33,6 @@ class Product extends PbController {
 	
 	function index()
 	{
-		echo "Ddd";
 		uses('setting');
 		$setting = new Settings();
 		//echo $setting->getValue('new_product_count');

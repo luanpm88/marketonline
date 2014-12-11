@@ -10,7 +10,7 @@ define('CURSCRIPT', 'index');
 $htmlize = true;
 require("libraries/common.inc.php");
 require("share.inc.php");
-
+echo "Ddd";
 if (!empty($_GET['do'])) {
 	$action = isset($_GET['action']) ?trim($_GET['action']) : 'index' ;
 	$do = $_GET['do'] == '' ? 'home' : htmlspecialchars(trim($_GET['do']));
