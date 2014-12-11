@@ -375,20 +375,23 @@
 
           <a class="rss" href="javascript:void(0)" data-original-title="RSS feed">RSS</a>
 
-          <a href="http://twitter.com" class="tw" data-original-title="Twitter">Twitter</a>
+          
 	  
 	  <a href="http://vimeo.com" class="vi" data-original-title="Vimeo">Vimeo</a>
 	  
 	 
 	  <a href="http://youtube.com" class="yt" data-original-title="YouTube">YouTube</a>
 	  <a href="https://accountservices.passport.net/" class="ms" data-original-title="Microsoft ID">Microsoft ID</a>
-	  <a href="http://linkedin.com" class="li" data-original-title="LinkedIN">LinkedIN</a>
+	  
 	  
 	  <a href="http://picasa.com" class="pi" data-original-title="Picasa">Picasa</a>
 	  
-	 
+		
 	  <a href="http://dropbox.com" class="db" data-original-title="Dropbox">Dropbox</a>
 	  
+	  
+	  <a target="_blank" href="https://twitter.com/intent/tweet?url={$F_URL}" class="tw" data-original-title="Twitter">Twitter</a>
+	  <a target="_blank" href="https://www.linkedin.com/shareArticle?url={$F_URL}" class="li" data-original-title="LinkedIN">LinkedIN</a>
 	  <a target="_blank" href="https://plus.google.com/share?url={$F_URL}" class="gp" data-original-title="Google +">Google +</a>
 	  <a class="fb" onclick="{if !$fb_current_page}goclicky(this, '{the_url module=space userid=`$COMPANY.cache_spacename` welcome=1}'){else}goclicky(this, '{$F_URL}')" href="javascript:void(0){/if}" href="javascript:void(0)">Facebook</a>
 	  <!--<a class="fb" onclick="shareStreamFacebook('{the_url module=space userid=`$COMPANY.cache_spacename`}/{$MEMBER.username}_un.htmls')" href="javascript:void(0)">Facebook</a>-->
