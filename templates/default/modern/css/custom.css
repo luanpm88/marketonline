@@ -1595,7 +1595,16 @@ button.nobutton:hover {
 }
 .right-banners a {
     margin-bottom: 10px;
+    position: relative;
 }
 .right-banners a:last-child {
     margin-bottom: 0;
+}
+.right-banners a .overlay_title {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.2);
+    bottom: 0;
+    padding: 5px 10px;
+    position: absolute;
+    width: 100%;
+    color: #fff;
 }
