@@ -53,7 +53,7 @@
 			<option {if $smarty.get.orderby=='active_time'}selected="selected"{/if} value="active_time">Thời gian hoạt động</option>
 			<option {if $smarty.get.orderby=='points_weekly'}selected="selected"{/if} value="points_weekly">Điểm tuần</option>
               	</select>
-				{lang cp_username} <input class="queryInput" type="text" name="member[name]" id="member_name" value="{$smarty.get.member.name}" /> 
+				Tên/ID người dùng <input class="queryInput" type="text" name="member[name]" id="member_name" value="{$smarty.get.member.name}" /> 
                 <select class="querySelect" name="groupid" id="Groupid">
 				<option value="-1">{lang membership_type}</option>
 				{html_options options=$MembergroupOptions selected=$smarty.get.groupid}

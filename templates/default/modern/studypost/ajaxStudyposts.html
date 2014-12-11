@@ -9,9 +9,9 @@
                   <div class="media post-item">
                     <p class="sub-info-meta">
                         <span aria-hidden="true" class="glyphicon glyphicon-calendar"></span>
-                            {$item.date}
+                        {$item.date}
                     </p>
-                    <a href="#" class="media-left">
+                    <a href="{the_url module=studypost action=memberpage id=`$item.member.id` title=`$item.member.fullname`}" class="media-left">
                       <img src="{$item.member.photo}" class="avatar">
                     </a>
                     <div class="media-body">

@@ -568,6 +568,12 @@ class Studypost extends PbController {
 	function join_group()
 	{
 		$pb_userinfo = pb_get_member_info();
+		
+		if(!$pb_userinfo) {
+			$_SESSION["flash_info"] = "Bạn phải đăng nhập thành viên";
+			return;
+		}
+		
 		$user = $this->member->getInfoById($pb_userinfo["pb_userid"]);
 		
 		if(!isset($_GET["id"]))
@@ -1504,7 +1510,6 @@ class Studypost extends PbController {
 	
 	function modern_post() {
 		
-		
 		$pb_userinfo = pb_get_member_info();
 		$user = $this->member->getInfoById(intval($pb_userinfo["pb_userid"]));
 		
@@ -1794,7 +1799,7 @@ class Studypost extends PbController {
 		$post["content_raw"] = trim(strip_tags($post["content"]));
 		$post["member"] = $this->member->getInfoById($post["member_id"]);
 		$post["group"] = $this->studygroup->getInfoById($post["studygroup_id"]);
-		//var_dump($post);
+		
 		//echo $_SERVER["HTTP_REFERER"];
 		$url = $_SERVER["HTTP_REFERER"];
 		$parse = parse_url($url);
