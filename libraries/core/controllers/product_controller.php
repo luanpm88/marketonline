@@ -993,6 +993,13 @@ class Product extends PbController {
 		//{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}
 		setvar("og_url", $this->product->url(array("module"=>'product',"product_name"=>$info["name"],"id"=>$info["id"],"service"=>$info["service"])));
 		
+		//Order message
+		$order_message = $this->announcement->read("message", 26);
+		$messagez = trim(strip_tags($order_message["message"]));
+		if(!empty($messagez)) {
+			setvar('order_message', $order_message);
+		}
+		
 		render("product/detail");
 	}
 	
