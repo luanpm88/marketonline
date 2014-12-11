@@ -1758,7 +1758,7 @@ class Product extends PbController {
 				$_SESSION["current_order_id"] = $order_id;
 				//echo $order_id;
 				$items = $cartitem->getDataByMemberID($session_cart_id, $_GET["id"]);
-				//var_dump($session_cart_id);
+				//var_dump($items);
 				if($items)
 				{
 					
@@ -1779,9 +1779,9 @@ class Product extends PbController {
 						$_SESSION["order_id"] = $order_id;
 						
 						$datas = $orderitem->getStickyDatas($order_id);
-						$info = $order->read("*", $order_id, null, array('id'=>$order_id));
-						//var_dump($info);
+						$info = $order->read("*", $order_id);
 						//var_dump($datas);
+						//var_dump($order_id);
 						
 						foreach($datas["items"] as $key => &$item)
 						{
@@ -1790,7 +1790,7 @@ class Product extends PbController {
 						}
 						
 						$datas["total"] = number_format($datas["total"], 0, ',', '.');
-						
+						//var_dump($datas);
 						$seller = $member->read("c.shop_name,Member.*, mf.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
 						
 						setvar("Seller", $seller);
@@ -1833,7 +1833,6 @@ class Product extends PbController {
 			{
 				$state_parent = array(1943, 1945, 1946);
 			}
-			
 			
 			//echo $_GET["country_id"];
 			$rows = $area->getStates($state_parent);

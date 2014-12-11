@@ -276,10 +276,17 @@ function checkConfirmOrderFields() {
 		
 		
 		{if $pb_company}
-			<p>
-				<span>{lang username}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
-			</p>
+			{if $pb_userinfo}
+				<p>
+					<span>{lang username}</span>
+					<input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
+				</p>
+			{else}
+				<p style="margin-bottom: 16px;">
+					<span>Người mua</span>
+					<br /><strong>Khách hàng</strong>
+				</p>
+			{/if}
 			
 			<p>
 				<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
@@ -303,10 +310,17 @@ function checkConfirmOrderFields() {
 				<input type="text" value="" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
 			</p>		
 		{else}
-			<p>
-				<span>{lang username}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
-			</p>
+			{if $pb_userinfo}
+				<p>
+					<span>{lang username}</span>
+					<input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
+				</p>
+			{else}
+				<p style="margin-bottom: 16px;">
+					<span>Người mua</span>
+					<br /><strong>Khách hàng</strong>
+				</p>
+			{/if}
 			
 			<p>
 				<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>

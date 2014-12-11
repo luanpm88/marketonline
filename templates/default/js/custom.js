@@ -2540,6 +2540,10 @@
 		$('.album_detail_a_image').fancybox();
 		
 		
-		
+		$('.checkout_but').live("click",function() {
+		    $(".box-res-con").hide();
+		    $(".box-res-con.shopping").show();
+		    $(".box-res-con.shopping .shopping_button").attr("href",$(".box-res-con.shopping .shopping_button").attr("href")+$(this).attr("rel"));
+		});
 		
 	});

@@ -112,7 +112,7 @@
 										<input name="checkout" class="checkout_but" onclick="window.location='index.php?do=product&action=meminfo&id={$shop.id}'"  type="button" value="{lang confirm_cart}" />
 									{/if}
 									{if !$pb_username}										
-										<input href="#login-box" name="checkout" class="checkout_but comment_but" redirect="index.php?do=product&action=meminfo&id={$shop.id}"  type="button" value="{lang confirm_cart}" />
+										<input href="#login-box" name="checkout" class="checkout_but comment_but" rel="{$shop.id}" redirect="index.php?do=product&action=meminfo&id={$shop.id}"  type="button" value="{lang confirm_cart}" />
 									{/if}
 									<input type="submit" class="checkout_but" style="margin-right: 10px" value="Cập nhật" />
 								</td>
