@@ -47,10 +47,11 @@ if (!empty($_GET['do'])) {
 	);
 	
 	if(in_array($do, $secure_c) && file_exists($c_file)){
-		echo "Ddd";
+		
 		include_once($c_file);
 		$pc = new $c_do();
-		if(method_exists($pc, $action)) 
+		var_dump(method_exists($pc, $action));
+		if(method_exists($pc, $action))
 			$pc->{$action}();
 		elseif (method_exists($pc, 'index'))
 			$pc->index();
