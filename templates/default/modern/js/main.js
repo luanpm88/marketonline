@@ -351,6 +351,20 @@ function initAjaxForm(name) {
             $(this).css('background-repeat','no-repeat');
             $(this).css('background-position','center center');
         });
+        
+        $('.banner-right-19_6.img-cropping').each(function() {
+            var scale = 9/16;
+            $(this).css('height',$(this).width()*scale);
+            
+            $(this).css('background-image','url('+$(this).attr("bg-data")+')');
+            if($(this).find('img').width()*scale < $(this).find('img').height()) {
+              $(this).css('background-size',$(this).width()+'px auto');
+            } else {
+              $(this).css('background-size','auto '+$(this).height()+'px');
+            }
+            $(this).css('background-repeat','no-repeat');
+            $(this).css('background-position','center center');
+        });
     }
     
     function clearInbox() {

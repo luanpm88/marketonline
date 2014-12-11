@@ -1576,3 +1576,20 @@ button.nobutton:hover {
 .chat-form {
     background: #fff;
 }
+.shop_info {
+    
+}
+.shop_info img {
+    float: left;
+    margin-right: 10px;
+    width: 80px;
+}
+.shop_info h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.shop_info p {
+    margin: 0;
+}

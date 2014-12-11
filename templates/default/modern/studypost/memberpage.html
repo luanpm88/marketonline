@@ -278,7 +278,40 @@
             </div>
             <div class="col-md-3">
               
-                <!--{include file="`$theme_name`/modern/studypost/_other_groups.html"}--> 
+                <!--{include file="`$theme_name`/modern/studypost/_other_groups.html"}-->
+                
+                {if $company}
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Gian Hàng</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="shop_info">
+                            <a target="_blank" href="{$company.url}">
+                                <img src="{$company.logo}" />
+                            </a>
+                            
+                            <h2><a target="_blank" href="{$company.url}">{$company.shop_name}</a></h2>
+                            <p>{$company.name}</p>
+                        </div>
+                      </div>
+                    </div>
+                {/if}
+                
+                {if $ads_right}
+                    <div class="panel panel-default" style="display:none">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">Quảng cáo</h3>
+                        </div>
+                        <div class="panel-body">
+                            <!--{loop $ads_right item level key}-->
+                                <a title="{$item.name}" target="_blank" bg-data="{$item.source_url}" class="banner-right-19_6 img-cropping" style="display: block;width:{$item.size_width}px;" href="{$item.target_url}">
+                                    <img title="{$item.name}" style="position: absolute;top: -9000px" src="{$item.source_url}" />
+                                </a>
+                            <!--{/loop}-->                            
+                        </div>
+                    </div>                    
+                {/if}
               
                 <!--<div class="panel panel-success">
                   <div class="panel-heading">

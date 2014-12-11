@@ -631,6 +631,9 @@ class Studypost extends PbController {
 	
 	function memberpage()
 	{
+		uses("ad");
+		$ad = new Adses();
+		
 		if(!isset($_GET["id"]))
 		{
 			flash("data_not_exists", '', 0);
@@ -694,6 +697,13 @@ class Studypost extends PbController {
 		setvar("friends",$friends);
 		setvar("friend_count",count($friends));
 		
+		//get shop info
+		$company = $this->company->getInfoByUserId($member["id"]);
+		//var_dump($company);
+		if(!empty($company)) {
+			setvar("company", $company);
+		}
+		
 		setvar("belongToMemberpage", $user["id"] == $member["id"]);
 		setvar("joined_groups",$joined_groups);
 		setvar("groups",$groups);
@@ -702,6 +712,10 @@ class Studypost extends PbController {
 		setvar("school_list", $school_list);
 		setvar("member", $member);
 		
+		
+		//get ads
+		setvar("ads_right", $ad->getByZone(37));
+		//var_dump($ad->getByZone(37));
 		
 		
 		if($_GET["modern"]) {
