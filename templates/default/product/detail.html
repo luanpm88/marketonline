@@ -581,8 +581,20 @@
 				{$item.content}
 			{/if}
 			
+			<br style="clear: both" />
+			<div style="padding-top: 50px;"></div>
+			
+			{if $order_message}
+				<div class="order_message_box">
+					<div class="order_message">
+						{$order_message.message}
+					</div>
+				</div>
+			{/if}
 			<div class="buy-bottom">
+				
 				<div>
+					
 					<a rel="buynow" href="index.php?do=product&action=add_cart&id={$item.id}">ĐẶT MUA</a>
 				</div>
 			</div>

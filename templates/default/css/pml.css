@@ -13225,3 +13225,17 @@ element.style {
 .tumblr:hover {
     background: url("../image/tumblr_hover.png") repeat scroll 0 0 / 21px auto rgba(0, 0, 0, 0) !important;
 }
+.buy-bottom {
+    padding-top: 0;
+}
+.order_message_box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.order_message {
+    display: inline-block;
+    margin: 0 auto;
+    background: #edf4ef;
+    width: 500px;
+    padding: 0 20px;
+}
