@@ -150,11 +150,12 @@
 	  <a href="http://youtube.com" class="yt" data-original-title="YouTube">YouTube</a>
 	  <a href="https://accountservices.passport.net/" class="ms" data-original-title="Microsoft ID">Microsoft ID</a>
 	  <a href="http://linkedin.com" class="li" data-original-title="LinkedIN">LinkedIN</a>
-	  <a href="https://accounts.google.com/" class="gp" data-original-title="Google +">Google +</a>
+	  
 	  <a href="http://picasa.com" class="pi" data-original-title="Picasa">Picasa</a>
 	  
 	 
 	  <a href="http://dropbox.com" class="db" data-original-title="Dropbox">Dropbox</a>
+	  <a target="_blank" href="https://plus.google.com/share?url={$F_URL}" class="gp" data-original-title="Google +">Google +</a>
 	  <a class="fb" onclick="{if !$FACE}goclicky(this, '{$F_URL}'){else}goclicky_custom(this, '{if $FACE.share_f}{the_url module=space userid=`$pb_company.cache_spacename`}/{$pb_username}_un.htmls{else}{$F_URL}{/if}', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">Facebook</a>
 	  
 
