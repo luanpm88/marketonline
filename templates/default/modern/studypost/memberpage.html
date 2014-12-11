@@ -299,45 +299,48 @@
                 {/if}
                 
                 {if $ads_right}
-                    <div class="panel panel-default" style="display:none">
+                    <div class="panel panel-default">
                         <div class="panel-heading">
                           <h3 class="panel-title">Quảng cáo</h3>
                         </div>
                         <div class="panel-body">
-                            <!--{loop $ads_right item level key}-->
-                                <a title="{$item.name}" target="_blank" bg-data="{$item.source_url}" class="banner-right-19_6 img-cropping" style="display: block;width:{$item.size_width}px;" href="{$item.target_url}">
-                                    <img title="{$item.name}" style="position: absolute;top: -9000px" src="{$item.source_url}" />
-                                </a>
-                            <!--{/loop}-->                            
+                            <div class="right-banners">
+                                <!--{loop $ads_right item level key}-->
+                                    <a title="{$item.name}" target="_blank" bg-data="{$item.logo}" class="banner-right-19_6 img-cropping" style="display: block;width:{$item.size_width}px;" href="{$item.target_url}">
+                                        <img title="{$item.name}" style="position: absolute;top: -9000px" src="{$item.logo}" />
+                                    </a>
+                                <!--{/loop}-->
+                            </div>
                         </div>
                     </div>                    
                 {/if}
               
-                <!--<div class="panel panel-success">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">Thống kê</h3>
-                  </div>
-                  <div class="panel-body">
-                    <ul class="list-group">
-                      <li class="list-group-item">
-                        <span class="badge">14</span>
-                        Sản phẩm
-                      </li>
-                      <li class="list-group-item">
-                        <span class="badge">2</span>
-                        Nhu cầu
-                      </li>
-                      <li class="list-group-item">
-                        <span class="badge">1</span>
-                        Dịch vụ
-                      </li>
-                      <li class="list-group-item">
-                        <span class="badge">13</span>
-                        Bài viết
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                <!--
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Thống kê</h3>
+                      </div>
+                      <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge">14</span>
+                                Sản phẩm
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">2</span>
+                                Nhu cầu
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">1</span>
+                                Dịch vụ
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">13</span>
+                                Bài viết
+                            </li>
+                        </ul>
+                      </div>
+                    </div>
                 -->
               
               

@@ -573,6 +573,7 @@ class Companies extends PbModel {
 			." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
 			." OR c.`keywords_string` LIKE '%".$keyword."%'";
 		$sql_foot = " ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT {$offset}, {$limit}";
+		
 		//echo $sql;
 		//$sql = "SELECT c.*, mf.first_name, mf.last_name"
 		//	

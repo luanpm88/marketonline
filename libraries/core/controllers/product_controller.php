@@ -5911,11 +5911,16 @@ class Product extends PbController {
 		if(!isset($_GET["id"])) {
 			pheader("location:index.php");
 		}
+		$joins = array("LEFT JOIN {$adses->table_prefix}members m ON Ads.member_id=m.id");
+		$joins[] = "LEFT JOIN {$adses->table_prefix}companies c ON Ads.company_id=c.id";
 		
-		$ad = $adses->read("Ads.*,m.space_name", intval($_GET["id"]),null,null,array("LEFT JOIN {$adses->table_prefix}members m ON Ads.member_id=m.id"));
+		$ad = $adses->read("c.cache_spacename,Ads.*,m.space_name", intval($_GET["id"]),null,null,$joins);
 		
 		if(!$ad["target_url"]) {
 			$ad["target_url"] = $adses->url(array("module"=>"space","userid"=>$ad["space_name"]));
+			if($ad["company_id"]) {
+				$ad["target_url"] = $adses->url(array("module"=>"space","userid"=>$ad["cache_spacename"]));
+			}
 		}
 		
 		$adses->clicked($customer_code, $ad);
@@ -6075,13 +6080,8 @@ class Product extends PbController {
 		$pb_userinfo = pb_get_member_info();
 		$permissions = $this->product->getPermisstions($_POST['id'], $pb_userinfo["pb_userid"]);
 		
-		//setvar("permissions",$permissions);
-		//var_dump($_SERVER['HTTP_REFERER']);
-		
 		//validations
 		if(isset($_POST["unvalid"])) {
-			//var_dump($_POST);
-			
 			if($permissions["unvalid"]) {
 				$valids["valid_status"] = 0;
 				$valids["valid_message"] = $_POST['message'];
@@ -6111,8 +6111,6 @@ class Product extends PbController {
 			}
 		}
 		if(isset($_POST["valid"])) {
-			//var_dump($_POST);
-			
 			if($permissions["valid"]) {
 				$valids["valid_status"] = 1;
 				//$valids["valid_message"] = $_POST['message'];
@@ -6143,8 +6141,6 @@ class Product extends PbController {
 	
 	function updateCompanyPosition() {
 		$com = $this->company->read("id,map_lat,map_lng,area_id,address",$_GET["id"]);
-		//var_dump($com);
-		
 		
 		if($com["area_id"] && ($com["map_lat"] == '' || $com["map_lng"] == '')) {
 			$ffaddress = $com["address"].", ".$this->area->getFullName($com["area_id"]);
@@ -6160,8 +6156,6 @@ class Product extends PbController {
 	
 	function updateAreaPosition() {
 		$com = $this->area->read("id,map_lat,map_lng,name",$_GET["id"]);
-		//var_dump($com);
-		
 		
 		if(($com["map_lat"] == '' || $com["map_lng"] == '')) {
 			$ffaddress = $this->area->getFullName($com["id"]);

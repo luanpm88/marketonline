@@ -1593,3 +1593,9 @@ button.nobutton:hover {
 .shop_info p {
     margin: 0;
 }
+.right-banners a {
+    margin-bottom: 10px;
+}
+.right-banners a:last-child {
+    margin-bottom: 0;
+}

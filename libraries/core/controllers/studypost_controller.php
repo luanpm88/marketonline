@@ -715,7 +715,6 @@ class Studypost extends PbController {
 		
 		//get ads
 		setvar("ads_right", $ad->getByZone(37));
-		//var_dump($ad->getByZone(37));
 		
 		
 		if($_GET["modern"]) {
