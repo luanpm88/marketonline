@@ -45,8 +45,9 @@ if (!empty($_GET['do'])) {
 		"area",
 		"chatc"
 	);
-	echo "Ddd";
+	
 	if(in_array($do, $secure_c) && file_exists($c_file)){
+		echo "Ddd";
 		include_once($c_file);
 		$pc = new $c_do();
 		if(method_exists($pc, $action)) 
