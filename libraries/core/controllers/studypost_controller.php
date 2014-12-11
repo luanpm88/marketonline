@@ -1404,11 +1404,6 @@ class Studypost extends PbController {
 			$settings["min_rate"] = $_POST["min_rate"];
 			$settings["max_rate"] = $_POST["max_rate"];
 			
-			//$add = rand($_POST["min_rand"],$_POST["max_rand"]);
-			//$sql = "update pb_companies set clicked=clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}), new_clicked=new_clicked+FLOOR((RAND() * ({$_POST["max_rand"]}-{$_POST["min_rand"]}+1))+{$_POST["min_rand"]}) where clicked >= ".$_POST["min_rate"]." AND clicked <= ".$_POST["max_rate"]."";
-			//echo "Thành công...!!<br /><br />";
-			//
-			//$return = $this->company->dbstuff->Execute($sql);
 		}
 		if(!empty($_POST["offer"]))
 		{
@@ -1417,11 +1412,6 @@ class Studypost extends PbController {
 			$settings["offer_min_rate"] = $_POST["offer_min_rate"];
 			$settings["offer_max_rate"] = $_POST["offer_max_rate"];
 			
-			//$add = rand($_POST["offer_min_rand"],$_POST["offer_max_rand"]);
-			//$sql = "update pb_trades set clicked=clicked+FLOOR((RAND() * ({$_POST["offer_max_rand"]}-{$_POST["offer_min_rand"]}+1))+{$_POST["offer_min_rand"]}) where clicked >= ".$_POST["offer_min_rate"]." AND clicked <= ".$_POST["offer_max_rate"]."";
-			//echo "Thành công...!!<br /><br />";
-			//
-			//$return = $this->trade->dbstuff->Execute($sql);
 		}
 		
 		$setting->saveField("valued",json_encode($settings),intval($row[0]["id"]));
