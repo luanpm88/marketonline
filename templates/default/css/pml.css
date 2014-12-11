@@ -13217,3 +13217,11 @@ element.style {
     position: absolute;
     right: 10px;
 }
+.tumblr {
+    background: url("../image/tumblr.png") repeat scroll 0 0 / 21px auto rgba(0, 0, 0, 0) !important;
+    height: 24px !important;
+    width: 24px;
+}
+.tumblr:hover {
+    background: url("../image/tumblr_hover.png") repeat scroll 0 0 / 21px auto rgba(0, 0, 0, 0) !important;
+}
