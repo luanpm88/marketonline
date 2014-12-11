@@ -204,7 +204,7 @@ if (isset($_GET['do'])) {
 		exit;
 	}
 	if ($do == "search") {
-		if(!empty($_GET['member']['name'])) $conditions[] = "(Member.username like '%".$_GET['member']['name']."%' OR Member.id='".$_GET['member']['name']."' OR Member.space_name like '%".$_GET['member']['name']."%')";
+		if(!empty($_GET['member']['name'])) $conditions[] = "(Member.username like '%".$_GET['member']['name']."%' OR Member.id='".$_GET['member']['name']."' OR Member.space_name='".$_GET['member']['name']."')";
 		//echo "(Member.username like '%".$_GET['member']['name']."%' OR Member.id=".$_GET['member']['name']." OR Member.space_name like '%".$_GET['member']['name']."%')";
 		if(isset($_GET['member']['status']) && $_GET['member']['status']>=0) $conditions[] = "Member.status='".$_GET['member']['status']."'";
 		if ($_GET['groupid']>0) {

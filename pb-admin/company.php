@@ -113,7 +113,7 @@ if (isset($_GET['do'])) {
 			$joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=Company.member_id";
 			$conditions[]= "m.username like '%".$_GET['member']['username']."%'";
 		}
-		if (!empty($_GET['company']['name'])) $conditions[]= "(Company.name like '%".$_GET['company']['name']."%' OR Company.shop_name like '%".$_GET['company']['name']."%')";
+		if (!empty($_GET['company']['name'])) $conditions[]= "(Company.name like '%".$_GET['company']['name']."%' OR Company.shop_name like '%".$_GET['company']['name']."%' OR m.space_name='".$_GET['company']['name']."')";
 		if (!empty($_GET['FromDate']) && $_GET['FromDate']!="None" && $_GET['ToDate'] && $_GET['ToDate']!="None") {
 			$condition= "m.created BETWEEN ";
 			$condition.= Times::dateConvert($_GET['FromDate']);
