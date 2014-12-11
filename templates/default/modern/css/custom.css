@@ -863,6 +863,24 @@ button.nobutton:hover {
     width: 282px;
 }
 .chat-min-but {
+    color: rgba(0, 0, 0, 0);
+    margin-right: 3px;
+}
+.chat-min-but:before {
+    color: #fff;
+    opacity: 0.7;
+}
+.chat-min-but:hover:before {
+    opacity: 1;
+    color: #fff !important;
+}
+.chat-title:hover .chat-min-but:before {
+    opacity: 1;
+}
+.chat-min-but:before {
+    color: #fff;
+}
+.chat-box.hidden .chat-min-but {
     display: none;
 }
 .chat-close-but {
@@ -873,7 +891,8 @@ button.nobutton:hover {
     color: #d9534f;
 }
 .chat-box .glyphicon-remove:before {
-    color: #888;
+    color: #fff;
+    opacity: 0.7;
 }
 .chat-box .glyphicon-picture:before {
     color: #333;
@@ -1425,6 +1444,7 @@ button.nobutton:hover {
 }
 .chat-title span:hover:before {
     color: #d43f3a;
+    opacity: 1;
 }
 .post-box .content p {
     margin-bottom: 5px;

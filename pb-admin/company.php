@@ -52,7 +52,7 @@ if (isset($_POST['set_group']) && !empty($_POST['id']) &&!empty($_POST['set_grou
 	$sql = "UPDATE {$tb_prefix}members m,{$tb_prefix}companies c SET c.cache_membergroupid='{$_POST['set_group']}',m.membergroup_id='{$_POST['set_group']}' WHERE c.member_id=m.id AND c.id ".$ids." AND m.id ".$member_ids;
 	$pdb->Execute($sql);
 }
-if (isset($_POST['recommend'])){
+if (isset($_POST['recommend'])) {
 	foreach($_POST['id'] as $val){
 		$commend_now = $company->field("if_commend", "id=".$val);
 		if($commend_now=="0"){
