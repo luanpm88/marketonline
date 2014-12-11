@@ -50,7 +50,7 @@ if (!empty($_GET['do'])) {
 		
 		include_once($c_file);
 		$pc = new $c_do();
-		var_dump($c_file);
+		//var_dump($c_file);
 		if(method_exists($pc, $action))
 			$pc->{$action}();
 		elseif (method_exists($pc, 'index'))
