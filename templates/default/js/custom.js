@@ -2546,4 +2546,5 @@
 		    $(".box-res-con.shopping .shopping_button").attr("href",$(".box-res-con.shopping .shopping_button").attr("href")+$(this).attr("rel"));
 		});
 		
+		
 	});
