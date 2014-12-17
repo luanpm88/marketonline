@@ -424,7 +424,7 @@ else
 	setvar("item", $tpm);
 }
 
-var_dump($memberinfo);
+//var_dump($memberinfo);
 
 //List industries level 1
 
