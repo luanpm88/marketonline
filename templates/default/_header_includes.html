@@ -24,13 +24,13 @@
 						<label class="loadingname">
 				{lang user_name}
 			    </label>
-			    <label style="height: 30px">
+			    <label style="height: 30px;margin-top: 5px;">
 				<input type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">&nbsp;
 			    </label>
 			    <label class="loadingname">
 			    {lang password}
 			    </label>
-			    <label>
+			    <label style="margin-top: 5px;">
 				<input name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2"><input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}&nbsp;
 			    </label>
 			    
@@ -46,7 +46,7 @@
 			    
 				<div class="box-res-con shopping" style="display: none">
 					<div class="inner-boxx">
-					    <h4 style="margin-bottom: 5px;">Nếu bạn chưa có tài khoản thành viên.<br />Vui lòng đăng ký để tham gia với chúng tôi.</h4>
+					    <h4 style="margin-bottom: 8px;">Nếu bạn chưa có tài khoản thành viên.<br />Vui lòng đăng ký để tham gia với chúng tôi.</h4>
 					    {if $smarty.get.do == "product"}
 						<a target="blank" class="single_add_to_cart_button button alt" type="button" href="{the_url module='register' typename='Company'}">{lang register}</a>
 					    {elseif $smarty.get.do == "employee"}
@@ -59,7 +59,7 @@
 						<a target="blank" class="single_add_to_cart_button button alt" type="button" href="{the_url module='register' typename='Company'}">{lang register}</a>
 					    {/if}
 					    
-					    <h4 style="margin-top: 17px;margin-bottom: 5px;"> Hoặc tiếp tục mua hàng không cần đăng ký</h4>
+					    <h4 style="margin-top: 17px;margin-bottom: 8px;"> Hoặc tiếp tục mua hàng không cần đăng ký</h4>
 					    <a class="shopping_button single_add_to_cart_button button alt" type="button" href="index.php?do=product&action=meminfo&id=">Tiếp tục mua</a>
 					</div>
 				    </div>
