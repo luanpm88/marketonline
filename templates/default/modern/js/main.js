@@ -107,7 +107,7 @@ $(document).ready(function() {
         }
     });
     
-    setInterval('cropping()',5000);
+    setInterval('cropping()',2000);
     
 });
 
