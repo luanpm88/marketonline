@@ -1,4 +1,4 @@
-    $(document).ready(function() {
+$(document).ready(function() {
         $('body').on("click", ".post-box .edit-button", function() {
             var box = $(this).parents('.post-box');
             
@@ -9,14 +9,8 @@
                 showEditor("editor-"+box.attr("rel"));
         }
         
-        setInterval('cropping();',5000);
-    });
         
-    $(window).resize(function() {
-        cropping();
-        autoSidebarChatHeight();
-    });
-    
+        });
     
     $('body').on("click",".post-box a.view_more",function(){
         $(this).attr("rel-page",parseInt($(this).attr("rel-page"))+1);
@@ -112,7 +106,14 @@
             $(".chat_friend_list").addClass("chat-hide");
         }
     });
+    
+    cropping();
+    
+});
 
+$(window).resize(function() {
+    cropping();
+    autoSidebarChatHeight();
 });
 
 function showEditor(name) {
