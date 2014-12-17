@@ -26,6 +26,10 @@ if (isset($_GET['do'])) {
 		$school->saveField("area_show", intval($_GET["value"]), intval($id));
 		pheader("location:".$_SERVER['HTTP_REFERER']);
 	}
+	if ($do == "del" && !empty($id)) {
+		$school->del($id);
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 
 $conditions = array();
