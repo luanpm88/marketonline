@@ -9,7 +9,7 @@
                 showEditor("editor-"+box.attr("rel"));
         }
         
-        setInterval('cropping()',5000);
+        setInterval('cropping();',5000);
     });
         
     $(window).resize(function() {
