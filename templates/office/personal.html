@@ -443,6 +443,7 @@ function readURL(input) {
 							<span class="school_name">
 								<span class="select_box">
 									<select name="memberfield[school_id]" id="school_select">
+										<option value="0">- Chọn trường -</option>
 										<!--{loop $Schools item0 level_0 key0}-->
 											<option value="{$item0.id}" {if $item.school_id == $item0.id}selected{/if}>{$item0.name}</option>
 										<!--{/loop}-->
