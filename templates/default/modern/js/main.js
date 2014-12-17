@@ -8,6 +8,8 @@
             if (!box.find('.mce-tinymce').length) {
                 showEditor("editor-"+box.attr("rel"));
         }
+        
+        cropping();
     });
         
     $(window).resize(function() {
