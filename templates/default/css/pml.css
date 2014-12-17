@@ -13239,6 +13239,6 @@ element.style {
     width: 500px;
     padding: 0 20px;
 }
-#settingouter .name {
-   
+#settingouter .top_login_name {
+    min-width: 123px;
 }

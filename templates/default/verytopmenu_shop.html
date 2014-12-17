@@ -22,7 +22,7 @@
 	
 	<div id="settingouter" style="float:right">
 	    <!--<a href="{if $pb_company}space/?userid={$pb_username}&do={else}redirect.php?url=/virtual-office/{/if}"></a>-->
-	    <a style="padding-left: 0; margin-right: 10px" class="name" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
+	    <a style="padding-left: 0; margin-right: 10px" class="top_login_name name" href="{if $pb_company}{the_url module=space userid=`$pb_company.cache_spacename`}{else}redirect.php?url=/virtual-office/{/if}">
 		<img class="avatar" src="{if $pb_company}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}" width="20" height="20" />
 		{if $pb_company}{$pb_company.shop_name}{else}{if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}{/if}
 	    </a>
