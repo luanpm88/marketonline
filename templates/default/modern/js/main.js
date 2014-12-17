@@ -107,7 +107,7 @@ $(document).ready(function() {
         }
     });
     
-    setInterval('cropping()',2000);
+    setInterval('cropping()', 2000);
     
 });
 
@@ -120,13 +120,11 @@ function showEditor(name) {
         tinymce.init({
             selector: "."+name,
             language: "vi_VN",
-            
             menubar: "",
             plugins: [
                 "image,table,wordcount"
             ],
             toolbar: "table image | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link",
-  
   
   
             content_css: ROOT_URL+"templates/default/modern/bootstrap/css/bootstrap.min.css,"+ROOT_URL+"templates/default/modern/css/custom_editor.css,"+ROOT_URL+"templates/default/modern/css/custom.css",

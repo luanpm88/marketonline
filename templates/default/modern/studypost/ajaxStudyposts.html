@@ -1,9 +1,6 @@
 <!--{if $List}-->
     <!--{loop $List item level_0 key}-->
             
-            
-            
-            
             <div class="panel panel-default post-box post-box-{$item.id}" rel="{$item.id}">
                 <div class="panel-heading">                  
                   <div class="media post-item">
@@ -20,29 +17,26 @@
                         <a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
                         
                         <div class="controls">
-                          {if $pb_userinfo.id!=$item.member.id}
-                              <a role="button" href="#chat" onclick="getChatboxNew('{$item.member.id}x6', false);" class="btn btn-xs btn-info">Nhắn tin</a>
-                          {/if}
+                            {if $pb_userinfo.id!=$item.member.id}
+                                <a role="button" href="#chat" onclick="getChatboxNew('{$item.member.id}x6', false);" class="btn btn-xs btn-info">Nhắn tin</a>
+                            {/if}
                           <!--<a role="button" href="#" class="btn btn-xs btn-default">+ Kết bạn</a>-->
                         </div>
                       
                     </div>
                   </div>
-                    {if $item.member.id == $pb_userinfo.id}
                         <div class="action">
-                            {if !$item.images}
+                            {if !$item.images && $item.member.id == $pb_userinfo.id}
                                 <button type="button" class="btn btn-primary btn-xs edit-button" title="Edit">
                                     <span class="glyphicon glyphicon-pencil"></span>
                                 </button>
                             {/if}
-                            <!--<button type="button" class="btn btn-success btn-xs" title="Approved">
-                                <span class="glyphicon glyphicon-ok"></span>
-                            </button>-->
-                            <button onclick="if(confirm('Bạn có chắc muốn xóa bài viết này?')) delStudypost({$item.id});" type="button" class="btn btn-danger btn-xs" title="Delete">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
+                            {if $item.memberpage_id == $pb_userinfo.id || $item.member.id == $pb_userinfo.id}
+                                <button onclick="if(confirm('Bạn có chắc muốn xóa bài viết này?')) delStudypost({$item.id});" type="button" class="btn btn-danger btn-xs" title="Delete">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            {/if}
                         </div>
-                    {/if}
                 </div>
                 <div class="panel-body">
                     

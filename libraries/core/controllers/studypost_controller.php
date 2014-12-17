@@ -367,7 +367,7 @@ class Studypost extends PbController {
 			
 		$item = $this->studypost->read("*", intval($_GET["id"]));
 
-		if($pb_userinfo["pb_userid"] == $item["member_id"])
+		if($pb_userinfo["pb_userid"] == $item["member_id"] || $pb_userinfo["pb_userid"] == $item["memberpage_id"])
 		{
 			$this->studypostcomment->delAll("studypost_id = ".$item["id"]);
 			$this->studypost->del(intval($item["id"]));
