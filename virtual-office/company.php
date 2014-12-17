@@ -411,7 +411,8 @@ else
 	$tpm["contact_mobile"] = $memberinfo["mobile"];
 	$tpm["contact_email"] = $memberinfo["email"];
 	$tpm["email"] = $memberinfo["email"];
-	$tpm["address"] = $memberinfo["address"];
+	
+	$tpm["address"] = $memberinfo["address_s"];
 	$r2 = $area->disSubOptions($memberinfo['area_id'], "area_");
 	$tpm["telcode"] = "84";
 	$tpm["faxcode"] = "84";
@@ -422,6 +423,8 @@ else
 	$tpm = am($tpm, $r1, $r2);
 	setvar("item", $tpm);
 }
+
+//var_dump($memberinfo);
 
 //List industries level 1
 
