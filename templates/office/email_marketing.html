@@ -105,7 +105,9 @@ jQuery(document).ready(function($) {
 				
 				if (typeof(entry.gd$email) != 'undefined') {
 					entry.gd$email.forEach(function(email){
-						html += '<span>'+email.address+'</span>';
+						if(email.primary) {
+							html += '<span>'+email.address+'</span>';
+						}
 					});
 				}					
 				
