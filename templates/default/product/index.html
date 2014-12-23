@@ -189,7 +189,7 @@
 	       $('#new_product_but').addClass("active");
 	       
 		//getFilterProducts() in custom.js
-		ajaxListProduct(getFilterProducts());
+		if (window.location.hash != "#san-pham-khac") ajaxListProduct(getFilterProducts());
 	 
 		$('#hot_product_but').click(function () {
 			resetFilter();
