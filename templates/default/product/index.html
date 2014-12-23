@@ -311,8 +311,12 @@
 		});
 		
 		if (window.location.hash == "#sale") {
-			setTimeout('$("#sale_product_but").trigger("click")',2000);
+		  setTimeout('$("#sale_product_but").trigger("click")',2000);
 		}
+		
+		if (window.location.hash == "#other_products") {
+                    $('#other_product_but').trigger("click");
+                }
 	});
 	
 	
