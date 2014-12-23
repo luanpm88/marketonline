@@ -77,7 +77,7 @@ jQuery(document).ready(function($) {
 	    var token = gapi.auth.getToken();
 		
 		$.ajax({
-			url: 'https://www.google.com/m8/feeds/contacts/default/full?alt=json',
+			url: 'https://www.google.com/m8/feeds/contacts/default/full?alt=json&max-results=700',
 			dataType: 'jsonp',
 			data: token
 		}).done(function(data) {
