@@ -3705,11 +3705,12 @@ a.unvalid_edit {
 }
 #authorize-button {
     background: none repeat scroll 0 0 #fff;
-    border: 1px solid #333;
+    border: 1px solid #888;
     cursor: pointer;
     font-size: 14px;
     padding: 10px;
     margin-top: 10px;
+    color: #888;
 }
 #authorize-button img {
     margin-bottom: 10px;
