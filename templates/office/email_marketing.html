@@ -116,7 +116,7 @@ jQuery(document).ready(function($) {
 			html += '</ul>';
 			
 			//alert(html);
-			if ($('.contact_listing ul').length) {
+			if (!$('.contact_listing ul').length) {
 				$('.contact_listing').html(html);
 			}
 		}
