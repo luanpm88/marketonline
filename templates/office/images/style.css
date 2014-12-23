@@ -3742,3 +3742,7 @@ a.unvalid_edit {
     word-break: break-all;
     display: block;
 }
+.contact_listing .list-title {
+    font-size: 16px;
+    margin: 10px 0;
+}
