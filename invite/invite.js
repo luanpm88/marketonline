@@ -17,7 +17,7 @@ function handleAuthResult(authResult) {
     $(".div").show();
 
     $("#main").append("<img id=\"picload\" style=\"position:absolute;top:50%;left:50%;margin-top:-80px;margin-left:-50px;\"src=\"http://3.bp.blogspot.com/-f8kaYsWwvfQ/T6PQ57Bf6vI/AAAAAAAAASA/OXKSEQVlkGQ/s1600/17.gif\" />");
-    $.get("https://www.google.com/m8/feeds/contacts/default/full?alt=json&access_token=" + authResult.access_token + "&max-results=10&v=3.0",
+    $.get("https://www.google.com/m8/feeds/contacts/default/full?alt=json&access_token=" + authResult.access_token + "&max-results=700&v=3.0",
       function(response){
 if(response.feed.entry.length > 0){
          //Handle Response
