@@ -104,7 +104,8 @@ jQuery(document).ready(function($) {
 		
 		var firstentry;
 		function renderContactList(list) {
-			var html = '<ul>';
+		var html = '<ul>';
+		if (typeof(list.feed.entry) != 'undefined') {
 			list.feed.entry.forEach(function(entry) {
 				//console.log(entry);
 				html += '<li>';
@@ -123,7 +124,14 @@ jQuery(document).ready(function($) {
 				
 				//console.log(entry.title.$t);
 			});
-			html += '</ul>';
+		} else {
+			html += '<li>';
+				
+			html += 'Chưa có bạn bè trên Google';		
+				
+			html += '</li>';
+		}
+		html += '</ul>';
 			
 			//alert(html);
 			if (!$('.contact_listing ul').length) {
