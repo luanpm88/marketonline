@@ -3730,13 +3730,12 @@ a.unvalid_edit {
     height: 60px;
     list-style: outside none none;
     margin: 5px;
-    overflow: hidden;
     padding: 5px;
     width: 215px;
 }
 .contact_listing ul li h2 {
-    
+    word-break: break-all;
 }
 .contact_listing ul li span {
-    
+    word-break: break-all;
 }
