@@ -94,7 +94,7 @@ jQuery(document).ready(function($) {
 		}); 
 	  }
 		
-		//var dataentry;
+		var firstentry;
 		function renderContactList(list) {
 			var html = '<ul>';
 			list.feed.entry.forEach(function(entry) {
@@ -119,6 +119,8 @@ jQuery(document).ready(function($) {
 			if (!$('.contact_listing ul').length) {
 				$('.contact_listing').html(html);
 			}
+			
+			firstentry = list.feed.entry[0];
 		}
 		
 		function saveGoogleContactString(data) {

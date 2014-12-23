@@ -3724,7 +3724,15 @@ a.unvalid_edit {
     
 }
 .contact_listing ul li {
-    
+    border: 1px solid #aaa;
+    display: block;
+    float: left;
+    height: 60px;
+    list-style: outside none none;
+    margin: 5px;
+    overflow: hidden;
+    padding: 5px;
+    width: 215px;
 }
 .contact_listing ul li h2 {
     
