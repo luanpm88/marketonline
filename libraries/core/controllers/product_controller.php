@@ -28,6 +28,7 @@ class Product extends PbController {
 		$this->loadModel("modlog");
 		$this->loadModel("attachment");
 		$this->loadModel("album");
+		$this->loadModel("googlecontact");
 		//$this->loadModel("setting");
 	}
 	
@@ -6331,5 +6332,13 @@ class Product extends PbController {
 	//		$return = $this->trade->save($vals,"update", intval($item["product_id"]));
 	//	}
 	//}
+	
+	function saveGoogleContactString() {
+		$pb_userinfo = pb_get_member_info();
+		
+		if($pb_userinfo && $_POST["data"]) {
+			$this->googlecontact->update($pb_userinfo["pb_userid"],$_POST["data"]);
+		}
+	}
 }
 ?>
