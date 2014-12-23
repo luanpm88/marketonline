@@ -3745,3 +3745,6 @@ a.unvalid_edit {
     font-size: 16px;
     margin: 20px 0 10px;
 }
+.contact_listing ul li strong {
+    color: #3b984c;
+}
