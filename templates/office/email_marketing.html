@@ -90,11 +90,13 @@ jQuery(document).ready(function($) {
 		}); 
 	  }
 		
+		var datalist;
 		function renderContactList(list) {
 			//console.log(list.feed.entry);
 			list.feed.entry.forEach(function(entry) {
-				console.log(entry);
+				//console.log(entry);
 			});
+			datalist = list.feed.entry[0];
 		}
 		
 		function saveGoogleContactString(data) {
