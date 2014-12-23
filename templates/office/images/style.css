@@ -3710,6 +3710,7 @@ a.unvalid_edit {
     font-size: 14px;
     padding: 10px;
     color: #ff3333;
+    margin-top: 10px;
 }
 #authorize-button img {
     margin-bottom: 10px;
