@@ -3720,8 +3720,10 @@ a.unvalid_edit {
 .contact_listing {
     
 }
+
 .contact_listing ul {
-    
+    margin-left: -5px;
+    margin-right: -10px;
 }
 .contact_listing ul li {
     border: 1px solid #aaa;
@@ -3731,7 +3733,7 @@ a.unvalid_edit {
     list-style: outside none none;
     margin: 5px;
     padding: 5px;
-    width: 290px;
+    width: 298px;
 }
 .contact_listing ul li h2 {
     word-break: break-all;
