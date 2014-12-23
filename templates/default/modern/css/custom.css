@@ -1608,3 +1608,17 @@ button.nobutton:hover {
     width: 100%;
     color: #fff;
 }
+#authorize-button {
+    background: none repeat scroll 0 0 #fff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    margin-top: 10px;
+    color: #888;
+}
+#authorize-button img {
+    margin-bottom: 10px;
+}
+#authorize-button:hover {
+    color: #ff3333;
+}
