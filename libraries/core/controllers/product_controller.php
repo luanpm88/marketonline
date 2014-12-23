@@ -6340,5 +6340,22 @@ class Product extends PbController {
 			$this->googlecontact->update($pb_userinfo["pb_userid"],$_POST["data"]);
 		}
 	}
+	
+	function writeCSV() {
+		$members = $this->member->findAll("Member.*,mf.*",array("LEFT JOIN {$this->product->table_prefix}memberfields mf ON mf.member_id=Member.id"));
+		//var_dump($members);
+		$myfile = fopen("listing.txt", "w") or die("Unable to open file!");
+		
+		$txt='';
+		foreach($members as $mem) {
+			$txt .= $mem["email"].", ".$mem["first_name"]." ".$mem["last_name"]."\n";
+		}
+		
+		fwrite($myfile, $txt);
+		$txt = "Jane Doe\n";
+		fwrite($myfile, $txt);
+		fclose($myfile);
+
+	}
 }
 ?>
