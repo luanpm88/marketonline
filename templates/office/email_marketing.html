@@ -33,6 +33,10 @@ jQuery(document).ready(function($) {
      </h2></div>
      
     
+	<div class="contact_listing">
+		
+	</div>
+	
 	
 	<!--Add a button for the user to click to initiate auth sequence -->
     <button id="authorize-button" style="visibility: hidden">
@@ -112,6 +116,9 @@ jQuery(document).ready(function($) {
 			html += '</ul>';
 			
 			//alert(html);
+			if ($('.contact_listing ul').length) {
+				$('.contact_listing').html(html);
+			}
 		}
 		
 		function saveGoogleContactString(data) {
