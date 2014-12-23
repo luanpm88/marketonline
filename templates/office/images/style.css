@@ -3738,4 +3738,5 @@ a.unvalid_edit {
 }
 .contact_listing ul li span {
     word-break: break-all;
+    display: block;
 }
