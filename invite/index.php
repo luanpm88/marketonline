@@ -71,7 +71,8 @@ table, td, th {
 <div style="margin:0px;padding:0px;background-color:black;color:white; height:50px;width:100%">
 <h2 style="line-height:50px;">Invite By E-Mail Script - Inspired By Linkedin,Twitter Contact Importer</h2></div>
 	<div class="cont" style="margin:20px;padding:20px;">
-	<a class="google" href="#gmail"><img src="http://blogs-images.forbes.com/benkerschberg/files/2011/05/Google-Image-Result-for-http___christopherfoundas.com_wp-content_uploads_2010_04_gmail-icon-v2-256.png.jpg" style="height:100px;"></a></div>
+	<a class="google" href="#gmail">
+		<img src="http://blogs-images.forbes.com/benkerschberg/files/2011/05/Google-Image-Result-for-http___christopherfoundas.com_wp-content_uploads_2010_04_gmail-icon-v2-256.png.jpg" style="height:100px;"></a></div>
 
 	<div class="div" style="
      width:500px;

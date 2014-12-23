@@ -6,7 +6,7 @@ if($_POST['email'])
 {
 $incominglist = $_POST['email'];
 $full=array();
-$con=mysqli_connect("localhost","root","","marktonline");
+$con=mysqli_connect("localhost","marketon_user","aA456321@","marketon_main");
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
