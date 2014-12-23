@@ -85,13 +85,16 @@ jQuery(document).ready(function($) {
 			dataType: 'jsonp',
 			data: token
 		}).done(function(data) {
-			console.log(JSON.stringify(data));
+			//console.log(JSON.stringify(data));
 			renderContactList(data);
 		}); 
 	  }
 		
 		function renderContactList(list) {
-			console.log(list.feed.entry);
+			//console.log(list.feed.entry);
+			list.feed.entry.forEach(function(entry) {
+				console.log(entry);
+			});
 		}
 		
 		function saveGoogleContactString(data) {
