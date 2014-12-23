@@ -102,8 +102,10 @@ jQuery(document).ready(function($) {
 		}); 
 	  }
 		
-		var firstentry;
-		function renderContactList(list) {
+	
+	var firstentry;
+	function renderContactList(list) {
+		var length=0;
 		var html = '<ul>';
 		if (typeof(list.feed.entry) != 'undefined') {
 			list.feed.entry.forEach(function(entry) {
@@ -122,7 +124,7 @@ jQuery(document).ready(function($) {
 				
 				html += '</li>';
 				
-				//console.log(entry.title.$t);
+				length = list.feed.entry.length;
 			});
 		} else {
 			html += '<li>';
@@ -137,13 +139,13 @@ jQuery(document).ready(function($) {
 			if (!$('.contact_listing ul').length) {
 				//$('.contact_listing').html(html);
 				
-				$('.contact_listing').html("<p>Bạn đang kết nối với <strong>"+list.feed.entry.length+" bạn bè</strong> trên Google bằng tài khoản <strong>"+list.feed.author[0].email.$t+"</strong></p>");
+				$('.contact_listing').html("<p>Bạn đang kết nối với <strong>"+length+" bạn bè</strong> trên Google bằng tài khoản <strong>"+list.feed.author[0].email.$t+"</strong></p>");
 				$('.contact_listing').append("<h3 class='list-title'>Danh sách bạn bè</h3>");
 				$('.contact_listing').append(html);
 			}
 			
 			firstentry = list;
-		}
+	}
 		
 		function getAllContactNana(args) {
 			//code
