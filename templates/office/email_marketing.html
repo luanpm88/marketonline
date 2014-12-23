@@ -99,9 +99,11 @@ jQuery(document).ready(function($) {
 				
 				html += '<h2>'+entry.title.$t+'</h2>';
 				
-				entry.gd$email.forEach(function(email){
-					html += '<span>'+email.address+'</span>';
-				});
+				if (typeof(entry.gd$email) != 'undefined') {
+					entry.gd$email.forEach(function(email){
+						html += '<span>'+email.address+'</span>';
+					});
+				}					
 				
 				html += '</li>';
 				
