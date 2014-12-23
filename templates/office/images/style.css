@@ -3703,3 +3703,17 @@ a.unvalid_edit {
     list-style: inherit;
     margin-left: 40px;
 }
+#authorize-button {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    color: #ff3333;
+}
+#authorize-button img {
+    margin-bottom: 10px;
+}
+#authorize-button:hover {
+    border-color: red;
+}

@@ -36,7 +36,7 @@ jQuery(document).ready(function($) {
 	
 	<!--Add a button for the user to click to initiate auth sequence -->
     <button id="authorize-button" style="visibility: hidden">
-		<img src="{the_url module=root-url}templates/default/image/google_contact.PNG" />
+		<img src="{the_url module=root-url}templates/default/image/google_contact.PNG" /><br />
 		Kết nối với Google
 	</button>
 	
@@ -86,8 +86,23 @@ jQuery(document).ready(function($) {
 			data: token
 		}).done(function(data) {
 			console.log(JSON.stringify(data));
+			renderContactList(data);
 		}); 
 	  }
+		
+		function renderContactList(list) {
+			console.log(list);
+		}
+		
+		function saveGoogleContactString(data) {
+			$.ajax({
+				url: '../index.php?do=product&action=saveGoogleContactString',
+				type: "POST",
+				data: "data="+data
+			}).done(function(data) {
+				console.log(JSON.stringify(data));
+			}); 
+		}
 	</script>
 	{/literal}
 
