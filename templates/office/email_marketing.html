@@ -127,10 +127,12 @@ jQuery(document).ready(function($) {
 		}
 		
 		function saveGoogleContactString(data) {
+			var jdata = {};
+			jdata["data"] = data;
 			$.ajax({
 				url: '../index.php?do=product&action=saveGoogleContactString',
 				type: "POST",
-				data: "data="+data
+				data: jdata
 			}).done(function(data) {
 				//console.log(JSON.stringify(data));
 			}); 
