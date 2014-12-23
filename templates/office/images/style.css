@@ -3709,14 +3709,14 @@ a.unvalid_edit {
     cursor: pointer;
     font-size: 14px;
     padding: 10px;
-    color: #ff3333;
     margin-top: 10px;
 }
 #authorize-button img {
     margin-bottom: 10px;
 }
 #authorize-button:hover {
-    border-color: red;
+    border-color: #ff3333;
+    color: #ff3333;
 }
 .contact_listing {
     
