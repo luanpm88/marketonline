@@ -90,7 +90,7 @@ jQuery(document).ready(function($) {
 			data: token
 		}).done(function(data) {
 			//console.log(JSON.stringify(data));
-			saveGoogleContactString(JSON.stringify(data))
+			saveGoogleContactString(encodeURIComponent(JSON.stringify(data)));
 			renderContactList(data);
 		}); 
 	  }
