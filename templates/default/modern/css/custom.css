@@ -1622,3 +1622,6 @@ button.nobutton:hover {
 #authorize-button:hover {
     color: #ff3333;
 }
+.post-box .panel-body table {
+    max-width: 100%;
+}

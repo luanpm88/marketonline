@@ -194,7 +194,7 @@ if (!empty($_GET['do'])) {
 	setvar("fimages", $imageface);
 	setvar("count_fimages", count($imageface));
 	
-	setvar("tet2014", false);
+	setvar("tet2014", true);
 	
 	//announce
 	
