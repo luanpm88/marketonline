@@ -5707,8 +5707,8 @@ body {
 
 .banner-small-top {
     margin-top: -3px;
-    position: absolute;
-    right: 145px;
+    margin-bottom: -67px;
+    margin-right: 135px;
 }
 .banner-small-top img {
     height: 67px;
@@ -13241,4 +13241,14 @@ element.style {
 }
 #settingouter .top_login_name {
     margin-right: -17px !important;
+}
+.banner-small-top.tet_others {
+    margin-bottom: -40px;
+}
+.open-soc.tet_others {
+    margin-top: -20px !important;
+}
+.soc-wrap.tet_others {
+    margin-bottom: 20px;
+    margin-top: -14px !important;
 }

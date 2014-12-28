@@ -377,4 +377,8 @@ if(isset($_SESSION["flash_error"])) {
     unset($_SESSION["flash_error"]);
 }
 
+
+//setvar("tet2014", true);
+//setvar("tet_others", true);
+
 ?>

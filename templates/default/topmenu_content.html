@@ -119,23 +119,23 @@
   <div class="fifteen columns" id="top-social" {if $tet2014}style="margin-bottom: -25px;"{/if}>
     
     {if $tet2014}
-	<div class="banner-small-top">
+	<div class="banner-small-top {if $tet_others}tet_others{/if}">
 	    <img src="{$WebRootUrl}images/tet2015.png" />
 	</div>
     {/if}
     {if $jobpage}
-	<div class="banner-small-top">
+	<div class="banner-small-top {if $tet_others}tet_others{/if}">
 	    <img src="{$WebRootUrl}images/tet2015.png" />
 	</div>
     {/if}
 
-    <a class="open-soc" id="show-social" href="javascript:void(0)" {if $tet2014}style="margin-top: 5px;"{/if}>
+    <a class="open-soc {if $tet_others}tet_others{/if}" id="show-social" href="javascript:void(0)" {if $tet2014}style="margin-top: 5px;"{/if}>
       <div class="twit-open"></div>
       <span>Chia sẻ</span>
       Thông tin
     </a>
 
-      <div class="soc-wrap" {if $tet2014}style="margin-top: 5px;"{/if}>
+      <div class="soc-wrap {if $tet_others}tet_others{/if}" {if $tet2014}style="margin-top: 5px;"{/if}>
 
       <div class="soc-icons">
 

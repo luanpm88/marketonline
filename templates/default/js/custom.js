@@ -2165,16 +2165,16 @@
 		$('#comment').val($.cookie("comment_tpm"));
 		
 		$('#show-social').click(function(){
-		
-		   displayTet2014();
+		//alert($('.soc-wrap').width());
+		   setTimeout( 'displayTet2014()',1000);
 		
 		});
 		
 		$('#menu-primary-navigation').hover(function() {
-		    $('.banner-small-top').css("display","none");
+		    $('.banner-small-top').css("visibility","hidden");
 		},
 		function() {
-		    $('.banner-small-top').css("display","block");
+		    $('.banner-small-top').css("visibility","visible");
 		}
 		);
 		

@@ -289,22 +289,24 @@
     
     function displayTet2014()
     {
-     var show = true;
-	  if ($('.soc-icons').width() > 0) {	      
+            var show = true;
+	  if ($('.soc-wrap').width() > 0) {
+            show = false;
 	  }
 	  else
 	  {
-	      show = false;
+	       
 	  }
+          
 	  
 
 	  
 	  if (show) {	      
-	      $('.banner-small-top').css("display","block");
+	      $('.banner-small-top').css("visibility","visible");
 	  }
 	  else
 	  {
-	      $('.banner-small-top').css("display","none");
+	      $('.banner-small-top').css("visibility","hidden");
 	  }
     }
    
