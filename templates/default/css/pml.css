@@ -13252,3 +13252,9 @@ element.style {
     margin-bottom: 20px;
     margin-top: -14px !important;
 }
+#announce_top {
+    margin-top: -19px;
+}
+#header .logo {
+    margin-top: -105px;
+}

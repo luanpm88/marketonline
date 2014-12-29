@@ -1623,5 +1623,12 @@ button.nobutton:hover {
     color: #ff3333;
 }
 .post-box .panel-body table {
-    max-width: 100%;
+max-width: 100% !important;
+width: auto !important;
+}
+.top-info {
+    border: 1px solid #ddd !important;
+}
+.album-main-image img {
+    border-left: solid 1px #ddd;
 }
