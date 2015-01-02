@@ -113,9 +113,9 @@ class Attachment extends PbController {
 			$upload->the_temp_file = $_FILES[$this->upload_form_field]['tmp_name'];
 			$upload->the_file = $_FILES[$this->upload_form_field]['name'];
 			$upload->http_error = $_FILES[$this->upload_form_field]['error'];
-	 		//if ($_FILES[$this->upload_form_field]['size']>$this->max_file_size) {
-	 		//	flash("file_too_big", '', 0, implode(",", $this->allowed_file_ext));
-	 		//}
+	 		if ($_FILES[$this->upload_form_field]['size']>$this->max_file_size) {
+	 			flash("file_too_big", '', 0, implode(",", $this->allowed_file_ext));
+	 		}
 			
 			if (class_exists("Logs")) {
 				$log = new Logs();
