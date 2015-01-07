@@ -36,6 +36,7 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
     //$auth_password = 'merketonlinebmn@#$123';
     //$auth_protocol = 'ssl';
     //$mail_from = 'bmnmarketonline@gmail.com';
+    //$from_name = "MarketOnline.vn";
     
     //$smtp_server = 'smtp.gmail.com';
     //$smtp_port = 465;
@@ -50,6 +51,7 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
     $auth_password = 'ngahoang';
     $auth_protocol = 'ssl';
     $mail_from = 'luanpm88@gmail.com';
+    $from_name = "Luan Pham";
     
     if ($send_mail == 2) {
     	$mail->IsSMTP();
@@ -70,7 +72,7 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
 	$mail->CharSet = $charset;
 	$mail->Encoding = "base64";
 	$mail->From     = $mail_from;
-	$mail->FromName = "MarketOnline.vn";
+	$mail->FromName = $from_name;
 	$mail->Subject = $subject;
 	$mail->AltBody = "To view the message, please use an HTML compatible email viewer!"; // optional, comment out and test
 	$tpl_file = "emails/".$template.$smarty->tpl_ext;
