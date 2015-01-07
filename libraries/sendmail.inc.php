@@ -30,13 +30,13 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
     //$auth_protocol = '';
     //$mail_from = 'contact@marketonline.vn';
     
-    //$smtp_server = 'smtp.gmail.com';
-    //$smtp_port = 465;
-    //$auth_username = 'bmnmarketonline@gmail.com';
-    //$auth_password = 'merketonlinebmn@#$123';
-    //$auth_protocol = 'ssl';
-    //$mail_from = 'bmnmarketonline@gmail.com';
-    //$from_name = "MarketOnline.vn";
+    $smtp_server = 'smtp.gmail.com';
+    $smtp_port = 465;
+    $auth_username = 'bmnmarketonline@gmail.com';
+    $auth_password = 'merketonlinebmn@#$123';
+    $auth_protocol = 'ssl';
+    $mail_from = 'bmnmarketonline@gmail.com';
+    $from_name = "MarketOnline.vn";
     
     //$smtp_server = 'smtp.gmail.com';
     //$smtp_port = 465;
@@ -45,13 +45,13 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
     //$auth_protocol = 'ssl';
     //$mail_from = 'fbmn.marketonline.vn@gmail.com';
     
-    $smtp_server = 'smtp.gmail.com';
-    $smtp_port = 465;
-    $auth_username = 'luanpm88@gmail.com';
-    $auth_password = 'ngahoang';
-    $auth_protocol = 'ssl';
-    $mail_from = 'luanpm88@gmail.com';
-    $from_name = "Luan Pham";
+    //$smtp_server = 'smtp.gmail.com';
+    //$smtp_port = 465;
+    //$auth_username = 'luanpm88@gmail.com';
+    //$auth_password = 'ngahoang';
+    //$auth_protocol = 'ssl';
+    //$mail_from = 'luanpm88@gmail.com';
+    //$from_name = "Luan Pham";
     
     if ($send_mail == 2) {
     	$mail->IsSMTP();
