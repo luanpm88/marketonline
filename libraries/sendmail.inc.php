@@ -91,7 +91,7 @@ function pb_sendmail($to_users = array(), $subject, $template = null, $body = nu
 		}
 		$logdata['handle_type'] = "error";
 		$logdata['source_module'] = "sendmail";
-		$logdata['description'] = $mail->ErrorInfo;
+		$logdata['description'] = $smtp_server."-".$auth_username."-".$smtp_port."-".$auth_protocol."-".$mail->ErrorInfo;
 		
 		$log->Add($logdata);
 		return false;
