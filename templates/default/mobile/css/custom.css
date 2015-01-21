@@ -32,17 +32,17 @@ body {
     border-color: #71c681;
 }
 .sidebar-nav {
-    padding-top: 15px;
+    padding-top: 10px;
 }
 .sidebar-nav li.sidebar-menu a {
-    padding-bottom: 8px;
+    padding-bottom: 5px;
 }
 .sidebar-nav li.sidebar-menu .color-point {
     display: inline-block;
     height: 40px;
     margin-bottom: -15px;
     margin-right: 10px;
-    margin-top: 8px;
+    margin-top: 5px;
     width: 40px;
     background-position: center -10px;
     background-size: 55px auto;
