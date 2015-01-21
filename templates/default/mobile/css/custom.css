@@ -145,7 +145,7 @@ body {
     border: 1px solid #ccc;
     float: left;
     list-style: outside none none;
-    margin-right: 15px;
+    margin-right: 8px;
     padding: 4px;
     width: 130px;
 }
@@ -168,5 +168,5 @@ body {
 }
 #page-content-wrapper.home-page {
     background: none repeat scroll 0 0 #ddd;
-    padding: 10px 0;
+    padding: 15px 0;
 }
