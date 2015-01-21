@@ -24,17 +24,17 @@ body {
     border-color: #71c681;
 }
 .sidebar-nav {
-    padding-top: 5px;
+    padding-top: 15px;
 }
 .sidebar-nav li.sidebar-menu a {
-    padding-bottom: 5px;
+    padding-bottom: 8px;
 }
 .sidebar-nav li.sidebar-menu .color-point {
     display: inline-block;
     height: 40px;
     margin-bottom: -15px;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: 8px;
     width: 40px;
     background-position: center -10px;
     background-size: 55px auto;
