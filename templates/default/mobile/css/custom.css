@@ -164,4 +164,6 @@ body {
     -webkit-animation: myfirst 5s; /* Chrome, Safari, Opera */
     animation: myfirst 5s;
 }
-
+.navbar-brand {
+    padding: 15px 8px;
+}
