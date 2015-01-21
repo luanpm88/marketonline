@@ -67,19 +67,19 @@
                 $('.mobile-horizon-slider ul').each(function() {
                     $(this).width($(this).find('li').length*155);
                 });
-                $('.mobile-horizon-slider ul').swipe( {
-                    //Generic swipe handler for all directions
-                    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                        if(direction=='left') {
-                            moveLeft($(this));
-                        }
-                        if(direction=='right') {
-                            moveRight($(this));
-                        }
-                    },
-                    //Default is 75px, set to 0 for demo so any distance triggers swipe
-                    threshold: 0
-                });
+                //$('.mobile-horizon-slider ul').swipe( {
+                //    //Generic swipe handler for all directions
+                //    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                //        if(direction=='left') {
+                //            moveLeft($(this));
+                //        }
+                //        if(direction=='right') {
+                //            moveRight($(this));
+                //        }
+                //    },
+                //    //Default is 75px, set to 0 for demo so any distance triggers swipe
+                //    threshold: 0
+                //});
             });
         </script>
     {/literal}
