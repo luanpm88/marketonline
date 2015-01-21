@@ -68,14 +68,14 @@
                     //Generic swipe handler for all directions
                     swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
                         if(direction=='left') {
-                            moveLeft($(this))
+                            moveLeft($(this));
                         }
                         if(direction=='right') {
-                            moveRight($(this))
+                            moveRight($(this));
                         }
                     },
                     //Default is 75px, set to 0 for demo so any distance triggers swipe
-                     threshold: 0
+                    threshold: 0
                 });
             });
         </script>
