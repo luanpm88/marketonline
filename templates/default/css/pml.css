@@ -13258,3 +13258,8 @@ element.style {
 #header .logo {
     margin-top: -105px;
 }
+.box-scroll {
+    border-bottom-color: #0064d2 !important;
+    padding-bottom: 5px !important;
+    margin-top: -5px;
+}
