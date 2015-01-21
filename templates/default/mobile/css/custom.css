@@ -109,7 +109,7 @@ body {
     margin: 7px 20px 0 0;
     padding: 3px 5px 0;
 }
-.custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active  {
+.custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active {
     background: none !important;
 }
 .top-register-box {
@@ -120,7 +120,8 @@ body {
     float: left;
 }
 .top-register-box li a {
-    
+    padding-bottom: 7px;
+    padding-top: 7px;
 }
 .navbar-nav .divider {
     background-color: #71c681;
