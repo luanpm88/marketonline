@@ -1,12 +1,11 @@
 body {
     padding-top: 50px;
 }
-.collapsing {
-    -webkit-transition: none;
-    transition: none;
-}
 .navbar-inverse {
     background-color: #3b984c;
+    border: 0;
+}
+.navbar-inverse .navbar-toggle {
     border: 0;
 }
 .navbar-inverse .navbar-nav > li > a {
@@ -15,29 +14,50 @@ body {
 .navbar-inverse .navbar-brand {
     color: #fff;
 }
+.navbar-inverse .navbar-nav > li:hover > a {
+    background-color: #71c681;
+}
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
     background-color: #71c681;
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    border-color: #71c681;
+}
+.sidebar-nav {
+    padding-top: 5px;
+}
+.sidebar-nav li.sidebar-menu a {
+    padding-bottom: 5px;
 }
 .sidebar-nav li.sidebar-menu .color-point {
     display: inline-block;
     height: 40px;
     margin-bottom: -15px;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     width: 40px;
+    background-position: center -10px;
+    background-size: 55px auto;
 }
 .sidebar-nav li.sidebar-menu-product .color-point {
     background-color: #1acfac;
+    background-image: url('../img/product_bg.png');
 }
 .sidebar-nav li.sidebar-menu-service .color-point {
     background-color: #ffa544;
+    background-image: url('../img/service_bg.png');
 }
 .sidebar-nav li.sidebar-menu-trade .color-point {
     background-color: #57BAE8;
+    background-image: url('../img/trade_bg.png');
 }
 .sidebar-nav li.sidebar-menu-company .color-point {
     background-color: #fe7477;
+    background-image: url('../img/brand_bg.png');
+    background-size: 50px auto;
 }
 .sidebar-nav li.sidebar-menu-job .color-point {
     background-color: #7ad04d;
+    background-image: url('../img/job_bg.png');
+    background-size: 50px auto;
 }

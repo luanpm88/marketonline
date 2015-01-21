@@ -1,0 +1,26 @@
+    <!-- Menu Toggle Script -->
+    {literal}
+        <script>
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+            
+            $(function() {      
+              //Enable swiping...
+              $(document).swipe( {
+                //Generic swipe handler for all directions
+                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                  if(direction == 'right') {
+                    $("#wrapper").addClass("toggled");
+                  }
+                  if(direction == 'left') {
+                    $("#wrapper").removeClass("toggled");
+                  }
+                },
+                //Default is 75px, set to 0 for demo so any distance triggers swipe
+                 threshold: 75
+              });
+            });
+        </script>
+    {/literal}

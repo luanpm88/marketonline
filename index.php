@@ -213,16 +213,13 @@ if (!empty($_GET['do'])) {
 	setvar("baomat", $baomat["message"]);
 	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 	
-	
-	//if(detectMobile()) {
-	//	render("mobile/index");
-	//} else {
-	//	render("index");
-	//}
-	
-	render("index");
-	
-	
+	//detectMobile()
+	if($_GET["mobile"]) {
+		render("mobile/index");
+	} else {
+		render("index");
+	}
+
 	
 }
 ?>

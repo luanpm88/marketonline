@@ -6,6 +6,8 @@ Options +FollowSymLinks
 Options +Indexes  
 RewriteEngine On
 
+RewriteRule ^mobile/?$ index.php?mobile=1 [L]
+
 RewriteRule ^privacy$ policy.html [L]
 RewriteRule ^modern_demo/?$ index.php?do=studypost&action=modern_demo [L]
 RewriteRule ^modern_demo/group?$ index.php?do=studypost&action=modern_demo_group [L]
