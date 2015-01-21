@@ -1190,4 +1190,11 @@ function format_time($t,$f=':') // t = seconds, f = separator
 	//return sprintf("%02d %s %02d %s", floor($t/3600), "giờ", ($t/60)%60, "phút");
 	return $string;
 }
+
+function detectMobile() {
+	require("libraries/mdetect.php");
+	$mobile_agent = new uagent_info();
+	return $mobile_agent->DetectMobileQuick();
+}
+
 ?>

@@ -61,6 +61,7 @@ if (!empty($_GET['do'])) {
 }else{
 	require('libraries/core/models/industry.php');
 	require('libraries/core/models/product.php');
+	
 	//require('libraries/core/models/announcement.php');
 	$industrybd = new Industries();
 	$product = new Products();
@@ -213,6 +214,15 @@ if (!empty($_GET['do'])) {
 	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 	
 	
+	//if(detectMobile()) {
+	//	render("mobile/index");
+	//} else {
+	//	render("index");
+	//}
+	
 	render("index");
+	
+	
+	
 }
 ?>
