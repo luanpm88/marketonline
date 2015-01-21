@@ -177,3 +177,10 @@ body {
     float: right;
     margin-top: 15px;
 }
+.top-register-box li a {
+    padding: 7px 0;
+    margin-left: 15px;
+}
+.top-register-box li:hover a {
+    background: none !important;
+}
