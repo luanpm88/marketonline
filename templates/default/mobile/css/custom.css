@@ -132,7 +132,7 @@ body {
 .mobile-horizon-slider {
     display: block;
     float: left;
-    overflow: hidden;
+    overflow: auto;
     width: 100%;
 }
 .mobile-horizon-slider ul {
