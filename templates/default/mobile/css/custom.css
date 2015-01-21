@@ -91,4 +91,8 @@ body {
 .leftbar-toggle .icon-bar:last-child {
     margin-bottom: 0;
 }
+.logo-sidebar img {
+    margin-bottom: 10px;
+    width: 190px;
+}
 
