@@ -170,3 +170,10 @@ body {
     background: none repeat scroll 0 0 #ddd;
     padding: 15px 0;
 }
+.mobile-horizon-slider-title h4 {
+    float: left;
+}
+.mobile-horizon-slider-title a.view-more {
+    float: right;
+    margin-top: 15px;
+}
