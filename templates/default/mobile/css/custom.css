@@ -32,17 +32,17 @@ body {
     border-color: #71c681;
 }
 .sidebar-nav {
-    padding-top: 10px;
+    padding-top: 15px;
 }
 .sidebar-nav li.sidebar-menu a {
-    padding-bottom: 5px;
+    padding-bottom: 8px;
 }
 .sidebar-nav li.sidebar-menu .color-point {
     display: inline-block;
     height: 40px;
     margin-bottom: -15px;
     margin-right: 10px;
-    margin-top: 5px;
+    margin-top: 8px;
     width: 40px;
     background-position: center -10px;
     background-size: 55px auto;
@@ -74,11 +74,13 @@ body {
     background-image: none;
     border: 1px solid transparent;
     border-radius: 4px;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    padding: 9px 10px;
+    color: #fff;
     float: left;
+    font-size: 24px;
+    margin-bottom: 0;
     margin-left: 15px;
+    margin-top: 8px;
+    padding: 1px 10px 0;
 }
 .leftbar-toggle .icon-bar {
     border-radius: 1px;
@@ -94,5 +96,20 @@ body {
 .logo-sidebar img {
     margin-bottom: 10px;
     width: 190px;
+}
+.sidebar-nav .divider {
+    background-color: #222;
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+}
+.custome-navbar-toggle {
+    color: #fff;
+    font-size: 24px;
+    margin: 7px 20px 0 0;
+    padding: 3px 5px 0;
+}
+.custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active  {
+    background: none !important;
 }
 
