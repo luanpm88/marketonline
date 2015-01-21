@@ -1,9 +1,17 @@
 body {
-    padding-top: 50px;
+    padding-top: 0;
 }
 .navbar-inverse {
     background-color: #3b984c;
     border: 0;
+    margin-left: -15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+.top-nav-cover {
+    height: 35px;
 }
 .navbar-inverse .navbar-toggle {
     border: 0;
@@ -61,3 +69,26 @@ body {
     background-image: url('../img/job_bg.png');
     background-size: 50px auto;
 }
+.leftbar-toggle {
+    background-color: transparent;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding: 9px 10px;
+    float: left;
+    margin-left: 15px;
+}
+.leftbar-toggle .icon-bar {
+    border-radius: 1px;
+    display: block;
+    height: 2px;
+    width: 22px;
+    background: #fff;
+    margin-bottom: 4px;
+}
+.leftbar-toggle .icon-bar:last-child {
+    margin-bottom: 0;
+}
+
