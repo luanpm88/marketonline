@@ -112,4 +112,20 @@ body {
 .custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active  {
     background: none !important;
 }
+.top-register-box {
+    float: right;
+    margin-right: 15px;
+}
+.top-register-box li {
+    float: left;
+}
+.top-register-box li a {
+    
+}
+.navbar-nav .divider {
+    background-color: #71c681;
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+}
 
