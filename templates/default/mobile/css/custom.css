@@ -147,14 +147,14 @@ body {
     list-style: outside none none;
     margin-right: 15px;
     padding: 5px;
-    width: 140px;
+    width: 130px;
 }
 .mobile-horizon-slider ul li a.title {
     display: block;
     margin-top: 5px;
     text-align: center;
     color: #333;
-    font-size: 90%;
+    font-size: 80%;
     
 }
 .mobile-horizon-slider ul li a img {
