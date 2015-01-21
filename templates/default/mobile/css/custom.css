@@ -129,4 +129,39 @@ body {
     margin: 9px 0;
     overflow: hidden;
 }
+.mobile-horizon-slider {
+    display: block;
+    float: left;
+    overflow: hidden;
+    width: 100%;
+}
+.mobile-horizon-slider ul {
+    float: left;
+    padding: 0;
+    width: 999999px;
+    position: relative;
+}
+.mobile-horizon-slider ul li {
+    border: 1px solid #ddd;
+    float: left;
+    list-style: outside none none;
+    margin-right: 15px;
+    padding: 5px;
+    width: 140px;
+}
+.mobile-horizon-slider ul li a.title {
+    display: block;
+    margin-top: 5px;
+    text-align: center;
+    color: #333;
+    font-size: 90%;
+    
+}
+.mobile-horizon-slider ul li a img {
+    width: 100%;
+}
+.mobile-horizon-slider ul {
+    -webkit-animation: myfirst 5s; /* Chrome, Safari, Opera */
+    animation: myfirst 5s;
+}
 

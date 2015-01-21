@@ -1,26 +1,82 @@
     <!-- Menu Toggle Script -->
     {literal}
         <script>
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
+            
+            function moveLeft(box) {
+                var current_left = parseInt(box.css('left'));
+                var amount = 155*2;
+                box.css('left', (current_left-amount)+'px');
+            }
+            
+            function moveRight(box) {
+                var current_left = parseInt(box.css('left'));
+                var amount = 155*2;
+                if(current_left<0) {
+                    box.css('left', (current_left+amount)+'px');
+                }
+            }
+            
+            function cropping() {
+		jQuery('.crop-img-square').each(function() {
+		    var scale = 1;
+		    jQuery(this).css('display','block');
+		    jQuery(this).find('img').css('display','none');
+		    jQuery(this).css('height',jQuery(this).width()*scale);
+		    
+		    jQuery(this).css('background-image','url('+jQuery(this).find('img').attr("src")+')');
+		    if(jQuery(this).find('img').width()*scale < jQuery(this).find('img').height()) {
+		      jQuery(this).css('background-size',jQuery(this).width()+'px auto');
+		    } else {
+		      jQuery(this).css('background-size','auto '+jQuery(this).height()+'px');
+		    }
+		    jQuery(this).css('background-repeat','no-repeat');
+		    jQuery(this).css('background-position','center center');
+		});       
+            }
+            
+            cropping();
+            $(window).resize(function() {
+                cropping();
             });
             
-            $(function() {      
-              //Enable swiping...
-              $(document).swipe( {
-                //Generic swipe handler for all directions
-                swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                  if(direction == 'right') {
-                    $("#wrapper").addClass("toggled");
-                  }
-                  if(direction == 'left') {
-                    $("#wrapper").removeClass("toggled");
-                  }
-                },
-                //Default is 75px, set to 0 for demo so any distance triggers swipe
-                 threshold: 75
-              });
+            
+            $(function() {
+                //SIDEBAR EFFECT
+                    //toogle sidebar
+                    $("#menu-toggle").click(function(e) {
+                        e.preventDefault();
+                        $("#wrapper").toggleClass("toggled");
+                    });                
+                    //Enable swiping...
+                    $(document).swipe( {
+                      //Generic swipe handler for all directions
+                      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                        if(direction == 'right') {
+                          $("#wrapper").addClass("toggled");
+                        }
+                        if(direction == 'left') {
+                          $("#wrapper").removeClass("toggled");
+                        }
+                      },
+                      //Default is 75px, set to 0 for demo so any distance triggers swipe
+                       threshold: 150
+                    });
+                
+                
+                //OTHER
+                $('.mobile-horizon-slider ul').swipe( {
+                    //Generic swipe handler for all directions
+                    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                        if(direction=='left') {
+                            moveLeft($(this))
+                        }
+                        if(direction=='right') {
+                            moveRight($(this))
+                        }
+                    },
+                    //Default is 75px, set to 0 for demo so any distance triggers swipe
+                     threshold: 0
+                });
             });
         </script>
     {/literal}
