@@ -4,7 +4,6 @@ body {
 .navbar-inverse {
     background-color: #3b984c;
     border: 0;
-    margin-left: -15px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -142,11 +141,12 @@ body {
     position: relative;
 }
 .mobile-horizon-slider ul li {
-    border: 1px solid #ddd;
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ccc;
     float: left;
     list-style: outside none none;
     margin-right: 15px;
-    padding: 5px;
+    padding: 4px;
     width: 130px;
 }
 .mobile-horizon-slider ul li a.title {
@@ -155,7 +155,6 @@ body {
     text-align: center;
     color: #333;
     font-size: 80%;
-    
 }
 .mobile-horizon-slider ul li a img {
     width: 100%;
@@ -166,4 +165,8 @@ body {
 }
 .navbar-brand {
     padding: 15px 8px;
+}
+#page-content-wrapper.home-page {
+    background: none repeat scroll 0 0 #ddd;
+    padding: 10px 0;
 }
