@@ -213,6 +213,13 @@ if (!empty($_GET['do'])) {
 	setvar("baomat", $baomat["message"]);
 	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 	
+	
+	//FOR MOBILE DATA
+	require('libraries/core/models/ad.php');
+	$ad = new Adses();
+	//var_dump($ad->getByZone(38));
+	setvar("mobile_home_cats", $ad->getMobileHomeCats());
+	
 	//detectMobile()
 	if($_GET["mobile"]) {
 		render("mobile/index");

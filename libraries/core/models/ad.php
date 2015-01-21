@@ -299,16 +299,41 @@ class Adses extends PbModel {
 		return $item;
 	}
 	
-	function getByZone($zone_id) {
+	function getByZone($zone_id, $order = "Ads.display_order") {
 		$joins = array("LEFT JOIN {$this->table_prefix}adsizes s ON s.id=Ads.adsize_id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Ads.company_id";
 		
-		$result = $this->findAll("c.shop_name,c.picture,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, array("Ads.adzone_id=".$zone_id), "Ads.display_order");
+		$result = $this->findAll("c.shop_name,c.picture,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, array("Ads.adzone_id=".$zone_id), $order);
 		foreach($result as $key => $item) {
 			$result[$key] = $this->formatResult($item);
 		}
 		
 		return $result;
+	}
+	
+	function getMobileHomeCats($zone_id=38) {
+		uses("industry");
+		$industry = new Industries();
+		$industries = $industry->findAll("id, name", null, array("level = 1"), "display_order");
+		foreach($industries as $key => $cat) {
+			$joins = array("LEFT JOIN {$this->table_prefix}adsizes s ON s.id=Ads.adsize_id");
+			$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Ads.company_id";
+			
+			$id = $cat["id"];
+			
+			$conditions = array("Ads.adzone_id=".$zone_id);
+			$conditions[] = "(Ads.industries LIKE '{$id}' OR Ads.industries LIKE '{$id},%' OR Ads.industries LIKE '%,{$id},%' OR Ads.industries LIKE '%,{$id}')";
+			//echo "(Ads.industries LIKE '{$id},%' OR Ads.industries LIKE '%,{$id},%' OR Ads.industries LIKE '%,{$id}')";
+			
+			$result = $this->findAll("c.shop_name,c.picture,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, $conditions, "Ads.display_order");
+			foreach($result as $keys => $item) {
+				$result[$keys] = $this->formatResult($item);
+			}
+			
+			$industries[$key]["items"] = $result;
+		}
+		//var_dump($industries);
+		return $industries;
 	}
 }
 ?>

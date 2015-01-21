@@ -72,7 +72,7 @@ jQuery(document).ready(function($) {
 			</select>
 		<!--{/if}-->
 		
-		<!--{if $smarty.get.adzone_id == 7}-->
+		<!--{if $smarty.get.adzone_id == 7 || $smarty.get.adzone_id == 38 }-->
 			<select onchange="$('#SearchFrm').submit()" name="industry_id" id="dataParentId">
 				<option value="0">Chọn chuyên mục</option>
 				<option value="-1" {if $smarty.get.industry_id=="-1"}selected="selected"{/if}>Tất cả</option>

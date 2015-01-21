@@ -172,6 +172,7 @@ body {
 }
 .mobile-horizon-slider-title h4 {
     float: left;
+    margin-top: 20px;
 }
 .mobile-horizon-slider-title a.view-more {
     float: right;
