@@ -20,10 +20,11 @@ body {
 }
 .sidebar-nav li.sidebar-menu .color-point {
     display: inline-block;
-    height: 15px;
-    margin-bottom: -2px;
+    height: 40px;
+    margin-bottom: -15px;
     margin-right: 10px;
-    width: 15px;
+    margin-top: 10px;
+    width: 40px;
 }
 .sidebar-nav li.sidebar-menu-product .color-point {
     background-color: #1acfac;
