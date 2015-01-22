@@ -219,7 +219,7 @@ for($i=0; $i<count($result); $i++){
 	}
 	
 	if(!$result[$i]["source_url"] && $result[$i]["com_pic"]) {
-		$result[$i]['src'] = URL.$result[$i]['com_pic'];
+		$result[$i]['src'] = URL."attachment/".$result[$i]['com_pic'];
 	}
 }
 setvar("CompanyTopLevel", $industry->findAll("id,name", null, array("level=1")));
