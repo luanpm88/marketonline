@@ -197,7 +197,7 @@ $joins[] = "LEFT JOIN {$tb_prefix}members m ON m.id=c.member_id";
 $amount = $ads->findCount($joins,$conditions,"Ads.id");
 $page->setPagenav($amount);
 
-$result = $ads->findAll("c.picture as com_pic, Ads.*,az.name AS adzone,indust.name AS industry_name",$joins, $conditions, " Ads.display_order,Ads.created DESC", $page->firstcount, $page->displaypg);
+$result = $ads->findAll("c.picture as com_pic, c.name as com_name, Ads.*,az.name AS adzone,indust.name AS industry_name",$joins, $conditions, " Ads.display_order,Ads.created DESC", $page->firstcount, $page->displaypg);
 for($i=0; $i<count($result); $i++){
 	if (!empty($result[$i]['source_url'])) {
 		if (strstr($result[$i]['source_url'], "http")) {
@@ -220,6 +220,10 @@ for($i=0; $i<count($result); $i++){
 	
 	if(!$result[$i]["source_url"] && $result[$i]["com_pic"]) {
 		$result[$i]['src'] = URL."attachment/".$result[$i]['com_pic'];
+	}
+	
+	if(!$result[$i]["title"] && $result[$i]["com_name"]) {
+		$result[$i]['title'] = $result[$i]["com_name"];
 	}
 }
 setvar("CompanyTopLevel", $industry->findAll("id,name", null, array("level=1")));
