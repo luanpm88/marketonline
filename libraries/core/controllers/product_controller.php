@@ -576,7 +576,14 @@ class Product extends PbController {
 			setvar("fimages", $fimages);
 			setvar("page_title", "Thị Trường Trực Tuyến");
 			
-			render("product/index");
+			
+			//detectMobile()
+			if($_GET["mobile"]) {
+				render("mobile/product/index");
+			} else {
+				render("product/index");
+			}
+			
 		}
 	}
 	

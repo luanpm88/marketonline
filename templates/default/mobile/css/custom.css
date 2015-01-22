@@ -223,3 +223,24 @@ body {
     text-decoration: line-through;
     color: #a94442;
 }
+.fixed-tab-top {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    width: 100%;
+    overflow: auto;
+}
+.fixed-tab-top .nav-pills > li > a {
+    border-radius: 0;
+    color: #333;
+}
+.fixed-tab-top.product-tabs .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    background-color: #1acfac;
+    color: #fff;
+}
+.ajax-list-container {
+    background: #fff;
+}
+.fixed-tab-top .nav > li > a {
+    padding: 8px 15px;
+}
