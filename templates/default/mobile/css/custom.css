@@ -301,3 +301,27 @@ body {
 .top-second-cover {
     height: 37px;
 }
+.fixed-filter-top {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid #eee;
+    height: 30px;
+    margin: 0;
+    position: fixed;
+    width: 100%;
+}
+.fixed-filter-top input[type="text"] {
+    border: 0 none;
+    height: 29px;
+    padding: 0 10px;
+    width: 100%;
+}
+.top-filter-cover {
+    height: 30px;
+}
+.fixed-filter-top label {
+    font-weight: normal;
+    height: 29px;
+    margin: 0;
+    padding: 5px 10px;
+    position: absolute;
+}
