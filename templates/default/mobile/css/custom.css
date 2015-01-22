@@ -206,3 +206,6 @@ body {
 .footer-menu li a {
     color: #555;
 }
+#page-content-wrapper {
+    width: 100%;
+}
