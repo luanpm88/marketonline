@@ -255,6 +255,7 @@ body {
     list-style: outside none none;
     min-height: 120px;
     padding: 10px;
+    font-size: 90%;
 }
 .ajax-list ul li a.img-box img {
     display: inline-block;
@@ -266,7 +267,7 @@ body {
     
 }
 .ajax-list ul li a.title {
-    font-size: 120%;
+    font-size: 100%;
 }
 .ajax-list ul li a.img-box {
     border: 1px solid #eee;
