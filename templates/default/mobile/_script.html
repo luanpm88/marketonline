@@ -48,7 +48,7 @@
                         $("#wrapper").toggleClass("toggled");
                     });                
                     //Enable swiping...
-                    $(document).swipe( {
+                    $("#wrapper").swipe( {
                       //Generic swipe handler for all directions
                       swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
                         if(direction == 'right') {
