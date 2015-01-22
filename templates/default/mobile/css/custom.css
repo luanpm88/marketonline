@@ -249,11 +249,12 @@ body {
 }
 .ajax-list ul {
     padding: 0;
+    margin: 0;
 }
 .ajax-list ul li {
     border-bottom: 1px solid #eee;
     list-style: outside none none;
-    min-height: 161px;
+    min-height: 141px;
     padding: 5px;
     font-size: 90%;
 }
@@ -274,12 +275,12 @@ body {
     border: 1px solid #eee;
     display: table-cell;
     float: left;
-    height: 150px;
-    line-height: 146px;
+    height: 130px;
+    line-height: 126px;
     margin-right: 5px;
     text-align: center;
     vertical-align: middle;
-    width: 150px;
+    width: 130px;
 }
 .ajax-list ul li .info {
     
@@ -287,7 +288,7 @@ body {
 .ajax-list ul li .price-box {
     float: right;
     margin-left: 15px;
-    height: 140px;
+    height: 130px;
     text-align: center;
     max-width: 30%;
 }
