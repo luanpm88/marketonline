@@ -6,6 +6,35 @@
             <div class="container-fluid">
                 <div class="row">
                     
+                    
+                    <!--{if $home_ads}-->
+                        
+                        <div class="col-lg-12">
+                            <div class="mobile-horizon-slider-title">
+                                <h4>Quảng cáo</h4>
+                                
+                            </div>
+                                
+                            <div class="mobile-horizon-slider">                            
+                                <ul>
+                                
+                                    <!--{loop $home_ads item ilevel ikey}-->
+                                        <li>
+                                            <a target="_blank" href="{$item.target_url}" class="crop-img-square">
+                                                <img src="{$item.thumb}" />                                        
+                                            </a>
+                                            <a target="_blank" href="{$item.target_url}" class="title">
+                                                {$item.name}
+                                            </a>
+                                        </li>                                            
+                                    <!--{/loop}-->
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    <!--{/if}-->
+                    
                     <!--{loop $mobile_home_cats cat level key}-->
                         
                         <!--{if $cat.items}-->
@@ -22,7 +51,7 @@
                                         <!--{loop $cat.items item ilevel ikey}-->
                                             <li>
                                                 <a target="_blank" href="{$item.target_url}" class="crop-img-square">
-                                                    <img src="{$item.logo}" />                                        
+                                                    <img src="{$item.thumb}" />                                        
                                                 </a>
                                                 <a target="_blank" href="{$item.target_url}" class="title">
                                                     {$item.name}

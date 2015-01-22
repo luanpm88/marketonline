@@ -771,5 +771,25 @@ class Products extends PbModel {
 		
 		return array("result"=>$result,"count"=>$count);
 	}
+	
+	function getMobileHomeCats($zone_id=38) {
+		uses("industry");
+		$industry = new Industries();
+		$industries = $industry->findAll("id, name", null, array("level = 1"), "display_order");
+		foreach($industries as $key => $cat) {
+			$conditions = array("Product.status=1","Product.state=1","Product.valid_status=1","Product.mobile_home=1");
+			$conditions[] = "i.top_parentid=".$cat["id"];
+		
+			$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
+			$joins[] = "LEFT JOIN {$this->table_prefix}industries AS i ON i.id = Product.industry_id";
+			
+			$result = $this->findAll("c.picture as company_logo,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC");
+			$result = $this->formatItems($result);
+			
+			$industries[$key]["items"] = $result;
+		}
+		//var_dump($industries);
+		return $industries;
+	}
 }
 ?>

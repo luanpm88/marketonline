@@ -218,7 +218,9 @@ if (!empty($_GET['do'])) {
 	require('libraries/core/models/ad.php');
 	$ad = new Adses();
 	//var_dump($ad->getByZone(38));
-	setvar("mobile_home_cats", $ad->getMobileHomeCats());
+	
+	setvar("home_ads", $ad->getByZone(38));
+	setvar("mobile_home_cats", $product->getMobileHomeCats());
 	
 	//detectMobile()
 	if($_GET["mobile"]) {

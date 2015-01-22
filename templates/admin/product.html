@@ -55,6 +55,7 @@
 		  <th>{lang status}</th>
 		  <th>Thị trường</th>
 		  <th>Sinh viên</th>
+		  <th>Mobile home</th>
 		  <th>Phê duyệt</th>
 		  <th>{lang pub_date}</th>
 		  <th>{lang action}</th>
@@ -116,6 +117,17 @@
 				</a>
 			{else}
 				<a href="product.php?id={$item.id}&do=for_student&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png" />
+				</a>
+			{/if}
+		  </td>
+		  <td>
+			{if $item.mobile_home}
+				<a href="product.php?id={$item.id}&do=mobile_home&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png" />
+				</a>
+			{else}
+				<a href="product.php?id={$item.id}&do=mobile_home&value=1" title="Bật">
 					<img src="../templates/office/images/unpublished.png" />
 				</a>
 			{/if}
