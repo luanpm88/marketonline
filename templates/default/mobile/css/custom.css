@@ -209,3 +209,10 @@ body {
 #page-content-wrapper {
     width: 100%;
 }
+#company_info {
+    padding-top: 10px;
+}
+#company_info p {
+    margin: 0;
+    text-align:center;
+}

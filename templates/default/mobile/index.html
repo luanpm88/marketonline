@@ -50,10 +50,10 @@
                                     
                                         <!--{loop $cat.items item ilevel ikey}-->
                                             <li>
-                                                <a target="_blank" href="{$item.target_url}" class="crop-img-square">
+                                                <a target="_blank" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" class="crop-img-square">
                                                     <img src="{$item.thumb}" />                                        
                                                 </a>
-                                                <a target="_blank" href="{$item.target_url}" class="title">
+                                                <a target="_blank" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" class="title">
                                                     {$item.name}
                                                 </a>
                                             </li>                                            
