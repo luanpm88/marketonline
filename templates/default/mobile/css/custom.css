@@ -192,14 +192,17 @@ body {
 .footer-menu {
     margin-bottom: 2px;
     text-align: center;
+    padding: 0;
 }
 .footer-menu li {
+    border-right: 1px solid #ccc;
     display: inline;
     list-style: outside none none;
-    margin: 0 5px;
+    padding: 0 10px;
+}
+.footer-menu li:last-child {
+    border: 0;
 }
 .footer-menu li a {
     color: #555;
-    font-size: 90%;
-    
 }
