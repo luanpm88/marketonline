@@ -20,10 +20,11 @@
 		
         <input type="hidden" name="do" value="search" />
              <div>
-		Bài duyệt: 
-		<select name="validation" onchange="$('#SearchFrm').submit()">
+		Bộ lọc: 
+		<select name="filter" onchange="$('#SearchFrm').submit()">
 			<option value="">none</option>
-			<option {if $smarty.get.validation=='all'}selected="selected"{/if} value="all">All</option>
+			<option {if $smarty.get.filter=='validation'}selected="selected"{/if} value="validation">Bài Duyệt</option>
+			<option {if $smarty.get.filter=='mobile_home'}selected="selected"{/if} value="mobile_home">Mobile Home</option>
 			
 		</select>
 				{lang member_name}{lang colon} <input class="queryInput" type="text" name="username" value="{$smaty.get.username}" /> 

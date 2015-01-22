@@ -219,3 +219,6 @@ body {
 .price-block {
     text-align: center;
 }
+.old_price {
+    text-decoration: line-through;
+}
