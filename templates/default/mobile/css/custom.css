@@ -253,7 +253,7 @@ body {
 .ajax-list ul li {
     border-bottom: 1px solid #ddd;
     list-style: outside none none;
-    min-height: 120px;
+    min-height: 100px;
     padding: 10px;
 }
 .ajax-list ul li a.img-box img {
@@ -272,12 +272,12 @@ body {
     border: 1px solid #eee;
     display: table-cell;
     float: left;
-    height: 100px;
-    line-height: 96px;
+    height: 80px;
+    line-height: 76px;
     margin-right: 10px;
     text-align: center;
     vertical-align: middle;
-    width: 100px;
+    width: 80px;
 }
 .ajax-list ul li .info {
     
@@ -285,7 +285,7 @@ body {
 .ajax-list ul li .price-box {
     float: right;
     margin-left: 15px;
-    min-height: 100px;
+    min-height: 80px;
     text-align: center;
     max-width: 30%;
 }
