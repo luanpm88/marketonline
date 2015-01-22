@@ -186,9 +186,11 @@ body {
 .top-register-box li:hover a {
     background: none !important;
 }
+.footer {
+    padding-top: 10px;
+}
 .footer-menu {
-    margin-bottom: 0;
-    margin-top: 5px;
+    margin-bottom: 2px;
     text-align: center;
 }
 .footer-menu li {

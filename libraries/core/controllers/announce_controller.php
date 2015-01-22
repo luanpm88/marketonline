@@ -57,9 +57,19 @@ class Announce extends PbController {
 				}else{
 					$result['next_link'] = L("nothing", "tpl");
 				}
+				
+				$result["title"] = str_replace("*","",$result["title"]);
+				
 				setvar("item", $result);
 				setvar("PageTitle", strip_tags($result['subject']));
-				render("detail.default", true);
+				//render("detail.default", true);
+				
+				//detectMobile()
+				if(detectMobile()) {
+					render("mobile/announce/detail");
+				} else {
+					render("detail.default", true);
+				}
 			}
 		}
 	}

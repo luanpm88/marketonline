@@ -84,6 +84,13 @@ function smarty_function_the_url($params){
 					$return = URL."index.php?do=".$module."&action=detail&id=".$id;
 				}
 				break;
+			case "announces":
+				if ($rewrite_able) {
+					$return = URL."thong-tin/".$id."/".stringToURI($title);
+				}else{
+					$return = URL."index.php?do=".$module."&action=detail&id=".$id;
+				}
+				break;
 			case "fair":
 				if ($rewrite_able) {
 					$return = URL."$module/detail/".$id.".html";
