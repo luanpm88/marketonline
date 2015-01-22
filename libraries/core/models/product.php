@@ -170,6 +170,7 @@ class Products extends PbModel {
 			$result[$keys]["shop_url"] = $space->setBaseUrlByUserId($result[$keys]['cache_spacename'], 'index');
 			$result[$keys]["comments_count"] = $productcomment->findCount(null, array("product_id=".$result[$keys]["id"]));
 			$result[$keys]["name"] = fix_text_error($result[$keys]["name"]);
+			$result[$keys]["description"] = trim(strip_tags($result[$keys]["content"]));
 			
 			//{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}
 			$result[$keys]["href"] = $this->url(array("module"=>"product","product_name"=>$values['name'],"id"=>$values['id'],"service"=>$values['service']));

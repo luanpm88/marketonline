@@ -54,7 +54,7 @@
 		});
 		
 		//first list
-		$(".ajax-tab-but").eq(0).trigger("click");
+		$(".ajax-tab-but[orderby='"+$(".ajax_product_filter_form input[name='orderby']").val()+"'][type='"+$(".ajax_product_filter_form input[name='type']").val()+"']").eq(0).trigger("click");
             });
 	    
 	    $(document).scroll(function(){		
