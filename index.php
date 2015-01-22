@@ -223,7 +223,7 @@ if (!empty($_GET['do'])) {
 	setvar("mobile_home_cats", $product->getMobileHomeCats());
 	
 	//detectMobile()
-	if($_GET["mobile"]) {
+	if(detectMobile()) {
 		render("mobile/index");
 	} else {
 		render("index");
