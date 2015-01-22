@@ -53,8 +53,8 @@
                                                 <a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" class="crop-img-square">
                                                     <img src="{$item.thumb}" />                                        
                                                 </a>
-                                                <a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" class="title">
-                                                    {$item.name}
+                                                <a title="{$item.name}" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" class="title">
+                                                    {$item.name|truncate:60}
                                                 </a>
                                                 <div class="price-block">
                                                     {if $item.new_price || $item.price}
