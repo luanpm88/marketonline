@@ -34,13 +34,14 @@
 		});       
             }
             
+            
             cropping();
             $(window).resize(function() {
                 cropping();
             });
             
             
-            $(function() {
+            $(document).ready(function() { 
                 //SIDEBAR EFFECT
                     //toogle sidebar
                     $("#menu-toggle").click(function(e) {

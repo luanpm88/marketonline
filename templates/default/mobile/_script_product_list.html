@@ -1,0 +1,55 @@
+    <form class="ajax_product_filter_form" action="{the_url module=root-url}">
+	<input type="hidden" name="do" value="product" />
+	<input type="hidden" name="action" value="listAjax" />
+	<input type="hidden" name="orderby" value="dateline" />
+	<input type="hidden" name="layout" value="mobile" />
+	<input type="hidden" name="pos_pg" value="0" />
+	<input type="hidden" name="num_per_page" value="25" />
+	<input type="hidden" name="type" value="" />
+    </form>
+    <div id="ajax_output" style="display: none"></div>
+    
+    
+    <!-- Menu Toggle Script -->
+    {literal}
+        <script>
+	    
+	    function initList() {
+		$(".ajax-list").html("");
+		$("input[name='pos_pg']").val("0");
+	    }
+	    
+	    function increasePage() {
+		var current_pg = parseInt($("input[name='pos_pg']").val());
+		var num_per_page = parseInt($("input[name='num_per_page']").val());
+		$("input[name='pos_pg']").val(current_pg+num_per_page);
+	    }
+	    
+	    function ajaxList() {
+		if (!ajax_sending) {
+		    ajax_sending = true;
+		    $('.list-loading').show();
+		    $('.ajax_product_filter_form').ajaxSubmit({ 
+			success: function(response) {
+			    $(".ajax-list").append(response);
+			    ajax_sending = false;
+			    increasePage();
+			    $('.list-loading').hide();
+			}
+		    });
+		}
+	    }
+	    
+	    var ajax_sending = false;
+	    $(document).ready(function() {
+		initList();
+                ajaxList();
+            });
+	    
+	    $(document).scroll(function(){		
+		if(($(document).height()-$(window).height()-$(document).scrollTop()) < 1000){
+		    ajaxList();		
+		}
+	    });	
+        </script>
+    {/literal}

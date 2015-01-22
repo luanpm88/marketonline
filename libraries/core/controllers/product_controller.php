@@ -1439,7 +1439,12 @@ class Product extends PbController {
 			setvar("TotalCount", $count);
 			setvar("Count", count($products));
 			setvar("Products", $products);
-			$this->render("product/ajax.list");
+			
+			if($_GET["layout"]=='mobile') {
+				$this->render("mobile/product/_ajax_list");
+			} else {
+				$this->render("product/ajax.list");
+			}
 		}
 	}
 	
