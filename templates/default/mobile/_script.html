@@ -49,7 +49,7 @@
                         $("#wrapper").toggleClass("toggled");
                     });                
                     //Enable swiping...
-                    $(document).swipe( {
+                    $("#page-content-wrapper.home-page").swipe( {
                       //Generic swipe handler for all directions
                       allowPageScroll: "vertical",
                       swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
