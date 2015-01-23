@@ -1447,7 +1447,7 @@ class Product extends PbController {
 			setvar("Products", $products);
 			
 			if($_GET["layout"]=='mobile') {
-				$this->render("mobile/product/_ajax_list");
+				$this->render("mobile/product/ajax_list");
 			} else {
 				$this->render("product/ajax.list");
 			}

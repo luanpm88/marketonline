@@ -3,7 +3,7 @@
     <ul>
         <!--{loop $Products item level key}-->
             <li class="list-item">
-                <a class="img-box" href="">
+                <a class="img-box" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
                     <img src="{$item.thumb}" />
                 </a>
                 <div class="price-box">
