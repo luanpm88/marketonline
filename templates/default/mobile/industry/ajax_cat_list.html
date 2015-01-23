@@ -1,6 +1,6 @@
                             <li class="list-first list-group-item item-{$item.id} parent-{$item.parent_id} level-{$item.level}">
                                 <!--<span class="badge">{$count_children}</span>-->
-                                <span class="border-line"></span>
+                                
                                 <a href="#" cat-id="{$item.id}" link-data="{the_url module=products level={$item.level} industryid=`$item.id` title=`$item.name`}">
                                     {$item.name}
                                 </a>
@@ -13,7 +13,23 @@
                             <!--{loop $cats item0 level_0 key0}-->
                                 <li class="list-group-item item-{$item0.id} parent-{$item0.parent_id} level-{$item0.level}">
                                     <!--<span class="badge">{$count_children}</span>-->
-                                    <span class="border-line"></span>
+                                    
+                                    {if $item0.level == 4}
+                                        <span class="border-line"></span>
+                                        <span class="border-line2"></span>
+                                        <span class="border-line3"></span>
+                                        <span class="border-line4"></span>
+                                    {elseif $item0.level == 3}
+                                        <span class="border-line"></span>
+                                        <span class="border-line2"></span>
+                                        <span class="border-line3"></span>
+                                    {elseif $item0.level == 2}                                    
+                                        <span class="border-line"></span>
+                                        <span class="border-line2"></span>
+                                    {elseif $item0.level == 1}
+                                        <span class="border-line"></span>
+                                    {/if}
+                                    
                                     <a href="#" cat-id="{$item0.id}" link-data="{the_url module=products level={$item0.level} industryid=`$item0.id` title=`$item0.name`}">
                                         {$item0.name}
                                     </a>
