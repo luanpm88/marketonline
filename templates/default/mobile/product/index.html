@@ -8,38 +8,19 @@
                     <div class="bs-example fixed-filter-top">
                         <div class="cat-filter-but-group">
                             <span class="glyphicon glyphicon-th cats-list-icon"></span>
-                            <button type="button" class="btn btn-default cat-filter-but">
-                                Tất cả chuyên mục <span class="caret"></span>
-                            </button>                            
+                            <span type="button" class="btn btn-default cat-filter-but">
+                                <span class="cat-filter-items"><span class="cat-filter-item" rel="0">Tất cả chuyên mục <span class="caret"></span></span></span>
+                            </span>                            
                         </div>
                         
                         <!--<input type="text" class="top-filter-product-search" name="top-filter" value="" />-->
                     </div>
                     <div class="top-filter-cover"></div>
                     
-                    <div class="cats-list" style="display: none">
-                        <ul class="list-group">
-                            <!--{loop $IndustryList item0 level_0 key0}-->
-                                <li class="list-group-item">
-                                    <!--<span class="badge">14</span>-->
-                                    <a href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
-                                          {$item0.name}
-                                    </a>
-                                    <div class="cats-list-caret-but" rel="{$item0.id}">
-                                        <span class="cats-list-caret caret"></span>
-                                    </div>
-                                </li>
-                                
-                                <!--{loop $item0.sub level1 level_1_industry key_level1}-->
-				    <li class="list-group-item child-item child-{$item0.id}" style="display: none">
-                                        <span class="border-line"></span>
-					<a href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">
-                                            --- {$level1.name}</a>                        
-				    </li>				     
-				<!--{/loop}-->
-                                
-                            <!--{/loop}-->                            
-                        </ul>
+                    <div class="cats-list-box" style="display: none">                        
+                        <div class="cats-list">
+                            <div class="list-loading"></div>
+                        </div>
                     </div>
                     <!--<div class="cats-list-cover"></div>-->
                     

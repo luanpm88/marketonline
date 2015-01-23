@@ -6,6 +6,7 @@
 	<input type="hidden" name="pos_pg" value="0" />
 	<input type="hidden" name="num_per_page" value="25" />
 	<input type="hidden" name="type" value="" />
+	<input type="hidden" name="industryid" value="" />
     </form>
     <div id="ajax_output" style="display: none"></div>
     
@@ -14,17 +15,74 @@
     {literal}
         <script>
 	    
+	    function updateCatList(cat_id) {
+		if ($('.list-group-item.parent-'+cat_id).length) {
+		    $(".cats-list-box").show();
+		    return;
+		}
+
+		$.ajax({
+		    url: ROOT_URL+"index.php?do=industry&action=updateCatList&id="+cat_id,
+		}).done(function ( data ) {
+		    if( console && console.log ) {
+			if(data.trim() == "") {
+			    $(".cats-list-box").hide();
+			} else {
+			    $(".cats-list-box").show();
+			    if (!$('.list-group-item').length) {
+				$(".cats-list").html('<ul class="list-group">'+data+'</ul>');
+			    } else {
+				$('.list-group-item.item-'+cat_id).after(data); //list-first
+				$('.item-'+cat_id+'.list-first').remove();
+			    }
+			}		
+		    }
+		});
+	    }
+	    
+	    function updateTab(orderby, type) {
+		$(".ajax-tab-but").removeClass("active");
+		$(".ajax-tab-but[orderby='"+orderby+"'][type='"+type+"']").addClass("active");
+	    }
+	    
+	    function updateCatFilter(cat_id) {
+		if (cat_id=="") {
+		    return;
+		}
+		$.ajax({
+		    url: ROOT_URL+"index.php?do=industry&action=updateCatFilter&id="+cat_id,
+		}).done(function ( data ) {
+		    if( console && console.log ) {
+			var cats = JSON.parse(data);
+			var html = ""
+			cats.forEach(function(cat) {
+			    var pointer = "";
+			    if (cat.count!="0") {
+				pointer = ' <span class="caret"></span>';
+			    }
+			    html += '<span class="cat-filter-item" rel="'+cat.id+'">'+cat.name+pointer+'</span>';
+			});
+			$('.cat-filter-items').html(html);
+			$(".cats-list-box").hide();
+		    }
+		});
+	    }
+	    
+	    function filterCat(cat_id) {
+		$(".ajax_product_filter_form input[name='industryid']").val(cat_id);
+		initList();
+		ajaxList();
+		updateCatFilter(cat_id);
+	    }	    
 	    function initList() {
 		$(".ajax-list").html("");
 		$(".ajax_product_filter_form input[name='pos_pg']").val("0");
-	    }
-	    
+	    }	    
 	    function increasePage() {
 		var current_pg = parseInt($(".ajax_product_filter_form input[name='pos_pg']").val());
 		var num_per_page = parseInt($(".ajax_product_filter_form input[name='num_per_page']").val());
 		$(".ajax_product_filter_form input[name='pos_pg']").val(current_pg+num_per_page);
-	    }
-	    
+	    }	    
 	    function ajaxList() {
 		if (!ajax_sending) {
 		    ajax_sending = true;
@@ -38,31 +96,47 @@
 			}
 		    });
 		}
-	    }
-	    
+	    }	    
 	    var ajax_sending = true;
 	    $(document).ready(function() {
 		//tab buttons
 		$('body').on("click",".ajax-tab-but",function(){
 		    ajax_sending = false;
-		    $(".ajax-tab-but").removeClass("active");
-		    $(this).addClass("active");
+
 		    $(".ajax_product_filter_form input[name='orderby']").val($(this).attr("orderby"));
 		    $(".ajax_product_filter_form input[name='type']").val($(this).attr("type"));
+		    
+		    updateTab($(this).attr("orderby"), $(this).attr("type"));
+		    
 		    initList();
 		    ajaxList();
 		});
 		
 		//first list
-		$(".ajax-tab-but[orderby='"+$(".ajax_product_filter_form input[name='orderby']").val()+"'][type='"+$(".ajax_product_filter_form input[name='type']").val()+"']").eq(0).trigger("click");
+		//update cat
+		updateCatFilter($(".ajax_product_filter_form input[name='industryid']").val());
+		updateTab($(".ajax_product_filter_form input[name='orderby']").val(), $(".ajax_product_filter_form input[name='type']").val());
+		ajax_sending = false;
+		initList();
+		ajaxList();		
 		
 		//cats list action
 		$("body").on("click",".cats-list-caret-but",function() {
-		    $(".list-group-item.child-"+$(this).attr("rel")).toggle();
+		    updateCatList($(this).attr("rel"));
+		    $(".list-group-item.parent-"+$(this).attr("rel")).toggle();
+		});		
+		$("body").on("click",".cat-filter-but .cat-filter-item",function() {		    
+		    $(".cats-list ul").remove();
+		    updateCatList($(this).attr("rel"));
+		});
+		$("body").on("click",".cats-list .list-group-item a",function() {		    
+		    filterCat($(this).attr("cat-id"));
 		});
 		
-		$("body").on("click",".cat-filter-but-group",function() {
-		    $(".cats-list").toggle();
+		$("body").on("click",".cats-list-icon",function() {		    
+		    $(".cats-list ul").remove();
+		    filterCat(0);
+		    updateCatList(0);
 		});
             });
 	    

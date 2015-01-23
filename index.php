@@ -43,7 +43,8 @@ if (!empty($_GET['do'])) {
 		"studypost",
 		"album",
 		"area",
-		"chatc"
+		"chatc",
+		"industry"
 	);
 	
 	if(in_array($do, $secure_c) && file_exists($c_file)){
