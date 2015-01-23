@@ -49,21 +49,21 @@
                         $("#wrapper").toggleClass("toggled");
                     });                
                     //Enable swiping...
-                    //$(document).swipe( {
-                    //  //Generic swipe handler for all directions
-                    //  allowPageScroll: "vertical",
-                    //  swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                    //    if(direction == 'right') {
-                    //      $("#wrapper").addClass("toggled");
-                    //    }
-                    //    if(direction == 'left') {
-                    //      $("#wrapper").removeClass("toggled");
-                    //    }
-                    //  },
-                    //  //Default is 75px, set to 0 for demo so any distance triggers swipe
-                    //   threshold: 100,
-                    //   //excludedElements: ""
-                    //});
+                    $(document).swipe( {
+                      //Generic swipe handler for all directions
+                      allowPageScroll: "vertical",
+                      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                        if(direction == 'right') {
+                          $("#wrapper").addClass("toggled");
+                        }
+                        if(direction == 'left') {
+                          $("#wrapper").removeClass("toggled");
+                        }
+                      },
+                      //Default is 75px, set to 0 for demo so any distance triggers swipe
+                       threshold: 100,
+                       excludedElements: ""
+                    });
                 
                 
                 //OTHER
