@@ -6,7 +6,7 @@ Options +FollowSymLinks
 Options +Indexes  
 RewriteEngine On
 
-RewriteRule ^mobile/?$ index.php?do=product&mobile=1&industryid=1000 [L]
+#RewriteRule ^mobile/?$ index.php?do=product&mobile=1&industryid=1000 [L]
 
 RewriteRule ^privacy$ policy.html [L]
 RewriteRule ^modern_demo/?$ index.php?do=studypost&action=modern_demo [L]

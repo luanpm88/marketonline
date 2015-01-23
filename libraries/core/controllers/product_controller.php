@@ -89,6 +89,7 @@ class Product extends PbController {
 				}
 				
 				setvar("IndustryList", $IndustryList);
+				
 				render("product/category");
 			}
 			else if($_GET["level"] == 1)
@@ -200,7 +201,7 @@ class Product extends PbController {
 				
 				setvar("IndustryList", $industries[$_GET["industryid"]]);
 				
-				render("product/category");
+				
 			}
 			else if($_GET["level"] == 2)
 			{
@@ -293,7 +294,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("product/category");
+				
 			}
 			else if($_GET["level"] == 3)
 			{
@@ -374,7 +375,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("product/category");
+				
 			}
 			else if($_GET["level"] == 4)
 			{
@@ -441,6 +442,12 @@ class Product extends PbController {
 				}
 				setvar("IndustryList", $IndustryList);
 				
+				
+			}
+			
+			if(detectMobile()) {
+				render("mobile/product/index");
+			} else {
 				render("product/category");
 			}
 		}
@@ -577,13 +584,12 @@ class Product extends PbController {
 			setvar("page_title", "Thị Trường Trực Tuyến");
 			
 			
-			//detectMobile()
-			if($_GET["mobile"]) {
+			
+			if(detectMobile()) {
 				render("mobile/product/index");
 			} else {
-				render("product/index");
+				render("product/category");
 			}
-			
 		}
 	}
 	
