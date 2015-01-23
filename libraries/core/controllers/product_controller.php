@@ -588,7 +588,7 @@ class Product extends PbController {
 			if(detectMobile()) {
 				render("mobile/product/index");
 			} else {
-				render("product/category");
+				render("product/index");
 			}
 		}
 	}
