@@ -450,3 +450,9 @@ body {
 .list-group-item .border-line4 {
     margin-left: 24px;
 }
+.cats-list-caret-but.loading {
+    background: url("../img/ajax-loader.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.cats-list-caret-but.loading .cats-list-caret {
+    border: 0;
+}

@@ -18,6 +18,8 @@
 	    function updateCatList(cat_id) {
 		if ($('.list-group-item.parent-'+cat_id).length) {
 		    $(".cats-list-box").show();
+		    $(".list-group-item.parent-"+cat_id).toggle();
+		    $(".cats-list-caret-but").removeClass("loading");
 		    return;
 		}
 
@@ -35,7 +37,11 @@
 				$('.list-group-item.item-'+cat_id).after(data); //list-first
 				$('.item-'+cat_id+'.list-first').remove();
 			    }
-			}		
+			}
+			
+			$(".list-group-item.parent-"+cat_id).show();
+			
+			$(".cats-list-caret-but").removeClass("loading");
 		    }
 		});
 	    }
@@ -122,10 +128,12 @@
 		
 		//cats list action
 		$("body").on("click",".cats-list-caret-but",function() {
+		    $(this).addClass("loading");
 		    updateCatList($(this).attr("rel"));
-		    $(".list-group-item.parent-"+$(this).attr("rel")).toggle();
+		    
 		});		
-		$("body").on("click",".cat-filter-but .cat-filter-item",function() {		    
+		$("body").on("click",".cat-filter-but .cat-filter-item",function() {
+		    
 		    $(".cats-list ul").remove();
 		    updateCatList($(this).attr("rel"));
 		});
