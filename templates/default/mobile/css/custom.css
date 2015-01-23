@@ -336,6 +336,7 @@ body {
 .cat-filter-but-group {
     position: absolute;
     z-index: 20;
+    max-width: 100%;
 }
 .cats-list-box {
     background: #edf4ef;
