@@ -51,7 +51,7 @@
                     //Enable swiping...
                     $(document).swipe( {
                       //Generic swipe handler for all directions
-                      allowPageScroll: "vertical,horizon",
+                      allowPageScroll: "vertical",
                       swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
                         if(direction == 'right') {
                           $("#wrapper").addClass("toggled");
