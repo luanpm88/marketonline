@@ -55,6 +55,15 @@
 		
 		//first list
 		$(".ajax-tab-but[orderby='"+$(".ajax_product_filter_form input[name='orderby']").val()+"'][type='"+$(".ajax_product_filter_form input[name='type']").val()+"']").eq(0).trigger("click");
+		
+		//cats list action
+		$("body").on("click",".cats-list-caret-but",function() {
+		    $(".list-group-item.child-"+$(this).attr("rel")).toggle();
+		});
+		
+		$("body").on("click",".cat-filter-but",function() {
+		    $(".cats-list").toggle();
+		});
             });
 	    
 	    $(document).scroll(function(){		

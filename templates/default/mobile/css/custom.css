@@ -325,3 +325,44 @@ body {
     padding: 5px 10px;
     position: absolute;
 }
+.cat-filter-but {
+    border: 0 none;
+    border-radius: 0;
+    height: 29px;
+    padding: 5px;
+}
+.cat-filter-but-group {
+    position: absolute;
+    z-index: 20;
+}
+.cats-list {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid #eee;
+    height: 300px;
+    padding: 5px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    overflow: auto;
+    background: #edf4ef;
+}
+.cats-list-cover {
+    height: 299px;
+}
+.cats-list ul li a {
+    color: #333;
+}
+.cats-list-caret {
+    border-width: 7px 6px 0;
+    
+}
+.cats-list-caret-but {
+    border-left: 1px solid #ddd;
+    display: block;
+    height: 41px;
+    padding: 10px 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+}
