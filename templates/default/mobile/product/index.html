@@ -30,7 +30,8 @@
                                 </li>
                                 
                                 <!--{loop $item0.sub level1 level_1_industry key_level1}-->
-				    <li class="list-group-item child-{$item0.id}" style="display: none">
+				    <li class="list-group-item child-item child-{$item0.id}" style="display: none">
+                                        <span class="border-line"></span>
 					<a href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">
                                             --- {$level1.name}</a>                        
 				    </li>				     

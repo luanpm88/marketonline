@@ -344,10 +344,13 @@ body {
     width: 100%;
     z-index: 10;
     overflow: auto;
-    background: #edf4ef;
+    background: #ddd;
 }
 .cats-list-cover {
     height: 299px;
+}
+.cats-list ul {
+    margin-bottom: 5px;
 }
 .cats-list ul li a {
     color: #333;
@@ -365,4 +368,17 @@ body {
     right: 0;
     top: 0;
     width: 44px;
+}
+.list-group-item.child-item {
+}
+.list-group-item.child-item .border-line {
+    background: none repeat scroll 0 0 #1acfac;
+    display: block;
+    float: left;
+    height: 41px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 4px;
+    z-index: 100;
 }
