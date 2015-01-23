@@ -131,15 +131,7 @@
 		    $(this).addClass("loading");
 		    updateCatList($(this).attr("rel"));		    
 		    
-		    if ($(this).find("span").hasClass("glyphicon-plus")) {
-			$(this).find("span").removeClass("glyphicon-plus");
-			$(this).find("span").removeClass("glyphicon-minus");
-			$(this).find("span").addClass("glyphicon-minus");
-		    } else {
-			$(this).find("span").removeClass("glyphicon-plus");
-			$(this).find("span").removeClass("glyphicon-minus");
-			$(this).find("span").addClass("glyphicon-plus");
-		    }
+		    
 		});		
 		$("body").on("click",".cat-filter-but .cat-filter-item",function() {
 		    
