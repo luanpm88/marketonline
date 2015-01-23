@@ -303,8 +303,9 @@ body {
 }
 .fixed-filter-top {
     background: none repeat scroll 0 0 #fff;
-    border-bottom: 1px solid #eee;
-    height: 30px;
+    border-bottom: 2px solid #edf4ef;
+    border-top: 2px solid #edf4ef;
+    height: 34px;
     margin: 0;
     position: fixed;
     width: 100%;
@@ -316,7 +317,7 @@ body {
     width: 100%;
 }
 .top-filter-cover {
-    height: 30px;
+    height: 34px;
 }
 .fixed-filter-top label {
     font-weight: normal;
@@ -329,7 +330,8 @@ body {
     border: 0 none;
     border-radius: 0;
     height: 29px;
-    padding: 5px;
+    padding: 5px 5px 5px 38px;
+    text-align: left;
 }
 .cat-filter-but-group {
     position: absolute;
@@ -344,7 +346,7 @@ body {
     width: 100%;
     z-index: 10;
     overflow: auto;
-    background: #ddd;
+    background: #edf4ef;
 }
 .cats-list-cover {
     height: 299px;
@@ -381,4 +383,11 @@ body {
     top: 0;
     width: 4px;
     z-index: 100;
+}
+.cats-list-icon {
+    display: block;
+    float: left;
+    font-size: 21px;
+    margin: 2px 2px 0 10px;
+    position: absolute;
 }
