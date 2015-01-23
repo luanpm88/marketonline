@@ -1,0 +1,26 @@
+                            <li class="list-first list-group-item item-{$item.id} parent-{$item.parent_id} level-{$item.level}">
+                                <!--<span class="badge">{$count_children}</span>-->
+                                <span class="border-line"></span>
+                                <a href="#" cat-id="{$item.id}" link-data="{the_url module=products level={$item.level} industryid=`$item.id` title=`$item.name`}">
+                                    {$item.name}
+                                </a>
+                                {if $item.count}
+                                    <div class="cats-list-caret-but" rel="{$item.id}">
+                                        <span class="cats-list-caret caret"></span>
+                                    </div>
+                                {/if}
+                            </li>
+                            <!--{loop $cats item0 level_0 key0}-->
+                                <li class="list-group-item item-{$item0.id} parent-{$item0.parent_id} level-{$item0.level}">
+                                    <!--<span class="badge">{$count_children}</span>-->
+                                    <span class="border-line"></span>
+                                    <a href="#" cat-id="{$item0.id}" link-data="{the_url module=products level={$item0.level} industryid=`$item0.id` title=`$item0.name`}">
+                                        {$item0.name}
+                                    </a>
+                                    {if $item0.count}
+                                        <div class="cats-list-caret-but" rel="{$item0.id}">
+                                            <span class="cats-list-caret caret"></span>
+                                        </div>
+                                    {/if}
+                                </li>
+                            <!--{/loop}-->
