@@ -395,10 +395,11 @@ body {
     z-index: 100;
 }
 .cats-list-icon {
+    background: none repeat scroll 0 0 #fff;
     display: block;
     float: left;
     font-size: 21px;
-    margin: 2px 2px 0 10px;
+    padding: 2px 2px 0 10px;
     position: absolute;
 }
 .cat-filter-items .cat-filter-item {
