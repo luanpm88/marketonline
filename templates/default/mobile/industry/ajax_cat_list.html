@@ -1,6 +1,21 @@
+                        <ul class="list-group child-box-{$item.id}">
                             <li class="list-first list-group-item item-{$item.id} parent-{$item.parent_id} level-{$item.level}">
                                 <!--<span class="badge">{$count_children}</span>-->
-                                
+                                {if $item.level == 4}
+                                        <span class="border-line"></span>
+                                        <span class="border-line2"></span>
+                                        <span class="border-line3"></span>
+                                        <span class="border-line4"></span>
+                                    {elseif $item.level == 3}
+                                        <span class="border-line"></span>
+                                        <span class="border-line2"></span>
+                                        <span class="border-line3"></span>
+                                    {elseif $item.level == 2}                                    
+                                        <span class="border-line"></span>
+                                        <span class="border-line2"></span>
+                                    {elseif $item.level == 1}
+                                        <span class="border-line"></span>
+                                    {/if}
                                 <a href="#" cat-id="{$item.id}" link-data="{the_url module=products level={$item.level} industryid=`$item.id` title=`$item.name`}">
                                     {$item.name}
                                 </a>
@@ -35,8 +50,9 @@
                                     </a>
                                     {if $item0.count}
                                         <div class="cats-list-caret-but loading" rel="{$item0.id}">
-                                            <span class="cats-list-caret caret"></span>
+                                            <span class="glyphicon glyphicon-plus"></span>
                                         </div>
                                     {/if}
                                 </li>
                             <!--{/loop}-->
+                        </ul>

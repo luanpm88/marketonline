@@ -16,9 +16,9 @@
         <script>
 	    
 	    function updateCatList(cat_id) {
-		if ($('.list-group-item.parent-'+cat_id).length) {
+		if ($('.child-box-'+cat_id).length) {
 		    $(".cats-list-box").show();
-		    $(".list-group-item.parent-"+cat_id).toggle();
+		    $(".child-box-"+cat_id).toggle();
 		    $(".cats-list-caret-but").removeClass("loading");
 		    return;
 		}
@@ -32,14 +32,14 @@
 			} else {
 			    $(".cats-list-box").show();
 			    if (!$('.list-group-item').length) {
-				$(".cats-list").html('<ul class="list-group">'+data+'</ul>');
+				$(".cats-list").html(''+data+'');
 			    } else {
-				$('.list-group-item.item-'+cat_id).after(data); //list-first
+				$('.list-group-item.item-'+cat_id).append(data); //list-first
 				$('.item-'+cat_id+'.list-first').remove();
 			    }
 			}
 			
-			$(".list-group-item.parent-"+cat_id).show();
+			$(".child-box-"+cat_id).show();
 			
 			$(".cats-list-caret-but").removeClass("loading");
 		    }
@@ -129,8 +129,17 @@
 		//cats list action
 		$("body").on("click",".cats-list-caret-but",function() {
 		    $(this).addClass("loading");
-		    updateCatList($(this).attr("rel"));
+		    updateCatList($(this).attr("rel"));		    
 		    
+		    if ($(this).find("span").hasClass("glyphicon-plus")) {
+			$(this).find("span").removeClass("glyphicon-plus");
+			$(this).find("span").removeClass("glyphicon-minus");
+			$(this).find("span").addClass("glyphicon-minus");
+		    } else {
+			$(this).find("span").removeClass("glyphicon-plus");
+			$(this).find("span").removeClass("glyphicon-minus");
+			$(this).find("span").addClass("glyphicon-plus");
+		    }
 		});		
 		$("body").on("click",".cat-filter-but .cat-filter-item",function() {
 		    

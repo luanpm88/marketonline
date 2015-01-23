@@ -414,6 +414,13 @@ body {
 .cat-filter-but:hover {
     background: none;
 }
+.cats-list-box .list-group-item {
+    padding-left: 0;
+    padding-right: 0;
+}
+.cats-list-box ul ul {
+    margin: 10px -1px -11px;
+}
 .list-group-item .border-line, .list-group-item .border-line2, .list-group-item .border-line3, .list-group-item .border-line4 {
     background: none repeat scroll 0 0 #1acfac;
     display: block;
@@ -425,16 +432,19 @@ body {
     width: 5px;
     z-index: 100;
 }
-.list-group-item.level-1 {
+.list-group-item.level-0 a {
+    padding-left: 20px;
+}
+.list-group-item.level-1 a {
     padding-left: 30px;
 }
-.list-group-item.level-2 {
+.list-group-item.level-2 a {
     padding-left: 40px;
 }
-.list-group-item.level-3 {
+.list-group-item.level-3 a {
     padding-left: 50px;
 }
-.list-group-item.level-4{
+.list-group-item.level-4 a {
     padding-left: 60px;
 }
 
@@ -453,6 +463,6 @@ body {
 .cats-list-caret-but.loading {
     background: url("../img/ajax-loader.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
 }
-.cats-list-caret-but.loading .cats-list-caret {
-    border: 0;
+.cats-list-caret-but.loading span {
+    color: rgba(0,0,0,0);
 }
