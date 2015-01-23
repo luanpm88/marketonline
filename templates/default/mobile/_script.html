@@ -49,7 +49,7 @@
                         $("#wrapper").toggleClass("toggled");
                     });                
                     //Enable swiping...
-                    $("#page-content-wrapper.home-page").swipe( {
+                    $(document).swipe( {
                       //Generic swipe handler for all directions
                       allowPageScroll: "vertical",
                       swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
@@ -62,7 +62,7 @@
                       },
                       //Default is 75px, set to 0 for demo so any distance triggers swipe
                        threshold: 100,
-                       excludedElements: ".fixed-filter-top"
+                       excludedElements: ""
                     });
                 
                 

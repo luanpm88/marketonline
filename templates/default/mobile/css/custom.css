@@ -330,6 +330,8 @@ body {
     border: 0 none;
     border-radius: 0;
     height: 29px;
+    max-width: 100%;
+    overflow: auto;
     padding: 5px 5px 5px 38px;
     text-align: left;
 }
