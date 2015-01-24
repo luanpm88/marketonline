@@ -657,7 +657,7 @@ body {
     max-width: 100%;
 }
 .quantity_val {
-    height: 26px;
+    height: 36px;
     position: absolute;
     text-align: right;
     width: 50px;
@@ -665,7 +665,7 @@ body {
 }
 .quantity_sel {
     display: block;
-    height: 26px;
+    height: 36px;
     position: absolute;
     text-align: right;
     width: 66px;
