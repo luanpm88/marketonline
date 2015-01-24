@@ -5,38 +5,67 @@
             
             <div class="container-fluid">
                 <div class="row">
-                    <div class="cart-items">
-                        <h1>Cart</h1>
-                        <table class="table">
-                            <tr>
-                                <th>{lang picture}</th>
-                                <th>{lang products}</th>
-                                <th>{lang quantity} <span id="update_quantity_but"></span></th>
-                                <th>{lang sum_price} (VNĐ)</th>
-                            </tr>
-                            <!--{loop $StickyItems shop sticky_offer}-->
-                                <tr>
-                                    <td colspan="4">
-                                        <a href="{the_url module=space userid=`$shop.space_name`}">
-                                            {$shop.shop_name}
-                                        </a>
-                                    </td>
-                                </tr>
-                                <!--{loop $shop.items sticky sticky_offer}-->
+                    <form name="offer_list_frm" id="cart" action="{the_url module=root-url}">
+                        <input type='hidden' name="do" value="product" />
+                        <input type='hidden' name="action" value="add_cart" />
+                        <input type='hidden' id="task" name="task" value="update" />
+                        <input type='hidden' id="cartitemid" name="cartitemid" value="" />
+                        <div class="cart-items">
+                            <h1>Cart</h1>
+                            <table class="table">
+                                <thead>
                                     <tr>
-                                        <td class="cart-picture-cols">
-                                            <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
-                                                <img src="{$sticky.image}" />
-                                            </a>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>                                
+                                        <th style="width: 70px;">{lang picture}</th>
+                                        <th style="width:30%">{lang products}</th>
+                                        <th>{lang quantity} <span id="update_quantity_but"></span></th>
+                                        <th>{lang sum_price} (VNĐ)</th>
                                     </tr>
-                                <!--{/loop}-->
-                            <!--{/loop}-->
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody>
+                                    <!--{loop $StickyItems shop sticky_offer}-->
+                                        <tr>
+                                            <td colspan="4">
+                                                <a href="{the_url module=space userid=`$shop.space_name`}">
+                                                    {$shop.shop_name}
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <!--{loop $shop.items sticky sticky_offer}-->
+                                            <tr>
+                                                <td class="cart-picture-cols">
+                                                    <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                        <img src="{$sticky.image}" />
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                        {$sticky.p_name}
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <select class="quantity_sel" onchange="$(this).parent().find('.quantity_val').val($(this).val())">
+                                                        <option value="1" selected="selected">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                        <option value="10">10</option>
+                                                    </select>
+                                                    <input class="quantity_val" style="" type="text" name="product[{$sticky.id}]" value="{$sticky.quantity}" />
+                                                    <input class="quantity_but btn btn-default" type="submit" value="{lang update}" />                                            
+                                                </td>
+                                                <td></td>                                
+                                            </tr>
+                                        <!--{/loop}-->
+                                    <!--{/loop}-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
                 </div>
             </div>
             

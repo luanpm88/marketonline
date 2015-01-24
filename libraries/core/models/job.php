@@ -81,9 +81,9 @@ class Jobs extends PbModel {
 			}
 			
 			if (empty($item['company_picture'])) {
-				$item['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+				$item['logo'] = pb_get_attachmenturl('', '', 'small');
 			}else{
-				$item['logo'] = URL.pb_get_attachmenturl($item['company_picture'], '', 'smaller');
+				$item['logo'] = pb_get_attachmenturl($item['company_picture'], '', 'smaller');
 			}
 			
 			$item['thumb'] = $item['logo'];

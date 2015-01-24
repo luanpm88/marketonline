@@ -91,7 +91,7 @@ class Chatc extends PbController {
 					
 					if($result[$i]["picture"] && $pps[1] != 6)
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 					}
 					else
 					{						
@@ -143,7 +143,7 @@ class Chatc extends PbController {
 					
 					if($result[$i]["picture_2"] && $pps[1] != 6)
 					{
-						$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture_2"], '', 'smaller');
+						$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture_2"], '', 'smaller');
 					}
 					else
 					{						

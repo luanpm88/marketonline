@@ -78,9 +78,9 @@ class Shopvotes extends PbModel {
 		
 		$items = $this->findAll("c.cache_spacename,c.shop_name,c.picture,c.name as company_name,m.photo,mf.first_name,mf.last_name,m.username,Shopvote.*",$joins,$conditions,"CASE WHEN m.id = 1 THEN 1 ELSE 2 END, Shopvote.created DESC");
 		foreach($items as $key => $item) {
-			$items[$key]["avatar"] = '<img src="'.URL.pb_get_attachmenturl($item['photo'], '', 'small').'" />';			
+			$items[$key]["avatar"] = '<img src="'.pb_get_attachmenturl($item['photo'], '', 'small').'" />';			
 			if($item["picture"]) {
-				$items[$key]["avatar"] = '<img src="'.URL.pb_get_attachmenturl($item['picture'], '', 'small').'" />';
+				$items[$key]["avatar"] = '<img src="'.pb_get_attachmenturl($item['picture'], '', 'small').'" />';
 			}
 			$items[$key]["avatar_link"] = '<a class="avatar" href="'.$this->url(array("module"=>"space","userid"=>$item["cache_spacename"])).'">'.$items[$key]["avatar"].'</a>';
 			

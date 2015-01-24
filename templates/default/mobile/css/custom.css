@@ -643,12 +643,29 @@ body {
 .cart-picture-cols a {
     border: 1px solid #ddd;
     display: inline-block;
-    height: 50px;
-    line-height: 48px;
+    height: 70px;
+    line-height: 66px;
     text-align: center;
     vertical-align: middle;
-    width: 50px;
+    width: 70px;
 }
 .cart-picture-cols img {
-    
+    max-height: 100%;
+    max-width: 100%;
+}
+.quantity_val {
+    height: 26px;
+    position: absolute;
+    text-align: right;
+    width: 50px;
+}
+.quantity_sel {
+    display: block;
+    height: 26px;
+    position: absolute;
+    text-align: right;
+    width: 66px;
+}
+.quantity_but {
+    margin-top: 30px;
 }

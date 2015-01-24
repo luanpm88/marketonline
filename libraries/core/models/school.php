@@ -227,12 +227,12 @@ class Schools extends PbModel {
 	
 	function formatStudentItems($result) {
 		foreach($result as $key => $item) {
-			$item["thumb"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
+			$item["thumb"] = pb_get_attachmenturl($item['photo'], '', 'small');
 			$item["title"] = $item["first_name"]." ".$item["last_name"];
 			//{the_url module=studypost action=memberpage id=`$item.id` title=`$item.fullname`}
 			$item["href"] = $this->url(array("module"=>"studypost","action"=>"memberpage","id"=>$item["id"],"title"=>$item["title"]));
 			$item["fullname"] = $item["first_name"]." ".$item["last_name"];
-			$item["photo"] = URL.pb_get_attachmenturl($item['photo'], '', 'small');
+			$item["photo"] = pb_get_attachmenturl($item['photo'], '', 'small');
 			$result[$key] = $item;
 		}
 		return $result;

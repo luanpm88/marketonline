@@ -87,7 +87,7 @@ class Message extends PbController {
 				}
 				if($result[$i]["picture"] && $result[$i]["membertype_ids"] != '[6]')
 				{
-					$result[$i]["company_logo"] = URL.pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
+					$result[$i]["company_logo"] = pb_get_attachmenturl($result[$i]["picture"], '', 'smaller');
 				}
 				else
 				{

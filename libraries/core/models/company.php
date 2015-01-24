@@ -304,11 +304,11 @@ class Companies extends PbModel {
 			}
 			
 			if (empty($result['picture'])) {
-				$result['logo'] = URL.pb_get_attachmenturl('', '', 'smaller');
+				$result['logo'] = pb_get_attachmenturl('', '', 'smaller');
 			}else{
-				$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
-				$result['logosmall'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
-				$result['logobig'] = URL.pb_get_attachmenturl($result['picture'], '', '');
+				$result['logo'] = pb_get_attachmenturl($result['picture'], '', 'smaller');
+				$result['logosmall'] = pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['logobig'] = pb_get_attachmenturl($result['picture'], '', '');
 			}
 			
 			$result['url'] = $space->rewrite($result["cache_spacename"]);
@@ -354,11 +354,11 @@ class Companies extends PbModel {
 			}
 			
 			if (empty($result['picture'])) {
-				$result['logo'] = URL.pb_get_attachmenturl('', '', 'smaller');
+				$result['logo'] = pb_get_attachmenturl('', '', 'smaller');
 			}else{
-				$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
-				$result['logosmall'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
-				$result['logobig'] = URL.pb_get_attachmenturl($result['picture'], '', '');
+				$result['logo'] = pb_get_attachmenturl($result['picture'], '', 'smaller');
+				$result['logosmall'] = pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['logobig'] = pb_get_attachmenturl($result['picture'], '', '');
 			}
 			
 			$result['url'] = $space->rewrite($result["cache_spacename"]);
@@ -404,11 +404,11 @@ class Companies extends PbModel {
 			}
 			
 			if (empty($result['picture'])) {
-				$result['logo'] = URL.pb_get_attachmenturl('', '', 'smaller');
+				$result['logo'] = pb_get_attachmenturl('', '', 'smaller');
 			}else{
-				$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
-				$result['logosmall'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
-				$result['logobig'] = URL.pb_get_attachmenturl($result['picture'], '', '');
+				$result['logo'] = pb_get_attachmenturl($result['picture'], '', 'smaller');
+				$result['logosmall'] = pb_get_attachmenturl($result['picture'], '', 'small');
+				$result['logobig'] = pb_get_attachmenturl($result['picture'], '', '');
 			}
 			
 			$result['url'] = $space->rewrite($result["cache_spacename"]);
@@ -617,9 +617,9 @@ class Companies extends PbModel {
 				}
 				
 				if (empty($result['picture'])) {
-					$result['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+					$result['logo'] = pb_get_attachmenturl('', '', 'small');
 				}else{
-					$result['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'smaller');
+					$result['logo'] = pb_get_attachmenturl($result['picture'], '', 'smaller');
 				}
 				
 				$result['url'] = $space->rewrite($result["cache_spacename"]);
@@ -666,9 +666,9 @@ class Companies extends PbModel {
 				}
 				
 				if (empty($result['picture'])) {
-					$results[$key]['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+					$results[$key]['logo'] = pb_get_attachmenturl('', '', 'small');
 				}else{
-					$results[$key]['logo'] = URL.pb_get_attachmenturl($result['picture'], '', 'small');
+					$results[$key]['logo'] = pb_get_attachmenturl($result['picture'], '', 'small');
 				}
 				
 				$results[$key]['url'] = $this->url(array("module"=>"space","userid"=>$result["cache_spacename"])); //$space->rewrite($result["cache_spacename"]);

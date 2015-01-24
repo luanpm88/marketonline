@@ -107,7 +107,7 @@ class Studygroups extends PbModel {
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
 			//echo $groups[$key]["new_count"];
 			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
-			$groups[$key]["logo"] = URL.pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
+			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
 			
 			$groups[$key]["address"] = $item["school_address"].", ".$area->getFullName($item["school_area_id"]);
 			
@@ -142,7 +142,7 @@ class Studygroups extends PbModel {
 			$groups[$key]["new_count"] = $this->getCountNew($item["id"], $pb_userinfo["pb_userid"]);
 			
 			$groups[$key]["logo_origin"] = $groups[$key]["logo"];
-			$groups[$key]["logo"] = URL.pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
+			$groups[$key]["logo"] = pb_get_attachmenturl($groups[$key]['logo'], '', 'small');
 			
 			//get banners
 			$banners = $studygroupimage->findAll("*", null, array("group_id=".$id), "created DESC");
@@ -273,7 +273,7 @@ class Studygroups extends PbModel {
 	
 	function formatItems($result) {
 		foreach($result as $key => $item) {
-			$item["thumb"] = URL.pb_get_attachmenturl($item['logo'], '', 'small');
+			$item["thumb"] = pb_get_attachmenturl($item['logo'], '', 'small');
 			$item["title"] = $item["subject_name"]."<br />".$item["school_name"];
 			//{the_url module=studypost action=group id=`$group.id` title=`$group.subject_name`}
 			$item["href"] = $this->url(array("module"=>"studypost","action"=>"group","id"=>$item["id"],"title"=>$item["title"]));
