@@ -697,3 +697,16 @@ body {
 .buy_methods .nav-justified li strong {
     font-size: 130%;
 }
+.count_badge_outer {
+    display: block;
+    margin-left: -13px;
+    margin-top: -20px;
+    position: absolute;
+    text-align: center;
+    width: 50px;
+    z-index: 100;
+}
+.count_badge_outer .badge {
+    font-size: 11px;
+    background: #b92c28;
+}

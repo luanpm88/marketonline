@@ -2,7 +2,21 @@
     {literal}
         <script>
             
-            
+            function getCartCount() {
+                $.ajax({
+		    url: ROOT_URL+"index.php?do=product&action=ajaxTopCart&mobile=1",
+		}).done(function ( data ) {
+		    if( console && console.log ) {
+			
+			//$('.cat-filter-items').html(html);
+                        $('.count_badge_outer .badge').html("");
+                        if(data!="0") {
+                            $('.count_badge_outer .badge').html(data);
+                        }
+
+		    }
+		});
+            }
             
             function prevSlide() {
                 var num = $('.mobile-product-gallery ul li').length;                
@@ -193,6 +207,9 @@
                 
                 //Gallery
                 initMobileGallery();
+                
+                //Cart COut
+                getCartCount();
             });
         </script>
     {/literal}

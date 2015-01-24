@@ -6305,7 +6305,11 @@ class Product extends PbController {
 		setvar("count", $count);
 
 		//$viewhelper->setPosition("Cart");
-		$this->render("product/TopCartAjax");
+		if($_GET["mobile"]) {
+			echo $count;
+		} else {
+			$this->render("product/TopCartAjax");
+		}
 	}
 	
 	function ajaxModernSearch()
