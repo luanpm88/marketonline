@@ -627,3 +627,28 @@ body {
     border-width: 1px 0;
     margin-top: 5px;
 }
+.cart-items .table {
+    margin: 0 -10px;
+}
+.cart-items {
+    padding: 10px;
+    background: #fff;
+}
+.cart-items h1 {
+    margin-top: 0;
+}
+.cart-picture-cols {
+    
+}
+.cart-picture-cols a {
+    border: 1px solid #ddd;
+    display: inline-block;
+    height: 50px;
+    line-height: 48px;
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+}
+.cart-picture-cols img {
+    
+}

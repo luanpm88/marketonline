@@ -1980,7 +1980,11 @@ class Product extends PbController {
 		}
 		else
 		{
-			$this->render("product/cart");
+			if($_GET["mobile"]) {
+				$this->render("mobile/product/cart");
+			} else {
+				$this->render("product/cart");
+			}			
 		}
 	}
 	

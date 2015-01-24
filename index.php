@@ -119,7 +119,7 @@ if (!empty($_GET['do'])) {
 			$fimages[] = $industries[$key0]["image"];
 		}
 		
-		$industries[$key0]["image"] = URL.$industries[$key0]["image"];
+		$industries[$key0]["image"] = $industries[$key0]["image"];
 		
 		$kkc = 0;
 		foreach($level0['sub'] as $key1 => $level1)
