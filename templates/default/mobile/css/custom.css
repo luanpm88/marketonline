@@ -510,7 +510,7 @@ body {
 }
 .mobile-product-gallery .pointers {
     margin-left: -10px;
-    margin-top: -50px;
+    margin-top: -30px;
     position: absolute;
     text-align: center;
     width: 100%;
@@ -519,9 +519,9 @@ body {
     background: none repeat scroll 0 0 #aaa;
     border-radius: 10px;
     display: inline-block;
-    height: 10px;
-    margin: 10px;
-    width: 10px;
+    height: 5px;
+    margin: 5px;
+    width: 5px;
 }
 .mobile-product-gallery .pointers .pointer.active {
     background: #333;
@@ -529,7 +529,10 @@ body {
 .mobile-product-info {
     background: #fff;
     padding: 10px;
-    border-bottom: solid 1px #ddd;
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px 0;
+    margin-top: 5px;
 }
 .summary .title_disc {
     display: inline-block;
@@ -552,4 +555,40 @@ body {
 #quantity {
     width: 100px;
     text-align: center;
+}
+.mobile-shop-info {
+    background: #fff;
+    padding: 10px;
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px 0;
+    margin-top: 5px;
+}
+.logo_box_u img {
+    border: 1px solid #ddd;
+    float: left;
+    margin-right: 20px;
+    width: 30%;
+}
+.mobile-shop-info .shop_name {
+    margin-top: 0;
+}
+.mobile-shop-info .seller-title {
+    font-size: 130%;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+.mobile-product-desc {
+    background: #fff;
+    padding: 10px;
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px 0;
+    margin-top: 5px;
+}
+.mobile-product-desc * {
+    max-width: 100%;
+}
+.mobile-product-desc h2 {
+    margin-top: 0;
 }

@@ -55,10 +55,10 @@
                     </div>
                     
                     
-                    <div class="mobile-product-info">
+                        <div class="mobile-product-info">
                         
                         
-                        <div class="summary">
+                            <div class="summary">
                                 
                                 <p itemprop="price" class="price">
                                     <span class="title_disc" style="">Giá</span>
@@ -99,38 +99,111 @@
 			
 			</div>
 			
-			
-			
-				
-				<form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
-			
-					
-					<div class="quantity">
-					    <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />
-					</div>
-                                        
-                                        <p style="text-align: center">
-                                            <a href="{the_url module=root-url}index.php?do=product&action=add_cart&id={$item.id}" type="button" class="single_add_to_cart_button button alt btn btn-primary">{lang add_to_cart}</a>
-                                        </p>
-					
-                                        <p></p>
-					{if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label> {$item.tag}</p>{/if}
-					
-				</form>
-
+                            <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
+                                
+                                    <div class="quantity">
+                                        <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />
+                                    </div>
+                                    
+                                    <p style="text-align: center">
+                                        <a href="{the_url module=root-url}index.php?do=product&action=add_cart&id={$item.id}" type="button" class="single_add_to_cart_button button alt btn btn-primary">{lang add_to_cart}</a>
+                                    </p>
+                                    
+                                    <p></p>
+                                    {if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label> {$item.tag}</p>{/if}
+                                    
+                            </form>                                
 				
 			</div>
 			
 			
 				
 				    </div>
-				
-				    
-				
-				</div>
+    			
+                        
+                        </div>
+                        
+                        
+                        
+                        <div class="mobile-shop-info">
+                            <!--<h3 class="seller-title">Thông tin người bán</h3>-->
+                            <div id="shop_info">
+                            
+                                    
+                                    <section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
+                                            
+                                            
+                                            {if $item.shop_name}			
+                                                                    
+                                            <div class="logo_box_u">
+                                            <div class="four columns logo logoz">
+                                                
+                                            
+                                                <a href="{the_url module=space userid=`$item.space_name`}">
+                                                    <img class="klbox" alt="{$COMPANY.name}" src="{the_url module=root-url}{$COMPANY.logo}"></a>
+                                              </div>
+                                              
+                                            </div>			
+                                                                    
+                                            {/if}			
+                                                                    
+                                                                    <!--<h5>Chủ Shop</h5>-->
+                                                    <div class="red_box">
+                                                                    <h3 class="shop_name" style="">{if $item.shop_name}
+                                            <a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
+                                                                    
+                                                    
+                                                                        <table class="box_info_col">
+                                                                            <tr>
+                                                                                <th>Liên hệ:</th>
+                                                                                <td>{$item.link_people}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th width="100px">{lang phone}:</th>
+                                                                                <td>{$COMPANY.contact_mobile}</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>{lang email}:</th>
+                                                                                <td><a href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a></td>
+                                                                            </tr>
+                                                                                    
+                                                                      </table>
+                                                     </div>
+                                            
+    
+                                                            </div>
+                                    
+                                    
+                                                            
+                                    
+                                    
+                                    </section>
+                                
+                                </div>
+                            <br style="clear: both" />
+                            
+                        </div>
+                    
+                        {if $item.content}
+                            <div class="mobile-product-desc">
+                                
+                                <h2 class="page-title">
+				{$item.title}                    </h2>
+	
+				{$item.content}
+                                
+                                
+                                
+                            </div>
+			    
+			{/if}
+                        
+                        
+                        
                         
                         
                     </div>
+                    
                     
                     
                     
