@@ -11,7 +11,7 @@
                                         <!--{foreach from=$banners item=itemxxx}-->
                                             <li>
                                                 <a href="{the_url module=ad id=`$itemxxx.id`}" class="crop-img-square">
-                                                    <img src="{$itemxxx.image}" />                                        
+                                                    <img src="{the_url module=root-url}{$itemxxx.image}" />                                        
                                                 </a>
                                                 <a href="{the_url module=ad id=`$itemxxx.id`}" class="title">
                                                     {$itemxxx.title|truncate:50}
