@@ -276,9 +276,9 @@ class Adses extends PbModel {
 		}
 		else {
 			if (empty($item['picture'])) {
-				$item['logo'] = URL.pb_get_attachmenturl('', '', 'small');
+				$item['logo'] = pb_get_attachmenturl('', '', 'small');
 			}else{
-				$item['logo'] = URL.pb_get_attachmenturl($item['picture'], '', 'small');
+				$item['logo'] = pb_get_attachmenturl($item['picture'], '', 'small');
 			}
 		}
 		
