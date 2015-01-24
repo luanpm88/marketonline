@@ -487,6 +487,7 @@ body {
     border-bottom: 1px solid #ddd;
     padding: 10px;
     text-align: center;
+    position: relative;
 }
 .mobile-product-gallery ul {
     padding: 0;
@@ -591,4 +592,16 @@ body {
 }
 .mobile-product-desc h2 {
     margin-top: 0;
+}
+.pointer-left {
+    font-size: 200%;
+    left: 10px;
+    position: absolute;
+    top: 45%;
+}
+.pointer-right {
+    font-size: 200%;
+    right: 10px;
+    position: absolute;
+    top: 45%;
 }

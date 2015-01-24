@@ -53,15 +53,48 @@
                 for(var i=0;i<num;i++) {
                     html_point += '<span rel="'+i+'" class="pointer pointer-'+i+'"></span>';
                 }
-                html_point += '<div class="pointers">';                
+                html_point += '</div>';
+                
+                //for pointer left right
+                html_point += '<span class="glyphicon glyphicon-chevron-right pointer-right"></span><span class="glyphicon glyphicon-chevron-left pointer-left"></span>';
+                
                 $('.mobile-product-gallery').append(html_point);
                 $('.mobile-product-gallery .pointers .pointer').eq(0).addClass("active");
                 
+                
+                //MobileGallery
+                    $(".mobile-product-gallery").swipe( {
+                      //Generic swipe handler for all directions
+                      allowPageScroll: "vertical",
+                      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                        if(direction == 'right') {
+                          prevSlide();
+                        }
+                        if(direction == 'left') {
+                          nextSlide();
+                        }
+                      },
+                      //Default is 75px, set to 0 for demo so any distance triggers swipe
+                       threshold: 0,
+                       excludedElements: ""
+                    });
+                
+                $("body").on("click",".pointer-right",function() {
+                    nextSlide();
+                });
+                $("body").on("click",".pointer-left",function() {
+                    prevSlide();
+                });
                 
             }
             
             function autoresizeMobileGallery() {
                 var size = $(window).height()-100;
+                
+                if (size > $(window).width()-20) {
+                    size = $(window).width()-20;
+                }
+                
                 $('.mobile-product-gallery ul li').width(size);
                 $('.mobile-product-gallery ul li').height(size);
                 $('.mobile-product-gallery ul li').css("line-height",size+"px");
@@ -110,22 +143,7 @@
                 cropping();
                 autoresizeMobileGallery();
                 
-                //MobileGallery
-                    $(".mobile-product-gallery").swipe( {
-                      //Generic swipe handler for all directions
-                      allowPageScroll: "vertical",
-                      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                        if(direction == 'right') {
-                          prevSlide();
-                        }
-                        if(direction == 'left') {
-                          nextSlide();
-                        }
-                      },
-                      //Default is 75px, set to 0 for demo so any distance triggers swipe
-                       threshold: 0,
-                       excludedElements: ""
-                    });
+                
                 
                 
                 //SIDEBAR EFFECT
