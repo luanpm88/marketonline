@@ -1015,7 +1015,7 @@ class Product extends PbController {
 		}
 		
 		
-		if($_GET["mobile"]) {
+		if(detectMobile()) {
 			render("mobile/product/detail");
 		} else {
 			render("product/detail");
