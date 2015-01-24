@@ -1,0 +1,49 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Sản phẩm - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="cart-items">
+                        <h1>Cart</h1>
+                        <table class="table">
+                            <tr>
+                                <th>{lang picture}</th>
+                                <th>{lang products}</th>
+                                <th>{lang quantity} <span id="update_quantity_but"></span></th>
+                                <th>{lang sum_price} (VNĐ)</th>
+                            </tr>
+                            <!--{loop $StickyItems shop sticky_offer}-->
+                                <tr>
+                                    <td colspan="4">
+                                        <a href="{the_url module=space userid=`$shop.space_name`}">
+                                            {$shop.shop_name}
+                                        </a>
+                                    </td>
+                                </tr>
+                                <!--{loop $shop.items sticky sticky_offer}-->
+                                    <tr>
+                                        <td class="cart-picture-cols">
+                                            <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                <img src="{$sticky.image}" />
+                                            </a>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>                                
+                                    </tr>
+                                <!--{/loop}-->
+                            <!--{/loop}-->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
