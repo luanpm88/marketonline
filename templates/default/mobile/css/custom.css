@@ -687,3 +687,13 @@ body {
 .cart-line-name a {
     color: #333;
 }
+.checkout_but {
+    margin-right: 0;
+}
+.buy_methods {
+    background: #fff;
+    padding: 10px;
+}
+.buy_methods .nav-justified li strong {
+    font-size: 130%;
+}

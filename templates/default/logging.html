@@ -58,6 +58,7 @@ label.error {
             <input type="hidden" name="action" value="logging">
 	    <input type="hidden" name="type" value="{$Type}">
 	    <input type="hidden" name="redirect" value="{$smarty.get.redirect}">
+	    <input type="hidden" name="return_page" value="{if $smarty.get.return_page}{$smarty.get.return_page}{/if}{if $smarty.post.return_page}{$smarty.post.return_page}{/if}" />
 		
 	    <!-- {formhash} -->
 	    <input type="hidden" name="forward" value="{$_G.forward}" />

@@ -6393,5 +6393,16 @@ class Product extends PbController {
 		fclose($myfile);
 
 	}
+	
+	function buy_method_select() {
+		$pb_userinfo = pb_get_member_info();
+		
+		if($pb_userinfo) {
+			pheader("location:index.php?do=product&action=meminfo&id=".$_GET["shop_id"]);
+		}		
+		setvar("return_page",urlencode("index.php?do=product&action=meminfo&id=".$_GET["shop_id"]));
+		
+		render("mobile/product/buy_method_select");
+	}
 }
 ?>
