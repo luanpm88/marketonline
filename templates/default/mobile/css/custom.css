@@ -528,12 +528,12 @@ body {
     background: #333;
 }
 .mobile-product-info {
-    background: #fff;
-    padding: 10px;
-    border-style: solid;
+    background: none repeat scroll 0 0 #fff;
     border-color: #ddd;
-    border-width: 1px 0;
-    margin-top: 5px;
+    border-style: solid;
+    border-width: 0 0 1px;
+    margin-top: 0;
+    padding: 10px;
 }
 .summary .title_disc {
     display: inline-block;
@@ -604,4 +604,8 @@ body {
     right: 10px;
     position: absolute;
     top: 45%;
+}
+.mobile-product-infobox-title {
+    font-size: 130%;
+    margin: 20px 0 -5px 5px;
 }
