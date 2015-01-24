@@ -31,31 +31,41 @@
                         
                     <div class="mobile-product-gallery">
                         <ul class="thumbnails">
+                        {if $item.image}
                             <li>
                                 <a href="{the_url module=root-url}{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{the_url module=root-url}{$item.image}" class="attachment-shop_thumbnail" alt="{$item.title}" />
                                 </a>
                             </li>
+                        {/if}
+                        {if $item.image1}
                             <li>
-                                <a href="{the_url module=root-url}{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                <a href="{the_url module=root-url}{$item.image1}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{the_url module=root-url}{$item.image1}" class="attachment-shop_thumbnail" alt="{$item.title}" />
                                 </a>
                             </li>
+                        {/if}
+                        {if $item.image2}
                             <li>
-                                <a href="{the_url module=root-url}{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                <a href="{the_url module=root-url}{$item.image2}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{the_url module=root-url}{$item.image2}" class="attachment-shop_thumbnail" alt="{$item.title}" />
                                 </a>
                             </li>
+                        {/if}
+                        {if $item.image3}
                             <li>
-                                <a href="{the_url module=root-url}{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                <a href="{the_url module=root-url}{$item.image3}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{the_url module=root-url}{$item.image3}" class="attachment-shop_thumbnail" alt="{$item.title}" />
                                 </a>
                             </li>
+                        {/if}
+                        {if $item.image4}
                             <li>
-                                <a href="{the_url module=root-url}{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                <a href="{the_url module=root-url}{$item.image4}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{the_url module=root-url}{$item.image4}" class="attachment-shop_thumbnail" alt="{$item.title}" />
                                 </a>
-                            </li>                            
+                            </li>
+                        {/if}
 			</ul>
                     </div>
                     
