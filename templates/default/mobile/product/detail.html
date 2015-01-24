@@ -1,5 +1,10 @@
         <!--{include file="`$theme_name`/mobile/header.html" page_title="`$page_title`"}-->
             
+            
+            
+        
+            
+            
         <!-- Page Content -->
         <div id="page-content-wrapper" class="home-page">
             
@@ -199,19 +204,19 @@
 			    
 			{/if}
                         
-                        
-                        
-                        
+                        <div class="related_products-container">
+                            <div class="mobile-product-infobox-title">Sản phẩm khác của gian hàng</div>
+                            <div class="related_products ajax-list">
+                                <div class="related_products_box">
+                                        
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                     
                     
-                    <div class="mobile-product-infobox-title">Sản phẩm của gian hàng</div>
-                    <div class="related_products">
-                        <div class="related_products_box">
-				
-			</div>
-                    </div>
+                    
                         
                     
                             
@@ -224,6 +229,33 @@
         </div>
         <!-- /#page-content-wrapper -->
         
-        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        
+        {literal}
+            <script>
+                function getSameShopProducts() {
+                    //get related products
+                    $.ajax({
+                            url: ROOT_URL+"index.php?do=product&mobile=1&action=related_products&member_id=<!--{/literal}-->{$item.member_id}<!--{literal}-->&product_id=<!--{/literal}-->{$item.id}<!--{literal}-->",
+                    }).done(function ( data ) {
+                            if( console && console.log ) {
+                                    $('.related_products_box').html(data);                                    
+                                    
+                                    if ($('.related_products li').length < 6) {
+                                            $('.view_more_detail').remove()
+                                    }
+                                    
+                                    if (!$('.related_products li').length) {
+                                            $('.related_products-container').remove()
+                                    }
+                            }
+                    });
+                }
+                getSameShopProducts();
+            </script>
+        {/literal}
+        
+        
+        
         
         <!--{include file="`$theme_name`/mobile/footer.html"}-->

@@ -1027,7 +1027,15 @@ class Product extends PbController {
 	{
 		setvar("product_id",$_GET["product_id"]);
 		setvar("member_id",$_GET["member_id"]);
-		render("product/_related_products");
+		
+		$member = $this->member->read("*",$_GET["member_id"]);
+		setvar("member",$member);
+		
+		if($_GET["mobile"]) {
+			render("mobile/product/_related_products");
+		} else {
+			render("product/_related_products");
+		}	
 	}
 	
 	function inquery()
