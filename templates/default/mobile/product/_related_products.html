@@ -1,0 +1,34 @@
+    <ul>
+        {pb:product memberid=`$member_id` row=50 titlelen="35" name="item"}
+			{if $product_id != $itemz.id}
+				<li class="list-item">
+					<a class="img-box" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+						<img src="{the_url module=root-url}{$item.thumb}" />
+					</a>
+					<div class="price-box">
+						{if $item.new_price || $item.price}
+				{if $item.new_price != "" && $item.new_price != 0}
+					<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <br /><span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> {if $item.price_note}<br /><span class="noteprice">({$item.price_note})</span>{/if}
+				{else}
+					<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+				{/if}
+						{/if}
+					</div>
+					<div class="info">
+						<a class="title" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+							{$item.name}
+						</a>
+						
+					</div>
+					
+				</li>
+			{/if}
+        {/pb:product}
+    </ul>
+	
+	<!--<div style="text-align: center">
+		<p></p>
+		<a href="{the_url module=space userid=`$member.space_name`}"><span class="btn btn-primary">Xem sản phẩm từ Gian hàng</span></a>
+		<p></p>
+	</div>-->
+
