@@ -607,5 +607,6 @@ body {
 }
 .mobile-product-infobox-title {
     font-size: 130%;
-    margin: 20px 0 -5px 5px;
+    margin: 15px 0 -5px 5px;
+    font-weight: 700;
 }
