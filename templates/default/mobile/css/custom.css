@@ -659,20 +659,22 @@ body {
 .quantity_val {
     height: 36px;
     position: absolute;
-    text-align: right;
-    width: 50px;
+    text-align: center;
+    width: 48px;
     padding-right: 5px;
+    font-size: 120%;
 }
 .quantity_sel {
     display: block;
     height: 36px;
     position: absolute;
-    text-align: right;
+    text-align: center;
     width: 66px;
     padding-right: 5px;
+    font-size: 120%;
 }
 .quantity_but {
-    margin-top: 30px;
+    margin-top: 40px;
 }
 .shop-info-line-cart {
     background: none repeat scroll 0 0 #eee;
