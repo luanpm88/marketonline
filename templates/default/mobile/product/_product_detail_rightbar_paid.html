@@ -13,7 +13,7 @@
                                                     <img src="{the_url module=root-url}{$itemxxx.image}" />                                        
                                                 </a>
                                                 <a href="{the_url module=ad id=`$itemxxx.id`}" class="title">
-                                                    {$itemxxx.title|truncate:50}
+                                                    {$itemxxx.name|truncate:50}
                                                 </a>
                                                 {if $itemxxx.description}<div style="margin-bottom: 0">{$itemxxx.description|truncate:99}</div>{/if}
                                             </li>                                            
