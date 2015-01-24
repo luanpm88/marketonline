@@ -1,11 +1,11 @@
     <nav class="navbar navbar-inverse navbar-default">
       <div class="container">
         <div class="navbar-header">
-            <!--{if $pb_username!=""}-->
+
                 <button type="button" class="custome-navbar-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="glyphicon glyphicon-align-justify"></span>
+                  <span class="glyphicon glyphicon-user"></span>
                 </button>
-            <!--{/if}-->
+
           
           
           <button id="menu-toggle" class="leftbar-toggle">
@@ -14,26 +14,10 @@
           
           
           <a class="navbar-brand" href="{the_url module=root-url}">MarketOnline</a>
-          
-            <!--{if $pb_username==""}-->     
-                <ul class="nav navbar-nav top-register-box">
-                    <li><a href="{the_url module=login redirect=`$current_address_encoded`}">Đăng nhập</a></li>
-                    <li>
-                        {if $smarty.get.do == "employee"}
-                            <a class="main-but" href="{the_url module=register typename=Employee}">{lang register_now}</a>	    
-                        {elseif $smarty.get.do == "job"}
-                            <a class="main-but" href="{the_url module=register typename=Employer}">{lang register_now}</a>	    
-                        {elseif $smarty.get.do == "studypost"}
-                            <a class="main-but" href="{the_url module=register typename=Learner}">{lang register_now}</a>
-                        {else}
-                            <a class="main-but" href="{the_url module=register}">{lang register_now}</a>
-                        {/if}
-                    </li>
-                </ul>
-            <!--{/if}-->
+
         </div>
-        <!--{if $pb_username!=""}-->
-            <div id="navbar" class="collapse navbar-collapse">
+        <div id="navbar" class="collapse navbar-collapse">
+          <!--{if $pb_username!=""}-->            
               <ul class="nav navbar-nav">
                     <li>
                         <a target="_blank" href="{the_url module=root-url}redirect.php?url=/virtual-office/">
@@ -67,8 +51,24 @@
                       <li class="divider"></li>
                       <li><a href="{the_url module=root-url}logging.php?action=logout">Đăng xuất</a></li>
               </ul>
-            </div><!--/.nav-collapse -->
-        <!--{/if}-->
+            
+          <!--{else}-->
+            <ul class="nav navbar-nav">
+                <li><a href="{the_url module=login redirect=`$current_address_encoded`}">Đăng nhập</a></li>
+                <li>
+                    {if $smarty.get.do == "employee"}
+                        <a class="main-but" href="{the_url module=register typename=Employee}">{lang register_now}</a>	    
+                    {elseif $smarty.get.do == "job"}
+                        <a class="main-but" href="{the_url module=register typename=Employer}">{lang register_now}</a>	    
+                    {elseif $smarty.get.do == "studypost"}
+                        <a class="main-but" href="{the_url module=register typename=Learner}">{lang register_now}</a>
+                    {else}
+                        <a class="main-but" href="{the_url module=register}">{lang register_now}</a>
+                    {/if}
+                </li>
+            </ul>
+          <!--{/if}-->
+        </div><!--/.nav-collapse -->
       </div>
     </nav>
     <div class="top-nav-cover"></div>
