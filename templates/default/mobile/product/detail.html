@@ -3,8 +3,21 @@
         <!-- Page Content -->
         <div id="page-content-wrapper" class="home-page">
             
+            
+            
+            
             <div class="container-fluid">
                 <div class="row">
+                    {if !$MEMBER.checkout}
+			<!--{include file="`$theme_name`/mobile/product/_product_detail_rightbar_nopaid.html"}-->
+                    {else}
+                        <!--{include file="`$theme_name`/mobile//product/_product_detail_rightbar_paid.html"}-->
+                    {/if}
+                </div>
+                
+                <div class="row">
+                    
+                    
                     
                     <div class="product-title">
                         <h4>{if $item.service}{lang services}{else}{lang products}{/if}</h4>
@@ -40,6 +53,89 @@
                             </li>                            
 			</ul>
                     </div>
+                    
+                    
+                    <div class="mobile-product-info">
+                        
+                        
+                        <div class="summary">
+                                
+                                <p itemprop="price" class="price">
+                                    <span class="title_disc" style="">Giá</span>
+					{if $item.new_price || $item.price}					
+						{if $item.new_price != "" && $item.new_price != 0}
+							{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+						{else}
+							<span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+						{/if}
+					{/if}
+				</p>
+                                
+                                
+				    <div class="sum_top">
+					{if $item.service && $item.industry_name}<service class="service_title"><span>{lang services}</span> {$item.industry_name}</service>{/if}
+					<div class="top_left_info" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+			
+				
+				{if $item.brand_name}<p><span class="title_disc" style="">{lang brand}</span> {$item.brand_name}</p>{/if}
+				{if $item.market}<p><span class="title_disc" style="">{lang market}</span> {$item.market}</p>{/if}
+				{if $item.product_code}<p><span class="title_disc" style="">{lang product_code}</span> {$item.product_code}</p>{/if}
+				{if false}<p><span class="title_disc" style="">{lang area_tt}</span> {$item.area_names}</p>{/if}
+			
+				
+					<!--{foreach from=$ObjectParams name=form item=item1 key=key1}-->
+					{if $item1.value}<p style="clear: both"><span class="title_disc" style="">{$item1.label}</span> {$item1.value}</p>{/if}
+					<!--{/foreach}-->
+				
+			
+				
+			
+			
+				<link itemprop="availability" href="http://schema.org/InStock" />
+			
+			</div>
+					<div itemprop="description">
+			
+			
+			</div>
+			
+			
+			
+				
+				<form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
+			
+					
+					<div class="quantity">
+					    <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />
+					</div>
+                                        
+                                        <p style="text-align: center">
+                                            <a href="{the_url module=root-url}index.php?do=product&action=add_cart&id={$item.id}" type="button" class="single_add_to_cart_button button alt btn btn-primary">{lang add_to_cart}</a>
+                                        </p>
+					
+                                        <p></p>
+					{if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label> {$item.tag}</p>{/if}
+					
+				</form>
+
+				
+			</div>
+			
+			
+				
+				    </div>
+				
+				    
+				
+				</div>
+                        
+                        
+                    </div>
+                    
+                    
+                    
+                            
+                    
                     
                 </div>
             </div>

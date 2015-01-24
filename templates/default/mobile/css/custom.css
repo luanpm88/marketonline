@@ -468,7 +468,10 @@ body {
 }
 .product-title {
     background: none repeat scroll 0 0 #fff;
-    padding: 5px 10px;
+    padding: 8px 10px;
+    border-top: solid 1px #ddd;
+    border-bottom: solid 1px #ddd;
+    margin-top: 10px;
 }
 .product-title h4 {
     font-size: 90%;
@@ -481,7 +484,7 @@ body {
 }
 .mobile-product-gallery {
     background: none repeat scroll 0 0 #fff;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
     padding: 10px;
     text-align: center;
 }
@@ -522,4 +525,31 @@ body {
 }
 .mobile-product-gallery .pointers .pointer.active {
     background: #333;
+}
+.mobile-product-info {
+    background: #fff;
+    padding: 10px;
+    border-bottom: solid 1px #ddd;
+}
+.summary .title_disc {
+    display: inline-block;
+    min-width: 150px;
+    font-weight: 700;
+}
+.summary .top_left_info p {
+    
+}
+.summary .quantity {
+    display: inline-block;
+    margin-right: 10px;
+    position: absolute;
+    left: -90000px;
+}
+.summary .keywords {
+    line-height: 100%;
+    padding-top: 10px;
+}
+#quantity {
+    width: 100px;
+    text-align: center;
 }
