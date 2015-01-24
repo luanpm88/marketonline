@@ -466,3 +466,60 @@ body {
 .cats-list-caret-but.loading span {
     border: none;
 }
+.product-title {
+    background: none repeat scroll 0 0 #fff;
+    padding: 5px 10px;
+}
+.product-title h4 {
+    font-size: 90%;
+    font-weight: 700;
+    margin: 0 0 4px;
+}
+.product-title h1 {
+    font-size: 150%;
+    margin: 0;
+}
+.mobile-product-gallery {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+.mobile-product-gallery ul {
+    padding: 0;
+}
+.mobile-product-gallery ul li {
+    display: inline-block;
+    height: 500px;
+    line-height: 500px;
+    list-style: outside none none;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+    background: #eee;
+}
+.mobile-product-gallery ul li a {
+    
+}
+.mobile-product-gallery ul li a img {
+    max-height: 100%;
+    max-width: 100%;
+}
+.mobile-product-gallery .pointers {
+    margin-left: -10px;
+    margin-top: -50px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.mobile-product-gallery .pointers .pointer {
+    background: none repeat scroll 0 0 #aaa;
+    border-radius: 10px;
+    display: inline-block;
+    height: 10px;
+    margin: 10px;
+    width: 10px;
+}
+.mobile-product-gallery .pointers .pointer.active {
+    background: #333;
+}

@@ -1014,7 +1014,13 @@ class Product extends PbController {
 			setvar('order_message', $order_message);
 		}
 		
-		render("product/detail");
+		
+		if($_GET["mobile"]) {
+			render("mobile/product/detail");
+		} else {
+			render("product/detail");
+		}
+		
 	}
 	
 	function related_products()

@@ -2,6 +2,71 @@
     {literal}
         <script>
             
+            function prevSlide() {
+                var num = $('.mobile-product-gallery ul li').length;                
+                var current = $('.mobile-product-gallery ul li.active').attr("rel");
+                
+                if (current == 0) {
+                    gotoSlide(num-1);
+                } else {
+                    gotoSlide(parseInt(current)-1);
+                }
+            }
+            
+            function nextSlide() {
+                var num = $('.mobile-product-gallery ul li').length;                
+                var current = $('.mobile-product-gallery ul li.active').attr("rel");
+                
+                if (current == num-1) {
+                    gotoSlide(0);
+                } else {
+                    gotoSlide(parseInt(current)+1);
+                }
+            }
+            
+            function gotoSlide(num) {
+                var current = $('.mobile-product-gallery ul li.active').attr("rel");
+                //alert(current);
+                
+                $('.mobile-product-gallery ul li[rel="'+current+'"]').hide();
+                $('.mobile-product-gallery ul li[rel="'+current+'"]').removeClass("active");
+                $('.mobile-product-gallery .pointers .pointer[rel="'+current+'"]').removeClass("active");
+                
+                $('.mobile-product-gallery ul li[rel="'+num+'"]').fadeIn();
+                $('.mobile-product-gallery ul li[rel="'+num+'"]').addClass("active");
+                $('.mobile-product-gallery .pointers .pointer[rel="'+num+'"]').addClass("active");
+            }
+            
+            function initMobileGallery() {
+                var num = $('.mobile-product-gallery ul li').length;
+                
+                $('.mobile-product-gallery ul li').each(function(index) {
+                    $(this).attr("rel",index);
+                });
+                
+                $('.mobile-product-gallery ul li').hide();
+                $('.mobile-product-gallery ul li').removeClass("active");
+                $('.mobile-product-gallery ul li').eq(0).fadeIn();
+                $('.mobile-product-gallery ul li').eq(0).addClass("active");
+                
+                var html_point = '<div class="pointers">';
+                for(var i=0;i<num;i++) {
+                    html_point += '<span rel="'+i+'" class="pointer pointer-'+i+'"></span>';
+                }
+                html_point += '<div class="pointers">';                
+                $('.mobile-product-gallery').append(html_point);
+                $('.mobile-product-gallery .pointers .pointer').eq(0).addClass("active");
+                
+                
+            }
+            
+            function autoresizeMobileGallery() {
+                var size = $(window).height()-100;
+                $('.mobile-product-gallery ul li').width(size);
+                $('.mobile-product-gallery ul li').height(size);
+                $('.mobile-product-gallery ul li').css("line-height",size+"px");
+            }
+            
             function moveLeft(box) {
                 var current_left = parseInt(box.css('left'));
                 var amount = 155*2;
@@ -35,13 +100,34 @@
             }
             
             
-            cropping();
             $(window).resize(function() {
                 cropping();
+                autoresizeMobileGallery();
             });
             
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
-            $(document).ready(function() { 
+            $(document).ready(function() {
+                cropping();
+                autoresizeMobileGallery();
+                
+                //MobileGallery
+                    $(".mobile-product-gallery").swipe( {
+                      //Generic swipe handler for all directions
+                      allowPageScroll: "vertical",
+                      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+                        if(direction == 'right') {
+                          prevSlide();
+                        }
+                        if(direction == 'left') {
+                          nextSlide();
+                        }
+                      },
+                      //Default is 75px, set to 0 for demo so any distance triggers swipe
+                       threshold: 0,
+                       excludedElements: ""
+                    });
+                
+                
                 //SIDEBAR EFFECT
                     //toogle sidebar
                     $("#menu-toggle").click(function(e) {
@@ -83,6 +169,10 @@
                 //    //Default is 75px, set to 0 for demo so any distance triggers swipe
                 //    threshold: 0
                 //});
+                
+                
+                //Gallery
+                initMobileGallery();
             });
         </script>
     {/literal}
