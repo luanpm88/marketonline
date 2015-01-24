@@ -174,9 +174,9 @@ class Members extends PbModel {
 			}
 			
 			if (empty($result['photo'])) {
-				$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				$result['photo'] = pb_get_attachmenturl('', '', 'big');				
 			}else{
-				$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');;
+				$result['photo'] = pb_get_attachmenturl($result['photo'], '', 'small');;
 			}
 			
 			
@@ -187,10 +187,10 @@ class Members extends PbModel {
 			{
 				foreach($studyimages as $key => $item)
 				{
-					$item["name_small"] = URL.pb_get_attachmenturl($item["name"], '', 'small');
-					$item["name_medium"] = URL.pb_get_attachmenturl($item["name"], '', 'medium');
-					$item["name_origin"] = URL.pb_get_attachmenturl($item["name"], '', '');
-					$item["name_wide"] = URL.pb_get_attachmenturl($item["name"], '', 'wide');
+					$item["name_small"] = pb_get_attachmenturl($item["name"], '', 'small');
+					$item["name_medium"] = pb_get_attachmenturl($item["name"], '', 'medium');
+					$item["name_origin"] = pb_get_attachmenturl($item["name"], '', '');
+					$item["name_wide"] = pb_get_attachmenturl($item["name"], '', 'wide');
 					$item["comments"]["count"] = $studymemberimagecomment->findCount(null, array("studymemberimage_id=".$item["id"]));
 					$item["description_raw"] = $item["description"];
 					$item["description"] = str_replace("\n","<br />",$item["description"]);
@@ -275,9 +275,9 @@ class Members extends PbModel {
 			}
 			
 			if (empty($result['photo'])) {
-				$result['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				$result['photo'] = pb_get_attachmenturl('', '', 'big');				
 			}else{
-				$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');;
+				$result['photo'] = pb_get_attachmenturl($result['photo'], '', 'small');;
 			}
 			
 			
@@ -288,9 +288,9 @@ class Members extends PbModel {
 			{
 				foreach($studyimages as $key => $item)
 				{
-					$item["name_small"] = URL.pb_get_attachmenturl($item["name"], '', 'small');
-					$item["name_medium"] = URL.pb_get_attachmenturl($item["name"], '', 'medium');
-					$item["name_origin"] = URL.pb_get_attachmenturl($item["name"], '', '');
+					$item["name_small"] = pb_get_attachmenturl($item["name"], '', 'small');
+					$item["name_medium"] = pb_get_attachmenturl($item["name"], '', 'medium');
+					$item["name_origin"] = pb_get_attachmenturl($item["name"], '', '');
 					$item["comments"]["count"] = $studymemberimagecomment->findCount(null, array("studymemberimage_id=".$item["id"]));
 					$item["description_raw"] = $item["description"];
 					$item["description"] = str_replace("\n","<br />",$item["description"]);
@@ -903,7 +903,7 @@ class Members extends PbModel {
 			$result["address"] = $result["address"].", ".$area->getFullName($result["area_id"]);
 			$result["address_short"] = $area->getFullName($result["area_id"]);
 			
-			$result['photo'] = URL.pb_get_attachmenturl($result['photo'], '', 'small');
+			$result['photo'] = pb_get_attachmenturl($result['photo'], '', 'small');
 
 			$result['online'] = $this->isOnline($result["id"]);
 			
@@ -970,9 +970,9 @@ class Members extends PbModel {
 			}
 			
 			if (empty($members[$key]['photo'])) {
-				$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				$members[$key]['photo'] = pb_get_attachmenturl('', '', 'big');				
 			}else{
-				$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+				$members[$key]['photo'] = pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
 			}
 			
 			
@@ -1026,15 +1026,15 @@ class Members extends PbModel {
 			
 			if($item["membertype_id"] != 6 && $item["c_picture"] != "")
 			{
-				$members[$key]['photo'] = URL.pb_get_attachmenturl($item["c_picture"], '', 'small');;
+				$members[$key]['photo'] = pb_get_attachmenturl($item["c_picture"], '', 'small');;
 				
 			}
 			else
 			{
 				if (empty($members[$key]['photo'])) {
-					$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+					$members[$key]['photo'] = pb_get_attachmenturl('', '', 'big');				
 				}else{
-					$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+					$members[$key]['photo'] = pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
 				}
 				
 			}
@@ -1160,15 +1160,15 @@ class Members extends PbModel {
 		{			
 			if($item["membertype_id"] != 6 && $item["c_picture"] != "")
 			{
-				$members[$key]['photo'] = URL.pb_get_attachmenturl($item["c_picture"], '', 'small');;
+				$members[$key]['photo'] = pb_get_attachmenturl($item["c_picture"], '', 'small');;
 				
 			}
 			else
 			{
 				if (empty($members[$key]['photo'])) {
-					$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+					$members[$key]['photo'] = pb_get_attachmenturl('', '', 'big');				
 				}else{
-					$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+					$members[$key]['photo'] = pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
 				}
 				
 			}
@@ -1265,9 +1265,9 @@ class Members extends PbModel {
 			}
 			
 			if (empty($members[$key]['photo'])) {
-				$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				$members[$key]['photo'] = pb_get_attachmenturl('', '', 'big');				
 			}else{
-				$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+				$members[$key]['photo'] = pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
 			}
 			
 			
@@ -1310,9 +1310,9 @@ class Members extends PbModel {
 			}
 			
 			if (empty($members[$key]['photo'])) {
-				$members[$key]['photo'] = URL.pb_get_attachmenturl('', '', 'big');				
+				$members[$key]['photo'] = pb_get_attachmenturl('', '', 'big');				
 			}else{
-				$members[$key]['photo'] = URL.pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
+				$members[$key]['photo'] = pb_get_attachmenturl($members[$key]['photo'], '', 'small');;
 			}
 			
 			
