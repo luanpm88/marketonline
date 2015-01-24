@@ -630,7 +630,7 @@ function pb_get_attachmenturl($src, $path = '', $size = '', $force = false, $nos
 	if ($scope && ($img!=$default_thumb_img)) {
 		$img.="{$scope}.jpg";
 	}
-	return $path.$img;
+	return URL.$path.$img;
 }
 
 

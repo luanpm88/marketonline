@@ -574,6 +574,10 @@ class Products extends PbModel {
 			{
 				$result['thumb'] = $result['imgsmall'];
 			}
+			
+			
+			//for url
+			
 		
 	}
 	
