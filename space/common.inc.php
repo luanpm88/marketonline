@@ -78,10 +78,10 @@ if (empty($company->info['email'])) {
 	$company->info['email'] = $G['service_email'];
 }
 if (empty($company->info['picture'])) {
-	$company->info['logo'] = $absolute_uri.pb_get_attachmenturl('', '', 'small');
+	$company->info['logo'] = pb_get_attachmenturl('', '', 'small');
 }else{
-	$company->info['logo'] = $absolute_uri.pb_get_attachmenturl($company->info['picture'], '', 'small');
-	$company->info['logo_big'] = $absolute_uri.pb_get_attachmenturl($company->info['picture'], '', '');
+	$company->info['logo'] = pb_get_attachmenturl($company->info['picture'], '', 'small');
+	$company->info['logo_big'] = pb_get_attachmenturl($company->info['picture'], '', '');
 }
 
 //if (empty($company->info['banner'])) {
