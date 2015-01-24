@@ -629,10 +629,13 @@ body {
 }
 .cart-items .table {
     margin: 0 -10px;
+    max-width: none;
+    width: auto;
 }
 .cart-items {
     padding: 10px;
     background: #fff;
+    border-bottom: solid 1px #ddd;
 }
 .cart-items h1 {
     margin-top: 0;
@@ -658,6 +661,7 @@ body {
     position: absolute;
     text-align: right;
     width: 50px;
+    padding-right: 5px;
 }
 .quantity_sel {
     display: block;
@@ -665,7 +669,19 @@ body {
     position: absolute;
     text-align: right;
     width: 66px;
+    padding-right: 5px;
 }
 .quantity_but {
     margin-top: 30px;
+}
+.shop-info-line-cart {
+    background: none repeat scroll 0 0 #eee;
+}
+.shop-info-line-cart td {
+    padding: 5px 10px !important;
+}
+.shop-info-line-cart td a {
+}
+.cart-line-name a {
+    color: #333;
 }
