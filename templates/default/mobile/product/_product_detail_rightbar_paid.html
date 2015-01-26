@@ -1,4 +1,4 @@
-			<div class="col-lg-12">
+	<div class="col-lg-12">
                                 <div class="mobile-horizon-slider-title">
                                     <h4>Quảng cáo</h4>
                                     
@@ -10,7 +10,7 @@
                                         <!--{foreach from=$product_banners item=itemxxx}-->
                                             <li>
                                                 <a href="{the_url module=ad id=`$itemxxx.id`}" class="crop-img-square">
-                                                    <img src="{$itemxxx.image}" />                                        
+                                                    <img src="{$itemxxx.thumb}" />                                        
                                                 </a>
                                                 <a href="{the_url module=ad id=`$itemxxx.id`}" class="title">
                                                     {$itemxxx.name|truncate:50}
