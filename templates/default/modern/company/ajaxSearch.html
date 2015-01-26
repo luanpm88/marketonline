@@ -2,7 +2,7 @@
                             <ul class="list-group">
                                 <!--{loop $list item level key}-->
                                     {if $item.shop_name}
-                                        <li class="list-group-item">
+                                        <li class="list-group-item crop-img-square">
                                             <a title="{$item.shop_name|strip_tags}" href="{the_url module=space userid=`$item.cache_spacename`}">
                                                 <span class="ajax-list-img-box">
                                                     <img alt="{$item.shop_name|strip_tags}" title="{$item.shop_name}" class="img-responsive" src="{$item.logo}" style="">
