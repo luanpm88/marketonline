@@ -728,7 +728,7 @@ body {
     font-weight: normal;
     margin-top: 15px;
 }
-.input[type="text"], .input[type="password"] {
+.logging-box input[type="text"], .logging-box input[type="password"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
