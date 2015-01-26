@@ -90,7 +90,12 @@ class Product extends PbController {
 				
 				setvar("IndustryList", $IndustryList);
 				
-				render("product/category");
+				if(detectMobile()) {
+					render("mobile/product/index");
+				} else {
+					render("product/category");
+				}
+				
 				return;
 				
 			}

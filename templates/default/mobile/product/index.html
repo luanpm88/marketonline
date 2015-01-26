@@ -10,6 +10,7 @@
                             <span class="glyphicon glyphicon-th cats-list-icon"></span>
                             <span type="button" class="btn btn-default cat-filter-but">
                                 <span class="cat-filter-items"><span class="cat-filter-item" rel="0">Tất cả chuyên mục <span class="caret"></span></span></span>
+                                {if $smarty.get.keyword}<span class="keyword_title">Với từ khóa: `<strong>{$smarty.get.keyword}</strong>` <span class="glyphicon glyphicon-remove"></span>{/if}
                             </span>                            
                         </div>
                         
