@@ -91,6 +91,7 @@ class Product extends PbController {
 				setvar("IndustryList", $IndustryList);
 				
 				render("product/category");
+				return;
 			}
 			else if($_GET["level"] == 1)
 			{
