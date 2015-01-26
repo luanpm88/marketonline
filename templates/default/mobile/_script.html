@@ -274,6 +274,11 @@
 		    goSearch();
 		});            
 		$('.top-search-input').on("keyup", function(event){
+		    if (event.keyCode == 13) {
+			if($('.top-search-type').attr("rel")=='product') {
+			    window.location = ROOT_URL+"index.php?do=product&level=search&keyword="+$('#top-search-input').val();
+			}
+		    }
 		    $('.top-search-input').val($(this).val());
 		    goSearch();
 		});
@@ -285,6 +290,8 @@
 		});
 		
 		///////////////////////////////////////////////////////////
+		
+		
 		
 		
             });
