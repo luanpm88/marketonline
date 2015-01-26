@@ -891,12 +891,11 @@ label.error {
 .top-search-result-box .list-group li:hover {
     background-color: #f8f8f8;
 }
-.top-search-result-box .list-group li img {
+.top-search-result-box .list-group li .ajax-list-img-box {
     color: rgba(0, 0, 0, 0);
     height: 60px;
     overflow: hidden;
     width: 60px;
-    float: left;
 }
 .top-search-result-box .list-group li a {
     color: #333;
