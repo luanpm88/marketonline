@@ -965,3 +965,6 @@ label.error {
     top: 11px;
     z-index: 100;
 }
+#search-panel input {
+    font-size: 85%;
+}
