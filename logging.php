@@ -114,6 +114,7 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 		}else {
 			$member->validationErrors[] = L('login_faild');
 		}
+		
 		setvar("LoginError", $validate->show($member));
 	}
 }
@@ -155,5 +156,9 @@ if(isset($_GET['action'])){
 			break;
 	}
 }
-render("logging");
+if(detectMobile()) {
+	render("mobile/logging");
+} else {
+	render("logging");
+}
 ?>

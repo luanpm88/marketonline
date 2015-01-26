@@ -710,3 +710,25 @@ body {
     font-size: 11px;
     background: #b92c28;
 }
+.logging-box {
+    padding: 10px;
+    background: #fff;
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 40px;
+}
+.logging-box h1 {
+    font-size: 200%;
+    margin-top: 0;
+
+}
+.logging-box label {
+    display: block;
+    font-size: 100%;
+    font-weight: normal;
+}
+.logging-box input[type="text"], .logging-box input[type="password"] {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
