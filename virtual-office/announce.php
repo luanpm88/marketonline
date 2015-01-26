@@ -34,7 +34,7 @@ elseif (!empty($_GET['type']))
 {
 	$info = $announcementtype->read("*", $_GET['type'], null, null);
 	
-	var_dump($info);
+	//var_dump($info);
 	$tpl_file = "announce_list";
 	setvar("item",$info);
 	template($tpl_file);
