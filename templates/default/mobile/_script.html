@@ -16,6 +16,47 @@
 	</script>
     
         <script>
+	    
+	    //--------------TOP SEARCH ACTIONS------------------------//
+	    var keytimeout;
+	    function goSearch() {
+		if ($('.top-search-input').val().trim() != '') {
+		    $('.top-search-result-box .panel-body').html('<div class="no-search-top search-loading">Loading</div>');
+		    $('.top-search-result-box').show();
+		    
+		    clearTimeout(keytimeout);
+		
+		    keytimeout = setTimeout(function(){
+			fullTextSearch( $('.top-search-input').val() );
+		    }, 500);
+		    
+		} else {
+		    $('.top-search-result-box').hide();
+		}
+	    }
+	    
+	    //full text search
+	    var fullTextSearch_xhr;
+	    function fullTextSearch(keyword) {
+		var search_type = $('.top-search-type').attr("rel");
+		
+		if(fullTextSearch_xhr && fullTextSearch_xhr.readystate != 4){
+		    fullTextSearch_xhr.abort();
+		}
+	    
+		    fullTextSearch_xhr = $.ajax({
+			url: ROOT_URL+"index.php?do=product&action=ajaxModernSearch&type="+search_type+"&keyword="+encodeURIComponent(keyword)
+		    }).done(function ( data ) {
+			if( console && console.log ) {
+			    
+			    $('.top-search-result-box .panel-body').html(data);
+			    
+			}
+		    });
+	    }
+	    //=================================================//
+	    
+	    
             
             function getCartCount() {
                 $.ajax({
@@ -206,19 +247,7 @@
                 $('.mobile-horizon-slider ul').each(function() {
                     $(this).width($(this).find('li').length*155);
                 });
-                //$('.mobile-horizon-slider ul').swipe( {
-                //    //Generic swipe handler for all directions
-                //    swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                //        if(direction=='left') {
-                //            moveLeft($(this));
-                //        }
-                //        if(direction=='right') {
-                //            moveRight($(this));
-                //        }
-                //    },
-                //    //Default is 75px, set to 0 for demo so any distance triggers swipe
-                //    threshold: 0
-                //});
+
                 
                 
                 //Gallery
@@ -231,6 +260,31 @@
 		//for login page
 		$("#LoggingFrm").validate();
 		$("#checkout-meminfo").validate();
+		
+		
+		
+		//--------------TOP SEARCH ACTIONS------------------------//
+        
+		$('.top-search-form .dropdown-menu li').click(function() {
+		    $('.top-search-type').removeClass("shop","fins");
+		    $('.top-search-type').addClass($(this).attr("icon-rel"));
+		    $('.top-search-type').attr("rel",$(this).attr("rel"));
+		    $('.top-search-input').attr("placeholder",$(this).attr("holder-rel"));
+		    
+		    goSearch();
+		});            
+		$('.top-search-input').on("keyup", function(event){
+		    $('.top-search-input').val($(this).val());
+		    goSearch();
+		});
+		$('.top-search-input').on("focus", function(event){
+		    goSearch();
+		});
+		$('.page').on("click", function(event){
+		    $('.top-search-result-box').hide();
+		});
+		
+		///////////////////////////////////////////////////////////
 		
 		
             });
