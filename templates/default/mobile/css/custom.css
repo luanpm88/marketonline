@@ -719,16 +719,33 @@ body {
 .logging-box h1 {
     font-size: 200%;
     margin-top: 0;
+    margin-bottom: 25px;
 
 }
 .logging-box label {
     display: block;
     font-size: 100%;
     font-weight: normal;
+    margin-top: 15px;
 }
 .logging-box input[type="text"], .logging-box input[type="password"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
     width: 100%;
+    border-color: #aaa;
+}
+input.error {
+    border-color: #b92c28 !important;
+}
+label.error {
+    color: #b92c28;
+    margin: 0;
+}
+.logging-box input[type="submit"] {
+    display: block;
+    margin-top: 25px;
+}
+.logging_actions {
+    margin-top: 10px;
 }
