@@ -1,0 +1,118 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Sản phẩm - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="page-inner meminfo-box">
+                        <h1>Thông tin đặt hàng</h1>
+                        <form name="offer_list_frm" id="checkout-meminfo" method="post">
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">Thông tin người mua</div>
+                                <div class="panel-body">
+                                    {if $pb_userinfo}
+                                            <p>
+                                                    <span>{lang username}</span>
+                                                    <input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
+                                            </p>
+                                    {else}
+                                            <p style="margin-bottom: 16px;">
+                                                    <span>Người mua</span>
+                                                    <br /><strong>Khách hàng</strong>
+                                            </p>
+                                    {/if}
+                                    <div class="input-group">
+                                        <label>{lang fullname}<strong class="red-bold">*</strong></label>
+                                        <input required type="text" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>{lang mobile}<strong class="red-bold">*</strong></label>
+                                        <input required value="{$pb_userinfo.mobile}" type="text" name="data[order][mobile]" id="mobile" class="bgWhite" value="{$pb_username.mobile}">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>{lang email}<strong class="red-bold">*</strong></label>
+                                        <input required value="{$pb_userinfo.email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>{lang address}<strong class="red-bold">*</strong></label>
+                                        <input required type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default receiver-info-panel">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">Thông tin người nhận
+                                     (<input type="checkbox" name="same_as_buyer" value="1" /> Giống thông tin người mua)
+                                </div>
+                                <div class="panel-body receiver_box" style="display: none">
+                                    <div class="input-group">
+                                        <label>{lang fullname}<strong class="red-bold">*</strong></label>
+                                        <input type="text" id="receiver_fullname" name="data[order][receiver_fullname]" class="bgWhite" value="{$pb_userinfo.receiver_fullname}" {if $pb_userinfo.receiver_fullname} disabled="disabled" {/if}>
+                                    </div>
+                                    <div class="input-group">
+                                        <label>{lang mobile}<strong class="red-bold">*</strong></label>
+                                        <input value="{$pb_userinfo.receiver_mobile}" {if $pb_userinfo.receiver_mobile} disabled="disabled" {/if} type="text" name="data[order][receiver_mobile]" id="receiver_mobile" class="bgWhite">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>{lang email}<strong class="red-bold">*</strong></label>
+                                        <input value="{$pb_userinfo.receiver_email}" {if $pb_userinfo.receiver_email} disabled="disabled" {/if} type="text" name="data[order][receiver_email]" id="receiver_email" class="bgWhite">
+                                    </div>
+                                    <div class="input-group">
+                                        <label>{lang address}<strong class="red-bold">*</strong></label>
+                                        <input type="text" value="{$pb_userinfo.receiver_address}" {if $pb_userinfo.receiver_address} disabled="disabled" {/if} maxlength="120" name="data[order][receiver_address]" id="receiver_address" class="bgWhite" />
+                                    </div>
+                                </div>
+                                
+                                                             
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading">Ghi chú đơn hàng
+                                </div>
+                                <div class="panel-body">
+                                    <div class="input-group">
+                                        <textarea style="width: 100%" id="message" type="text" name="data[order][message]" value="" style="" class="bgInput">{$order.message}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p></p>
+                                <input class="checkout_but btn btn-primary" type="submit" value="{lang confirm_order}" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        {literal}
+        <script>
+            function checkSameAsBuyer() {
+                if($('input[name="same_as_buyer"]:checked').length) {
+                    $('.receiver-info-panel .panel-body').show();
+                    $('.receiver-info-panel input[type="text"]').attr("required","");
+                } else {
+                    $('.receiver_box').hide();
+                    $('.receiver-info-panel input[type="text"]').removeAttr("required");
+                }
+            }
+            
+            $(document).ready(function() {
+                checkSameAsBuyer();
+                $('body').on("change",'input[name="same_as_buyer"]', function() {
+                    checkSameAsBuyer();
+                });
+            });
+        </script>
+        {/literal}
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
