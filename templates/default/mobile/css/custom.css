@@ -818,3 +818,35 @@ label.error {
 .custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active {
     color: #333 !important;
 }
+#search-panel {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid #ddd;
+    height: 36px;
+    padding: 0;
+    top: 49px;
+    width: 100%;
+    margin: 0;
+}
+#search-panel .form-group {
+    position: absolute;
+    width: 100%;
+}
+#search-panel button, #search-panel input {
+    border: 0;
+}
+#search-panel .input-group-btn {
+    position: absolute;
+    z-index: 1000;
+    padding: 0;
+}
+#search-panel .input-group-btn .btn {
+    padding: 3px 10px;
+}
+#search-panel input {
+    border: 0;
+    padding-left: 60px;
+    width: 100%;
+}
+#search-panel .top-search-type {
+    font-size: 22px;
+}

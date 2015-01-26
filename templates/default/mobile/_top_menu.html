@@ -7,6 +7,11 @@
                 <button type="button" class="custome-navbar-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                   <span class="glyphicon glyphicon-user"></span>
                 </button>
+                
+                <button type="button" class="custome-navbar-toggle search-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#search-panel" aria-expanded="false" aria-controls="search-panel">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+                
 
                 <a href="{the_url module=root-url}/index.php?do=product&action=add_cart" type="button" class="custome-navbar-toggle navbar-toggle collapsed">
                   <div class="count_badge_outer">
@@ -23,6 +28,11 @@
           <a class="navbar-brand" href="{the_url module=root-url}">MarketOnline</a>
 
         </div>
+        
+        
+        
+        
+        
         <div id="navbar" class="collapse navbar-collapse">
           <!--{if $pb_username!=""}-->            
               <ul class="nav navbar-nav">
@@ -77,5 +87,33 @@
           <!--{/if}-->
         </div><!--/.nav-collapse -->
       </div>
+      
+      <div id="search-panel" class="row collapse navbar-collapse">
+            <div class="form-group">                    
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span aria-hidden="true" class="top-search-type glyphicon glyphicons shop" rel="shop"></span>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li rel="shop" icon-rel="shop" holder-rel="Tên Gian hàng/Công ty/Chủ nhân/Email/...">
+                        <a href="#">
+                          <span aria-hidden="true" class="glyphicon glyphicons shop"></span>
+                          Tìm kiếm gian hàng
+                        </a>
+                      </li>
+                      <li rel="product" icon-rel="fins" holder-rel="Tên sản phẩm/Mã sản phẩm/Tên Thương hiệu/...">
+                        <a href="#">
+                          <span aria-hidden="true" class="glyphicon glyphicons fins"></span>
+                          Tìm kiếm sản phẩm
+                        </a>
+                      </li>                      
+                    </ul>
+                </div><!-- /btn-group -->
+                <input id="top-search-input" placeholder="Tên Gian hàng/Công ty/Chủ nhân/Email/..." type="text" class="top-search-input form-control">
+              </div><!-- /input-group -->
+            </div>
+        </div>
+      
     </nav>
     <div class="top-nav-cover"></div>
