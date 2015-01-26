@@ -14,7 +14,7 @@
                                 <input type="hidden" name="type" value="{$Type}">
                                 <input type="hidden" name="redirect" value="{$smarty.get.redirect}">
                                 <input type="hidden" name="return_page" value="{if $smarty.get.return_page}{$smarty.get.return_page}{/if}{if $smarty.post.return_page}{$smarty.post.return_page}{/if}" />
-                                    
+                                
                                 <!-- {formhash} -->
                                 <input type="hidden" name="forward" value="{$_G.forward}" />
                                 
@@ -41,7 +41,17 @@
                                 {/if}
                                 
                                 <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton btn btn-default" />
-                                <div class="logging_actions"><a href="getpasswd.php">{lang forget_password}</a></div>
+                                <div class="logging_actions">
+                                    <a href="{the_url module=root-url}getpasswd.php">{lang forget_password}</a><br />
+                                    
+                                
+                                </div>
+                                <br style="clear: both" />
+                                <p></p>
+                                <p>
+                                    Nếu bạn chưa có tài khoản thành viên. Vui lòng đăng ký.
+                                    <br /><a class="btn btn-primary" href="{the_url module=root-url}dang-ky">Đăng ký</a>
+                                </p>
                                 
                             </form>
                         {else}
