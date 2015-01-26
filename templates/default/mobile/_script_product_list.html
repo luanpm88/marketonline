@@ -155,9 +155,9 @@
 		    updateCatList(0);
 		});
 		
-		$('body').on("click",".keyword_title .glyphicon-remove",function() {		    
+		$('body').on("click",".keyword_title",function() {		    
 		    $(".ajax_product_filter_form input[name='q']").val("");
-		    $(this).parent().remove();
+		    $(this).remove();
 		    initList();
 		    ajaxList();
 		});
