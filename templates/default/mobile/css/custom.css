@@ -815,3 +815,6 @@ label.error {
     position: relative;
     min-height: 18px;   
 }
+.custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active {
+    color: #333 !important;
+}
