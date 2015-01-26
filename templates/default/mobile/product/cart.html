@@ -22,12 +22,13 @@
                                             <th style="width:30%">{lang products}</th>
                                             <th>{lang quantity} <span id="update_quantity_but"></span></th>
                                             <th style="text-align: right">{lang sum_price}</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <!--{loop $StickyItems shop sticky_offer}-->
                                             <tr class="shop-info-line-cart">
-                                                <td colspan="4">
+                                                <td colspan="5">
                                                     <strong>
                                                         <a href="{the_url module=space userid=`$shop.space_name`}">
                                                             Gian hàng: {$shop.shop_name}
@@ -66,16 +67,21 @@
                                                     <td style="text-align: right">
                                                         x{$sticky.quantity}<br />
                                                         {$sticky.p_total} (VNĐ)                                                
-                                                    </td>                                
+                                                    </td>
+                                                    <td>
+                                                        <a class="cart_remove btn btn-default" onclick="$('#cartitemid').val('{$sticky.id}');$('#task').val('remove');$('#cart').submit()" href="#del">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </a>
+                                                    </td>
                                                 </tr>
                                             <!--{/loop}-->
                                             <tr>
-                                                <td colspan="4" style="text-align: right">
+                                                <td colspan="5" style="text-align: right">
                                                     Tổng cộng: <strong>{$shop.total} (VNĐ) </strong>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <td colspan="4" style="text-align: right">
+                                                <td colspan="5" style="text-align: right">
                                                     <a href="{the_url module=root-url}index.php?do=product&action=buy_method_select&shop_id={$shop.id}" name="checkout" class="checkout_but comment_but btn btn-primary" rel="{$shop.id}" redirect="index.php?do=product&action=meminfo&id={$shop.id}">{lang confirm_cart}</a>
 
                                                     <input type="submit" class="checkout_but btn btn-default" style="" value="Cập nhật" />
