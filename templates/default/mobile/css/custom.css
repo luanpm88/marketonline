@@ -958,3 +958,10 @@ label.error {
 .keyword_title .glyphicon-remove {
     color: #b92c28;
 }
+.top-search-bg {
+    color: #aaa;
+    position: absolute;
+    right: 11px;
+    top: 11px;
+    z-index: 100;
+}
