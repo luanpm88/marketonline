@@ -7,43 +7,49 @@
                 <div class="row">
                     
                     <div class="logging-box">
-                        
-                        <h1>Đăng nhập</h1>
-                        <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
-                            <input type="hidden" name="action" value="logging">
-                            <input type="hidden" name="type" value="{$Type}">
-                            <input type="hidden" name="redirect" value="{$smarty.get.redirect}">
-                            <input type="hidden" name="return_page" value="{if $smarty.get.return_page}{$smarty.get.return_page}{/if}{if $smarty.post.return_page}{$smarty.post.return_page}{/if}" />
+                        {if $pb_username==""}
+                            <h1>Đăng nhập</h1>
+                            <form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
+                                <input type="hidden" name="action" value="logging">
+                                <input type="hidden" name="type" value="{$Type}">
+                                <input type="hidden" name="redirect" value="{$smarty.get.redirect}">
+                                <input type="hidden" name="return_page" value="{if $smarty.get.return_page}{$smarty.get.return_page}{/if}{if $smarty.post.return_page}{$smarty.post.return_page}{/if}" />
+                                    
+                                <!-- {formhash} -->
+                                <input type="hidden" name="forward" value="{$_G.forward}" />
                                 
-                            <!-- {formhash} -->
-                            <input type="hidden" name="forward" value="{$_G.forward}" />
-                            
-                            {if $LoginError}
-                                <div class="alert alert-danger" role="alert">{$LoginError}</div>
-                            
-                            {/if}
-                            
-                            <label>Tên người dùng</label>
-                            <input required type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">
-                            
-                            <label>Mật khẩu</label>
-                            <input required name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2">
-                            <p></p>
-                            <input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}                        
-                            
-                            {if $ifcapt}
+                                {if $LoginError}
+                                    <div class="alert alert-danger" role="alert">{$LoginError}</div>
+                                
+                                {/if}
+                                
+                                <label>Tên người dùng</label>
+                                <input required type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">
+                                
+                                <label>Mật khẩu</label>
+                                <input required name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2">
                                 <p></p>
-                                <label>{lang code}</label>
-                                <input name="data[capt_logging]" id="LoginAuth" type="text" value="" size="5" maxlength="5" tabindex="3">
-                                <br /><a href="javascript:;" onclick="$('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());return false;"><img src="captcha.php" id="imgcaptcha" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" width="128"/></a>
-                                <br />
-                                <p class="loadingp1">{lang refresh_code}</p>
-                            {/if}
-                            
-                            <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton btn btn-default" />
-                            <div class="logging_actions"><a href="getpasswd.php">{lang forget_password}</a></div>
-                            
-                        </form>
+                                <input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}                        
+                                
+                                {if $ifcapt}
+                                    <p></p>
+                                    <label>{lang code}</label>
+                                    <input name="data[capt_logging]" id="LoginAuth" type="text" value="" size="5" maxlength="5" tabindex="3">
+                                    <br /><a href="javascript:;" onclick="$('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());return false;"><img src="captcha.php" id="imgcaptcha" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" width="128"/></a>
+                                    <br />
+                                    <p class="loadingp1">{lang refresh_code}</p>
+                                {/if}
+                                
+                                <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton btn btn-default" />
+                                <div class="logging_actions"><a href="getpasswd.php">{lang forget_password}</a></div>
+                                
+                            </form>
+                        {else}
+                            <p>Bạn đã đăng nhập.</p>
+                            <p>
+                                <a href="{the_url module=root-url}" class="btn btn-primary">Về trang chủ</a>
+                            </p>
+                        {/if}
                     </div>
                     
                 </div>
