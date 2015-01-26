@@ -1856,7 +1856,7 @@ class Product extends PbController {
 		setvar("pb_company", $pb_company);
 		//$viewhelper->setPosition("Cart");
 		
-		if(true) {
+		if(detectMobile()) {
 			$this->render("mobile/product/meminfo");
 		} else {
 			$this->render("product/meminfo");
