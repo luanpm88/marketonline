@@ -4,12 +4,12 @@
         <div id="page-content-wrapper" class="home-page">
             
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" style="padding: 0 10px">
                     
                     
                     <!--{if $home_ads}-->
                         
-                        <div class="col-lg-12">
+                        <div class="">
                             <div class="mobile-horizon-slider-title">
                                 <h4>Quảng cáo</h4>
                                 
@@ -39,7 +39,7 @@
                         
                         <!--{if $cat.items}-->
                         
-                            <div class="col-lg-12">
+                            <div class="">
                                 <div class="mobile-horizon-slider-title">
                                     <h4>{$cat.name}</h4>
                                     <a href="{the_url module=products level=1 industryid=`$cat.id` title=`$cat.name`}" class="view-more">Xem thêm...</a>
