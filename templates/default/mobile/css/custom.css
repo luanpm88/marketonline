@@ -928,3 +928,21 @@ label.error {
 .top-search-result-box .list-group li .more_info {
 
 }
+.search-loading {
+    height: 50px;
+    text-indent: -9000px;
+    width: 100%;
+    background: url("../img/ajax-loader.gif") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.top-search-more {
+    background: none repeat scroll 0 0 #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 0 0 4px 4px;
+    bottom: -11px;
+    padding: 5px 10px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    color: #333;
+    left: 0;
+}
