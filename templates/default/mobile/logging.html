@@ -23,16 +23,16 @@
                                 
                                 {/if}
                                 
-                                <label>Tên người dùng</label>
-                                <input required type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">
                                 
-                                <label>Mật khẩu</label>
-                                <input required name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2">
-                                <p></p>
+                                <input required type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="Tên người dùng" tabindex="1">
+                                
+                                
+                                <input placeholder="Mật khẩu" required name="data[login_pass]" type="password" id="LoginPass" value="" tabindex="2">
+                                <br />
                                 <input type="checkbox" name="remember_pass" id="RememberPass" value="1" title="{lang remember_password}">&nbsp;{lang remember_password}                        
                                 
                                 {if $ifcapt}
-                                    <p></p>
+
                                     <label>{lang code}</label>
                                     <input name="data[capt_logging]" id="LoginAuth" type="text" value="" size="5" maxlength="5" tabindex="3">
                                     <br /><a href="javascript:;" onclick="$('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());return false;"><img src="captcha.php" id="imgcaptcha" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" width="128"/></a>
@@ -40,7 +40,7 @@
                                     <p class="loadingp1">{lang refresh_code}</p>
                                 {/if}
                                 
-                                <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton btn btn-default" />
+                                <input type="submit" name="log_in" value="{lang login}" id="wp-submit" class="submitbutton btn btn-primary" />
                                 <div class="logging_actions">
                                     <a href="{the_url module=root-url}getpasswd.php">{lang forget_password}</a><br />
                                     
@@ -49,7 +49,7 @@
                                 <br style="clear: both" />
                                 <p></p>
                                 <p>
-                                    Nếu bạn chưa có tài khoản thành viên. Vui lòng đăng ký.
+                                    Chưa có tài khoản thành viên? Vui lòng đăng ký.
                                     <br /><a class="btn btn-primary" href="{the_url module=root-url}dang-ky">Đăng ký</a>
                                 </p>
                                 

@@ -1848,7 +1848,12 @@ class Product extends PbController {
 		setvar("pb_userinfo", $pb_userinfo);
 		setvar("pb_company", $pb_company);
 		//$viewhelper->setPosition("Cart");
-		$this->render("product/meminfo");
+		
+		if() {
+			$this->render("mobile/product/meminfo");
+		} else {
+			$this->render("product/meminfo");
+		}
 	}
 	
 	function getStates()
