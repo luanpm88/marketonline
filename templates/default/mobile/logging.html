@@ -18,7 +18,10 @@
                             <!-- {formhash} -->
                             <input type="hidden" name="forward" value="{$_G.forward}" />
                             
-                            {if $LoginError}{$LoginError}{/if}
+                            {if $LoginError}
+                                <div class="alert alert-danger" role="alert">{$LoginError}</div>
+                            
+                            {/if}
                             
                             <label>Tên người dùng</label>
                             <input required type="text" style="color: #333;" name="data[login_name]" id="LoginName"  value="" placeholder="{lang account_n_email_n_mobile}" tabindex="1">
