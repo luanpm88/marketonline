@@ -896,6 +896,7 @@ label.error {
     height: 60px;
     overflow: hidden;
     width: 60px;
+    float: left;
 }
 .top-search-result-box .list-group li a {
     color: #333;
