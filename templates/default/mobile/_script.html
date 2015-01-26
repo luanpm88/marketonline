@@ -157,18 +157,7 @@
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
             $(document).ready(function() {
 		
-		//fix for ie phone 10
-		if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) {
-		    var msViewportStyle = document.createElement("style");
-		    msViewportStyle.appendChild(
-			document.createTextNode("@-ms-viewport{width:auto!important}")
-		    );
-		    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
-		}
-		
-		
-		
-                cropping();
+		cropping();
                 autoresizeMobileGallery();
                 
                 
@@ -230,5 +219,16 @@
 		
 		
             });
+	    
+	    
+	    (function() { 
+		if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/)) { 
+		    var msViewportStyle = document.createElement("style"); 
+		    msViewportStyle.appendChild( 
+			document.createTextNode("@-ms-viewport{width:auto!important}") 
+		    ); 
+		    document.getElementsByTagName("head")[0].appendChild(msViewportStyle); 
+		} 
+	    })(); 
         </script>
     {/literal}
