@@ -92,6 +92,7 @@ class Product extends PbController {
 				
 				render("product/category");
 				return;
+				
 			}
 			else if($_GET["level"] == 1)
 			{
