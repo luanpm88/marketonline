@@ -1,0 +1,202 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Xác nhận hóa đơn - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="page-inner meminfo-box">
+                        <h1>Xác nhận hóa đơn</h1>
+                        <form name="offer_list_frm" id="cart" method="GET">
+                            <input type='hidden' name="do" value="product" />
+                            <input type='hidden' name="action" value="confirmorder" />
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Thông tin người mua</strong></div>
+                                <div class="panel-body">
+                                    <div class="info-2line-group">
+                                        <p>
+                                                <span>{lang fullname}</span>
+                                                {$Info.fullname}
+                                        </p>
+                                        
+                                        <p>
+                                                <span>{lang mobile}</span>
+                                                {$Info.mobile}
+                                        </p>
+                                        
+                                        <p>
+                                                <span>{lang email}</span>
+                                                {$Info.email}
+                                        </p>
+                                        
+                                                
+                                        
+                                        <p>
+                                                <span>{lang address}</span>
+                                                {$Info.address}
+                                        </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Thông tin người nhận</strong></div>
+                                <div class="panel-body">
+                                    <div class="info-2line-group">
+                                        <p>
+                                                <span>{lang fullname}</span>
+                                                {$Info.receiver_fullname}
+                                        </p>
+                                        
+                                        <p>
+                                                <span>{lang mobile}</span>
+                                                {$Info.receiver_mobile}
+                                        </p>
+                                        
+                                        <p>
+                                                <span>{lang email}</span>
+                                                {$Info.receiver_email}
+                                        </p>
+                                        
+                                                
+                                        
+                                        <p>
+                                                <span>{lang address}</span>
+                                                {$Info.receiver_address}
+                                        </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Thông tin nhà cung cấp</strong></div>
+                                <div class="panel-body">
+                                    <div class="info-2line-group">
+                                        <p>
+                                                <span>{lang space_name}</span>
+                                                {$Seller.shop_name}
+                                        </p>
+                                        
+                                        <p>
+                                                <span>{lang mobile}</span>
+                                                {$Seller.mobile}
+                                        </p>
+                                        
+                                        <p>
+                                                <span>{lang email}</span>
+                                                {$Seller.email}
+                                        </p>
+                                        
+                                                
+                                        
+                                        <p>
+                                                <span>{lang address}</span>
+                                                {$Seller.address}
+                                        </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Ghi chú đơn hàng</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <p>{$Info.message}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Chi tiết đơn hàng</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 70px;">{lang picture}</th>
+                                                <th style="width:30%">{lang products}</th>
+                                                <th style="text-align: center">{lang quantity} <span id="update_quantity_but"></span></th>
+                                                <th style="text-align: right">{lang sum_price}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <!--{loop $StickyItems.items sticky sticky_offer}-->
+                                                    <tr>
+                                                        <td class="cart-picture-cols">
+                                                            <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                                <img src="{$sticky.image}" />
+                                                            </a>
+                                                        </td>
+                                                        <td class="cart-line-name">
+                                                            <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                                {$sticky.p_name}
+                                                            </a>
+                                                        </td>
+                                                        <td style="text-align: center">
+                                                            x{$sticky.quantity}
+                                                        </td>
+                                                        <td style="text-align: right">
+                                                            {$sticky.p_total} (VNĐ)                                                
+                                                        </td>                                
+                                                    </tr>
+                                                <!--{/loop}-->
+                                                <tr>
+                                                    <td colspan="4" style="text-align: right">
+                                                        Tổng cộng: <strong>{$StickyItems.total} (VNĐ) </strong>
+                                                    </td>
+                                                </tr>
+                                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <p></p>
+                                <input class="checkout_but btn btn-primary" type="submit" value="Xác nhận hóa đơn" />
+                                
+                                <a href="{the_url module=root-url}index.php?do=product&action=meminfo&id={$smarty.get.id}" class="meminfo_but btn btn-default">Sửa thông tin đặt hàng</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        {literal}
+        <script>
+            function checkSameAsBuyer() {
+                if(!$('input[name="same_as_buyer"]:checked').length) {
+                    $('.receiver-info-panel .panel-body').show();
+                    $('.receiver-info-panel input[type="text"]').attr("required","");
+                } else {
+                    $('.receiver_box').hide();
+                    $('.receiver-info-panel input[type="text"]').removeAttr("required");
+                }
+            }
+            
+            $(document).ready(function() {
+                checkSameAsBuyer();
+                $('body').on("change",'input[name="same_as_buyer"]', function() {
+                    checkSameAsBuyer();
+                });
+            });
+        </script>
+        {/literal}
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

@@ -1753,7 +1753,12 @@ class Product extends PbController {
 			$this->sendTestMail($order_id);
 		}
 		
-		$this->render("product/thankyou");
+		if(detectMobile()) {
+			$this->render("mobile/product/thankyou");
+		} else {
+			$this->render("product/thankyou");
+		}
+		
 		
 	}
 	
@@ -1834,7 +1839,12 @@ class Product extends PbController {
 						setvar("Info", $info);
 						setvar("total", $cartitem->total);
 						
-						render("product/confirmorder");
+						if(detectMobile()) {
+							render("mobile/product/confirmorder");
+						} else {
+							render("product/confirmorder");
+						}
+						
 						exit;
 					}
 				}

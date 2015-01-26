@@ -728,7 +728,7 @@ body {
     font-weight: normal;
     margin-top: 15px;
 }
-input[type="text"], input[type="password"] {
+.input[type="text"], .input[type="password"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
@@ -770,6 +770,14 @@ label.error {
     margin: 0 -10px;
     margin-bottom: 10px;
 }
+.meminfo-box input[type="text"] {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    border-color: #aaa;
+    margin-bottom: 5px;
+}
 .input-group label {
     display: block;
     font-size: 100%;
@@ -783,4 +791,19 @@ label.error {
 }
 .meminfo-box input[type="submit"] {
     width: 100%;
+}
+.info-2line-group p span {
+    display: block;
+    float: left;
+    left: 0;
+    position: absolute;
+}
+.info-2line-group p {
+    padding-left: 140px;
+    position: relative;
+    min-height: 18px;   
+}
+.meminfo_but {
+    width: 100%;
+    margin-top: 10px;
 }
