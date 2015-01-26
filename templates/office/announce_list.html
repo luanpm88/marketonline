@@ -18,7 +18,7 @@
 		<div class="content-inner" style="margin-left: 20px;">
 			<ol>
 			    {announce row=10 userid=$MEMBER.id typeid=`$item.id` membertypeid=$MEMBER.membertype_id}
-				{$announce.status}{if $announce.status}
+				{if $announce.status}
 					<li{if !$announce.read} class="notread"{/if}><a href="{$announce.url}">{$announce.title}</a></li>
 				{/if}
 			    {/announce}
