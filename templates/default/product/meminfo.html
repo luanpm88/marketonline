@@ -324,24 +324,24 @@ function checkConfirmOrderFields() {
 			
 			<p>
 				<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}" {if $pb_userinfo.first_name} readonly="readonly" {/if}>
+				<input type="text" id="fullname" name="data[order][fullname]" class="bgWhite" value="{$pb_userinfo.last_name} {$pb_userinfo.first_name}">
 			</p>
 			
 			<p>
 				<span>{lang mobile}<b class="red-bold">*</b>&nbsp;</span>
-				<input value="{$pb_userinfo.mobile}" {if $pb_userinfo.mobile} readonly="readonly" {/if} type="text" name="data[order][mobile]" id="mobile" class="bgWhite" value="{$pb_username}">
+				<input value="{$pb_userinfo.mobile}" type="text" name="data[order][mobile]" id="mobile" class="bgWhite" value="{$pb_username.mobile}">
 			</p>
 			
 			<p>
 				<span>{lang email}<b class="red-bold">*</b>&nbsp;</span>
-				<input value="{$pb_userinfo.email}" {if $pb_userinfo.email} readonly="readonly" {/if} type="text" name="data[order][email]" id="email" class="bgWhite" value="">
+				<input value="{$pb_userinfo.email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
 			</p>
 			
 				
 			
 			<p>
 				<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" value="{$pb_userinfo.address}" {if $pb_userinfo.address} readonly="readonly" {/if} maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
+				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
 			</p>
 		{/if}
 		
@@ -378,12 +378,12 @@ function checkConfirmOrderFields() {
 		
 		<p>
 			<span>{lang mobile}<b class="red-bold">*</b>&nbsp;</span>
-			<input value="{$pb_userinfo.receiver_mobile}" {if $pb_userinfo.receiver_mobile} disabled="disabled" {/if} type="text" name="data[order][receiver_mobile]" id="receiver_mobile" class="bgWhite" value="{$pb_username}">
+			<input value="{$pb_userinfo.receiver_mobile}" {if $pb_userinfo.receiver_mobile} disabled="disabled" {/if} type="text" name="data[order][receiver_mobile]" id="receiver_mobile" class="bgWhite">
 		</p>
 		
 		<p>
 			<span>{lang email}<b class="red-bold">*</b>&nbsp;</span>
-			<input value="{$pb_userinfo.receiver_email}" {if $pb_userinfo.receiver_email} disabled="disabled" {/if} type="text" name="data[order][receiver_email]" id="receiver_email" class="bgWhite" value="">
+			<input value="{$pb_userinfo.receiver_email}" {if $pb_userinfo.receiver_email} disabled="disabled" {/if} type="text" name="data[order][receiver_email]" id="receiver_email" class="bgWhite">
 		</p>
 		
 		<p>		

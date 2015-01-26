@@ -1772,6 +1772,9 @@ class Product extends PbController {
 		
 		if(isset($_POST["data"]))
 		{
+			//var_dump($_POST["same_as_buyer"]);
+			//exit;
+			
 			if(isset($_SESSION["order_id"])) {
 				$order->deleteItems($_SESSION["order_id"]);
 				$order->del($_SESSION["order_id"]);
@@ -1779,7 +1782,7 @@ class Product extends PbController {
 			if(isset($_GET["id"]))
 			{				
 				//var_dump($_POST["data"]);
-				if(!isset($_POST["data"]["order"]["receiver_fullname"]))
+				if(!isset($_POST["data"]["order"]["receiver_fullname"]) || !isset($_POST["same_as_buyer"]))
 				{
 					$_POST["data"]["order"]["receiver_fullname"] = $_POST["data"]["order"]["fullname"];
 					$_POST["data"]["order"]["receiver_mobile"] = $_POST["data"]["order"]["mobile"];
@@ -1844,12 +1847,16 @@ class Product extends PbController {
 		$pb_company = $company->getInfoByUserId($pb_userinfo['id']);
 		//var_dump($pb_company);
 		
+		if(isset($_SESSION["order_id"])) {
+			setvar("order",$order->read("*", $_SESSION["order_id"]));
+		}
+		
 		setvar("Countries", $countries = cache_read("country"));
 		setvar("pb_userinfo", $pb_userinfo);
 		setvar("pb_company", $pb_company);
 		//$viewhelper->setPosition("Cart");
 		
-		if(false) {
+		if(true) {
 			$this->render("mobile/product/meminfo");
 		} else {
 			$this->render("product/meminfo");

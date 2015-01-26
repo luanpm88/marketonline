@@ -728,7 +728,7 @@ body {
     font-weight: normal;
     margin-top: 15px;
 }
-.logging-box input[type="text"], .logging-box input[type="password"] {
+input[type="text"], input[type="password"] {
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 10px;
@@ -750,4 +750,37 @@ label.error {
 }
 .logging_actions {
     margin-top: 10px;
+}
+.meminfo-box {
+    
+}
+.page-inner {
+    padding: 10px;
+    background: #fff;
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 40px;
+}
+.page-inner h1 {
+    font-size: 200%;
+    margin-top: 0;
+    margin-bottom: 25px;
+
+}
+.meminfo-box .panel {
+    margin: 0 -10px;
+    margin-bottom: 10px;
+}
+.input-group label {
+    display: block;
+    font-size: 100%;
+    font-weight: normal;
+    margin-top: 0;
+    font-size: 90%;
+}
+.input-group {
+    width: 100%;
+    margin-bottom: 10px;
+}
+.meminfo-box input[type="submit"] {
+    width: 100%;
 }
