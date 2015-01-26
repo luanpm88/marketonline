@@ -168,91 +168,99 @@
 				    </div>
     			
                         
-                        </div>
-                        
-                        
-                        <div class="mobile-product-infobox-title">Sản phẩm của gian hàng</div>
-                        <div class="mobile-shop-info">
-                            <!--<h3 class="seller-title">Thông tin người bán</h3>-->
-                            <div id="shop_info">
-                            
-                                    
-                                    <section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
-                                            
-                                            
-                                            {if $item.shop_name}			
-                                                                    
-                                            <div class="logo_box_u">
-                                            <div class="four columns logo logoz">
-                                                
-                                            
-                                                <a href="{the_url module=space userid=`$item.space_name`}">
-                                                    <img class="klbox" alt="{$COMPANY.name}" src="{$COMPANY.logo}"></a>
-                                              </div>
-                                              
-                                            </div>			
-                                                                    
-                                            {/if}			
-                                                                    
-                                                                    <!--<h5>Chủ Shop</h5>-->
-                                                    <div class="red_box">
-                                                                    <h3 class="shop_name" style="">{if $item.shop_name}
-                                            <a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
-                                                                    
-                                                    <div class="info-2line-group line-small">					    
-							    <p>
-								<label>Liên hệ</label>
-								{$item.link_people}
-							    </p>
-							    <p>
-								<label>{lang phone}</label>
-								{$COMPANY.contact_mobile}
-							    </p>
-							    <p>
-								<label>{lang email}</label>
-								<a style="word-wrap: break-word" href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a>
-							    </p>
-						    </p>
-                                                                        
-                                                     </div>
-                                            
-    
-                                                            </div>
-                                    
-                                    
-                                                            
-                                    
-                                    
-                                    </section>
-                                
-                                </div>
-                            <br style="clear: both" />
-                            
-                        </div>
-                    
-                        {if $item.content}
-                        <div class="mobile-product-infobox-title">Mô tả chi tiết</div>
-                            <div class="mobile-product-desc">
-                                
-                                <h2 class="page-title">
-				{$item.title}                    </h2>
+			
+			
+			    <div class="mobile-product-infobox-title">Sản phẩm của gian hàng</div>
+			    <div class="mobile-shop-info">
+				<!--<h3 class="seller-title">Thông tin người bán</h3>-->
+				<div id="shop_info">
+				
+					
+					<section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
+						
+						
+						{if $item.shop_name}			
+									
+						<div class="logo_box_u">
+						<div class="four columns logo logoz">
+						    
+						
+						    <a href="{the_url module=space userid=`$item.space_name`}">
+							<img class="klbox" alt="{$COMPANY.name}" src="{$COMPANY.logo}"></a>
+						  </div>
+						  
+						</div>			
+									
+						{/if}			
+									
+									<!--<h5>Chủ Shop</h5>-->
+							<div class="red_box">
+									<h3 class="shop_name" style="">{if $item.shop_name}
+						<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
+									
+							<div class="info-2line-group line-small">					    
+								<p>
+								    <label>Liên hệ</label>
+								    {$item.link_people}
+								</p>
+								<p>
+								    <label>{lang phone}</label>
+								    {$COMPANY.contact_mobile}
+								</p>
+								<p>
+								    <label>{lang email}</label>
+								    <a style="word-wrap: break-word" href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a>
+								</p>
+							</p>
+									    
+							 </div>
+						
 	
-				{$item.content}
-                                
-                                
-                                
-                            </div>
+								</div>
+					
+					
+								
+					
+					
+					</section>
+				    
+				    </div>
+				<br style="clear: both" />
+				
+			    </div>
+			
+			    {if $item.content}
+			    <div class="mobile-product-infobox-title">Mô tả chi tiết</div>
+				<div class="mobile-product-desc">
+				    
+				    <h2 class="page-title">
+				    {$item.title}                    </h2>
+	    
+				    {$item.content}
+				    
+				    
+				    
+				</div>
+				
+			    {/if}
 			    
-			{/if}
-                        
-                        <div class="related_products-container">
-                            <div class="mobile-product-infobox-title">Sản phẩm khác của gian hàng</div>
-                            <div class="related_products ajax-list">
-                                <div class="related_products_box">
-                                        
-                                </div>
-                            </div>
+			    <div class="related_products-container">
+				<div class="mobile-product-infobox-title">Sản phẩm khác của gian hàng</div>
+				<div class="related_products ajax-list">
+				    <div class="related_products_box">
+					    
+				    </div>
+				</div>
+			    </div>
+			
+			
+			
+			
+			
                         </div>
+                        
+                        
+                        
                         
                     </div>
                     
