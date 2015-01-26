@@ -1782,7 +1782,7 @@ class Product extends PbController {
 			if(isset($_GET["id"]))
 			{				
 				//var_dump($_POST["data"]);
-				if(!isset($_POST["data"]["order"]["receiver_fullname"]) || !isset($_POST["same_as_buyer"]))
+				if(!isset($_POST["data"]["order"]["receiver_fullname"]) || isset($_POST["same_as_buyer"]))
 				{
 					$_POST["data"]["order"]["receiver_fullname"] = $_POST["data"]["order"]["fullname"];
 					$_POST["data"]["order"]["receiver_mobile"] = $_POST["data"]["order"]["mobile"];

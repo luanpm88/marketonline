@@ -95,7 +95,7 @@
         {literal}
         <script>
             function checkSameAsBuyer() {
-                if($('input[name="same_as_buyer"]:checked').length) {
+                if(!$('input[name="same_as_buyer"]:checked').length) {
                     $('.receiver-info-panel .panel-body').show();
                     $('.receiver-info-panel input[type="text"]').attr("required","");
                 } else {
