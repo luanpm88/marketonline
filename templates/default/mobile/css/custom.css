@@ -899,7 +899,7 @@ label.error {
     border-style: none none dotted;
     border-width: medium medium 1px;
     margin: 0;
-    padding: 10px 15px;
+    padding: 5px;
 }
 .top-search-result-box .list-group li:last-child {
     border-bottom: 0;
