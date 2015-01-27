@@ -226,7 +226,11 @@
                 cropping();
                 autoresizeMobileGallery();
             });
-            
+	    
+            $(document).scroll(function() {
+                $("#search-panel input").blur();
+            });
+	    
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
             $(document).ready(function() {
 		
@@ -308,6 +312,10 @@
 		$('.top-search-bg').on("click", function(event){
 		    goSearch();
 		});
+		//$('.wrapper-search').on("click", function(event){
+		//    $("#search-panel input").blur();
+		//});
+		
 		///////////////////////////////////////////////////////////
 		
 		
