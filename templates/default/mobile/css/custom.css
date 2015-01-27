@@ -972,6 +972,7 @@ label.error {
     right: 5px;
     top: 5px;
     z-index: 100;
+    background: #3b984c;
 }
 #search-panel input {
     font-size: 85%;
