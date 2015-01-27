@@ -226,7 +226,9 @@
                 cropping();
                 autoresizeMobileGallery();
             });
-	    
+	    $(window).scroll(function() {
+                $("#search-panel input").blur();
+            });
 	    
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
             $(document).ready(function() {
