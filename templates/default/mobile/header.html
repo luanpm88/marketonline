@@ -56,34 +56,37 @@
         <!--{include file="`$theme_name`/mobile/_sidebar.html"}-->
         <!--{include file="`$theme_name`/mobile/_top_menu.html"}-->
         
-        <div class="wrapper-search">
-            <div id="search-panel" class="row collapse navbar-collapse top-search-form">
-                <div class="form-group">                    
-                  <div class="input-group">
-                    <span class="btn btn-primary glyphicon glyphicon-search top-search-bg"></span>
-                    <div class="input-group-btn">
-                      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        <span aria-hidden="true" class="top-search-type glyphicon glyphicons shop" rel="shop"></span>
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu" role="menu">
-                          <li rel="shop" icon-rel="shop" holder-rel="Tên Gian hàng/Công ty/Chủ nhân/Email/...">
-                            <a href="#">
-                              <span aria-hidden="true" class="glyphicon glyphicons shop"></span>
-                              &nbsp;&nbsp;Tìm kiếm gian hàng
-                            </a>
-                          </li>
-                          <li rel="product" icon-rel="fins" holder-rel="Tên sản phẩm/Mã sản phẩm/Tên Thương hiệu/...">
-                            <a href="#">
-                              <span aria-hidden="true" class="glyphicon glyphicons fins"></span>
-                              &nbsp;&nbsp;Tìm kiếm sản phẩm
-                            </a>
-                          </li>                      
-                        </ul>
-                    </div><!-- /btn-group -->
-                    <input id="top-search-input" placeholder="Tên Gian hàng/Công ty/Chủ nhân/Email/..." type="text" class="top-search-input form-control">
-                  </div><!-- /input-group -->
-                </div>
+        <div id="search-panel" class="row collapse navbar-collapse top-search-form">
+            <div class="form-group">                    
+              <div class="input-group">
+                <span class="btn btn-primary glyphicon glyphicon-search top-search-bg"></span>
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span aria-hidden="true" class="top-search-type glyphicon glyphicons shop" rel="shop"></span>
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li rel="shop" icon-rel="shop" holder-rel="Tên Gian hàng/Công ty/Chủ nhân/Email/...">
+                        <a href="#">
+                          <span aria-hidden="true" class="glyphicon glyphicons shop"></span>
+                          &nbsp;&nbsp;Tìm kiếm gian hàng
+                        </a>
+                      </li>
+                      <li rel="product" icon-rel="fins" holder-rel="Tên sản phẩm/Mã sản phẩm/Tên Thương hiệu/...">
+                        <a href="#">
+                          <span aria-hidden="true" class="glyphicon glyphicons fins"></span>
+                          &nbsp;&nbsp;Tìm kiếm sản phẩm
+                        </a>
+                      </li>                      
+                    </ul>
+                </div><!-- /btn-group -->
+                <input id="top-search-input" placeholder="Tên Gian hàng/Công ty/Chủ nhân/Email/..." type="text" class="top-search-input form-control">
+              </div><!-- /input-group -->
             </div>
+        </div>
+        
+        
+        <div class="wrapper-search">
+            
             
             <div class="search-page-result">
                 <div class="top-search-result-box" style="display: none">

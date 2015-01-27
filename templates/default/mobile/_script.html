@@ -21,11 +21,25 @@
 	    }
 	    
 	    //--------------TOP SEARCH ACTIONS------------------------//
+	    function hideSearch() {
+		$('.top-search-result-box').hide();
+		    
+		$('.wrapper-search').hide();
+		$('.wrapper-inner').show();
+	    }
+	    
+	    function showSearch() {
+		$('.top-search-result-box').show();
+		    
+		$('.wrapper-search').show();
+		$('.wrapper-inner').hide();
+	    }
+	    
 	    var keytimeout;
 	    function goSearch() {
 		if ($('.top-search-input').val().trim() != '') {
 		    $('.top-search-result-box .panel-body').html('<div class="no-search-top search-loading">Loading</div>');
-		    $('.top-search-result-box').show();
+		    showSearch();
 		    
 		    clearTimeout(keytimeout);
 		
@@ -34,7 +48,7 @@
 		    }, 500);
 		    
 		} else {
-		    $('.top-search-result-box').hide();
+		    hideSearch();
 		}
 	    }
 	    
@@ -289,7 +303,7 @@
 		    goSearch();
 		});
 		$('.navbar-header').on("click", function(event){
-		    $('.top-search-result-box').hide();
+		    hideSearch();
 		});
 		$('.top-search-bg').on("click", function(event){
 		    goSearch();
