@@ -827,7 +827,7 @@ label.error {
 #search-panel .input-group {
     background: none repeat scroll 0 0 #fff;
     margin: 0;
-    padding: 5px;
+    padding: 8px 5px;
     width: 100%;
 }
 #search-panel .form-group {
@@ -837,7 +837,7 @@ label.error {
     margin-top: 0;
     position: fixed;
     width: 100%;
-    z-index: 20;
+    z-index: 2000;
 }
 #search-panel button, #search-panel input {
     border: 0 none;
@@ -853,12 +853,13 @@ label.error {
     border-radius: 4px 0 0 4px;
     border-style: solid;
     border-width: 1px 0 1px 1px;
-    height: 34px;
-    padding: 3px 10px;
+    height: 40px;
+    padding: 6px;
 }
 #search-panel input {
     border: 1px solid #aaa;
-    padding: 10px 0 10px 55px;
+    height: 40px;
+    padding: 10px 0 10px 50px;
     width: 100%;
 }
 #search-panel .glyphicon {
@@ -965,15 +966,15 @@ label.error {
     color: #b92c28;
 }
 .top-search-bg {
+    background: none repeat scroll 0 0 #3b984c;
     border-radius: 0 4px 4px 0;
     color: rgba(255, 255, 255, 0.9);
-    height: 34px;
-    padding: 1px 10px;
+    height: 40px;
+    padding: 4px 15px;
     position: absolute;
     right: 5px;
-    top: 5px;
+    top: 8px;
     z-index: 100;
-    background: #3b984c;
 }
 #search-panel input {
     font-size: 85%;
