@@ -819,14 +819,14 @@ label.error {
 #search-panel {
     background: none repeat scroll 0 0 #fff;
     border-bottom: 1px solid #ddd;
-    height: 36px;
+    height: 46px;
+    margin: 0;
     padding: 0;
     top: 49px;
     width: 100%;
-    margin: 0;
 }
 #search-panel .input-group {
-    background: none repeat scroll 0 0 #3b984c;
+    background: none repeat scroll 0 0 #fff;
     margin-bottom: 10px;
     padding: 5px;
     width: 100%;
@@ -845,11 +845,16 @@ label.error {
     padding: 0;
 }
 #search-panel .input-group-btn .btn {
+    border-color: #aaa;
+    border-radius: 4px 0 0 4px;
+    border-style: solid;
+    border-width: 1px 0 1px 1px;
+    height: 34px;
     padding: 3px 10px;
 }
 #search-panel input {
-    border: 0;
-    padding-left: 55px;
+    border: 1px solid #aaa;
+    padding: 10px 0 10px 55px;
     width: 100%;
 }
 #search-panel .glyphicon {
@@ -959,12 +964,16 @@ label.error {
     color: #b92c28;
 }
 .top-search-bg {
-    color: #aaa;
+    border-radius: 0 4px 4px 0;
+    color: rgba(255, 255, 255, 0.9);
+    height: 34px;
+    padding: 1px 10px;
     position: absolute;
-    right: 11px;
-    top: 11px;
+    right: 5px;
+    top: 5px;
     z-index: 100;
 }
 #search-panel input {
     font-size: 85%;
+    box-shadow: none;
 }
