@@ -869,9 +869,7 @@ label.error {
 }
 .top-search-result-box {
     margin-top: -1px;
-    position: absolute;
     width: 100%;
-    z-index: 10;
 }
 .top-search-result-box .panel {
     border-radius: 0;
