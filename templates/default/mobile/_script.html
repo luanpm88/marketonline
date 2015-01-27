@@ -38,6 +38,8 @@
 	    var keytimeout;
 	    function goSearch() {
 		if ($('.top-search-input').val().trim() != '') {
+		    $(document).scrollTop(0);
+		    
 		    $('.top-search-result-box .panel-body').html('<div class="no-search-top search-loading">Loading</div>');
 		    showSearch();
 		    
@@ -227,7 +229,7 @@
                 autoresizeMobileGallery();
             });
 	    $(document).scroll(function() {
-                $("#search-panel input").blur();
+                if($(document).scrollTop()>100) $("#search-panel input").blur();
             });
 	    
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
