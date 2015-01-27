@@ -452,6 +452,8 @@ class Product extends PbController {
 				
 			}
 			
+			setvar("pagetitle", "Sản phẩm");
+			
 			if(detectMobile()) {
 				render("mobile/product/index");
 			} else {
@@ -589,7 +591,7 @@ class Product extends PbController {
 			
 			setvar("fimages", $fimages);
 			setvar("page_title", "Thị Trường Trực Tuyến");
-			
+			setvar("pagetitle", "Sản phẩm");
 			
 			
 			if(detectMobile()) {
@@ -5123,7 +5125,7 @@ class Product extends PbController {
 				}
 				
 				setvar("IndustryList", $IndustryList);
-				render("services/level1");
+				//render("services/level1");
 			}
 			else if($_GET["level"] == 1)
 			{
@@ -5216,7 +5218,7 @@ class Product extends PbController {
 				
 				setvar("IndustryList", $industries[$_GET["industryid"]]);
 				
-				render("services/level1");
+				//render("services/level1");
 			}
 			else if($_GET["level"] == 2)
 			{
@@ -5299,7 +5301,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("services/level1");
+				//render("services/level1");
 			}
 			else if($_GET["level"] == 3)
 			{
@@ -5377,7 +5379,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("services/level1");
+				//render("services/level1");
 			}
 			else if($_GET["level"] == 4)
 			{
@@ -5441,7 +5443,7 @@ class Product extends PbController {
 				}
 				setvar("IndustryList", $IndustryList);
 				
-				render("services/level1");
+				//render("services/level1");
 			}
 		}
 		else
@@ -5462,6 +5464,17 @@ class Product extends PbController {
 			}
 			
 			setvar("IndustryList", $IndustryList);
+			
+			
+			//render("services/level1");
+		}
+		
+		setvar("service_page",1);
+		setvar("pagetitle","Dịch vụ");
+		
+		if(detectMobile()) {
+			render("mobile/product/index");
+		} else {
 			render("services/level1");
 		}
 	}

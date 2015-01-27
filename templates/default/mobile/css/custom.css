@@ -240,6 +240,9 @@ body {
     background-color: #1acfac;
     color: #fff;
 }
+.service-page .fixed-tab-top.product-tabs .nav-pills > li.active > a, .service-page .nav-pills > li.active > a:focus, .service-page .nav-pills > li.active > a:hover {
+    background-color: #ffa544;
+}
 .ajax-list-container {
     background: #fff;
 }
@@ -979,4 +982,7 @@ label.error {
 #search-panel input {
     font-size: 85%;
     box-shadow: none;
+}
+.service-page .fixed-tab-top {
+    border-bottom: 1px solid #ffa544;
 }
