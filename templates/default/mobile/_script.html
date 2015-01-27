@@ -230,7 +230,7 @@
             });
 	    
 	    function blurSearchInput() {
-		if($(document).scrollTop()>100) { $("#search-panel input").blur();
+		if($(document).scrollTop()>100) $("#search-panel input").blur();
 	    }
 	    $(document).scroll(function() {
                 setTimeout("blurSearchInput();",2000);
