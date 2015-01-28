@@ -10,7 +10,8 @@
 	    <input type="hidden" name="pos_pg" value="0" />
 	    <input type="hidden" name="num_per_page" value="25" />
 	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
-        
+        {elseif $offer_page}
+	    
 	{else}
 	    <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />

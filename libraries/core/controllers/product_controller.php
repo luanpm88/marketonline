@@ -5885,11 +5885,14 @@ class Product extends PbController {
 			render("offers/level1");
 		}
 		
-		if(detectMobile()) {
-			render("mobile/product/index");
-		} else {
+		//setvar("offer_page",1);
+		//setvar("pagetitle","Thương mại");
+		//
+		//if(detectMobile()) {
+		//	render("mobile/product/index");
+		//} else {
 			render("offers/level1");
-		}
+		//}
 	}
 	
 	function ajaxMainCategoryMenu()
