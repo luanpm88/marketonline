@@ -112,7 +112,7 @@ class Products extends PbModel {
 		
 		
 		$searchkeywords = strip_tags(urldecode($_GET['q']));
-		if (isset($_GET['q'])) {
+		if (isset($_GET['q']) && $_GET['q']!="") {
 			$fields = "MATCH (Product.name) AGAINST ('".$searchkeywords."') AS score, MATCH (Product.content) AGAINST ('".$searchkeywords."') AS score1, ";
 			$fields .= "MATCH (b.name) AGAINST ('".$searchkeywords."') AS score2, ";
 			$fields .= "MATCH (Product.product_code) AGAINST ('".$searchkeywords."') AS score3, ";
