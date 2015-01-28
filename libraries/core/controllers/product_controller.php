@@ -1130,7 +1130,7 @@ class Product extends PbController {
 		
 		
 		$area_a = array();
-		if (false && isset($_GET['industryid']) && $_GET['industryid'] != 0 && $_GET['industryid'] != "") {
+		if (isset($_GET['industryid']) && $_GET['industryid'] != 0 && $_GET['industryid'] != "") {
 			//Get industry level 1
 			$industries = $this->industry->getCacheIndustry();
 			
@@ -1425,7 +1425,7 @@ class Product extends PbController {
 				if(strpos($item, "industry_id"))
 				{
 					$this->product->condition[$key] = "Product.industry_id IN (".implode(',',$area_a).")";
-					if($_GET['industryid'] == 0)
+					if($_GET['industryid'] == 0 && $_GET['industryid']!="")
 					{
 						$this->product->condition[$key] = '1';
 					}
