@@ -1,0 +1,304 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$page_title`"}-->
+            
+            
+            
+        
+            
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            
+            
+            
+            <div class="container-fluid">
+                
+                
+                <div class="row">
+                    
+                    
+                    
+                    <div class="product-title">
+                        <h4>Thương mại / {$Trade.typename}</h4>
+                        <h1>{$item.name}</h1>
+                    </div>
+                        
+                    <div class="mobile-product-gallery">
+                        <ul class="thumbnails">
+                        {if $item.image}
+                            <li>
+                                <a href="{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                </a>
+                            </li>
+                        {/if}
+                        {if $item.image1}
+                            <li>
+                                <a href="{$item.image1}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image1}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                </a>
+                            </li>
+                        {/if}
+                        {if $item.image2}
+                            <li>
+                                <a href="{$item.image2}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image2}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                </a>
+                            </li>
+                        {/if}
+                        {if $item.image3}
+                            <li>
+                                <a href="{$item.image3}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image3}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                </a>
+                            </li>
+                        {/if}
+                        {if $item.image4}
+                            <li>
+                                <a href="{$item.image4}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image4}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                </a>
+                            </li>
+                        {/if}
+			</ul>
+                    </div>
+                    
+                    
+                        <div class="mobile-product-info">
+                        
+                        
+                            <div class="summary">
+                                
+                                
+                                
+                                
+				    <div class="sum_top">
+					
+					<div class="info-2line-group">
+					    
+					    <p>
+						<label>Giá</label>
+						{if $item.new_price || $item.price}					
+							{if $item.new_price != "" && $item.new_price != 0}
+								{if $item.price}<span class="old_price title">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+							{else}
+								<span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+							{/if}
+						{/if}
+					    </p>
+					    
+					    {if $item.industry_name}
+						<p>
+						    <label>Chuyên mục</label>
+						    {$item.industry_name}
+						</p>
+					    {/if}
+					    
+					    {if $item.brand_name}
+						<p>
+						    <label>{lang brand}</label>
+						    {$item.brand_name}
+						</p>
+					    {/if}
+					    
+					    {if $item.market}
+						<p>
+						    <label>{lang market}</label>
+						    {$item.market}
+						</p>
+					    {/if}
+					    
+					    {if $item.product_code}
+						<p>
+						    <label>{lang product_code}</label>
+						    {$item.product_code}
+						</p>
+					    {/if}
+					    
+					    <!--{foreach from=$ObjectParams name=form item=item1 key=key1}-->
+						{if $item1.value}
+						    <p>
+							<label>{$item1.label}</label>
+							{$item1.value}
+						    </p>
+						{/if}
+					    <!--{/foreach}-->
+					    
+					    
+					</div>
+					
+				
+			
+				
+			
+			
+				<link itemprop="availability" href="http://schema.org/InStock" />
+			
+			</div>
+					<div itemprop="description">
+			
+			
+			</div>
+			
+                            <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
+                                
+                                    <div class="quantity">
+                                        <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />
+                                    </div>
+                                    
+                                    <p style="text-align: center">
+                                        <a href="{the_url module=root-url}index.php?do=product&action=add_cart&id={$item.id}" type="button" class="single_add_to_cart_button button alt btn btn-primary">{lang add_to_cart}</a>
+                                    </p>
+                                    
+                                    <p></p>
+                                    {if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label> {$item.tag}</p>{/if}
+                                    
+                            </form>                                
+				
+			</div>
+			
+			
+				
+				    </div>
+    			
+                        
+			
+			
+			    <div class="mobile-product-infobox-title">Sản phẩm của gian hàng</div>
+			    <div class="mobile-shop-info">
+				<!--<h3 class="seller-title">Thông tin người bán</h3>-->
+				<div id="shop_info">
+				
+					
+					<section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
+						
+						
+						{if $company.shop_name}			
+									
+						<div class="logo_box_u">
+						<div class="four columns logo logoz">
+						    
+						
+						    <a href="{the_url module=space userid=`$item.space_name`}">
+							<img class="klbox" alt="{$company.name}" src="{$company.logo}"></a>
+						  </div>
+						  
+						</div>			
+									
+						{/if}			
+									
+									<!--<h5>Chủ Shop</h5>-->
+							<div class="red_box">
+									<h3 class="shop_name" style="">{if $company.shop_name}
+						<a href="{$company.url}">{$company.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
+									
+							<div class="info-2line-group line-small">					    
+								<p>
+								    <label>Liên hệ</label>
+								    {$company.link_man}
+								</p>
+								<p>
+								    <label>{lang phone}</label>
+								    {$company.contact_mobile}
+								</p>
+								<p>
+								    <label>{lang email}</label>
+								    <a style="word-wrap: break-word" href="{the_url module=space userid=`$company.space_name`}contact">{$company.contact_email}</a>
+								</p>
+							</p>
+									    
+							 </div>
+						
+	
+								</div>
+					
+					
+								
+					
+					
+					</section>
+				    
+				    </div>
+				<br style="clear: both" />
+				
+			    </div>
+			
+			    {if $item.content}
+			    <div class="mobile-product-infobox-title">Mô tả chi tiết</div>
+				<div class="mobile-product-desc">
+				    
+				    <h2 class="page-title">
+				    {$item.name}                    </h2>
+	    
+				    {$item.content}
+				    
+				    
+				    
+				</div>
+				
+			    {/if}
+			    
+			    <div class="related_products-container">
+				<div class="mobile-product-infobox-title">Sản phẩm khác của gian hàng</div>
+				<div class="related_products ajax-list">
+				    <div class="related_products_box">
+					    
+				    </div>
+				</div>
+			    </div>
+			
+			
+			
+			
+			
+                        </div>
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    
+                    
+                        
+                    
+                            
+                    
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        
+        {literal}
+            <script>
+                function getSameShopProducts() {
+                    //get related products
+                    $.ajax({
+                            url: ROOT_URL+"index.php?do=product&mobile=1&action=related_products&member_id=<!--{/literal}-->{$item.member_id}<!--{literal}-->&product_id=<!--{/literal}-->{$item.id}<!--{literal}-->",
+                    }).done(function ( data ) {
+                            if( console && console.log ) {
+                                    $('.related_products_box').html(data);                                    
+                                    
+                                    if ($('.related_products li').length < 6) {
+                                            $('.view_more_detail').remove()
+                                    }
+                                    
+                                    if (!$('.related_products li').length) {
+                                            $('.related_products-container').remove()
+                                    }
+                            }
+                    });
+                }
+                getSameShopProducts();
+            </script>
+        {/literal}
+        
+        
+        
+        
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

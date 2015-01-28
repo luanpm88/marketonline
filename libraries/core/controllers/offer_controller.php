@@ -1801,8 +1801,14 @@ class Offer extends PbController {
 			setvar("Trade", $Trade);
 			setvar("company", $company);
 			setvar("member", $member);
+			setvar("item", $Trade);
 			
-			$this->render("offers/detail");
+			if(detectMobile()) {
+				$this->render("mobile/offer/detail");
+			} else {
+				$this->render("offers/detail");
+			}
+			
 		}
 	}
 	

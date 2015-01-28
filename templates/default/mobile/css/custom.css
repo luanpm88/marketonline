@@ -475,7 +475,7 @@ body {
     padding: 8px 10px;
     border-top: solid 1px #ddd;
     border-bottom: solid 1px #ddd;
-    margin-top: 10px;
+    margin-top: 0;
 }
 .product-title h4 {
     font-size: 90%;
