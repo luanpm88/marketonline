@@ -5884,15 +5884,6 @@ class Product extends PbController {
 			setvar("IndustryList", $IndustryList);
 			render("offers/level1");
 		}
-		
-		//setvar("offer_page",1);
-		//setvar("pagetitle","Thương mại");
-		//
-		//if(detectMobile()) {
-		//	render("mobile/product/index");
-		//} else {
-			render("offers/level1");
-		//}
 	}
 	
 	function ajaxMainCategoryMenu()
