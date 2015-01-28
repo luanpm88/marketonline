@@ -989,6 +989,6 @@ label.error {
 .offer-page .fixed-tab-top.product-tabs .nav-pills > li.active > a, .offer-page .nav-pills > li.active > a:focus, .offer-page .nav-pills > li.active > a:hover {
     background-color: #57bae8;
 }
-.offer-page .offer-tab-top {
+.offer-page .fixed-tab-top {
     border-bottom: 1px solid #57bae8;
 }
