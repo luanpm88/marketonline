@@ -107,6 +107,7 @@ class Trades extends PbModel {
  			$result[$keys]['digest'] = pb_lang_split($values['digest']);
  			$result[$keys]['typename'] = $cache_types['offertype'][$values['type_id']];
 			$result[$keys]["name"] = fix_text_error($result[$keys]["name"]);
+			$result[$keys]["name"] = $result[$keys]["title"];
 			
 			if($result[$keys]['default_pic'])
 			{
