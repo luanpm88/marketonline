@@ -18,7 +18,7 @@
     <link href="{the_url module=root-url}{$theme_img_path}mobile/css/simple-sidebar.css" rel="stylesheet">
     <link href="{the_url module=root-url}{$theme_img_path}mobile/css/sticky-footer.css?v=14" rel="stylesheet">
     <link href="{the_url module=root-url}{$theme_img_path}mobile/css/glyphicons.css?v=15" rel="stylesheet">
-    <link href="{the_url module=root-url}{$theme_img_path}mobile/css/custom.css?v=27" rel="stylesheet">
+    <link href="{the_url module=root-url}{$theme_img_path}mobile/css/custom.css?v=28" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,7 +52,7 @@
     
     
 
-    <div id="wrapper">
+    <div id="wrapper" class="{if $smarty.get.do=='product'}product-page{/if} {if $service_page}service-page{/if} {if $offer_page}offer-page{/if}">
         
         <!--{include file="`$theme_name`/mobile/_sidebar.html"}-->
         <!--{include file="`$theme_name`/mobile/_top_menu.html"}-->

@@ -992,3 +992,12 @@ label.error {
 .offer-page .fixed-tab-top {
     border-bottom: 1px solid #57bae8;
 }
+.product-page .navbar-inverse {
+    background-color: #1acfac;
+}
+.offer-page .navbar-inverse {
+    background-color: #57bae8;
+}
+.service-page .navbar-inverse {
+    background-color: #ffa544;
+}
