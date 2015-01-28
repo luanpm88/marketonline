@@ -1343,7 +1343,7 @@ class Product extends PbController {
 			}
 			
 			if($_GET["layout"]=='mobile') {
-				$this->render("mobile/product/ajax.list");
+				$this->render("mobile/product/ajax_list");
 			} else {
 				$this->render("product/ajax.offerlist");
 			}
