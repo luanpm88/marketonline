@@ -1425,7 +1425,7 @@ class Product extends PbController {
 				if(strpos($item, "industry_id"))
 				{
 					$this->product->condition[$key] = "Product.industry_id IN (".implode(',',$area_a).")";
-					if($_GET['industryid'] == 0 && $_GET['industryid']!="")
+					if($_GET['industryid'] == 0 || $_GET['industryid']=="")
 					{
 						$this->product->condition[$key] = '1';
 					}
