@@ -1130,11 +1130,12 @@ class Product extends PbController {
 		
 		
 		$area_a = array();
-		if (isset($_GET['industryid']) && $_GET['industryid'] != 0) {
+		if (isset($_GET['industryid']) && $_GET['industryid'] != 0 && $_GET['industryid'] != "") {
 			//Get industry level 1
 			$industries = $this->industry->getCacheIndustry();
 			
 			$area_a[] = $_GET['industryid'];
+			
 			
 			if (isset($_GET['type']) && $_GET['type'] == 'service' && !isset($_GET['service_page'])) {
 				$citem = $this->industry->read("*", $_GET['industryid'], null, array('id'=>$_GET['industryid']));
