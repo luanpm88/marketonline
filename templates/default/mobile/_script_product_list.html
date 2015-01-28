@@ -1,14 +1,21 @@
     <form class="ajax_product_filter_form" action="{the_url module=root-url}">
-	<input type="hidden" name="do" value="product" />
-	<input type="hidden" name="action" value="listAjax" />
-	<input type="hidden" name="orderby" value="dateline" />
-	<input type="hidden" name="layout" value="mobile" />
-	<input type="hidden" name="pos_pg" value="0" />
-	<input type="hidden" name="num_per_page" value="25" />
-	<input type="hidden" name="type" value="" />
-	<input type="hidden" name="industryid" value="{$smarty.get.industryid}" />
-	<input type="hidden" name="q" value="{$smarty.get.keyword}" />
-	<input type="hidden" name="service_page" value="{$service_page}" />
+	{if service_page}
+            <input type="hidden" name="do" value="product" />
+	    <input type="hidden" name="action" value="listAjax" />
+	    <input type="hidden" name="orderby" value="dateline" />
+	    <input type="hidden" name="type" value="service" />
+	    <input type="hidden" name="service_page" value="1" />
+        {else}
+	    <input type="hidden" name="do" value="product" />
+	    <input type="hidden" name="action" value="listAjax" />
+	    <input type="hidden" name="orderby" value="dateline" />
+	    <input type="hidden" name="layout" value="mobile" />
+	    <input type="hidden" name="pos_pg" value="0" />
+	    <input type="hidden" name="num_per_page" value="25" />
+	    <input type="hidden" name="type" value="" />
+	    <input type="hidden" name="industryid" value="{$smarty.get.industryid}" />
+	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
+	{/if}
     </form>
     <div id="ajax_output" style="display: none"></div>
     
