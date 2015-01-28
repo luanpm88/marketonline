@@ -6,7 +6,12 @@
 	    <input type="hidden" name="type" value="service" />
 	    <input type="hidden" name="service_page" value="1" />
 	    <input type="hidden" name="layout" value="mobile" />
-        {else}
+	    <input type="hidden" name="industryid" value="{$smarty.get.industryid}" />
+	    <input type="hidden" name="pos_pg" value="0" />
+	    <input type="hidden" name="num_per_page" value="25" />
+	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
+        
+	{else}
 	    <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
 	    <input type="hidden" name="orderby" value="dateline" />
