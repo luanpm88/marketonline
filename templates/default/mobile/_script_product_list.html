@@ -10,6 +10,8 @@
 	    <input type="hidden" name="pos_pg" value="0" />
 	    <input type="hidden" name="num_per_page" value="25" />
 	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
+	    
+	    <input type="hidden" name="offertype" value="" />
         {elseif $offer_page}
 	    <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
@@ -23,6 +25,7 @@
 	    <input type="hidden" name="offertype" value="all" />
 	     <input type="hidden" name="offer_page" value="1" />
 	{else}
+	
 	    <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
 	    <input type="hidden" name="orderby" value="dateline" />
@@ -32,6 +35,8 @@
 	    <input type="hidden" name="type" value="" />
 	    <input type="hidden" name="industryid" value="{$smarty.get.industryid}" />
 	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
+	    
+	    <input type="hidden" name="offertype" value="" />
 	{/if}
     </form>
     <div id="ajax_output" style="display: none"></div>
@@ -72,9 +77,9 @@
 		});
 	    }
 	    
-	    function updateTab(orderby, type) {
+	    function updateTab(orderby, type, offertype) {
 		$(".ajax-tab-but").removeClass("active");
-		$(".ajax-tab-but[orderby='"+orderby+"'][type='"+type+"']").addClass("active");
+		$(".ajax-tab-but[orderby='"+orderby+"'][type='"+type+"'][offertype='"+offertype+"']").addClass("active");
 	    }
 	    
 	    function updateCatFilter(cat_id) {
@@ -137,8 +142,9 @@
 
 		    $(".ajax_product_filter_form input[name='orderby']").val($(this).attr("orderby"));
 		    $(".ajax_product_filter_form input[name='type']").val($(this).attr("type"));
+		    $(".ajax_product_filter_form input[name='offertype']").val($(this).attr("offertype"));
 		    
-		    updateTab($(this).attr("orderby"), $(this).attr("type"));
+		    updateTab($(this).attr("orderby"), $(this).attr("type"), $(this).attr("offertype"));
 		    
 		    initList();
 		    ajaxList();
@@ -147,7 +153,7 @@
 		//first list
 		//update cat
 		updateCatFilter($(".ajax_product_filter_form input[name='industryid']").val());
-		updateTab($(".ajax_product_filter_form input[name='orderby']").val(), $(".ajax_product_filter_form input[name='type']").val());
+		updateTab($(".ajax_product_filter_form input[name='orderby']").val(), $(".ajax_product_filter_form input[name='type']").val(), $(".ajax_product_filter_form input[name='offertype']").val());
 		
 		//update keyword
 		if($(".ajax_product_filter_form input[name='q']").val()=="") {
