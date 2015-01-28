@@ -13,7 +13,7 @@ class Products extends PbModel {
  		$this->condition[] = "Product.status=1 ";
 		$this->condition[] = "Product.valid_status=1 ";
 		$this->condition[] = "Product.state=1 ";
- 		if (false && isset($_GET['industryid']) && $area_a == null && $_GET['industryid']!="") {
+ 		if (isset($_GET['industryid']) && $area_a == null && $_GET['industryid']!="") {
  			if (strpos($_GET['industryid'], ",")!==false) {
  				$this->condition[]= "Product.industry_id IN (".trim($_GET['industryid']).")";
  			}else{
