@@ -233,7 +233,7 @@
 		if($(document).scrollTop()>50) $("#search-panel input").blur();
 	    }
 	    $(document).scroll(function() {
-                setTimeout("blurSearchInput();",1000);
+                setTimeout("blurSearchInput();",500);
             });
 	    
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
