@@ -1,10 +1,11 @@
     <form class="ajax_product_filter_form" action="{the_url module=root-url}">
-	{if service_page}
+	{if $service_page}
             <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
 	    <input type="hidden" name="orderby" value="dateline" />
 	    <input type="hidden" name="type" value="service" />
 	    <input type="hidden" name="service_page" value="1" />
+	    <input type="hidden" name="layout" value="mobile" />
         {else}
 	    <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
