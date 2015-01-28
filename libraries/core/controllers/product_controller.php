@@ -1340,7 +1340,13 @@ class Product extends PbController {
 				setvar("isConnect", 1);
 				
 			}
-			$this->render("product/ajax.offerlist");
+			
+			if($_GET["layout"]=='mobile') {
+				$this->render("mobile/product/ajax.list");
+			} else {
+				$this->render("product/ajax.offerlist");
+			}
+			
 		
 		}
 		else
@@ -5549,7 +5555,7 @@ class Product extends PbController {
 				}
 				
 				setvar("IndustryList", $IndustryList);
-				render("offers/level1");
+				//render("offers/level1");
 			}
 			else if($_GET["level"] == 1)
 			{
@@ -5641,7 +5647,7 @@ class Product extends PbController {
 				
 				setvar("IndustryList", $industries[$_GET["industryid"]]);
 				
-				render("offers/level1");
+				//render("offers/level1");
 			}
 			else if($_GET["level"] == 2)
 			{
@@ -5724,7 +5730,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("offers/level1");
+				//render("offers/level1");
 			}
 			else if($_GET["level"] == 3)
 			{
@@ -5797,7 +5803,7 @@ class Product extends PbController {
 				$IndustryList["count"] = count($IndustryList["sub"]);
 				setvar("IndustryList", $IndustryList);
 				
-				render("offers/level1");
+				//render("offers/level1");
 			}
 			else if($_GET["level"] == 4)
 			{
@@ -5861,7 +5867,7 @@ class Product extends PbController {
 				}
 				setvar("IndustryList", $IndustryList);
 				
-				render("offers/level1");
+				//render("offers/level1");
 			}
 		}
 		else
@@ -5882,6 +5888,16 @@ class Product extends PbController {
 			}
 			
 			setvar("IndustryList", $IndustryList);
+			
+			//render("offers/level1");
+		}
+		
+		setvar("offer_page",1);
+		setvar("pagetitle","Thương mại");
+		
+		if(detectMobile()) {
+			render("mobile/product/index");
+		} else {
 			render("offers/level1");
 		}
 	}

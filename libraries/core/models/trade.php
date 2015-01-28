@@ -49,7 +49,7 @@ class Trades extends PbModel {
  			$type_id = intval($_GET['typeid']);
  			$this->condition[]= "type_id='".$type_id."'";
  		}
- 		if (isset($_GET['industryid'])) {
+ 		if (isset($_GET['industryid']) && $_GET['industryid'] != "") {
  			if (strpos($_GET['industryid'], ",")!==false) {
  				$this->condition[]= "industry_id IN (".trim($_GET['industryid']).")";
  			}else{
