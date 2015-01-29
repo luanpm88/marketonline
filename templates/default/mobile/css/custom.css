@@ -1052,8 +1052,8 @@ label.error {
 #top_company_info h3 {
     font-size: 120%;
     font-weight: bold;
-    margin-bottom: 1px;
-    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-top: 0;
 }
 #top_company_info p {
     line-height: normal;
