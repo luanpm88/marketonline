@@ -6,7 +6,7 @@ Options +FollowSymLinks
 Options +Indexes  
 RewriteEngine On
 
-RewriteRule ^mobile/?$ logging.php?mobile=1 [L]
+RewriteRule ^mobile/?$ space/\?userid=phu-dong&layout=mobile [L]
 
 RewriteRule ^privacy$ policy.html [L]
 RewriteRule ^modern_demo/?$ index.php?do=studypost&action=modern_demo [L]

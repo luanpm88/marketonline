@@ -146,6 +146,7 @@
 			
 			</div>
 			
+			{if !$item.service}
                             <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
                                 
                                     <div class="quantity">
@@ -160,7 +161,7 @@
                                     {if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label> {$item.tag}</p>{/if}
                                     
                             </form>                                
-				
+			{/if}
 			</div>
 			
 			

@@ -173,5 +173,17 @@ class Space extends PbController {
 		}
 		$smarty->display("{$tpl_file}{$ext}");
 	}
+	function render_mobile($tpl_file = null, $ext = ".html")
+	{
+		global $smarty, $skin_path;
+		//echo $smarty->template_dir."default".DS."mobile".DS;
+		$mobile_template_dir = $smarty->template_dir."default".DS."mobile".DS;
+		$mobile_template_dir = str_replace("skins".DS,"",$mobile_template_dir);
+		//echo $smarty->template_dir."default".DS."mobile".DS;
+		
+		$smarty->template_dir = $mobile_template_dir;
+		//echo $smarty->template_dir;
+		$smarty->display("{$tpl_file}{$ext}");
+	}
 }
 ?>

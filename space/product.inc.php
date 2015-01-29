@@ -118,5 +118,14 @@ setvar("custom_array", $custom_array);
 //var_dump($amount);
 
 setvar("paging", array('total'=>$amount));
-$space->render($tpl_file);
+
+//var_dump(detectMobile());
+
+if($_GET["layout"]=='mobile') {
+	$space->render_mobile("space/product");
+} else {
+	$space->render($tpl_file);
+}
+
+
 ?>

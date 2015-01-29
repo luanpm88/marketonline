@@ -1192,7 +1192,7 @@ function format_time($t,$f=':') // t = seconds, f = separator
 }
 
 function detectMobile() {
-	require("libraries/mdetect.php");
+	require_once(PHPB2B_ROOT.DS."libraries/mdetect.php");
 	$mobile_agent = new uagent_info();
 	return $mobile_agent->DetectMobileQuick();
 }
