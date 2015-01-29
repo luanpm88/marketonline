@@ -1297,6 +1297,7 @@ class Product extends PbController {
 				$this->trade->condition[] = "Trade.for_student=1";
 			}
 			
+			
 			$products = $this->trade->Search($pos_pg, $num_per_page);
 			$count = $this->trade->SearchCount();
 			//var_dump($products);
@@ -1357,7 +1358,10 @@ class Product extends PbController {
 			$this->product->initSearch();
 			$this->product->condition[] = "Product.state = 1";
 			$this->product->condition[] = "Product.valid_status = 1";
-			
+			//for space
+			if (isset($_GET['owner_id']) && $_GET['owner_id'] != '') {
+				$this->product->condition[] = 'Product.member_id='.$_GET['owner_id'];
+			}
 			//
 			if(empty($_GET['q'])) $this->product->condition[] = "Product.show = 1";
 			
@@ -1396,6 +1400,8 @@ class Product extends PbController {
 			if (isset($_GET['type']) && $_GET['type'] == 'sale') {
 				$this->product->condition[] = 'Product.new_price != 0';
 			}
+			
+			
 			
 			//member connect
 			if (isset($_GET['connectid'])) {

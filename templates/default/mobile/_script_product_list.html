@@ -37,6 +37,10 @@
 	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
 	    
 	    <input type="hidden" name="offertype" value="" />
+	    
+	    {if $smarty.get.userid}
+		<input type="hidden" name="owner_id" value="{$COMPANY.member_id}" />
+	    {/if}
 	{/if}
     </form>
     <div id="ajax_output" style="display: none"></div>
@@ -112,6 +116,7 @@
 		updateCatFilter(cat_id);
 	    }	    
 	    function initList() {
+		end = false;
 		$(".ajax-list").html("");
 		$(".ajax_product_filter_form input[name='pos_pg']").val("0");
 	    }	    
@@ -130,6 +135,10 @@
 			    ajax_sending = false;
 			    increasePage();
 			    $('.list-loading').hide();
+			    
+			    if (response.trim()=="") {
+				end = true;
+			    }
 			}
 		    });
 		}
@@ -194,8 +203,9 @@
 		});
             });
 	    
+	    var end = false;
 	    $(document).scroll(function(){		
-		if(($(document).height()-$(window).height()-$(document).scrollTop()) < 200){
+		if(!end && ($(document).height()-$(window).height()-$(document).scrollTop()) < 200){
 		    ajaxList();		
 		}
 	    });	
