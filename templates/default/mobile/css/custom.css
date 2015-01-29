@@ -1029,7 +1029,7 @@ label.error {
     background: -moz-linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)); /* For Firefox 3.6 to 15 */
     background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7)); /* Standard syntax */
     bottom: 0;
-    height: 140px;
+    height: 100px;
     left: 0;
     padding: 10px;
     position: absolute;
@@ -1039,7 +1039,7 @@ label.error {
 .shop_top_info .logo_title .logo img {
     border: 1px solid #ddd;
     float: left;
-    width: 120px;
+    width: 80px;
     margin-right: 10px;
 }
 .shop_top_info .head {
@@ -1052,7 +1052,8 @@ label.error {
 #top_company_info h3 {
     font-weight: bold;
     margin-top: 5px;
+    font-size: 115%;
 }
 #top_company_info p {
-    font-size: 115%;
+    
 }
