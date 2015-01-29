@@ -1076,3 +1076,57 @@ label.error {
     margin-bottom: 5px;
     padding: 0;
 }
+.shop-nav {
+    background: none repeat scroll 0 0 #3b984c;
+    border-bottom: 1px solid #fff;
+    height: 41px;
+    overflow: auto;
+}
+.shop-nav ul {
+    width: 640px;
+}
+.shop-nav ul li {
+    margin: 0
+}
+.shop-nav ul li a {
+    background: rgba(255,255,255,0.1);
+}
+.shop-nav ul li.active {
+    
+}
+.shop-nav ul li a {
+    color: #fff;
+}
+.shop-nav .nav-pills > li > a {
+    border-radius: 0;
+}
+.shop-nav .nav-pills > li > a:hover, .shop-nav .nav-pills > li > a:focus {
+    background: rgba(255,255,255,0.5);
+}
+.shop-nav .nav-pills > li.active > a, .shop-nav .nav-pills > li.active > a:focus, .shop-nav .nav-pills > li.active > a:hover {
+    background: rgba(255,255,255,0.8);
+    color: #333;
+}
+.space-product-tabs {
+    background: #3b984c;
+    overflow: auto;
+}
+.space-product-tabs ul {
+    width: 100%;
+    background: rgba(255,255,255,0.8);
+    color: #333;
+    min-width: 400px;
+}
+.space-product-tabs .nav-pills > li > a {
+    border-radius: 0;
+    color: #333;
+}
+.space-product-tabs .nav-pills > li.active > a {
+    color: #fff;
+}
+.footer {
+    background: none;
+}
+.space-product-tabs .nav-pills > li.active > a, .space-product-tabs .nav-pills > li.active > a:focus, .space-product-tabs .nav-pills > li.active > a:hover {
+    background: #337ab7;
+}

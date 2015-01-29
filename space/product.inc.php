@@ -121,7 +121,7 @@ setvar("paging", array('total'=>$amount));
 
 //var_dump(detectMobile());
 
-if($_GET["layout"]=='mobile') {
+if(detectMobile()) {
 	$space->render_mobile("space/product");
 } else {
 	$space->render($tpl_file);

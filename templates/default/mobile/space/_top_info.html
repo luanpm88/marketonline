@@ -35,5 +35,44 @@
                 {/if}
             </ul>
         </div>
+        
+        
     </div>
+    
+    
 </div>
+
+<div class="bs-example shop-nav">
+            <ul class="nav nav-pills" style="">
+                <li class="{if $do == 'product'} active{/if}" role="presentation">
+                    <a href="{$Menus.product}">
+                        <span>{lang product_show}</span>
+                    </a>
+                </li>
+                <li class="{if $do == 'offer'} active{/if}" role="presentation">
+                    <a href="{$Menus.offer}">
+                        <span>{lang offer}</span>
+                    </a>
+                </li>
+                <li class="{if $do == 'news'} active{/if}" role="presentation">
+                    <a href="{$Menus.news}">
+                        <span>{lang space_news}</span>
+                    </a>
+                </li>
+                <li class="{if $do == 'job'} active{/if}" role="presentation">
+                    <a href="{$Menus.job}">
+                        <span>{lang space_hr}</span>
+                    </a>
+                </li>
+                <li class="{if $do == 'intro'} active{/if}" role="presentation">
+                    <a href="{$Menus.intro}">
+                        <span>{lang comnote} {if $MEMBER.membertype_id == 1}{lang member_person}{/if}{if $MEMBER.membertype_id == 2}{lang member_company}{/if}{if $MEMBER.membertype_id == 3}{lang member_shop}{/if}</span>
+                    </a>
+                </li>
+                <li class="{if $do == 'contact'} active{/if}" role="presentation">
+                    <a href="{$Menus.contact}">
+                        <span>{lang contact_us}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
