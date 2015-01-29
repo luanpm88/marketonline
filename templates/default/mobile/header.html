@@ -52,7 +52,7 @@
     
     
 
-    <div id="wrapper" class="{if $smarty.get.do=='product'}product-page{/if} {if $service_page}service-page{/if} {if $offer_page}offer-page{/if}">
+    <div id="wrapper" class="{if $smarty.get.do=='product'}product-page{/if} {if $service_page}service-page{/if} {if $smarty.get.do=='offer' || $offer_page}offer-page{/if}">
         
         <!--{include file="`$theme_name`/mobile/_sidebar.html"}-->
         <!--{include file="`$theme_name`/mobile/_top_menu.html"}-->

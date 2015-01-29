@@ -1023,6 +1023,7 @@ class Product extends PbController {
 			setvar('order_message', $order_message);
 		}
 		
+		setvar("service_page",$info["service"]);
 		
 		if(detectMobile()) {
 			render("mobile/product/detail");
