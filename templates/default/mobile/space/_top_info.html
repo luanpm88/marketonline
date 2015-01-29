@@ -12,10 +12,10 @@
                     <span class="token com_name">{$COMPANY.name}</span>
                     <span class="token phone"><label>{lang mobile_number}:</label> {$COMPANY.contact_mobile} ({$COMPANY.link_man})</span>
                     {if $COMPANY.site_url_name && false}
-                        <br /><span class="token"><label>{lang website}:</label> <a target="_blank" rel="nofollow" href="{$COMPANY.site_url}">{$COMPANY.site_url_name}</a></span>
+                        <span class="token"><label>{lang website}:</label> <a target="_blank" rel="nofollow" href="{$COMPANY.site_url}">{$COMPANY.site_url_name}</a></span>
                     {/if}
                     {if $COMPANY.email}
-                        <br /><span class="token"><label>{lang email}:</label> <a target="_blank" rel="nofollow" href="mailto:{$COMPANY.email}">{$COMPANY.email}</a></span>
+                        <span class="token"><label>{lang email}:</label> <a target="_blank" rel="nofollow" href="mailto:{$COMPANY.email}">{$COMPANY.email}</a></span>
                     {/if}
                 </p>
             </div>

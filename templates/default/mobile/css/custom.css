@@ -1036,6 +1036,8 @@ label.error {
     position: absolute;
     width: 100%;
     z-index: 1;
+    overflow-y: hidden;
+    overflow-x: auto
 }
 .shop_top_info .logo_title .logo img {
     border: 1px solid #ddd;
@@ -1048,7 +1050,8 @@ label.error {
 }
 #top_company_info {
     color: #fff;
-    text-shadow: 1px 1px rgba(0,0,0,0.6);
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+    width: 150%;
 }
 #top_company_info h3 {
     font-size: 140%;
@@ -1067,9 +1070,12 @@ label.error {
     color: #fff;
 }
 #top_company_info span {
-    line-height: normal;
+    display: block;
     font-size: 100%;
-    line-height: 18px
+    height: 18px;
+    line-height: 18px;
+    overflow: hidden;
+    word-break: break-all;
 }
 #top_company_info .com_name {
     display: block;
