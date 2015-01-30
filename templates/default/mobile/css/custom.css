@@ -1195,3 +1195,9 @@ label.error {
     text-align: center;
     width: 20px;
 }
+.space-menu-icon {
+    font-size: 21px;
+    margin-right: 5px;
+    float:left;
+    margin-top: -5px;
+}
