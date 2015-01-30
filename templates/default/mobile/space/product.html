@@ -5,10 +5,11 @@
             
             
             <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
-            
-            <div class="tree_bound">
-		<div class="tree_loading"></div>
-	      </div>
+            {if $do == 'product' && false}
+                <div class="tree_bound">
+                    <div class="tree_loading"></div>
+                </div>
+            {/if}
 
             <div class="bs-example space-product-tabs">
                         {if $service_page}
