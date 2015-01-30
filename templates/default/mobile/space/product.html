@@ -59,7 +59,7 @@
 	    if( console && console.log ) {
 		$('.tree_bound').html(data);
                 //tree title space
-		$('.tree_title').html(': '+$('.tree_bound li.active a tt').html());
+		if($('.tree_bound li.active').length) $('.tree_title').html(': '+$('.tree_bound li.active a tt').html());
 	    }
 	});
     });
