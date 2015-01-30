@@ -87,7 +87,7 @@ if (isset($_GET['typeid'])) {
 		     $conditions_temp['customid'] = "Product.producttype_id IN (".implode(',',$custom_array).")";		
 	      
 	$conditions[] = "(".implode(" OR ", $conditions_temp).")";
-		
+	//var_dump($conditions);
 }
 
 $amount = $product->findCount(null, $conditions,"id");

@@ -1090,7 +1090,7 @@ label.error {
     overflow: auto;
 }
 .shop-nav ul {
-    width: 670px;
+    width: 700px;
 }
 .shop-nav ul li {
     margin: 0;
@@ -1140,4 +1140,58 @@ label.error {
 }
 .shop_top_info {
     margin-top: 1px;
+}
+.tree_bound {
+    background: none repeat scroll 0 0 #fff;
+    margin-bottom: 1px;
+}
+.tree_bound h3 {
+    border: 1px solid #ddd;
+    font-size: 100%;
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+}
+.tree_bound ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+    -webkit-animation: myfirst 5s; /* Chrome, Safari, Opera */
+    animation: myfirst 5s;
+}
+.tree_bound ul li {
+    list-style: outside none none;
+    padding: 0 !important;
+}
+.tree_bound ul li a {
+    border: 1px solid #ddd;
+    color: #333;
+    display: block;
+    padding: 10px;
+}
+.tree_bound ul li.plevel0 a {
+    background: #f5f5f5;
+}
+.tree_bound ul li.plevel1 a {
+    padding-left: 30px;
+    background: #efefef;
+}
+.tree_bound ul li.plevel2 a {
+    padding-left: 50px
+}
+.tree_bound ul li.plevel3 a {
+    padding-left: 70px
+}
+.tree_bound ul li.plevel4 a {
+    padding-left: 90px
+}
+.tree_bound ul li a span {
+    background: none repeat scroll 0 0 #999;
+    border-radius: 4px;
+    color: #fff;
+    display: block;
+    float: right;
+    height: 20px;
+    text-align: center;
+    width: 20px;
 }

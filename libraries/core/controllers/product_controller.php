@@ -1366,7 +1366,73 @@ class Product extends PbController {
 			//for space
 			if (isset($_GET['owner_id']) && $_GET['owner_id'] != '') {
 				$this->product->condition[] = 'Product.member_id='.$_GET['owner_id'];
+				
+				
+				
+				if (isset($_GET['typeid']) && $_GET['typeid']!=0 && $_GET['typeid']!="") {
+					$id_i = intval($_GET['typeid']);
+				
+					
+					$level = 0;
+					$tree = $this->producttype->findTree('id,name,level', array("0"=>'member_id='.$_GET['owner_id']));
+					foreach($tree as $key => $item)
+					{		
+						if($level)
+						{
+							if($item["level"] > $level)
+							{
+								if(!isset($item["member_id"]))
+								{
+									$indus_array[] = $item["id"];
+								}
+								else
+								{
+									$custom_array[] = $item["id"];
+								}
+							}
+							else
+							{
+								break;
+							}
+						}		
+						elseif($item["id"] == $id_i)
+						{
+							//echo "no do".$id_i;
+							if($_GET["memberid"] == '' && !isset($item["member_id"]))
+							{			
+								$indus_array[] = $id_i;
+								$level = $item["level"];
+								
+								setvar('current_cat', $item);
+							}
+							if($_GET["memberid"] != '' && isset($item["member_id"]))
+							{
+								$custom_array[] = $id_i;
+								$level = $item["level"];
+								setvar('current_cat', $item);
+							}
+							
+						}
+						//echo $level;
+					}
+
+					
+					$conditions_temp = null;
+						if(!empty($indus_array))
+						     $conditions_temp['industry'] = "Product.industry_id IN (".implode(',',$indus_array).")";
+								     
+						if(!empty($custom_array))
+						     $conditions_temp['customid'] = "Product.producttype_id IN (".implode(',',$custom_array).")";		
+					      
+					$this->product->condition[] = "(".implode(" OR ", $conditions_temp).")";
+					
+					//var_dump($this->product->condition);
+				}
+				
+				//$this->product->condition[] = "fff";
+				
 			}
+			//var_dump($this->product->condition);
 			//
 			if(empty($_GET['q'])) $this->product->condition[] = "Product.show = 1";
 			
@@ -1434,15 +1500,17 @@ class Product extends PbController {
 			
 			foreach($this->product->condition as $key => $item)
 			{
-				if(strpos($item, "industry_id"))
+				if(strpos($item, "industry_id") && !$_GET["typeid"])
 				{
 					$this->product->condition[$key] = "Product.industry_id IN (".implode(',',$area_a).")";
-					if($_GET['industryid'] == 0 || $_GET['industryid']=="")
+					if(($_GET['industryid'] == 0 || $_GET['industryid']==""))
 					{
 						$this->product->condition[$key] = '1';
 					}
 				}			
 			}
+			
+			//var_dump($this->product->condition);
 			
 			if(!empty($_GET["student"])) {
 				$this->product->condition[] = "Product.for_student=1";
@@ -4715,7 +4783,13 @@ class Product extends PbController {
 		}
 		setvar("tree",$tree);
 		
-		$this->render("product/get_space_tree");
+		
+		if($_GET["layout"] == "mobile") {
+			$this->render("mobile/space/ajax_space_tree");
+		} else {
+			$this->render("product/get_space_tree");
+		}
+		
 	}
 	
 	function getChatboxNew()

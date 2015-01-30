@@ -563,6 +563,7 @@ class PbModel extends Overloadable
 
 	function findAll($fields = null, $joins = null, $conditions = null, $order = null, $limit = null, $offset = null, $recursive = null, $groupby = null)
 	{
+		
 		global $ADODB_CACHE_DIR, $db_cache_support;
 		$orders			= null;
 		$records		= null;

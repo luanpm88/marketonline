@@ -35,7 +35,7 @@ class Products extends PbModel {
  			}
  		}
  		if (!empty($_GET['typeid'])) {
- 			$this->condition[] = "Product.sort_id='".$_GET['typeid']."'";
+ 			//$this->condition[] = "Product.sort_id='".$_GET['typeid']."'";
  		}
  		if(!empty($_GET['q'])) {
 			uses("tag");

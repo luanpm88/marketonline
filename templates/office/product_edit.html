@@ -415,31 +415,31 @@ jQuery(document).ready(function($) {
 				<!--{if $item.image1}--><img id="uploadpic" src="" alt="{$item.name}" width="200" /><!--{/if}-->
 			</div>
 			<div id="thumbs">
-				<!--{if $item.picture}-->
+				<!--{if $item.image1 != '../images/nopicture_small.gif' && $item.image1}-->
 				<div class="img_item tim_1">
 					<img id="uploadpic" src="{$item.image1}" alt="{$item.name1}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="0" {if $item.default_pic == 0}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '1');" ><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.picture1}-->
+				<!--{if $item.image2 != '../images/nopicture_small.gif' && $item.image2}-->
 				<div class="img_item tim_2">
 					<img id="uploadpic" src="{$item.image2}" alt="{$item.name2}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="1" {if $item.default_pic == 1}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '2');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.picture2}-->
+				<!--{if $item.image3 != '../images/nopicture_small.gif' && $item.image3}-->
 				<div class="img_item tim_3">
 					<img id="uploadpic" src="{$item.image3}" alt="{$item.name3}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="2" {if $item.default_pic == 2}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '3');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.picture3}-->
+				<!--{if $item.image4 != '../images/nopicture_small.gif' && $item.image4}-->
 				<div class="img_item tim_4">
 					<img id="uploadpic" src="{$item.image4}" alt="{$item.name4}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="3" {if $item.default_pic == 3}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '4');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.picture4}-->
+				<!--{if $item.image5 != '../images/nopicture_small.gif' && $item.image5}-->
 				<div class="img_item tim_5">
 					<img id="uploadpic" src="{$item.image5}" alt="{$item.name5}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="4" {if $item.default_pic == 4}checked="checked"{/if} />
