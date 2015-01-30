@@ -1,0 +1,23 @@
+                <section id="recent_products-3" class="widget-3 widget-last widget widget_recent_products">
+                <div class="widget-inner">
+                    <h3>{lang product_category} <span class="tree_title"></span> <span class="caret"></span></h3>
+		    <div class="scrollbarleft">
+			<ul>
+			    <li style="" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954 plevel{$item0.lpad} {if $item0.member_id == $smarty.get.memberid && $item0.id == $smarty.get.typeid} active{/if}" id="menu-item-954">
+				<a class="item menu_lvl1" rel="" content="" href="{the_url module=space userid=`$smarty.get.userid`}">
+				  Tất cả
+				</a>
+			    </li>
+			    <!--{loop $tree item0 level_0 key0}-->
+				{if true}
+				  <li style="{if $item0.hide};display: none{/if}" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954 plevel{$item0.lpad} {if $item0.member_id == $smarty.get.memberid && $item0.id == $smarty.get.typeid} active{/if}" id="menu-item-954">
+				    <a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.id}" href="{the_url module=producttype typeid=`$item0.id` member_id=`$item0.member_id` userid=`$smarty.get.userid`}">
+				      <span>{$item0.count}</span><tt>{$item0.name}</tt>
+				    </a>
+				  </li>
+				{/if}
+			    <!--{/loop}-->
+			</ul>
+			</div>
+		</div>
+	      </section>
