@@ -1123,7 +1123,7 @@ label.error {
     width: 100%;
     background: rgba(255,255,255,0.8);
     color: #333;
-    min-width: 400px;
+    min-width: 520px;
 }
 .space-product-tabs .nav-pills > li > a {
     border-radius: 0;
