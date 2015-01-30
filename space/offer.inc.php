@@ -76,5 +76,13 @@ setvar("TradeNames", $tradenames = $trade_controller->getTradeTypeNames());
 setvar("paging", array('total'=>$amount));
 setvar("list", $list);
 setvar("Type", $Type);
-$space->render("offer");
+
+setvar("offer_page",1);
+setvar("pagetitle","Thương mại");
+if(detectMobile()) {
+	$space->render_mobile("space/product");
+} else {
+	$space->render("offer");
+}
+
 ?>

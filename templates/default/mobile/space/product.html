@@ -1,4 +1,4 @@
-        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$_space_product` - `$COMPANY.shop_name`"}-->
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$pagetitle` - `$COMPANY.shop_name`"}-->
             
         <!-- Page Content -->
         <div id="page-content-wrapper" class="home-page">
@@ -8,13 +8,28 @@
             
             
             <div class="bs-example space-product-tabs">
-                    <ul class="nav nav-pills" style="">
-                        <li offertype="" orderby="dateline" type="" class="ajax-tab-but" role="presentation"><a href="#">Mới</a></li>
-                        <li offertype="" orderby="dateline" type="sale" class="ajax-tab-but" role="presentation"><a href="#">Giảm giá/Khuyến mãi</a></li>
-                        <li offertype="" orderby="favourite" type="" class="ajax-tab-but" role="presentation"><a href="#">Nổi bật</a></li>
-                        <li offertype="" orderby="dateline" type="other" class="ajax-tab-but" role="presentation"><a href="#">Khác</a></li>
-                    </ul>
-            </div>
+                        {if $service_page}
+                            <ul class="nav nav-pills">
+                                <li offertype="" orderby="dateline" type="service" class="ajax-tab-but" role="presentation"><a href="#">Dịch vụ</a></li>
+                                <li offertype="" orderby="dateline" type="sale" class="ajax-tab-but" role="presentation"><a href="#">Giảm giá/Khuyến mãi</a></li>                                
+                            </ul>
+                        {elseif $offer_page}
+                            <ul class="nav nav-pills">
+                                <li offertype="all" orderby="dateline" type="offer" class="ajax-tab-but" role="presentation"><a href="#">Tất cả</a></li>
+                                <li offertype="14" orderby="dateline" type="offer" class="ajax-tab-but" role="presentation"><a href="#">Nhu cầu mua</a></li>
+                                <li offertype="9" orderby="dateline" type="offer" class="ajax-tab-but" role="presentation"><a href="#">Nhu cầu bán</a></li>
+                                <li offertype="10" orderby="dateline" type="offer" class="ajax-tab-but" role="presentation"><a href="#">Phân phối</a></li>
+                                <li offertype="16" orderby="dateline" type="offer" class="ajax-tab-but" role="presentation"><a href="#">Tìm đối tác</a></li>
+                            </ul>
+                        {else}
+                            <ul class="nav nav-pills">
+                                <li offertype="" orderby="dateline" type="" class="ajax-tab-but" role="presentation"><a href="#">Mới</a></li>
+                                <li offertype="" orderby="dateline" type="sale" class="ajax-tab-but" role="presentation"><a href="#">Giảm giá/Khuyến mãi</a></li>
+                                <li offertype="" orderby="favourite" type="" class="ajax-tab-but" role="presentation"><a href="#">Nổi bật</a></li>
+                                <li offertype="" orderby="dateline" type="other" class="ajax-tab-but" role="presentation"><a href="#">Khác</a></li>
+                            </ul>
+                        {/if}
+                    </div>
             
             <div class="container">
                 <div class="row">

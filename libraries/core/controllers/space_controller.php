@@ -130,6 +130,9 @@ class Space extends PbController {
 						case "product":
 							$val_s = "san-pham";
 							break;
+						case "service":
+							$val_s = "dich-vu";
+							break;
 						default:
 							$val_s = "";
 							break;

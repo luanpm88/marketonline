@@ -22,7 +22,8 @@ $space_actions = array(
 "index", 
 "contact", 
 "feedback",
-"ajaxannoucebox"
+"ajaxannoucebox",
+"service"
 );
 $userid = 0;
 if(isset($_GET['userid'])) {

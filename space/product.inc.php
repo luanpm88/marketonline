@@ -120,7 +120,7 @@ setvar("custom_array", $custom_array);
 setvar("paging", array('total'=>$amount));
 
 //var_dump(detectMobile());
-
+setvar("pagetitle","Sản phẩm");
 if(detectMobile()) {
 	$space->render_mobile("space/product");
 } else {

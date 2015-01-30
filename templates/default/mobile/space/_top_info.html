@@ -44,12 +44,12 @@
 
 <div class="bs-example shop-nav">
             <ul class="nav nav-pills" style="">
-                <li class="{if $do == 'product' && !$smarty.get.service} active{/if}" role="presentation">
+                <li class="{if $do == 'product'} active{/if}" role="presentation">
                     <a href="{$Menus.product}">
                         <span>{lang product_show}</span>
                     </a>
                 </li>
-                <li class="{if $do == 'product' && $smarty.get.service} active{/if}" role="presentation">
+                <li class="{if $do == 'service'} active{/if}" role="presentation">
                     <a href="{$Menus.service}">
                         <span>Dịch vụ</span>
                     </a>

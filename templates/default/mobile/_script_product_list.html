@@ -12,6 +12,10 @@
 	    <input type="hidden" name="q" value="{$smarty.get.keyword}" />
 	    
 	    <input type="hidden" name="offertype" value="" />
+	    
+	    {if $smarty.get.userid}
+		<input type="hidden" name="owner_id" value="{$COMPANY.member_id}" />
+	    {/if}
         {elseif $offer_page}
 	    <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
@@ -24,6 +28,10 @@
 	    
 	    <input type="hidden" name="offertype" value="all" />
 	     <input type="hidden" name="offer_page" value="1" />
+	     
+	    {if $smarty.get.userid}
+		<input type="hidden" name="owner_id" value="{$COMPANY.member_id}" />
+	    {/if}
 	{else}
 	
 	    <input type="hidden" name="do" value="product" />
