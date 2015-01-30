@@ -415,31 +415,31 @@ jQuery(document).ready(function($) {
 				<!--{if $item.image1}--><img id="uploadpic" src="" alt="{$item.name}" width="200" /><!--{/if}-->
 			</div>
 			<div id="thumbs">
-				<!--{if $item.image1 != '../images/nopicture_small.gif' && $item.image1}-->
+				<!--{if $item.picture}-->
 				<div class="img_item tim_1">
 					<img id="uploadpic" src="{$item.image1}" alt="{$item.name1}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="0" {if $item.default_pic == 0}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '1');" ><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.image2 != '../images/nopicture_small.gif' && $item.image2}-->
+				<!--{if $item.picture1}-->
 				<div class="img_item tim_2">
 					<img id="uploadpic" src="{$item.image2}" alt="{$item.name2}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="1" {if $item.default_pic == 1}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '2');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.image3 != '../images/nopicture_small.gif' && $item.image3}-->
+				<!--{if $item.picture2}-->
 				<div class="img_item tim_3">
 					<img id="uploadpic" src="{$item.image3}" alt="{$item.name3}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="2" {if $item.default_pic == 2}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '3');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.image4 != '../images/nopicture_small.gif' && $item.image4}-->
+				<!--{if $item.picture3}-->
 				<div class="img_item tim_4">
 					<img id="uploadpic" src="{$item.image4}" alt="{$item.name4}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="3" {if $item.default_pic == 3}checked="checked"{/if} />
 					<a href="#deleteImage" onclick="deleteImage('{$item.id}', '4');"><img src="{$office_theme_path}images/delete-icon.png" /></a>
 				</div><!--{/if}-->
-				<!--{if $item.image5 != '../images/nopicture_small.gif' && $item.image5}-->
+				<!--{if $item.picture4}-->
 				<div class="img_item tim_5">
 					<img id="uploadpic" src="{$item.image5}" alt="{$item.name5}" />					
 					<input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="4" {if $item.default_pic == 4}checked="checked"{/if} />
@@ -451,7 +451,7 @@ jQuery(document).ready(function($) {
 				  <td colspan=2 style="padding-bottom: 10px"><span id="image_size_note"><strong>{lang upload_image}</strong> {lang image_size_format_provision}</span></td>
 				</tr>
 								
-				<tr class="inputfile_1" <!--{if $item.image1 != '../images/nopicture_small.gif' && $item.image1}-->style="display: none"<!--{/if}-->>
+				<tr class="inputfile_1" <!--{if $item.picture}-->style="display: none"<!--{/if}-->>
 				<td class="pic_title">H1</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile0').trigger('click')">{lang upload_picture}: <span class="picload0" style="color: #3B984C">......</span></a>
@@ -464,7 +464,7 @@ jQuery(document).ready(function($) {
 				
 				
 				
-			      <tr class="inputfile_2" <!--{if $item.image2 != '../images/nopicture_small.gif' && $item.image2}-->style="display: none"<!--{/if}-->>
+			      <tr class="inputfile_2" <!--{if $item.picture1}-->style="display: none"<!--{/if}-->>
 				<td class="pic_title">H2</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile1').trigger('click')">{lang upload_picture}: <span class="picload1" style="color: #3B984C">......</span></a>
@@ -477,7 +477,7 @@ jQuery(document).ready(function($) {
 			      
 			      
 			      
-			      <tr class="inputfile_3" <!--{if $item.image3 != '../images/nopicture_small.gif' && $item.image3}-->style="display: none"<!--{/if}-->>
+			      <tr class="inputfile_3" <!--{if $item.picture2}-->style="display: none"<!--{/if}-->>
 				<td class="pic_title">H3</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile2').trigger('click')">{lang upload_picture}: <span class="picload2" style="color: #3B984C">......</span></a>
@@ -490,7 +490,7 @@ jQuery(document).ready(function($) {
 			      
 			      
 			      
-			      <tr class="inputfile_4" <!--{if $item.image4 != '../images/nopicture_small.gif' && $item.image4}-->style="display: none"<!--{/if}-->>
+			      <tr class="inputfile_4" <!--{if $item.picture3}-->style="display: none"<!--{/if}-->>
 				<td class="pic_title">H4</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile3').trigger('click')">{lang upload_picture}: <span class="picload3" style="color: #3B984C">......</span></a>
@@ -503,7 +503,7 @@ jQuery(document).ready(function($) {
 			      
 			      
 			      
-			      <tr class="inputfile_5" <!--{if $item.image5 != '../images/nopicture_small.gif' && $item.image5}-->style="display: none"<!--{/if}--> >
+			      <tr class="inputfile_5" <!--{if $item.picture4}-->style="display: none"<!--{/if}--> >
 				<td class="pic_title">H5</td>
 				<td>
 				    <a href="#loadpic" onclick="$('#uploadfile4').trigger('click')">{lang upload_picture}: <span class="picload4" style="color: #3B984C">......</span></a>
