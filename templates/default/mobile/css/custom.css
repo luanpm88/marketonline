@@ -1290,10 +1290,20 @@ time .time {
     
 }
 #album_tab ul {
-    
+    margin-right: -2%;
+    padding: 0;
 }
 #album_tab ul li {
-    
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    float: left;
+    height: 230px;
+    list-style: outside none none;
+    margin-bottom: 10px;
+    margin-right: 2%;
+    overflow: hidden;
+    padding: 10px;
+    width: 48%;
 }
 #album_tab ul li a {
     
