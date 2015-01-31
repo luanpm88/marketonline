@@ -204,9 +204,11 @@ class Producttypes extends PbModel {
 	
 	function findTreeIndustry($field, $conditions)
 	{
+		
 		if(!empty($conditions))
 		{
 			if (is_array($conditions) && !empty($conditions)) {
+				
 				$conditions = implode(" AND ", $conditions);
 			}
 		}
@@ -246,6 +248,8 @@ class Producttypes extends PbModel {
 				}
 			}
 		}
+		//var_dump($list);
+		
 		return $list;
 		
 		//$sql = "SELECT i.id, i.name FROM {$this->table_prefix}industries i WHERE i.level = 1 AND i.id IN (".$ids_string.")";

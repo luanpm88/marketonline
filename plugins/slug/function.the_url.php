@@ -172,13 +172,19 @@ function smarty_function_the_url($params){
 				}
 				break;
 			case "producttype":
+				if($tree_type == 'service') {
+					$do_name = 'dich-vu';
+				} else {
+					$tree_type = 'product';
+					$do_name = 'san-pham';
+				}
 				if ($rewrite_able) {
 					if($member_id)
-						$return = URL.$userid."/product/type-".intval($typeid)."-".intval($page)."-".$member_id.          ($order != ''?"_".$order:'')          .".htmls";
+						$return = URL.$userid."/".$tree_type."/type-".intval($typeid)."-".intval($page)."-".$member_id.          ($order != ''?"_".$order:'')          .".htmls";
 					else
-						$return = URL.$userid."/product/type-".intval($typeid)."-".intval($page).         ($order != ''?"_".$order:'')          .".htmls";
+						$return = URL.$userid."/".$tree_type."/type-".intval($typeid)."-".intval($page).         ($order != ''?"_".$order:'')          .".htmls";
 				}else{
-					$return = URL."space/?userid=".$userid."&do=product&typeid=".$typeid."&page=".$page."&memberid=".$member_id."&order=".$order;
+					$return = URL."space/?userid=".$userid."&do=".$tree_type."&typeid=".$typeid."&page=".$page."&memberid=".$member_id."&order=".$order;
 				}
 				break;
 			case "space":

@@ -122,6 +122,7 @@ setvar("paging", array('total'=>$amount));
 //var_dump(detectMobile());
 setvar("pagetitle","Sản phẩm");
 if(detectMobile()) {
+	setvar("tree_type","product");
 	$space->render_mobile("space/product");
 } else {
 	$space->render($tpl_file);

@@ -1364,7 +1364,10 @@ class Product extends PbController {
 			$this->product->condition[] = "Product.state = 1";
 			$this->product->condition[] = "Product.valid_status = 1";
 			//for space
-			if (isset($_GET['owner_id']) && $_GET['owner_id'] != '') {
+			
+			$is_space = isset($_GET['owner_id']) && $_GET['owner_id'] != '';
+			
+			if ($is_space) {
 				$this->product->condition[] = 'Product.member_id='.$_GET['owner_id'];
 				
 				
@@ -1434,7 +1437,7 @@ class Product extends PbController {
 			}
 			//var_dump($this->product->condition);
 			//
-			if(empty($_GET['q'])) $this->product->condition[] = "Product.show = 1";
+			if(empty($_GET['q']) && !$is_space) $this->product->condition[] = "Product.show = 1";
 			
 			
 			
@@ -1449,7 +1452,7 @@ class Product extends PbController {
 				}
 				
 				//Condition to show products but not for sale products
-				if ($_GET['type'] != 'sale' && $_GET['orderby'] != 'all')
+				if ($_GET['type'] != 'sale' && $_GET['orderby'] != 'all' && !$is_space)
 				{
 					if (isset($_GET['type']) && $_GET['type'] == 'other') {
 						$other_con = " < 9";
@@ -1500,7 +1503,7 @@ class Product extends PbController {
 			
 			foreach($this->product->condition as $key => $item)
 			{
-				if(strpos($item, "industry_id") && !$_GET["typeid"])
+				if(strpos($item, "industry_id") && !$is_space)
 				{
 					$this->product->condition[$key] = "Product.industry_id IN (".implode(',',$area_a).")";
 					if(($_GET['industryid'] == 0 || $_GET['industryid']==""))
@@ -4692,7 +4695,7 @@ class Product extends PbController {
 		$company = $this->company->getInfoByUserId($_GET["page_memid"]);
 		
 		$tree = $this->producttype->findTree('id,name,level', array("0"=>'member_id='.$member['id']));
-	
+		//var_dump($tree);
 		$level_padding = 0;
 		foreach($tree as $key0 => $item0)
 		{
@@ -4700,7 +4703,14 @@ class Product extends PbController {
 			
 			//count product
 			$conditions = null;
-			$conditions[] = "Product.status=1 AND Product.state=1 AND Product.company_id='".$company['id']."'";
+			$conditions[] = "Product.status=1 AND Product.state=1 AND Product.status=1 AND Product.company_id='".$company['id']."'";
+			
+			if($_GET["tree_type"]=='service') {
+				$conditions[] = "Product.service=1";
+			} elseif ($_GET["tree_type"]=='product') {
+				$conditions[] = "(Product.service=0 || Product.service='')";
+			}
+			
 			$indus_array = array();
 			$custom_array = array();
 			$id_i = intval($item0["id"]);

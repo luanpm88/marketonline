@@ -1192,8 +1192,9 @@ label.error {
     display: block;
     float: right;
     height: 20px;
+    padding: 0 5px;
     text-align: center;
-    width: 20px;
+    width: auto;
 }
 .space-menu-icon {
     font-size: 21px;

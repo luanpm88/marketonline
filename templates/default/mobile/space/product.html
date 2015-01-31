@@ -5,7 +5,7 @@
             
             
             <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
-            {if $do == 'product'}
+            {if $do == 'product' || $do == 'service'}
                 <div class="tree_bound">
                     <div class="tree_loading"></div>
                 </div>
@@ -55,7 +55,7 @@
 <script>
     $(document).ready(function() {
 	$.ajax({
-	    url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&layout=mobile&action=get_space_tree&userid={/literal}{$smarty.get.userid}{literal}&page_memid={/literal}{$MEMBER.id}{literal}&typeid={/literal}{$smarty.get.typeid}{literal}&page={/literal}{$smarty.get.page}{literal}&memberid={/literal}{$smarty.get.memberid}{literal}&order={/literal}{$smarty.get.order}{literal}",
+	    url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&tree_type={/literal}{$tree_type}{literal}&layout=mobile&action=get_space_tree&userid={/literal}{$smarty.get.userid}{literal}&page_memid={/literal}{$MEMBER.id}{literal}&typeid={/literal}{$smarty.get.typeid}{literal}&page={/literal}{$smarty.get.page}{literal}&memberid={/literal}{$smarty.get.memberid}{literal}&order={/literal}{$smarty.get.order}{literal}",
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		$('.tree_bound').html(data);
