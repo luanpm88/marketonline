@@ -1846,6 +1846,8 @@ class Product extends PbController {
 		$_SESSION["cart_id"] = null;
 		$_SESSION["order_id"] = null;
 		
+		echo "---------".$order_id."------";
+		
 		if($order_id) {
 			//echo $order_id;
 			//echo "send email";
