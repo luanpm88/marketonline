@@ -31,36 +31,36 @@
                         <ul class="thumbnails">
                         {if $item.picture}
                             <li>
-                                <a href="{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-                                    <img src="{$item.image}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                <a href="{$item.image}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture1}
                             <li>
-                                <a href="{$item.image1}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-                                    <img src="{$item.image1}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                <a href="{$item.image1}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image1}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture2}
                             <li>
-                                <a href="{$item.image2}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-                                    <img src="{$item.image2}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                <a href="{$item.image2}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image2}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture3}
                             <li>
-                                <a href="{$item.image3}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-                                    <img src="{$item.image3}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                <a href="{$item.image3}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image3}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture4}
                             <li>
-                                <a href="{$item.image4}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-                                    <img src="{$item.image4}" class="attachment-shop_thumbnail" alt="{$item.title}" />
+                                <a href="{$item.image4}" rel="thumbnails" class="zoomz first fancyx">
+                                    <img src="{$item.image4}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
@@ -78,7 +78,7 @@
                                 
 				    <div class="sum_top">
 					
-					<div class="info-2line-group">
+					<div class="info-2line-group line-normal">
 					    
 					    <p>
 						<label>Giá</label>
@@ -197,7 +197,7 @@
 									<h3 class="shop_name" style="">{if $item.shop_name}
 						<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
 									
-							<div class="info-2line-group line-small">					    
+							<div class="info-2line-group line-xsmall">					    
 								<p>
 								    <label>Liên hệ</label>
 								    {$item.link_people}

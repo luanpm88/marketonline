@@ -813,8 +813,12 @@ label.error {
 }
 .info-2line-group.line-small p {
     padding-left: 100px;
-    position: relative;
-    min-height: 18px;   
+}
+.info-2line-group.line-xsmall p {
+    padding-left: 80px;
+}
+.info-2line-group.line-normal p {
+    padding-left: 120px;
 }
 .custome-navbar-toggle:hover, .custome-navbar-toggle:focus, .custome-navbar-toggle:active {
     color: #333 !important;
