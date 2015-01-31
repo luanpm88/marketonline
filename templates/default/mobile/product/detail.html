@@ -145,6 +145,15 @@
 			</div>
 			
 			{if !$item.service}
+			
+			    {if $order_message}
+				<div class="order_message_box">
+					<div class="order_message">
+						{$order_message.message}
+					</div>
+				</div>
+			    {/if}
+			
                             <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
                                 
                                     <div class="quantity">
