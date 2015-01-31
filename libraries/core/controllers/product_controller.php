@@ -754,7 +754,7 @@ class Product extends PbController {
 		//echo $_SESSION["viewed_list"];
 		
 		
-		if(empty($info) || !$info || $info["valid_status"] != 1) {
+		if(empty($info) || !$info || $info["valid_status"] != 1 && false) {
 			//$pb_userinfo = pb_get_member_info();
 			//$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
 			if(!empty($info) && ($permissions["valid"] || $info["valid_moderator"] == $pb_userinfo["pb_userid"] || $info["member_id"] == $pb_userinfo["pb_userid"])) {
@@ -804,7 +804,7 @@ class Product extends PbController {
 				setvar("TAG_STRING", $info['tag_string']);
 			}
 		}
-		if ($info['state']!=1) {
+		if ($info['state']!=1 && false) {
 			//var_dump($info);
 			$iindus = $this->industry->read("*",$info["industry_id"]);
 			$mmodul = "products";

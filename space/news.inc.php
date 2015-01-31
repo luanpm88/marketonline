@@ -28,11 +28,27 @@ if (isset($_GET['nid'])) {
 		setvar("fb_current_page",1);
 		setvar("fb_no_logo",1);
 		setvar("fb_description",substr(strip_tags($info["content"]),0,9999));
-		$space->render($tpl_file);
+		
+		setvar("pagetitle",$info["title"]);
+		if(detectMobile()) {
+			$space->render_mobile("space/news_detail");
+		} else {
+			$space->render($tpl_file);
+		}
+		
 		exit;
 	}
 }
 $amount = $companynews->findCount(null, $conditions,"Companynews.id");
 setvar("paging", array('total'=>$amount));
-$space->render("news");
+
+
+//var_dump(detectMobile());
+setvar("pagetitle","Tin tức");
+if(detectMobile()) {
+	$space->render_mobile("space/news");
+} else {
+	$space->render("news");
+}
+
 ?>

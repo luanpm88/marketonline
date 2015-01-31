@@ -45,5 +45,12 @@ foreach($industries as $key => $item)
 
 setvar("ins_string", $ins_string);
 setvar("Items", $result);
-$space->render("intro");
+
+setvar("pagetitle","Hồ sơ/Thông tin");
+if(detectMobile()) {
+	$space->render_mobile("space/intro");
+} else {
+	$space->render("intro");
+}
+
 ?>

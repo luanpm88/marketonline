@@ -37,11 +37,25 @@ if (isset($_GET['nid'])) {
 		$pdb->Execute($sql);
 		$tpl_file = "job_detail";
 		setvar("item",$info);
+		
+		setvar("pagetitle",$info["name"]);
+		if(detectMobile()) {
+			$space->render_mobile("space/job_detail");
+		} else {
+			$space->render("job");
+		}
 		$space->render($tpl_file);
 		exit;
 	}
 }
 $amount = $job->findCount(null, $conditions,"id");
 setvar("paging", array('total'=>$amount));
-$space->render("job");
+
+setvar("pagetitle","Tuyển dụng");
+if(detectMobile()) {
+	$space->render_mobile("space/job");
+} else {
+	$space->render("job");
+}
+
 ?>
