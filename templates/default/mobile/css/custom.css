@@ -1265,3 +1265,6 @@ time .time {
 .footerz {
     padding-top: 20px;
 }
+.contact_box label {
+    margin-top: 20px;
+}
