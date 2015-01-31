@@ -1,0 +1,49 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$pagetitle` - `$COMPANY.shop_name`"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            
+            <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
+            
+
+            
+            <div class="container">
+                <div class="row">
+                    <div class="list-container">
+                        
+                        <div class="bs-example media-list-box">
+			    <ul class="media-list">
+				<!--{companynews companyid=`$COMPANY.id` row=10}-->
+				    <li class="media">
+				      <div class="media-left">
+					<a href="#">
+					  <time datetime="2012-11-23T10:15:44+00:00">
+					    <span class="day">{$companynews.created_d}/{$companynews.created_f}</span>
+					    <span class="mounth">{$companynews.created_y}</span>
+					    <span class="time">{$companynews.created_time}</span>
+					  </time>
+					</a>
+					
+				      </div>
+				      <div class="media-body">
+					<h4 class="media-heading">{$companynews.link}</h4>
+					<p>{$companynews.content|truncate:400}</p>
+					
+				      </div>
+				    </li>
+				<!--{/companynews}-->
+				
+			    </ul>
+			</div>
+                        
+                    </div>
+                    <div class="list-loading" style="display: none"></div>
+                </div>                
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        <!--{include file="`$theme_name`/mobile/space/_footer_space.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

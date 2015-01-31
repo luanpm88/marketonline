@@ -1,0 +1,29 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$pagetitle` - `$COMPANY.shop_name`"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            
+            <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
+            
+
+            
+            <div class="container">
+                <div class="row">
+                    <div class="list-container page-inner">
+                        <h1>{$item.title}</h1>
+                        
+                        {$item.content}
+			
+			
+			<a style="margin-top: 40px;" href="{$Menus.news}" class="btn btn-default"><< Xem các tin khác</a>
+                    </div>
+                    <div class="list-loading" style="display: none"></div>
+                </div>                
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        <!--{include file="`$theme_name`/mobile/space/_footer_space.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

@@ -1,0 +1,158 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$pagetitle` - `$COMPANY.shop_name`"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            
+            <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
+            
+
+            
+            <div class="container">
+                <div class="row">
+                    <div class="list-container page-inner">
+                        
+                        <h1>{$item.name}</h1>
+			
+			<table class="table" width="98%" class="TableInfo" style="border-color: #aaa">
+    
+				<tbody>
+
+				    <tr>
+					<th width="20%" align="left">{lang require_gender}</th>
+					<td>
+						<span class="JobName">{$options.gender[$item.require_gender_id]}</span>
+					</td>
+				</tr>
+				    <tr>
+					<th align="left">{lang education}</th>
+					<td>
+						{$options.education[$item.require_education_id]}																	
+																										</td>
+				</tr>
+				<tr>
+						<th align="left">{lang job_category}</th>
+						<td>
+							{$item.industry}						</td>
+					</tr>
+				
+				<tr>
+						<th align="left">{lang job_nature}</th>
+						<td>
+							{$options.work_type[$item.worktype_id]}						</td>
+				</tr>
+				    
+				 <tr>
+						<th align="left">{lang work_station}</th>
+						<td>{$item.area}</td>
+					</tr>
+				<tr>
+					<th align="left">{lang require_age}</th>
+					<td>
+					{$item.require_age}
+											</td>
+				</tr>
+				<tr>
+					<th align="left">{lang exper}</th>
+					<td>
+						{$item.exper}																	
+					</td>
+				</tr>
+				<tr>
+					<th align="left">{lang salary_scope}</th>
+					<td>{if $item.salary}{$item.salary} {$item.salary_currency}/tháng{else}Thương lượng{/if}</td>
+				</tr>
+				<tr>
+					<th align="left">{lang testtime}</th>
+					<td>{$item.testtime}					</td>
+				</tr>
+				<tr>
+					<th align="left">{lang job_number} ({lang peoples})</th>
+					<td>
+						{$item.peoples}					</td>
+				</tr>
+				<tr>
+					<th align="left">{lang publish_date_deadline}</th>
+					<td>{$item.expired_dates}</td>
+				</tr>
+				
+				
+				
+				
+				<tr>
+					<th align="left" valign="top">{lang job_description}</th>
+					<td>{$item.content}					</td>
+				</tr>
+				
+				<tr>
+					<th align="left">{lang skills}</th>
+					<td>{$item.skills}					</td>
+				</tr>
+				
+				
+				
+				<tr style="display: none">
+					<th align="left">{lang salary_scope}</th>
+					<td>
+					{$options.salary[$item.salary_id]}
+										<br>
+																																																										</td>
+				</tr>
+
+									
+				
+				<tr style="display: none">
+						<th align="left">{lang work_type}</th>
+						<td>
+							{$options.work_type[$item.worktype_id]}						</td>
+					</tr>
+									
+				<!--<tr>
+					<th align="left">{lang require_education}</th>
+					<td>
+						{$options.education[$item.require_education_id]}																	
+																										</td>
+				</tr>-->
+				
+				<tr>
+					<th align="left">{lang job_other}</th>
+					<td>
+						{$item.job_other}																	
+																										</td>
+				</tr>
+				
+				
+				<tr>
+					<th align="left">{lang rprofile}</th>
+					<td>
+					{$item.rprofile}
+											</td>
+				</tr>
+				
+				{if $item.contact_name}
+				    <tr>
+					    <th align="left" valign="top">Thông tin liên hệ nộp hồ sơ</th>
+					    <td>
+						<div class="text left_com_info job_contact_detail" style="">
+							<p>{if $item.contact_gender == 1}Mr.{elseif $item.contact_gender == 2}Mrs.{/if} {$item.contact_name}{if $item.contact_position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$item.contact_position}</p>{/if}
+							{if $item.contact_mobile}<p>{lang mobile_number}: {$item.contact_mobile}</p>{/if}
+							{if $item.contact_email}<p>{lang email}: {$item.contact_email}</p>{/if}							
+						</div>
+					    </td>
+				    </tr>
+				{/if}
+				
+				
+			</tbody>
+ </table>
+                        
+                    </div>
+                    <div class="list-loading" style="display: none"></div>
+                </div>                
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        <!--{include file="`$theme_name`/mobile/space/_footer_space.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

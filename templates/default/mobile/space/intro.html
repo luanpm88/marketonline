@@ -1,0 +1,131 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$pagetitle` - `$COMPANY.shop_name`"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            
+            <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
+            
+
+            
+            <div class="container">
+                <div class="row">
+                    <div class="list-container page-inner">
+                        
+			
+			
+			
+			
+			
+<h3 class="top_tab_intro" style="padding-left: 10px; margin-bottom: 15px;">
+    <a href="javascript:void(0)" class="active" rel="intro_tab">{lang space_intro}</a>
+    <a href="javascript:void(0)" rel="policy_tab">{lang policy}</a>
+    <a href="javascript:void(0)" rel="album_tab">{lang company_album} {$membertype_name}</a>
+</h3>
+
+
+<div id="intro_tab">
+    <div class="row" style="padding-left: 20px; padding-top: 0;">                
+		    <div class="columns logo logoz"><a href="{$Menus.index}"><img src="{$COMPANY.logo}"></a></div>
+		    
+		    <div class="text left_com_info">
+			    <h3>{$COMPANY.name}</h3>
+			    <p><label>{lang address}</label> {$COMPANY.address}</p>
+			    {if $COMPANY.tel}<p><label>{lang phone}</label> {$COMPANY.tel}</p>{/if}
+			    {if $COMPANY.fax}<p><label>{lang fax}</label> {$COMPANY.fax}</p>{/if}
+			    {if $COMPANY.email}<p><label>{lang email}</label> {$COMPANY.email}</p>{/if}
+			    {if $COMPANY.site_url_name}<p><label>{lang company_home}</label> <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a></p>{/if}			
+		    </div>
+		  
+
+		    <h2 style="padding-left: 0;font-size: 20px;">{if $MEMBER.membertype_id == 1}{lang shop_intro}{/if}{if $MEMBER.membertype_id == 2}{lang company_intro}{/if}{if $MEMBER.membertype_id == 3}{lang shop_intro}{/if}</h2>
+		    <h3 style="padding-left: 0;font-size: 18px;margin-bottom: 10px;">A. {lang person_company_contact}</h3>
+		    
+		    <div class="text left_com_info" style="margin-left: 130px">
+			    <p><label>Họ và Tên</label> {$COMPANY.link_man}{if $COMPANY.position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$COMPANY.position}</p>{/if}
+			    <p><label>{lang mobile_number}</label> {$COMPANY.contact_mobile}</p>
+			    <p><label>{lang email}</label> {$COMPANY.contact_email}</p>
+			    {if $COMPANY.facebook}<p><label>Facebook</label> <a href="{$COMPANY.facebook}" rel="nofollow" target="_blank">{$COMPANY.facebook}</a></p>{/if}
+		    </div>
+		    
+		    <br style="clear: both">
+		    <br />
+		    {if $MEMBER.membertype_id != 1}
+			<h3 style="padding-left: 0;font-size: 18px;margin-bottom: 10px;">B. {if $MEMBER.membertype_id == 2}{lang company_power}{/if}{if $MEMBER.membertype_id == 3}{lang shop_power}{/if}</h3>
+			<div class="text left_com_info wwo" style="margin-left: 130px">
+				{if $COMPANY.main_customer}<p><label>{lang main_customer}</label> {$COMPANY.main_customer}</p>{/if}
+				{if $COMPANY.vp_address}<p><label>{lang phone}</label> {$COMPANY.vp_address}</p>{/if}
+				{if $COMPANY.vp_fax}<p><label>{lang fax}</label> {$COMPANY.vp_fax}</p>{/if}
+				{if $COMPANY.vp_email}<p><label>{lang email}</label> {$COMPANY.vp_email}</p>{/if}
+				{if $COMPANY.main_brand && false}<p><label>{lang brand_name}</label> {$COMPANY.main_brand}</p>{/if}
+				{if $COMPANY.industry}<p><label>{lang sectors}</label> {$COMPANY.industry}</p>{/if}
+				{if $ins_string}<p><label>{lang sectors}</label> {$ins_string}</p>{/if}
+				{if $COMPANY.reg_address}<p><label>{lang legal_note_company}</label> {$COMPANY.reg_address}</p>{/if}
+				{if $COMPANY.registration_date}<p><label>{lang registration_date}</label> {$COMPANY.registration_date}</p>{/if}
+				{if $COMPANY.boss_name}<p><label>{lang legal_person_s}</label> {$COMPANY.boss_name}</p>{/if}
+				{if $COMPANY.chairman}<p><label>{lang company_boss_man}</label> {$COMPANY.chairman}</p>{/if}
+				
+				{if $COMPANY.reg_fund}<p><label>{lang registration_funds}</label> {$COMPANY.reg_fund}</p>{/if}
+				{if $COMPANY.mst}<p><label>{lang mst}</label> {$COMPANY.mst}</p>{/if}
+				{if $COMPANY.bank_account}<p><label>{lang account}</label> {$COMPANY.bank_account} ; {lang opening_bank}: {$COMPANY.bank_from}</p>{/if}
+				{if $COMPANY.property}<p><label>{lang bussiness_form}</label> {$COMPANY.property}</p>{/if}
+				{if $COMPANY.manage_type}<p><label>{lang business_model}</label> {$COMPANY.manage_type}</p>{/if}
+				
+				{if $COMPANY.employee_amount}<p><label>{lang employees_number}</label> {$COMPANY.employee_amount}</p>{/if}
+				{if $COMPANY.year_annual}<p><label>{lang year_turnover}</label> {$COMPANY.year_annual}</p>{/if}
+				{if $COMPANY.zipcode && false}<p><label>{lang zip}</label> {$COMPANY.zipcode}</p>{/if}
+				
+			</div>
+		    {/if}
+		    
+		    
+		    <br style="clear: both">
+		    <br />
+		    <h3 style="padding-left: 0;font-size: 18px;margin-bottom: 10px;">C. {if $MEMBER.membertype_id == 1}{lang thungo_shop}{/if}{if $MEMBER.membertype_id == 2}{lang thungo_company}{/if}{if $MEMBER.membertype_id == 3}{lang thungo_shop}{/if}</h3>
+		    <div class="company_intro">{$COMPANY.description}</div>
+    </div>  
+</div>
+
+<div id="policy_tab">
+    <div class="row" style="padding-left: 20px; padding-top: 0;">
+	{$COMPANY.policy}
+    </div>
+</div>
+
+<div id="album_tab">
+    <div class="row" style="padding-left: 20px; padding-top: 0;margin-right: -20px">
+	<div id="showAlbumDetail">
+	    
+	    
+	</div>
+	<h1 class="other_album">{lang other_album}</h1>
+					<!--{if $Items}-->
+						<ul id="com_album">
+						<!--{loop $Items item}-->
+							<li><a title="{$item.title}" type="{$item.type}" rel="{$item.source}?v={$item.modified}" class="fancybox {if $item.type=='video'}video-overlay{/if}" href="javascript:void(0)" onclick="loadAlbumDetail({$item.a_id},{$MEMBER.id},$(this))"><img src="{$item.image}" width="80" height="80" alt="{$item.title}" border="0"></a><p>{$item.title}</p></li>
+						<!--{/loop}-->				
+						</ul>
+						<div class="clear"></div>
+						<p class="page">{$ByPages}</p>
+					<!--{/if}-->
+    </div>
+</div>
+			
+		
+		<div class="clear"></div>
+
+			
+			
+			
+			
+			
+                    </div>
+                    <div class="list-loading" style="display: none"></div>
+                </div>                
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        <!--{include file="`$theme_name`/mobile/space/_footer_space.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

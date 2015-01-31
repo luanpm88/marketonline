@@ -1,0 +1,55 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$pagetitle` - `$COMPANY.shop_name`"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            
+            <!--{include file="`$theme_name`/mobile/space/_top_info.html"}-->
+            
+
+            
+            <div class="container">
+                <div class="row">
+                    <div class="list-container page-inner">
+                        
+                        <h1>Danh sách tuyển dụng</h1>
+			
+			<table width="98%" cellspacing="1" class="table">
+	<tbody><tr class="table_th">
+	  <th width="22%" align="left">{lang job_name}</th>
+	  <th width="34%" align="left">{lang company}</th>
+	  <th width="14%" align="left">{lang work_station}</th>
+	  <th width="15%" align="left">{lang salary_scope}</th>
+	  <th width="30%" align="left">{lang publish_date_deadline}</th>
+	</tr>
+		
+		<!--{job companyid="`$COMPANY.id`" row=10 status=1 start=`$smarty.get.pos`}-->
+				
+				
+				<tr>
+						<td>
+								{$job.link}
+						</td>
+						<td>{$job.companyname}</td>
+						<td>{$job.area}</td>
+						<td>{if $job.salary}{$job.salary} {$job.salary_currency}{else}Thương lượng{/if}</td>
+						<td>{$job.expired_dates}</td>
+				</tr>
+		<!--{/job}-->	
+		
+	
+	
+	
+	
+      </tbody></table>
+                        
+                    </div>
+                    <div class="list-loading" style="display: none"></div>
+                </div>                
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        
+        <!--{include file="`$theme_name`/mobile/space/_footer_space.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
