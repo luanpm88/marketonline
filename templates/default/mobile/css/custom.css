@@ -1272,3 +1272,8 @@ time .time {
 .contact_box label {
     margin-top: 20px;
 }
+.no-result {
+    font-size: 110%;
+    padding: 20px;
+    text-align: center;
+}

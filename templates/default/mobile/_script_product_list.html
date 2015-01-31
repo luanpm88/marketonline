@@ -147,6 +147,9 @@
 			    
 			    if (response.trim()=="") {
 				end = true;
+				if ($('.ajax-list li').length == 0) {
+				    $(".ajax-list").append('<p class="no-result">Chưa có nội dung nào ở mục này!</p>');
+				}
 			    }
 			}
 		    });
