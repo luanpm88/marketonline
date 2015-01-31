@@ -27,5 +27,12 @@ else
 
 setvar("capt_check",$capt_check);
 setvar("sid",md5(uniqid($time_stamp)));
-$space->render("contact");
+
+setvar("pagetitle","Liên hệ");
+if(detectMobile()) {
+	$space->render_mobile("space/contact");
+} else {
+	$space->render("contact");
+}
+
 ?>

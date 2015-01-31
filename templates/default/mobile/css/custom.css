@@ -1252,4 +1252,6 @@ time .time {
 .time {
     padding-top: 2px !important;
 }
-
+.logoz {
+    text-align: center;
+}
