@@ -103,7 +103,7 @@
 					<!--{if $Items}-->
 						<ul id="com_album">
 						<!--{loop $Items item}-->
-							<li><a title="{$item.title}" type="{$item.type}" rel="{$item.source}?v={$item.modified}" class="fancybox {if $item.type=='video'}video-overlay{/if}" href="javascript:void(0)" onclick="loadAlbumDetail({$item.a_id},{$MEMBER.id},$(this))"><img src="{$item.image}" width="80" height="80" alt="{$item.title}" border="0"></a><p>{$item.title}</p></li>
+							<li><a title="{$item.title}" type="{$item.type}" target="_blank" href="{$item.source}?v={$item.modified}" rel="{$item.source}?v={$item.modified}" class="fancybox {if $item.type=='video'}video-overlay{/if}" href="javascript:void(0)" onclick="loadAlbumDetail({$item.a_id},{$MEMBER.id},$(this))"><img src="{$item.image}" width="80" height="80" alt="{$item.title}" border="0"></a><p>{$item.title}</p></li>
 						<!--{/loop}-->				
 						</ul>
 						<div class="clear"></div>
