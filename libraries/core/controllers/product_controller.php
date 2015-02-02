@@ -6573,7 +6573,7 @@ class Product extends PbController {
 		//Home Top Main Left
 		$items = $ads->getByZone($_GET["id"]);
 		setvar("items",$items);
-		
+		echo "dddd";
 		render("product/ajaxAdItem");
 	}
 }
