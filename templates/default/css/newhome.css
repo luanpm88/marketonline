@@ -23,6 +23,7 @@
 .newhome-menus .tabs-menu ul li.main-title {
     background: none repeat scroll 0 0 #3b984c;
     color: #fff;
+    height: 35px;
     text-align: center;
     width: 200px;
 }
