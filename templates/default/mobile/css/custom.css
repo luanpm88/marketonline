@@ -1433,3 +1433,6 @@ time .time {
     padding-top: 5px;
     margin-top: 10px;
 }
+.album_detail {
+    width: 100%;
+}
