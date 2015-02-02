@@ -170,7 +170,7 @@ class Company extends PbController {
  		}
 		
 		$cc_count = $this->company->findCount($com_joins, $com_conditions, "Company.id");
-		if ($cc_count > 72) {
+		if ($cc_count < 72) {
 			$cc_count = intval($cc_count/6)*6;
 		} else {
 			$cc_count = 72;
