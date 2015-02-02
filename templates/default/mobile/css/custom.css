@@ -1331,3 +1331,14 @@ time .time {
     background: #f44f00;
     border-color: #f44f00;
 }
+.color-tab-top .nav-pills > li.active > a, .color-tab-top .nav-pills > li.active > a:focus, .color-tab-top .nav-pills > li.active > a:hover {
+    background-color: #1acfac;
+    color: #fff;
+}
+.color-tab-top .nav > li > a {
+    padding: 8px 10px;
+}
+.color-tab-top .nav-pills > li > a {
+    border-radius: 0;
+    color: #333;
+}
