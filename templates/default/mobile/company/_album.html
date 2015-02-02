@@ -15,10 +15,14 @@
 								    <img title="{$item.title}" alt="{$item.title}" style="" src="{$item.image}">
 								</div>
 							    </a>
-							    <p>{if $item.type=='video'}<span class="glyphicon glyphicon-facetime-video"></span>{/if}{$item.title}</p>
-							    <span class="shop-info-line"><a class="shop_link" href="{the_url module=space userid=`$item.space_name`}">
-								<span class="glyphicon glyphicons shop" aria-hidden="true"></span> {$item.shop_name}
-							    </a></span>
+							    <p>{if $item.type=='video'}<span class="glyphicon glyphicon-facetime-video"></span> {/if}{$item.title}</p>
+							    
+							    {if $item.shop_name}
+								<span class="shop-info-line"><a class="shop_link" href="{the_url module=space userid=`$item.space_name`}">
+								    <span class="glyphicon glyphicons shop" aria-hidden="true"></span> {$item.shop_name}
+								</a></span>
+							    {/if}
+							    
 							</li>
 						<!--{/loop}-->
 					</ul>
@@ -45,9 +49,12 @@
 							    <img title="{$item.title}" alt="{$item.title}" style="" src="{$item.image}">
 							</div>
 						    </a><p>{if $item.type=='video'}<span class="glyphicon glyphicon-facetime-video"></span> {/if}{$item.title}</p>
-						<span class="shop-info-line"><a class="shop_link" href="{the_url module=space userid=`$item.space_name`}">
-							<span class="glyphicon glyphicons shop" aria-hidden="true"></span> {$item.shop_name}
-						    </a></span>	
+						
+							{if $item.shop_name}
+								<span class="shop-info-line"><a class="shop_link" href="{the_url module=space userid=`$item.space_name`}">
+								    <span class="glyphicon glyphicons shop" aria-hidden="true"></span> {$item.shop_name}
+								</a></span>
+							    {/if}
 					</li>
 					<!--{/loop}-->				
 					</ul>
