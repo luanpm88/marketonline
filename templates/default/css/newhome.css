@@ -2,8 +2,8 @@
     
 }
 .newhome-menus {
-    margin: auto;
-    padding: 10px;
+    margin: -455px auto auto;
+    padding: 0 10px;
     width: 1200px;
 }
 .newhome-menus .tabs-menu {
@@ -46,7 +46,7 @@
 }
 .top-banners {
     background: none repeat scroll 0 0 #eee;
-    height: 480px;
-    top: 20px;
+    height: 420px;
+    margin-top: 60px;
     width: 100%;
 }
