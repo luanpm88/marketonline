@@ -6494,7 +6494,7 @@ class Product extends PbController {
 			$_GET["q"] = $keyword;
 			//
 			$this->product->initSearch();
-			$result = $this->product->Search(0, 40);
+			$result = $this->product->Search(0, 100);
 			
 			//var_dump($result);
 			setvar("list", $result);
