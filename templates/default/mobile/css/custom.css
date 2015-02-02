@@ -1374,5 +1374,10 @@ time .time {
     width: 100%;
 }
 .compage ul li span.title {
-    
+    text-align: center;
+    display: block;
+}
+.compage ul li span.logo-box {
+    text-align: center;
+    display: block;
 }
