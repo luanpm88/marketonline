@@ -223,7 +223,7 @@ body {
 }
 .old_price {
     text-decoration: line-through;
-    color: #a94442;
+    color: #bf0000;
 }
 .fixed-tab-top {
     background: none repeat scroll 0 0 #fff;
@@ -1310,4 +1310,20 @@ time .time {
 }
 #album_tab ul li a img {
     
+}
+.amount {
+    color: #0072bd;
+    font-size: 110%;
+    font-weight: 700;
+}
+.price_unit {
+    color: #0072bd;
+    font-size: 110%;
+    font-weight: 700;
+}
+.old_price .price_unit {
+    color: #a94442;
+}
+.old_price {
+    font-weight: 700;
 }
