@@ -1358,7 +1358,7 @@ time .time {
     padding: 10px;
 }
 .compage h3, .video_new_page h3 {
-    margin-top: 0;
+    margin-top: 10px;
 }
 .compage ul {
     margin: 0 -2% 0 0;
