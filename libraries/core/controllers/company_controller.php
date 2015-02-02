@@ -124,7 +124,7 @@ class Company extends PbController {
 		foreach($zones as &$zone) {
 			$zone_condition = array("Ads.adzone_id=".$zone["id"]);
 			$count = $ads->findCount($joins, array_merge($conditions, $zone_condition), "Ads.id");
-			var_dump($count);
+			//var_dump($count);
 			$count = intval($count/6)*6;
 			//var_dump($count);
 			$adses = $ads->findAll("c.cache_spacename, c.shop_name as shop_name, c.picture, Ads.*", $joins, array_merge($conditions, $zone_condition), "display_order", 0, $count);
@@ -168,7 +168,15 @@ class Company extends PbController {
 		if(!empty($_GET['membergroup_id'])){
  			$com_conditions[] = "m.membergroup_id=".intval($_GET['membergroup_id']);
  		}
-		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_weekly DESC, m.active_time DESC", 0, 72);
+		
+		$cc_count = $this->company->findAll($com_joins, $com_conditions, "Company.id");
+		if ($cc_count > 72) {
+			$cc_count = intval($cc_count/6)*6;
+		} else {
+			$cc_count = 72;
+		}
+		
+		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_weekly DESC, m.active_time DESC", 0, $cc_count);
 		foreach($companies as $key => $com) {
 			$companies[$key] = $ads->formatResult($com);
 		}
