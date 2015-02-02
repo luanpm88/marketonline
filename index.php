@@ -226,6 +226,8 @@ if (!empty($_GET['do'])) {
 	//detectMobile()
 	if(detectMobile()) {
 		render("mobile/index");
+	} elseif($_GET["layout"]=='newhome') {
+		render("mobile/newhome");
 	} else {
 		render("index");
 	}

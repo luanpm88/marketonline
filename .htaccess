@@ -6,6 +6,8 @@ Options +FollowSymLinks
 Options +Indexes  
 RewriteEngine On
 
+RewriteRule ^newhome/?$ index.php?layout=newhome [L]
+
 RewriteRule ^mobile/?$ space/\?userid=phu-dong&layout=mobile [L]
 
 RewriteRule ^privacy$ policy.html [L]

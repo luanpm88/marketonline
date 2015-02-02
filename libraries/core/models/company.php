@@ -5,8 +5,8 @@ class Companies extends PbModel {
 	var $info = null;
 	var $id;
  	var $validate = array(
-	'name' => array('required' => true),
-	//'description' => array( 'required' => true),
+		'name' => array('required' => true),
+		//'description' => array( 'required' => true),
 	);
 
  	function Companies()
@@ -456,7 +456,7 @@ class Companies extends PbModel {
 		$this->dbstuff->Execute("UPDATE {$this->table_prefix}products p SET p.cache_companyname='".$new_name."' WHERE p.company_id=".$id);
 		$this->dbstuff->Execute("UPDATE {$this->table_prefix}trades t SET t.cache_companyname='".$new_name."' WHERE t.company_id=".$id);
 	}
-	
+
 	function formatResult($result)
 	{
 		global $_PB_CACHE;
@@ -490,7 +490,7 @@ class Companies extends PbModel {
 		}
 		return $result;		
 	}
-	
+
 	function getPhone($code = 0, $zone = 0, $id = 0)
 	{
 		$p = null;
@@ -505,14 +505,14 @@ class Companies extends PbModel {
 		$p.=@implode("-", array($zone, $id));
 		return trim($p);
 	}
-	
+
 	function splitPhone($phone)
 	{
 		$return = array();
 		preg_match("/\(+([0-9]{2,3})+\)([0-9]{1,3})-([0-9]{1,8})/", $phone, $return);
 		return $return;
 	}
-	
+
 	function clicked($id, $force = false)
 	{
 		//echo $session->read('company_click_lock')."----".$id;if(!isset($_SESSION["customer_code"]))
@@ -525,7 +525,7 @@ class Companies extends PbModel {
 		}
 		return 0;
 	}
-	
+
 	function countProduct($id)
 	{
 //#####		uses("product");
@@ -547,14 +547,14 @@ class Companies extends PbModel {
 		$space = new Spaces();
 		
 		//$keyword = utf8_encode($keyword);
-		
+
 		//$sql = "SELECT c.*, MATCH (`shop_name`,`name`) AGAINST"
 		//		." ('".$keyword."') AS score"
 		//		." FROM {$this->table_prefix}companies c WHERE MATCH (`shop_name`,`name`) AGAINST"
 		//		." ('".$keyword."')"
 		//		." ORDER BY score DESC LIMIT 0, 10";
 		//echo $sql;
-				
+
 		$sql = "SELECT c.*, mf.first_name, mf.last_name,"
 			." MATCH (`shop_name`) AGAINST ('".$keyword."') AS score,"
 			." MATCH (`name`) AGAINST ('".$keyword."') AS score1,"
@@ -573,7 +573,7 @@ class Companies extends PbModel {
 			." OR CONCAT(mf.`last_name`,' ', mf.`first_name`) LIKE '%".$keyword."%'"
 			." OR c.`keywords_string` LIKE '%".$keyword."%'";
 		$sql_foot = " ORDER BY (score*3 + score1*2 + score2 + score3) DESC LIMIT {$offset}, {$limit}";
-		
+
 		//echo $sql;
 		//$sql = "SELECT c.*, mf.first_name, mf.last_name"
 		//	
@@ -586,7 +586,7 @@ class Companies extends PbModel {
 		//	//." OR mf.`last_name` LIKE '%".$keyword."%'"
 		//	." OR c.`keywords_string` LIKE '%".$keyword."%'"			
 		//	." ORDER BY created DESC LIMIT 0, 20";
-		
+
 		//echo $sql."dddd";
 		$keyword = trim($keyword);
 		if(!empty($keyword)) $results = $this->dbstuff->GetArray($sql.$sql_middle.$sql_foot);
@@ -759,7 +759,7 @@ class Companies extends PbModel {
 				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc"
 				." INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id"
 				." WHERE pp.status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
-		
+
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=Company.area_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a_parent ON a_parent.id=a.parent_id";
@@ -769,7 +769,7 @@ class Companies extends PbModel {
 		$result = $this->findAll("Company.*", $joins, $conditions, "m.points_weekly DESC, m.active_time DESC", $offset, $num);
 		//$count = $this->findCount($joins, $conditions, "Company.id");
 		$result = $this->formatItems($result);
-		
+
 		return array("result"=>$result,"count"=>$count);
 	}
 }
