@@ -2583,7 +2583,7 @@
 		
 		
 		
-		loadAdItem();
+		//loadAdItem();
 	});
 	
 	$(window).resize(function() {
