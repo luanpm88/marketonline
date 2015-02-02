@@ -1412,5 +1412,10 @@ time .time {
     background-color: #fe7477;
 }
 .shop-info-line {
-    
+    display: block;
+    font-size: 90%;
+    text-align: center;
+}
+.shop-info-line a {
+    color: #888;
 }
