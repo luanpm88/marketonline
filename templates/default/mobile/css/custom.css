@@ -1352,6 +1352,7 @@ time .time {
     border-bottom: 1px solid #1acfac;
     overflow: auto;
     width: 100%;
+    border-top: solid 1px #fff;
 }
 .compage, .video_new_page {
     background: none repeat scroll 0 0 #fff;
