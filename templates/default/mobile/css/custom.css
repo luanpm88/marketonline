@@ -1429,4 +1429,7 @@ time .time {
 .album_detail {
     background: #fff;
     border-bottom: solid 1px #ddd;
+    border-top: solid 1px #ddd;
+    padding-top: 5px;
+    margin-top: 10px;
 }
