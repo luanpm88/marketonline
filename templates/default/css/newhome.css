@@ -96,3 +96,6 @@
     height: 380px;
     background: #888;
 }
+.stretch_banner {
+    background: url("../image/ajax-loader-2.gif") no-repeat center center #fff;
+}
