@@ -1401,7 +1401,7 @@ time .time {
 .company-page .color-tab-top.product-tabs .nav-pills > li.active > a, .company-page .nav-pills > li.active > a:focus, .company-page .nav-pills > li.active > a:hover {
     background-color: #fe7477;
 }
-.company-page .fixed-tab-top {
+.company-page .color-tab-top {
     border-bottom: 1px solid #fe7477;
 }
 .company-page .navbar-inverse {
