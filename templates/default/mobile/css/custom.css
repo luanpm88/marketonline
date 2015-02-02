@@ -806,7 +806,8 @@ label.error {
 .info-2line-group p {
     padding-left: 140px;
     position: relative;
-    min-height: 18px;   
+    min-height: 18px;
+    word-wrap: break-word;
 }
 .meminfo_but {
     width: 100%;
