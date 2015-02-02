@@ -39,5 +39,8 @@
 .newhome-menus .main-menu ul li a {
     color: #333;
     display: block;
-    padding: 10px;
+    padding: 0 10px;
+}
+.top-banners {
+    
 }
