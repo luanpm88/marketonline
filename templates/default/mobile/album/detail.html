@@ -1,0 +1,144 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Thương hiệu - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <!--{include file="`$theme_name`/mobile/company/_topmenu.html"}-->	
+                    
+                    
+		    
+			    
+		    
+		    
+		    
+		    
+		    
+		    {if $company}
+		    
+		    
+			    <div class="mobile-shop-info">
+				<!--<h3 class="seller-title">Thông tin người bán</h3>-->
+				<div id="shop_info">
+				
+					
+					<section class="widget-3 widget-last widget widget_recent_products" id="recent_products-3" style="background:none; margin-bottom: 0"><div class="widget-inner">
+						
+						
+									
+									
+						<div class="logo_box_u">
+						<div class="four columns logo logoz">
+						    
+						
+						    <a class="pic" href="{$company.url}"><img src="{$company.logo}" /></a>
+						  </div>
+						  
+						</div>			
+									
+									
+									
+									<!--<h5>Chủ Shop</h5>-->
+							<div class="red_box">
+									<h3 style="" class="shop_name">
+									    <a href="http://marketonline.vn/hello-kitty-f21">
+										{$company.shop_name}
+									    </a>
+									</h3>
+									
+							<div class="info-2line-group line-xsmall">					    
+								{if $company.link_man}
+									<p>
+										<label>Liên hệ</label>:
+										{$company.link_man}
+									</p>
+								{/if}
+								{if $company.contact_mobile}
+									<p>
+										<label>Di động</label>:
+										{$company.contact_mobile}
+									</p>
+								{/if}
+								{if $company.contact_email}
+									<p>
+										<label>Email</label>:
+										{$company.contact_email}
+									</p>
+								{/if}
+								{if $company.address}
+									<p>
+										<label>Địa chỉ</label>:
+										{$member.address}
+									</p>
+								{/if}
+							<p></p>
+									    
+							 </div>
+						
+	
+								</div>
+					
+					
+								
+					
+					
+					</div></section>
+				    
+				    </div>
+				<br style="clear: both">
+				
+			    </div>
+			    
+		    {else}
+				
+					<div class="avatar">
+					    <img src="{$member.photo}" />
+					    <a onclick="" href="#login-box" class="chat_with_owner online comment_but">Nhắn tin</a>
+					</div>
+					<h2>{$member.name}</h2>
+					
+					{if $member.mobile}
+						<p>
+							<label>Điện thoại</label>:
+							{$member.mobile}
+						</p>
+					{/if}
+					{if $member.email}
+						<p>
+							<label>Email</label>:
+							{$member.email}
+						</p>
+					{/if}
+					{if $member.address}
+					    <p>
+						<label>Địa chỉ</label>:
+						{$member.address}
+					    </p>
+					{/if}
+		    {/if}
+		    
+		    
+                    
+                    
+                    {if $smarty.get.do=='company'}
+	    
+                        <!--{include file="`$theme_name`/mobile/company/_companies.html"}-->
+                    
+                    {elseif $smarty.get.do=='album'}
+                    
+                        <!--{include file="`$theme_name`/mobile/album/_album.html"}-->	
+                    
+                    {/if}
+                        
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
