@@ -84,12 +84,15 @@
     background: #efefef;
 }
 .home-right-top-banner .banner-item {
-    
+    background: none repeat scroll 0 0 #999;
+    height: 380px;
+    width: 100%;
 }
 .home-right-top-banner .banner-item.left-banner {
-    
+    width: 70%;
 }
 .home-right-top-banner .banner-item.right-banner {
-    
+    width: 30%;
+    height: 380px;
 }
     
