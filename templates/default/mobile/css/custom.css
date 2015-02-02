@@ -1297,7 +1297,7 @@ time .time {
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #ddd;
     float: left;
-    height: 205px;
+    height: 210px;
     list-style: outside none none;
     margin-bottom: 10px;
     margin-right: 2%;
@@ -1310,6 +1310,11 @@ time .time {
 }
 .album_tab ul li a img {
     
+}
+.album_tab ul li p {
+    display: block;
+    padding: 5px;
+    text-align: center;
 }
 .amount {
     color: #0072bd;
