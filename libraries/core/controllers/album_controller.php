@@ -28,7 +28,13 @@ class Album extends PbController {
 		setvar("images",$images);
 		setvar("videos",$videos);
 		setvar("PageTitle", "Album Thương hiệu - MarketOnline.vn");
-		render("company/index", 1);
+		
+		if(detectMobile()) {
+			render("mobile/company/index", 1);
+		} else {
+			render("company/index", 1);
+		}
+		
 	}
 	
 	function detail() {
