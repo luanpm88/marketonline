@@ -1359,7 +1359,6 @@ time .time {
     border-top: solid 1px #fff;
 }
 .compage {
-    background: none repeat scroll 0 0 #fff;
     padding: 10px;
 }
 .video_new_page {
@@ -1380,6 +1379,7 @@ time .time {
     margin-bottom: 20px;
     margin-right: 1%;
     width: 32%;
+    background: #fff;
 }
 .compage ul li a {
     
