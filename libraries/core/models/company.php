@@ -540,7 +540,7 @@ class Companies extends PbModel {
 		return 0;
 	}
 	
-	function fullTextSearch($keyword, $offset = 0, $limit = 100, $pagination = false)
+	function fullTextSearch($keyword, $offset = 0, $limit = 150, $pagination = false)
 	{
 		uses("area","space");
  		$area = new Areas();
