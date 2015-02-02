@@ -76,7 +76,7 @@
 	    $.ajax({
 		url: "index.php?do=product&action=ajaxAdItem&id="+adid,
 	    }).done(function ( data ) {
-		alert(data);
+		$('.adid-'+adid).html(data);
 		cropping();
 	    });
 	});
