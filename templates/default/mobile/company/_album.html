@@ -16,7 +16,7 @@
 							</div>
 						    </a>
 						    <p>{if $item.type=='video'}[Video] {/if}{$item.title}</p>
-						    <span class="shop-info-line"><a class="shop_link" href="{the_url module=space userid=`$item.space_name`}">Gian hàng: {$item.shop_name}</a></span>
+						    <span class="shop-info-line"><a class="shop_link" href="{the_url module=space userid=`$item.space_name`}">{$item.shop_name}</a></span>
 						</li>
 					<!--{/loop}-->				
 					</ul>
