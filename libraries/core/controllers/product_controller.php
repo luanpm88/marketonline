@@ -6569,9 +6569,9 @@ class Product extends PbController {
 	function ajaxAdItem() {
 		uses("ad");
 		$ads = new Adses();
-		echo "Dd";
+		//echo "Dd";
 		//Home Top Main Left
-		$items = $ad->getByZone($_GET["id"]);
+		$items = $ads->getByZone($_GET["id"]);
 		setvar("items",$items);
 		
 		render("product/ajaxAdItem");
