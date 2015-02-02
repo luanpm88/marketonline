@@ -8,7 +8,7 @@
                     
                     
                     
-                    <div class="bs-example fixed-tab-top product-tabs">
+                    <div class="bs-example ajax-tab-top product-tabs">
                         <ul class="nav nav-pills" style="width:400px">
                             
                                 <li class="{if $smarty.get.membergroup_id==3 || !$smarty.get.membergroup_id}active{/if}">
@@ -31,15 +31,17 @@
                              
                         </ul>
                     </div>
-                    <div class="top-second-cover"></div>
-                    <div class="ajax-list-container">
-                        
-                        <div class="ajax-list">
-                            
-                        </div>
-                        
-                    </div>
-                    <div class="list-loading" style="display: none"></div>
+                    
+                    
+                    {if $smarty.get.do=='company'}
+	    
+                        <!--{include file="`$theme_name`/company/_companies.html"}-->
+                    
+                    {elseif $smarty.get.do=='album'}
+                    
+                        <!--{include file="`$theme_name`/company/_album.html"}-->	
+                    
+                    {/if}
                         
                     
                 </div>
