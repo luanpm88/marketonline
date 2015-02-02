@@ -10,10 +10,25 @@
                     
                     <div class="bs-example fixed-tab-top product-tabs">
                         <ul class="nav nav-pills" style="width:400px">
-                            <li offertype="" orderby="dateline" type="" class="ajax-tab-but" role="presentation"><a href="#">Mới</a></li>
-                            <li offertype="" orderby="dateline" type="sale" class="ajax-tab-but" role="presentation"><a href="#">Giảm giá/Khuyến mãi</a></li>
-                            <li offertype="" orderby="favourite" type="" class="ajax-tab-but" role="presentation"><a href="#">Nổi bật</a></li>
-                            <li offertype="" orderby="dateline" type="other" class="ajax-tab-but" role="presentation"><a href="#">Khác</a></li>
+                            <li class="">
+                                <li>
+                                    <a class="{if $smarty.get.membergroup_id==3}active{/if}" href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>
+                                </li>
+                                <li>
+                                    <a class="{if $smarty.get.membergroup_id==1}active{/if}" href="{the_url module='companies' membergroup_id='1' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cửa hàng</a>
+                                </li>
+                                <li>
+                                    <a class="{if $smarty.get.membergroup_id==2}active{/if}" href="{the_url module='companies' membergroup_id='2' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cá nhân</a>
+                                </li>
+                                {if $pb_setting.company_student_feature}
+                                    <li>
+                                        <a class="{if $smarty.get.student}active{/if}" href="{the_url module='companies' industryid=`$smarty.get.industryid` title=`$industry.name` student=1}">Sinh viên</a>&nbsp;&nbsp;&nbsp;
+                                    </li>
+                                {/if}
+                                <li>
+                                    <a class="{if $smarty.get.do==album}active{/if}" href="{the_url module='album' type='image'}">Hình ảnh/Videos</a>
+                                </li>
+                             
                         </ul>
                     </div>
                     <div class="top-second-cover"></div>
