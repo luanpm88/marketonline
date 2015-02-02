@@ -80,4 +80,7 @@
     height: 250px;
     width: 100%;
 }
+.newhome-menus .main-menu ul li a:hover {
+    background: #ddd;
+}
     
