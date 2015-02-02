@@ -2585,7 +2585,7 @@
 		
 		
 		
-		loadAdItem();
+		loadAdItems();
 	});
 	
 	$(window).resize(function() {
