@@ -1387,6 +1387,7 @@ time .time {
 .compage ul li img {
     float: left;
     width: 100%;
+    padding: 2px;
 }
 .compage ul li span.title {
     display: block;
