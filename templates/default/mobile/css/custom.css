@@ -1381,6 +1381,7 @@ time .time {
     padding: 5px;
     text-align: center;
     color: #333;
+    width: 100%;
 }
 .compage ul li span.logo-box {
     border-bottom: 1px solid #ddd;
