@@ -507,7 +507,7 @@ class PbModel extends Overloadable
 			//$tmp_condition = str_replace("WHERE", "", $tmp_condition);
 			$sql.= " WHERE ".$tmp_condition." ";			
 		}
-		echo $sql."<br />";
+		//echo $sql."<br />";
 		if ($this->cache_sql) {
 			$return = $this->dbstuff->CacheGetOne($this->cache_sql, $sql);
 		}else{
