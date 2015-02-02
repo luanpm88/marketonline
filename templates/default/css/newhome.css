@@ -1,18 +1,28 @@
 .newhome-menus {
-    
+    margin: auto;
+    padding: 10px;
+    width: 1200px;
 }
 .newhome-menus .tabs-menu {
-    
+    margin-top: 10px;
 }
 .newhome-menus .tabs-menu ul {
-    
+    float: left;
+    margin: 0;
+    width: 100%;
 }
 .newhome-menus .tabs-menu ul li {
-    
+    float: left;
+    font-size: 120%;
+    list-style: outside none none;
+    padding: 5px 20px;
 }
 .newhome-menus .tabs-menu ul li.main-title {
-    
+    background: none repeat scroll 0 0 #3b984c;
+    color: #fff;
+    text-align: center;
+    width: 200px;
 }
 .newhome-menus .tabs-menu ul li a {
-    
+    color: #333;
 }
