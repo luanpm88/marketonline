@@ -1389,3 +1389,6 @@ time .time {
     float: left;
     text-align: center;
 }
+.clear {
+    clear: both;
+}
