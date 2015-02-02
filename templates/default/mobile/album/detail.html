@@ -10,7 +10,18 @@
                     
                     
 		    
-			    
+		<div class="album_detail">
+		    {if $item.type=='image'}
+			<a href="{$item.source}" class="album_detail_a_image">
+			    <img title="{$item.title}" src="{$item.source}" />
+			</a>
+		    {else}
+			<video poster="{$item.image}" controls width="778" height="544">
+			    <source src="{$item.source}" type="video/mp4" />
+			    Your browser does not support the video tag.
+			</video>
+		    {/if}
+		</div>
 		    
 		    
 		    

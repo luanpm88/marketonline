@@ -1426,3 +1426,7 @@ time .time {
 .shop-info-line a {
     color: #888;
 }
+.album_detail {
+    background: #fff;
+    border-bottom: solid 1px #ddd;
+}
