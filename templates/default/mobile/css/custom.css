@@ -1398,7 +1398,7 @@ time .time {
     clear: both;
 }
 
-.company-page .fixed-tab-top.product-tabs .nav-pills > li.active > a, .company-page .nav-pills > li.active > a:focus, .company-page .nav-pills > li.active > a:hover {
+.company-page .color-tab-top.product-tabs .nav-pills > li.active > a, .company-page .nav-pills > li.active > a:focus, .company-page .nav-pills > li.active > a:hover {
     background-color: #fe7477;
 }
 .company-page .fixed-tab-top {
