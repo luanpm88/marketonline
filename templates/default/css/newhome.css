@@ -100,7 +100,7 @@
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
     overflow: hidden;
 }
-.stretch_banner {
+.stretch_banner a {
     display: block;
     height: 900px;
     width: 100%;
