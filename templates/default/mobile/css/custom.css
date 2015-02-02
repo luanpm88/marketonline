@@ -307,8 +307,8 @@ body {
 }
 .fixed-filter-top {
     background: none repeat scroll 0 0 #fff;
-    border-bottom: 2px solid #edf4ef;
-    border-top: 2px solid #edf4ef;
+    border-bottom: 1px solid #edf4ef;
+    border-top: 1px solid #edf4ef;
     height: 34px;
     margin: 0;
     position: fixed;
