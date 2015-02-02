@@ -94,7 +94,7 @@
 .home-right-top-banner .banner-item.right {
     width: 30%;
     height: 380px;
-    background: #888;
+    /*background: #888;*/
 }
 .stretch_banner {
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
