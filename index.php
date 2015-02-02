@@ -227,6 +227,10 @@ if (!empty($_GET['do'])) {
 	if(detectMobile()) {
 		render("mobile/index");
 	} elseif($_GET["layout"]=='newhome') {
+		//Home Top Main Left
+		$home_top_main_left = $ad->getByZone(39);
+		setvar("home_top_main_left",$home_top_main_left);
+		
 		render("newhome");
 	} else {
 		render("index");
