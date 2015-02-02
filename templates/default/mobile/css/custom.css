@@ -1286,14 +1286,14 @@ time .time {
     padding: 20px;
     text-align: center;
 }
-#album_tab {
+.album_tab {
     
 }
-#album_tab ul {
+.album_tab ul {
     margin-right: -2%;
     padding: 0;
 }
-#album_tab ul li {
+.album_tab ul li {
     background: none repeat scroll 0 0 #fff;
     border: 1px solid #ddd;
     float: left;
@@ -1305,10 +1305,10 @@ time .time {
     padding: 10px;
     width: 48%;
 }
-#album_tab ul li a {
+.album_tab ul li a {
     
 }
-#album_tab ul li a img {
+.album_tab ul li a img {
     
 }
 .amount {
