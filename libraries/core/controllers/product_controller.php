@@ -6565,5 +6565,16 @@ class Product extends PbController {
 		
 		render("mobile/product/buy_method_select");
 	}
+	
+	function ajaxAdItem() {
+		uses("ad");
+		$ads = new Adses();
+		
+		//Home Top Main Left
+		$items = $ad->getByZone($_GET["id"]);
+		setvar("items",$items);
+		
+		render("product/ajaxAdItem");
+	}
 }
 ?>

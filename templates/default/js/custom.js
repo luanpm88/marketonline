@@ -68,8 +68,21 @@
 //	    //client.getLatLng('444/4 CMT8, F11, quận 3, ho chi minh', 'getlatlng');
 //	}
 //    }
+
+    function loadAdItem() {
+	jQuery('.stretch_banner').each(function() {
+	    var adid = $(this).attr("rel");
+	    
+	    $.ajax({
+		url: "index.php?do=product&action=ajaxAdItem&id="+adid,
+	    }).done(function ( data ) {
+		alert(data);
+		cropping();
+	    });
+	});
+    }
     
-    cropping();
+    //cropping();
     function cropping() {
 	jQuery('.stretch_banner').each(function() {
 	    var scale = 1;
@@ -2565,9 +2578,14 @@
 		    $(".box-res-con.shopping .shopping_button").attr("href",$(".box-res-con.shopping .shopping_button").attr("href")+$(this).attr("rel"));
 		});
 		
-		$('#settingouter .top_login_name').width($('#settingouter .top_login_name').width()+17);		
+		$('#settingouter .top_login_name').width($('#settingouter .top_login_name').width()+17);
+		
+		
+		
+		
+		loadAdItem();
 	});
 	
 	$(window).resize(function() {
-	    cropping();
+	    //cropping();
 	});
