@@ -1360,6 +1360,7 @@ time .time {
     padding: 0;
 }
 .compage ul li {
+    border: 1px solid #ddd;
     float: left;
     list-style: outside none none;
     margin-bottom: 20px;
@@ -1373,11 +1374,15 @@ time .time {
     float: left;
     width: 100%;
 }
-.compage ul li span.title {
-    text-align: center;
+.compage ul li span.logo-box {
+    border-bottom: 1px solid #ddd;
     display: block;
+    float: left;
+    text-align: center;
 }
 .compage ul li span.logo-box {
-    text-align: center;
+    border-bottom: 1px solid #ddd;
     display: block;
+    float: left;
+    text-align: center;
 }
