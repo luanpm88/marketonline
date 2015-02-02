@@ -333,10 +333,11 @@ body {
 .cat-filter-but {
     border: 0 none;
     border-radius: 0;
-    height: 29px;
+    height: 32px;
+    line-height: 24px;
     max-width: 100%;
     overflow: auto;
-    padding: 5px 5px 5px 38px;
+    padding: 5px 5px 5px 42px;
     text-align: left;
 }
 .cat-filter-but-group {
@@ -402,7 +403,7 @@ body {
     background: none repeat scroll 0 0 #fff;
     display: block;
     float: left;
-    font-size: 21px;
+    font-size: 24px;
     padding: 2px 2px 0 10px;
     position: absolute;
 }
