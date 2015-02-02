@@ -89,7 +89,7 @@
 	    jQuery(this).css('display','block');
 	    jQuery(this).find('img').css('display','none');
 	    //jQuery(this).css('height',jQuery(this).width()*scale);
-	    scale = jQuery(this).width()/jQuery(this).height();
+	    scale = jQuery(this).height()/jQuery(this).width();
 	    
 	    jQuery(this).css('background-image','url('+jQuery(this).find('img').attr("src")+')');
 	    if(jQuery(this).find('img').width()*scale < jQuery(this).find('img').height()) {
