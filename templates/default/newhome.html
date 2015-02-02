@@ -9,35 +9,37 @@
 <!--{include file="`$theme_name`/topmenu.html"}-->
 
 <div class="newhome">
-    <div class="top-banners">
-        
-    </div>
-    
-    
-    <div class="newhome-menus">
-        <div class="tabs-menu">
-            <ul>
-                <li class="main-title">Danh mục chính</li>
-                <li>
-                    <a target="_blank" href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a>
-                </li>
-            </ul>
+    <div class="top-absolute">
+        <div class="top-banners">
+            
         </div>
-        <div class="main-menu">
-            <ul>
-                <!--{loop $IndustryList item0 level_0 key0}-->
-                    <li class="main-title">
-                        <a target="_blank" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
-                            {$item0.name}
-                        </a>
+    
+    
+        <div class="newhome-menus">
+            <div class="tabs-menu">
+                <ul>
+                    <li class="main-title">Danh mục chính</li>
+                    <li>
+                        <a target="_blank" href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a>
                     </li>
-                <!--{/loop}-->
-            </ul>
+                </ul>
+            </div>
+            <div class="main-menu">
+                <ul>
+                    <!--{loop $IndustryList item0 level_0 key0}-->
+                        <li class="main-title">
+                            <a target="_blank" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
+                                {$item0.name}
+                            </a>
+                        </li>
+                    <!--{/loop}-->
+                </ul>
+            </div>
         </div>
+        
+        <br style="clear: both" />
     </div>
-    
-    
-    <br style="clear: both" /><br style="clear: both" />
+        
     <div class="newhome-content">
         aaa
     </div>
