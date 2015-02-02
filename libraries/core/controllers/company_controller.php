@@ -180,7 +180,12 @@ class Company extends PbController {
 		
 		setvar("PageTitle", "Thương hiệu - MarketOnline.vn");
 		setvar("list", $zones);
-		render("company/index", 1);
+		
+		if(detectMobile()) {
+			render("mobile/company/index", 1);
+		} else {
+			render("company/index", 1);
+		}		
 	}
 	
 	function search() {
