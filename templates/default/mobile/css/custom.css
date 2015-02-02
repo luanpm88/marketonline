@@ -1304,7 +1304,7 @@ time .time {
     overflow: hidden;
     padding: 10px;
     width: 48%;
-    margin: 0
+   
 }
 .album_tab ul li a {
     
@@ -1318,6 +1318,7 @@ time .time {
     overflow: hidden;
     padding: 5px;
     text-align: center;
+    margin: 0;
 }
 .amount {
     color: #0072bd;
