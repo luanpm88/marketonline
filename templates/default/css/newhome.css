@@ -27,14 +27,17 @@
     color: #333;
 }
 .newhome-menus .main-menu {
-    
+    clear: both;
+    width: 200px;
 }
 .newhome-menus .main-menu ul {
     
 }
 .newhome-menus .main-menu ul li {
-    
+    list-style: none;
 }
 .newhome-menus .main-menu ul li a {
-    
+    color: #333;
+    display: block;
+    padding: 10px;
 }
