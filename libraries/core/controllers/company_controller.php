@@ -123,7 +123,7 @@ class Company extends PbController {
 		
 		foreach($zones as &$zone) {
 			$zone_condition = array("Ads.adzone_id=".$zone["id"]);
-			$count = $ads->findCount($joins, array_merge($conditions, $zone_condition), "c.cache_spacename");
+			$count = $ads->findCount($joins, array_merge($conditions, $zone_condition), "Ads.id");
 			//var_dump($count);
 			$count = intval($count/6)*6;
 			//var_dump($count);
