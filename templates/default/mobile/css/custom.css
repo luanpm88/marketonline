@@ -1374,11 +1374,13 @@ time .time {
     float: left;
     width: 100%;
 }
-.compage ul li span.logo-box {
-    border-bottom: 1px solid #ddd;
+.compage ul li span.title {
     display: block;
     float: left;
+    height: 50px;
+    padding: 5px;
     text-align: center;
+    color: #333;
 }
 .compage ul li span.logo-box {
     border-bottom: 1px solid #ddd;
