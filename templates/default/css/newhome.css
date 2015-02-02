@@ -57,8 +57,14 @@
     
 }
 .top-banners .right-banner {
-    
+    background: none repeat scroll 0 0 #ddd;
+    height: 630px;
+    margin: auto;
+    padding-left: 210px;
+    width: 1200px;
 }
 .top-banners .right-banner-inner {
-    
+    height: 630px;
+    width: 100%;
+    background: #ccc;
 }
