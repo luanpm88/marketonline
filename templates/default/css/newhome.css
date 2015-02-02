@@ -71,5 +71,10 @@
     position: absolute;
 }
 .home-right-top-banner {
-    
+    background: none repeat scroll 0 0 #bbb;
+    height: 380px;
+    width: 100%;
 }
+.home-right-bottoms-products {
+}
+    
