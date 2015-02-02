@@ -6566,15 +6566,22 @@ class Product extends PbController {
 		render("mobile/product/buy_method_select");
 	}
 	
-	function ajaxAdItem() {
+	function ajaxAdItems() {
 		uses("ad");
 		$ads = new Adses();
+		
 		//echo "Dd";
 		//Home Top Main Left
 		$items = $ads->getByZone($_GET["id"]);
 		setvar("items",$items);
-		//echo "dddd";
-		$this->render("product/ajaxAdItem");
+		
+		if($_GET["type"]) {
+			$this->render("product/ajaxAdItem_"+$_GET["type"]);
+		} else {
+			$this->render("product/ajaxAdItem");
+		}
+		
 	}
+
 }
 ?>

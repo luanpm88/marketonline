@@ -69,12 +69,13 @@
 //	}
 //    }
 
-    function loadAdItem() {
-	jQuery('.stretch_banner').each(function() {
+    function loadAdItems() {
+	jQuery('.ajax_banner').each(function() {
 	    var adid = $(this).attr("rel");
+	    var type = $(this).attr("type");
 	    
 	    $.ajax({
-		url: "index.php?do=product&action=ajaxAdItem&id="+adid,
+		url: "index.php?do=product&action=ajaxAdItems&id="+adid+"&type="+type,
 	    }).done(function ( data ) {
 		$('.adid-'+adid).html(data);
 		cropping();
