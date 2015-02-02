@@ -8,6 +8,7 @@
 }
 .newhome-menus .tabs-menu {
     margin-top: 10px;
+    position: absolute;
 }
 .newhome-menus .tabs-menu ul {
     float: left;
@@ -32,6 +33,8 @@
 }
 .newhome-menus .main-menu {
     clear: both;
+    position: absolute;
+    top: 55px;
     width: 200px;
 }
 .newhome-menus .main-menu ul {
