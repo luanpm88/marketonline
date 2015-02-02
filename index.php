@@ -227,9 +227,9 @@ if (!empty($_GET['do'])) {
 	if(detectMobile()) {
 		render("mobile/index");
 	} elseif($_GET["layout"]=='newhome') {
-		//Home Top Main Left
-		$home_top_main_left = $ad->getByZone(39);
-		setvar("home_top_main_left",$home_top_main_left);
+		//if show Home Top Main Right
+		$show_home_top_main_left = $ad->getByZone(40);
+		setvar("show_home_top_main_left",count($show_home_top_main_left));
 		
 		render("newhome");
 	} else {
