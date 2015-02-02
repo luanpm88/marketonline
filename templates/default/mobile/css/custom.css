@@ -1349,16 +1349,18 @@ time .time {
     width: 100%;
 }
 .compage {
-    
+    background: none repeat scroll 0 0 #fff;
+    padding: 10px;
 }
 .compage h3 {
-    
+    margin-top: 0;
 }
 .compage ul {
-    
+    margin: 0;
+    padding: 0;
 }
 .compage ul li {
-    
+    list-style: outside none none;
 }
 .compage ul li a {
     
