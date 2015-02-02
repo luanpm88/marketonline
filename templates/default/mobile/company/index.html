@@ -11,22 +11,22 @@
                     <div class="bs-example fixed-tab-top product-tabs">
                         <ul class="nav nav-pills" style="width:400px">
                             <li class="">
-                                <li>
-                                    <a class="{if $smarty.get.membergroup_id==3}active{/if}" href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>
+                                <li class="{if $smarty.get.membergroup_id==3}active{/if}">
+                                    <a href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>
                                 </li>
-                                <li>
-                                    <a class="{if $smarty.get.membergroup_id==1}active{/if}" href="{the_url module='companies' membergroup_id='1' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cửa hàng</a>
+                                <li class="{if $smarty.get.membergroup_id==1}active{/if}">
+                                    <a href="{the_url module='companies' membergroup_id='1' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cửa hàng</a>
                                 </li>
-                                <li>
-                                    <a class="{if $smarty.get.membergroup_id==2}active{/if}" href="{the_url module='companies' membergroup_id='2' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cá nhân</a>
+                                <li class="{if $smarty.get.membergroup_id==2}active{/if}">
+                                    <a href="{the_url module='companies' membergroup_id='2' industryid=`$smarty.get.industryid` title=`$industry.name`}">Cá nhân</a>
                                 </li>
                                 {if $pb_setting.company_student_feature}
-                                    <li>
-                                        <a class="{if $smarty.get.student}active{/if}" href="{the_url module='companies' industryid=`$smarty.get.industryid` title=`$industry.name` student=1}">Sinh viên</a>&nbsp;&nbsp;&nbsp;
+                                    <li class="{if $smarty.get.student}active{/if}">
+                                        <a href="{the_url module='companies' industryid=`$smarty.get.industryid` title=`$industry.name` student=1}">Sinh viên</a>&nbsp;&nbsp;&nbsp;
                                     </li>
                                 {/if}
-                                <li>
-                                    <a class="{if $smarty.get.do==album}active{/if}" href="{the_url module='album' type='image'}">Hình ảnh/Videos</a>
+                                <li class="{if $smarty.get.do==album}active{/if}">
+                                    <a href="{the_url module='album' type='image'}">Hình ảnh/Videos</a>
                                 </li>
                              
                         </ul>
