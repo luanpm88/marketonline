@@ -175,7 +175,7 @@ class Company extends PbController {
 		} else {
 			$cc_count = 72;
 		}
-		//var_dump();
+		var_dump($cc_count);
 		
 		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_weekly DESC, m.active_time DESC", 0, $cc_count);
 		foreach($companies as $key => $com) {
