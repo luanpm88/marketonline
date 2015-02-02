@@ -65,6 +65,11 @@
 }
 .top-banners .right-banner-inner {
     height: 630px;
-    width: 100%;
+    width: 990px;
     background: #ccc;
+    position: relative;
+    position: absolute;
+}
+.home-right-top-banner {
+    
 }
