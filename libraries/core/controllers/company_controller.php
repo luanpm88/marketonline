@@ -169,12 +169,13 @@ class Company extends PbController {
  			$com_conditions[] = "m.membergroup_id=".intval($_GET['membergroup_id']);
  		}
 		
-		$cc_count = $this->company->findAll($com_joins, $com_conditions, "Company.id");
+		$cc_count = $this->company->findCount($com_joins, $com_conditions, "Company.id");
 		if ($cc_count > 72) {
 			$cc_count = intval($cc_count/6)*6;
 		} else {
 			$cc_count = 72;
 		}
+		//var_dump();
 		
 		$companies = $this->company->findAll("Company.*", $com_joins, $com_conditions, "m.points_weekly DESC, m.active_time DESC", 0, $cc_count);
 		foreach($companies as $key => $com) {
