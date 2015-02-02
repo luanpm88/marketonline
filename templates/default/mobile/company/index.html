@@ -11,7 +11,7 @@
                     <div class="bs-example fixed-tab-top product-tabs">
                         <ul class="nav nav-pills" style="width:400px">
                             
-                                <li class="{if $smarty.get.membergroup_id==3}active{/if}">
+                                <li class="{if $smarty.get.membergroup_id==3 || !$smarty.get.membergroup_id}active{/if}">
                                     <a href="{the_url module='companies' membergroup_id='3' industryid=`$smarty.get.industryid` title=`$industry.name`}">Doanh nghiệp</a>
                                 </li>
                                 <li class="{if $smarty.get.membergroup_id==1}active{/if}">
