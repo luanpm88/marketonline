@@ -1358,8 +1358,12 @@ time .time {
     width: 100%;
     border-top: solid 1px #fff;
 }
-.compage, .video_new_page {
+.compage {
     background: none repeat scroll 0 0 #fff;
+    padding: 10px;
+}
+, .video_new_page {
+    background: none;
     padding: 10px;
 }
 .compage h3, .video_new_page h3 {
