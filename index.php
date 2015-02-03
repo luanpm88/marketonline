@@ -232,7 +232,7 @@ if (!empty($_GET['do'])) {
 		setvar("show_home_top_main_left",count($show_home_top_main_left));
 		
 		//Home Top Main List ads row
-		$home_main_list_add = $ad->getByZone(41);
+		$home_main_list_add = $ad->getByZone(41, "Ads.display_order", 5);
 		setvar("home_main_list_add",count($home_main_list_add));
 		
 		render("newhome");
