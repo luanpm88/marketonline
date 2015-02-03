@@ -169,6 +169,7 @@
 }
 .menu-content-inner {
     border: solid 1px #ddd;
+    padding-bottom: 10px;
 }
 .menu-content .loading {
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
