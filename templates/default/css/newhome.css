@@ -170,8 +170,13 @@
     width: 200px;
     margin: 0;
 }
+.main-menu .menu-content h3 {
+    margin: 10px;
+}
+.main-menu .menu-content h3 a {
+    color: #3b984c;
+}
 .main-menu .menu-content ul {
-    margin-top: 10px;
     clear: both;
 }
 .main-menu .menu-content ul li {

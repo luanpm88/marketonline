@@ -70,6 +70,20 @@
 //    }
     
     
+    function alignMainMenu() {
+	$('.menu-content').each(function() {
+	    item = $(this).last();
+	    item_bottom = item.offset().top + item.height();
+	    
+	    main = $('.newhome-menus');
+	    main_bottom = main.offset().top + main.height();
+	    
+	    if(item_bottom - main_bottom > -100) {
+		item.css("margin-top","-"+(item.height()/2)+"px");
+	    }
+	});
+    }
+    
     function show23cats(id) {
 	var iid = id;
 	
@@ -81,6 +95,8 @@
 	    //alert(data);
 	    if (!$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content ul').length) {
 		$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').html(data);
+		
+		alignMainMenu();
 	    }
 	});
     }

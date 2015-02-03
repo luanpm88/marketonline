@@ -6595,6 +6595,7 @@ class Product extends PbController {
 				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 4);						
 			}
 			
+			setvar("parent", $parent);
 			setvar("industries", $industries);
 			
 			$this->render("product/ajaxcat23level");
