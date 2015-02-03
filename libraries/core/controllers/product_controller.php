@@ -6583,6 +6583,23 @@ class Product extends PbController {
 		}
 		
 	}
+	
+	function ajaxcat23level() {
+		if($_GET["id"]) {
+			$fields = "id,parent_id,name,level";
+			$parent = $this->industry->read($fields, $_GET["id"]);
+			
+			//level 2			
+			$industries = $this->industry->findAll($fields, null, array("parent_id=".$parent["id"]));
+			foreach($industries as $key => $item) {
+				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 4);						
+			}
+			
+			setvar("industries", $industries);
+			
+			$this->render("product/ajaxcat23level");
+		}	
+	}
 
 }
 ?>

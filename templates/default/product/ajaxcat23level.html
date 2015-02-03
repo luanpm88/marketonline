@@ -1,0 +1,23 @@
+{if $industries}
+    <ul>
+        <!--{loop $industries item level key}-->
+            <li class="item">
+                <a target="_blank" class="link_item" href="{the_url module=products level=2 industryid=`$item.id` title=`$item.name`}">
+                    {$item.name}
+                </a>
+                {if $item.children}
+                    <ul>
+                        <!--{loop $item.children item1 level1 key1}-->
+                            <li class="item">
+                                <a target="_blank" class="link_item" href="{the_url module=products level=3 industryid=`$item1.id` title=`$item1.name`}">
+                                    {$item1.name}
+                                </a>
+                            </li>
+                        <!--{/loop}-->
+                    </ul>
+                {/if}
+            </li>
+        {if $key%3 == 2}</ul><ul>{/if}
+        <!--{/loop}-->
+    </ul>
+{/if}

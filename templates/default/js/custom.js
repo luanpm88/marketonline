@@ -68,7 +68,28 @@
 //	    //client.getLatLng('444/4 CMT8, F11, quận 3, ho chi minh', 'getlatlng');
 //	}
 //    }
-
+    
+    
+    function show23cats(id) {
+	var iid = id;
+	
+	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').show();
+	
+	$.ajax({
+	    url: "index.php?do=product&action=ajaxcat23level&id="+iid,
+	}).done(function ( data ) {
+	    //alert(data);
+	    if (!$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content ul').length) {
+		$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').html(data);
+	    }
+	});
+    }
+    
+    function hide23cats(id) {
+	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').hide();
+    }
+    
+    
     function loadAdItems() {
 	jQuery('.ajax_banner').each(function() {
 	    var adid = $(this).attr("rel");
@@ -2586,6 +2607,15 @@
 		
 		
 		loadAdItems();
+		
+		
+		//23catlevel
+		$('.newhome-menus .main-menu ul li.parent').hover(function() {
+		    show23cats($(this).attr("rel"));
+		},
+		function() {
+		    hide23cats($(this).attr("rel"));
+		});
 	});
 	
 	$(window).resize(function() {

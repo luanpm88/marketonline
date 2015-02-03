@@ -42,10 +42,13 @@
         <div class="main-menu">
             <ul>
                 <!--{loop $IndustryList item0 level_0 key0}-->
-                    <li class="main-title">
+                    <li class="parent" rel="{$item0.id}">
                         <a target="_blank" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
                             {$item0.name}
                         </a>
+                        <div class="menu-content" style="display: none">
+                            <div class="loading"></div>
+                        </div>
                     </li>
                 <!--{/loop}-->
             </ul>
