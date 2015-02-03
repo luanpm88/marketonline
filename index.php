@@ -231,6 +231,10 @@ if (!empty($_GET['do'])) {
 		$show_home_top_main_left = $ad->getByZone(40);
 		setvar("show_home_top_main_left",count($show_home_top_main_left));
 		
+		//Home Top Main List ads row
+		$home_main_list_add = $ad->getByZone(41);
+		setvar("home_main_list_add",count($home_main_list_add));
+		
 		render("newhome");
 	} else {
 		render("index");

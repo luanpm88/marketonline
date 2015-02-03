@@ -1,9 +1,55 @@
 {if $items}
-    <div class="banner">
+<div class="home-main-product-list">
+    <ul>
+        
         <!--{loop $items item level key}-->
-            <a href="{$item.target_url}" target="_blank" title="{$item.name}">
-                <img style="display: none" class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
-            </a>
+            <li>
+                <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+                    <span class="img-box stretch_banner">
+                        <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+                    </span>
+                    <span class="name">{$item.name}</span>
+                    <span class="desc">{$item.description}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+                    <span class="img-box stretch_banner">
+                        <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+                    </span>
+                    <span class="name">{$item.name}</span>
+                    <span class="desc">{$item.description}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+                    <span class="img-box stretch_banner">
+                        <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+                    </span>
+                    <span class="name">{$item.name}</span>
+                    <span class="desc">{$item.description}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+                    <span class="img-box stretch_banner">
+                        <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+                    </span>
+                    <span class="name">{$item.name}</span>
+                    <span class="desc">{$item.description}</span>
+                </a>
+            </li>
+            <li>
+                <a href="{$item.target_url}" target="_blank" title="{$item.name}">
+                    <span class="img-box stretch_banner">
+                        <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
+                    </span>
+                    <span class="name">{$item.name}</span>
+                    <span class="desc">{$item.description}</span>
+                </a>
+            </li>
         <!--{/loop}-->
-    </div>
+
+    </ul>
+</div>
 {/if}

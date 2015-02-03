@@ -1,7 +1,7 @@
 .newhome {    
 }
 .newhome-menus {
-    margin: -675px auto auto;
+    margin: -676px auto auto;
     padding: 0 10px;
     width: 1200px;
 }
@@ -32,9 +32,10 @@
     background: none repeat scroll 0 0 #fff;
     clear: both;
     width: 200px;
+    border-bottom: solid 1px #ddd;
 }
 .newhome-menus .main-menu ul {
-    
+    margin: 0;
 }
 .newhome-menus .main-menu ul li {
     list-style: none;
@@ -48,7 +49,7 @@
 }
 .top-banners {
     background: none repeat scroll 0 0 #eee;
-    height: 630px;
+    height: 631px;
     margin-top: 60px;
     width: 100%;
 }
@@ -57,13 +58,13 @@
 }
 .top-banners .right-banner {
     background: none repeat scroll 0 0 #ddd;
-    height: 630px;
+    height: 631px;
     margin: auto;
     padding-left: 210px;
     width: 1200px;
 }
 .top-banners .right-banner-inner {
-    height: 630px;
+    height: 631px;
     width: 980px;
     background: #ccc;
     position: relative;
@@ -71,20 +72,21 @@
 }
 .home-right-top-banner {
     background: none repeat scroll 0 0 #bbb;
-    height: 380px;
+    height: 381px;
     width: 100%;
 }
 .home-right-bottoms-products {
-    background: none repeat scroll 0 0 #aaa;
+    /*background: none repeat scroll 0 0 #aaa;*/
     height: 250px;
     width: 100%;
+    border-bottom: solid 1px #ddd;
 }
 .newhome-menus .main-menu ul li a:hover {
     background: #efefef;
 }
 .home-right-top-banner .banner-item {
     /*background: none repeat scroll 0 0 #999;*/
-    height: 380px;
+    height: 381px;
     width: 100%;
 }
 .home-right-top-banner .banner-item.left {
@@ -92,10 +94,9 @@
 }
 .home-right-top-banner .banner-item.right {
     width: 30%;
-    height: 380px;
     /*background: #888;*/
 }
-.stretch_banner {
+.ajax_banner {
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
     overflow: hidden;
 }
@@ -103,4 +104,49 @@
     display: block;
     height: 900px;
     width: 100%;
+}
+.home-main-product-list {
+    
+}
+.home-main-product-list ul {
+    margin: 0;
+}
+.home-main-product-list ul li {
+    float: left;
+    list-style: outside none none;
+    width: 20%;
+}
+.home-main-product-list ul li a {
+    background: none repeat scroll 0 0 #fff;
+    border-left: 1px solid #ddd;
+    display: block;
+    float: left;
+    height: 250px;
+    padding: 5px;
+    width: 100%;
+}
+.home-main-product-list ul li:first-child a {
+    border-left: 0;
+}
+.home-main-product-list ul li img {
+    
+}
+.home-main-product-list ul li .name {
+    color: #333;
+    font-size: 110%;
+    font-weight: 700;
+}
+.home-main-product-list ul li .img-box {
+    display: block;
+    height: 154px;
+    width: 100%;
+}
+.home-main-product-list ul li .desc {
+    color: #333;
+    font-size: 140%;
+}
+.home-main-product-list ul li p {
+    font-size: 16px;
+    line-height: 18px;
+    margin: 0;
 }
