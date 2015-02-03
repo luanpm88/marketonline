@@ -754,7 +754,7 @@ class Product extends PbController {
 		//echo $_SESSION["viewed_list"];
 		
 		
-		if(empty($info) || !$info || $info["valid_status"] != 1 && false) {
+		if(empty($info) || !$info || $info["valid_status"] != 1) {
 			//$pb_userinfo = pb_get_member_info();
 			//$member_info = $member->getInfoById($pb_userinfo['pb_userid']);
 			if(!empty($info) && ($permissions["valid"] || $info["valid_moderator"] == $pb_userinfo["pb_userid"] || $info["member_id"] == $pb_userinfo["pb_userid"])) {
@@ -6572,7 +6572,9 @@ class Product extends PbController {
 		
 		//echo "Dd";
 		//Home Top Main Left
-		$items = $ads->getByZone($_GET["id"]);
+		//$zone_id, $order = "Ads.display_order", $limit=100, $industry_id
+		
+		$items = $ads->getByZone($_GET["id"],"Ads.display_order",100,$_GET["industry_id"]);
 		setvar("items",$items);
 		
 		if($_GET["type"]) {			
@@ -6592,7 +6594,7 @@ class Product extends PbController {
 			//level 2			
 			$industries = $this->industry->findAll($fields, null, array("parent_id=".$parent["id"]));
 			foreach($industries as $key => $item) {
-				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 4);						
+				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 3);						
 			}
 			
 			setvar("parent", $parent);

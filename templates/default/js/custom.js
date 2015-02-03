@@ -87,34 +87,42 @@
     function show23cats(id) {
 	var iid = id;
 	
-	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').show();
+	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').removeClass("hidden");
 	
 	$.ajax({
 	    url: "index.php?do=product&action=ajaxcat23level&id="+iid,
 	}).done(function ( data ) {
 	    //alert(data);
 	    if (!$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content ul').length) {
-		$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').html(data);
+		$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content .menu-content-inner').html(data);
 		
-		alignMainMenu();
+		//alignMainMenu();
 	    }
 	});
     }
     
     function hide23cats(id) {
-	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').hide();
+	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').addClass("hidden");
     }
     
     
     function loadAdItems() {
 	jQuery('.ajax_banner').each(function() {
 	    var adid = $(this).attr("rel");
+	    var conid = adid;
 	    var type = $(this).attr("type");
+	    //var industry_id = $(this).attr("industry_id");
+	    var industry = "";
+	    
+	    if (typeof($(this).attr("industry_id")) != 'undefined') {
+		industry = "&industry_id="+$(this).attr("industry_id");
+		conid += "-"+$(this).attr("industry_id");
+	    }
 	    
 	    $.ajax({
-		url: "index.php?do=product&action=ajaxAdItems&id="+adid+"&type="+type,
+		url: "index.php?do=product&action=ajaxAdItems&id="+adid+"&type="+type+industry,
 	    }).done(function ( data ) {
-		$('.adid-'+adid).html(data);
+		$('.adid-'+conid).html(data);
 		cropping();
 	    });
 	});

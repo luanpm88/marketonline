@@ -46,8 +46,11 @@
                         <a target="_blank" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
                             {$item0.name}
                         </a>
-                        <div class="menu-content" style="display: none">
-                            <div class="loading"></div>
+                        <div class="menu-content hidden">
+                            <div class="banner_container ajax_banner adid-42-{$item0.id}" rel="42" type="industry" industry_id="{$item0.id}"></div>
+                            <div class="menu-content-inner">
+                                <div class="loading"></div>
+                            </div>
                         </div>
                     </li>
                 <!--{/loop}-->

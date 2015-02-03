@@ -1,4 +1,5 @@
 {if $industries}
+    
     <h3>{$parent.name}</h3>
     <ul>
         <!--{loop $industries item level key}-->
@@ -22,4 +23,6 @@
         {if $key%3 == 2}</ul><ul>{/if}
         <!--{/loop}-->
     </ul>
+    
+    <br style="clear: both" />
 {/if}
