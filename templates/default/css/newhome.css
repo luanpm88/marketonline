@@ -33,6 +33,7 @@
     clear: both;
     width: 200px;
     border-bottom: solid 1px #ddd;
+    border-right: solid 1px #ddd;
 }
 .newhome-menus .main-menu ul {
     margin: 0;
