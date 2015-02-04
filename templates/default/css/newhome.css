@@ -154,6 +154,7 @@
     display: block;
     height: 170px;
     width: 100%;
+    margin-bottom: 2px;
 }
 .home-main-product-list ul li .desc {
     color: #333;
