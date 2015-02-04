@@ -176,8 +176,16 @@
     width: 770px;
 }
 .menu-content-inner {
-    border: solid 1px #ddd;
-    border-left: 0;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #ddd #ddd #ddd -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px 0;
+    height: 491px;
+    overflow: auto;
     padding-bottom: 0;
 }
 .menu-content .loading {
