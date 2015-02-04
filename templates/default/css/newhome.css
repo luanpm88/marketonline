@@ -51,6 +51,7 @@
     height: 30px;
     line-height: 20px;
     padding: 5px 10px;
+    font-size: 110%;
 }
 .top-banners {
     background: none repeat scroll 0 0 #eee;
