@@ -149,7 +149,6 @@
 .home-main-product-list ul li .name {
     color: #333;
     font-size: 110%;
-    font-weight: 700;
 }
 .home-main-product-list ul li .img-box {
     display: block;
@@ -244,5 +243,4 @@
     color: #333;    
     display: block;
     font-size: 18px;
-    font-weight: 700;
 }
