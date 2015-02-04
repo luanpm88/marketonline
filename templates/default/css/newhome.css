@@ -169,11 +169,11 @@
 }
 .menu-content {
     background: none repeat scroll 0 0 #fff;
-    border: 0px solid #ddd;
+    border: 0 solid #ddd;
     margin-left: 199px;
-    position: absolute;
-    width: 760px;
     margin-top: -65px;
+    position: absolute;
+    width: 770px;
 }
 .menu-content-inner {
     border: solid 1px #ddd;
