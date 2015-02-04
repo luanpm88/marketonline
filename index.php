@@ -234,11 +234,23 @@ if (!empty($_GET['do'])) {
 		//if show Home Top Main Right
 		$productbox_left = $ad->getByZone(43);
 		$productbox_right = $ad->getByZone(44);
-		setvar("show_productbox",count($productbox_left)+count($productbox_right));
+		$productbox_center = $ad->getByZone(45);
+		setvar("show_productbox",count($productbox_left)+count($productbox_right)+count($productbox_center));
+		setvar("show_productbox_center",$productbox_center);
 		
-		////Home Top Main List ads row
-		//$home_main_list_add = $ad->getByZone(41, "Ads.display_order", 5);
-		//setvar("home_main_list_add",count($home_main_list_add));
+		//if show Home Top Main Right
+		$servicebox_left = $ad->getByZone(46);
+		$servicebox_right = $ad->getByZone(47);
+		$servicebox_center = $ad->getByZone(48);
+		setvar("show_servicebox",count($servicebox_left)+count($servicebox_right)+count($servicebox_center));
+		setvar("show_servicebox_center",$servicebox_center);
+		
+		//if show Home Top Main Right
+		$tradebox_left = $ad->getByZone(49);
+		$tradebox_right = $ad->getByZone(50);
+		$tradebox_center = $ad->getByZone(51);
+		setvar("show_tradebox",count($tradebox_left)+count($tradebox_right)+count($tradebox_center));
+		setvar("show_tradebox_center",$tradebox_center);
 		
 		render("newhome");
 	} else {

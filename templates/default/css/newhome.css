@@ -266,8 +266,7 @@
     float: left;
     width: 100%;
 }
-.newhome-product2lines .box-4items .box-item {
-    
+.newhome-product2lines .box-4items .box-item {    
 }
 .newhome-product2lines .box-4items .box-1 .stretch_banner {
     border-right: 1px solid #ddd;
@@ -275,11 +274,9 @@
     height: 420px;
     width: 436px;
 }
-.newhome-product2lines .box-4items .box-2 .stretch_banner {
-    
+.newhome-product2lines .box-4items .box-2 .stretch_banner {    
 }
-.newhome-product2lines .box-4items .box-3 .stretch_banner {
-    
+.newhome-product2lines .box-4items .box-3 .stretch_banner {    
 }
 .newhome-product2lines .box-4items .box-4 .stretch_banner {
     border-bottom: 0 !important;
@@ -290,16 +287,14 @@
     height: 140px;
     width: 140px;
 }
-.newhome-product2lines .desc-box {
-    
+.newhome-product2lines .desc-box {    
 }
 .newhome-product2lines .desc-box {
     float: left;
     width: 100%;
     background: #fff;
 }
-.newhome-product2lines .desc-box p {
-    
+.newhome-product2lines .desc-box p {    
 }
 h2.area-title {
     border-bottom: 1px solid #ddd;
@@ -325,4 +320,90 @@ h2.area-title {
 }
 .newhome-product2lines .desc-box .desc-right .line:last-child {
     border: 0;
+}
+
+
+.newhome-product3lines {
+    margin: auto;
+    padding: 10px;
+    width: 1200px;
+}
+.newhome-product3lines .col-left {
+    float: left;
+    width: 32%;
+}
+.newhome-product3lines .col-right {
+    float: right;
+    width: 32%;
+}
+.newhome-product3lines .col-center {
+    float: left;
+    margin-left: 2%;
+    width: 32%;
+}
+.newhome-product3lines .box-4items {
+    border: 1px solid #ddd;
+    float: left;
+    width: 100%;
+}
+.newhome-product3lines .box-4items .box-item {    
+}
+.newhome-product3lines .box-4items .box-1 .stretch_banner {
+    border-bottom: 1px solid #ddd;
+    float: left;
+    height: 375px;
+    width: 375px;
+}
+.newhome-product3lines .box-4items .box-2 .stretch_banner {    
+}
+.newhome-product3lines .box-4items .box-3 .stretch_banner {    
+}
+.newhome-product3lines .box-4items .box-4 .stretch_banner {
+    border-right: 0 !important;
+}
+.newhome-product3lines .box-4items .box-right .stretch_banner {
+    border-right: 1px solid #ddd;
+    float: left;
+    height: 125px;
+    width: 125px;
+}
+.newhome-product3lines .desc-box {
+    float: left;
+    width: 100%;
+    background: #fff;
+    display: none;
+}
+.newhome-product3lines .desc-box p {    
+}
+h2.area-title {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.newhome-product3lines .desc-box .desc-left {
+    float: left;
+    padding-right: 10px;
+    width: 437px;
+}
+.newhome-product3lines .desc-box .desc-right {
+    display: block;
+    float: right;
+    width: 140px;
+    
+}
+.newhome-product3lines .desc-box .desc-right .line {
+    margin: 0;
+    padding: 11px 5px;
+    text-align: center;
+    font-weight: 700;
+}
+.newhome-product3lines .desc-box .desc-right .line:last-child {
+    border: 0;
+}
+.productbox {
+    margin-bottom: 20px;
+}
+
+.productbox .col-item {
+    min-height: 200px;
 }
