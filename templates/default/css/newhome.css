@@ -170,23 +170,16 @@
 .menu-content {
     background: none repeat scroll 0 0 #fff;
     border: 0 solid #ddd;
-    margin-left: 200px;
+    margin-left: 199px;
     top: 0;
     position: absolute;
     width: 770px;
 }
 .menu-content-inner {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    border-color: #ddd #ddd #ddd -moz-use-text-color;
-    border-image: none;
-    border-style: solid solid solid none;
-    border-width: 1px 1px 1px 0;
-    height: 491px;
-    overflow: auto;
+    border: solid 1px #ddd;
     padding-bottom: 0;
+    height: 461px;
+    overflow: auto;
 }
 .menu-content .loading {
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
