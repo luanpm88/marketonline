@@ -79,7 +79,7 @@
 	    main_bottom = main.offset().top + main.height();
 	    
 	    if(item_bottom - main_bottom > -100) {
-		item.css("margin-top","-"+(item.height()/2)+"px");
+		item.css("margin-top","-"+(item.height()/3)+"px");
 	    }
 	});
     }
