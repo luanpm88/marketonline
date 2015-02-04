@@ -134,6 +134,7 @@
 	    var scale = 1;
 	    jQuery(this).css('display','block');
 	    jQuery(this).find('img').css('display','none');
+	    jQuery(this).find('a').css('height',jQuery(this).height()+'px');
 	    //jQuery(this).css('height',jQuery(this).width()*scale);
 	    scale = jQuery(this).height()/jQuery(this).width();
 	    

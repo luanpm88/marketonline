@@ -187,6 +187,11 @@ if (isset($_GET['do'])){
 		$ads->setPaid($id, $_GET["months"], $_GET["amount"]);
 		//echo $id.$_GET["months"].$_GET["amount"];
 	}
+	
+	if ($do=="state" && $id) {
+		$ads->saveField("state", intval($_GET["value"]), intval($id));
+		pheader("location:".$_SERVER['HTTP_REFERER']);
+	}
 }
 
 $joins[] = "LEFT JOIN {$tb_prefix}adzones az ON az.id=Ads.adzone_id";

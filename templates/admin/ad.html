@@ -123,7 +123,15 @@ jQuery(document).ready(function($) {
 		  <br />{$item.target_url}</td>
 		  <td><a title="{lang click_and_search}" href="ad.php?do=search&adzone_id={$item.adzone_id}">{$item.adzone}</a></td>
 		  <td>
-			{if $item.state}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}
+			{if $item.state}
+				<a href="ad.php?id={$item.id}&do=state&value=0" title="Tắt">
+					<img src="../templates/office/images/published.png">
+				</a>
+			{else}
+				<a href="ad.php?id={$item.id}&do=state&value=1" title="Bật">
+					<img src="../templates/office/images/unpublished.png">
+				</a>
+			{/if}
 		  </td>
 		  <td>
 			{if $item.status}<img src="../templates/office/images/published.png">{else}<img src="../templates/office/images/unpublished.png">{/if}

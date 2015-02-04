@@ -117,7 +117,6 @@
 }
 .stretch_banner a {
     display: block;
-    height: 900px !important;
     width: 100%;
     background: none !important;
 }
@@ -233,7 +232,8 @@
     top: -90000px;
 }
 .newhome .header {
-    height: 900px;
+    height: 676px;
+    margin-bottom: 20px;
 }
 .home-right-bottoms-products .line1 {
     color: #333;
@@ -247,4 +247,82 @@
     color: #c00;    
     display: block;
     font-size: 18px;
+}
+.newhome-product2lines {
+    margin: auto;
+    padding: 10px;
+    width: 1200px;
+}
+.newhome-product2lines .col-left {
+    float: left;
+    width: 49%;
+}
+.newhome-product2lines .col-right {
+    float: right;
+    width: 49%;
+}
+.newhome-product2lines .box-4items {
+    border: 1px solid #ddd;
+    float: left;
+    width: 100%;
+}
+.newhome-product2lines .box-4items .box-item {
+    
+}
+.newhome-product2lines .box-4items .box-1 .stretch_banner {
+    border-right: 1px solid #ddd;
+    float: left;
+    height: 420px;
+    width: 436px;
+}
+.newhome-product2lines .box-4items .box-2 .stretch_banner {
+    
+}
+.newhome-product2lines .box-4items .box-3 .stretch_banner {
+    
+}
+.newhome-product2lines .box-4items .box-4 .stretch_banner {
+    border-bottom: 0 !important;
+}
+.newhome-product2lines .box-4items .box-right .stretch_banner {
+    border-bottom: 1px solid #ddd;
+    float: left;
+    height: 140px;
+    width: 140px;
+}
+.newhome-product2lines .desc-box {
+    
+}
+.newhome-product2lines .desc-box {
+    float: left;
+    width: 100%;
+    background: #fff;
+}
+.newhome-product2lines .desc-box p {
+    
+}
+h2.area-title {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+.newhome-product2lines .desc-box .desc-left {
+    float: left;
+    padding-right: 10px;
+    width: 437px;
+}
+.newhome-product2lines .desc-box .desc-right {
+    display: block;
+    float: right;
+    width: 140px;
+    
+}
+.newhome-product2lines .desc-box .desc-right .line {
+    margin: 0;
+    padding: 11px 5px;
+    text-align: center;
+    font-weight: 700;
+}
+.newhome-product2lines .desc-box .desc-right .line:last-child {
+    border: 0;
 }

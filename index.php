@@ -231,9 +231,14 @@ if (!empty($_GET['do'])) {
 		$show_home_top_main_left = $ad->getByZone(40);
 		setvar("show_home_top_main_left",count($show_home_top_main_left));
 		
-		//Home Top Main List ads row
-		$home_main_list_add = $ad->getByZone(41, "Ads.display_order", 5);
-		setvar("home_main_list_add",count($home_main_list_add));
+		//if show Home Top Main Right
+		$productbox_left = $ad->getByZone(43);
+		$productbox_right = $ad->getByZone(44);
+		setvar("show_productbox",count($productbox_left)+count($productbox_right));
+		
+		////Home Top Main List ads row
+		//$home_main_list_add = $ad->getByZone(41, "Ads.display_order", 5);
+		//setvar("home_main_list_add",count($home_main_list_add));
 		
 		render("newhome");
 	} else {
