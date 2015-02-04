@@ -178,11 +178,11 @@
 .menu-content-inner {
     border: solid 1px #ddd;
     padding-bottom: 0;
-    height: 676px;
+    min-height: 676px;
     overflow: auto;
 }
 .menu-content .loading {
-    background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
+    background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #fff;
     height: 674px;
     width: 100%;
     margin: 0;
