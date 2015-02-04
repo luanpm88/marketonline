@@ -171,19 +171,19 @@
     background: none repeat scroll 0 0 #fff;
     border: 0 solid #ddd;
     margin-left: 199px;
-    top: -30px;
+    top: -35px;
     position: absolute;
     width: 770px;
 }
 .menu-content-inner {
     border: solid 1px #ddd;
     padding-bottom: 0;
-    height: 611px;
+    height: 676px;
     overflow: auto;
 }
 .menu-content .loading {
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
-    height: 609px;
+    height: 674px;
     width: 100%;
     margin: 0;
 }
