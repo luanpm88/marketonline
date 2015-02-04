@@ -235,7 +235,7 @@ if (!empty($_GET['do'])) {
 		$productbox_left = $ad->getByZone(43);
 		$productbox_right = $ad->getByZone(44);
 		setvar("show_productbox",count($productbox_left)+count($productbox_right));
-		
+		echo count($productbox_left)+count($productbox_right);
 		////Home Top Main List ads row
 		//$home_main_list_add = $ad->getByZone(41, "Ads.display_order", 5);
 		//setvar("home_main_list_add",count($home_main_list_add));
