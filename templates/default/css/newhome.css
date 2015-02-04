@@ -169,9 +169,9 @@
 .menu-content {
     background: none repeat scroll 0 0 #fff;
     border: 0px solid #ddd;
-    margin-left: 199px;
+    margin-left: 200px;
     position: absolute;
-    top: 35px;
+    top: 0;
     width: 760px;
 }
 .menu-content-inner {
