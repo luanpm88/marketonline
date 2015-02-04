@@ -1,10 +1,10 @@
 .newhome {    
 }
 .newhome-menus {
-    margin: -676px auto auto;
+    margin: 30px auto auto;
     padding: 0 10px;
-    width: 1200px;
     position: relative;
+    width: 1200px;
 }
 .newhome-menus .tabs-menu {
     margin-top: 10px;
@@ -31,10 +31,13 @@
 }
 .newhome-menus .main-menu {
     background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
     clear: both;
+    position: absolute;
+    top: 35px;
     width: 200px;
-    border-bottom: solid 1px #ddd;
-    border-right: solid 1px #ddd;
+    z-index: 200;
 }
 .newhome-menus .main-menu ul {
     margin: 0;
@@ -52,8 +55,10 @@
 .top-banners {
     background: none repeat scroll 0 0 #eee;
     height: 631px;
-    margin-top: 60px;
+    margin-top: 35px;
+    position: absolute;
     width: 100%;
+    z-index: 10;
 }
 .top-banners {
     
@@ -147,7 +152,7 @@
 }
 .home-main-product-list ul li .img-box {
     display: block;
-    height: 154px;
+    height: 170px;
     width: 100%;
 }
 .home-main-product-list ul li .desc {
@@ -169,7 +174,7 @@
 }
 .menu-content-inner {
     border: solid 1px #ddd;
-    padding-bottom: 10px;
+    padding-bottom: 0;
 }
 .menu-content .loading {
     background: url("../image/ajax-loader-2.gif") no-repeat scroll center center #efefef;
@@ -201,8 +206,7 @@
     padding: 0 10px;
 }
 .main-menu .menu-content ul li ul {
-    margin-top: 0;
-    
+    margin-top: 0;    
 }
 .main-menu .menu-content ul li ul li {
     height: auto;
@@ -222,4 +226,20 @@
 .hidden {
     position: absolute;
     top: -90000px;
+}
+.newhome .header {
+    height: 900px;
+}
+.home-right-bottoms-products .line1 {
+    color: #555;
+    display: block;
+    line-height: 10px;
+    margin-top: 5px;
+    text-decoration: line-through;
+}
+.home-right-bottoms-products .line2 {
+    color: #c00;
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
 }

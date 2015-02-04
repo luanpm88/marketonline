@@ -75,9 +75,22 @@ jQuery(document).ready(function($) {
 		<input style="width: 50%" class="infoTableInput2" name="ad[title]" value="{$item.title}" /><label class="field_notice">{lang ad_show_title}</label>        </td>
       </tr>
       <tr>
-        <th class="paddingT15"> {lang ads}{lang description_n}</th>
-        <td class="paddingT15 wordSpacing5"><textarea style="width:550px;height:100px;" name="ad[description]" id="dataTradeContent">{$item.description}</textarea></td>
+        <th class="paddingT15"> Dòng 1 (Giá cũ){lang colon}</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input style="width: 50%" class="infoTableInput2" name="ad[text_line1]" value="{$item.text_line2}" />
+	</td>
       </tr>
+      <tr>
+        <th class="paddingT15"> Dòng 2 (Giá mới){lang colon}</th>
+        <td class="paddingT15 wordSpacing5">          
+		<input style="width: 50%" class="infoTableInput2" name="ad[text_line2]" value="{$item.text_line2}" />
+	</td>
+      </tr>
+      <tr>
+        <th class="paddingT15"> {lang ads}{lang description_n}</th>
+        <td class="paddingT15 wordSpacing5"><textarea style="width:550px;height:100px !important;" name="ad[description]" id="dataTradeContent">{$item.description}</textarea></td>
+      </tr>
+      
       <tr>
         <th class="paddingT15"> {lang adzone}{lang naming_n}</th>
         <td class="paddingT15 wordSpacing5">

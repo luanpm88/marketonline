@@ -9,60 +9,62 @@
 <!--{include file="`$theme_name`/topmenu.html"}-->
 
 <div class="newhome">
-    <div class="top-banners">
-        <div class="right-banner">
-            <div class="right-banner-inner">
-                <div class="home-right-content">
-                    <div class="home-right-top-banner">
-                        <div class="banner-item {if $show_home_top_main_left}left{/if} ajax_banner adid-39 stretch_banner" rel="39" type="">
+    <div class="header">
+        <div class="top-banners">
+            <div class="right-banner">
+                <div class="right-banner-inner">
+                    <div class="home-right-content">
+                        <div class="home-right-top-banner">
+                            <div class="banner-item {if $show_home_top_main_left}left{/if} ajax_banner adid-39 stretch_banner" rel="39" type="">
+                                
+                            </div>
+                            {if $show_home_top_main_left}
+                                <div class="banner-item right ajax_banner adid-40 stretch_banner" rel="40" type="">
+                                </div>
+                            {/if}
+                        </div>
+                        <div class="home-right-bottoms-products ajax_banner adid-41" rel="41" type="products">
                             
                         </div>
-                        {if $show_home_top_main_left}
-                            <div class="banner-item right ajax_banner adid-40 stretch_banner" rel="40" type="">
-                            </div>
-                        {/if}
-                    </div>
-                    <div class="home-right-bottoms-products ajax_banner adid-41" rel="41" type="products">
-                        
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     
-    <div class="newhome-menus">
-        <div class="tabs-menu">
-            <ul>
-                <li class="main-title">Danh mục chính</li>
-                <li>
-                    <a target="_blank" href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a>
-                </li>
-            </ul>
-        </div>
-        <div class="main-menu">
-            <ul>
-                <!--{loop $IndustryList item0 level_0 key0}-->
-                    <li class="parent" rel="{$item0.id}">
-                        <a target="_blank" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
-                            {$item0.name}
-                        </a>
-                        <div class="menu-content hidden">
-                            <div class="banner_container ajax_banner adid-42-{$item0.id}" rel="42" type="industry" industry_id="{$item0.id}"></div>
-                            <div class="menu-content-inner">
-                                <div class="loading"></div>
-                            </div>
-                        </div>
+        <div class="newhome-menus">
+            <div class="tabs-menu">
+                <ul>
+                    <li class="main-title">Danh mục chính</li>
+                    <li>
+                        <a target="_blank" href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a>
                     </li>
-                <!--{/loop}-->
-            </ul>
+                </ul>
+            </div>
+            <div class="main-menu">
+                <ul>
+                    <!--{loop $IndustryList item0 level_0 key0}-->
+                        <li class="parent" rel="{$item0.id}">
+                            <a target="_blank" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
+                                {$item0.name}
+                            </a>
+                            <div class="menu-content hidden">
+                                <div class="banner_container ajax_banner adid-42-{$item0.id}" rel="42" type="industry" industry_id="{$item0.id}"></div>
+                                <div class="menu-content-inner">
+                                    <div class="loading"></div>
+                                </div>
+                            </div>
+                        </li>
+                    <!--{/loop}-->
+                </ul>
+            </div>
         </div>
     </div>
-    
     
     <div class="newhome-content">
         
     </div>
 </div>
+<br style="clear: both" />
 
 
 
