@@ -497,3 +497,8 @@ h2.area-title {
 .newhome-product4lines .desc-box .desc-right .line:last-child {
     border: 0;
 }
+.stretch_banner img {
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
+}

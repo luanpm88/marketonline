@@ -136,13 +136,13 @@
 	    jQuery(this).find('img').css('display','none');
 	    jQuery(this).find('a').css('height',jQuery(this).height()+'px');
 	    //jQuery(this).css('height',jQuery(this).width()*scale);
-	    scale = jQuery(this).height()/jQuery(this).width();
+	    scale = jQuery(this).width()/jQuery(this).height();
 	    
 	    jQuery(this).css('background-image','url('+jQuery(this).find('img').attr("src")+')');
-	    if(jQuery(this).find('img').height()/jQuery(this).find('img').width() < scale) {
-	      jQuery(this).css('background-size',(jQuery(this).width()+20)+'px auto');
+	    if(jQuery(this).find('img').width()/jQuery(this).find('img').height() < scale) {
+	      jQuery(this).css('background-size',jQuery(this).width()+'px auto');
 	    } else {
-	      jQuery(this).css('background-size','auto '+(jQuery(this).height()+20)+'px');
+	      jQuery(this).css('background-size','auto '+jQuery(this).height()+'px');
 	    }
 	    jQuery(this).css('background-repeat','no-repeat');
 	    jQuery(this).css('background-position','center center');
