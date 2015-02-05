@@ -10,20 +10,22 @@
             </div>            
         <!--{/loop}-->        
     </div>
-    <div class="desc-box">
-        <div class="desc-left">
-            <h3>{$items.0.name}</h3>
-            {$items.0.description}
-        </div>
-        <div class="desc-right">
-            <div class="line line-1">{$items.0.text_line1}</div>
-            <div class="line line-1">{$items.0.text_line2}</div>
-            <div class="line line-1">
-                <a target="_blank" href="{$item.0.target_url}" title="{$item.name}">
-                    Vào xem
-                </a>
+    {if $items.0.name}
+        <div class="desc-box">
+            <div class="desc-left">
+                <h3>{$items.0.name}</h3>
+                {$items.0.description}
+            </div>
+            <div class="desc-right">
+                <div class="line line-1">{$items.0.text_line1}</div>
+                <div class="line line-1">{$items.0.text_line2}</div>
+                <div class="line line-1">
+                    <a target="_blank" href="{$item.0.target_url}" title="{$item.name}">
+                        Vào xem
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    {/if}
 {/if}
             

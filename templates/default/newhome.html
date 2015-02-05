@@ -62,12 +62,12 @@
     
     {if $show_productbox > 0 }
         {if $show_productbox < 13}
-            <div class="productbox newhome-{if $show_productbox_center}product3lines{else}product2lines{/if}">
+            <div class="productbox newhome-{if $productbox_center && !$productbox_more}product3lines{elseif $productbox_more}product4lines{else}product2lines{/if}">
                 <h2 class="area-title">Sản phẩm nổi bật</h2>
                 <div class="col-item col-left ajax_banner adid-43" type="productbox" rel="43">
                     
                 </div>
-                {if $show_productbox_center}
+                {if $productbox_center || $productbox_more}
                     <div class="col-item col-center ajax_banner adid-45" type="productbox" rel="45">
                     
                     </div>
@@ -77,6 +77,11 @@
                     
                     </div>
                 </div>
+                {if $productbox_more}
+                    <div class="col-item col-more ajax_banner adid-52" type="productbox" rel="52">
+                    
+                    </div>
+                {/if}
                 <br style="clear: both" />
             </div>        
         {/if}
@@ -84,12 +89,12 @@
     
     {if $show_servicebox > 0 }
         {if $show_servicebox < 13}
-            <div class="productbox newhome-{if $show_servicebox_center}product3lines{else}product2lines{/if}">
+            <div class="productbox newhome-{if $servicebox_center && !$servicebox_more}product3lines{elseif $servicebox_more}product4lines{else}product2lines{/if}">
                 <h2 class="area-title">Dịch vụ nổi bật</h2>
                 <div class="col-item col-left ajax_banner adid-46" type="productbox" rel="46">
                     
                 </div>
-                {if $show_servicebox_center}
+                {if $servicebox_center || $servicebox_more}
                     <div class="col-item col-center ajax_banner adid-48" type="productbox" rel="48">
                     
                     </div>
@@ -97,6 +102,11 @@
                 <div class="col-item col-right ajax_banner adid-47" type="productbox" rel="47">
                     
                 </div>
+                {if $servicebox_more}
+                    <div class="col-item col-more ajax_banner adid-53" type="productbox" rel="53">
+                    
+                    </div>
+                {/if}
                 <br style="clear: both" />
             </div>
         {/if}
@@ -104,12 +114,12 @@
     
     {if $show_tradebox > 0 }
         {if $show_tradebox < 13}
-            <div class="productbox newhome-{if $show_tradebox_center}product3lines{else}product2lines{/if}">
+            <div class="productbox newhome-{if $tradebox_center && !$tradebox_more}product3lines{elseif $tradebox_more}product4lines{else}product2lines{/if}">
                 <h2 class="area-title">Thương mại nổi bật</h2>
                 <div class="col-item col-left ajax_banner adid-49" type="productbox" rel="49">
                     
                 </div>
-                {if $show_tradebox_center}
+                {if $tradebox_center || $tradebox_more}
                     <div class="col-item col-center ajax_banner adid-51" type="productbox" rel="51">
                     
                     </div>
@@ -117,6 +127,36 @@
                 <div class="col-item col-right ajax_banner adid-50" type="productbox" rel="50">
                     
                 </div>
+                {if $tradebox_more}
+                    <div class="col-item col-more ajax_banner adid-54" type="productbox" rel="54">
+                    
+                    </div>
+                {/if}
+                <br style="clear: both" />
+            </div>
+        {/if}
+    {/if}
+    
+    {if $show_combox > 0 }
+        {if $show_combox < 13}
+            <div class="productbox newhome-{if $combox_center && !$combox_more}product3lines{elseif $combox_more}product4lines{else}product2lines{/if}">
+                <h2 class="area-title">Thương mại nổi bật</h2>
+                <div class="col-item col-left ajax_banner adid-55" type="productbox" rel="55">
+                    
+                </div>
+                {if $combox_center || $combox_more}
+                    <div class="col-item col-center ajax_banner adid-56" type="productbox" rel="56">
+                    
+                    </div>
+                {/if}
+                <div class="col-item col-right ajax_banner adid-57" type="productbox" rel="57">
+                    
+                </div>
+                {if $combox_more}
+                    <div class="col-item col-more ajax_banner adid-58" type="productbox" rel="58">
+                    
+                    </div>
+                {/if}
                 <br style="clear: both" />
             </div>
         {/if}

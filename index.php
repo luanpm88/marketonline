@@ -235,22 +235,37 @@ if (!empty($_GET['do'])) {
 		$productbox_left = $ad->getByZone(43);
 		$productbox_right = $ad->getByZone(44);
 		$productbox_center = $ad->getByZone(45);
-		setvar("show_productbox",count($productbox_left)+count($productbox_right)+count($productbox_center));
-		setvar("show_productbox_center",$productbox_center);
+		$productbox_more = $ad->getByZone(52);
+		setvar("show_productbox",count($productbox_more)+count($productbox_left)+count($productbox_right)+count($productbox_center));
+		setvar("productbox_center",$productbox_center);
+		setvar("productbox_more",$productbox_more);
 		
 		//if show Home Top Main Right
 		$servicebox_left = $ad->getByZone(46);
 		$servicebox_right = $ad->getByZone(47);
 		$servicebox_center = $ad->getByZone(48);
-		setvar("show_servicebox",count($servicebox_left)+count($servicebox_right)+count($servicebox_center));
-		setvar("show_servicebox_center",$servicebox_center);
+		$servicebox_more = $ad->getByZone(53);
+		setvar("show_servicebox",count($servicebox_more)+count($servicebox_left)+count($servicebox_right)+count($servicebox_center));
+		setvar("servicebox_center",$servicebox_center);
+		setvar("servicebox_more",$servicebox_more);
 		
 		//if show Home Top Main Right
 		$tradebox_left = $ad->getByZone(49);
 		$tradebox_right = $ad->getByZone(50);
 		$tradebox_center = $ad->getByZone(51);
-		setvar("show_tradebox",count($tradebox_left)+count($tradebox_right)+count($tradebox_center));
-		setvar("show_tradebox_center",$tradebox_center);
+		$tradebox_more = $ad->getByZone(54);
+		setvar("show_tradebox",count($tradebox_more)+count($tradebox_left)+count($tradebox_right)+count($tradebox_center));
+		setvar("tradebox_center",$tradebox_center);
+		setvar("tradebox_more",$tradebox_more);
+		
+		//if show Home Top Main Right
+		$combox_left = $ad->getByZone(55);
+		$combox_right = $ad->getByZone(56);
+		$combox_center = $ad->getByZone(57);
+		$combox_more = $ad->getByZone(58);
+		setvar("show_combox",count($combox_more)+count($combox_left)+count($combox_right)+count($combox_center));
+		setvar("combox_center",$combox_center);
+		setvar("combox_more",$combox_more);
 		
 		render("newhome");
 	} else {

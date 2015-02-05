@@ -371,7 +371,6 @@ h2.area-title {
     float: left;
     width: 100%;
     background: #fff;
-    display: none;
 }
 .newhome-product3lines .desc-box p {    
 }
@@ -383,12 +382,16 @@ h2.area-title {
 .newhome-product3lines .desc-box .desc-left {
     float: left;
     padding-right: 10px;
-    width: 437px;
+    width: 100%;
+}
+.newhome-product3lines .desc-box .desc-left h3 {
+    font-size: 150%;
 }
 .newhome-product3lines .desc-box .desc-right {
     display: block;
     float: right;
     width: 140px;
+    display: none;
     
 }
 .newhome-product3lines .desc-box .desc-right .line {
@@ -406,4 +409,91 @@ h2.area-title {
 
 .productbox .col-item {
     min-height: 200px;
+}
+
+
+
+
+.newhome-product4lines {
+    margin: auto;
+    padding: 10px;
+    width: 1200px;
+}
+.newhome-product4lines .col-left {
+    float: left;
+}
+.newhome-product4lines .col-right {
+    float: left;
+    margin-left: 2%;
+}
+.newhome-product4lines .col-center {
+    float: left;
+    margin-left: 2%;
+}
+.newhome-product4lines .col-more {
+    float: right; 
+}
+.newhome-product4lines .col-item {
+    width: 23.5%;
+}
+.newhome-product4lines .box-4items {
+    border: 1px solid #ddd;
+    float: left;
+    width: 100%;
+    overflow: hidden;
+}
+.newhome-product4lines .box-4items .box-item {
+    float: left
+}
+.newhome-product4lines .box-4items .box-1 .stretch_banner {
+    border-bottom: 1px solid #ddd;
+    float: left;
+    height: 276px;
+    width: 276px;
+}
+.newhome-product4lines .box-4items .box-2 .stretch_banner {    
+}
+.newhome-product4lines .box-4items .box-3 .stretch_banner {
+    width: 138px !important;
+    border-right: 0 !important;
+}
+.newhome-product4lines .box-4items .box-4 {
+    display: none;
+}
+.newhome-product4lines .box-4items .box-right .stretch_banner {
+    border-right: 1px solid #ddd;
+    float: left;
+    height: 137px;
+    width: 137px;
+}
+.newhome-product4lines .desc-box {
+    float: left;
+    width: 100%;
+    background: #fff;
+}
+.newhome-product4lines .desc-box p {    
+}
+.newhome-product4lines .desc-box .desc-left {
+    float: left;
+    padding-right: 10px;
+    width: 100%;
+}
+.newhome-product4lines .desc-box .desc-left h3 {
+    font-size: 150%;
+}
+.newhome-product4lines .desc-box .desc-right {
+    display: block;
+    float: right;
+    width: 140px;
+    display: none;
+    
+}
+.newhome-product4lines .desc-box .desc-right .line {
+    margin: 0;
+    padding: 11px 5px;
+    text-align: center;
+    font-weight: 700;
+}
+.newhome-product4lines .desc-box .desc-right .line:last-child {
+    border: 0;
 }
