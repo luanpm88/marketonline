@@ -6594,7 +6594,7 @@ class Product extends PbController {
 			//level 2			
 			$industries = $this->industry->findAll($fields, null, array("parent_id=".$parent["id"]));
 			foreach($industries as $key => $item) {
-				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 3);						
+				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 3);
 			}
 			
 			setvar("parent", $parent);

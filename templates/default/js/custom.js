@@ -139,7 +139,7 @@
 	    scale = jQuery(this).height()/jQuery(this).width();
 	    
 	    jQuery(this).css('background-image','url('+jQuery(this).find('img').attr("src")+')');
-	    if(jQuery(this).find('img').width()*scale < jQuery(this).find('img').height()) {
+	    if(jQuery(this).find('img').width()*scale > jQuery(this).find('img').height()) {
 	      jQuery(this).css('background-size',jQuery(this).width()+'px auto');
 	    } else {
 	      jQuery(this).css('background-size','auto '+jQuery(this).height()+'px');
