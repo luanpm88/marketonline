@@ -60,10 +60,12 @@
 		  <th style="text-align: center">Thị trường</th>
 		  <th style="text-align: center">SP mới</th>
 		  <th style="text-align: center">Trang TH</th>
+		  <th style="text-align: center">Trang chủ</th>
 		  <!--<th>{lang in_area}</th>
 		  <th>{lang in_industry}</th>-->
 			<th width="11%" style="text-align: center">Điểm (Người)</th>
 			<th style="text-align: center">SHOP đẹp</th>
+			
 		  <th>{lang action}</th>
 		</tr>
     </thead>
@@ -118,6 +120,17 @@
 				</a>
 			{/if}
 		  </td>
+		  <td style="text-align: center">
+				{if $item.new_home}
+					<a href="company.php?id={$item.id}&do=new_home&value=0" title="Tắt">
+						<img src="../templates/office/images/published.png">
+					</a>
+				{else}
+					<a href="company.php?id={$item.id}&do=new_home&value=1" title="Bật">
+						<img src="../templates/office/images/unpublished.png">
+					</a>
+				{/if}
+			  </td>
 		  <!--<td>{$Areas[1][$item.area_id1]}{$Areas[2][$item.area_id2]}</td>
 		  <td>{$Industries[1][$item.industry_id1]}{$Industries[2][$item.industry_id2]}</td>-->
 			
@@ -144,6 +157,8 @@
 					{/if}
 				{/if}
 			</td>
+			
+			
 		  
 		  <td class="handler">
            <ul id="handler_icon">

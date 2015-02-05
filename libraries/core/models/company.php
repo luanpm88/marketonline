@@ -772,5 +772,23 @@ class Companies extends PbModel {
 
 		return array("result"=>$result,"count"=>$count);
 	}
+	
+	function getNewHome() {
+		$conditions = array();
+		
+		$conditions[] = "Company.new_home!=0";
+		
+
+		$joins = array();
+		
+		$joins[] = "LEFT JOIN {$this->table_prefix}members AS m ON m.id = Company.member_id";
+		$joins[] = "LEFT JOIN {$this->table_prefix}memberfields AS mf ON mf.member_id = Company.member_id";
+		
+		$result = $this->findAll("Company.*", $joins, $conditions, "m.points_weekly DESC, m.active_time DESC", $offset, $num);
+		//$count = $this->findCount($joins, $conditions, "Company.id");
+		$result = $this->formatItems($result);
+
+		return array("result"=>$result,"count"=>$count);
+	}
 }
 ?>

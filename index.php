@@ -62,7 +62,7 @@ if (!empty($_GET['do'])) {
 }else{
 	require('libraries/core/models/industry.php');
 	require('libraries/core/models/product.php');
-	
+		
 	//require('libraries/core/models/announcement.php');
 	$industrybd = new Industries();
 	$product = new Products();
@@ -266,6 +266,11 @@ if (!empty($_GET['do'])) {
 		setvar("show_combox",count($combox_more)+count($combox_left)+count($combox_right)+count($combox_center));
 		setvar("combox_center",$combox_center);
 		setvar("combox_more",$combox_more);
+		
+		//get companie
+		$companies = $company->getNewHome();
+		//var_dump($companies);
+		setvar("companies",$companies["result"]);
 		
 		render("newhome");
 	} else {
