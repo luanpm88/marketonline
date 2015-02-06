@@ -1962,12 +1962,12 @@ div.product .woocommerce_tabs ul.tabs li.active, #content div.product .woocommer
 
 #product_detail_box .four
 {
-    border-left: solid 1px #ccc;
+    border-left: solid 1px #ddd;
 }
 
 #product_detail_box .four
 {
-    border-left: 1px solid #CCCCCC;
+    border-left: 1px solid #ddd;
     margin-top: -10px;
     padding: 6px;
 }
@@ -2095,9 +2095,9 @@ div.product .woocommerce_tabs .panel, #content div.product .woocommerce_tabs .pa
 div.product .woocommerce_tabs .panel, #content div.product .woocommerce_tabs .panel
 {
     margin-right: -1px !important;
-    border-right: solid 1px #ccc !important;
+    border-right: solid 1px #ddd !important;
     margin-bottom: 0;
-    border-left: solid 0px #ccc;
+    border-left: solid 0px #ddd;
 }
 
 .detail_box_content a {
@@ -2390,9 +2390,9 @@ div.product div.images, #content div.product div.images {
 }
 
 #product_desc {
-    border-bottom: 1px solid #333;
-    border-left: 1px solid #333;
-    border-right: 1px solid #333;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     float: left;
     margin-top: -20px;
     padding-top: 10px;
