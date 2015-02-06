@@ -2365,7 +2365,7 @@ div.product div.images, #content div.product div.images {
 
 #three_box_detail tr td {
     background: none repeat scroll 0 0 #FFFFFF;
-    border: 1px solid #AAA;
+    border: 1px solid #ddd;
     color: #333333;
     padding: 8px;
     vertical-align: top;
@@ -2617,7 +2617,7 @@ a.button.alt, button.button.alt, input.button.alt, #respond input#submit.alt, #c
 
 #three_box_detail tr td:last-child
 {
-    border-right: solid 1px #AAA;
+    border-right: solid 1px #ddd;
 }
 
 #shop_info .box_info_col td
