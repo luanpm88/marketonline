@@ -196,7 +196,7 @@
 		$('.adid-'+conid).html(data);
 		cropping();
 		
-		if (type=="") sliderBanner('.adid-'+conid);
+		if (type=="" || type=="products") sliderBanner('.adid-'+conid);
 	    });
 	});
     }
@@ -204,21 +204,24 @@
     //cropping();
     function cropping() {
 	jQuery('.stretch_banner').each(function() {
-	    var scale = 1;
-	    //jQuery(this).css('display','block');
-	    jQuery(this).find('img').css('display','none');
-	    jQuery(this).find('a').css('height',jQuery(this).height()+'px');
-	    //jQuery(this).css('height',jQuery(this).width()*scale);
-	    scale = jQuery(this).width()/jQuery(this).height();
+	    var box = jQuery(this);
 	    
-	    jQuery(this).css('background-image','url('+jQuery(this).find('img').attr("src")+')');
-	    if(jQuery(this).find('img').width()/jQuery(this).find('img').height() < scale) {
-	      jQuery(this).css('background-size',jQuery(this).width()+'px auto');
-	    } else {
-	      jQuery(this).css('background-size','auto '+jQuery(this).height()+'px');
-	    }
-	    jQuery(this).css('background-repeat','no-repeat');
-	    jQuery(this).css('background-position','center center');
+	    var scale = 1;
+	    box.find('img').css('display','none');
+	    box.find('a').css('height',box.height()+'px');
+	    
+	    scale = box.width()/box.height();
+	    
+	    box.find('img').load(function() {	
+		box.css('background-image','url('+box.find('img').attr("src")+')');
+		if(box.find('img').width()/box.find('img').height() < scale) {
+		  box.css('background-size',box.width()+'px auto');
+		} else {
+		 box.css('background-size','auto '+box.height()+'px');
+		}
+		box.css('background-repeat','no-repeat');
+		box.css('background-position','center center');
+	    });
 	});
     }
     

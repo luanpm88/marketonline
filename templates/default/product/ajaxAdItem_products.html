@@ -1,6 +1,6 @@
 {if $items}
 <div class="home-main-product-list">
-    <ul>
+    <ul class="banner">
         
         <!--{loop $items item level key}-->
             <li>
@@ -9,12 +9,12 @@
                         <img class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
                     </span>
                     <span class="name">{$item.name}</span>
-                    <span class="line1">{$item.text_line1}</span>
-                    <span class="line2">{$item.text_line2}</span>
+                    {if $item.text_line1}<span class="line1">{$item.text_line1}</span>{/if}
+                    {if $item.text_line2}<span class="line2">{$item.text_line2}</span>{/if}
                 </a>
             </li>
+            {if $key%5==4}</ul><ul class="banner">{/if}
         <!--{/loop}-->
-
     </ul>
 </div>
 {/if}

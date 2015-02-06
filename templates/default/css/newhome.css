@@ -80,12 +80,8 @@
     position: absolute;
 }
 .home-right-top-banner {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
     background: none repeat scroll 0 0 #bbb;
-    border-color: #ddd #ddd #ddd -moz-use-text-color;
+    border-color: #ddd;
     border-image: none;
     border-style: solid solid solid none;
     border-width: 1px 1px 1px 0;
@@ -544,4 +540,7 @@ h2.area-title {
 }
 .point-nav li.active {
     background: #333;
+}
+.home-right-bottoms-products .point-nav {
+    bottom: -10px;
 }
