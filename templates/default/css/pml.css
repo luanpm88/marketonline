@@ -1569,7 +1569,7 @@ div.product .woocommerce_tabs .panel, #content div.product .woocommerce_tabs .pa
 }
 
 .fb_boxx {
-    border: 1px solid #CCCCCC;
+    border: 1px solid #ddd;
     height: 300px;
     margin-top: 10px;
     padding: 2px 2px 2px 3px;
@@ -2630,7 +2630,7 @@ a.button.alt, button.button.alt, input.button.alt, #respond input#submit.alt, #c
 }
 
 #product_detail_box .logoz {
-    border: solid 2px #a4d198 !important; 
+    border: solid 1px #ddd !important; 
 }
 
 #shop_info .childcat {
