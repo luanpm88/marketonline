@@ -4633,7 +4633,7 @@ insitem {
 }
 .offer_transform ul.products li.product:first-child {
     margin-top: 15px;
-    border-top: solid 1px #aaa;
+    border-top: solid 1px #ddd;
 }
 .offer_transform ul.products li.product .title_detail
 {
