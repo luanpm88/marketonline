@@ -1,9 +1,11 @@
 {if $items}
-    <div class="industry_banner stretch_banner">
-        <!--{loop $items item level key}-->
+<!--{loop $items item level key}-->
+    <div class="industry_banner stretch_banner" style="{if $item.height}height:{$item.height}px{/if}">
+        
             <a href="{$item.target_url}" target="_blank" title="{$item.name}">
                 <img style="display: none" class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
             </a>
-        <!--{/loop}-->
+        
     </div>
+<!--{/loop}-->
 {/if}

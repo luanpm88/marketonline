@@ -105,12 +105,15 @@
 .newhome-menus .main-menu ul li:hover ul a {
     background: #fff;
 }
+.home-right-top-banner .banner-item {
+    position: relative;
+}
 .home-right-top-banner .banner-item.right {
     border-left: 1px solid #ddd;
     overflow: hidden;
     width: 30%;
 }
-.home-right-top-banner .banner-item {
+.home-right-top-banner .banner-item .stretch_banner, .home-right-top-banner .banner-item {
     /*background: none repeat scroll 0 0 #999;*/
     height: 381px;
     width: 100%;
@@ -513,4 +516,32 @@ h2.area-title {
     max-width: none !important;
     width: auto !important;
     height: auto !important;
+}
+
+.banner-bottom-abs {
+    bottom: 0;
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+}
+.point-nav {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+}
+.point-nav li {
+    background: none repeat scroll 0 0 #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+    height: 10px;
+    margin: 0 3px;
+    text-indent: -9000px;
+    width: 10px;
+}
+.point-nav li.active {
+    background: #333;
 }

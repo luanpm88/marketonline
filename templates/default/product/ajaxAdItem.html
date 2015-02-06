@@ -1,9 +1,9 @@
 {if $items}
-    <div class="banner">
-        <!--{loop $items item level key}-->
+    <!--{loop $items item level key}-->
+        <div class="banner stretch_banner ajax_banner">        
             <a href="{$item.target_url}" target="_blank" title="{$item.name}">
                 <img style="display: none" class="banner_{$item.size_width}_{$item.size_height} banner-item-{$item.id}" src="{$item.logo}" />
-            </a>
-        <!--{/loop}-->
-    </div>
+            </a>        
+        </div>
+    <!--{/loop}-->
 {/if}

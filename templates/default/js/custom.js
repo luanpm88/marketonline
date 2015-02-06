@@ -69,6 +69,77 @@
 //	}
 //    }
     
+    function sliderMove(boxclass, left) {
+	var cont = $(boxclass);
+	var current = 0;
+	var nextItem;
+	var length = cont.find(".banner").length;
+	cont.find(".banner").each(function(index) {
+	    if ($(this).css("display")=='block') {
+		current = index;
+		return;
+	    }
+	});
+	
+	if (left==1) {
+	    if(current == length-1) {
+		nextItem = 0;
+	    } else {
+		nextItem = current + 1;
+	    }
+	} else {
+	    if(current == 0) {
+		nextItem = length-1;
+	    } else {
+		nextItem = current - 1;
+	    }
+	}
+	
+	sliderGoItem(cont, nextItem);
+    }
+    
+    function sliderGoItem(cont, index) {
+	cont.find(".banner").fadeOut(1000);
+	cont.find(".banner").eq(index).fadeIn(1000);
+	
+	cont.find(".point-nav li").removeClass("active");
+	cont.find(".point-nav li").eq(index).addClass("active");
+    }
+    
+    function sliderBanner(boxclass) {
+	var cont = $(boxclass);
+	var length = cont.find(".banner").length;
+	if (length > 1) {
+	    var html = '<ul class="point-nav">';
+	    cont.find(".banner").each(function(index) {
+	      html += '<li class="pointer" rel="'+index+'">'+index+'</li>';
+	    });
+	    html += '</ul>';
+	    
+	    cont.append(html);
+	    
+	    cont.find(".banner").hide();
+	    cont.find(".banner").eq(0).show();	    
+	    cont.find(".point-nav li").eq(0).addClass("active");
+	    
+	    cont.find(".point-nav li").click(function() {
+		//alert("sss");
+		sliderGoItem(cont, parseInt($(this).attr("rel")));
+	    });
+	    
+	    
+	    
+
+	    var min = 5;
+	    var max = 15;
+	    // and the formula is:
+	    var random = Math.floor(Math.random() * (max - min + 1)) + min;
+
+
+	    setInterval("sliderMove('"+boxclass+"',1)", random*1000);
+	}
+	
+    }
     
     function alignMainMenu() {
 	$('.menu-content').each(function() {
@@ -124,6 +195,8 @@
 	    }).done(function ( data ) {
 		$('.adid-'+conid).html(data);
 		cropping();
+		
+		if (type=="") sliderBanner('.adid-'+conid);
 	    });
 	});
     }
@@ -132,7 +205,7 @@
     function cropping() {
 	jQuery('.stretch_banner').each(function() {
 	    var scale = 1;
-	    jQuery(this).css('display','block');
+	    //jQuery(this).css('display','block');
 	    jQuery(this).find('img').css('display','none');
 	    jQuery(this).find('a').css('height',jQuery(this).height()+'px');
 	    //jQuery(this).css('height',jQuery(this).width()*scale);

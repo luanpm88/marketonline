@@ -15,11 +15,11 @@
                 <div class="right-banner-inner">
                     <div class="home-right-content">
                         <div class="home-right-top-banner">
-                            <div class="banner-item {if $show_home_top_main_left}left{/if} ajax_banner adid-39 stretch_banner" rel="39" type="">
+                            <div class="banner-item {if $show_home_top_main_left}left{/if} ajax_banner adid-39" rel="39" type="">
                                 
                             </div>
                             {if $show_home_top_main_left}
-                                <div class="banner-item right ajax_banner adid-40 stretch_banner" rel="40" type="">
+                                <div class="banner-item right ajax_banner adid-40" rel="40" type="">
                                 </div>
                             {/if}
                         </div>
@@ -49,9 +49,12 @@
                             </a>
                             <div class="menu-content hidden">
                                 <div class="banner_container ajax_banner adid-42-{$item0.id}" rel="42" type="industry" industry_id="{$item0.id}"></div>
+                                
                                 <div class="menu-content-inner">
                                     <div class="loading"></div>
                                 </div>
+                                
+                                <div class="banner_container ajax_banner banner-bottom-abs adid-59-{$item0.id}" rel="59" type="industry" industry_id="{$item0.id}"></div>
                             </div>
                         </li>
                     <!--{/loop}-->

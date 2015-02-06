@@ -86,7 +86,7 @@
 					      <!--{loop $school_list item level key}-->
 						      <li onclick="window.location='{the_url module=studypost action=school id=`$item.id` title=`$item.name`}'" class="school_list_box {if $item.id == $school.id}active{/if}">
 							  <a class="head-title">
-							      <img src="{$WebRootUrl}/{$item.logo}" />
+							      <img src="{$item.logo}" />
 							      <span>{$item.name|truncate:40}</span>
 							  </a>
 							  {if $item.address}<p>{$item.address}</p>{/if}
