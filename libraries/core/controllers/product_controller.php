@@ -6591,11 +6591,17 @@ class Product extends PbController {
 			$fields = "id,parent_id,name,level";
 			$parent = $this->industry->read($fields, $_GET["id"]);
 			
-			//level 2			
+			//level 2
+			$stt = 0;
 			$industries = $this->industry->findAll($fields, null, array("parent_id=".$parent["id"]));
 			foreach($industries as $key => $item) {
 				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 3);
+				$industries[$key]["count"] = $this->industry->findCount(null, array("parent_id=".$item["id"]), "Industry.id");
+				$industries[$key]["stt"] = $stt;
 				
+				if($industries[$key]["count"]) {
+					$stt++;
+				}
 			}
 			
 			setvar("parent", $parent);
