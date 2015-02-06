@@ -492,7 +492,7 @@ a.tile_title
 
 .childcat {
     background: none;
-    border: 1px solid #AAAAAA;
+    border: 1px solid #ddd;
     color: #333333;
     font-weight: normal;
     height: 50px;
@@ -3334,7 +3334,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
 
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], textarea
 {
-    border: solid 1px #aaa;
+    border: solid 1px #ddd;
     padding: 4px;
     height: auto;
 }

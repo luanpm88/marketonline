@@ -515,8 +515,8 @@ ul.phomes li.product  a img {
 }
 
 .logoz {
-    border: 1px solid #63A940;
-    border-right: 1px solid #63A940;
+    border: 1px solid #ddd;
+    border-right: 1px solid #ddd;
 }
 
 #offer_list_page
@@ -2062,7 +2062,7 @@ a.following
 }
 .leftbar_space .widget.widget_recent_products {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.5);
-    border: 1px solid #bbb;
+    border: 1px solid #ddd;
     width: 260px;
     padding: 5px;
 }
