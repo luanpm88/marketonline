@@ -2343,7 +2343,7 @@ div.product div.images, #content div.product div.images {
 
 #shop_info .childcat
 {
-    border: solid 1px #ccc;
+    border: solid 1px #ddd;
 }
 
 #annouce_box ul li
@@ -2634,12 +2634,12 @@ a.button.alt, button.button.alt, input.button.alt, #respond input#submit.alt, #c
 }
 
 #shop_info .childcat {
-    border: 1px solid #AAAAAA;
+    border: 1px solid #ddd;
 }
 
 
 .shop_name {
-    border-bottom: 1px solid #AAAAAA;
+    border-bottom: 1px solid #ddd;
     clear: both;
     padding-bottom: 5px;
     padding-left: 0 !important;

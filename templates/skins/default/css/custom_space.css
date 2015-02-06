@@ -144,7 +144,7 @@ ul.products li.product.last
 .space_content
 {
     margin-top: 3px;
-    border-top: 1px solid #AAA;
+    border-top: 1px solid #ddd;
     padding-top: 0;
     width: 1180px;
     padding-left: 5px;
@@ -538,7 +538,7 @@ ul.phomes li.product  a img {
 }
 #header #recent_products-3 {
     background: none repeat scroll 0 0 transparent;
-    border: 1px solid #AAAAAA;
+    border: 1px solid #ddd;
     clear: both;
     height: 146px;
     margin-bottom: 0;
@@ -779,7 +779,7 @@ table tbody tr:nth-child(2n) {
 }
 
 #left-sidebar {
-    border-right: 1px solid #AAA;
+    border-right: 1px solid #ddd;
     margin-bottom: 0;
 }
 
@@ -1655,7 +1655,7 @@ ul.new_products
 }
 #com_album li {
     background: none repeat scroll 0 0 rgba(255, 255, 255, 0.95);
-    border: 1px solid #AAAAAA;
+    border: 1px solid #ddd;
     float: left;
     list-style: none outside none;
     margin: 10px 10px 10px 0;
@@ -1708,7 +1708,7 @@ h1.other_album
     width: 100%;
     background: #fff;
     padding: 10px;
-    border: solid 1px #aaa;
+    border: solid 1px #ddd;
 }
 #showAlbumDetail table {
     
@@ -1924,11 +1924,11 @@ a.following
 }
 .main_banner img
 {
-    border: solid 1px #aaa;
+    border: solid 1px #ddd;
 }
 #top_company_info
 {
-    border-bottom: solid 1px #aaa;
+    border-bottom: solid 1px #ddd;
 }
 .foot-col2, .foot-col1 {
     margin-bottom: 18px;
