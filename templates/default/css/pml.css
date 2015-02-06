@@ -13263,3 +13263,6 @@ element.style {
     padding-bottom: 5px !important;
     margin-top: -5px;
 }
+#body-wrapper {
+    background: none repeat scroll 0 0 #edf4ef;
+}
