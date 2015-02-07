@@ -445,7 +445,7 @@ h2.area-title {
 }
 .newhome-product4lines .col-item {
     margin-left: 3%;
-    width: 22.7%;
+    width: 268px;
 }
 .newhome-product4lines .box-4items {
     border: 1px solid #ddd;
@@ -457,20 +457,20 @@ h2.area-title {
     float: left
 }
 .newhome-product4lines .box-4items .stretch_banner {
-    width: 132px;
-    height: 132px;
+    width: 133px;
+    height: 133px;
 }
 .newhome-product4lines .box-4items .box-item {
-    width: 132px;
-    height: 132px;
+    width: 133px;
+    height: 133px;
 }
 .newhome-product4lines .box-4items .box-1 {
-    width: 265px;
-    height: 265px;
+    width: 266px;
+    height: 266px;
 }
 .newhome-product4lines .box-4items .box-item .stretch_banner {
     width: 100%;
-    height: 132px;
+    height: 133px;
 }
 .newhome-product4lines .box-4items .box-1 .stretch_banner {
     border-bottom: 1px solid #ddd;
