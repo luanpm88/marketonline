@@ -13341,3 +13341,6 @@ element.style {
 .study_menu_top .menu_bg {
     background: none;
 }
+.study_menu_top .menu_bg {
+    border-bottom: 1px solid #ddd;
+}
