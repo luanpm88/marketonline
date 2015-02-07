@@ -10192,7 +10192,7 @@ input[name=redirect]
     width: 32px;
 }
 .top_new_product_main .box {
-    background: none repeat scroll 0 0 #fff;
+    background: none;
     float: left;
     margin: 0;
     width: 100%;
