@@ -3,6 +3,7 @@
     <ul class="banner">
         
         <!--{loop $items item level key}-->
+            {if $key%5==0 && $key!=0}</ul><ul class="banner">{/if}
             <li>
                 <a href="{$item.target_url}" target="_blank" title="{$item.name}">
                     <span class="img-box stretch_banner">
@@ -13,7 +14,7 @@
                     {if $item.text_line2}<span class="line2">{$item.text_line2}</span>{/if}
                 </a>
             </li>
-            {if $key%5==4}</ul><ul class="banner">{/if}
+            
         <!--{/loop}-->
     </ul>
 </div>
