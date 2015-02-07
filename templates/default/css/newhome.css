@@ -465,7 +465,7 @@ h2.area-title {
 .newhome-product4lines .box-4items .box-2 .stretch_banner {
 }
 .newhome-product4lines .box-4items .box-3 .stretch_banner {
-    width: 138px !important;
+    width: 135px !important;
     border-right: 0 !important;
 }
 .newhome-product4lines .box-4items .box-4 {
@@ -474,8 +474,8 @@ h2.area-title {
 .newhome-product4lines .box-4items .box-right .stretch_banner {
     border-right: 1px solid #ddd;
     float: left;
-    height: 137px;
-    width: 137px;
+    height: 135px;
+    width: 135px;
 }
 .newhome-product4lines .desc-box {
     float: left;
