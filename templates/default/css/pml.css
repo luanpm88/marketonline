@@ -712,7 +712,7 @@ ul.products li.product
 }
 
 .cat_scroll_box_page .wrap {
-    background: none repeat scroll 0 0 #FFF;
+    background: none;
     height: 415px;
     padding-top: 5px;
 }
