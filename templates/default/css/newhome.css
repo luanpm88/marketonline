@@ -579,3 +579,6 @@ h2.area-title {
     height: 22px;
     overflow: hidden;
 }
+.home-main-product-list ul li:last-child {
+    border-right: solid 1px #ddd;
+}

@@ -157,19 +157,20 @@
     
     function show23cats(id) {
 	var iid = id;
-	
+
 	$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content').removeClass("hidden");
-	
-	$.ajax({
-	    url: "index.php?do=product&action=ajaxcat23level&id="+iid,
-	}).done(function ( data ) {
-	    //alert(data);
-	    if (!$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content ul').length) {
-		$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content .menu-content-inner').html(data);
+	if (!$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content ul').length) {
+	    $.ajax({
+		url: "index.php?do=product&action=ajaxcat23level&id="+iid,
+	    }).done(function ( data ) {
+		//alert(data);
 		
-		loadAdItems('.newhome-menus .main-menu ul li.parent[rel="'+id+'"] .menu_ajax_banner');
-	    }
-	});
+		    $('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content .menu-content-inner').html(data);
+		    
+		    loadAdItems('.newhome-menus .main-menu ul li.parent[rel="'+id+'"] .menu_ajax_banner');
+		
+	    });
+	}
     }
     
     function hide23cats(id) {
@@ -191,8 +192,8 @@
 		//var industry_id = $(this).attr("industry_id");
 		var industry = "";
 		
-		if (typeof($(this).attr("industry_id")) != 'undefined') {
-		    industry = "&industry_id="+$(this).attr("industry_id");
+		if (typeof(box.attr("industry_id")) != 'undefined') {
+		    industry = "&industry_id="+box.attr("industry_id");
 		    conid += "-"+$(this).attr("industry_id");
 		}
 		
