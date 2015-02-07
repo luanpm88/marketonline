@@ -13289,3 +13289,21 @@ element.style {
 .product_listing_connect {
     width: 890px;
 }
+#product_desc {
+    background: #fff;
+}
+.bottom-address {
+    background: #fff;
+}
+.related_products_bottom {
+    background: #fff;
+}
+#right_detail_banner .detail_box_content {
+    background: none;
+}
+.rightbanner_block {
+    border: 0;
+}
+.detail_box_content a {
+    border: none;
+}
