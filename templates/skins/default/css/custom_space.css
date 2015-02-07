@@ -2105,3 +2105,6 @@ a.following
     box-shadow: none;
     border-color: #ddd;
 }
+.space_content #content {
+    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.7);
+}
