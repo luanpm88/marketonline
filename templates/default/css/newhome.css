@@ -432,7 +432,7 @@ h2.area-title {
 }
 .newhome-product4lines .col-left {
     float: left;
-    margin-left: 0;
+    margin-left: 0 !important;
 }
 .newhome-product4lines .col-right {
     float: left;
@@ -444,8 +444,8 @@ h2.area-title {
     float: right; 
 }
 .newhome-product4lines .col-item {
-    width: 22%;
     margin-left: 3%;
+    width: 22.7%;
 }
 .newhome-product4lines .box-4items {
     border: 1px solid #ddd;
