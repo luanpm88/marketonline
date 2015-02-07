@@ -13277,3 +13277,12 @@ element.style {
 .product_listing ul.products li.product:first-child {
     margin-top: 10px;
 }
+.company-container .works-list .companylayout {
+    padding: 0;
+    width: 1180px;
+    background: none;
+}
+.company-container .works-list .companylayout li {
+    margin-right: 19px;
+    width: 181px;
+}
