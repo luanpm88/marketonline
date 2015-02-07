@@ -13381,3 +13381,9 @@ element.style {
 .offer_detail_page .right-offerbox {
     width: 540px;
 }
+.bottom_industry_list ul li ul {
+    margin: 0;
+}
+.bottom_industry_list ul li.view-more {
+    margin-left: 0;
+}
