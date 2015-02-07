@@ -226,7 +226,7 @@ if (!empty($_GET['do'])) {
 	//detectMobile()
 	if(detectMobile()) {
 		render("mobile/index");
-	} elseif($_GET["layout"]=='newhome') {
+	} else {
 		//if show Home Top Main Right
 		$show_home_top_main_left = $ad->getByZone(40);
 		setvar("show_home_top_main_left",count($show_home_top_main_left));
@@ -273,8 +273,8 @@ if (!empty($_GET['do'])) {
 		setvar("companies",$companies["result"]);
 		
 		render("newhome");
-	} else {
-		render("newhome");
+	//} else {
+	//	render("newhome");
 	}
 
 	
