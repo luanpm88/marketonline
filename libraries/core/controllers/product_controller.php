@@ -6577,6 +6577,8 @@ class Product extends PbController {
 		$items = $ads->getByZone($_GET["id"],"Ads.display_order",100,$_GET["industry_id"]);
 		setvar("items",$items);
 		
+		
+		
 		if($_GET["type"]) {			
 			$this->render("product/ajaxAdItem_".$_GET["type"]);
 			

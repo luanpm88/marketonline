@@ -552,5 +552,28 @@ h2.area-title {
     background: #333;
 }
 .home-right-bottoms-products .point-nav {
-    bottom: -10px;
+
+}
+.company-info {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    min-height: 60px;
+    margin-bottom: -1px;
+    padding: 10px;
+}
+.company-info img {
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+}
+.company-info h2 {
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+}
+.company-info a {
+    color: #333;
+}
+.company-info p {
+    margin: 0;
 }

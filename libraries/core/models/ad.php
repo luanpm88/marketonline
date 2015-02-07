@@ -300,6 +300,10 @@ class Adses extends PbModel {
 	}
 	
 	function getByZone($zone_id, $order = "Ads.display_order", $limit=100, $industry_id) {
+		uses("company");
+		$company = new Companies();
+		
+		
 		$joins = array("LEFT JOIN {$this->table_prefix}adsizes s ON s.id=Ads.adsize_id");
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Ads.company_id";
 		
@@ -312,6 +316,10 @@ class Adses extends PbModel {
 		$result = $this->findAll("c.shop_name,c.picture,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, $conditions, $order, 0, $limit);
 		foreach($result as $key => $item) {
 			$result[$key] = $this->formatResult($item);
+
+			if($item["company_id"]) {
+				$result[$key]["company"] = $company->getInfoById($item["company_id"]);
+			}
 		}
 		
 		return $result;

@@ -1,4 +1,18 @@
-{if $items}    
+    
+{if $items}
+    {if $items.0.company}
+        <div class="company-info">
+            <a target="_blank" href="{the_url module=space userid=`$items.0.company.cache_spacename`}">
+                <img src="{$items.0.company.logo}" />
+            </a>
+            <h2>
+                <a target="_blank" href="{the_url module=space userid=`$items.0.company.cache_spacename`}">
+                    {$items.0.company.shop_name}
+                </a>
+            </h2>
+            <p>{$items.0.company.name}</p>
+        </div>
+    {/if}
     <div class="box-4items">
         <!--{loop $items item level key}-->
             <div class="box-item {if $key>0}box-right{/if} box-{$key+1}">
