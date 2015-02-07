@@ -4549,7 +4549,7 @@ ul.products li.product .price .amount {
     display: inline;
 }
 .product_tools {
-    border-top: 1px solid #CCC;
+    border-top: 1px solid #ddd;
     margin-top: 5px;
     padding-top: 0;
     text-align: left;
