@@ -266,11 +266,11 @@
 }
 .newhome-product2lines .col-left {
     float: left;
-    width: 49%;
+    width: 48.5%;
 }
 .newhome-product2lines .col-right {
     float: right;
-    width: 49%;
+    width: 48.5%;
 }
 .newhome-product2lines .box-4items {
     border: 1px solid #ddd;
@@ -283,7 +283,7 @@
     border-right: 1px solid #ddd;
     float: left;
     height: 420px;
-    width: 436px;
+    width: 430px;
 }
 .newhome-product2lines .box-4items .box-2 .stretch_banner {    
 }
@@ -298,12 +298,10 @@
     height: 140px;
     width: 140px;
 }
-.newhome-product2lines .desc-box {    
-}
 .newhome-product2lines .desc-box {
     float: left;
     width: 100%;
-    background: #fff;
+    background: none;
 }
 .newhome-product2lines .desc-box p {    
 }
@@ -339,18 +337,19 @@ h2.area-title {
     padding: 10px;
     width: 1200px;
 }
+.newhome-product3lines .col-item {
+    width: 30%;
+    margin-left: 3%;
+}
 .newhome-product3lines .col-left {
     float: left;
-    width: 32%;
+    margin-left: 0;
 }
 .newhome-product3lines .col-right {
     float: right;
-    width: 32%;
 }
 .newhome-product3lines .col-center {
     float: left;
-    margin-left: 2%;
-    width: 32%;
 }
 .newhome-product3lines .box-4items {
     border: 1px solid #ddd;
@@ -362,8 +361,8 @@ h2.area-title {
 .newhome-product3lines .box-4items .box-1 .stretch_banner {
     border-bottom: 1px solid #ddd;
     float: left;
-    height: 375px;
-    width: 375px;
+    height: 352px;
+    width: 352px;
 }
 .newhome-product3lines .box-4items .box-2 .stretch_banner {    
 }
@@ -371,17 +370,17 @@ h2.area-title {
 }
 .newhome-product3lines .box-4items .box-4 .stretch_banner {
     border-right: 0 !important;
+    width: 118px;
 }
 .newhome-product3lines .box-4items .box-right .stretch_banner {
     border-right: 1px solid #ddd;
     float: left;
-    height: 125px;
-    width: 125px;
+    height: 117px;
+    width: 117px;
 }
 .newhome-product3lines .desc-box {
     float: left;
     width: 100%;
-    background: #fff;
 }
 .newhome-product3lines .desc-box p {    
 }
@@ -432,20 +431,20 @@ h2.area-title {
 }
 .newhome-product4lines .col-left {
     float: left;
+    margin-left: 0;
 }
 .newhome-product4lines .col-right {
     float: left;
-    margin-left: 2%;
 }
 .newhome-product4lines .col-center {
     float: left;
-    margin-left: 2%;
 }
 .newhome-product4lines .col-more {
     float: right; 
 }
 .newhome-product4lines .col-item {
-    width: 23.5%;
+    width: 22%;
+    margin-left: 3%;
 }
 .newhome-product4lines .box-4items {
     border: 1px solid #ddd;
