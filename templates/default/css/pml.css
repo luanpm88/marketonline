@@ -1579,6 +1579,7 @@ div.product .woocommerce_tabs .panel, #content div.product .woocommerce_tabs .pa
     border: 1px solid #CCCCCC;
     padding: 0 10px 10px;
     margin-bottom: 10px;
+    background: #fff;
 }
 
 #page-title .breadcrumbs {
