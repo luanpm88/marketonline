@@ -274,7 +274,7 @@ if (!empty($_GET['do'])) {
 		
 		render("newhome");
 	} else {
-		render("index");
+		render("newhome");
 	}
 
 	
