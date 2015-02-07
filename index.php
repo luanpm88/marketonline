@@ -271,7 +271,7 @@ if (!empty($_GET['do'])) {
 		$companies = $company->getNewHome();
 		//var_dump($companies);
 		setvar("companies",$companies["result"]);
-		
+		setvar("newhome",1);
 		render("newhome");
 	//} else {
 	//	render("newhome");
