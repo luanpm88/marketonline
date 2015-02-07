@@ -13345,8 +13345,8 @@ element.style {
     border-bottom: 1px solid #ddd;
 }
 .bottom_industry_list {
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
-    border: 0 none;
+    background: #fff;
+    border: solid 1px #ddd;
     padding: 0;
 }
 .bottom_industry_list h3 {
@@ -13364,12 +13364,6 @@ element.style {
     margin-right: -30px;
 }
 
-*, *:before, *:after {
-    box-sizing: border-box;
-}
-*, *:before, *:after {
-    box-sizing: border-box;
-}
 .bottom_industry_list ul li.level0 {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
     border-bottom: 1px solid #ddd;
