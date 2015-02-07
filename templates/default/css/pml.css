@@ -13347,7 +13347,7 @@ element.style {
 .bottom_industry_list {
     background: #fff;
     border: solid 1px #ddd;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
 }
 .bottom_industry_list h3 {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
