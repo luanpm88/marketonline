@@ -15,7 +15,7 @@
                         
                         <a href="{the_url module=studypost action=school id=`$school.id` title=`$school.name`}">
                             
-                            <img alt="{$school.name}" class="profile-picture img-thumbnail" src="{the_url module=root-url}{$school.logo}" />
+                            <img alt="{$school.name}" class="profile-picture img-thumbnail" src="{$school.logo}" />
                         </a>
                         
                         {if $pb_userinfo.role == 'admin' || $pb_userid == $school.leader_id}
@@ -77,7 +77,7 @@
                     <!--{loop $school.banners item level key}-->
                         {if $key==0}
                             <a class="fancybox" href="{the_url module=root-url}{$item.banner}">
-                                <img src="{the_url module=root-url}{$item.banner}" />
+                                <img src="{$item.banner}" />
                             </a>
                         {/if}
                     <!--{/loop}-->

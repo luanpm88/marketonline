@@ -130,7 +130,7 @@
                     {if $group.banners}
                         <!--{loop $group.banners item level key}-->
                             {if $key==0}
-                                <img src="{the_url module=root-url}{$item.banner}" />
+                                <img src="{$item.banner}" />
                             {/if}
                         <!--{/loop}-->
                     {else}
