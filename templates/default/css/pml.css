@@ -13354,7 +13354,7 @@ element.style {
     border-color: #ddd;
     color: #333;
     margin: 0 0 20px;
-    padding: 4px 15px;
+    padding: 4px 15px 10px;
 }
 .bottom_industry_list h3 a {
     color: #333;
