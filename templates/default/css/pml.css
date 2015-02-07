@@ -13375,7 +13375,8 @@ element.style {
     border-bottom: 1px solid #ddd;
     box-shadow: none;
     margin-bottom: 20px;
-    margin-right: 27px;
+    margin-right: 22px;
+    width: 272px;
 }
 .bottom_industry_list ul li a.level0 {
     color: #333;
