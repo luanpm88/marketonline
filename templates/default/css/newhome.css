@@ -576,4 +576,6 @@ h2.area-title {
 }
 .company-info p {
     margin: 0;
+    height: 22px;
+    overflow: hidden;
 }
