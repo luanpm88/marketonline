@@ -13363,8 +13363,16 @@ element.style {
 .bottom_industry_list ul {
     margin-right: -30px;
 }
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
 .bottom_industry_list ul li.level0 {
-    border: 1px solid #ddd;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-bottom: 1px solid #ddd;
     box-shadow: none;
     margin-bottom: 20px;
     margin-right: 27px;
