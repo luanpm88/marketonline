@@ -17,17 +17,17 @@
         <!--{loop $items item level key}-->
             <div class="box-item {if $key>0}box-right{/if} box-{$key+1}">
                     <div class="stretch_banner">
-                        <a target="_blank" href="{$item.target_url}" title="{$item.name}">
+                        <a target="_blank" href="{$item.target_url}" title="{$item.ad_name}">
                             <img src="{$item.logo}" />
                         </a>
                     </div>
             </div>            
         <!--{/loop}-->        
     </div>
-    {if $items.0.name}
+    {if $items.0.title || $items.0.description}
         <div class="desc-box">
             <div class="desc-left">
-                <h3>{$items.0.name}</h3>
+                {if $items.0.title}<h3>{$items.0.title}</h3>{/if}
                 {$items.0.description}
             </div>
             <div class="desc-right">

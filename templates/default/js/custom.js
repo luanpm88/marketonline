@@ -167,7 +167,7 @@
 	    if (!$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content ul').length) {
 		$('.newhome-menus .main-menu ul li[rel='+id+'] .menu-content .menu-content-inner').html(data);
 		
-		//alignMainMenu();
+		loadAdItems('.newhome-menus .main-menu ul li.parent[rel="'+id+'"] .menu_ajax_banner');
 	    }
 	});
     }
@@ -177,28 +177,35 @@
     }
     
     
-    function loadAdItems() {
-	jQuery('.ajax_banner').each(function() {
-	    var adid = $(this).attr("rel");
-	    var conid = adid;
-	    var type = $(this).attr("type");
-	    //var industry_id = $(this).attr("industry_id");
-	    var industry = "";
-	    
-	    if (typeof($(this).attr("industry_id")) != 'undefined') {
-		industry = "&industry_id="+$(this).attr("industry_id");
-		conid += "-"+$(this).attr("industry_id");
-	    }
-	    
-	    $.ajax({
-		url: "index.php?do=product&action=ajaxAdItems&id="+adid+"&type="+type+industry,
-	    }).done(function ( data ) {
-		$('.adid-'+conid).html(data);
-		cropping();
-		
-		if (type=="" || type=="products") sliderBanner('.adid-'+conid);
-	    });
+    function loadAdItems(boxclass) {
+	jQuery(boxclass).each(function() {
+	    loadAdItem($(this));
 	});
+    }
+    
+    function loadAdItem(box) {
+	    if (!box.hasClass("loaded")) {
+		var adid = box.attr("rel");
+		var conid = adid;
+		var type = box.attr("type");
+		//var industry_id = $(this).attr("industry_id");
+		var industry = "";
+		
+		if (typeof($(this).attr("industry_id")) != 'undefined') {
+		    industry = "&industry_id="+$(this).attr("industry_id");
+		    conid += "-"+$(this).attr("industry_id");
+		}
+		
+		$.ajax({
+		    url: "index.php?do=product&action=ajaxAdItems&id="+adid+"&type="+type+industry,
+		}).done(function ( data ) {
+		    box.html(data);
+		    box.addClass("loaded")
+		    cropping();
+		    
+		    if (type=="" || type=="products") sliderBanner('.adid-'+conid);
+		});
+	    }
     }
     
 	    //cropping();
@@ -2714,7 +2721,7 @@
 		
 		
 		
-		loadAdItems();
+		loadAdItems('.ajax_banner');
 		
 		
 		//23catlevel
