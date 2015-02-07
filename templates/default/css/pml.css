@@ -13324,3 +13324,14 @@ element.style {
     margin: 5px 0 10px;
     width: 1190px;
 }
+.product_listing ul.products li.product{
+    border-color: #ddd;
+}
+.product_listing ul.products li.product:hover
+{
+    border-color: #ddd;
+    background: #f8f8f8;
+}
+.offer_detail_page .related_bottom_h3 {
+    margin: 30px 0 5px;
+}
