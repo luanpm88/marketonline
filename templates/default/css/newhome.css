@@ -485,6 +485,9 @@ h2.area-title {
     border-right: 1px solid #ddd;
     float: left;
 }
+.newhome-product4lines .box-4items .box-3 .stretch_banner {
+    border-right: 0px solid #ddd;
+}
 .newhome-product4lines .desc-box {
     float: left;
     width: 100%;
