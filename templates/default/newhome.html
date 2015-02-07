@@ -213,12 +213,12 @@
                             <li class="level0 {if $level_0%4 == 0}clear{/if}">
                                     <a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{$item0.name}</a>
                                     <ul>
-                                            <!--{loop $item0.sub level1 level_1_industry key_level1}-->
-                                                    <li class="level1 {if $key_level1 > 4}hide{/if}">
-                                                            <a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
-                                                    </li>
-                                            <!--{/loop}-->
-                                            <li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
+                                        <!--{loop $item0.sub level1 level_1_industry key_level1}-->
+                                            <li class="level1 {if $key_level1 > 4}hide{/if}">
+                                                    <a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
+                                            </li>
+                                        <!--{/loop}-->
+                                        <li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
                                     </ul>
                             </li>
                             {if $level_0++}{/if}
