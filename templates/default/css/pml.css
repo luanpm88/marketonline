@@ -13377,3 +13377,6 @@ element.style {
     margin-bottom: 20px;
     margin-right: 27px;
 }
+.bottom_industry_list ul li a.level0 {
+    color: #333;
+}
