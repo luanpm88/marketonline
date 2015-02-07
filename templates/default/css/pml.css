@@ -1652,7 +1652,7 @@ h1 {
 }
 
 .product_listing {
-    background: none repeat scroll 0 0 #EDF4EF;
+    background: none;
     margin: 10px;
     padding: 0 10px;
     margin-top: 0;
@@ -3576,7 +3576,7 @@ service {
     margin: 15px auto;
 }
 .product_listing {
-    padding: 0 0 0 15px;
+    padding: 0 0 0 0;
 }
 .product_listing ul.products li.product {
     border: 1px solid #ddd;
@@ -10199,7 +10199,7 @@ input[name=redirect]
 }
 .top_new_product_main .box_inner {
     background: none repeat scroll 0 0 #fff;
-    border: 1px solid #aaa;
+    border: 1px solid #ddd;
     float: left;
     margin: 10px 10px 20px;
     overflow: hidden;
