@@ -13310,3 +13310,17 @@ element.style {
 .rightbanner_block .img_box {
     border: 0;
 }
+.offer_detail_page .detail-info {
+    border: 1px solid #ddd;
+    clear: both;
+    margin-top: 0;
+    padding: 10px;
+}
+.offer_detail_page .offer_content_inner .left-offerbox {
+    border-color: #ddd;
+    border-bottom: 0;
+}
+.related_products_bottom {
+    margin: 5px 0 10px;
+    width: 1190px;
+}
