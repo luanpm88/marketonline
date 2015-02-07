@@ -13322,7 +13322,7 @@ element.style {
 }
 .related_products_bottom {
     margin: 5px 0 10px;
-    width: 1190px;
+    width: 1180px;
 }
 .product_listing ul.products li.product{
     border-color: #ddd;
@@ -13374,4 +13374,10 @@ element.style {
 }
 .bottom_industry_list ul li a.level0 {
     color: #333;
+}
+.offer_detail_page {
+    padding-right: 10px;
+}
+.offer_detail_page .right-offerbox {
+    width: 540px;
 }
