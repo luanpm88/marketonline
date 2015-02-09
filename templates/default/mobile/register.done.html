@@ -1,0 +1,61 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Đăng ký - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="">
+                <div class="row">
+                    
+                    <div class="page-inner page-register">
+                        
+                        
+                        
+                        <h1>Xác nhận địa chỉ email của bạn</h1>
+                        
+                        <h4>Chúng tôi đã gửi email kích hoạt tài khoản "<strong>{$username}</strong>" tới <strong>{$smarty.get.em}</strong>.
+			<br ><br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email.
+			<br /><strong>Lưu ý:</strong> kiểm tra cả mục inbox và spam</h4>
+                        <br style="clear: both" />
+                        <p></p>
+                        
+			<a class="gomail btn btn-primary" href="{$gomail}" target="_blank" rel="nofollow">Tới email của bạn</a>
+                        <a class="resend btn btn-default" href="index.php?do=member&action=reactive&em={$smarty.get.em}">Gửi lại email xác nhận</a>
+                        
+                    </div>
+                            
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+
+        {literal}
+            <script>
+                function toggleEmailPassword() {
+                    //alert($('#memberpass').val());
+                    if ($('#dataMemberEmail').val().trim() != "") {
+                        $('.email_confirm').show();
+                    } else {
+                        $('.email_confirm').hide();
+                    }
+                    if ($('#memberpass').val().trim() != "") {
+                        $('.password_confirm').show();
+                    } else {
+                        $('.password_confirm').hide();
+                    }
+                }
+                toggleEmailPassword();
+                $('body').on("keyup","#dataMemberEmail",function() {
+                    toggleEmailPassword();
+                });
+                $('body').on("keyup","#memberpass",function() {
+                    toggleEmailPassword();
+                });
+            </script>
+        {/literal}
+
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
