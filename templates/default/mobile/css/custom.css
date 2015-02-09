@@ -1438,7 +1438,7 @@ time .time {
     width: 100%;
 }
 .page-register {
-    padding: 20px 25px;
+    padding: 20px 45px;
 }
 #regfrm p {
     margin: 0;
@@ -1448,4 +1448,7 @@ time .time {
 }
 label.error {
     margin-bottom: 10px;
+}
+.form-control {
+    height: 44px;
 }
