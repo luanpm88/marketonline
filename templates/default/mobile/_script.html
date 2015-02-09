@@ -312,6 +312,45 @@
 		$("#checkout-meminfo").validate();
 		
 		
+		$("#regfrm").validate({
+		    rules: {
+			"data[member][email]": {
+			    required:true,
+			    remote: {
+				url: ROOT_URL+"ajax.php?action=checkemail_mobile",
+			    }
+			},
+			"confirm_email": {
+			    equalTo: "#dataMemberEmail"
+			},
+			"data[member][userpass]": "required",
+			"re_memberpass": {
+			    equalTo: "#memberpass"
+			},
+			"data[member][referrer_id]": {
+			    remote: {
+				url: ROOT_URL+"ajax.php?action=checkreferrer_mobile",
+			    }
+			}
+		    },
+		    messages: {
+			"data[member][email]": {
+			    remote: "Email đã có người sử dụng"
+			},
+			"re_memberpass": "Mật khẩu chưa khớp",
+			"confirm_email": "Email chưa khớp",
+			"data[member][referrer_id]": 'Người giới thiệu không tồn tại',
+			"typename": "Chọn loại thành viên"
+		    }
+		});		
+		//$('.is_select2').select2();
+		
+		
+		$('#exchange_imgcapt').click(function (){
+			$('#imgcaptcha').attr('src','captcha.php?sid=' + Math.random());
+			$('#login_auth').focus();
+			return false;
+		});	
 		
 		//--------------TOP SEARCH ACTIONS------------------------//
         

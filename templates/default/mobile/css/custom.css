@@ -1437,3 +1437,12 @@ time .time {
 .album_detail {
     width: 100%;
 }
+.page-register {
+    padding: 20px 25px;
+}
+#regfrm p {
+    margin: 0;
+}
+.footerz {
+    margin-top: 40px;
+}

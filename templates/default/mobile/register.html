@@ -1,0 +1,185 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Đăng ký - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="">
+                <div class="row">
+                    
+                    <div class="page-inner page-register">
+                        <h1>Đăng ký</h1>
+                        
+                        
+                        
+                        
+                        <div class="">
+                                {if $capt_check == false}<div class="capt-error">Mã bảo mật không đúng. Vui lòng nhập lại!</div>{/if}
+                                
+                                    <div class="four columns loginbox resbox">
+                                
+                                        <section id="woocommerce_login-2" class="widget-1 widget-first widget">
+                                          <div class="widget-inner">
+                                            
+                                            
+                                            
+                                            
+                                            <form name="regfrm" id="regfrm" method="post" action="" autocomplete="off">
+                                              <input style="display:none">
+                                <input type="password" style="display:none">
+                                            <!-- {formhash} -->
+                                            <input type="hidden" name="register" value="{$_G.type}" />
+                                            <!--<input type="hidden" name="typename" value="{$_G.typename|urldecode}" />-->
+                                            <input type="hidden" name="forward" value="{$_G.forward}" />
+                                            
+                                            <p>
+                                                        <label class="registerlabel" for="dataMemberUsername">
+                                                        {lang member_login_name}<span>*</span>
+                                                        </label>
+                                                        <input class="form-control required" placeholder="Tên đăng nhập (không phải tên Shop)" type="text" name="data[member][username]" id="dataMemberUsername" value="{$smarty.post.data.member.username}" tabindex="1"/>
+                                            
+                                                        <label class="lenglabel" id="membernameDiv">
+                                                        
+                                                        </label>
+                                            </p>
+                                            <p>
+                                                        <label class="registerlabel" for="dataMemberEmail">
+                                                        {lang email}<span>*</span>
+                                                        </label>
+                                
+                                                        <input type="email" class="form-control required" placeholder="E-mail để khách hàng liên hệ với bạn" type="text" name="data[member][email]" id="dataMemberEmail" value="{$smarty.post.data.member.email}" tabindex="2"/>
+                                
+                                                        <label class="lenglabel" id="memberemailDiv">
+                                
+                                                        </label>
+                                        </p>
+                                        <p class="email_confirm hide_res">
+                                                        <label class="registerlabel" for="dataMemberEmail">
+                                                        Nhập lại email<span>*</span>
+                                                        </label>
+                                
+                                                        <input type="email" type="email" class="form-control required" placeholder="" type="text" name="confirm_email" id="dataMemberConfirmEmail" value="{$smarty.post.data.member.email}" tabindex="2"/>
+                                
+                                                        <label class="lenglabel" id="memberemailDiv">
+                                
+                                                        </label>
+                                        </p>
+                                            <p>
+                                                        <label class="registerlabel" for="memberpass">
+                                                        {lang password}<span>*</span>
+                                                        </label>
+                                
+                                                        <input class="form-control required" type="password" autocomplete="off" name="data[member][userpass]" id="memberpass" value="" tabindex="3">
+                                
+                                                        <label class="lenglabel">
+                                                        
+                                                        </label>
+                                                </p>
+                                            <p class="password_confirm hide_res">
+                                                        <label class="registerlabel" for="re_memberpass">
+                                                        {lang re_enter_password}<span>*</span>
+                                                        </label>
+                                
+                                                        <input class="form-control required" name="re_memberpass" type="password" id="re_memberpass" value="" tabindex="4">
+                                
+                                                        <label class="lenglabel">
+                                                        
+                                                        </label>
+                                            </p>
+                                            
+                                            <p class="typename_out you_are_form" style="margin-bottom: 0;">
+                                                        <label class="registerlabel" for="dataMemberUsername">
+                                                        {lang member_type_choose}:<span>*</span>
+                                                        </label>
+                                                        
+                                                        <select name="typename" class="form-control required is_select2" id="typenameselect">
+                                                            <option value="" {if !$smarty.post.typename}selected="selected"{/if}>-- Chọn loại thành viên --</option>
+                                                            
+                                                            <option value="Personal" {if $smarty.post.typename == "Personal"}selected="selected"{/if}>Gian hàng cá nhân</option>
+                                                            <option value="Shop" {if $smarty.post.typename == "Shop"}selected="selected"{/if}>Cửa hàng</option>
+                                                            <option value="Company" {if $smarty.post.typename == "Company"}selected="selected"{/if}>Doanh nghiệp</option>
+                                                            <option value="Employee" {if $smarty.post.typename == "Employee"}selected="selected"{/if}>Người xin việc</option>
+                                                            <option value="Employer" {if $smarty.post.typename == "Employer"}selected="selected"{/if}>Nhà tuyển dụng</option>
+                                                            <option value="Learner" {if $smarty.post.typename == "Learner"}selected="selected"{/if}>Học sinh/Sinh viên/Học viên</option>
+                                                        </select>
+                                                        
+                                                        <br />
+                                                        <label style="display: none" for="typename" class="error">Please select your gender</label>
+                                                            
+                                            </p>
+                                            <p></p>
+                                            
+                                              <!--<input type="hidden" name="data[member][referrer_id]" id="dataMemberReferrerHidden" value="{$smarty.post.data.member.referrer_id}" tabindex="5"/>-->
+                                               
+                                            
+                                              <p class="noreferrer" style="">
+                                                          <label class="registerlabel" for="dataMemberUsername">
+                                                          {lang referrer_name}
+                                                          </label>
+                                                          
+                                                          <input class="form-control" placeholder="{lang referrer_intro}" type="text" name="data[member][referrer_id]" id="dataMemberReferrer" value="" tabindex="5"/>
+                                                          <span class="referer_info">({lang referer_info})</span>
+                                              
+                                                          <label class="lenglabel" id="memberReferrer">
+                                  
+                                                          </label>
+                                              </p>
+                                            <br style="clear: both" />
+                                            
+                                            <!-- {if $ifcapt} -->
+                                            <div id="res_captcha">
+                                                
+                                                <div class="right">
+                                                        <label class="registerlabel" for="login_auth" style="margin-top: 5px;margin-bottom: 8px;">
+                                                          {lang code}<span>*</span>
+                                                        </label>
+                                                        <div class="left">
+                                                        
+                                                                <span class="registercheck"><img class="registerpic" width="123" height="50" id="imgcaptcha" src="captcha.php?sid={$sid}" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" />
+        
+                                                                <a href="javascript:;"><img src="{$theme_img_path}images/gongqiu03.jpg" class="registerpic2" id="exchange_imgcapt" /></a>
+                                                                </span>
+                                                        </div>
+                                                        <font class="gray" style="float: left">Nhập mã xác minh ở hình phía trên:</font><br />
+                                                        <input class="form-control" class="" name="data[capt_register]" id="login_auth" type="text" value="" size="4" style="width:117px; margin-bottom: 5px;" tabindex="5">&nbsp;
+                                                </div>
+                                           </div>
+                                            <!-- {/if} -->
+
+                                                        <p class="registerp2">
+                                                          <input style="float: left; margin: 5px 5px 5px 0;" name="licence_check" id="LicenseCheck" type="checkbox" onclick="if(this.checked)$('#Submit').removeAttr('disabled'); else $('#Submit').attr('disabled','true');" checked="checked" />
+                                                          <label style="float: left;margin-top: 3px;" for="LicenseCheck">{lang see_agree}</label>
+                                                        </p>
+                                                        <div class="agree" id="agreements" style="display: none;">{$agreement}</div>
+                                                        <p></p>
+                                                        <br style="clear: both" />
+                                                        <p></p>
+                                                        <p class="registerbutton">
+                                                          <input class="btn btn-primary" style="width: 100%" type="submit" name="Submit" id="wp-submit" value="{lang register}" class="submit_w67 submit_res" />
+                                                        </p>
+                                                        </form>
+                                            
+                                            
+                                                        <ul class="pagenav"></ul></div></section>
+                                                        
+                                    </div>
+                                    
+
+                                    
+                                </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                            
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

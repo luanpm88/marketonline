@@ -106,7 +106,9 @@ if (isset($_POST['do_action'])) {
 	}
 }
 if (isset($_GET['action'])) {
+	
 	$action = trim($_GET['action']);
+	//echo $action;
 	switch ($action) {
 		case "checkusername":
 			if(isset($_GET['username'])) {
@@ -150,12 +152,37 @@ if (isset($_GET['action'])) {
 			ajax_exit($return);
 			break;
 		case "checkreferrer":
+			echo $_GET['referrer'];
 			if(isset($_GET['referrer'])) {
 				$result = call_user_func_array($action, array($_GET['referrer']));		
 				if($result == true){
 					$return["isError"] = 1;
 				}else{
 					$return["isError"] = 0;
+				}
+			}
+			ajax_exit($return);
+			break;
+		case "checkreferrer_mobile":
+			//echo $_GET["data"]["member"]["referrer_id"];
+			if(isset($_GET["data"]["member"]["referrer_id"])) {
+				$result = call_user_func_array("checkreferrer", array($_GET["data"]["member"]["referrer_id"]));
+				//var_dump($result);
+				if(!$result){
+					$return = true;
+				}else{
+					$return = false;
+				}
+			}
+			ajax_exit($return);
+			break;
+		case "checkemail_mobile":
+			if(isset($_GET["data"]["member"]["email"])) {
+				$result = call_user_func_array("checkemail", array($_GET["data"]["member"]["email"]));
+				if($result){
+					$return = false;
+				}else{
+					$return = true;
 				}
 			}
 			ajax_exit($return);

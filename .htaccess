@@ -8,7 +8,7 @@ RewriteEngine On
 
 RewriteRule ^newhome/?$ index.php?layout=newhome [L]
 
-RewriteRule ^mobile/?$ space/\?userid=phu-dong&layout=mobile [L]
+RewriteRule ^mobile/?$ register.php?&layout=mobile [L]
 
 RewriteRule ^privacy$ policy.html [L]
 RewriteRule ^modern_demo/?$ index.php?do=studypost&action=modern_demo [L]

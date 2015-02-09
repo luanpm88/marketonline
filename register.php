@@ -211,5 +211,11 @@ setvar("agreement", $_PB_CACHE['setting']['agreement']);
 	setvar("baomat", $baomat["message"]);
 	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 
-render($tpl_file);
+	
+	if(detectMobile()) {
+		render("mobile/register");
+	} else {
+		render($tpl_file);
+	}
+
 ?>

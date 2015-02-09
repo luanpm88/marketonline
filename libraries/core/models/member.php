@@ -485,7 +485,7 @@ class Members extends PbModel {
 	
 	function checkReferrerExist($uname, $set = true)
 	{
-		
+		//echo $uname;
 		$referrer = $this->field("id", "username='".$uname."' OR email='".$uname."'");
 		//var_dump($referrer);
 		if($referrer) return false;
