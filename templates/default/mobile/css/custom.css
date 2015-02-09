@@ -1462,3 +1462,6 @@ label.error {
 #regfrm {
     font-size: 120%;
 }
+#regfrm input {
+    font-size: 110%;
+}
