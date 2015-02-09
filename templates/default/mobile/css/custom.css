@@ -1462,6 +1462,6 @@ label.error {
 #regfrm {
     font-size: 120%;
 }
-#regfrm input {
-    font-size: 110%;
+#regfrm input, #regfrm select {
+    font-size: 100%;
 }
