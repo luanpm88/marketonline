@@ -1468,3 +1468,6 @@ label.error {
 .email_confirm, .password_confirm {
     display: none;
 }
+.h4, h4 {
+    line-height: normal;
+}
