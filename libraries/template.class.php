@@ -149,7 +149,13 @@ class TemplateEngines extends Smarty {
 		if (!$this->template_exists($this->flash_layout.$this->tpl_ext)) {
 			die($message);
 		}
-		template($this->flash_layout);
+		
+		if() {
+			template("mobile/".$this->flash_layout);
+		} else {
+			template($this->flash_layout);
+		}
+		
 		exit();
 	}
 	
