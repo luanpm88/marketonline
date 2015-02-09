@@ -1457,4 +1457,8 @@ label.error {
 }
 #regfrm label span {
     color: #ff0000;
+    font-size: 150%;
+}
+#regfrm {
+    font-size: 120%;
 }
