@@ -187,6 +187,17 @@ if (isset($_GET['action'])) {
 			}
 			ajax_exit($return);
 			break;
+		case "checkusername_mobile":
+			if(isset($_GET["data"]["member"]["username"])) {
+				$result = call_user_func_array("checkusername", array($_GET["data"]["member"]["username"]));		
+				if($result == true){
+					$return = false;
+				}else{
+					$return = true;
+				}
+			}
+			ajax_exit($return);
+			break;
 	}
 }
 
