@@ -150,7 +150,7 @@ class TemplateEngines extends Smarty {
 			die($message);
 		}
 		
-		if() {
+		if(detectMobile()) {
 			template("mobile/".$this->flash_layout);
 		} else {
 			template($this->flash_layout);
