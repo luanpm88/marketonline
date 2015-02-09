@@ -151,8 +151,8 @@ class TemplateEngines extends Smarty {
 		}
 		
 		if(detectMobile()) {
-			echo $this->flash_layout.
-			template("mobile/".$this->flash_layout);
+			//echo $this->flash_layout.
+			template("default/mobile/flash");
 		} else {
 			template($this->flash_layout);
 		}
