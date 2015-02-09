@@ -187,7 +187,7 @@
         {literal}
             <script>
                 function toggleEmailPassword() {
-                    
+                    //alert($('#memberpass').val());
                     if ($('#dataMemberEmail').val().trim() != "") {
                         $('.email_confirm').show();
                     } else {
@@ -201,6 +201,9 @@
                 }
                 toggleEmailPassword();
                 $('body').on("keyup","#dataMemberEmail",function() {
+                    toggleEmailPassword();
+                });
+                $('body').on("keyup","#memberpass",function() {
                     toggleEmailPassword();
                 });
             </script>
