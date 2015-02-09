@@ -94,7 +94,14 @@ if (isset($_GET['action'])) {
 		$smarty->assign("result", $reg_result);
 		$smarty->assign("RegTips", $reg_tips);
 		setvar("username",$member_infoz["username"]);
-		render($tpl_file, true);
+		
+		
+		if(detectMobile()) {
+			render("mobile/".$tpl_file, true);
+		} else {
+			render($tpl_file, true);
+		}
+		
 	}
 }
 if (!empty($ip_reg_sep)) {
