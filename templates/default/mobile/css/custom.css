@@ -1452,3 +1452,9 @@ label.error {
 .form-control {
     height: 44px;
 }
+#regfrm label {
+    margin-bottom: 0;
+}
+#regfrm label span {
+    color: #ff0000;
+}
