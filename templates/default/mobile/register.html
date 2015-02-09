@@ -22,6 +22,9 @@
                                             
                                             
                                             <form name="regfrm" id="regfrm" method="post" action="" autocomplete="off">
+                                                
+                                                
+                                                
                                               <input style="display:none">
                                 <input type="password" style="display:none">
                                             <!-- {formhash} -->
@@ -36,7 +39,6 @@
                                                         <input class="form-control required" placeholder="Tên đăng nhập" type="text" name="data[member][username]" id="dataMemberUsername" value="{$smarty.post.data.member.username}" tabindex="1"/>
                                             
                                                         <label class="lenglabel" id="membernameDiv">
-                                                        
                                                         </label>
                                             </p>
                                             <p>
@@ -91,8 +93,7 @@
                                                         
                                                         <select name="typename" class="form-control required is_select2" id="typenameselect">
                                                             <option value="" {if !$smarty.post.typename}selected="selected"{/if}>-- Chọn loại thành viên --</option>
-                                                            
-                                                            <option value="Personal" {if $smarty.post.typename == "Personal"}selected="selected"{/if}>Gian hàng cá nhân</option>
+                                                            <option value="Personal" {if $smarty.post.typename == "Personal"}selected="selected"{/if}>Cá nhân</option>
                                                             <option value="Shop" {if $smarty.post.typename == "Shop"}selected="selected"{/if}>Cửa hàng</option>
                                                             <option value="Company" {if $smarty.post.typename == "Company"}selected="selected"{/if}>Doanh nghiệp</option>
                                                             <option value="Employee" {if $smarty.post.typename == "Employee"}selected="selected"{/if}>Người xin việc</option>
@@ -108,7 +109,7 @@
                                             
                                               <!--<input type="hidden" name="data[member][referrer_id]" id="dataMemberReferrerHidden" value="{$smarty.post.data.member.referrer_id}" tabindex="5"/>-->
                                                
-                                            
+                                            <br />
                                               <p class="noreferrer" style="">
                                                           <label class="registerlabel" for="dataMemberUsername">
                                                           {lang referrer_name}
@@ -176,8 +177,36 @@
                             
                 </div>
             </div>
+            
+            
+            
         </div>
         <!-- /#page-content-wrapper -->
+
+
+        {literal}
+            <script>
+                function toggleEmailPassword() {
+                    
+                    if ($('#dataMemberEmail').val().trim() != "") {
+                        $('.email_confirm').show();
+                    } else {
+                        $('.email_confirm').hide();
+                    }
+                    if ($('#memberpass').val().trim() != "") {
+                        $('.password_confirm').show();
+                    } else {
+                        $('.password_confirm').hide();
+                    }
+                }
+                toggleEmailPassword();
+                $('body').on("keyup","#dataMemberEmail",function() {
+                    toggleEmailPassword();
+                });
+            </script>
+        {/literal}
+
+
         
         <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
         <!--{include file="`$theme_name`/mobile/footer.html"}-->

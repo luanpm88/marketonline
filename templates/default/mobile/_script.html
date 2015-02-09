@@ -311,11 +311,19 @@
 		$("#LoggingFrm").validate();
 		$("#checkout-meminfo").validate();
 		
+		$.validator.addMethod("unameCheck", function (value, element) {
+		    var isSuccess = false;
+		    if (value.match(/^[a-zA-Z0-9.\-\s_]*$/)) {
+			    isSuccess = true;
+		    }	
+		    return isSuccess;
+		}, "Vui lòng chỉ sử dụng chữ cái không dấu (a-z), số và các ký tự: <strong style='font-size: 18px;line-height:15px'>. _ -</strong>");
 		
 		$("#regfrm").validate({
 		    rules: {
 			"data[member][username]": {
 			    required:true,
+			    unameCheck: true,
 			    remote: {
 				url: ROOT_URL+"ajax.php?action=checkusername_mobile",
 			    }

@@ -1465,3 +1465,6 @@ label.error {
 #regfrm input, #regfrm select {
     font-size: 110%;
 }
+.email_confirm, .password_confirm {
+    display: none;
+}
