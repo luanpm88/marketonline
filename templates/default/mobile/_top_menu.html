@@ -41,8 +41,9 @@
                             Trang quản lý
                         </a>
                       </li>
-                      <li class="divider"></li>
+                      
                         {if $pb_company}
+                            <li class="divider"></li>
                             <li {if $pb_userinfo.current_type == 1 || $pb_userinfo.current_type == 2 || $pb_userinfo.current_type == 3}class="active"{/if}>
                                 <a href="{the_url module=space userid=`$pb_company.cache_spacename` change_current_type=`$pb_userinfo.membertype_id`}">
                                     {$pb_company.shop_name}
