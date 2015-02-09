@@ -31,31 +31,6 @@
         </div>
         <!-- /#page-content-wrapper -->
 
-        {literal}
-            <script>
-                function toggleEmailPassword() {
-                    //alert($('#memberpass').val());
-                    if ($('#dataMemberEmail').val().trim() != "") {
-                        $('.email_confirm').show();
-                    } else {
-                        $('.email_confirm').hide();
-                    }
-                    if ($('#memberpass').val().trim() != "") {
-                        $('.password_confirm').show();
-                    } else {
-                        $('.password_confirm').hide();
-                    }
-                }
-                toggleEmailPassword();
-                $('body').on("keyup","#dataMemberEmail",function() {
-                    toggleEmailPassword();
-                });
-                $('body').on("keyup","#memberpass",function() {
-                    toggleEmailPassword();
-                });
-            </script>
-        {/literal}
-
         
         <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
         <!--{include file="`$theme_name`/mobile/footer.html"}-->

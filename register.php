@@ -197,15 +197,11 @@ if(isset($_POST['register']) && $capt_check) {
 	}
 }
 
-//setvar("sharing_username", $sharing_username);
-//echo $sharing_username;
-
 setvar("capt_check",$capt_check);
 setvar("sid",md5(uniqid($time_stamp)));
 setvar("agreement", $_PB_CACHE['setting']['agreement']);
 
-	//announce
-	
+	//announce	
 	$dksd = $announcement->read("message",23);
 	setvar("dksd", $dksd["message"]);
 	setvar("dksd_raw", substr(trim(strip_tags($dksd["message"])),29,1000));
