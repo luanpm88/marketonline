@@ -1541,5 +1541,17 @@ label.error {
 }
 .office-page .sidebar-nav li {
     padding-left: 10px;
-    font-size: 120%;
+    font-size: 140%;
+}
+.office-page .navbar-nav .divider {
+    background: #aaa;
+}
+.office-page  .navbar-collapse, .office-page .navbar-form {
+    border-color: #aaa;
+}
+.office-page  .navbar-nav > .active > a, .office-page  .navbar-nav > .active > a:focus, .office-page  .navbar-nav > .active > a:hover {
+    background-color: #aaa;
+}
+.office-page .navbar-nav > li:hover > a {
+    background-color: #aaa;
 }
