@@ -1512,3 +1512,33 @@ label.error {
     border: solid 1px #ddd;
     padding: 2px;
 }
+.navbar-inverse.office-page {
+    background: #666;
+}
+.office-page .sidebar-brand img {
+    width: 50px;
+    float: left;
+    margin-right: 10px;
+}
+.office-page .sidebar-brand {
+    height: 70px;
+    padding: 10px 20px !important;
+}
+.office-page .sidebar-brand a {
+    float: left;
+    line-height: normal;
+    text-indent: 0;
+}
+.office-page .sidebar-nav li.title {
+    color: #555;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-top: 20px;
+}
+.office-page .sidebar-nav li.title h2 {
+    font-size: 150%;
+    margin: 0;
+}
+.office-page .sidebar-nav li {
+    padding-left: 10px;
+}

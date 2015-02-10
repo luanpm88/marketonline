@@ -1,38 +1,252 @@
         <!-- Sidebar -->
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" class="office-page">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a class="logo-sidebar" href="{the_url module=root-url}">
-                        <img src="{the_url module=root-url}images/logo-home.png" />
+                    <a href="../redirect.php?url=/virtual-office/">
+                        <img class="avatar" src="{if $COMPANYINFO.name}{$COMPANYINFO.logo}{else}{if $user_avatar}{$user_avatar} {else} ../templates/default/image/usericon.jpg  {/if}{/if}" />
+                    
+                        {if $COMPANYINFO.name}
+                            
+                               {$COMPANYINFO.shop_name}
+                                
+                        {else}
+                           
+                               {if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
+                          
+                        {/if}
                     </a>
                 </li>
-                <li class="sidebar-menu sidebar-menu-product">
-                    <a href="{the_url module='product_main'}">
-                        <span class="color-point"></span>
-                        Sản phẩm</a>
-                </li>
-                <li class="sidebar-menu sidebar-menu-service">
-                    <a href="{the_url module='service_main'}">
-                        <span class="color-point"></span>
-                        Dịch vụ</a>
-                </li>
-                <li class="sidebar-menu sidebar-menu-trade">
-                    <a href="{the_url module='offer_main'}">
-                        <span class="color-point"></span>
-                        Thương mại</a>
-                </li>
-                <li class="sidebar-menu sidebar-menu-company">
-                    <a href="{the_url module='companies'}">
-                        <span class="color-point"></span>
-                        Thương hiệu</a>
-                </li>
-                <li class="sidebar-menu sidebar-menu-job">
-                    <a href="{the_url module='jobs'}">
-                        <span class="color-point"></span>
-                        Học và Làm</a>
-                </li>
-                <li class="divider"></li>
-                <li><a href="{the_url module=root-url}lien-he">Trợ giúp / Liên hệ</a></li>
+                
+                <!--{if $MEMBER.permissions}-->
+                    <li class="title">
+                        <h2>Phần quản trị</h2>
+                    </li>
+                    <!--{foreach item=item from=$MEMBER.permissions key=right}-->
+                        <!--{if $right=='product'}-->
+                                <li class="MenuItem_{$right}">
+                                    <a href="moderator.php?type={$right}">Sản phẩm</a>
+                                </li>								
+                        <!--{/if}-->
+                        <!--{if $right=='service'}-->
+                                <li class="MenuItem_{$right}">
+                                    <a href="moderator.php?type={$right}">Dịch vụ</a>
+                                </li>								
+                        <!--{/if}-->
+                        <!--{if $right=='trade'}-->
+                                <li class="MenuItem_{$right}">
+                                    <a href="moderator_trade.php?type={$right}">Thương mại</a>
+                                </li>								
+                        <!--{/if}-->
+                    <!--{/foreach}-->
+                <!--{/if}-->
+                
+                
+                <!--{if $menu.offer}-->		
+		    <!--{if $showEmployeeShop && $membertype_id != 5 && $membertype_id != 6}-->
+                        <li class="title">
+                            <h2>{lang business_information}</h2>
+                        </li>
+                        <li class="MenuItem1">
+                            <a href="offer.php?do=edit">{lang release_supply}</a>
+                        </li>
+                        <li class="MenuItem2">
+                            <a href="offer.php">{lang our_offer}</a>
+                        </li>                          
+                        <li  class="MenuItem3">
+                            <a href="stat.php">{lang buy_statistics}</a>
+                        </li>
+		    <!--{/if}-->
+		<!--{/if}-->
+                
+                
+                <!--{if $showEmployeeShop && $membertype_id != 5 && $membertype_id != 6}-->
+                    <li class="title">
+                        <h2>{lang information_management}</h2>
+                    </li>
+                    <li class="MenuItem4">
+                        <a href="product.php?do=edit">{lang release_products}</a>
+                    </li>
+                    <li class="MenuItem5">
+                        <a href="product.php">{lang our_productse}</a>
+                    </li>
+                    <li class="MenuItem24">
+                        <a href="producttype.php">{lang categories_management}</a>
+                    </li>
+                    <li class="MenuItem6">
+                        <a href="brand.php">{lang brand_manage}</a>
+                    </li>
+                    <li class="MenuItem7">
+                        <a href="buyerorder.php">{lang buy_order}</a>
+                    </li>
+                    <li class="MenuItem8">
+                        <a href="sellerorder.php">{lang sell_order}</a>
+                        {if $count_sellerorder_new}
+                            <div class="unread">
+                                    <span>{$count_sellerorder_new}</span>
+                            </div>
+                        {/if}
+                    </li>
+		<!--{/if}-->
+                
+                
+                <!--{if $showEmployeeShop && $membertype_id != 5 && $membertype_id != 6}-->
+                    <li class="title">
+                        <h2>{lang services_menu_title}</h2>
+                    </li>
+                    
+                    <li class="MenuItem21">
+                        <a href="product.php?type=service&do=edit">{lang add_service}</a>
+                    </li>
+                    <li class="MenuItem22">
+                        <a href="product.php?type=service">{lang service_list}</a>
+                    </li>
+                    <li class="MenuItem23">
+                        <a href="brand.php?type=service">{lang brand_manage}</a>
+                    </li>                    
+		<!--{/if}-->
+                
+                
+                <!--{if $showEmployeeShop && $membertype_id != 5 && $membertype_id != 6}-->
+                    <li class="title">
+                        <h2>{lang site_advertising}</h2>
+                    </li>
+                    <li class="MenuItem30">
+                        <a href="banner.php">{lang site_advertising}</a>
+                    </li>
+                    <li class="MenuItem30_1">
+                        <a href="banner.php?do=price_list">Bảng giá</a>
+                    </li>
+                    <li class="MenuItem30_3">
+                        <a href="email_marketing.php">Kết nối bạn bè</a>
+                    </li>                    
+		<!--{/if}-->
+                
+                
+                <!--{if $menu.company && $MEMBER.membergroup_id == 3 && $showEmployeeShop && $membertype_id != 6}-->
+                    <li class="title">
+                        <h2>{if $membertype_id == 5}Nhà tuyển dụng{else}{lang company_information}{/if}</h2>
+                    </li>
+                    
+                    <li class="MenuItem10"> 
+                        <a href="company.php">{lang basic_information} {$membertype_name}</a>
+                    </li>
+                    <li class="MenuItem10_1"> 
+                        <a href="companyoffice.php">Chi nhánh</a>
+                    </li>
+                    <li class="MenuItem11"> 
+                        <a href="policy.php">{lang policy}</a>
+                    </li>
+                    <li class="MenuItem20"> 
+                        <a href="news.php?typeid=9">{lang comnote} {$membertype_name}</a>
+                    </li>
+                    <li class="MenuItem12"> 
+                        <a href="album.php">{lang company_album}</a>
+                    </li>
+                    <li class="MenuItem13"> 
+                        <a href="news.php">{lang company_news}</a>
+                    </li>
+                    <li class="MenuItem14">
+                        <a href="job.php">{lang hr}</a>
+                    <li> 
+                    <li class="MenuItem15"> 
+                        <a href="link.php" title="{lang friendlink}">{lang link_exchange}</a>
+                    </li>                    
+		<!--{/if}-->
+                
+                
+                <!--{if $menu.company && ($MEMBER.membergroup_id == 1 || $MEMBER.membergroup_id == 2) && $showEmployeeShop && $membertype_id != 6}-->
+                    <li class="title">
+                        <h2>{lang shop_information} {if $MEMBER.membergroup_id == 2}({lang personal}){/if}</h2>
+                    </li>
+                    <li class="MenuItem10"> 
+                        <a href="company.php">{lang basic_information} {if $MEMBER.membergroup_id == 2}Cửa hàng{else}{$membertype_name}{/if}</a>
+                    </li>
+                    <li class="MenuItem10_1"> 
+                        <a href="companyoffice.php">Chi nhánh</a>
+                    </li>
+                    <li class="MenuItem11"> 
+                        <a href="policy.php">{lang policy}</a>
+                    </li>
+                      
+                    {if $MEMBER.membergroup_id == 1}
+                        <li class="MenuItem20"> 
+                            <a href="news.php?typeid=9">{lang comnote} {$membertype_name}</a>
+                        </li>
+                    {/if}
+                      
+                    <li class="MenuItem12"> 
+                        <a href="album.php">{lang company_album}</a>
+                    </li>
+                    <li class="MenuItem13"> 
+                        <a href="news.php">{lang company_news}</a>
+                    </li>
+                    <li class="MenuItem14">
+                        <a href="job.php">{lang hr}</a>
+                    <li> 
+                    <li class="MenuItem15"> 
+                        <a href="link.php" title="{lang friendlink}">{lang link_exchange}</a>
+                    </li>  
+		<!--{/if}-->
+                
+                
+                <!--{if $membertype_id != 5}-->
+                    <li class="title">
+                        <h2>{lang office_employee}</h2>
+                    </li>
+                    <li class="MenuItem31">
+                        <a href="employee.php?do=edit">{lang employee_send}</a>
+                    </li>
+                    <li class="MenuItem32">
+                        <a href="employee.php">{lang employee_list}</a>
+                    </li>			
+		<!--{/if}-->
+                
+                
+                <!--{if $menu.pms}-->
+                    <li class="title">
+                        <h2>{lang exchange_information}</h2>
+                    </li>
+                    
+                    <li class="MenuItem17">
+                        <a href="pms.php?do=send">{lang send_message}</a>
+                    </li>
+                    <li class="MenuItem16">
+                        <a href="pms.php">{lang sms}</a>
+                    </li>
+                    <li class="MenuItem16sent">
+                        <a href="pms.php?type=sent">{lang sms_sent}</a>
+                    </li>                    
+		<!--{/if}-->
+                
+                <!--{if $menu.basic}-->
+                    <li class="title">
+                        <h2>{lang system_settings}</h2>
+                    </li>
+                    <li class="MenuItem18">
+                        <a href="personal.php">{lang profile}</a>
+                    </li>
+                    <li class="MenuItem19"> 
+                        <a href="changepass.php">{lang change_password}</a>
+                    </li>
+                    <!--{if $pb_userinfo.role=="admin"}-->
+                        <li class="MenuItem19_1"> 
+                            <a href="task.php">Tiến độ phát triển</a>
+                        </li>
+                    <!--{/if}-->
+		<!--{/if}-->
+                
+                <!--{if $membertype_id == 4 && !$hasCompany && $hasProfile && $employeecount}-->		
+                    <li class="create_shop">
+                        <a href="#createShop" onclick="$('#upgrade_shop').css('display','block')">Tạo SHOP<br /> tham gia hoạt động<br /> kinh doanh</a>
+                    </li>
+		<!--{/if}-->
+		
+		<!--{if ($membertype_id == 5 && $hasCompany && $jobcount) || ($membertype_id == 6 && $hasProfile)}-->
+                    <li class="create_shop">
+                        <a href="#createShop" onclick="$('#upgrade_company').css('display','block')">Tạo SHOP<br /> tham gia hoạt động<br /> kinh doanh</a>
+		    </li>		
+		<!--{/if}-->
+                
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
