@@ -198,6 +198,7 @@ $r2 = $area->disSubOptions($memberinfo['area_id'], "area_");
 //echo $memberinfo["address"];
 $memberinfo = am($memberinfo, $r2);
 setvar("item",$memberinfo);
+setvar("PageTitle","Hồ sơ cá nhân");
 
 if(detectMobile()) {	
 	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
