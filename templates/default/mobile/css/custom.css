@@ -1584,8 +1584,14 @@ i.note {
 .industry_list_checkbox li, .fb_list li {
     float: left;
     list-style: outside none none;
-    width: 50%;
+    width: 100%;
 }
 .industry_list_checkbox, .fb_list {
     padding-left: 10px;
+}
+.fb_list li {
+    width: 100%;
+}
+.fb_list {
+    margin-bottom: 10px;
 }
