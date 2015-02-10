@@ -1581,11 +1581,11 @@ i.note {
 .phonepart-2 {
     width: 80px;
 }
-.industry_list_checkbox li {
+.industry_list_checkbox li, .fb_list li {
     float: left;
     list-style: outside none none;
     width: 50%;
 }
-.industry_list_checkbox {
+.industry_list_checkbox, .fb_list {
     padding-left: 10px;
 }
