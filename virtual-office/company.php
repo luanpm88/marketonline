@@ -439,7 +439,7 @@ foreach($industries_checkbox as $key => $item)
 //var_dump($industries_array);
 setvar("industries_checkbox", $industries_checkbox);
 setvar("Genders", $typeoption->get_cache_type('gender', null, array(-1)));
-setvar("PageTitle","Thông tin Gian Hàng");
+setvar("PageTitle","Hồ sơ");
 
 if(detectMobile()) {	
 	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
