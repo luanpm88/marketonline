@@ -78,14 +78,16 @@
 							<label class="">
 								Hình ảnh<span>*</span>
 							</label>
-							<div id="MemberLogo" style="">
+							<div id="MemberLogo">
+							    <div onclick="$('#com_pic').trigger('click')" class="logo-box crop-img-square" style="">
 								<!--{if $item.photo}-->
-								<img onclick="$('#com_pic').trigger('click')" id="mem_photo" src="{$item.image}" />
+								<img class="preview_image" id="mem_photo" src="{$item.image}" />
 								<!--{else}-->
-								<img onclick="$('#com_pic').trigger('click')" id="mem_no_photo" src="../images/personal_nopic.png" />
+								<img class="preview_image" id="mem_no_photo" src="../images/personal_nopic.png" />
 								<!--{/if}-->
-								<br />(Nhấn vào ảnh để thay)
-								<br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
+							    </div>
+							    (Nhấn vào ảnh để thay)
+							    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
 							</div>
 							
 							<span class="fullcols" style="position: absolute;visibility: hidden">
@@ -170,7 +172,25 @@
 		</script>
 		
 		<!--{literal}-->
+		
 			<script>
+			    
+				function readURL(input) {
+				    if (input.files && input.files[0]) {
+					var reader = new FileReader();			    
+					reader.onload = function (e) {
+					    $('.preview_image').attr('src', e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				    }
+				}
+			    
+				$("#com_pic").change(function(){
+				    readURL(this);
+				    setTimeout("cropping()",1000);
+				});
+			    
+			    
 				$.validator.addMethod("NotzeroOrEmpty", function (value, element) {
 					var isSuccess = false;
 					if (value != 0 && value != "") {

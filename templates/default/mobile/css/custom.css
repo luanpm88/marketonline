@@ -1472,7 +1472,7 @@ form input, form select {
     line-height: normal;
 }
 .form-control.half-control {
-    width: 35%;
+    width: 40%;
     float: left;
     margin-right: 20px;
 }
@@ -1554,4 +1554,16 @@ label.error {
 }
 .office-page .navbar-nav > li:hover > a {
     background-color: #aaa;
+}
+.sidebar-nav {
+    width: 300px;
+}
+#wrapper.toggled #sidebar-wrapper {
+    width: 300px;
+}
+#wrapper.toggled {
+    padding-left: 300px;
+}
+.logo-box {
+    width: 150px; margin: auto; border: solid 1px #ddd
 }
