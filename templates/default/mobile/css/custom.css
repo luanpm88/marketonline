@@ -1573,7 +1573,7 @@ i.note {
 }
 .phonepart-1, .phonepart-2, .phonepart-3 {
     display: inline-block;
-    width: 150px;
+    width: 120px;
 }
 .phonepart-1 {
     width: 60px;
