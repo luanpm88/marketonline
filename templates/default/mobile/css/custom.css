@@ -1536,12 +1536,12 @@ label.error {
     padding-top: 20px;
 }
 .office-page .sidebar-nav li.title h2 {
-    font-size: 140%;
+    font-size: 130%;
     margin: 0;
 }
 .office-page .sidebar-nav li {
     padding-left: 10px;
-    font-size: 140%;
+    font-size: 130%;
 }
 .office-page .navbar-nav .divider {
     background: #aaa;
@@ -1556,13 +1556,13 @@ label.error {
     background-color: #aaa;
 }
 .sidebar-nav {
-    width: 300px;
+    width: 280px;
 }
 #wrapper.toggled #sidebar-wrapper {
-    width: 300px;
+    width: 280px;
 }
 #wrapper.toggled {
-    padding-left: 300px;
+    padding-left: 280px;
 }
 .logo-box {
     width: 150px; margin: auto; border: solid 1px #ddd
