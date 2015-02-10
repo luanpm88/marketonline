@@ -359,10 +359,10 @@ if(!empty($companyinfo['name'])){
 	//$companyinfo["option_employee_amount"] = $typeoption->get_cache_key_unique("employee_amount", $companyinfo['employee_amount']);
 	//$companyinfo["option_economic_type"] = $typeoption->get_cache_key_unique("economic_type", $companyinfo['property']);
 	if(!empty($companyinfo["picture"])) {
-		$companyinfo["logo"] = pb_get_attachmenturl($companyinfo["picture"], "../");
+		$companyinfo["logo"] = pb_get_attachmenturl($companyinfo["picture"]);
 	}
 	if(!empty($companyinfo["banner"])) {
-		$companyinfo["banner"] = pb_get_attachmenturl($companyinfo["banner"], "../");
+		$companyinfo["banner"] = pb_get_attachmenturl($companyinfo["banner"]);
 	}
 	$company_fields = $pdb->GetRow("SELECT * FROM {$tb_prefix}companyfields WHERE company_id={$company_id}");
 	if (!empty($company_fields)) {
@@ -439,5 +439,13 @@ foreach($industries_checkbox as $key => $item)
 //var_dump($industries_array);
 setvar("industries_checkbox", $industries_checkbox);
 setvar("Genders", $typeoption->get_cache_type('gender', null, array(-1)));
-template($tpl_file);
+setvar("PageTitle","Thông tin Gian Hàng");
+
+if(detectMobile()) {	
+	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+	template("m_company");
+} else {
+	template($tpl_file);
+}
+
 ?>

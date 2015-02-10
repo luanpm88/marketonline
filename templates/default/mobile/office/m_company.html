@@ -1,0 +1,341 @@
+        <!--{include file="../header.html" page_title="`$_company_information` - MarketOnline.vn"}-->
+            
+	    
+	<!--{editor type="tiny_mce_new"}-->
+	    
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid page-inner">
+
+                    <h1>Cập nhật hồ sơ</h1>
+                    
+					
+					<form name="company_frm" id="CompanyFrm" action="{$smarty.server.PHP_SELF}" method="post" enctype="multipart/form-data">
+					    <input type="hidden" name="id" value="{$item.id}">        
+					    <input type="hidden" name="data[companyfield][company_id]" value="{$item.id}">        
+					    <!-- {formhash} -->        
+					    <input type="hidden" name="do" id="Do" value="save" />
+					    <input type="hidden" value="" name="image_tmp" id="image_tmp">
+					    {if !$hasCompany}<input type="hidden" value="1" name="isnew" id="isnew">{/if}
+		
+					    
+					    <p>
+						<label class="">
+							Hình ảnh<span>*</span>
+						</label>
+						<div id="MemberLogo">
+						    <div onclick="$('#com_pic').trigger('click')" class="logo-box crop-img-square" style="">
+							<!--{if $item.logo}-->
+							<img class="preview_image" id="main_photo" src="{$item.logo}" />
+							<!--{else}-->
+							<img class="preview_image" id="main_no_photo" src="../images/company_nopic.png" />
+							<!--{/if}-->
+						    </div>
+						    (Nhấn vào ảnh để thay)
+						    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
+						</div>
+						
+						<span class="fullcols" style="position: absolute;visibility: hidden">
+							<input class="form-control" accept="image/*" id="com_pic" style="" name="pic" type="file" id="MemberPhoto" size="32" onchange="">
+						</span>
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    {lang company_name_n}<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input placeholder="Tên Công Ty / Tên Nhà Phân Phối" type="text" name="data[company][name]" id="dataCompanyName" value="{$item.name}" size="30" class="form-control required">
+						</span>						    
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    {lang location}<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <span id="dataArea">
+							<select name="area[id][1]" id="dataCompanyAreaId1" class="level_1 form-control required"></select>
+							<select name="area[id][2]" id="dataCompanyAreaId2" class="level_2 form-control required"></select>
+							<select name="area[id][3]" id="dataCompanyAreaId3" class="level_3 form-control required"></select>
+						    </span>
+						</span>						    
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    {lang address}<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input placeholder="Số Tên đường, Phường/Xã" name="data[company][address]" type="text" id="address" value="{$item.address}" class="form-control required">
+						</span>						    
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    {lang contact_phone}<span>*</span> <i class="note">{lang format}</i>
+						</label>
+						<span class="fullcols">
+						    <input class="form-control phonepart-1 required" name="data[telcode]" type="text" id="telcode" value="{$item.telcode}" size="4" maxlength="4">
+						    -
+						      <input class="form-control phonepart-2 required" name="data[telzone]" type="text" id="telzone" value="{$item.telzone}" size="4" maxlength="4">
+						    -
+						    <input class="form-control phonepart-3 required" name="data[tel]" type="text" id="tel" value="{$item.tel}" size="15"><br />
+						</span>
+						<br />
+						<label id="telcode-error" class="error" for="telcode" style="display: none;">Yêu cầu nhập.</label>
+						<label id="telzone-error" class="error" for="telzone" style="display: none;">Yêu cầu nhập.</label>
+						<label id="tel-error" class="error" for="tel" style="display: none;">Yêu cầu nhập.</label>
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    Fax <i class="note">{lang format}</i>
+						</label>
+						<span class="fullcols">
+						    <input class="form-control phonepart-1" name="data[faxcode]" type="text" id="faxcode" value="{$item.faxcode}" size="4" maxlength="4">
+						    -
+						    <input class="form-control phonepart-2" name="data[faxzone]" type="text" id="faxzone" value="{$item.faxzone}" size="4" maxlength="4">
+						    -
+						    <input class="form-control phonepart-3" name="data[fax]" type="text" id="fax" value="{$item.fax}" size="15">
+						</span>
+						<br />
+						
+					    </p>
+					    <p>
+						<label class="">
+						    {lang business_email_n}<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input name="data[company][email]" id="email" value="{$item.email}" size="32" class="form-control required" type="email">
+						</span>						    
+					    </p>
+					    <p>
+						<label class="">
+						    {lang company_home}<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input class="form-control required" name="data[company][site_url]" type="text" id="site_url" value="{$item.site_url}" size="32">
+						</span>						    
+					    </p>
+					    
+					    
+					    <br />
+					    <h3>{lang person_company_contact}</h3>
+					    
+					    
+					    
+					    <p>
+						<label class="">
+						    Họ và tên/Giới tính<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input  placeholder="Người liên hệ" class="form-control required" name="data[company][link_man]" type="text" id="linkman" value="{$item.link_man}" size="32" class="required">
+						    <span class="gendercheck" style="margin: 5px 0 -16px; display: block">{html_radios name="data[company][link_man_gender]" options=$Genders checked=$item.link_man_gender separator=" "}</span>
+						     
+						</span>						    
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    Chức vụ<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input placeholder="{lang chucvu}" class="form-control required" name="data[company][position]" type="text" id="dataCompanyPosition" value="{$item.position}" size="30">
+						    
+						</span>						    
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    Di Động<span>*</span>
+						</label>
+						<span class="fullcols">
+						    
+						    <input style="margin-top: 5px;" placeholder="{lang mobile_number}" name="data[company][contact_mobile]" type="text" id="contact_mobile" value="{$item.contact_mobile}" size="32" class="form-control required">
+						    
+						</span>						    
+					    </p>
+					    
+					    <p>
+						<label class="">
+						    Email<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input style="margin-top: 5px;" placeholder="{lang email}" name="data[company][contact_email]" type="text" id="contact_email" value="{$item.contact_email}" size="32" class="form-control required">
+						</span>						    
+					    </p>
+					    
+					    <!--{include file="_fb_connect.html"}-->
+					    
+					    {if $MEMBER.membergroup_id == 3}
+					    
+					    
+						<br />
+						<h3>{lang company_power}</h3>
+					    
+						<p>
+						    <label class="">
+							{lang main_customer} (nếu có)
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" placeholder="{lang vp_address}" name="data[company][main_customer]" type="text" id="main_customer" value="{$item.main_customer}" size="32">
+							    <input class="form-control" placeholder="{lang phone}" name="data[company][vp_address]" type="text" id="vp_address" value="{$item.vp_address}" size="32">
+							    <input class="form-control" placeholder="{lang fax}" name="data[company][vp_fax]" type="text" id="vp_fax" value="{$item.vp_fax}" size="32">
+							    <input class="form-control" placeholder="{lang email}" name="data[company][vp_email]" type="text" id="vp_email" value="{$item.vp_email}" size="32">
+						    </span>						    
+						</p>
+						
+						<div style="margin: 10px 0">
+						    <label class="">
+							{lang sectors}
+						    </label>
+						    <span class="fullcols">
+							<ul class="industry_list_checkbox">
+								<!--{loop $industries_checkbox itemc level_0 key0}-->
+								     <li><input type="checkbox" {if $itemc.checked}checked="checked"{/if} name="industries_checkbox[]" value="{$itemc.id}"> {$itemc.name}</li>
+								<!--{/loop}-->
+								<li><input type="checkbox" name="industries_checkbox[]" value="0">{lang others}</li>
+							</ul>
+						    </span>						    
+						</div>
+						
+						<p>
+						    <label class="">
+							{lang legal_note_company}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][reg_address]" type="text" id="reg_address" value="{$item.reg_address}">
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang registration_date}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" style="width: 194px" type="text" placeholder="{lang date_format2}" name="data[company][registration_date]" id="dataFoundDate" value="{$item.registration_date}"> 
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang legal_person}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][boss_name]" type="text" id="bossname" value="{$item.boss_name}">
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang company_boss_man}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][chairman]" type="text" id="chairman" value="{$item.chairman}">
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang registration_funds}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][reg_fund]" type="text" id="dataCompanyRegFund" value="{$item.reg_fund}" size="30">			
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang mst}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][mst]" type="text" id="mst" value="{$item.mst}">
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang bank_account}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][bank_account]" type="text" id="bank_account" value="{$item.bank_account}" size="32">
+							<input class="form-control" style="width: 400px" placeholder="{lang opening_bank}" name="data[company][bank_from]" type="text" id="bank_from" value="{$item.bank_from}" size="32">
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang bussiness_form}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" placeholder="Tư nhân / Nhà nước" name="data[company][property]" type="text" id="dataCompanyEconomicType" value="{$item.property}" size="30">			
+						    </span>						    
+						</p>
+						
+						<p>
+						    <label class="">
+							{lang business_model}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" placeholder="CTy TNHH / Cổ phần ..." name="data[company][manage_type]" type="text" id="dataCompanyManageType" value="{$item.manage_type}" size="30">			
+						    </span>						    
+						</p>
+						<p>
+						    <label class="">
+							{lang employees_number}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][employee_amount]" type="text" id="dataCompanyEmployeeAmount" value="{$item.employee_amount}" size="30">			
+						    </span>						    
+						</p>
+						<p>
+						    <label class="">
+							{lang year_turnover}
+						    </label>
+						    <span class="fullcols">
+							<input class="form-control" name="data[company][year_annual]" type="text" id="dataCompanyYearAnnual" value="{$item.year_annual}" size="30">			
+						    </span>						    
+						</p>
+					    
+					    
+					    {/if}
+					    
+					    <br />
+					    <h3>Giới thiệu</h3>
+					    <textarea name="data[company][description]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 300px">{$item.description}</textarea>
+						
+						
+						<p></p>
+						<p></p>
+						<br />
+						<input class="btn btn-primary" style="width: 100%" name="save" type="submit" id="save" value="{lang save}" />
+					</form>
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+		
+		<script src="../data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+		<script language="javascript">
+			var enter_name = "{lang enter_name}";
+			var enter_website_error = "{lang enter_website_error}";
+			var cache_path = "../";
+			var app_language = '{$AppLanguage}';
+			var area_id1 = {$item.area_id1|default:0} ;
+			var area_id2 = {$item.area_id2|default:0} ;
+			var area_id3 = {$item.area_id3|default:0} ;
+		
+		</script>
+		
+		<!--{include file="_office_script.html"}-->
+		
+		<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+		<script src="../scripts/script_area.js"></script>
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

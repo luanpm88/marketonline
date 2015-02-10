@@ -1,0 +1,78 @@
+                    <!--{literal}-->
+			<script>
+			    
+				function readURL(input) {
+				    if (input.files && input.files[0]) {
+					var reader = new FileReader();			    
+					reader.onload = function (e) {
+					    $('.preview_image').attr('src', e.target.result);
+					}
+					reader.readAsDataURL(input.files[0]);
+				    }
+				}
+			    
+				$("#com_pic").change(function(){
+				    readURL(this);
+				    setTimeout("cropping()",1000);
+				});
+			    
+			    
+				$.validator.addMethod("NotzeroOrEmpty", function (value, element) {
+					var isSuccess = false;
+					if (value != 0 && value != "") {
+						isSuccess = true;
+					}	
+					return isSuccess;
+				}, "Yêu cầu chọn.");
+				
+				$.validator.addMethod("HasMainPic", function (value, element) {
+					var isSuccess = false;
+					if (value != "" || $("#main_photo").length > 0) {
+						isSuccess = true;
+					}	
+					return isSuccess;
+				}, "Chọn ảnh đại diện.");
+				
+				$(document).ready(function() {
+					$("#Frm1").validate({
+						rules: {
+							"area[id][1]": {
+								NotzeroOrEmpty: true
+							},
+							"area[id][2]": {
+								NotzeroOrEmpty: true
+							},
+							"area[id][3]": {
+								NotzeroOrEmpty: true
+							},
+							"photo": {
+								HasMainPic: true
+							}
+						}
+					});
+				    
+				    
+                                    
+                                    
+                                    
+                                    
+                                    //Company page
+                                    $("#CompanyFrm").validate({
+                                            rules: {
+                                                "area[id][1]": {
+                                                    NotzeroOrEmpty: true
+                                                },
+                                                "area[id][2]": {
+                                                    NotzeroOrEmpty: true
+                                                },
+                                                "area[id][3]": {
+                                                    NotzeroOrEmpty: true
+                                                },
+                                                "pic": {
+                                                    HasMainPic: true
+                                                }
+                                            }
+                                    });
+				});
+                    	</script>
+                    <!--{/literal}-->

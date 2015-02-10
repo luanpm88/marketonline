@@ -1499,7 +1499,7 @@ form input, form select {
 label.error {
     display: none;
 }
-#dataArea #dataMemberfieldAreaId1 {
+#dataArea .level_1 {
     margin-top: 0;
 }
 #MemberLogo {
@@ -1566,4 +1566,26 @@ label.error {
 }
 .logo-box {
     width: 150px; margin: auto; border: solid 1px #ddd
+}
+i.note {
+    font-style: normal;
+    font-weight: normal;
+}
+.phonepart-1, .phonepart-2, .phonepart-3 {
+    display: inline-block;
+    width: 150px;
+}
+.phonepart-1 {
+    width: 60px;
+}
+.phonepart-2 {
+    width: 80px;
+}
+.industry_list_checkbox li {
+    float: left;
+    list-style: outside none none;
+    width: 50%;
+}
+.industry_list_checkbox {
+    padding-left: 10px;
 }
