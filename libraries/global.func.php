@@ -238,6 +238,7 @@ function template($filename = null, $exit = false)
 {
 	global $smarty;
 	$return = false;
+
 	$return = $smarty->display($filename.$smarty->tpl_ext);
 	if ($exit) {
 		exit;

@@ -191,7 +191,7 @@ setvar("resume_status",$personal['resume_status']);
 setvar("max_education",$personal['max_education']);
 //echo $memberinfo['photo'];
 if (!empty($memberinfo['photo'])) {
-	$memberinfo['image'] = pb_get_attachmenturl($memberinfo['photo'], "../", "small");
+	$memberinfo['image'] = pb_get_attachmenturl($memberinfo['photo'], "../", "small")."?v=".rand(0,900);
 }
 if(strpos($memberinfo['photo'], "nopicture")) $memberinfo['photo'] = "";
 $r2 = $area->disSubOptions($memberinfo['area_id'], "area_");
@@ -199,6 +199,12 @@ $r2 = $area->disSubOptions($memberinfo['area_id'], "area_");
 $memberinfo = am($memberinfo, $r2);
 setvar("item",$memberinfo);
 
+if(detectMobile()) {	
+	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+	template("m_personal");
+} else {
 
-template("personal");
+	template("personal");
+}
+
 ?>

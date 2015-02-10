@@ -1452,17 +1452,17 @@ label.error {
 .form-control {
     height: 44px;
 }
-#regfrm label {
+form label {
     margin-bottom: 0;
 }
-#regfrm label span {
+form label span {
     color: #ff0000;
     font-size: 150%;
 }
 #regfrm {
     font-size: 120%;
 }
-#regfrm input, #regfrm select {
+form input, form select {
     font-size: 110%;
 }
 .email_confirm, .password_confirm {
@@ -1470,4 +1470,45 @@ label.error {
 }
 .h4, h4 {
     line-height: normal;
+}
+.form-control.half-control {
+    width: 35%;
+    float: left;
+    margin-right: 20px;
+}
+.half-control.lastname {
+}
+.half-control.firstname {
+}
+.fullcols {
+    display: inline-block;
+    width: 100%;
+}
+.genders {
+    margin-bottom: 5px;
+}
+#dataArea {
+    width: 100%;
+    display: block;
+}
+#dataArea select {
+    width: 100%;
+    margin-top: 10px;
+    display: block;
+}
+label.error {
+    display: none;
+}
+#dataArea #dataMemberfieldAreaId1 {
+    margin-top: 0;
+}
+#MemberLogo {
+    margin-bottom: 40px;
+    text-align: center;
+    
+}
+#MemberLogo img {
+    max-width: 150px;
+    border: solid 1px #ddd;
+    padding: 2px;
 }

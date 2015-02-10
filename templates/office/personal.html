@@ -386,7 +386,8 @@ function readURL(input) {
 							      
 							      <tr>
 								<th>{lang sex_n}<font color="#FF6600">*</font></th>
-								<td class="gendercheck">{html_radios name="memberfield[gender]" options=$Genders checked=$item.gender separator=" "}</td>
+								<td class="gendercheck">
+										{html_radios name="memberfield[gender]" options=$Genders checked=$item.gender separator=" "}</td>
 							      </tr>
 							       <tr style="display: none">
 								<th>{lang contact_phone}</th>

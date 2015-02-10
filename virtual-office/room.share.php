@@ -22,6 +22,14 @@ $company_controller = new Company();
 $moderator = new Moderators();
 $smarty->template_dir = PHPB2B_ROOT. "templates/office/";
 setvar("office_theme_path", "../templates/office/");
+
+if(detectMobile()) {
+	setvar("theme_img_path", "templates/default/");
+	setvar("theme_name", "../../");
+	setvar("office_path", "office/");
+}
+
+
 $smarty->setCompileDir($viewhelper->office_dir.DS);
 $smarty->flash_layout = "flash";
 $check_invite_code = false;
@@ -167,6 +175,8 @@ setvar("hasCompany", $hasCompany);
 setvar("membertype_id", $meminfo);
 setvar("membertype_name", $meminfo_name);
 setvar("MEMBER", $memberinfo);
+
+
 
 if (!$check)
 	if(!$hasProfile && $meminfo != 5)

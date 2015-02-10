@@ -1,0 +1,217 @@
+        <!--{include file="../header.html" page_title="`$_profile` - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid page-inner">
+
+                    <h1>{$_profile}</h1>
+                    
+					
+					<form name="companyeditfrm" id="Frm1" method="post" enctype="multipart/form-data">
+						<!-- {formhash} -->
+						<input type="hidden" value="" name="image_tmp" id="image_tmp" />
+							
+							
+						<p>
+							<label class="">
+								Tên đầy đủ<span>*</span>
+							</label>
+							<span class="fullcols">
+								<input class="form-control half-control firstname" name="memberfield[first_name]" type="text" placeholder="{lang first_name}" id="memberlastname" value="{$item.first_name}" required>
+								<input class="form-control half-control lastname" placeholder="{lang last_name}" name="memberfield[last_name]" type="text" id="memberlastname" value="{$item.last_name}" required>
+							</span>
+							<label id="memberlastname-error" class="error" for="memberlastname">Yêu cầu nhập.</label>
+							<label id="memberfirstname-error" class="error" for="memberfirstname">Yêu cầu nhập.</label>
+						</p>
+						
+						<p>
+							<label class="">
+								Giới tính<span>*</span>
+							</label>
+							<span class="fullcols genders">
+								{html_radios name="memberfield[gender]" options=$Genders checked=$item.gender separator=" "}
+							</span>
+						</p>
+						
+						<p>
+							<label class="">
+								Di động<span>*</span>
+							</label>
+							<span class="fullcols">
+								<input size="25" name="memberfield[mobile]" type="text" id="membermobile" value="{$item.mobile}" class="required form-control">
+							</span>
+						</p>
+						
+						<p>
+							<label class="">
+								{lang email_addr}<span>*</span>
+							</label>
+							<span class="fullcols">
+								<input name="member[email]" type="text" id="memberemail" value="{$item.email}" class="required email form-control">
+							</span>
+						</p>
+						
+						<p>
+							<label class="">
+								Khu vực (Quốc gia <icon class="glyphicon glyphicon-arrow-right"></icon> Tỉnh/Thành <icon class="glyphicon glyphicon-arrow-right"></icon> Quận/huyện)<span>*</span>
+							</label>
+							<span class="fullcols">
+								<span id="dataArea">
+									<select name="area[id][1]" id="dataMemberfieldAreaId1" class="level_1 form-control"></select>
+									<select name="area[id][2]" id="dataMemberfieldAreaId2" class="level_2 form-control"></select>
+									<select name="area[id][3]" id="dataMemberfieldAreaId3" class="level_3 form-control"></select>
+								</span>
+							</span>
+						</p>
+						
+						<p>
+							<label class="">
+								Địa chỉ<span>*</span>
+							</label>
+							<span class="fullcols">
+								<input placeholder="Số đường Tên đường, Phường/Xã" name="memberfield[address]" type="text" id="memberaddress" value="{$item.address_s}" class="form-control required">
+							</span>
+						</p>
+						
+						<p>
+							<label class="">
+								Hình ảnh<span>*</span>
+							</label>
+							<div id="MemberLogo" style="">
+								<!--{if $item.photo}-->
+								<img onclick="$('#com_pic').trigger('click')" id="mem_photo" src="{$item.image}" />
+								<!--{else}-->
+								<img onclick="$('#com_pic').trigger('click')" id="mem_no_photo" src="../images/personal_nopic.png" />
+								<!--{/if}-->
+								<br />(Nhấn vào ảnh để thay)
+								<br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
+							</div>
+							
+							<span class="fullcols" style="position: absolute;visibility: hidden">
+								<input class="form-control" accept="image/*" id="com_pic" style="" name="photo" type="file" id="MemberPhoto" size="32" onchange="">
+							</span>
+						</p>
+						
+						
+						{if $membertype_id == 6 || $pb_userinfo.is_student}
+						
+							
+							
+						{/if}
+						
+						
+						
+						<h3>Thông tin bổ sung cá nhân (nếu có)</h3>
+						
+						<p>
+							<label class="">
+								Skype{lang colon}
+							</label>
+							<span class="fullcols">
+								<input class="form-control" size="30" name="memberfield[skype]" type="text" id="memberskype" value="{$item.skype}">
+							</span>
+						</p>
+						
+						<p>
+							<label class="">
+								Yahoo Messenger{lang colon}
+							</label>
+							<span class="fullcols">
+								<input class="form-control" size="30" name="memberfield[yahoo]" type="text" id="memberyahoo" value="{$item.yahoo}">
+							</span>
+						</p>
+						<p>
+							<label class="">
+								{lang personal_homepage}
+							</label>
+							<span class="fullcols">
+								<input class="form-control" name="memberfield[site_url]" type="text" id="site_url" value="{$item.site_url}">
+							</span>
+						</p>
+						<p>
+							<label class="">
+								Facebook
+							</label>
+							<span class="fullcols">
+								<input class="form-control" placeholder="Nick kết bạn của facebook (không phải trang fanpage) " name="memberfield[facebook]" type="text" id="site_url" value="{$item.facebook}">
+							</span>
+						</p>
+						
+						
+						<h3 id="tgttext">Tự giới thiệu</h3>
+						<p>
+							
+							<span class="fullcols">
+								<textarea name="memberfield[intro]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 300px">{$item.intro}</textarea>
+							</span>
+						</p>
+						
+						<p></p>
+						<p></p>
+						<input class="btn btn-primary" style="width: 100%" name="save" type="submit" id="save" value="{lang save}" />
+					</form>
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+		
+		<script src="../data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+		<script language="javascript">
+			var enter_name = "{lang enter_name}";
+			var enter_website_error = "{lang enter_website_error}";
+			var cache_path = "../";
+			var app_language = '{$AppLanguage}';
+			var area_id1 = {$item.area_id1|default:0} ;
+			var area_id2 = {$item.area_id2|default:0} ;
+			var area_id3 = {$item.area_id3|default:0} ;
+		
+		</script>
+		
+		<!--{literal}-->
+			<script>
+				$.validator.addMethod("NotzeroOrEmpty", function (value, element) {
+					var isSuccess = false;
+					if (value != 0 && value != "") {
+						isSuccess = true;
+					}	
+					return isSuccess;
+				}, "Yêu cầu chọn.");
+				
+				$.validator.addMethod("HasMemberPic", function (value, element) {
+					var isSuccess = false;
+					if (value != "" || $("#mem_photo").length > 0) {
+						isSuccess = true;
+					}	
+					return isSuccess;
+				}, "Chọn ảnh đại diện.");
+				
+				$(document).ready(function() {
+					$("#Frm1").validate({
+						rules: {
+							"area[id][1]": {
+								NotzeroOrEmpty: true
+							},
+							"area[id][2]": {
+								NotzeroOrEmpty: true
+							},
+							"area[id][3]": {
+								NotzeroOrEmpty: true
+							},
+							"photo": {
+								HasMemberPic: true
+							}
+						}
+					});
+				});
+			</script>
+		<!--{/literal}-->
+		
+		<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+		<script src="../scripts/script_area.js"></script>
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
