@@ -40,7 +40,14 @@
 							<input class="form-control" accept="image/*" id="com_pic" style="" name="pic" type="file" id="MemberPhoto" size="32" onchange="">
 						</span>
 					    </p>
-					    
+					    <p>
+						<label class="">
+						    Tên Gian Hàng<span>*</span>
+						</label>
+						<span class="fullcols">
+						    <input title="{lang shop_name_limit}" alt="{lang shop_name_limit}" maxlength="25" value="{$item.shop_name}" id="company_shop_name" name="data[company][shop_name]" class="form-control required" type="text" placeholder="{lang input_shop_name}"/>
+						</span>						    
+					    </p>
 					    <p>
 						<label class="">
 						    {lang company_name_n}<span>*</span>
@@ -155,7 +162,7 @@
 						    
 						    <input style="margin-top: 5px;" placeholder="{lang mobile_number}" name="data[company][contact_mobile]" type="text" id="contact_mobile" value="{$item.contact_mobile}" size="32" class="form-control required">
 						    
-						</span>						    
+						</span>
 					    </p>
 					    
 					    <p>
