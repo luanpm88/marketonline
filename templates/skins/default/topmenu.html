@@ -94,7 +94,7 @@
 	<h3>{lang change_logo}</h3>
 	<p>{lang logo_size_1200}</p>
 	<iframe name="upload" id="upload" style="display: none"></iframe>
-	<form name="productaddfrm" id="Frm2_logo" method="post" action="{$WebRootUrl}index.php?do=product&action=change_logo_home" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
+	<form name="productaddfrm" id="Frm2_logo" method="post" action="{the_url module=root-url}index.php?do=product&action=change_logo_home" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
 	  <!-- {formhash} -->
 	  <input type="hidden" name="username" value="{$MEMBER.username}" />
 	  <input type="hidden" name="com_id" value="{$COMPANY.id}" />

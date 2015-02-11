@@ -2462,10 +2462,10 @@ class Product extends PbController {
 		$pb_userinfo = pb_get_member_info();
 		$attachment = new Attachment('upload_logo');
 		$company = new Companies();
-		var_dump($pb_userinfo);
+		//var_dump($pb_userinfo);
 		//var_dump($_POST["com_id"]);
 		$com = $company->read("member_id", $_POST["com_id"]);
-		var_dump($com);
+		//var_dump($com);
 		
 		if (!empty($_FILES['upload_logo']['name']) && $com["member_id"] == $pb_userinfo["pb_userid"]) {
 			echo $_POST["com_id"];

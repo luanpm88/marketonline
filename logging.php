@@ -12,8 +12,9 @@ require(LIB_PATH. "validation.class.php");
 require(PHPB2B_ROOT. 'libraries/sendmail.inc.php');
 require(LIB_PATH.'passport.class.php');
 session_start();
-uses("member","company","point","memberfield","membergroup");
+uses("announcement","member","company","point","memberfield","membergroup");
 $validate = new Validation();
+$announcement = new Announcements();
 $membergroup = new Membergroups();
 $passport = new Passports();
 $memberfield = new Memberfields();
@@ -50,6 +51,11 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 			//logging counting
 			$member->loggingCount($member->info['id']);
 			
+			$announce = $announcement->getOldestUnread($member->info["id"],$member->info["membertype_id"], 1);
+			if($announce) {
+				pheader("location:virtual-office/");
+				exit;
+			}
 			
 			if (!empty($_REQUEST['return_page'])) {				
 				pheader("location:".$_REQUEST['return_page']);
