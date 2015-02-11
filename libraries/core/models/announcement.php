@@ -33,5 +33,29 @@ class Announcements extends PbModel {
  		}
  		return $result;
  	}
+	
+	function getOldestUnread($member_id=null, $member_type=null, $type_id=null) {
+		$conditions = array();
+		
+		$conditions[] = "status=1";
+		
+		if (isset($type_id)) {
+			$conditions[] = "announcetype_id=".$type_id;
+		}
+		if (isset($member_type)) {
+			$conditions[] = "(membertypes LIKE '%".$member_type."%' OR membertypes = '')";
+		}
+		if (isset($member_id)) {
+			$conditions[] = "(read_members NOT LIKE '%[".$member_id."]%')";
+		}
+		
+		$annouce = $this->findAll("*", null, $conditions, "created", 0, 1);
+		
+		if($annouce) {
+			return $annouce[0];
+		}
+		
+		return false;
+	}
 }
 ?>

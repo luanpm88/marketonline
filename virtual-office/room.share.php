@@ -9,7 +9,7 @@
 $office_theme_name = "";
 require(CACHE_LANG_PATH.'lang_office.php');
 $_PB_CACHE['membergroup'] = cache_read("membergroup");
-uses("setting","point","member", "memberfield", "company", "job", "employee", "saleorder","moderator");
+uses("announcement","setting","point","member", "memberfield", "company", "job", "employee", "saleorder","moderator");
 $job = new Jobs();
 $setting = new Settings();
 $point = new Points();
@@ -20,6 +20,7 @@ $memberfield = new Memberfields();
 $company = new Companies();
 $company_controller = new Company();
 $moderator = new Moderators();
+$announcement = new Announcements();
 $smarty->template_dir = PHPB2B_ROOT. "templates/office/";
 setvar("office_theme_path", "../templates/office/");
 
@@ -213,4 +214,13 @@ foreach($sets as $set) {
 	$settings[$set["variable"]] = $set["valued"];
 }
 setvar("settings",$settings);
+
+
+//check unread announcements
+$announce = $announcement->getOldestUnread($memberinfo["id"],$memberinfo["membertype_id"], 1);
+if($announce && !$_GET["announce"] && $hasProfile && $hasCompany) {
+	//http://localhost/marketonline/virtual-office/announce.php?id=4
+	pheader("location:announce.php?announce=1&id=".$announce["id"]);
+}
+
 ?>

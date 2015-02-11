@@ -4,7 +4,8 @@
  *      The contents of this file are subject to the License; you may not use this file except in compliance with the License. 
  *
  *      @version $Revision: 2075 $
- */
+**/
+
 require("../libraries/common.inc.php");
 uses("announcement");
 require("session_cp.inc.php");
@@ -33,7 +34,7 @@ if (isset($_GET['do'])) {
 		$announce->del($id);	
 	}
 	if($do=="edit"){
-		if(!empty($id)){
+		if(!empty($id)) {
 			$res= $announce->read("*",$id);
 			$res['display_expiration'] = df($res['display_expiration']);
 			setvar("item",$res);
@@ -45,7 +46,7 @@ if (isset($_GET['do'])) {
 }
 if (isset($_POST['save']) && !empty($_POST['data']['announcement'])) {
 	$vals = $_POST['data']['announcement'];
-	if(isset($_POST['id'])){
+	if(isset($_POST['id'])) {
 		$id = intval($_POST['id']);
 	}
 	if (!empty($_POST['data']['display_expiration'])) {
@@ -54,7 +55,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['announcement'])) {
 	if (!empty($id)) {
 		$vals['modified'] = $time_stamp;
 		$result = $announce->save($vals, "update", $id);
-	}else{
+	} else {
 		$vals['created'] = $vals['modified'] = $time_stamp;
 		$result = $announce->save($vals);
 	}
@@ -71,7 +72,7 @@ $fields = "id,announcetype_id,announcetype_id as typeid,subject,status,message,s
 setvar("ByPages", $page->pagenav);
 $result = $announce->findAll($fields, null, $conditions, "id DESC", $page->firstcount, $page->displaypg);
 if (!empty($result)) {
-	for($i=0; $i<count($result); $i++){
+	for($i=0; $i<count($result); $i++) {
 		if(!empty($result[$i]['created'])) $result[$i]['pubdate'] = df($result[$i]['created']);
 	}
 	setvar("Items", $result);

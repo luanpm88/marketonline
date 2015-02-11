@@ -106,7 +106,6 @@ if (!empty($_GET['do'])) {
 		
 		
 		//getImage
-		//echo "sdfsdf";
 		//$rowi = $industrybd->getByID($key0);
 		//var_dump($rowi);
 		$industries[$key0]["image"] = pb_get_attachmenturl($industries[$key0]["picture"], "", "");

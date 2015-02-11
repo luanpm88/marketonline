@@ -109,6 +109,7 @@ if (isset($_POST['del'])) {
 }
 $tpl_file = "buyerorder";
 $page->displaypg = 25;
+
 $amount = $saleorder->findCount(null, $conditions);
 //echo $amount;
 $page->setPagenav($amount);
