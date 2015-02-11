@@ -10506,6 +10506,7 @@ input[name=redirect]
 }
 .res_done_box {
     border: 1px solid #aaa;
+    background: #fff;
 }
 .title-line-box {
     background: none repeat scroll 0 0 #efefef;
