@@ -220,7 +220,7 @@ setvar("settings",$settings);
 $announce = $announcement->getOldestUnread($memberinfo["id"],$memberinfo["membertype_id"], 1);
 if($announce && !$_GET["announce"] && $hasProfile && $hasCompany) {
 	//http://localhost/marketonline/virtual-office/announce.php?id=4
-	pheader("location:announce.php?announce=1&id=".$announce["id"]."#newshop");
+	pheader("location:announce.php?announce=1&id=".$announce["id"]."&newshop=1");
 }
 
 ?>
