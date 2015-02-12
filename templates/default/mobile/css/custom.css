@@ -1280,8 +1280,7 @@ time .time {
     padding: 20px;
     text-align: center;
 }
-.order_message_box {
-    
+.order_message_box {    
 }
 .order_message_box {
     background: none repeat scroll 0 0 #edf4ef;
@@ -1289,8 +1288,7 @@ time .time {
     padding: 20px;
     text-align: center;
 }
-.album_tab {
-    
+.album_tab {    
 }
 .album_tab ul {
     margin-right: -2%;
@@ -1384,8 +1382,7 @@ time .time {
     width: 32%;
     background: #fff;
 }
-.compage ul li a {
-    
+.compage ul li a {    
 }
 .compage ul li img {
     float: left;
@@ -1410,7 +1407,6 @@ time .time {
 .clear {
     clear: both;
 }
-
 .company-page .color-tab-top.product-tabs .nav-pills > li.active > a, .company-page .nav-pills > li.active > a:focus, .company-page .nav-pills > li.active > a:hover {
     background-color: #fe7477;
 }
