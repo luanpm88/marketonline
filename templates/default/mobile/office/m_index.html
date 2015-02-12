@@ -1,0 +1,229 @@
+        <!--{include file="../header.html" page_title="Trang quản lý - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid page-inner">
+
+                    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    <div class="main_content">
+        <div class="main_content_left">
+          <div class="visit_time">
+		{lang the_last_visit_time_was} {$LastLogin}
+          </div>
+          <div class="base_info">
+              <h2>{lang basic_info}</h2>
+              <table class="base_member">
+               <tr>
+                <td colspan="3"><div class="blank"></div></td>
+              </tr>
+	       
+              <tr>
+                <td rowspan="3" class="avatar" ><img src="{$MemberInfo.avatar}"></td>
+                <td>
+			<strong>{$MemberInfo.first_name} {$MemberInfo.last_name}</strong>
+		</td>
+                <td rowspan="3" width="100" title="{$group.name}"></td>
+              </tr>
+	      <tr>
+		<td class="member_upgrade">{$group.name|pl}</td>
+                
+                </tr>              
+             <tr>
+                <td><div id="progressbar"></div>&nbsp;
+		<!--{if $service_days>=100 && false}--><strong>{lang been_expired}<a href="../purchase.php?do=upgrade" target="_blank">{lang upgrade_now}</a></strong><!--{/if}-->
+			<img src="../images/group/{$group.image}" alt="{$group.name}" />
+		</td>
+               </tr>
+              <tr>
+                <td colspan="3"><div class="blank"></div></td>
+              </tr>
+            </table>
+          </div> 
+           <div class="blank"></div>
+           <div class="count_info">
+              <h2>{lang statistics}</h2> 
+              <div class="count_info_content">
+		<!--<p class="credit"><strong>{lang account_main} </strong>: {$MemberInfo.level1_cash}</p>
+		<p class="credit"><strong>{lang account_store} </strong>: {$MemberInfo.level2_point}</p>-->
+                <p class="credit"><strong>{lang your_account} </strong>{lang balance_amount}<em> {$MemberInfo.balance_amount|default:0}</em> | {lang your_points}<em> {$MemberInfo.points|default:0}</em></p>
+                <p class="info"><strong>{lang business_information} </strong><!--{foreach from=$items_offer name=items_offer item=item key=key}--> {$key}{lang colon} <em> {$item}</em> {lang number}; <!--{if !$smarty.foreach.items_offer.last}--> <!--{/if}--><!--{/foreach}--></p>
+		<!--<p class="info"><strong>{lang products} </strong></p>
+		{if $MEMBER.membergroup_id != 2}
+			<p class="info"><strong>
+				{if $MEMBER.membergroup_id == 3}{lang company_information}{/if}
+				{if $MEMBER.membergroup_id == 1}{lang shop_information}{/if}
+			</strong></p>
+		{/if}-->
+                <p class="message_home"><strong>{lang messages} </strong>{lang common_message} <em>{$pm.user|default:0}</em> {lang number} | {lang system_message} <em> {$pm.system|default:0}</em> {lang number} | {lang query_message} <em>{$pm.inquery|default:0}</em> {lang number}</p>
+                <!--<p class="collect"><strong>{lang favorites} </strong><a href="favor.php">{lang manage_favorite}</a></p>-->
+              </div>
+           </div>
+	   
+	   <div class="blank"></div>
+           <div class="count_info point_table">
+
+              <h2 {if $pb_company.shop_name && ($pb_userinfo.activity_announce_count<2)}style="color:red"{/if}>Bảng cộng điểm Gian hàng của bạn hàng tuần</h2> 
+              <div class="count_info_content">
+		<table class="table bglist bg_blue_link" style="margin-top: 0">
+			<tr>
+				<th width="5%">STT</th>
+				<th width="45%" style="text-align: left">Nội dung</th>
+				<th width="16%">Đánh giá</th>
+				<th style="text-align: left">Liên kết để xem và thực hiện</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td style="text-align: left">Gian hàng hoàn thiện và đẹp bao gồm: logo, hình đại diện cho Gian hàng, 9 sản phẩm trở lên</td>
+				<td>{$settings.point_good_shop} điểm/tuần</td>
+				<td style="text-align: left">
+					<a target="_blank" class="name" href="{$COMPANYINFO.space_url}">
+						{$COMPANYINFO.shop_name}
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td style="text-align: left">Liên kết Facebook</td>
+				<td>{$settings.point_connect_facebook} điểm/tuần</td>
+				<td style="text-align: left">
+					<a target="_blank" class="name" href="company.php">
+						{lang basic_information} {$membertype_name}
+					</a>
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td style="text-align: left">Hoạt động tích cực</td>
+				<td>1 điểm/ngày</td>
+				<td style="text-align: left"></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td style="text-align: left">Mời bạn bè (mời bạn bè tham gia khi đăng ký thành viên điền email mà bạn đã đăng ký trên trang MarketOnline.vn khi đó bạn có hệ thống liên kết với bạn bè để bán hàng)</td>
+				<td>{$settings.point_invite} điểm/bạn</td>
+				<td style="text-align: left">
+					<a target="_blank" href="{the_url module='share_shop' space_name=`$pb_userinfo.space_name`}">
+						{the_url module='share_shop' space_name=`$pb_userinfo.space_name`}
+					</a>					
+				</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td style="text-align: left">Thanh toán (với phí 1 triệu/tuần)</td>
+				<td>{$settings.point_checkout} điểm/tuần</td>
+				<td style="text-align: left"></td>
+			</tr>
+			
+		</table>
+              </div>
+           </div>
+		<p class="point_table_note"><span style="font-weight: bold;text-decoration: underline">Ghi chú:</span> Các nội dung trên là không bắt buộc. Quý Chủ Gian Hàng thực hiện càng đầy đủ thì hệ thống MarketOnline.vn sẽ xây dựng <strong>Thương Hiệu Gian Hàng</strong> cũng như liên kết để bán hàng được hiệu quả.
+		<a href="../thuong-hieu" target="_blank">Kiểm tra xem Gian Hàng của Quý Bạn đã có trong danh sách thương hiệu chưa?
+		</a>
+		
+		</p>
+	   
+	   <div class="blank"></div>
+           <div class="count_info point_table">
+
+              <h2 {if $pb_company.shop_name && ($pb_userinfo.activity_announce_count<2)}style="color:red"{/if}>Bảng kết quả hoạt động trong tuần
+		({$week_start} - {$week_end})
+	      </h2> 
+              <div class="count_info_content">
+		<table class="table bglist" style="margin-top: 0">
+			<tr>
+				<th width="5%">STT</th>
+				<th width="45%" style="text-align: left">Hoạt động</th>
+				<th width="16%">Điểm</th>
+				<th>Thời gian</th>
+				<th>Ghi chú</th>
+			</tr>
+			<!--{foreach from=$weekly_logs.logs item=item key=key}-->
+				<tr>
+					<td style="text-align: center">{$key+1}</td>
+					<td style="text-align: left">{$activity_names[$item.action_name]}</td>
+					<td style="text-align: center">
+						{$item.points}
+					</td>
+					<td>{$item.date}</td>
+					<td>{$item.description}</td>
+				</tr>
+			<!--{/foreach}-->
+			<tr>
+				<td></td>
+				<td style="text-align: right">
+					Tổng cộng: 
+				</td>
+				<td style="text-align: center"><strong>{$weekly_logs.total} </strong></td>
+				<td style="text-align: left">{if $weekly_logs.store}(Điểm tích lũy tuần: <strong>{$weekly_logs.store}</strong>){/if}</td>
+				<td></td>
+			</tr>
+		</table>
+              </div>
+           </div>
+	   
+         </div>
+	
+        <div class="main_content_right">
+		<!--{include file="_rightbar.html"}-->
+        </div>
+    </div>
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+		    
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+
+		   
+		
+		
+		<!--{include file="_office_script.html"}-->
+		
+		<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+		<script src="../scripts/script_area.js"></script>
+		<script src="../scripts/script_industry.js"></script>
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

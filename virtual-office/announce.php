@@ -9,8 +9,8 @@ require("../libraries/common.inc.php");
 require("room.share.php");
 require(PHPB2B_ROOT.'./libraries/page.class.php');
 require(CACHE_COMMON_PATH."cache_type.php");
-uses("announcement","announcementtype");
-
+uses("announceread","announcement","announcementtype");
+$announceread = new Announcereads();
 $announce = new Announcements();
 $announcementtype = new Announcementtypes();
 
@@ -24,8 +24,11 @@ if (!empty($_GET['id'])) {
 		$info["read_members"] .= "[".$the_memberid."]";
 		$announce->saveField("read_members", $info["read_members"], intval($info["id"]));
 	}
-
-	//var_dump($info);	
+	
+	//update read
+	$announceread->read($id,$memberinfo["id"]);
+	
+	
 	$tpl_file = "announce";
 	setvar("item",$info);
 	template($tpl_file);

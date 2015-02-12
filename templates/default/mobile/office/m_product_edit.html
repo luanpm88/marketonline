@@ -1,0 +1,723 @@
+        <!--{include file="../header.html" page_title="`$PageTitle`"}-->
+            	    
+	<!--{editor type="tiny_mce_new"}-->
+	    
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid page-inner">
+
+                    <h1>
+			{if !$smarty.get.id}
+			    Thêm {if $item.service}dịch vụ{else}sản phẩm{/if}
+			{else}
+			    Sửa: {$item.name}
+			{/if}
+		    </h1>
+                    
+		    {if $notice}
+			<div role="alert" class="alert alert-info">
+			    {$notice}
+			</div>
+		    {/if}
+					
+			    <form name="productaddfrm" id="productaddfrm" method="post" action="{$smarty.env.PHP_SELF}" enctype="multipart/form-data">
+				<!-- {formhash} -->
+				<input type="hidden" name="id" value="{$item.id}">
+				<input type="hidden" name="formattribute_ids" value="{$item.formattribute_ids}">
+				<input type="hidden" name="redirect" value="{$back_link}">
+				{if $getvar.type}<input type="hidden" name="data[product][service]" value="1" />{/if}
+				
+				
+				<p>
+				    <label>{if $getvar.type == 'service'}{lang service_name}{else}{lang product_name}{/if}<span>*</span></label>
+				    <input placeholder="{lang words_length}" maxlength="70" style="" name="data[product][name]" type="text" id="dataProductName" value="{$item.name}" class="form-control required">
+				</p>
+				
+				<p>
+				    <label>Hình ảnh<span>*</span></label>
+				    <div class="images_inputs">
+					<div class="box box-1">
+					    <div class="img-box" rel="1">
+						<!--{if $item.picture}-->
+						    <img class="preview_image product_photo ppic photo-1" src="{$item.image1}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-1" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="0" {if $item.default_pic == 0}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic" type="file" id="uploadfile1" onchange="preview(this,1)" />
+					</div>
+					<div class="box box-2">
+					    <div class="img-box" rel="2">
+						<!--{if $item.picture1}-->
+						    <img class="preview_image product_photo ppic photo-2" src="{$item.image2}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-2" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="1" {if $item.default_pic == 1}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic1" type="file" id="uploadfile2" onchange="preview(this,2)" />
+					</div>
+					<div class="box box-3">
+					    <div class="img-box" rel="3">
+						<!--{if $item.picture2}-->
+						    <img class="preview_image product_photo ppic photo-3" src="{$item.image3}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-3" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="2" {if $item.default_pic == 2}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic2" type="file" id="uploadfile3" onchange="preview(this,3)" />
+					</div>
+					<div class="box box-4">
+					    <div class="img-box" rel="4">
+						<!--{if $item.picture3}-->
+						    <img class="preview_image product_photo ppic photo-4" src="{$item.image4}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-4" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="3" {if $item.default_pic == 3}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic3" type="file" id="uploadfile4" onchange="preview(this,4)" />
+					</div>
+					<div class="box box-5">
+					    <div class="img-box" rel="5">
+						<!--{if $item.picture4}-->
+						    <img class="preview_image product_photo ppic photo-5" src="{$item.image5}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-5" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="4" {if $item.default_pic == 4}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic4" type="file" id="uploadfile5" onchange="preview(this,5)" />
+					</div>
+					
+				    </div>
+				    <label id="uploadfile1-error" class="error" for="uploadfile1">Giá không hợp lệ</label>
+				    
+				    <br style="clear: both" />
+				</p>
+				
+				<p>
+				<label style="width: 100%">{lang the_price_n}<span>*</span></label>
+				<span class="price_2cols">
+				    <input class="form-control" name="data[product][price]" type="text" id="dataProductPrice" value="{$item.price}">
+				    <strong>VNĐ / </strong>
+				    <input class="form-control" placeholder="Đơn vị sản phẩm (Ví dụ: cái, m2,...)" name="data[product][price_unit]" type="text" id="dataProductPriceUnit" value="{$item.price_unit}">
+				    <br /><label id="dataProductPrice-error" class="error" for="dataProductPrice">Giá không hợp lệ</label>
+				</span>
+			    </p>
+			    
+			    <p>
+				<label style="width: 100%">{lang the_new_price}{lang colon}</label>
+				<span class="price_2cols">
+				    <input class="form-control" name="data[product][new_price]" type="text" id="dataProductNewPrice" value="{$item.new_price}">
+				    <strong>VNĐ</strong>
+				    <input style="width: 100%;margin-top: 5px" class="form-control" placeholder="Ghi chú (Ví dụ: giá khuyến mãi)" name="data[product][price_note]" type="text" id="dataProductPriceNote" value="{$item.price_note}">
+				</span>
+			    </p>
+				
+				<p>
+				    <div id="dataIndustry">
+						<label>{lang industry_product}<span>*</span> <i class="note">({lang main_industry_info})</i></label>
+						<br /><label id="dataProductIndustryId1-error" class="error" for="dataProductIndustryId1">Chọn chuyên mục sản phẩm</label>
+						<div id="dataIndustry">
+						    <span>Cấp 1:</span>
+						    <select name="industry[id][1]" id="dataProductIndustryId1" class="form-control level_1" rel="1"></select>
+						    <span>Cấp 2:</span>
+						    <select name="industry[id][2]" id="dataProductIndustryId2" class="form-control level_2" rel="2"></select>
+						    <span>Cấp 3:</span>
+						    <select name="industry[id][3]" id="dataProductIndustryId3" class="form-control level_3" rel="3"></select>
+						    <span>Cấp 4:</span>
+						    <select name="industry[id][4]" id="dataProductIndustryId4" class="form-control level_4" rel="4"></select>
+						</div>
+						<span class="industry_info"></span>
+				    </div>
+				</p>
+				
+				<p style="">
+					    <label onclick="$('#dataCustomIndustry').show()">{lang custom_industry} <span>*</span> <i class="note">({lang custom_industry_info})</i></label>
+						    <div id="dataCustomIndustry">
+							<span>Cấp 1:</span>
+							    <div class="i_item pos_1">
+								
+								    <input class="form-control" name="customIndustry[name][1]" value="" placeholder="{lang create_custom_industry}" rel="1" />
+								    <select name="customIndustry[id][1]" id="dataCustomProductIndustryId1" class="form-control level_1" rel="1" >
+									    <option value="-1">{lang select}</option>
+									    <option value="0">-{lang create_custom_industry}-</option>
+								    </select>
+								    
+							    </div>
+							    <span>Cấp 2:</span>
+							    <div class="i_item pos_2">
+								
+								    <input class="form-control" name="customIndustry[name][2]" value="" placeholder="{lang create_custom_industry}" rel="2"  />
+								    <select name="customIndustry[id][2]" id="dataCustomProductIndustryId2" class="form-control level_2" rel="2" >
+									    <option value="-1">{lang select}</option>
+									    <option value="0">-{lang create_custom_industry}-</option>
+								    </select>
+								    
+							    </div>
+							    <span>Cấp 3:</span>
+							    <div class="i_item pos_3">
+								
+								    <input class="form-control" name="customIndustry[name][3]" value="" placeholder="{lang create_custom_industry}" rel="3"  />
+								    <select name="customIndustry[id][3]" id="dataCustomProductIndustryId3" class="form-control level_3" rel="3" >
+									    <option value="-1">{lang select}</option>
+									    <option value="0">-{lang create_custom_industry}-</option>
+								    </select>
+								    
+							    </div>
+							    <span>Cấp 4:</span>
+							    <div class="i_item pos_4">
+								
+								    <input class="form-control" name="customIndustry[name][4]" value="" placeholder="{lang create_custom_industry}" rel="4" />
+								    <select name="customIndustry[id][4]" id="dataCustomProductIndustryId4" class="form-control level_4" rel="4" >
+									    <option value="-1">{lang select}</option>
+									    <option value="0">-{lang create_custom_industry}-</option>
+								    </select>
+								    
+							    </div>
+						    </div>
+						    <span class="industry_info"></span>
+						    <br />
+			    </p>
+				
+
+			    <p>
+				<label>{lang market}<span>*</span></label>
+				<input placeholder="{lang market_note}" name="data[product][market]" type="text" id="dataProductMarket" value="{$item.market}" class="form-control required"></font>					   
+			    </p>
+			    {if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
+					<p>
+					    <label>Dịch vụ dành cho sinh viên: </label>
+						<input style="" {if $item.for_student}checked="checked"{/if} type="checkbox" value="1" name="data[product][for_student]" />
+						
+					</p>
+			    {/if}
+			    
+			    <p>
+				<label>{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}{lang colon}</label>
+				<input class="form-control" name="data[product][product_code]" type="text" id="dataProductProductCode" value="{$item.product_code}">
+			    </p>
+			    
+			    <p>
+				<label>{lang product_brand}</label>
+				<select class="form-control" name="data[product][brand_id]" id="brand_id_select">
+				    <option value="0">{lang select}</option>
+				    {html_options options=$UserBrands selected=$item.brand_id}
+				</select>
+			    </p>
+			    <!--{foreach from=$Forms name=form item=item1 key=key1}-->
+				<p>
+				    <label>{$item1.label}{lang colon}{if $key1 == 6 || ($getvar.type != 'service' && $key1 == 7)}<span>*</span>{/if}</label>
+				    <input placeholder="{$item1.description}" name="data[formitem][{$key1}]" type="text" id="{$item1.id}" value="{$item1.value}" class="form-control {if $key1 == 6 || ($getvar.type != 'service' && $key1 == 7)}required{/if}">
+				</p>					
+			    <!--{/foreach}-->
+			    
+
+			    
+			    
+			    
+			    <p>
+				<label>{lang tags_n}</label>
+				<span class="">
+				   <input class="form-control infoTableInput2" name="data[tag]" type="text" id="tag" value="{$item.tag}" />
+				   <span class="field_notice">{lang space_separate}</span>
+				</span>
+			    </p>
+			    
+			    <p>
+				<label>Mô tả sản phẩm<span>*</span></label>
+				<span class="">
+				   <textarea class="required" name="data[product][content]" id="dataProductContent" rows="16" wrap="VIRTUAL" style="width:100%;height: 200px" class="">{$item.content}</textarea>
+				</span>
+			    </p>
+			    
+			    
+			    
+			    
+			    
+						<p></p>
+						<p></p>
+						<br />
+						<input class="btn btn-primary" style="width: 100%" name="save" type="submit" value="{lang save}" />
+						<p></p><br />
+						<a style="width: 100%" class="btn btn-default" href="product.php">
+						    <span class="glyphicon glyphicon-chevron-left"></span> Về danh sách</a>
+						
+					</form>
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+<script src="../data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+</script>
+<!-- {literal} -->
+<script>
+jQuery(document).ready(function($) {
+	$("#ProductpriceCategory").val("{$item.category_id|default:0}")
+})
+</script>
+<!-- {/literal} -->
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+
+
+
+
+
+
+
+
+<!--{literal}-->
+<style>
+</style>
+<script>
+    
+	function checkHasCustomIndustry() {
+		for (var i=1; i<5; i++) {
+			if(!$('#dataCustomProductIndustryId'+i).attr("disabled") && ($('#dataCustomProductIndustryId'+i).val() > 0 || ($('#dataCustomProductIndustryId'+i).val() == 0 && $('.pos_'+i+' input').val() != ""))){
+				return true;
+			}
+		}
+		return false;
+	}
+    
+	function preview(input,num) {
+		//alert('.photo-'+num);
+		var numz = num;
+		var numz_c = $('.ppic').length;
+		if (input.files && input.files[0]) {
+		    var reader = new FileReader();			    
+		    reader.onload = function (e) {
+			//alert('.photo-'+numz);
+			$('.photo-'+numz).attr('src', e.target.result);
+			$('.photo-'+numz).addClass('ppic');
+			
+			
+			//check default
+			if (numz_c == 0) {
+			    var numy = $('input[name="data[product][default_pic]"]:checked').val();
+			    $(".photo-"+(parseInt(numy)+1)).hasClass("ppic");
+			    var first = parseInt($(".ppic").first().parent().attr("rel"))-1;
+			    $('input[type=radio][value='+first+']').prop("checked",1);
+			}
+			    
+		    }
+		    reader.readAsDataURL(input.files[0]);
+		    
+		    
+		}
+	}
+	
+	function IsValidImageUrl(url) {
+		$("<img>", {
+		    src: url,
+		    error: function() { alert(url + ': ' + false); },
+		    load: function() { alert(url + ': ' + true); }
+		});
+	}
+	
+	function checkHasImage() {
+		if ($('#uploadfile0').val() || $('#uploadlinkfile').val() ||
+			$('#uploadfile1').val() || $('#uploadlinkfile1').val() ||
+			$('#uploadfile2').val() || $('#uploadlinkfile2').val() ||
+			$('#uploadfile3').val() || $('#uploadlinkfile3').val() ||
+			$('#uploadfile4').val() || $('#uploadlinkfile4').val() ||
+			$('#p_image img').length
+		) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function checkHasCustomIndustry() {
+		for (var i=1; i<5; i++) {
+			if(!$('#dataCustomProductIndustryId'+i).attr("disabled") && ($('#dataCustomProductIndustryId'+i).val() > 0 || ($('#dataCustomProductIndustryId'+i).val() == 0 && $('.pos_'+i+' input').val() != ""))){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').removeAttr('disabled');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<img src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" />');
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+	function checkUploadEditorInput() {
+		//code
+		if($('#uploadEditorFile').val() == '')
+		{
+			$('#uploadEditorFile').css('border', 'solid 1px red');
+			return false;
+		} else
+		{
+			$('#uploadEditorFile').css('border', 'none');
+			$('#uploadIVbutton').attr('disabled','disabled');
+			$('#uploadIVbutton').attr('value','Đang tải...');
+			return true;
+		}
+	}
+	
+	function deleteImage(id, pos) {
+		//code
+		if (parseInt($('.img_item input[type=radio]:checked').val())+1 == pos) {
+			//code
+			//alert(parseInt($('.img_item input[type=radio]:checked').val())-1);
+			
+			alert('Bạn không thể xóa hình chính. Vui lòng chọn hình khác làm hình chính trước khi xóa');
+			return;
+		}
+		
+		$('#thumbs .tim_'+pos).css('opacity', '0.2');
+		$.ajax({
+			url: "../index.php?do=product&action=ajaxDeleteImage&pid="+id+"&pos="+pos,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				if(data == '1')
+				{
+					$('#thumbs .tim_'+pos).fadeOut();
+					$('.inputfile_'+pos).fadeIn();
+				}
+			}
+		});
+	}
+	
+	function changeDefaultImage(id, pos) {
+		//code
+		$('#thumbs .tim_'+pos).css('opacity', '0.2');
+		$.ajax({
+			url: "../index.php?do=product&action=changeDefaultImage&pid="+id+"&pos="+pos,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data)
+				
+				$('#p_image img').attr('src', ($('#thumbs .tim_'+pos+' img').attr("src")));
+				$('#thumbs .tim_'+pos).css('opacity', '1');
+			}
+		});
+	}
+	
+	
+	function getCustomIndustriesByCurrent(id) {
+		if (id != 0) {
+			$('#dataCustomIndustry select').addClass("iloading");
+			$.ajax({
+				url: "../index.php?do=product&action=getCustomIndustriesByCurrent&id="+id+"&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					for (var i=1; i<5; i++) {
+						if ($(data).filter('#block_'+i).html()) {
+							//alert($(data).filter('#block_'+i).html());
+							$('#dataCustomIndustry .pos_'+i+' select').html($(data).filter('#block_'+i).html());
+							$('#dataCustomIndustry .pos_'+i).css('visibility', 'visible');
+							$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+							$('#dataCustomIndustry .pos_'+i+' input').css('display', 'none');
+							$('#dataCustomIndustry .pos_'+i+' select').removeAttr('disabled');
+						}
+						$('#dataCustomIndustry select').removeClass("iloading");
+					}
+					
+				}
+			});	
+		}
+		else
+		{
+			getCustomIndustriesByParent(0, 1);
+		}
+		
+	}
+	
+	function getCustomIndustriesByCustomParent(id, level) {
+		if (level > 3 || id == 0) {				
+			changeIndustry();			
+			if (id == 0) {
+				for (var i=parseInt(level)+1; i < 5; i++) {
+					$('#dataCustomIndustry .pos_'+i+' select').html('<option value="0">-<!--{/literal}-->{lang create_custom_industry}<!--{literal}-->-</option>');
+					$('#dataCustomIndustry .pos_'+i).css('visibility', 'hidden');
+					$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+					$('#dataCustomIndustry .pos_'+i+' select').attr('disabled','disabled');
+				}
+			}
+			return;
+		}
+
+		$('#dataCustomIndustry .pos_'+level+' select').addClass("iloading");
+
+		$.ajax({
+			url: "../index.php?do=product&action=getCustomIndustriesByCustomParent&id="+id+"&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').html(data);				
+				changeIndustry();
+				$('#dataCustomIndustry .pos_'+level+' select').removeClass("iloading");
+			}
+		});
+	}
+	
+	function getCustomIndustriesByParent(id, level) {
+		if (id == 0 && level == 1) {
+			$('#dataCustomIndustry .pos_'+level+' select').addClass("iloading");
+			$.ajax({
+			url: "../index.php?do=product&action=getCustomIndustriesByParent&id=-1&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$('#dataCustomIndustry .pos_'+level+' select').html(data);
+					changeIndustry();
+					$('#dataCustomIndustry .pos_'+level+' select').removeClass("iloading");
+					//getCustomIndustriesByCustomParent($('#dataCustomIndustry .pos_'+level+' select').val(), level)
+				}
+			});	
+		}
+		else
+		{
+			$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').addClass("iloading");
+			$.ajax({
+				url: "../index.php?do=product&action=getCustomIndustriesByParent&id="+id+"&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').html(data);
+					changeIndustry();
+					$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').removeClass("iloading");
+					//getCustomIndustriesByCustomParent($('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').val(), parseInt(level)+1)
+				}
+			});
+		}
+	}
+	
+	function updateCustomIndustry() {
+		for (var i=1; i < 5; i++) {
+			if ($('#dataCustomIndustry .pos_'+i+' select').val() != 0) {
+				$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+				$('#dataCustomIndustry .pos_'+i+' input').css('display', 'none');
+			}
+			else
+			{
+				$('#dataCustomIndustry .pos_'+i+' input').removeAttr('disabled');
+				$('#dataCustomIndustry .pos_'+i+' input').removeAttr("style");				
+			}
+		}
+	}
+	
+	function changeIndustry(item) {
+		//alert($(item).val());
+		//getCustomIndustriesByParent($(item).val(), $(item).attr("rel"));
+		var index = parseInt($(item).attr("rel"));
+		
+		for (var i=4; i > 0; i--) {			
+			//getCustomIndustriesByParent($('#dataProductIndustryId'+i).val(), $('#dataProductIndustryId'+i).attr("rel"));
+			
+			if ($('#dataProductIndustryId'+i).val() != 0) {
+				$('#dataCustomIndustry .pos_'+i).css('visibility', 'hidden');
+				$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+				$('#dataCustomIndustry .pos_'+i+' select').attr('disabled','disabled');
+			}
+			else
+			{
+				$('#dataCustomIndustry .pos_'+i).css('visibility', 'visible');
+				$('#dataCustomIndustry .pos_'+i+' input').removeAttr('disabled');
+				$('#dataCustomIndustry .pos_'+i+' select').removeAttr('disabled');
+				
+				for(var j=i+1; j < 5; j++)
+				{
+					if ((($('#dataCustomIndustry .pos_'+(j-1)+' select').val() != -1)) && $('#dataCustomIndustry .pos_'+(j-1)).css('visibility') == 'visible') {
+						$('#dataCustomIndustry .pos_'+j).css('visibility', 'visible');
+						$('#dataCustomIndustry .pos_'+j+' input').removeAttr('disabled');
+						$('#dataCustomIndustry .pos_'+j+' select').removeAttr('disabled');
+					}
+					else
+					{
+						$('#dataCustomIndustry .pos_'+j).css('visibility', 'hidden');
+						$('#dataCustomIndustry .pos_'+j+' input').attr('disabled','disabled');
+						$('#dataCustomIndustry .pos_'+j+' select').attr('disabled','disabled');
+					}
+				}
+			}
+		}
+		updateCustomIndustry();
+	}
+	
+	
+jQuery(document).ready(function($) {	
+	
+	
+	$('.img_item input[type=radio]').change(function() {
+		changeDefaultImage('<!--{/literal}-->{$item.id}<!--{literal}-->', parseInt($(this).val())+1);
+	});
+	
+	//main image
+	var cur_id = parseInt($('.img_item input[type=radio]:checked').val())+1;
+	$('#p_image img').attr('src', $('#thumbs .tim_'+cur_id+' img').attr("src"));
+	
+	if (!$('#thumbs').children().length) {
+		$('#image_size_note').addClass('noImage');
+	}
+	
+	
+	
+	getCustomIndustriesByCurrent(<!--{/literal}-->{if $item.producttype_id}{$item.producttype_id}{else}0{/if}<!--{literal}-->);
+	
+	$('#dataCustomIndustry select').change(function(){
+		//changeIndustry();
+		getCustomIndustriesByCustomParent($(this).val(), $(this).attr("rel"));
+	});
+	$('#dataCustomIndustry input').keyup(function(){
+		for(var j=parseInt($(this).attr("rel"))+1; j < 5; j++)
+		{
+			if ($(this).val() != '' && j == parseInt($(this).attr("rel"))+1) {
+				$('#dataCustomIndustry .pos_'+j+' select').html('<option value="0">-<!--{/literal}-->{lang create_custom_industry}<!--{literal}-->-</option>');
+				$('#dataCustomIndustry .pos_'+j).css('visibility', 'visible');
+				$('#dataCustomIndustry .pos_'+j+' input').removeAttr('disabled');
+				$('#dataCustomIndustry .pos_'+j+' input').removeAttr("style");
+				$('#dataCustomIndustry .pos_'+j+' select').removeAttr('disabled');
+			}
+			else
+			{
+				$('#dataCustomIndustry .pos_'+j+' select').html('<option value="0">-<!--{/literal}-->{lang create_custom_industry}<!--{literal}-->-</option>');
+				$('#dataCustomIndustry .pos_'+j).css('visibility', 'hidden');
+				$('#dataCustomIndustry .pos_'+j+' input').attr('disabled', 'disabled');
+				$('#dataCustomIndustry .pos_'+j+' input').css("display", "none");
+				$('#dataCustomIndustry .pos_'+j+' select').attr('disabled', 'disabled');
+			}
+		}
+		
+	});
+	
+	$('#dataIndustry select').each(function( index ) {
+		  changeIndustry(this);
+		  //getCustomIndustriesByParent($(this).val(), $(this).attr("rel"));
+		//alert($(this).children().length);
+		if($(this).children().length == 1)
+		     {
+		       $(this).addClass('lock');
+		     }
+		     else
+		     {
+		      $(this).removeClass('lock');
+		     }
+		 });
+		 
+		 $('#dataIndustry select').change(function( index ) {
+			changeIndustry(this);
+			if ($(this).val() == 0 && $(this).attr("rel") != 1) {
+			   getCustomIndustriesByParent($(this).prev().val(), $(this).prev().attr("rel"));
+			}
+			else
+			{
+			   getCustomIndustriesByParent($(this).val(), $(this).attr("rel"));
+			}
+			   
+                        $('#dataIndustry select').each(function( index ) {
+                        //alert($(this).children().length);
+                           if($(this).children().length == 1)
+                           {
+                             $(this).addClass('lock');
+                           }
+                           else
+                           {
+                            $(this).removeClass('lock');
+                           }
+                       });
+		 });
+		 
+		 
+		$('body').on("click",".img-box", function() {
+		    $('#uploadfile'+$(this).attr("rel")).trigger("click");
+		});
+		
+		
+		$.validator.addMethod("ValidPrice", function (value, element) {
+			var isSuccess = false;
+			//alert(value.replace(/\./g,''));
+			if (parseInt(value.replace(/\./g,'')) > 1000) {
+				isSuccess = true;
+			}	
+			return isSuccess;
+		}, "Giá không hợp lệ");
+		
+		$.validator.addMethod("ValidProductPic", function (value, element) {
+			var isSuccess = false;
+			if ($('.ppic').length > 0) {
+				isSuccess = true;
+			}	
+			return isSuccess;
+		}, "Chọn hình ảnh sản phẩm");
+		
+		$.validator.addMethod("ValidIndustry", function (value, element) {
+			var isSuccess = false;
+			var noparent = $('#dataProductIndustryId1').val()==0
+			if (!noparent && !checkHasCustomIndustry()) {
+				isSuccess = true;
+			}	
+			return isSuccess;
+		}, "Chọn chuyên mục sản phẩm");
+		
+		//Product page
+		$("#productaddfrm").validate({
+		    rules: {
+			"data[product][price]": {
+			    ValidPrice: true,
+			},
+			"pic": {
+			    ValidProductPic: true
+			},
+			"industry[id][1]": {
+			    ValidIndustry: true
+			},
+		    }
+		});
+		
+		$("#dataProductPrice, #dataProductNewPrice").inputmask("decimal",{
+		    radixPoint:"", 
+		    groupSeparator: ".", 
+		    digits: 0,
+		    autoGroup: true,
+		    prefix: ''
+		});
+
+		$('.MenuItem<!--{/literal}-->{if $getvar.type == 'service'}21{else}4{/if}<!--{literal}-->').addClass('active');
+
+
+})
+</script>
+<!--{/literal}-->
+
+
+
+
+
+
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

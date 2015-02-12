@@ -395,11 +395,11 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 				flash("action_failed");
 			}else {
 				if (true) {
-					$productinfo['image1'] = pb_get_attachmenturl($productinfo['picture'], '../');
-					$productinfo['image2'] = pb_get_attachmenturl($productinfo['picture1'], '../');
-					$productinfo['image3'] = pb_get_attachmenturl($productinfo['picture2'], '../');
-					$productinfo['image4'] = pb_get_attachmenturl($productinfo['picture3'], '../');
-					$productinfo['image5'] = pb_get_attachmenturl($productinfo['picture4'], '../');
+					$productinfo['image1'] = pb_get_attachmenturl($productinfo['picture']);
+					$productinfo['image2'] = pb_get_attachmenturl($productinfo['picture1']);
+					$productinfo['image3'] = pb_get_attachmenturl($productinfo['picture2']);
+					$productinfo['image4'] = pb_get_attachmenturl($productinfo['picture3']);
+					$productinfo['image5'] = pb_get_attachmenturl($productinfo['picture4']);
 				}		   
 				if(!empty($productinfo['tag_ids'])){
 					$tag->getTagsByIds($productinfo['tag_ids'], true);
@@ -438,7 +438,19 @@ if (isset($_GET['do']) || isset($_GET['act'])) {
 		//var_dump($productinfo);
 		setvar("item",$productinfo);
 		$tpl_file = "product_edit";
-		template($tpl_file);
+		if($_GET['type'] == 'service') {
+			setvar("PageTitle","Dịch vụ");
+		} else {
+			setvar("PageTitle","Sản phẩm");
+		}
+		
+		if(detectMobile()) {	
+			$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+			template("m_product_edit");
+		} else {
+			template($tpl_file);
+		}
+		
 		exit;
 	}
 	if ($do == "price") {
@@ -610,7 +622,7 @@ if ($result) {
 		}
 		//echo $result[$i][$col_pic]."-";
 		
-		$result[$i]['image'] = pb_get_attachmenturl($result[$i][$col_pic], '../', 'small');
+		$result[$i]['image'] = pb_get_attachmenturl($result[$i][$col_pic], '', 'small');
 		$result[$i]['created'] = df($result[$i]['created'], "d-m-Y H:i");
 		$result[$i]['row'] = $i%2;
 		
@@ -642,6 +654,19 @@ setvar("nlink",$page->nextpage_link);
 setvar("plink", $page->previouspage_link);
 setvar("CheckStatus", explode(",",L('product_status', 'tpl')));
 uaAssign(array("pagenav"=>$page->getPagenav()));
-template($tpl_file);
+
+if($_GET['type'] == 'service') {
+	setvar("PageTitle","Dịch vụ");
+} else {
+	setvar("PageTitle","Sản phẩm");
+}
+
+if(detectMobile()) {	
+	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+	template("m_product");
+} else {
+	template($tpl_file);
+}
+
 
 ?>

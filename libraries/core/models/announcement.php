@@ -37,20 +37,21 @@ class Announcements extends PbModel {
 	function getOldestUnread($member_id=null, $member_type=null, $type_id=null) {
 		$conditions = array();
 		
-		$conditions[] = "status=1";
+		$conditions[] = "Announcement.status=1";
+		//$conditions[] = "r.id IS NULL";
 		
 		if (isset($type_id)) {
 			$conditions[] = "announcetype_id=".$type_id;
 		}
 		if (isset($member_type)) {
 			$conditions[] = "(membertypes LIKE '%".$member_type."%' OR membertypes = '')";
-		}
-		if (isset($member_id)) {
-			$conditions[] = "(read_members NOT LIKE '%[".$member_id."]%')";
-		}
+		}		
 		
-		$annouce = $this->findAll("*", null, $conditions, "created", 0, 1);
+		$joins = array("LEFT JOIN {$this->table_prefix}announcereads r ON r.announce_id=Announcement.id");
+		$joins[] = "LEFT JOIN {$this->table_prefix}members m ON r.member_id=m.id";
 		
+		$annouce = $this->findAll("Announcement.*,r.id as read_id,r.times", $joins, $conditions, "Announcement.created", 0, 1);
+		//var_dump($annouce);
 		if($annouce) {
 			return $annouce[0];
 		}

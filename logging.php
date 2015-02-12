@@ -52,8 +52,8 @@ if(isset($_POST['action']) && ($_POST['action']=="logging")){
 			$member->loggingCount($member->info['id']);
 			
 			$announce = $announcement->getOldestUnread($member->info["id"],$member->info["membertype_id"], 1);
-			if($announce) {
-				pheader("location:virtual-office/");
+			if(($announce["times"]==null || $announce["times"] < 4)) {
+				pheader("location:virtual-office/announce.php?announce=1&id=".$announce["id"]);
 				exit;
 			}
 			
@@ -136,7 +136,7 @@ function ua_referer($default = '') {
 	return $referer;
 }
 
-if(isset($_GET['action'])){
+if(isset($_GET['action'])) {
 	$action = trim($_GET['action']);
 	switch ($action) {
 		case "logout":

@@ -1,0 +1,223 @@
+        <!--{include file="../header.html" page_title="`$_profile` - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid page-inner">
+
+                    <h1 style="margin: 0">
+			{if $getvar.type == 'service'}
+				{lang service_management}
+			{else}
+				{lang product_management}
+			{/if}
+		    </h1>
+		    
+		    <a class="btn btn-success pull-right" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}">Thêm
+			{if $getvar.type == 'service'}
+				dịch vụ
+			{else}
+				sản phẩm
+			{/if}
+		    </a>
+		    <br style="clear: both" />
+		     <br />
+		    <form name="typefrm" id="TypeFrm" method="get" action="">
+		    <input type="hidden" name="order_by" id="OrderBy" value="{$getvar.order_by}" />
+		    {if $getvar.type == 'service'}<input type="hidden" name="type" id="type" value="service" />{/if}
+		   <table width="100%" class="product_sort">
+            <tr>
+              <td>
+		
+		<label style="">{lang category}: </label><br />
+		    <div id="dataIndustry" class="searchbox_mleft">
+			<select name="level1" id="dataProductIndustryId1" class="form-control level_1" ></select>
+			<select name="level2" id="dataProductIndustryId2" class="form-control level_2"></select>
+			<select name="level3" id="dataProductIndustryId3" class="form-control level_3" ></select>
+			<select name="level4" id="dataProductIndustryId4" class="form-control level_4" ></select>
+		    </div>
+		    <input class="form-control search_keyword" name="keyword" value="{$getvar.keyword}" placeholder="{if $getvar.type == 'service'}{lang service_name}{else}{lang product_name}{/if}/{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}" />
+		    <input style="width: 100px" class="btn btn-primary" type="button" value="{lang search}" onclick="submitForm();" /></td>
+
+            </tr>
+          </table>
+		  </form>
+ <br />
+	    <div class="sort_box">
+		<label>{lang sort}</label>
+		<select class="form-control" name="sort_type" id="sortType">
+		    <option value="created" selected="selected">{lang sort_created}</option>
+		    <option value="modified">{lang sort_modified}</option>		    
+		    <option value="name">{lang sort_name}</option>
+		    <option value="price">{lang sort_price}</option>
+		</select>
+		<select class="form-control" name="sort_order" id="sortOrder">
+		    <option value="DESC" selected="selected">{lang desc}</option>
+		    <option value="ASC">{lang asc}</option>		    
+		</select>
+	    </div>
+		    <br />
+		    
+		    <h3>Danh sách sản phẩm</h3>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 70px;">{lang picture}</th>
+                                            <th style="width:40%">{lang products}</th>
+                                            <th style="text-align: center">Ẫn/Hiện</th>
+					    <th style="text-align: center">Phê duyệt</th>
+                                            <th>Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                            <!--{foreach item=item from=$Items}-->
+                                                <tr>
+                                                    <td class="cart-picture-cols">
+                                                        <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                            <img src="{$item.image}" />
+                                                        </a>
+                                                    </td>
+                                                    <td class="cart-line-name">
+                                                        <a title="{$item.name}" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">
+							    {$item.name|truncate:80}
+							</a>
+							
+							{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
+                                                    </td>
+                                                    <td style="text-align: center">
+                                                        <!--{if $item.state eq 1}-->
+							    <a href="{$smarty.server.PHP_SELF}?do=state&type=down&id={$item.id}">
+								<span class="published_but glyphicon glyphicon-ok-sign"></span>
+							    </a>
+							<!--{else}-->
+							    <a href="{$smarty.server.PHP_SELF}?do=state&type=up&id={$item.id}">
+								<span class="unpublished_but glyphicon glyphicon-minus-sign"></span>
+							    </a>
+							<!--{/if}-->
+                                                    </td>
+                                                    <td style="text-align: center">
+                                                        {$item.validation}
+                                                    </td>
+						    <td class="action_col">
+							<!--{if $pb_userinfo.role == "admin"}<a class="btn btn-xs btn-default" href="product.php?do=admin_refresh&id={$item.id}&{$current_uri}">Lên nhất (admin)</a><br />{/if}-->
+			
+							<a class="btn btn-xs btn-default" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a>
+							<br /><a class="btn btn-xs btn-default" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">{lang click_preview}</a>
+							
+						    </td>
+                                                </tr>
+                                            <!--{/foreach}-->
+					    <tr>
+						<td colspan="5">{$pagenav}</td>
+					    </tr>
+                                    </tbody>
+                                </table>
+		    
+		    
+		    
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+
+		    <script src="../data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+		    <script language="javascript">
+			    var enter_name = "{lang enter_name}";
+			    var enter_website_error = "{lang enter_website_error}";
+			    var cache_path = "../";
+			    var app_language = '{$AppLanguage}';
+			    var area_id1 = {$item.area_id1|default:0} ;
+			    var area_id2 = {$item.area_id2|default:0} ;
+			    var area_id3 = {$item.area_id3|default:0} ;
+			    
+			    
+		    </script>
+		    
+		    
+    
+
+		<!--{literal}-->		   
+		    <script language="javascript">
+			function submitForm() {
+			    if ($('#cat_id').val() != '0') {
+				$('#TypeFrm').submit();
+			    }
+			}
+			    
+			    $(document).ready(function($) {
+				$('.MenuItem<!--{/literal}-->{if $getvar.type == 'service'}22{else}5{/if}<!--{literal}-->').addClass('active');
+				
+				$('#dataIndustry select').change(function() {
+				    //alert($(this).prev().val());
+				    var value = $(this).val();
+				    if (value == '0') {
+					//value = $(this).prev().val();
+					if (typeof($(this).prev().val()) != 'undefined') {
+					    value = $(this).prev().val();
+					}
+				    }
+				    
+				    $('#cat_id').val(value);
+				});
+				
+				$('#sortType').val('<!--{/literal}-->{$sortType}<!--{literal}-->');
+				$('#sortOrder').val('<!--{/literal}-->{$sortOrder}<!--{literal}-->');
+				$('#sortType').change(function() {
+				    $('#OrderBy').val($(this).val()+' '+$('#sortOrder').val());
+				    $('#TypeFrm').submit();
+				});
+				
+				$('#sortOrder').change(function() {
+				    $('#OrderBy').val($('#sortType').val()+' '+$(this).val());
+				    $('#TypeFrm').submit();
+				});
+			    });
+		    </script>
+		<!--{/literal}-->
+		
+		
+		
+<!-- {literal} -->
+<script>
+jQuery(document).ready(function($) {
+	setTimeout(function(){
+	    
+	    $("#dataProductIndustryId1").val("<!-- {/literal} -->{$getvar.level1|default:0}<!-- {literal} -->");
+	    $("#dataProductIndustryId1").trigger("change");
+	    
+	    setTimeout(function(){
+		$("#dataProductIndustryId2").val("<!-- {/literal} -->{$getvar.level2|default:0}<!-- {literal} -->");
+		$("#dataProductIndustryId2").trigger("change");
+		
+		setTimeout(function(){
+		    $("#dataProductIndustryId3").val("<!-- {/literal} -->{$getvar.level3|default:0}<!-- {literal} -->");
+		    $("#dataProductIndustryId3").trigger("change");
+		    
+		    setTimeout(function(){
+			$("#dataProductIndustryId4").val("<!-- {/literal} -->{$getvar.level4|default:0}<!-- {literal} -->");
+			$("#dataProductIndustryId4").trigger("change");
+		    }, 200);
+		    
+		}, 200);
+		
+	    }, 200);
+		   
+	}, 200);
+})
+</script>
+<!-- {/literal} -->
+
+		
+		
+		<!--{include file="_office_script.html"}-->
+		
+		<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+		<script src="../scripts/script_area.js"></script>
+		<script src="../scripts/script_industry.js"></script>
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
