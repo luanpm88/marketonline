@@ -1267,6 +1267,7 @@ time .time {
 }
 .page-inner img {
     max-width: 100%;
+    max-height: 100%;
 }
 .footerz {
     padding-top: 20px;
