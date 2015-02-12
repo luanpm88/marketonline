@@ -66,6 +66,7 @@
                                             <th style="width:40%">{lang products}</th>
                                             <th style="text-align: center">Ẫn/Hiện</th>
 					    <th style="text-align: center">Phê duyệt</th>
+                                            <th>Chức năng</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -83,10 +84,10 @@
 							</a>
 							
 							{if $item.price}<p style="color: #ec8a49">{$item.price} VNĐ</p>{/if}
-							<!--{if $pb_userinfo.role == "admin"}[<a class="btn btn-xs btn-default" href="product.php?do=admin_refresh&id={$item.id}&{$current_uri}">Lên nhất (admin)</a>]<br />{/if}-->
+							<!--{if $pb_userinfo.role == "admin"}<a class="btn btn-xs btn-default" href="product.php?do=admin_refresh&id={$item.id}&{$current_uri}">Lên nhất (admin)</a><br />{/if}-->
 			
-							[<a class="btn btn-xs btn-default" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a>]
-							[<br /><a class="btn btn-xs btn-default" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">{lang click_preview}</a>]
+							<a class="btn btn-xs btn-default" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">{lang modify}</a>
+							<br /><a class="btn btn-xs btn-default" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}" target="_blank" title="{lang click_preview}">{lang click_preview}</a>
                                                     </td>
                                                     <td style="text-align: center">
                                                         <!--{if $item.state eq 1}-->
