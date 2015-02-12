@@ -1306,11 +1306,9 @@ time .time {
     width: 48%;
     height: 235px;
 }
-.album_tab ul li a {
-    
+.album_tab ul li a {    
 }
-.album_tab ul li a img {
-    
+.album_tab ul li a img {    
 }
 .album_tab ul li p {
     display: block;
@@ -1643,7 +1641,7 @@ DIV.pagination2 A {
 }
 .price_2cols input {
     display: inline-block;
-    width: 140px;
+    width: 130px;
 }
 #dataIndustry select.lock {
     background: #efefef;
