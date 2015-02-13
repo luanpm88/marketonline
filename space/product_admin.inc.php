@@ -205,5 +205,11 @@ setvar("aaa", $area_a);
 setvar("paging", array('total'=>$amount));
 setvar('comid', $COMPANY_CURRENT['id']);
 setvar('userID', $COMPANY_CURRENT['member_id']);
-$space->render($tpl_file);
+setvar("pagetitle","Sản phẩm");
+if(detectMobile()) {
+	setvar("tree_type","product");
+	$space->render_mobile("space/product");
+} else {
+	$space->render($tpl_file);
+}
 ?>
