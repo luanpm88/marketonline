@@ -2614,7 +2614,13 @@ class Product extends PbController {
 		setvar("Link", $absolute_uri."virtual-office/pms.php");
 		setvar("Count", $pms->findCount(null, $conditions));
 		//setvar("Item", $result);
-		$this->render("product/ajaxInbox");
+		
+		if($_GET["layout"]=='mobile') {
+			$this->render("mobile/ajax_inbox");
+		} else {
+			$this->render("product/ajaxInbox");
+		}
+		
 	}
 	
 	function ajaxClearInbox()

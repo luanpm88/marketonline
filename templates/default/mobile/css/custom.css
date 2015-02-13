@@ -704,7 +704,7 @@ body {
 }
 .count_badge_outer {
     display: block;
-    margin-left: -13px;
+    margin-left: -11px;
     margin-top: -20px;
     position: absolute;
     text-align: center;
@@ -1662,4 +1662,69 @@ DIV.pagination2 A {
     width: 80px;
     float: left;
     margin-right: 20px;
+}
+.glyphicons-envelope:before {
+  content: "\2709";
+}
+.pms-toggle .glyphicon {
+    font-size: 28px;
+    margin-top: 0;
+}
+.top_inbox_content {
+    
+}
+#inboxhome {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 5px solid #ddd;
+    max-height: 400px;
+    overflow: auto;
+    padding: 10px;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+.pms-toggle {
+    position: inherit;
+}
+#quick_inbox_content {
+    
+}
+#quick_inbox_content ul {
+    padding: 0;
+}
+#quick_inbox_content ul li {
+    border-bottom: 1px solid #ddd;
+    line-height: 16px;
+    margin-bottom: 10px;
+    min-height: 50px;
+    padding-bottom: 10px;
+}
+#quick_inbox_content ul li a {
+    
+}
+#quick_inbox_content .announce_title {
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+#quick_inbox_content ul li .content {
+    font-size: 14px;
+    display: inline;
+}
+#quick_inbox_content ul li .timeinbox {
+    color: #333;
+    display: inline;
+    font-size: 14px;
+}
+#quick_inbox_content ul li p {
+    margin: 0;
+}
+#quick_inbox_content ul li img {
+    float: left;
+    margin-right: 10px;
+    width: 40px;
+}
+.top_inbox_content {
+    display: none;
 }

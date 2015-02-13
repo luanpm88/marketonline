@@ -16,6 +16,38 @@
 	</script>
     
         <script>
+	    
+	    function clearInbox() {
+		//code
+		$.ajax({
+			url: ROOT_URL+"index.php?do=product&action=ajaxClearInbox",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				
+			}
+		});
+	    }
+	    
+	    var getInbox_xhr;
+	    function getInbox() {
+		if(getInbox_xhr && getInbox_xhr.readystate != 4){
+			getInbox_xhr.abort();
+		}
+		//code
+		getInbox_xhr = $.ajax({
+			url: ROOT_URL+"index.php?do=product&action=ajaxInbox&layout=mobile",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			    $(".top_inbox_content").html(data);
+			    //alert($('<div>').html(data).find('.inbox_counter').html());
+			    if($('<div>').html(data).find('.inbox_counter').length > 0) {
+				var html = $('<div>').html(data).find('.inbox_counter').html();
+				$('.pms-toggle .badge').html(html);
+			    }
+			}
+		});
+	    }
+	    
 	    function scrollTopSearch() {
 		
 	    }
@@ -84,9 +116,9 @@
 		    if( console && console.log ) {
 			
 			//$('.cat-filter-items').html(html);
-                        $('.count_badge_outer .badge').html("");
+                        $('.cart_badge .badge').html("");
                         if(data!="0") {
-                            $('.count_badge_outer .badge').html(data);
+                            $('.cart_badge .badge').html(data);
                         }
 
 		    }
@@ -408,6 +440,17 @@
 		});
 		
 		
+		
+		//Inbox
+		$('body').on("click",".pms-toggle", function() {
+		    $('.top_inbox_content').toggle();
+		    if ($('.top_inbox_content').css("display")=="block") {
+			clearInbox();
+		    }
+		});
+		
+		getInbox();
+		setInterval("getInbox()", 10000);
             });
 	    
 	    
