@@ -7,7 +7,7 @@
 	<div class="announce_title">Hộp thư</div>
         <ul>
             {if !$Items}
-                <li style="text-align: center;font-size: 14px;height: auto">Hiện chưa có thông tin nào</li>
+                <li style="text-align: center;font-size: 14px;min-height: none">Hiện chưa có thông tin nào</li>
             {/if}
             <!--{loop $Items item level key}-->
                 <li class="item" {if !$item.status}class="unread"{/if}>
