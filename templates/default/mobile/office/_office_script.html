@@ -1,7 +1,283 @@
 <!--{literal}-->
 <script>
 	
+	function checkHasCustomIndustry() {
+		for (var i=1; i<5; i++) {
+			if(!$('#dataCustomProductIndustryId'+i).attr("disabled") && ($('#dataCustomProductIndustryId'+i).val() > 0 || ($('#dataCustomProductIndustryId'+i).val() == 0 && $('.pos_'+i+' input').val() != ""))){
+				return true;
+			}
+		}
+		return false;
+	}
+    
+	function preview(input,num) {
+		//alert('.photo-'+num);
+		var numz = num;
+		var numz_c = $('.ppic').length;
+		if (input.files && input.files[0]) {
+		    var reader = new FileReader();			    
+		    reader.onload = function (e) {
+			//alert('.photo-'+numz);
+			$('.photo-'+numz).attr('src', e.target.result);
+			$('.photo-'+numz).addClass('ppic');
+			
+			
+			//check default
+			if (numz_c == 0) {
+			    var numy = $('input[name="data[product][default_pic]"]:checked').val();
+			    $(".photo-"+(parseInt(numy)+1)).hasClass("ppic");
+			    var first = parseInt($(".ppic").first().parent().attr("rel"))-1;
+			    $('input[type=radio][value='+first+']').prop("checked",1);
+			}
+			    
+		    }
+		    reader.readAsDataURL(input.files[0]);
+		    
+		    
+		}
+	}
 	
+	function IsValidImageUrl(url) {
+		$("<img>", {
+		    src: url,
+		    error: function() { alert(url + ': ' + false); },
+		    load: function() { alert(url + ': ' + true); }
+		});
+	}
+	
+	function checkHasImage() {
+		if ($('#uploadfile0').val() || $('#uploadlinkfile').val() ||
+			$('#uploadfile1').val() || $('#uploadlinkfile1').val() ||
+			$('#uploadfile2').val() || $('#uploadlinkfile2').val() ||
+			$('#uploadfile3').val() || $('#uploadlinkfile3').val() ||
+			$('#uploadfile4').val() || $('#uploadlinkfile4').val() ||
+			$('#p_image img').length
+		) {
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	function checkHasCustomIndustry() {
+		for (var i=1; i<5; i++) {
+			if(!$('#dataCustomProductIndustryId'+i).attr("disabled") && ($('#dataCustomProductIndustryId'+i).val() > 0 || ($('#dataCustomProductIndustryId'+i).val() == 0 && $('.pos_'+i+' input').val() != ""))){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	function inserEditorFile(url, image) {
+		$('#uploadIVbutton').removeAttr('disabled');
+		$('#uploadIVbutton').attr('value','Tải Ảnh/Video');
+		if (image) {
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<img src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" />');
+		}
+		else
+		{
+			alert("Video đã được chèn thành công. Sau khi nhấn nút lưu ở dưới, bạn xem video này ở trang chi tiết.");
+			tinyMCE.activeEditor.execCommand('mceInsertContent', false, '<video controls width="640" height="360">'
+										+'<source src="{/literal}{the_url module=root-url}{literal}attachment/'+url+'" type="video/mp4" />'
+										+'Your browser does not support the video tag.</video>');
+		}		
+	}
+	
+	function checkUploadEditorInput() {
+		//code
+		if($('#uploadEditorFile').val() == '')
+		{
+			$('#uploadEditorFile').css('border', 'solid 1px red');
+			return false;
+		} else
+		{
+			$('#uploadEditorFile').css('border', 'none');
+			$('#uploadIVbutton').attr('disabled','disabled');
+			$('#uploadIVbutton').attr('value','Đang tải...');
+			return true;
+		}
+	}
+	
+	function deleteImage(id, pos) {
+		//code
+		if (parseInt($('.img_item input[type=radio]:checked').val())+1 == pos) {
+			//code
+			//alert(parseInt($('.img_item input[type=radio]:checked').val())-1);
+			
+			alert('Bạn không thể xóa hình chính. Vui lòng chọn hình khác làm hình chính trước khi xóa');
+			return;
+		}
+		
+		$('#thumbs .tim_'+pos).css('opacity', '0.2');
+		$.ajax({
+			url: "../index.php?do=product&action=ajaxDeleteImage&pid="+id+"&pos="+pos,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				if(data == '1')
+				{
+					$('#thumbs .tim_'+pos).fadeOut();
+					$('.inputfile_'+pos).fadeIn();
+				}
+			}
+		});
+	}
+	
+	function changeDefaultImage(id, pos) {
+		//code
+		$('#thumbs .tim_'+pos).css('opacity', '0.2');
+		$.ajax({
+			url: "../index.php?do=product&action=changeDefaultImage&pid="+id+"&pos="+pos,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data)
+				
+				$('#p_image img').attr('src', ($('#thumbs .tim_'+pos+' img').attr("src")));
+				$('#thumbs .tim_'+pos).css('opacity', '1');
+			}
+		});
+	}
+	
+	
+	function getCustomIndustriesByCurrent(id) {
+		if (id != 0) {
+			$('#dataCustomIndustry select').addClass("iloading");
+			$.ajax({
+				url: "../index.php?do=product&action=getCustomIndustriesByCurrent&id="+id+"&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					for (var i=1; i<5; i++) {
+						if ($(data).filter('#block_'+i).html()) {
+							//alert($(data).filter('#block_'+i).html());
+							$('#dataCustomIndustry .pos_'+i+' select').html($(data).filter('#block_'+i).html());
+							$('#dataCustomIndustry .pos_'+i).css('visibility', 'visible');
+							$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+							$('#dataCustomIndustry .pos_'+i+' input').css('display', 'none');
+							$('#dataCustomIndustry .pos_'+i+' select').removeAttr('disabled');
+						}
+						$('#dataCustomIndustry select').removeClass("iloading");
+					}
+					
+				}
+			});	
+		}
+		else
+		{
+			getCustomIndustriesByParent(0, 1);
+		}
+		
+	}
+	
+	function getCustomIndustriesByCustomParent(id, level) {
+		if (level > 3 || id == 0) {				
+			changeIndustry();			
+			if (id == 0) {
+				for (var i=parseInt(level)+1; i < 5; i++) {
+					$('#dataCustomIndustry .pos_'+i+' select').html('<option value="0">-<!--{/literal}-->{lang create_custom_industry}<!--{literal}-->-</option>');
+					$('#dataCustomIndustry .pos_'+i).css('visibility', 'hidden');
+					$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+					$('#dataCustomIndustry .pos_'+i+' select').attr('disabled','disabled');
+				}
+			}
+			return;
+		}
+
+		$('#dataCustomIndustry .pos_'+level+' select').addClass("iloading");
+
+		$.ajax({
+			url: "../index.php?do=product&action=getCustomIndustriesByCustomParent&id="+id+"&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+				//alert(data);
+				$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').html(data);				
+				changeIndustry();
+				$('#dataCustomIndustry .pos_'+level+' select').removeClass("iloading");
+			}
+		});
+	}
+	
+	function getCustomIndustriesByParent(id, level) {
+		if (id == 0 && level == 1) {
+			$('#dataCustomIndustry .pos_'+level+' select').addClass("iloading");
+			$.ajax({
+			url: "../index.php?do=product&action=getCustomIndustriesByParent&id=-1&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$('#dataCustomIndustry .pos_'+level+' select').html(data);
+					changeIndustry();
+					$('#dataCustomIndustry .pos_'+level+' select').removeClass("iloading");
+					//getCustomIndustriesByCustomParent($('#dataCustomIndustry .pos_'+level+' select').val(), level)
+				}
+			});	
+		}
+		else
+		{
+			$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').addClass("iloading");
+			$.ajax({
+				url: "../index.php?do=product&action=getCustomIndustriesByParent&id="+id+"&member_id=<!--{/literal}-->{$MEMBER.id}<!--{literal}-->",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').html(data);
+					changeIndustry();
+					$('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').removeClass("iloading");
+					//getCustomIndustriesByCustomParent($('#dataCustomIndustry .pos_'+(parseInt(level)+1)+' select').val(), parseInt(level)+1)
+				}
+			});
+		}
+	}
+	
+	function updateCustomIndustry() {
+		for (var i=1; i < 5; i++) {
+			if ($('#dataCustomIndustry .pos_'+i+' select').val() != 0) {
+				$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+				$('#dataCustomIndustry .pos_'+i+' input').css('display', 'none');
+			}
+			else
+			{
+				$('#dataCustomIndustry .pos_'+i+' input').removeAttr('disabled');
+				$('#dataCustomIndustry .pos_'+i+' input').removeAttr("style");				
+			}
+		}
+	}
+	
+	function changeIndustry(item) {
+		//alert($(item).val());
+		//getCustomIndustriesByParent($(item).val(), $(item).attr("rel"));
+		var index = parseInt($(item).attr("rel"));
+		
+		for (var i=4; i > 0; i--) {			
+			//getCustomIndustriesByParent($('#dataProductIndustryId'+i).val(), $('#dataProductIndustryId'+i).attr("rel"));
+			
+			if ($('#dataProductIndustryId'+i).val() != 0) {
+				$('#dataCustomIndustry .pos_'+i).css('visibility', 'hidden');
+				$('#dataCustomIndustry .pos_'+i+' input').attr('disabled','disabled');
+				$('#dataCustomIndustry .pos_'+i+' select').attr('disabled','disabled');
+			}
+			else
+			{
+				$('#dataCustomIndustry .pos_'+i).css('visibility', 'visible');
+				$('#dataCustomIndustry .pos_'+i+' input').removeAttr('disabled');
+				$('#dataCustomIndustry .pos_'+i+' select').removeAttr('disabled');
+				
+				for(var j=i+1; j < 5; j++)
+				{
+					if ((($('#dataCustomIndustry .pos_'+(j-1)+' select').val() != -1)) && $('#dataCustomIndustry .pos_'+(j-1)).css('visibility') == 'visible') {
+						$('#dataCustomIndustry .pos_'+j).css('visibility', 'visible');
+						$('#dataCustomIndustry .pos_'+j+' input').removeAttr('disabled');
+						$('#dataCustomIndustry .pos_'+j+' select').removeAttr('disabled');
+					}
+					else
+					{
+						$('#dataCustomIndustry .pos_'+j).css('visibility', 'hidden');
+						$('#dataCustomIndustry .pos_'+j+' input').attr('disabled','disabled');
+						$('#dataCustomIndustry .pos_'+j+' select').attr('disabled','disabled');
+					}
+				}
+			}
+		}
+		updateCustomIndustry();
+	}
 	
 	function readURL(input) {
 		if (input.files && input.files[0]) {
@@ -72,6 +348,162 @@
 		});
 		
 		
+		//Product page
+		$('.img_item input[type=radio]').change(function() {
+		changeDefaultImage('<!--{/literal}-->{$item.id}<!--{literal}-->', parseInt($(this).val())+1);
+	});
+	
+	//main image
+	var cur_id = parseInt($('.img_item input[type=radio]:checked').val())+1;
+	$('#p_image img').attr('src', $('#thumbs .tim_'+cur_id+' img').attr("src"));
+	
+	if (!$('#thumbs').children().length) {
+		$('#image_size_note').addClass('noImage');
+	}
+	
+	
+	
+	getCustomIndustriesByCurrent(<!--{/literal}-->{if $item.producttype_id}{$item.producttype_id}{else}0{/if}<!--{literal}-->);
+	
+	$('#dataCustomIndustry select').change(function(){
+		//changeIndustry();
+		getCustomIndustriesByCustomParent($(this).val(), $(this).attr("rel"));
+	});
+	$('#dataCustomIndustry input').keyup(function(){
+		for(var j=parseInt($(this).attr("rel"))+1; j < 5; j++)
+		{
+			if ($(this).val() != '' && j == parseInt($(this).attr("rel"))+1) {
+				$('#dataCustomIndustry .pos_'+j+' select').html('<option value="0">-<!--{/literal}-->{lang create_custom_industry}<!--{literal}-->-</option>');
+				$('#dataCustomIndustry .pos_'+j).css('visibility', 'visible');
+				$('#dataCustomIndustry .pos_'+j+' input').removeAttr('disabled');
+				$('#dataCustomIndustry .pos_'+j+' input').removeAttr("style");
+				$('#dataCustomIndustry .pos_'+j+' select').removeAttr('disabled');
+			}
+			else
+			{
+				$('#dataCustomIndustry .pos_'+j+' select').html('<option value="0">-<!--{/literal}-->{lang create_custom_industry}<!--{literal}-->-</option>');
+				$('#dataCustomIndustry .pos_'+j).css('visibility', 'hidden');
+				$('#dataCustomIndustry .pos_'+j+' input').attr('disabled', 'disabled');
+				$('#dataCustomIndustry .pos_'+j+' input').css("display", "none");
+				$('#dataCustomIndustry .pos_'+j+' select').attr('disabled', 'disabled');
+			}
+		}
+		
+	});
+	
+	$('#dataIndustry select').each(function( index ) {
+		  changeIndustry(this);
+		  //getCustomIndustriesByParent($(this).val(), $(this).attr("rel"));
+		//alert($(this).children().length);
+		if($(this).children().length == 1)
+		     {
+		       $(this).addClass('lock');
+		     }
+		     else
+		     {
+		      $(this).removeClass('lock');
+		     }
+		 });
+		 
+		 $('#dataIndustry select').change(function( index ) {
+			changeIndustry(this);
+			if ($(this).val() == 0 && $(this).attr("rel") != 1) {
+			   getCustomIndustriesByParent($(this).prev().val(), $(this).prev().attr("rel"));
+			}
+			else
+			{
+			   getCustomIndustriesByParent($(this).val(), $(this).attr("rel"));
+			}
+			   
+                        $('#dataIndustry select').each(function( index ) {
+                        //alert($(this).children().length);
+                           if($(this).children().length == 1)
+                           {
+                             $(this).addClass('lock');
+                           }
+                           else
+                           {
+                            $(this).removeClass('lock');
+                           }
+                       });
+		 });
+		 
+		 
+		$('body').on("click",".img-box", function() {
+		    $('#uploadfile'+$(this).attr("rel")).trigger("click");
+		});
+		
+		
+		$.validator.addMethod("ValidPrice", function (value, element) {
+			var isSuccess = false;
+			//alert(value.replace(/\./g,''));
+			if (parseInt(value.replace(/\./g,'')) > 1000) {
+				isSuccess = true;
+			}	
+			return isSuccess;
+		}, "Giá không hợp lệ");
+		
+		$.validator.addMethod("ValidProductPic", function (value, element) {
+			var isSuccess = false;
+			if ($('.ppic').length > 0) {
+				isSuccess = true;
+			}	
+			return isSuccess;
+		}, "Chọn hình ảnh sản phẩm");
+		
+		$.validator.addMethod("ValidIndustry", function (value, element) {
+			var isSuccess = false;
+			var noparent = $('#dataProductIndustryId1').val()==0
+			if (!noparent && !checkHasCustomIndustry()) {
+				isSuccess = true;
+			}	
+			return isSuccess;
+		}, "Chọn chuyên mục sản phẩm");
+		
+		//Product page
+		$("#productaddfrm").validate({
+		    rules: {
+			"data[product][price]": {
+			    ValidPrice: true,
+			},
+			"pic": {
+			    ValidProductPic: true
+			},
+			"industry[id][1]": {
+			    ValidIndustry: true
+			},
+		    }
+		});
+		
+		$("#dataProductPrice, #dataProductNewPrice").inputmask("decimal",{
+		    radixPoint:"", 
+		    groupSeparator: ".", 
+		    digits: 0,
+		    autoGroup: true,
+		    prefix: ''
+		});
+
+		
+		
+		
+		
+		//trade page
+		$("#TradeFrm").validate({
+		    rules: {
+			"data[trade][price]": {
+			    ValidPrice: true,
+			},
+			"pic": {
+			    ValidProductPic: true
+			},
+			"industry[id][1]": {
+			    ValidIndustry: true
+			},
+			"data[trade][type_id]": {
+				NotzeroOrEmpty: true,
+			}
+		    }
+		});
 	});
 </script>
 <!--{/literal}-->

@@ -116,11 +116,19 @@ if (isset($_GET['do'])) {
 			    $trade_info['expire_date'] = df($trade_info['expire_time']);
 			    //industry ids, 1 to n.
 			    if (!empty($trade_info['picture'])) {
-			    	$trade_info['image1'] = pb_get_attachmenturl($trade_info['picture'], "../");
-				$trade_info['image2'] = pb_get_attachmenturl($trade_info['picture1'], "../");
-				$trade_info['image3'] = pb_get_attachmenturl($trade_info['picture2'], "../");
-				$trade_info['image4'] = pb_get_attachmenturl($trade_info['picture3'], "../");
-				$trade_info['image5'] = pb_get_attachmenturl($trade_info['picture4'], "../");
+			    	$trade_info['image1'] = pb_get_attachmenturl($trade_info['picture']);
+			    }
+			    if (!empty($trade_info['picture1'])) {
+				$trade_info['image2'] = pb_get_attachmenturl($trade_info['picture1']);
+			}
+			    if (!empty($trade_info['picture2'])) {
+				$trade_info['image3'] = pb_get_attachmenturl($trade_info['picture2']);
+			}
+			    if (!empty($trade_info['picture3'])) {
+				$trade_info['image4'] = pb_get_attachmenturl($trade_info['picture3']);
+			}
+			    if (!empty($trade_info['picture4'])) {
+				$trade_info['image5'] = pb_get_attachmenturl($trade_info['picture4']);
 			    }
 			    if (!empty($trade_info['country_id'])) {
 			    	$trade_info['country'] = $countries[$trade_info['country_id']]['picture'];
@@ -182,13 +190,20 @@ if (isset($_GET['do'])) {
 			$r2 = $area->disSubOptions($trade_info['area_id'], "area_");
 			$trade_info = am($trade_info, $r1, $r2);
 			
-			
+			$trade_info["title"] = pb_lang_split($trade_info["title"]);
 			$trade_info['price'] = number_format($trade_info['price'], 0, ',', '.');
 			
-			
+			//var_dump($trade_info);
 			setvar("item",$trade_info);
 			$tpl_file = "offer_edit";
-			template($tpl_file);
+			setvar("PageTitle", "Thương mại");
+			if(detectMobile()) {	
+				$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+				template("m_offer_edit");
+			} else {
+				template($tpl_file);
+			}
+
 			exit;
 			break;
 		case "stat":
@@ -248,7 +263,7 @@ if (isset($_GET['do'])) {
         	$item['type_id'] = 2;
         	$item['title'] = $item['name'];
         	if (isset($item['picture'])) {
-        		$item['image'] = pb_get_attachmenturl($item['picture'], "../");
+        		$item['image'] = pb_get_attachmenturl($item['picture']);
         	}
         	setvar("type_id", $item['type_id']);
         	setvar("item", $item);
@@ -502,7 +517,7 @@ $result = $trade->findAll("*", null, $conditions, "CASE WHEN valid_status = 0 TH
 if (!empty($result)) {
 	for($i=0; $i<count($result); $i++){
 	    $result[$i]["price"] = number_format($result[$i]["price"], 0, ',', '.');;
-	    
+	    $result[$i]["name"] = pb_lang_split($result[$i]["title"]);
 	    $result[$i]['expire_date'] = df($result[$i]['expire_time']);
 	    
 	    $space_controller->setBaseUrlByUserId($tmp_personalinfo["space_name"], "offer");
@@ -518,7 +533,7 @@ if (!empty($result)) {
 			$col_pic = 'picture';
 		}
 		
-		$result[$i]['image'] = pb_get_attachmenturl($result[$i][$col_pic], '../', 'small');
+		$result[$i]['image'] = pb_get_attachmenturl($result[$i][$col_pic], '', 'small');
 		$result[$i]['created'] = df($result[$i]['created'], "d-m-Y H:i");
 		$result[$i]['row'] = $i%2;
 		
@@ -551,5 +566,12 @@ setvar("OFFER_MODERATE_POINT", $_PB_CACHE['setting']['offer_moderate_point']);
 setvar("CheckStatus", $typeoption->get_cache_type("check_status"));
 setvar("Amount", $amount);
 setvar("TimeStamp", $time_stamp);
-template($tpl_file);
+setvar("PageTitle", "Thương mại");
+
+if(detectMobile()) {	
+	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+	template("m_offer");
+} else {
+	template($tpl_file);
+}
 ?>

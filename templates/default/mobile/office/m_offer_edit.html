@@ -1,0 +1,277 @@
+        <!--{include file="../header.html" page_title="`$PageTitle`"}-->
+            	    
+	<!--{editor type="tiny_mce_new"}-->
+	    
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid page-inner">
+
+                    <h1>
+			{if !$smarty.get.id}
+			    Thêm thương mại
+			{else}
+			    Sửa: {$item.name}
+			{/if}
+		    </h1>
+                    
+		    {if $notice}
+			<div role="alert" class="alert alert-info">
+			    {$notice}
+			</div>
+		    {/if}
+					
+			    <form name="TradeFrm" id="TradeFrm" enctype="multipart/form-data" method="post" action="{$smarty.server.PHP_SELF}">
+				<!-- {formhash} -->
+				<input type="hidden" name="id" value="{$item.id}">
+				<input type="hidden" name="do" value="save" />
+				
+				
+				<!--{if !$item.id}-->
+				    <p>
+					<label>{lang theme_n}<span>*</span></label>
+					<input class="form-control required" type="text" id="dataMultivi-vn" name="data[multi][vi-vn]" value="{$item.title}">
+					
+				    </p>
+				 <!--{else}-->
+				    <p>
+					<label>{lang theme_n}<span>*</span></label>
+					<br />{$item.title}
+					
+				    </p>
+				<!--{/if}-->
+				
+				
+				
+				
+				<p>
+				    <div id="dataIndustry">
+						<label>{lang industry_product}<span>*</span> <i class="note">({lang main_industry_info})</i></label>
+						<br /><label id="dataProductIndustryId1-error" class="error" for="dataProductIndustryId1">Chọn chuyên mục sản phẩm</label>
+						<div id="dataIndustry">
+						    <span>Cấp 1:</span>
+						    <select name="industry[id][1]" id="dataProductIndustryId1" class="form-control level_1" rel="1"></select>
+						    <span>Cấp 2:</span>
+						    <select name="industry[id][2]" id="dataProductIndustryId2" class="form-control level_2" rel="2"></select>
+						    <span>Cấp 3:</span>
+						    <select name="industry[id][3]" id="dataProductIndustryId3" class="form-control level_3" rel="3"></select>
+						    <span>Cấp 4:</span>
+						    <select name="industry[id][4]" id="dataProductIndustryId4" class="form-control level_4" rel="4"></select>
+						</div>
+						<span class="industry_info"></span>
+				    </div>
+				</p>
+				
+
+				
+				<p>
+				    <label>Hình ảnh<span>*</span> <i class="note">(Nhấn lên hình để thay)</i></label>
+				    <div class="images_inputs">
+					<div class="box box-1">
+					    <div class="img-box" rel="1">
+						<!--{if $item.picture}-->
+						    <img class="preview_image product_photo ppic photo-1" src="{$item.picture}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-1" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[trade][default_pic]" value="0" {if $item.default_pic == 0}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic" type="file" id="uploadfile1" onchange="preview(this,1)" />
+					</div>
+					<div class="box box-2">
+					    <div class="img-box" rel="2">
+						<!--{if $item.picture1}-->
+						    <img class="preview_image product_photo ppic photo-2" src="{$item.image2}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-2" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[trade][default_pic]" value="1" {if $item.default_pic == 1}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic1" type="file" id="uploadfile2" onchange="preview(this,2)" />
+					</div>
+					<div class="box box-3">
+					    <div class="img-box" rel="3">
+						<!--{if $item.picture2}-->
+						    <img class="preview_image product_photo ppic photo-3" src="{$item.image3}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-3" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[trade][default_pic]" value="2" {if $item.default_pic == 2}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic2" type="file" id="uploadfile3" onchange="preview(this,3)" />
+					</div>
+					<div class="box box-4">
+					    <div class="img-box" rel="4">
+						<!--{if $item.picture3}-->
+						    <img class="preview_image product_photo ppic photo-4" src="{$item.image4}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-4" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[trade][default_pic]" value="3" {if $item.default_pic == 3}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic3" type="file" id="uploadfile4" onchange="preview(this,4)" />
+					</div>
+					<div class="box box-5">
+					    <div class="img-box" rel="5">
+						<!--{if $item.picture4}-->
+						    <img class="preview_image product_photo ppic photo-5" src="{$item.image5}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-5" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[trade][default_pic]" value="4" {if $item.default_pic == 4}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic4" type="file" id="uploadfile5" onchange="preview(this,5)" />
+					</div>
+					
+				    </div>
+				    <label id="uploadfile1-error" class="error" for="uploadfile1">Giá không hợp lệ</label>
+				    
+				    <br style="clear: both" />
+				</p>
+				
+				
+				<!--{if $item.id}-->
+					<p>
+					  <label>{lang direction}:</label>
+					  <!--{if $item.if_urgent=="1"}-->{lang urgent}<!--{/if}-->{$TradeTypes[$item.type_id]}
+					</p>
+					
+					<p>
+					  <label>{lang adwords}:</label>
+					  {if $item.adwords}{$item.adwords}{else}<br /><input class="form-control" name="data[trade][adwords]" id="trade_adwords" type="text" value="{$item.adwords}"/>{/if}</td>
+					</p>
+					<p>
+					  <label>{lang duration}:</label>
+					  {$item.expire_date}
+					</p>
+				<!-- {else} -->
+				
+				<p>
+				    <label>{lang release}<span>*</span></label>
+				    
+				    <select name="data[trade][type_id]" id="DataTradeTypeId" class="form-control required">
+					    <option value="0">{lang select}</option>
+					    <!-- {foreach from=$select_tradetypes name=f1 item=f1} -->
+					    <!-- {if $f1.child} -->
+					    <optgroup label="{$f1.name}">
+					    <!-- {foreach from=$f1.child name=f2 item=f2} -->
+						    <option value="{$f2.id}">{$f2.name}</option>
+					    <!-- {/foreach} -->
+					    </optgroup>
+					    <!-- {else} -->
+					    <option value="{$f1.id}">{$f1.name}</option>
+					    <!-- {/if} -->
+					    <!-- {/foreach} -->
+				    </select>
+
+				</p>
+				
+				
+				<br />
+				<p>
+				    <label>{lang duration}</label>
+				    <br />{html_radios name="expire_days" options=$OfferExpires checked=$item.expire_days|default:10 separator=" "}
+				</p>
+				
+				<!--{/if}-->
+				
+				<br />
+				{if true || $pb_userinfo.checkout || $pb_userinfo.school_id}
+					<p>
+						<label>Sinh viên</label>
+						<br />
+						<input style="" {if $item.for_student}checked="checked"{/if} type="checkbox" value="1" name="data[trade][for_student]" />
+						Dành cho sinh viên
+					</p>
+				{/if}
+				<br />
+				<p>
+				    <label>{lang market}</label>
+				    <input class="form-control" placeholder="{lang market_note}" name="data[trade][market]" type="text" id="dataProductMarket" value="{$item.market}"></font>					   
+				</p>
+				
+				
+				<p>
+				    <label>{lang product_brand}</label>
+
+					  <select class="form-control" name="data[trade][brand_id]" id="brand_id_select">
+					<option value="0">{lang select}</option>
+					{html_options options=$UserBrands selected=$item.brand_id}
+				      </select> 
+					  
+				</p>
+				
+				
+				
+				    <!--{foreach from=$Forms name=form item=item1 key=key1}-->
+					<p>
+					  <label> {$item1.label}{lang colon}</label>
+					    <input class="form-control" name="data[formitem][{$key1}]" type="text" id="{$item1.id}" value="{$item1.value}"></font></td>
+					</p>
+				    <!--{/foreach}-->
+				    
+				
+				    
+				    
+				<p>
+				    <label>{lang tags_n}</label>
+				    <input class="form-control" name="data[tag]" type="text" id="tag" value="{$item.tag}" title="{lang space_separate}" /><label class="field_notice">{lang space_separate}</label>
+				</p>
+				    
+				<p>    
+				    <label style="width: 100%">{lang the_price_n}<span>*</span></label>
+				    <span class="price_2cols">
+					<input class="form-control" name="data[trade][price]" type="text" id="dataProductPrice" value="{$item.price}">
+					<strong>VNĐ / </strong>
+					<input class="form-control" placeholder="Đơn vị sản phẩm (Ví dụ: cái, m2,...)" name="data[trade][price_unit]" type="text" id="dataProductPriceUnit" value="{$item.price_unit}">
+					<br /><label id="dataProductPrice-error" class="error" for="dataProductPrice">Giá không hợp lệ</label>
+				    </span>
+				</p>
+			    
+			    
+			    
+						<p></p>
+						<p></p>
+						<br />
+						<input class="btn btn-primary" style="width: 100%" name="save" type="submit" value="{lang save}" />
+						<p></p><br />
+						<a style="width: 100%" class="btn btn-default" href="offer.php">
+						    <span class="glyphicon glyphicon-chevron-left"></span> Về danh sách</a>
+						
+					</form>
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+<script src="../data/cache/{$JsLanguage}/locale.js" charset="{$charset}"></script>
+<script>
+var cache_path = "../";
+var app_language = '{$AppLanguage}';
+var area_id1 = {$item.area_id1|default:0} ;
+var area_id2 = {$item.area_id2|default:0} ;
+var area_id3 = {$item.area_id3|default:0} ;
+var industry_id1 = {$item.industry_id1|default:0} ;
+var industry_id2 = {$item.industry_id2|default:0} ;
+var industry_id3 = {$item.industry_id3|default:0} ;
+var industry_id4 = {$item.industry_id4|default:0} ;
+var type_id = {$type_id|default:2} ;
+
+$('.MenuItem1').addClass('active');
+</script>
+<!-- {literal} -->
+<script>
+$(function(){
+  $('#DataTradeTypeId').attr('value', type_id);
+});
+</script>
+<!-- {/literal} -->
+<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+<script src="../scripts/script_area.js"></script>
+<script src="../scripts/script_industry.js"></script>
+
+        <!--{include file="_office_script.html"}-->
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
