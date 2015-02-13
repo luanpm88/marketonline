@@ -138,7 +138,8 @@
 	<img src="{$WebRootUrl}{$Info.groupimage}" alt="{$Info.groupname}" /><br />({$COMPANY.clicked})
     </div>
     <div style="margin-top: 5px;" class="childcat">
-	<span><a id="policy_but" href="#policy_content">Chính sách<br><span style="font-size: 14px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span></a></span>
+	<span>
+		<a id="policy_but" href="#policy_content"><br><span style="font-size: 14px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span></a></span>
     </div>
     
     
