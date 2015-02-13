@@ -1,0 +1,62 @@
+        <!--{include file="../header.html" page_title="Đơn đặt hàng - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="page-inner meminfo-box">
+                        <div class="main_content">
+			    <div class="blank"></div>
+				
+			    <div class="offer_info_title"><h1>Tin nhắn</h1></div>
+			    
+			    <div class="hint" style="color: red">{$message}</div>
+				 <form name="sendmsgfrm" id="sendmsgfrm" action="pms.php" method="post">
+				 <!-- {formhash} -->
+				 
+				<p>
+				    <label>{lang send_to}<span>*</span></label>
+				    <input  name="to" type="text" id="To" size="30" value="{$item.to}" class="form-control required">
+					<font color="#666666">{lang send_other_username}</font>
+				</p>
+				
+				<p>
+				    <label>{lang theme_n}<span>*</span></label>
+				    <input name="pms[title]" type="text" id="title" size="30" value="{$mm.title}" class="form-control required">
+				</p>
+				
+				<p>
+				    <label>{lang content}<span>*</span></label>
+				    <textarea name="pms[content]" id="Content" cols="50" rows="6" wrap="VIRTUAL" class="form-control required">{$mm.content}</textarea>
+				</p>
+				<p></p>
+				<input class="btn btn-primary" name="send" type=submit id="Send" value=" {lang send} ">
+				    
+				 
+				 </form>
+			</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+{literal}
+    <script>
+	$(document).ready(function() {
+	    $("#sendmsgfrm").validate();
+	});
+	
+    </script>
+{/literal}
+		
+		<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+		<script src="../scripts/script_area.js"></script>
+		<script src="../scripts/script_industry.js"></script>
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->

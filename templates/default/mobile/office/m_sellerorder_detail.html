@@ -1,0 +1,189 @@
+        <!--{include file="../header.html" page_title="Đơn đặt hàng - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="page-inner meminfo-box">
+                        <h1>Chi tiết đơn hàng</h1>
+			Ngày đặt hàng: <label>{$Info.created}</label>
+                        <form name="offer_list_frm" id="cart" method="GET">
+                            <input type='hidden' name="do" value="product" />
+                            <input type='hidden' name="action" value="confirmorder" />
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Thông tin người mua</strong></div>
+                                <div class="panel-body">
+                                    <div class="info-2line-group">
+                                        <p>
+                                                <label>{lang fullname}</label>
+                                                {$Info.fullname}
+                                        </p>
+                                        
+                                        <p>
+                                                <label>{lang mobile}</label>
+                                                {$Info.mobile}
+                                        </p>
+                                        
+                                        <p>
+                                                <label>{lang email}</label>
+                                                {$Info.email}
+                                        </p>
+                                        
+                                                
+                                        
+                                        <p>
+                                                <label>{lang address}</label>
+                                                {$Info.address}
+                                        </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Thông tin người nhận</strong></div>
+                                <div class="panel-body">
+                                    <div class="info-2line-group">
+                                        <p>
+                                                <label class="title">{lang fullname}</label>
+                                                {$Info.receiver_fullname}
+                                        </p>
+                                        
+                                        <p>
+                                                <label>{lang mobile}</label>
+                                                {$Info.receiver_mobile}
+                                        </p>
+                                        
+                                        <p>
+                                                <label>{lang email}</label>
+                                                {$Info.receiver_email}
+                                        </p>
+                                        
+                                                
+                                        
+                                        <p>
+                                                <label>{lang address}</label>
+                                                {$Info.receiver_address}
+                                        </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Thông tin nhà cung cấp</strong></div>
+                                <div class="panel-body">
+                                    <div class="info-2line-group">
+                                        <p>
+                                                <label>{lang space_name}</label>
+                                                {$Seller.shop_name}
+                                        </p>
+                                        
+                                        <p>
+                                                <label>{lang mobile}</label>
+                                                {$Seller.mobile}
+                                        </p>
+                                        
+                                        <p>
+                                                <label>{lang email}</label>
+                                                {$Seller.email}
+                                        </p>
+                                        
+                                                
+                                        
+                                        <p>
+                                                <label>{lang address}</label>
+                                                {$Seller.address}
+                                        </p>
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Ghi chú đơn hàng</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <p>{$Info.message}</p>
+                                </div>
+                            </div>
+                            
+                            <div class="panel panel-default">
+                                <!-- Default panel contents -->
+                                <div class="panel-heading"><strong>Chi tiết đơn hàng</strong>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 70px;">{lang picture}</th>
+                                                <th style="width:30%">{lang products}</th>
+                                                <th style="text-align: center">{lang quantity} <span id="update_quantity_but"></span></th>
+                                                <th style="text-align: right">{lang sum_price}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                                <!--{loop $StickyItems.items sticky sticky_offer}-->
+                                                    <tr>
+                                                        <td class="cart-picture-cols">
+                                                            <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                                <img src="{$sticky.image}" />
+                                                            </a>
+                                                        </td>
+                                                        <td class="cart-line-name">
+                                                            <a href="{the_url module=product id=`$sticky.p_id` product_name=`$sticky.p_name`}">
+                                                                {$sticky.p_name}
+                                                            </a>
+                                                        </td>
+                                                        <td style="text-align: center">
+                                                            x{$sticky.quantity}
+                                                        </td>
+                                                        <td style="text-align: right">
+                                                            {$sticky.p_total} (VNĐ)                                                
+                                                        </td>                                
+                                                    </tr>
+                                                <!--{/loop}-->
+                                                <tr>
+                                                    <td colspan="4" style="text-align: right">
+                                                        Tổng cộng: <strong>{$StickyItems.total} (VNĐ) </strong>
+                                                    </td>
+                                                </tr>
+                                                
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <p></p>
+                                
+                                
+                                <a href="sellerorder.php" class="meminfo_but btn btn-primary"><< Trở lại danh sách</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+		
+<script>
+    $('.MenuItem8').addClass('active');
+</script>
+		
+		<script src="../scripts/multi_select.js" charset="{$charset}"></script>
+		<script src="../scripts/script_area.js"></script>
+		<script src="../scripts/script_industry.js"></script>
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
