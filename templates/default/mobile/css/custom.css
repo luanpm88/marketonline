@@ -1698,6 +1698,7 @@ DIV.pagination2 A {
     margin-bottom: 10px;
     min-height: 50px;
     padding-bottom: 10px;
+    list-style: none;
 }
 #quick_inbox_content ul li a {
     

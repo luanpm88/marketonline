@@ -22,6 +22,15 @@
 		
 		<div class="row moderator_actions">
 		    <h2>Kiểm duyệt</h2>
+		    
+		    {if $pending}
+			<div role="alert" class="alert alert-danger">
+			    <div class="item_pending">{$pending}</div>
+			</div>
+			    
+		    {/if}
+		    
+		    
 			{if $permissions.unvalid}
 				<a href="#unvalid" class="title unvalid" title="Bài viết không hợp lệ">Bài viết không hợp lệ?</a>
 				<div id="unvalid" style="">
