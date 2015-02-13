@@ -72,7 +72,7 @@
 	      <td style="text-align: left{if $item.status==0};font-weight: 700{/if}" align="left"><a  style="color: #3B984C" href="pms.php?do=view&id={$item.id}{if $smarty.get.type}&type=sent{/if}">{$item.title}</a></td>
               
 	      
-	      {if $smarty.get.type}
+		{if $smarty.get.type}
 			<td style="text-align: left">{$item.cache_to_username}</td>
 		{else}
 			<td style="text-align: left">{$item.cache_from_username}</td>

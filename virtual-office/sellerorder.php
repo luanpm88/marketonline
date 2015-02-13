@@ -75,12 +75,20 @@ if (isset($_GET['do'])) {
 						
 						$datas["total"] = number_format($datas["total"], 0, ',', '.');
 						
+						$info["created"] = date("Y-m-d H:i:s",$info["created"]);
+						
 						setvar("StickyItems", $datas);
 						setvar("Info", $info);
 						setvar("total", $cartitem->total);
 						setvar("Seller", $seller);
-						
-						template("sellerorder_detail");
+						setvar("PageTitle","Đơn đặt hàng");
+
+						if(detectMobile()) {	
+							$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+							template("m_sellerorder_detail");
+						} else {
+							template("sellerorder_detail");
+						}
 						exit;
 	}
 }
@@ -127,5 +135,13 @@ if (!empty($result)) {
 }
 
 setvar("ByPages",$page->pagenav);
-template($tpl_file);
+
+setvar("PageTitle","Đơn đặt hàng");
+
+if(detectMobile()) {	
+	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+	template("m_sellerorder");
+} else {
+	template($tpl_file);
+}
 ?>

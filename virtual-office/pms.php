@@ -39,7 +39,16 @@ if (isset($_GET['do'])) {
 			$item['to'] = $_GET['to'];
 		}
 		setvar("item", $item);
-		template("pms_send");
+		
+		setvar("PageTitle","Hộp thư");
+
+			if(detectMobile()) {	
+				$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+				template("m_pms_send");
+			} else {
+				template("pms_send");
+			}
+
 		exit;
 	}
 	if($do == "view" && !empty($id)){
@@ -51,7 +60,16 @@ if (isset($_GET['do'])) {
 			$message_info['pubdate'] = df($message_info['created']);
 			setvar("item",$message_info);
 			$tpl_file = "pms_detail";
-			template($tpl_file);
+			
+			setvar("PageTitle","Hộp thư");
+
+			if(detectMobile()) {	
+				$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+				template("m_pms_detail");
+			} else {
+				template($tpl_file);
+			}
+
 			exit;
 		}
 	}
@@ -118,5 +136,14 @@ if (!empty($result)) {
 }
 //var_dump($result);
 setvar("ByPages",$page->pagenav);
-template($tpl_file);
+
+setvar("PageTitle","Hộp thư");
+
+if(detectMobile()) {	
+	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+	template("m_pms");
+} else {
+	template($tpl_file);
+}
+
 ?>
