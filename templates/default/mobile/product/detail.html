@@ -19,6 +19,31 @@
                         <!--{include file="`$theme_name`/mobile//product/_product_detail_rightbar_paid.html"}-->
                     {/if}
                 </div>
+		
+		<div class="row moderator_actions">
+		    <h2>Kiểm duyệt</h2>
+			{if $permissions.unvalid}
+				<a href="#unvalid" class="title unvalid" title="Bài viết không hợp lệ">Bài viết không hợp lệ?</a>
+				<div id="unvalid" style="">
+					<form action="{the_url module='root-url'}index.php?do=product&action=validation" onsubmit="{literal}if($('.mod_message').val().trim() != '') {return true} else {$('.mod_message').addClass('error');$('.mod_message').focus();return false}{/literal}" class="moderator_form" method="POST">
+						<label>Lý do không hợp lệ: </label>
+						<input type="hidden" name="id" value="{$item.id}" />
+						<input type="text" name="message" class="mod_message" />
+						<input class="btn btn-primary" type="submit" name="unvalid" value="Gửi" />
+					</form>
+				</div>
+			{/if}
+			{if $permissions.valid}
+				<a href="#valid" class="title" title="Bài viết hợp lệ">Bài viết hợp lệ?</a>
+				<div id="valid" style="">
+					<form action="{the_url module='root-url'}index.php?do=product&action=validation" class="moderator_form" method="POST">
+						<p>Xác nhận bài viết này hợp lệ?</p>
+						<input type="hidden" name="id" value="{$item.id}" />
+						<input class="btn btn-primary" type="submit" name="valid" value="Hợp lệ" />
+					</form>
+				</div>
+			{/if}
+		</div>
                 
                 <div class="row">
                                         

@@ -1728,3 +1728,18 @@ DIV.pagination2 A {
 .top_inbox_content {
     display: none;
 }
+.moderator_actions {
+    background: none repeat scroll 0 0 #fff;
+    border: 1px solid #ddd;
+    margin: 10px -15px !important;
+    padding: 10px;
+}
+.moderator_actions .title {
+    background: none repeat scroll 0 0 #efefef;
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+}
+.moderator_actions h2 {
+    margin: 5px 0 15px;
+}
