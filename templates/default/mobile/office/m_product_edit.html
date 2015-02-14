@@ -99,9 +99,26 @@
 				    <br style="clear: both" />
 				</p>
 				
-				
-				
 				<p>
+				<label style="width: 100%">{lang the_price_n}<span>*</span></label>
+				<span class="price_2cols">
+				    <input class="form-control" name="data[product][price]" type="text" id="dataProductPrice" value="{if $item.price}{$item.price}{/if}">
+				    <strong>VNĐ / </strong>
+				    <input class="form-control" placeholder="Đơn vị sản phẩm (Ví dụ: cái, m2,...)" name="data[product][price_unit]" type="text" id="dataProductPriceUnit" value="{$item.price_unit}">
+				    <br /><label id="dataProductPrice-error" class="error" for="dataProductPrice">Giá không hợp lệ</label>
+				</span>
+			    </p>
+			    
+			    <p>
+				<label style="width: 100%">{lang the_new_price}{lang colon}</label>
+				<span class="price_2cols">
+				    <input class="form-control" name="data[product][new_price]" type="text" id="dataProductNewPrice" value="{if $item.new_price}{$item.new_price}{/if}">
+				    <strong>VNĐ</strong>
+				    <input style="width: 100%;margin-top: 5px" class="form-control" placeholder="Ghi chú (Ví dụ: giá khuyến mãi)" name="data[product][price_note]" type="text" id="dataProductPriceNote" value="{$item.price_note}">
+				</span>
+			    </p>
+				
+				<p style="display: none">
 				    <div id="dataIndustry">
 						<label>{lang industry_product}<span>*</span> <i class="note">({lang main_industry_info})</i></label>
 						<br /><label id="dataProductIndustryId1-error" class="error" for="dataProductIndustryId1">Chọn chuyên mục sản phẩm</label>
