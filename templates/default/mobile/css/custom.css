@@ -1682,6 +1682,7 @@ DIV.pagination2 A {
     position: absolute;
     right: 0;
     width: 100%;
+    z-index: 100;
 }
 .pms-toggle {
     position: inherit;

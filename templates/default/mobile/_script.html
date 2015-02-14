@@ -17,6 +17,12 @@
     
         <script>
 	    
+	    function hideTopmenu() {
+		$('.top_inbox_content').hide();		
+		$('#search-panel').removeClass("in");
+		$('#navbar').removeClass("in");
+	    }
+	    
 	    function clearInbox() {
 		//code
 		$.ajax({
@@ -445,12 +451,23 @@
 		$('body').on("click",".pms-toggle", function() {
 		    $('.top_inbox_content').toggle();
 		    //if ($('.top_inbox_content').css("display")=="block") {
+			$('#search-panel').removeClass("in");
 			clearInbox();
 		    //}
 		});
 		
 		getInbox();
 		setInterval("getInbox()", 10000);
+		
+		
+		
+		//hide topmenu
+		
+		$('body').on("click",".search-toggle,.user-toggle",function(){
+		    hideTopmenu();
+		});
+		
+		
             });
 	    
 	    
