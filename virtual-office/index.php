@@ -18,7 +18,6 @@ if (!empty($memberinfo)) {
 	//$memberinfo["level1_point"] = $memberinfo["level1_point"]*300000;
 	$memberinfo["level1_cash"] = number_format($memberinfo["level1_point"]*1000000*0.1, 0, ',', '.')." VNĐ";
 	
-	
 	$service_info = false;
 	$membergroup_id = $memberinfo['membergroup_id'];
 	if (empty($memberinfo['service_end_date']) or empty($memberinfo['service_start_date'])) {

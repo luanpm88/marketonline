@@ -19,48 +19,24 @@
 
 <div role="alert" class="alert alert-danger">Mã bảo mật không đúng. Vui lòng nhập lại!</div>
 {/if}
-                        
-                            <h1 style="margin-bottom: 20px;font-size: 18px;" class="page-title">
-            {lang contact_help}</h1>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                                <div class="five columns contact_page_left" style="">
 
-
-                
-<div>
-                <p style="font-size: 19px;margin-bottom: 2px; font-weight: bold">{$pb_setting.owner_name}</p>
-<p><label>{lang office_room}</label> {$pb_setting.owner_office}<br />
-<label>{lang vpgd}</label> {$pb_setting.owner_vpgd}<br />
-<label>{lang phone}</label> {$pb_setting.owner_phone}<br />
-<label>{lang fax}</label> {$pb_setting.owner_fax}<br />
-<label>{lang email}</label> <a title="Liên hệ với chúng tôi qua email" onclick="" href="mailto:{$pb_setting.owner_email}" rel="noreferrer">{$pb_setting.owner_email}</a><br />
-<label>{lang hotline}</label> {$pb_setting.owner_hotline}<br />
-</p>
-</div>
-
-
-
-
-</div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+   
 
 
 
@@ -119,6 +95,38 @@
      
             </div>
     
+    <div class="fifteen columns">
+      <div id="map" style="width: 100%;height: 300px;margin-top: 20px;"></div>
+      <!--{literal}-->
+            <script type="text/javascript">
+        jQuery(document).ready(function () {
+            //jQuery("#map").gmap3(
+            //    { action:'addMarker',
+            //      address:"444/4 Cách Mạng Tháng 8, Phường 11, Quận 3, TP.HCM",
+            //      map:{
+            //        center:true,
+            //        zoom:14,
+            //        scrollwheel: false
+            //      }});
+          
+            ////google maps
+            //function initialize() {
+            //    var mapOptions = {
+            //        center: { lat: -34.397, lng: 150.644},
+            //        zoom: 8
+            //    };
+            //    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            //}
+            //google.maps.event.addDomListener(window, 'load', initialize);
+            
+            initMapWithLatLng(10.784031,106.670205);
+            
+
+        });
+      </script>
+            <!--{/literal}-->
+
+    </div>
     
     
     

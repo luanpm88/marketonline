@@ -69,7 +69,7 @@
       marker = true;
     }
     if (typeof(zoom)=='undefined' || zoom==null) {
-      zoom = 13;
+      zoom = 14;
     }
     var latlng = new google.maps.LatLng(lat, lng);
     var mapOptions = {
