@@ -26,7 +26,11 @@
 						</label>
 						<div id="MemberLogo">
 						    <div onclick="$('#com_pic').trigger('click')" class="logo-box crop-img-square" style="">
-							
+							<!--{if $item.logo}-->
+							<img class="preview_image" id="main_photo" src="{$item.logo}" />
+							<!--{else}-->
+							<img class="preview_image" id="main_no_photo" src="../images/company_nopic.png" />
+							<!--{/if}-->
 						    </div>
 						    (Nhấn vào ảnh để thay)
 						    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
