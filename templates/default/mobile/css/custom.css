@@ -1800,7 +1800,12 @@ body {
     display: block;
 }
 DIV.pagination2 {
-    line-height: 39px;
+    line-height: 35px;
     word-break: normal !important;
-    word-wrap: normal !important;
+    word-wrap: break-word;
+}
+DIV.pagination2 A {
+    padding: 0 10px !important;
+    display: inline-block;
+    margin-bottom: 5px;
 }
