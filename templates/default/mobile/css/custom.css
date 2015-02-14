@@ -1799,3 +1799,8 @@ body {
     overflow-x: hidden;
     display: block;
 }
+DIV.pagination2 {
+    line-height: 39px;
+    word-break: normal;
+    word-wrap: normal;
+}
