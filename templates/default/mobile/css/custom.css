@@ -133,7 +133,7 @@ body {
     display: block;
     float: left;
     overflow: auto;
-    width: 90%;
+    width: 100%;
 }
 .mobile-horizon-slider ul {
     float: left;
