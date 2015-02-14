@@ -1561,6 +1561,7 @@ label.error {
 }
 #wrapper.toggled #sidebar-wrapper {
     width: 280px;
+    height: 40000px;
 }
 #wrapper.toggled {
     padding-left: 280px;
@@ -1808,7 +1809,4 @@ DIV.pagination2 A {
     padding: 0 10px !important;
     display: inline-block;
     margin-bottom: 5px;
-}
-#wrapper.toggled #sidebar-wrapper {
-    position: fixed;
 }
