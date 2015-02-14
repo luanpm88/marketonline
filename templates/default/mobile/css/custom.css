@@ -1753,11 +1753,21 @@ body {
     overflow-x: hidden;
 }
 .shop-stats {
-    
+    background: none repeat scroll 0 0 #fff;
+    width: 100%;
 }
 .shop-stats ul {
-    
+    margin: 0;
+    padding: 0;
 }
 .shop-stats ul li {
-    
+    border-right: 1px solid #ddd;
+    display: inline-block;
+    list-style: outside none none;
+    padding: 5px;
+    text-align: center;
+    width: 49%;
+}
+.shop-stats ul li:last-child {
+    border: 0;
 }

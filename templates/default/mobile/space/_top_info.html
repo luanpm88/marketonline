@@ -45,9 +45,11 @@
 <div class="shop-stats">
     <ul>
         <li>
-            {if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}
+            <span class="glyphicon glyphicon-home"></span> {if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}
         </li>
-        <li>{$COMPANY.clicked}</li>
+        <li>
+            <span class="glyphicon glyphicon-stats"></span> {$COMPANY.clicked}
+        </li>        
     </ul>
 </div>
 
