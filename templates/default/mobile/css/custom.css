@@ -1564,7 +1564,6 @@ label.error {
 }
 #wrapper.toggled {
     padding-left: 280px;
-    position: absolute;
 }
 .logo-box {
     width: 150px; margin: auto; border: solid 1px #ddd
