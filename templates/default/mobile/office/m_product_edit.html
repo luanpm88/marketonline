@@ -34,7 +34,70 @@
 				    <input placeholder="{lang words_length}" maxlength="70" style="" name="data[product][name]" type="text" id="dataProductName" value="{$item.name}" class="form-control required">
 				</p>
 				
-				
+				<p>
+				    <label>Hình ảnh<span>*</span> <i class="note">(Nhấn lên hình để thay)</i></label>
+				    <div class="images_inputs" style="max-width: 100%">
+					<div class="box box-1">
+					    <div class="img-box" rel="1">
+						<!--{if $item.picture}-->
+						    <img class="preview_image product_photo ppic photo-1" src="{$item.image1}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-1" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="0" {if $item.default_pic == 0}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic" type="file" id="uploadfile1" onchange="preview(this,1)" />
+					</div>
+					<div class="box box-2">
+					    <div class="img-box" rel="2">
+						<!--{if $item.picture1}-->
+						    <img class="preview_image product_photo ppic photo-2" src="{$item.image2}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-2" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="1" {if $item.default_pic == 1}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic1" type="file" id="uploadfile2" onchange="preview(this,2)" />
+					</div>
+					<div class="box box-3">
+					    <div class="img-box" rel="3">
+						<!--{if $item.picture2}-->
+						    <img class="preview_image product_photo ppic photo-3" src="{$item.image3}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-3" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="2" {if $item.default_pic == 2}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic2" type="file" id="uploadfile3" onchange="preview(this,3)" />
+					</div>
+					<div class="box box-4">
+					    <div class="img-box" rel="4">
+						<!--{if $item.picture3}-->
+						    <img class="preview_image product_photo ppic photo-4" src="{$item.image4}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-4" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="3" {if $item.default_pic == 3}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic3" type="file" id="uploadfile4" onchange="preview(this,4)" />
+					</div>
+					<div class="box box-5">
+					    <div class="img-box" rel="5">
+						<!--{if $item.picture4}-->
+						    <img class="preview_image product_photo ppic photo-5" src="{$item.image5}" />
+						<!--{else}-->
+						    <img class="preview_image product_photo photo-5" src="../images/nopicture_smaller.gif" />
+						<!--{/if}-->
+					    </div>
+					    <input title="Chọn làm hình chính" type="radio" name="data[product][default_pic]" value="4" {if $item.default_pic == 4}checked="checked"{/if} /> Hình chính
+					    <input accept="image/*" style="position: absolute;top: -9000px" name="pic4" type="file" id="uploadfile5" onchange="preview(this,5)" />
+					</div>
+					
+				    </div>
+				    <label id="uploadfile1-error" class="error" for="uploadfile1">Giá không hợp lệ</label>
+				    
+				    <br style="clear: both" />
+				</p>
 				
 				<p>
 				<label style="width: 100%">{lang the_price_n}<span>*</span></label>
