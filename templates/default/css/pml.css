@@ -13388,3 +13388,15 @@ element.style {
 .bottom_industry_list ul li.view-more {
     margin-left: 0;
 }
+.inner_hocvalam {
+    padding: 0;
+    width: 1180px !important;
+}
+body {
+    min-width: 1200px !important;
+}
+#TopSearch input {
+    margin-left: 38px;
+    position: absolute;
+    width: 344px;
+}
