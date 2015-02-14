@@ -20,26 +20,7 @@
 					    {if !$hasCompany}<input type="hidden" value="1" name="isnew" id="isnew">{/if}
 		
 					    
-					    <p>
-						<label class="">
-							Hình ảnh<span>*</span>
-						</label>
-						<div id="MemberLogo" style="width: 95%">
-						    <div onclick="$('#com_pic').trigger('click')" class="logo-box crop-img-square" style="">
-							<!--{if $item.logo}-->
-							<img class="preview_image" id="main_photo" src="{$item.logo}" />
-							<!--{else}-->
-							<img class="preview_image" id="main_no_photo" src="../images/company_nopic.png" />
-							<!--{/if}-->
-						    </div>
-						    (Nhấn vào ảnh để thay)
-						    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
-						</div>
-						
-						<span class="fullcols" style="position: absolute;visibility: hidden">
-							<input class="form-control" accept="image/*" id="com_pic" style="" name="pic" type="file" id="MemberPhoto" size="32" onchange="">
-						</span>
-					    </p>
+					    
 					    <p>
 						<label class="">
 						    Tên Gian Hàng<span>*</span> <i class="note">(Giới hạn 25 ký tự)</i>
