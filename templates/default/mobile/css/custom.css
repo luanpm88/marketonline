@@ -1790,3 +1790,7 @@ body {
     margin-top: 5px;
     font-weight: 700;
 }
+.images_inputs {
+    max-width: 100%;
+    overflow-x: hidden;
+}
