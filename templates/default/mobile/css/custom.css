@@ -23,13 +23,13 @@ body {
     color: #fff;
 }
 .navbar-inverse .navbar-nav > li:hover > a {
-    background-color: #71c681;
+    background-color: rgba(255,255,255,0.3);
 }
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:focus, .navbar-inverse .navbar-nav > .active > a:hover {
-    background-color: #71c681;
+    background-color: rgba(255,255,255,0.3);
 }
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
-    border-color: #71c681;
+    border-color: rgba(255,255,255,0.3);
 }
 .sidebar-nav {
     padding-top: 15px;
@@ -124,7 +124,7 @@ body {
     padding-top: 7px;
 }
 .navbar-nav .divider {
-    background-color: #71c681;
+    background-color: rgba(255,255,255,0.3);
     height: 1px;
     margin: 9px 0;
     overflow: hidden;
@@ -172,6 +172,7 @@ body {
     padding: 0;
     z-index: 10;
     width: 100%;
+    overflow-x: hidden;
 }
 .mobile-horizon-slider-title h4 {
     float: left;
@@ -1607,7 +1608,7 @@ i.note {
     margin-bottom: 5px;
 }
 DIV.pagination2 A {
-    padding: 10px 15px !important;
+    padding: 8px 10px !important;
 }
 .pagination2 {
     padding-top: 20px !important;
@@ -1789,4 +1790,3 @@ body {
     margin-top: 5px;
     font-weight: 700;
 }
-
