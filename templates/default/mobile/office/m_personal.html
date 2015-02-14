@@ -17,7 +17,7 @@
 							<label class="">
 								Tên đầy đủ<span>*</span>
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input class="form-control half-control firstname" name="memberfield[first_name]" type="text" placeholder="{lang first_name}" id="memberlastname" value="{$item.first_name}" required>
 								<input class="form-control half-control lastname" placeholder="{lang last_name}" name="memberfield[last_name]" type="text" id="memberlastname" value="{$item.last_name}" required>
 							</span>
@@ -29,7 +29,7 @@
 							<label class="">
 								Giới tính<span>*</span>
 							</label>
-							<span class="fullcols genders">
+							<span class="genders">
 								{html_radios name="memberfield[gender]" options=$Genders checked=$item.gender separator=" "}
 							</span>
 						</p>
@@ -38,7 +38,7 @@
 							<label class="">
 								Di động<span>*</span>
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input size="25" name="memberfield[mobile]" type="text" id="membermobile" value="{$item.mobile}" class="required form-control">
 							</span>
 						</p>
@@ -47,7 +47,7 @@
 							<label class="">
 								{lang email_addr}<span>*</span>
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input name="member[email]" type="text" id="memberemail" value="{$item.email}" class="required email form-control">
 							</span>
 						</p>
@@ -56,7 +56,7 @@
 							<label class="">
 								Khu vực (Quốc gia <icon class="glyphicon glyphicon-arrow-right"></icon> Tỉnh/Thành <icon class="glyphicon glyphicon-arrow-right"></icon> Quận/huyện)<span>*</span>
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<span id="dataArea">
 									<select name="area[id][1]" id="dataMemberfieldAreaId1" class="level_1 form-control"></select>
 									<select name="area[id][2]" id="dataMemberfieldAreaId2" class="level_2 form-control"></select>
@@ -69,7 +69,7 @@
 							<label class="">
 								Địa chỉ<span>*</span>
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input placeholder="Số đường Tên đường, Phường/Xã" name="memberfield[address]" type="text" id="memberaddress" value="{$item.address_s}" class="form-control required">
 							</span>
 						</p>
@@ -90,7 +90,7 @@
 							    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
 							</div>
 							
-							<span class="fullcols" style="position: absolute;visibility: hidden">
+							<span class="" style="position: absolute;visibility: hidden">
 								<input class="form-control" accept="image/*" id="com_pic" style="" name="photo" type="file" id="MemberPhoto" size="32" onchange="">
 							</span>
 						</p>
@@ -110,7 +110,7 @@
 							<label class="">
 								Skype{lang colon}
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input class="form-control" size="30" name="memberfield[skype]" type="text" id="memberskype" value="{$item.skype}">
 							</span>
 						</p>
@@ -119,7 +119,7 @@
 							<label class="">
 								Yahoo Messenger{lang colon}
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input class="form-control" size="30" name="memberfield[yahoo]" type="text" id="memberyahoo" value="{$item.yahoo}">
 							</span>
 						</p>
@@ -127,7 +127,7 @@
 							<label class="">
 								{lang personal_homepage}
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input class="form-control" name="memberfield[site_url]" type="text" id="site_url" value="{$item.site_url}">
 							</span>
 						</p>
@@ -135,7 +135,7 @@
 							<label class="">
 								Facebook
 							</label>
-							<span class="fullcols">
+							<span class="">
 								<input class="form-control" placeholder="Nick kết bạn của facebook (không phải trang fanpage) " name="memberfield[facebook]" type="text" id="site_url" value="{$item.facebook}">
 							</span>
 						</p>
@@ -144,7 +144,7 @@
 						<h3 id="tgttext">Tự giới thiệu</h3>
 						<p>
 							
-							<span class="fullcols">
+							<span class="">
 								<textarea name="memberfield[intro]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 300px">{$item.intro}</textarea>
 							</span>
 						</p>
