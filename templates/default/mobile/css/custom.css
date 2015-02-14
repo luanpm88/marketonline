@@ -1631,6 +1631,7 @@ DIV.pagination2 A {
     float: left;
     width: 100%;
     display: inline-block;
+    position: absolute;
 }
 .images_inputs .box {
     margin-bottom: 20px;
