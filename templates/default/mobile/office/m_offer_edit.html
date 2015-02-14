@@ -221,7 +221,7 @@
 				<p>    
 				    <label style="width: 100%">{lang the_price_n}<span>*</span></label>
 				    <span class="price_2cols">
-					<input class="form-control" name="data[trade][price]" type="text" id="dataProductPrice" value="{$item.price}">
+					<input class="form-control" name="data[trade][price]" type="text" id="dataProductPrice" value="{if $item.price}{$item.price}{/if}">
 					<strong>VNĐ / </strong>
 					<input class="form-control" placeholder="Đơn vị sản phẩm (Ví dụ: cái, m2,...)" name="data[trade][price_unit]" type="text" id="dataProductPriceUnit" value="{$item.price_unit}">
 					<br /><label id="dataProductPrice-error" class="error" for="dataProductPrice">Giá không hợp lệ</label>

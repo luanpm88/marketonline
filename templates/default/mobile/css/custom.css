@@ -1397,10 +1397,15 @@ time .time {
     width: 100%;
 }
 .compage ul li span.logo-box {
+    border: 0;
     border-bottom: 1px solid #ddd;
     display: block;
     float: left;
     text-align: center;
+    width: 100%
+}
+.compage ul li span.logo-box img {
+    width: 100%
 }
 .clear {
     clear: both;
@@ -1771,4 +1776,7 @@ body {
 }
 .shop-stats ul li:last-child {
     border: 0;
+}
+#dataProductPrice, #dataProductNewPrice {
+    text-align: right;
 }

@@ -475,13 +475,7 @@
 		    }
 		});
 		
-		$("#dataProductPrice, #dataProductNewPrice").inputmask("decimal",{
-		    radixPoint:"", 
-		    groupSeparator: ".", 
-		    digits: 0,
-		    autoGroup: true,
-		    prefix: ''
-		});
+		$("#dataProductPrice, #dataProductNewPrice").mask('000.000.000.000.000', {reverse: true});
 
 		
 		
