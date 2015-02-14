@@ -1,0 +1,156 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="Liên hệ với chúng tôi - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    <div class="logging-box">
+                        
+                        {if $success}
+                            <div role="alert" class="alert alert-success">
+                                {lang contact_success}
+                            </div>
+                        {/if}
+
+{if $capt_check == false}
+
+
+<div role="alert" class="alert alert-danger">Mã bảo mật không đúng. Vui lòng nhập lại!</div>
+{/if}
+                        
+                            <h1 style="margin-bottom: 20px;font-size: 18px;" class="page-title">
+            {lang contact_help}</h1>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                <div class="five columns contact_page_left" style="">
+
+
+                
+<div>
+                <p style="font-size: 19px;margin-bottom: 2px; font-weight: bold">{$pb_setting.owner_name}</p>
+<p><label>{lang office_room}</label> {$pb_setting.owner_office}<br />
+<label>{lang vpgd}</label> {$pb_setting.owner_vpgd}<br />
+<label>{lang phone}</label> {$pb_setting.owner_phone}<br />
+<label>{lang fax}</label> {$pb_setting.owner_fax}<br />
+<label>{lang email}</label> <a title="Liên hệ với chúng tôi qua email" onclick="" href="mailto:{$pb_setting.owner_email}" rel="noreferrer">{$pb_setting.owner_email}</a><br />
+<label>{lang hotline}</label> {$pb_setting.owner_hotline}<br />
+</p>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+    <div class="ten columns contactbox_right">
+           <h3>{lang contact_with_us}</h3>
+           
+           <form action="" method="POST" name="contact_feedback" id="contact_feedback" class="contact-form">
+           <div class="four columns logging contact_box">
+
+        
+            <div class="fields">
+                <label for="sender_name">{lang sender}<span>*</span></label>
+                <input class="form-control required" type="text" class="text" name="sender_name" id="sender_name" value="{$post.sender_name}" />
+                <label for="sender_email">{lang sender_email}<span>*</span></label>
+                <input class="form-control required email" id="sender_email" name="sender_email" class="text span4" type="text" value="{$post.sender_email}" />
+                <label>{lang subject}<span>*</span></label>
+                <input class="form-control required" class="text span4"  type="text" name="letter_subject" id="letter_subject" value="{$post.letter_subject}" />
+            </div>
+            <label style="margin-top: 5px;font-weight: 700">{lang message}<span>*</span></label>
+            <textarea class="form-control required" name="letter_text" id="letter_text" cols="30" rows="10" placeholder="" tabindex="4">{$post.letter_text}</textarea>
+            
+        
+            <!-- {if $ifcapt} -->
+            <br />
+                <div id="res_captcha">
+                    <div class="left" style="padding-right: 120px">
+                            <label class="registerlabel" for="login_auth" style="margin-top: 5px;margin-bottom: 8px;">
+                              {lang code}<span>*</span>
+                            </label>
+                            
+                            <span class="registercheck"><img class="registerpic" width="123" height="50" id="imgcaptcha" src="captcha.php?sid={$sid}" alt="{lang unclear_see_numbers}" title="{lang unclear_see_numbers}" />
+                            
+                            <!--<object type="application/x-shockwave-flash" data="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" height="19" width="19">
+                            <param name="movie" value="images/play.swf?audio=captcha.php&amp;do=play&amp;bgColor1=#fff&amp;bgColor2=#fff&amp;iconColor=#777&amp;borderWidth=1&amp;borderColor=#000" />
+                            </object>-->
+                            <a href="javascript:;"><img src="{$theme_img_path}images/gongqiu03.jpg" class="registerpic2" id="exchange_imgcapt" /></a>
+                            </span>
+                    </div>
+                    <div class="right">
+                            
+                            <input class="" name="data[capt_service]" id="login_auth" type="text" value="" size="4" style="width:117px; margin-top: 5px;" tabindex="5">&nbsp;<font class="gray" style="">{lang input_code}</font>
+                    </div>
+               </div>
+            <!-- {/if} -->
+        
+        
+        </div>
+           
+            <input type="submit" class="btn btn-primary right" name="send" id="wp-submit" style="margin-right: 0" tabindex="5" value="{lang send_contact_email}" />
+            <input type="checkbox" id="agree" style="display:none;" />
+            <label for="antispam_answer" style="float:left; width:300px; margin-top:13px; margin-right:20px;"></label><input style="display: none;" class="text" style="width:331px; float:left;"  type="text" name = "antispam_answer" id="antispam_answer" />
+            
+           </form>
+     
+            </div>
+    
+    
+    
+    
+  </div>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+        
+        <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
