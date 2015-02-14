@@ -41,4 +41,9 @@ setvar("support_members", $member->getAdminSupport());
 setvar("capt_check",$capt_check);
 setvar("sid",md5(uniqid($time_stamp)));
 $tpl_file = "contact";
-render($tpl_file);
+
+        if(detectMobile()) {
+		render("mobile/contact");
+	} else {
+            render($tpl_file);
+        }

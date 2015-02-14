@@ -1750,7 +1750,7 @@ DIV.pagination2 A {
 .moderator_actions h2 {
     margin: 5px 0 15px;
 }
-table * {
+table td * {
     word-wrap: break-word;
     word-break: break-all;
 }
@@ -1779,4 +1779,13 @@ body {
 }
 #dataProductPrice, #dataProductNewPrice {
     text-align: right;
+}
+.contact_page_left label {
+    display: inline-block;
+    font-weight: 700;
+    margin: 5px 0;
+}
+.fields label {
+    margin-top: 5px;
+    font-weight: 700;
 }
