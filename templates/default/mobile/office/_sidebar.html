@@ -14,8 +14,9 @@
                                {if $pb_userinfo.first_name}{$pb_userinfo.first_name} {$pb_userinfo.last_name}{else}{$pb_userinfo.username}{/if}
                           
                         {/if}
-                        
+                        <br />
                         <span style="font-size: 14px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span>
+                        
                     </a>
                 </li>
                 

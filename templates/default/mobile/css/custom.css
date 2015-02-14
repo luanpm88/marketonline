@@ -1744,3 +1744,11 @@ DIV.pagination2 A {
 .moderator_actions h2 {
     margin: 5px 0 15px;
 }
+table * {
+    word-wrap: break-word;
+    word-break: break-all;
+}
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
