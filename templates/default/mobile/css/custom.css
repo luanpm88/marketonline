@@ -1801,6 +1801,6 @@ body {
 }
 DIV.pagination2 {
     line-height: 39px;
-    word-break: normal;
-    word-wrap: normal;
+    word-break: normal !important;
+    word-wrap: normal !important;
 }
