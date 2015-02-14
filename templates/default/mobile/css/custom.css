@@ -1561,7 +1561,6 @@ label.error {
 }
 #wrapper.toggled #sidebar-wrapper {
     width: 280px;
-    height: 40000px;
 }
 #wrapper.toggled {
     padding-left: 280px;
