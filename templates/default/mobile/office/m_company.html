@@ -8,8 +8,7 @@
             
             <div class="">
 
-                    <h1>Cập nhật hồ sơ</h1>
-                    
+                    <h1>Cập nhật hồ sơ</h1>                   
 		    
 					
 					<form name="company_frm" id="CompanyFrm" action="{$smarty.server.PHP_SELF}" method="post" enctype="multipart/form-data">
@@ -25,7 +24,7 @@
 						<label class="">
 							Hình ảnh<span>*</span>
 						</label>
-						<div id="MemberLogo">
+						<div id="MemberLogo" style="width: 95%">
 						    <div onclick="$('#com_pic').trigger('click')" class="logo-box crop-img-square" style="">
 							<!--{if $item.logo}-->
 							<img class="preview_image" id="main_photo" src="{$item.logo}" />
