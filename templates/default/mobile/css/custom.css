@@ -1632,8 +1632,8 @@ DIV.pagination2 A {
     width: 100%;
 }
 .images_inputs .box {
-    margin-bottom: 20px;
-    margin-right: 10px;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     text-align: center;
     width: 100px;
