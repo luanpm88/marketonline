@@ -1791,6 +1791,7 @@ body {
     font-weight: 700;
 }
 .images_inputs {
-    max-width: 95%;
+    max-width: 330px;
     overflow-x: hidden;
+    display: block;
 }
