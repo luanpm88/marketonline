@@ -171,7 +171,7 @@ body {
     background: none repeat scroll 0 0 #edf4ef;
     padding: 0;
     z-index: 10;
-    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
 }
 .mobile-horizon-slider-title h4 {
