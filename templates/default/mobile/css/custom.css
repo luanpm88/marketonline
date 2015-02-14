@@ -1637,6 +1637,7 @@ DIV.pagination2 A {
     overflow: hidden;
     text-align: center;
     width: 100px;
+    display: inline-block;
 }
 .images_inputs .img-box {
     border: 1px solid #ddd;
