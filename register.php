@@ -215,7 +215,9 @@ setvar("agreement", $_PB_CACHE['setting']['agreement']);
 	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 	
 	$qc = $announcement->read("message",31);
+	$qc2 = $announcement->read("message",32);
 	setvar("qc", $qc["message"]);
+	setvar("qc2", $qc2["message"]);
 	setvar("qc_raw", substr(trim(strip_tags($qc["message"])),12,10000));
 
 	
