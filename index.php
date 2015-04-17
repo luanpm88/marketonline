@@ -213,6 +213,10 @@ if (!empty($_GET['do'])) {
 	setvar("baomat", $baomat["message"]);
 	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
 	
+	$qc = $announcement->read("message",31);
+	setvar("qc", $qc["message"]);
+	setvar("qc_raw", substr(trim(strip_tags($qc["message"])),12,1000));
+	
 	
 	//FOR MOBILE DATA
 	require('libraries/core/models/ad.php');
