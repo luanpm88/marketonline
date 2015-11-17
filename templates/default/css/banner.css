@@ -211,7 +211,7 @@
 }
 li.ad_li {
     float: right !important;
-    padding-right: 0 !important;
+    padding: 2px 0 !important;
 }
 .ad_fixed_in {
     font-size: 20px;
