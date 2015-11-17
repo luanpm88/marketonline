@@ -33,7 +33,7 @@ $(document).ready(function() {
               if(data.time != "") {
                 box.append('<div class=\"ad_info_hover\"><div class="subtitle right time_remaining">Có thể quảng cáo từ ngày: <br /><strong>'+data.time+'</strong></div><span class=\"size\">'+data.pos.width+' x '+data.pos.height+'</span><span class=\"ticket\">Đăng ký trước</span></div>')
               } else {
-                box.append('<div class=\"ad_info_hover\"><div class="subtitle time_remaining"><strong>Có thể quảng cáo ngay</strong></div><span class=\"size\">'+data.pos.width+' x '+data.pos.height+'</span><span class=\"ticket\">Đăng ký ngay</span></div>')
+                box.append('<div class=\"ad_info_hover\"><div class="subtitle right time_remaining"><strong>Có thể quảng cáo ngay</strong></div><span class=\"size\">'+data.pos.width+' x '+data.pos.height+'</span><span class=\"ticket\">Đăng ký ngay</span></div>')
               }
             });
           }
