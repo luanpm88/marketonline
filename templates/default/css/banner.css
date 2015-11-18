@@ -252,7 +252,7 @@ li.ad_li {
     margin-top: -24px;
 }
 .wide_3_banners .product_home_banner {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: #7cb342; /*rgba(0, 255, 100, 0.6) none repeat scroll 0 0;*/
     border: 1px dashed #fff;
     color: #fff;
     cursor: pointer;
