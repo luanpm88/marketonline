@@ -6,7 +6,7 @@
 }
 </style>
 <!--{/literal}-->
-<div id="body-wrapper" >
+<div id="body-wrapper"  class="product_home_page">
 <div id="body-wrapper-padding" class="connect_page">
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
@@ -278,7 +278,7 @@
 	  if ($('#aq-block-5').height())
 	    pos_searchlist = $('#aq-block-5').height() + 440;
 	  else
-	    pos_searchlist = 250;
+	    pos_searchlist = 420;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -565,7 +565,31 @@
 <!--{include file="`$theme_name`/topmenu.html"}-->
 
 
+<div class="ad_banner_item_hover"></div>
+  <div class="row">
+	<div class="wide_3_banners">
+					<div style="display: block; height: 22px;">
+					  <div class="ad_toggle_h2"><a href="#add_toggle" class="ad_toggle" target="_blank">Đăng Quảng Cáo</a></div>
+					</div>
+                    <div class="works-list compage" style="padding: 0">         
+                        <div class="ad_banner_item product_home_banner">
+                            Nhấn vào đây
+                            <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+                        </div>
+                        <div class="ad_banner_item product_home_banner">
+                            Nhấn vào đây
+                            <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+                        </div>
+                        <div class="ad_banner_item product_home_banner">
+                            Nhấn vào đây
+                            <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+                        </div>
+                        
+                        <iframe style="border: medium none;height: 252px;width: 102%;" src="/app/ad_positions/iframe_3_wide_banners?pos=product_home_top" style="border: none;"></iframe>
 
+                    </div>
+	</div>
+  </div>
 
       
       {if $IndustryList.count && false}
@@ -762,7 +786,7 @@
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 250px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 420px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="{lang search}" />
