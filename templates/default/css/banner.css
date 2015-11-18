@@ -249,7 +249,7 @@ li.ad_li {
 }
 .wide_3_banners .ad_toggle_h2 {
     margin-bottom: 8px;
-    margin-top: -8px;
+    margin-top: -6px;
 }
 .wide_3_banners .product_home_banner {
     background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
@@ -273,4 +273,10 @@ li.ad_li {
 }
 .productbox {
     margin-bottom: 10px !important;
+}
+.product_home_page #top-social {
+    margin-top: 174px;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
 }
