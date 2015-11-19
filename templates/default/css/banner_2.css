@@ -1,0 +1,284 @@
+.ad_banner_item, .ad_banner_item_hover {
+    display: none;
+}
+.ad_banner_item_hover {
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+.ad_banner_item:hover {
+    opacity: 0.8;
+}
+.ad_banner_item {
+    border: 1px dashed #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 30px;
+    position: absolute;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 90000;
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+}
+.ad_banner_item .subtitle {
+    display: block;
+    font-size: 17px;
+}
+.ad_banner_item .size {
+    font-size: 17px;
+}
+.ad_banner_item .subtitle.right {
+    bottom: 50px;
+    position: absolute;
+    right: 10px;
+    text-align: right;
+}
+.ad_banner_item.ad_banner_1 {
+    height: 382px;
+    left: 210px;
+    padding: 120px 10px;
+    top: 36px;
+    width: 685px;
+}
+.ad_banner_item.ad_banner_2 {
+    height: 382px;
+    left: 894px;
+    padding: 120px 10px;
+    top: 36px;
+    width: 295px;
+    background: rgba(250, 90, 0, 0.5) none repeat scroll 0 0;
+}
+.ad_banner_item.ad_banner_3 {
+    background: rgba(250, 0, 0, 0.5) none repeat scroll 0 0;
+    color: #fff;
+    font-size: 18px;
+    height: 180px;
+    left: 210px;
+    padding: 30px 10px;
+    top: 417px;
+    width: 196px;
+}
+.ad_banner_item.ad_banner_3 .ticket {
+    font-size: 14px;
+    right: 48px;
+}
+.ad_banner_item.ad_banner_12 .ticket {
+    font-size: 14px;
+    right: 39px;
+}
+.ad_banner_item.ad_banner_3 .subtitle {
+    font-size: 11px;
+}
+.ad_banner_item.ad_banner_3 .size {
+    font-size: 11px;
+}
+.ad_banner_item.ad_banner_3 .subtitle.right {
+    bottom: 40px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    width: 92%
+}
+.ad_banner_item.ad_banner_12 .subtitle.right {
+    bottom: 40px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+}
+.ad_banner_item.ad_banner_12 .size {
+    font-size: 11px;
+}
+.ad_banner_item.ad_banner_3.kkk_1 {
+    margin-left: 196px;
+}
+.ad_banner_item.ad_banner_3.kkk_2 {
+    margin-left: 392px;
+}
+.ad_banner_item.ad_banner_3.kkk_3 {
+    margin-left: 588px;
+}
+.ad_banner_item.ad_banner_3.kkk_4 {
+    margin-left: 784px;
+}
+.ad_banner_item.ad_banner_4 {
+    height: 422px;
+    margin-left: 0;
+    margin-top: 58px;
+    padding: 120px 10px;
+    width: 572px;
+    background: rgba(0, 0, 100, 0.7) none repeat scroll 0 0;
+    color: #fff;
+    border-color: #aaa;
+}
+.ad_banner_item.ad_banner_5 {
+    height: 422px;
+    margin-left: 608px;
+    margin-top: 58px;
+    padding: 120px 10px;
+    width: 572px;
+    background: rgba(0, 0, 100, 0.6) none repeat scroll 0 0;
+    color: #fff;
+    border-color: #aaa;
+}
+.ad_banner_item.ad_banner_6 {
+    height: 422px;
+    margin-left: 0;
+    margin-top: 0;
+    padding: 120px 10px;
+    width: 572px;
+    background: rgba(200, 5, 100, 0.6) none repeat scroll 0 0;
+}
+.ad_banner_item.ad_banner_7 {
+    height: 422px;
+    margin-left: 608px;
+    margin-top: 0;
+    padding: 120px 10px;
+    width: 572px;
+    background: rgba(200, 5, 100, 0.6) none repeat scroll 0 0;
+}
+.ad_banner_item.ad_banner_8 {
+    height: 401px;
+    margin-left: 0;
+    margin-top: 59px;
+    padding: 110px 10px;
+    width: 268px;
+}
+.ad_banner_item.ad_banner_9 {
+    height: 401px;
+    margin-left: 303px;
+    margin-top: 59px;
+    padding: 110px 10px;
+    width: 268px;
+}
+.ad_banner_item.ad_banner_10 {
+    height: 401px;
+    margin-left: 607px;
+    margin-top: 59px;
+    padding: 110px 10px;
+    width: 268px;
+}
+.ad_banner_item.ad_banner_11 {
+    height: 401px;
+    margin-left: 912px;
+    margin-top: 59px;
+    padding: 110px 10px;
+    width: 268px;
+}
+.ad_banner_item.ad_banner_12 {
+    font-size: 18px;
+    height: 184px;
+    margin-left: 0;
+    margin-top: 21px;
+    padding: 30px 0;
+    width: 181px;
+    background: rgba(0, 100, 100, 0.6) none repeat scroll 0 0;
+}
+.ad_banner_item.ad_banner_12 .subtitle {
+    font-size: 11px;
+    di
+}
+.ad_banner_12.line_2 {
+    margin-top: 252px
+}
+.ad_banner_item.ad_banner_12.kkk_1 {
+    margin-left: 200px;
+}
+.ad_banner_item.ad_banner_12.kkk_2 {
+    margin-left: 400px;
+}
+.ad_banner_item.ad_banner_12.kkk_3 {
+    margin-left: 600px;
+}
+.ad_banner_item.ad_banner_12.kkk_4 {
+    margin-left: 800px;
+}
+.ad_banner_item.ad_banner_12.kkk_5 {
+    margin-left: 1000px;
+}
+
+.ad_toggle {
+    background: #3b984c none repeat scroll 0 0;
+    border-radius: 40px;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px 5px;
+    text-align: center;
+}
+li.ad_li {
+    float: right !important;
+    padding: 2px 0 !important;
+}
+.ad_fixed_in {
+    font-size: 20px;
+    height: 40px;
+    position: fixed;
+    right: 20px;
+    top: 220px;
+    width: 40px;
+    z-index: 100000;
+    padding: 6px;
+}
+.ad_toggle_h2 {
+    float: right;
+    margin-top: -42px;
+}
+.ad_banner_item .ticket {
+    background: green none repeat scroll 0 0;
+    border-radius: 20px;
+    bottom: 10px;
+    color: #fff;
+    display: block;
+    font-size: 17px;
+    padding: 3px 10px 5px;
+    position: absolute;
+    right: 10px;
+}
+.wide_3_banners {
+    padding: 10px;
+}
+.wide_3_banners iframe {
+    border: medium none;
+    height: 142px !important;
+    margin-top: -1px !important;
+    overflow: hidden;
+}
+.wide_3_banners .ad_toggle_h2 {
+    margin-bottom: 8px;
+    margin-top: -24px;
+}
+.wide_3_banners .product_home_banner {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    color: #fff;
+    cursor: pointer;
+    float: left;
+    font-size: 30px;
+    height: 140px;
+    margin-bottom: -139px;
+    margin-right: 20px;
+    padding: 30px 10px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 380px;
+    z-index: 90000;
+}
+.product_home_page #top-social {
+}
+.productbox {
+    margin-bottom: 10px !important;
+}
+.product_home_page #top-social {
+    margin-top: 174px;
+    position: absolute;
+    right: 0;
+    z-index: 1000;
+}
+.with85 {
+    width: 85%;
+}
