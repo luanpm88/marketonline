@@ -257,7 +257,7 @@ li.ad_li {
     color: #fff;
     cursor: pointer;
     float: left;
-    font-size: 30px;
+    font-size: 20px;
     height: 140px;
     margin-bottom: -139px;
     margin-right: 20px;
@@ -267,6 +267,9 @@ li.ad_li {
     vertical-align: middle;
     width: 380px;
     z-index: 90000;
+}
+.wide_3_banners .product_home_banner.subtitle {
+    font-size: 14px;
 }
 .product_home_page #top-social {
 }
