@@ -7,7 +7,7 @@ $(document).ready(function() {
     
     $(".ad_banner_item").click(function() {
       var pos = $(this).attr("pos")
-      OpenInNewTab("/app/ads/new?pos="+pos)
+      OpenInNewTab("http://marketonline.vn:3000/ads/new?pos="+pos)
     })
     $(".ad_toggle").click(function(e) {
       e.preventDefault()
