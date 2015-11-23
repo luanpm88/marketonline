@@ -26,7 +26,7 @@ $(document).ready(function() {
           var box = $(this)
           if (typeof(pos) != "undefined") {
             $.ajax({
-              url: "/app/ad_positions/get_remaining_time?pos="+pos,
+              url: "http://marketonline.vn:3000/ad_positions/get_remaining_time?pos="+pos,
             }).done(function ( data ) {
               box.find(".ad_info_hover").remove()
               //alert(data.time)
