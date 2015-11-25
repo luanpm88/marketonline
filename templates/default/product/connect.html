@@ -503,26 +503,26 @@
 	});
 	
 	
-	var startscroll = true;
-	var pos_pg = 15;
-
-	$(document).scroll(function(){		
-		if(($(document).height()-$(window).height()-$(document).scrollTop()) < 1000){
-			if (startscroll && scroll) {
-				startscroll = false;
-				//code
-				console.log('Scrolled to bottom');
-				//ArticleList.loadMoreArticles();
-				//alert("end");
-				
-				
-				ajaxListProductScroll(getFilterProducts()+"&pos_pg="+pos_pg);		
-			}
-		
-		} else {
-		    //console.log('Scroll '+$(document).height()+' - '+$(window).height()+' - ' +$(document).scrollTop());
-		}
-	});	
+	//var startscroll = true;
+	//var pos_pg = 15;
+	//
+	//$(document).scroll(function(){		
+	//	if(($(document).height()-$(window).height()-$(document).scrollTop()) < 1000){
+	//		if (startscroll && scroll) {
+	//			startscroll = false;
+	//			//code
+	//			console.log('Scrolled to bottom');
+	//			//ArticleList.loadMoreArticles();
+	//			//alert("end");
+	//			
+	//			
+	//			ajaxListProductScroll(getFilterProducts()+"&pos_pg="+pos_pg);		
+	//		}
+	//	
+	//	} else {
+	//	    //console.log('Scroll '+$(document).height()+' - '+$(window).height()+' - ' +$(document).scrollTop());
+	//	}
+	//});	
 	
 </script>
    
