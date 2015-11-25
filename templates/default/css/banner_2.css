@@ -239,7 +239,7 @@ li.ad_li {
     right: 10px;
 }
 .wide_3_banners {
-    padding: 10px;
+    padding: 10px 10px 30px;
 }
 .wide_3_banners iframe {
     border: medium none;
