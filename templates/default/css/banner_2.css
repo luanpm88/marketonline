@@ -172,7 +172,7 @@
     font-size: 18px;
     height: 184px;
     margin-left: 0;
-    margin-top: 21px;
+    margin-top: 0;
     padding: 30px 0;
     width: 181px;
     background: rgba(0, 100, 100, 0.6) none repeat scroll 0 0;
@@ -182,7 +182,7 @@
     di
 }
 .ad_banner_12.line_2 {
-    margin-top: 252px
+    margin-top: 229px;
 }
 .ad_banner_item.ad_banner_12.kkk_1 {
     margin-left: 200px;
