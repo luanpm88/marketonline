@@ -302,5 +302,10 @@ li.ad_li {
     width: 1180px;
 }
 .wide_4_banners .ad_banner_item {
-    
+    float: left;
+    height: 140px;
+    margin-bottom: -139px;
+    margin-right: 10px;
+    position: inherit;
+    width: 287px;
 }
