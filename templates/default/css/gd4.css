@@ -260,7 +260,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     display: block;
     float: left;
     padding: 10px;
-    width: 218px;
+    width: 215px;
     height: 300px;
 }
 #product_detail_box .related_products_box .related_title {
