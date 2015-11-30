@@ -131,13 +131,12 @@
     background: none;
 }
 .related_products_bottom ul li .img_box {
+    height: 186px;
+    width: 186px;
 }
 .related_products_bottom ul li img {
-
-}
-.related_products_bottom ul li span img {
-    max-width: none !important;
-    max-height: none !important;
+    max-height: 186px;
+    max-width: 186px;
 }
 #detail_box_top {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 center;
@@ -245,7 +244,8 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     height: 198px;
 }
 #product_detail_box .related_products_box ul li a img {
-    width: 198px;
+    max-width: none;
+    max-height: none;
 }
 #product_detail_box .related_products_box ul li a span {
     width: 198px;
