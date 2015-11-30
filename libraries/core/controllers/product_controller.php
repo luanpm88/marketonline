@@ -914,18 +914,18 @@ class Product extends PbController {
 		//var_dump($width .$height. $type. $attr);
 		
 		if($info["display_type"]==1) {
-			$wwwi = 546;
+			$wwwi = 360;
 		} else {
-			$wwwi = 370;
+			$wwwi = 360;
 		}
 		setvar("wwwi",$wwwi);
 		setvar("width",$width);
 		setvar("height",$height);
 		setvar("theight",round($height/($width/$wwwi),0));
 		
-		if($width/$wwwi>3)
+		if($width/$wwwi>2)
 		{
-			$ttt = 3;
+			$ttt = 2;
 		}
 		else if($width/$wwwi<1.4)
 		{
