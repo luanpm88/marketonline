@@ -49,6 +49,7 @@ if (isset($_POST['save']) && !empty($_POST['data']['name'])) {
 	if(!empty($id)){
 		$record['modified'] = $time_stamp;
 		$result = $producttype->save($record, "update", $id, null, $conditions);
+		echo "test";
 	}else{
 		$orignal_count = $producttype->findCount(null, $conditions);
 		if ($g['max_producttype'] && $orignal_count>=$g['max_producttype']) {
