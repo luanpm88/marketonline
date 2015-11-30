@@ -923,9 +923,9 @@ class Product extends PbController {
 		setvar("height",$height);
 		setvar("theight",round($height/($width/$wwwi),0));
 		
-		if($width/$wwwi>2)
+		if($width/$wwwi>2.5)
 		{
-			$ttt = 2;
+			$ttt = 2.5;
 		}
 		else if($width/$wwwi<1.4)
 		{
