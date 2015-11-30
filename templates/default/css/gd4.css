@@ -1,7 +1,7 @@
 .new_product_detail_panel {
     display: block;
     margin: 0 auto;
-    padding: 10px;
+    padding: 0 10px 10px;
     width: 1200px;
 }
 .new_product_detail_panel .left-bar {
