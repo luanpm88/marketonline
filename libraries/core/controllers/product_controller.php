@@ -1041,11 +1041,13 @@ class Product extends PbController {
 		$member = $this->member->read("*",$_GET["member_id"]);
 		setvar("member",$member);
 		
-		if($_GET["mobile"]) {
+		if($_GET["style"] == "nocrop") {
+			render("product/_related_products_new");
+		} else if($_GET["mobile"]) {
 			render("mobile/product/_related_products");
 		} else {
 			render("product/_related_products");
-		}	
+		}
 	}
 	
 	function inquery()
@@ -1107,9 +1109,8 @@ class Product extends PbController {
 		$result = $this->product->Search($pos, $limit);
 		setvar("items", $result);
 		$this->render("list.trade");
-	}
-	
-		
+	}	
+
 	function listAjax()
 	{
 		global $pos, $limit;
@@ -1127,8 +1128,7 @@ class Product extends PbController {
 		{
 			$pos_pg = 0;
 		}
-		
-		
+
 		
 		$area_a = array();
 		if (isset($_GET['industryid']) && $_GET['industryid'] != 0 && $_GET['industryid'] != "") {
@@ -4802,7 +4802,39 @@ class Product extends PbController {
 		setvar("tree",$tree);
 		
 		
-		if($_GET["layout"] == "mobile") {
+		if($_GET["frontend"] == "1") {
+			$html = "";
+			$level = -1;
+			foreach($tree as $key0 => $item0)
+			{
+				$display = "";
+				if($tree[$key0]["count"] == 0) {
+					$display = 'style="display:none"';
+				}
+				
+				if($level == $tree[$key0]["lpad"]) {
+					$html .= "</li><li ".$display."><a href=''>".$tree[$key0]["name"]."</a>";
+				}
+				if($level < $tree[$key0]["lpad"]) {
+					$html .= "<ul><li ".$display."><a href=''>".$tree[$key0]["name"]."</a>";
+				}
+				
+				if($level > $tree[$key0]["lpad"]) {
+					$bound = $level - $tree[$key0]["lpad"];			
+					for($i = 1; $i <= $bound; $i++) {
+						$html .= "</li></ul>";
+					}
+					$html .= "</li><li ".$display."><a href=''>".$tree[$key0]["name"]."</a>";							
+				}
+				
+				$level = $tree[$key0]["lpad"];
+			}
+			
+			$html .= "</li></ul>";
+			
+			setvar("html",$html);
+			$this->render("product/get_space_tree_frontend");
+		} else if($_GET["layout"] == "mobile") {
 			$this->render("mobile/space/ajax_space_tree");
 		} else {
 			$this->render("product/get_space_tree");

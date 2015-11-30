@@ -1,0 +1,47 @@
+			<ul class="product_list_widget">
+				
+		    {pb:product memberid=`$member_id` row=12 titlelen="35" name="itemz"}
+					{if $smarty.get.id != $itemz.id}
+						<li>
+										
+							<a style="float: right;width: 189px;" href="{the_url id=`$itemz.id` module='product' product_name=`$itemz.name` service=`$itemz.service`}">
+									<img width="200" height="200" src="{$itemz.thumb}" class="" alt="675476-1">
+							</a>
+					
+							<!--<del><span class="amount">&#36;{$itemz.price}</span></del>-->
+							<ins style="margin-bottom: 5px;padding: 0;clear: both">
+					
+							{if $itemz.new_price || $itemz.price}
+								{if $itemz.new_price != "" && $itemz.new_price != 0}
+									{if $itemz.price}<span class="old_price">{$itemz.price} <span class="price_unit">VNĐ{if $itemz.price_unit}/{$itemz.price_unit}{/if}</span></span> {/if}<span class="amount">{$itemz.new_price} <span class="price_unit">VNĐ{if $itemz.price_unit}/{$itemz.price_unit}{/if}</span></span>
+								{else}
+									<span class="amount">{$itemz.price} <span class="price_unit">VNĐ{if $itemz.price_unit}/{$itemz.price_unit}{/if}</span></span>
+								{/if}
+							{/if}
+					
+							</ins>
+							<div class="related_title"><a href="{the_url id=`$itemz.id` module='product' product_name=`$itemz.name` service=`$itemz.service`}">{$itemz.name}</a></div>
+						</li>
+					{/if}
+        {/pb:product}
+		    
+			</ul>
+
+<!--{literal}-->
+<script>
+        if($(".same_shop_product_list ul li").length == 0) {
+                $(".same_shop_product_list").hide();
+        }
+				var row = Math.floor($(".same_shop_product_list ul li").length/4)
+				var count = row*4
+				if (count < 4) {
+          count = 4;
+        }
+				$(".same_shop_product_list ul li").hide()
+				for(var i=0; i < count; i++) {
+					$(".same_shop_product_list ul li").eq(i).show()
+				}
+				
+</script>
+<!--{/literal}-->			
+			
