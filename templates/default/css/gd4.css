@@ -322,7 +322,6 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     margin: 0 0 -1px;
     padding: 2px;
     color: #333;
-    height: 34px;
 }
 .new_menu_product_detail ul li a:hover {
     background: #018bc8;
