@@ -233,7 +233,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     border-style: solid;
     border-width: 0 0 1px 1px;
     float: left;
-    width: 102%;
+    width: 100%;
 }
 #product_detail_box .related_products_box ul {
     margin: 0 !important;
@@ -348,7 +348,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .new_product_detail_panel .bottom_industry_list {
     margin-left: 0;
     margin-right: 0;
-    width: 1200px;
+    width: 1180px;
 }
 .hidable_box.less {
     overflow: hidden;
