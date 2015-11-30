@@ -304,7 +304,7 @@
     </div>
     
     
-    <div class="fifteen columns" style="margin-top: -5px;height: 1px;"><div class="line"></div></div>
+    <div class="fifteen columns" style="margin-top: -25px;visibility: hidden"><div class="line"></div></div>
 </div>
 
 
@@ -335,350 +335,7 @@
   </div>
 
 
-
-
-<div class="new_product_detail_panel">
-	<div id="product_detail_box">
-		<div class="left-bar">
-			
-			
-			<div id="shop_info">
-				
-					
-					<section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
-						
-						
-						{if $item.shop_name}			
-									
-						<div class="logo_box_u">
-						<div class="four columns logo logoz">
-							
-						
-							<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$COMPANY.shop_name}</strong>">
-							<img class="klbox" alt="{$COMPANY.name}" src="{$COMPANY.logo}"></a>
-						  </div>
-						  <div id="TopMenuCat">
-							<div class="childcat">
-							<img class="" src="{$MEMBER.groupimage}" alt="{$MEMBER.groupname}" /><br />({$COMPANY.clicked})
-							</div>
-							<div style="margin-top: 5px;" class="childcat">
-							<span><a href="{the_url module=space userid=`$item.space_name`}#chinh-sach">Chính sách<br><span style="font-size: 13px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span></a></span>
-							</div>
-							
-						  </div>
-						</div>			
-									
-						{/if}			
-									
-									<!--<h5>Chủ Shop</h5>-->
-							<div class="red_box">
-									<h3 class="shop_name" style="">{if $item.shop_name}
-						<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
-									
-							
-										<table class="box_info_col">
-										<tr>
-											<th>Liên hệ:</th>
-											<td>{$item.link_people}</td>
-										</tr>
-										<tr>
-											<th>{lang phone}:</th>
-											<td>{$COMPANY.contact_mobile}</td>
-										</tr>
-										<tr>
-											<th>{lang email}:</th>
-											<td><a href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a></td>
-										</tr>
-											<tr>
-											
-											<td colspan="2" style="width: 100%">
-											<!--{if $pb_username!=""}-->
-												<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)">{lang chat_with_owner}</a>
-											<!--{else}-->
-												<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
-											<!--{/if}-->
-											</td>
-										</tr>
-									  </table>
-							 </div>
-						
-	
-								</div>
-					
-					
-								<h3 style="padding-left: 0;border-bottom: solid 1px #ddd;padding-bottom: 5px;">{lang announce}</h3>
-									<div id="annouce_box">
-						<div style="clear: both">Đang tải...</div>
-									</div>
-					
-					
-					</section>
-					
-					
-					
-				
-			</div>
-			
-			<br style="clear:both">
-			
-			<h3 class="categories_heading">Danh mục sản phẩm</h3>
-			
-			<aside id="left-sidebar" class="four columns leftbar_space new_menu_product_detail hidable_box less">
-				<div class="tree_bound hidable_box_content">
-				</div>
-				<span class="shop_menu_view_more view_more_but"><button>Xem thêm danh mục</button></span>
-			</aside>
-			
-			
-			
-		</div>
-		<div class="content">
-			<div class="product-info">
-			<div class="left">
-				<div class="image images" id="detail_box_top">
-		  
-					<div class="cloud-zoom-wrap">
-						{if $item.d_image}
-							<!--<a itemprop="image" href="{$item.d_image}" class="zoomz fancyx" rel="thumbnails" title="{$item.title}"><img width="313" height="418" src="{$item.d_image}" class="attachment-shop_single wp-post-image" alt="{$item.title}"></a>-->
-							<!--<div class="detailtopconleft">
-								<p class="left1"><img src="{$item.image}" alt="" width="80" height="80" /></p>
-								<p class="left2"><a href="misc.php?source={$item.image_url}" target="_blank"><img src="{$theme_img_path}images/detail_17.jpg" alt="" /></a><span>{lang enlarge_image}</span></p>
-							</div>-->
-							<a itemprop="image" href="{$item.d_image}" class="fancyx" rel="thumbnails" title="">
-							<ul id="example2">
-								<li>
-									<img class="etalage_thumb_image" src="{$item.d_imgsmall}" />
-									<img class="etalage_source_image" src="{$item.d_image}" />
-								</li>
-							</ul>
-							</a>
-						{/if}
-						<div style="background-image: url(&quot;.&quot;); z-index: 999; position: absolute; width: 360px; height: 360px; left: 0px; top: 0px; cursor: move;" class="mousetrap">
-								
-							</div></div>
-						<!-- zoom link-->
-						<a class="colorbox cboxElement" id="zoom-btn" title="Ut Tellus Dolor Dapibus Eget 30" href="http://velikorodnov.com/opencart/shopme/demo2/image/cache/catalog/products/10-750x750.JPG"><i class="fa fa-expand"></i></a>
-				
-				
-					<div class="thumbnails">
-						{if $item.picture && $item.d_image != $item.image}<a href="{$item.image}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-							<img width="200" height="200" src="{$item.imgsmall}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
-							{/if}
-						{if $item.picture1 && $item.d_image != $item.image1}<a href="{$item.image1}" title="{$item.title}" rel="thumbnails" class="zoomz first fancyx">
-							<img width="200" height="200" src="{$item.imgsmall1}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
-							{/if}
-						{if $item.picture2 && $item.d_image != $item.image2}<a href="{$item.image2}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
-							<img width="200" height="200" src="{$item.imgsmall2}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
-							{/if}
-						{if $item.picture3 && $item.d_image != $item.image3}<a href="{$item.image3}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
-							<img width="200" height="200" src="{$item.imgsmall3}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
-							{/if}
-						{if $item.picture4 && $item.d_image != $item.image4}<a href="{$item.image4}" title="{$item.title}" rel="thumbnails" class="zoomz fancyx">
-							<img width="200" height="200" src="{$item.imgsmall4}" class="attachment-shop_thumbnail" alt="{$item.title}" /></a>
-						{/if}
-					</div>
-				
-				
-				
-				</div>
-						  
-					
-					
-					
-						 
-						  </div>
-					 <div style="" class="right">
-			  
-						<!-- NextPrevLinks-->
-						  
-						  <!--<h1 itemprop="name">{$item.title}</h1>-->
-						  
-								
-							
-							<!-- Rich snippet end -->
-							
-								
-							<div class="description">
-								  {if $item.brand_name}
-									  <span>{lang brand}</span> {$item.brand_name}<br>
-								  {/if}
-									
-								  {if $item.market}
-									  <span>{lang market}</span> {$item.market}<br>
-								  {/if}
-								  {if $item.product_code}
-									  <span>{lang product_code}</span> {$item.product_code}<br>
-								  {/if}
-								  {if false}
-									  <span>{lang area_tt}</span> {$item.area_names}<br>
-								  {/if}				
-								  <!--{foreach from=$ObjectParams name=form item=item1 key=key1}-->
-									  {if $item1.value}
-										  <span>{$item1.label}</span> {$item1.value}<br>
-									  {/if}
-								  <!--{/foreach}-->
-							
-							</div> <!-- .description ends -->
-							
-							
-							  <div class="offer_wrapper">
-								  <div class="price">
-									  <span itemprop="price">
-										  {if $item.new_price || $item.price}					
-											  {if $item.new_price != "" && $item.new_price != 0}
-												  {if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
-											  {else}
-												  <span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
-											  {/if}
-										  {/if}
-									  </span>
-								  </div>
-								  
-								  <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
-					  
-									  <button style="float: left" onclick="getCart({$item.id}, $('#quantity').val(), $(this));" type="button" class="single_add_to_cart_button button alt">{lang add_to_cart}</button>
-									  <div class="quantity" style="display: inline-block">
-										  <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />
-									  </div>
-									  
-									  {if $item.tag}<p class="keywords"><label>Từ khóa tìm kiếm: </label>{$item.tag}</p>{/if}
-									  
-								  </form>
-							  </div>
-						   
-					
-					
-					
-					
-						
-					
-					
-					
-					
-					
-					
-					</div> <!-- product-info-right END -->
-				  
-			</div>
-			
-			
-			
-			
-			
-			<div class="woocommerce_tabs">
-				<ul class="tabs">
-					<li class="description_tab  active">
-						<a href="#tab-description">{lang details_n}</a>
-					</li>
-					<li class="description_tab">
-						<a href="#tab-commenttab">
-							<div id="comment_link">
-								<label>
-									<h2>{lang comment_list} ({$comments_count})</h2>
-								</label>
-							</div>
-						</a>
-					</li>
-				</ul>
-			
-				<div class="panel entry-content hidable_box less" id="tab-description" style="margin-bottom: -25px;">
-					<div class="hidable_box_content">
-						{if $item.content}
-							<h2 class="page-title">
-							{$item.title}                    </h2>
-				
-							{$item.content}
-						{/if}
-						
-						<br style="clear: both" />
-						<div style="padding-top: 50px;"></div>
-						
-						{if $order_message}
-							<div class="order_message_box">
-								<div class="order_message">
-									{$order_message.message}
-								</div>
-							</div>
-						{/if}
-						<div class="buy-bottom">
-							
-							<div>
-								
-								<a rel="buynow" href="index.php?do=product&action=add_cart&id={$item.id}">ĐẶT MUA</a>
-							</div>
-						</div>
-					</div>
-					
-					<span class="shop_menu_view_more view_more_but"><button>Xem thêm</button></span>
-				</div>
-				
-				<div class="panel entry-content" id="tab-commenttab" style="display: none">
-					
-					<div id="comments">
-						
-						<div id="comm-list"></div>
-						
-						<!--{if $pb_username!=""}-->
-							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
-								<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
-								<!-- {formhash} -->
-								<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
-								<textarea id="comment" name="data[content]"></textarea>
-							</form>
-						<!--{else}-->
-							<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
-								<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
-								<!-- {formhash} -->
-								<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
-								<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
-								<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
-								<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
-								<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
-							</form>
-						<!--{/if}-->
-					</div>
-					
-				</div>
-		
-			</div>
-			
-			
-			<div class="new_list_horizon same_bottom_product_list">
-				
-				<h3 class="related_bottom_h3">Sản phẩm cùng loại</h3>
-				<div style="margin-left: 10px;" class="related_products_bottom">	
-					
-				</div>
-				
-				
-				
-				
-			</div>
-			
-			
-			<div class="new_list_horizon same_shop_product_list">
-				
-				<h3 class="related_bottom_h3">Sản phẩm cùng Gian hàng</h3>
-				<div class="related_products_box">
-				
-				</div>
-			</div>
-			
-			
-		</div>
-		<br style="clear:both">
-	
-	</div>
-	
-	<div class="bottom_industry_list">
-	
-	</div>
-	
-	<br style="clear: both" />
-</div>
-
-
-<div class="row" id="detail_box" style="display: none">
+<div class="row" id="detail_box" style="">
     
     
     
@@ -826,74 +483,74 @@
 			    <div id="shop_info">
 			
 				
-					<section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
+				<section style="background:none; margin-bottom: 0" id="recent_products-3" class="widget-3 widget-last widget widget_recent_products"><div class="widget-inner">
+					
+					
+					{if $item.shop_name}			
+								
+					<div class="logo_box_u">
+					<div class="four columns logo logoz">
+					    
+					
+					    <a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$COMPANY.shop_name}</strong>">
+						<img class="klbox" alt="{$COMPANY.name}" src="{$COMPANY.logo}"></a>
+					  </div>
+					  <div id="TopMenuCat">
+					    <div class="childcat">
+						<img class="" src="{$MEMBER.groupimage}" alt="{$MEMBER.groupname}" /><br />({$COMPANY.clicked})
+					    </div>
+					    <div style="margin-top: 5px;" class="childcat">
+						<span><a href="{the_url module=space userid=`$item.space_name`}#chinh-sach">Chính sách<br><span style="font-size: 13px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span></a></span>
+					    </div>
+					    
+					  </div>
+					</div>			
+								
+					{/if}			
+								
+								<!--<h5>Chủ Shop</h5>-->
+						<div class="red_box">
+								<h3 class="shop_name" style="">{if $item.shop_name}
+					<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
+								
 						
-						
-						{if $item.shop_name}			
-									
-						<div class="logo_box_u">
-						<div class="four columns logo logoz">
-							
-						
-							<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$COMPANY.shop_name}</strong>">
-							<img class="klbox" alt="{$COMPANY.name}" src="{$COMPANY.logo}"></a>
-						  </div>
-						  <div id="TopMenuCat">
-							<div class="childcat">
-							<img class="" src="{$MEMBER.groupimage}" alt="{$MEMBER.groupname}" /><br />({$COMPANY.clicked})
+								    <table class="box_info_col">
+									<tr>
+									    <th>Liên hệ:</th>
+									    <td>{$item.link_people}</td>
+									</tr>
+									<tr>
+									    <th>{lang phone}:</th>
+									    <td>{$COMPANY.contact_mobile}</td>
+									</tr>
+									<tr>
+									    <th>{lang email}:</th>
+									    <td><a href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a></td>
+									</tr>
+										<tr>
+									    
+									    <td colspan="2" style="width: 100%">
+										<!--{if $pb_username!=""}-->
+											<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)">{lang chat_with_owner}</a>
+										<!--{else}-->
+											<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
+										<!--{/if}-->
+									    </td>
+									</tr>
+								  </table>
+						 </div>
+					
+
 							</div>
-							<div style="margin-top: 5px;" class="childcat">
-							<span><a href="{the_url module=space userid=`$item.space_name`}#chinh-sach">Chính sách<br><span style="font-size: 13px;font-weight: bold;background: none">{if $MEMBER.membergroup_id == 2}{lang member_person} <span style='font-weight:normal;background: none'>({lang personal})</span>{/if}{if $MEMBER.membergroup_id == 3}{lang member_company}{/if}{if $MEMBER.membergroup_id == 1}{lang member_shop}{/if}</span></a></span>
-							</div>
-							
-						  </div>
-						</div>			
-									
-						{/if}			
-									
-									<!--<h5>Chủ Shop</h5>-->
-							<div class="red_box">
-									<h3 class="shop_name" style="">{if $item.shop_name}
-						<a href="{the_url module=space userid=`$item.space_name`}" title="Vào xem gian hàng <br><strong class='red'>{$item.shop_name}</strong>">{$item.shop_name}</a>{else}{lang released_by_personnal}{/if}</h3>
-									
-							
-										<table class="box_info_col">
-										<tr>
-											<th>Liên hệ:</th>
-											<td>{$item.link_people}</td>
-										</tr>
-										<tr>
-											<th>{lang phone}:</th>
-											<td>{$COMPANY.contact_mobile}</td>
-										</tr>
-										<tr>
-											<th>{lang email}:</th>
-											<td><a href="{the_url module=space userid=`$item.space_name`}contact">{$COMPANY.contact_email}</a></td>
-										</tr>
-											<tr>
-											
-											<td colspan="2" style="width: 100%">
-											<!--{if $pb_username!=""}-->
-												<a class="chat_with_owner {if $online}online{/if}" href="javascript:void(0)" onclick="getChatboxNew('{$MEMBER.id}x{$MEMBER.membertype_id}', false)">{lang chat_with_owner}</a>
-											<!--{else}-->
-												<a class="chat_with_owner {if $online}online{/if} comment_but" href="#login-box" onclick="">{lang chat_with_owner}</a>
-											<!--{/if}-->
-											</td>
-										</tr>
-									  </table>
-							 </div>
-						
-	
-								</div>
-					
-					
-								<h3 style="padding-left: 0;border-bottom: solid 1px #ddd;padding-bottom: 5px;">{lang announce}</h3>
-									<div id="annouce_box">
-						<div style="clear: both">Đang tải...</div>
-									</div>
-					
-					
-					</section>
+				
+				
+							<h3 style="padding-left: 0;border-bottom: solid 1px #ddd;padding-bottom: 5px;">{lang announce}</h3>
+							    <div id="annouce_box">
+				    <div style="clear: both">Đang tải...</div>
+							    </div>
+				
+				
+				</section>
 			    
 			    </div>
 			    
@@ -928,76 +585,76 @@
 
 
 		<div class="woocommerce_tabs">
-			<ul class="tabs">
-				<li class="description_tab  active">
-					<a href="#tab-description">{lang details_n}</a>
-				</li>
-				<li class="description_tab">
-					<a href="#tab-commenttab">
-						<div id="comment_link">
-							<label>
-								<h2>{lang comment_list} ({$comments_count})</h2>
-							</label>
-						</div>
-					</a>
-				</li>
-			</ul>
-		
-			<div class="panel entry-content" id="tab-description">
-				{if $item.content}
-					<h2 class="page-title">
-					{$item.title}                    </h2>
-		
-					{$item.content}
-				{/if}
-				
-				<br style="clear: both" />
-				<div style="padding-top: 50px;"></div>
-				
-				{if $order_message}
-					<div class="order_message_box">
-						<div class="order_message">
-							{$order_message.message}
-						</div>
+		<ul class="tabs">
+			<li class="description_tab  active">
+				<a href="#tab-description">{lang details_n}</a>
+			</li>
+			<li class="description_tab">
+				<a href="#tab-commenttab">
+					<div id="comment_link">
+						<label>
+							<h2>{lang comment_list} ({$comments_count})</h2>
+						</label>
 					</div>
-				{/if}
-				<div class="buy-bottom">
-					
-					<div>
-						
-						<a rel="buynow" href="index.php?do=product&action=add_cart&id={$item.id}">ĐẶT MUA</a>
+				</a>
+			</li>
+		</ul>
+		
+		<div class="panel entry-content" id="tab-description">
+			{if $item.content}
+			    <h2 class="page-title">
+				{$item.title}                    </h2>
+	
+				{$item.content}
+			{/if}
+			
+			<br style="clear: both" />
+			<div style="padding-top: 50px;"></div>
+			
+			{if $order_message}
+				<div class="order_message_box">
+					<div class="order_message">
+						{$order_message.message}
 					</div>
 				</div>
-	
+			{/if}
+			<div class="buy-bottom">
+				
+				<div>
+					
+					<a rel="buynow" href="index.php?do=product&action=add_cart&id={$item.id}">ĐẶT MUA</a>
+				</div>
+			</div>
+
+		</div>
+		
+		<div class="panel entry-content" id="tab-commenttab" style="display: none">
+			
+			<div id="comments">
+				
+				<div id="comm-list"></div>
+				
+				<!--{if $pb_username!=""}-->
+					<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+						<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+						<!-- {formhash} -->
+						<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+						<textarea id="comment" name="data[content]"></textarea>
+					</form>
+				<!--{else}-->
+					<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
+						<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
+						<!-- {formhash} -->
+						<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
+						<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
+						<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
+						<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
+						<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
+					</form>
+				<!--{/if}-->
 			</div>
 			
-			<div class="panel entry-content" id="tab-commenttab" style="display: none">
-				
-				<div id="comments">
-					
-					<div id="comm-list"></div>
-					
-					<!--{if $pb_username!=""}-->
-						<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
-							<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
-							<!-- {formhash} -->
-							<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
-							<textarea id="comment" name="data[content]"></textarea>
-						</form>
-					<!--{else}-->
-						<form name="productaddfrm" class="productaddfrm" id="Frm1" method="post" action="{the_url module=products action=postcomment id=`$item.id`}" onsubmit="$('#Save').attr('disabled',true);">
-							<img src="{if $pb_company}{$pb_company.image}{else}  {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon_big.png  {/if} {/if}" />
-							<!-- {formhash} -->
-							<input type="hidden" id="pid" name="data[id]" value="{$item.id}" />
-							<input type="hidden" id="guest_name" name="data[guest_name]" value="" />
-							<input type="hidden" id="guest_email" name="data[guest_email]" value="" />
-							<input type="hidden" id="guest_isedit" name="guest_isedit" value="0" />
-							<textarea id="comment" name="data[content]"></textarea> <span class="guest_info"></span>
-						</form>
-					<!--{/if}-->
-				</div>
-				
-			</div>
+		</div>
 
 	</div>
 
@@ -1147,14 +804,14 @@
 <script>
 	//get related products
 	$.ajax({
-		url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&action=related_products&member_id=<!--{/literal}-->{$item.member_id}<!--{literal}-->&product_id=<!--{/literal}-->{$item.id}<!--{literal}-->&style=nocrop",
+		url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&action=related_products&member_id=<!--{/literal}-->{$item.member_id}<!--{literal}-->&product_id=<!--{/literal}-->{$item.id}<!--{literal}-->",
 	}).done(function ( data ) {
 		if( console && console.log ) {
 			$('.related_products_box').html(data);
 			
 			$('#product_detail_box ul.product_list_widget li img').resizecrop({
-				width:189,
-				height:189
+				width:100,
+				height:100
 			});
 			
 			$('#product_detail_box ul.product_list_widget li img').css("float", "none");
@@ -1167,41 +824,6 @@
 	
 	{/literal}getBottomRelatedProducts({$item.industry_id},{$COMPANY.member_id});{literal}
 	getBottomIndustryList();
-	
-	// Get Spce Tree
-	$.ajax({
-	    url: "{/literal}{the_url module=root-url}{literal}index.php?do=product&tree_type={/literal}{$tree_type}{literal}&layout=mobile&action=get_space_tree&userid={/literal}{$item.space_name}{literal}&page_memid={/literal}{$MEMBER.id}{literal}&typeid={/literal}{$smarty.get.typeid}{literal}&page={/literal}{$smarty.get.page}{literal}&memberid={/literal}{$smarty.get.memberid}{literal}&order={/literal}{$smarty.get.order}{literal}&frontend=1",
-	}).done(function ( data ) {
-	    if( console && console.log ) {
-			$('.tree_bound').html(data);
-			//tree title space
-			if($('.tree_bound li.active').length > 0) $('.tree_title').html(': '+$('.tree_bound li.active a tt').html());
-			
-			var content_height = $('.tree_bound').height();
-			if (content_height < $(".new_menu_product_detail").height()) {
-                $(".new_menu_product_detail").removeClass("less")
-				$(".new_menu_product_detail .view_more_but").remove();
-            }
-			
-			$(".view_more_but button").click(function() {
-				$(this).parents(".hidable_box").removeClass("less")
-				$(this).parents(".hidable_box").find(".view_more_but").remove();
-			})
-	    }
-	});
-	
-	var content_height = $('#tab-description .hidable_box_content').height();
-	if (content_height < $("#tab-description").height()) {
-		$("#tab-description").removeClass("less")
-		$("#tab-description .view_more_but").remove();
-	}
-	
-	$(".view_more_but button").click(function() {
-		$(this).parents(".hidable_box").removeClass("less")
-		$(this).parents(".hidable_box").find(".view_more_but").remove();
-	})
-
-	
 </script>
 <!--{/literal}-->
 
