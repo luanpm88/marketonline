@@ -414,3 +414,6 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .view_more_shop_items a:hover {
     opacity: 0.8;
 }
+.inner_slide {
+    width: 300px;
+}
