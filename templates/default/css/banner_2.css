@@ -325,15 +325,19 @@ li.ad_li {
 
 
 .wide_6_banners {
-    width: 1180px;
+    width: 1183px;
+    overflow: hidden;
+}
+.wide_6_banners .works-list {
+    width: 104%;
 }
 .wide_6_banners .ad_banner_item {
     float: left;
-    height: 140px;
-    margin-bottom: -139px;
-    margin-right: 10px;
+    height: 172px;
+    margin-bottom: -171px;
+    margin-right: 30px;
     position: inherit;
-    width: 287px;
+    width: 172px;
     font-size: 20px;
 }
 .wide_6_banners .product_home_banner .subtitle {
