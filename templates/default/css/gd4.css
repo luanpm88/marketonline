@@ -420,10 +420,12 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .friendlink_box a {
     height: 95px;
     width: 95px;
+    overflow: hidden;
+}
+.friendlink_box a img {
+    height: 95px !important;
+    width: 95px !important;
 }
 .link_item span.bg {
     width: 95px;
-}
-#left-sidebar .link_item span.bg {
-    margin-top: -33px;
 }
