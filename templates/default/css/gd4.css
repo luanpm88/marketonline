@@ -401,8 +401,16 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     display: none;
 }
 .view_more_shop_items {
-    
+    clear: both;
+    display: block;
+    padding-top: 5px;
 }
 .view_more_shop_items a {
-    
+    background: #3b984c none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    padding: 5px 20px;
+}
+.view_more_shop_items a:hover {
+    opacity: 0.8;
 }
