@@ -326,10 +326,9 @@ li.ad_li {
 
 .wide_6_banners {
     width: 1183px;
-    overflow: hidden;
 }
 .wide_6_banners .works-list {
-    width: 104%;
+    width: 100%;
 }
 .wide_6_banners .ad_banner_item {
     float: left;
