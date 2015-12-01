@@ -322,3 +322,29 @@ li.ad_li {
     right: 115px;
     text-align: right;
 }
+
+
+.wide_6_banners {
+    width: 1180px;
+}
+.wide_6_banners .ad_banner_item {
+    float: left;
+    height: 140px;
+    margin-bottom: -139px;
+    margin-right: 10px;
+    position: inherit;
+    width: 287px;
+    font-size: 20px;
+}
+.wide_6_banners .product_home_banner .subtitle {
+    font-size: 14px;
+}
+.wide_6_banners .product_home_banner .ticket {
+    font-size: 12px;
+}
+.wide_6_banners .product_home_banner .subtitle.right {
+    bottom: 6px;
+    position: absolute;
+    right: 115px;
+    text-align: right;
+}
