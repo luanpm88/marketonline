@@ -397,3 +397,6 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     overflow: hidden;
     display: block;
 }
+.mousetrap {
+    display: none;
+}
