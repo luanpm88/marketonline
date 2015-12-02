@@ -21,6 +21,9 @@
 	    page = p;
 
 	    var pages = Math.ceil(total/num_per_page);
+		
+		var begin = 1;
+		var end = 3;
 	    
 	    $('.pagination-list').html("");
 	    
@@ -33,7 +36,7 @@
 			'<li class="prev"><a href="javascript:void(0)" rel="'+(page-1)+'"><</a></li>';
 	      }
 		  
-	      for(var i = 1; i <= pages; i++) {
+	      for(var i = begin; i <= end; i++) {
 		var active = '';
 		if (page == i) {
 		  active = ' active';
