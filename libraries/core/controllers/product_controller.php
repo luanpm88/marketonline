@@ -2683,6 +2683,41 @@ class Product extends PbController {
 		$industries = $this->industry->getCacheIndustry();
 		//echo $_GET['industryid'];
 		
+		
+			if(isset($_GET["service"]) && $_GET["service"] != "" && $_GET["service"] != "0detail" && $_GET["service"] != "h")
+			{
+				$module = "services";
+				if($_GET["service"] == "offers")
+				{
+					$module = "offers";
+				}
+			}
+			else
+			{
+				$module = "products";
+			}
+			
+			if(isset($_GET["service"]) && $_GET["service"] == "company") {
+				$module = "companies";
+			}			
+			if(isset($_GET["service"]) && $_GET["service"] == "detail") {
+				$module = "companies";
+			}			
+			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='thuong-mai') {
+				$module = "offers";
+			}			
+			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='san-pham') {
+				$module = "products";
+			}			
+			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='dich-vu') {
+				$module = "services";
+			}
+			
+			setvar("module",$module);
+		
+		
+		
+		
 		$service = 0;
 		if(isset($_GET["tipe"]))
 		{
