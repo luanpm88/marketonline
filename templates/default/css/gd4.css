@@ -460,11 +460,17 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     padding: 8px 0 8px 12px !important;    
 }
 .paging_col_ajax ul.products li.boxcols img {
-    
+    height: 288px;
+    max-height: none;
+    max-width: none;
+    width: 288px;
 }
 .paging_col_ajax ul.products li.boxcols span img {
     
 }
 .paging_col_ajax ul.products li.boxcols {
     
+}
+.paging_col_ajax ul.products li.boxcols a div {
+    height: auto !important;
 }
