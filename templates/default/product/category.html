@@ -22,8 +22,13 @@
 
 	    var pages = Math.ceil(total/num_per_page);
 		
-		var begin = 1;
-		var end = 3;
+		var begin = p-10;
+		var end = p+10;
+		
+		if (begin < 0) {
+          end = end - begin
+		  begin = 1
+        }
 	    
 	    $('.pagination-list').html("");
 	    
