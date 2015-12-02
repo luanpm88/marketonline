@@ -2684,7 +2684,7 @@ class Product extends PbController {
 		//echo $_GET['industryid'];
 		
 		
-		if(isset($_GET["service"]) && $_GET["service"] != "" && $_GET["service"] != "0detail" && $_GET["service"] != "h")
+			if(isset($_GET["service"]) && $_GET["service"] != "" && $_GET["service"] != "0detail" && $_GET["service"] != "h")
 			{
 				$module = "services";
 				if($_GET["service"] == "offers")
@@ -2699,33 +2699,18 @@ class Product extends PbController {
 			
 			if(isset($_GET["service"]) && $_GET["service"] == "company") {
 				$module = "companies";
-			}
-			
+			}			
 			if(isset($_GET["service"]) && $_GET["service"] == "detail") {
 				$module = "companies";
-			}
-			
+			}			
 			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='thuong-mai') {
 				$module = "offers";
-				
-				setvar("module",$module);
-				exit;
-			}
-			
+			}			
 			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='san-pham') {
 				$module = "products";
-			}
-			
+			}			
 			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='dich-vu') {
 				$module = "services";
-			}
-			
-			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='viec-lam') {
-				exit;
-			}
-			
-			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='hoc-tap') {
-				exit;
 			}
 			
 			setvar("module",$module);
