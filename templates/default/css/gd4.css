@@ -457,6 +457,5 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     border-bottom: 1px solid #ddd;
 }
 .connect_menu .menu li a {
-    padding-left: 8px 0 8px 0px !important;
-    
+    padding: 8px 0 8px 0px !important;    
 }
