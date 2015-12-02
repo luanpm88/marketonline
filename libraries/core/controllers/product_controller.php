@@ -2703,7 +2703,7 @@ class Product extends PbController {
 			if(isset($_GET["service"]) && $_GET["service"] == "detail") {
 				$module = "companies";
 			}			
-			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='thuong-mai') {
+			if($_GET["type"]=='thuong-mai') {
 				$module = "offers";
 			}			
 			if(isset($_GET["pos"]) && $_GET["pos"]=='area' && $_GET["type"]=='san-pham') {
