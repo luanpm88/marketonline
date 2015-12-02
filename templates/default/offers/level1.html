@@ -61,14 +61,16 @@
 				if(typeof($(data).filter('ul').html()) != 'undefined' || true)
 				{
 				    var levelx = level;
+					$('.parent-menu-title').html("<a>"+$('.product_list_title parent').html()+"</a>");
 				    if(typeof($(data).filter('ul').html()) == 'undefined')
 				    {
 				      levelx = level - 1;
+					  $('.parent-menu-title').html("<a>"+$('.product_list_title a').eq(levelx-2).html()+"</a>");
 				    }
 				    
 				    //update parent menu link
-					alert(levelx-1)
-				      $('.parent-menu-title').html($('.product_list_title a').eq(levelx-2).html());
+					
+				      
 				      if (industryid == 0) {
 						$('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục thương mại</a>");
 						//$('.product_list_title').html(" / Tìm kiếm");
