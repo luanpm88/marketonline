@@ -445,7 +445,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 }
 #menu-features-list {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 .box-level1, .box-level2, .box-level3, .box-level4 {
     max-height: none;
