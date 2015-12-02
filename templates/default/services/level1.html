@@ -70,22 +70,22 @@
 					//$('.product_list_title').html(" / Tìm kiếm");
 				      }
 				    
-				  //if (levelx == '2') {
-				  //  $('.s-scroll').animate({ marginLeft: '-240px' }, 500);
-				  //}
-				  //else if (levelx == '3') {				    
-				  //  $('.s-scroll').animate({ marginLeft: '-480px' }, 500);
-				  //}
-				  //else if (levelx == '4') {
-				  //  $('.s-scroll').animate({ marginLeft: '-720px' }, 500);
-				  //}
+				  if (levelx == '2') {
+				    $('.s-scroll').animate({ marginLeft: '-240px' }, 500);
+				  }
+				  else if (levelx == '3') {				    
+				    $('.s-scroll').animate({ marginLeft: '-480px' }, 500);
+				  }
+				  else if (levelx == '4') {
+				    $('.s-scroll').animate({ marginLeft: '-720px' }, 500);
+				  }
 				    
 				    
 				    $('.box-level'+level).html(data);
-				    $('.box-level'+level).mCustomScrollbar({
-					    autoHideScrollbar:true,
-					    theme:"light-thin"
-				    });
+				//    $('.box-level'+level).mCustomScrollbar({
+				//	    autoHideScrollbar:true,
+				//	    theme:"light-thin"
+				//    });
 				    
 				    $('.box-level'+level+' ul li a.item').click(function() {
 				      ajaxLoadMenu($(this).attr("rel"), parseInt(level)+1, $(this));				      
@@ -431,22 +431,22 @@
 		  
 		});
 		
-		$(".box-level1").mCustomScrollbar({
-					autoHideScrollbar:true,
-					theme:"light-thin"
-				});
-	       $(".box-level2").mCustomScrollbar({
-					autoHideScrollbar:true,
-					theme:"light-thin"
-				});
-	       $(".box-level3").mCustomScrollbar({
-					autoHideScrollbar:true,
-					theme:"light-thin"
-				});
-	       $(".box-level4").mCustomScrollbar({
-					autoHideScrollbar:true,
-					theme:"light-thin"
-				});
+	//	$(".box-level1").mCustomScrollbar({
+	//				autoHideScrollbar:true,
+	//				theme:"light-thin"
+	//			});
+	//       $(".box-level2").mCustomScrollbar({
+	//				autoHideScrollbar:true,
+	//				theme:"light-thin"
+	//			});
+	//       $(".box-level3").mCustomScrollbar({
+	//				autoHideScrollbar:true,
+	//				theme:"light-thin"
+	//			});
+	//       $(".box-level4").mCustomScrollbar({
+	//				autoHideScrollbar:true,
+	//				theme:"light-thin"
+	//			});
 				
 		$('.parent-menu-title').live("click",function() {
 		  industryid = $(this).find("a").attr('rel');
