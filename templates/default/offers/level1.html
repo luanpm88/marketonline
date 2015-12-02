@@ -25,7 +25,7 @@
 	    if(item) item.parent().parent().find("li").removeClass('active');
 	    if(item) item.parent().addClass('active');
 	    $.ajax({
-		    url: "index.php?do=product&action=ajaxLoadMenuConnect&tipe=offer&industryid="+id+"{/literal}{if $smarty.get.do=='area'}&pos=area&areatype={$smarty.get.action}&type={$smarty.get.type}{/if}&service={if $smarty.get.do=='company'}company&membergroup_id={$smarty.get.membergroup_id}{else}{$item.service}{$smarty.get.action}{/if}{literal},			
+		    url: "index.php?do=product&action=ajaxLoadMenuConnect&tipe=offer&industryid="+id+"{/literal}{if $smarty.get.do=='area'}&pos=area&areatype={$smarty.get.action}&type={$smarty.get.type}{/if}&service={if $smarty.get.do=='company'}company&membergroup_id={$smarty.get.membergroup_id}{else}{$item.service}{$smarty.get.action}{/if}{literal}",			
 		}).done(function ( data ) {
 			if( console && console.log ) {
 			  
