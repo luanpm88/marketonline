@@ -468,6 +468,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .paging_col_ajax ul.products li.boxcols span img {
     width: auto;
     height: auto;
+    padding: 0;
 }
 .paging_col_ajax ul.products li.boxcols a div span {
     margin-top: 6px;
