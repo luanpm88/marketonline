@@ -449,3 +449,9 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .box-level1, .box-level2, .box-level3, .box-level4 {
     max-height: none;
 }
+.parent-menu-title {
+    display: none;
+}
+#menu-features-list li {
+    background: none;
+}
