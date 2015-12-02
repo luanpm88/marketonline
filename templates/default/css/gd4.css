@@ -466,7 +466,8 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     width: 288px;
 }
 .paging_col_ajax ul.products li.boxcols span img {
-    
+    width: auto;
+    height: auto;
 }
 .paging_col_ajax ul.products li.boxcols {
     
@@ -475,5 +476,5 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     height: auto !important;
 }
 .paging_col_ajax ul.products li.boxcols .info_box {
-    
+    min-height: 100px;
 }
