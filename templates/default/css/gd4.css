@@ -469,6 +469,9 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     width: auto;
     height: auto;
 }
+.paging_col_ajax ul.products li.boxcols a div span {
+    margin-top: 5px;
+}
 .paging_col_ajax ul.products li.boxcols {    
 }
 .paging_col_ajax ul.products li.boxcols a div {
