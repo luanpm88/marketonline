@@ -454,7 +454,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 }
 #menu-features-list li {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #eee;
 }
 .connect_menu .menu li a {
     padding: 8px 0 8px 12px !important;    
