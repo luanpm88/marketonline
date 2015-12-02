@@ -61,13 +61,14 @@
 				if(typeof($(data).filter('ul').html()) != 'undefined' || true)
 				{
 				    var levelx = level;
+				    $('.parent-menu-title').html("<a>"+$('.product_list_title parent').html()+"</a>");
 				    if(typeof($(data).filter('ul').html()) == 'undefined')
 				    {
 				      levelx = level - 1;
+					  $('.parent-menu-title').html("<a>"+$('.product_list_title a').eq(levelx-2).html()+"</a>");
 				    }
-				    
-				    //update parent menu link
-				      $('.parent-menu-title').html($('.box-level'+(levelx-1)+' li.active a').clone());
+					
+					
 				      if (industryid == 0) {
 					$('.parent-menu-title').html("<a href='javascript:void(0)'>Danh mục sản phẩm</a>");
 					//$('.product_list_title').html(" / Tìm kiếm");
@@ -742,7 +743,7 @@
 		<ul class="menu" id="menu-features-list">
 		  <!--{loop $IndustryList.box1 item0 level_0 key0}-->
 		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.level0_id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="javascript:void(0)">
+			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=products level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
 			  {$item0.name} <span>{$item0.count}</span>
 			</a>
 		      </li>
@@ -754,7 +755,7 @@
 		    <ul class="menu">
 			<!--{loop $IndustryList.box2 item0 level_0 key0}-->
 		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.level1_id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="javascript:void(0)">
+			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=products level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
 			  {$item0.name} <span>{$item0.count}</span>
 			</a>
 		      </li>
@@ -767,7 +768,7 @@
 		    <ul class="menu">
 				<!--{loop $IndustryList.box3 item0 level_0 key0}-->
 		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="javascript:void(0)">
+			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=products level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
 			  {$item0.name} <span>{$item0.count}</span>
 			</a>
 		      </li>
@@ -780,7 +781,7 @@
 		    <ul class="menu">
 				<!--{loop $IndustryList.box4 item0 level_0 key0}-->
 		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="javascript:void(0)">
+			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=products level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
 			  {$item0.name} <span>{$item0.count}</span>
 			</a>
 		      </li>
