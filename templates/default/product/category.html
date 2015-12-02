@@ -159,8 +159,8 @@
 	    var it = 0;
 	    for (var j=1; j < 3; j++) {
 	       if ($('#list_product_ajax'+j).height() < min) {
-		  min = $('#list_product_ajax'+j).height();
-		  it = j;
+			  min = $('#list_product_ajax'+j).height();
+			  it = j;
 	       }				    
 	    }
 	    return it;
@@ -262,7 +262,7 @@
 				//$('#list_product_ajax').append(data);
 				for (var i=0; i < num_per_page; i++) {
 				    var pos = i%3;
-				    $('#list_product_ajax'+getMinHeight()+' ul').append($(data).filter(".products_"+i).html());
+				    $('#list_product_ajax'+pos+' ul').append($(data).filter(".products_"+i).html());
 				    //alert(getMinHeight());
 				}
 				startscroll = true;
