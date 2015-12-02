@@ -29,6 +29,15 @@
           end = end - begin
 		  begin = 1
         }
+		
+		if (end > pages) {
+          begin = begin - (end - pages)
+		  end = pages
+        }
+		
+		if (begin < 0) {
+		  begin = 1
+        }
 	    
 	    $('.pagination-list').html("");
 	    
