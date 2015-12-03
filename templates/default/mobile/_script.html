@@ -335,7 +335,8 @@
                 
                 //OTHER
                 $('.mobile-horizon-slider ul').each(function() {
-                    $(this).width($(this).find('li').length*155);
+					var width =  $(this).find('li').width();
+                    $(this).width($(this).find('li').length*width+5);
                 });
 
                 
