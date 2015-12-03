@@ -491,3 +491,11 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     margin-right: 2px;
     width: 20px;
 }
+.offer_detail_page .related_products_bottom ul li a {
+    color: #333;
+    font-size: 14px;
+    height: 222px;
+    line-height: 29px;
+    overflow: hidden;
+    text-align: left;
+}
