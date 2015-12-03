@@ -1809,3 +1809,8 @@ DIV.pagination2 A {
     display: inline-block;
     margin-bottom: 5px;
 }
+.main_price {
+    display: block;
+    height: 17px;
+    overflow: hidden;
+}
