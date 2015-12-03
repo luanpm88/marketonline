@@ -59,9 +59,9 @@
                                                 <div class="price-block">
                                                     {if $item.new_price || $item.price}
                                                             {if $item.new_price != "" && $item.new_price != 0}
-                                                                    <span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> 
+                                                                    <span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="main_price"><span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> 
                                                             {else}
-                                                                    <span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+                                                                    <span class="price"><span class="main_price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span>
                                                             {/if}
                                                     {/if}
                                                 </div>
