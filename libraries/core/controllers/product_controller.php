@@ -1933,7 +1933,7 @@ class Product extends PbController {
 						
 						$datas["total"] = number_format($datas["total"], 0, ',', '.');
 						//var_dump($datas);
-						$seller = $member->read("c.shop_name,Member.*, mf.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
+						$seller = $member->read("c.shop_name,Member.*, c.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
 						
 						setvar("Seller", $seller);
 						setvar("StickyItems", $datas);
@@ -2300,7 +2300,7 @@ class Product extends PbController {
 						$datas = $saleorderitem->getStickyDatas($id);
 						$info = $saleorder->read("*", $id, null, array('id'=>$id));
 												
-						$seller = $member->read("c.shop_name,Member.*, mf.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
+						$seller = $member->read("c.shop_name,Member.*, c.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
 						//var_dump($info);
 						//var_dump($datas);
 						
