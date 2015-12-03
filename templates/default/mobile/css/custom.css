@@ -1331,6 +1331,7 @@ time .time {
     color: #a94442;
 }
 .old_price {
+    display: block;
     font-weight: 700;
     height: 17px;
     overflow: hidden;
