@@ -150,6 +150,10 @@ body {
     margin-right: 8px;
     padding: 4px;
     width: 130px;
+    height: 190px;
+}
+.ad_slider ul li {
+    height: 155px;
 }
 .mobile-horizon-slider ul li a.title {
     display: block;
