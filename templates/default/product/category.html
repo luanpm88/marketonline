@@ -1000,8 +1000,12 @@
 
 
 <div class="postitem">
-	<!--{include file="`$theme_name`/_postitems.html"}-->
-      </div>
+		  <!--{if $pb_username!=""}-->
+			<a class="ppiitteemm" target="_blank" href="{the_url module="redirect" url="/virtual-office/product.php?do=edit"}">{lang post_product}</a>
+		  <!--{else}-->
+			<a class="comment_but ppiitteemm" target="_blank" href="#login-box" redirect="{the_url module="redirect" url="/virtual-office/product.php?do=edit"}">{lang post_product}</a>
+		  <!--{/if}-->
+</div>
     
     
   </div>
