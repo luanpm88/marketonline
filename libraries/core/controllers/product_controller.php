@@ -2472,7 +2472,7 @@ class Product extends PbController {
 			$attachment->if_watermark = false;
 			$attachment->if_thumb_middle = false;
 			$attachment->if_logo = true;
-			$attachment->rename_file = "company-logo-".$_POST["com_id"];
+			$attachment->rename_file = "company-logo-".$_POST["com_id"].$time_stamp;
 			$attachment->upload_process();
 			$vals['picture'] = $attachment->file_full_url;
 			$company->saveField('picture', $vals['picture'], intval($_POST["com_id"]));
@@ -2501,7 +2501,7 @@ class Product extends PbController {
 				$_POST["com_id"] = $date->getTimestamp()."-".rand(0,900);
 			}
 			
-			$attachment->rename_file = "company-logo-".$_POST["com_id"];
+			$attachment->rename_file = "company-logo-".$_POST["com_id"].$time_stamp;
 			$attachment->upload_process();
 			$vals['banner'] = $attachment->file_full_url;
 			$company->saveField('picture', $vals['banner'], intval($_POST["com_id"]));
@@ -2533,7 +2533,7 @@ class Product extends PbController {
 				$_POST["com_id"] = $date->getTimestamp();
 			}
 			
-			$attachment->rename_file = "member-ava-".$_POST["com_id"];
+			$attachment->rename_file = "member-ava-".$_POST["com_id"].$time_stamp;
 			$attachment->upload_process();
 			$vals['banner'] = $attachment->file_full_url;
 			$member->saveField('photo', $vals['banner'], intval($_POST["com_id"]));
