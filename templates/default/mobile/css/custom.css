@@ -142,9 +142,10 @@ body {
     position: relative;
 }
 .mobile-horizon-slider ul li {
-    background: none repeat scroll 0 0 #fff;
+    background: #fff none repeat scroll 0 0;
     border: 1px solid #ccc;
     float: left;
+    font-size: 80%;
     list-style: outside none none;
     margin-right: 8px;
     padding: 4px;
@@ -155,7 +156,8 @@ body {
     margin-top: 5px;
     text-align: center;
     color: #333;
-    font-size: 80%;
+    height: 17px;
+    overflow: hidden;
 }
 .mobile-horizon-slider ul li a img {
     width: 100%;
@@ -358,10 +360,6 @@ body {
     overflow: auto;
 }
 .cats-list {
-    
-    
-    
-    
 }
 .cats-list-cover {
     height: 299px;
