@@ -26,51 +26,51 @@
 				$('.guest_info').html('<strong>'+$('#guest_name').val()+'</strong> ('+$('#guest_email').val()+') | <a class="change_guest_info" href="javascript:void(0)">Chỉnh sửa</a> - <a class="delete_guest_info" href="javascript:void(0)">Thoát</a>');
 			}			
 		
-			//$('.left-offerbox a img').css("display", "none");
-			//  $('.left-offerbox a img').eq(0).addClass("active");
-			//  
-			//  $('.offer_content_inner .left-offerbox span.next').click(function() {
-			//    $('.left-offerbox a img').each(function() {
-			//      if ($(this).hasClass("active")) {				     
-			//	$(this).removeClass("active");
-			//	if ($(this).next().length) {
-			//	  $(this).next().addClass("active");
-			//	}
-			//	else
-			//	{
-			//	  $('.left-offerbox a img').eq(0).addClass("active");
-			//	}					
-			//	return false;
-			//      }
-			//    });
-			//  });
-			//  $('.offer_content_inner .left-offerbox span.previous').click(function() {
-			//    $('.left-offerbox a img').each(function() {
-			//      if ($(this).hasClass("active")) {				     
-			//	$(this).removeClass("active");
-			//	if ($(this).prev().length) {
-			//	  $(this).prev().addClass("active");
-			//	}
-			//	else
-			//	{
-			//	  $('.left-offerbox a img:last-child').addClass("active");
-			//	}					
-			//	return false;
-			//      }
-			//    });
-			//  });
-			//  
-			//  $('.left-offerbox a').click(function() {
-			//    $('.offer_content_inner .left-offerbox span.next').trigger("click");
-			//  });
-			//  
-			//  
-			//  
-			//  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
-			//  
-			//  if ($('.left-offerbox img').length < 2) {
-			//	$('.left-offerbox span').remove();
-			//  }
+			$('.left-offerbox a img').css("display", "none");
+			  $('.left-offerbox a img').eq(0).addClass("active");
+			  
+			  $('.offer_content_inner .left-offerbox span.next').click(function() {
+			    $('.left-offerbox a img').each(function() {
+			      if ($(this).hasClass("active")) {				     
+				$(this).removeClass("active");
+				if ($(this).next().length) {
+				  $(this).next().addClass("active");
+				}
+				else
+				{
+				  $('.left-offerbox a img').eq(0).addClass("active");
+				}					
+				return false;
+			      }
+			    });
+			  });
+			  $('.offer_content_inner .left-offerbox span.previous').click(function() {
+			    $('.left-offerbox a img').each(function() {
+			      if ($(this).hasClass("active")) {				     
+				$(this).removeClass("active");
+				if ($(this).prev().length) {
+				  $(this).prev().addClass("active");
+				}
+				else
+				{
+				  $('.left-offerbox a img:last-child').addClass("active");
+				}					
+				return false;
+			      }
+			    });
+			  });
+			  
+			  $('.left-offerbox a').click(function() {
+			    $('.offer_content_inner .left-offerbox span.next').trigger("click");
+			  });
+			  
+			  
+			  
+			  //$('.offer_transform ul.products li.product[rel="'+id+'"]').removeClass('loading');
+			  
+			  if ($('.left-offerbox img').length < 2) {
+				$('.left-offerbox span').remove();
+			  }
 			  
 			  
 			  loadOfferComment();
