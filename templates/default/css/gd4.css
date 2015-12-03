@@ -476,3 +476,6 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .paging_col_ajax ul.products li.boxcols .info_box {
     min-height: 100px;
 }
+.share_title {
+    float: left;
+}
