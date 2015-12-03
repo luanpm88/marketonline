@@ -509,4 +509,5 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 }
 .connect_page_scroll_menu .box-scroll {
     background: #fff;
+    border: solid 1px #ddd;
 }
