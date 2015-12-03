@@ -502,3 +502,8 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .album_detail_page .offer_content_inner .left-offerbox {
     width: auto;
 }
+.album_detail_page .right-offerbox {
+    height: 550px;
+    overflow: hidden;
+    width: 400px !important;
+}
