@@ -499,3 +499,6 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     overflow: hidden;
     text-align: left;
 }
+.album_detail_page .offer_content_inner .left-offerbox {
+    width: auto;
+}
