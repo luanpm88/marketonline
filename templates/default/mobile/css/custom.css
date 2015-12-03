@@ -1332,6 +1332,8 @@ time .time {
 }
 .old_price {
     font-weight: 700;
+    height: 17px;
+    overflow: hidden;
 }
 .single_add_to_cart_button {
     background: #f44f00;
