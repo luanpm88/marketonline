@@ -156,6 +156,9 @@ body {
 .ad_slider ul li {
     height: 155px;
 }
+.crop-img-square {
+    overflow: hidden;
+}
 .mobile-horizon-slider ul li a.title {
     display: block;
     margin-top: 5px;
