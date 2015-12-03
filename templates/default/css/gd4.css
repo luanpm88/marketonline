@@ -197,10 +197,10 @@
 .box_info_col td, .box_info_col th {
     line-height: 20px;
 }
-.red_box h3 {
+.new_product_detail_panel .red_box h3 {
     width: 268px;
 }
-a.chat_with_owner {
+.new_product_detail_panel a.chat_with_owner {
     width: 268px;
 }
 .new_list_horizon {
@@ -208,18 +208,12 @@ a.chat_with_owner {
     padding-top: 20px;
     margin-bottom: 0;
 }
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
 ul.cart_list li::after, ul.product_list_widget li::after {
     clear: both;
     content: "";
     display: block;
 }
-*, *::before, *::after {
-    box-sizing: border-box;
-}
+
 #product_detail_box .related_products_bottom ul.product_list_widget li {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #ddd;
