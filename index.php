@@ -230,7 +230,11 @@ if (!empty($_GET['do'])) {
 	
 	//detectMobile()
 	if(detectMobile()) {
-		render("mobile/index");
+		if($_GET["mobile_page"] == "home_ads") {
+			render("mobile/home_ads");
+		} else {
+			render("mobile/index");
+		}		
 	} else {
 		//if show Home Top Main Right
 		$show_home_top_main_left = $ad->getByZone(40);
