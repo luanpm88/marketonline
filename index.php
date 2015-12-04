@@ -226,7 +226,7 @@ if (!empty($_GET['do'])) {
 	//var_dump($ad->getByZone(38));
 	
 	setvar("home_ads", $ad->getByZone(38));
-	//setvar("mobile_home_cats", $product->getMobileHomeCats());
+	setvar("mobile_home_cats", $product->getMobileHomeCats());
 	
 	//detectMobile()
 	if(detectMobile()) {
