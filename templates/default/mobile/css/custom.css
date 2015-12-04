@@ -1842,8 +1842,19 @@ DIV.pagination2 A {
     
 }
 .loading_page .cover_page {
-    
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
 }
 .loading_page .loadicon {
-    
+    background: transparent url("http://www.enilivewec.com/img/ajax-loading.gif") no-repeat scroll 0 0;
+    display: block;
+    height: 50px;
+    margin: 0 50%;
+    position: fixed;
+    top: 45%;
+    width: 50px;
+    z-index: 101;
 }
