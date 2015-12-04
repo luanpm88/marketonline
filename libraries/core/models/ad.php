@@ -299,7 +299,7 @@ class Adses extends PbModel {
 		return $item;
 	}
 	
-	function getByZone($zone_id, $order = "Ads.display_order", $limit=10, $industry_id) {
+	function getByZone($zone_id, $order = "Ads.display_order", $limit=100, $industry_id) {
 		uses("company");
 		$company = new Companies();
 		
