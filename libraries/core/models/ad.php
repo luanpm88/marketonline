@@ -313,7 +313,7 @@ class Adses extends PbModel {
 			$conditions[] = "(Ads.industries LIKE '{$industry_id}' OR Ads.industries LIKE '{$industry_id},%' OR Ads.industries LIKE '%,{$industry_id},%' OR Ads.industries LIKE '%,{$industry_id}')";
 		}
 		
-		$result = $this->findAll("c.shop_name,c.picture,c.name as com_name,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, $conditions, $order, 0, $limit);
+		$result = $this->findAll("c.shop_name,c.picture,c.name as com_name,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, $conditions, $order, $limit);
 		foreach($result as $key => $item) {
 			$result[$key] = $this->formatResult($item);
 
