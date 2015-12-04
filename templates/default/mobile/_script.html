@@ -314,7 +314,7 @@
 				
 				//hide search box
 				if ($(document).scrollTop() > 100) {
-                    $("#search-panel").hide()
+                    $("#search-panel").attr("style", "display:none !important")
                 } else {
 					$("#search-panel").show()
 				}
