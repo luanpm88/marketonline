@@ -855,9 +855,14 @@ label.error {
     margin-left: 0;
     margin-right: 0;
     margin-top: -1px;
-    position: fixed;
     width: 100%;
     z-index: 2000;
+}
+.search-toggle {
+    display: none;
+}
+#search-panel {
+    overflow: hidden;
 }
 #search-panel button, #search-panel input {
     border: 0 none;
