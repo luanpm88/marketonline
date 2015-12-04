@@ -18,20 +18,20 @@
         <script>
 	    
 	    function hideTopmenu() {
-		$('.top_inbox_content').hide();		
-		$('#search-panel').removeClass("in");
-		$('#navbar').removeClass("in");
+			$('.top_inbox_content').hide();		
+			$('#search-panel').removeClass("in");
+			$('#navbar').removeClass("in");
 	    }
 	    
 	    function clearInbox() {
-		//code
-		$.ajax({
-			url: ROOT_URL+"index.php?do=product&action=ajaxClearInbox",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-				
-			}
-		});
+			//code
+			$.ajax({
+				url: ROOT_URL+"index.php?do=product&action=ajaxClearInbox",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					
+				}
+			});
 	    }
 	    
 	    var getInbox_xhr;
@@ -474,7 +474,7 @@
 		//hide topmenu
 		
 		$('body').on("click",".search-toggle,.user-toggle",function(){
-		    hideTopmenu();
+		    setTimeout("hideTopmenu()", 1000)
 		});
 		
 		$("#contact_feedback").validate();
