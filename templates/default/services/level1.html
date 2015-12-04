@@ -71,13 +71,13 @@
 				      }
 				    
 				  if (levelx == '2') {
-				    $('.s-scroll').animate({ marginLeft: '-240px' }, 500);
+				    $('.s-scroll').animate({ marginLeft: '-240px' }, 260);
 				  }
 				  else if (levelx == '3') {				    
-				    $('.s-scroll').animate({ marginLeft: '-480px' }, 500);
+				    $('.s-scroll').animate({ marginLeft: '-480px' }, 260);
 				  }
 				  else if (levelx == '4') {
-				    $('.s-scroll').animate({ marginLeft: '-720px' }, 500);
+				    $('.s-scroll').animate({ marginLeft: '-720px' }, 260);
 				  }
 				    
 				    
@@ -270,9 +270,9 @@
 	$(document).ready(function() {
 	  
 	  if ($('#aq-block-5').height())
-	    pos_searchlist = $('#aq-block-5').height() + 500;
+	    pos_searchlist = $('#aq-block-5').height() + 260;
 	  else
-	    pos_searchlist = 500;
+	    pos_searchlist = 260;
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -284,9 +284,9 @@
 	      //ajaxListProduct(getFilterProducts());
 	      {/literal}
 		{if $smarty.get.student}
-		  setTimeout('$("#student_but").trigger("click")',500);
+		  setTimeout('$("#student_but").trigger("click")',260);
 		{else}
-		  setTimeout('$("#new_service_but").trigger("click")',500);
+		  setTimeout('$("#new_service_but").trigger("click")',260);
 		{/if}      
 	      {literal}
 	      
@@ -711,7 +711,7 @@
 <div class="row" style="height: 45px;">
   
         
-                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 500px;">
+                <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: 260px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="{lang search}" />
