@@ -8,7 +8,7 @@ RewriteEngine On
 
 RewriteRule ^newhome/?$ index.php?layout=newhome [L]
 
-RewriteRule ^home_ads/?$ index.php?device=mobile [L]
+RewriteRule ^home_ads/?$ index.php?mobile_page=home_ads [L]
 
 RewriteRule ^mobile/?$ register.php?&layout=mobile [L]
 
