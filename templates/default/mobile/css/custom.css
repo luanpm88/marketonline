@@ -1001,7 +1001,7 @@ label.error {
     position: absolute;
     right: 5px;
     top: 8px;
-    z-index: 100;
+    z-index: 3;
 }
 #search-panel input {
     font-size: 85%;
