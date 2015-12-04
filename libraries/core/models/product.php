@@ -788,7 +788,7 @@ class Products extends PbModel {
 			$joins = array("LEFT JOIN {$this->table_prefix}companies AS c ON c.id = Product.company_id","LEFT JOIN {$this->table_prefix}members AS m ON m.id = Product.member_id");
 			$joins[] = "LEFT JOIN {$this->table_prefix}industries AS i ON i.id = Product.industry_id";
 			
-			$result = $this->findAll("c.picture as company_logo,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC", 10);
+			$result = $this->findAll("c.picture as company_logo,m.membertype_id,Product.*,Product.name AS title,Product.content AS digest,c.shop_name, c.cache_spacename", $joins, $conditions, "Product.created DESC", 0, 10);
 			$result = $this->formatItems($result);
 			
 			$industries[$key]["items"] = $result;

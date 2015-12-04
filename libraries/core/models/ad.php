@@ -299,7 +299,7 @@ class Adses extends PbModel {
 		return $item;
 	}
 	
-	function getByZone($zone_id, $order = "Ads.display_order", $limit=100, $industry_id) {
+	function getByZone($zone_id, $order = "Ads.display_order", $limit=10, $industry_id) {
 		uses("company");
 		$company = new Companies();
 		
@@ -313,7 +313,7 @@ class Adses extends PbModel {
 			$conditions[] = "(Ads.industries LIKE '{$industry_id}' OR Ads.industries LIKE '{$industry_id},%' OR Ads.industries LIKE '%,{$industry_id},%' OR Ads.industries LIKE '%,{$industry_id}')";
 		}
 		
-		$result = $this->findAll("c.shop_name,c.picture,c.name as com_name,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, $conditions, $order, $limit, 0);
+		$result = $this->findAll("c.shop_name,c.picture,c.name as com_name,s.name as size_name,s.width as size_width,s.height as size_height,Ads.*", $joins, $conditions, $order, 0, $limit);
 		foreach($result as $key => $item) {
 			$result[$key] = $this->formatResult($item);
 
