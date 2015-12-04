@@ -471,25 +471,25 @@
 		
 		
 		
-		//hide topmenu
+			//hide topmenu			
+			$('body').on("click",".search-toggle",function(){
+				$('.top_inbox_content').hide();		
+				$('#navbar').removeClass("in");
+			});
+			
+			$('body').on("click",".user-toggle",function(){
+				$('.top_inbox_content').hide();		
+				$('#search-panel').removeClass("in");
+			});
+			
+			$('body').on("click",".pms-toggle",function(){
+				$('#search-panel').removeClass("in");
+				$('#navbar').removeClass("in");
+			});		
+			$("#contact_feedback").validate();
 		
-		$('body').on("click",".search-toggle",function(){
-		    $('.top_inbox_content').hide();		
-			$('#navbar').removeClass("in");
-		});
-		$('body').on("click",".user-toggle",function(){
-		    $('.top_inbox_content').hide();		
-			$('#search-panel').removeClass("in");
-		});
-		$('body').on("click",".pms-toggle",function(){
-			$('#search-panel').removeClass("in");
-			$('#navbar').removeClass("in");
-		});
 		
-		$("#contact_feedback").validate();
-		
-		
-            });
+        });
 	    
 	    
 	    
