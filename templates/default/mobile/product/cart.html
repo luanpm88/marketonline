@@ -64,14 +64,13 @@
                                                         <input class="quantity_but btn btn-default" type="submit" value="{lang update}" />
                                                         <br />
                                                         <a style="margin-top: 5px" class="cart_remove btn btn-default" onclick="$('#cartitemid').val('{$sticky.id}');$('#task').val('remove');$('#cart').submit()" href="#del">
-                                                            
                                                             <span class="glyphicon glyphicon-remove"></span> Xóa
                                                         </a>
                                                     </td>
                                                     <td style="text-align: right">
                                                         x{$sticky.quantity}<br />
-                                                        {$sticky.p_total} (VNĐ)                                                
-                                                    </td>                                
+                                                        {$sticky.p_total} (VNĐ)
+                                                    </td>
                                                 </tr>
                                             <!--{/loop}-->
                                             <tr>
@@ -82,7 +81,6 @@
                                             <tr>
                                                 <td colspan="4" style="text-align: right">
                                                     <a href="{the_url module=root-url}index.php?do=product&action=buy_method_select&shop_id={$shop.id}" name="checkout" class="checkout_but comment_but btn btn-primary" rel="{$shop.id}" redirect="index.php?do=product&action=meminfo&id={$shop.id}">{lang confirm_cart}</a>
-
                                                     <input type="submit" class="checkout_but btn btn-default" style="" value="Cập nhật" />
                                                 </td>
                                             </tr>
@@ -91,10 +89,7 @@
                                 </table>
                             </div>
                         </form>
-                        
-                        
                     {else}
-                    
                         <p>Hiện chưa có sản phẩm nào!</p>
                         <p class="back button"><a class="btn btn-primary" href="{the_url module=root-url}">{lang go_back}</a></p>
                     {/if}
