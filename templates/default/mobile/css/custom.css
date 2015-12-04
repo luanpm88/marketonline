@@ -1848,6 +1848,8 @@ DIV.pagination2 A {
     position: fixed;
     width: 100%;
     z-index: 100;
+    top: 0;
+    left: 0;
 }
 .loading_page .loadicon {
     background: transparent url("../img/loading_page.gif") no-repeat scroll 0 0;
@@ -1858,6 +1860,7 @@ DIV.pagination2 A {
     top: 45%;
     width: 50px;
     z-index: 101;
+    left: 0;
 }
 h2.area-title {
     font-size: 20px;
