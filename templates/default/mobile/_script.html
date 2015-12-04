@@ -311,7 +311,14 @@
 	    }
 	    $(document).scroll(function() {
                 setTimeout("blurSearchInput();",500);
-            });
+				
+				//hide search box
+				if ($(document).scrollTop() > 100) {
+                    $("#search-panel").hide()
+                } else {
+					$("#search-panel").show()
+				}
+        });
 	    
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
             $(document).ready(function() {

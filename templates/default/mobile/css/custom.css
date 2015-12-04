@@ -691,6 +691,7 @@ a.crop-img-square {
 }
 .quantity_but {
     margin-top: 40px;
+    padding: 10px 5px;
 }
 .shop-info-line-cart {
     background: none repeat scroll 0 0 #eee;
