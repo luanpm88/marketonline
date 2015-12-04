@@ -8,6 +8,8 @@ RewriteEngine On
 
 RewriteRule ^newhome/?$ index.php?layout=newhome [L]
 
+RewriteRule ^home_ads/?$ index.php?device=mobile [L]
+
 RewriteRule ^mobile/?$ register.php?&layout=mobile [L]
 
 RewriteRule ^privacy$ policy.html [L]
