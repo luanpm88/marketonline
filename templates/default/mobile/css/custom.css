@@ -1849,7 +1849,7 @@ DIV.pagination2 A {
     z-index: 100;
 }
 .loading_page .loadicon {
-    background: transparent url("http://www.enilivewec.com/img/ajax-loading.gif") no-repeat scroll 0 0;
+    background: transparent url("http://static.huluim.com/images/loading-animated-circle-32x32.gif?1148796774") no-repeat scroll 0 0;
     display: block;
     height: 50px;
     margin: 0 50%;
