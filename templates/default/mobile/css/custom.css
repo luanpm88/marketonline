@@ -843,6 +843,7 @@ label.error {
     margin: 0;
     padding: 0;
     width: 100%;
+    display: block !important;
 }
 #search-panel .input-group {
     background: none repeat scroll 0 0 #fff;
@@ -857,6 +858,7 @@ label.error {
     margin-top: -1px;
     width: 100%;
     z-index: 2000;
+    visibility: visible;
 }
 .search-toggle {
     display: none;
