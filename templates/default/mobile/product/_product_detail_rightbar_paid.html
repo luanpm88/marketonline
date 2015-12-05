@@ -9,10 +9,10 @@
                                     
                                         <!--{foreach from=$product_banners item=itemxxx}-->
                                             <li>
-                                                <a href="{the_url module=ad id=`$itemxxx.id`}" class="crop-img-square">
+                                                <a href="{the_url module=product id=`$itemxxx.id` product_name=`$itemxxx.name`}" class="crop-img-square">
                                                     <img src="{$itemxxx.thumb}" />                                        
                                                 </a>
-                                                <a href="{the_url module=ad id=`$itemxxx.id`}" class="title">
+                                                <a href="{the_url module=product id=`$itemxxx.id` product_name=`$itemxxx.name`}" class="title">
                                                     {$itemxxx.name|truncate:50}
                                                 </a>
                                                 {if $itemxxx.description}<div style="margin-bottom: 0">{$itemxxx.description|truncate:99}</div>{/if}
