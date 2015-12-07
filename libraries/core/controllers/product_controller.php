@@ -1407,14 +1407,14 @@ class Product extends PbController {
 								$level = $item["level"];
 								
 								setvar('current_cat', $item);
-								echo "ssssss"
+								echo "ssssss";
 							}
 							if($_GET["memberid"] != '' && isset($item["member_id"]))
 							{
 								$custom_array[] = $id_i;
 								$level = $item["level"];
 								setvar('current_cat', $item);
-								echo "ssssss222222"
+								echo "ssssss222222";
 							}
 							
 						}
