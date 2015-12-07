@@ -2,7 +2,7 @@
 
 <div class="home_ads" style="padding: 10px;">
     <h2 class="area-title">Sản phẩm được quan tâm nhiều</h2>
-    <iframe onload="resizeIframe(this)" scrolling="no" style="overflow: hidden;border: medium none;height: 900px;width: 100%;" src="http://marketonline.vn:3000/ad_positions/iframe_home_top_banner?device=mobile" style="border: none;"></iframe>
+    <iframe class="ad_box_1" onload="resizeIframe(this)" scrolling="no" style="overflow: hidden;border: medium none;height: 900px;width: 100%;" src="http://marketonline.vn:3000/ad_positions/iframe_home_top_banner?device=mobile" style="border: none;"></iframe>
     
     
     <h2 class="area-title">Sản phẩm nổi bật</h2>
@@ -25,6 +25,15 @@
     <iframe scrolling="no" class="iframe_ad" style="border: medium none;height: 485px;width: 100%;overflow: hidden" src_tmp="http://marketonline.vn:3000/ad_positions/iframe_6_items_list?pos=home_feature_company" style="border: none;"></iframe>-->
     
 </div>
+
+{literal}
+    <script>
+        function resizeAds() {
+            alert(2.5)
+            //$(".ad_box_1").height()
+        }
+    </script>
+{/literal}
 
 <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
 <!--{include file="`$theme_name`/mobile/footer.html"}-->
