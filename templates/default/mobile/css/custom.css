@@ -1866,3 +1866,6 @@ h2.area-title {
     font-size: 20px;
     margin: 10px 0;
 }
+#wrapper.toggled #page-content-wrapper {
+    position: inherit !important;
+}
