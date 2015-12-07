@@ -1866,3 +1866,8 @@ h2.area-title {
     font-size: 20px;
     margin: 10px 0;
 }
+@media screen and (max-width: 480px) {
+    .footerz {
+        display: none;
+    }
+}
