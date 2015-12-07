@@ -30,8 +30,13 @@
     <script>
         function resizeAds() {
             //alert(2.5)
-            $(".ad_box_1").css("height", $(window).width()*2.6)
+            $(".ad_box_1").css("height", $(window).width()*2.7)
         }
+        
+        resizeAds()
+        $( window ).resize(function() {
+            resizeAds()
+        });
     </script>
 {/literal}
 
