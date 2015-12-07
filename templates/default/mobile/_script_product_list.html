@@ -1,6 +1,6 @@
     <form class="ajax_product_filter_form" action="{the_url module=root-url}">
 	{if $service_page}
-            <input type="hidden" name="do" value="product" />
+        <input type="hidden" name="do" value="product" />
 	    <input type="hidden" name="action" value="listAjax" />
 	    <input type="hidden" name="orderby" value="dateline" />
 	    <input type="hidden" name="type" value="service" />
@@ -32,6 +32,10 @@
 	    {if $smarty.get.userid}
 		<input type="hidden" name="owner_id" value="{$COMPANY.member_id}" />
 	    {/if}
+		
+		{if $smarty.get.memberid}
+			<input type="hidden" name="memberid" value="{$smarty.get.memberid}" />
+	    {/if}
 	{else}
 	
 	    <input type="hidden" name="do" value="product" />
@@ -47,8 +51,12 @@
 	    <input type="hidden" name="offertype" value="" />
 	    
 	    {if $smarty.get.userid}
-		<input type="hidden" name="owner_id" value="{$COMPANY.member_id}" />
-		<input type="hidden" name="typeid" value="{$smarty.get.typeid}" />
+			<input type="hidden" name="owner_id" value="{$COMPANY.member_id}" />
+			<input type="hidden" name="typeid" value="{$smarty.get.typeid}" />
+	    {/if}
+		
+		{if $smarty.get.memberid}
+			<input type="hidden" name="memberid" value="{$smarty.get.memberid}" />
 	    {/if}
 	{/if}
     </form>
