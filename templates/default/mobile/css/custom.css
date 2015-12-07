@@ -1869,3 +1869,6 @@ h2.area-title {
 #wrapper.toggled #page-content-wrapper {
     position: inherit !important;
 }
+.area-title.second {
+    margin-top: 20px;
+}
