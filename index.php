@@ -241,7 +241,7 @@ if (!empty($_GET['do'])) {
 			$info = $product->getProductById($id);
 			
 			//if($info.picture) {
-				list($w,$h) = getimagesize($info.image1);
+				list($w,$h) = getimagesize($info.image2);
 			//}
 			
 			setvar("item", $info);
