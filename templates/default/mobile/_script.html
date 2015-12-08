@@ -222,19 +222,19 @@ function goclicky_custom(meh, url, images, title, summary)
                 
                 //MobileGallery
                     $(".mobile-product-gallery").swipe( {
-                      //Generic swipe handler for all directions
-                      allowPageScroll: "vertical",
-                      swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
-                        if(direction == 'right') {
-                          prevSlide();
-                        }
-                        if(direction == 'left') {
-                          nextSlide();
-                        }
-                      },
-						//tap: function(event, target) {
-						//	alert("aaaa")
-						//},
+						//Generic swipe handler for all directions
+						allowPageScroll: "vertical",
+						swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+						  if(direction == 'right') {
+							prevSlide();
+						  }
+						  if(direction == 'left') {
+							nextSlide();
+						  }
+						},
+						tap: function(event, target) {
+							alert("aaaa")
+						},
                       //Default is 75px, set to 0 for demo so any distance triggers swipe
                        threshold: 0,
                        excludedElements: ".glyphicon"
