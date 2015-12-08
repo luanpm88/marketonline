@@ -485,7 +485,10 @@
             
             //openPhotoSwipe();
             
-            $('.mobile-product-gallery a').onclick = openPhotoSwipe;
+            $('.mobile-product-gallery a').click(function(e) {
+				e.preventDefault();
+				openPhotoSwipe();
+			})
         
         </script>
         
