@@ -233,7 +233,6 @@ if (!empty($_GET['do'])) {
 		if($_GET["mobile_page"] == "home_ads") {
 			render("mobile/home_ads");
 		} else if($_GET["mobile_page"] == "mobile_album") {
-			require('libraries/core/models/product.php');
 			$product = new Products();
 	
 			if (isset($_GET['id'])) {
