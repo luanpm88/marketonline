@@ -1872,3 +1872,13 @@ h2.area-title {
 .area-title.second {
     margin-top: 20px;
 }
+.share_title::before {
+    background: rgba(0, 0, 0, 0) url("http://s.ytimg.com/yts/imgbin/www-hitchhiker-vflYxhNH5.png") no-repeat scroll -171px -233px;
+    color: rgba(0, 0, 0, 0);
+    content: "a";
+    display: block;
+    float: left;
+    height: 20px;
+    margin-right: 2px;
+    width: 20px;
+}
