@@ -1912,4 +1912,13 @@ h2.area-title {
     width: 49%;
     right: 0;
 }
+.ad_hover.home_top_banner_4 {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 22.5%;
+    position: absolute;
+    top: 21.7%;
+    width: 49%;
+    right: 0;
+}
 
