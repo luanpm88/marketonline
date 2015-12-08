@@ -1898,7 +1898,17 @@ h2.area-title {
 .ad_hover.home_top_banner_2 {
     background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
     border: 1px dashed #fff;
-    height: 20.5%;
+    height: 22.5%;
     position: absolute;
-    width: 100%;
+    top: 21.7%;
+    width: 49%;
 }
+.ad_hover.home_top_banner_3 {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 22.5%;
+    position: absolute;
+    top: 21.7%;
+    width: 49%;
+}
+
