@@ -348,9 +348,6 @@
 		
 		{literal}
         <style>
-            .pswp__button--close {
-                display: none !important;
-            }
             .pswp--zoomed-in .pswp__img, .pswp--zoom-allowed .pswp__img {
                 height: auto !important;
             }
@@ -440,6 +437,7 @@
         {literal}
         
         <script>
+			var gallery;
             var openPhotoSwipe = function() {
                 var pswpElement = document.querySelectorAll('.pswp')[0];
             
@@ -494,7 +492,7 @@
                     
                 };
                 
-                var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+                gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
                 gallery.init();
             };
             
