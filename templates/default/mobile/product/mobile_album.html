@@ -105,7 +105,9 @@
                 var items = [
                     {/literal}{if $item.picture}{literal}
                         {
-                            src: '{/literal}{$item.image}{literal}'
+                            src: '{/literal}{$item.image}{literal}',
+                            w: {/literal}{$w}{literal},
+                            h: {/literal}{$h}{literal}
                         },                           
                     {/literal}{/if}{literal}
                     {/literal}{if $item.picture1}{literal}
