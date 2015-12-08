@@ -528,7 +528,8 @@ function goclicky_custom(meh, url, images, title, summary)
 			//$('.iframe_ad').appear();
 			
 			$(".mobile-product-gallery li").click(function() {
-				alert($(this).find("a").attr("href"));
+				//alert($(this).find("a").attr("href"));
+				window.location = $(this).find("a").attr("href")
 			})
 			
         });
