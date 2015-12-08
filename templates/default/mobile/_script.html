@@ -236,6 +236,12 @@ function goclicky_custom(meh, url, images, title, summary)
                        threshold: 0,
                        excludedElements: ".glyphicon"
                     });
+					
+					$(".mobile-product-gallery li").swipe( {
+						tap: function(event, target) {
+							alert("aaaa")
+						},
+					});
                 
                 $("body").on("click",".pointer-right",function() {
                     nextSlide();
