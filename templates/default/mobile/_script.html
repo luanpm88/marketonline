@@ -17,6 +17,30 @@
     
         <script>
 			
+			function goclicky(meh, url)
+{
+    var x = screen.width/2 - 626/2;
+    var y = screen.height/2 - 436/2;
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(url), 
+      'facebook-share-dialog', 
+      'width=626,height=436,left='+x+',top='+y); 
+    return false;
+    //window.open(meh.href, 'sharegplus','height=485,width=700,left='+x+',top='+y);
+}
+ 
+function goclicky_custom(meh, url, images, title, summary)
+{
+    var x = screen.width/2 - 626/2;
+    var y = screen.height/2 - 436/2;
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?s=100&p[url]='+url+images+'&p[title]='+title+'&p[summary]='+summary, 
+      'facebook-share-dialog', 
+      'width=626,height=436,left='+x+',top='+y); 
+    return false;
+    //window.open(meh.href, 'sharegplus','height=485,width=700,left='+x+',top='+y);
+}
+			
 			
 		function resizeIframe(obj) {
 			obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
