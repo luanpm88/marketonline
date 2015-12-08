@@ -60,14 +60,15 @@
                         
                     <div class="mobile-product-gallery">
                         <ul class="thumbnails">
-						{$count=0}
+						{if $count=0}
+						{/if}
                         {if $item.picture}
                             <li>
                                 <a rel="0" href="#ddd" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{$item.image}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
-							{$count++}
+							{if $count++}{/if}
                         {/if}
                         {if $item.picture1}
                             <li>
