@@ -240,9 +240,9 @@ if (!empty($_GET['do'])) {
 			}
 			$info = $product->getProductById($id);
 			
-			if($info.picture) {
+			//if($info.picture) {
 				list($w,$h) = getimagesize($info.image);
-			}
+			//}
 			
 			setvar("item", $info);
 			setvar("w", $w);
