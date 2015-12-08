@@ -1888,6 +1888,17 @@ h2.area-title {
     margin-right: 10px;
     padding: 5px;
 }
-.ad_hover.iframe_home_top_banner {
-    
+.ad_hover.home_top_banner_1 {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 20.5%;
+    position: absolute;
+    width: 100%;
+}
+.ad_hover.home_top_banner_2 {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 20.5%;
+    position: absolute;
+    width: 100%;
 }
