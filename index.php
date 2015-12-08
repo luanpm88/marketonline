@@ -240,7 +240,11 @@ if (!empty($_GET['do'])) {
 			}
 			$info = $product->getProductById($id);
 			
+			list($w,$h) = getimagesize($info.image);
+			
 			setvar("item", $info);
+			setvar("w", $w);
+			setvar("h", $h);
 			render("mobile/product/mobile_album");
 		} else {
 			render("mobile/index");
