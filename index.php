@@ -232,6 +232,8 @@ if (!empty($_GET['do'])) {
 	if(detectMobile()) {
 		if($_GET["mobile_page"] == "home_ads") {
 			render("mobile/home_ads");
+		} else if($_GET["mobile_page"] == "mobile_album") {
+			render("mobile/product/mobile_album");
 		} else {
 			render("mobile/index");
 		}		
