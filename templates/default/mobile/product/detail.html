@@ -62,35 +62,35 @@
                         <ul class="thumbnails">
                         {if $item.picture}
                             <li>
-                                <a rel="0" href="#ddd" rel="thumbnails" class="zoomz first fancyx">
+                                <a href="#ddd" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{$item.image}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture1}
                             <li>
-                                <a rel="1" target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
+                                <a target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{$item.image1}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture2}
                             <li>
-                                <a rel="2" target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
+                                <a target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{$item.image2}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture3}
                             <li>
-                                <a rel="3" target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
+                                <a target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{$item.image3}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
                         {/if}
                         {if $item.picture4}
                             <li>
-                                <a rel="4" target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
+                                <a target="_blank" href="/index.php?mobile_page=mobile_album&id={$item.id}" rel="thumbnails" class="zoomz first fancyx">
                                     <img src="{$item.image4}" class="attachment-shop_thumbnail" />
                                 </a>
                             </li>
@@ -497,10 +497,15 @@
             };
             
             //openPhotoSwipe();
+			
+			$(".mobile-product-gallery ul li a").each(function(index) {
+				$(this).attr("rel",index);
+			})
             
             $('.mobile-product-gallery a').click(function(e) {
 				e.preventDefault();
 				openPhotoSwipe();
+				gallery.goTo(parseInt($(this).attr("rel")));
 			})
         
         </script>
