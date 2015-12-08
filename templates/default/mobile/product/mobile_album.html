@@ -15,7 +15,7 @@
         <script src="{the_url module=root-url}{$theme_img_path}mobile/photoswipe/photoswipe.min.js"></script>
         <script src="{the_url module=root-url}{$theme_img_path}mobile/photoswipe/photoswipe-ui-default.min.js"></script>
     
-        <title></title>
+        <title>{$item.name}</title>
     </head>
     
     <body>
@@ -86,7 +86,7 @@
             </div>
         
         </div>
-{$item.name}ssssssssssssss
+
         
         {literal}
         
@@ -103,17 +103,35 @@
                             h: 1024
                         },                           
                     {/literal}{/if}{literal}
-                        
+                    {/literal}{if $item.picture1}{literal}
                         {
-                            src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
+                            src: '{/literal}{$item.image1}{literal}',
                             w: 964,
                             h: 1024
-                        },
+                        },                           
+                    {/literal}{/if}{literal}
+                    {/literal}{if $item.picture2}{literal}
                         {
-                            src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
-                            w: 1024,
-                            h: 683
-                        }
+                            src: '{/literal}{$item.image2}{literal}',
+                            w: 964,
+                            h: 1024
+                        },                           
+                    {/literal}{/if}{literal}
+                    {/literal}{if $item.picture3}{literal}
+                        {
+                            src: '{/literal}{$item.image3}{literal}',
+                            w: 964,
+                            h: 1024
+                        },                           
+                    {/literal}{/if}{literal}
+                    {/literal}{if $item.picture4}{literal}
+                        {
+                            src: '{/literal}{$item.image4}{literal}',
+                            w: 964,
+                            h: 1024
+                        },                           
+                    {/literal}{/if}{literal}
+                    
                 ];
                 
                 // define options (if needed)
