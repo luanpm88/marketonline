@@ -43,7 +43,26 @@
 		
 		<!--<meta property="og:type" content="article"/>-->
 		
-  
+  {if !$fb_image && $count_fimages < 3}<meta property="og:image" content="http://marketonline.vn/images/logo-marketonline.png"/>{/if}
+  {if $fb_image}
+     <meta property="og:image" content="{$fb_image}"/>
+  {/if}
+  {if $fb_image1}
+     <meta property="og:image" content="{$fb_image1}"/>
+  {/if}
+  {if $fb_image2}
+     <meta property="og:image" content="{$fb_image2}"/>
+  {/if}
+  {if $fb_image3}
+     <meta property="og:image" content="{$fb_image3}"/>
+  {/if}
+  {if $fb_image4}
+     <meta property="og:image" content="{$fb_image4}"/>
+  {/if}
+   
+  <!--{loop $fimages item level key}-->
+	<meta property="og:image" content="{$item}"/>
+  <!--{/loop}-->
   
   
   
