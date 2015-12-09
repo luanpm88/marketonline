@@ -2029,7 +2029,7 @@ h2.area-title {
 .navbar-inverse {
     z-index: 1001
 }
-.ad_hover.ad_banner_12 {
+.ad_banner_item.ad_banner_12 {
     background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 25%;
