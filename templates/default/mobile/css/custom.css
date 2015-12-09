@@ -1889,7 +1889,7 @@ h2.area-title {
     padding: 5px;
 }
 .ad_hover.home_top_banner_1 {
-    background: rgba(0, 255, 100, 0.8) none repeat scroll 0 0;
+    background: rgba(0, 255, 100, 0.4) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 20.5%;
     position: absolute;
@@ -1897,7 +1897,7 @@ h2.area-title {
     padding-top: 18px;
 }
 .ad_hover.home_top_banner_2 {
-    background: rgba(250, 90, 0, 0.7) none repeat scroll 0 0;
+    background: rgba(250, 90, 0, 0.3) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 22.5%;
     position: absolute;
@@ -1906,7 +1906,7 @@ h2.area-title {
     padding-top: 8px;
 }
 .ad_hover.home_top_banner_3 {
-    background: rgba(250, 90, 0, 0.7) none repeat scroll 0 0;
+    background: rgba(250, 90, 0, 0.3) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 22.5%;
     position: absolute;
@@ -1916,7 +1916,7 @@ h2.area-title {
     padding-top: 8px;
 }
 .ad_hover.home_top_banner_4 {
-    background: rgba(250, 0, 0, 0.7) none repeat scroll 0 0;
+    background: rgba(250, 0, 0, 0.3) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 25%;
     position: absolute;
