@@ -1936,7 +1936,7 @@ h2.area-title {
     text-align: center;
 }
 .ad_hover.home_feature_hot_product_left {
-    background: rgba(0, 0, 100, 0.7) none repeat scroll 0 0;
+    background: rgba(0, 0, 100, 0.5) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 59.1%;
     margin-top: 59px;
@@ -1945,7 +1945,7 @@ h2.area-title {
     padding-top: 50px;
 }
 .ad_hover.home_feature_hot_product_right {
-    background: rgba(0, 0, 100, 0.7) none repeat scroll 0 0;
+    background: rgba(0, 0, 100, 0.5) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 59.1%;
     margin-top: 59px;
@@ -1954,7 +1954,7 @@ h2.area-title {
     padding-top: 50px;
 }
 .ad_hover.home_feature_hot_service_left {
-    background: rgba(200, 5, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(200, 5, 100, 0.4) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 74.8%;
     position: absolute;
@@ -1962,7 +1962,7 @@ h2.area-title {
     padding-top: 50px;
 }
 .ad_hover.home_feature_hot_service_right {
-    background: rgba(200, 5, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(200, 5, 100, 0.4) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 74.8%;
     position: absolute;
@@ -1970,7 +1970,7 @@ h2.area-title {
     padding-top: 50px;
 }
 .ad_hover.home_feature_trade_1, .ad_hover.home_feature_trade_2 {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(0, 255, 100, 0.4) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 76.5%;
     position: absolute;
@@ -2009,7 +2009,7 @@ h2.area-title {
     z-index: 100000;
 }
 .ad_banner_item_hover {
-    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    background: rgba(0, 0, 0, 0.3) none repeat scroll 0 0;
     height: 100%;
     left: 0;
     position: fixed;
@@ -2046,7 +2046,7 @@ h2.area-title {
     z-index: 1001
 }
 .ad_banner_item.ad_banner_12 {
-    background: rgba(0, 100, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(0, 100, 100, 0.4) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 15.9%;
     position: absolute;
