@@ -2079,3 +2079,8 @@ h2.area-title {
     margin: 5px 5px 5px 10%;
     right: auto;
 }
+.home_feature_trade_1 .time_remaining, .home_feature_trade_2 .time_remaining, .ad_banner_12 .time_remaining, .home_top_banner_4 .time_remaining, .home_top_banner_2 .time_remaining, .home_top_banner_3 .time_remaining {
+    right: auto;
+    text-align: center;
+    width: 100%;
+}
