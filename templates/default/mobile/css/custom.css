@@ -1931,3 +1931,17 @@ h2.area-title {
     color: #fff;
     text-align: center;
 }
+.ad_hover.home_feature_hot_product_left {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 20.5%;
+    position: absolute;
+    width: 100%;
+}
+.ad_hover.home_feature_hot_product_right {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 20.5%;
+    position: absolute;
+    width: 100%;
+}
