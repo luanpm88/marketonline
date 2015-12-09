@@ -1976,10 +1976,13 @@ h2.area-title {
     background: #3b984c none repeat scroll 0 0;
     border-radius: 40px;
     color: #fff !important;
+    float: right;
     font-size: 12px;
     font-weight: bold;
+    margin: 12px 12px 20px 0;
     padding: 3px 10px 5px;
     text-align: center;
+    width: 94%;
 }
 .ad_banner_item {
     display: none;
