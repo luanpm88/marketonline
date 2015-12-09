@@ -1894,31 +1894,35 @@ h2.area-title {
     height: 20.5%;
     position: absolute;
     width: 100%;
+    padding-top: 18px;
 }
 .ad_hover.home_top_banner_2 {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(250, 90, 0, 0.5) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 22.5%;
     position: absolute;
     top: 21.7%;
     width: 49%;
+    padding-top: 8px;
 }
 .ad_hover.home_top_banner_3 {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(250, 90, 0, 0.5) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 22.5%;
     position: absolute;
     top: 21.7%;
     width: 49%;
     right: 0;
+    padding-top: 8px;
 }
 .ad_hover.home_top_banner_4 {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(250, 0, 0, 0.5) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 25%;
     position: absolute;
     top: 46.3%;
     width: 49%;
+    padding-top: 15px;
 }
 .home_top_banner_4.ad_1, .home_top_banner_4.ad_3 {
     right: 0;
@@ -1932,34 +1936,38 @@ h2.area-title {
     text-align: center;
 }
 .ad_hover.home_feature_hot_product_left {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(0, 0, 100, 0.7) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 59.1%;
     margin-top: 59px;
     position: absolute;
     width: 100%;
+    padding-top: 50px;
 }
 .ad_hover.home_feature_hot_product_right {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(0, 0, 100, 0.7) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 59.1%;
     margin-top: 59px;
     position: absolute;
     width: 100%;
+    padding-top: 50px;
 }
 .ad_hover.home_feature_hot_service_left {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(200, 5, 100, 0.6) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 74.8%;
     position: absolute;
     width: 100%;
+    padding-top: 50px;
 }
 .ad_hover.home_feature_hot_service_right {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(200, 5, 100, 0.6) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 74.8%;
     position: absolute;
     width: 100%;
+    padding-top: 50px;
 }
 .ad_hover.home_feature_trade_1, .ad_hover.home_feature_trade_2 {
     background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
@@ -1968,6 +1976,7 @@ h2.area-title {
     position: absolute;
     top: 59px;
     width: 49%;
+    padding-top: 20px;
 }
 .ad_hover.home_feature_trade_2 {
     right: 0;
@@ -2030,7 +2039,7 @@ h2.area-title {
     z-index: 1001
 }
 .ad_banner_item.ad_banner_12 {
-    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    background: rgba(0, 100, 100, 0.6) none repeat scroll 0 0;
     border: 1px dashed #fff;
     height: 15.9%;
     position: absolute;
