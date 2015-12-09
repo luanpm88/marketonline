@@ -2020,14 +2020,22 @@ h2.area-title {
 .ad_banner_item .ticket {
     background: green none repeat scroll 0 0;
     border-radius: 20px;
+    bottom: 0;
     color: #fff;
     display: block;
-    margin: 0 auto;
+    margin: 5px;
+    position: absolute;
+    right: 0;
     width: 131px;
 }
 .time_remaining {
+    bottom: 26px;
     display: block;
+    font-size: 90%;
     margin-top: 10px;
+    position: absolute;
+    right: 5px;
+    text-align: right;
 }
 .ad_info_hover .size {
     display: block;
