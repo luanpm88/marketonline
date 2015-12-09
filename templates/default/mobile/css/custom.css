@@ -1986,6 +1986,7 @@ h2.area-title {
 }
 .ad_banner_item {
     display: none;
+    cursor: pointer;
 }
 .ad_fixed_in {
     font-size: 20px;
@@ -2005,4 +2006,21 @@ h2.area-title {
     top: 0;
     width: 100%;
     z-index: 10000;
+}
+.ad_banner_item .ticket {
+    background: green none repeat scroll 0 0;
+    border-radius: 20px;
+    color: #fff;
+    display: block;
+    margin-top: 5px;
+}
+.time_remaining {
+    display: block;
+    margin-top: 10px;
+}
+.ad_info_hover .size {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px;
 }
