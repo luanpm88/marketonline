@@ -1927,4 +1927,7 @@ h2.area-title {
 .home_top_banner_4.ad_2, .home_top_banner_4.ad_3 {
     top: 71.9%;
 }
-
+.ad_banner_item {
+    color: #fff;
+    text-align: center;
+}
