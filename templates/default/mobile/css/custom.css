@@ -1992,6 +1992,7 @@ h2.area-title {
     padding: 5px 10px 5px;
     text-align: center;
     width: 94%;
+    cursor: pointer;
 }
 .ad_banner_item {
     display: none;
