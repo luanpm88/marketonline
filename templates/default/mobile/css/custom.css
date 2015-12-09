@@ -1972,3 +1972,12 @@ h2.area-title {
 .ad_hover.home_feature_trade_2 {
     right: 0;
 }
+.ad_toggle {
+    background: #3b984c none repeat scroll 0 0;
+    border-radius: 40px;
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 3px 10px 5px;
+    text-align: center;
+}
