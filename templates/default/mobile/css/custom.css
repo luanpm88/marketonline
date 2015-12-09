@@ -2099,6 +2099,6 @@ h2.area-title {
     top: 0;
     width: 100%;
 }
-iframe {
-    min-width: 330px;
+#wrapper.toggled #page-content-wrapper {
+    min-width: 350px;
 }
