@@ -2032,8 +2032,26 @@ h2.area-title {
 .ad_banner_item.ad_banner_12 {
     background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
     border: 1px dashed #fff;
-    height: 25%;
+    height: 15.9%;
     position: absolute;
-    top: 46.3%;
+    top: 0;
     width: 49%;
+}
+.ad_banner_12.kkk_1, .ad_banner_12.kkk_3, .ad_banner_12.kkk_5 {
+    right: 0;
+}
+.ad_banner_12.line_2 {
+    
+}
+.ad_banner_12.line_3 {
+    
+}
+.ad_banner_12.line_4 {
+    
+}
+.ad_banner_12.line_5 {
+    
+}
+.ad_banner_12.line_6 {
+    
 }
