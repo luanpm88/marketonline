@@ -569,7 +569,7 @@ function goclicky_custom(meh, url, images, title, summary)
 					var box = $(this)
 					if (typeof(pos) != "undefined") {
 					  $.ajax({
-						url: "http://marketonline.vn:3000/ad_positions/get_remaining_time?pos="+pos,
+						url: "http://marketonline.vn:3000/ad_positions/get_remaining_time?pos="+pos+"&device=mobile",
 					  }).done(function ( data ) {
 						box.find(".ad_info_hover").remove()
 						//alert(data.time)
