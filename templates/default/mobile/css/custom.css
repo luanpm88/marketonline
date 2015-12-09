@@ -2075,3 +2075,7 @@ h2.area-title {
 .ad_banner_12 {
     padding-top: 20px;
 }
+.home_feature_trade_1 .ticket, .home_feature_trade_2 .ticket, .ad_banner_12 .ticket, .home_top_banner_4 .ticket, .home_top_banner_2 .ticket, .home_top_banner_3 .ticket {
+    margin: 5px 5px 5px 10%;
+    right: auto;
+}
