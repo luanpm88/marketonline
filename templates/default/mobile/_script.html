@@ -586,6 +586,22 @@ function goclicky_custom(meh, url, images, title, summary)
 			
 			
         });
+			
+			
+
+              function resizeAds() {
+					$(".ad_box_1").css("height", $(window).width()*2.66)
+					$(".ad_box_2").css("height", $(window).width()*1.2)
+					$(".ad_box_3").css("height", $(window).width()*0.95)
+					$(".ad_box_4").css("height", $(window).width()*0.9)
+					$(".ad_box_5").css("height", $(window).width()*3.5)
+					$(".banner_top_frame").css("height", $(window).width()*0.6)
+              }
+              
+              resizeAds()
+              $( window ).resize(function() {
+                  resizeAds()
+              });
 	    
 	    
 	    

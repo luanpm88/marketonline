@@ -158,23 +158,6 @@
     
 </div>
 
-{literal}
-    <script>
-        function resizeAds() {
-            //alert(2.5)
-            $(".ad_box_1").css("height", $(window).width()*2.66)
-            $(".ad_box_2").css("height", $(window).width()*1.2)
-            $(".ad_box_3").css("height", $(window).width()*0.95)
-            $(".ad_box_4").css("height", $(window).width()*0.9)
-            $(".ad_box_5").css("height", $(window).width()*3.5)
-        }
-        
-        resizeAds()
-        $( window ).resize(function() {
-            resizeAds()
-        });
-    </script>
-{/literal}
 
 <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
 <!--{include file="`$theme_name`/mobile/footer.html"}-->
