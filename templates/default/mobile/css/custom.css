@@ -2084,3 +2084,16 @@ h2.area-title {
     text-align: center;
     width: 100%;
 }
+
+*::after, *::before {
+    box-sizing: border-box;
+}
+*::after, *::before {
+    box-sizing: border-box;
+}
+.wide_3_banners .ad_toggle {
+    position: absolute;
+    right: 0;
+    width: auto;
+    z-index: 1000;
+}
