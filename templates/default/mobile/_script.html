@@ -17,6 +17,12 @@
     
         <script>
 			
+			function OpenInNewTab(url) {
+				var win = window.open(url, '_blank');
+				win.focus();
+			  }
+
+			
 			function updateAdHovers() {
 				$(".ad_hover").each(function() {
 					var pos = $(this).attr("rel")
