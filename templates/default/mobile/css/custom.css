@@ -1994,6 +1994,9 @@ h2.area-title {
     width: 94%;
     cursor: pointer;
 }
+.ad_toggle:focus, .ad_toggle:hover {
+    text-decoration: none;
+}
 .ad_banner_item {
     display: none;
     cursor: pointer;
