@@ -1981,3 +1981,16 @@ h2.area-title {
     padding: 3px 10px 5px;
     text-align: center;
 }
+.ad_banner_item {
+    display: none;
+}
+.ad_fixed_in {
+    font-size: 20px;
+    height: 40px;
+    padding: 6px;
+    position: fixed;
+    right: 10px;
+    top: 50px;
+    width: 40px;
+    z-index: 100000;
+}
