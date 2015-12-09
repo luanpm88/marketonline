@@ -21,7 +21,7 @@
                                   <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
                               </div>
                               
-                              <iframe style="border: medium none;height: 252px;width: 102%;" src="http://marketonline.vn:3000/ad_positions/iframe_3_wide_banners?pos=product_home_top&device=mobile" style="border: none;"></iframe>
+                              <iframe class="banner_top_frame" style="border: medium none;height: 252px;width: 102%;" src="http://marketonline.vn:3000/ad_positions/iframe_3_wide_banners?pos=product_home_top&device=mobile" style="border: none;"></iframe>
       
                           </div>
           </div>
@@ -93,6 +93,20 @@
             
         </div>
         <!-- /#page-content-wrapper -->
+        
+        {literal}
+          <script>
+              function resizeAds() {
+                  //alert(2.5)
+                  $(".banner_top_frame").css("height", $(window).width()*2.66)
+              }
+              
+              resizeAds()
+              $( window ).resize(function() {
+                  resizeAds()
+              });
+          </script>
+      {/literal}
         
         <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
         
