@@ -2089,6 +2089,7 @@ h2.area-title {
     right: 0;
     width: auto;
     z-index: 1000;
+    font-size: 12px;
 }
 .ad_banner_item.product_home_banner {
     background: rgba(0, 100, 100, 0.4) none repeat scroll 0 0;
