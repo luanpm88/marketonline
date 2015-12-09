@@ -2003,11 +2003,11 @@ h2.area-title {
     font-size: 20px;
     height: 40px;
     padding: 6px;
-    position: fixed;
+    position: fixed !important;
     right: 0;
     top: 100px;
-    width: 40px;
-    z-index: 100000;
+    width: 40px !important;
+    z-index: 100000 !important;
 }
 .ad_banner_item_hover {
     background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0;
