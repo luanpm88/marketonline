@@ -1987,6 +1987,7 @@ h2.area-title {
 .ad_banner_item {
     display: none;
     cursor: pointer;
+    z-index: 100;
 }
 .ad_fixed_in {
     font-size: 20px;
@@ -2005,7 +2006,7 @@ h2.area-title {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 10000;
+    z-index: 99;
 }
 .ad_banner_item .ticket {
     background: green none repeat scroll 0 0;
