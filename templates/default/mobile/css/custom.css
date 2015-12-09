@@ -1945,3 +1945,28 @@ h2.area-title {
     position: absolute;
     width: 100%;
 }
+.ad_hover.home_feature_hot_service_left {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 20.5%;
+    position: absolute;
+    width: 100%;
+}
+.ad_hover.home_feature_hot_service_right {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 20.5%;
+    position: absolute;
+    width: 100%;
+}
+.ad_hover.home_feature_trade_1, .ad_hover.home_feature_trade_2 {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    height: 22.5%;
+    position: absolute;
+    top: 21.7%;
+    width: 49%;
+}
+.ad_hover.home_feature_trade_2 {
+    right: 0;
+}
