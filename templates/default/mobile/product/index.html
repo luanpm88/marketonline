@@ -32,7 +32,7 @@
             
             <div class="container-fluid">
                 <div class="row">
-                    <div class="bs-example fixed-filter-top">
+                    <div class="bs-example fixed-filter-top" style="position: inherit;">
                         <div class="cat-filter-but-group">
                             <span class="glyphicon glyphicon-th cats-list-icon"></span>
                             <span type="button" class="btn btn-default cat-filter-but">
@@ -43,9 +43,9 @@
                         
                         <!--<input type="text" class="top-filter-product-search" name="top-filter" value="" />-->
                     </div>
-                    <div class="top-filter-cover"></div>
+                    <!--<div class="top-filter-cover"></div>-->
                     
-                    <div class="cats-list-box" style="display: none">                        
+                    <div class="cats-list-box" style="display: none;position: inherit;">                        
                         <div class="cats-list">
                             <div class="list-loading"></div>
                         </div>
@@ -76,7 +76,7 @@
                             </ul>
                         {/if}
                     </div>
-                    <div class="top-second-cover"></div>
+                    <!--<div class="top-second-cover"></div>-->
                     <div class="ajax-list-container">
                         
                         <div class="ajax-list">
@@ -98,7 +98,7 @@
           <script>
               function resizeAds() {
                   //alert(2.5)
-                  $(".banner_top_frame").css("height", $(window).width()*2.66)
+                  $(".banner_top_frame").css("height", $(window).width()*0.6)
               }
               
               resizeAds()
