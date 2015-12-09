@@ -2025,3 +2025,6 @@ h2.area-title {
     font-weight: bold;
     margin: 5px;
 }
+.navbar-inverse {
+    z-index: 1001
+}
