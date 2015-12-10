@@ -2124,3 +2124,12 @@ h2.area-title {
 .ad_toggle_2.ad_fixed_in {
     top: 305px;
 }
+.select2-results .select2-result-label {
+    height: auto;
+}
+.select2-results .select2-result-label > i {
+    float: left;
+    height: 21px;
+    margin-right: 10px;
+    padding-top: 2px;
+}
