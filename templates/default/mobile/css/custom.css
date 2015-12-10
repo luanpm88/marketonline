@@ -2106,3 +2106,16 @@ h2.area-title {
 #wrapper.toggled #page-content-wrapper {
     min-width: 350px;
 }
+.ad_toggle_2 {
+    background: #3b984c none repeat scroll 0 0;
+    border-radius: 40px;
+    color: #fff !important;
+    cursor: pointer;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 12px 12px 20px 0;
+    padding: 5px 10px;
+    text-align: center;
+    width: 147px;
+}
