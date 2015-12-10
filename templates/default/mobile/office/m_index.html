@@ -81,58 +81,63 @@
            <div class="count_info point_table">
 
               <h2 {if $pb_company.shop_name && ($pb_userinfo.activity_announce_count<2)}style="color:red"{/if}>Bảng cộng điểm Gian hàng của bạn hàng tuần</h2> 
-              <div class="count_info_content">
-		<table class="table bglist bg_blue_link" style="margin-top: 0">
-			<tr>
-				<th width="5%">STT</th>
-				<th width="45%" style="text-align: left">Nội dung</th>
-				<th width="16%">Đánh giá</th>
-				<th style="text-align: left">Liên kết để xem và thực hiện</th>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td style="text-align: left">Gian hàng hoàn thiện và đẹp bao gồm: logo, hình đại diện cho Gian hàng, 9 sản phẩm trở lên</td>
-				<td>{$settings.point_good_shop} điểm/tuần</td>
-				<td style="text-align: left">
-					<a target="_blank" class="name" href="{$COMPANYINFO.space_url}">
-						{$COMPANYINFO.shop_name}
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td style="text-align: left">Liên kết Facebook</td>
-				<td>{$settings.point_connect_facebook} điểm/tuần</td>
-				<td style="text-align: left">
-					<a target="_blank" class="name" href="company.php">
-						{lang basic_information} {$membertype_name}
-					</a>
-				</td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td style="text-align: left">Hoạt động tích cực</td>
-				<td>1 điểm/ngày</td>
-				<td style="text-align: left"></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td style="text-align: left">Mời bạn bè (mời bạn bè tham gia khi đăng ký thành viên điền email mà bạn đã đăng ký trên trang MarketOnline.vn khi đó bạn có hệ thống liên kết với bạn bè để bán hàng)</td>
-				<td>{$settings.point_invite} điểm/bạn</td>
-				<td style="text-align: left">
-					<a target="_blank" href="{the_url module='share_shop' space_name=`$pb_userinfo.space_name`}">
-						{the_url module='share_shop' space_name=`$pb_userinfo.space_name`}
-					</a>					
-				</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td style="text-align: left">Thanh toán (với phí 1 triệu/tuần)</td>
-				<td>{$settings.point_checkout} điểm/tuần</td>
-				<td style="text-align: left"></td>
-			</tr>
-			
-		</table>
+              <div class="count_info_content" style="min-width: 500px; overflow-y: auto">
+		
+		
+					<table class="table bglist bg_blue_link" style="margin-top: 0">
+						<tr>
+							<th width="5%">STT</th>
+							<th width="45%" style="text-align: left">Nội dung</th>
+							<th width="16%">Đánh giá</th>
+							<th style="text-align: left">Liên kết để xem và thực hiện</th>
+						</tr>
+						<tr>
+							<td>1</td>
+							<td style="text-align: left">Gian hàng hoàn thiện và đẹp bao gồm: logo, hình đại diện cho Gian hàng, 9 sản phẩm trở lên</td>
+							<td>{$settings.point_good_shop} điểm/tuần</td>
+							<td style="text-align: left">
+								<a target="_blank" class="name" href="{$COMPANYINFO.space_url}">
+									{$COMPANYINFO.shop_name}
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td style="text-align: left">Liên kết Facebook</td>
+							<td>{$settings.point_connect_facebook} điểm/tuần</td>
+							<td style="text-align: left">
+								<a target="_blank" class="name" href="company.php">
+									{lang basic_information} {$membertype_name}
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td style="text-align: left">Hoạt động tích cực</td>
+							<td>1 điểm/ngày</td>
+							<td style="text-align: left"></td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td style="text-align: left">Mời bạn bè (mời bạn bè tham gia khi đăng ký thành viên điền email mà bạn đã đăng ký trên trang MarketOnline.vn khi đó bạn có hệ thống liên kết với bạn bè để bán hàng)</td>
+							<td>{$settings.point_invite} điểm/bạn</td>
+							<td style="text-align: left">
+								<a target="_blank" href="{the_url module='share_shop' space_name=`$pb_userinfo.space_name`}">
+									{the_url module='share_shop' space_name=`$pb_userinfo.space_name`}
+								</a>					
+							</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td style="text-align: left">Thanh toán (với phí 1 triệu/tuần)</td>
+							<td>{$settings.point_checkout} điểm/tuần</td>
+							<td style="text-align: left"></td>
+						</tr>
+						
+					</table>
+		
+		
+		
               </div>
            </div>
 		<p class="point_table_note"><span style="font-weight: bold;text-decoration: underline">Ghi chú:</span> Các nội dung trên là không bắt buộc. Quý Chủ Gian Hàng thực hiện càng đầy đủ thì hệ thống MarketOnline.vn sẽ xây dựng <strong>Thương Hiệu Gian Hàng</strong> cũng như liên kết để bán hàng được hiệu quả.
