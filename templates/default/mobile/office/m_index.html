@@ -36,7 +36,13 @@
               </tr>
 	       
               <tr>
-                <td rowspan="3" class="avatar" ><img src="{$MemberInfo.avatar}"></td>
+                <td rowspan="3" class="avatar" >
+					{if $pb_company}
+						<img src="{$pb_company.logo}">
+					{else}
+						<img src="{$MemberInfo.avatar}">
+					{/if}
+				</td>
                 <td>
 			<strong>{$MemberInfo.first_name} {$MemberInfo.last_name}</strong>
 		</td>
