@@ -24,6 +24,7 @@ $announcement = new Announcements();
 $announceread= new Announcereads();
 $smarty->template_dir = PHPB2B_ROOT. "templates/office/";
 setvar("office_theme_path", "../templates/office/");
+setvar("hide_search_bar", true);
 
 if(detectMobile()) {
 	setvar("theme_img_path", "templates/default/");
