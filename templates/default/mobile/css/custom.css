@@ -2136,3 +2136,6 @@ h2.area-title {
 .mobile-product-desc img {
     height: auto !important;
 }
+.h2, h2 {
+    font-size: 22px;
+}
