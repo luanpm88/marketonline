@@ -22,6 +22,7 @@ $company = new Companies();
 $point = new Points();
 $member = new Members();
 $referer = "";
+setvar("hide_search_bar", true);
 capt_check("capt_logging");
 if (empty($_GET['forward'])) {
 	$_GET['forward'] = $_SERVER['HTTP_REFERER'];
