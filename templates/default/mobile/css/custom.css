@@ -2121,3 +2121,6 @@ h2.area-title {
     position: relative;
     z-index: 100;
 }
+.ad_toggle_2.ad_fixed_in {
+    top: 305px;
+}
