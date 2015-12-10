@@ -49,7 +49,13 @@
                 <td rowspan="3" width="100" title="{$group.name}"></td>
               </tr>
 	      <tr>
-		<td class="member_upgrade">{$group.name|pl}</td>
+		<td class="member_upgrade">
+			{if $pb_company}
+				{$pb_company.shop_name}
+			{else}
+				{$group.name|pl}
+			{/if}
+		</td>
                 
                 </tr>              
              <tr>
