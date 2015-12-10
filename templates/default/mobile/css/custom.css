@@ -2114,7 +2114,7 @@ h2.area-title {
     float: right;
     font-size: 12px;
     font-weight: bold;
-    margin: 12px 12px 20px 0;
+    margin: -20px 12px 20px 0;
     padding: 5px 10px;
     text-align: center;
     width: 147px;
