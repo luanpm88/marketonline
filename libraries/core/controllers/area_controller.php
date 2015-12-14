@@ -468,7 +468,7 @@ class Area extends PbController {
 		//if($products["count"] > $row*$num*70) {
 		//	$products["count"] = $row*$num*70;
 		//}
-		setbar("industries", $industries);
+		setvar("industries", $industries);
 		setvar("count",$products["count"]);
 		
 		render("area/ajaxProductModule", 1);
