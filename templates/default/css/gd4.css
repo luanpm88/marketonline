@@ -542,7 +542,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     height: auto;
     width: 950px;
 }
-.market-product-module .areas-container .works-list:first-child {
+.areas-container .market-product-module .works-list:first-child {
     margin-top: 0;
 }
 .market-product-module .product_listing ul.products li.product {
