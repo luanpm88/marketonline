@@ -629,3 +629,6 @@ h2.market-header-title {
     height: 45px;
     overflow: hidden;
 }
+.company-container .works-list .description-bottom {
+    width: 100%;
+}
