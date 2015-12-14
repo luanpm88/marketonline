@@ -376,13 +376,45 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		$products = $trades["result"]
+		foreach($products as $key => $item)
+		{
+			$products[$key]["content"] = strip_tags(pb_lang_split($item['content']));
+			$products[$key]["created"] = date('d/m/Y H:i', $item['created']);
+			$products[$key]["enddate"] = date('d/m/Y', $item['created']+($item['expire_days']*24*3600));
+			//$products[$key]["price"] = number_format($item["price"], 0, ',', '.');
+			//$products[$key]["old_price"] = number_format($item["old_price"], 0, ',', '.');
+			$products[$key]["name"] = fix_text_error($products[$key]["name"]);
+			
+			//get space_name
+			$mem = $this->member->getInfoById($item['member_id']);
+			$com = $this->company->getInfoByUserId($item['member_id']);
+			
+			
+			
+			$space_controller->setBaseUrlByUserId($mem["space_name"], "offer");
+			$products[$key]['url'] = $space_controller->rewriteDetail("offer", $item['id']);
+			
+			if($com)
+			{
+				$aaaa = $this->area->disSubNames($com['area_id'], " / ", false, "product");
+			}
+			else
+			{
+				$aaaa = $this->area->disSubNames($mem['area_id'], " / ", false, "product");
+			}
+			
+			$aaaa = explode(' / ', $aaaa);
+			if($aaaa[1]) $products[$key]['area_names'] = $aaaa[1];
+			
+		}
 		
 		setvar("areatype", $areatype);
 		setvar("area", $area);
 		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
 		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
-		setvar("trades",$trades["result"]);
+		setvar("trades",$products);
 		setvar("count",$trades["count"]);
 		
 		render("area/ajaxTradeModule", 1);
