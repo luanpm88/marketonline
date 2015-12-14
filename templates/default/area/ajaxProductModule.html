@@ -2,6 +2,17 @@
 				{if $industry}
 					- {$industry.name}
 				{/if}
+				{if $areatype}
+					| <span class="delim">/</span> <a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
+				{/if}
+				{if $area}
+					{if $area.level==3},
+					<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name`}">
+						{$parent_area.name}
+					</a>
+					{/if}
+					<span class="delim">,</span> <a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name`}">{$area.name}</a>
+				{/if}
 		</h2>
 		<div class="market-product-module">
 			<div class="box_left">
