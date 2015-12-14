@@ -470,6 +470,8 @@ class Area extends PbController {
 		//if($products["count"] > $row*$num*70) {
 		//	$products["count"] = $row*$num*70;
 		//}
+		setvar("areatype", $areatype);
+		setvar("area", $area);
 		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
 		setvar("count",$products["count"]);
