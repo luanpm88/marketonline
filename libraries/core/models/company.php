@@ -729,7 +729,7 @@ class Companies extends PbModel {
 		
 		//Conditions for effective company
 		$other_con = " > 8";
-		$company_has_logo = "" //"AND Company.picture != '' AND Company.banners IS NOT NULL";
+		$company_has_logo = ""; //"AND Company.picture != '' AND Company.banners IS NOT NULL";
 		$conditions[] = "(Company.id IN (".
 				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc"
 				." INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id"
