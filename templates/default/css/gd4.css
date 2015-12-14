@@ -565,6 +565,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     margin: 0;
     overflow: hidden;
     width: 100%;
+    min-height: none;
 }
 .market-product-module ul.products li.product h3 {
     border: 0 none;
@@ -572,6 +573,6 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     padding: 0;
     width: auto;
 }
-.company-container .market-product-module  .works-list .filterable-grid {
+.company-container  .works-list .market-product-module .filterable-grid {
     width: 100%;
 }
