@@ -542,6 +542,9 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     height: auto;
     width: 950px;
 }
+.market-product-module .areas-container .works-list:first-child {
+    margin-top: 0;
+}
 .market-product-module .product_listing ul.products li.product {
     float: left;
     margin: 0;
@@ -550,10 +553,25 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .market-product-module .product_listing ul.products li.product a {
     
 }
-.market-product-module .product_listing ul.products li.product a img {
-    
+.market-product-module .product_listing ul.products li.product {
+    float: left;
+    height: 233px;
+    margin: 0 9px 9px 0;
+    overflow: hidden;
+    width: 226px;
 }
 .market-product-module .product_listing {
-    width: 100%;
+    height: 474px;
     margin: 0;
+    overflow: hidden;
+    width: 100%;
+}
+.market-product-module ul.products li.product h3 {
+    border: 0 none;
+    font-size: 16px;
+    padding: 0;
+    width: auto;
+}
+.company-container .market-product-module  .works-list .filterable-grid {
+    width: 100%;
 }
