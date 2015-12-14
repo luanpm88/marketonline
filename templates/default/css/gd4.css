@@ -537,12 +537,10 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     width: 100%;
 }
 .market-product-module .box_left {
-    background: #aaa none repeat scroll 0 0;
     float: left;
     width: 235px;
 }
 .market-product-module .box_right {
-    background: #ddd none repeat scroll 0 0;
     float: right;
     height: auto;
     width: 950px;
@@ -597,4 +595,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 }
 .areas-container .market-product-module .shop_info_product div {
     margin: -18px 1px;
+}
+.market-product-module #menu-features-list li:first-child a {
+    border-top: solid 1px #ddd;
 }
