@@ -377,6 +377,7 @@ class Area extends PbController {
 		setvar("areatype", $areatype);
 		setvar("area", $area);
 		setvar("industry", $industry);
+		setvar("industries_list", $industries_list);
 		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		setvar("trades",$trades["result"]);
 		setvar("count",$trades["count"]);
