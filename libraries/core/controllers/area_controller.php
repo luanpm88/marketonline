@@ -462,9 +462,9 @@ class Area extends PbController {
 		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
 		
-		if($products["count"] > $row*$num*70) {
-			$products["count"] = $row*$num*70;
-		}
+		//if($products["count"] > $row*$num*70) {
+		//	$products["count"] = $row*$num*70;
+		//}
 		setvar("count",$products["count"]);
 		
 		render("area/ajaxProductModule", 1);
