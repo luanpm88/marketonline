@@ -15,7 +15,12 @@
 					<a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name`}">{$area.name}</a>
 				{/if}
 				{if $areatype}
-					<span class="delim">,</span> <a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
+						{if $area}
+								<span class="delim">,</span>
+						{else}
+								|
+						{/if}
+						<a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
 				{/if}
 				
 		</h2>
