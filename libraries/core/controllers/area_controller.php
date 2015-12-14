@@ -527,6 +527,8 @@ class Area extends PbController {
 			$services["count"] = $row*$num*70;
 		}
 		
+		setvar("areatype", $areatype);
+		setvar("area", $area);
 		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
 		setvar("count",$services["count"]);
