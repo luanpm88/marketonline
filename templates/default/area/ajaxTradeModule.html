@@ -77,117 +77,120 @@
 				
 				
 				<!--{if $trades}-->
-		
+					<div class="product_listing">
+						<ul class="products">
                         <!--{loop $trades item level key}-->
-                            <ul class="products_{$key}">
-	
-							<li class="product{$item.isfirst}" rel="{$item.id}">
-							
-								<div class="images">
-									<a target="_blank" href="{the_url module=offers action=detail id=`$item.id` title=`$item.title`}" class="fancy-box-offer">	
-										<img width="225" height="" src="{$item.thumb}" class="attachment-shop_catalog wp-post-image" alt="{$item.name}">
-									</a>
-								</div>
 								
-								<div class="title_detail">
-									<h3>
-										
-										<a target="_blank" href="{the_url module=offers action=detail id=`$item.id` title=`$item.title`}" title="{$item.title}">
-											{$item.title}
+		
+								<li class="product{$item.isfirst}" rel="{$item.id}">
+								
+									<div class="images">
+										<a target="_blank" href="{the_url module=offers action=detail id=`$item.id` title=`$item.title`}" class="fancy-box-offer">	
+											<img width="225" height="" src="{$item.thumb}" class="attachment-shop_catalog wp-post-image" alt="{$item.name}">
 										</a>
-													
-									</h3>
-									<p>
-										{if $item.new_price || $item.price}
-										{if $item.new_price != "" && $item.new_price != 0}
-											<span class="price">Giá: {if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
-										{else}
-											<span class="price">Giá: <span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
-										{/if}
-										{/if}
-										
-									</p>
-										{if $isConnect}
+									</div>
+									
+									<div class="title_detail">
+										<h3>
+											
+											<a target="_blank" href="{the_url module=offers action=detail id=`$item.id` title=`$item.title`}" title="{$item.title}">
+												{$item.title}
+											</a>
+														
+										</h3>
+										<p>
 											{if $item.new_price || $item.price}
-												{$item.content|truncate:120}
+											{if $item.new_price != "" && $item.new_price != 0}
+												<span class="price">Giá: {if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
 											{else}
-												{$item.content|truncate:170}
+												<span class="price">Giá: <span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
 											{/if}
-										{else}
-											{$item.content|truncate:350}
+											{/if}
+											
+										</p>
+											{if $isConnect}
+												{if $item.new_price || $item.price}
+													{$item.content|truncate:120}
+												{else}
+													{$item.content|truncate:170}
+												{/if}
+											{else}
+												{$item.content|truncate:350}
+											{/if}
+											
+											
+										
+									</div>
+									
+									<div class="offer_clicked_col">
+										
+											<h4>Lượt truy cập</h4>
+										<p>	{$item.clicked}
+										</p>
+										<p>
+											<a href="javascript:void(0)" class="quick_view" onclick="getOfferDetail({$item.id},0);">Xem nhanh</a>
+										</p>
+									</div>
+									
+									<div class="offer_date_col">
+										
+											<h4>Ngày đăng</h4>
+										<p>	{$item.created}
+										</p>
+										
+											<h4>Ngày hết hạn</h4>
+										<p>	{$item.enddate}
+										</p>
+										
+									</div>
+									
+									<div class="offer_date_col areax">
+										
+										{if $item.area_names}
+											<h4>Nơi đăng</h4>
+										<p>	{$item.area_names}
+										</p>
 										{/if}
 										
-										
-									
-								</div>
-								
-								<div class="offer_clicked_col">
-									
-										<h4>Lượt truy cập</h4>
-									<p>	{$item.clicked}
-									</p>
-									<p>
-										<a href="javascript:void(0)" class="quick_view" onclick="getOfferDetail({$item.id},0);">Xem nhanh</a>
-									</p>
-								</div>
-								
-								<div class="offer_date_col">
-									
-										<h4>Ngày đăng</h4>
-									<p>	{$item.created}
-									</p>
-									
-										<h4>Ngày hết hạn</h4>
-									<p>	{$item.enddate}
-									</p>
-									
-								</div>
-								
-								<div class="offer_date_col areax">
-									
-									{if $item.area_names}
-										<h4>Nơi đăng</h4>
-									<p>	{$item.area_names}
-									</p>
-									{/if}
-									
-										{if $item.market}
-										<h4>Thị trường</h4>
-									<p>	{$item.market}
-									</p>
-									{/if}
-									
-								</div>
-								
-									<!--<a class="shop_info_product" href="{$item.shop_url}"><span>{$item.shop_name}</span></a>
-									<h3>{$item.title}</h3>
-									
-									{if $item.new_price || $item.price}
-										{if $item.new_price != "" && $item.new_price != 0}
-											<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
-										{else}
-											<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+											{if $item.market}
+											<h4>Thị trường</h4>
+										<p>	{$item.market}
+										</p>
 										{/if}
-									{/if}-->
+										
+									</div>
+									
+										<!--<a class="shop_info_product" href="{$item.shop_url}"><span>{$item.shop_name}</span></a>
+										<h3>{$item.title}</h3>
+										
+										{if $item.new_price || $item.price}
+											{if $item.new_price != "" && $item.new_price != 0}
+												<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+											{else}
+												<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+											{/if}
+										{/if}-->
+									
 								
-							
+									
 								
-							
-								<a style="display: none" onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
+									<a style="display: none" onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
+									
+									<div class="product_tools" style="display: none">
+										<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+										<!--{if $pb_username!=""}-->
+											<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
+										<!--{else}-->
+											<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
+										<!--{/if}-->
+									</div>
 								
-								<div class="product_tools" style="display: none">
-									<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
-									<!--{if $pb_username!=""}-->
-										<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
-									<!--{else}-->
-										<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
-									<!--{/if}-->
-								</div>
-							
-							</li>
-							
-							</ul>
-                        <!--{/loop}-->
+								</li>
+								
+						
+						<!--{/loop}-->
+						</ul>
+					</div>
 					{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
 				<!--{else}-->
 					<p style="text-align: center; font-size: 18px">Chưa có thương mại phù hợp trong mục này!</p>
