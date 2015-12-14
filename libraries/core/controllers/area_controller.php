@@ -454,6 +454,8 @@ class Area extends PbController {
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industries = $this->getAreas($industry_id);
+			
+			$industry = $this->industry->read("*" ,$industry_id);
 		}
 		
 		//paging
@@ -468,6 +470,7 @@ class Area extends PbController {
 		//if($products["count"] > $row*$num*70) {
 		//	$products["count"] = $row*$num*70;
 		//}
+		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
 		setvar("count",$products["count"]);
 		
