@@ -1,7 +1,8 @@
 		<h2 class="market-header-title">Sản phẩm
 				{if $industry}
-					- {$industry.name}
+					{$industry.name}
 				{/if}
+				<?php echo "ssss" ?>dssss
 		</h2>
 		<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham'}">Xem thêm</a>
 		<div class="market-product-module">
@@ -24,6 +25,7 @@
 									Nhấn vào đây
 									<br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
 							  </div>
+							  
 							  
 							  <iframe scrolling="no" style="border: medium none;height: 415px;width: 932px;margin-bottom: 0" src="http://marketonline.vn:3000/ad_positions/iframe_1_wide_banners?pos=product_category_main&industry_id=0" style="border: none;"></iframe>
 						</div>
