@@ -629,9 +629,7 @@ h2.market-header-title {
     height: 45px;
     overflow: hidden;
 }
-.works-list.trade_module .item a.shop_info_product div {
-    display: block;
-    height: auto;
+.works-list.trade_module .item a.shop_info_product {
     overflow: inherit;
 }
 .company-container .works-list .description-bottom {
