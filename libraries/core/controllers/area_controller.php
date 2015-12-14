@@ -398,7 +398,7 @@ class Area extends PbController {
 			$com = $this->company->getInfoByUserId($item['member_id']);
 			
 			
-			
+			$space_controller = new Space();
 			$space_controller->setBaseUrlByUserId($mem["space_name"], "offer");
 			$products[$key]['url'] = $space_controller->rewriteDetail("offer", $item['id']);
 			
