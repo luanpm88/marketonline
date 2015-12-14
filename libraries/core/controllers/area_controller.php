@@ -357,7 +357,7 @@ class Area extends PbController {
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
-			$areatype = $this->area->read("*",$area_id);
+			$areatype = $this->areatype->read("*",$areatype_id);
 			setvar("areatype",$areatype);
 		}
 		if(isset($_GET["type_id"])){
@@ -373,6 +373,10 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		
+		setvar("areatype", $areatype);
+		setvar("area", $area);
+		setvar("industry", $industry);
 		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		setvar("trades",$trades["result"]);
 		setvar("count",$trades["count"]);
@@ -384,6 +388,9 @@ class Area extends PbController {
 		$offset = 0;
 		$row = 3;
 		$num = 6;
+		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
 		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
@@ -409,6 +416,8 @@ class Area extends PbController {
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industries = $this->getAreas($industry_id);
+			
+			$industry = $this->industry->read("*" ,$industry_id);
 		}
 		
 		//paging
