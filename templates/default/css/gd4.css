@@ -612,3 +612,14 @@ h2.market-header-title {
 .market-product-module ul.products li.product h3 {
     color: #333;
 }
+.box_right .module-more-but {
+    background: #3b984c none repeat scroll 0 0;
+    color: #fff;
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+    padding: 5px 10px;
+}
+.box_right .module-more-but:hover {
+    opacity: 0.8;
+}
