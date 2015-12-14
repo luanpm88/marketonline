@@ -122,5 +122,61 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="product_list">
+					<!--{if $products}-->
+						<div class="product_listing areapage">
+							<ul class="filterable-grid products">					      
+							<!--{loop $products item level key}-->
+							
+								
+								<li class="product{$item.isfirst} boxcols">
+								<div class="hidden-info-list-item">
+									<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">Xem chi tiết</a>
+								</div>
+								
+								<a href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}">
+									<div><img width="225" height="" src="{$item.thumb}" class="attachment-shop_catalog wp-post-image" alt="{$item.name}"></div>
+									<a class="shop_info_product" href="{$item.shop_url}" title="">
+									<div>Xem gian hàng:</div>
+									<span>{$item.shop_name}</span>
+									</a>
+									<h3>{$item.name}</h3>
+									<div class="fixedheight_box">
+									{if $item.new_price || $item.price}
+										{if $item.new_price != "" && $item.new_price != 0}
+										<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+										{else}
+										<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+										{/if}
+									{/if}
+									</div>
+								</a>
+								
+								<div class="product_tools">
+									<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
+									<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+									<!--{if $pb_username!=""}-->
+										<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
+									<!--{else}-->
+										<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
+									<!--{/if}-->
+								</div>
+								</li>
+							</ul>
+							
+						</div>
+						
+						{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
+						<!--{else}-->
+									<p class="no-content">Chưa có sản phẩm nào trong mục này.</p>
+								<!--{/if}-->
+						
+						{if $smarty.get.p}
+							<div id="cccount" style="display: none">{$count}</div>
+							<div id="pppage" style="display: none">{$smarty.get.p}</div>
+						{/if}
+				</div>
+				
 			</div>
 		</div>
