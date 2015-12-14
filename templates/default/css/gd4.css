@@ -606,3 +606,6 @@ h2.market-header-title {
 .market-area-listing-page .market-product-module .product_listing {
     overflow: inherit;
 }
+.market-product-module ul.products li.product h3 {
+    color: #333;
+}
