@@ -376,6 +376,13 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		
+		
+		setvar("areatype", $areatype);
+		setvar("area", $area);
+		setvar("industry", $industry);
+		setvar("industries_list", $industries_list);
+		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		$products = $trades["result"]
 		foreach($products as $key => $item)
 		{
@@ -408,12 +415,6 @@ class Area extends PbController {
 			if($aaaa[1]) $products[$key]['area_names'] = $aaaa[1];
 			
 		}
-		
-		setvar("areatype", $areatype);
-		setvar("area", $area);
-		setvar("industry", $industry);
-		setvar("industries_list", $industries_list);
-		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		setvar("trades",$products);
 		setvar("count",$trades["count"]);
 		
