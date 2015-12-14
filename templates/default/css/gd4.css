@@ -534,7 +534,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     font-size: 15px;
     height: auto;
     margin: 0;
-    padding: 8px 0 8px 12px;
+    padding: 8px 0;
     width: 100%;
 }
 .market-product-module .box_left {
