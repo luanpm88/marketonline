@@ -78,11 +78,13 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = "/".$areatype["name"];
 			
-			$areas_by_areatype = $this->getAreasByAreatype();
-			setvar("areas_by_areatype",$areas_by_areatype);
+			
 			
 			setvar("areatype",$areatype);
 		}
+		$areas_by_areatype = $this->getAreasByAreatype();
+		setvar("areas_by_areatype",$areas_by_areatype);
+		
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industry = $this->industry->read("*",$industry_id);
