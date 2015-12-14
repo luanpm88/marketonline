@@ -56,8 +56,7 @@
 					<!--{if $products}-->
 					<div class="product_listing">
 						<ul class="filterable-grid products">					      
-						<!--{loop $products item level key}-->
-						
+						<!--{loop $products item level key}-->						
 							
 							<li class="product{$item.isfirst} boxcols">
 								<div class="hidden-info-list-item">
@@ -84,15 +83,15 @@
 									</div>
 								</a>
 								
-									<div class="product_tools">
-										<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
-										<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
-										<!--{if $pb_username!=""}-->
-											<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
-										<!--{else}-->
-											<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
-										<!--{/if}-->
-									</div>
+								<div class="product_tools">
+									<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
+									<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
+									<!--{if $pb_username!=""}-->
+										<a class="comment_link message_tool" href="javascript:void(0)" onclick="getChatboxNew('{$item.member_id}x{$item.membertype_id}', false)">{lang message}</a>
+									<!--{else}-->
+										<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
+									<!--{/if}-->
+								</div>
 								</li>							
 							<!--{/loop}-->
 							</ul>
@@ -120,14 +119,14 @@
 {literal}
     <script>
 		$(document).ready(function() {
-			$('.market-product-module .product_listing ul.products li.product img').resizecrop({
-			   width:224,
-			   height:190
-			});
-			
-			{/literal}{if $smarty.get.p}{literal}
-				pagination({/literal}{$count}{literal}, {/literal}{$smarty.get.p}{literal})
-			{/literal}{/if}{literal}
+				$('.market-product-module .product_listing ul.products li.product img').resizecrop({
+						width:224,
+						height:190
+				});
+				
+				{/literal}{if $smarty.get.p}{literal}
+							pagination({/literal}{$count}{literal}, {/literal}{$smarty.get.p}{literal})
+				{/literal}{/if}{literal}
 		});
     </script>
 {/literal}
