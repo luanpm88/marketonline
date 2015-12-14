@@ -540,9 +540,17 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     background: #ddd none repeat scroll 0 0;
     float: right;
     height: auto;
-    padding-right: 20px;
     width: 950px;
 }
 .areas-container .market-product-module .works-list:first-child {
     margin-top: 0;
+}
+.market-product-module .product_listing ul.products li.product {
+    
+}
+.market-product-module .product_listing ul.products li.product a {
+    
+}
+.market-product-module .product_listing ul.products li.product a img {
+    
 }
