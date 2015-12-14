@@ -575,7 +575,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     border: 0 none;
     font-size: 16px;
     height: 42px;
-    line-height: 30px;
+    line-height: 26px;
     overflow: hidden;
     padding: 5px;
     width: auto;
