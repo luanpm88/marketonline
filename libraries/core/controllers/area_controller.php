@@ -135,7 +135,7 @@ class Area extends PbController {
 				
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
-				setvar("companies_map_script",$companies_map_script);
+				setvar("companies_map_script", $companies_map_script);
 				break;
 			case 'dich-vu':
 				$script = '
@@ -146,11 +146,11 @@ class Area extends PbController {
 						$(".service_module a.main_a").live("click", function() {
 						    ajaxLoadModule("service_module", "ajaxServiceModule","","",1,"'.$industry_id.'");
 						});
-					';
+				';
 				$container = '<div class="works-list album area-module service_module starting"></div>';
 				$paging = 'ajaxLoadModule("service_module", "ajaxServiceModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Dịch vụ";
-				
+
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
 				setvar("companies_map_script",$companies_map_script);
@@ -186,7 +186,7 @@ class Area extends PbController {
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
 				setvar("companies_map_script",$companies_map_script);
-				
+
 				break;
 			case 'hoc-tap':
 				$script = '
@@ -205,6 +205,7 @@ class Area extends PbController {
 			default:
 				break;
 		}
+
 		setvar("script",$script);
 		setvar("container",$container);
 		setvar("paging",$paging);
