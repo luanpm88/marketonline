@@ -428,7 +428,7 @@ class Area extends PbController {
 		$num = 7;
 		
 		//Get industry level 1
-		$industries = $this->industry->getCacheIndustry();
+		$industries_list = $this->industry->getCacheIndustry();
 		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
@@ -468,7 +468,7 @@ class Area extends PbController {
 		//if($products["count"] > $row*$num*70) {
 		//	$products["count"] = $row*$num*70;
 		//}
-		setvar("industries", $industries);
+		setvar("industries_list", $industries_list);
 		setvar("count",$products["count"]);
 		
 		render("area/ajaxProductModule", 1);
