@@ -542,15 +542,18 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     height: auto;
     width: 950px;
 }
-.areas-container .market-product-module .works-list:first-child {
-    margin-top: 0;
-}
 .market-product-module .product_listing ul.products li.product {
-    
+    float: left;
+    margin: 0;
+    width: 200px;
 }
 .market-product-module .product_listing ul.products li.product a {
     
 }
 .market-product-module .product_listing ul.products li.product a img {
     
+}
+.market-product-module .product_listing {
+    width: 100%;
+    margin: 0;
 }
