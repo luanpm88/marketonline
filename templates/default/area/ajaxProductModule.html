@@ -3,7 +3,7 @@
 					- {$industry.name}
 				{/if}
 				{if $areatype}
-					| <span class="delim">/</span> <a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
+					| <a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
 				{/if}
 				{if $area}
 					{if $area.level==3},
