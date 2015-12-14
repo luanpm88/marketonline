@@ -169,6 +169,10 @@
 							</ul>
 						</div>
 						{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
+						{if $smarty.get.p}
+							<div id="cccount" style="display: none">{$count}</div>
+							<div id="pppage" style="display: none">{$smarty.get.p}</div>
+						{/if}
 					<!--{/if}-->
 				</div>				
 			</div>
