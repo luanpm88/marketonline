@@ -624,13 +624,10 @@ h2.market-header-title {
     opacity: 0.8;
     color: #fff;
 }
-.works-list.trade_module .item a {
+.works-list.trade_module .item h4 a {
     display: block;
     height: 45px;
     overflow: hidden;
-}
-.works-list.trade_module .item a.shop_info_product {
-    overflow: inherit;
 }
 .company-container .works-list .description-bottom {
     width: 100%;
