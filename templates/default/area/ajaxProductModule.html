@@ -5,8 +5,8 @@
 				<ul id="menu-features-list" class="menu">
 					<!--{loop $industries item0 level_0 key0}-->
 						<li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954">
-							<a href="http://marketonline.vn/san-pham/1/1/thoi-trang-trang-suc" content="Thời trang, trang sức" rel="1" class="item menu_lvl1">
-								Thời trang, trang sức <span></span>
+							<a href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham'}" content="{$item0.name}" rel="1" class="item menu_lvl1">
+								{$item0.name} <span></span>
 							</a>
 						</li>
 					<!--{/loop}-->
