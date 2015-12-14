@@ -537,6 +537,10 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     padding: 8px 0;
     width: 100%;
 }
+.company-container .works-list .market-product-module .item:hover, .company-container .works-list .market-product-module .item:hover {
+    background: #3b984c;
+    color: #fff;
+}
 .market-product-module .box_left {
     float: left;
     width: 235px;
