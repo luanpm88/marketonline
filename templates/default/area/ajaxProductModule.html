@@ -1,6 +1,6 @@
 		<h2 class="market-header-title">Sản phẩm</h2>
 		<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham'}">Xem thêm</a>
-		<div class="market-product-module  areapage">
+		<div class="market-product-module">
 			<div class="box_left">
 				<ul id="menu-features-list" class="menu">
 							  <li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954">
@@ -185,6 +185,8 @@
 		   width:224,
 		   height:190
 	    });
+		
+		pagination({/literal}{$count}{literal}, {/literal}{$smarty.get.p}{literal})
 	});
     </script>
 {/literal}
