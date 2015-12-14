@@ -632,3 +632,6 @@ h2.market-header-title {
 .company-container .works-list .description-bottom {
     width: 100%;
 }
+.areas-container .subtab-area {
+    margin-top: 0;
+}
