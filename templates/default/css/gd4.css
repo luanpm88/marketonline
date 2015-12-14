@@ -579,3 +579,14 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .market-product-module .product_listing ul.products li.product img {
     padding: 0;
 }
+.market-product-module .shop_info_product {
+    width: 200px;
+    height: 28px;
+}
+.areas-container .market-product-module .shop_info_product span {
+    width: 198px;
+    margin-top: 1px;
+}
+.areas-container .market-product-module .shop_info_product div {
+    margin: -18px 1px;
+}
