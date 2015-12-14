@@ -342,6 +342,9 @@ class Area extends PbController {
 		$row = 3;
 		$num = 7;
 		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
+		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
 		}
