@@ -576,12 +576,12 @@ class Area extends PbController {
 		}
 		
 		//GETs
-		if(isset($_GET["area_id"])){
+		if(isset($_GET["area_id"])) {
 			$area_id = $_GET["area_id"];
 			$area = $this->area->read("*",$area_id);
 			setvar("area",$area);
 		}
-		if(isset($_GET["areatype_id"])){
+		if(isset($_GET["areatype_id"])) {
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->area->read("*",$area_id);
 			setvar("areatype",$areatype);
@@ -659,8 +659,8 @@ class Area extends PbController {
 								{
 									$area_a[] = $level3["id"];
 									foreach($level3['sub'] as $key4 => $level4)
-									{												
-										$area_a[] = $level4["id"];												
+									{
+										$area_a[] = $level4["id"];
 									}
 								}
 							}

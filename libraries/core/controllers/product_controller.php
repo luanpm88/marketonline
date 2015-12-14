@@ -1342,20 +1342,18 @@ class Product extends PbController {
 			setvar("TotalCount", $count);
 			setvar("Count", count($products));
 			setvar("Products", $products);
-			
+
 			if(isset($_GET['leftbar']))
 			{
 				setvar("isConnect", 1);
 				
 			}
-			
+
 			if($_GET["layout"]=='mobile') {
 				$this->render("mobile/product/ajax_list_offer");
 			} else {
 				$this->render("product/ajax.offerlist");
-			}
-			
-		
+			}		
 		}
 		else
 		{
