@@ -8,7 +8,7 @@
 				<ul id="menu-features-list" class="menu">
 					<!--{loop $industries_list item0 level_0 key0}-->
 						<li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954">
-							<a href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham' industry_id=`$item0.id` industry_name=`$item0.name`}" content="{$item0.name}" rel="1" class="item menu_lvl1 {if $smarty.get.industry_id==$item0.id}active{/if}">
+							<a href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='dich-vu' industry_id=`$item0.id` industry_name=`$item0.name`}" content="{$item0.name}" rel="1" class="item menu_lvl1 {if $smarty.get.industry_id==$item0.id}active{/if}">
 								{$item0.name} <span></span>
 							</a>
 						</li>
@@ -35,7 +35,6 @@
 					<div class="product_listing">
 						<ul class="filterable-grid products">					      
 						<!--{loop $services item level key}-->
-						
 							
 							<li class="product{$item.isfirst} boxcols">
 								<div class="hidden-info-list-item">
@@ -52,14 +51,13 @@
 									<div class="fixedheight_box">
 									{if $item.new_price || $item.price}
 										{if $item.new_price != "" && $item.new_price != 0}
-										<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+											<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
 										{else}
-										<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+											<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
 										{/if}
 									{/if}
 									</div>
 								</a>
-								
 									<div class="product_tools">
 										<a class="comment_link stat_link" href="javascript:void(0)">{$item.clicked}</a>
 										<a class="comment_link" href="{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}#comment_pos">{lang comment_list} ({$item.comments_count})</a>
@@ -69,10 +67,10 @@
 											<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
 										<!--{/if}-->
 									</div>
-								</li>							
-							<!--{/loop}-->
-							</ul>
-						</div>
+							</li>							
+						<!--{/loop}-->
+						</ul>
+					</div>
 					
 						{if $smarty.get.p}<br style="clear: both" /><p></p><br /><div class="pagination-list"></div><br style="clear:both" />{/if}
 						
@@ -82,12 +80,12 @@
 						{/if}
 					
 					<!--{else}-->
-						<p style="text-align: center; font-size: 18px">Chưa có sản phẩm phù hợp trong mục này!</p>
+						<p style="text-align: center; font-size: 18px">Chưa có dịch vụ phù hợp trong mục này!</p>
 					<!--{/if}-->
 				</div>				
 			</div>
 		</div>
-		
+	
 {literal}
     <script>
 	$(document).ready(function() {

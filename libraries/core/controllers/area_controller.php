@@ -482,6 +482,9 @@ class Area extends PbController {
 		$row = 3;
 		$num = 7;
 		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
+		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
 		}
@@ -506,6 +509,8 @@ class Area extends PbController {
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industries = $this->getAreas($industry_id);
+			
+			$industry = $this->industry->read("*" ,$industry_id);
 		}
 		
 		//paging
@@ -519,6 +524,9 @@ class Area extends PbController {
 		if($services["count"] > $row*$num*70) {
 			$services["count"] = $row*$num*70;
 		}
+		
+		setvar("industry", $industry);
+		setvar("industries_list", $industries_list);
 		setvar("count",$services["count"]);
 		
 		render("area/ajaxServiceModule", 1);
