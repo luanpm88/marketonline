@@ -624,3 +624,8 @@ h2.market-header-title {
     opacity: 0.8;
     color: #fff;
 }
+.works-list.trade_module .item a {
+    display: block;
+    height: 45px;
+    overflow: hidden;
+}
