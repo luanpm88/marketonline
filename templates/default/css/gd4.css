@@ -515,3 +515,12 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .link_friends {
     margin-top: 0;
 }
+.market-product-module #menu-features-list {
+    width: 200px;
+}
+.market-product-module #menu-features-list li {
+    float: left;
+}
+.company-container .works-list .item {
+    height: auto;
+}
