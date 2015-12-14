@@ -717,13 +717,13 @@ class Companies extends PbModel {
 		if($params["for_map"]) {
 			$conditions[] = "(Company.map_lat!='' AND Company.map_lng!='')";
 		}
-		//if($params["industry_id"]) {
-		//	$$industryid = $params["industry_id"];
-		//	$conditions[] = "((Company.industries LIKE '".$industryid."')"
-		//					." OR (Company.industries LIKE '%,".$industryid."')"
-		//					." OR (Company.industries LIKE '".$industryid.",%')"
-		//					." OR (Company.industries LIKE '%,".$industryid.",%'))";
-		//}
+		if($params["industry_id"]) {
+			$industryid = $params["industry_id"];
+			$conditions[] = "((Company.industries LIKE '".$industryid."')"
+							." OR (Company.industries LIKE '%,".$industryid."')"
+							." OR (Company.industries LIKE '".$industryid.",%')"
+							." OR (Company.industries LIKE '%,".$industryid.",%'))";
+		}
 		
 		//$conditions[] = 'Company.area_show=1';
 		//
