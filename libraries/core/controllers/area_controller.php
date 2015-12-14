@@ -383,7 +383,8 @@ class Area extends PbController {
 		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
 		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
-		$products = $trades["result"]
+		$products = $trades["result"];
+		
 		foreach($products as $key => $item)
 		{
 			$products[$key]["content"] = strip_tags(pb_lang_split($item['content']));
