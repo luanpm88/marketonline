@@ -10,9 +10,30 @@
     
     function pagination(total, p) {
 	    page = p;
-	    var num_per_page = row*num_per_row;
+		
+		var num_per_page = row*num_per_row;
+		
+		var pages = Math.ceil(total/num_per_page);
+		
+		var begin = p-10;
+		var end = p+10;
+		
+		if (begin < 0) {
+          end = end - begin
+		  begin = 1
+        }
+		
+		if (end > pages) {
+          begin = begin - (end - pages)
+		  end = pages
+        }
+		
+		if (begin < 0) {
+		  begin = 1
+        }
 	    
-	    var pages = Math.ceil(total/num_per_page);
+	    
+	   
 	    
 	    $('.pagination-list').html("");
 	    
@@ -25,7 +46,7 @@
 			'<li class="prev"><a href="javascript:void(0)" rel="'+(page-1)+'"><</a></li>';
 	      }
 		  
-	      for(var i = 1; i <= pages; i++) {
+	      for(var i = begin; i <= end; i++) {
 		var active = '';
 		if (page == i) {
 		  active = ' active';
