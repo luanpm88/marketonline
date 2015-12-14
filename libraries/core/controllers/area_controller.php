@@ -82,8 +82,8 @@ class Area extends PbController {
 			
 			setvar("areatype",$areatype);
 		}
-		$areas_by_areatype = $this->getAreasByAreatype();
-		setvar("areas_by_areatype",$areas_by_areatype);
+		//$areas_by_areatype = $this->getAreasByAreatype();
+		//setvar("areas_by_areatype",$areas_by_areatype);
 		
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
