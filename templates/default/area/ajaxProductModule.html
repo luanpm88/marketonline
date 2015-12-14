@@ -168,11 +168,12 @@
 							<!--{/loop}-->
 							</ul>
 						</div>
+						{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
 					<!--{/if}-->
 				</div>				
 			</div>
 		</div>
-		{if $smarty.get.p}<div class="pagination-list"></div><br style="clear:both" />{/if}
+		
 {literal}
     <script>
 	$(document).ready(function() {
