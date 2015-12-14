@@ -5,11 +5,11 @@ function OpenInNewTab(url) {
 
 $(document).ready(function() {
     
-    $(".ad_banner_item").click(function() {
+    $(".ad_banner_item").live("click", function() {
       var pos = $(this).attr("pos")
       OpenInNewTab("http://marketonline.vn:3000/ads/new?pos="+pos)
     })
-    $(".ad_toggle").click(function(e) {
+    $(".ad_toggle").live("click", function(e) {
       e.preventDefault()
       if ($(".ad_banner_item_hover").css("display") == "block") {
         $(".ad_banner_item, .ad_banner_item_hover").fadeOut()
