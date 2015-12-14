@@ -82,8 +82,8 @@ class Area extends PbController {
 			
 			setvar("areatype",$areatype);
 		}
-		//$areas_by_areatype = $this->getAreasByAreatype();
-		//setvar("areas_by_areatype",$areas_by_areatype);
+		$areas_by_areatype = $this->getAreasByAreatype();
+		setvar("areas_by_areatype",$areas_by_areatype);
 		
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
@@ -110,7 +110,7 @@ class Area extends PbController {
 						$(".company_module a.main_a").live("click", function() {
 						    ajaxLoadModule("company_module", "ajaxCompanyModule","","",1,"'.$industry_id.'");
 						});
-					';
+				';
 				$container = '<div class="works-list album area-module company_module starting"></div>';
 				$paging = 'ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Thương hiệu";
