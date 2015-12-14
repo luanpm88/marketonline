@@ -445,7 +445,7 @@ class Area extends PbController {
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
-			$areatype = $this->area->read("*",$area_id);
+			$areatype = $this->area->read("*",$areatype_id);
 			setvar("areatype",$areatype);
 		}
 		if(isset($_GET["membergroup_id"])){
