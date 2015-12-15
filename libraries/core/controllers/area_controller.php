@@ -813,32 +813,32 @@ class Area extends PbController {
 	}
 	
 	function getMapCompany() {
-		if(isset($_GET["area_id"])){
-			$companies = $this->company->getByArea(array("for_map"=>true,"industry_id"=>$_GET["industry_id"],"area_id"=>$_GET["area_id"],"areatype_id"=>$_GET["areatype_id"],"membergroup_id"=>$_GET["membergroup_id"]),0,10,10);
-			//var_dump($companies["count"]);
-			//setvar("companies",$companies["result"]);
-			$companies_map_script = '';
-			foreach($companies["result"] as $com) {
-				$html = '<div class=map_box_info>';
-					$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
-					
-					$html .= '<p>';
-						$html .= '<strong>'.$com["shop_name"].'</strong>';
-						$html .= '<br />'.$com["address"];						
-						$more = array();
-						if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
-						if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
-						if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
-						if(!empty($more)) $html .= implode(", ",$more);					
-					$html .= '</p>';
-				$html .= '</div>';
-				
-				//$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
-				$companies_map_script .= 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'");';
-			}
-		}
-		
-		return $companies_map_script;
+		//if(isset($_GET["area_id"])){
+		//	$companies = $this->company->getByArea(array("for_map"=>true,"industry_id"=>$_GET["industry_id"],"area_id"=>$_GET["area_id"],"areatype_id"=>$_GET["areatype_id"],"membergroup_id"=>$_GET["membergroup_id"]),0,10,10);
+		//	//var_dump($companies["count"]);
+		//	//setvar("companies",$companies["result"]);
+		//	$companies_map_script = '';
+		//	foreach($companies["result"] as $com) {
+		//		$html = '<div class=map_box_info>';
+		//			$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
+		//			
+		//			$html .= '<p>';
+		//				$html .= '<strong>'.$com["shop_name"].'</strong>';
+		//				$html .= '<br />'.$com["address"];						
+		//				$more = array();
+		//				if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
+		//				if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
+		//				if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
+		//				if(!empty($more)) $html .= implode(", ",$more);					
+		//			$html .= '</p>';
+		//		$html .= '</div>';
+		//		
+		//		//$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
+		//		$companies_map_script .= 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'");';
+		//	}
+		//}
+		//
+		//return $companies_map_script;
 	}
 	
 	function getAreasByAreatype() {
