@@ -679,3 +679,9 @@ h2.market-header-title {
 .job_employee_boxes a {
     color: #333 !important;
 }
+.job_employee_boxes .areas-module-controls {
+    
+}
+.job_employee_boxes .module-title {
+    position: relative;
+}
