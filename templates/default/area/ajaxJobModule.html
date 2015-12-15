@@ -32,8 +32,11 @@
 									<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
 									<!--<td>{$job.salary}</td>-->
 									<td>{$job.expired_dates}</td>
-								</tr>				
+								</tr>
 								<!-- {/loop} -->
+								<!--{if !$count}-->
+									<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào</td></tr>
+								<!--{/if}-->
 								
 								</tbody></table>
 								
