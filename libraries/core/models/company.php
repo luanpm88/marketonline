@@ -705,18 +705,18 @@ class Companies extends PbModel {
 	}
 	
 	function getByArea($params=array(), $offset=0, $row=3, $num=7) {
-		if($params["area_id"]) {
-			$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
-		}
-		if($params["areatype_id"]) {
-			$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
-		}
-		if($params["membergroup_id"]) {
-			$conditions[] = "m.membergroup_id=".$params["membergroup_id"];
-		}
-		if($params["for_map"]) {
-			$conditions[] = "(Company.map_lat!='' AND Company.map_lng!='')";
-		}
+		//if($params["area_id"]) {
+		//	$conditions[] = "(a_parent.id=".intval($params["area_id"])." OR a.id=".intval($params["area_id"]).")";
+		//}
+		//if($params["areatype_id"]) {
+		//	$conditions[] = "(a_parent.areatype_id=".intval($params["areatype_id"])." OR a.areatype_id=".intval($params["areatype_id"]).")";
+		//}
+		//if($params["membergroup_id"]) {
+		//	$conditions[] = "m.membergroup_id=".$params["membergroup_id"];
+		//}
+		//if($params["for_map"]) {
+		//	$conditions[] = "(Company.map_lat!='' AND Company.map_lng!='')";
+		//}
 		if($params["industry_id"]) {
 			$industryid = $params["industry_id"];
 			$conditions[] = "((Company.industries LIKE '".$industryid."')"
@@ -725,7 +725,7 @@ class Companies extends PbModel {
 							." OR (Company.industries LIKE '%,".$industryid.",%'))";
 		}
 		
-		//$conditions[] = 'Company.area_show=1';
+		$conditions[] = 'Company.area_show=1';
 		
 		////Conditions for effective company
 		//$other_con = " > 8";
