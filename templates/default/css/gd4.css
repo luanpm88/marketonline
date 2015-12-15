@@ -676,3 +676,6 @@ h2.market-header-title {
     float: right;
     width: 49%;
 }
+.job_employee_boxes a {
+    color: #333;
+}
