@@ -21,7 +21,7 @@
 								<th width="" align="left">Hạn nộp</th>
 								  </tr>
 									
-								<!-- {job row=20 status=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$area_string`} -->
+								<!-- {job row=10 status=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$area_string`} -->
 								<tr>
 									<td><a href="{the_url module='jobs' id=`$job.id` title=`$job.name`}">{$job.name}</td>
 									<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
