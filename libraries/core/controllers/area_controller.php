@@ -633,15 +633,15 @@ class Area extends PbController {
 	
 	function ajaxJobModule() {
 		$offset = 0;
-		$row = 3;
-		$num = 7;
+		$row = 10;
+		$num = 1;
 		
-		if(isset($_GET["row"])) {
-			$row = intval($_GET["row"]);
-		}
-		if(isset($_GET["num_per_row"])) {
-			$num = intval($_GET["num_per_row"]);
-		}
+		//if(isset($_GET["row"])) {
+		//	$row = intval($_GET["row"]);
+		//}
+		//if(isset($_GET["num_per_row"])) {
+		//	$num = intval($_GET["num_per_row"]);
+		//}
 		
 		//GETs
 		if(isset($_GET["area_id"])) {
