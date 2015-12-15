@@ -725,7 +725,7 @@ class Companies extends PbModel {
 							." OR (Company.industries LIKE '%,".$industryid.",%'))";
 		}
 		
-		$conditions[] = 'Company.area_show=1';
+		//$conditions[] = 'Company.area_show=1';
 		
 		////Conditions for effective company
 		//$other_con = " > 8";
