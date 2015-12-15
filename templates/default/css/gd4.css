@@ -717,3 +717,7 @@ h2.market-header-title {
     background: transparent url("../image/ajax-loading.gif") no-repeat scroll center 10px;
     min-height: 1000px;
 }
+.market-product-module .box_left.no_item {
+    height: 505px;
+    overflow: hidden;
+}
