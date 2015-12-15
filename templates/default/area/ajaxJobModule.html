@@ -90,11 +90,21 @@
 						</div>
 					</div>
 				</div>
-				<a style="color: #3b984c !important;margin: 0 10px 10px 0;;float: right" class="" href="{the_url module='jemployees'}">Xem thêm</a>
+				<a style="color: #3b984c !important;margin: 0 10px 10px 0;float: right" class="" href="{the_url module='jemployees'}">Xem thêm</a>
 		    </div>
 				
 			</div>
 		</div>
 
+{literal}
+<script>
+	var height = $(".job_box .module-box").height()
+	if(height < $(".employee_box .module-box").height()) {
+	  height = $(".employee_box .module-box").height()
+	}
+	$(".employee_box .module-box").css("height",height)
+	$(".job_box .module-box").css("height",height)
+</script>
+{/literal}
 
         
