@@ -677,5 +677,5 @@ h2.market-header-title {
     width: 49%;
 }
 .job_employee_boxes a {
-    color: #333;
+    color: #333 !important;
 }
