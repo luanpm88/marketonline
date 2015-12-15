@@ -638,3 +638,6 @@ h2.market-header-title {
 .market-product-module .offer_transform ul.products li.product .title_detail {
     width: 38%;
 }
+.market-product-module .product_listing.offer_transform {
+    height: 934px;
+}
