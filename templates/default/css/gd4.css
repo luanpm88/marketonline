@@ -552,15 +552,15 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .areas-container .market-product-module .works-list:first-child {
     margin-top: 0;
 }
-.market-product-module .product_listing ul.products li.product {
+.market-product-module .product_listing ul.products li.product_2 {
     float: left;
     margin: 0;
     width: 200px;
 }
-.market-product-module .product_listing ul.products li.product a {
+.market-product-module .product_listing ul.products li.product_2 a {
     
 }
-.market-product-module .product_listing ul.products li.product {
+.market-product-module .product_listing ul.products li.product_2 {
     float: left;
     height: 228px;
     margin: 0 9px 9px 0;
