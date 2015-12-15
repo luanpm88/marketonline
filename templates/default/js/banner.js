@@ -49,4 +49,11 @@ $(document).ready(function() {
     });
     $('.iframe_ad').appear();
     
+    
+    $(".view_more_cat_module").live('click', function(event) {
+      event.preventDefault();
+      $(this).parents().removeClass("no_item");
+      $(this).hide();
+    });
+    
 });
