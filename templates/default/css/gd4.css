@@ -614,7 +614,7 @@ h2.market-header-title {
 }
 .module-more-but {
     background: #3b984c none repeat scroll 0 0;
-    color: #fff;
+    color: #fff !important;
     float: right;
     margin-right: 20px;
     margin-top: 10px;
