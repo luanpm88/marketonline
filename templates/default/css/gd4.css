@@ -656,3 +656,6 @@ h2.market-header-title {
     margin-bottom: 0 !important;
     padding-bottom: 0;
 }
+.areas-container .album.school_module h3 {
+    margin-bottom: 20px !important;
+}
