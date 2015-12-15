@@ -644,3 +644,9 @@ h2.market-header-title {
 .offer_transform ul.products li.product:first-child {
     overflow: hidden;
 }
+.school_module .subtab-area {
+    margin-top: 10px;
+}
+.works-list .areas-module-controls a {
+    color: #fff;
+}
