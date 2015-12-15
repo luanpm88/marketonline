@@ -47,7 +47,10 @@
 	
 	//when appear
 	$('.trade_module').on('appear', function(event, $all_appeared_elements) {
-		ajaxLoadModule("trade_module", "ajaxTradeModule");
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("trade_module", "ajaxTradeModule");
+			$(this).addClass("appeared");
+        }			
 	});
 	$('.trade_module').appear();
 	$('.trade_module .subtab-area ul li a').live("click", function() {
