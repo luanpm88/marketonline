@@ -713,3 +713,6 @@ h2.market-header-title {
 .area-module {
     min-height: 250px;
 }
+.area-module.starting {
+    background: transparent url("../image/ajax-loading.gif") no-repeat scroll center 10px;
+}
