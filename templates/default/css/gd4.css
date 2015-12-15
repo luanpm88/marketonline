@@ -700,3 +700,10 @@ h2.market-header-title {
 .job_employee_boxes .study-mod {
     padding-bottom: 40px;
 }
+.box_right .ad_toggle_h2 {
+    margin-right: 20px;
+    margin-top: -28px !important;
+}
+.box_right .wide_1_banners .ad_banner_item {
+    margin-top: 0;
+}
