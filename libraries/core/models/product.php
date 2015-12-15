@@ -263,8 +263,6 @@ class Products extends PbModel {
 		$sql = "SELECT p.*,m.username,c.name AS companyname,c.shop_name AS shop_name FROM {$this->table_prefix}products p LEFT JOIN {$this->table_prefix}members m ON m.id=p.member_id LEFT JOIN {$this->table_prefix}companies c ON c.member_id=p.member_id WHERE p.id=".$id;
 		$result = $this->dbstuff->GetRow($sql);
 		
-		
-		
 		return $result;
 	}
 	
