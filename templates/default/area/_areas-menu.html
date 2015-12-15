@@ -13,7 +13,8 @@
 	<!--{/loop}-->
     </ul>
     <div class="area-left-info">
-        <div class="top-menu">
+        
+		<div class="top-menu">
             <div class="path">
                 {if $areatype}
                     {$areatype.name}
@@ -23,6 +24,9 @@
                 <span class="pointer">.</span>
             </div>
             <ul style="display: none">
+				<li>
+					<a href="{the_url module='areas'}"><strong>Việt Nam</strong></a>
+				</li>
                 <!--{loop $areatypes type level key}-->
                     <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
                         <a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
@@ -30,6 +34,7 @@
                 <!--{/loop}-->                
             </ul>
         </div>
+		
         <div class="bottom-content">
             <!--{if $areatype && !$area}-->
                 <div class="city_box">
