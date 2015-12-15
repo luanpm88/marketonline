@@ -25,7 +25,7 @@
 								<th style="white-space: nowrap" width="" align="left">Hạn nộp</th>
 								  </tr>
 									
-								<!-- {job row=10 status=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$area_string`} -->
+								<!--{loop $jobs job level key}-->
 								<tr>
 									<td><a href="{the_url module='jobs' id=`$job.id` title=`$job.name`}">{$job.name}</td>
 									<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
@@ -33,7 +33,7 @@
 									<!--<td>{$job.salary}</td>-->
 									<td>{$job.expired_dates}</td>
 								</tr>				
-								<!-- {/job} -->
+								<!-- {/loop} -->
 								
 								</tbody></table>
 								
