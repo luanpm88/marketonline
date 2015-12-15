@@ -78,8 +78,6 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = "/".$areatype["name"];
 			
-			
-			
 			setvar("areatype",$areatype);
 		}
 		$areas_by_areatype = $this->getAreasByAreatype();
@@ -236,7 +234,7 @@ class Area extends PbController {
 	function index() {
 		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
-		
+
 		//get area
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -273,6 +271,7 @@ class Area extends PbController {
 			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
 			setvar("districts",$districts);
 		}
+		
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->areatype->read("*",$areatype_id);

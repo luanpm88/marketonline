@@ -300,6 +300,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     margin-bottom: 10px;
     margin-top: 20px;
 }
+
 #product_detail_box .new_menu_product_detail .widget.widget_recent_products {
     background: none;
 }
@@ -710,8 +711,7 @@ h2.market-header-title {
 .box_right .wide_1_banners .ad_banner_item {
     margin-top: 0;
 }
-.area-module {
-    
+.area-module {    
 }
 .area-module.starting {
     background: transparent url("../image/ajax-loading.gif") no-repeat scroll center 10px;
