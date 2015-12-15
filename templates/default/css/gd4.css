@@ -651,7 +651,7 @@ h2.market-header-title {
 .works-list .areas-module-controls a {
     color: #fff;
 }
-.areas-container .album.company_module h3 {
+.areas-container .album.company_module h3, .areas-container .album.school_module h3 {
     border-bottom: medium none;
     margin-bottom: 0 !important;
     padding-bottom: 0;
