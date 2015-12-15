@@ -28,7 +28,7 @@
 					<a href="{the_url module='areas'}"><strong>Việt Nam</strong></a>
 				</li>
                 <!--{loop $areatypes type level key}-->
-                    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
+                    <li style="padding-left: 20px;" class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
                         <a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
                     </li>
                 <!--{/loop}-->                
