@@ -25,8 +25,14 @@
     $(document).ready(function() {
 		
 	
-	
-	ajaxLoadModule("company_module", "ajaxCompanyModule");
+	//when appear
+	$('.company_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("company_module", "ajaxCompanyModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.company_module').appear();	
 	$('.company_module .subtab-area ul li a').live("click", function() {
 	   ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(this).attr("rel"));
 	});
@@ -34,15 +40,36 @@
 	    ajaxLoadModule("company_module", "ajaxCompanyModule");
 	});
 	
-	ajaxLoadModule("product_module", "ajaxProductModule");
+	
+	
+	
+	//when appear
+	$('.product_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("product_module", "ajaxProductModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.product_module').appear();	
 	$('.product_module a.main_a').live("click", function() {
 	    ajaxLoadModule("product_module", "ajaxProductModule");
 	});
 	
-	ajaxLoadModule("service_module", "ajaxServiceModule");
+	
+	
+	//when appear
+	$('.service_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("service_module", "ajaxServiceModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.service_module').appear();	
 	$('.service_module a.main_a').live("click", function() {
 	    ajaxLoadModule("service_module", "ajaxServiceModule");
-	});	
+	});
+	
+	
 	
 	
 	//when appear
@@ -61,22 +88,39 @@
 	});
 	
 	
-	ajaxLoadModule("school_module", "ajaxSchoolModule");
+	
+	//when appear
+	$('.school_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("school_module", "ajaxSchoolModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.school_module').appear();	
 	$('.school_module .subtab-area ul li a').live("click", function() {
 	   ajaxLoadModule("school_module", "ajaxSchoolModule", "type",$(this).attr("rel"));
 	});
 	$('.school_module a.main_a').live("click", function() {
 	    ajaxLoadModule("school_module", "ajaxSchoolModule");
-	});
+	});	
 	
-	ajaxLoadModule("job_module", "ajaxJobModule");
+	
+	
+	//when appear
+	$('.job_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("job_module", "ajaxJobModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.job_module').appear();	
 	$('.job_module a.main_a').live("click", function() {
 	    ajaxLoadModule("job_module", "ajaxJobModule");
 	});
 	
 	
 	
-    });
+});
 </script>
 <!--{/literal}-->
 

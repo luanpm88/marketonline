@@ -515,10 +515,11 @@ class Area extends PbController {
 		//get products by areas
 		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
-		
+
 		//if($products["count"] > $row*$num*70) {
 		//	$products["count"] = $row*$num*70;
 		//}
+
 		setvar("areatype", $areatype);
 		setvar("area", $area);
 		setvar("industry", $industry);

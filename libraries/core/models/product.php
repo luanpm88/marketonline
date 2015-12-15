@@ -762,7 +762,6 @@ class Products extends PbModel {
  		$area_s = $space->array_multi2single($area->getCacheArea());
  		$industry_s = $space->array_multi2single($area->getCacheArea());
 		
-		
 		$conditions = array("Product.status=1","Product.state=1","Product.valid_status=1","Product.new_price>0");
 		
 		if($service) $conditions[] = "Product.service=1";
