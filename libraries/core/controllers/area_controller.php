@@ -834,7 +834,7 @@ class Area extends PbController {
 				$html .= '</div>';
 				
 				//$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
-				$companies_map_script .= 'alert(\'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'");\')';
+				$companies_map_script .= 'alert(\'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'")\');';
 			}
 		}
 		
