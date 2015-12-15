@@ -573,12 +573,9 @@ class Products extends PbModel {
 			else
 			{
 				$result['thumb'] = $result['imgsmall'];
-			}
-			
+			}			
 			
 			//for url
-			
-		
 	}
 	
 	function saveAdTypes($id, $types) {
@@ -669,7 +666,7 @@ class Products extends PbModel {
 						if($product["valid_status"] == 1 || ($product["valid_status"] == 3) && $product["valid_moderator"] != $mid) {
 							$permissions["valid"] = false;				
 						}
-					}					
+					}
 				}
 			}
 		}
