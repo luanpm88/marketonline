@@ -574,7 +574,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
     width: 100%;
     min-height: auto;
 }
-.market-product-module ul.products li.product h3 {
+.market-product-module ul.products li.product_2 h3 {
     border: 0 none;
     font-size: 16px;
     height: 42px;
@@ -586,7 +586,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .company-container  .works-list .market-product-module .filterable-grid {
     width: 100%;
 }
-.market-product-module .product_listing ul.products li.product img {
+.market-product-module .product_listing ul.products li.product_2 img {
     padding: 0;
 }
 .market-product-module .shop_info_product {
@@ -609,7 +609,7 @@ h2.market-header-title {
 .market-area-listing-page .market-product-module .product_listing {
     overflow: inherit;
 }
-.market-product-module ul.products li.product h3 {
+.market-product-module ul.products li.product_2 h3 {
     color: #333;
 }
 .box_right .module-more-but {
