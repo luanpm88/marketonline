@@ -687,3 +687,6 @@ h2.market-header-title {
     right: 0;
     width: 300px;
 }
+.job_employee_boxes .module-title {
+    position: relative;
+}
