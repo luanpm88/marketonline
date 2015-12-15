@@ -164,15 +164,12 @@
 										<h3>{$item.title}</h3>
 										
 										{if $item.new_price || $item.price}
-											{if $item.new_price != "" && $item.new_price != 0}
-												<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
-											{else}
-												<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
-											{/if}
-										{/if}-->
-									
-								
-									
+												{if $item.new_price != "" && $item.new_price != 0}
+													<span class="price">{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span></span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+												{else}
+													<span class="price"><span class="amount">{$item.price}</span> <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+												{/if}
+										{/if}-->									
 								
 									<a style="display: none" onclick="getCart({$item.id}, 1, $(this))" href="javascript:void(0)" rel="nofollow" class="add_to_cart_button button product_type_simple">{lang add_to_cart}</a>
 									
@@ -184,10 +181,7 @@
 											<a class="comment_link message_tool comment_but" href="#login-box">{lang message}</a>
 										<!--{/if}-->
 									</div>
-								
 								</li>
-								
-						
 						<!--{/loop}-->
 						</ul>
 					</div>
