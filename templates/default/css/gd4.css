@@ -544,6 +544,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .market-product-module .box_left {
     float: left;
     width: 235px;
+    position: relative;
 }
 .market-product-module .box_right {
     float: right;
@@ -722,5 +723,11 @@ h2.market-header-title {
     overflow: hidden;
 }
 .view_more_cat_module {
-    
+    background: #f8f8f8 none repeat scroll 0 0;
+    bottom: 0;
+    color: #3b984c !important;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    width: 100%;
 }
