@@ -220,11 +220,11 @@ li.ad_li {
 .ad_fixed_in {
     font-size: 20px;
     height: 40px;
-    position: fixed;
+    position: fixed !important;
     right: 20px;
     top: 220px;
     width: 40px;
-    z-index: 100000;
+    z-index: 100000 !important;
     padding: 6px;
 }
 .ad_toggle_h2 {
