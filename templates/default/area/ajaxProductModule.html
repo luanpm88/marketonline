@@ -26,7 +26,7 @@
 		</h2>
 
 		<div class="market-product-module">
-			<div class="box_left <!--{if !$products! && !$smarty.get.p}-->no_item<!--{/if}-->">
+			<div class="box_left <!--{if !$products && !$smarty.get.p}-->no_item<!--{/if}-->">
 				<ul id="menu-features-list" class="menu">
 					<!--{loop $industries_list item0 level_0 key0}-->
 						<li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954">
@@ -36,6 +36,9 @@
 						</li>
 					<!--{/loop}-->					
 				</ul>
+				<!--{if !$services && !$smarty.get.p}-->
+						<a href="#" class="view_more_cat_module">Xem thêm</a>
+				<!--{/if}-->
 			</div>
 			<div class="box_right">
 				<div class="wide_1_banners">
