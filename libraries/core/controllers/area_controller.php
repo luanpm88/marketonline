@@ -818,6 +818,7 @@ class Area extends PbController {
 			//var_dump($companies["count"]);
 			//setvar("companies",$companies["result"]);
 			$companies_map_script = '';
+			$addresses = array();
 			foreach($companies["result"] as $com) {
 				$html = '<div class=map_box_info>';
 					$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
@@ -834,7 +835,11 @@ class Area extends PbController {
 				$html .= '</div>';
 				
 				//$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
+				if(in_array($com["map_lng"], $addresses)) {
+					$com["map_lng"] = $com["map_lng"]+0.0002;
+				}
 				$companies_map_script .= 'alert(\'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'")\');';
+				array_push($addresses, $com["map_lat"]);
 			}
 		}
 		
