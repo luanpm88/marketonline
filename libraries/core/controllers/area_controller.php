@@ -876,9 +876,7 @@ class Area extends PbController {
 				$this->areainfo->save($vals);
 			} else {
 				$this->areainfo->save($vals,'update',intval($exsit[0]["id"]));
-			}
-			
-			
+			}			
 			
 			header('Location: '.$_SERVER['HTTP_REFERER'].'#thanks');
 			echo "ok";
