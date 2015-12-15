@@ -635,3 +635,6 @@ h2.market-header-title {
 .areas-container .subtab-area {
     margin-top: 0;
 }
+.market-product-module .offer_transform ul.products li.product .title_detail {
+    width: 38%;
+}
