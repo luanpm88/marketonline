@@ -1,12 +1,4 @@
 		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Việc làm</a>
-		    <!--<div class="subtab-area">
-			<ul>
-			    <li><a class="{if $smarty.get.type_id==14}active{/if}" rel="14" href="javascript:void(0)">Nhu cầu mua</a></li>
-			    <li><a class="{if $smarty.get.type_id==9}active{/if}" rel="9" href="javascript:void(0)">Nhu cầu bán</a></li>
-			    <li><a class="{if $smarty.get.type_id==10}active{/if}" rel="10" href="javascript:void(0)">Nhà phân phối</a></li>
-			    <li><a class="{if $smarty.get.type_id==16}active{/if}" rel="16" href="javascript:void(0)">Tìm đối tác</a></li>
-			</ul>
-		    </div>-->
 		</h3>
 		
 		<div class="areas-module-controls">
@@ -67,42 +59,33 @@
 				<div class="study-mod">
 					<div id="job-content">
 						<div class="">
-						<table width="100%" style="">
-						  <tbody><tr class="job-table-list-head">
-							<th style="white-space: nowrap" width="40%" align="left">Vị trí mong muốn</th>
-							<th style="white-space: nowrap" width="35%" align="left">Cấp bậc</th>
-							<th style="white-space: nowrap" width="30%" align="left">Nơi làm việc</th>
-							<!--<th width="15%" align="left">Mức lương</th>-->
-							<!--<th width="15%" align="left">Hạn nộp</th>-->
-						  </tr>
+							<table width="100%" style="">
+							  <tbody><tr class="job-table-list-head">
+								<th style="white-space: nowrap" width="40%" align="left">Vị trí mong muốn</th>
+								<th style="white-space: nowrap" width="35%" align="left">Cấp bậc</th>
+								<th style="white-space: nowrap" width="30%" align="left">Nơi làm việc</th>
+							  </tr>
+								
+							<!-- {employee row=10 status=1 showed=1 searched=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$smarty.get.area`} -->
+								<tr>
+									<td><a href="{the_url module='employees' id=`$job.id`}">{$job.expected_position}</td>
+									<td><a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)">{$job.joblevel}</a></td>
+									<td>
+										{$job.areas}
+									</td>
+								</tr>				
+							<!-- {/employee} -->
 							
-						<!-- {employee row=10 status=1 showed=1 searched=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$smarty.get.area`} -->
-							<tr>
-								<td><a href="{the_url module='employees' id=`$job.id`}">{$job.expected_position}</td>
-								<td><a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)">{$job.joblevel}</a></td>
-								<td>
-									{$job.areas}
-								</td>
-								<!--<td>{$job.salary}</td>-->
-								<!--<td>{$job.expired_dates}</td>-->
-							</tr>				
-						<!-- {/employee} -->
-						
-						<!--{if !$count}-->
-							<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào</td></tr>
-						<!--{/if}-->
-						  
-						</tbody></table>
-						
-						<div id="pagenav">
-							<div class="pagination margintop10"><!-- {pager rowcount=`$paging.total` limit=20} --></div>
+							<!--{if !$count}-->
+								<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào</td></tr>
+							<!--{/if}-->
+							  
+							</tbody></table>
+							
+							<div id="pagenav">
+								<div class="pagination margintop10"><!-- {pager rowcount=`$paging.total` limit=20} --></div>
+							</div>						
 						</div>
-						
-						  
-						  </div>
-						
-						
-						
 					</div>
 				</div>
 		    </div>
