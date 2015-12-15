@@ -23,13 +23,8 @@
     {literal}
     
     $(document).ready(function() {
-	ajaxLoadModule("trade_module", "ajaxTradeModule");
-	$('.trade_module .subtab-area ul li a').live("click", function() {
-	    ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id", $(this).attr("rel"));
-	});
-	$('.trade_module a.main_a').live("click", function() {
-	    ajaxLoadModule("trade_module", "ajaxTradeModule");
-	});
+		
+	
 	
 	ajaxLoadModule("company_module", "ajaxCompanyModule");
 	$('.company_module .subtab-area ul li a').live("click", function() {
@@ -47,7 +42,21 @@
 	ajaxLoadModule("service_module", "ajaxServiceModule");
 	$('.service_module a.main_a').live("click", function() {
 	    ajaxLoadModule("service_module", "ajaxServiceModule");
+	});	
+	
+	
+	//when appear
+	$('.trade_module').on('appear', function(event, $all_appeared_elements) {
+		ajaxLoadModule("trade_module", "ajaxTradeModule");
 	});
+	$('.trade_module').appear();
+	$('.trade_module .subtab-area ul li a').live("click", function() {
+	    ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id", $(this).attr("rel"));
+	});
+	$('.trade_module a.main_a').live("click", function() {
+	    ajaxLoadModule("trade_module", "ajaxTradeModule");
+	});
+	
 	
 	ajaxLoadModule("school_module", "ajaxSchoolModule");
 	$('.school_module .subtab-area ul li a').live("click", function() {
