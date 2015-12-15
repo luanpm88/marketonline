@@ -24,10 +24,6 @@
 					</div>
 					<div class="study-mod">
 						<div id="job-content">
-							
-							
-							
-							
 							<div class="">
 								<table width="100%" style="">
 								  <tbody><tr class="job-table-list-head">
@@ -64,7 +60,47 @@
 				</div>
 			</div>
 			<div class="employee_box">
-				
+				<div class="module-box">
+					<div class="module-title">
+						<h2>Danh sách tuyển dụng</h2>
+						<!--<a class="more" href="#">Danh sách trung tâm</a>-->
+					</div>
+					<div class="study-mod">
+						<div id="job-content">
+							<div class="">
+								<table width="100%" style="">
+								  <tbody><tr class="job-table-list-head">
+								<th style="white-space: nowrap" width="40%" align="left">Tên công việc</th>
+								<th style="white-space: nowrap" width="30%" align="left">Nhà tuyển dụng</th>
+								<th style="white-space: nowrap" width="18%" align="left">Nơi làm việc</th>
+								<!--<th width="15%" align="left">Mức lương</th>-->
+								<th style="white-space: nowrap" width="" align="left">Hạn nộp</th>
+								  </tr>
+									
+								<!-- {job row=10 status=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$area_string`} -->
+								<tr>
+									<td><a href="{the_url module='jobs' id=`$job.id` title=`$job.name`}">{$job.name}</td>
+									<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
+									<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
+									<!--<td>{$job.salary}</td>-->
+									<td>{$job.expired_dates}</td>
+								</tr>				
+								<!-- {/job} -->
+								
+								</tbody></table>
+								
+								<div id="pagenav">
+									<div class="pagination margintop10"><!-- {pager rowcount=`$paging.total` limit=20} --></div>
+								</div>
+								
+								  
+							  </div>
+							
+							
+							
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
