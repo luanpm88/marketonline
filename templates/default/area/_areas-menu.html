@@ -54,6 +54,7 @@
 					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
 				</div>
 			<!--{/if}-->
+		<!--{elseif $smarty.get.do == "employee"}-->
 		<!--{else}-->
 			<!--{if $areatype && !$area}-->
 				<div class="city_box">
@@ -71,7 +72,7 @@
 				</div>
 			<!--{/if}-->
 		<!--{/if}-->
-	    <!--{if $areatype && $area && $smarty.get.do != "job" }-->
+	    <!--{if $areatype && $area && $smarty.get.do != "job" && $smarty.get.do != "employee" }-->
                 <div class="city_box">
                     <h3 {if $area.level==3}style="background: none"{/if}>
                         <!--<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>-->
