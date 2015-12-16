@@ -26,8 +26,8 @@ class Job extends PbController {
 		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
 		//var_dump($_GET);
 		//get area
-		if(isset($_GET["area_id"])){
-			$area_id = $_GET["area_id"];
+		if(isset($_GET["area"])){
+			$area_id = $_GET["area"];
 			$area = $this->area->read("*",$area_id);
 			$parent_area = $this->area->read("*",$area["parent_id"]);
 			$area_name = "/".$area["name"];
@@ -35,13 +35,13 @@ class Job extends PbController {
 			setvar("parent_area",$parent_area);
 			
 			//get area info by member
-			$area_info_by_member = $this->getAreaInfoByMember($area_id,$pb_userinfo["pb_userid"]);
+			$area_info_by_member = $area_controller->getAreaInfoByMember($area_id,$pb_userinfo["pb_userid"]);
 			if(!empty($area_info_by_member)) {
 				setvar("area_info_by_member",$area_info_by_member);
 			}
 			
 			//area info
-			$area_info = $this->getAreaInfo($area_id);
+			$area_info = $area_controller->getAreaInfo($area_id);
 			if($area_info) {
 				setvar("area_info",$area_info);
 			}
