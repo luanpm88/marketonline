@@ -8,6 +8,7 @@ class Job extends PbController {
 		$this->loadModel("jobindust");
 		$this->loadModel("jobtype");
 		$this->loadModel("area");
+		$this->loadModel("areatype");
 		$this->loadModel("company");
 		$this->loadModel("product");
 		$this->loadModel("trade");
