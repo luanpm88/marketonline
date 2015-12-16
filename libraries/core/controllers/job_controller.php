@@ -58,6 +58,7 @@ class Job extends PbController {
 			
 			
 			//get map company
+			$_GET["area_id"] = $area_id;
 			$companies_map_script = $area_controller->getMapCompany();
 			setvar("companies_map_script",$companies_map_script);
 			
