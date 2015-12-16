@@ -45,7 +45,7 @@
 							<ul class="city_list">					      
 								<!--{loop $type.areas item level key}-->
 									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}">
-										<a class="level2" href="/?do=employee&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
+										<a class="level2" href="/?do=job&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
 									</li>
 								<!--{/loop}-->
 							</ul>
@@ -71,7 +71,7 @@
 				</div>
 			<!--{/if}-->
 		<!--{/if}-->
-	    <!--{if $areatype && $area && $smarty.get.do == "job" }-->
+	    <!--{if $areatype && $area && $smarty.get.do != "job" }-->
                 <div class="city_box">
                     <h3 {if $area.level==3}style="background: none"{/if}>
                         <!--<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>-->
