@@ -25,7 +25,7 @@ class Employee extends PbController {
 	
 	function index()
 	{
-		uses("ad");
+		uses("ad","area");
 		$ad = new Adses();
 		//$this->employee->updateStatus();
 		
