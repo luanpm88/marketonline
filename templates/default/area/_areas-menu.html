@@ -36,21 +36,21 @@
         </div>
 		
         <div class="bottom-content">
-            <!--{if $areatype && !$area}-->
-                <div class="city_box">
-                    <h3>Danh sách tỉnh/thành {$areatype.name}</h3>
-                    <!--{loop $areatypes type level key}-->                
-                        <!--{if $type.id==$areatype.id}-->
-                            <ul class="city_list">					      
-                                <!--{loop $type.areas item level key}-->
-                                    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
-                                <!--{/loop}-->
-                            </ul>
-                        <!--{/if}-->
-                    <!--{/loop}-->
-					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
-                </div>
-            <!--{/if}-->
+		<!--{if $areatype && (!$area || $smarty.get.do == "job")}-->
+			<div class="city_box">
+				<h3>Danh sách tỉnh/thành {$areatype.name}</h3>
+				<!--{loop $areatypes type level key}-->                
+					<!--{if $type.id==$areatype.id}-->
+						<ul class="city_list">					      
+							<!--{loop $type.areas item level key}-->
+								<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
+							<!--{/loop}-->
+						</ul>
+					<!--{/if}-->
+				<!--{/loop}-->
+				<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+			</div>
+		<!--{/if}-->
 	    <!--{if $areatype && $area}-->
                 <div class="city_box">
                     <h3 {if $area.level==3}style="background: none"{/if}>
