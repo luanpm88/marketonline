@@ -16,8 +16,9 @@ class Job extends PbController {
 
 	function index()
 	{
-		uses("ad");
+		uses("ad","area");
 		$ad = new Adses();
+		$area_controller = new Area();
 		
 		
 		// map
