@@ -740,3 +740,6 @@ h2.market-header-title {
 .area-left-info {
     overflow: hidden;
 }
+.area-left-info .bottom-content .city_list {
+    height: 415px;
+}
