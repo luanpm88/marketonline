@@ -732,5 +732,10 @@ h2.market-header-title {
     width: 100%;
 }
 .iframe_area_top_3_banner {
-    position: relative;
+}
+.area_info .info_content {
+    height: 112px;
+}
+.area-left-info {
+    overflow: hidden;
 }
