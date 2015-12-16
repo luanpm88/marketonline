@@ -750,3 +750,6 @@ h2.market-header-title {
 .area_info .actions {
     height: 26px;
 }
+.area_info .actions a {
+    margin-top: -2px;
+}
