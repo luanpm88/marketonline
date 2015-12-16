@@ -38,7 +38,7 @@
         <div class="bottom-content">
             <!--{if $areatype && !$area}-->
                 <div class="city_box">
-                    <h3>Tỉnh/Thành</h3>
+                    <h3>Danh sách tỉnh/thành - {$areatype.name}</h3>
                     <!--{loop $areatypes type level key}-->                
                         <!--{if $type.id==$areatype.id}-->
                             <ul class="city_list">					      
@@ -59,6 +59,9 @@
 			    <a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">
 				{$parent_area.name}
 			    </a> <span style="font-weight:normal"> / </span>
+			{/if}
+			{if $area.level==2}
+				Danh sách quận/huyện
 			{/if}
                         {$area.name}
 		    </h3>
