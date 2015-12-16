@@ -27,6 +27,7 @@ class Employee extends PbController {
 	{
 		uses("ad","area");
 		$ad = new Adses();
+		$area_controller = new Area();
 		//$this->employee->updateStatus();
 		
 		// map
