@@ -66,7 +66,7 @@
                         {$area.name}
 		    </h3>
 		    {if $area.level==2}
-			<ul class="city_list" style="display: none">					      
+			<ul class="city_list">					      
 			    <!--{loop $districts item level key}-->
 				<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
 			    <!--{/loop}-->
@@ -447,6 +447,7 @@
 	    $(this).hide();
 	    $('.area_info').show();	    
 	});
+	$('.area-left-info .bottom-content .city_box .hide_but').trigger("click");
 	$('.area-left-info .bottom-content .city_box h3').click(function() {
 	    $('.area_info,.area-left-info .bottom-content .city_list,.area-left-info .bottom-content .city_box .hide_but').toggle();
 	});
