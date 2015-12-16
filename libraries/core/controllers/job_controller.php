@@ -18,6 +18,61 @@ class Job extends PbController {
 		uses("ad");
 		$ad = new Adses();
 		
+		
+		// map
+		$pb_userinfo = pb_get_member_info();
+		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
+		//var_dump($_GET);
+		//get area
+		if(isset($_GET["area_id"])){
+			$area_id = $_GET["area_id"];
+			$area = $this->area->read("*",$area_id);
+			$parent_area = $this->area->read("*",$area["parent_id"]);
+			$area_name = "/".$area["name"];
+			setvar("area",$area);
+			setvar("parent_area",$parent_area);
+			
+			//get area info by member
+			$area_info_by_member = $this->getAreaInfoByMember($area_id,$pb_userinfo["pb_userid"]);
+			if(!empty($area_info_by_member)) {
+				setvar("area_info_by_member",$area_info_by_member);
+			}
+			
+			//area info
+			$area_info = $this->getAreaInfo($area_id);
+			if($area_info) {
+				setvar("area_info",$area_info);
+			}
+			
+			//listing district
+			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
+			setvar("districts",$districts);
+		}
+		if(isset($_GET["areatype_id"])){
+			$areatype_id = $_GET["areatype_id"];
+			$areatype = $this->areatype->read("*",$areatype_id);
+			$areatype_name = "/".$areatype["name"];
+			
+			setvar("areatype",$areatype);
+		}
+		$areas_by_areatype = $this->getAreasByAreatype();
+		setvar("areas_by_areatype",$areas_by_areatype);
+		
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industry = $this->industry->read("*",$industry_id);
+			setvar("industry",$industry);
+		}
+		
+		//get areas with level 2
+		foreach($areatypes as $key => $areatype) {
+			$areas = $this->area->findAll("*",null,array("level=2","areatype_id=".$areatype["id"]),"Area.display_order");
+			$areatypes[$key]["areas"] = $areas;
+		}
+		setvar("areatypes",$areatypes);
+		
+		
+		
 		$this->job->updateStatus();
 		
 		$conditions[] = "Job.status=1";
