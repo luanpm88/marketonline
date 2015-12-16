@@ -735,6 +735,7 @@ h2.market-header-title {
 }
 .area_info .info_content {
     height: 112px;
+    overflow: hidden;
 }
 .area-left-info {
     overflow: hidden;
