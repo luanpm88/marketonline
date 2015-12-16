@@ -303,6 +303,7 @@ class Job extends PbController {
 			$info['testtime'] = cleanContent($info['testtime']);
 			$info['skills'] = cleanContent($info['skills']);
 			$info['rprofile'] = cleanContent($info['rprofile']);
+			
 			$info['job_other'] = cleanContent($info['job_other']);
 			$info["salary"] = number_format($info["salary"], 0, ',', '.');
 			
@@ -325,8 +326,7 @@ class Job extends PbController {
 			setvar("area_string",$area_string);
 			setvar("companyinfo",$companyinfo);
 			setvar("item",$info);
-			Hi Hùng,
-			Em bổ sung nội dung hợp đồng với Mắt Báo theo email dưới sớm nhé. Có thông tin gì thắc mắc hỏi lại chị Nguyên, anh Tuấn.
+			
 			setvar('fb_title', "(Tuyển dụng) ".$companyinfo['name'].": ".$info['name']);
 			setvar('fb_image', $companyinfo['logobig']);
 			setvar("fb_description", mb_convert_encoding(preg_replace('/\s+/'," ",substr(trim(strip_tags($info["content"])),0, 1000)),"UTF-8"));
