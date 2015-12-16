@@ -55,6 +55,23 @@
 				</div>
 			<!--{/if}-->
 		<!--{elseif $smarty.get.do == "employee"}-->
+			<!--{if $areatype}-->
+				<div class="city_box">
+					<h3>Danh sách tỉnh/thành {$areatype.name}</h3>
+					<!--{loop $areatypes type level key}-->                
+						<!--{if $type.id==$areatype.id}-->
+							<ul class="city_list">					      
+								<!--{loop $type.areas item level key}-->
+									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}">
+										<a class="level2" href="/?do=employee&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
+									</li>
+								<!--{/loop}-->
+							</ul>
+						<!--{/if}-->
+					<!--{/loop}-->
+					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+				</div>
+			<!--{/if}-->
 		<!--{else}-->
 			<!--{if $areatype && !$area}-->
 				<div class="city_box">
