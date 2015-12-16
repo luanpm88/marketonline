@@ -12,6 +12,7 @@ class Employee extends PbController {
 		$this->loadModel("jobindust");
 		$this->loadModel("jobtype");
 		$this->loadModel("area");
+		$this->loadModel("areatype");
 		$this->loadModel("company");
 		$this->loadModel("member");
 		$this->loadModel("employeeexperience");
@@ -27,6 +28,73 @@ class Employee extends PbController {
 		uses("ad");
 		$ad = new Adses();
 		//$this->employee->updateStatus();
+		
+		// map
+		$pb_userinfo = pb_get_member_info();
+		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
+		//var_dump($_GET);
+		//get area
+		if(isset($_GET["area"])){
+			$area_id = $_GET["area"];
+			$area = $this->area->read("*",$area_id);
+			$parent_area = $this->area->read("*",$area["parent_id"]);
+			$area_name = "/".$area["name"];
+			setvar("area",$area);
+			setvar("parent_area",$parent_area);
+			
+			//get area info by member
+			$area_info_by_member = $area_controller->getAreaInfoByMember($area_id,$pb_userinfo["pb_userid"]);
+			if(!empty($area_info_by_member)) {
+				setvar("area_info_by_member",$area_info_by_member);
+			}
+			
+			//area info
+			$area_info = $area_controller->getAreaInfo($area_id);
+			if($area_info) {
+				setvar("area_info",$area_info);
+			}
+			
+			//listing district
+			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
+			setvar("districts",$districts);
+			
+			if($area["level"] == 3) {
+				$_GET["areatype_id"] = $parent_area["areatype_id"];
+			} else {
+				$_GET["areatype_id"] = $area["areatype_id"];
+			}
+			
+			
+			//get map company
+			$_GET["area_id"] = $area_id;
+			$companies_map_script = $area_controller->getMapCompany();
+			setvar("companies_map_script",$companies_map_script);
+			
+		}
+		
+		
+		if(isset($_GET["areatype_id"])){
+			$areatype_id = $_GET["areatype_id"];
+			$areatype = $this->areatype->read("*",$areatype_id);
+			$areatype_name = "/".$areatype["name"];
+			
+			setvar("areatype",$areatype);
+		}
+		$areas_by_areatype = $area_controller->getAreasByAreatype();
+		setvar("areas_by_areatype",$areas_by_areatype);
+		
+		if(isset($_GET["industry_id"])){
+			$industry_id = $_GET["industry_id"];
+			$industry = $this->industry->read("*",$industry_id);
+			setvar("industry",$industry);
+		}
+		
+		//get areas with level 2
+		foreach($areatypes as $key => $areatype) {
+			$areas = $this->area->findAll("*",null,array("level=2","areatype_id=".$areatype["id"]),"Area.display_order");
+			$areatypes[$key]["areas"] = $areas;
+		}
+		setvar("areatypes",$areatypes);
 		
 		$conditions[] = "Employee.status=1";
 		$conditions[] = "Employee.showed=1";
