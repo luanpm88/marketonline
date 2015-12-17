@@ -464,6 +464,8 @@ class Area extends PbController {
 		
 		//get companies by areas
 		$companies = $this->company->getByArea(array("industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		
+		setvar("view_more", count($companies) > ($row*$num));
 		setvar("companies",$companies["result"]);
 		setvar("count",$companies["count"]);
 		
