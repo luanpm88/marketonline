@@ -11464,6 +11464,7 @@ p.no-content {
 }
 .map_box_info {
     max-width: 450px;
+    min-width: 300px;
 }
 .map_box_info img {
     
