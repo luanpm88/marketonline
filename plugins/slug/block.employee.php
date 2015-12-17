@@ -56,6 +56,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
 		var_dump($all_areas);
 	}
+	echo "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
 	if (isset($params['type']) && $params['type'] != 0) {
 		$conditions[] = "j.joblevel_id = ".intval($params['type']);
 	}
