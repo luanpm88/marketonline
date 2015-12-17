@@ -752,3 +752,16 @@ h2.market-header-title {
 .area_info .actions a {
     margin-top: -2px;
 }
+.area_info .actions {
+    display: inline;
+    height: 26px;
+}
+.area_info .actions a.areazoom {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    color: #333;
+    height: auto;
+    margin: 0;
+    opacity: 1;
+    text-indent: 0;
+    width: auto;
+}

@@ -137,36 +137,37 @@
                         {else}
                             <p>Chưa có thông tin...</p>   
                         {/if}
+						{if $area_info}
+							<a class="areazoom in" href="javascript:void(0)">Phóng to</a>
+						{/if}
                     </div>
                     <div class="actions">
-                        {if $area_info}
-			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
-			{/if}
+                        
                         {if $pb_userinfo}
                             <!--<a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>-->
                         {else}
                             <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
-			{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
-			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
-			    <div class="validation" style="display: none">
-				<h2>Vị trí địa lý - {$area.name}</h2>
-				<ul>
-				    <!--{loop $area_infos ii levelii keyii}-->
-					<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
-					    {$ii.first_name} {$ii.last_name}
-					</li>
-				    <!--{/loop}-->
-				</ul>
-				<div class="area_info_item_content">
-				    {if $area_info.content}{$area_info.content}{/if}
-				</div>
-				<div class="area_valid_controls">
-				    <a class="close" href="javascript:void(0)">Đóng</a>
-				    <a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
-				</div>
-			    </div>
-			{/if}
+						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
+							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+							<div class="validation" style="display: none">
+							<h2>Vị trí địa lý - {$area.name}</h2>
+							<ul>
+								<!--{loop $area_infos ii levelii keyii}-->
+								<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
+									{$ii.first_name} {$ii.last_name}
+								</li>
+								<!--{/loop}-->
+							</ul>
+							<div class="area_info_item_content">
+								{if $area_info.content}{$area_info.content}{/if}
+							</div>
+							<div class="area_valid_controls">
+								<a class="close" href="javascript:void(0)">Đóng</a>
+								<a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
+							</div>
+							</div>
+						{/if}
 			
                     </div>
                     <div id="area-info-form" class="areahide">
@@ -353,13 +354,13 @@
     
     function zoomInfoIn() {
         $('.area_info').addClass("full_areabox");
-        $('.area_info .actions a.areazoom').removeClass("in");
-        $('.area_info .actions a.areazoom').addClass("out");
+        $('.area_info a.areazoom').removeClass("in");
+        $('.area_info a.areazoom').addClass("out");
     }
     function zoomInfoOut() {
         $('.area_info').removeClass("full_areabox");
-        $('.area_info .actions a.areazoom').removeClass("out");
-        $('.area_info .actions a.areazoom').addClass("in");
+        $('.area_info a.areazoom').removeClass("out");
+        $('.area_info a.areazoom').addClass("in");
     }
     
     
@@ -471,12 +472,12 @@
         //        }
         //});
         
-        $('.area_info .actions a.areazoom.in').live("click",function() {
+        $('.area_info a.areazoom.in').live("click",function() {
             zoomInfoIn();
             $('#area-info-form').addClass("areahide");
 	    $('.area-left-info .bottom-content .validation').hide();
         });
-        $('.area_info .actions a.areazoom.out').live("click",function() {
+        $('.area_info a.areazoom.out').live("click",function() {
             zoomInfoOut();
             $('#area-info-form').addClass("areahide");
 			$('.area-left-info .bottom-content .validation').hide();
