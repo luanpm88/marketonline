@@ -62,7 +62,7 @@ function smarty_block_job($params, $content, &$smarty, &$repeat) {
 		$offset = $params['start'];
 	}
 	$job->setLimitOffset($offset, $limit);
-	$sql = "SELECT j.id,j.area_id,expired_dates,salary,salary_currency, j.content,j.name, j.work_station, j.expire_time, j.salary_id,j.name as title,c.name AS companyname,c.cache_spacename AS userid, m.membertype_id FROM {$job->table_prefix}jobs j LEFT JOIN {$job->table_prefix}companies c ON c.id=j.company_id LEFT JOIN {$job->table_prefix}members m ON m.id=j.member_id ".$job->getCondition()."{$orderby}".$job->getLimitOffset();
+	$sql = "SELECT j.id,j.area_id,expired_dates,salary,salary_currency, j.content, j.company_id,j.name, j.work_station, j.expire_time, j.salary_id,j.name as title,c.name AS companyname,c.cache_spacename AS userid, m.membertype_id FROM {$job->table_prefix}jobs j LEFT JOIN {$job->table_prefix}companies c ON c.id=j.company_id LEFT JOIN {$job->table_prefix}members m ON m.id=j.member_id ".$job->getCondition()."{$orderby}".$job->getLimitOffset();
 	//echo $sql;
 	if(empty($smarty->blockvars[$param_count])) {
 		$smarty->blockvars[$param_count] = $job->GetArray($sql);
