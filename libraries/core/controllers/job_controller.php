@@ -49,11 +49,11 @@ class Job extends PbController {
 			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
 			setvar("districts",$districts);
 			
-			if($area["level"] == 3) {
-				$_GET["areatype_id"] = $parent_area["areatype_id"];
-			} else {
-				$_GET["areatype_id"] = $area["areatype_id"];
-			}
+			//if($area["level"] == 3) {
+			//	$_GET["areatype_id"] = $parent_area["areatype_id"];
+			//} else {
+			//	$_GET["areatype_id"] = $area["areatype_id"];
+			//}
 			
 			
 			//get map company
