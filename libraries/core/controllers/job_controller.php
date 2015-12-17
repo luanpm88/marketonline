@@ -55,8 +55,7 @@ class Job extends PbController {
 				} else {
 					$_GET["areatype_id"] = $area["areatype_id"];
 				}
-			}
-			
+			}			
 			
 			//get map company
 			//$_GET["area_id"] = $area_id;
@@ -266,11 +265,6 @@ class Job extends PbController {
 							
 						}
 						
-						
-						
-						
-						
-						
 						echo "<br />";
 					}					
 				}
@@ -376,8 +370,6 @@ class Job extends PbController {
 					
 					$location->innertext = split(',',$location->innertext);
 					$area = $this->area->getByName($location->innertext[0]);
-					
-					
 					
 					
 					$date = new MyDateTime();

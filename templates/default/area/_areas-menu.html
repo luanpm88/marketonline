@@ -137,7 +137,9 @@
                 <div class="area_info"{if $area.level < 3} style="display: none"{/if}>
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$area.name}
-						<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $areatype_infos}
+							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+						{/if}
 			    {if $pb_userinfo}
 				<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
 			    {else}
@@ -211,7 +213,9 @@
                 <div class="area_info" style="display: none">
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$areatype.name}
-						<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $areatype_infos}
+							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+						{/if}
 						{if $pb_userinfo}
 						<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
 						{else}
