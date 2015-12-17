@@ -54,7 +54,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	}
 	if (!isset($params['area']) && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
 		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
-		var_dump($all_areas);
+		var_dump($params['areatype_id']);
 	}
 	echo "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss";
 	if (isset($params['type']) && $params['type'] != 0) {
