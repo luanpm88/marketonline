@@ -93,7 +93,9 @@
 						{if $smarty.get.p}
 								<br style="clear: both" /><p></p><br /><div class="pagination-list"></div><br style="clear:both" />
 						{else}
-								<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='dich-vu'}">Xem thêm</a>
+								{if $view_more}
+										<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='dich-vu'}">Xem thêm</a>
+								{/if}
 						{/if}
 						
 						{if $smarty.get.p}

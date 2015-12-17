@@ -474,8 +474,8 @@ class Area extends PbController {
 	
 	function ajaxProductModule() {
 		$offset = 0;
-		$row = 3;
-		$num = 7;
+		$row = 2;
+		$num = 4;
 		
 		//Get industry level 1
 		$industries_list = $this->industry->getCacheIndustry();
@@ -533,8 +533,8 @@ class Area extends PbController {
 	
 	function ajaxServiceModule() {
 		$offset = 0;
-		$row = 3;
-		$num = 7;
+		$row = 2;
+		$num = 4;
 		
 		//Get industry level 1
 		$industries_list = $this->industry->getCacheIndustry();
@@ -575,9 +575,7 @@ class Area extends PbController {
 		//get services by areas
 		$services = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
 		setvar("services",$services["result"]);
-		if($services["count"] > $row*$num*70) {
-			$services["count"] = $row*$num*70;
-		}
+		setvar("view_more", count($services["result"]) > ($row*$num));
 		
 		setvar("areatype", $areatype);
 		setvar("area", $area);
