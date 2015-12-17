@@ -58,7 +58,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		foreach($all_areas as $key => $aaaa) {
 			$ors[] = "j.areas LIKE '%[".$aaaa.id."]%'";
 		}
-		$conditions[] = "(".implode(" OR ", $ors).")";
+		//$conditions[] = "(".implode(" OR ", $ors).")";
 	}
 	
 	if (isset($params['type']) && $params['type'] != 0) {
