@@ -49,9 +49,11 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	if (isset($params['indust']) && $params['indust'] != 0) {
 		$conditions[] = "j.jobindusts LIKE '%[".intval($params['indust'])."]%'";
 	}
+	
 	if (isset($params['area']) && $params['area'] != 0) {
 		$conditions[] = "j.areas LIKE '%[".$params['area']."]%'";
 	}
+	
 	if (!$params['area'] && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
 		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
 		$ors = array();
@@ -93,7 +95,6 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {
 		//var_dump($item);
 		$repeat = true;
-		
 		
 		
 		uses("company");
