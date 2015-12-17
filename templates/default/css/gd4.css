@@ -801,3 +801,13 @@ h2.market-header-title {
 .iframe_area_top_3_banner .ad_banner_item * {
     font-size: 14px;
 }
+.iframe_area_top_3_banner .ad_banner_item .subtitle.right {
+    bottom: 31px;
+    position: absolute;
+    right: 10px;
+    text-align: right;
+}
+.iframe_area_top_3_banner .ad_banner_item .ticket {
+    bottom: 5px;
+    right: 5px;
+}
