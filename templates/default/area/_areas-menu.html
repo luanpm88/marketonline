@@ -306,10 +306,12 @@
 						  Nhấn vào đây
 						  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
 					</div>
-					<div class="ad_banner_item product_home_banner line_3" pos="area_top_map_3">
-						  Nhấn vào đây
-						  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
-					</div>
+					{if !$areatype && !$area}
+						<div class="ad_banner_item product_home_banner line_3" pos="area_top_map_3">
+							  Nhấn vào đây
+							  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+						</div>
+					{/if}
 					{if !$areatype && !$area}
 						<iframe scrolling="no" style="border: medium none;height: 460px;width: 298px;margin-bottom: 0" src="http://marketonline.vn:3000/ad_positions/iframe_area_top_3_banner?pos=area_top_map&area_id={$area.id}&areatype_id={$areatype.id}" style="border: none;"></iframe>
 					{else}
