@@ -103,7 +103,7 @@ function smarty_block_job($params, $content, &$smarty, &$repeat) {
 			$com["map_lng"] = $com["map_lng"]+(0.0005*$dup);
 			$dup++;
 		}
-		$item["company_map"] = 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","/'.$com["cache_spacename"].'");';
+		$item["company_map"] = 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","/'.$com["cache_spacename"].'/tuyen-dung");';
 		
 		
 		
