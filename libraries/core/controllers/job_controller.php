@@ -55,7 +55,7 @@ class Job extends PbController {
 				} else {
 					$_GET["areatype_id"] = $area["areatype_id"];
 				}
-			}			
+			}
 			
 			//get map company
 			//$_GET["area_id"] = $area_id;
