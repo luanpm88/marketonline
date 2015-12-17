@@ -465,7 +465,7 @@ class Area extends PbController {
 		//get companies by areas
 		$companies = $this->company->getByArea(array("industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
 		
-		setvar("view_more", count($companies["result"]) > ($row*$num));
+		setvar("view_more", count($companies["count"]) > ($row*$num));
 		setvar("companies",$companies["result"]);
 		setvar("count",$companies["count"]);
 		
@@ -516,7 +516,7 @@ class Area extends PbController {
 		//get products by areas
 		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
-		setvar("view_more", count($products["result"]) > ($row*$num));
+		setvar("view_more", count($products["count"]) > ($row*$num));
 
 		//if($products["count"] > $row*$num*70) {
 		//	$products["count"] = $row*$num*70;
@@ -575,7 +575,7 @@ class Area extends PbController {
 		//get services by areas
 		$services = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
 		setvar("services",$services["result"]);
-		setvar("view_more", count($services["result"]) > ($row*$num));
+		setvar("view_more", count($services["count"]) > ($row*$num));
 		
 		setvar("areatype", $areatype);
 		setvar("area", $area);
