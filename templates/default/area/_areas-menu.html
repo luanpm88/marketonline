@@ -381,11 +381,15 @@
         $('.area_info').addClass("full_areabox");
         $('.area_info a.areazoom').removeClass("in");
         $('.area_info a.areazoom').addClass("out");
+		$('.validate_area_but').hide();
+		$('.iframe_area_top_3_banner').hide();
     }
     function zoomInfoOut() {
         $('.area_info').removeClass("full_areabox");
         $('.area_info a.areazoom').removeClass("out");
         $('.area_info a.areazoom').addClass("in");
+		$('.validate_area_but').show();
+		$('.iframe_area_top_3_banner').show();
     }
     
     
