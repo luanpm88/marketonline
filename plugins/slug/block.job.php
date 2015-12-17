@@ -43,9 +43,9 @@ function smarty_block_job($params, $content, &$smarty, &$repeat) {
 	if (isset($params['area']) && $params['area'] != 0) {
 		$conditions[] = "j.area_id IN (".$params['area'].")";
 	}
-	if (!isset($params['area']) && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
-		$conditions[] = "areas.areatype_id =".intval($params['areatype_id']);
-	}
+	//if (!isset($params['area']) && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
+	//	$conditions[] = "areas.areatype_id =".intval($params['areatype_id']);
+	//}
 	if (isset($params['type']) && $params['type'] != 0) {
 		$conditions[] = "j.jobtype_id = ".intval($params['type']);
 	}
