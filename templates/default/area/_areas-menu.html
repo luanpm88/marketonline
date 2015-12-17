@@ -199,19 +199,19 @@
                                 <input type="hidden" name="area_id" value="{$area.id}" />
                                 <div style="border-bottom: solid 1px #aaa">
                                     <input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
-					onclick ="javascript:document.getElementById('imagefile').click();">
+										onclick ="javascript:document.getElementById('imagefile').click();">
                                     <textarea style="height:322px;max-height: 322px" name="content">{$area_info_by_member.content}</textarea>
                                 </div>
                                 <a class="but_area close" href="javascript:void(0)">Đóng</a>
-				<input class="but_area" type="submit" value="Cập nhật" />
+								<input class="but_area" type="submit" value="Cập nhật" />
                             </form>
                             <div id="uploadImageVideo">
-				<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
-				<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
-				    <input type="hidden" name="do" value="product" />
-				    <input type="hidden" name="action" value="uploadEditorFile" />
-				    <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
-				</form>
+								<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+								<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+									<input type="hidden" name="do" value="product" />
+									<input type="hidden" name="action" value="uploadEditorFile" />
+									<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+								</form>
                             </div>
                         </div>
                     </div>
@@ -226,9 +226,9 @@
 							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
 						{/if}
 						{if $pb_userinfo}
-						<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
+							<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
 						{else}
-						<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
+							<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
 						{/if}
 					</h2>
                         {if $areatype_info.content}
@@ -429,16 +429,16 @@
 		    init_zoom = 12;
 		{/if}
 	    {elseif $areatype.map_lat}
-		init_lat = {$areatype.map_lat};
-		init_lng = {$areatype.map_lng};
+				init_lat = {$areatype.map_lat};
+				init_lng = {$areatype.map_lng};
 		
-		{if $areatype.map_zoom}
-                    initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,{$areatype.map_zoom});
-		    init_zoom = {$areatype.map_zoom};
-		{else}
-                    initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,6);
-		    init_zoom = 6;
-		{/if}
+				{if $areatype.map_zoom}
+							initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,{$areatype.map_zoom});
+					init_zoom = {$areatype.map_zoom};
+				{else}
+							initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,6);
+					init_zoom = 6;
+				{/if}
                 
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
@@ -492,7 +492,6 @@
         
         //$('#post-area-info-form').ajaxForm({
         //        beforeSend: function() {
-        //            
         //        },
         //        uploadProgress: function(event, position, total, percentComplete) {
         //            //var percentVal = percentComplete + '%';
