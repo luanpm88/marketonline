@@ -110,8 +110,6 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		$item["company_map"] = 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","/'.$com["cache_spacename"].'/tuyen-dung");';
 		
 		
-		
-		
 		//$space_controller->setBaseUrlByUserId($item['userid'], "job");
 		//$url = $space_controller->rewriteDetail("job", $item['id']);
 		//$item['url'] = $url;
@@ -166,6 +164,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		$repeat = false;
 		reset($smarty->blockvars[$param_count]);
 	}
+	
 	if(!is_null($content)) print $content;
 	if(!$repeat) $smarty->blockvars[$param_count] = array();
 }
