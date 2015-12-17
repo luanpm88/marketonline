@@ -779,3 +779,11 @@ h2.market-header-title {
     text-indent: -90000px;
     width: 27px;
 }
+.validate_area_but {
+    color: red;
+    font-size: 11px;
+    font-weight: bold;
+    left: 274px;
+    margin-top: -18px;
+    position: absolute;
+}
