@@ -26,7 +26,7 @@
             <ul style="display: none">
 				<!--{if $smarty.get.do == "job" }-->
 					<li>
-						<a href="{the_url module='jobs'}"><strong>{$areatype.name}Việt Nam</strong></a>
+						<a href="{the_url module='jobs'}"><strong>{$areatype.id}Việt Nam</strong></a>
 					</li>
 					<!--{loop $areatypes type level key}-->
 						<li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
