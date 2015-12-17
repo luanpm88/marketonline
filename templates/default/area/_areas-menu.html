@@ -159,7 +159,7 @@
                             {$area_info.content}
                         {else}
                             <p>Chưa có thông tin...</p>
-							<p>Mời bạn cập nhật thông tin địa lý.</p>
+							<p style="cursor: pointer;color: #3b984c" onclick="$('.h2_area_post_but').trigger('click')">Mời bạn cập nhật thông tin địa lý.</p>
                         {/if}
                     </div>
                     <div class="actions">
@@ -174,24 +174,23 @@
 						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
 							<!--<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>-->
 							<div class="validation" style="display: none">
-							<h2>Vị trí địa lý - {$area.name}</h2>
-							<ul>
-								<!--{loop $area_infos ii levelii keyii}-->
-								<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
-									{$ii.first_name} {$ii.last_name}
-								</li>
-								<!--{/loop}-->
-							</ul>
-							<div class="area_info_item_content">
-								{if $area_info.content}{$area_info.content}{/if}
+								<h2>Vị trí địa lý - {$area.name}</h2>
+								<ul>
+									<!--{loop $area_infos ii levelii keyii}-->
+									<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
+										{$ii.first_name} {$ii.last_name}
+									</li>
+									<!--{/loop}-->
+								</ul>
+								<div class="area_info_item_content">
+									{if $area_info.content}{$area_info.content}{/if}
+								</div>
+								<div class="area_valid_controls">
+									<a class="close" href="javascript:void(0)">Đóng</a>
+									<a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
+								</div>
 							</div>
-							<div class="area_valid_controls">
-								<a class="close" href="javascript:void(0)">Đóng</a>
-								<a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
-							</div>
-							</div>
-						{/if}
-			
+						{/if}			
                     </div>
                     <div id="area-info-form" class="areahide">
                         <div class="content">
