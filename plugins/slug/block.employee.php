@@ -6,6 +6,9 @@
  *      @version $Revision: 2075 $
  */
 function smarty_block_employee($params, $content, &$smarty, &$repeat) {
+	uses("area");
+	$area = new Areas();
+	
 	$conditions = array();
 	$param_count = count($smarty->_tag_stack);
 	if(empty($params['name'])) $params['name'] = "job";
@@ -49,6 +52,10 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	if (isset($params['area']) && $params['area'] != 0) {
 		$conditions[] = "j.areas LIKE '%[".$params['area']."]%'";
 	}
+	if (!isset($params['area']) && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
+		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
+		var_dump($all_areas);
+	}
 	if (isset($params['type']) && $params['type'] != 0) {
 		$conditions[] = "j.joblevel_id = ".intval($params['type']);
 	}
@@ -77,8 +84,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	
 	$JobProficiencies = cache_read('typeoption', 'job_proficiency');	
 		
-	uses("area");
-	$area = new Areas();
+	
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {
 		//var_dump($item);
 		$repeat = true;
