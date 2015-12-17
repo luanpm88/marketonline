@@ -790,3 +790,6 @@ h2.market-header-title {
 .area-left-info .top-menu ul {
     z-index: 101;
 }
+.areas-container {
+    position: relative;
+}
