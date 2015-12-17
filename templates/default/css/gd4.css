@@ -794,3 +794,7 @@ h2.market-header-title {
 .areas-container {
     position: relative;
 }
+.iframe_area_top_3_banner .ad_banner_item {
+    height: 139px;
+    width: 299px;
+}
