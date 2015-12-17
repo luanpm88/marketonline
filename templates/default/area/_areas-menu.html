@@ -364,14 +364,14 @@
     }
     
     function saveAreaInfoDefault(aid) {
-	$.ajax({
-	    url: "index.php?do=area&action=saveAreaInfoDefault&id="+aid,
-	}).done(function ( data ) {
-	    if( console && console.log ) {
-		location.reload(); 
-	    }
-	});
-    }
+		$.ajax({
+			url: "index.php?do=area&action=saveAreaInfoDefault&id="+aid,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			location.reload(); 
+			}
+		});
+	}
     
     function hideAll() {
 	
