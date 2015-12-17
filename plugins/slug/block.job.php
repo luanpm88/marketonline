@@ -89,6 +89,7 @@ function smarty_block_job($params, $content, &$smarty, &$repeat) {
 		// Get company
 		$com = $company->read("*", $item["company_id"]);
 		$item["company"] = $com;
+		$com["thumb"] = $com['logo'] = pb_get_attachmenturl($com['picture'], '', 'small');
 		$html = '<div class=map_box_info>';
 			$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
 			
