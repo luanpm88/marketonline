@@ -54,7 +54,11 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	}
 	if (!$params['area'] && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
 		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
-		var_dump($all_areas);
+		$ors = array();
+		foreach($all_areas as $key => $aaaa) {
+			$ors[] = "j.areas LIKE '%[".$aaaa.id."]%'";
+		}
+		$conditions[] = "(".implode(" OR ", $ors).")";
 	}
 	
 	if (isset($params['type']) && $params['type'] != 0) {
