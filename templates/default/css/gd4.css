@@ -811,3 +811,9 @@ h2.market-header-title {
     bottom: 5px;
     right: 5px;
 }
+.iframe_area_top_3_banner .ad_banner_item.line_2 {
+    top: 145px;
+}
+.iframe_area_top_3_banner .ad_banner_item.line_3 {
+    top: 291px;
+}
