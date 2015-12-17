@@ -86,6 +86,29 @@ function smarty_block_job($params, $content, &$smarty, &$repeat) {
 		// Get company
 		$com = $company->read("*", $item["company_id"]);
 		$item["company"] = $com;
+		$html = '<div class=map_box_info>';
+			$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
+			
+			$html .= '<p>';
+				$html .= '<strong>'.$com["shop_name"].'</strong>';
+				$html .= '<br />'.$com["address"];						
+				$more = array();
+				if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
+				if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
+				if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
+				if(!empty($more)) $html .= implode(", ",$more);
+			$html .= '</p>';
+		$html .= '</div>';
+		if(in_array($com["map_lng"], $addresses)) {
+			$com["map_lng"] = $com["map_lng"]+(0.0005*$dup);
+			$dup++;
+		}
+		$item["company_map"] = 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'");';
+		
+		
+		
+		
+		
 		
 		$item["area"] = $area->getFullName($item["area_id"]);
 		
