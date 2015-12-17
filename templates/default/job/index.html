@@ -161,9 +161,13 @@
 									<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
 									<!--<td>{$job.salary}</td>-->
 									<td>{$job.expired_dates}
-										<script>
-											{$job.company_map}
-										</script>									
+										{literal}
+											<script>
+												$(document).ready(function() {
+													{/literal}{$job.company_map}{literal}
+												});
+											</script>
+										{/literal}
 									</td>
 								</tr>				
 							<!-- {/job} -->
