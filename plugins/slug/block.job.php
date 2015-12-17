@@ -79,8 +79,14 @@ function smarty_block_job($params, $content, &$smarty, &$repeat) {
 		
 		$item['expire_time'] = date('d/m/Y', $item['expire_time']);
 		
-		uses("area");
+		uses("area","company");
 		$area = new Areas();
+		$company = new Companies();
+		
+		// Get company
+		$com = $company->read("*", $item["company_id"]);
+		$item["company"] = $com;
+		
 		$item["area"] = $area->getFullName($item["area_id"]);
 		
 		$item["area"] = explode(',',$item["area"]);

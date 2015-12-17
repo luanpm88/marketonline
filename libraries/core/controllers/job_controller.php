@@ -74,6 +74,10 @@ class Job extends PbController {
 		$areas_by_areatype = $area_controller->getAreasByAreatype();
 		setvar("areas_by_areatype",$areas_by_areatype);
 		
+		//===================== end map ====================
+		
+		
+		
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industry = $this->industry->read("*",$industry_id);

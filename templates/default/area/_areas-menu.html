@@ -201,12 +201,12 @@
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$areatype.name}
 						<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
-			    {if $pb_userinfo}
-				<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
-			    {else}
-				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
-			    {/if}
-			</h2>
+						{if $pb_userinfo}
+						<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
+						{else}
+						<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
+						{/if}
+					</h2>
                         {if $areatype_info.content}
                             {$areatype_info.content}
                         {else}
