@@ -445,7 +445,7 @@
 	    $('.area-left-info .bottom-content .validation').hide();
         });
         
-        setTimeout("$('.area_info .content a.close').click(function(){ $('a.h2_area_post_button').trigger('click') });", 60000);
+        $('.area_info .content a.close').click(function(){ $('a.h2_area_post_button').trigger('click') });
         
         if (window.location.hash == "#thanks") {
             alert("Cám ơn Quý Khách đã cập nhật thông tin tại MarketOnline.vn");
@@ -487,7 +487,8 @@
 	    $(this).hide();
 	    $('.area_info').show();	    
 	});
-	$('.area-left-info .bottom-content .city_box .hide_but').trigger("click");
+	setTimeout("$('.area-left-info .bottom-content .city_box .hide_but').trigger('click')", 60000);
+	
 	$('.area-left-info .bottom-content .city_box h3').click(function() {
 	    $('.area_info,.area-left-info .bottom-content .city_list,.area-left-info .bottom-content .city_box .hide_but').toggle();
 	});
