@@ -52,7 +52,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	if (isset($params['area']) && $params['area'] != 0) {
 		$conditions[] = "j.areas LIKE '%[".$params['area']."]%'";
 	}
-	if (!isset($params['area']) && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
+	if ($params['area'] && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
 		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
 		var_dump($params['areatype_id']);
 	}
