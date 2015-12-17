@@ -20,7 +20,6 @@ class Job extends PbController {
 		$ad = new Adses();
 		$area_controller = new Area();
 		
-		
 		// map
 		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");

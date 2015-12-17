@@ -328,8 +328,7 @@ class Area extends PbController {
 		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
 			$main_ades = $this->getMainThreeBanners();
 			setvar("main_ades",$main_ades);
-		}
-		
+		}		
 		
 		setvar("industries",$this->industry->getCacheIndustry());
 		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
