@@ -771,3 +771,11 @@ h2.market-header-title {
     text-indent: 0;
     width: auto;
 }
+.area_info .actions a.areazoom.out {
+    background: transparent url("../image/zoomout.png") no-repeat scroll 0 0 / 26px auto;
+    bottom: 8px;
+    height: 27px;
+    right: 9px;
+    text-indent: -90000px;
+    width: 27px;
+}

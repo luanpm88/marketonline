@@ -148,7 +148,7 @@
                             <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
 						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
-							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+							<!--<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>-->
 							<div class="validation" style="display: none">
 							<h2>Vị trí địa lý - {$area.name}</h2>
 							<ul>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="actions">
                         {if $areatype_info}
-			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
+			    <a class="areazoom in" href="javascript:void(0)">... Xem thêm</a>
 			{/if}
                         {if $pb_userinfo}
                             <!--<a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>-->
