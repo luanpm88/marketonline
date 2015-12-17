@@ -831,7 +831,7 @@ class Area extends PbController {
 						if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
 						if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
 						if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
-						if(!empty($more)) $html .= implode(", ",$more);					
+						if(!empty($more)) $html .= implode(", ",$more);
 					$html .= '</p>';
 				$html .= '</div>';
 				//$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
@@ -843,10 +843,8 @@ class Area extends PbController {
 				array_push($addresses, $com["map_lng"]);
 			}
 		}
-		
 		return $companies_map_script;
 	}
-	
 	function getAreasByAreatype() {
 		if(isset($_GET["areatype_id"])){
 			$areas_by_areatype = $this->area->findAll("*",null,array("level=2","areatype_id=".$_GET["areatype_id"]));

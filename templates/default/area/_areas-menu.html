@@ -445,7 +445,7 @@
 	    $('.area-left-info .bottom-content .validation').hide();
         });
         
-        $('.area_info .content a.close').click(function(){ $('a.h2_area_post_button').trigger('click') });
+        setTimeout("$('.area_info .content a.close').click(function(){ $('a.h2_area_post_button').trigger('click') });", 60000);
         
         if (window.location.hash == "#thanks") {
             alert("Cám ơn Quý Khách đã cập nhật thông tin tại MarketOnline.vn");
