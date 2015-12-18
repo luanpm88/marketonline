@@ -1286,7 +1286,6 @@ class Product extends PbController {
 					}			
 				}
 			
-			
 			//for offer type
 			if (isset($_GET['offertype']) && $_GET['offertype'] != 'all') {
 				$this->trade->condition[] = 'Trade.type_id = '.$_GET['offertype'];
