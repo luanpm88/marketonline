@@ -182,6 +182,7 @@ $conditions = null;
 $pb_userinfo = pb_get_member_info();
 
 $show_market_page = $setts->fields("valued", array("variable = 'show_market_page'"));
+var_dump($show_market_page);
 setvar("show_market_page", $show_market_page);
 
 if ($pb_userinfo) {
