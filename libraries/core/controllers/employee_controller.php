@@ -94,7 +94,7 @@ class Employee extends PbController {
 		
 		//get areas with level 2
 		foreach($areatypes as $key => $areatype) {
-			$areas = $this->area->findAll("*",null,array("level=2","areatype_id=".$areatype["id"]),"Area.display_order");
+			$areas = $this->area->findAll("*",null,array("level=2","areatype_id=".$areatype["id"]),"Area.display_order DESC");
 			$areatypes[$key]["areas"] = $areas;
 		}
 		setvar("areatypes",$areatypes);
