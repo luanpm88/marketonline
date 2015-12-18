@@ -2524,9 +2524,9 @@ class Product extends PbController {
 			$attachment->if_thumb_middle = false;
 			$attachment->if_logo = true;
 			
+			$date = new MyDateTime();
 			if($_POST["com_id"] == "")
-			{
-				$date = new MyDateTime();
+			{				
 				$_POST["com_id"] = $date->getTimestamp();
 			}
 			
