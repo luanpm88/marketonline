@@ -1286,7 +1286,6 @@ class Product extends PbController {
 					}			
 				}
 			
-			
 			//for offer type
 			if (isset($_GET['offertype']) && $_GET['offertype'] != 'all') {
 				$this->trade->condition[] = 'Trade.type_id = '.$_GET['offertype'];
@@ -1342,20 +1341,18 @@ class Product extends PbController {
 			setvar("TotalCount", $count);
 			setvar("Count", count($products));
 			setvar("Products", $products);
-			
+
 			if(isset($_GET['leftbar']))
 			{
 				setvar("isConnect", 1);
 				
 			}
-			
+
 			if($_GET["layout"]=='mobile') {
 				$this->render("mobile/product/ajax_list_offer");
 			} else {
 				$this->render("product/ajax.offerlist");
-			}
-			
-		
+			}		
 		}
 		else
 		{

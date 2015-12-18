@@ -78,11 +78,11 @@ class Area extends PbController {
 			$areatype = $this->areatype->read("*",$areatype_id);
 			$areatype_name = "/".$areatype["name"];
 			
-			$areas_by_areatype = $this->getAreasByAreatype();
-			setvar("areas_by_areatype",$areas_by_areatype);
-			
 			setvar("areatype",$areatype);
 		}
+		$areas_by_areatype = $this->getAreasByAreatype();
+		setvar("areas_by_areatype",$areas_by_areatype);
+		
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industry = $this->industry->read("*",$industry_id);
@@ -108,7 +108,7 @@ class Area extends PbController {
 						$(".company_module a.main_a").live("click", function() {
 						    ajaxLoadModule("company_module", "ajaxCompanyModule","","",1,"'.$industry_id.'");
 						});
-					';
+				';
 				$container = '<div class="works-list album area-module company_module starting"></div>';
 				$paging = 'ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(".areas-container .subtab-area ul li a.active").attr("rel"),$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Thương hiệu";
@@ -135,7 +135,7 @@ class Area extends PbController {
 				
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
-				setvar("companies_map_script",$companies_map_script);
+				setvar("companies_map_script", $companies_map_script);
 				break;
 			case 'dich-vu':
 				$script = '
@@ -146,11 +146,11 @@ class Area extends PbController {
 						$(".service_module a.main_a").live("click", function() {
 						    ajaxLoadModule("service_module", "ajaxServiceModule","","",1,"'.$industry_id.'");
 						});
-					';
+				';
 				$container = '<div class="works-list album area-module service_module starting"></div>';
 				$paging = 'ajaxLoadModule("service_module", "ajaxServiceModule","","",$(this).attr("rel"),"'.$industry_id.'");';
 				$PageTypeName = "Dịch vụ";
-				
+
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
 				setvar("companies_map_script",$companies_map_script);
@@ -186,7 +186,7 @@ class Area extends PbController {
 				//get positions on map
 				$companies_map_script = $this->getMapCompany();
 				setvar("companies_map_script",$companies_map_script);
-				
+
 				break;
 			case 'hoc-tap':
 				$script = '
@@ -205,6 +205,7 @@ class Area extends PbController {
 			default:
 				break;
 		}
+
 		setvar("script",$script);
 		setvar("container",$container);
 		setvar("paging",$paging);
@@ -233,7 +234,7 @@ class Area extends PbController {
 	function index() {
 		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
-		
+
 		//get area
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -270,6 +271,7 @@ class Area extends PbController {
 			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
 			setvar("districts",$districts);
 		}
+		
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->areatype->read("*",$areatype_id);
@@ -326,8 +328,7 @@ class Area extends PbController {
 		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
 			$main_ades = $this->getMainThreeBanners();
 			setvar("main_ades",$main_ades);
-		}
-		
+		}		
 		
 		setvar("industries",$this->industry->getCacheIndustry());
 		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
@@ -338,6 +339,9 @@ class Area extends PbController {
 		$offset = 0;
 		$row = 3;
 		$num = 7;
+		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
 		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
@@ -354,7 +358,7 @@ class Area extends PbController {
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
-			$areatype = $this->area->read("*",$area_id);
+			$areatype = $this->areatype->read("*",$areatype_id);
 			setvar("areatype",$areatype);
 		}
 		if(isset($_GET["type_id"])){
@@ -370,8 +374,47 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		
+		
+		setvar("areatype", $areatype);
+		setvar("area", $area);
+		setvar("industry", $industry);
+		setvar("industries_list", $industries_list);
 		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
-		setvar("trades",$trades["result"]);
+		$products = $trades["result"];
+		
+		foreach($products as $key => $item)
+		{
+			$products[$key]["content"] = strip_tags(pb_lang_split($item['content']));
+			$products[$key]["created"] = date('d/m/Y H:i', $item['created']);
+			$products[$key]["enddate"] = date('d/m/Y', $item['created']+($item['expire_days']*24*3600));
+			//$products[$key]["price"] = number_format($item["price"], 0, ',', '.');
+			//$products[$key]["old_price"] = number_format($item["old_price"], 0, ',', '.');
+			$products[$key]["name"] = fix_text_error($products[$key]["name"]);
+			
+			//get space_name
+			$mem = $this->member->getInfoById($item['member_id']);
+			$com = $this->company->getInfoByUserId($item['member_id']);
+			
+			
+			$space_controller = new Space();
+			$space_controller->setBaseUrlByUserId($mem["space_name"], "offer");
+			$products[$key]['url'] = $space_controller->rewriteDetail("offer", $item['id']);
+			
+			if($com)
+			{
+				$aaaa = $this->area->disSubNames($com['area_id'], " / ", false, "product");
+			}
+			else
+			{
+				$aaaa = $this->area->disSubNames($mem['area_id'], " / ", false, "product");
+			}
+			
+			$aaaa = explode(' / ', $aaaa);
+			if($aaaa[1]) $products[$key]['area_names'] = $aaaa[1];
+			
+		}
+		setvar("trades",$products);
 		setvar("count",$trades["count"]);
 		
 		render("area/ajaxTradeModule", 1);
@@ -382,6 +425,9 @@ class Area extends PbController {
 		$row = 3;
 		$num = 6;
 		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
+		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
 		}
@@ -397,7 +443,7 @@ class Area extends PbController {
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
-			$areatype = $this->area->read("*",$area_id);
+			$areatype = $this->areatype->read("*",$areatype_id);
 			setvar("areatype",$areatype);
 		}
 		if(isset($_GET["membergroup_id"])){
@@ -406,6 +452,8 @@ class Area extends PbController {
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industries = $this->getAreas($industry_id);
+			
+			$industry = $this->industry->read("*" ,$industry_id);
 		}
 		
 		//paging
@@ -415,6 +463,8 @@ class Area extends PbController {
 		
 		//get companies by areas
 		$companies = $this->company->getByArea(array("industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		
+		setvar("view_more", $companies["count"] > ($row*$num));
 		setvar("companies",$companies["result"]);
 		setvar("count",$companies["count"]);
 		
@@ -423,8 +473,11 @@ class Area extends PbController {
 	
 	function ajaxProductModule() {
 		$offset = 0;
-		$row = 3;
-		$num = 7;
+		$row = 2;
+		$num = 4;
+		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
 		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
@@ -441,7 +494,7 @@ class Area extends PbController {
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
-			$areatype = $this->area->read("*",$area_id);
+			$areatype = $this->areatype->read("*",$areatype_id);
 			setvar("areatype",$areatype);
 		}
 		if(isset($_GET["membergroup_id"])){
@@ -450,6 +503,8 @@ class Area extends PbController {
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industries = $this->getAreas($industry_id);
+			
+			$industry = $this->industry->read("*" ,$industry_id);
 		}
 		
 		//paging
@@ -460,10 +515,16 @@ class Area extends PbController {
 		//get products by areas
 		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
-		
-		if($products["count"] > $row*$num*70) {
-			$products["count"] = $row*$num*70;
-		}
+		setvar("view_more", $products["count"] > ($row*$num));
+
+		//if($products["count"] > $row*$num*70) {
+		//	$products["count"] = $row*$num*70;
+		//}
+
+		setvar("areatype", $areatype);
+		setvar("area", $area);
+		setvar("industry", $industry);
+		setvar("industries_list", $industries_list);
 		setvar("count",$products["count"]);
 		
 		render("area/ajaxProductModule", 1);
@@ -471,8 +532,11 @@ class Area extends PbController {
 	
 	function ajaxServiceModule() {
 		$offset = 0;
-		$row = 3;
-		$num = 7;
+		$row = 2;
+		$num = 4;
+		
+		//Get industry level 1
+		$industries_list = $this->industry->getCacheIndustry();
 		
 		if(isset($_GET["row"])) {
 			$row = intval($_GET["row"]);
@@ -489,7 +553,7 @@ class Area extends PbController {
 		}
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
-			$areatype = $this->area->read("*",$area_id);
+			$areatype = $this->areatype->read("*",$areatype_id);
 			setvar("areatype",$areatype);
 		}
 		if(isset($_GET["membergroup_id"])){
@@ -498,6 +562,8 @@ class Area extends PbController {
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
 			$industries = $this->getAreas($industry_id);
+			
+			$industry = $this->industry->read("*" ,$industry_id);
 		}
 		
 		//paging
@@ -508,9 +574,12 @@ class Area extends PbController {
 		//get services by areas
 		$services = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
 		setvar("services",$services["result"]);
-		if($services["count"] > $row*$num*70) {
-			$services["count"] = $row*$num*70;
-		}
+		setvar("view_more", $services["count"] > ($row*$num));
+		
+		setvar("areatype", $areatype);
+		setvar("area", $area);
+		setvar("industry", $industry);
+		setvar("industries_list", $industries_list);
 		setvar("count",$services["count"]);
 		
 		render("area/ajaxServiceModule", 1);
@@ -564,23 +633,23 @@ class Area extends PbController {
 	
 	function ajaxJobModule() {
 		$offset = 0;
-		$row = 3;
-		$num = 7;
+		$row = 5;
+		$num = 1;
 		
-		if(isset($_GET["row"])) {
-			$row = intval($_GET["row"]);
-		}
-		if(isset($_GET["num_per_row"])) {
-			$num = intval($_GET["num_per_row"]);
-		}
+		//if(isset($_GET["row"])) {
+		//	$row = intval($_GET["row"]);
+		//}
+		//if(isset($_GET["num_per_row"])) {
+		//	$num = intval($_GET["num_per_row"]);
+		//}
 		
 		//GETs
-		if(isset($_GET["area_id"])){
+		if(isset($_GET["area_id"])) {
 			$area_id = $_GET["area_id"];
 			$area = $this->area->read("*",$area_id);
 			setvar("area",$area);
 		}
-		if(isset($_GET["areatype_id"])){
+		if(isset($_GET["areatype_id"])) {
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->area->read("*",$area_id);
 			setvar("areatype",$areatype);
@@ -658,8 +727,8 @@ class Area extends PbController {
 								{
 									$area_a[] = $level3["id"];
 									foreach($level3['sub'] as $key4 => $level4)
-									{												
-										$area_a[] = $level4["id"];												
+									{
+										$area_a[] = $level4["id"];
 									}
 								}
 							}
@@ -749,6 +818,8 @@ class Area extends PbController {
 			//var_dump($companies["count"]);
 			//setvar("companies",$companies["result"]);
 			$companies_map_script = '';
+			$addresses = array();
+			$dup = 1;
 			foreach($companies["result"] as $com) {
 				$html = '<div class=map_box_info>';
 					$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
@@ -760,18 +831,20 @@ class Area extends PbController {
 						if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
 						if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
 						if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
-						if(!empty($more)) $html .= implode(", ",$more);					
+						if(!empty($more)) $html .= implode(", ",$more);
 					$html .= '</p>';
 				$html .= '</div>';
-				
 				//$companies_map_script .= 'addAreaMarker('.$com["map_lat"].','.$com["map_lng"].',"'.$html.'","'.$com["href"].'");';
+				if(in_array($com["map_lng"], $addresses)) {
+					$com["map_lng"] = $com["map_lng"]+(0.0005*$dup);
+					$dup++;
+				}
 				$companies_map_script .= 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","'.$com["href"].'");';
+				array_push($addresses, $com["map_lng"]);
 			}
 		}
-		
 		return $companies_map_script;
 	}
-	
 	function getAreasByAreatype() {
 		if(isset($_GET["areatype_id"])){
 			$areas_by_areatype = $this->area->findAll("*",null,array("level=2","areatype_id=".$_GET["areatype_id"]));
@@ -807,9 +880,7 @@ class Area extends PbController {
 				$this->areainfo->save($vals);
 			} else {
 				$this->areainfo->save($vals,'update',intval($exsit[0]["id"]));
-			}
-			
-			
+			}			
 			
 			header('Location: '.$_SERVER['HTTP_REFERER'].'#thanks');
 			echo "ok";

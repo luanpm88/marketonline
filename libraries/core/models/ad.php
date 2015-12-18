@@ -308,7 +308,7 @@ class Adses extends PbModel {
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Ads.company_id";
 		
 		$conditions = array("Ads.adzone_id=".$zone_id,"Ads.status=1","Ads.state=1");
-		
+
 		if($industry_id) {
 			$conditions[] = "(Ads.industries LIKE '{$industry_id}' OR Ads.industries LIKE '{$industry_id},%' OR Ads.industries LIKE '%,{$industry_id},%' OR Ads.industries LIKE '%,{$industry_id}')";
 		}

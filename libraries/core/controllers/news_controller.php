@@ -39,8 +39,7 @@ class News extends PbController {
 		}
 		$viewhelper->setTitle($title);
 		setvar("Calendar", $cal->getMonthView($month, $year));
-		$cache_id = $year.$month.$day;
-		//end cal
+		$cache_id = $year.$month.$day;		
 		render("news/index");
 	}
 	

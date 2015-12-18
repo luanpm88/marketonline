@@ -1,6 +1,8 @@
                 <div class="areas-module-controls">
 		    <a target="_blank" href="{the_url module=root-url}virtual-office">Tiêu chuẩn thương hiệu</a>
-		    <a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}{if $smarty.get.membergroup_id}#{$smarty.get.membergroup_id}{/if}">Xem thêm</a>
+		    {if $view_more}
+				<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}{if $smarty.get.membergroup_id}#{$smarty.get.membergroup_id}{/if}">Xem thêm</a>
+			{/if}
 		    
 		</div>
 		
@@ -27,10 +29,10 @@
                                 <div class="description-bottom">
                                     <div class="title">				      
                                         <h4>
-					    <a target="_blank" title="{$item.title}" href="{$item.href}">
-						{$item.title}
-					    </a>
-					</h4>
+											<a target="_blank" title="{$item.title}" href="{$item.href}">
+											{$item.title}
+											</a>
+										</h4>
                                     </div>
                                 </div>
                             </li>
@@ -39,7 +41,7 @@
                     </ul>
 		{if $smarty.get.p}<div style="margin-top: 20px" class="pagination-list"></div><br style="clear:both" />{/if}
                 <!--{else}-->
-                    <p class="no-content">Chưa có thương hiệu nào trong mục này.</p>
+                    <br><br><br><p class="no-content">Chưa có thương hiệu nào trong mục này.</p>
                 <!--{/if}-->
 		
 		{if $smarty.get.p}

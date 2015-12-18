@@ -13,7 +13,8 @@
 	<!--{/loop}-->
     </ul>
     <div class="area-left-info">
-        <div class="top-menu">
+        
+		<div class="top-menu">
             <div class="path">
                 {if $areatype}
                     {$areatype.name}
@@ -23,48 +24,113 @@
                 <span class="pointer">.</span>
             </div>
             <ul style="display: none">
-                <!--{loop $areatypes type level key}-->
-                    <li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
-                        <a class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
-                    </li>
-                <!--{/loop}-->                
+				<!--{if $smarty.get.do == "job" }-->
+					<li>
+						<a href="{the_url module='jobs'}"><strong>Việt Nam</strong></a>
+					</li>
+					<!--{loop $areatypes type level key}-->
+						<li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
+							<a style="padding-left: 20px;" class="level1" href="/?do=job&type=&indust=0&area=&areatype_id={$type.id}&keyword=">{$type.name}</a>
+						</li>
+					<!--{/loop}-->
+				<!--{elseif $smarty.get.do == "employee"}-->
+					<li>
+						<a href="{the_url module='employees'}"><strong>Việt Nam</strong></a>
+					</li>
+					<!--{loop $areatypes type level key}-->
+						<li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
+							<a style="padding-left: 20px;" class="level1" href="/?do=employee&type=&indust=0&area=&areatype_id={$type.id}&keyword=">{$type.name}</a>
+						</li>
+					<!--{/loop}-->
+				<!--{else}--> 
+					<li>
+						<a href="{the_url module='areas'}"><strong>Việt Nam</strong></a>
+					</li>
+					<!--{loop $areatypes type level key}-->
+						<li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
+							<a style="padding-left: 20px;" class="level1" href="{the_url module=areas areatype_id=`$type.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$type.name}</a>
+						</li>
+					<!--{/loop}-->
+				<!--{/if}--> 
             </ul>
         </div>
+		
         <div class="bottom-content">
-            <!--{if $areatype && !$area}-->
-                <div class="city_box">
-                    <h3>Tỉnh/Thành</h3>
-                    <!--{loop $areatypes type level key}-->                
-                        <!--{if $type.id==$areatype.id}-->
-                            <ul class="city_list">					      
-                                <!--{loop $type.areas item level key}-->
-                                    <li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
-                                <!--{/loop}-->
-                            </ul>
-                        <!--{/if}-->
-                    <!--{/loop}-->
-		    <a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
-                </div>
-            <!--{/if}-->
-	    <!--{if $areatype && $area}-->
+		<!--{if $smarty.get.do == "job" }-->
+			<!--{if $areatype}-->
+				<div class="city_box">
+					<h3>Danh sách tỉnh/thành {$areatype.name}</h3>
+					<!--{loop $areatypes type level key}-->                
+						<!--{if $type.id==$areatype.id}-->
+							<ul class="city_list">					      
+								<!--{loop $type.areas item level key}-->
+									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}">
+										<a class="level2" href="/?do=job&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
+									</li>
+								<!--{/loop}-->
+							</ul>
+						<!--{/if}-->
+					<!--{/loop}-->
+					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+				</div>
+			<!--{/if}-->
+		<!--{elseif $smarty.get.do == "employee"}-->
+			<!--{if $areatype}-->
+				<div class="city_box">
+					<h3>Danh sách tỉnh/thành {$areatype.name}</h3>
+					<!--{loop $areatypes type level key}-->                
+						<!--{if $type.id==$areatype.id}-->
+							<ul class="city_list">					      
+								<!--{loop $type.areas item level key}-->
+									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}">
+										<a class="level2" href="/?do=employee&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
+									</li>
+								<!--{/loop}-->
+							</ul>
+						<!--{/if}-->
+					<!--{/loop}-->
+					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+				</div>
+			<!--{/if}-->
+		<!--{else}-->
+			<!--{if $areatype && !$area}-->
+				<div class="city_box">
+					<h3>Danh sách tỉnh/thành {$areatype.name}</h3>
+					<!--{loop $areatypes type level key}-->                
+						<!--{if $type.id==$areatype.id}-->
+							<ul class="city_list">					      
+								<!--{loop $type.areas item level key}-->
+									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$type.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
+								<!--{/loop}-->
+							</ul>
+						<!--{/if}-->
+					<!--{/loop}-->
+					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+				</div>
+			<!--{/if}-->
+		<!--{/if}-->
+			<!--{if $areatype && $area && $smarty.get.do == "area" }-->
                 <div class="city_box">
                     <h3 {if $area.level==3}style="background: none"{/if}>
                         <!--<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$areatype.name}</a>-->
-			{if $area.level==3}
-			    <a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">
-				{$parent_area.name}
-			    </a> <span style="font-weight:normal"> / </span>
-			{/if}
+						{if $area.level==3}
+							<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">
+							{$parent_area.name}
+							</a> <span style="font-weight:normal"> / </span>
+						{/if}
+						{if $area.level==2}
+							Danh sách quận/huyện
+						{/if}
                         {$area.name}
-		    </h3>
-		    {if $area.level==2}
-			<ul class="city_list">					      
-			    <!--{loop $districts item level key}-->
-				<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
-			    <!--{/loop}-->
-			</ul>
-			<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
-		    {/if}
+					</h3>
+					{if $area.level==2}
+					<ul class="city_list">					      
+						<!--{loop $districts item level key}-->
+						<li class="level2{if $smarty.get.area_id==$item.id} active{/if}"><a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$item.id` title=`$item.name` type=`$smarty.get.type` industry_id=`$industry.id` industry_name=`$industry.name`}">{$item.name}</a></li>
+						<!--{/loop}-->
+					</ul>
+					<a class="hide_but" title="Thu nhỏ">Thu nhỏ</a>
+					{/if}
                 </div>
             <!--{/if}-->
             {if $main_ades}
@@ -80,48 +146,51 @@
                 <div class="area_info"{if $area.level < 3} style="display: none"{/if}>
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$area.name}
+						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos && !$area_info}
+							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+						{/if}
 			    {if $pb_userinfo}
 				<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
 			    {else}
-				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
+				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>				
 			    {/if}
 			</h2>
                         {if $area_info.content}
                             {$area_info.content}
                         {else}
-                            <p>Chưa có thông tin...</p>   
+                            <p>Chưa có thông tin...</p>
+							<p style="cursor: pointer;color: #3b984c" onclick="$('.h2_area_post_but').trigger('click')">Mời bạn cập nhật thông tin địa lý.</p>
                         {/if}
                     </div>
                     <div class="actions">
                         {if $area_info}
-			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
-			{/if}
+							<a class="areazoom in" href="javascript:void(0)">... Xem thêm</a>
+						{/if}
                         {if $pb_userinfo}
                             <!--<a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>-->
                         {else}
                             <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
-			{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
-			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
-			    <div class="validation" style="display: none">
-				<h2>Vị trí địa lý - {$area.name}</h2>
-				<ul>
-				    <!--{loop $area_infos ii levelii keyii}-->
-					<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
-					    {$ii.first_name} {$ii.last_name}
-					</li>
-				    <!--{/loop}-->
-				</ul>
-				<div class="area_info_item_content">
-				    {if $area_info.content}{$area_info.content}{/if}
-				</div>
-				<div class="area_valid_controls">
-				    <a class="close" href="javascript:void(0)">Đóng</a>
-				    <a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
-				</div>
-			    </div>
-			{/if}
-			
+						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $area_infos}
+							<!--<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>-->
+							<div class="validation" style="display: none">
+								<h2>Vị trí địa lý - {$area.name}</h2>
+								<ul>
+									<!--{loop $area_infos ii levelii keyii}-->
+									<li class="area_info_item{if $ii.id==$area_info.id} active current{/if}" rel="{$ii.id}">
+										{$ii.first_name} {$ii.last_name}
+									</li>
+									<!--{/loop}-->
+								</ul>
+								<div class="area_info_item_content">
+									{if $area_info.content}{$area_info.content}{/if}
+								</div>
+								<div class="area_valid_controls">
+									<a class="close" href="javascript:void(0)">Đóng</a>
+									<a class="save_default" href="javascript:void(0)">Chọn bài viết</a>
+								</div>
+							</div>
+						{/if}			
                     </div>
                     <div id="area-info-form" class="areahide">
                         <div class="content">
@@ -130,19 +199,19 @@
                                 <input type="hidden" name="area_id" value="{$area.id}" />
                                 <div style="border-bottom: solid 1px #aaa">
                                     <input class="editor_imagevideo" id="uploadIVbutton" type = "button" value = "Tải Ảnh/Video" 
-					onclick ="javascript:document.getElementById('imagefile').click();">
+										onclick ="javascript:document.getElementById('imagefile').click();">
                                     <textarea style="height:322px;max-height: 322px" name="content">{$area_info_by_member.content}</textarea>
                                 </div>
                                 <a class="but_area close" href="javascript:void(0)">Đóng</a>
-				<input class="but_area" type="submit" value="Cập nhật" />
+								<input class="but_area" type="submit" value="Cập nhật" />
                             </form>
                             <div id="uploadImageVideo">
-				<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
-				<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
-				    <input type="hidden" name="do" value="product" />
-				    <input type="hidden" name="action" value="uploadEditorFile" />
-				    <input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
-				</form>
+								<iframe style="display: none" id="insertFrame" name="insertFrame" ></iframe>
+								<form method="POST" action="{$SiteUrl}index.php?do=product&action=uploadEditorFile" name="insertPicForm" id="insertPicForm" target="insertFrame" enctype="multipart/form-data" onsubmit="return checkUploadEditorInput()">
+									<input type="hidden" name="do" value="product" />
+									<input type="hidden" name="action" value="uploadEditorFile" />
+									<input style="visibility: hidden; position: absolute; top: -20000px" id="imagefile" type="file" name="uploadEditorFile" id="uploadEditorFile" onchange="$('#insertPicForm').submit()" />
+								</form>
                             </div>
                         </div>
                     </div>
@@ -153,12 +222,15 @@
                 <div class="area_info" style="display: none">
                     <div class="info_content">
                         <h2>Vị trí địa lý - {$areatype.name}
-			    {if $pb_userinfo}
-				<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
-			    {else}
-				<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
-			    {/if}
-			</h2>
+						{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $areatype_infos && !$areatype_info}
+							<a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+						{/if}
+						{if $pb_userinfo}
+							<a class="h2_area_post_but h2_area_post_button" href="javascript:void(0)" title="Cập nhật thông tin">.</a>
+						{else}
+							<a class="h2_area_post_but comment_but" href="#login-box" title="Cập nhật thông tin">.</a>
+						{/if}
+					</h2>
                         {if $areatype_info.content}
                             {$areatype_info.content}
                         {else}
@@ -167,7 +239,7 @@
                     </div>
                     <div class="actions">
                         {if $areatype_info}
-			    <a class="areazoom in" href="javascript:void(0)">Phóng to</a>
+			    <a class="areazoom in" href="javascript:void(0)">... Xem thêm</a>
 			{/if}
                         {if $pb_userinfo}
                             <!--<a class="post_area_info" href="javascript:void(0)">Cập nhật thông tin</a>-->
@@ -175,7 +247,7 @@
                             <!--<a class="comment_but" href="#login-box">Cập nhật thông tin</a>-->
                         {/if}
 			{if ($pb_userinfo.role == 'admin' || $pb_userinfo.area_moderator) && $areatype_infos}
-			    <a class="validate_area_but" href="javascript:void(0)">Xem & Duyệt Bài</a>
+			    
 			    <div class="validation" style="display: none">
 				<h2>Vị trí địa lý - {$areatype.name}</h2>
 				<ul>
@@ -221,6 +293,34 @@
                 </div>
             {/if}
         </div>
+	<div class="ad_banner_item_hover"></div>
+		<div class="iframe_area_top_3_banner">
+			<div class="ad_toggle_h2" style="margin-top: 10px"><a style="position: relative;z-index: 100" href="#add_toggle" class="ad_toggle" target="_blank">Đăng Quảng Cáo</a></div>
+			<div style="">
+				<div class="works-list compage" style="padding: 0">         
+					<div class="ad_banner_item product_home_banner" pos="area_top_map">
+						  Nhấn vào đây
+						  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+					</div>
+					<div class="ad_banner_item product_home_banner line_2" pos="area_top_map_2">
+						  Nhấn vào đây
+						  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+					</div>
+					{if !$areatype && !$area}
+						<div class="ad_banner_item product_home_banner line_3" pos="area_top_map_3">
+							  Nhấn vào đây
+							  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
+						</div>
+					{/if}
+					{if !$areatype && !$area}
+						<iframe scrolling="no" style="border: medium none;height: 460px;width: 298px;margin-bottom: 0" src="http://marketonline.vn:3000/ad_positions/iframe_area_top_3_banner?pos=area_top_map&area_id={$area.id}&areatype_id={$areatype.id}" style="border: none;"></iframe>
+					{else}
+						<iframe scrolling="no" style="border: medium none;height: 315px;width: 298px;margin-bottom: 0" src="http://marketonline.vn:3000/ad_positions/iframe_area_top_3_banner?pos=area_top_map&area_id={$area.id}&areatype_id={$areatype.id}" style="border: none;"></iframe>
+					{/if}
+				</div>
+			</div>
+		</div>
+		
     </div>
 
     <div class="vietbando_outer">
@@ -274,14 +374,14 @@
     }
     
     function saveAreaInfoDefault(aid) {
-	$.ajax({
-	    url: "index.php?do=area&action=saveAreaInfoDefault&id="+aid,
-	}).done(function ( data ) {
-	    if( console && console.log ) {
-		location.reload(); 
-	    }
-	});
-    }
+		$.ajax({
+			url: "index.php?do=area&action=saveAreaInfoDefault&id="+aid,
+		}).done(function ( data ) {
+			if( console && console.log ) {
+			location.reload(); 
+			}
+		});
+	}
     
     function hideAll() {
 	
@@ -289,15 +389,18 @@
     
     function zoomInfoIn() {
         $('.area_info').addClass("full_areabox");
-        $('.area_info .actions a.areazoom').removeClass("in");
-        $('.area_info .actions a.areazoom').addClass("out");
+        $('.area_info a.areazoom').removeClass("in");
+        $('.area_info a.areazoom').addClass("out");
+		$('.validate_area_but').hide();
+		$('.iframe_area_top_3_banner').hide();
     }
     function zoomInfoOut() {
         $('.area_info').removeClass("full_areabox");
-        $('.area_info .actions a.areazoom').removeClass("out");
-        $('.area_info .actions a.areazoom').addClass("in");
+        $('.area_info a.areazoom').removeClass("out");
+        $('.area_info a.areazoom').addClass("in");
+		$('.validate_area_but').show();
+		$('.iframe_area_top_3_banner').show();
     }
-    
     
     var init_lat,init_ln,init_zoom;
     $(document).ready(function() {	
@@ -326,16 +429,16 @@
 		    init_zoom = 12;
 		{/if}
 	    {elseif $areatype.map_lat}
-		init_lat = {$areatype.map_lat};
-		init_lng = {$areatype.map_lng};
+				init_lat = {$areatype.map_lat};
+				init_lng = {$areatype.map_lng};
 		
-		{if $areatype.map_zoom}
-                    initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,{$areatype.map_zoom});
-		    init_zoom = {$areatype.map_zoom};
-		{else}
-                    initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,6);
-		    init_zoom = 6;
-		{/if}
+				{if $areatype.map_zoom}
+							initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,{$areatype.map_zoom});
+					init_zoom = {$areatype.map_zoom};
+				{else}
+							initMapWithLatLng({$areatype.map_lat},{$areatype.map_lng},"vietbando_map",false,6);
+					init_zoom = 6;
+				{/if}
                 
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
@@ -343,10 +446,10 @@
                     {/if}
                 {/loop}
 	    {else}
-		initMapWithLatLng(null,null,"vietbando_map",false,5)
-		init_lat = 16.0458134537522;
-		init_lng = 107.5341796875;
-		init_zoom = 5;
+			initMapWithLatLng(null,null,"vietbando_map",false,5)
+			init_lat = 16.0458134537522;
+			init_lng = 107.5341796875;
+			init_zoom = 5;
                 
                 {loop $areas_by_areatype aaa levela keya}
                     {if $aaa.map_lat}
@@ -384,12 +487,11 @@
         $('.area_info .content a.close').click(function(){ $('a.h2_area_post_button').trigger('click') });
         
         if (window.location.hash == "#thanks") {
-            alert("Cám ơn Quý Khách đã cập nhật thông tin tại MarketOnline.vn");
+            alert("Cám ơn Quý Khách đã cập nhật thông tin tại MarketOnline.vn.\n\nNội dung sẽ được đăng tải khi được kiểm duyệt.");
         }
         
         //$('#post-area-info-form').ajaxForm({
         //        beforeSend: function() {
-        //            
         //        },
         //        uploadProgress: function(event, position, total, percentComplete) {
         //            //var percentVal = percentComplete + '%';
@@ -407,15 +509,15 @@
         //        }
         //});
         
-        $('.area_info .actions a.areazoom.in').live("click",function() {
+        $('.area_info a.areazoom.in').live("click",function() {
             zoomInfoIn();
             $('#area-info-form').addClass("areahide");
 	    $('.area-left-info .bottom-content .validation').hide();
         });
-        $('.area_info .actions a.areazoom.out').live("click",function() {
+        $('.area_info a.areazoom.out').live("click",function() {
             zoomInfoOut();
             $('#area-info-form').addClass("areahide");
-	    $('.area-left-info .bottom-content .validation').hide();
+			$('.area-left-info .bottom-content .validation').hide();
         });
 	
 	$('.area-left-info .bottom-content .city_box .hide_but').click(function() {
@@ -423,6 +525,8 @@
 	    $(this).hide();
 	    $('.area_info').show();	    
 	});
+	setTimeout("$('.area-left-info .bottom-content .city_box .hide_but').trigger('click')", 5000);
+	
 	$('.area-left-info .bottom-content .city_box h3').click(function() {
 	    $('.area_info,.area-left-info .bottom-content .city_list,.area-left-info .bottom-content .city_box .hide_but').toggle();
 	});
@@ -488,7 +592,7 @@
 	    {/if}
 	{literal}
 	
-	
-    });
+
+});
 </script>
 <!--{/literal}-->

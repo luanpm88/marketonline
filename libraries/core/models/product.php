@@ -263,8 +263,6 @@ class Products extends PbModel {
 		$sql = "SELECT p.*,m.username,c.name AS companyname,c.shop_name AS shop_name FROM {$this->table_prefix}products p LEFT JOIN {$this->table_prefix}members m ON m.id=p.member_id LEFT JOIN {$this->table_prefix}companies c ON c.member_id=p.member_id WHERE p.id=".$id;
 		$result = $this->dbstuff->GetRow($sql);
 		
-		
-		
 		return $result;
 	}
 	
@@ -573,12 +571,9 @@ class Products extends PbModel {
 			else
 			{
 				$result['thumb'] = $result['imgsmall'];
-			}
-			
+			}			
 			
 			//for url
-			
-		
 	}
 	
 	function saveAdTypes($id, $types) {
@@ -669,7 +664,7 @@ class Products extends PbModel {
 						if($product["valid_status"] == 1 || ($product["valid_status"] == 3) && $product["valid_moderator"] != $mid) {
 							$permissions["valid"] = false;				
 						}
-					}					
+					}
 				}
 			}
 		}
@@ -705,11 +700,11 @@ class Products extends PbModel {
 		$conditions[] = "Product.state = 1";
 		$conditions[] = "Product.valid_status = 1";
 		$conditions[] = 'Product.area_show=1';
-		$other_con = " > 8";
-		$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
-		$conditions[] = "(c.new_product_show=1 AND c.id IN (".
-				"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 AND pp.state=1 AND pp.valid_status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
-		
+		//$other_con = " > 8";
+		//$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
+		//$conditions[] = "(c.new_product_show=1 AND c.id IN (".
+		//		"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->table_prefix}companies AS cc INNER JOIN {$this->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 AND pp.state=1 AND pp.valid_status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
+
 		$joins = array();
 		$joins[] = "LEFT JOIN {$this->table_prefix}companies c ON c.id=Product.company_id";
 		$joins[] = "LEFT JOIN {$this->table_prefix}areas a ON a.id=c.area_id";
@@ -761,7 +756,6 @@ class Products extends PbModel {
  		$cache_options = cache_read('typeoption');
  		$area_s = $space->array_multi2single($area->getCacheArea());
  		$industry_s = $space->array_multi2single($area->getCacheArea());
-		
 		
 		$conditions = array("Product.status=1","Product.state=1","Product.valid_status=1","Product.new_price>0");
 		

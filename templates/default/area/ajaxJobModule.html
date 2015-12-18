@@ -1,45 +1,117 @@
-                <div class="areas-module-controls">
-		    <a target="_blank" href="{the_url module=root-url}virtual-office/job.php?do=edit">Đăng việc làm</a>
-		    <a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='viec-lam'}">Xem thêm</a>
-		    
-		</div>
-		
 		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Việc làm</a>
-		    <!--<div class="subtab-area">
-			<ul>
-			    <li><a class="{if $smarty.get.type_id==14}active{/if}" rel="14" href="javascript:void(0)">Nhu cầu mua</a></li>
-			    <li><a class="{if $smarty.get.type_id==9}active{/if}" rel="9" href="javascript:void(0)">Nhu cầu bán</a></li>
-			    <li><a class="{if $smarty.get.type_id==10}active{/if}" rel="10" href="javascript:void(0)">Nhà phân phối</a></li>
-			    <li><a class="{if $smarty.get.type_id==16}active{/if}" rel="16" href="javascript:void(0)">Tìm đối tác</a></li>
-			</ul>
-		    </div>-->
 		</h3>
-                <!--{if $jobs}-->
 		
-                    <ul class="filterable-grid">					      
-                        <!--{loop $jobs item level key}-->
-                            <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
-                                <div class="half odd">
-                                    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
-                                    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
-                                </div>
-                                <div class="description-bottom">
-                                    <div class="title">				      
-                                            <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
-                                    </div>
-                                </div>
-                            </li>
-                        <!--{/loop}-->
-                    </ul>
-		{if $smarty.get.p}
-		    <div class="pagination-list"></div><br style="clear:both" />
-		{/if}
 		
-                <!--{else}-->
-                    <p class="no-content">Chưa có tin việc làm nào trong mục này.</p>
-                <!--{/if}-->
 		
-		{if $smarty.get.p}
-		    <div id="cccount" style="display: none">{$count}</div>
-		    <div id="pppage" style="display: none">{$smarty.get.p}</div>
-		{/if}
+		<div class="job_employee_boxes">
+			<div class="job_box">
+				<div class="module-box">
+					<div class="module-title">
+						<h2>Danh sách tuyển dụng</h2>
+						<div class="areas-module-controls">
+							<a target="_blank" href="{the_url module=root-url}virtual-office/job.php?do=edit">Đăng việc làm</a>
+							
+						</div>
+					</div>
+					<div class="study-mod">
+						<div id="job-content">
+							<div class="">
+								<table width="100%" style="">
+								  <tbody><tr class="job-table-list-head">
+								<th style="white-space: nowrap" width="40%" align="left">Tên công việc</th>
+								<th style="white-space: nowrap" width="30%" align="left">Nhà tuyển dụng</th>
+								<th style="white-space: nowrap" width="18%" align="left">Nơi làm việc</th>
+								<!--<th width="15%" align="left">Mức lương</th>-->
+								<th style="white-space: nowrap" width="" align="left">Hạn nộp</th>
+								  </tr>
+									
+								<!--{loop $jobs job level key}-->
+								<tr>
+									<td><a href="{the_url module='jobs' id=`$job.id` title=`$job.name`}">{$job.name}</td>
+									<td><a href="{if $job.membertype_id == 5}{the_url module='jobs' id=`$job.id` title=`$job.name`}{else}{$job.space_url}{/if}">{$job.companyname}</a></td>
+									<td><a class="job_city_link" href="javascript:void(0)" rel="{$job.city_id}">{$job.area}</a></td>
+									<!--<td>{$job.salary}</td>-->
+									<td>{$job.expired_dates}</td>
+								</tr>
+								<!-- {/loop} -->
+								
+								<!--{if !$jobs}-->
+									<tr><td align="center" colspan="4" style="text-align: center">Không tìm thấy tuyển dụng nào</td></tr>
+								<!--{/if}-->
+								
+								</tbody></table>
+								  
+							  </div>
+							
+						</div>
+					</div>
+					<a style="bottom: 10px;
+    color: #3b984c !important;
+    position: absolute;
+    right: 10px;" class="" href="/?do=job&type=&indust=0&area={$area.id}&keyword=">Xem thêm</a>
+				</div>
+				
+			</div>
+			<div class="employee_box">
+				<div class="module-box">
+				<div class="module-title">
+					<h2>Danh sách ứng viên</h2>
+					<div class="areas-module-controls">
+						<a target="_blank" href="{the_url module=root-url}virtual-office/employee.php?do=edit">Đăng việc làm</a>
+					
+					</div>
+				</div>
+				<div class="study-mod">
+					<div id="job-content">
+						<div class="">
+							<table width="100%" style="">
+								<tbody>
+									
+									<tr class="job-table-list-head">
+										<th style="white-space: nowrap" width="40%" align="left">Vị trí mong muốn</th>
+										<th style="white-space: nowrap" width="35%" align="left">Cấp bậc</th>
+										<th style="white-space: nowrap" width="30%" align="left">Nơi làm việc</th>
+									</tr>
+									
+									<!-- {employee row=10 status=1 showed=1 searched=1 indust=`$smarty.get.industry_id` type=`$smarty.get.type` area=`$smarty.get.area_id`} -->
+										<tr>
+											<td><a href="{the_url module='employees' id=`$job.id`}">{$job.expected_position}</td>
+											<td><a class="joblevel_link" rel="{$job.joblevel_id}" href="javascript:void(0)">{$job.joblevel}</a></td>
+											<td>
+												{$job.areas}
+											</td>
+										</tr>				
+									<!-- {/employee} -->
+									
+									<!--{if !$count}-->
+										<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào</td></tr>
+									<!--{/if}-->
+								  
+								</tbody>
+							</table>
+							
+							
+						</div>
+					</div>
+				</div>
+				<a style="bottom: 10px;
+    color: #3b984c !important;
+    position: absolute;
+    right: 10px;" class="" href="/?do=employee&type=&indust=0&area={$area.id}&keyword=">Xem thêm</a>
+		    </div>
+				
+			</div>
+		</div>
+
+{literal}
+<script>
+	var height = $(".job_box .module-box").height()
+	if(height < $(".employee_box .module-box").height()) {
+	  height = $(".employee_box .module-box").height()
+	}
+	$(".employee_box .module-box").css("height",height)
+	$(".job_box .module-box").css("height",height)
+</script>
+{/literal}
+
+        

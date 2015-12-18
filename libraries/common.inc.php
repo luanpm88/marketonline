@@ -170,15 +170,21 @@ if (isset($_PB_CACHE['setting']['time_offset'])){
 		@date_default_timezone_set('Asia/Ho_Chi_Minh');
 	}
 }
-uses("company", "announcement", "member","adsize");
+uses("company", "announcement", "member","adsize","setting");
 $adsize = new Adsizes();
 $company = new Companies();
 $member = new Members();
+$setts = new Settings();
 $announcement = new Announcements();
 $date_line = date("Y-m-d H:i:s", $time_stamp);
 $viewhelper = new PbView();
 $conditions = null;
 $pb_userinfo = pb_get_member_info();
+
+$show_market_page = $setts->fields("valued", array("variable = 'show_market_page'"));
+//var_dump($show_market_page);
+setvar("show_market_page", $show_market_page["valued"]);
+
 if ($pb_userinfo) {
 	$pb_user = $pb_userinfo;
 	$pb_user = pb_addslashes($pb_user);

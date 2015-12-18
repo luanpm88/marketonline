@@ -6,6 +6,9 @@
  *      @version $Revision: 2075 $
  */
 function smarty_block_employee($params, $content, &$smarty, &$repeat) {
+	uses("area");
+	$area = new Areas();
+	
 	$conditions = array();
 	$param_count = count($smarty->_tag_stack);
 	if(empty($params['name'])) $params['name'] = "job";
@@ -46,9 +49,20 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	if (isset($params['indust']) && $params['indust'] != 0) {
 		$conditions[] = "j.jobindusts LIKE '%[".intval($params['indust'])."]%'";
 	}
+	
 	if (isset($params['area']) && $params['area'] != 0) {
 		$conditions[] = "j.areas LIKE '%[".$params['area']."]%'";
 	}
+	
+	if (!$params['area'] && isset($params['areatype_id']) && $params['areatype_id'] != 0) {
+		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
+		$ors = array();
+		foreach($all_areas as $key => $aaaa) {
+			$ors[] = "j.areas LIKE '%[".$aaaa.id."]%'";
+		}
+		//$conditions[] = "(".implode(" OR ", $ors).")";
+	}
+	
 	if (isset($params['type']) && $params['type'] != 0) {
 		$conditions[] = "j.joblevel_id = ".intval($params['type']);
 	}
@@ -77,11 +91,37 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	
 	$JobProficiencies = cache_read('typeoption', 'job_proficiency');	
 		
-	uses("area");
-	$area = new Areas();
+	
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {
 		//var_dump($item);
 		$repeat = true;
+		
+		
+		uses("company");
+		$company = new Companies();
+		// Get company
+		$com = $company->read("*", $item["company_id"]);
+		$item["company"] = $com;
+		$html = '<div class=map_box_info>';
+			$html .= '<img src='.$com["thumb"].' class=map_com_thumb />';
+			
+			$html .= '<p>';
+				$html .= '<strong>'.$com["shop_name"].'</strong>';
+				$html .= '<br />'.$com["address"];						
+				$more = array();
+				if($com["tel"]) $more[] = '<br />ĐT: '.$com["tel"];
+				if($com["fax"]) $more[] = '<br />Fax: '.$com["fax"];
+				if($com["email"]) $more[] = '<br />Email: '.$com["email"];				
+				if(!empty($more)) $html .= implode(", ",$more);
+			$html .= '</p>';
+		$html .= '</div>';
+		if(in_array($com["map_lng"], $addresses)) {
+			$com["map_lng"] = $com["map_lng"]+(0.0005*$dup);
+			$dup++;
+		}
+		$item["company_map"] = 'addMarkerByLatLng('.$com["map_lat"].','.$com["map_lng"].',map,"'.$html.'","/'.$com["cache_spacename"].'/tuyen-dung");';
+		
+		
 		//$space_controller->setBaseUrlByUserId($item['userid'], "job");
 		//$url = $space_controller->rewriteDetail("job", $item['id']);
 		//$item['url'] = $url;
@@ -136,6 +176,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		$repeat = false;
 		reset($smarty->blockvars[$param_count]);
 	}
+	
 	if(!is_null($content)) print $content;
 	if(!$repeat) $smarty->blockvars[$param_count] = array();
 }

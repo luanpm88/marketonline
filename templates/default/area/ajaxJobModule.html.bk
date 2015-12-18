@@ -1,0 +1,45 @@
+<div class="areas-module-controls">
+		    <a target="_blank" href="{the_url module=root-url}virtual-office/job.php?do=edit">Đăng việc làm</a>
+		    <a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='viec-lam'}">Xem thêm</a>
+		    
+		</div>
+		
+		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Việc làm</a>
+		    <!--<div class="subtab-area">
+			<ul>
+			    <li><a class="{if $smarty.get.type_id==14}active{/if}" rel="14" href="javascript:void(0)">Nhu cầu mua</a></li>
+			    <li><a class="{if $smarty.get.type_id==9}active{/if}" rel="9" href="javascript:void(0)">Nhu cầu bán</a></li>
+			    <li><a class="{if $smarty.get.type_id==10}active{/if}" rel="10" href="javascript:void(0)">Nhà phân phối</a></li>
+			    <li><a class="{if $smarty.get.type_id==16}active{/if}" rel="16" href="javascript:void(0)">Tìm đối tác</a></li>
+			</ul>
+		    </div>-->
+		</h3>
+                <!--{if $jobs}-->
+		
+                    <ul class="filterable-grid">					      
+                        <!--{loop $jobs item level key}-->
+                            <li data-type="dentity motion sites web-design " data-id="id-1" class="item id{$item.id}">
+                                <div class="half odd">
+                                    <div class="pic"><img title="{$item.title}" alt="{$item.title}" style="margin:0 0;" src="{$item.thumb}"></div>
+                                    <a rel="video_group" class="album_a_block" title="{$item.title}" href="{$item.href}"></a>
+                                </div>
+                                <div class="description-bottom">
+                                    <div class="title">				      
+                                            <h4><a target="_blank" title="{$item.title}" href="{$item.href}">{$item.title}</a></h4>
+                                    </div>
+                                </div>
+                            </li>
+                        <!--{/loop}-->
+                    </ul>
+		{if $smarty.get.p}
+		    <div class="pagination-list"></div><br style="clear:both" />
+		{/if}
+		
+                <!--{else}-->
+                    <p class="no-content">Chưa có tin việc làm nào trong mục này.</p>
+                <!--{/if}-->
+		
+		{if $smarty.get.p}
+		    <div id="cccount" style="display: none">{$count}</div>
+		    <div id="pppage" style="display: none">{$smarty.get.p}</div>
+		{/if}

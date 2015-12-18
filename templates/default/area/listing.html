@@ -10,9 +10,28 @@
     
     function pagination(total, p) {
 	    page = p;
-	    var num_per_page = row*num_per_row;
-	    
-	    var pages = Math.ceil(total/num_per_page);
+		
+		var num_per_page = row*num_per_row;
+		
+		var pages = Math.ceil(total/num_per_page);
+		
+		var begin = p-10;
+		var end = p+10;
+		
+		if (begin < 0) {
+          end = end - begin
+		  begin = 1
+        }
+		
+		if (end > pages) {
+          begin = begin - (end - pages)
+		  end = pages
+        }
+		
+		if (begin < 0) {
+		  begin = 1
+        }   
+	   
 	    
 	    $('.pagination-list').html("");
 	    
@@ -25,7 +44,7 @@
 			'<li class="prev"><a href="javascript:void(0)" rel="'+(page-1)+'"><</a></li>';
 	      }
 		  
-	      for(var i = 1; i <= pages; i++) {
+	      for(var i = begin; i <= end; i++) {
 		var active = '';
 		if (page == i) {
 		  active = ' active';
@@ -63,8 +82,8 @@
 	{/if}
     {literal}
     
-    var row = 25;
-    var num_per_row = 7;
+    var row = 20;
+    var num_per_row = 4;
     {/literal}
 	{if $num_per_row}
 	    var num_per_row = {$num_per_row};
@@ -84,10 +103,11 @@
 	
     });
 </script>
+
 <!--{/literal}-->
 
 
-<div id="body-wrapper" >
+<div id="body-wrapper" class="market-area-listing-page" >
 <div id="body-wrapper-padding">
 <!--[if lt IE 7]>
 <div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
