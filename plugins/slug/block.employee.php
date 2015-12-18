@@ -58,9 +58,9 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 		$all_areas = $area->findAll("id",null,array("areatype_id=".$params['areatype_id']));
 		$ors = array();
 		foreach($all_areas as $key => $aaaa) {
-			$ors[] = "j.areas LIKE '%[".$aaaa.id."]%'";
+			$ors[] = "j.areas LIKE '%[".$aaaa["id"]."]%'";
 		}
-		//$conditions[] = "(".implode(" OR ", $ors).")";
+		$conditions[] = "(".implode(" OR ", $ors).")";
 	}
 	
 	if (isset($params['type']) && $params['type'] != 0) {
@@ -94,8 +94,7 @@ function smarty_block_employee($params, $content, &$smarty, &$repeat) {
 	
 	if(list($key, $item) = each($smarty->blockvars[$param_count])) {
 		//var_dump($item);
-		$repeat = true;
-		
+		$repeat = true;		
 		
 		uses("company");
 		$company = new Companies();

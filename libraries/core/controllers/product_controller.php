@@ -2290,8 +2290,7 @@ class Product extends PbController {
 		$pb_userinfo = pb_get_member_info();
 		
 		if ($id) {
-			//$id = intval($_GET['id']);
-			
+			//$id = intval($_GET['id']);			
 		
 						$datas = $saleorderitem->getStickyDatas($id);
 						$info = $saleorder->read("*", $id, null, array('id'=>$id));
@@ -2314,6 +2313,7 @@ class Product extends PbController {
 						setvar("Seller", $seller);
 						
 						//var_dump($arrTemplate);
+						
 				
 				//get name				
 				
