@@ -75,9 +75,7 @@ class Job extends PbController {
 		$areas_by_areatype = $area_controller->getAreasByAreatype();
 		setvar("areas_by_areatype",$areas_by_areatype);
 		
-		//===================== end map ====================
-		
-		
+		//===================== end map ====================		
 		
 		if(isset($_GET["industry_id"])){
 			$industry_id = $_GET["industry_id"];
@@ -90,9 +88,7 @@ class Job extends PbController {
 			$areas = $this->area->findAll("*",null,array("level=2","areatype_id=".$areatype["id"]),"Area.display_order DESC");
 			$areatypes[$key]["areas"] = $areas;
 		}
-		setvar("areatypes",$areatypes);
-		
-		
+		setvar("areatypes",$areatypes);	
 		
 		$this->job->updateStatus();
 		
@@ -118,16 +114,13 @@ class Job extends PbController {
 		}
 		
 		$amount = $this->job->findCount(null, $conditions,"id");
-		setvar("paging", array('total'=>$amount));
-		
+		setvar("paging", array('total'=>$amount));		
 		
 		setvar("JobindustOptions", $this->jobindust->getTypeOptions('['.$_GET['indust'].']'));
-		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));
-		
+		setvar("AreaOptions", $this->area->getAreaOptions('['.$_GET['area'].']'));		
 		
 		$salaries = cache_read('typeoption', 'salary');
-		setvar("Salary", $salaries);
-		
+		setvar("Salary", $salaries);		
 		
 		//#################for rightbar#########
 		setvar("ads_top", $ad->getByZone(23));
@@ -149,7 +142,6 @@ class Job extends PbController {
 		//$student_discount_products = $this->product->getStudentDiscountProducts(0, 0, 3);		
 		//setvar("student_discount_products", $student_discount_products["result"]);
 		//######################################
-		
 		
 		render("job/index");
 	}
@@ -214,11 +206,9 @@ class Job extends PbController {
 		
 		//$query = "SELECT * FROM `pb_industries` WHERE level=2 AND id='".$_GET["id"]."'";                    
 
-		
 		//$result = $con->query($query);
 		//$row = $result->fetch_assoc();
 		$url = "http://www.vietnamworks.com/tim-viec-lam";
-
 
 		$html = file_get_html($url);
 		if($html->find('div.page-content div.list-simple', 0))
@@ -251,7 +241,6 @@ class Job extends PbController {
 						
 						//echo $block3->innertext;
 						//echo " - ".$block3->href;
-						
 						
 						//save database
 						if($key1 == 2)
