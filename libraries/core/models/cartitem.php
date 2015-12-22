@@ -371,6 +371,14 @@ class Cartitems extends PbModel {
 				}
 				
 				
+				// GET DEAL
+				uses("deal");
+				$deal_m = new Deals();
+				$deal = $deal_m->getDeal($result[$i]["p_id"]);
+				if($deal) {
+					$result[$i]["deal"] = $deal;
+				}
+				
 				//if($result[$i]['default_pic'])
 				//{
 				//	$pic_col = 'picture'.$result[$i]['default_pic'];
@@ -448,13 +456,7 @@ class Cartitems extends PbModel {
 					$result[$key]['p_price'] = $item["p_price"];
 				}
 				
-				// GET DEAL
-				uses("deal");
-				$deal_m = new Deals();
-				$deal = $deal_m->getDeal($item["p_id"]);
-				if($deal) {
-					$result[$key]["deal"] = $deal;
-				}
+				
 			}
 			
 			if(!empty($result)){
