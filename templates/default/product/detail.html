@@ -541,6 +541,7 @@
 							
 							
 							  <div class="offer_wrapper">
+								{if !$deal}
 								  <div class="price">
 									  <span itemprop="price">
 										  {if $item.new_price || $item.price}					
@@ -552,6 +553,13 @@
 										  {/if}
 									  </span>
 								  </div>
+								{else}
+									<div class="price">
+										<span itemprop="price">															
+											<span class="amount">{$deal.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+										</span>
+									</div>
+								{/if}
 								  
 								  <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
 					  
