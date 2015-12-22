@@ -377,6 +377,7 @@ class Cartitems extends PbModel {
 				$deal = $deal_m->getDeal($result[$i]["p_id"]);
 				if($deal) {
 					$result[$i]["deal"] = $deal;
+					var_dump($deal);
 				}
 				
 				//if($result[$i]['default_pic'])
