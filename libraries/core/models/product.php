@@ -807,6 +807,7 @@ class Products extends PbModel {
 								);
 		if(count($deals)) {
 			$result = $deals[0];
+			$result["price"] = number_format($result["price"], 0, ',', '.');
 		}
 		
 		return $result;
