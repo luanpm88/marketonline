@@ -432,6 +432,7 @@ class Cartitems extends PbModel {
 	{
 		$condition = null;
 		
+		echo "Dddddd";
 		
 		if (!isset($_GET['page']) || $_GET['page']==1) {
 			//if (isset($_GET['typeid'])) {
