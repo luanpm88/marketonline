@@ -316,6 +316,14 @@ class Cartitems extends PbModel {
 			$result[$i]['image'] = pb_get_attachmenturl($result[$i][$pic_col], '', 'small');
 			//$result[$i]['image'] = pb_get_attachmenturl($result[$i]['p_picture'], '', 'small');
 			
+			// GET DEAL
+			uses("product");
+			$product = new Products();
+			$deal = $product->getDeal($result[$i]["p_id"]);
+			if($deal) {
+				$result[$i]["deal"] = $deal;
+			}
+			
 			$result_new[$result[$i]['member_id']]['total'] += $result[$i]['p_price']*$result[$i]['quantity'];			
 			$result_new[$result[$i]['member_id']]['items'][$i] = $result[$i];
 			
