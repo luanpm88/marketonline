@@ -432,7 +432,7 @@ class Cartitems extends PbModel {
 	{
 		$condition = null;
 		
-		echo "Dddddd";
+		
 		
 		if (!isset($_GET['page']) || $_GET['page']==1) {
 			//if (isset($_GET['typeid'])) {
@@ -459,7 +459,7 @@ class Cartitems extends PbModel {
 					$result[$key]['p_price'] = $item["p_price"];
 				}
 				
-				
+				echo $item["p_id"];
 			}
 			
 			if(!empty($result)){
