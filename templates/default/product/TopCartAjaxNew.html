@@ -71,14 +71,16 @@
 							    <input class="quantity_val" style="height:22px;margin: 0 auto; width: 48px; text-align: right" type="text" name="product[{$sticky.id}]" value="{$sticky.quantity}" />
 							    <input class="quantity_but" type="submit" value="{lang update}" />
 							</td>
-							<td align=right style="text-align: right;padding-top: 20px">oo
+							<td align=right style="text-align: right;padding-top: 20px">
 								{if $sticky.deal}
 									{$sticky.deal.price}
 								{else}
 									{$sticky.p_price}
 								{/if}
 							</td>
-							<td align=right style="text-align: right;padding-top: 20px">{$sticky.p_total}</td>
+							<td align=right style="text-align: right;padding-top: 20px">
+								{$sticky.p_total}
+							</td>
 							<td align="right"  style="text-align: right;padding-top: 20px">
 							    
 							    <input class="cart_remove" onclick="$('#cartitemid').val('{$sticky.id}');$('#task').val('remove');$('#cart').submit()" type="button" value="{lang remove}" />
