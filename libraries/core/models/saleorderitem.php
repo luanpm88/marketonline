@@ -327,11 +327,11 @@ class Saleorderitems extends PbModel {
 			{
 				if($item["p_new_price"] != "" && $item["p_new_price"] != 0)
 				{
-					$result[$key]['p_price'] = $item["p_new_price"];
+					$result[$key]['p_price'] = $item["price"];
 				}
 				else
 				{
-					$result[$key]['p_price'] = $item["p_price"];
+					$result[$key]['p_price'] = $item["price"];
 				}
 			}
 			if(!empty($result)){
