@@ -1911,6 +1911,9 @@ class Product extends PbController {
 						$item_info['product_id'] = $item['p_id'];
 						$item_info['price'] = $item['p_price'];
 						$item_info['quantity'] = $item['quantity'];
+						$item_info['deal_id'] = $item['deal']['id'];
+						
+						
 						
 						//var_dump($item_info);
 						$orderitem->add($item_info);
