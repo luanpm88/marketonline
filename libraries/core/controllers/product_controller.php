@@ -737,6 +737,9 @@ class Product extends PbController {
 		}
 		$info = $this->product->getProductById($id);
 		
+		$deal = $this->product->getDeal($id);
+		var_dump($deal);
+		
 		
 		//clicked
 		$this->product->clicked($customer_code, $info);		

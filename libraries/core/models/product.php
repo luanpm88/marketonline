@@ -790,5 +790,18 @@ class Products extends PbModel {
 		//var_dump($industries);
 		return $industries;
 	}
+	
+	function getDeal($id) {
+		uses("deal");
+		$deal = new Deals();
+		$result = false;
+		
+		$deals = $deal->findAll("*", null, array("pb_product_id = ".$id));
+		if(count($deals)) {
+			$result = $deals[0];
+		}
+		
+		return $result;
+	}
 }
 ?>
