@@ -548,7 +548,8 @@
 											  {if $item.new_price != "" && $item.new_price != 0}
 												  {if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
 											  {else}
-												  <span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+													{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if}
+													<span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
 											  {/if}
 										  {/if}
 									  </span>
