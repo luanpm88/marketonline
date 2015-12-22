@@ -801,8 +801,8 @@ class Products extends PbModel {
 		
 		$deals = $deal->findAll("*", null, array(
 													"pb_product_id = ".$id,
-													"UNIX_TIMESTAMP(created_at) >= ".$beginOfDay,
-													"UNIX_TIMESTAMP(created_at) <= ".$endOfDay
+													"UNIX_TIMESTAMP(start_at) <= ".$beginOfDay,
+													"UNIX_TIMESTAMP(end_at) >= ".$endOfDay
 												)
 								);
 		if(count($deals)) {

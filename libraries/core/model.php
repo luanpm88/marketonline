@@ -607,7 +607,7 @@ class PbModel extends Overloadable
 			$sql.=$records;
 		}
 		
-		echo $sql."<br /><br /><br /><br />";
+		//echo $sql."<br /><br /><br /><br />";
 		
 		if (!empty($ADODB_CACHE_DIR) && $this->cache_sql && !defined("IN_PBADMIN")) {
 			$return = $this->dbstuff->CacheGetArray($sql);
