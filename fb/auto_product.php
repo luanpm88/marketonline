@@ -67,11 +67,11 @@ foreach($share_topics as $share_topic) {
     // define POST parameters
     $params = array(
       "access_token" => $fb_access_token, // configure appropriately
-      "message" => $share_topic['post_title'],
-      "link" => $share_topic['url']."#welcome",
+      "message" => "hello world!",
+      "link" => $share_topic['url'],
       "name" => $share_topic['title'],
       "caption" => "http://marketonline.vn", // configure appropriately
-      "description" => $share_topic['content']
+      "description" => "Hello World!"
     );
 	
 	echo $share_topic['url']."#welcome";
