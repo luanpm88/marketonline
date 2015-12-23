@@ -73,7 +73,7 @@ foreach($share_topics as $share_topic) {
       "link" => $share_topic['url']."#welcome",
       "name" => $share_topic['title'],
       "caption" => "http://marketonline.vn", // configure appropriately
-      "description" => $share_topic['content']
+      "description" => "something to share! Test may fb app"
     );
  
     if($share_topic['image']) {
