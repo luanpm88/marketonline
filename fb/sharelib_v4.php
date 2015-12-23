@@ -83,10 +83,10 @@ $config['fileUpload'] = false; // optional
 // Connect to facebook sdk
 require_once("sdk_v4/autoload.php"); // set the right path
 //$fb = new Facebook($config);
-$fb = new Facebook\Facebook(array(
+$fb = new Facebook\Facebook([
   'app_id' => '1226574870702526',
   'app_secret' => '676ea4e2bf3a6e10ab32f2eb2b0021ea',
   'default_graph_version' => 'v2.2',
-));
+]);
 
 ?>
