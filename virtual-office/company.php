@@ -313,8 +313,7 @@ if (isset($_GET['do']) && $_GET['do'] == "facebook_connect") {
 }
 
 if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
-	$adm = $member->read("*", 1);
-	setver("fb_app_id", $adm["fb_app_id"]);
+	
 	
 	$fb_data = $member->read("*", $memberinfo["id"]);
 	$access_token = $fb_data["fb_access_token"];
@@ -443,6 +442,10 @@ foreach($industries_checkbox as $key => $item)
 setvar("industries_checkbox", $industries_checkbox);
 setvar("Genders", $typeoption->get_cache_type('gender', null, array(-1)));
 setvar("PageTitle","Hồ sơ");
+
+$adm = $member->read("*", 1);
+setver("fb_app_id", $adm["fb_app_id"]);
+
 
 if(detectMobile()) {	
 	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
