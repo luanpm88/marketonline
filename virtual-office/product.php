@@ -349,10 +349,10 @@ if (isset($_POST['save'])) {
 				
 				
 				if (isset($product->params['data']['product']['service'])) {
-					header('Location:product.php?type=service&success=1&share_id='.$prouduct_id);
+					header('Location:product.php?type=service&success=1&share_id='.$product_id);
 				}
 				else {
-					header('Location:product.php?success=1&share_id='.$prouduct_id);
+					header('Location:product.php?success=1&share_id='.$product_id);
 				}				
 			}
 			setvar("notice", "Sản phẩm được lưu thành công!");
