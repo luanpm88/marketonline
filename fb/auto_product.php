@@ -121,7 +121,7 @@ foreach($share_topics as $share_topic) {
 		$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
 	}
 	
-	sleep(3);
+	sleep(180);
   } 
 }
 
