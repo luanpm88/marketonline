@@ -340,19 +340,19 @@ if (isset($_POST['save'])) {
 			}
 		}
 		if ($result) {
-			if (!empty($id)) {
-				//flash($message_info?$message_info:"success");
-				//header('Location: '.$_SERVER['REQUEST_URI']);
-			}
-			else
-			{
-				if (isset($product->params['data']['product']['service'])) {
-					header('Location:product.php?type=service&success=1');
-				}
-				else {
-					header('Location:product.php?success=1');
-				}				
-			}
+			//if (!empty($id)) {
+			//	//flash($message_info?$message_info:"success");
+			//	//header('Location: '.$_SERVER['REQUEST_URI']);
+			//}
+			//else
+			//{
+			//	if (isset($product->params['data']['product']['service'])) {
+			//		header('Location:product.php?type=service&success=1');
+			//	}
+			//	else {
+			//		header('Location:product.php?success=1');
+			//	}				
+			//}
 			setvar("notice", "Sản phẩm được lưu thành công!");
 			
 			$share_product = $product->read("*", $prouduct_id);
