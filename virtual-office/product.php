@@ -311,7 +311,7 @@ if (isset($_POST['save'])) {
 			
 			$result = $product->save($product->params['data']['product'], "update", $id, null, $conditions);
 			
-			
+			$product_id = $id;
 			
 		} else {
 			if ($g['max_product'] && $now_product_amount>=$g['max_product']) {
@@ -346,15 +346,19 @@ if (isset($_POST['save'])) {
 			}
 			else
 			{
+				
+				
 				if (isset($product->params['data']['product']['service'])) {
-					header('Location:product.php?type=service&success=1');
+					header('Location:product.php?type=service&success=1&share_id='.$product_id);
 				}
 				else {
-					header('Location:product.php?success=1');
+					header('Location:product.php?success=1&share_id='.$product_id);
 				}				
 			}
 			setvar("notice", "Sản phẩm được lưu thành công!");
-			setvar("notice_share", true);
+			
+			$share_product = $product->read("*", $prouduct_id);
+			setvar("share_product", $share_product);
 
 		}else {			
 			header('Location: '.$_SERVER['REQUEST_URI']);
@@ -655,6 +659,11 @@ setvar("nlink",$page->nextpage_link);
 setvar("plink", $page->previouspage_link);
 setvar("CheckStatus", explode(",",L('product_status', 'tpl')));
 uaAssign(array("pagenav"=>$page->getPagenav()));
+
+if(isset($_GET["share_id"])) {
+	$share_product = $product->read("*", $_GET["share_id"]);
+	setvar("share_product", $share_product);
+}
 
 if($_GET['type'] == 'service') {
 	setvar("PageTitle","Dịch vụ");
