@@ -337,10 +337,10 @@ jQuery(document).ready(function($) {
 		<div class="hint">{lang must_input_with_star}</div>
 		<p class="message">{$notice}</p>
 		
-		<p>Hãy chia sẻ để quảng bá sản phẩm <strong>{$item.name}</strong>
 		
-							<div class="share_buts">
-							
+					<div class="share_box">
+						<div class="share_buts">
+							<p>Hãy chia sẻ để quảng bá sản phẩm <strong>{$item.name}</strong></p>
 						  <!-- AddThis Button BEGIN -->
 							{literal}
 								<div addthis:url='{/literal}{the_url id=`$item.id` module='product' product_name=`$item.name` service=`$item.service`}{literal}' class="addthis_toolbox addthis_default_style addthis_32x32_style">
@@ -353,16 +353,8 @@ jQuery(document).ready(function($) {
 								<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
 							{/literal}
 							<!-- AddThis Button END -->
-						</div>
-		
-		</p>
-       
-       
-       
-       
-       
-       
-       
+						</div>       
+					</div>
        
        
        
