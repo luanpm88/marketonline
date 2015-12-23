@@ -336,6 +336,10 @@ jQuery(document).ready(function($) {
 		{if $getvar.type}<input type="hidden" name="data[product][service]" value="1" />{/if}
 		<div class="hint">{lang must_input_with_star}</div>
 		<p class="message">{$notice}</p>
+		
+		{if $share_product}
+			<p>Hãy chia sẻ để quảng bá sản phẩm <strong>{$share_product.name}</strong></p>
+		{/if}
        
        
        
