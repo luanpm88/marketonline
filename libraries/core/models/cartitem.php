@@ -316,6 +316,15 @@ class Cartitems extends PbModel {
 			$result[$i]['image'] = pb_get_attachmenturl($result[$i][$pic_col], '', 'small');
 			//$result[$i]['image'] = pb_get_attachmenturl($result[$i]['p_picture'], '', 'small');
 			
+			// GET DEAL
+			uses("product");
+			$product = new Products();
+			$deal = $product->getDeal($result[$i]["p_id"]);
+			if($deal) {
+				$result[$i]["deal"] = $deal;
+				$result[$i]["p_price"] = $deal["price"];
+			}
+			
 			$result_new[$result[$i]['member_id']]['total'] += $result[$i]['p_price']*$result[$i]['quantity'];			
 			$result_new[$result[$i]['member_id']]['items'][$i] = $result[$i];
 			
@@ -371,6 +380,15 @@ class Cartitems extends PbModel {
 				}
 				
 				
+				// GET DEAL
+				uses("product");
+				$product = new Products();
+				$deal = $product->getDeal($result[$i]["p_id"]);
+				if($deal) {
+					$result[$i]["deal"] = $deal;
+				}
+				var_dump($deal);
+				
 				//if($result[$i]['default_pic'])
 				//{
 				//	$pic_col = 'picture'.$result[$i]['default_pic'];
@@ -423,6 +441,7 @@ class Cartitems extends PbModel {
 		$condition = null;
 		
 		
+		
 		if (!isset($_GET['page']) || $_GET['page']==1) {
 			//if (isset($_GET['typeid'])) {
 			//	$type_id = intval($_GET['typeid']);
@@ -447,6 +466,7 @@ class Cartitems extends PbModel {
 				{
 					$result[$key]['p_price'] = $item["p_price"];
 				}
+				
 			}
 			
 			if(!empty($result)){

@@ -2,7 +2,7 @@
 class Saleorderitems extends PbModel {
  	var $name = "Saleorderitem";
  	var $info;
- 	var $fields = "ci.id,ci.saleorder_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.picture as p_picture,p.id as p_id";
+ 	var $fields = "ci.price, ci.id,ci.saleorder_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.picture as p_picture,p.id as p_id";
  	var $amount;
  	var $instance = NULL;
 	var $condition;
@@ -327,11 +327,11 @@ class Saleorderitems extends PbModel {
 			{
 				if($item["p_new_price"] != "" && $item["p_new_price"] != 0)
 				{
-					$result[$key]['p_price'] = $item["p_new_price"];
+					$result[$key]['p_price'] = $item["price"];
 				}
 				else
 				{
-					$result[$key]['p_price'] = $item["p_price"];
+					$result[$key]['p_price'] = $item["price"];
 				}
 			}
 			if(!empty($result)){

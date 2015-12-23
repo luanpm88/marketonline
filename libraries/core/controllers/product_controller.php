@@ -737,6 +737,10 @@ class Product extends PbController {
 		}
 		$info = $this->product->getProductById($id);
 		
+		// Get Product Deal
+		$deal = $this->product->getDeal($id);
+		setvar("deal", $deal);
+		
 		
 		//clicked
 		$this->product->clicked($customer_code, $info);		
@@ -1907,6 +1911,9 @@ class Product extends PbController {
 						$item_info['product_id'] = $item['p_id'];
 						$item_info['price'] = $item['p_price'];
 						$item_info['quantity'] = $item['quantity'];
+						$item_info['deal_id'] = $item['deal']['id'];
+						
+						
 						
 						//var_dump($item_info);
 						$orderitem->add($item_info);
@@ -2292,27 +2299,27 @@ class Product extends PbController {
 		if ($id) {
 			//$id = intval($_GET['id']);			
 		
-						$datas = $saleorderitem->getStickyDatas($id);
-						$info = $saleorder->read("*", $id, null, array('id'=>$id));
-												
-						$seller = $member->read("c.shop_name,Member.*, c.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
-						//var_dump($info);
-						//var_dump($datas);
-						
-						foreach($datas["items"] as $key => &$item)
-						{
-							$item["p_total"] = number_format($item["p_price"]*$item["quantity"], 0, ',', '.');
-							$item["p_price"] = number_format($item["p_price"], 0, ',', '.');
-						}
-						
-						$datas["total"] = number_format($datas["total"], 0, ',', '.');
-						
-						setvar("StickyItems", $datas);
-						setvar("Info", $info);
-						setvar("total", $cartitem->total);
-						setvar("Seller", $seller);
-						
-						//var_dump($arrTemplate);
+			$datas = $saleorderitem->getStickyDatas($id);
+			$info = $saleorder->read("*", $id, null, array('id'=>$id));
+									
+			$seller = $member->read("c.shop_name,Member.*, c.address, mf.mobile", $info["seller_id"], null, array('id'=>$info["seller_id"]), array("LEFT JOIN pb_memberfields mf ON mf.member_id=Member.id","LEFT JOIN pb_companies c ON c.member_id=Member.id"));
+			//var_dump($info);
+			//var_dump($datas);
+			
+			foreach($datas["items"] as $key => &$item)
+			{
+				$item["p_total"] = number_format($item["p_price"]*$item["quantity"], 0, ',', '.');
+				$item["p_price"] = number_format($item["p_price"], 0, ',', '.');
+			}
+			
+			$datas["total"] = number_format($datas["total"], 0, ',', '.');
+			
+			setvar("StickyItems", $datas);
+			setvar("Info", $info);
+			setvar("total", $cartitem->total);
+			setvar("Seller", $seller);
+			
+			//var_dump($arrTemplate);
 						
 				
 				//get name				

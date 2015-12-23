@@ -790,5 +790,27 @@ class Products extends PbModel {
 		//var_dump($industries);
 		return $industries;
 	}
+	
+	function getDeal($id) {
+		uses("deal");
+		$deal = new Deals();
+		$result = false;
+		
+		$beginOfDay = strtotime("midnight", $this->timestamp);
+		$endOfDay   = strtotime("tomorrow", $this->timestamp) - 1;
+		
+		$deals = $deal->findAll("*", null, array(
+													"pb_product_id = ".$id,
+													"UNIX_TIMESTAMP(start_at) <= ".$beginOfDay,
+													"UNIX_TIMESTAMP(end_at) >= ".$endOfDay
+												)
+								);
+		if(count($deals)) {
+			$result = $deals[0];
+			$result["display_price"] = number_format($result["price"], 0, ',', '.');
+		}
+		
+		return $result;
+	}
 }
 ?>

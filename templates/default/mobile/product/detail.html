@@ -38,6 +38,7 @@
 					</form>
 				</div>
 			{/if}
+			
 			{if $permissions.valid}
 				<a href="#valid" class="title" title="Bài viết hợp lệ">Bài viết hợp lệ?</a>
 				<div id="valid" style="">
@@ -48,16 +49,10 @@
 					</form>
 				</div>
 			{/if}
+			
 		    </div>
 		{/if}
-        
-		
-		
-		
-		
-		
-		
-		
+        		
                 <div class="row">
                                         
                     <div class="product-title">
@@ -111,21 +106,23 @@
                         
                             <div class="summary">
                                 
-                                
-                                
-                                
 				    <div class="sum_top">
 					
 					<div class="info-2line-group line-normal">
 					    
 					    <p>
 						<label>Giá</label>
-						{if $item.new_price || $item.price}					
-							{if $item.new_price != "" && $item.new_price != 0}
-								{if $item.price}<span class="old_price title">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
-							{else}
-								<span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+						{if !$deal}
+							{if $item.new_price || $item.price}					
+								{if $item.new_price != "" && $item.new_price != 0}
+									{if $item.price}<span class="old_price title">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if} <span class="amount">{$item.new_price} </span><span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span> {if $item.price_note}<span class="noteprice">({$item.price_note})</span>{/if}
+								{else}
+									<span class="amount">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
+								{/if}
 							{/if}
+						{else}
+							{if $item.price}<span class="old_price">{$item.price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>{/if}
+							<span class="amount">{$deal.display_price} <span class="price_unit">VNĐ{if $item.price_unit}/{$item.price_unit}{/if}</span></span>
 						{/if}
 					    </p>
 					    
