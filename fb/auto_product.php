@@ -73,8 +73,10 @@ foreach($share_topics as $share_topic) {
       "link" => $share_topic['url']."#welcome",
       "name" => $share_topic['title'],
       "caption" => "http://marketonline.vn", // configure appropriately
-      "description" => "something to share! Test may fb app"
+      "description" => $share_topic['content']
     );
+	
+	var_dump($params);
  
     if($share_topic['image']) {
       $params["picture"] = $share_topic['image'];
@@ -82,46 +84,47 @@ foreach($share_topics as $share_topic) {
  
     // check if topic successfully posted to Facebook
     try {
-	$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
-	
-	$logs["link"] = $params["link"];
-	$logs["fb_page"] = $admin["fb_user"]["link"];
-	$logs["type"] = "admin_wall";
-	$logs["title"] = $params['name'];
-	$logs["created"] = date("Y-m-d H:i:s");
-	$logs["message"] = $params['message'];
-	$logs["kind"] = "product";
-	$sharelog->save($logs);
-	
-	// mark topic as posted (ensure that it will be posted only once)
-	$sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
-	if($conn->query($sql) === false) {
-	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-	}
-	
-	$result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break; 
+		$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
+		
+		$logs["link"] = $params["link"];
+		$logs["fb_page"] = $admin["fb_user"]["link"];
+		$logs["type"] = "admin_wall";
+		$logs["title"] = $params['name'];
+		$logs["created"] = date("Y-m-d H:i:s");
+		$logs["message"] = $params['message'];
+		$logs["kind"] = "product";
+		$sharelog->save($logs);
+		
+		// mark topic as posted (ensure that it will be posted only once)
+		$sql = 'UPDATE pb_products SET facebook_pubstatus = 1 WHERE id = ' . $share_topic['id'];
+		if($conn->query($sql) === false) {
+		  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+		}
+		
+		$result .= ' SUCCESSFUL... (Posted to [ME] Wall) : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
+		
     } catch(Exception $e) {
 	
-	$logs["link"] = $params["link"];
-	$logs["fb_page"] = $admin["fb_user"]["link"];
-	$logs["type"] = "admin_wall";
-	$logs["title"] = $params['name'];
-	$logs["created"] = date("Y-m-d H:i:s");
-	$logs["error_message"] = $e->getMessage();
-	$logs["message"] = $params['message'];
-	$logs["kind"] = "product";
-	$sharelog->save($logs);
-	
-	// mark topic as posted (ensure that it will be posted only once)
-	$sql = 'UPDATE pb_products SET facebook_pubstatus = -1 WHERE id = ' . $share_topic['id'];
-	if($conn->query($sql) === false) {
-	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-	}
-	
-	$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
-    }
- 
-    sleep(3);
+		$logs["link"] = $params["link"];
+		$logs["fb_page"] = $admin["fb_user"]["link"];
+		$logs["type"] = "admin_wall";
+		$logs["title"] = $params['name'];
+		$logs["created"] = date("Y-m-d H:i:s");
+		$logs["error_message"] = $e->getMessage();
+		$logs["message"] = $params['message'];
+		$logs["kind"] = "product";
+		$sharelog->save($logs);
+		
+		// mark topic as posted (ensure that it will be posted only once)
+		$sql = 'UPDATE pb_products SET facebook_pubstatus = -1 WHERE id = ' . $share_topic['id'];
+		if($conn->query($sql) === false) {
+		  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+		}
+		
+		$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
+		}
+	 
+		sleep(3);
   }
  
 }
