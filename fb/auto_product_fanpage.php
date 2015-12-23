@@ -120,7 +120,7 @@ foreach($share_topics as $share_topic) {
         trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
       
-    sleep(3);
+    sleep(10);
   }
  
 }
