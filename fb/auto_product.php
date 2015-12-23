@@ -71,7 +71,7 @@ foreach($share_topics as $share_topic) {
       "link" => $share_topic['url'],
       "name" => $share_topic['title'],
       "caption" => "http://marketonline.vn", // configure appropriately
-      "description" => "Hello World!"
+      "description" => $share_topic['content']
     );
 	
 	echo $share_topic['url']."#welcome";
