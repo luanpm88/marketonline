@@ -311,7 +311,7 @@ if (isset($_POST['save'])) {
 			
 			$result = $product->save($product->params['data']['product'], "update", $id, null, $conditions);
 			
-			
+			$product_id = $id;
 			
 		} else {
 			if ($g['max_product'] && $now_product_amount>=$g['max_product']) {
@@ -354,7 +354,9 @@ if (isset($_POST['save'])) {
 				}				
 			}
 			setvar("notice", "Sản phẩm được lưu thành công!");
-			setvar("notice_share", true);
+			
+			$share_product = $product->read("*", $prouduct_id);
+			setvar("notice_item", $share_product);
 
 		}else {			
 			header('Location: '.$_SERVER['REQUEST_URI']);

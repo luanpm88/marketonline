@@ -126,6 +126,13 @@
 	    </div>
 	    
 	    {if $smarty.get.success}<p class="notice" style="margin-bottom: -25px;">Sản phẩm được lưu thành công!</p>{/if}
+		
+		
+		{if $share_item}
+			<p>Hãy chia sẻ để quảng bá sản phẩm <strong>{$share_item.name}</strong></p>
+		{/if}
+		
+		
 	    <div class="next_prev prev_page"><a href="{$plink}" title="{lang prev_page}">{lang prev_page}</a>&nbsp;&nbsp;&nbsp;<a href="{$nlink}" title="{lang next_page}">{lang next_page}</a></div>
          <table class="bglist">
               <!-- product -->
