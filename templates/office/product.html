@@ -125,10 +125,26 @@
 		</select>
 	    </div>
 	    
-	    {if $smarty.get.success}<p class="notice" style="margin-bottom: -25px;">Sản phẩm được lưu thành công!</p>{/if}
-		
-		
-		
+	    {if $share_product}
+			<div class="share_box" onclick="$('.share_box,.share_buts').hide()"></div>
+				<div class="share_buts">
+					<div class="close_but" onclick="$('.share_box,.share_buts').hide()">X</div>
+					<p>Sản phẩm được lưu thành công!<br />Hãy chia sẻ để quảng bá sản phẩm <strong>{$share_product.name}</strong></p>
+				  <!-- AddThis Button BEGIN -->
+					{literal}
+						<div addthis:url='{/literal}{the_url id=`$share_product.id` module='product' product_name=`$share_product.name` service=`$share_product.service`}{literal}' class="addthis_toolbox addthis_default_style addthis_32x32_style">
+						<a class="addthis_button_facebook"></a>
+						<a class="addthis_button_google_plusone_share"></a>
+						<a class="addthis_button_twitter"></a>					
+						<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+						</div>
+						<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+						<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+					{/literal}
+					<!-- AddThis Button END -->
+				</div>       
+			
+		{/if}
 		
 		
 	    <div class="next_prev prev_page"><a href="{$plink}" title="{lang prev_page}">{lang prev_page}</a>&nbsp;&nbsp;&nbsp;<a href="{$nlink}" title="{lang next_page}">{lang next_page}</a></div>
