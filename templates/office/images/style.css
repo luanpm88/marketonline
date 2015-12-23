@@ -3750,3 +3750,31 @@ a.unvalid_edit {
 .contact_listing strong {
     color: #3b984c;
 }
+
+.share_box {
+    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+.share_box .share_buts {
+    background: #fff none repeat scroll 0 0;
+    display: block;
+    margin: auto;
+    padding: 30px;
+    position: relative;
+    top: 40%;
+    width: 50%;
+}
+.share_box .share_buts p {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.share_box .addthis_toolbox {
+    margin-left: 230px;
+}
