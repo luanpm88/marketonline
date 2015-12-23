@@ -35,8 +35,6 @@ while($res_s = $rs->fetch_assoc()) {
     $message = str_replace("{link_bai_viet}",$res['url'],$message);
     $res["post_title"] = $message;//mb_convert_encoding($res_s["company_name"],"ASCII", "UTF8");
     
-    
-    
       if(isset($res_s['default_pic']))
       {
 	  $pic_col = 'picture'.$res_s['default_pic'];
@@ -53,8 +51,6 @@ while($res_s = $rs->fetch_assoc()) {
 }
 
 $rs->free();
-
-
 
 
 $result = '';
@@ -121,7 +117,7 @@ foreach($share_topics as $share_topic) {
 		$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
 	}
 	
-	sleep(180);
+	sleep(90);
   } 
 }
 
