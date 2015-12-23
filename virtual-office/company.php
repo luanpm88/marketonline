@@ -313,6 +313,9 @@ if (isset($_GET['do']) && $_GET['do'] == "facebook_connect") {
 }
 
 if (isset($_GET['do']) && $_GET['do'] == "fanpage_select") {
+	$adm = $member->read("*", 1);
+	setver("fb_app_id", $adm["fb_app_id"]);
+	
 	$fb_data = $member->read("*", $memberinfo["id"]);
 	$access_token = $fb_data["fb_access_token"];
 	$fb_data = $member->getFacebookAccounts($access_token);	
