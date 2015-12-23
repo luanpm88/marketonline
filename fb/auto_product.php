@@ -112,6 +112,12 @@ foreach($share_topics as $share_topic) {
 	$logs["kind"] = "product";
 	$sharelog->save($logs);
 	
+	// mark topic as posted (ensure that it will be posted only once)
+	$sql = 'UPDATE pb_products SET facebook_pubstatus = -1 WHERE id = ' . $share_topic['id'];
+	if($conn->query($sql) === false) {
+	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+	}
+	
 	$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
     }
  
