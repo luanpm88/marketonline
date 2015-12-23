@@ -346,14 +346,13 @@ if (isset($_POST['save'])) {
 			}
 			else
 			{
-				$share_product = $product->read("*", $prouduct_id);
-				setvar("share_product", $share_product);
+				
 				
 				if (isset($product->params['data']['product']['service'])) {
-					header('Location:product.php?type=service&success=1');
+					header('Location:product.php?type=service&success=1&share_id='.$prouduct_id);
 				}
 				else {
-					header('Location:product.php?success=1');
+					header('Location:product.php?success=1&share_id='.$prouduct_id);
 				}				
 			}
 			setvar("notice", "Sản phẩm được lưu thành công!");
@@ -660,6 +659,11 @@ setvar("nlink",$page->nextpage_link);
 setvar("plink", $page->previouspage_link);
 setvar("CheckStatus", explode(",",L('product_status', 'tpl')));
 uaAssign(array("pagenav"=>$page->getPagenav()));
+
+if(isset($_GET["share_id"])) {
+	$share_product = $product->read("*", $_GET["share_id"]);
+	setvar("share_product", $share_product);
+}
 
 if($_GET['type'] == 'service') {
 	setvar("PageTitle","Dịch vụ");
