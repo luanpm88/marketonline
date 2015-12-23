@@ -23,7 +23,6 @@ while($res_s = $rs->fetch_assoc()) {
     $res['url'] = "http://marketonline.vn/san-pham/".$res_s['id']."/".stringToURI($res['title']);
     $res["content"]= substr(strip_tags(str_replace('[:vi-vn]', '', $res_s["content"])),0,9000);
     
-    
     $message = str_replace("{chuyen_muc}","Gian hàng Online",$message);
     $message = str_replace("{ten_chu_the}",$res_s["company_name"],$message);
     if($res_s["service"] == 1) {
@@ -72,9 +71,8 @@ foreach($share_topics as $share_topic) {
       "name" => $share_topic['title'],
       "caption" => "http://marketonline.vn", // configure appropriately
       "description" => $share_topic['content']
-    );
+    );	
 	
-	echo $share_topic['url']."#welcome";
  
     if($share_topic['image']) {
       $params["picture"] = $share_topic['image'];
@@ -124,8 +122,7 @@ foreach($share_topics as $share_topic) {
 	}
 	
 	sleep(3);
-  }
- 
+  } 
 }
 
 if($result) $result .= date("Y-m-d H:i:s") . $line_break;
