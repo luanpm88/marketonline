@@ -3760,7 +3760,7 @@ a.unvalid_edit {
     width: 100%;
     z-index: 10000;
 }
-.share_box .share_buts {
+.share_buts {
     background: #fff none repeat scroll 0 0;
     display: block;
     margin: auto;
@@ -3769,12 +3769,12 @@ a.unvalid_edit {
     top: 40%;
     width: 50%;
 }
-.share_box .share_buts p {
+.share_buts p {
     display: block;
     font-size: 14px;
     margin-bottom: 10px;
     text-align: center;
 }
-.share_box .addthis_toolbox {
-    margin-left: 230px;
+.share_buts .addthis_toolbox {
+    margin-left: 236px;
 }
