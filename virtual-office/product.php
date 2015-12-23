@@ -356,7 +356,7 @@ if (isset($_POST['save'])) {
 			setvar("notice", "Sản phẩm được lưu thành công!");
 			
 			$share_product = $product->read("*", $prouduct_id);
-			setvar("notice_item", $share_product);
+			setvar("share_product", $share_product);
 
 		}else {			
 			header('Location: '.$_SERVER['REQUEST_URI']);
