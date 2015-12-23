@@ -63,7 +63,7 @@ $result = '';
 foreach($share_topics as $share_topic) {
  
   if($share_topic['facebook_pubstatus'] == 0) {
-  //if(true) {  
+	//if(true) {  
     // define POST parameters
     $params = array(
       "access_token" => $fb_access_token, // configure appropriately
@@ -73,6 +73,8 @@ foreach($share_topics as $share_topic) {
       "caption" => "http://marketonline.vn", // configure appropriately
       "description" => $share_topic['content']
     );
+	
+	echo $fb_access_token;
  
     if($share_topic['image']) {
       $params["picture"] = $share_topic['image'];
@@ -80,7 +82,7 @@ foreach($share_topics as $share_topic) {
  
     // check if topic successfully posted to Facebook
     try {
-		$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
+		$ret = $fb->api('/me/feed', 'POST', $params); 	// configure appropriately	
 		
 		$logs["link"] = $params["link"];
 		$logs["fb_page"] = $admin["fb_user"]["link"];
@@ -89,6 +91,7 @@ foreach($share_topics as $share_topic) {
 		$logs["created"] = date("Y-m-d H:i:s");
 		$logs["message"] = $params['message'];
 		$logs["kind"] = "product";
+		
 		$sharelog->save($logs);
 		
 		// mark topic as posted (ensure that it will be posted only once)
@@ -118,9 +121,9 @@ foreach($share_topics as $share_topic) {
 		}
 		
 		$result .= ' FAILED... (' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
-		}
-	 
-		sleep(3);
+	}
+	
+	sleep(3);
   }
  
 }
@@ -134,6 +137,7 @@ if(php_sapi_name() == 'cli') {
   echo $result;
  
 } else {
+  
   $html = '<html><head>';
   $html .= '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">';
   $html .= '</head>';
