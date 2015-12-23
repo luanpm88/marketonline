@@ -443,6 +443,8 @@ setvar("industries_checkbox", $industries_checkbox);
 setvar("Genders", $typeoption->get_cache_type('gender', null, array(-1)));
 setvar("PageTitle","Hồ sơ");
 
+$adm = $member->read("*", 1);
+setvar("fb_app_id", $adm["fb_app_id"]);
 
 
 if(detectMobile()) {	
