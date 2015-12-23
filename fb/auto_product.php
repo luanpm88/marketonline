@@ -85,7 +85,7 @@ foreach($share_topics as $share_topic) {
     // check if topic successfully posted to Facebook
     try {
 		$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
-		
+		var_dump($ret);
 		$logs["link"] = $params["link"];
 		$logs["fb_page"] = $admin["fb_user"]["link"];
 		$logs["type"] = "admin_wall";
