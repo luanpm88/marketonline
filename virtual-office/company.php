@@ -308,6 +308,9 @@ if (isset($_GET['do']) && $_GET['do'] == "facebook_connect") {
 	setvar("fb_data", $fb_data);
 	setvar("fb_user", $fb_user);
 	
+	$adm = $member->read("*", 1);
+	setvar("fb_app_id", $adm["fb_app_id"]);
+	
 	template("_fb_connect");
 	exit;
 }
