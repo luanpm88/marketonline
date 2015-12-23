@@ -92,27 +92,27 @@ foreach($share_topics as $share_topic) {
     try {
       //for fanpage of member under admin info
       if($share_topic["fanpage_id"]) {
-	//$params["access_token"] = $fb_access_token;
-	$params["access_token"] = "CAAEIS7GNlZAEBAIprbcFnNaivZCN0qus6bSkx0Kik1uVFY6oxZAyaZBGDAZAImUh0kd5shw8ZCowh1ARvYXW9fnLa73Pl5XMIJYeKiZC3nKsZABbk10ZC3bxk0HDIeObsQ1LUZC3KDASRLA5ZCbT3JEHOjqz6kQuZAh5P8CIWpfIBxWG64k3Xy2dtvbFxDXEdM774i0ZD";
-	$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);	
-	
-	$sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
-	if($conn->query($sql) === false) {
-	  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
-	}
-	
-	
-	$logs["link"] = $params["link"];
-	$logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$share_topic["fanpage_id"];
-	$logs["type"] = "admin_user_fanpage";
-	$logs["title"] = $params['name'];
-	$logs["created"] = date("Y-m-d H:i:s");
-	$logs["message"] = $params['message'];
-	$logs["kind"] = "product";
-	$sharelog->save($logs);
+		//$params["access_token"] = $fb_access_token;
+		$params["access_token"] = "CAAEIS7GNlZAEBAIprbcFnNaivZCN0qus6bSkx0Kik1uVFY6oxZAyaZBGDAZAImUh0kd5shw8ZCowh1ARvYXW9fnLa73Pl5XMIJYeKiZC3nKsZABbk10ZC3bxk0HDIeObsQ1LUZC3KDASRLA5ZCbT3JEHOjqz6kQuZAh5P8CIWpfIBxWG64k3Xy2dtvbFxDXEdM774i0ZD";
+		$ret = $fb->api('/'.$share_topic["fanpage_id"].'/feed', 'POST', $params);	
+		
+		$sql = 'UPDATE pb_products SET facebook_pubstatus_user = 1 WHERE id = ' . $share_topic['id'];
+		if($conn->query($sql) === false) {
+		  trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
+		}
 	
 	
-	$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
+		$logs["link"] = $params["link"];
+		$logs["fb_page"] = "https://www.facebook.com/pages/fanpage/".$share_topic["fanpage_id"];
+		$logs["type"] = "admin_user_fanpage";
+		$logs["title"] = $params['name'];
+		$logs["created"] = date("Y-m-d H:i:s");
+		$logs["message"] = $params['message'];
+		$logs["kind"] = "product";
+		$sharelog->save($logs);
+		
+		
+		$result .= ' SUCCESSFUL... (Posted to ['.$share_topic["shop_name"].'] Fanpage) : ' . $share_topic['fanpage'] . ' - ' . $share_topic['url'] . $line_break;
       }
       else
       {
