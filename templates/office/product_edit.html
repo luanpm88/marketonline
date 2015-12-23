@@ -339,7 +339,7 @@ jQuery(document).ready(function($) {
 				{if $share_product}
 					<div class="share_box" onclick="$('.share_box,.share_buts').hide()"></div>
 						<div class="share_buts">
-							<div class="close_but">X</div>
+							<div class="close_but" onclick="$('.share_box,.share_buts').hide()">X</div>
 							<p>{$notice}<br />Hãy chia sẻ để quảng bá sản phẩm <strong>{$item.name}</strong></p>
 						  <!-- AddThis Button BEGIN -->
 							{literal}
