@@ -74,7 +74,7 @@ class Facebook extends BaseFacebook
 
     }
   }
-
+  
   /**
    * Supported keys for persistent data
    *
