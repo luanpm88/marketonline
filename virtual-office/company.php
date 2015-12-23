@@ -445,6 +445,7 @@ setvar("PageTitle","Hồ sơ");
 
 $adm = $member->read("*", 1);
 setvar("fb_app_id", $adm["fb_app_id"]);
+//var_dump($adm["fb_app_id"]);
 
 
 if(detectMobile()) {	
