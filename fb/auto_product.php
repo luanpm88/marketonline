@@ -66,7 +66,7 @@ foreach($share_topics as $share_topic) {
 	//if(true) {  
     // define POST parameters
     $params = array(
-      "access_token" => $fb_access_token."z", // configure appropriately
+      "access_token" => $fb_access_token, // configure appropriately
       "message" => $share_topic['post_title'],
       "link" => $share_topic['url']."#welcome",
       "name" => $share_topic['title'],
@@ -74,7 +74,7 @@ foreach($share_topics as $share_topic) {
       "description" => $share_topic['content']
     );
 	
-	echo $fb_access_token;
+	echo $share_topic['url']."#welcome";
  
     if($share_topic['image']) {
       $params["picture"] = $share_topic['image'];
