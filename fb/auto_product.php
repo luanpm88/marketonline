@@ -58,8 +58,6 @@ $rs->free();
 
 
 
-var_dump($share_topics);
-
 $result = '';
 // AUTOMATIC POST EACH TOPIC TO FACEBOOK
 foreach($share_topics as $share_topic) {
@@ -75,8 +73,6 @@ foreach($share_topics as $share_topic) {
       "caption" => "http://marketonline.vn", // configure appropriately
       "description" => $share_topic['content']
     );
-	
-	var_dump($params);
  
     if($share_topic['image']) {
       $params["picture"] = $share_topic['image'];
@@ -85,7 +81,7 @@ foreach($share_topics as $share_topic) {
     // check if topic successfully posted to Facebook
     try {
 		$ret = $fb->api('/me/feed', 'POST', $params); // configure appropriately	
-		var_dump($ret);
+		
 		$logs["link"] = $params["link"];
 		$logs["fb_page"] = $admin["fb_user"]["link"];
 		$logs["type"] = "admin_wall";
