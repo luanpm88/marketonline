@@ -3765,9 +3765,10 @@ a.unvalid_edit {
     display: block;
     margin: auto;
     padding: 30px;
-    position: relative;
+    position: fixed;
     top: 40%;
     width: 50%;
+    z-index: 10001;
 }
 .share_buts p {
     display: block;
