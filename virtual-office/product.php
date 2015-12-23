@@ -354,6 +354,7 @@ if (isset($_POST['save'])) {
 				}				
 			}
 			setvar("notice", "Sản phẩm được lưu thành công!");
+			setvar("notice_share", true);
 
 		}else {			
 			header('Location: '.$_SERVER['REQUEST_URI']);

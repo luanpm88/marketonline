@@ -1,10 +1,5 @@
 <?php
 require_once('sharelib.php'); 
-    
-    
-    
-
-
 
 // create array with topics to be posted on Facebook
 $sql = 'SELECT type.name as type_name, com.cache_spacename, com.shop_name as company_name, trade.id, trade.facebook_pubstatus, trade.title, trade.content, trade.picture, trade.picture1, trade.picture2, trade.picture3, trade.picture4'    
