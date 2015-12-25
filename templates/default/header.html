@@ -405,6 +405,10 @@ function goclicky_custom(meh, url, images, title, summary)
 			param += "&id="+p_id;
 		}
 		if(typeof(amount)!='undefined') param += "&amount="+amount;
+        
+        if (window.location.hash != "") {
+            param += "&hash="+window.location.hash;
+        }
 		
 		//code
 		$.ajax({
