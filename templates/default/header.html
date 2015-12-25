@@ -407,9 +407,9 @@ function goclicky_custom(meh, url, images, title, summary)
 		if(typeof(amount)!='undefined') param += "&amount="+amount;
         
         if (window.location.hash != "") {
-            param += "&hash="+window.location.hash;
+            param += "&hash="+window.location.hash.replace("#","");
         }
-        alert(window.location.hash)
+        //alert(window.location.hash)
 		
 		//code
 		$.ajax({
