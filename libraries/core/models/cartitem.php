@@ -2,7 +2,7 @@
 class Cartitems extends PbModel {
  	var $name = "Cartitem";
  	var $info;
- 	var $fields = "c.shop_name,ci.id,ci.cart_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.default_pic,p.picture as p_picture,p.picture1 as p_picture1,p.picture2 as p_picture2,p.picture3 as p_picture3,p.picture4 as p_picture4,p.id as p_id,m.space_name,m.id as member_id";
+ 	var $fields = "c.shop_name,ci.id,ci.agent_username,ci.cart_id,ci.product_id,ci.quantity,p.name as p_name,p.price as p_price,p.new_price as p_new_price,p.default_pic,p.picture as p_picture,p.picture1 as p_picture1,p.picture2 as p_picture2,p.picture3 as p_picture3,p.picture4 as p_picture4,p.id as p_id,m.space_name,m.id as member_id";
  	var $amount;
  	var $instance = NULL;
 	var $condition;

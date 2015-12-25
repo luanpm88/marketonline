@@ -1912,6 +1912,7 @@ class Product extends PbController {
 						$item_info['price'] = $item['p_price'];
 						$item_info['quantity'] = $item['quantity'];
 						$item_info['deal_id'] = $item['deal']['id'];
+						$item_info['agent_username'] = $item['agent_username'];
 						
 						
 						
@@ -2153,10 +2154,10 @@ class Product extends PbController {
 				//deal_admin_19550
 				$vs = explode("_", $_GET["hash"]);
 				
-				$cartitem->params['data']['cartitem']['agent_username'] = $vs[1];
-			}
-			
-			
+				if($vs[2] == $_GET["id"]) {
+					$cartitem->params['data']['cartitem']['agent_username'] = $vs[1];
+				}
+			}		
 			
 			if(isset($_GET["amount"]))
 			{
@@ -2164,7 +2165,7 @@ class Product extends PbController {
 				$result = $cartitem->add($_GET["id"], $session_cart_id, '', $_GET["amount"]);
 			}
 			else
-			{			
+			{
 				$result = $cartitem->add($_GET["id"], $session_cart_id);
 			}
 			
