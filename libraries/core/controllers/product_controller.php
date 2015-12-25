@@ -2153,7 +2153,7 @@ class Product extends PbController {
 				//deal_admin_19550
 				$vs = explode("_", $_GET["hash"]);
 				
-				$cartitem->params['data']['cartitem']['agent_username'] = vs[1];
+				$cartitem->params['data']['cartitem']['agent_username'] = $vs[1];
 			}
 			
 			
