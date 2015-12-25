@@ -2149,6 +2149,13 @@ class Product extends PbController {
 			$cartitem->params['data']['cartitem']['cart_id'] = $session_cart_id;
 			$cartitem->params['data']['cartitem']['product_id'] = $_GET["id"];
 			
+			if(isset($_GET["hash"])) {
+				//deal_admin_19550
+				vs = explode("_");
+				
+				$cartitem->params['data']['cartitem']['agent_username'] = vs[1];
+			}
+			
 			
 			
 			if(isset($_GET["amount"]))
@@ -2160,6 +2167,8 @@ class Product extends PbController {
 			{			
 				$result = $cartitem->add($_GET["id"], $session_cart_id);
 			}
+			
+			
 			//echo $cartitem->checkExist($_GET["id"], $session_cart_id)."gsdgs";
 		}
 		
