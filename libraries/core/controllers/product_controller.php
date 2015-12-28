@@ -2146,9 +2146,9 @@ class Product extends PbController {
 			$cartitem->params['data']['cartitem']['cart_id'] = $session_cart_id;
 			$cartitem->params['data']['cartitem']['product_id'] = $_GET["id"];
 			
-			if(isset($_GET["hash"])) {
+			if(isset($_GET["deal"])) {
 				//deal_admin_19550
-				$vs = explode("_", $_GET["hash"]);
+				$vs = explode("_", $_GET["deal"]);
 				
 				if($vs[2] == $_GET["id"]) {
 					$cartitem->params['data']['cartitem']['agent_username'] = $vs[1];
