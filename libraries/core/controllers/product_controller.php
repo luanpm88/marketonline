@@ -2150,8 +2150,8 @@ class Product extends PbController {
 				//deal_admin_19550
 				$vs = explode("_", $_GET["deal"]);
 				
-				if($vs[2] == $_GET["id"]) {
-					$cartitem->params['data']['cartitem']['agent_username'] = $vs[1];
+				if($vs[1] == $_GET["id"]) {
+					$cartitem->params['data']['cartitem']['agent_username'] = $vs[0];
 				}
 			}		
 			
