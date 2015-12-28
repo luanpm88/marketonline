@@ -838,6 +838,18 @@ h2.market-header-title {
     float: right;
     width: 49%;
 }
+.deal_box .deal_content {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ffa544;
+    border-radius: 10px;
+    padding: 10px;
+}
 .deal_box .deal_content .left_content {
-    
+    border-right: 1px solid #ffa544;
+    float: left;
+    height: 100px;
+    width: 49%;
+}
+.deal_box .deal_content a {
+    color: #333;
 }
