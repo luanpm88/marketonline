@@ -1856,9 +1856,7 @@ class Product extends PbController {
 			$this->render("mobile/product/thankyou");
 		} else {
 			$this->render("product/thankyou");
-		}
-		
-		
+		}	
 	}
 	
 	function meminfo()
@@ -1870,7 +1868,7 @@ class Product extends PbController {
 		$cart = new Carts();
 		$member = new Members();
 		$order = new Saleorders();
-		$orderitem = new Saleorderitems();		
+		$orderitem = new Saleorderitems();
 		
 		$session_cart_id = $_SESSION['cart_id'];
 		
@@ -1909,9 +1907,14 @@ class Product extends PbController {
 						$item_info['product_id'] = $item['p_id'];
 						$item_info['price'] = $item['p_price'];
 						$item_info['quantity'] = $item['quantity'];
-						$item_info['deal_id'] = $item['deal']['id'];
-						$item_info['agent_username'] = $item['agent_username'];					
-						
+						if(isset($item['deal'])) {
+							$item_info['deal_id'] = $item['deal']['id'];
+							$item_info['deal_price'] = $item['deal']['price'];
+						}						
+						if(isset($item['agent_username'])) {
+							$item_info['agent_username'] = $item['agent_username'];
+						}
+
 						//var_dump($item_info);
 						$orderitem->add($item_info);
 					}

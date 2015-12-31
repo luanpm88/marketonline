@@ -197,7 +197,7 @@ class Cartitems extends PbModel {
 		$cartitem_info = $this->params['data']['cartitem'];
 		
 		if(!$this->checkExist($pid, $cart_id))
-		{			
+		{
 			$result = $this->save($cartitem_info);
 			$this->dbstuff->Execute("UPDATE {$this->table_prefix}cartitems SET quantity=".$amount." WHERE  product_id={$pid} AND cart_id={$cart_id}");
 		}
@@ -319,10 +319,10 @@ class Cartitems extends PbModel {
 			// GET DEAL
 			uses("product");
 			$product = new Products();
-			$deal = $product->getDeal($result[$i]["p_id"]);
+			$deal = $product->getDeal($result[$i]["p_id"], isset($result[$i]['agent_username']));
 			if($deal) {
 				$result[$i]["deal"] = $deal;
-				$result[$i]["p_price"] = $deal["price"];
+				$result[$i]["p_price"] = $deal["price"];				
 			}
 			
 			$result_new[$result[$i]['member_id']]['total'] += $result[$i]['p_price']*$result[$i]['quantity'];			
