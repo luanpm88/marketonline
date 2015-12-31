@@ -523,7 +523,7 @@
 	<script>
 		//Load new chatbox
 		$.ajax({
-			url: "http://marketonline.vn:3000/pb_members/pending_order_count",
+			url: "http://marketonline.vn:3000/pb_members/pending_order_count?user_id="+{/literal}{$pb_userinfo.id}{literal},
 		}).done(function ( data ) {
 			$(".sell_count").html(data)
 		});
