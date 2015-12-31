@@ -13,6 +13,24 @@
 </div>
 
 
+<div class="new_menu">
+	<ul>
+        <li>
+			<span class="new_count sell_count"></span>
+			<a title="Xem danh sách đơn hàn từ khách" href="http://marketonline.vn:3000/pb_saleorders" target="_blank">
+				Đơn đặt hàng từ khách
+			</a>			
+		</li>
+		<li>
+			
+			<a title="Xem lịch sử mua hàng của bạn" href="http://marketonline.vn:3000/pb_saleorders/buy_orders" target="_blank">
+				Lịch sử mua hàng
+			</a>			
+		</li>
+		<li></li>
+    </ul>
+</div>
+
 <table class="menu_nav" >
 	<tr>
 	</tr>
@@ -501,6 +519,15 @@
 </table>
 
 
-
+{literal}
+	<script>
+		//Load new chatbox
+		$.ajax({
+			url: "http://marketonline.vn:3000/pb_members/pending_order_count",
+		}).done(function ( data ) {
+			$(".sell_count").html(data)
+		});
+	</script>
+{/literal}
 
     

@@ -51,6 +51,9 @@ if (isset($_GET['do'])) {
 	}
 	if($do == "view" && !empty($id)){
 		//
+		
+		pheader("location: http://marketonline.vn:3000/pb_saleorders/".$id);
+		
 						$datas = $saleorderitem->getStickyDatas($id);
 						$info = $saleorder->read("*", $id, null, array('id'=>$id));
 						

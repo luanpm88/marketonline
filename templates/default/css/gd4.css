@@ -818,3 +818,38 @@ h2.market-header-title {
 .iframe_area_top_3_banner .ad_banner_item.line_3 {
     top: 291px;
 }
+.deal_box {
+    display: block;
+    margin: auto auto 20px;
+    padding: 10px;
+    width: 1200px;
+}
+.deal_box .deal_content {
+    background: #fff none repeat scroll 0 0;
+    border: 2px solid #ffa544;
+    border-radius: 10px;
+    height: 120px;
+    padding: 10px;
+}
+.deal_box .comment_but {
+    font-size: 16px;
+}
+.deal_box .deal_content .deal_share_buttons {
+    float: right;
+    width: 49%;
+}
+.deal_box .deal_content {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ffa544;
+    border-radius: 10px;
+    padding: 10px;
+}
+.deal_box .deal_content .left_content {
+    border-right: 1px solid #ffa544;
+    float: left;
+    height: 100px;
+    width: 49%;
+}
+.deal_box .deal_content a {
+    color: #333;
+}

@@ -117,8 +117,6 @@ class Product extends PbController {
 						//	$industries[$_GET["industryid"]]["box1"][$key]["count"] = $this->industry->getCountProduct($ii);
 						//}
 						
-						
-						
 						$cats = array();					
 						$cats[] = $level1["id"];
 						
@@ -1858,9 +1856,7 @@ class Product extends PbController {
 			$this->render("mobile/product/thankyou");
 		} else {
 			$this->render("product/thankyou");
-		}
-		
-		
+		}	
 	}
 	
 	function meminfo()
@@ -1872,7 +1868,7 @@ class Product extends PbController {
 		$cart = new Carts();
 		$member = new Members();
 		$order = new Saleorders();
-		$orderitem = new Saleorderitems();		
+		$orderitem = new Saleorderitems();
 		
 		$session_cart_id = $_SESSION['cart_id'];
 		
@@ -1911,10 +1907,14 @@ class Product extends PbController {
 						$item_info['product_id'] = $item['p_id'];
 						$item_info['price'] = $item['p_price'];
 						$item_info['quantity'] = $item['quantity'];
-						$item_info['deal_id'] = $item['deal']['id'];
-						
-						
-						
+						if(isset($item['deal'])) {
+							$item_info['deal_id'] = $item['deal']['id'];
+							$item_info['deal_price'] = $item['deal']['price'];
+						}						
+						if(isset($item['agent_username'])) {
+							$item_info['agent_username'] = $item['agent_username'];
+						}
+
 						//var_dump($item_info);
 						$orderitem->add($item_info);
 					}
@@ -2149,7 +2149,14 @@ class Product extends PbController {
 			$cartitem->params['data']['cartitem']['cart_id'] = $session_cart_id;
 			$cartitem->params['data']['cartitem']['product_id'] = $_GET["id"];
 			
-			
+			if(isset($_GET["deal"])) {
+				//deal_admin_19550
+				$vs = explode("_", $_GET["deal"]);
+				
+				if($vs[1] == $_GET["id"]) {
+					$cartitem->params['data']['cartitem']['agent_username'] = $vs[0];
+				}
+			}		
 			
 			if(isset($_GET["amount"]))
 			{
@@ -2157,9 +2164,11 @@ class Product extends PbController {
 				$result = $cartitem->add($_GET["id"], $session_cart_id, '', $_GET["amount"]);
 			}
 			else
-			{			
+			{
 				$result = $cartitem->add($_GET["id"], $session_cart_id);
 			}
+			
+			
 			//echo $cartitem->checkExist($_GET["id"], $session_cart_id)."gsdgs";
 		}
 		
@@ -3275,7 +3284,6 @@ class Product extends PbController {
 	
 	function getNewClickedCompany()
 	{
-		//echo $_GET["id"];
 		if(isset($_GET["id"]))
 		{
 			$com = $this->company->read("new_clicked, new_clicked_date", $_GET["id"]);
@@ -6409,6 +6417,7 @@ class Product extends PbController {
 	function checkActiveTime() {
 		
 	}
+	
 	function testScreenshot() {
 		var_dump(php_uname());
 		echo exec("ffmpeg -i attachment/album/201409/25/album-757-118.mp4 -ss 00:00:5.435 -f image2 -vframes 1 attachment/album/201409/25/album-757-118.mp4.thumb.png", $out, $err);
@@ -6647,22 +6656,18 @@ class Product extends PbController {
 		uses("ad");
 		$ads = new Adses();
 		
-		//echo "Dd";
 		//Home Top Main Left
 		//$zone_id, $order = "Ads.display_order", $limit=100, $industry_id
 		
 		$items = $ads->getByZone($_GET["id"],"Ads.display_order",100,$_GET["industry_id"]);
 		setvar("items",$items);
 		
-		
-		
 		if($_GET["type"]) {			
 			$this->render("product/ajaxAdItem_".$_GET["type"]);
 			
 		} else {
 			$this->render("product/ajaxAdItem");
-		}
-		
+		}		
 	}
 	
 	function ajaxcat23level() {
@@ -6681,8 +6686,7 @@ class Product extends PbController {
 				if($industries[$key]["count"]) {
 					$stt++;
 				}
-			}
-			
+			}			
 			setvar("parent", $parent);
 			setvar("industries", $industries);
 			

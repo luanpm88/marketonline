@@ -312,9 +312,9 @@
 			
 			<!--{if $pb_username!=""}-->
 				<a class="ppiitteemm" target="_blank" href="{the_url module="redirect" url="/virtual-office/product.php?do=edit"}">{lang post_product}</a>
-			  <!--{else}-->
+			<!--{else}-->
 				<a class="comment_but ppiitteemm" target="_blank" href="#login-box" redirect="{the_url module="redirect" url="/virtual-office/product.php?do=edit"}">{lang post_product}</a>
-			  <!--{/if}-->
+			 <!--{/if}-->
 		
 		{/if}
 	</div>
@@ -328,6 +328,7 @@
 </div>
 
 
+{if !$deal}
 
   <div class="row">
 	<div class="wide_3_banners">
@@ -353,6 +354,45 @@
                     </div>
 	</div>
 </div>
+  
+{else}
+
+	<div class="deal_box">
+		<div class="deal_content">
+			<div class="left_content">
+				
+			</div>
+			<div class="deal_share_buttons">
+				<h4 style="margin-bottom: 15px;">Chia sẽ nội dung sản phẩm này để được nhận chiết khấu từ chương trình Cộng tác viên cho DEAL:</h4>
+				<span class="share_title">
+						Chia sẻ
+				</span>
+				<div class="share_buts">
+					<!--{if $pb_username!=""}-->
+						
+								<!-- AddThis Button BEGIN -->
+								{literal}
+									<div addthis:url='{/literal}{$F_URL}/deal/{$pb_username}_{$item.id}{literal}' class="addthis_toolbox addthis_default_style addthis_32x32_style">
+									<a class="addthis_button_facebook"></a>
+									<a class="addthis_button_twitter"></a>
+									<a class="addthis_button_google_plusone_share"></a>
+									<a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+									</div>
+									<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+								{/literal}
+								<!-- AddThis Button END -->
+					<!--{else}-->
+						<a class="comment_but" target="_blank" href="#login-box" redirect="{$F_URL}">Đăng nhập/Đăng ký thành viên để tham gia chương trình Cộng tác viên nhận chiết khấu.</a>
+					<!--{/if}-->
+								
+				</div>
+			</div>
+			<br style="clear:both" />
+		</div>
+	</div>
+
+{/if}
 
 
 
@@ -563,7 +603,7 @@
 								{/if}
 								  
 								  <form style="padding-top: 6px;clear: both" action="/onetouch/shop/backpack-iuter/?add-to-cart=850" class="cart" method="post" enctype='multipart/form-data' id="comment_pos">
-					  
+										
 									  <button style="float: left" onclick="getCart({$item.id}, $('#quantity').val(), $(this));" type="button" class="single_add_to_cart_button button alt">{lang add_to_cart}</button>
 									  <div class="quantity" style="display: inline-block">
 										  <input id="quantity" name="quantity" data-min="1" data-max="0" value="1" size="4" title="Qty" class="input-text qty text" maxlength="12" />

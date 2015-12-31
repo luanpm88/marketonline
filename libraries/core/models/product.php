@@ -791,7 +791,7 @@ class Products extends PbModel {
 		return $industries;
 	}
 	
-	function getDeal($id) {
+	function getDeal($id, $shared=false) {
 		uses("deal");
 		$deal = new Deals();
 		$result = false;
@@ -801,12 +801,23 @@ class Products extends PbModel {
 		
 		$deals = $deal->findAll("*", null, array(
 													"pb_product_id = ".$id,
+													"approved = 1",
+													"status = 1",
 													"UNIX_TIMESTAMP(start_at) <= ".$beginOfDay,
 													"UNIX_TIMESTAMP(end_at) >= ".$endOfDay
 												)
 								);
 		if(count($deals)) {
 			$result = $deals[0];
+			
+			if(isset($_GET["deal"])) {
+				$shared = true;
+			}
+			
+			if($shared) {
+				$result["price"] = $result["price"]*(1-$result["share_price"]/100.0);
+			} else {
+			}
 			$result["display_price"] = number_format($result["price"], 0, ',', '.');
 		}
 		
