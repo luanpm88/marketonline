@@ -853,3 +853,22 @@ h2.market-header-title {
 .deal_box .deal_content a {
     color: #333;
 }
+#announce_top .deal_label_announce {
+    
+}
+#announce_top .deal_label_announce li {
+    border: medium none;
+}
+#announce_top .deal_label_announce li a {
+    background: rgb(237, 86, 27) none repeat scroll 0 0;
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    margin-top: 33px;
+    padding: 5px 10px;
+    width: 316px;
+}
+#header .logo a img {
+    margin-top: 145px;
+    margin-bottom: 0;
+}

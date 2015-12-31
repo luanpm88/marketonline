@@ -364,6 +364,10 @@ setvar("pb_setting",$_PB_CACHE['setting']);
 	setvar("gioithieu", $gioithieu["message"]);
 	setvar("gioithieu_raw", substr(trim(strip_tags($gioithieu["message"])),15,1000));
 	
+	$deal_announce = $announcement->read("message",22);
+	setvar("deal_announce", $deal_announce["message"]);
+	setvar("deal_announce_raw", substr(trim(strip_tags($deal_announce["message"])),15,1000));
+	
 	
 //banner size
 setvar("adsizes",$adsize->findAll("*"));
