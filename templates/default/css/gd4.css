@@ -872,3 +872,7 @@ h2.market-header-title {
     margin-top: 145px;
     margin-bottom: 0;
 }
+.fancybox-opened {
+    border: 2px solid rgb(237, 86, 27) !important;
+    z-index: 8030;
+}
