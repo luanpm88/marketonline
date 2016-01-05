@@ -250,9 +250,13 @@ if (!empty($_GET['do'])) {
 			setvar("w", $w);
 			setvar("h", $h);
 			render("mobile/product/mobile_album");
-		} else {
-			render("mobile/index");
+		} else {			
+				render("mobile/index");
+			
 		}		
+	} else if($_GET["custom_page"] == "deal_home") {
+		render("modern/deal_home");
+		exit;
 	} else {
 		//if show Home Top Main Right
 		$show_home_top_main_left = $ad->getByZone(40);
@@ -302,6 +306,8 @@ if (!empty($_GET['do'])) {
 		render("newhome");
 	//} else {
 	//	render("newhome");
+		
+		
 	}
 
 	

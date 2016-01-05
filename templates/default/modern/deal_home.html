@@ -1,0 +1,27 @@
+<!--{include file="`$theme_name`/modern/header.html" page_title="Quà tặng & Khuyến mãi hàng ngày"}-->
+
+<!--{include file="`$theme_name`/modern/topmenu.html"}-->
+    
+    <div class="page">
+        <div class="container" style="padding: 0 10px;">          
+              
+            <div class="deal_home_container" url="http://marketonline.vn:3000/deals/home">
+                
+            </div>              
+              
+        </div>
+    </div>
+    
+{literal}
+    <script>
+        $.ajax({
+                url: $(".deal_home_container").attr("url"),
+            }).done(function ( data ) {
+                if( console && console.log ) {
+                    $(".deal_home_container").html(data)
+                }                        
+            });
+    </script>
+{/literal}
+
+<!--{include file="`$theme_name`/modern/footer.html"}-->
