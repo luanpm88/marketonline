@@ -230,7 +230,9 @@ if (!empty($_GET['do'])) {
 	
 	//detectMobile()
 	if(detectMobile()) {
-		if($_GET["mobile_page"] == "home_ads") {
+		if($_GET["mobile_page"] == "deal_intro") {
+			render("mobile/deal_intro");
+		} else if($_GET["mobile_page"] == "home_ads") {
 			render("mobile/home_ads");
 		} else if($_GET["mobile_page"] == "mobile_album") {
 			$product = new Products();
