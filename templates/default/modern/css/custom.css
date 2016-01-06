@@ -1722,6 +1722,7 @@ width: auto !important;
 }
 .deal_intro_box:hover {
     opacity: 0.9;
+    text-decoration: none;
 }
 .deal_intro_box .icon_bg {
     color: #888;
