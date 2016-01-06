@@ -1716,7 +1716,7 @@ width: auto !important;
 .deal_intro_box {
     background: #fff none repeat scroll 0 0;
     float: left;
-    padding: 15px;
+    padding: 8px;
     width: 100%;
     cursor: pointer;
 }
@@ -1730,7 +1730,7 @@ width: auto !important;
     text-align: center;
 }
 .deal_intro_box .icon_bg i {
-    font-size: 30px;
+    font-size: 50px;
     color: #fff;
 }
 .deal_intro_box .content {
@@ -1739,7 +1739,7 @@ width: auto !important;
 .deal_intro_box .content h5 {
     color: #fff;
     font-size: 15px;
-    line-height: 25px;
+    line-height: 17px;
     margin-bottom: 0;
 }
 @media screen and (min-width: 960px) {
