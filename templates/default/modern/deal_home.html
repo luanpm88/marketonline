@@ -8,7 +8,7 @@
             
             <div class="row deal_intro_container" style="padding: 0 5px;margin-bottom: 20px;">
                 <div class="col-xs-12 col-sm-6 custom-5-box">
-                    <div class="deal_intro_box" rel="deal_intro_message" style="background: #57BAE8">
+                    <div class="deal_intro_box aajax" rel="deal_intro_message" style="background: #57BAE8">
                         <div class="icon_bg">
                             <i class="icon icon-bookmark"></i>
                         </div>
@@ -19,7 +19,7 @@
                 </div>
                 
                 <div class="col-xs-12 col-sm-6 custom-5-box">
-                    <div class="deal_intro_box" rel="deal_intro_transfer_payment" style="background: rgb(237, 86, 27)">
+                    <div class="deal_intro_box aajax" rel="deal_intro_transfer_payment" style="background: #ff7043">
                         <div class="icon_bg">
                             <i class="icon icon-truck"></i>
                         </div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 custom-5-box">
-                    <div class="deal_intro_box" rel="deal_intro_agent_program" style="background: rgb(255,191,0)">
+                    <div class="deal_intro_box aajax" rel="deal_intro_agent_program" style="background: rgb(255,191,0)">
                         <div class="icon_bg">
                             <i class="icon icon-star-empty3"></i>
                         </div>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6 custom-5-box">
-                    <div class="deal_intro_box" rel="deal_intro_agent_register" style="background: #7ad04d">
+                    <div class="deal_intro_box aajax" rel="deal_intro_agent_register" style="background: #7ad04d">
                         <div class="icon_bg">
                             <i class="icon-user-plus"></i>
                         </div>
@@ -79,7 +79,7 @@
                 }                        
             });
         
-        $(".deal_intro_box").click(function() {
+        $(".deal_intro_box.aajax").click(function() {
             var code = $(this).attr("rel")
             $.fancybox({
                 width: "80%",
