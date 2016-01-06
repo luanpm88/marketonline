@@ -355,24 +355,59 @@
 	</div>
 </div>
   
+{elseif $smarty.get.deal}
+	<div class="deal_box">
+		<div class="deal_content">
+			<div class="ajax_deal_intro" url="http://local.marketonline.vn/app/deals/ajax_deal_info?id={$deal.id}&hash={$smarty.get.deal}">
+					
+			</div>
+			{literal}
+					<script>
+						$.ajax({
+								url: $(".ajax_deal_intro").attr("url"),
+							}).done(function ( data ) {
+								if( console && console.log ) {
+									$(".ajax_deal_intro").html(data)
+								}                        
+							});
+					</script>
+				{/literal}
+		</div>
+	</div>
 {else}
 
 	<div class="deal_box">
 		<div class="deal_content">
 			<div class="left_content">
-				
+				<div class="ajax_deal_intro" url="http://local.marketonline.vn/app/deals/ajax_deal_info?id={$deal.id}">
+					
+				</div>
+				{literal}
+					<script>
+						$.ajax({
+								url: $(".ajax_deal_intro").attr("url"),
+							}).done(function ( data ) {
+								if( console && console.log ) {
+									$(".ajax_deal_intro").html(data)
+								}                        
+							});
+					</script>
+				{/literal}
 			</div>
 			<div class="deal_share_buttons">
-				<h4 style="margin-bottom: 15px;">Chia sẽ nội dung sản phẩm này để được nhận chiết khấu từ chương trình Cộng tác viên cho DEAL:</h4>
-				<span class="share_title">
-						Chia sẻ
-				</span>
-				<div class="share_buts">
-					<!--{if $pb_username!=""}-->
+				<h5>THAM GIA CỘNG TÁC VIÊN</h5>
+				
+				<!--{if $pb_username!=""}-->
+					<h4 style="margin-bottom: 15px;">Chia sẽ nội dung sản phẩm này để được nhận chiết khấu từ chương trình Cộng tác viên:</h4>
+					<span class="share_title">
+							Chia sẻ
+					</span>
+					<div class="share_buts">
+					
 						
 								<!-- AddThis Button BEGIN -->
 								{literal}
-									<div addthis:url='{/literal}{$F_URL}/deal/{$pb_username}_{$item.id}{literal}' class="addthis_toolbox addthis_default_style addthis_32x32_style">
+									<div addthis:url='{/literal}{$F_URL}/deal/{$pb_username}_share_{$item.id}{literal}' class="addthis_toolbox addthis_default_style addthis_32x32_style">
 									<a class="addthis_button_facebook"></a>
 									<a class="addthis_button_twitter"></a>
 									<a class="addthis_button_google_plusone_share"></a>
@@ -382,11 +417,11 @@
 									<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
 								{/literal}
 								<!-- AddThis Button END -->
-					<!--{else}-->
-						<a class="comment_but" target="_blank" href="#login-box" redirect="{$F_URL}">Đăng nhập/Đăng ký thành viên để tham gia chương trình Cộng tác viên nhận chiết khấu.</a>
-					<!--{/if}-->
 								
-				</div>
+					</div>
+				<!--{else}-->
+					Bạn chưa là thành viên. Vui lòng <a class="comment_but" target="_blank" href="#login-box" redirect="{$F_URL}">Đăng nhập hoặc Đăng ký</a> thành viên để tham gia chương trình Cộng tác viên.
+				<!--{/if}-->
 			</div>
 			<br style="clear:both" />
 		</div>

@@ -828,7 +828,7 @@ h2.market-header-title {
     background: #fff none repeat scroll 0 0;
     border: 2px solid #ffa544;
     border-radius: 10px;
-    height: 120px;
+    height: auto;
     padding: 10px;
 }
 .deal_box .comment_but {
@@ -836,7 +836,7 @@ h2.market-header-title {
 }
 .deal_box .deal_content .deal_share_buttons {
     float: right;
-    width: 49%;
+    width: 39%;
 }
 .deal_box .deal_content {
     background: #fff none repeat scroll 0 0;
@@ -847,11 +847,11 @@ h2.market-header-title {
 .deal_box .deal_content .left_content {
     border-right: 1px solid #ffa544;
     float: left;
-    height: 100px;
-    width: 49%;
+    height: auto;
+    width: 59%;
 }
 .deal_box .deal_content a {
-    color: #333;
+    color: #3b984c;
 }
 #announce_top .deal_label_announce {
     
@@ -875,4 +875,36 @@ h2.market-header-title {
 .fancybox-opened {
     border: 2px solid rgb(237, 86, 27) !important;
     z-index: 8030;
+}
+.deal_content h5 {
+    font-weight: 700;
+    margin: 0 0 5px;
+    color: rgb(237, 86, 27);
+}
+.deal_content * {
+    font-size: 16px;
+}
+.ajax_deal_intro ul {
+    margin: 0;
+}
+.ajax_deal_intro ul li {
+    list-style: none;
+    margin-bottom: 3px;
+}
+.ajax_deal_intro ul li a {
+    
+}
+.deal_share_buttons h4 {
+    line-height: 22px;
+    font-size: 16px;
+}
+.deal_content .deal_price {
+    font-weight: 700;
+}
+.deal_content .deal_old_price {
+    color: #777;
+    text-decoration: line-through;
+}
+.deal_content .income_price {
+    font-weight: 700;
 }

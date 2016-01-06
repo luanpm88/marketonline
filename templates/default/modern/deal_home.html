@@ -2,8 +2,63 @@
 
 <!--{include file="`$theme_name`/modern/topmenu.html"}-->
     
+    
     <div class="page">
-        <div class="container" style="padding: 0 10px;">          
+        <div class="container" style="padding: 0 10px;">
+            
+            <div class="row deal_intro_container" style="padding: 0 5px;margin-bottom: 20px;">
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box" rel="deal_intro_message" style="background: #57BAE8">
+                        <div class="icon_bg">
+                            <i class="icon icon-bookmark"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Giới thiệu</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box" style="background: rgb(237, 86, 27)">
+                        <div class="icon_bg">
+                            <i class="icon icon-truck"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Giao hàng & Thanh toán</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box" style="background: #1acfac">
+                        <div class="icon_bg">
+                            <i class="icon icon-pencil7"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Đăng sản phẩm</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box" style="background: rgb(255,191,0)">
+                        <div class="icon_bg">
+                            <i class="icon icon-star-empty3"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Chiết khấu cộng tác viên</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box" style="background: #7ad04d">
+                        <div class="icon_bg">
+                            <i class="icon-user-plus"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Đăng ký Cộng tác viên</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
               
             <div class="deal_home_container" url="http://marketonline.vn:3000/deals/home">
                 
@@ -21,6 +76,15 @@
                     $(".deal_home_container").html(data)
                 }                        
             });
+        
+        $(".deal_intro_box").click(function() {
+            var code = $(this).attr("rel")
+            $.fancybox({
+                autoSize: true,
+                href: 'http://marketonline.vn:3000/system_messages/ajax_content?code='+code,
+                type: 'ajax'
+            });
+        })
     </script>
 {/literal}
 

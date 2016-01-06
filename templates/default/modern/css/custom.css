@@ -1665,7 +1665,7 @@ width: auto !important;
 .deal_box a.title {
     color: #333;
     display: block;
-    font-size: 16px;
+    font-size: 15px;
     max-height: 44px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1680,6 +1680,25 @@ width: auto !important;
     color: #777;
     text-decoration: line-through;
 }
+.deal_box.deal_big {
+    
+}
+.deal_box.deal_big .image_box {
+    float: none;
+    height: 266px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.deal_box.deal_big .description_box {
+    
+}
+.deal_box.deal_big a.title {
+    height: 20px;
+    overflow: hidden;
+}
+.deal_box.deal_big .prices {
+    margin-top: 10px;
+}
 .deal_list {
     padding: 0 10px;
 }
@@ -1693,4 +1712,37 @@ width: auto !important;
     color: #fff;
     display: inline-block;
     padding: 7px 20px;
+}
+.deal_intro_box {
+    background: #fff none repeat scroll 0 0;
+    float: left;
+    padding: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+.deal_intro_box:hover {
+    opacity: 0.9;
+}
+.deal_intro_box .icon_bg {
+    color: #888;
+    display: block;
+    text-align: center;
+}
+.deal_intro_box .icon_bg i {
+    font-size: 30px;
+    color: #fff;
+}
+.deal_intro_box .content {
+    text-align: center;
+}
+.deal_intro_box .content h5 {
+    color: #fff;
+    font-size: 15px;
+    line-height: 25px;
+    margin-bottom: 0;
+}
+@media screen and (min-width: 960px) {
+    .custom-5-box {
+        width: 20%;
+    }
 }
