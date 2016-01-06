@@ -59,6 +59,8 @@
                     </div>
                 </div>
             </div>
+            
+            
               
             <div class="deal_home_container" url="http://marketonline.vn:3000/deals/home">
                 
@@ -80,7 +82,8 @@
         $(".deal_intro_box").click(function() {
             var code = $(this).attr("rel")
             $.fancybox({
-                autoSize: true,
+                width: "80%",
+                autoSize: false,
                 href: 'http://marketonline.vn:3000/system_messages/ajax_content?code='+code,
                 type: 'ajax'
             });
