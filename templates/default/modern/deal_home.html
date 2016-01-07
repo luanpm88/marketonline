@@ -1,0 +1,94 @@
+<!--{include file="`$theme_name`/modern/header.html" page_title="Quà tặng & Khuyến mãi hàng ngày"}-->
+
+<!--{include file="`$theme_name`/modern/topmenu.html"}-->
+    
+    
+    <div class="page">
+        <div class="container" style="padding: 0 10px;">
+            
+            <div class="row deal_intro_container" style="padding: 0 5px;margin-bottom: 20px;">
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box aajax" rel="deal_intro_message" style="background: #57BAE8">
+                        <div class="icon_bg">
+                            <i class="icon icon-bookmark"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Giới thiệu</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box aajax" rel="deal_intro_transfer_payment" style="background: #ff7043">
+                        <div class="icon_bg">
+                            <i class="icon icon-truck"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Giao hàng & Thanh toán</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <a class="deal_intro_box" target="_blank" href="http://marketonline.vn:3000/deals/new" rel="deal_intro_post_product" style="background: #1acfac">
+                        <div class="icon_bg">
+                            <i class="icon icon-pencil7"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Đăng sản phẩm</h5>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box aajax" rel="deal_intro_agent_program" style="background: rgb(255,191,0)">
+                        <div class="icon_bg">
+                            <i class="icon icon-star-empty3"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Chương trình cộng tác viên</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 custom-5-box">
+                    <div class="deal_intro_box aajax" rel="deal_intro_agent_register" style="background: #7ad04d">
+                        <div class="icon_bg">
+                            <i class="icon-user-plus"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Đăng ký Cộng tác viên</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+              
+            <div class="deal_home_container" url="http://marketonline.vn:3000/deals/home">
+                
+            </div>              
+
+        </div>
+    </div>
+    
+{literal}
+    <script>
+        $.ajax({
+                url: $(".deal_home_container").attr("url"),
+            }).done(function ( data ) {
+                if( console && console.log ) {
+                    $(".deal_home_container").html(data)
+                }                        
+            });
+        
+        $(".deal_intro_box.aajax").click(function() {
+            var code = $(this).attr("rel")
+            $.fancybox({
+                width: "80%",
+                autoSize: false,
+                href: 'http://marketonline.vn:3000/system_messages/ajax_content?code='+code,
+                type: 'ajax'
+            });
+        })
+    </script>
+{/literal}
+
+<!--{include file="`$theme_name`/modern/footer.html"}-->

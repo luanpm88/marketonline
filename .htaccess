@@ -14,6 +14,7 @@ RewriteRule ^mobile/?$ register.php?&layout=mobile [L]
 
 RewriteRule ^privacy$ policy.html [L]
 RewriteRule ^modern_demo/?$ index.php?do=studypost&action=modern_demo [L]
+RewriteRule ^deal/?$ index.php?custom_page=deal_home [L]
 RewriteRule ^modern_demo/group?$ index.php?do=studypost&action=modern_demo_group [L]
 RewriteRule ^modern_demo/school?$ index.php?do=studypost&action=modern_demo_school [L]
 RewriteRule ^thuong-hieu/?(sinh-vien)?/?$ index.php?do=company&student=$1 [L]

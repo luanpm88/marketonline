@@ -1632,3 +1632,118 @@ width: auto !important;
 .album-main-image img {
     border-left: solid 1px #ddd;
 }
+.deal_box {
+    border-color: #ddd;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+.deal_box .image_box {
+    display: inline-block;
+    float: left;
+    height: 160px;
+    margin-right: 15px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 160px;
+}
+.deal_box .description_box {
+    
+}
+.deal_box .product_image {
+    bottom: 0;
+    display: inline-block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    max-width: 100%;
+    max-height: 100%;
+    left: 0;
+    right: 0;
+}
+.deal_box a.title {
+    color: #333;
+    display: block;
+    font-size: 15px;
+    max-height: 44px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.deal_box .prices {
+    margin-top: 20px;
+}
+.deal_box .deal_price {
+    font-size: 22px;
+}
+.deal_box .old_price {
+    color: #777;
+    text-decoration: line-through;
+}
+.deal_box.deal_big {
+    
+}
+.deal_box.deal_big .image_box {
+    float: none;
+    height: 266px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.deal_box.deal_big .description_box {
+    
+}
+.deal_box.deal_big a.title {
+    height: 20px;
+    overflow: hidden;
+}
+.deal_box.deal_big .prices {
+    margin-top: 10px;
+}
+.deal_list {
+    padding: 0 10px;
+}
+.deal_list .deal-col {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.deal_title {
+    margin-top: 40px;
+    font-size: 22px;
+}
+.deal_intro_box {
+    background: #fff none repeat scroll 0 0;
+    float: left;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+}
+.deal_intro_box:hover {
+    opacity: 0.9;
+    text-decoration: none;
+}
+.deal_intro_box .icon_bg {
+    color: #888;
+    display: block;
+    text-align: center;
+}
+.deal_intro_box .icon_bg i {
+    font-size: 50px;
+    color: #fff;
+}
+.deal_intro_box .content {
+    text-align: center;
+}
+.deal_intro_box .content h5 {
+    color: #fff;
+    font-size: 15px;
+    line-height: 17px;
+    margin-bottom: 0;
+}
+@media screen and (min-width: 960px) {
+    .custom-5-box {
+        width: 20%;
+    }
+}
+.fancybox-overlay {
+    background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0 !important;
+}
