@@ -908,3 +908,12 @@ h2.market-header-title {
 .deal_content .income_price {
     font-weight: 700;
 }
+.sell_count span {
+    background: red none repeat scroll 0 0;
+    border-radius: 12px;
+    color: #fff;
+    margin-top: 3px;
+    padding: 0 7px 1px;
+    position: absolute;
+    right: 3px;
+}
