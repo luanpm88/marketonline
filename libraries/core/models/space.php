@@ -153,7 +153,7 @@ class Spaces extends PbModel {
 		
 		//var_dump($fids);
 		
-		$sql = "SELECT s.*, m.username  FROM {$this->table_prefix}companies s LEFT JOIN {$this->table_prefix}members m ON s.member_id = m.id INNER JOIN {$this->table_prefix}follows f ON f.member_id = m.id WHERE s.id IN (".implode(",", $fids).")";
+		$sql = "SELECT DISTINCT s.id, s.*, m.username  FROM {$this->table_prefix}companies s LEFT JOIN {$this->table_prefix}members m ON s.member_id = m.id INNER JOIN {$this->table_prefix}follows f ON f.member_id = m.id WHERE s.id IN (".implode(",", $fids).")";
 
 		$result = $this->dbstuff->GetArray($sql);
 		
