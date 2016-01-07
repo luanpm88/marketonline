@@ -73,7 +73,21 @@
                         <li class="divider"></li>
                         <li><a class="virtual_office_link" target="_blank" href="{the_url module=root-url}redirect.php?url=/virtual-office/?home=1">Quản lý chung</a></li>
                         <li class="divider"></li>
-                        <li><a class="virtual_office_link" target="_blank" href="http://marketonline.vn:3000/pb_saleorders">Quản lý đơn hàng</a></li>
+                        <li>
+                          <span class="sell_count"></span>
+                          <a class="virtual_office_link" target="_blank" href="http://marketonline.vn:3000/pb_saleorders">Quản lý đơn hàng</a>
+                          {literal}
+                          <script>
+                              //Load new chatbox
+                              $.ajax({
+                                  url: "http://marketonline.vn:3000/pb_members/pending_order_count?user_id="+{/literal}{$pb_userinfo.id}{literal},
+                              }).done(function ( data ) {
+                                  $(".sell_count").html(data)
+                              });
+                          </script>
+                          {/literal}
+                          
+                        </li>
                         
                         
                         <li><a class="virtual_office_link" target="_blank" href="http://marketonline.vn:3000">Quản lý Quảng cáo</a></li>
