@@ -1,0 +1,54 @@
+<!--{if $menu.company && $MEMBER.membergroup_id == 3 && $showEmployeeShop && $membertype_id != 6}-->
+				<table class="menu_width167">
+				  <tr>
+					<td> <table class="menu_nav title_nav">
+						<tr class="MenuItem9">
+						  <td width="10"></td>
+						  <td class="title_bar" onclick="if($('#MenuCompany').length>0) $('#MenuCompany').toggle();">
+							{if $membertype_id == 5}Nhà tuyển dụng{else}{lang company_information}{/if}</td>
+						</tr>
+					</table></td>
+				  </tr>
+				  <tr>
+					<td align="center">
+					<table class="menu_nav_content" id="MenuCompany" style="">
+						<tr class="MenuItem10"> 
+						  <th><img src="{$office_theme_path}images/company.gif"></th>
+						  <td><a href="company.php">{lang basic_information} {$membertype_name}</a> </td>
+						</tr>
+						<tr class="MenuItem10_1"> 
+						  <th><img src="{$office_theme_path}images/AddressBook.png"></th>
+						  <td><a href="companyoffice.php">Chi nhánh</a> </td>
+						</tr>
+						<tr class="MenuItem11"> 
+						  <th><img width="16" height="16" src="{$office_theme_path}images/Release.gif"></th>
+						  <td><a href="policy.php">{lang policy}</a> </td>
+						</tr>
+						<tr class="MenuItem20"> 
+						  <th><img src="{$office_theme_path}images/product2.gif"></th>
+						  <td><a href="news.php?typeid=9">{lang comnote} {$membertype_name}</a></td>
+						</tr>
+						<tr class="MenuItem12"> 
+						  <th><img src="{$office_theme_path}images/album.gif"></th>
+						  <td><a href="album.php">{lang company_album}</a> </td>
+						</tr>
+						<!--<tr> 
+						  <th><img src="{$office_theme_path}images/contact.gif"></th>
+						  <td><a href="card.php">{lang card_information}</a> </td>
+						</tr>-->
+						<tr class="MenuItem13"> 
+						  <th><img src="{$office_theme_path}images/alert.gif"></th>
+						  <td><a href="news.php">{lang company_news}</a></td>
+						</tr>
+						<tr class="MenuItem14">
+						  <th><img src="{$office_theme_path}images/hr.gif" /></th>
+						  <td><a href="job.php">{lang hr}</a></td>
+						<tr> 
+						<tr class="MenuItem15"> 
+						  <th><img src="{$office_theme_path}images/link.gif"></th>
+						  <td><a href="link.php" title="{lang friendlink}">{lang link_exchange}</a></td>
+						</tr>
+					  </table></td>
+				  </tr>
+				</table>
+			<!--{/if}-->
