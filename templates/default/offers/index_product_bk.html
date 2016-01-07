@@ -481,7 +481,48 @@
 		     
 		     
 		     
-	   	   
+	   	    
+            <!--{loop $IndustryList item0 level_0 key0}-->
+	    {if $key0 != 19 && $key0 != 5 && $key0 != 3965 || true}
+		  {if $k%6 == 0 && $k != 0}
+		     <br style="clear:both" />
+		  {/if}
+		  {if $k%3 == 0 || $item0.id == 3965}
+		     <div class = "gr-box">
+		  {/if}
+		  
+		  
+		  <div class="item {if $k%6 == 5 || $k%6 == 0}large{else}half{/if} {if $k%6 == 0}odd{else}{if $k%2 == 0}even{else}odd{/if}{/if} {if $item0.image != ''} hasbanner {/if}">
+                                    {if $item0.image != "" && false}
+					<img src="{$item0.image}.small.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
+                                    {else}
+					<img id="imgitem{$item0.id}" rel="{$item0.image}.small.jpg" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
+				    {/if}
+                                    <div class="description divlink {$item0.disp}" onclick="window.location='{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}'">
+                                        <time>{lang category}</time>
+                                        <h3><a class="tile_title" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}" title="{$item0.name} ({$item0.ppcount})" class="typeboxlet01">{$item0.name}</a></h3>
+
+                                        <ul>
+					  <!--{loop $item0.sub level1 level_1_industry key_level1}-->
+					  	<li>
+							<a href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}" title="{$level1.name} ({$level1.ppcount})" class="typeboxlet01">{if $k%6 == 5 || $k%6 == 0}{$level1.name|truncate:30}{else}{$level1.name|truncate:50}{/if}</a>                        
+						</li>				     
+					  <!--{/loop}-->
+					    <li><a href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{lang read_more}</a></li>					    
+					</ul>
+
+                                    </div>
+				    <a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}" {if $item0.url != ""}target="_blank"{/if}></a>
+                  </div>
+		  
+		  
+		  
+		  {if $k%3 == 2 || $item0.last == 1 || $item0.id == 19}
+		     </div>
+		  {/if}
+		  {if $k++}{/if}
+		  {/if}
+	    <!--{/loop}-->
 		     
 		     
 		
