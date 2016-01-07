@@ -157,10 +157,14 @@ class Spaces extends PbModel {
 
 		$result = $this->dbstuff->GetArray($sql);
 		
-		usort($result, function($a, $b)
-		{
-			return strcmp(2, 1);
-		});
+		//usort($result, function($a, $b)
+		//{
+		//	uses("follow");
+		//	$follow = new Follows();
+		//	$aa = $follow->fields("created", array("shop_id" => $a->id, "mwmber_id" => $member_id));
+		//	//var_dump($aa);
+		//	return strcmp(2, 1);
+		//});
 		
 
 			$returna = array();
