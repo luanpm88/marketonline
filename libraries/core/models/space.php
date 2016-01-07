@@ -158,20 +158,19 @@ class Spaces extends PbModel {
 		$result = $this->dbstuff->GetArray($sql);
 		
 		//var_dump($result);
-		
 
-			$returna = array();
-			for($i=0; $i<count($result); $i++){
-				if($result[$i]["shop_name"])
-				{
-					$result[$i]["image"] = pb_get_attachmenturl($result[$i]['picture'], '', 'smaller');
-					if($rewrite_able)
-						$result[$i]["link"] = $result[$i]["cache_spacename"];
-					else
-						$result[$i]["link"] = URL.'space/?userid='.$result[$i]["username"].'&do=';
-					$returna[] = $result[$i];
-				}
+		$returna = array();
+		for($i=0; $i<count($result); $i++) {
+			if($result[$i]["shop_name"])
+			{
+				$result[$i]["image"] = pb_get_attachmenturl($result[$i]['picture'], '', 'smaller');
+				if($rewrite_able)
+					$result[$i]["link"] = $result[$i]["cache_spacename"];
+				else
+					$result[$i]["link"] = URL.'space/?userid='.$result[$i]["username"].'&do=';
+				$returna[] = $result[$i];
 			}
+		}
 
 		return $returna;
 	}
