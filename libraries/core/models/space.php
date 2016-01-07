@@ -157,10 +157,10 @@ class Spaces extends PbModel {
 
 		$result = $this->dbstuff->GetArray($sql);
 		
-		usort($result, function($a, $b)
-		{
-			return strcmp($b->f_created, $a->f_created);
-		});
+		//usort($result, function($a, $b)
+		//{
+		//	return strcmp($b->f_created, $a->f_created);
+		//});
 		
 		//var_dump($result);
 
