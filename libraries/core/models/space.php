@@ -157,7 +157,10 @@ class Spaces extends PbModel {
 
 		$result = $this->dbstuff->GetArray($sql);
 		
-		//var_dump($result);
+		usort($result, function($a, $b)
+		{
+			return strcmp(2, 1);
+		});
 		
 
 			$returna = array();
