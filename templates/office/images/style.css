@@ -3826,3 +3826,28 @@ a.unvalid_edit {
     position: absolute;
     z-index: 1;
 }
+.facebook_office {
+    margin-top: 20px;
+    width: 900px;
+}
+.facebook_office .col {
+    float: left;
+    margin-right: 10px;
+    width: 260px;
+}
+.facebook_office .left-col {
+    width: 350px;
+}
+.facebook_office h4 {
+    color: #333;
+    display: block;
+}
+.facebook_office .share_tro {
+    margin-bottom: 10px;
+    clear: both;
+    margin-top: 40px;
+}
+li.sline {
+    border-top: 1px solid #ccc;
+    height: 0;
+}

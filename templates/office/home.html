@@ -1,0 +1,204 @@
+<!--{assign var="page_title" value="`$_office_homepage`"}-->
+<!--{include file="header.html"}-->
+<link href="../scripts/jquery/ui.css" rel="stylesheet" type="text/css"/>
+<script src="../scripts/jquery/ui.core.js"></script>
+<script>
+var service_days = {$service_days|default:1};
+</script>
+<!--{literal}-->
+<script>
+$(document).ready(function() {
+	$("#progressbar").progressbar({ value:service_days});
+	$("#info-manage").removeClass("current_nav");
+	$("#home-page").toggleClass("current_nav");
+});
+</script>
+<!--{/literal}-->
+
+<div class="wrap clearfix">
+    <div class="sidebar">
+       <div class="sidebar_menu">
+         <!--{include file="menu.html"}-->
+       </div>
+    </div>
+   <div class="main_content">
+        <div class="main_content_left">
+            <div class="blank"></div>
+		    <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
+            <div class="offer_info_title"><h2>{$announce.subject}</h2></div>
+          
+            <div class="content-inner">
+                {$announce.message}
+            </div>
+            
+            <br />
+            
+            
+            <div class='facebook_office'>
+                <div class="share_tro" rel="office_home_invite_fanpage">
+                    <h4>Nội dung chia sẻ website</h4>
+                </div>
+                
+                <div class="col left-col">
+                    <div class="fb-page" data-href="https://www.facebook.com/EMarketOnline.vn" data-tabs="timeline" data-width="350" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                        <div class="fb-xfbml-parse-ignore">
+                            <blockquote cite="https://www.facebook.com/EMarketOnline.vn">
+                                <a href="https://www.facebook.com/EMarketOnline.vn">Market Online</a>
+                            </blockquote>
+                        </div>
+                    </div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                </div>
+                <div class="col right-col">
+                    
+                    <div class="fb-page" data-href="https://www.facebook.com/Th%C6%B0%C6%A1ng-Hi%E1%BB%87u-Doanh-Nghi%E1%BB%87p-240960652695957/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                    <br />
+                    <div class="fb-page" data-href="https://www.facebook.com/KinhDoanhTiepThi.BMN/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/KinhDoanhTiepThi.BMN/?ref=bookmarks"><a href="https://www.facebook.com/KinhDoanhTiepThi.BMN/?ref=bookmarks">Kinh Doanh Tiếp Thị</a></blockquote></div></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                    
+                    <br />
+                    <div class="fb-page" data-href="https://www.facebook.com/VuaLikes/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/VuaLikes/?ref=bookmarks"><a href="https://www.facebook.com/VuaLikes/?ref=bookmarks">Vua Likes</a></blockquote></div></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                    
+                    <br />
+                    <div class="fb-page" data-href="https://www.facebook.com/D%E1%BB%8ACH-V%E1%BB%A4-K%E1%BA%BE-TO%C3%81N-524182704282183/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                </div>
+                <div class="col last-col">
+                    <div class="fb-page" data-href="https://www.facebook.com/KinhDoanhTiepThi.vn/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/KinhDoanhTiepThi.vn/?ref=bookmarks"><a href="https://www.facebook.com/KinhDoanhTiepThi.vn/?ref=bookmarks">Kinh Doanh Tiếp Thị</a></blockquote></div></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                    
+                    <br />
+                    <div class="fb-page" data-href="https://www.facebook.com/MarketOnlineChiNhanhThaiNguyen/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/MarketOnlineChiNhanhThaiNguyen/?ref=bookmarks"><a href="https://www.facebook.com/MarketOnlineChiNhanhThaiNguyen/?ref=bookmarks">Market Online - Chi Nhánh Thái Nguyên</a></blockquote></div></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                    
+                    <br />
+                    <div class="fb-page" data-href="https://www.facebook.com/muabanvl/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/muabanvl/?ref=bookmarks"><a href="https://www.facebook.com/muabanvl/?ref=bookmarks">Mua Bán VL</a></blockquote></div></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                    
+                    <br />
+                    <div class="fb-page" data-href="https://www.facebook.com/MarketOnlinevn-279758152225264/?ref=bookmarks" data-tabs="timeline" data-width="270" data-height="50" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"></div>
+                    {literal}
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                          var js, fjs = d.getElementsByTagName(s)[0];
+                          if (d.getElementById(id)) return;
+                          js = d.createElement(s); js.id = id;
+                          js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
+                          fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                    {/literal}
+                </div>
+                
+                <br style="clear: both" />
+                
+                <div class="share_tro" rel="office_home_invite_group">
+                    <h4>Nội dung chia sẻ website</h4>
+                </div>
+                
+                <div class="more_share">
+                    
+                </div>
+            </div>
+            
+            
+            
+        </div>
+	
+        <div class="main_content_right">
+		<!--{include file="_rightbar.html"}-->
+        </div>
+    </div>
+</div>
+
+
+{literal}
+<script>
+    $(".share_tro").each(function() {
+        var code = $(this).attr("rel")
+        var box = $(this)
+        $.ajax({
+            url: 'http://marketonline.vn:3000/system_messages/ajax_content?code='+code,
+            context: document.body
+        }).done(function(data) {
+            box.html(data)
+        });
+    })
+</script>
+{/literal}
+
+<!--{include file="footer.html"}-->
+
