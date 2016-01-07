@@ -100,11 +100,37 @@ if (!empty($memberinfo)) {
 	
 	setvar("PageTitle","Trang chính");
 	
-	if(detectMobile()) {	
-	$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
-	template("m_index");
+	if(detectMobile()) {
+		$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+		template("m_index");
 	} else {
-		template("index");
+		if(isset($_GET["home"])) {
+			uses("announceread","announcement","announcementtype");
+			$announceread = new Announcereads();
+			$announce = new Announcements();
+			$announcementtype = new Announcementtypes();
+
+			$id = 4;
+			$info = $announce->read("*", $id, null, null);
+			
+			//check if read
+			if(!strpos("[0]".$info["read_members"], "[".$the_memberid."]"))
+			{			
+				$info["read_members"] .= "[".$the_memberid."]";
+				$announce->saveField("read_members", $info["read_members"], intval($info["id"]));
+			}
+			
+			//update read
+			$announceread->read($id,$memberinfo["id"]);
+			
+			
+			$tpl_file = "announce";
+			setvar("announce",$info);
+
+			template("home");
+		} else {
+			template("index");
+		}		
 	}
 }else{
 	flash('invalid_user');
