@@ -1747,3 +1747,9 @@ width: auto !important;
 .fancybox-overlay {
     background: rgba(0, 0, 0, 0.4) none repeat scroll 0 0 !important;
 }
+.sell_count span {
+    background: red none repeat scroll 0 0;
+    margin-top: 3px;
+    position: absolute;
+    right: 5px;
+}
