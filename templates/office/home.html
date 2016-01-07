@@ -32,12 +32,11 @@ $(document).ready(function() {
             </div>
             
             <br />
-            <br />
             
             
             
             <div class='facebook_office'>
-                <div class="share_tro">
+                <div class="share_tro" rel="office_home_invite_fanpage">
                     <h4>Nội dung chia sẻ website</h4>
                 </div>
                 
@@ -167,7 +166,7 @@ $(document).ready(function() {
                 
                 <br style="clear: both" />
                 
-                <div class="share_tro">
+                <div class="share_tro" rel="office_home_invite_group">
                     <h4>Nội dung chia sẻ website</h4>
                 </div>
                 
@@ -185,5 +184,22 @@ $(document).ready(function() {
         </div>
     </div>
 </div>
+
+
+{literal}
+<script>
+    $(".share_tro").each(function() {
+        var code = $(this).attr("rel")
+        var box = $(this)
+        $.ajax({
+            url: 'http://marketonline.vn:3000/system_messages/ajax_content?code='+code,
+            context: document.body
+        }).done(function(data) {
+            box.html(data)
+        });
+    })
+</script>
+{/literal}
+
 <!--{include file="footer.html"}-->
 
