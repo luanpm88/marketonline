@@ -2174,3 +2174,6 @@ h2.area-title {
 #search-panel .input-group {
     position: absolute;
 }
+.cats-list-box {
+    position: relative;
+}
