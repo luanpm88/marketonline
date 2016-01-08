@@ -5,14 +5,13 @@
             
             <div class="container-fluid page-inner">
 
-		    <a class="btn btn-success pull-right" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}">Thêm
+		    <a class="btn btn-success pull-right" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}">Đăng
 				{if $getvar.type == 'service'}
 					dịch vụ
 				{else}
 					sản phẩm
 				{/if}
-		    </a>	    
-	    
+			</a>
             <h1 style="margin: 0">
 				{if $getvar.type == 'service'}
 					{lang service_management}
@@ -29,7 +28,7 @@
             <tr>
               <td>
 		
-		<label style="">{lang category}: </label><br />
+		<label style="">Chuyên mục: </label><br />
 		    <div id="dataIndustry" class="searchbox_mleft">
 			<select name="level1" id="dataProductIndustryId1" class="idus_select form-control level_1" ></select>
 			<select name="level2" id="dataProductIndustryId2" class="idus_select form-control level_2"></select>
