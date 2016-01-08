@@ -98,7 +98,7 @@ if (!empty($memberinfo)) {
 	setvar( "week_start", date("d/m/Y", strtotime('sunday last week', time())) );
 	setvar( "week_end", date("d/m/Y", strtotime('saturday this week', time())) );
 	
-	setvar("PageTitle","Trang chính");
+	setvar("PageTitle","Quản lý chung");
 	
 	if(detectMobile()) {
 		if(isset($_GET["home"])) {

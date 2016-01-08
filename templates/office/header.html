@@ -1370,9 +1370,9 @@ $(document).ready(function() {
    <div id="main-nav">
 	 <div class="nav-wrapper">
 		<ul>
-			<li><a href="index.php" id="home-page"><span>{lang office_homepage}</span></a></li>
+			<li><a href="index.php" id="home-page"><span>Quản lý chung</span></a></li>
 			
-			<li><a class="current_nav" href="offer.php" id="info-manage"><span>{lang info_manage}</span></a></li>
+			
 			{if $hasProfile && $membertype_id == 6}
 			      <li><a class="" href="{the_url module='studypost' action='memberpage' id=`$pb_userinfo.id`}" id="info-manage"><span>{$pb_userinfo.first_name} {$pb_userinfo.last_name}</span></a></li>
 			{/if}
