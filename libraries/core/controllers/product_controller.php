@@ -2478,6 +2478,7 @@ class Product extends PbController {
 		//var_dump($_POST["com_id"]);
 		$com = $company->read("member_id", $_POST["com_id"]);
 		//var_dump($com);
+		$date = new MyDateTime();
 		
 		if (!empty($_FILES['upload_logo']['name']) && $com["member_id"] == $pb_userinfo["pb_userid"]) {
 			echo $_POST["com_id"];
