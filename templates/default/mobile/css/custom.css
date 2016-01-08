@@ -1674,6 +1674,7 @@ DIV.pagination2 A {
     text-align: center;
     vertical-align: middle;
     width: 100px;
+    overflow: hidden;
 }
 .price_2cols input {
     display: inline-block;
