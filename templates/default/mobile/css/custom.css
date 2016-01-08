@@ -1684,7 +1684,7 @@ DIV.pagination2 A {
 }
 .searchbox_mleft select {
     float: left;
-    max-width: 150px;
+    max-width: 100%;
     margin-right: 10px;
 }
 .product_sort input {
@@ -2216,4 +2216,7 @@ h1.page-title .icon-page.icon-company {
 }
 .navbar-nav > li > a {
     font-size: 18px;
+}
+#dataIndustry select.idus_select {
+    background: #fff;
 }

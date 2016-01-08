@@ -32,11 +32,12 @@
 		
 		<label style="">{lang category}: </label><br />
 		    <div id="dataIndustry" class="searchbox_mleft">
-			<select name="level1" id="dataProductIndustryId1" class="form-control level_1" ></select>
-			<select name="level2" id="dataProductIndustryId2" class="form-control level_2"></select>
-			<select name="level3" id="dataProductIndustryId3" class="form-control level_3" ></select>
-			<select name="level4" id="dataProductIndustryId4" class="form-control level_4" ></select>
+			<select name="level1" id="dataProductIndustryId1" class="idus_select form-control level_1" ></select>
+			<select name="level2" id="dataProductIndustryId2" class="idus_select form-control level_2"></select>
+			<select name="level3" id="dataProductIndustryId3" class="idus_select form-control level_3" ></select>
+			<select name="level4" id="dataProductIndustryId4" class="idus_select form-control level_4" ></select>
 		    </div>
+			<label style="">Từ khóa: </label><br />
 		    <input class="form-control search_keyword" name="keyword" value="{$getvar.keyword}" placeholder="{if $getvar.type == 'service'}{lang service_name}{else}{lang product_name}{/if}/{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}" />
 		    <input style="width: 100px" class="btn btn-primary" type="button" value="{lang search}" onclick="submitForm();" /></td>
 
@@ -205,6 +206,20 @@ jQuery(document).ready(function($) {
 		   
 	}, 200);
 })
+
+
+function checkIndustryBox() {
+  $(".idus_select").each(function() {
+    if($(this).find("option").length > 1) {
+      $(this).show()
+    } else {
+      $(this).hide()
+    }
+  })
+}
+
+setInterval("checkIndustryBox()", 500)
+
 </script>
 <!-- {/literal} -->
 
