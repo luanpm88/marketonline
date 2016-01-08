@@ -124,7 +124,8 @@ if (!empty($memberinfo)) {
 			$tpl_file = "announce";
 			setvar("announce",$info);
 
-			template("home");
+			$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+			template("m_home");
 		} else {
 			$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
 			template("m_index");
