@@ -2048,7 +2048,7 @@ h2.area-title {
     font-weight: bold;
 }
 .navbar-inverse {
-    z-index: 1001
+    z-index: 1001;
 }
 .ad_banner_item.ad_banner_12 {
     background: rgba(0, 100, 100, 0.4) none repeat scroll 0 0;
