@@ -73,7 +73,7 @@
                                             <!--{foreach item=item from=$Items}-->
                                                 <tr>
                                                     <td class="cart-picture-cols">
-                                                        <a href="{the_url module=product id=`$item.id` product_name=`$item.name`}">
+                                                        <a href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}&id={$item.id}">
                                                             <img src="{$item.image}" />
                                                         </a>
                                                     </td>
