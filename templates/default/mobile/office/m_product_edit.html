@@ -308,9 +308,11 @@ jQuery(document).ready(function($) {
 					if($(this).find("input:checked").length) {
 					  $(this).css("color","blue")
 					  $(this).css("font-weight","bold")
+					  $(this).find(".img-box").css("border-color","blue")
 					} else {
 					  $(this).css("color","#333")
 					  $(this).css("font-weight","normal")
+					  $(this).find(".img-box").css("border-color","#ddd")
 					}
 				})
 			}			
