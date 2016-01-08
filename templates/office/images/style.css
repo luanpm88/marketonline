@@ -3865,3 +3865,9 @@ li.sline {
 .facebook_office h4 {
     margin-bottom: 10px;
 }
+.hint font {
+    display: inline-block;
+    font-size: 25px;
+    line-height: 0;
+    position: relative;
+}
