@@ -2159,7 +2159,7 @@ h2.area-title {
     width: 100%;
 }
 .facebook_office .col iframe {
-    border: solid 1px #ccc;
+    border: solid 1px #ccc !important;
 }
 .facebook_office .left-col {
     width: 100%;
