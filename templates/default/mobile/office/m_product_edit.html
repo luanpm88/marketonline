@@ -122,71 +122,89 @@
 						<label>{lang industry_product}<span>*</span> <i class="note">({lang main_industry_info})</i></label>
 						<br /><label id="dataProductIndustryId1-error" class="error" for="dataProductIndustryId1">Chọn chuyên mục sản phẩm</label>
 						<div id="dataIndustry">
-						    <span>Cấp 1:</span>
-						    <select name="industry[id][1]" id="dataProductIndustryId1" class="form-control level_1" rel="1"></select>
-						    <span>Cấp 2:</span>
-						    <select name="industry[id][2]" id="dataProductIndustryId2" class="form-control level_2" rel="2"></select>
-						    <span>Cấp 3:</span>
-						    <select name="industry[id][3]" id="dataProductIndustryId3" class="form-control level_3" rel="3"></select>
-						    <span>Cấp 4:</span>
-						    <select name="industry[id][4]" id="dataProductIndustryId4" class="form-control level_4" rel="4"></select>
+							<div class="indus_select_box">
+								<span>Cấp 1:</span>
+								<select name="industry[id][1]" id="dataProductIndustryId1" class="form-control level_1" rel="1"></select>
+							</div>
+							<div class="indus_select_box">
+								<span>Cấp 2:</span>
+								<select name="industry[id][2]" id="dataProductIndustryId2" class="form-control level_2" rel="2"></select>
+							</div>
+							<div class="indus_select_box">
+								<span>Cấp 3:</span>
+								<select name="industry[id][3]" id="dataProductIndustryId3" class="form-control level_3" rel="3"></select>
+							</div>
+							<div class="indus_select_box">
+								<span>Cấp 4:</span>
+								<select name="industry[id][4]" id="dataProductIndustryId4" class="form-control level_4" rel="4"></select>
+							</div>
 						</div>
 						<span class="industry_info"></span>
 				    </div>
 				</p>
 				
-				<p style="">
+				<p style="display: none !important">
 					    <label onclick="$('#dataCustomIndustry').show()">{lang custom_industry} <span>*</span> <i class="note">({lang custom_industry_info})</i></label>
-						    <div id="dataCustomIndustry">
-							<span>Cấp 1:</span>
-							    <div class="i_item pos_1">
+						    <div style="display: none" id="dataCustomIndustry">
 								
-								    <input class="form-control" name="customIndustry[name][1]" value="" placeholder="{lang create_custom_industry}" rel="1" />
-								    <select name="customIndustry[id][1]" id="dataCustomProductIndustryId1" class="form-control level_1" rel="1" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
-							    <span>Cấp 2:</span>
-							    <div class="i_item pos_2">
+								<div class="indus_select_boxz">
+									<span>Cấp 1:</span>
+									<div class="i_item pos_1">								
+										<input class="form-control" name="customIndustry[name][1]" value="" placeholder="{lang create_custom_industry}" rel="1" />
+										<select name="customIndustry[id][1]" id="dataCustomProductIndustryId1" class="form-control level_1" rel="1" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+									</div>
+								</div>
 								
-								    <input class="form-control" name="customIndustry[name][2]" value="" placeholder="{lang create_custom_industry}" rel="2"  />
-								    <select name="customIndustry[id][2]" id="dataCustomProductIndustryId2" class="form-control level_2" rel="2" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
-							    <span>Cấp 3:</span>
-							    <div class="i_item pos_3">
+								<div class="indus_select_boxz">
+									<span>Cấp 2:</span>
+									<div class="i_item pos_2">
+									
+										<input class="form-control" name="customIndustry[name][2]" value="" placeholder="{lang create_custom_industry}" rel="2"  />
+										<select name="customIndustry[id][2]" id="dataCustomProductIndustryId2" class="form-control level_2" rel="2" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+										
+									</div>
+								</div>
 								
-								    <input class="form-control" name="customIndustry[name][3]" value="" placeholder="{lang create_custom_industry}" rel="3"  />
-								    <select name="customIndustry[id][3]" id="dataCustomProductIndustryId3" class="form-control level_3" rel="3" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
-							    <span>Cấp 4:</span>
-							    <div class="i_item pos_4">
+								<div class="indus_select_boxz">
+									<span>Cấp 3:</span>
+									<div class="i_item pos_3">
+									
+										<input class="form-control" name="customIndustry[name][3]" value="" placeholder="{lang create_custom_industry}" rel="3"  />
+										<select name="customIndustry[id][3]" id="dataCustomProductIndustryId3" class="form-control level_3" rel="3" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+										
+									</div>
+								</div>
 								
-								    <input class="form-control" name="customIndustry[name][4]" value="" placeholder="{lang create_custom_industry}" rel="4" />
-								    <select name="customIndustry[id][4]" id="dataCustomProductIndustryId4" class="form-control level_4" rel="4" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
+								<div class="indus_select_boxz">
+									<span>Cấp 4:</span>
+									<div class="i_item pos_4">
+									
+										<input class="form-control" name="customIndustry[name][4]" value="" placeholder="{lang create_custom_industry}" rel="4" />
+										<select name="customIndustry[id][4]" id="dataCustomProductIndustryId4" class="form-control level_4" rel="4" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+										
+									</div>
+								</div>
 						    </div>
 						    <span class="industry_info"></span>
-						    <br />
+						   <!-- <br />-->
 			    </p>
 				
 
 			    <p>
-				<label>{lang market}<span>*</span></label>
-				<input placeholder="{lang market_note}" name="data[product][market]" type="text" id="dataProductMarket" value="{$item.market}" class="form-control required"></font>					   
+					<label>{lang market}<span>*</span></label>
+					<input placeholder="{lang market_note}" name="data[product][market]" type="text" id="dataProductMarket" value="{$item.market}" class="form-control required"></font>					   
 			    </p>
 			    {if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
 					<p>
@@ -197,16 +215,16 @@
 			    {/if}
 			    
 			    <p>
-				<label>{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}{lang colon}</label>
-				<input class="form-control" name="data[product][product_code]" type="text" id="dataProductProductCode" value="{$item.product_code}">
+					<label>{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}{lang colon}</label>
+					<input class="form-control" name="data[product][product_code]" type="text" id="dataProductProductCode" value="{$item.product_code}">
 			    </p>
 			    
 			    <p>
-				<label>{lang product_brand}</label>
-				<select class="form-control" name="data[product][brand_id]" id="brand_id_select">
-				    <option value="0">{lang select}</option>
-				    {html_options options=$UserBrands selected=$item.brand_id}
-				</select>
+					<label>{lang product_brand}</label>
+					<select class="form-control" name="data[product][brand_id]" id="brand_id_select">
+						<option value="0">{lang select}</option>
+						{html_options options=$UserBrands selected=$item.brand_id}
+					</select>
 			    </p>
 			    <!--{foreach from=$Forms name=form item=item1 key=key1}-->
 				<p>
@@ -218,18 +236,18 @@
 			    
 			    
 			    <p>
-				<label>{lang tags_n}</label>
-				<span class="">
-				   <input class="form-control infoTableInput2" name="data[tag]" type="text" id="tag" value="{$item.tag}" />
-				   <span class="field_notice">{lang space_separate}</span>
-				</span>
+					<label>{lang tags_n}</label>
+					<span class="">
+					   <input class="form-control infoTableInput2" name="data[tag]" type="text" id="tag" value="{$item.tag}" />
+					   <span class="field_notice">{lang space_separate}</span>
+					</span>
 			    </p>
 			    
 			    <p>
-				<label>Mô tả sản phẩm<span>*</span></label>
-				<span class="">
-				   <textarea class="required" name="data[product][content]" id="dataProductContent" rows="16" wrap="VIRTUAL" style="width:100%;height: 200px" class="">{$item.content}</textarea>
-				</span>
+					<label>Mô tả sản phẩm<span>*</span></label>
+					<span class="">
+					   <textarea class="required" name="data[product][content]" id="dataProductContent" rows="16" wrap="VIRTUAL" style="width:100%;height: 200px" class="">{$item.content}</textarea>
+					</span>
 			    </p>
 			    
 			    
@@ -239,7 +257,8 @@
 						<input class="btn btn-primary" style="width: 100%" name="save" type="submit" value="{lang save}" />
 						<p></p><br />
 						<a style="width: 100%" class="btn btn-default" href="product.php">
-						    <span class="glyphicon glyphicon-chevron-left"></span> Về danh sách</a>
+						    <span class="glyphicon glyphicon-chevron-left"></span> Về danh sách
+						</a>
 						
 					</form>
             </div>
@@ -274,9 +293,20 @@ jQuery(document).ready(function($) {
 
 
 
-
-
-
+	<!-- {literal} -->
+		<script>
+			function checkIndustryBox() {
+				$(".indus_select_box select").each(function() {
+					if($(this).find("option").length > 1) {
+						$(this).parents(".indus_select_box").fadeIn()
+					} else {
+						$(this).parents(".indus_select_box").fadeOut()
+					}
+				})
+			}			
+			setInterval("checkIndustryBox()", 500)
+		</script>
+	<!-- {/literal} -->
 
 
 	<!--{include file="_office_script.html"}-->
