@@ -2151,7 +2151,7 @@ h2.area-title {
 }
 .facebook_office {
     margin-top: 20px;
-    width: 900px;
+    width: 100%;
 }
 .facebook_office .col {
     float: left;
@@ -2160,6 +2160,7 @@ h2.area-title {
 }
 .facebook_office .left-col {
     width: 350px;
+    margin-bottom: 20px;
 }
 .facebook_office h4 {
     color: #333;
