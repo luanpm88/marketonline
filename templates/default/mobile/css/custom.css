@@ -2171,3 +2171,6 @@ h2.area-title {
     clear: both;
     margin-top: 40px;
 }
+#search-panel .input-group {
+    position: absolute;
+}
