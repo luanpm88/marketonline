@@ -163,25 +163,25 @@
 			<col width="60">
                     <col width="82">
                 <tr>
-                   <th width="9%">{lang sample_image}</th>
-                   <th style="text-align: left">{lang content}</th>
-		   <th>{lang spcode}</th>
-                   <th>{lang published}</th>
+                   <th style="white-space: nowrap" width="9%">{lang sample_image}</th>
+                   <th style="text-align: left;white-space: nowrap">{lang content}</th>
+		   <th style="white-space: nowrap">{lang spcode}</th>
+                   <th style="white-space: nowrap">{lang published}</th>
 		   {if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
-			<th>Sinh viên</th>
+			<th style="white-space: nowrap">Sinh viên</th>
 		   {/if}
 		   {if $pb_userinfo.checkout}
-			<th style="text-align: left">Quảng cáo</th>
-			<th>Chế độ</th>
+			<th style="text-align: left;white-space: nowrap">Quảng cáo</th>
+			<th style="white-space: nowrap">Chế độ</th>
 		   {/if}
 		   
-		   <th style="text-align: left">{lang created_date}</th>
+		   <th style="text-align: left;white-space: nowrap">{lang created_date}</th>
                    <!--<th style="text-align: left">{lang release}</th>-->
-		   <th width="14%">Phê duyệt</th>
+		   <th style="white-space: nowrap" width="14%">Phê duyệt</th>
 		   
 		   
 		   
-                   <th width="" style="text-align: left">{lang operation}</th>
+                   <th width="" style="text-align: left;white-space: nowrap">{lang operation}</th>
                 </tr> 
               <!--{foreach item=item from=$Items}-->
                 <tr class="row{$item.row}">
