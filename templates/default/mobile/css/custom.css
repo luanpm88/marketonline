@@ -2181,3 +2181,33 @@ h2.area-title {
 .cats-list-box {
     position: relative;
 }
+h1.page-title {
+    font-size: 26px;
+    margin: 15px 10px;
+}
+h1.page-title .icon-page {
+    background: #1acfac url("../img/product_bg.png") no-repeat scroll center -10px / 55px auto;
+    display: block;
+    float: left;
+    height: 40px;
+    margin-right: 10px;
+    margin-top: -6px;
+    width: 40px;
+}
+h1.page-title .icon-page.icon-service {
+    background-color: #ffa544;
+    background-image: url("../img/service_bg.png");
+}
+h1.page-title .icon-page.icon-trade {
+    background-color: #57bae8;
+    background-image: url("../img/trade_bg.png");
+}
+h1.page-title .icon-page.icon-company {
+   background-color: #fe7477;
+    background-image: url("../img/brand_bg.png");
+    background-position: center -6px;
+    background-size: 50px auto;
+}
+.color-tab-top {
+    padding: 0 10px;
+}
