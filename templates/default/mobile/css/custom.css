@@ -2157,10 +2157,11 @@ h2.area-title {
     float: left;
     margin-right: 10px;
     width: 100%;
+    margin-bottom: 20px;
 }
 .facebook_office .col iframe {
     border: solid 1px #ccc !important;
-    margin-bottom: 20px;
+    
 }
 .facebook_office .left-col {
     width: 100%;    
