@@ -139,47 +139,55 @@
 					    <label onclick="$('#dataCustomIndustry').show()">{lang custom_industry} <span>*</span> <i class="note">({lang custom_industry_info})</i></label>
 						    <div style="display: none" id="dataCustomIndustry">
 								
-								<span>Cấp 1:</span>
-							    <div class="i_item pos_1">								
-								    <input class="form-control" name="customIndustry[name][1]" value="" placeholder="{lang create_custom_industry}" rel="1" />
-								    <select name="customIndustry[id][1]" id="dataCustomProductIndustryId1" class="form-control level_1" rel="1" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-							    </div>
+								<div class="indus_select_box">
+									<span>Cấp 1:</span>
+									<div class="i_item pos_1">								
+										<input class="form-control" name="customIndustry[name][1]" value="" placeholder="{lang create_custom_industry}" rel="1" />
+										<select name="customIndustry[id][1]" id="dataCustomProductIndustryId1" class="form-control level_1" rel="1" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+									</div>
+								</div>
 								
-							    <span>Cấp 2:</span>
-							    <div class="i_item pos_2">
+								<div class="indus_select_box">
+									<span>Cấp 2:</span>
+									<div class="i_item pos_2">
+									
+										<input class="form-control" name="customIndustry[name][2]" value="" placeholder="{lang create_custom_industry}" rel="2"  />
+										<select name="customIndustry[id][2]" id="dataCustomProductIndustryId2" class="form-control level_2" rel="2" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+										
+									</div>
+								</div>
 								
-								    <input class="form-control" name="customIndustry[name][2]" value="" placeholder="{lang create_custom_industry}" rel="2"  />
-								    <select name="customIndustry[id][2]" id="dataCustomProductIndustryId2" class="form-control level_2" rel="2" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
+								<div class="indus_select_box">
+									<span>Cấp 3:</span>
+									<div class="i_item pos_3">
+									
+										<input class="form-control" name="customIndustry[name][3]" value="" placeholder="{lang create_custom_industry}" rel="3"  />
+										<select name="customIndustry[id][3]" id="dataCustomProductIndustryId3" class="form-control level_3" rel="3" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+										
+									</div>
+								</div>
 								
-							    <span>Cấp 3:</span>
-							    <div class="i_item pos_3">
-								
-								    <input class="form-control" name="customIndustry[name][3]" value="" placeholder="{lang create_custom_industry}" rel="3"  />
-								    <select name="customIndustry[id][3]" id="dataCustomProductIndustryId3" class="form-control level_3" rel="3" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
-								
-							    <span>Cấp 4:</span>
-							    <div class="i_item pos_4">
-								
-								    <input class="form-control" name="customIndustry[name][4]" value="" placeholder="{lang create_custom_industry}" rel="4" />
-								    <select name="customIndustry[id][4]" id="dataCustomProductIndustryId4" class="form-control level_4" rel="4" >
-									    <option value="-1">{lang select}</option>
-									    <option value="0">-{lang create_custom_industry}-</option>
-								    </select>
-								    
-							    </div>
+								<div class="indus_select_box">
+									<span>Cấp 4:</span>
+									<div class="i_item pos_4">
+									
+										<input class="form-control" name="customIndustry[name][4]" value="" placeholder="{lang create_custom_industry}" rel="4" />
+										<select name="customIndustry[id][4]" id="dataCustomProductIndustryId4" class="form-control level_4" rel="4" >
+											<option value="-1">{lang select}</option>
+											<option value="0">-{lang create_custom_industry}-</option>
+										</select>
+										
+									</div>
+								</div>
 						    </div>
 						    <span class="industry_info"></span>
 						    <br />
@@ -220,18 +228,18 @@
 			    
 			    
 			    <p>
-				<label>{lang tags_n}</label>
-				<span class="">
-				   <input class="form-control infoTableInput2" name="data[tag]" type="text" id="tag" value="{$item.tag}" />
-				   <span class="field_notice">{lang space_separate}</span>
-				</span>
+					<label>{lang tags_n}</label>
+					<span class="">
+					   <input class="form-control infoTableInput2" name="data[tag]" type="text" id="tag" value="{$item.tag}" />
+					   <span class="field_notice">{lang space_separate}</span>
+					</span>
 			    </p>
 			    
 			    <p>
-				<label>Mô tả sản phẩm<span>*</span></label>
-				<span class="">
-				   <textarea class="required" name="data[product][content]" id="dataProductContent" rows="16" wrap="VIRTUAL" style="width:100%;height: 200px" class="">{$item.content}</textarea>
-				</span>
+					<label>Mô tả sản phẩm<span>*</span></label>
+					<span class="">
+					   <textarea class="required" name="data[product][content]" id="dataProductContent" rows="16" wrap="VIRTUAL" style="width:100%;height: 200px" class="">{$item.content}</textarea>
+					</span>
 			    </p>
 			    
 			    
@@ -241,7 +249,8 @@
 						<input class="btn btn-primary" style="width: 100%" name="save" type="submit" value="{lang save}" />
 						<p></p><br />
 						<a style="width: 100%" class="btn btn-default" href="product.php">
-						    <span class="glyphicon glyphicon-chevron-left"></span> Về danh sách</a>
+						    <span class="glyphicon glyphicon-chevron-left"></span> Về danh sách
+						</a>
 						
 					</form>
             </div>
@@ -276,9 +285,20 @@ jQuery(document).ready(function($) {
 
 
 
-
-
-
+	<!-- {literal} -->
+		<script>
+			function checkIndustryBox() {
+				$(".indus_select_box select").each(function() {
+					if($(this).find("option").length > 1) {
+						$(this).parents(".indus_select_box").fadeIn()
+					} else {
+						$(this).parents(".indus_select_box").fadeOut()
+					}
+				})
+			}			
+			setInterval("checkIndustryBox()", 500)
+		</script>
+	<!-- {/literal} -->
 
 
 	<!--{include file="_office_script.html"}-->
