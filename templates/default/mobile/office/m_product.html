@@ -6,20 +6,19 @@
             <div class="container-fluid page-inner">
 
 		    <a class="btn btn-success pull-right" href="product.php?do=edit{if $getvar.type == 'service'}&type=service{/if}">Thêm
-			{if $getvar.type == 'service'}
-				dịch vụ
-			{else}
-				sản phẩm
-			{/if}
-		    </a>
+				{if $getvar.type == 'service'}
+					dịch vụ
+				{else}
+					sản phẩm
+				{/if}
+		    </a>	    
 	    
-	    
-                    <h1 style="margin: 0">
-			{if $getvar.type == 'service'}
-				{lang service_management}
-			{else}
-				{lang product_management}
-			{/if}
+            <h1 style="margin: 0">
+				{if $getvar.type == 'service'}
+					{lang service_management}
+				{else}
+					{lang product_management}
+				{/if}
 		    </h1>
 
 		     <br />
@@ -211,9 +210,9 @@ jQuery(document).ready(function($) {
 function checkIndustryBox() {
   $(".idus_select").each(function() {
     if($(this).find("option").length > 1) {
-      $(this).show()
+      $(this).fadeIn()
     } else {
-      $(this).hide()
+      $(this).fadeOut()
     }
   })
 }
