@@ -122,14 +122,22 @@
 						<label>{lang industry_product}<span>*</span> <i class="note">({lang main_industry_info})</i></label>
 						<br /><label id="dataProductIndustryId1-error" class="error" for="dataProductIndustryId1">Chọn chuyên mục sản phẩm</label>
 						<div id="dataIndustry">
-						    <span>Cấp 1:</span>
-						    <select name="industry[id][1]" id="dataProductIndustryId1" class="form-control level_1" rel="1"></select>
-						    <span>Cấp 2:</span>
-						    <select name="industry[id][2]" id="dataProductIndustryId2" class="form-control level_2" rel="2"></select>
-						    <span>Cấp 3:</span>
-						    <select name="industry[id][3]" id="dataProductIndustryId3" class="form-control level_3" rel="3"></select>
-						    <span>Cấp 4:</span>
-						    <select name="industry[id][4]" id="dataProductIndustryId4" class="form-control level_4" rel="4"></select>
+							<div class="indus_select_box">
+								<span>Cấp 1:</span>
+								<select name="industry[id][1]" id="dataProductIndustryId1" class="form-control level_1" rel="1"></select>
+							</div>
+							<div class="indus_select_box">
+								<span>Cấp 2:</span>
+								<select name="industry[id][2]" id="dataProductIndustryId2" class="form-control level_2" rel="2"></select>
+							</div>
+							<div class="indus_select_box">
+								<span>Cấp 3:</span>
+								<select name="industry[id][3]" id="dataProductIndustryId3" class="form-control level_3" rel="3"></select>
+							</div>
+							<div class="indus_select_box">
+								<span>Cấp 4:</span>
+								<select name="industry[id][4]" id="dataProductIndustryId4" class="form-control level_4" rel="4"></select>
+							</div>
 						</div>
 						<span class="industry_info"></span>
 				    </div>
@@ -190,13 +198,13 @@
 								</div>
 						    </div>
 						    <span class="industry_info"></span>
-						    <br />
+						   <!-- <br />-->
 			    </p>
 				
 
 			    <p>
-				<label>{lang market}<span>*</span></label>
-				<input placeholder="{lang market_note}" name="data[product][market]" type="text" id="dataProductMarket" value="{$item.market}" class="form-control required"></font>					   
+					<label>{lang market}<span>*</span></label>
+					<input placeholder="{lang market_note}" name="data[product][market]" type="text" id="dataProductMarket" value="{$item.market}" class="form-control required"></font>					   
 			    </p>
 			    {if $smarty.get.type=='service' && ($pb_userinfo.checkout || $pb_userinfo.school_id)}
 					<p>
@@ -207,16 +215,16 @@
 			    {/if}
 			    
 			    <p>
-				<label>{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}{lang colon}</label>
-				<input class="form-control" name="data[product][product_code]" type="text" id="dataProductProductCode" value="{$item.product_code}">
+					<label>{if $getvar.type == 'service'}{lang service_code}{else}{lang product_code}{/if}{lang colon}</label>
+					<input class="form-control" name="data[product][product_code]" type="text" id="dataProductProductCode" value="{$item.product_code}">
 			    </p>
 			    
 			    <p>
-				<label>{lang product_brand}</label>
-				<select class="form-control" name="data[product][brand_id]" id="brand_id_select">
-				    <option value="0">{lang select}</option>
-				    {html_options options=$UserBrands selected=$item.brand_id}
-				</select>
+					<label>{lang product_brand}</label>
+					<select class="form-control" name="data[product][brand_id]" id="brand_id_select">
+						<option value="0">{lang select}</option>
+						{html_options options=$UserBrands selected=$item.brand_id}
+					</select>
 			    </p>
 			    <!--{foreach from=$Forms name=form item=item1 key=key1}-->
 				<p>
