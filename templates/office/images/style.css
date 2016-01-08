@@ -3842,6 +3842,9 @@ a.unvalid_edit {
     color: #333;
     display: block;
 }
+.facebook_office h4 {
+    font-family: tahoma;
+}
 .facebook_office .share_tro {
     margin-bottom: 10px;
     clear: both;
