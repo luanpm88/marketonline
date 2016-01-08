@@ -49,16 +49,16 @@
           <td>
           <table class="bglist">
             <tr>
-              <th width="9%">{lang sample_image}</th>
-              <th width="25%" style="text-align: left">{lang content}</th>
-              <th>Thời hạn</th>
-              <th width="10%">{lang published}</th>
-		{if $pb_userinfo.checkout || $pb_userinfo.school_id}
-			<th width="10%">Sinh viên</th>	      
-		{/if}
-	      <th width="21%">Phê duyệt</th>
-              <th style="text-align: left" width="10%">{lang operation}</th>
-              <th>{lang choose}</th>
+              <th style="white-space: nowrap" width="9%">{lang sample_image}</th>
+              <th width="25%" style="text-align: left;white-space: nowrap">{lang content}</th>
+              <th style="white-space: nowrap">Thời hạn</th>
+              <th style="white-space: nowrap" width="10%">{lang published}</th>
+			{if $pb_userinfo.checkout || $pb_userinfo.school_id}
+				<th style="white-space: nowrap" width="10%">Sinh viên</th>	      
+			{/if}
+	      <th style="white-space: nowrap" width="21%">Phê duyệt</th>
+              <th style="text-align: left;white-space: nowrap" width="10%">{lang operation}</th>
+              <th style="white-space: nowrap">{lang choose}</th>
             </tr>
 			<!--{foreach from=$Items item=item}-->
             <tr>
