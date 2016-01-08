@@ -35,7 +35,7 @@
 				</p>
 				
 				
-				    <label>Hình ảnh<span>*</span> <i class="note">(Nhấn lên hình để thay)</i></label>
+				    <label>Hình ảnh<span>*</span> <i class="note">(Nhấn lên hình để Tải hình)</i></label>
 				    <div class="images_inputs">
 					<div class="box box-1">
 					    <div class="img-box" rel="1">
@@ -295,7 +295,7 @@ jQuery(document).ready(function($) {
 
 	<!-- {literal} -->
 		<script>
-			function checkIndustryBox() {
+			function autoCheck() {
 				$(".indus_select_box select").each(function() {
 					if($(this).find("option").length > 1) {
 						$(this).parents(".indus_select_box").fadeIn()
@@ -303,8 +303,18 @@ jQuery(document).ready(function($) {
 						$(this).parents(".indus_select_box").fadeOut()
 					}
 				})
+				
+				$(".images_inputs .box").each(function() {
+					if($(this).find("input:checked").length) {
+					  $(this).css("color","blue")
+					  $(this).css("font-weight","bold")
+					} else {
+					  $(this).css("color","#333")
+					  $(this).css("font-weight","normal")
+					}
+				})
 			}			
-			setInterval("checkIndustryBox()", 500)
+			setInterval("autoCheck()", 500)
 		</script>
 	<!-- {/literal} -->
 
