@@ -28,7 +28,7 @@
 				<input type="hidden" name="redirect" value="{$back_link}">
 				{if $getvar.type}<input type="hidden" name="data[product][service]" value="1" />{/if}
 				
-				
+				<p>(Ghi chú: Những mục có dấu <label><span>*</span></label> là bắt buộc)</p>
 				<p>
 				    <label>{if $getvar.type == 'service'}{lang service_name}{else}{lang product_name}{/if}<span>*</span></label>
 				    <input placeholder="{lang words_length}" maxlength="70" style="" name="data[product][name]" type="text" id="dataProductName" value="{$item.name}" class="form-control required">
