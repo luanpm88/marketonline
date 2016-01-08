@@ -2156,10 +2156,10 @@ h2.area-title {
 .facebook_office .col {
     float: left;
     margin-right: 10px;
-    width: 300px;
+    width: 100%;
 }
 .facebook_office .left-col {
-    width: 300px;
+    width: 100%;
     margin-bottom: 20px;
 }
 .facebook_office h4 {
@@ -2173,4 +2173,7 @@ h2.area-title {
 }
 #search-panel .input-group {
     position: absolute;
+}
+.cats-list-box {
+    position: relative;
 }
