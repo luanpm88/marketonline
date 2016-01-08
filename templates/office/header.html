@@ -1376,6 +1376,8 @@ $(document).ready(function() {
 			{if $hasProfile && $membertype_id == 6}
 			      <li><a class="" href="{the_url module='studypost' action='memberpage' id=`$pb_userinfo.id`}" id="info-manage"><span>{$pb_userinfo.first_name} {$pb_userinfo.last_name}</span></a></li>
 			{/if}
+			
+			<li><a class="" href="announce.php?id=34" id="info-manage"><span>Dịch vụ MarketOnline.vn</span></a></li>
 			<!--{if $COMPANYINFO.cache_spacename and $COMPANYINFO.status==1 && $MEMBER.membertype_id != 5}--><li class="shop_menu"><a href="{$COMPANYINFO.space_url}" target="_blank"><span>{$COMPANYINFO.shop_name}</span></a></li><!--{/if}-->
 			<li><a href="../logging.php?action=logout"><span>{lang login_out}</span></a></li>
 		</ul>
