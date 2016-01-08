@@ -195,7 +195,20 @@
 		
 		</script>
 		   
-		
+		{literal}
+<script>
+    $(".share_tro").each(function() {
+        var code = $(this).attr("rel")
+        var box = $(this)
+        $.ajax({
+            url: 'http://marketonline.vn:3000/system_messages/ajax_content?code='+code,
+            context: document.body
+        }).done(function(data) {
+            box.html(data)
+        });
+    })
+</script>
+{/literal}
 		
 		<!--{include file="_office_script.html"}-->
 		
