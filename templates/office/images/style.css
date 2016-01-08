@@ -3855,3 +3855,6 @@ li.sline {
     background: red !important;
     color: #fff;
 }
+.facebook_office .col iframe {
+    border: solid 1px #ccc !important;
+}
