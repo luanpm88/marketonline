@@ -19,7 +19,7 @@
         
 	
 	<div id="settingouter" style="float:right">
-	    <a href="../redirect.php?url=/virtual-office/"><img class="avatar" src="{if $COMPANYINFO.name}{$COMPANYINFO.logo}{else}{if $user_avatar} ../{$user_avatar} {else} ../templates/default/image/usericon.jpg  {/if}{/if}" width="20" height="20" /></a>
+	    <a href="../redirect.php?url=/virtual-office/"><img class="avatar" src="{if $COMPANYINFO.name}{$COMPANYINFO.logo}{else}{if $user_avatar} {$user_avatar} {else} ../templates/default/image/usericon.jpg  {/if}{/if}" width="20" height="20" /></a>
 	    
 	    
 	    {if $COMPANYINFO.name}
