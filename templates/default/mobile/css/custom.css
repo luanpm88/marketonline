@@ -2224,3 +2224,8 @@ h1.page-title .icon-page.icon-company {
 .navbar-nav {
     padding-bottom: 20px;
 }
+.genders input {
+    display: inline-block;
+    margin-right: 5px;
+    padding-right: 5px;
+}
