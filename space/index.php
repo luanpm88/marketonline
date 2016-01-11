@@ -10,7 +10,7 @@ define('CURSCRIPT', 'index');
 require("../libraries/common.inc.php");
 
 $do = null;
-$space_actions = array(
+$space_actions = array (
 "intro", 
 "home", 
 "product", 
