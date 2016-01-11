@@ -2221,3 +2221,6 @@ h1.page-title .icon-page.icon-company {
 #dataIndustry select.idus_select {
     background: #fff;
 }
+.navbar-nav {
+    padding-bottom: 20px;
+}
