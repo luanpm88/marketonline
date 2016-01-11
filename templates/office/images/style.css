@@ -3871,3 +3871,7 @@ li.sline {
     line-height: 0;
     position: relative;
 }
+.tooltip-box {
+    left: 365px;
+    z-index: 100;
+}
