@@ -17,10 +17,15 @@
 							<label class="" style="width: 90%">
 								Tên đầy đủ<span>*</span>
 							</label>
-							<span class="">
-								<input class="form-control half-control firstname" name="memberfield[first_name]" type="text" placeholder="{lang first_name}" id="memberlastname" value="{$item.first_name}" required>
-								<input class="form-control half-control lastname" placeholder="{lang last_name}" name="memberfield[last_name]" type="text" id="memberlastname" value="{$item.last_name}" required>
-							</span>
+							<div class="row">
+								<div class="col-xs-6">
+									<input class="form-control half-control firstname" name="memberfield[first_name]" type="text" placeholder="{lang first_name}" id="memberlastname" value="{$item.first_name}" required>
+								</div>
+								<div class="col-xs-6">
+									<input class="form-control half-control lastname" placeholder="{lang last_name}" name="memberfield[last_name]" type="text" id="memberlastname" value="{$item.last_name}" required>
+								</div>
+							</div>	
+							
 							<label id="memberlastname-error" class="error" for="memberlastname">Yêu cầu nhập.</label>
 							<label id="memberfirstname-error" class="error" for="memberfirstname">Yêu cầu nhập.</label>
 						</p>
