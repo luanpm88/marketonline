@@ -335,7 +335,7 @@ function checkConfirmOrderFields() {
 			<p>
 				<span>{lang email}<b class="red-bold">*</b>&nbsp;</span>
 				<input value="{$pb_userinfo.email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
-				<div style="color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Vui lòng kiểm tra email chính xác để nhận thông tin tài khoản</div>
+				<div class="email_note" style="display: none;color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Vui lòng kiểm tra email chính xác để nhận thông tin tài khoản</div>
 			</p>
 			
 				
@@ -345,29 +345,24 @@ function checkConfirmOrderFields() {
 				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
 			</p>
 			
-			<div style="float: left; width: 100%">
-				<div style="float: left;margin-right: 8px;width: 49%;">
-					<p>
-						<span>Tên người dùng</span>
-						<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="user_name" id="address" class="bgWhite" />
-					</p>
+			{if !$pb_userinfo}
+				<div style="float: left; width: 100%">
+					<div style="float: left;margin-right: 8px;width: 49%;">
+						<p>
+							<span>Tên người dùng</span>
+							<input  type="text" value="{$pb_userinfo.address}" maxlength="120" name="user_name" id="username" class="bgWhite" />
+						</p>
+					</div>
+					<div  style="float: left; width: 50%; width: 49%">
+						<p>
+							<span>Mật khẩu đăng nhập</span>
+							<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="password" id="" class="bgWhite" />
+						</p>
+					</div>
 				</div>
-				<div  style="float: left; width: 50%; width: 49%">
-					<p>
-						<span>Mật khẩu đăng nhập</span>
-						<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="password" id="address" class="bgWhite" />
-					</p>
-				</div>
-			</div>
-			<div style="color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Lưu ý: Quý khách nên nhớ <strong>tên người dùng</strong> và <strong>mật khẩu</strong> để đăng nhập.</div>
+				<div style="color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Lưu ý: Quý khách nên nhớ <strong>Tên người dùng</strong> và <strong>Mật khẩu</strong> để đăng nhập.</div>
+			{/if}
 		{/if}
-		
-		
-		
-		
-		
-              
-                
 		
                 
               </div>
@@ -380,10 +375,9 @@ function checkConfirmOrderFields() {
 			<input checked="checked" type="checkbox" id="chkSameBuyer" name="data[orderz][chkSameBuyer]"><label for="buyer">{lang same_buyer}</label>
 		  </p>
             <div class="contStore" style="clear: both;">
-              <div class="formProfile box-profile">
+				<div class="formProfile box-profile">
                   
-		  
-		  <div class="reciever">
+				<div class="reciever">
                 
 		
 		
@@ -404,6 +398,7 @@ function checkConfirmOrderFields() {
 		
 		<p>		
 			<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
+			<br style="clear: both" />
 			<input type="text" value="{$pb_userinfo.receiver_address}" {if $pb_userinfo.receiver_address} disabled="disabled" {/if} maxlength="120" name="data[order][receiver_address]" id="receiver_address" class="bgWhite" />
 		</p>
 
@@ -463,16 +458,98 @@ var industry_id3 = {$item.industry_id3|default:0} ;
 <script>
 $(document).ready(function() {
 
-	alert("checking");
-	$("validateion").check(function() {
-	})
-
+	$('#email').blur(function (){
+		//$(".email_note").show();
+		
+		//var username = $("#dataMemberUsername").val();
+		//var params = "username="+username;
+		//var action = "checkusername";
+		//if(username){
+		//	$.ajax({
+		//	  url:'ajax.php?action='+action,
+		//	  type:'get',
+		//	  dataType:'json',
+		//	  data:params,	
+		//	  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+		//	  success: update_checkusernameDiv
+		//	});
+		//}
+		
+		var email = $("#email").val();
+		if(email.length<5){
+			return;
+		}
+		var params = "email="+email;
+		var action = "checkemail";
+		$.ajax({
+		  url:'ajax.php?action='+action,
+		  type:'get',
+		  dataType:'json',
+		  data:params,
+		  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+		  success: function(data) {
+				var errorNumber = data.isError;
+				if(errorNumber!="0")
+				{
+					//if(errorNumber=="1"){
+						if(!$(".email_error").length) {							
+							$(".email_note").after('<div class="email_error">Em đã có người dùng</div>');
+							$(".email_note").hide();
+						}
+					//} else {
+					//	$(".email_error").remove();
+					//}
+				} else {
+					$("#Submit").attr('disabled', false);
+					$("#memberemailDiv").html('');
+					$(".email_error").remove();
+					$(".email_note").show();
+				}
+		  }
+		});
+	});
+	
+	$('#username').blur(function (){
+		//$(".email_note").show();
+		
+		var username = $("#username").val();
+		var params = "username="+username;
+		var action = "checkusername";
+		if(username){
+			$.ajax({
+			  url:'ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,	
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success:  function(data) {
+							var errorNumber = data.isError;
+							if(errorNumber!="0")
+							{
+								//if(errorNumber=="1"){
+									if(!$(".username_error").length) {							
+										$("#username").after('<div class="username_error">Tên người dùng đã được sử dụng</div>');
+									}
+								//} else {
+								//	$(".email_error").remove();
+								//}
+							} else {
+								$("#Submit").attr('disabled', false);
+								$("#memberemailDiv").html('');
+								$(".username_error").remove();
+							}
+					  }
+			});
+		}
+		
+		
+	});
+	
+		
+	
 });
 </script>
 <!--{/literal}-->
-
-
-
 
 
 </div>
