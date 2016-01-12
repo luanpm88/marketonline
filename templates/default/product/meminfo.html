@@ -253,7 +253,6 @@ function checkConfirmOrderFields() {
     
     <div class="detailtopcon clearfix">
 		
-		
 		<div class="qiugouleftcon carttable">
 			<form name="offer_list_frm" id="cart" method="post" onsubmit="return checkConfirmOrderFields();">
 
@@ -301,6 +300,7 @@ function checkConfirmOrderFields() {
 			<p>
 				<span>{lang email}<b class="red-bold">*</b>&nbsp;</span>
 				<input value="{$pb_company.contact_email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
+				
 			</p>
 			
 				
@@ -385,7 +385,6 @@ function checkConfirmOrderFields() {
                 
 		
 		
-		
 		<p>
 			<span>{lang fullname}<b class="red-bold">*</b>&nbsp;</span>
 			<input type="text" id="receiver_fullname" name="data[order][receiver_fullname]" class="bgWhite" value="{$pb_userinfo.receiver_fullname}" {if $pb_userinfo.receiver_fullname} disabled="disabled" {/if}>
@@ -462,11 +461,15 @@ var industry_id3 = {$item.industry_id3|default:0} ;
 <script>
 $(document).ready(function() {
 
-
+	alert("checking");
+	$("validateion").check(function() {
+	})
 
 });
 </script>
 <!--{/literal}-->
+
+
 
 
 
