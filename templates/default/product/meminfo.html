@@ -19,61 +19,85 @@ function checkConfirmOrderFields() {
 	if($("#email").val().trim() == "")
 	{
 		$("#email").addClass('error');
+		if(!$("#email").parent().find(".full_fill_error").length) {
+			$("#email").after('<div class="full_fill_error">Vui lòng điền email.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#email").removeClass('error');
+		$("#email").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#username").val().trim() == "")
 	{
 		$("#username").addClass('error');
+		if(!$("#username").parent().find(".full_fill_error").length) {
+			$("#username").after('<div class="full_fill_error">Vui lòng điền tên người dùng.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#username").removeClass('error');
+		$("#username").parent().find(".full_fill_error").remove();
 	}	
 	
 	if($("#password").val().trim() == "")
 	{
 		$("#password").addClass('error');
+		if(!$("#password").parent().find(".full_fill_error").length) {
+			$("#password").after('<div class="full_fill_error">Vui lòng điền mật khẩu.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#password").removeClass('error');
+		$("#password").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#fullname").val().trim() == "")
 	{
 		$("#fullname").addClass('error');
+		if(!$("#fullname").parent().find(".full_fill_error").length) {
+			$("#fullname").after('<div class="full_fill_error">Vui lòng điền tên đầy đủ.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#fullname").removeClass('error');
+		$("#fullname").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#mobile").val().trim() == "")
 	{
 		$("#mobile").addClass('error');
+		if(!$("#mobile").parent().find(".full_fill_error").length) {
+			$("#mobile").after('<div class="full_fill_error">Vui lòng điền số điện thoại.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#mobile").removeClass('error');
+		$("#mobile").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#address").val().trim() == "")
 	{
 		$("#address").addClass('error');
+		if(!$("#address").parent().find(".full_fill_error").length) {
+			$("#address").after('<div class="full_fill_error">Vui lòng điền địa chỉ.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#address").removeClass('error');
+		$("#address").parent().find(".full_fill_error").remove();
 	}
 	
 	//if($("#message").val() == "")
@@ -140,7 +164,9 @@ function checkConfirmOrderFields() {
 	$(document).ready(function() {
 		
 		//
-		
+		$("input.error").change(function() {
+			checkConfirmOrderFields();
+		});
 		
 		//buyer info
 		function changeCheckBuyer() {
@@ -280,7 +306,7 @@ function checkConfirmOrderFields() {
 <div class="orderdetail_form_ut" style="width:900px">
 <h3 class="head">{lang customer_info}</h3>
 		<!--<h2>Thông tin người mua</h2>   -->
-                <p class="hint">{lang member_info_announce}</p>
+                <p class="hint">Vui lòng điền đầy đủ (<b class="red-bold">*</b>) thông tin bên dưới</p>
 		
 	<div class="checkInfor orderdetail_form" style="padding:20px; background: #edf4ef">
                         
@@ -380,7 +406,7 @@ function checkConfirmOrderFields() {
 						</p>
 					</div>
 				</div>
-				<div style="color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Lưu ý: Quý khách nên nhớ <strong>Tên người dùng</strong> và <strong>Mật khẩu</strong> để đăng nhập.</div>
+				<div style="color: blue;margin-top: -5px;margin-bottom: 10px;clear: both" class="info_annoucr" style="color: blue;">Lưu ý: Quý khách nên nhớ <strong>Tên người dùng</strong> và <strong>Mật khẩu</strong> để đăng nhập.</div>
 			{/if}
 		{/if}
 		
@@ -496,38 +522,44 @@ $(document).ready(function() {
 		//}
 		
 		var email = $("#email").val();
-		if(email.length<5){
-			return;
-		}
-		var params = "email="+email;
-		var action = "checkemail";
-		$.ajax({
-		  url:'ajax.php?action='+action,
-		  type:'get',
-		  dataType:'json',
-		  data:params,
-		  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
-		  success: function(data) {
-				var errorNumber = data.isError;
-				if(errorNumber!="0")
-				{
-					//if(errorNumber=="1"){
-						if(!$(".email_error").length) {							
-							$(".email_note").after('<div class="email_error">Email đã có người dùng. Nếu là bạn vui lòng <a class="comment_but" href="#login-box" redirect="{/literal}{$F_URL}{literal}"><strong>Đăng nhập</strong></a><br/>Hoặc chọn email khác.</div>');
-							$(".email_note").hide();
-							$("#Submit").attr('disabled', true);
-						}
-					//} else {
-					//	$(".email_error").remove();
-					//}
-				} else {
-					$("#Submit").attr('disabled', false);
-					$("#memberemailDiv").html('');
-					$(".email_error").remove();
-					$(".email_note").show();
-				}
-		  }
-		});
+		
+		if (email.length>5) {
+            if(email.length<5){
+				return;
+			}
+			var params = "email="+email;
+			var action = "checkemail";
+			$.ajax({
+			  url:'ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success: function(data) {
+					var errorNumber = data.isError;
+					if(errorNumber!="0")
+					{
+						//if(errorNumber=="1"){
+							if(!$(".email_error").length) {							
+								$(".email_note").after('<div class="email_error">Email đã có người dùng. Nếu là bạn vui lòng <a class="comment_but" href="#login-box" redirect="{/literal}{$F_URL}{literal}"><strong>Đăng nhập</strong></a><br/>Hoặc chọn email khác.</div>');
+								$(".email_note").hide();
+								$("#Submit").attr('disabled', true);
+							}
+						//} else {
+						//	$(".email_error").remove();
+						//}
+					} else {
+						$("#Submit").attr('disabled', false);
+						$("#memberemailDiv").html('');
+						$(".email_error").remove();
+						$(".email_note").show();
+					}
+			  }
+			});
+        } else {
+			$(".email_error").remove();
+			$("#Submit").attr('disabled', false);
+		}		
 	});
 	
 	$('#username').blur(function (){
@@ -562,6 +594,9 @@ $(document).ready(function() {
 							}
 					  }
 			});
+		} else {
+			$(".username_error").remove();
+			$("#Submit").attr('disabled', false);
 		}
 		
 		

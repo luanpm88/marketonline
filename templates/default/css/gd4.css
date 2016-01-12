@@ -917,7 +917,7 @@ h2.market-header-title {
     position: absolute;
     right: 3px;
 }
-.email_error, .username_error {
+.email_error, .username_error, .full_fill_error {
     color: red;
     margin: -5px 0 15px;
 }
@@ -926,4 +926,6 @@ h2.market-header-title {
 }
 .red-bold {
     color: red;
+    font-size: 20px;
+    line-height: 10px;
 }
