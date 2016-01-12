@@ -3,16 +3,22 @@
 	    
 	<!--{editor type="tiny_mce_new"}-->
 	    
+		{if !$hasProfile || !$hasCompany}
+			<a value="" style="width: 100%;font-size: 18px;padding: 10px;margin-bottom: 10px;" class="btn btn-default">{if $hasProfile}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 1: Bổ sung thông tin cá nhân</a>
+			<a value="" style="width: 100%;font-size: 18px;padding: 10px;margin-bottom: 10px;" class="btn btn-success">{if $hasCompany}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 2: Bổ sung thông tin kinh doanh</a>
+		{/if}
+		
         <!-- Page Content -->
         <div id="page-content-wrapper" class="home-page">
             
             <div class="container-fluid page-inner">
 
-                    <h1>Cập nhật hồ sơ</h1>
+                    <h1>Cập nhật hồ sơ {$membertype_name}</h1>
                     
 		    
 					
 					<form name="company_frm" id="CompanyFrm" action="{$smarty.server.PHP_SELF}" method="post" enctype="multipart/form-data">
+						<div class="hint">(Ghi chú: Những mục có dấu <label><span class="red">*</span></label> là bắt buộc)</div>
 					    <input type="hidden" name="id" value="{$item.id}">        
 					    <input type="hidden" name="data[companyfield][company_id]" value="{$item.id}">        
 					    <!-- {formhash} -->        
@@ -33,7 +39,7 @@
 							<img class="preview_image" id="main_no_photo" src="../images/company_nopic.png" />
 							<!--{/if}-->
 						    </div>
-						    (Nhấn vào ảnh để thay)
+						    (Nhấn vào ảnh để <!--{if $item.logo}-->thay<!--{else}-->đăng<!--{/if}-->)
 						    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
 						</div>
 						
@@ -82,14 +88,14 @@
 					    
 					    <p>
 						<label class="">
-						    {lang contact_phone}<span>*</span> <i class="note">{lang format}</i>
-						</label>
+						    {lang contact_phone}{if $membertype_name == "Doanh nghiệp"}<span>*</span>{/if} <i class="note">Ví dụ: (84) 08.3846 1716</i>
+						</label><br />
 						<span class="">
-						    <input class="form-control phonepart-1 required" name="data[telcode]" type="text" id="telcode" value="{$item.telcode}" size="4" maxlength="4">
+						    <input class="form-control phonepart-1 {if $membertype_name == "Doanh nghiệp"}required{/if}" name="data[telcode]" type="text" id="telcode" value="{$item.telcode}" size="4" maxlength="4">
 						    -
-						      <input class="form-control phonepart-2 required" name="data[telzone]" type="text" id="telzone" value="{$item.telzone}" size="4" maxlength="4">
+						      <input class="form-control phonepart-2 {if $membertype_name == "Doanh nghiệp"}required{/if}" name="data[telzone]" type="text" id="telzone" value="{$item.telzone}" size="4" maxlength="4">
 						    -
-						    <input class="form-control phonepart-3 required" name="data[tel]" type="text" id="tel" value="{$item.tel}" size="15"><br />
+						    <input class="form-control phonepart-3 {if $membertype_name == "Doanh nghiệp"}required{/if}" name="data[tel]" type="text" id="tel" value="{$item.tel}" size="15"><br />
 						</span>
 						<br />
 						<label id="telcode-error" class="error" for="telcode" style="display: none;">Yêu cầu nhập.</label>
@@ -99,8 +105,8 @@
 					    
 					    <p>
 						<label class="">
-						    Fax <i class="note">{lang format}</i>
-						</label>
+						    Fax <i class="note">Ví dụ: (84) 08.3957 0385</i>
+						</label><br />
 						<span class="">
 						    <input class="form-control phonepart-1" name="data[faxcode]" type="text" id="faxcode" value="{$item.faxcode}" size="4" maxlength="4">
 						    -
@@ -121,10 +127,10 @@
 					    </p>
 					    <p>
 						<label class="">
-						    {lang company_home}<span>*</span>
+						    {lang company_home}
 						</label>
 						<span class="">
-						    <input class="form-control required" name="data[company][site_url]" type="text" id="site_url" value="{$item.site_url}" size="32">
+						    <input class="form-control" name="data[company][site_url]" type="text" id="site_url" value="{$item.site_url}" size="32">
 						</span>						    
 					    </p>
 					    
@@ -140,7 +146,7 @@
 						</label>
 						<span class="">
 						    <input  placeholder="Người liên hệ" class="form-control required" name="data[company][link_man]" type="text" id="linkman" value="{$item.link_man}" size="32" class="required">
-						    <span class="gendercheck" style="margin: 5px 0 -16px; display: block">{html_radios name="data[company][link_man_gender]" options=$Genders checked=$item.link_man_gender separator=" "}</span>
+						    <span class="genders gendercheck" style="margin: 18px 0 0; display: block">{html_radios name="data[company][link_man_gender]" options=$Genders checked=$item.link_man_gender separator=" "}</span>
 						     
 						</span>						    
 					    </p>
@@ -311,8 +317,8 @@
 					    {/if}
 					    
 					    <br />
-					    <h3>Giới thiệu</h3>
-					    <textarea name="data[company][description]" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 300px">{$item.description}</textarea>
+					    <h3>Giới thiệu<span style="color: red">*</span></h3>
+					    <textarea name="data[company][description]" class="required" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 300px">{$item.description}</textarea>
 						
 						
 						<p></p>
@@ -335,7 +341,12 @@
 			var area_id1 = {$item.area_id1|default:0} ;
 			var area_id2 = {$item.area_id2|default:0} ;
 			var area_id3 = {$item.area_id3|default:0} ;
-		
+			
+			{literal}
+				$('textarea[name="data[company][description]"]').change(function(){
+					alert("ddd");
+				});
+			{/literal}
 		</script>
 		
 		<!--{include file="_office_script.html"}-->

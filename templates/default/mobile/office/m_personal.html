@@ -1,5 +1,10 @@
         <!--{include file="../header.html" page_title="`$_profile` - MarketOnline.vn"}-->
-            
+        
+		{if !$hasProfile || !$hasCompany}
+			<a value="" style="width: 100%;font-size: 18px;padding: 10px;margin-bottom: 10px;" class="btn btn-success">{if $hasProfile}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 1: Bổ sung thông tin cá nhân</a>
+			<a value="" style="width: 100%;font-size: 18px;padding: 10px;margin-bottom: 10px;" class="btn btn-default">{if $hasCompany}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 2: Bổ sung thông tin kinh doanh</a>
+		{/if}
+			
         <!-- Page Content -->
         <div id="page-content-wrapper" class="home-page">
             
@@ -93,7 +98,7 @@
 								<img class="preview_image" id="main_no_photo" src="../images/personal_nopic.png" />
 								<!--{/if}-->
 							    </div>
-							    (Nhấn vào ảnh để thay)
+							    (Nhấn vào ảnh để <!--{if $item.photo}-->thay<!--{else}-->đăng<!--{/if}-->)
 							    <br /><label id="com_pic-error" class="error" for="com_pic">Chọn ảnh đại diện.</label>
 							</div>
 							
