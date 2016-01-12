@@ -419,7 +419,7 @@ function checkConfirmOrderFields() {
                   <a href="?portal=market&amp;page=shopping_cart" class="btn-small SGray btCheck"><span>{lang back}</span></a> 
                   <span style="float:right;"> 
                           
-                        <span><input class="checkout_but" type="submit" value="Lưu thông tin" /></span>
+                        <span><input class="checkout_but" id="Submit" type="submit" value="Lưu thông tin" /></span>
                          
                 </span>
             </div>
@@ -495,6 +495,7 @@ $(document).ready(function() {
 						if(!$(".email_error").length) {							
 							$(".email_note").after('<div class="email_error">Email đã có người dùng. Nếu là bạn vui lòng <a class="comment_but" href="#login-box" redirect="{/literal}{$F_URL}{literal}"><strong>Đăng nhập</strong></a><br/>Hoặc chọn email khác.</div>');
 							$(".email_note").hide();
+							$("#Submit").attr('disabled', true);
 						}
 					//} else {
 					//	$(".email_error").remove();
@@ -529,6 +530,7 @@ $(document).ready(function() {
 								//if(errorNumber=="1"){
 									if(!$(".username_error").length) {							
 										$("#username").after('<div class="username_error">Tên người dùng đã được sử dụng. Thử tên người dùng khác?</div>');
+										$("#Submit").attr('disabled', true);
 									}
 								//} else {
 								//	$(".email_error").remove();
