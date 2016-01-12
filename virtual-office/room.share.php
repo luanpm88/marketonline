@@ -32,7 +32,6 @@ if(detectMobile()) {
 	setvar("office_path", "office/");
 }
 
-
 $smarty->setCompileDir($viewhelper->office_dir.DS);
 $smarty->flash_layout = "flash";
 $check_invite_code = false;
@@ -158,11 +157,11 @@ if($memgroup == 3){
 	$meminfo_name = "Cá nhân";
 }
 
-if($meminfo == 5){
+if($meminfo == 5) {
 	$meminfo_name = "Nhà tuyển dụng";
 	setvar("jobcount", $job->findCount(null, array("member_id=".$the_memberid)));
 }
-else if($meminfo == 4){
+else if($meminfo == 4) {
 	setvar("employeecount", $employee->findCount(null, array("member_id=".$the_memberid)));
 }
 
@@ -178,8 +177,6 @@ setvar("hasCompany", $hasCompany);
 setvar("membertype_id", $meminfo);
 setvar("membertype_name", $meminfo_name);
 setvar("MEMBER", $memberinfo);
-
-
 
 if (!$check)
 	if(!$hasProfile && $meminfo != 5)

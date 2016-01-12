@@ -343,6 +343,21 @@ function checkConfirmOrderFields() {
 				<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
 				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
 			</p>
+			
+			<div style="float: left; width: 100%">
+				<div style="float: left;margin-right: 8px;width: 49%;">
+					<p>
+						<span>Tên người dùng</span>
+						<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="user_name" id="address" class="bgWhite" />
+					</p>
+				</div>
+				<div  style="float: left; width: 50%; width: 49%">
+					<p>
+						<span>Mật khẩu đăng nhập</span>
+						<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="password" id="address" class="bgWhite" />
+					</p>
+				</div>
+			</div>
 		{/if}
 		
 		
@@ -390,9 +405,7 @@ function checkConfirmOrderFields() {
 			<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
 			<input type="text" value="{$pb_userinfo.receiver_address}" {if $pb_userinfo.receiver_address} disabled="disabled" {/if} maxlength="120" name="data[order][receiver_address]" id="receiver_address" class="bgWhite" />
 		</p>
-		
-		
-		
+
 		
 		  </div>
               </div>
@@ -441,12 +454,19 @@ var industry_id3 = {$item.industry_id3|default:0} ;
 <script src="scripts/script_industry.js"></script>
 
 
-
-
 </div>
 
 
+<script type='text/javascript' src='{$theme_img_path}js/jquery.validate.js'></script>
+<!--{literal}-->
+<script>
+$(document).ready(function() {
 
+
+
+});
+</script>
+<!--{/literal}-->
 
 
 

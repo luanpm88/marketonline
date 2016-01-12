@@ -1874,8 +1874,45 @@ class Product extends PbController {
 		
 		if(isset($_POST["data"]))
 		{
-			//var_dump($_POST["same_as_buyer"]);
-			//exit;
+			// QUICK REGISTRATION
+			if(isset($_POST["user_name"]) && isset($_POST["password"])) {
+				$username = trim($_POST["user_name"]);
+				$password = $member->authPasswd($_POST["password"]);
+				$space_name = stringToURI($_POST['user_name']);
+				$email = "";
+				if(isset($_POST["data"]["order"]["email"])) {
+					$email = $_POST["data"]["order"]["email"];
+				}
+				$full_name = "";
+				if(isset($_POST["data"]["order"]["fullname"])) {
+					$full_name = $_POST["data"]["order"]["fullname"];
+				}
+				$date = new MyDateTime();
+				$created_at = $date->getTimestamp();
+				$d_datetime = date("Y-m-d H:i:s", $created_at);
+				
+				$inser_sql = "INSERT INTO `pb_members` (`space_name`, `templet_id`, `username`, `userpass`, `email`, `points`, `credits`, `balance_amount`, `trusttype_ids`, `status`, `photo`, `membertype_id`, `membergroup_id`, `last_login`, `last_ip`, `service_start_date`, `service_end_date`, `office_redirect`, `created`, `modified`, `referrer_id`, `checkout`, `level1_point`, `level2_point`, `level1_paid`, `level2_paid`, `current_type`, `studypictures`, `counted_effective_members`, `role`, `typing`, `typing_time`, `fb_app_id`, `fb_secret`, `fb_access_token`, `fb_code`, `fb_data`, `fb_user_id`, `connect_points`, `good_shop_status`, `good_shop_moderator`, `good_shop_date`, `active_time`, `active_last`, `points_monthly`, `points_storage`, `points_storage_updated`, `points_monthly_lock`, `logging_count`, `points_weekly`, `points_weekly_store`, `points_weekly_updated`, `activity_announce_count`, `area_show`, `area_moderator`, `total_sales`, `total_buyers`, `real_total_sales`, `total_sold_products`, `total_bought`, `total_sellers`, `real_total_bought`, `total_bought_products`) VALUES
+('".$space_name."', 0, '".trim($_POST["user_name"])."', '".$password."', '".$email."', 1, 0, 0.00, '', '1', '', 1, 2, '".$created_at."', '".$_SERVER['REMOTE_ADDR']."', '1452573338', '', 0, '".$created_at."', '".$created_at."', 757, 0, 0, 0, 0, 0, 1, '', 0, '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, 0, '".$d_datetime."', 1, 0, NULL, 0, 0, 1, 0, NULL, 0, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+";
+				
+				$member->dbstuff->Execute($inser_sql);
+				
+				// Send email
+				require(PHPB2B_ROOT."libraries/sendmail.inc.php");
+				
+				$if_need_check = true;
+				$exp_time = $created_at+1296000;
+				$tmp_username = $username;
+				$hash = authcode("{$tmp_username}\t".$exp_time, "ENCODE");
+				//$hash = str_replace(array("+", "|"), array("|", "_"), $hash);
+				$hash = rawurlencode($hash);
+				setvar("hash", $hash);
+				setvar("username", $tmp_username);
+				setvar("expire_date", date("d-m-Y",strtotime("+100 day")));
+				$sended = pb_sendmail(array("luanpm88@gmail.com", $username), $username.", ".L("pls_active_your_account_title", "tpl"), "activite");
+			}		
+			
+
 			
 			if(isset($_SESSION["order_id"])) {
 				$order->deleteItems($_SESSION["order_id"]);
@@ -1898,8 +1935,7 @@ class Product extends PbController {
 				$items = $cartitem->getDataByMemberID($session_cart_id, $_GET["id"]);
 				//var_dump($items);
 				if($items)
-				{
-					
+				{					
 					foreach($items[$_GET["id"]]['items'] as $item)
 					{
 						//echo $item['p_name'];
@@ -1914,7 +1950,7 @@ class Product extends PbController {
 						if(isset($item['agent_username'])) {
 							$item_info['agent_username'] = $item['agent_username'];
 						}
-
+			
 						//var_dump($item_info);
 						$orderitem->add($item_info);
 					}
