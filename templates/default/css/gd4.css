@@ -921,3 +921,6 @@ h2.market-header-title {
     color: red;
     margin: -5px 0 15px;
 }
+.comment_but:hover {
+    opacity: 0.9;
+}

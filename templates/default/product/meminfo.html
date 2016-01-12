@@ -256,7 +256,7 @@ function checkConfirmOrderFields() {
 		<div class="qiugouleftcon carttable">
 			<form name="offer_list_frm" id="cart" method="post" onsubmit="return checkConfirmOrderFields();">
 
-<br />
+<br style="clear: both" /><br />
 <div class="orderdetail_form_ut" style="width:900px">
 <h3 class="head">{lang customer_info}</h3>
 		<!--<h2>Thông tin người mua</h2>   -->
@@ -493,7 +493,7 @@ $(document).ready(function() {
 				{
 					//if(errorNumber=="1"){
 						if(!$(".email_error").length) {							
-							$(".email_note").after('<div class="email_error">Email đã có người dùng</div>');
+							$(".email_note").after('<div class="email_error">Email đã có người dùng. Nếu là bạn vui lòng <a class="comment_but" href="#login-box" redirect="{/literal}{$F_URL}{literal}"><strong>Đăng nhập</strong></a><br/>Hoặc chọn email khác.</div>');
 							$(".email_note").hide();
 						}
 					//} else {
@@ -528,7 +528,7 @@ $(document).ready(function() {
 							{
 								//if(errorNumber=="1"){
 									if(!$(".username_error").length) {							
-										$("#username").after('<div class="username_error">Tên người dùng đã được sử dụng</div>');
+										$("#username").after('<div class="username_error">Tên người dùng đã được sử dụng. Thử tên người dùng khác?</div>');
 									}
 								//} else {
 								//	$(".email_error").remove();
