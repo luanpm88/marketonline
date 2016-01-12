@@ -26,6 +26,26 @@ function checkConfirmOrderFields() {
 		$("#email").removeClass('error');
 	}
 	
+	if($("#username").val().trim() == "")
+	{
+		$("#username").addClass('error');
+		valid = false;
+	}
+	else
+	{
+		$("#username").removeClass('error');
+	}	
+	
+	if($("#password").val().trim() == "")
+	{
+		$("#password").addClass('error');
+		valid = false;
+	}
+	else
+	{
+		$("#password").removeClass('error');
+	}
+	
 	if($("#fullname").val().trim() == "")
 	{
 		$("#fullname").addClass('error');
@@ -342,21 +362,21 @@ function checkConfirmOrderFields() {
 			
 			<p>
 				<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
+				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite required" />
 			</p>
 			
 			{if !$pb_userinfo}
 				<div style="float: left; width: 100%">
 					<div style="float: left;margin-right: 8px;width: 49%;">
 						<p>
-							<span>Tên người dùng</span>
-							<input  type="text" value="{$pb_userinfo.address}" maxlength="120" name="user_name" id="username" class="bgWhite" />
+							<span>Tên người dùng<b class="red-bold">*</b></span>
+							<input  type="text" value="{$pb_userinfo.address}" maxlength="120" name="user_name" id="username" class="bgWhite required" />
 						</p>
 					</div>
 					<div  style="float: left; width: 50%; width: 49%">
 						<p>
-							<span>Mật khẩu đăng nhập</span>
-							<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="password" id="" class="bgWhite" />
+							<span>Mật khẩu đăng nhập<b class="red-bold">*</b></span>
+							<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="password" id="password" class="bgWhite required" />
 						</p>
 					</div>
 				</div>

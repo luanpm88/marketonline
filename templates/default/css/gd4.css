@@ -924,3 +924,6 @@ h2.market-header-title {
 .comment_but:hover {
     text-decoration: underline;
 }
+.red-bold {
+    color: red;
+}
