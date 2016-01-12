@@ -922,5 +922,5 @@ h2.market-header-title {
     margin: -5px 0 15px;
 }
 .comment_but:hover {
-    opacity: 0.9;
+    text-decoration: underline;
 }
