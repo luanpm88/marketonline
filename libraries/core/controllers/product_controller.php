@@ -1852,6 +1852,10 @@ class Product extends PbController {
 			$this->sendTestMail($order_id);
 		}
 		
+		//echo $_SESSION["new_user_id"]."Ddddddd";
+		setvar("username", $_SESSION["new_user_username"]);
+		setvar("email", $_SESSION["new_user_email"]);
+		
 		if(detectMobile()) {
 			$this->render("mobile/product/thankyou");
 		} else {
@@ -1899,6 +1903,8 @@ class Product extends PbController {
 				$new_user_id = $member->dbstuff->Insert_ID();
 				
 				$_SESSION["new_user_id"] = $new_user_id;
+				$_SESSION["new_user_email"] = $email;
+				$_SESSION["new_user_username"] = $username;
 				//echo $new_user_id;
 				//
 				//$pb_userinfo = pb_get_member_info();
