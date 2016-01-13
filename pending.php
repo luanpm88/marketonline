@@ -34,7 +34,7 @@ if (!empty($validate_str)) {
     			$result = $member->updateUserStatus($member->info['id']);
     			if ($result) {
 					if(isset($_GET["new_user_id"])) {
-						flash(array("message"=>"aaaaa", "box_title"=>"Đăng ký tài khoản thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
+						flash(array("message"=>'Kích hoạt thành công,<br> Bạn hãy <a href="logging.php?type=new"><strong>&nbsp;&nbsp;Đăng nhập&nbsp;&nbsp;</strong></a> để theo dõi đơn hàng và hưởng chính sách ưu đãi.<br />Bạn có thể dùng tài khoản này để kinh doanh và hoạt động trên MarketOnline.vn', "box_title"=>"Đăng ký tài khoản thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
 					} else {
 						flash(array("message"=>"actived_and_login", "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
 					}
