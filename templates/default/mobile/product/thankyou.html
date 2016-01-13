@@ -8,22 +8,19 @@
                     
                     <div class="page-inner">
                         
-                            <p>{lang message_thankyou_confirmed_order}</p>
+                            <h4><p>{lang message_thankyou_confirmed_order}</p></h4>
                             
                             {if $username != ""}
-                            <hr>
-                            <h4>Chúng tôi đã gửi email kích hoạt tài khoản "<strong>{$username}</strong>" tới <br /><strong>{$email}</strong>.
-                                        <br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email. Để tiện cho việc quản lý và theo dõi đơn hàng của bạn.
-                                        <br /><br />(Lưu ý: kiểm tra cả mục inbox và spam)</h4>
+                                <hr>
+                                <h4>Chúng tôi đã gửi email kích hoạt tài khoản "<strong>{$username}</strong>" tới <br /><strong>{$email}</strong>.
+                                            <br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email. Để tiện cho việc quản lý và theo dõi đơn hàng của bạn.
+                                            <br /><br />(Lưu ý: kiểm tra cả mục inbox và spam)</h4>
+                                    </div>
                                 </div>
-                                <div class="reg_foot">
-                                            <a class="gomail" href="{$gomail}" target="_blank" rel="nofollow">Tới email của bạn</a>
-                                        </div>
-                            </div>
                             {/if}
                             
                             <p>
-                                <a href="{the_url module=root-url}" class="btn btn-primary">Về trang chủ</a>
+                                <a href="{$gomail}" class="btn btn-primary">Tới email của bạn</a>
                             </p>
         
                     </div>
