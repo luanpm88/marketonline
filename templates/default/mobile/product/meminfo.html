@@ -173,7 +173,7 @@ $(document).ready(function() {
                     
 					var errorNumber = data.isError;
                     alert(errorNumber);
-					if(errorNumber!="0")
+					if(errorNumber!="0" && errorNumber!="2")
 					{
 						//if(errorNumber=="1"){
 							if(!$(".email_error").length) {							
@@ -216,7 +216,7 @@ $(document).ready(function() {
 			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
 			  success:  function(data) {
 							var errorNumber = data.isError;
-							if(errorNumber!="0")
+							if(errorNumber!="0" && errorNumber!="2")
 							{
 								//if(errorNumber=="1"){
 									if(!$(".username_error").length) {							
