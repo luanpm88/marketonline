@@ -1896,6 +1896,15 @@ class Product extends PbController {
 ";
 				
 				$member->dbstuff->Execute($inser_sql);
+				$new_user_id = $member->dbstuff->Insert_ID();
+				
+				$_SESSION["new_user_id"] = $new_user_id;
+				//echo $new_user_id;
+				//
+				//$pb_userinfo = pb_get_member_info();
+				//var_dump(!isset($pb_userinfo["pb_userid"]) && isset($_SESSION["new_user_id"]));
+				//
+				//exit;
 				
 				// Send email
 				require(PHPB2B_ROOT."libraries/sendmail.inc.php");
@@ -1918,7 +1927,9 @@ class Product extends PbController {
 				$order->del($_SESSION["order_id"]);
 			}
 			if(isset($_GET["id"]))
-			{				
+			{
+				
+				
 				//var_dump($_POST["data"]);
 				if(!isset($_POST["data"]["order"]["receiver_fullname"]) || isset($_POST["same_as_buyer"]))
 				{
@@ -1934,7 +1945,9 @@ class Product extends PbController {
 				$items = $cartitem->getDataByMemberID($session_cart_id, $_GET["id"]);
 				//var_dump($items);
 				if($items)
-				{					
+				{
+					//echo "dddd";
+					//exit;
 					foreach($items[$_GET["id"]]['items'] as $item)
 					{
 						//echo $item['p_name'];
@@ -1987,8 +2000,9 @@ class Product extends PbController {
 						exit;
 					}
 				}
-			}
-			
+				echo "22dddd";
+				exit;
+			}			
 		}
 		
 		$pb_userinfo = pb_get_member_info();
