@@ -1924,7 +1924,7 @@ class Product extends PbController {
 				setvar("hash", $hash);
 				setvar("username", $tmp_username);
 				setvar("expire_date", date("d-m-Y",strtotime("+100 day")));
-				$sended = pb_sendmail(array("luanpm88@gmail.com", $username), $username.", ".L("pls_active_your_account_title", "tpl"), "activite");
+				$sended = pb_sendmail(array($email, $username), $username.", ".L("pls_active_your_account_title", "tpl"), "activite");
 			}
 
 			
