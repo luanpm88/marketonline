@@ -1852,7 +1852,25 @@ class Product extends PbController {
 			$this->sendTestMail($order_id);
 		}
 		
-		//echo $_SESSION["new_user_id"]."Ddddddd";
+		//forward email
+		//echo $_GET['em'];
+		preg_match('/(.*?)@(.*?)$/', $_SESSION["new_user_email"], $match);
+		$rail = $match[2];		
+		
+		switch($rail)
+		{
+			case 'gmail.com':
+				$gomail = 'http://gmail.com';
+				break;
+			case 'outlook.com':
+				$gomail = 'http://outlook.com';
+				break;
+			default;
+				$gomail = 'http://mail.'.$rail;
+				break;			
+		}
+		setvar("gomail", $gomail);
+		
 		setvar("username", $_SESSION["new_user_username"]);
 		setvar("email", $_SESSION["new_user_email"]);
 		
@@ -1924,6 +1942,7 @@ class Product extends PbController {
 				setvar("hash", $hash);
 				setvar("username", $tmp_username);
 				setvar("expire_date", date("d-m-Y",strtotime("+100 day")));
+				setvar("new_user_id",$_SESSION["new_user_id"]);
 				$sended = pb_sendmail(array($email, $username), $username.", ".L("pls_active_your_account_title", "tpl"), "activite");
 			}
 
