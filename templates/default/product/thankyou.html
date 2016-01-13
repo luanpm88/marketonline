@@ -41,8 +41,10 @@
 	
 	<h4>Cám ơn Quý khách tham gia mua hàng tại website <a href="http://marketonline.vn">MarketOnline.vn</a>.<br>Người bán sẽ liên hệ với bạn sớm.</h4>
 
-<hr>
 
+
+{if !$username != ""}
+<hr>
 <h4>Chúng tôi đã gửi email kích hoạt tài khoản "<strong>{$username}</strong>" tới <br /><strong>{$email}</strong>.
 			<br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email. Để tiện cho việc quản lý và theo dõi đơn hàng của bạn.
 			<br /><br />(Lưu ý: kiểm tra cả mục inbox và spam)</h4>
@@ -51,7 +53,7 @@
 			    <a class="gomail" href="{$gomail}" target="_blank" rel="nofollow">Tới email của bạn</a>
 			</div>
 </div>
-
+{/if}
 
 
 
