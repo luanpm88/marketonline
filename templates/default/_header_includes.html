@@ -1,14 +1,16 @@
 {if !$pb_username}
 	<div id="login-box" style="display: none">
 		
-		<div style="padding: 20px 20px 0px 20px;width: 375px">
+		<div style="padding: 20px 20px 0px 20px;width: 425px">
 	
 			<div class="content_inner" style="padding-bottom:10px;">
 			    <div class="wrapper">
 	
 	    <div class="content">
 		
-		<h1 style="font-size: 18px; border-bottom: solid 1px #ddd; line-height: 22px;">{lang login}</h1>
+		<h1 style="font-size: 25px;
+    font-weight: bold;
+    line-height: 35px;">{lang login}</h1>
 		
 		<div class="loadingcon">
 		<form name="loggingfrm" id="LoggingFrm" method="post" action="logging.php">
@@ -44,8 +46,10 @@
 			       </div>
 			    </div>
 				<br style="clear: both" />
-				<br /><br />
-			    <h1 style="font-size: 18px; line-height: 22px; border-bottom: solid 1px #ddd">Nếu bạn chưa có tài khoản thành viên</h1>
+				<br /><div style="display: block; border: 1px solid rgb(85, 85, 85);"></div><br />
+			    <h1 style="font-size: 25px;
+    font-weight: bold;
+    line-height: 35px;">Nếu chưa có tài khoản thành viên</h1>
 				<div class="box-res-con shopping" style="display: none">
 					<div class="">
 					    <!--<h4 style="margin-bottom: 8px;">Nếu bạn chưa có tài khoản thành viên.<br />Vui lòng đăng ký để tham gia với chúng tôi.</h4>
@@ -62,7 +66,7 @@
 					    {/if}-->
 					    
 					    
-					    <a class="shopping_button single_add_to_cart_button button alt" type="button" href="index.php?do=product&action=meminfo&id=">Tiếp tục mua</a>
+					    <a class="shopping_button single_add_to_cart_button button alt" type="button" href="index.php?do=product&action=meminfo&id=">Bổ sung thông tin</a>
 					</div>
 				    </div>
 			    
