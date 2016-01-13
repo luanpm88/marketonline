@@ -36,22 +36,32 @@
 
 
 {if $smarty.get.new_user_id}
-	.
+	<div class="row res_box res_done_box flash_boxz" style="width: 564px;">
+		<h2>{$box_title}</h2>
+		<div class="success_box">
+		<h4>{$message}</h4>
+		</div>
+		
+		<div class="reg_foot">
+					
+					<a class="gomail" href="javascript:history.go(-1);">{lang go_back}</a>
+				</div>
+	</div>
 {else}
-
+	<div class="row res_box res_done_box flash_boxz">
+		<h2>{$box_title}</h2>
+		<div class="success_box">
+		<h4>{$message}</h4>
+		</div>
+		
+		<div class="reg_foot">
+					
+					<a class="gomail" href="javascript:history.go(-1);">{lang go_back}</a>
+				</div>
+	</div>
 {/if}
 
-<div class="row res_box res_done_box flash_boxz">
-    <h2>{$box_title}</h2>
-    <div class="success_box">
-	<h4>{$message}</h4>
-    </div>
-    
-    <div class="reg_foot">
-			    
-			    <a class="gomail" href="javascript:history.go(-1);">{lang go_back}</a>
-			</div>
-</div>
+
 
 <div class="row">
 
