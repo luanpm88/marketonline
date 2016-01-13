@@ -36,7 +36,7 @@ if (!empty($validate_str)) {
 					if(isset($_GET["new_user_id"]) && $_GET["new_user_id"] != "") {
 						flash(array("message"=>'Bạn hãy <a href="logging.php?type=new"><strong>&nbsp;&nbsp;Đăng nhập&nbsp;&nbsp;</strong></a> để theo dõi đơn hàng và hưởng chính sách ưu đãi.<br /><br />Bạn có thể dùng tài khoản này để kinh doanh và hoạt động trên MarketOnline.vn', "box_title"=>"Đăng ký tài khoản thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
 					} else {
-						flash(array("message"=>'Bạn hãy <a href="logging.php?type=new"><strong>&nbsp;&nbsp;Đăng nhập&nbsp;&nbsp;</strong></a> để tiếp tục.', "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
+						flash(array("message"=>'Bạn hãy <a href="logging.php?type=new"><strong>&nbsp;&nbsp;Đăng nhập&nbsp;&nbsp;</strong></a> để tiếp tục.<br />', "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
 					}
     				
     			}
