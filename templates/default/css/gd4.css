@@ -929,3 +929,11 @@ h2.market-header-title {
     font-size: 20px;
     line-height: 10px;
 }
+.success_box {
+    padding: 10px 10px 8px;
+}
+.reg_foot {
+    background: #3b984c none repeat scroll 0 0;
+    min-height: 40px;
+    padding: 11px 20px;
+}
