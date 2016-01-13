@@ -937,6 +937,6 @@ h2.market-header-title {
     min-height: 40px;
     padding: 11px 20px;
 }
-.res_done_box {
-    
+.res_done_box a:hover {
+    text-decoration: underline;
 }
