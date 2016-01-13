@@ -139,7 +139,6 @@
 $(document).ready(function() {
 
 	$('#email').blur(function (){
-        alert("sssssssss");
 		//$(".email_note").show();
 		
 		//var username = $("#dataMemberUsername").val();
@@ -171,7 +170,9 @@ $(document).ready(function() {
 			  data:params,
 			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
 			  success: function(data) {
+                    
 					var errorNumber = data.isError;
+                    alert(errorNumber);
 					if(errorNumber!="0")
 					{
 						//if(errorNumber=="1"){
@@ -191,6 +192,9 @@ $(document).ready(function() {
 					}
 			  }
 			});
+        
+            
+        
         } else {
 			$(".email_error").remove();
 			$(".submit_buttonz").attr('disabled', false);
