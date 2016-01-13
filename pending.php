@@ -34,7 +34,7 @@ if (!empty($validate_str)) {
     			$result = $member->updateUserStatus($member->info['id']);
     			if ($result) {
 					if(isset($_GET["new_user_id"])) {
-						flash(array("message"=>"aaaaa", "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
+						flash(array("message"=>"aaaaa", "box_title"=>"Đăng ký tài khoản thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
 					} else {
 						flash(array("message"=>"actived_and_login", "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
 					}
