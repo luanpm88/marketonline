@@ -2232,3 +2232,7 @@ h1.page-title .icon-page.icon-company {
 .email_error, .username_error, .full_fill_error {
     color: red;
 }
+.red-bold {
+    color: red;
+    font-size: 22px;
+}
