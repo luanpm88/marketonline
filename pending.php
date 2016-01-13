@@ -33,7 +33,12 @@ if (!empty($validate_str)) {
 			$member->logOut();
     			$result = $member->updateUserStatus($member->info['id']);
     			if ($result) {
-    				flash(array("message"=>"actived_and_login", "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
+					if(isset($_GET["new_user_id"])) {
+						flash(array("message"=>"aaaaa", "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
+					} else {
+						flash(array("message"=>"actived_and_login", "box_title"=>"Đăng ký thành công", "page_title"=>"Đăng ký"), "logging.php?type=new");
+					}
+    				
     			}
     			break;
     		case "getpasswd":
