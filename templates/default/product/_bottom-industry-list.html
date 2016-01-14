@@ -10,7 +10,7 @@
 						<!--{loop $item0.sub level1 level_1_industry key_level1}-->
 							{if $level1.count}
 								<li class="level1 {if $key_level1 > 4}hide{/if}">
-									<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
+									<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name} {$level1.count}</a>
 								</li>
 							{/if}
 						<!--{/loop}-->
