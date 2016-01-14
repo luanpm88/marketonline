@@ -200,6 +200,9 @@ class Saleorders extends PbModel {
 		//echo $pb_userinfo["pb_userid"];
 		$params['order']['status'] = "new";
 		$params['order']['buyer_id'] = $pb_userinfo["pb_userid"];
+		if(!isset($pb_userinfo["pb_userid"]) && isset($_SESSION["new_user_id"])) {
+			$params['order']['buyer_id'] = $_SESSION["new_user_id"];
+		}
 		$params['order']['seller_id'] = $_GET["id"];
 		$params['order']['created'] = strtotime(date("Y-m-d H:i:s"));
 		
@@ -234,6 +237,7 @@ class Saleorders extends PbModel {
 		//	$_this->primaryKey = "trade_id";
 		//	$_this->save($tradefield_info);
 		//}
+
 		return $result;
 	}
 	

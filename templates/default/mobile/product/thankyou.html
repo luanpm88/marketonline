@@ -6,12 +6,23 @@
             <div class="container-fluid">
                 <div class="row">
                     
-                    <div class="page-inner">
-                        
-                            <p>{lang message_thankyou_confirmed_order}</p>
-                            <p>
-                                <a href="{the_url module=root-url}" class="btn btn-primary">Về trang chủ</a>
+                    <div class="page-inner" style="padding-bottom: 10px;">
+                            <h1 style="font-size: 28px;
+    margin-bottom: 15px;">Đặt hàng thành công</h1>
+                            <h4><p>{lang message_thankyou_confirmed_order}</p></h4>
+                            
+                            {if $username != ""}
+                                <hr>
+                                <h4>Chúng tôi đã gửi email kích hoạt tài khoản "<strong>{$username}</strong>" tới <br /><strong>{$email}</strong>.
+                                            <br >Vui lòng kiểm tra và nhấn vào liên kết kích hoạt tài khoản trong email. <br>Để tiện cho việc quản lý và theo dõi đơn hàng của bạn.
+                                            <br /><br />(Lưu ý: kiểm tra cả mục inbox và spam)</h4>
+                                     <p>
+                                <a href="{$gomail}" class="btn btn-primary">Tới email của bạn</a>
                             </p>
+                                </div>
+                            {/if}
+                            
+                           
         
                     </div>
                     

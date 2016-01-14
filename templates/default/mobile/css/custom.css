@@ -2229,3 +2229,10 @@ h1.page-title .icon-page.icon-company {
     margin-right: 5px;
     padding-right: 5px;
 }
+.email_error, .username_error, .full_fill_error {
+    color: red;
+}
+.red-bold {
+    color: red;
+    font-size: 22px;
+}

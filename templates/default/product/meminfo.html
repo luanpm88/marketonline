@@ -19,41 +19,85 @@ function checkConfirmOrderFields() {
 	if($("#email").val().trim() == "")
 	{
 		$("#email").addClass('error');
+		if(!$("#email").parent().find(".full_fill_error").length) {
+			$("#email").after('<div class="full_fill_error">Vui lòng điền email.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#email").removeClass('error');
+		$("#email").parent().find(".full_fill_error").remove();
+	}
+	
+	if($("#username").val().trim() == "")
+	{
+		$("#username").addClass('error');
+		if(!$("#username").parent().find(".full_fill_error").length) {
+			$("#username").after('<div class="full_fill_error">Vui lòng điền tên người dùng.</div>');
+		}
+		valid = false;
+	}
+	else
+	{
+		$("#username").removeClass('error');
+		$("#username").parent().find(".full_fill_error").remove();
+	}	
+	
+	if($("#password").val().trim() == "")
+	{
+		$("#password").addClass('error');
+		if(!$("#password").parent().find(".full_fill_error").length) {
+			$("#password").after('<div class="full_fill_error">Vui lòng điền mật khẩu.</div>');
+		}
+		valid = false;
+	}
+	else
+	{
+		$("#password").removeClass('error');
+		$("#password").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#fullname").val().trim() == "")
 	{
 		$("#fullname").addClass('error');
+		if(!$("#fullname").parent().find(".full_fill_error").length) {
+			$("#fullname").after('<div class="full_fill_error">Vui lòng điền tên đầy đủ.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#fullname").removeClass('error');
+		$("#fullname").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#mobile").val().trim() == "")
 	{
 		$("#mobile").addClass('error');
+		if(!$("#mobile").parent().find(".full_fill_error").length) {
+			$("#mobile").after('<div class="full_fill_error">Vui lòng điền số điện thoại.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#mobile").removeClass('error');
+		$("#mobile").parent().find(".full_fill_error").remove();
 	}
 	
 	if($("#address").val().trim() == "")
 	{
 		$("#address").addClass('error');
+		if(!$("#address").parent().find(".full_fill_error").length) {
+			$("#address").after('<div class="full_fill_error">Vui lòng điền địa chỉ.</div>');
+		}
 		valid = false;
 	}
 	else
 	{
 		$("#address").removeClass('error');
+		$("#address").parent().find(".full_fill_error").remove();
 	}
 	
 	//if($("#message").val() == "")
@@ -120,7 +164,9 @@ function checkConfirmOrderFields() {
 	$(document).ready(function() {
 		
 		//
-		
+		$("input.error").change(function() {
+			checkConfirmOrderFields();
+		});
 		
 		//buyer info
 		function changeCheckBuyer() {
@@ -253,17 +299,16 @@ function checkConfirmOrderFields() {
     
     <div class="detailtopcon clearfix">
 		
-		
 		<div class="qiugouleftcon carttable">
 			<form name="offer_list_frm" id="cart" method="post" onsubmit="return checkConfirmOrderFields();">
 
-
+<br style="clear: both" /><br />
 <div class="orderdetail_form_ut" style="width:900px">
 <h3 class="head">{lang customer_info}</h3>
 		<!--<h2>Thông tin người mua</h2>   -->
-                <p class="hint">{lang member_info_announce}</p>
+                <p class="hint">Vui lòng điền đầy đủ (mục <b class="red-bold">*</b>) thông tin bên dưới</p>
 		
-	<div class="checkInfor orderdetail_form" style="padding:20px">
+	<div class="checkInfor orderdetail_form" style="padding:20px; background: #edf4ef">
                         
             
             <div class="clearfix bg-blockItem boderStore" style="margin-top:20px;">
@@ -301,6 +346,7 @@ function checkConfirmOrderFields() {
 			<p>
 				<span>{lang email}<b class="red-bold">*</b>&nbsp;</span>
 				<input value="{$pb_company.contact_email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
+				
 			</p>
 			
 				
@@ -335,22 +381,34 @@ function checkConfirmOrderFields() {
 			<p>
 				<span>{lang email}<b class="red-bold">*</b>&nbsp;</span>
 				<input value="{$pb_userinfo.email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
+				<div class="email_note" style="display: none;color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Vui lòng kiểm tra email chính xác để nhận thông tin tài khoản</div>
 			</p>
 			
 				
 			
 			<p>
 				<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
-				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
+				<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite required" />
 			</p>
+			
+			{if !$pb_userinfo}
+				<div style="float: left; width: 100%">
+					<div style="float: left;margin-right: 8px;width: 49%;">
+						<p>
+							<span>Tên người dùng<b class="red-bold">*</b></span>
+							<input  type="text" value="{$pb_userinfo.address}" maxlength="120" name="user_name" id="username" class="bgWhite required" />
+						</p>
+					</div>
+					<div  style="float: left; width: 50%; width: 49%">
+						<p>
+							<span>Mật khẩu đăng nhập<b class="red-bold">*</b></span>
+							<input type="text" value="{$pb_userinfo.address}" maxlength="120" name="password" id="password" class="bgWhite required" />
+						</p>
+					</div>
+				</div>
+				<div style="color: blue;margin-top: -5px;margin-bottom: 10px;clear: both" class="info_annoucr" style="color: blue;">Lưu ý: Quý khách nên nhớ <strong>Tên người dùng</strong> và <strong>Mật khẩu</strong> để đăng nhập.</div>
+			{/if}
 		{/if}
-		
-		
-		
-		
-		
-              
-                
 		
                 
               </div>
@@ -363,12 +421,10 @@ function checkConfirmOrderFields() {
 			<input checked="checked" type="checkbox" id="chkSameBuyer" name="data[orderz][chkSameBuyer]"><label for="buyer">{lang same_buyer}</label>
 		  </p>
             <div class="contStore" style="clear: both;">
-              <div class="formProfile box-profile">
+				<div class="formProfile box-profile">
                   
-		  
-		  <div class="reciever">
+				<div class="reciever">
                 
-		
 		
 		
 		<p>
@@ -388,11 +444,10 @@ function checkConfirmOrderFields() {
 		
 		<p>		
 			<span>{lang address}<b class="red-bold">*</b>&nbsp;</span>
+			<br style="clear: both" />
 			<input type="text" value="{$pb_userinfo.receiver_address}" {if $pb_userinfo.receiver_address} disabled="disabled" {/if} maxlength="120" name="data[order][receiver_address]" id="receiver_address" class="bgWhite" />
 		</p>
-		
-		
-		
+
 		
 		  </div>
               </div>
@@ -410,7 +465,7 @@ function checkConfirmOrderFields() {
                   <a href="?portal=market&amp;page=shopping_cart" class="btn-small SGray btCheck"><span>{lang back}</span></a> 
                   <span style="float:right;"> 
                           
-                        <span><input class="checkout_but" type="submit" value="Lưu thông tin" /></span>
+                        <span><input class="checkout_but" id="Submit" type="submit" value="Lưu thông tin" /></span>
                          
                 </span>
             </div>
@@ -441,13 +496,117 @@ var industry_id3 = {$item.industry_id3|default:0} ;
 <script src="scripts/script_industry.js"></script>
 
 
-
-
 </div>
 
 
+<script type='text/javascript' src='{$theme_img_path}js/jquery.validate.js'></script>
+<!--{literal}-->
+<script>
+$(document).ready(function() {
 
-
+	$('#email').blur(function (){
+		//$(".email_note").show();
+		
+		//var username = $("#dataMemberUsername").val();
+		//var params = "username="+username;
+		//var action = "checkusername";
+		//if(username){
+		//	$.ajax({
+		//	  url:'ajax.php?action='+action,
+		//	  type:'get',
+		//	  dataType:'json',
+		//	  data:params,	
+		//	  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+		//	  success: update_checkusernameDiv
+		//	});
+		//}
+		
+		var email = $("#email").val();
+		
+		if (email.length>5) {
+            if(email.length<5){
+				return;
+			}
+			var params = "email="+email;
+			var action = "checkemail";
+			$.ajax({
+			  url:'ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success: function(data) {
+					var errorNumber = data.isError;
+					if(errorNumber!="0")
+					{
+						//if(errorNumber=="1"){
+							if(!$(".email_error").length) {							
+								$(".email_note").after('<div class="email_error">Email đã có người dùng. Nếu là bạn vui lòng <a class="comment_but" href="#login-box" redirect="{/literal}{$F_URL}{literal}"><strong>Đăng nhập</strong></a><br/>Hoặc chọn email khác.</div>');
+								$(".email_note").hide();
+								$("#Submit").attr('disabled', true);
+							}
+						//} else {
+						//	$(".email_error").remove();
+						//}
+					} else {
+						$("#Submit").attr('disabled', false);
+						$("#memberemailDiv").html('');
+						$(".email_error").remove();
+						$(".email_note").show();
+					}
+			  }
+			});
+        } else {
+			$(".email_error").remove();
+			$("#Submit").attr('disabled', false);
+		}		
+	});
+	
+	$('#username').blur(function (){
+		//$(".email_note").show();
+		
+		var username = $("#username").val();
+		var params = "username="+username;
+		var action = "checkusername";
+		if(username){
+			$.ajax({
+			  url:'ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,	
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success:  function(data) {
+							var errorNumber = data.isError;
+							if(errorNumber!="0")
+							{
+								//if(errorNumber=="1"){
+									if(!$(".username_error").length) {							
+										$("#username").after('<div class="username_error">Tên người dùng đã được sử dụng. Thử tên người dùng khác?</div>');
+										$("#Submit").attr('disabled', true);
+									}
+								//} else {
+								//	$(".email_error").remove();
+								//}
+							} else {
+								$("#Submit").attr('disabled', false);
+								$("#memberemailDiv").html('');
+								$(".username_error").remove();
+							}
+					  }
+			});
+		} else {
+			$(".username_error").remove();
+			$("#Submit").attr('disabled', false);
+		}
+		
+		
+	});
+	
+		
+	
+});
+</script>
+<!--{/literal}-->
 
 
 </div>

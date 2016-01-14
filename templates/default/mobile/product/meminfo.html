@@ -6,11 +6,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="page-inner meminfo-box">
-                        <h1>Thông tin đặt hàng</h1>
+                        <h1>Thông tin đặt hàng
+                        <br /><span style="font-size: 14px">Vui lòng điền đầy đủ (mục <b class="red-bold">*</b>) thông tin bên dưới</span></h1>
                         <form name="offer_list_frm" id="checkout-meminfo" method="post">
                             <div class="panel panel-default">
                                 <!-- Default panel contents -->
-                                <div class="panel-heading"><strong>Thông tin người mua</strong></div>
+                                <div class="panel-heading"><strong>Thông tin người mua</strong>
+                                    
+                                </div>
                                 <div class="panel-body">
                                     {if $pb_userinfo}
                                             <p>
@@ -18,10 +21,10 @@
                                                     <input type="text" id="username" name="user[order][username]" class="bgWhite" value="{$pb_userinfo.username}" {if $pb_userinfo.username} readonly="readonly" {/if}>
                                             </p>
                                     {else}
-                                            <p style="margin-bottom: 16px;">
+                                            <!--<p style="margin-bottom: 16px;">
                                                     <span>Người mua</span>
                                                     <br /><strong>Khách hàng</strong>
-                                            </p>
+                                            </p>-->
                                     {/if}
                                     <div class="input-group">
                                         <label>{lang fullname}<strong class="red-bold">*</strong></label>
@@ -34,11 +37,29 @@
                                     <div class="input-group">
                                         <label>{lang email}<strong class="red-bold">*</strong></label>
                                         <input required value="{$pb_userinfo.email}" type="text" name="data[order][email]" id="email" class="bgWhite" value="">
+                                        <div class="email_note" style="display: none;color: blue;margin-top: -5px;margin-bottom: 10px;" class="info_annoucr" style="color: blue;">Vui lòng kiểm tra email chính xác để nhận thông tin tài khoản</div>
                                     </div>
                                     <div class="input-group">
                                         <label>{lang address}<strong class="red-bold">*</strong></label>
                                         <input required type="text" value="{$pb_userinfo.address}" maxlength="120" name="data[order][address]" id="address" class="bgWhite" />
                                     </div>
+                                    
+                                    
+                                    {if !$pb_userinfo}
+                                        
+                                        <div class="input-group">
+                                            <label>Tên người dùng<strong class="red-bold">*</strong></label>
+                                            <input required type="text" value="" maxlength="120" name="user_name" id="username" class="bgWhite" />
+                                        </div>
+                                        <div class="input-group">
+                                            <label>Mật khẩu<strong class="red-bold">*</strong></label>
+                                            <input required type="text" value="" maxlength="120" name="password" id="password" class="bgWhite" />
+                                        </div>
+                                        
+                                        <div style="color: blue;margin-top: -5px;margin-bottom: 10px;clear: both" class="info_annoucr" style="color: blue;">Lưu ý: Quý khách nên nhớ <strong>Tên người dùng</strong> và <strong>Mật khẩu</strong> để đăng nhập.</div>
+                                    {/if}
+                                    
+                                    
                                 </div>
                             </div>
                             
@@ -81,7 +102,7 @@
                             </div>
                             
                             <p></p>
-                                <input class="checkout_but btn btn-primary" type="submit" value="Lưu thông tin" />
+                                <input class="submit_buttonz checkout_but btn btn-primary" type="submit" value="Lưu thông tin" />
                         </form>
                     </div>
                 </div>
@@ -112,6 +133,119 @@
             });
         </script>
         {/literal}
+        
+        <!--{literal}-->
+<script>
+$(document).ready(function() {
+
+	$('#email').blur(function (){
+		//$(".email_note").show();
+		
+		//var username = $("#dataMemberUsername").val();
+		//var params = "username="+username;
+		//var action = "checkusername";
+		//if(username){
+		//	$.ajax({
+		//	  url:'ajax.php?action='+action,
+		//	  type:'get',
+		//	  dataType:'json',
+		//	  data:params,	
+		//	  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+		//	  success: update_checkusernameDiv
+		//	});
+		//}
+		
+		var email = $("#email").val();
+		
+		if (email.length>5) {
+            if(email.length<5){
+				return;
+			}
+			var params = "email="+email;
+			var action = "checkemail";
+			$.ajax({
+			  url:'ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success: function(data) {
+                    
+					var errorNumber = data.isError;
+
+					if(errorNumber!="0" && errorNumber!="2")
+					{
+						//if(errorNumber=="1"){
+							if(!$(".email_error").length) {							
+								$(".email_note").after('<div class="email_error">Email đã có người dùng. Nếu là bạn vui lòng <a class="comment_but" href="#login-box" redirect="{/literal}{$F_URL}{literal}"><strong>Đăng nhập</strong></a><br/>Hoặc chọn email khác.</div>');
+								$(".email_note").hide();
+								$(".submit_buttonz").attr('disabled', true);
+							}
+						//} else {
+						//	$(".email_error").remove();
+						//}
+					} else {
+						$(".submit_buttonz").attr('disabled', false);
+						$("#memberemailDiv").html('');
+						$(".email_error").remove();
+						$(".email_note").show();
+					}
+			  }
+			});
+        
+            
+        
+        } else {
+			$(".email_error").remove();
+			$(".submit_buttonz").attr('disabled', false);
+		}		
+	});
+	
+	$('#username').blur(function (){
+		//$(".email_note").show();
+		
+		var username = $("#username").val();
+		var params = "username="+username;
+		var action = "checkusername";
+		if(username){
+			$.ajax({
+			  url:'ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,	
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success:  function(data) {
+							var errorNumber = data.isError;
+							if(errorNumber!="0" && errorNumber!="2")
+							{
+								//if(errorNumber=="1"){
+									if(!$(".username_error").length) {							
+										$("#username").after('<div class="username_error">Tên người dùng đã được sử dụng. Thử tên người dùng khác?</div>');
+										$("#Submit").attr('disabled', true);
+									}
+								//} else {
+								//	$(".email_error").remove();
+								//}
+							} else {
+								$(".submit_buttonz").attr('disabled', false);
+								$("#memberemailDiv").html('');
+								$(".username_error").remove();
+							}
+					  }
+			});
+		} else {
+			$(".username_error").remove();
+			$(".submit_buttonz").attr('disabled', false);
+		}
+		
+		
+	});
+	
+		
+	
+});
+</script>
+<!--{/literal}-->
         
         <!--{include file="`$theme_name`/mobile/_script_product_list.html"}-->
         

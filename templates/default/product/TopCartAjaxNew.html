@@ -108,7 +108,7 @@
 								{if !$pb_username}										
 								    <input href="#login-box" name="checkout" class="checkout_but comment_but" rel="{$shop.id}" redirect="index.php?do=product&action=meminfo&id={$shop.id}"  type="button" value="{lang confirm_cart}" />
 								{/if}
-								<input type="button" onclick="window.location='{the_url module=root-url}index.php?do=product&action=add_cart'" class="checkout_but" style="margin-right: 10px" value="Vào giỏ hàng" />
+								<input type="button" onclick="javascript:$.fancybox.close();" class="checkout_but" style="margin-right: 10px" value="Mua thêm sản phẩm" />
 							    </td>
 							</tr>
 						
