@@ -8,6 +8,7 @@
 session_start();
 define('CURSCRIPT', 'register');
 require("libraries/common.inc.php");
+
 require("share.inc.php");
 require(PHPB2B_ROOT."libraries/sendmail.inc.php");
 require(LIB_PATH.'passport.class.php');
@@ -18,6 +19,7 @@ uses("point","member","company","companyfield","memberfield","membergroup","link
 $cfg['reg_time_seperate'] = 3*60;
 $memberfield = new Memberfields();
 $member = new Members();
+
 $membergroup = new Membergroups();
 $company = new Companies();
 $companyfield = new Companyfields();
@@ -30,6 +32,9 @@ $forbid_ip = $_PB_CACHE['setting']['forbid_ip'];
 $conditions = array();
 $capt_check = capt_check_2("capt_register");
 $tpl_file = "register";
+
+//var_dump(call_user_func_array("checkusername", array("aaaa")));
+
 $member_reg_auth = $_PB_CACHE['setting']['new_userauth'];
 if (isset($_GET['action'])) {
 	$action = trim($_GET['action']);
