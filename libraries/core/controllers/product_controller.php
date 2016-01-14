@@ -1921,7 +1921,7 @@ class Product extends PbController {
 				
 					$member->dbstuff->Execute($inser_sql);
 					$new_user_id = $member->dbstuff->Insert_ID();
-				
+
 					$_SESSION["new_user_id"] = $new_user_id;
 					$_SESSION["new_user_email"] = $email;
 					$_SESSION["new_user_username"] = $username;
