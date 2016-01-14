@@ -17,6 +17,10 @@
     width: 48%;" class="btn btn-success">{if $hasCompany}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 2</a>
 		{/if}
 		
+		<br />
+		{if $smarty.get.message == 'success'}<p class="message btn btn-success" style="margin: -25px 0 10px 15px;padding: 10px;margin-left: 15px; width: 93%">Đã cập nhật thông tin Gian hàng thành công!</p>{/if}
+		<br />
+		
         <!-- Page Content -->
         <div id="page-content-wrapper" class="home-page">
             
@@ -326,7 +330,7 @@
 					    {/if}
 					    
 					    <br />
-					    <h3>Giới thiệu<span style="color: red">*</span></h3>
+					    <h3>Giới thiệu</h3>
 					    <textarea name="data[company][description]" class="required" rows="80" wrap="VIRTUAL" id="company_des" style="width:100%;height: 300px">{$item.description}</textarea>
 						
 						

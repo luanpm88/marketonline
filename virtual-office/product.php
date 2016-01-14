@@ -170,6 +170,9 @@ else
 //echo $_SERVER['HTTP_REFERER'];
 $tpl_file = "product";
 if(!$hasCompany) {
+	if(detectMobile()) {
+		pheader("location:company.php");
+	}
 	//flash("pls_complete_company_info", "company.php", 0);
 	setvar('no_company_info', true);
 }

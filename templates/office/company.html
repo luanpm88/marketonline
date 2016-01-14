@@ -354,7 +354,7 @@ jQuery(document).ready(function($) {
 	 <div class="offer_banner"><img src="{$office_theme_path}images/offer_01.gif" /></div>
      <div class="offer_info_title"><h2>{lang company_info}</h2></div>
      <div class="hint">(Ghi chú: Những mục có dấu <label><font class="red">*</font></label> là bắt buộc)</div>
-     {if $smarty.get.message == 'success'}<p class="message">Thông tin được lưu thành công!</p>{/if}
+     {if $smarty.get.message == 'success'}<p class="message">Đã cập nhật thông tin Gian hàng thành công!</p>{/if}
 	  {$Errors}
 	  <form name="company_frm" id="CompanyFrm" action="{$smarty.server.PHP_SELF}" method="post" enctype="multipart/form-data">
 		 <input type="hidden" name="id" value="{$item.id}">        
