@@ -1937,6 +1937,7 @@ class Product extends PbController {
 					$_SESSION["new_user_id"] = $new_user_id;
 					$_SESSION["new_user_email"] = $email;
 					$_SESSION["new_user_username"] = $username;
+					
 					//echo $new_user_id;
 					//
 					//$pb_userinfo = pb_get_member_info();
