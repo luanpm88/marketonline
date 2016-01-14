@@ -915,7 +915,7 @@
 	});
 	
 	{/literal}getBottomRelatedProducts({$item.industry_id},{$COMPANY.member_id});{literal}
-	getBottomIndustryList();
+	getBottomIndustryList('{/literal}{$item.service}{literal}');
 	
 	// Get Spce Tree
 	$.ajax({

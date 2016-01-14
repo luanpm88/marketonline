@@ -374,7 +374,7 @@ class Industries extends PbModel {
 		return $this->getCountProduct($area_a, $member_id);
 	}
 	
-	function countProduct($id, $member_id = null)
+	function countProduct($id, $member_id = null, $service = null)
 	{
 		uses("product");
 		$product = new Product();
@@ -468,7 +468,7 @@ class Industries extends PbModel {
 		}
 		
 		
-		$result = $this->getCountProduct_3(explode(",",$cats["children"]));
+		$result = $this->getCountProduct_3(explode(",",$cats["children"]), null, $service);
 		
 		if($cats["count"] != $result) $this->saveField("count", $result, intval($id));
 		
@@ -500,14 +500,19 @@ class Industries extends PbModel {
 		return 0;
 	}
 	
-	function getCountProduct_3($ids, $member_id = null)
+	function getCountProduct_3($ids, $member_id = null, $service = null)
 	{
 		$member_condition = '';
 		if($member_id)
 		{
 			$member_condition = " AND member_id='".$member_id."'";
 		}
-		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")".$member_condition;
+		$service_condition = '';
+		if($service)
+		{
+			$service_condition = " AND service='1'";
+		}
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")".$member_condition.$service_condition;
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}
