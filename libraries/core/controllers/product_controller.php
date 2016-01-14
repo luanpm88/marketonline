@@ -6792,12 +6792,12 @@ class Product extends PbController {
 					}
 				}
 				
-				$industries[$key]["count_children"] = $count_children;
+				$industries[$key]["count_children"] = $count_children;				
+				$industries[$key]["stt"] = $stt;
 				
 				if($count_children) {
 					$stt++;
 				}
-				$industries[$key]["stt"] = $stt;
 			}			
 			setvar("parent", $parent);
 			setvar("industries", $industries);
