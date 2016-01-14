@@ -6786,9 +6786,15 @@ class Product extends PbController {
 					$stt++;
 				}
 				
+				$count_children = 0;
 				foreach($industries[$key]["children"] as $kk => $cc) {
 					$industries[$key]["children"][$kk]["count"] = $this->industry->countProduct($cc["id"]);
+					if($industries[$key]["children"][$kk]["count"] > 0) {
+						$count_children++;
+					}
 				}
+				
+				$industries[$key]["count_children"]
 			}			
 			setvar("parent", $parent);
 			setvar("industries", $industries);
