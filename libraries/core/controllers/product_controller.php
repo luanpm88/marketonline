@@ -6794,7 +6794,7 @@ class Product extends PbController {
 					}
 				}
 				
-				$industries[$key]["count_children"]
+				$industries[$key]["count_children"] = $count_children;
 			}			
 			setvar("parent", $parent);
 			setvar("industries", $industries);
