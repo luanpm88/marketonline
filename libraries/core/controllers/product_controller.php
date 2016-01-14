@@ -6780,11 +6780,9 @@ class Product extends PbController {
 				$industries[$key]["children"] = $this->industry->findAll($fields, null, array("parent_id=".$item["id"]), null, 0, 3);
 				//$industries[$key]["count"] = $this->industry->findCount(null, array("parent_id=".$item["id"]), "Industry.id");
 				$industries[$key]["count"] = $this->industry->countProduct($item["id"]);
-				$industries[$key]["stt"] = $stt;
 				
-				if($industries[$key]["count"]) {
-					$stt++;
-				}
+				
+				
 				
 				$count_children = 0;
 				foreach($industries[$key]["children"] as $kk => $cc) {
@@ -6795,6 +6793,11 @@ class Product extends PbController {
 				}
 				
 				$industries[$key]["count_children"] = $count_children;
+				
+				if($count_children) {
+					$stt++;
+				}
+				$industries[$key]["stt"] = $stt;
 			}			
 			setvar("parent", $parent);
 			setvar("industries", $industries);
