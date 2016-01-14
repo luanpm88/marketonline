@@ -2905,7 +2905,7 @@ class Product extends PbController {
 										//echo "<a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> / <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> / <a href='javascript:void(0)' rel='".$level2["id"]."'>".$level2["name"]."</a> / ".$level3["name"];
 										$this->render("product/ajaxLoadMenuConnect");
 										exit;
-									}									
+									}
 								}
 							}
 						}
