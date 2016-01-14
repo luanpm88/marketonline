@@ -133,15 +133,15 @@ if (isset($_POST['save'])) {
 	if (empty($_POST['member']['email'])) {
 		unset($vals['email']);
 	}
-	//if (!empty($_FILES['photo']['name'])) {
-	//	$attachment->upload_dir = "profile".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
-	//	$attachment->insert_new = false;
-	//	$attachment->if_orignal = false;
-	//	$attachment->if_watermark = false;
-	//	$attachment->rename_file = "photo-".$the_memberid;
-	//	$attachment->upload_process();
-	//	$vals['photo'] = $attachment->file_full_url;
-	//}
+	if (!empty($_FILES['photo']['name'])) {
+		$attachment->upload_dir = "profile".DS.gmdate("Y").gmdate("m").DS.gmdate("d");
+		$attachment->insert_new = false;
+		$attachment->if_orignal = false;
+		$attachment->if_watermark = false;
+		$attachment->rename_file = "photo-".$the_memberid;
+		$attachment->upload_process();
+		$vals['photo'] = $attachment->file_full_url;
+	}
 	
 	$_POST['memberfield']['area_id'] = PbController::getMultiId($_POST['area']['id']);
 	$result = $member->save($vals, "update", $the_memberid);

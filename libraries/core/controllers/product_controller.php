@@ -1884,11 +1884,12 @@ class Product extends PbController {
 	function meminfo()
 	{
 		global $viewhelper, $session;
-		uses("cart", "cartitem", "member", "saleorder", "saleorderitem", "company");
+		uses("cart", "cartitem", "member", "saleorder", "saleorderitem", "company", "memberfield");
 		$company = new Companies();
 		$cartitem = new Cartitems();
 		$cart = new Carts();
 		$member = new Members();
+		$memberfield = new Memberfields();
 		$order = new Saleorders();
 		$orderitem = new Saleorderitems();
 		
@@ -1921,6 +1922,12 @@ class Product extends PbController {
 				
 					$member->dbstuff->Execute($inser_sql);
 					$new_user_id = $member->dbstuff->Insert_ID();
+					
+					// update memberfield
+					
+					$update_sql = "INSERT INTO `pb_memberfields` (`member_id`, `today_logins`, `total_logins`, `area_id`, `first_name`, `last_name`, `gender`, `tel`, `fax`, `mobile`, `qq`, `msn`, `icq`, `yahoo`, `skype`, `address`, `zipcode`, `site_url`, `question`, `answer`, `reg_ip`, `facebook`, `mssv`, `school_id`, `department`, `class_tmp`, `intro`, `id`) VALUES
+(".$new_user_id.", 0, 0, 0, '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '".$_SERVER['REMOTE_ADDR']."', '', '', 0, '', '', '', 6094);";
+					$memberfield->dbstuff->Execute($update_sql);
 
 					$_SESSION["new_user_id"] = $new_user_id;
 					$_SESSION["new_user_email"] = $email;
