@@ -2,7 +2,7 @@
 	<ul>
 		<!--{loop $industries item0 level_0 key0}-->
 			{if $item0.count}
-				<li class="level0 {if $level_0%4 == 0}clear{/if}">
+				<li class="level0 {if $item0.stt%4 == 0}clear{/if}">
 					<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
 						{$item0.name} 
 					</a>

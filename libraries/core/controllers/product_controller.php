@@ -6257,11 +6257,14 @@ class Product extends PbController {
 		//listing main industries
 		$industries = $this->industry->getCacheIndustry();
 		
+		$stt = 0;;
 		foreach($industries as $key => $item) {
 			$industries[$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
 			foreach($item["sub"] as $kk => $cc) {
 				$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"]);
 			}
+			$industries[$key]["stt"] = $stt;
+			$stt++;
 		}
 		
 		setvar("industries",$industries);
