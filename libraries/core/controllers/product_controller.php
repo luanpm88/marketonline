@@ -6229,6 +6229,14 @@ class Product extends PbController {
 				exit;
 			}
 			
+			foreach($industries as $key => $item) {
+				$industries[$key]["count"] = $this->industry->countProduct($item["id"]);
+				foreach($item["sub"] as $kk => $cc) {
+					$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"]);
+					
+				}
+			}
+			
 			setvar("module",$module);
 			setvar("industries",$industries);
 			render("product/ajaxMainCategoryMenu");
