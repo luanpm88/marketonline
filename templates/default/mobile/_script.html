@@ -17,9 +17,9 @@
     
         <script>
 			function updateAreaSelect() {
-                $('#dataMemberfieldAreaId1 option').eq(0).html("Chọn Quốc gia");
-				$('#dataMemberfieldAreaId1 option').eq(1).html("Chọn Tỉnh/Thành");
-				$('#dataMemberfieldAreaId1 option').eq(2).html("Chọn Quận/Huyện");
+                $('#dataArea select').eq(0).find('option').eq(0).html("Chọn Quốc gia");
+				$('#dataArea select').eq(1).find('option').eq(0).html("Chọn Tỉnh/Thành");
+				$('#dataArea select').eq(2).find('option').eq(0).html("Chọn Quận/Huyện");
             }
 			function OpenInNewTab(url) {
 				var win = window.open(url, '_blank');
