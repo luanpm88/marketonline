@@ -6230,9 +6230,9 @@ class Product extends PbController {
 			}
 			
 			foreach($industries as $key => $item) {
-				$industries[$key]["count"] = $this->industry->countProduct($item["id"]);
+				$industries[$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
 				foreach($item["sub"] as $kk => $cc) {
-					$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"]);
+					$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"], null, $_GET["service"]);
 					
 				}
 			}
