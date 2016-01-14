@@ -1,8 +1,17 @@
         <!--{include file="../header.html" page_title="`$_profile` - MarketOnline.vn"}-->
         
 		{if !$hasProfile || !$hasCompany}
-			<a href="personal.php" style="width: 100%;font-size: 18px;padding: 10px;margin-bottom: 10px;" class="btn btn-success">{if $hasProfile}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 1: Bổ sung thông tin cá nhân</a>
-			<a href="company.php" style="width: 100%;font-size: 18px;padding: 10px;margin-bottom: 10px;" class="btn btn-default">{if $hasCompany}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 2: Bổ sung thông tin kinh doanh</a>
+			<a href="personal.php" style="font-size: 18px;
+    margin-bottom: 10px;
+    margin-left: 1%;
+    padding: 10px;
+    width: 48%;" class="btn btn-success">{if $hasProfile}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 1: Bổ sung thông tin cá nhân</a>
+			<a href="company.php" style="float: right;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-right: 1%;
+    padding: 10px;
+    width: 48%;" class="btn btn-default">{if $hasCompany}<span aria-hidden="true" class="glyphicon glyphicon-ok"></span>{/if} Bước 2: Bổ sung thông tin kinh doanh</a>
 		{/if}
 			
         <!-- Page Content -->
