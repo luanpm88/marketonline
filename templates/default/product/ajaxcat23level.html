@@ -12,11 +12,13 @@
                         
                         <ul>
                             <!--{loop $item.children item1 level1 key1}-->
-                                <li class="item">
-                                    <a target="_blank" class="link_item" href="{the_url module=products level=3 industryid=`$item1.id` title=`$item1.name`}">
-                                        {$item1.name}
-                                    </a>
-                                </li>
+                                {if $item1.count}
+                                    <li class="item">
+                                        <a target="_blank" class="link_item" href="{the_url module=products level=3 industryid=`$item1.id` title=`$item1.name`}">
+                                            {$item1.name}
+                                        </a>
+                                    </li>
+                                {/if}
                             <!--{/loop}-->
                         </ul>
                     {/if}
@@ -27,11 +29,11 @@
         
         <!--{loop $industries item level key}-->
             {if $item.count == 0}
-                <li class="item">
+                <!--<li class="item">
                     <a target="_blank" class="link_item" href="{the_url module=products level=2 industryid=`$item.id` title=`$item.name`}">
-                        {$item.name}
+                        {$item.name} {$item.count}ss
                     </a>                    
-                </li>
+                </li>-->
                 
             {/if}
         <!--{/loop}-->

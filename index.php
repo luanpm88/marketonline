@@ -258,7 +258,8 @@ if (!empty($_GET['do'])) {
 		render("modern/deal_home");
 		exit;
 	} else {
-		
+		//$industry = new Industries();
+		//var_dump($industry->countProduct(1));
 		
 		
 		//if show Home Top Main Right

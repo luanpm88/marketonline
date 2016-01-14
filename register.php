@@ -20,6 +20,7 @@ $cfg['reg_time_seperate'] = 3*60;
 $memberfield = new Memberfields();
 $member = new Members();
 
+
 $membergroup = new Membergroups();
 $company = new Companies();
 $companyfield = new Companyfields();
