@@ -470,7 +470,7 @@ class Industries extends PbModel {
 		
 		$result = $this->getCountProduct_3(explode(",",$cats["children"]), null, $service);
 		
-		if($cats["count"] != $result) $this->saveField("count", $result, intval($id));
+		//if($cats["count"] != $result) $this->saveField("count", $result, intval($id));
 		
 		return $result;
 	}
