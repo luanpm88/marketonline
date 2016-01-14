@@ -1912,38 +1912,41 @@ class Product extends PbController {
 				$date = new MyDateTime();
 				$created_at = $date->getTimestamp();
 				$d_datetime = date("Y-m-d H:i:s", $created_at);
+				$checkusername = $member->checkUserExist($username, false);
+				if($checkusername == false) {
 				
-				$inser_sql = "INSERT INTO `pb_members` (`space_name`, `templet_id`, `username`, `userpass`, `email`, `points`, `credits`, `balance_amount`, `trusttype_ids`, `status`, `photo`, `membertype_id`, `membergroup_id`, `last_login`, `last_ip`, `service_start_date`, `service_end_date`, `office_redirect`, `created`, `modified`, `referrer_id`, `checkout`, `level1_point`, `level2_point`, `level1_paid`, `level2_paid`, `current_type`, `studypictures`, `counted_effective_members`, `role`, `typing`, `typing_time`, `fb_app_id`, `fb_secret`, `fb_access_token`, `fb_code`, `fb_data`, `fb_user_id`, `connect_points`, `good_shop_status`, `good_shop_moderator`, `good_shop_date`, `active_time`, `active_last`, `points_monthly`, `points_storage`, `points_storage_updated`, `points_monthly_lock`, `logging_count`, `points_weekly`, `points_weekly_store`, `points_weekly_updated`, `activity_announce_count`, `area_show`, `area_moderator`, `total_sales`, `total_buyers`, `real_total_sales`, `total_sold_products`, `total_bought`, `total_sellers`, `real_total_bought`, `total_bought_products`) VALUES
-('".$space_name."', 0, '".trim($_POST["user_name"])."', '".$password."', '".$email."', 1, 0, 0.00, '', '0', '', 1, 2, '".$created_at."', '".$_SERVER['REMOTE_ADDR']."', '1452573338', '', 0, '".$created_at."', '".$created_at."', 757, 0, 0, 0, 0, 0, 1, '', 0, '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, 0, '".$d_datetime."', 1, 0, NULL, 0, 0, 1, 0, NULL, 0, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+					$inser_sql = "INSERT INTO `pb_members` (`space_name`, `templet_id`, `username`, `userpass`, `email`, `points`, `credits`, `balance_amount`, `trusttype_ids`, `status`, `photo`, `membertype_id`, `membergroup_id`, `last_login`, `last_ip`, `service_start_date`, `service_end_date`, `office_redirect`, `created`, `modified`, `referrer_id`, `checkout`, `level1_point`, `level2_point`, `level1_paid`, `level2_paid`, `current_type`, `studypictures`, `counted_effective_members`, `role`, `typing`, `typing_time`, `fb_app_id`, `fb_secret`, `fb_access_token`, `fb_code`, `fb_data`, `fb_user_id`, `connect_points`, `good_shop_status`, `good_shop_moderator`, `good_shop_date`, `active_time`, `active_last`, `points_monthly`, `points_storage`, `points_storage_updated`, `points_monthly_lock`, `logging_count`, `points_weekly`, `points_weekly_store`, `points_weekly_updated`, `activity_announce_count`, `area_show`, `area_moderator`, `total_sales`, `total_buyers`, `real_total_sales`, `total_sold_products`, `total_bought`, `total_sellers`, `real_total_bought`, `total_bought_products`) VALUES
+	('".$space_name."', 0, '".trim($_POST["user_name"])."', '".$password."', '".$email."', 1, 0, 0.00, '', '0', '', 1, 2, '".$created_at."', '".$_SERVER['REMOTE_ADDR']."', '1452573338', '', 0, '".$created_at."', '".$created_at."', 757, 0, 0, 0, 0, 0, 1, '', 0, '', '', '', '', '', '', '', '', '', 0, 0, 0, NULL, 0, '".$d_datetime."', 1, 0, NULL, 0, 0, 1, 0, NULL, 0, 1, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 ";
 				
-				$member->dbstuff->Execute($inser_sql);
-				$new_user_id = $member->dbstuff->Insert_ID();
+					$member->dbstuff->Execute($inser_sql);
+					$new_user_id = $member->dbstuff->Insert_ID();
 				
-				$_SESSION["new_user_id"] = $new_user_id;
-				$_SESSION["new_user_email"] = $email;
-				$_SESSION["new_user_username"] = $username;
-				//echo $new_user_id;
-				//
-				//$pb_userinfo = pb_get_member_info();
-				//var_dump(!isset($pb_userinfo["pb_userid"]) && isset($_SESSION["new_user_id"]));
-				//
-				//exit;
-				
-				// Send email
-				require(PHPB2B_ROOT."libraries/sendmail.inc.php");
-				
-				$if_need_check = true;
-				$exp_time = $created_at+1296000;
-				$tmp_username = $username;
-				$hash = authcode("{$tmp_username}\t".$exp_time, "ENCODE");
-				//$hash = str_replace(array("+", "|"), array("|", "_"), $hash);
-				$hash = rawurlencode($hash);
-				setvar("hash", $hash);
-				setvar("username", $tmp_username);
-				setvar("expire_date", date("d-m-Y",strtotime("+100 day")));
-				setvar("new_user_id",$_SESSION["new_user_id"]);
-				$sended = pb_sendmail(array($email, $username), $username.", ".L("pls_active_your_account_title", "tpl"), "activite");
+					$_SESSION["new_user_id"] = $new_user_id;
+					$_SESSION["new_user_email"] = $email;
+					$_SESSION["new_user_username"] = $username;
+					//echo $new_user_id;
+					//
+					//$pb_userinfo = pb_get_member_info();
+					//var_dump(!isset($pb_userinfo["pb_userid"]) && isset($_SESSION["new_user_id"]));
+					//
+					//exit;
+					
+					// Send email
+					require(PHPB2B_ROOT."libraries/sendmail.inc.php");
+					
+					$if_need_check = true;
+					$exp_time = $created_at+1296000;
+					$tmp_username = $username;
+					$hash = authcode("{$tmp_username}\t".$exp_time, "ENCODE");
+					//$hash = str_replace(array("+", "|"), array("|", "_"), $hash);
+					$hash = rawurlencode($hash);
+					setvar("hash", $hash);
+					setvar("username", $tmp_username);
+					setvar("expire_date", date("d-m-Y",strtotime("+100 day")));
+					setvar("new_user_id",$_SESSION["new_user_id"]);
+					$sended = pb_sendmail(array($email, $username), $username.", ".L("pls_active_your_account_title", "tpl"), "activite");
+				}
 			}
 
 			

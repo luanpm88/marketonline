@@ -11,6 +11,7 @@ define('NOROBOT', TRUE);
 require_once 'libraries/common.inc.php';
 require("share.inc.php");
 require_once 'libraries/json_config.php';
+
 $return = array();
 $result = array();
 $post_actions = array("checkpasswd");
@@ -18,6 +19,7 @@ $get_actions = array("checkusername");
 uses("member", "company");
 $member = new Members();
 $company = new Companies();
+
 if (isset($_POST['do_action'])) {
 	$action = trim($_POST['do_action']);
 	switch ($action) {

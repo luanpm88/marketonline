@@ -258,6 +258,9 @@ if (!empty($_GET['do'])) {
 		render("modern/deal_home");
 		exit;
 	} else {
+		
+		
+		
 		//if show Home Top Main Right
 		$show_home_top_main_left = $ad->getByZone(40);
 		setvar("show_home_top_main_left",count($show_home_top_main_left));
