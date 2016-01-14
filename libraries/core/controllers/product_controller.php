@@ -6264,7 +6264,9 @@ class Product extends PbController {
 				$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"]);
 			}
 			$industries[$key]["stt"] = $stt;
-			$stt++;
+			if($industries[$key]["count"] > 0) {
+				$stt++;
+			}
 		}
 		
 		setvar("industries",$industries);
