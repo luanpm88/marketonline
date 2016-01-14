@@ -8,6 +8,7 @@
 	<!--<h3><a href="{the_url module='product_main'}">Danh mục sản phẩm</a></h3>-->
 	<ul class="toptoptop">
 		<!--{loop $industries item0 level_0 key0}-->
+		{if $item0.count}
 			<li class="level0 {if $level_0%4 == 0}clear{/if}">
 				<a class="level0" href="{the_url module=`$module` level=1 industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
 					{$item0.name}
@@ -29,6 +30,7 @@
                                 {/if}
 			</li>
 			{if $level_0++}{/if}
+		{/if}
 		<!--{/loop}-->
 	</ul>
 </div>
