@@ -16,7 +16,9 @@
 	</script>
     
         <script>
-			
+			function updateAreaSelect() {
+                $('#dataMemberfieldAreaId1 option').eq(0).html("Chọn Tỉnh/Thành");
+            }
 			function OpenInNewTab(url) {
 				var win = window.open(url, '_blank');
 				win.focus();
@@ -365,6 +367,12 @@ function goclicky_custom(meh, url, images, title, summary)
 	    
             var ROOT_URL = "{/literal}{the_url module=root-url}{literal}";
             $(document).ready(function() {
+				
+				
+				setInterval('updateAreaSelect()', 500);
+				
+				
+				
 		
 		cropping();
                 autoresizeMobileGallery();
