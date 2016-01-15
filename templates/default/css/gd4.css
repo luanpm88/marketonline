@@ -968,3 +968,6 @@ h2.market-header-title {
 .widget ul.menu li, .widget ul.pagenav li {
     background: none;
 }
+li.liback {
+    display: none;
+}
