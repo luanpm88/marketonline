@@ -514,9 +514,11 @@ class Industries extends PbModel {
 		if(($service && $service != "h") || $_GET["action"] == "services")
 		{
 			$service_condition = " AND service='1'";
+		} else {
+			$service_condition = " AND service!='1'";
 		}
 		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE p.show=1 AND p.state=1 AND p.valid_status=1 AND i.id IN (".implode(',', $ids).")".$member_condition.$service_condition;
-		echo $sql;
+		//echo $sql;
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}

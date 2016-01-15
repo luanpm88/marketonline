@@ -1493,23 +1493,24 @@ class Product extends PbController {
 					$this->product->condition[] = "Product.service != 1";
 				}
 				
-				//Condition to show products but not for sale products
-				if ($_GET['type'] != 'sale' && $_GET['orderby'] != 'all' && !$is_space)
-				{
-					if (isset($_GET['type']) && $_GET['type'] == 'other') {
-						$other_con = " < 9";
-						$company_has_logo = "OR c.picture = '' OR c.banners IS NULL";
-					}
-					else
+				if(!isset($_GET["industryid"])) {
+					//Condition to show products but not for sale products
+					if ($_GET['type'] != 'sale' && $_GET['orderby'] != 'all' && !$is_space)
 					{
-						$other_con = " > 8";
-						$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
+						if (isset($_GET['type']) && $_GET['type'] == 'other') {
+							$other_con = " < 9";
+							$company_has_logo = "OR c.picture = '' OR c.banners IS NULL";
+						}
+						else
+						{
+							$other_con = " > 8";
+							$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
+						}
+						
+						$this->product->condition[] = "(c.new_product_show=1 AND c.id IN (".
+									"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->product->table_prefix}companies AS cc INNER JOIN {$this->product->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 AND pp.state=1 AND pp.valid_status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
 					}
-					
-					$this->product->condition[] = "(c.new_product_show=1 AND c.id IN (".
-								"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->product->table_prefix}companies AS cc INNER JOIN {$this->product->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 AND pp.state=1 AND pp.valid_status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
 				}
-				
 			}
 			
 			//for sale
