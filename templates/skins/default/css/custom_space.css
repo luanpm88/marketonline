@@ -2161,3 +2161,6 @@ a.following
     background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
     padding-left: 20px;
 }
+#left-sidebar .sapce_menu_new_style ul li.plevel0 a:first-child {
+    line-height: 22px;
+}
