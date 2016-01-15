@@ -243,6 +243,15 @@ class Product extends PbController {
 								$level1["box2"] = $level0['sub'];
 								$level1["box1"] = $industries;
 								
+								//var_dump($level2["box3"]);
+								foreach($level1["box2"] as $kk => $tem) {
+									if($module == "offers") {
+										$level1["box2"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
+									} else {
+										$level1["box2"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+									}
+								}
+								
 								//foreach($level1["box1"] as $key => $item)
 								//{									
 								//	$level1["box1"][$key]["count"] = $this->industry->getCount($item["id"]);
