@@ -965,3 +965,6 @@ h2.market-header-title {
 .menu_industry_list ul li.level0:hover i, .menu_industry_list ul li.level1:hover i {
     color: #333;
 }
+.widget ul.menu li, .widget ul.pagenav li {
+    background: none;
+}
