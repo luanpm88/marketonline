@@ -898,17 +898,16 @@
 	      </div>
 	      
 	      <div class="box-level3">
-		    <ul class="menu">
-			  
+		    <ul class="menu">			  
 				<!--{loop $IndustryList.box3 item0 level_0 key0}-->
-				{if $item0.count}
-				  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
-					<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=products level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
-					  {$item0.name} <span>{$item0.count}</span>
-					</a>
-				  </li>
-			  {/if}
-		  <!--{/loop}-->
+				  {if $item0.count}
+					<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
+					  <a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=products level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
+						{$item0.name} <span>{$item0.count}</span>
+					  </a>
+					</li>
+				  {/if}
+				<!--{/loop}-->
 		  <li class="liback"><a class="mback" href="javascript:void(0)">{lang back}</a></li>
 		    </ul>
 	      </div>
@@ -995,7 +994,7 @@
       <a id="hot_product_but" class="hotnewlist" href="javascript:void(0)">{lang hot_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;
       
       <!-- for other -->
-      <a id="other_product_but" class="hotnewlist" href="javascript:void(0)">{lang other_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+      <!--<a id="other_product_but" class="hotnewlist" href="javascript:void(0)">{lang other_product}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       
       <!--<a id="new_service_but" class="hotnewlist" href="javascript:void(0)">{lang services}</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
       <!-- for offer -->
