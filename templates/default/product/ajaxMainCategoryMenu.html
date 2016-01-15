@@ -11,7 +11,7 @@
 		{if $item0.count}
 			<li class="level0 {if $level_0%4 == 0}clear{/if}">
 				<a class="level0" href="{the_url module=`$module` level=1 industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
-					{$item0.name}
+					{$item0.name} {$item0.count}
 				    {if $module!="companies"}<i></i>{/if}
 				</a>
 				
@@ -21,7 +21,7 @@
 						{if $level1.count}
 							<li class="level1">
 								<a class="level1" href="{the_url module=`$module` level=2 industryid=`$level1.id` title=`$level1.name`}">
-									{$level1.name}
+									{$level1.name} {$level1.count}
 								</a>
 							</li>
 						{/if}
