@@ -2129,7 +2129,8 @@ a.following
     background: none;
 }
 #left-sidebar .sapce_menu_new_style ul li:hover {
-    background: #efefef;
+    background: #018bc8;
+    color: #fff;
 }
 #left-sidebar .sapce_menu_new_style ul li a {
     display: block;
