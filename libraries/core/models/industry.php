@@ -513,7 +513,7 @@ class Industries extends PbModel {
 		{
 			$service_condition = " AND service='1'";
 		}
-		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")".$member_condition.$service_condition;
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE p.show=1 AND p.valid_status=1 AND i.id IN (".implode(',', $ids).")".$member_condition.$service_condition;
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}
@@ -534,7 +534,7 @@ class Industries extends PbModel {
 	}
 	function getCountTrade($ids)
 	{
-		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")";
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE p.valid_status=1 AND i.id IN (".implode(',', $ids).")";
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}
