@@ -2124,7 +2124,7 @@ a.following
 }
 #left-sidebar .sapce_menu_new_style ul li {
     margin: 0 0 0 10px;
-    padding: 0;
+    padding: 0 !important;
     width: 258px;
     background: none;
 }
@@ -2138,7 +2138,8 @@ a.following
 #left-sidebar .sapce_menu_new_style ul li a span {
     margin-right: 5px;
 }
-
+#left-sidebar .sapce_menu_new_style ul li.plevel1 a {
+}
 #left-sidebar .sapce_menu_new_style ul li.plevel1 a {
     background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 1px 5px / 9px auto
 }
