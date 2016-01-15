@@ -2119,12 +2119,12 @@ a.following
     right: 3px;
 }
 
-.sapce_menu_new_style ul {
+#left-sidebar .sapce_menu_new_style ul {
     
 }
-.sapce_menu_new_style ul li {
+#left-sidebar .sapce_menu_new_style ul li {
     
 }
-.sapce_menu_new_style ul li a {
+#left-sidebar .sapce_menu_new_style ul li a {
     
 }
