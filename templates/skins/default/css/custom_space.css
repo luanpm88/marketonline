@@ -2128,10 +2128,10 @@ a.following
     width: 258px;
     background: none;
 }
-#left-sidebar .sapce_menu_new_style ul li:hover {
+#left-sidebar .sapce_menu_new_style ul li:hover, #left-sidebar .sapce_menu_new_style ul li.active {
     background: #018bc8;
 }
-#left-sidebar .sapce_menu_new_style ul li:hover * {
+#left-sidebar .sapce_menu_new_style ul li:hover *, #left-sidebar .sapce_menu_new_style ul li.active * {
     color: #fff;
     background: none;
 }
