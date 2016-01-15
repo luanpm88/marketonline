@@ -975,3 +975,10 @@ li.liback {
 .reg_foot {
     margin-top: 10px;
 }
+.connect_menu .menu li a:hover {
+    background: #018bc8;
+    color: #fff;
+}
+.connect_menu .menu li a:hover * {
+    color: #fff;
+}
