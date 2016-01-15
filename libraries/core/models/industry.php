@@ -475,6 +475,7 @@ class Industries extends PbModel {
 		return $result;
 	}
 	
+	
 	function getCountProduct($ids, $member_id = null, $service = 0)
 	{
 //#####		$member_condition = '';
@@ -516,6 +517,29 @@ class Industries extends PbModel {
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}
+	
+	
+	function countTrade($id)
+	{
+		$cats = $this->read('count,children', intval($id));
+
+		if(!$cats["children"])
+		{
+			$cats["children"] = $product->updateIndustryChildren($id);
+		}
+		
+		$result = $this->getCountTrade(explode(",",$cats["children"]));
+		
+		return $result;
+	}
+	function getCountTrade($ids)
+	{
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")";
+ 		$result = $this->GetRow($sql);
+		return $result["COUNT(*)"];
+	}
+	
+	
 	
 	function getCountProduct_2($ids, $member_id = null)
 	{

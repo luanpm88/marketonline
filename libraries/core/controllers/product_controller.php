@@ -6229,11 +6229,21 @@ class Product extends PbController {
 				exit;
 			}
 			
-			foreach($industries as $key => $item) {
-				$industries[$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
-				foreach($item["sub"] as $kk => $cc) {
-					$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"], null, $_GET["service"]);
-					
+			if($module == 'offers') {
+				foreach($industries as $key => $item) {
+					$industries[$key]["count"] = $this->industry->countTrade($item["id"]);
+					foreach($item["sub"] as $kk => $cc) {
+						$industries[$key]["sub"][$kk]["count"] = $this->industry->countTrade($cc["id"]);
+						
+					}
+				}
+			} else {
+				foreach($industries as $key => $item) {
+					$industries[$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+					foreach($item["sub"] as $kk => $cc) {
+						$industries[$key]["sub"][$kk]["count"] = $this->industry->countProduct($cc["id"], null, $_GET["service"]);
+						
+					}
 				}
 			}
 			
