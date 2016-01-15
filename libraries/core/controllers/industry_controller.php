@@ -69,6 +69,14 @@ class Industry extends PbController {
 			$item = array("id"=>"0","name"=>"Tất cả chuyên mục","parent_id"=>"0","level"=>0,"count"=>0);
 		}
 		
+		foreach($cats as $kk => $tem) {
+			if($module == "offers") {
+				$cats[$kk]["count"] = $this->industry->countTrade($tem["id"]);
+			} else {
+				$cats[$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["service"]);
+			}
+		}
+		
 		setvar("cats",$cats);
 		setvar("item",$item);
 		render("mobile/industry/ajax_cat_list");

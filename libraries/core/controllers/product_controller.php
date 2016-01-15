@@ -210,13 +210,13 @@ class Product extends PbController {
 				//$IndustryList["count"] = count($IndustryList["sub"]);
 				
 				
-				foreach($IndustryList["box1"] as $kk => $tem) {
-					if($module == "offers") {
-						$IndustryList["box1"][$kk]["count"] = $this->industry->countTrade($item["id"]);
-					} else {
-						$IndustryList["box1"][$kk]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
-					}
-				}
+				//foreach($IndustryList["box1"] as $kk => $tem) {
+				//	if($module == "offers") {
+				//		$IndustryList["box1"][$kk]["count"] = $this->industry->countTrade($item["id"]);
+				//	} else {
+				//		$IndustryList["box1"][$kk]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+				//	}
+				//}
 				
 				
 				$industries["id"] = $_GET["industryid"] ;
