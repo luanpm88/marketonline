@@ -2128,7 +2128,7 @@ a.following
     width: 258px;
     background: none;
 }
-#left-sidebar .sapce_menu_new_style ul li:hover {
+#left-sidebar .sapce_menu_new_style ul li:hover a {
     background: #018bc8;
     color: #fff;
 }
