@@ -2131,7 +2131,7 @@ a.following
 #left-sidebar .sapce_menu_new_style ul li:hover {
     background: #018bc8;
 }
-#left-sidebar .sapce_menu_new_style ul li:hover a {
+#left-sidebar .sapce_menu_new_style ul li:hover * {
     color: #fff;
 }
 #left-sidebar .sapce_menu_new_style ul li a {
