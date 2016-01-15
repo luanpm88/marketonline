@@ -793,11 +793,13 @@
 	      <div class="box-level1">
 		<ul class="menu" id="menu-features-list">
 		  <!--{loop $IndustryList.box1 item0 level_0 key0}-->
+			{if $item0.count}
 		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.level0_id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
-			  {$item0.name} <!--<span>{$item0.count}</span>-->
-			</a>
+				<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
+				  {$item0.name} <!--<span>{$item0.count}</span>-->
+				</a>
 		      </li>
+			{/if}
 		  <!--{/loop}-->
 		</ul>
 	      </div>
@@ -805,11 +807,13 @@
 	      <div class="box-level2">
 		    <ul class="menu">
 			<!--{loop $IndustryList.box2 item0 level_0 key0}-->
-		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.level1_id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
-			  {$item0.name} <span>{$item0.count}</span>
-			</a>
-		      </li>
+			  {if $item0.count}
+				<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.level1_id} active{/if}" id="menu-item-954">
+				  <a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
+					{$item0.name} <span>{$item0.count}</span>
+				  </a>
+				</li>
+			  {/if}
 		  <!--{/loop}-->
 		  <li class="liback"><a class="mback" href="javascript:void(0)">{lang back}</a></li>
 		    </ul>
@@ -818,12 +822,14 @@
 	      <div class="box-level3">
 		    <ul class="menu">
 				<!--{loop $IndustryList.box3 item0 level_0 key0}-->
-		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
-			  {$item0.name} <span>{$item0.count}</span>
-			</a>
-		      </li>
-		  <!--{/loop}-->
+				  {if $item0.count}
+					  <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
+					<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
+					  {$item0.name} <span>{$item0.count}</span>
+					</a>
+					  </li>
+				  {/if}
+				<!--{/loop}-->
 		  <li class="liback"><a class="mback" href="javascript:void(0)">{lang back}</a></li>
 		    </ul>
 	      </div>
@@ -831,12 +837,14 @@
 	      <div class="box-level4">
 		    <ul class="menu">
 				<!--{loop $IndustryList.box4 item0 level_0 key0}-->
-		      <li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
-			<a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
-			  {$item0.name} <span>{$item0.count}</span>
-			</a>
-		      </li>
-		  <!--{/loop}-->
+				  {if $item0.count}
+					<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954{if $item0.id == $IndustryList.id} active{/if}" id="menu-item-954">
+					  <a class="item menu_lvl1" rel="{$item0.id}" content="{$item0.name}" href="{the_url module=services level=`$item0.level` industryid=`$item0.id` title=`$item0.name` membergroup_id=`$smarty.get.membergroup_id`}">
+						{$item0.name} <span>{$item0.count}</span>
+					  </a>
+					</li>
+				  {/if}
+				<!--{/loop}-->
 		  <li class="liback"><a class="mback" href="javascript:void(0)">{lang back}</a></li>
 		    </ul>
 	      </div>
