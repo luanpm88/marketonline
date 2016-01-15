@@ -2836,10 +2836,14 @@ class Product extends PbController {
 		
 		if($_GET['industryid'] == 0)
 		{
-			//foreach($industries as $key => $item)
-			//{
-			//	$industries[$key]["count"] = $this->industry->getCount($item["id"],$service);
-			//}
+			foreach($industries as $key => $item)
+			{
+				if($module == "offers") {
+					$industries[$key]["count"] = $this->industry->countTrade($item["id"]);
+				} else {
+					$industries[$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+				}				
+			}
 			setvar("Items", $industries);				
 			setvar("Map", "");
 			$this->render("product/ajaxLoadMenuConnect");
@@ -2850,10 +2854,14 @@ class Product extends PbController {
 		{
 			if($level0["id"] == $_GET['industryid'])
 			{
-				//foreach($level0['sub'] as $key => $item)
-				//{
-				//	$level0['sub'][$key]["count"] = $this->industry->getCount($item["id"],$service);
-				//}			
+				foreach($level0['sub'] as $key => $item)
+				{
+					if($module == "offers") {
+						$level0['sub'][$key]["count"] = $this->industry->countTrade($item["id"]);
+					} else {
+						$level0['sub'][$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+					}				
+				}					
 				setvar("Items", $level0['sub']);				
 				setvar("Map", " | <parent>".$level0["name"]."</parent>");
 				$this->render("product/ajaxLoadMenuConnect");
@@ -2865,10 +2873,14 @@ class Product extends PbController {
 				{
 					if($level1["id"] == $_GET['industryid'])
 					{
-						//foreach($level1['sub'] as $key => $item)
-						//{
-						//	$level1['sub'][$key]["count"] = $this->industry->getCount($item["id"],$service);
-						//}
+						foreach($level1['sub'] as $key => $item)
+						{
+							if($module == "offers") {
+								$level1['sub'][$key]["count"] = $this->industry->countTrade($item["id"]);
+							} else {
+								$level1['sub'][$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+							}				
+						}		
 						setvar("Items", $level1['sub']);
 						setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <parent>".$level1["name"]."</parent>");
 						$this->render("product/ajaxLoadMenuConnect");
@@ -2880,10 +2892,14 @@ class Product extends PbController {
 						{
 							if($level2["id"] == $_GET['industryid'])
 							{
-								//foreach($level2['sub'] as $key => $item)
-								//{
-								//	$level2['sub'][$key]["count"] = $this->industry->getCount($item["id"],$service);
-								//}
+								foreach($level2['sub'] as $key => $item)
+								{
+									if($module == "offers") {
+										$level2['sub'][$key]["count"] = $this->industry->countTrade($item["id"]);
+									} else {
+										$level2['sub'][$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+									}				
+								}	
 								setvar("Items", $level2['sub']);
 								setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> | <parent>".$level2["name"]."</parent>");
 								$this->render("product/ajaxLoadMenuConnect");
@@ -2896,10 +2912,14 @@ class Product extends PbController {
 									
 									if($level3["id"] == $_GET['industryid'])
 									{
-										//foreach($level3['sub'] as $key => $item)
-										//{
-										//	$level3['sub'][$key]["count"] = $this->industry->getCount($item["id"],$service);
-										//}
+										foreach($level3['sub'] as $key => $item)
+										{
+											if($module == "offers") {
+												$level3['sub'][$key]["count"] = $this->industry->countTrade($item["id"]);
+											} else {
+												$level3['sub'][$key]["count"] = $this->industry->countProduct($item["id"], null, $_GET["service"]);
+											}				
+										}	
 										setvar("Items", $level3['sub']);
 										setvar("Map", " | <a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> | <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> | <a href='javascript:void(0)' rel='".$level2["id"]."'>".$level2["name"]."</a> | <parent>".$level3["name"]."</parent>");
 										//echo "<a href='javascript:void(0)' rel='".$level0["id"]."'>".$level0["name"]."</a> / <a href='javascript:void(0)' rel='".$level1["id"]."'>".$level1["name"]."</a> / <a href='javascript:void(0)' rel='".$level2["id"]."'>".$level2["name"]."</a> / ".$level3["name"];
