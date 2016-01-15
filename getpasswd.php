@@ -21,7 +21,7 @@ if (isset($_POST['action'])) {
 		$checked = false;
 	}else{
 		//$member->setInfoByUserName($login_name);
-		$member->setInfoByEmail($email);
+		$member->setInfoByEmail($user_email);
 		$member_info = $member->getInfo();
 		if(!$member_info || empty($member_info)){
 			setvar("ERRORS", "Tài khoản không có trong hệ thống. Hãy thử lại email khác.");
