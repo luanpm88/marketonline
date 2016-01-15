@@ -6032,6 +6032,15 @@ class Product extends PbController {
 								$level1["box2"] = $level0['sub'];
 								$level1["box1"] = $industries;
 								
+								//var_dump($level2["box3"]);
+								foreach($level1["box2"] as $kk => $tem) {
+									if($module == "offers") {
+										$level1["box2"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
+									} else {
+										$level1["box2"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+									}
+								}
+								
 								//foreach($level1["box1"] as $key => $item)
 								//{									
 								//	$level1["box1"][$key]["count"] = $this->industry->getCount($item["id"],2);
@@ -6118,6 +6127,15 @@ class Product extends PbController {
 									$level2["box2"] = $level0['sub'];
 									$level2["box1"] = $industries;
 									
+									//var_dump($level2["box3"]);
+									foreach($level2["box3"] as $kk => $tem) {
+										if($module == "offers") {
+											$level2["box3"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
+										} else {
+											$level2["box3"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+										}
+									}
+									
 									foreach($level2['sub'] as $key3 => $level3)
 									{
 										$cats = array();
@@ -6203,6 +6221,15 @@ class Product extends PbController {
 										$level3["box3"] = $level1['sub'];
 										$level3["box2"] = $level0['sub'];
 										$level3["box1"] = $industries;
+										
+										//var_dump($level2["box3"]);
+										foreach($level3["box4"] as $kk => $tem) {
+											if($module == "offers") {
+												$level3["box4"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
+											} else {
+												$level3["box4"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+											}
+										}
 										
 										//foreach($level3["box1"] as $key => $item)
 										//{
