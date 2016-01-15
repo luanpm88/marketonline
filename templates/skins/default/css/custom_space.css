@@ -2118,3 +2118,49 @@ a.following
     position: absolute;
     right: 3px;
 }
+
+#left-sidebar .sapce_menu_new_style ul {
+    
+}
+#left-sidebar .sapce_menu_new_style ul li {
+    margin: 0 0 0 10px !important;
+    padding: 0 !important;
+    width: 258px;
+    background: none;
+}
+#left-sidebar .sapce_menu_new_style ul li:hover, #left-sidebar .sapce_menu_new_style ul li.active {
+    background: #018bc8;
+}
+#left-sidebar .sapce_menu_new_style ul li:hover *, #left-sidebar .sapce_menu_new_style ul li.active * {
+    color: #fff;
+    background: none !important;
+}
+#left-sidebar .sapce_menu_new_style ul li a {
+    display: block;
+    padding: 7px 5px;
+    margin: 0
+}
+#left-sidebar .sapce_menu_new_style ul li a span {
+    margin-right: 5px;
+    margin-top: 2px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel1 a {
+    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
+    padding-left: 20px;
+    
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel2 a {
+    background: rgba(0, 0, 0, 0) url("../image/space_pointer_menu.png") no-repeat scroll 19px 8px / 18px auto;
+    padding-left: 30px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel3 a {
+    background: rgba(0, 0, 0, 0) url("../image/space_pointer_menu_2.png") no-repeat scroll 32px 9px / 15px auto;
+    padding-left: 46px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel4 a {
+    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
+    padding-left: 20px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel0 a:first-child {
+    line-height: 22px;
+}
