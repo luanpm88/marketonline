@@ -2139,6 +2139,6 @@ a.following
     margin-right: 5px;
 }
 
-#left-sidebar .sapce_menu_new_style ul li.plevel1 {
+#left-sidebar .sapce_menu_new_style ul li.plevel1 a {
     background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 1px 5px / 9px auto
 }
