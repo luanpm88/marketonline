@@ -1,18 +1,23 @@
         <h3><a href="{the_url module='product_main'}">Tất cả danh mục</a></h3>
 	<ul>
 		<!--{loop $industries item0 level_0 key0}-->
-			<li class="level0 {if $level_0%4 == 0}clear{/if}">
-				<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">{$item0.name}</a>
-				<ul>
-					<!--{loop $item0.sub level1 level_1_industry key_level1}-->
-						<li class="level1 {if $key_level1 > 4}hide{/if}">
-							<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
-						</li>
-					<!--{/loop}-->
-					<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
-				</ul>
-			</li>
-			{if $level_0++}{/if}
+			{if $item0.count}
+				<li class="level0 {if $item0.stt%4 == 0}clear{/if}">
+					<a class="level0" href="{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}">
+						{$item0.name} 
+					</a>
+					<ul>
+						<!--{loop $item0.sub level1 level_1_industry key_level1}-->
+							{if $level1.count}
+								<li class="level1 {if $key_level1 > 4}hide{/if}">
+									<a class="level1" href="{the_url module=products level=2 industryid=`$level1.id` title=`$level1.name`}">{$level1.name}</a>
+								</li>
+							{/if}
+						<!--{/loop}-->
+						<li class="view-more"><a href="javascript:void(0)">Xem thêm</a></li>
+					</ul>
+				</li>
+			{/if}
 		<!--{/loop}-->
 		<li class="level0 more-item"><a href="{the_url module='product_main'}">Sản phẩm mới</a></li>
 		<li class="level0 more-item"><a href="{the_url module='product_main'}#sale">Giảm giá/Khuyến mãi</a></li>

@@ -89,7 +89,7 @@
 <link rel="stylesheet" href="{$theme_img_path}css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" href="{$SiteUrl}{$theme_img_path}css/pml.css?v=5">
 <link rel="stylesheet" href="{$SiteUrl}{$theme_img_path}css/banner_2.css?v=15">
-<link rel="stylesheet" href="{$SiteUrl}{$theme_img_path}css/gd4.css?v=41">
+<link rel="stylesheet" href="{$SiteUrl}{$theme_img_path}css/gd4.css?v=42">
 
 <script type='text/javascript' src='{$theme_img_path}js/jquery.js?ver=1.8.3'></script>
 <script type='text/javascript' src='{$theme_img_path}js/jquery.themepunch.plugins.min.js?ver=3.5.1'></script>
@@ -312,8 +312,6 @@
 	      $('.banner-small-top').css("visibility","hidden");
 	  }
     }
-   
- 
  
  
 function goclicky(meh, url)
@@ -456,8 +454,6 @@ function goclicky_custom(meh, url, images, title, summary)
             });
 	}
 	
-	
-	
 	function clearInbox() {
 		//code
 		$.ajax({
@@ -473,8 +469,6 @@ function goclicky_custom(meh, url, images, title, summary)
 	//chatbox
 	var ichatbox = new Array();
         
-        
-	
 	var companylogo = '<!--{/literal}-->{if $pb_company && $pb_userinfo.current_type != 6}{$pb_company.image}{else} {if $user_avatar} {$user_avatar} {else} {$theme_img_path}image/usericon.jpg  {/if}  {/if}<!--{literal}-->';
 	
         var ROOT_URL = '<!--{/literal}-->{the_url module=root-url}<!--{literal}-->';
@@ -490,6 +484,7 @@ function goclicky_custom(meh, url, images, title, summary)
 		//$('a.cart_link').click(function(){
 		//	$('.item_rows').toggle();
 		//});
+        //ngat mobile updat
 		
 		$("#hiddenclicker").fancybox({
 			'padding': 0,
@@ -1148,9 +1143,18 @@ $(document).scroll(function() {
 	<div style="padding: 20px;width: 900px">
 	 
 	 
-	 
+<div style="opacity: 0.5">
 <h2 style="line-height: 30px; text-align:center">Chương trình Quà tặng &amp; Giảm giá cực Sốc hằng ngày của <br/> Thị trường Trực tuyến MarketOnline.vn</h2>
 <p>Chương trình nhằm tri ân Khách Hàng đã ủng hộ hoạt động của MarketOnline.vn trong thời gian qua. Chúng tôi sẽ ra mắt chương trình này kể từ ngày <strong>15/01/2016</strong> với những chương trình <strong>Quà tặng</strong> và <strong>Sản phẩm giảm giá</strong> cực kỳ hấp dẫn:</p>
+
+</div>
+
+<div style="text-align: center; background: rgb(237, 244, 239) none repeat scroll 0% 0%; padding: 10px 10px 1px; font-weight: bold;margin-bottom: 10px;">
+<p style="font-weight: bold">Vì một số công tác chuẩn bị quà tặng và hàng giảm giá chưa kịp. Chúng tôi sẽ ra mắt chương trình này trong thời gian tới. Chắc chắn sẽ đáp ứng được nhu cầu thiết thực của Quý Khách. Mong Quý Khách thông cảm!</p>
+<p style="font-weight: bold">Sau khi chuẩn bị hoàn tất, chúng tôi sẽ thông báo và ra mắt chương trình này đến Quý Khách.</p>
+</div>
+
+<div style="opacity: 0.5">
 <p><img src="https://cdn2.iconfinder.com/data/icons/basicset/tick_64.png" width="25" /> Những sản phẩm độc đáo sẽ được <strong>tặng miễn phí</strong> và <strong>giảm giá cực kỳ hấp dẫn</strong> (lên đến <strong>80%</strong>)</p>
 <p><img src="https://cdn2.iconfinder.com/data/icons/basicset/tick_64.png" width="25" />  Mọi người đều có thể tham gia kiếm tiền bằng cách chia sẻ sản phẩm giảm giá với chiết khấu cao</p>
 <p><img src="https://cdn2.iconfinder.com/data/icons/basicset/tick_64.png" width="25" />  Thành viên Mua và Bán sẽ nhận được <strong>quà tặng hấp dẫn</strong> tương xứng với điểm hoạt của mình</p>
@@ -1160,10 +1164,10 @@ $(document).scroll(function() {
 <div class=""><img src="/images/hoa.png" /></div>
 
 <br/>
-<div style="text-align: center;">
+<div style="text-align: center;display: none">
     <p>Hãy chia sẻ để mọi người cùng tham gia và nhận quà với bạn:
 </p>
-<div style=" display: inline-block;
+<div style=" display: none;
     width: 310px;">
         <span class="share_title">
 			Chia sẻ
@@ -1185,6 +1189,10 @@ $(document).scroll(function() {
 
 		</div>
     </div>
+
+</div>
+
+
 </div>
 			
 	</div>

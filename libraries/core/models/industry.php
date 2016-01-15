@@ -374,7 +374,7 @@ class Industries extends PbModel {
 		return $this->getCountProduct($area_a, $member_id);
 	}
 	
-	function countProduct($id, $member_id = null)
+	function countProduct($id, $member_id = null, $service = null)
 	{
 		uses("product");
 		$product = new Product();
@@ -468,12 +468,13 @@ class Industries extends PbModel {
 		}
 		
 		
-		$result = $this->getCountProduct($cats["children"], $member_id);
+		$result = $this->getCountProduct_3(explode(",",$cats["children"]), null, $service);
 		
-		if($cats["count"] != $result) $this->saveField("count", $result, intval($id));
+		//if($cats["count"] != $result) $this->saveField("count", $result, intval($id));
 		
 		return $result;
 	}
+	
 	
 	function getCountProduct($ids, $member_id = null, $service = 0)
 	{
@@ -500,17 +501,45 @@ class Industries extends PbModel {
 		return 0;
 	}
 	
-	function getCountProduct_3($ids, $member_id = null)
+	function getCountProduct_3($ids, $member_id = null, $service = null)
 	{
 		$member_condition = '';
 		if($member_id)
 		{
 			$member_condition = " AND member_id='".$member_id."'";
 		}
-		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")".$member_condition;
+		$service_condition = '';
+		if($service && $service != "h")
+		{
+			$service_condition = " AND service='1'";
+		}
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."products p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE p.show=1 AND p.valid_status=1 AND i.id IN (".implode(',', $ids).")".$member_condition.$service_condition;
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}
+	
+	
+	function countTrade($id)
+	{
+		$cats = $this->read('count,children', intval($id));
+
+		if(!$cats["children"])
+		{
+			$cats["children"] = $product->updateIndustryChildren($id);
+		}
+		
+		$result = $this->getCountTrade(explode(",",$cats["children"]));
+		
+		return $result;
+	}
+	function getCountTrade($ids)
+	{
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE p.valid_status=1 AND i.id IN (".implode(',', $ids).")";
+ 		$result = $this->GetRow($sql);
+		return $result["COUNT(*)"];
+	}
+	
+	
 	
 	function getCountProduct_2($ids, $member_id = null)
 	{

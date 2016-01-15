@@ -409,9 +409,9 @@
 	txtarea.scrollTop = scrollPos;
     }
     
-    function getBottomIndustryList() {
+    function getBottomIndustryList(service) {
 	$.ajax({
-	    url: "index.php?do=product&action=getBottomIndustryList",
+	    url: "index.php?do=product&action=getBottomIndustryList&service="+service,
 	}).done(function ( data ) {
 	    $('.bottom_industry_list').html(data);
 	});
