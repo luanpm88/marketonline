@@ -2127,7 +2127,13 @@ a.following
     padding: 0;
     width: 258px;
 }
+#left-sidebar .sapce_menu_new_style ul li:hover {
+    background: #efefef;
+}
 #left-sidebar .sapce_menu_new_style ul li a {
     display: block;
     padding: 5px;
+}
+#left-sidebar .sapce_menu_new_style ul li a span {
+    margin-right: 5px;
 }
