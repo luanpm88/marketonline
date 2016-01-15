@@ -959,6 +959,6 @@ h2.market-header-title {
     color: #333;
     font-weight: normal;
 }
-.menu_industry_list ul li.level0:hover span, .menu_industry_list ul li.level1:hover span {
-    color: #333;
+.menu_industry_list ul li.level0:hover .mainmenu_count, .menu_industry_list ul li.level1:hover .mainmenu_count {
+    color: #333 !important;
 }
