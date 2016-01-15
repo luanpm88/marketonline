@@ -1506,11 +1506,11 @@ class Product extends PbController {
 								$other_con = " > 8";
 								$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
 							}
-							
+
 							// show new in category page
 							$newnewshow = "";
 							
-								$newnewshow = "c.new_product_show=1 AND ";
+							$newnewshow = "c.new_product_show=1 AND ";
 							
 							
 							$this->product->condition[] = "(".$newnewshow." c.id IN (".
