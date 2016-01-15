@@ -1493,7 +1493,7 @@ class Product extends PbController {
 					$this->product->condition[] = "Product.service != 1";
 				}
 				
-				if(!isset($_GET["industryid"])) {
+				
 					//Condition to show products but not for sale products
 					if ($_GET['type'] != 'sale' && $_GET['orderby'] != 'all' && !$is_space)
 					{
@@ -1507,11 +1507,17 @@ class Product extends PbController {
 							$company_has_logo = "AND c.picture != '' AND c.banners IS NOT NULL";
 						}
 						
-						$this->product->condition[] = "(c.new_product_show=1 AND c.id IN (".
+						// show new in category page
+						$newnewshow = "";
+						if(!isset($_GET["industryid"])) {
+							$newnewshow = "c.new_product_show=1 AND ";
+						}
+						
+						$this->product->condition[] = "(".$newnewshow." c.id IN (".
 									"SELECT id FROM (SELECT cc.id, COUNT(pp.id) AS pcount FROM {$this->product->table_prefix}companies AS cc INNER JOIN {$this->product->table_prefix}products AS pp ON cc.id = pp.company_id WHERE pp.status=1 AND pp.state=1 AND pp.valid_status=1 GROUP BY cc.id) AS kk WHERE pcount".$other_con.") ".$company_has_logo." )";
 					}
 				}
-			}
+			
 			
 			//for sale
 			if (isset($_GET['type']) && $_GET['type'] == 'sale') {
