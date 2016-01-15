@@ -4903,7 +4903,7 @@ class Product extends PbController {
 			
 			//count product
 			$conditions = null;
-			$conditions[] = "Product.status=1 AND Product.state=1 AND Product.status=1 AND Product.company_id='".$company['id']."'";
+			$conditions[] = "Product.status=1 AND Product.valid_status=1 AND Product.state=1 AND Product.status=1 AND Product.company_id='".$company['id']."'";
 			
 			if($_GET["tree_type"]=='service') {
 				$conditions[] = "Product.service=1";
