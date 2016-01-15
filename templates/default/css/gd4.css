@@ -979,6 +979,6 @@ li.liback {
     background: #018bc8;
     color: #fff;
 }
-.connect_menu .menu li.active a:hover, .connect_menu .menu li.active a * {
+.connect_menu .menu li.active a:hover *, .connect_menu .menu li.active a * {
     color: #fff;
 }
