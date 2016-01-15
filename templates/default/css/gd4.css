@@ -947,5 +947,10 @@ h2.market-header-title {
     width: 272px;
 }
 .mainmenu_count {
-    
+    color: #3b984c;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 4px;
+    position: absolute;
+    right: 22px;
 }
