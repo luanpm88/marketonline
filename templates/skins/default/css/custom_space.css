@@ -2133,7 +2133,7 @@ a.following
 }
 #left-sidebar .sapce_menu_new_style ul li:hover *, #left-sidebar .sapce_menu_new_style ul li.active * {
     color: #fff;
-    background: none;
+    background: none !important;
 }
 #left-sidebar .sapce_menu_new_style ul li a {
     display: block;
