@@ -954,11 +954,14 @@ h2.market-header-title {
     position: absolute;
     right: 22px;
 }
+.mainmenu_count.level_2 {
+    right: 8px;
+}
 .menu_industry_list ul li.level0:hover a.level0, .menu_industry_list ul li.level1 a.level1:hover {
     background: #efefef;
     color: #333;
     font-weight: normal;
 }
-.menu_industry_list ul li.level0:hover .mainmenu_count, .menu_industry_list ul li.level1:hover .mainmenu_count {
-    color: #333 !important;
+.menu_industry_list ul li.level0:hover i, .menu_industry_list ul li.level1:hover i {
+    color: #333;
 }
