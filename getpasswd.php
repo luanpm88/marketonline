@@ -20,10 +20,11 @@ if (isset($_POST['action'])) {
 		setvar("ERRORS", L("wrong_email_format"));
 		$checked = false;
 	}else{
-		$member->setInfoByUserName($login_name);
+		//$member->setInfoByUserName($login_name);
+		$member->setInfoByEmail($email);
 		$member_info = $member->getInfo();
 		if(!$member_info || empty($member_info)){
-			setvar("ERRORS", L('member_not_exists'));
+			setvar("ERRORS", "Tài khoản không có trong hệ thống. Hãy thử lại email khác.");
 			setvar("postLoginName", $login_name);
 			setvar("postUserEmail", $user_email);
 			$checked = false;

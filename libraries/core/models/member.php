@@ -41,6 +41,17 @@ class Members extends PbModel {
  		}
  		$this->info = array_merge($result, $field_info);
  	}
+	
+	function setInfoByEmail($email)
+ 	{
+ 		$return = $field_info = array();
+ 		$sql = "SELECT m.* FROM {$this->table_prefix}members m WHERE m.email='{$email}'";
+ 		$result = $this->dbstuff->GetRow($sql);
+ 		if (!empty($result)) {
+ 			$field_info = $this->dbstuff->GetRow("SELECT mf.* FROM {$this->table_prefix}memberfields mf WHERE mf.member_id=".$result['id']);
+ 		}
+ 		$this->info = array_merge($result, $field_info);
+ 	}
  	
  	function setInfoBySpaceName($space_name)
  	{

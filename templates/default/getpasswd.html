@@ -40,7 +40,7 @@
 	    <h3>{lang forget_pass}</h3>
 	  
 	  
-	  
+	  <p style="color: red">{$ERRORS}</p>
 
 
 
@@ -63,14 +63,14 @@ jQuery(document).ready(function($) {
               <form name="getpasswdfrm" id="getPasswdFrm" method="post" action="getpasswd.php">
                   <input type="hidden" name="action" value="getpasswd" />
                   <!-- {formhash} -->
-                    <strong>{lang input_name_email}</strong>
+                    <strong>Vui lòng nhập email đã đăng ký của bạn.</strong>
 		    
-		    <p>
+		    <!--<p>
 			<label>
 				{lang login_name}
 			</label>
 			<input type="text" name="data[username]" value="" id="dataUsername" class="required"/>
-		    </p>
+		    </p>-->
                      <p>
 			<label>
 				{lang your_email}
@@ -85,7 +85,7 @@ jQuery(document).ready(function($) {
                 </form>
                 <div class="messageconright">
                 <!-- {if $ERRORS} -->
-                    <p>{$ERRORS}</p>
+                    <!--<p>{$ERRORS}</p>-->
                 <!-- {else} -->
                     
                 <!-- {/if} -->
@@ -108,7 +108,11 @@ jQuery(document).ready(function($) {
 
 
 
-
+{literal}
+	<script>
+		$('#getPasswdFrm').validate();
+	</script>
+{/literal}
 
 
 <!--{include file="`$theme_name`/footer.html"}-->
