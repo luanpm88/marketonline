@@ -954,3 +954,6 @@ h2.market-header-title {
     position: absolute;
     right: 22px;
 }
+.menu_industry_list ul li.level0:hover a.level0, .menu_industry_list ul li.level1 a.level1:hover {
+    background: #efefef;
+}
