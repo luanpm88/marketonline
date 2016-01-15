@@ -2140,6 +2140,18 @@ a.following
     margin-top: 2px;
 }
 #left-sidebar .sapce_menu_new_style ul li.plevel1 a {
-    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 10px 10px / 9px auto;
-    padding-left: 25px;
+    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
+    padding-left: 20px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel2 a {
+    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
+    padding-left: 20px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel3 a {
+    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
+    padding-left: 20px;
+}
+#left-sidebar .sapce_menu_new_style ul li.plevel4 a {
+    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
+    padding-left: 20px;
 }
