@@ -539,7 +539,7 @@ class Industries extends PbModel {
 	}
 	function getCountTrade($ids)
 	{
-		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE p.valid_status=1 AND i.id IN (".implode(',', $ids).")";
+		$sql = "SELECT COUNT(*) FROM ".$this->table_prefix."trades p LEFT JOIN ".$this->table_prefix."industries i ON p.industry_id = i.id WHERE i.id IN (".implode(',', $ids).")";
  		$result = $this->GetRow($sql);
 		return $result["COUNT(*)"];
 	}

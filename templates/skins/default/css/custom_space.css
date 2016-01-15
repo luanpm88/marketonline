@@ -2137,11 +2137,11 @@ a.following
 }
 #left-sidebar .sapce_menu_new_style ul li a {
     display: block;
-    padding: 7px 5px 7px 10px;
+    padding: 7px 28px 7px 10px;
     margin: 0
 }
 #left-sidebar .sapce_menu_new_style ul li a span {
-    margin-right: 10px;
+    margin-right: -20px;
     margin-top: 2px;
 }
 #left-sidebar .sapce_menu_new_style ul li.plevel1 a {
