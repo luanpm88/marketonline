@@ -2123,8 +2123,11 @@ a.following
     
 }
 #left-sidebar .sapce_menu_new_style ul li {
-    
+    margin: 0 0 0 10px;
+    padding: 0;
+    width: 258px;
 }
 #left-sidebar .sapce_menu_new_style ul li a {
-    
+    display: block;
+    padding: 5px;
 }
