@@ -975,3 +975,6 @@ li.liback {
 .reg_foot {
     margin-top: 10px;
 }
+.connect_menu .menu li a:hover {
+    background: #eee;
+}
