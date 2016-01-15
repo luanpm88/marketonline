@@ -2144,8 +2144,8 @@ a.following
     padding-left: 20px;
 }
 #left-sidebar .sapce_menu_new_style ul li.plevel2 a {
-    background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
-    padding-left: 20px;
+    background: rgba(0, 0, 0, 0) url("../image/space_pointer_menu.png") no-repeat scroll 19px 8px / 18px auto;
+    padding-left: 30px;
 }
 #left-sidebar .sapce_menu_new_style ul li.plevel3 a {
     background: rgba(0, 0, 0, 0) url("../image/list-circle.png") no-repeat scroll 6px 10px / 9px auto;
