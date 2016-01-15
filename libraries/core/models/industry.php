@@ -509,7 +509,7 @@ class Industries extends PbModel {
 			$member_condition = " AND member_id='".$member_id."'";
 		}
 		$service_condition = '';
-		if($service)
+		if($service && $service != "h")
 		{
 			$service_condition = " AND service='1'";
 		}
