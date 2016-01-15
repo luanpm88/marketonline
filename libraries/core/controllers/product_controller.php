@@ -6034,11 +6034,11 @@ class Product extends PbController {
 								
 								//var_dump($level2["box3"]);
 								foreach($level1["box2"] as $kk => $tem) {
-									if($module == "offers") {
+									//if($module == "offers") {
 										$level1["box2"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
-									} else {
-										$level1["box2"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
-									}
+									//} else {
+									//	$level1["box2"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+									//}
 								}
 								
 								//foreach($level1["box1"] as $key => $item)
@@ -6129,11 +6129,11 @@ class Product extends PbController {
 									
 									//var_dump($level2["box3"]);
 									foreach($level2["box3"] as $kk => $tem) {
-										if($module == "offers") {
+										//if($module == "offers") {
 											$level2["box3"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
-										} else {
-											$level2["box3"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
-										}
+										//} else {
+										//	$level2["box3"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+										//}
 									}
 									
 									foreach($level2['sub'] as $key3 => $level3)
@@ -6224,11 +6224,11 @@ class Product extends PbController {
 										
 										//var_dump($level2["box3"]);
 										foreach($level3["box4"] as $kk => $tem) {
-											if($module == "offers") {
+											//if($module == "offers") {
 												$level3["box4"][$kk]["count"] = $this->industry->countTrade($tem["id"]);
-											} else {
-												$level3["box4"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
-											}
+											//} else {
+											//	$level3["box4"][$kk]["count"] = $this->industry->countProduct($tem["id"], null, $_GET["type"]);
+											//}
 										}
 										
 										//foreach($level3["box1"] as $key => $item)
