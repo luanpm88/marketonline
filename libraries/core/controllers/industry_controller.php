@@ -73,7 +73,7 @@ class Industry extends PbController {
 			if($module == "offers") {
 				$cats[$kk]["pcount"] = $this->industry->countTrade($tem["id"]);
 			} else {
-				$cats[$kk]["pcount"] = $this->industry->countProduct($tem["id"], null, $_GET["service"]);
+				$cats[$kk]["pcount"] = $this->industry->countProduct($tem["id"], null, $_GET["service"])+"aa";
 			}
 		}
 		
