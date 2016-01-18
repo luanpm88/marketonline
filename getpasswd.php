@@ -15,7 +15,7 @@ if (isset($_POST['action'])) {
 	pb_submit_check("data");
 	$checked = true;
 	$login_name = trim($_POST['data']['username']);
-	$user_email = trim($_POST['data']['email']);
+	$user_email = strtolower(trim($_POST['data']['email']));
 	if(!pb_check_email($user_email)){
 		setvar("ERRORS", L("wrong_email_format"));
 		$checked = false;
