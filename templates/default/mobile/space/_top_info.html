@@ -6,7 +6,10 @@
                     <img alt="{$COMPANY.name}" src="{$COMPANY.logo}">
                 </a>
                 <!--{if $pb_username==$MEMBER.username}-->
-                    <div class="shop_edit_logo_button" id="edit_logo" {if !$COMPANY.picture}style="display:block"{/if}><a href="javascript:void(0)" onclick="$('#changelogo-but').trigger('click')">{lang change_logo}</a>
+                    <div class="shop_edit_logo_button" id="edit_logo" {if !$COMPANY.picture}style="display:block"{/if}>
+                        <a href="javascript:void(0)" onclick="$('#changelogo-but').trigger('click')">
+                            <span aria-hidden="true" class="glyphicon glyphicon-camera"></span>    
+                        </a>
                           
                     </div>
                     {literal}
