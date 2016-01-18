@@ -45,7 +45,7 @@ if (isset($_POST['action'])) {
 			{
 				flash("email_send_false");
 			}else{
-				flash(array("message"=>"getpasswd_email_sended", "box_title"=>"Xác minh tài khoản", "page_title"=>"Lấy lại mật khẩu"));
+				flash(array("message"=>"Vui lòng kiểm tra email <strong>".$member_info['email']."</strong> và chọn lại mật khẩu mới.", "box_title"=>"Xác minh tài khoản", "page_title"=>"Lấy lại mật khẩu"));
 			}
 		}
 	}
