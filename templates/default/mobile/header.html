@@ -20,7 +20,7 @@
     <link href="{the_url module=root-url}{$theme_img_path}mobile/css/simple-sidebar.css" rel="stylesheet">
     <link href="{the_url module=root-url}{$theme_img_path}mobile/css/sticky-footer.css?v=15" rel="stylesheet">
     <link href="{the_url module=root-url}{$theme_img_path}mobile/css/glyphicons.css?v=17" rel="stylesheet">
-    <link href="{the_url module=root-url}{$theme_img_path}mobile/css/custom.css?v=120" rel="stylesheet">
+    <link href="{the_url module=root-url}{$theme_img_path}mobile/css/custom.css?v=121" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,7 +59,27 @@
     <script type='text/javascript' src='{the_url module=root-url}{$theme_img_path}mobile/js/jquery.mask.min.js'></script>
 </head>
 
-<body onload="$('.loading_page').remove()" style="min-width: 200px;">   
+<body onload="$('.loading_page').remove()" style="min-width: 200px;">
+    
+    <div id="upload_logo" class="hide">
+        <div class="upload_logo">
+        <h3>{lang change_logo}</h3>
+        <p>{lang logo_size_1200}</p>
+        <iframe name="upload" id="upload" style="display: none"></iframe>
+        <form name="productaddfrm" id="Frm2_logo" method="post" action="{the_url module=root-url}index.php?do=product&action=change_logo_home" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
+          <!-- {formhash} -->
+          <input type="hidden" name="username" value="{$MEMBER.username}" />
+          <input type="hidden" name="com_id" value="{$COMPANY.id}" />
+          <input type="hidden" name="uri" value="{$FURI}" />
+        
+        
+          <p><input accept="image/*" type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+          
+          
+          <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
+        </form>
+        </div>
+    </div>
     
     <div id="wrapper" class="{if $smarty.get.do=='product'}product-page{/if} {if $service_page}service-page{/if} {if $smarty.get.do=='offer' || $offer_page}offer-page{/if} {if $smarty.get.do=='company' || $smarty.get.do=='album'}company-page{/if}">
         

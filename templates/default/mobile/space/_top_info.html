@@ -5,6 +5,21 @@
                 <a href="{$Menus.index}">
                     <img alt="{$COMPANY.name}" src="{$COMPANY.logo}">
                 </a>
+                <!--{if $pb_username==$MEMBER.username}-->
+                    <div class="shop_edit_logo_button" id="edit_logo" {if !$COMPANY.picture}style="display:block"{/if}>
+                        <a href="javascript:void(0)" onclick="$('#changelogo-but').trigger('click')">
+                            <span aria-hidden="true" class="glyphicon glyphicon-camera"></span>    
+                        </a>
+                          
+                    </div>
+                    {literal}
+                        <script>
+                            $('.shop_edit_logo_button').click(function() {
+                                $('#changelogo-but').trigger('click')
+                            })
+                        </script>
+                    {/literal}
+                <!--{/if}-->
             </div>
             <div id="top_company_info">
                 <h3>{$COMPANY.shop_name}</h3>
