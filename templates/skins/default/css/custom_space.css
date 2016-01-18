@@ -1490,11 +1490,13 @@ ul.products li.product {
     height: 55px;
     float: right;
     margin-right: 5px;
+    margin: 0;
 }
 .uload_banner p span
 {
     margin-left: 10px;
-    float: right
+    float: right;
+    border: solid 1px #ddd;
 }
 #upload_banner input[type=file]
 {
