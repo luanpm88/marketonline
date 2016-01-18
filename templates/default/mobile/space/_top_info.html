@@ -20,7 +20,7 @@
 
 <div id="upload_banner" class="" style="display: none; padding: 15px;">
     <div class="uload_banner">
-	<h3>{lang change_banner}</h3>
+	<h3 style="margin-top: 0;">{lang change_banner}</h3>
 	<p style="height: auto">{lang banner_size_1200}</p>
 	<iframe name="upload" id="upload" style="display: none"></iframe>
 	<form name="productaddfrm" id="Frm1" method="post" action="{$WebRootUrl}index.php?do=product&action=change_banner" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
@@ -38,7 +38,7 @@
 	  <p>{if $banners.5}<img src="{$banners.5}.banner.jpg" />{/if}<input type="file" name="upload_banner_5" accept="image/*" /></p>
 	  
       <br style="clear: both" />
-	  <input type="submit" class="checkout_but pull-right" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
+	  <input type="submit" class="checkout_but pull-right" style="padding: 3px 50px; margin-left: 10px;margin-top: -15px;" value="{lang upload}" /><br>
       
 	</form>
     </div>
