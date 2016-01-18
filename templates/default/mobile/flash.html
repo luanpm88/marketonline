@@ -10,8 +10,17 @@
                     <div class="page-inner page-register">
                        <h1>{$box_title}</h1>
                        
-                       <h4>{$message}</h4>                       
+                       <h4 class="all_message">{$message}</h4>                       
                         
+                        
+                        {if $box_title == "Xác minh tài khoản"}
+                            <a class="btn btn-primary gomail" href="{$gomail}" target="_blank" rel="nofollow">Tới email của bạn</a>
+                            {literal}
+                                <script>
+                                    $('.gomail').attr("href", $('.all_message strong').attr('gomail'));
+                                </script>
+                            {/literal}
+                        {/if}
                        
                     </div>
                             

@@ -1,0 +1,53 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$box_title` - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="">
+                <div class="row">
+                    
+                    
+                    <div class="page-inner page-register">
+                       <h1>Xác minh tài khoản tại MarketOnline.vn</h1>
+                       
+                        <form name="getpasswdfrm" id="getPasswdFrm" method="post" action="getpasswd.php">
+                            <input type="hidden" name="action" value="getpasswd" />
+                            <!-- {formhash} -->
+                                
+                                <p style="color: red">{$ERRORS}</p>
+                            
+                              <strong>Vui lòng nhập email đã đăng ký của bạn.</strong>
+		    
+                            <!--<p>
+                            <label>
+                                {lang login_name}
+                            </label>
+                            <input type="text" name="data[username]" value="" id="dataUsername" class="required"/>
+                            </p>-->
+                                     <p>
+                            
+                            <input type="text" name="data[email]" id="UserEmail" value="" class="form-control required email"/>
+                            </p>
+                             <p>
+                            <label style="text-transform: none;">{lang send_password_email_next}</label>
+                            <br /><input type="submit" name="go_next" value="{lang pass_confirm}" id="wp-submit" class="submit_w165 btn btn-primary"/>
+                             </p>
+                            
+                        </form>             
+                        
+                       
+                    </div>
+                            
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        {literal}
+            <script>
+                $("#getPasswdFrm").validate();
+            </script>
+        {/literal}
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
+        
