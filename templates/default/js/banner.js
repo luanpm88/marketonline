@@ -42,12 +42,18 @@ $(document).ready(function() {
     })
     
     //when ad appear
-    $('.iframe_ad').on('appear', function(event, $all_appeared_elements) {
+    //$('.iframe_ad').on('appear', function(event, $all_appeared_elements) {
+    //  if (typeof($(this).attr("src")) == "undefined") {
+    //    $(this).attr("src", $(this).attr("src_tmp"))
+    //  }
+    //});
+    //$('.iframe_ad').appear();
+    $('.iframe_ad').each(function(event, $all_appeared_elements) {
       if (typeof($(this).attr("src")) == "undefined") {
         $(this).attr("src", $(this).attr("src_tmp"))
       }
     });
-    $('.iframe_ad').appear();
+    //$('.iframe_ad').appear();
     
     
     $(".view_more_cat_module").live('click', function(event) {
