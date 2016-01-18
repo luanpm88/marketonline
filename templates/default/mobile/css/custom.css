@@ -313,7 +313,7 @@ a.crop-img-square {
     max-width: 30%;
 }
 .list-loading {
-    background: url("../img/list-loading.gif") no-repeat scroll center center #fff;
+    background: url("../img/loading_page.gif") no-repeat scroll center center #fff;
     height: 150px;
     width: 100%;
     opacity: 0.9;
