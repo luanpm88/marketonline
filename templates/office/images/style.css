@@ -3875,3 +3875,6 @@ li.sline {
     left: 365px;
     z-index: 100;
 }
+.email_error {
+    color: red;
+}

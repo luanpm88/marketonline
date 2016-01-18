@@ -404,7 +404,8 @@ function readURL(input) {
 							      </tr>
 							      <tr>
 								<th>{lang email_addr}<font color="#FF6600">*</font></th>
-								<td><input name="member[email]" type="text" id="memberemail" value="{$item.email}" size="40" class="required email">
+								<td><input current_email="{$item.email}" name="member[email]" type="text" id="memberemail" value="{$item.email}" size="40" class="required email">
+								<div class="email_note"></div>
 								</td>
 							      </tr>
 							      <tr>
@@ -665,6 +666,80 @@ jQuery(document).ready(function($) {
 })
 </script>
 <!--{/literal}-->
+
+
+
+<!--{literal}-->
+<script>
+$(document).ready(function() {
+
+	$('#memberemail').blur(function (){
+		//$(".email_note").show();
+		var current_email = $(this).attr("current_email");
+		//var username = $("#dataMemberUsername").val();
+		//var params = "username="+username;
+		//var action = "checkusername";
+		//if(username){
+		//	$.ajax({
+		//	  url:'ajax.php?action='+action,
+		//	  type:'get',
+		//	  dataType:'json',
+		//	  data:params,	
+		//	  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+		//	  success: update_checkusernameDiv
+		//	});
+		//}
+		
+		var email = $("#memberemail").val();
+		
+		if (email.length>5) {
+            if(email.length<5){
+				return;
+			}
+			var params = "email="+email;
+			var action = "checkemail";
+			$.ajax({
+			  url:'../ajax.php?action='+action,
+			  type:'get',
+			  dataType:'json',
+			  data:params,
+			  error:function(XMLResponse){alert(pb_lang.CHECK_FAIL+":"+XMLResponse.responseText)},
+			  success: function(data) {
+					var errorNumber = data.isError;
+					if(errorNumber!="0" && current_email != email)
+					{
+						//if(errorNumber=="1"){
+							if(!$(".email_error").length) {							
+								$(".email_note").after('<div class="email_error">Email đã có người dùng. Vui lòng chọn email khác.</div>');
+								$(".email_note").hide();
+								$("#save").attr('disabled', true);
+							}
+						//} else {
+						//	$(".email_error").remove();
+						//}
+					} else {
+						$("#save").attr('disabled', false);
+						$("#memberemailDiv").html('');
+						$(".email_error").remove();
+						$(".email_note").show();
+					}
+			  }
+			});
+        } else {
+			$(".email_error").remove();
+			$("#Submit").attr('disabled', false);
+		}		
+	});
+	
+	
+	
+		
+	
+});
+</script>
+<!--{/literal}-->
+
+
 <script src="../scripts/multi_select.js" charset="{$charset}"></script>
 <script src="../scripts/script_area.js"></script>
 <!--{include file="footer.html"}-->
