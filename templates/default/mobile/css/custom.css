@@ -2279,3 +2279,9 @@ h1.page-title .icon-page.icon-company {
     margin: 10px 0;
     width: 170px;
 }
+.shop_top_info .banners ul li {
+    display: none;
+}
+.shop_top_info .banners ul li:last-child {
+    display: block;
+}
