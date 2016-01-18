@@ -2265,11 +2265,13 @@ h1.page-title .icon-page.icon-company {
 .uload_banner img {
     float: right;
     width: 100px;
+    height: 50px;
 }
 .uload_banner p {
     display: block;
     height: 60px;
     width: 100%;
+    width: 400px;
 }
 .uload_banner input[type="file"] {
     border: 1px solid #ccc;
