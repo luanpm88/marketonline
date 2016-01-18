@@ -45,7 +45,23 @@ if (isset($_POST['action'])) {
 			{
 				flash("email_send_false");
 			}else{
-				flash(array("message"=>"Vui lòng kiểm tra email <strong>".$member_info['email']."</strong> và chọn lại mật khẩu mới.", "box_title"=>"Xác minh tài khoản", "page_title"=>"Lấy lại mật khẩu"));
+				preg_match('/(.*?)@(.*?)$/', $member_info['email'], $match);
+				$rail = $match[2];				
+				switch($rail)
+				{
+					case 'gmail.com':
+						$gomail = 'http://gmail.com';
+						break;
+					case 'outlook.com':
+						$gomail = 'http://outlook.com';
+						break;
+					default;
+						$gomail = 'http://mail.'.$rail;
+						break;			
+				}
+				//setvar("gomail", $gomail);
+				
+				flash(array("message"=>"Vui lòng kiểm tra email<br/> <strong gomail='".$gomail."'>".$member_info['email']."</strong> và chọn lại mật khẩu mới.", "box_title"=>"Xác minh tài khoản", "page_title"=>"Lấy lại mật khẩu", "gomail" => $gomail));
 			}
 		}
 	}

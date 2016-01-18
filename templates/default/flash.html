@@ -48,15 +48,25 @@
 				</div>
 	</div>
 {else}
-	<div class="row res_box res_done_box flash_boxz" {if $box_title == 'Đăng ký thành công'}style="width:330px;"{/if}>
+	<div class="row res_box res_done_box flash_boxz" {if $box_title == 'Đăng ký thành công'}style="width:330px;"{/if} {if $box_title == "Xác minh tài khoản"}style="width: 500px"{/if}>
 		<h2>{$box_title}</h2>
 		<div class="success_box">
-		<h4>{$message}</h4>{if $box_title == 'Đăng ký thành công'}<br />{/if}
+		<h4 class="all_message">{$message}</h4>{if $box_title == 'Đăng ký thành công'}<br />{/if}
 		</div>
 		
 		<div class="reg_foot">
+			{if $box_title == "Xác minh tài khoản"}
+				<a class="gomail" href="{$gomail}" target="_blank" rel="nofollow">Tới email của bạn</a>
+				{literal}
+					<script>
+						$('.gomail').attr("href", $('.all_message strong').attr('gomail'));
+					</script>
+				{/literal}
+			{else}
+				<a class="gomail" href="javascript:history.go(-1);">{lang go_back}</a>
+			{/if}
 					
-					<a class="gomail" href="javascript:history.go(-1);">{lang go_back}</a>
+					
 				</div>
 	</div>
 {/if}
