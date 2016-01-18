@@ -74,26 +74,25 @@
 		    $(".cats-list-caret-but").removeClass("loading");
 		    return;
 		}
-
+		
 		$.ajax({
-		    url: ROOT_URL+"index.php?do=industry&action=updateCatList&id="+cat_id,
+		    url: ROOT_URL+"index.php?do=industry&action=updateCatList&id="+cat_id+"&type={/literal}{$smarty.get.action}{literal}",
 		}).done(function ( data ) {
 		    if( console && console.log ) {
-			if(data.trim() == "") {
-			    $(".cats-list-box").hide();
-			} else {
-			    $(".cats-list-box").show();
-			    if (!$('.list-group-item').length) {
-				$(".cats-list").html(''+data+'');
-			    } else {
-				$('.list-group-item.item-'+cat_id).append(data); //list-first
-				$('.item-'+cat_id+'.list-first').remove();
-			    }
-			}
-			
-			$(".child-box-"+cat_id).show();
-			
-			$(".cats-list-caret-but").removeClass("loading");
+				if(data.trim() == "") {
+					$(".cats-list-box").hide();
+				} else {
+					$(".cats-list-box").show();
+					if (!$('.list-group-item').length) {
+						$(".cats-list").html(''+data+'');
+					} else {
+						$('.list-group-item.item-'+cat_id).append(data); //list-first
+						$('.item-'+cat_id+'.list-first').remove();
+					}
+				}
+
+				$(".child-box-"+cat_id).show();
+				$(".cats-list-caret-but").removeClass("loading");
 		    }
 		});
 	    }
