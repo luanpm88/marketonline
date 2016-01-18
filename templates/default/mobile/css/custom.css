@@ -2280,8 +2280,8 @@ h1.page-title .icon-page.icon-company {
     width: 170px;
 }
 .shop_top_info .banners ul li {
-    display: none;
+    display: none !important;
 }
 .shop_top_info .banners ul li:last-child {
-    display: block;
+    display: block !important;
 }
