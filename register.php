@@ -203,6 +203,7 @@ if(isset($_POST['register']) && $capt_check) {
 	}
 }
 
+
 setvar("capt_check",$capt_check);
 setvar("sid",md5(uniqid($time_stamp)));
 setvar("agreement", $_PB_CACHE['setting']['agreement']);
