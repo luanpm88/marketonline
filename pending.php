@@ -44,7 +44,12 @@ if (!empty($validate_str)) {
     		case "getpasswd":
     			setvar("username", $member->info['username']);
     			$viewhelper->setPosition(L("reset_your_password", "tpl"));
-    			render("getpasswd.pending");
+				if(detectMobile()) {
+					render("mobile/getpasswd.pending", true);
+				} else {
+					render("getpasswd.pending");
+				}
+    			
     			break;
     		default:
     			break;

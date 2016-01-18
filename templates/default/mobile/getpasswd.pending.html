@@ -1,0 +1,91 @@
+        <!--{include file="`$theme_name`/mobile/header.html" page_title="`$box_title` - MarketOnline.vn"}-->
+            
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="home-page">
+            
+            <div class="">
+                <div class="row">
+                    
+                    
+                    <div class="page-inner page-register">
+                       <h1>Chọn mật khẩu mới</h1>
+                       
+                        <form id="ResetFrm" name="reset_frm" method="post" action="index.php?do=member&action=getpasswd">
+                            <input type="hidden" name="data[username]" value="{$username}" />
+                            <input type="hidden" name="do" value="reset" />
+                            <!-- {formhash} -->
+                            
+                            
+                            
+                            <label class="loadingname">
+                                            {lang user_authentication}
+                                        </label><br />
+                                        <label style="width: 100%">
+                                            <input class="form-control required" type="text" value="{$username}" disabled />
+                                        </label>
+                                 <br />
+                                 
+                                 <label class="loadingname">
+                                            {lang new_password}
+                                 </label><br />
+                                        <label style="width: 100%">
+                                            <input class="form-control required" type="password" name="data[password1]" id="password1" />
+                                        </label>
+                                 <br />
+                                 
+                                 <label class="loadingname">
+                                            {lang re_enter_new_password}
+                                        </label><br />
+                                        <label style="width: 100%">
+                                            <input class="form-control required" type="password" name="data[password1]" id="password2" />
+                                        </label>
+                                 <br clear="all" />
+                                 
+                                 
+                                 
+                                 
+                                 <div class="clear"></div>
+                                        <div class="login" id="btnLoginDiv">
+                                 <input id="wp-submit" type="button" name="Submit" value="{lang submit_reset_password}" class="submit_w118 btn btn-primary" onclick="return check();" />
+                                </div>
+                            
+                            
+                            
+                            </form>
+
+                        
+<!--{literal}-->
+<script>
+function check(){
+	if($("#password1").val()=="" || $("#password2").val()==""){
+		alert("Vui lòng chọn mật khẩu.");
+		return false;
+	}else if($("#password1").val().length<6 ){
+	alert("Vui lòng nhập đúng định dạng.")
+	return false;
+	}else if($("#password1").val()!=$("#password2").val()){
+		alert("Mật khẩu không khớp.");
+		return false;
+	}else{
+		$("#ResetFrm").submit();
+	}
+}
+</script>
+<!--{/literal}-->
+                        
+                       
+                    </div>
+                            
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        {literal}
+            <script>
+                $("#ResetFrm").validate();
+            </script>
+        {/literal}
+        
+        <!--{include file="`$theme_name`/mobile/_footer_home.html"}-->
+        <!--{include file="`$theme_name`/mobile/footer.html"}-->
+        

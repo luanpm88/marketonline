@@ -68,5 +68,11 @@ if (isset($_POST['action'])) {
 }
 $viewhelper->setPosition(L("get_password", "tpl"));
 formhash();
-render("getpasswd");
+
+if(detectMobile()) {
+	render("mobile/getpasswd", true);
+} else {
+	render("getpasswd");
+}
+
 ?>
