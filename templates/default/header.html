@@ -959,7 +959,7 @@ $(window).resize(function() {
     
     var scale = 1.03 - (1200/$(window).width() - 1);
     var scale_percent = scale*100;
-    
+    alert(scale);
     if (scale < 1) {
         $('body').css('-moz-transform', 'scale('+scale+', '+scale+')');
         $('body').css('zoom', scale);
