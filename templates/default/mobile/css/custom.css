@@ -2236,3 +2236,11 @@ h1.page-title .icon-page.icon-company {
     color: red;
     font-size: 22px;
 }
+.shop_edit_logo_button {
+    background: #333 none repeat scroll 0 0;
+    float: left;
+    height: 25px;
+    position: absolute;
+    text-indent: -90000px;
+    width: 25px;
+}
