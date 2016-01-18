@@ -101,6 +101,23 @@
                 </div>
                 {literal}
                     <script>
+                        var current_slide = 0;
+
+                        function goslide() {
+                          var max_index = $('.shop_top_info .banners ul li').length-1;
+                          
+                          if(current_slide == max_index) {
+                            current_slide = 0;
+                          } else {
+                            current_slide = current_slide + 1;
+                          }
+                          
+                          $('.shop_top_info .banners ul li').fadeOut();
+                          $('.shop_top_info .banners ul li').eq(current_slide).fadeIn();
+                        }
+                        
+                        setInterval('goslide()', 3000);
+                        
                         $("#edit_banner a").fancybox({
                             'padding': 0,
                             'zoomOpacity': true,
@@ -108,8 +125,9 @@
                             'zoomSpeedOut': 500,
                             'overlayOpacity': 0.75,
                             'width': "100%",
-                            'hideOnContentClick': false
-                        });
+                            'hideOnContentClick': false,
+                        });                        
+                        
                     </script>
                 {/literal}
             <!--{/if}-->
