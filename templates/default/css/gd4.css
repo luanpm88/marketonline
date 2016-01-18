@@ -997,3 +997,6 @@ li.liback {
     top: 10px;
     z-index: 1000;
 }
+.studyhome-page {
+    min-height: 1300px;
+}
