@@ -2282,6 +2282,6 @@ h1.page-title .icon-page.icon-company {
 .shop_top_info .banners ul li {
     display: none !important;
 }
-.shop_top_info .banners ul li:last-child {
+.shop_top_info .banners ul li:first-child {
     display: block !important;
 }
