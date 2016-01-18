@@ -1481,7 +1481,8 @@ ul.products li.product {
 }
 .uload_banner p
 {
-    clear: both
+    clear: both;
+    margin-bottom: 25px;
 }
 .uload_banner p img
 {
