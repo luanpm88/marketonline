@@ -2237,15 +2237,17 @@ h1.page-title .icon-page.icon-company {
     font-size: 22px;
 }
 .shop_edit_logo_button {
-    background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;
+    background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;
     color: #fff;
     float: left;
-    font-size: 20px;
-    height: 25px;
+    font-size: 16px;
+    height: 30px;
     padding: 0 2px;
     position: absolute;
-    width: 25px;
+    width: 30px;
 }
 .shop_edit_logo_button a {
-    color: #fff;
+    color: #333;
+    display: block;
+    padding: 5px;
 }
