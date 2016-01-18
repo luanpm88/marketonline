@@ -462,10 +462,10 @@ class Industries extends PbModel {
 		//echo $cats;
 		//var_dump($cats);
 		//return $cats;
-		if(!$cats["children"])
-		{
-			$cats["children"] = $product->updateIndustryChildren($id);
-		}
+		//if(!$cats["children"])
+		//{
+		//	$cats["children"] = $product->updateIndustryChildren($id);
+		//}
 		
 		
 		$result = $this->getCountProduct_3(explode(",",$cats["children"]), null, $service);
@@ -528,10 +528,10 @@ class Industries extends PbModel {
 	{
 		$cats = $this->read('count,children', intval($id));
 
-		if(!$cats["children"])
-		{
-			$cats["children"] = $product->updateIndustryChildren($id);
-		}
+		//if(!$cats["children"])
+		//{
+		//	$cats["children"] = $product->updateIndustryChildren($id);
+		//}
 		
 		$result = $this->getCountTrade(explode(",",$cats["children"]));
 		
