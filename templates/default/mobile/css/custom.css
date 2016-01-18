@@ -2249,5 +2249,31 @@ h1.page-title .icon-page.icon-company {
 .shop_edit_logo_button a {
     color: #333;
     display: block;
-    padding: 5px;
+    padding: 5px 7px;
+}
+#edit_banner a {
+    background: rgba(255, 255, 255, 0.5) none repeat scroll 0 0;
+    height: 30px;
+    margin-top: -100px;
+    position: absolute;
+    right: 10px;
+    width: 30px;
+    padding: 5px 7px;
+    color: #333;
+    z-index: 1000;
+}
+.uload_banner img {
+    float: right;
+    width: 100px;
+}
+.uload_banner p {
+    display: block;
+    height: 60px;
+    width: 100%;
+}
+.uload_banner input[type="file"] {
+    border: 1px solid #ccc;
+    display: block;
+    margin: 10px 0;
+    width: 190px;
 }

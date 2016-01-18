@@ -1,3 +1,47 @@
+<div id="upload_logo" class="hide">
+        <div class="upload_logo">
+        <h3>{lang change_logo}</h3>
+        <p>{lang logo_size_1200}</p>
+        <iframe name="upload" id="upload" style="display: none"></iframe>
+        <form name="productaddfrm" id="Frm2_logo" method="post" action="{the_url module=root-url}index.php?do=product&action=change_logo_home" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
+          <!-- {formhash} -->
+          <input type="hidden" name="username" value="{$MEMBER.username}" />
+          <input type="hidden" name="com_id" value="{$COMPANY.id}" />
+          <input type="hidden" name="uri" value="{$FURI}" />
+        
+        
+          <p><input accept="image/*" type="file" name="upload_logo" id="changelogo-but" onchange="$('#Frm2_logo').submit()" /></p>
+          
+          
+          <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
+        </form>
+        </div>
+</div>
+
+<div id="upload_banner" class="" style="display: none; padding: 15px;">
+    <div class="uload_banner">
+	<h3>{lang change_banner}</h3>
+	<p>{lang banner_size_1200}</p>
+	<iframe name="upload" id="upload" style="display: none"></iframe>
+	<form name="productaddfrm" id="Frm1" method="post" action="{$WebRootUrl}index.php?do=product&action=change_banner" enctype="multipart/form-data" onsubmit="$('#Save').attr('disabled',true);">
+	  <!-- {formhash} -->
+	  <input type="hidden" name="username" value="{$MEMBER.username}" />
+	  <input type="hidden" name="memid" value="{$MEMBER.id}" />
+	  <input type="hidden" name="com_id" value="{$COMPANY.id}" />
+	  <input type="hidden" name="uri" value="{$FURI}" />
+	
+	
+	  <p>{if $banners.1}<img src="{$banners.1}" />{/if}<input type="file" name="upload_banner_1" accept="image/*" /></p>
+	  <p>{if $banners.2}<img src="{$banners.2}" />{/if}<input type="file" name="upload_banner_2" accept="image/*" /></p>
+	  <p>{if $banners.3}<img src="{$banners.3}" />{/if}<input type="file" name="upload_banner_3" accept="image/*" /></p>
+	  <p>{if $banners.4}<img src="{$banners.4}" />{/if}<input type="file" name="upload_banner_4" accept="image/*" /></p>
+	  <p>{if $banners.5}<img src="{$banners.5}" />{/if}<input type="file" name="upload_banner_5" accept="image/*" /></p>
+	  
+	  <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
+	</form>
+    </div>
+</div>
+
 <div class="shop_top_info">
     <div class="head">
         <div class="logo_title">
@@ -49,6 +93,25 @@
                     <!--{/loop}-->
                 {/if}
             </ul>
+            <!--{if $pb_username==$MEMBER.username}-->
+                <div id="edit_banner" {if $banners.noimage}style="display: block"{/if}>
+                    <a href="#upload_banner"><span aria-hidden="true" class="glyphicon glyphicon-camera"></span>    </a>
+                </div>
+                {literal}
+                    <script>
+                        $("#edit_banner a").fancybox({
+                            'padding': 0,
+                            'zoomOpacity': true,
+                            'zoomSpeedIn': 500,
+                            'zoomSpeedOut': 500,
+                            'overlayOpacity': 0.75,
+                            'frameWidth': "100%",
+                            'frameHeight': "100%",
+                            'hideOnContentClick': false
+                        });
+                    </script>
+                {/literal}
+            <!--{/if}-->
         </div>
         
         
