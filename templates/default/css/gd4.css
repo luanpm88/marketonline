@@ -1001,5 +1001,5 @@ li.liback {
     min-height: 1300px;
 }
 .fancybox-opened {
-    z-index: 9000000;
+    z-index: 999999999;
 }
