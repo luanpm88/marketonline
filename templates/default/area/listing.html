@@ -184,7 +184,24 @@
 
 <div class="row company-container areas-container areas-listing">
     
-    <!--{include file="`$theme_name`/area/_areas-menu.html"}--> 
+    <!--{include file="`$theme_name`/area/_areas-menuz.html"}-->
+	
+	
+	<div class="groupcat_menu">
+		
+	</div>
+	{literal}
+	<script>
+		$.ajax({
+	    url: "http://marketonline.vn:3000/catgroups/display_menu",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+                $(".groupcat_menu").html(data);
+            }
+        });
+	</script>
+	{/literal}
+	
     <div>
 	    {$container}
     </div>    
