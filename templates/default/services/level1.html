@@ -144,8 +144,7 @@
 				    $('#list_product_ajax'+j+' ul').html("");
 				}
 				for (var i=0; i < 15; i++) {
-				    var pos = i%3;
-				    
+				    var pos = i%3;				    
 				    $('#list_product_ajax'+getMinHeight()+' ul').append($(data).filter(".products_"+i).html());
 				}
 				
@@ -156,7 +155,8 @@
 				if(!scroll) scroll = true;
 				
 				$('.product_listing ul.products li.product img').load(function() {
-				  $(this).parent().css("height", $(this).parent().height());
+				  //$(this).parent().css("height", $(this).parent().height());
+				  
 				});
 				
 				
@@ -186,6 +186,12 @@
 					adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
 				    }
 				})
+				
+				$('.product_listing ul.products li.boxcols img').resizecrop({
+						width:275,
+						height:275
+						
+					  });
 			}
 		});
 	}
@@ -233,7 +239,7 @@
 				pos_pg += 15;
 				
 				$('.product_listing ul.products li.product img').load(function() {
-				    $(this).parent().css("height", $(this).parent().height());
+				    //$(this).parent().css("height", $(this).parent().height());
 				});
 				
 				$('a,img').qtip({ // Grab some elements to apply the tooltip to
@@ -245,6 +251,12 @@
 					adjust: { x: 10, y: 25 } // Offset it slightly from under the mouse
 				    }
 				})
+				
+				$('.product_listing ul.products li.boxcols img').resizecrop({
+						width:275,
+						height:275
+						
+					  });
 			}
 		});
 	}
