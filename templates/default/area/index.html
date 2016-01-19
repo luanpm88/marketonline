@@ -194,57 +194,17 @@
     <!--{include file="`$theme_name`/area/_areas-menuz.html"}-->   
     
     <div class="groupcat_menu">
-		<ul>
-			<li>				
-				<a href="#">
-					<h4>Làng nghề</h4>
-					<img src="http://www.gomsuphongthuy.vn/FileUpload/Images/240212_020328banner01.png" />
-				</a>
-			</li>
-			<li>				
-				<a href="#">
-					<h4>Làng nghề</h4>
-					<img src="http://www.gomsuphongthuy.vn/FileUpload/Images/240212_020328banner01.png" />
-				</a>
-			</li>
-			<li>				
-				<a href="#">
-					<h4>Làng nghề</h4>
-					<img src="http://www.gomsuphongthuy.vn/FileUpload/Images/240212_020328banner01.png" />
-				</a>
-			</li>
-			<li>				
-				<a href="#">
-					<h4>Làng nghề</h4>
-					<img src="http://www.gomsuphongthuy.vn/FileUpload/Images/240212_020328banner01.png" />
-				</a>
-			</li>
-			<li>				
-				<a href="#">
-					<h4>Làng nghề</h4>
-					<img src="http://www.gomsuphongthuy.vn/FileUpload/Images/240212_020328banner01.png" />
-				</a>
-			</li>
-			<li>				
-				<a href="#">
-					<h4>Làng nghề</h4>
-					<img src="http://www.gomsuphongthuy.vn/FileUpload/Images/240212_020328banner01.png" />
-				</a>
-			</li>
-		</ul>
+		
 	</div>
 	{literal}
 	<script>
-//		$.ajax({
-//	    url: "index.php?do=product&action=ajaxMainCategoryMenu{/literal}{if $smarty.get.do=='area'}&pos=area&areatype={$smarty.get.action}&type={$smarty.get.type}{/if}&service={if $smarty.get.do=='company'}company&membergroup_id={$smarty.get.membergroup_id}{else}{$item.service}{$smarty.get.action}{/if}{literal}",
-//		}).done(function ( data ) {
-//			if( console && console.log ) {
-//                if (data.trim()!='') {
-//                    $('.super-main-category .main-cat-content').html(data);
-//                    $('.menu_industry_list ul li.level0 ul').height($('.toptoptop').height());
-//                }
-//            }
-//        });
+		$.ajax({
+	    url: "http://marketonline.vn:3000/catgroups/display_menu",
+		}).done(function ( data ) {
+			if( console && console.log ) {
+                $(".groupcat_menu").html(data);
+            }
+        });
 	</script>
 	{/literal}
     
