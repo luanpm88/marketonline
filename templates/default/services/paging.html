@@ -79,7 +79,7 @@
 	    if(item) item.parent().parent().find("li").removeClass('active');
 	    if(item) item.parent().addClass('active');
 	    $.ajax({
-			url: "index.php?do=product&service=services&action=ajaxLoadMenuConnect&industryid="+id,			
+			url: "index.php?do=product&service=services&tipe=service&action=ajaxLoadMenuConnect&industryid="+id,			
 		}).done(function ( data ) {
 			if( console && console.log ) {
 			  
@@ -187,7 +187,7 @@
 		$('.product_list_loading').height($('.product_listing').height());
 		$('.product_list_loading').css("display", "block");
 		$.ajax({
-			url: "index.php?do=product&type=service&leftbar=1&action=listAjax"+filter+"&pos_pg="+((1-1)*num_per_page)+"&num_per_page="+num_per_page,
+			url: "index.php?do=product&type=service&service_page=1&leftbar=1&action=listAjax"+filter+"&pos_pg="+((1-1)*num_per_page)+"&num_per_page="+num_per_page,
 			beforeSend: function ( xhr ) {
 				//xhr.overrideMimeType("text/plain; charset=x-user-defined");
 				$('#list_product_ajax').html('<div class="loading">'+$('#loading').html()+'</div>');
@@ -274,7 +274,7 @@
 	function ajaxListProductScroll(filter) {
 	  
 		$.ajax({
-			url: "index.php?do=product&type=service&leftbar=1&action=listAjax"+filter,
+			url: "index.php?do=product&type=service&leftbar=1&service_page=1&action=listAjax"+filter,
 		}).done(function ( data ) {
 			if( console && console.log ) {
 				//console.log("Sample of data:", data.slice(0, 200));
@@ -802,7 +802,7 @@
         <!--<label>{lang industry}&nbsp;&nbsp;</label>-->
         <input type="text" id="ProductName" name="q" value="{$keyword}" placeholder="Tìm kiếm (nhập tên, mã sản phẩm/dịch vụ)" />
 	
-	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục sản phẩm</span></a> <span class="product_list_title">
+	<h5><a href="javascript:void(0)" class="all_p"><span class="cat_title">Danh mục dịch vụ</span></a> <span class="product_list_title">
 	  
 	  
 	</span></h5>
