@@ -1000,3 +1000,6 @@ li.liback {
 .studyhome-page {
     min-height: 1300px;
 }
+.fancybox-opened {
+    z-index: 9000000;
+}
