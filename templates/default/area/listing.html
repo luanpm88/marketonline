@@ -193,7 +193,7 @@
 	{literal}
 	<script>
 		$.ajax({
-	    url: "http://marketonline.vn:3000/catgroups/display_menu",
+	    url: "http://marketonline.vn:3000/catgroups/display_menu?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
 		}).done(function ( data ) {
 			if( console && console.log ) {
                 $(".groupcat_menu").html(data);
