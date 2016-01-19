@@ -1003,3 +1003,31 @@ li.liback {
 .fancybox-opened {
     z-index: 999999999 !important;
 }
+.groupcat_menu {
+    display: block;
+    float: left;
+    width: 1200px;
+    margin-bottom: 30px;
+}
+.groupcat_menu ul {
+    
+}
+.groupcat_menu ul li {
+    float: left;
+    list-style: outside none none;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    width: 380px;
+}
+.groupcat_menu ul li a {
+    
+}
+.groupcat_menu ul li a h4 {
+    font-family: Segoe UI Light;
+    font-size: 26px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.groupcat_menu ul li a img {
+    width: 100%;
+}
