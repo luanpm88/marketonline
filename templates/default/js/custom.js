@@ -264,7 +264,7 @@
 	var box = $('.'+boxid);
 	box.addClass("area-module-loading");
 	$.ajax({
-		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+type+pages+industry_s+row_s+num_per_row_s,
+		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+"&catgroup_id="+CATGROUP_ID+type+pages+industry_s+row_s+num_per_row_s,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
 		if(data != '')

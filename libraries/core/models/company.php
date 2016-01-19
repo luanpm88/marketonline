@@ -724,6 +724,13 @@ class Companies extends PbModel {
 							." OR (Company.industries LIKE '".$industryid.",%')"
 							." OR (Company.industries LIKE '%,".$industryid.",%'))";
 		}
+		if($params["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$params["catgroup_id"]);
+			
+		}
+		
 		
 		$conditions[] = 'Company.area_show=1';
 		

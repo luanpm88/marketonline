@@ -17,6 +17,7 @@ class Area extends PbController {
 		$this->loadModel("school");
 		$this->loadModel("studygroup");
 		$this->loadModel("industry");
+		$this->loadModel("catgroup");
 	}
 	
 	function getNames()
@@ -224,6 +225,17 @@ class Area extends PbController {
 			setvar("main_ades",$main_ades);
 		}
 		
+		
+		//get catgroup
+		if(isset($_GET["catgroup_id"])){
+			$catgroup_id = $_GET["catgroup_id"];
+			$catgroup = $this->catgroup->read("*",$catgroup_id);
+			setvar("catgroup",$catgroup);
+			
+		}
+		
+		
+		
 		setvar("industries",$this->industry->getCacheIndustry());
 		
 		if($PageTypeName) $ttypename = $PageTypeName." - ";
@@ -328,7 +340,16 @@ class Area extends PbController {
 		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
 			$main_ades = $this->getMainThreeBanners();
 			setvar("main_ades",$main_ades);
-		}		
+		}
+		
+		
+		//get area
+		if(isset($_GET["catgroup_id"])){
+			$catgroup_id = $_GET["catgroup_id"];
+			$catgroup = $this->catgroup->read("*",$catgroup_id);
+			setvar("catgroup",$catgroup);
+			
+		}
 		
 		setvar("industries",$this->industry->getCacheIndustry());
 		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
@@ -461,8 +482,17 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		//get catgroup
+		if(isset($_GET["catgroup_id"])){
+			$catgroup_id = $_GET["catgroup_id"];
+			$catgroup = $this->catgroup->read("*",$catgroup_id);
+			setvar("catgroup",$catgroup);
+		}
+		
 		//get companies by areas
-		$companies = $this->company->getByArea(array("industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		$companies = $this->company->getByArea(array("catgroup_id"=>$catgroup_id,"industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		
+		
 		
 		setvar("view_more", $companies["count"] > ($row*$num));
 		setvar("companies",$companies["result"]);

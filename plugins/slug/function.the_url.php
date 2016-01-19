@@ -648,6 +648,12 @@ function smarty_function_the_url($params){
 							$return = $return."/".$industry_id."/".stringToURI($industry_name);
 						}
 					}
+					if($catgroup_id) {
+						$return = $return."/vung-mien/".$catgroup_id."/";
+						if($catgroup_name) {
+							$return = $return.stringToURI($catgroup_name);
+						}
+					}
 				}else{
 					$return = URL."index.php?do=area";
 					if($areatype_id) {

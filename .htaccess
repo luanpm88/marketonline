@@ -31,6 +31,23 @@ RewriteRule ^thuong-hieu/hinh-anh-video/([0-9]+)/(.*)(sinh-vien)?/?$ index.php?d
 RewriteRule ^danh-gia-shop/(.*)/([0-9]+)$ index.php?do=company&action=rating&star=$2&space_name=$1 [L]
 
 # FOR CATGROUP
+RewriteRule ^thi-truong/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&catgroup_id=$1 [L]
+RewriteRule ^thi-truong/mien-nam/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&areatype_id=1&catgroup_id=$1 [L]
+RewriteRule ^thi-truong/mien-trung/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&areatype_id=2&catgroup_id=$1 [L]
+RewriteRule ^thi-truong/mien-bac/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&areatype_id=3&catgroup_id=$1 [L]
+RewriteRule ^thi-truong/mien-nam/([0-9]+)/([\-a-z0-9]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&areatype_id=1&area_id=$1&catgroup_id=$3 [L]
+RewriteRule ^thi-truong/mien-trung/([0-9]+)/([\-a-z0-9]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&areatype_id=2&area_id=$1&catgroup_id=$3 [L]
+RewriteRule ^thi-truong/mien-bac/([0-9]+)/([\-a-z0-9]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&areatype_id=3&area_id=$1&catgroup_id=$3 [L]
+RewriteRule ^thi-truong/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&action=listing&type=$1&catgroup_id=$2 [L]
+RewriteRule ^thi-truong/mien-nam/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&action=listing&areatype_id=1&type=$1&catgroup_id=$2 [L]
+RewriteRule ^thi-truong/mien-trung/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&action=listing&areatype_id=2&type=$1&catgroup_id=$2 [L]
+RewriteRule ^thi-truong/mien-bac/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&action=listing&areatype_id=3&type=$1&catgroup_id=$2 [L]
+RewriteRule ^thi-truong/mien-nam/([0-9]+)/([\-a-z0-9]+)/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&&action=listing&areatype_id=1&area_id=$1&type=$3&catgroup_id=$4 [L]
+RewriteRule ^thi-truong/mien-trung/([0-9]+)/([\-a-z0-9]+)/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&&action=listing&areatype_id=2&area_id=$1&type=$3&catgroup_id=$4 [L]
+RewriteRule ^thi-truong/mien-bac/([0-9]+)/([\-a-z0-9]+)/([\-a-z]+)/vung-mien/([0-9]+)/([\-a-z0-9]+)/?$ index.php?do=area&&action=listing&areatype_id=3&area_id=$1&type=$3&catgroup_id=$4 [L]
+
+
+################
 
 RewriteRule ^thi-truong/?$ index.php?do=area [L]
 RewriteRule ^thi-truong/mien-nam/?$ index.php?do=area&areatype_id=1 [L]

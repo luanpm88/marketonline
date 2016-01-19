@@ -80,6 +80,13 @@
 	{else}
 	    var AREATYPE_ID = '';
 	{/if}
+	
+	{if $smarty.get.catgroup_id}
+	    var CATGROUP_ID = {$smarty.get.catgroup_id};
+	{else}
+	    var CATGROUP_ID = '';
+	{/if}
+	
     {literal}
     
     var row = 20;
@@ -154,6 +161,12 @@
 	    {/if}
 	    <span class="delim">/</span> <a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name`}">{$area.name}</a>
 	{/if}
+	{if $catgroup}
+		<span class="delim">/</span>
+		<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` catgroup_id=`$catgroup.id` catgroup_name=`$catgroup.name`}">
+		    {$catgroup.name}
+		</a>
+	{/if}
 	{if $PageTypeName}
 	    <span class="delim">/</span>
 	    {if $industry_tree}
@@ -161,7 +174,7 @@
 	    {else}
 		{$PageTypeName}
 	    {/if}
-	{/if}
+	{/if}	
 	{if $industry_tree}
 	    <!--{loop $industry_tree item level key}-->
 		<span class="delim">/</span>
@@ -172,6 +185,7 @@
 		{/if}
 	    <!--{/loop}-->
 	{/if}
+	
     </div>
     
 	<h1 class="page-title">{$PageTypeName}</h1>
