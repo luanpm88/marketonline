@@ -1037,3 +1037,34 @@ li.liback {
     border: 1px solid #ddd;
     padding: 5px;
 }
+.announce_intro_box {
+    float: left;
+    margin-bottom: 40px;
+    width: 1220px;
+}
+.announce_intro_box ul {
+    
+}
+.announce_intro_box ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    float: left;
+    list-style: outside none none;
+    margin-right: 20px;
+    width: 280px;
+}
+.announce_intro_box ul li a {
+    display: block;
+    float: left;
+    line-height: 0;
+    width: 100%;
+}
+.announce_intro_box ul li a h4 {
+    margin: 6px;
+    text-align: center;
+}
+.announce_intro_box ul li a img {
+    height: 110px;
+    margin: 0;
+    width: 100%;
+}
