@@ -729,9 +729,20 @@ class Companies extends PbModel {
 			$catgroup_db = new Catgroups;
 			$catgroup = $catgroup_db->read("*",$params["catgroup_id"]);
 			
-			$sql = "SELECT DISTINCT `member_id` AS some_alias FROM pb_products";
-			$ids = $catgroup->dbstuff->GetArray($sql);
-			var_dump($ids);
+			$id_arr = array();
+			$sql = "SELECT DISTINCT `member_id` AS mid FROM pb_products where industry_id IN (".$catgroup["related_cat_ids"].")";
+
+			$ids = $this->dbstuff->GetArray($sql);			
+			foreach($ids as $id) {
+				$id_arr[] = $id["mid"];
+			}
+			$sql = "SELECT DISTINCT `member_id` AS mid FROM pb_trades where industry_id IN (".$catgroup["related_cat_ids"].")";
+			$ids = $this->dbstuff->GetArray($sql);			
+			foreach($ids as $id) {
+				$id_arr[] = $id["mid"];
+			}
+			
+			$conditions[] = "Company.member_id IN (".implode(",",$id_arr).")";
 		}
 		
 		
