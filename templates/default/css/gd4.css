@@ -1069,6 +1069,12 @@ li.liback {
     margin: 0;
     width: 100%;
 }
+.top_areas_menu_box {
+    margin-top: -40px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
 .top_areas_menu {
     background: #fff none repeat scroll 0 0;
     border: 1px solid #ddd;
@@ -1082,7 +1088,7 @@ li.liback {
     cursor: pointer;
     font-size: 20px;
     margin: 0 20px 0 10px;
-    padding: 6px 20px 7px;
+    padding: 6px 20px 7px 10px;
 }
 .top_areas_menu h2:hover {
     opacity: 0.8;
@@ -1124,4 +1130,9 @@ li.liback {
     padding-left: 35px;
     font-weight: normal;
     font-size: 16px;
+}
+.choose_area_label {
+    display: inline-block;
+    font-size: 16px;
+    padding-right: 5px;
 }
