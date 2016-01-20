@@ -398,7 +398,8 @@ class Area extends PbController {
 		if($_GET["catgroup_id"]) {
 			uses("catgroup");
 			$catgroup_db = new Catgroups;
-			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);			
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);
+			setvar('catgroup', $catgroup);
 		}
 		
 		setvar("areatype", $areatype);
@@ -549,7 +550,8 @@ class Area extends PbController {
 		if($_GET["catgroup_id"]) {
 			uses("catgroup");
 			$catgroup_db = new Catgroups;
-			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);			
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);
+			setvar('catgroup', $catgroup);
 		}
 		
 		//get products by areas
@@ -614,7 +616,8 @@ class Area extends PbController {
 		if($_GET["catgroup_id"]) {
 			uses("catgroup");
 			$catgroup_db = new Catgroups;
-			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);			
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);
+			setvar('catgroup', $catgroup);
 		}
 		
 		//get services by areas

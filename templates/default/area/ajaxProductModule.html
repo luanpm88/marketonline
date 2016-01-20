@@ -105,7 +105,7 @@
 								<br style="clear: both" /><p></p><br /><div class="pagination-list"></div><br style="clear:both" />
 						{else}
 								{if $view_more}
-										<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham'}">Xem thêm</a>
+										<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='san-pham' catgroup_id=`$catgroup.id` catgroup_name=`$catgroup.name`}">Xem thêm</a>
 								{/if}
 						{/if}
 								
