@@ -207,7 +207,7 @@
 		{literal}
 		<script>
 			$.ajax({
-			url: "http://local.marketonline.vn/app/pb_areas/display_tree?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
+			url: "http://marketonline.vn:3000/app/pb_areas/display_tree?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
 			}).done(function ( data ) {
 				if( console && console.log ) {
 					$(".top_areas_menu").html(data);
