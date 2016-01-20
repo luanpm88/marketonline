@@ -200,21 +200,22 @@
     
     <!--{include file="`$theme_name`/area/_areas-menuz.html"}-->
 	
-	
-	<div class="groupcat_menu">
-		
-	</div>
-	{literal}
-	<script>
-		$.ajax({
-	    url: "http://marketonline.vn:3000/catgroups/display_menu?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
-		}).done(function ( data ) {
-			if( console && console.log ) {
-                $(".groupcat_menu").html(data);
-            }
-        });
-	</script>
-	{/literal}
+	{if $catgroup}
+		<div class="groupcat_menu">
+			
+		</div>
+		{literal}
+		<script>
+			$.ajax({
+			url: "http://marketonline.vn:3000/catgroups/display_menu?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$(".groupcat_menu").html(data);
+				}
+			});
+		</script>
+		{/literal}
+	{/if}
 	
     <div>
 	    {$container}
