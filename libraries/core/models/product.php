@@ -697,7 +697,7 @@ class Products extends PbModel {
 		}
 		
 		if($params["catgroup"]) {
-			$conditions[] = "Product.industry_id IN (".$params["catgroup"].")";
+			$conditions[] = "Product.industry_id IN (".$params["catgroup"]["related_cat_ids"].")";
 		}
 		
 		//Conditions for new product show
