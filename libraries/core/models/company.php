@@ -729,6 +729,9 @@ class Companies extends PbModel {
 			$catgroup_db = new Catgroups;
 			$catgroup = $catgroup_db->read("*",$params["catgroup_id"]);
 			
+			sql = "SELECT DISTINCT `member_id` AS some_alias FROM pb_products";
+			$ids = $this->dbstuff->GetArray($sql);
+			var_dump($ids);
 		}
 		
 		
