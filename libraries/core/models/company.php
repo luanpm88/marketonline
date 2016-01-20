@@ -736,7 +736,7 @@ class Companies extends PbModel {
 			foreach($ids as $id) {
 				$id_arr[] = $id["mid"];
 			}
-			$sql = "SELECT DISTINCT `member_id` AS mid FROM pb_trades where industry_id IN (".$catgroup["related_cat_ids"].")";
+			$sql = "SELECT DISTINCT `member_id` AS mid FROM pb_trades where valid_status=1 AND industry_id IN (".$catgroup["related_cat_ids"].")";
 			$ids = $this->dbstuff->GetArray($sql);			
 			foreach($ids as $id) {
 				$id_arr[] = $id["mid"];
