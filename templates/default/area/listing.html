@@ -200,6 +200,52 @@
     
     <!--{include file="`$theme_name`/area/_areas-menuz.html"}-->
 	
+	{if true}
+		<div class="top_areas_menu">
+			
+		</div>
+		{literal}
+		<script>
+			$.ajax({
+			url: "http://local.marketonline.vn/app/pb_areas/display_tree?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$(".top_areas_menu").html(data);
+				}
+			});
+		</script>
+		{/literal}
+	{/if}
+	
+	<div class="announce_intro_box">
+		<ul>
+			<li>
+				<a hre="#">
+					<h4>Thông báo</h4>
+					<img src="http://marketonline.vn:3000//uploads/catgroup/image/5/thumb_h_nh5__rau_an_to_n__1.jpg" />
+				</a>
+			</li>
+			<li>
+				<a hre="#">
+					<h4>Giới thiệu</h4>
+					<img src="http://marketonline.vn:3000//uploads/catgroup/image/5/thumb_h_nh5__rau_an_to_n__1.jpg" />
+				</a>
+			</li>
+			<li>
+				<a hre="#">
+					<h4>Nhu cầu mua</h4>
+					<img src="http://marketonline.vn:3000//uploads/catgroup/image/5/thumb_h_nh5__rau_an_to_n__1.jpg" />
+				</a>
+			</li>
+			<li>
+				<a hre="#">
+					<h4>Tìm đối tác</h4>
+					<img src="http://marketonline.vn:3000//uploads/catgroup/image/5/thumb_h_nh5__rau_an_to_n__1.jpg" />
+				</a>
+			</li>
+		</ul>
+	</div>
+	
 	{if !$catgroup}
 		<div class="groupcat_menu">
 			

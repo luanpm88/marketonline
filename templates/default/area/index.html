@@ -205,6 +205,25 @@
     
     <!--{include file="`$theme_name`/area/_areas-menuz.html"}-->
 	
+	{if true}
+		<div style="text-align: center;">
+			<div class="top_areas_menu">
+				
+			</div>
+		</div>
+		{literal}
+		<script>
+			$.ajax({
+			url: "http://local.marketonline.vn/app/pb_areas/display_tree?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$(".top_areas_menu").html(data);
+				}
+			});
+		</script>
+		{/literal}
+	{/if}
+	
 	<div class="announce_intro_box">
 		<ul>
 			<li>
