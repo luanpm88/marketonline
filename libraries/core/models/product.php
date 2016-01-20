@@ -696,6 +696,10 @@ class Products extends PbModel {
 			$conditions[] = "Product.industry_id IN (".implode(",",$params["industries"]).")";
 		}
 		
+		if($params["catgroup"]) {
+			$conditions[] = "Product.industry_id IN (".$params["catgroup"].")";
+		}
+		
 		//Conditions for new product show
 		$conditions[] = "Product.state = 1";
 		$conditions[] = "Product.valid_status = 1";

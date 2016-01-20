@@ -542,8 +542,14 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		if($_GET["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);			
+		}
+		
 		//get products by areas
-		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
+		$products = $this->product->getByArea(array("catgroup"=>$catgroup,"industries"=>$industries,"industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
 		setvar("view_more", $products["count"] > ($row*$num));
 
