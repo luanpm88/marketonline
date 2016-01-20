@@ -591,6 +591,10 @@ class Trades extends PbModel {
 			$conditions[] = "Trade.industry_id IN (".implode(",",$params["industries"]).")";
 		}
 		
+		if($params["catgroup"]) {
+			$conditions[] = "Trade.industry_id IN (".$params["catgroup"]["related_cat_ids"].")";
+		}
+		
 		$conditions[] = "Trade.status=1";
 		$conditions[] = "Trade.area_show=1";
 		$joins = array();

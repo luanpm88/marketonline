@@ -395,13 +395,17 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
-		
+		if($_GET["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);			
+		}
 		
 		setvar("areatype", $areatype);
 		setvar("area", $area);
 		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
-		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
+		$trades = $this->trade->getByArea(array("catgroup"=>$catgroup,"industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		$products = $trades["result"];
 		
 		foreach($products as $key => $item)
