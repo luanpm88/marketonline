@@ -246,7 +246,6 @@ class Area extends PbController {
 	function index() {
 		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
-
 		//get area
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -282,8 +281,7 @@ class Area extends PbController {
 			//listing district
 			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
 			setvar("districts",$districts);
-		}
-		
+		}		
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->areatype->read("*",$areatype_id);
@@ -317,31 +315,10 @@ class Area extends PbController {
 		}
 		setvar("areatypes",$areatypes);
 		
-		////get products by areas
-		//$products = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0));
-		//setvar("products",$products);
-		//
-		////get services by areas
-		//$services = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1));
-		//setvar("services",$services);
-		
-		////get trades by areas
-		//$trades = $this->trade->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		//setvar("trades",$trades);
-		
-		////get companies by areas
-		//$companies = $this->company->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		//setvar("companies",$companies);
-		
-		////get jobs by areas
-		//$jobs = $this->job->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		//setvar("jobs",$jobs);
-		
 		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
 			$main_ades = $this->getMainThreeBanners();
 			setvar("main_ades",$main_ades);
 		}
-		
 		
 		//get area
 		if(isset($_GET["catgroup_id"])){
@@ -351,9 +328,15 @@ class Area extends PbController {
 			
 		}
 		
-		setvar("industries",$this->industry->getCacheIndustry());
-		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
-		render("area/index", 1);
+		
+		if(isset($_GET["info_page"]) && $_GET["info_page"] != "") {
+			setvar("info_page", $_GET["info_page"]);
+			render("area/info_page", 1);
+		} else {
+			setvar("industries",$this->industry->getCacheIndustry());
+			setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
+			render("area/index", 1);
+		}		
 	}
 	
 	function ajaxTradeModule() {
@@ -925,6 +908,7 @@ class Area extends PbController {
 				$vals["member_id"] = $pb_userinfo["pb_userid"];				
 				$vals["area_id"] = $_POST["area_id"];
 				$vals["status"] = 0;
+				$vals["type_name"] = 'vtdl';
 				
 				$this->areainfo->save($vals);
 			} else {
@@ -995,6 +979,7 @@ class Area extends PbController {
 				$vals["member_id"] = $pb_userinfo["pb_userid"];				
 				$vals["areatype_id"] = $_POST["areatype_id"];
 				$vals["status"] = 0;
+				$vals["type_name"] = 'vtdl';
 				
 				$this->areatypeinfo->save($vals);
 			} else {

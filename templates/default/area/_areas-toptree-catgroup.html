@@ -8,7 +8,7 @@
 		{literal}
 		<script>
 			$.ajax({
-			url: "http://marketonline.vn:3000/pb_areas/display_tree?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}",
+			url: "http://marketonline.vn:3000/pb_areas/display_tree?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}&info_page={/literal}{$info_page}{literal}",
 			}).done(function ( data ) {
 				if( console && console.log ) {
 					$(".top_areas_menu").html(data);
@@ -18,17 +18,17 @@
 		{/literal}
 	{/if}
 	
-    {if !$catgroup}
+    {if !$catgroup && !$info_page}
         <div class="announce_intro_box">
             <ul>
                 <li>
-                    <a hre="#">
+                    <a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name` info_page='thong-bao'}">
                         <h4>Thông báo</h4>
                         <img src="http://marketonline.vn:3000//uploads/catgroup/image/5/thumb_h_nh5__rau_an_to_n__1.jpg" />
                     </a>
                 </li>
                 <li>
-                    <a hre="#">
+                    <a href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name` info_page='gioi-thieu'}">
                         <h4>Giới thiệu</h4>
                         <img src="http://marketonline.vn:3000//uploads/catgroup/image/5/thumb_h_nh5__rau_an_to_n__1.jpg" />
                     </a>
@@ -49,7 +49,7 @@
         </div>
     {/if}
     
-	{if !$catgroup}
+	{if !$catgroup && !$info_page}
 		<div class="groupcat_menu">
 			
 		</div>
