@@ -1246,7 +1246,7 @@ li.liback {
 .intro_page_title_h1 {
     text-align: center;
 }
-.intro_page_detail_box img {
+.writter_box img {
     float: left;
     margin-right: 10px;
     width: 180px;
@@ -1254,23 +1254,23 @@ li.liback {
     display: block;
     border: solid 1px #ddd;
 }
-.intro_page_detail_box h4 a {
+.writter_box h4 a {
     font-size: 22px;
     color: #3b984c;
     font-weight: 400;
 }
-.intro_page_detail_box label {
+.writter_box label {
     display: inline-block;
     font-family: Segoe UI;
     font-size: 14px;
     width: 75px;
 }
-.intro_page_detail_box p {
+.writter_box p {
     display: inline-block;
     font-size: 16px;
     margin: 0;
 }
-.intro_page_detail_box .right_info {
+.writter_box .right_info {
     float: right;
     width: 674px;
 }
