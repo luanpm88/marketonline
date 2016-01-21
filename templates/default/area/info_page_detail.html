@@ -219,8 +219,9 @@
     <div class="intro_page_detail_box">
         {if $company_info}
             <div class="writter_box">
-                <a href="{the_url module=space userid=`$member_info.space_name`}"><img class="" alt="{$company_info.name}" src="{$company_info.logo}"></a>
-                <h4><a href="{the_url module=space userid=`$member_info.space_name`}">{$company_info.name}</a></h4>
+                <a href="{the_url module=space userid=`$member_info.space_name`}"><img class="" alt="{$company_info.name}" src="{$company_info.logosmall}"></a>
+                <div class="right_info">
+                    <h4><a href="{the_url module=space userid=`$member_info.space_name`}">{$company_info.name}</a></h4>
                     <div>
                         <label>Địa chỉ:</label>
                         <p>{$company_info.address}</p>
@@ -237,7 +238,26 @@
                         <label>{lang email}:</label>
                         <p><a href="{the_url module=space userid=`$item.space_name`}contact">{$company_info.contact_email}</a></p>
                     </div>
-                </table>
+                    <br />
+                    <span class="share_title">
+						Chia sẻ
+                    </span>
+                    <div class="share_buts">
+                        
+                      <!-- AddThis Button BEGIN -->
+                        {literal}
+                            <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                            </div>
+                            <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>
+                        {/literal}
+                        <!-- AddThis Button END -->
+                    </div>
+                </div>
             </div>
         {else}
             <div class="writter_box">

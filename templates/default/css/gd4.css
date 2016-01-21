@@ -1249,8 +1249,8 @@ li.liback {
 .intro_page_detail_box img {
     float: left;
     margin-right: 10px;
-    width: 100px;
-    height: 100px;
+    width: 180px;
+    height: 180px;
     display: block;
     border: solid 1px #ddd;
 }
@@ -1269,4 +1269,8 @@ li.liback {
     display: inline-block;
     font-size: 16px;
     margin: 0;
+}
+.intro_page_detail_box .right_info {
+    float: right;
+    width: 674px;
 }
