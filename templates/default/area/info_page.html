@@ -222,7 +222,7 @@
 	{literal}
 		<script>
 			$.ajax({
-			url: "http://local.marketonline.vn/app/pb_areainfos/listing?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}&info_page={/literal}{$info_page}{literal}",
+			url: "http://marketonline.vn:3000/pb_areainfos/listing?areatype_id={/literal}{$areatype.id}{literal}&area_id={/literal}{$area.id}{literal}&catgroup_id={/literal}{$catgroup.id}{literal}&type={/literal}{$smarty.get.type}{literal}&info_page={/literal}{$info_page}{literal}",
 			}).done(function ( data ) {
 				if( console && console.log ) {
 					$(".info_page_content").html(data);
