@@ -1168,7 +1168,7 @@ li.liback {
 .info_page_listing_container ul li a h4 {
     float: left;
     line-height: 22px;
-    max-height: 48px;
+    height: 27px;
     overflow: hidden;
     text-align: center;
     width: 432px;
@@ -1178,7 +1178,7 @@ li.liback {
     padding: 0 10px 10px 10px;
     width: 432px;
     margin: 0;
-    line-height: 19px;
+    line-height: 20px;
 }
 .info_page_listing_container ul li .view_more_button {
     background: #fff none repeat scroll 0 0;
