@@ -219,8 +219,12 @@
     <div class="intro_page_detail_box">
         {if $company_info}
             <div class="writter_box">
-                <img class="" alt="{$company_info.name}" src="{$company_info.logo}"></a>
-                <h4>{$company_info.name}</h4>
+                <a href="{the_url module=space userid=`$member_info.space_name`}"><img class="" alt="{$company_info.name}" src="{$company_info.logo}"></a>
+                <h4><a href="{the_url module=space userid=`$member_info.space_name`}">{$company_info.name}</a></h4>
+                    <div>
+                        <label>Địa chỉ:</label>
+                        <p>{$company_info.address}</p>
+                    </div>
                     <div>
                         <label>Liên hệ:</label>
                         <p>{$company_info.link_man}</p>

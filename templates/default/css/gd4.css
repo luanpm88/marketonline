@@ -1254,13 +1254,16 @@ li.liback {
     display: block;
     border: solid 1px #ddd;
 }
-.intro_page_detail_box h4 {
-    font-size: 18px;
+.intro_page_detail_box h4 a {
+    font-size: 22px;
+    color: #3b984c;
+    font-weight: 400;
 }
 .intro_page_detail_box label {
     display: inline-block;
     font-family: Segoe UI;
     font-size: 14px;
+    width: 75px;
 }
 .intro_page_detail_box p {
     display: inline-block;
