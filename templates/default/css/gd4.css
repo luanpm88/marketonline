@@ -1234,6 +1234,36 @@ li.liback {
     margin-top: 0;
     padding-top: 0;
 }
+.writter_box {
+    border-bottom: 1px solid #ddd;
+    margin-left: -20px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    width: 884px;
+    float: left;
+    margin-bottom: 20px;
+}
 .intro_page_title_h1 {
     text-align: center;
+}
+.intro_page_detail_box img {
+    float: left;
+    margin-right: 10px;
+    width: 100px;
+    height: 100px;
+    display: block;
+    border: solid 1px #ddd;
+}
+.intro_page_detail_box h4 {
+    font-size: 18px;
+}
+.intro_page_detail_box label {
+    display: inline-block;
+    font-family: Segoe UI;
+    font-size: 14px;
+}
+.intro_page_detail_box p {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
 }

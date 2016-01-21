@@ -217,8 +217,42 @@
 	<!--{include file="`$theme_name`/area/_areas-toptree-catgroup.html"}-->
 	
     <div class="intro_page_detail_box">
+        {if $company_info}
+            <div class="writter_box">
+                <img class="" alt="{$company_info.name}" src="{$company_info.logo}"></a>
+                <h4>{$company_info.name}</h4>
+                    <div>
+                        <label>Liên hệ:</label>
+                        <p>{$company_info.link_man}</p>
+                    </div>
+                    <div>
+                        <label>{lang phone}:</label>
+                        <p>{$company_info.contact_mobile}</p>
+                    </div>
+                    <div>
+                        <label>{lang email}:</label>
+                        <p><a href="{the_url module=space userid=`$item.space_name`}contact">{$company_info.contact_email}</a></p>
+                    </div>
+                </table>
+            </div>
+        {else}
+            <div class="writter_box">
+                <img class="" alt="{$member_info.first_name} {$member_info.last_name}" src="{$member_info.photo}"></a>
+                <h4>{$member_info.first_name} {$member_info.last_name}</h4>
+                    <div>
+                        <label>{lang phone}:</label>
+                        <p>{$member_info.mobile}</p>
+                    </div>
+                    <div>
+                        <label>{lang email}:</label>
+                        <p><a href="{the_url module=space userid=`$item.space_name`}contact">{$member_info.email}</a></p>
+                    </div>
+                </table>
+            </div>
+        {/if}
+        
         <h1 class="intro_page_title_h1">{$areainfo.title}</h1>
-        <hr>
+        <br />
         {$areainfo.content}
         
         <br style="clear: both" />

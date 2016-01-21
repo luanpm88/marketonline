@@ -332,6 +332,10 @@ class Area extends PbController {
 		if(isset($_GET["info_page"]) && $_GET["info_page"] != "") {
 			if(isset($_GET["page_id"]) && $_GET["page_id"] != "") {
 				$areainfo = $this->areainfo->read("*", $_GET["page_id"]);
+				$member_info = $this->member->getInfoById($areainfo['member_id']);
+				$company_info = $this->company->getInfoByUserId($areainfo['member_id']);
+				setvar("member_info", $member_info);
+				setvar("company_info", $company_info);
 				setvar("info_page", $_GET["info_page"]);
 				setvar("areainfo", $areainfo);
 				setvar("PageTitle", $areainfo["title"]);
@@ -342,6 +346,7 @@ class Area extends PbController {
 				} else if($_GET["info_page"] == 'gioi-thieu') {
 					$ptitle = "Thị trường / Giới thiệu";
 				}
+				
 				setvar("info_page", $_GET["info_page"]);
 				setvar("PageTitle", $ptitle);
 				render("area/info_page", 1);
