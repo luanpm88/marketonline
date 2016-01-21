@@ -1,0 +1,272 @@
+<!--{include file="`$theme_name`/header.html" page_title="`$PageTitle`" nav_id="`$nav_id`"}-->
+
+<!--{literal}-->
+<style>
+    .banner_top {
+	display: none;
+    }
+</style>
+<script type="application/x-javascript">   
+    
+    {/literal}
+	{if $smarty.get.area_id}
+	    var AREA_ID = {$smarty.get.area_id};
+	{else}
+	    var AREA_ID = '';
+	{/if}
+	
+	{if $smarty.get.areatype_id}
+	    var AREATYPE_ID = {$smarty.get.areatype_id};
+	{else}
+	    var AREATYPE_ID = '';
+	{/if}
+	
+	{if $smarty.get.catgroup_id}
+	    var CATGROUP_ID = {$smarty.get.catgroup_id};
+	{else}
+	    var CATGROUP_ID = '';
+	{/if}
+	
+    {literal}
+    
+    $(document).ready(function() {
+		
+	
+	//when appear
+	$('.company_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("company_module", "ajaxCompanyModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.company_module').appear();	
+	$('.company_module .subtab-area ul li a').live("click", function() {
+	   ajaxLoadModule("company_module", "ajaxCompanyModule", "membergroup_id",$(this).attr("rel"));
+	});
+	$('.company_module a.main_a').live("click", function() {
+	    ajaxLoadModule("company_module", "ajaxCompanyModule");
+	});
+	
+	
+	
+	
+	//when appear
+	$('.product_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("product_module", "ajaxProductModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.product_module').appear();	
+	$('.product_module a.main_a').live("click", function() {
+	    ajaxLoadModule("product_module", "ajaxProductModule");
+	});
+	
+	
+	
+	//when appear
+	$('.service_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("service_module", "ajaxServiceModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.service_module').appear();	
+	$('.service_module a.main_a').live("click", function() {
+	    ajaxLoadModule("service_module", "ajaxServiceModule");
+	});
+	
+	
+	
+	
+	//when appear
+	$('.trade_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("trade_module", "ajaxTradeModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.trade_module').appear();
+	$('.trade_module .subtab-area ul li a').live("click", function() {
+	    ajaxLoadModule("trade_module", "ajaxTradeModule", "type_id", $(this).attr("rel"));
+	});
+	$('.trade_module a.main_a').live("click", function() {
+	    ajaxLoadModule("trade_module", "ajaxTradeModule");
+	});
+	
+	
+	
+	//when appear
+	$('.school_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("school_module", "ajaxSchoolModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.school_module').appear();	
+	$('.school_module .subtab-area ul li a').live("click", function() {
+	   ajaxLoadModule("school_module", "ajaxSchoolModule", "type",$(this).attr("rel"));
+	});
+	$('.school_module a.main_a').live("click", function() {
+	    ajaxLoadModule("school_module", "ajaxSchoolModule");
+	});	
+	
+	
+	
+	//when appear
+	$('.job_module').on('appear', function(event, $all_appeared_elements) {
+		if (!$(this).hasClass("appeared")) {
+            ajaxLoadModule("job_module", "ajaxJobModule");
+			$(this).addClass("appeared");
+        }			
+	});
+	$('.job_module').appear();	
+	$('.job_module a.main_a').live("click", function() {
+	    ajaxLoadModule("job_module", "ajaxJobModule");
+	});
+	
+	
+	
+});
+</script>
+<!--{/literal}-->
+
+
+<div id="body-wrapper" >
+<div id="body-wrapper-padding">
+<!--[if lt IE 7]>
+<div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different
+    browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to
+    experience this site.
+</div><![endif]-->
+
+<!--{include file="`$theme_name`/topmenu.html"}-->
+
+<div class="row">
+  <div class="fifteen columns" style="padding-left: 0">
+
+    <div id="page-title" class="connect_ptitle" style="padding-left: 110px">
+
+    <div class="super-main-category mainproductpage area">
+		<div class="show-but">
+			Chuyên mục chính
+			
+		</div>
+		<a href="{the_url module='areas'}" class="show-but current-but market">
+			.			
+		</a>
+		<br style="clear:both" />
+		<div class="main-cat-content-out">
+			<span class="pointer_topmenuz">.</span>
+			<div class="main-cat-content">
+			    <!--{include file="`$theme_name`/area/_main_menu.html"}-->
+			</div>
+		</div>
+	</div>
+	
+    <div class="breadcrumbs">
+	<a href="{$SiteUrl}">{lang home_page}</a> <span class="delim">/</span>
+	<a href="{the_url module=areas}">Thị trường</a>
+	
+	{if $areatype}
+	    <span class="delim">/</span>
+	    {if $area}
+		<a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
+	    {else}
+		<a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
+	    {/if}
+	{/if}
+	{if $area}
+	    {if $area.level==3} / 
+		<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name`}">
+		    {$parent_area.name}
+		</a>
+	    {/if}
+	    <span class="delim">/</span>
+		<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name`}">{$area.name}
+		</a>
+	{/if}
+    {if $catgroup}
+		<span class="delim">/</span>
+		<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` catgroup_id=`$catgroup.id` catgroup_name=`$catgroup.name`}">
+		    {$catgroup.name}
+		</a>
+	{/if}
+    </div>
+    
+	{if $info_page}
+		<h1 class="page-title">
+			Thị trường / 
+			{if $info_page == 'thong-bao'}
+				Thông báo
+			{else if $info_page == 'gioi-thieu'}
+				Giới thiệu
+			{/if}
+		</h1>
+	{/if}
+    
+    </div>
+
+  </div>
+</div>
+
+
+
+<div class="row company-container areas-container">
+	
+	<!--{include file="`$theme_name`/area/_areas-toptree-catgroup.html"}-->
+	
+    <div class="intro_page_detail_box">
+        <h1>{$areainfo.title}</h1>
+        <hr>
+        {$areainfo.content}
+        
+        <br style="clear: both" />
+    </div>
+    
+    <div class="intro_page_detail_sidebar">
+        
+        <div class="ad_sidebar_items">
+		
+        </div>
+        {if $info_page == 'thong-bao'}
+            {literal}
+                <script>
+                    $.ajax({
+                    url: "http://marketonline.vn:3000/ad_positions/ajax_market_left_single?pos=area_announce_detail",
+                    }).done(function ( data ) {
+                        if( console && console.log ) {
+                            $(".ad_sidebar_items").html(data);
+                        }
+                    });
+                </script>
+            {/literal}
+        {else if $info_page == 'gioi-thieu'}
+            {literal}
+                <script>
+                    $.ajax({
+                    url: "http://marketonline.vn:3000/ad_positions/ajax_market_left_single?pos=area_intro_detail",
+                    }).done(function ( data ) {
+                        if( console && console.log ) {
+                            $(".ad_sidebar_items").html(data);
+                        }
+                    });
+                </script>
+            {/literal}
+        {/if}
+        
+        
+    </div>
+    
+    <br style="clear: both" />
+</div>
+
+</div>
+  </div>
+
+
+
+<!--{include file="`$theme_name`/footer.html"}-->
+
+
+

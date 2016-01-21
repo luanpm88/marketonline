@@ -1175,11 +1175,58 @@ li.liback {
     padding: 10px;
     width: 432px;
     margin: 0;
-    max-height: 75px;
-    overflow: hidden;
+    line-height: 18px;
 }
 .info_page_listing_container ul li .view_more_button {
-    bottom: 5px;
+    bottom: 7px;
     position: absolute;
-    right: 10px;
+    right: 8px;
+    background: #fff;
+    display: inline-block;
+    padding: 0 15px;
+}
+.intro_page_detail_box {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    float: left;
+    margin: 20px 0;
+    padding: 10px 20px;
+    width: 886px;
+}
+.info_page_listing_container ul li .content_box {
+    height: 127px;
+    overflow: hidden;
+}
+.intro_page_detail_sidebar {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    float: right;
+    padding: 5px 10px;
+    margin-top: 20px;
+    width: 284px;
+}
+.ad_sidebar_item {
+    margin-bottom: 5px;
+}
+
+.ad_sidebar_item a {
+    
+}
+.ad_sidebar_item h4 {
+    font-size: 16px;
+    line-height: 24px;
+}
+.ad_sidebar_item img {
+    width: 100%;
+}
+.ad_sidebar_items .ad_sidebar_item {
+    border-top: 1px solid #ddd;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    padding-top: 2px;
+}
+.ad_sidebar_items .ad_sidebar_item:first-child {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
 }

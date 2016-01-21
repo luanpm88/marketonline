@@ -330,8 +330,22 @@ class Area extends PbController {
 		
 		
 		if(isset($_GET["info_page"]) && $_GET["info_page"] != "") {
-			setvar("info_page", $_GET["info_page"]);
-			render("area/info_page", 1);
+			if(isset($_GET["page_id"]) && $_GET["page_id"] != "") {
+				$areainfo = $this->areainfo->read("*", $_GET["page_id"]);
+				setvar("info_page", $_GET["info_page"]);
+				setvar("areainfo", $areainfo);
+				setvar("PageTitle", $areainfo["title"]);
+				render("area/info_page_detail", 1);
+			} else {
+				if($_GET["info_page"] == 'thong-bao') {
+					$ptitle = "Thị trường / Thông báo";
+				} else if($_GET["info_page"] == 'gioi-thieu') {
+					$ptitle = "Thị trường / Giới thiệu";
+				}
+				setvar("info_page", $_GET["info_page"]);
+				setvar("PageTitle", $ptitle);
+				render("area/info_page", 1);
+			}
 		} else {
 			setvar("industries",$this->industry->getCacheIndustry());
 			setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
