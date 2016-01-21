@@ -1167,23 +1167,26 @@ li.liback {
 }
 .info_page_listing_container ul li a h4 {
     float: left;
+    line-height: 22px;
+    max-height: 48px;
+    overflow: hidden;
     text-align: center;
     width: 432px;
 }
 .info_page_listing_container ul li p {
     float: left;
-    padding: 10px;
+    padding: 0 10px 10px 10px;
     width: 432px;
     margin: 0;
     line-height: 19px;
 }
 .info_page_listing_container ul li .view_more_button {
-    bottom: 7px;
-    position: absolute;
-    right: 8px;
-    background: #fff;
+    background: #fff none repeat scroll 0 0;
+    bottom: 5px;
     display: inline-block;
     padding: 0 15px;
+    position: absolute;
+    right: 0;
 }
 .intro_page_detail_box {
     background: #fff none repeat scroll 0 0;
@@ -1194,7 +1197,7 @@ li.liback {
     width: 886px;
 }
 .info_page_listing_container ul li .content_box {
-    height: 135px;
+    height: 118px;
     overflow: hidden;
     padding: 2px;
 }
