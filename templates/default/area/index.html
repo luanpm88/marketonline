@@ -214,9 +214,11 @@
     
     <div>
 	    
-	    <div class="works-list album area-module company_module starting">
-		
-	    </div>
+		{if $catgroup}
+			<div class="works-list album area-module company_module starting">
+			
+			</div>
+		{/if}
 	    
 	    <div class="works-list album area-module product_module starting">
 		
@@ -232,7 +234,7 @@
 		
 	    </div>    
 	    
-	    {if !$catgroup}
+	    {if !$catgroup && false}
 			<div class="works-list album area-module job_module starting">
 			
 			</div>
