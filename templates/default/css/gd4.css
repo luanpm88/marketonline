@@ -1286,7 +1286,7 @@ li.liback {
     border: 1px dashed #fff;
     color: #fff;
     cursor: pointer;
-    font-size: 21px;
+    font-size: 18px;
     height: 147px;
     margin-bottom: 66px;
     margin-top: 27px;
@@ -1300,8 +1300,14 @@ li.liback {
     font-size: 14px;
 }
 .addd .ad_banner_item .subtitle {
-    font-size: 15px;
+    font-size: 13px;
 }
 .addd .ad_banner_item .subtitle.right {
-    bottom: 38px;
+    bottom: 34px;
+}
+.addd .ad_banner_item .ticket {
+    bottom: 5px;
+}
+.addd .ad_banner_item .size {
+    font-size: 13px;
 }
