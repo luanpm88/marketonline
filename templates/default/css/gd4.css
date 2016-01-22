@@ -1219,7 +1219,9 @@ li.liback {
 }
 .ad_sidebar_item h4 {
     font-size: 16px;
+    height: 24px;
     line-height: 24px;
+    overflow: hidden;
 }
 .ad_sidebar_item img {
     width: 100%;
@@ -1230,7 +1232,7 @@ li.liback {
     margin-top: 30px;
     padding-top: 2px;
 }
-.ad_sidebar_items .ad_sidebar_item:first-child {
+.ad_sidebar_items div .ad_sidebar_item:first-child {
     border-top: 0;
     margin-top: 0;
     padding-top: 0;
@@ -1274,4 +1276,32 @@ li.liback {
 .writter_box .right_info {
     float: right;
     width: 674px;
+}
+.addd {
+    position: absolute;
+    z-index: 10000;
+}
+.addd .ad_banner_item {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 21px;
+    height: 147px;
+    margin-bottom: 66px;
+    margin-top: 27px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 262px;
+    z-index: 90000;
+}
+.addd .ad_banner_item .ticket {
+    font-size: 14px;
+}
+.addd .ad_banner_item .subtitle {
+    font-size: 15px;
+}
+.addd .ad_banner_item .subtitle.right {
+    bottom: 38px;
 }
