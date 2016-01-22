@@ -225,6 +225,8 @@ $(document).ready(function() {
       
       $(this).after(video_tag)
       $(this).hide()
+	  
+	  setTimeout('history.pushState("", document.title, window.location.pathname);', 1000);
     });
 	
 });
