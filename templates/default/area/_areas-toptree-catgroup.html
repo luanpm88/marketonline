@@ -36,6 +36,7 @@
 					$(".announce_intro_box ul li").eq(3).find("a").attr("href", link_4)
 					
 					$(".force_link").click(function() {
+						window.location = $(this).attr("href")
 						location.reload();
 					})
 				}
