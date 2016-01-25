@@ -1754,7 +1754,7 @@ width: auto !important;
     right: 5px;
 }
 .list_studypost .content.short, .list_studypost .comment_content.short {
-    max-height: 205px;
+    max-height: 475px;
     overflow: hidden;
 }
 .list_studypost .comment_content.short {
