@@ -18,6 +18,20 @@
 					<span class="delim">,</span> <a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
 				{/if}
 		</h2>
+		
+		<div class="s_module_banner_content_3" style=""></div>
+		{literal}
+		<script>
+			$.ajax({
+			url: "http://marketonline.vn:3000/ad_positions/ajax_3_wide_banners?pos=area_service_module_top&industry_id=0",
+			}).done(function ( data ) {
+				if( console && console.log ) {
+					$(".s_module_banner_content_3").html(data);
+				}
+			});
+		</script>
+		{/literal}
+		
 		<div class="market-product-module">
 			<div class="box_left <!--{if !$services && !$smarty.get.p}-->no_item<!--{/if}-->">
 				<ul id="menu-features-list" class="menu">
@@ -34,19 +48,39 @@
 				<!--{/if}-->
 			</div>
 			<div class="box_right">
-				<div class="wide_1_banners">
-					<div style="overflow: hidden;float: left">
-						<div class="works-list compage" style="padding: 0">         
+				<div class="wide_1_banners s_module_banner" style="display: none">
+					<div style="overflow: hidden;float: left; width: 100%">
+						<div class="compage" style="padding: 0">         
 							  <div class="ad_banner_item product_home_banner" pos="service_category_main">
 									Nhấn vào đây
 									<br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
 							  </div>
 							  
-							  <iframe scrolling="no" style="border: medium none;height: 435px;width: 932px;margin-bottom: 0" src="http://marketonline.vn:3000/ad_positions/iframe_1_wide_banners?pos=service_category_main&industry_id=0" style="border: none;"></iframe>
+							  
+								<!--<iframe scrolling="no" style="border: medium none;height: 435px;width: 932px;margin-bottom: 0" src="http://marketonline.vn:3000/ad_positions/iframe_1_wide_banners?pos=product_category_main&industry_id=0" style="border: none;"></iframe>-->
+								<div class="s_module_banner_content" style="">
+										
+								</div>
+								{literal}
+								<script>
+									$.ajax({
+									url: "http://marketonline.vn:3000/ad_positions/ajax_1_wide_banners?pos=service_category_main&industry_id=0",
+									}).done(function ( data ) {
+										if( console && console.log ) {
+											$(".s_module_banner_content").html(data);
+											if (data.trim() != "") {
+                                                $(".s_module_banner").show();
+                                            }
+										}
+									});
+								</script>
+								{/literal}
 						</div>
 					</div>
+					<div class="ad_toggle_h2" style="height: 31px;
+												margin-top: -13px;"><a style="position: relative;z-index: 100" href="#add_toggle" class="ad_toggle" target="_blank">Đăng Quảng Cáo</a></div>
 				</div>
-				<div class="ad_toggle_h2" style="margin-top: -25px"><a style="position: relative;z-index: 100" href="#add_toggle" class="ad_toggle" target="_blank">Đăng Quảng Cáo</a></div>
+				
 				
 				<div class="product_list">
 					<!--{if $services}-->

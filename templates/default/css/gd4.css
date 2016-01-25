@@ -704,7 +704,6 @@ h2.market-header-title {
 }
 .box_right .ad_toggle_h2 {
     margin-right: 20px;
-    margin-top: -48px !important;
 }
 .box_right .wide_1_banners .ad_banner_item {
     margin-top: 0;
@@ -1310,4 +1309,14 @@ li.liback {
 }
 .addd .ad_banner_item .size {
     font-size: 13px;
+}
+.ajax_1_wide_banners {
+    padding-right: 20px;
+}
+.ajax_1_wide_banners li {
+    list-style: none;
+}
+.ajax_1_wide_banners li img {
+    list-style: none;
+    width: 100%;
 }
