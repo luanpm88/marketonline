@@ -373,23 +373,23 @@
 				  
 				  
 				<li style="float: left;width: 3" class="item large odd{if $item0.image != ''} hasbanner {/if}">
-										{if $item0.image != "" && false}
-							<img src="{$item0.image}" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
-											{else}
-							<img id="imgitem{$item0.id}" rel="{$item0.image}" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
+							{if $item0.image != "" && false}
+								<img src="{$item0.image}" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
+												{else}
+								<img id="imgitem{$item0.id}" rel="{$item0.image}" src="images/green.jpg" style="margin:0 0;" alt="{$item0.name}" title="{$item0.name}" >
 							{/if}
-											<div class="description divlink {$item0.disp}" onclick="window.location='index.php?do=product&level=1&industryid={$item0.id}'">
-												<time>{lang category}</time>
-												<h3><a class="tile_title" href="index.php?do=product&level=1&industryid={$item0.id}" title="{$level0.name}" class="typeboxlet01">{$item0.name}</a></h3>
+							<div class="description divlink {$item0.disp}" onclick="window.location='index.php?do=product&level=1&industryid={$item0.id}'">
+								<time>{lang category}</time>
+								<h3><a class="tile_title" href="index.php?do=product&level=1&industryid={$item0.id}" title="{$level0.name}" class="typeboxlet01">{$item0.name}</a></h3>
 		
-												<ul>
-							  <!--{loop $item0.sub level1 level_1_industry key_level1}-->
-								<li>
-									<h4><a href="index.php?do=product&level=2&industryid={$level1.id}" title="{$level1.name}" class="typeboxlet01">{$level1.name|truncate:30}</a>                        </h4>
-								</li>				     
-							  <!--{/loop}-->
-								<li><a href="index.php?do=product&level=1&industryid={$item0.id}">{lang read_more}</a></li>					    
-							</ul>
+								<ul>
+									<!--{loop $item0.sub level1 level_1_industry key_level1}-->
+										<li>
+											<h4><a href="index.php?do=product&level=2&industryid={$level1.id}" title="{$level1.name}" class="typeboxlet01">{$level1.name|truncate:30}</a>                        </h4>
+										</li>				     
+									<!--{/loop}-->
+									<li><a href="index.php?do=product&level=1&industryid={$item0.id}">{lang read_more}</a></li>					    
+								</ul>
 		
 											</div>
 											<a href="{if $item0.url != ""}{$item0.url}{else}{the_url module=products level=1 industryid=`$item0.id` title=`$item0.name`}{/if}"></a>
