@@ -1758,7 +1758,7 @@ width: auto !important;
     overflow: hidden;
 }
 .list_studypost .comment_content.short {
-    max-height: 102px;
+    max-height: 113px;
 }
 .list_studypost .content.short .inner_content, .list_studypost .comment_content.short .inner_comment_content {
     margin-bottom: 25px;
@@ -1770,8 +1770,11 @@ width: auto !important;
     display: none;
 }
 .list_studypost .content.short .read_more_link, .list_studypost .comment_content.short .read_more_link {
+    background: #fff none repeat scroll 0 0;
     bottom: -5px;
     display: block;
     position: absolute;
     right: 0;
+    text-align: right;
+    width: 100%;
 }
