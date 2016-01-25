@@ -78,13 +78,10 @@
                     {/if}
                     
                     {if $pb_userinfo.id!=$member.id}
-                            <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-default chat-status-but {if $member.online}online{/if}">
-                                <span class="chat-status">.</span>Nhắn tin
-                            </a>
+                        <a role="button" href="#chat" onclick="getChatboxNew('{$member.id}x6', false);" class="btn btn-sm btn-default chat-status-but {if $member.online}online{/if}">
+                            <span class="chat-status">.</span>Nhắn tin
+                        </a>
                     {/if}
-                    
-                    
-                        
                     
                     <!--<a class="btn btn-sm btn-default">+ Kết bạn</a>
                     <a class="btn btn-sm btn-success">Tin nhắn</a>

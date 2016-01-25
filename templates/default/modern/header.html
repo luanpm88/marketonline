@@ -272,6 +272,11 @@
         
         $(".fancybox").fancybox();
         
+		
+		// read more link
+		$(document).on("click", ".list_studypost .content.short .read_more_link", function() {
+		  $(this).parents(".content").removeClass("short");
+		});
         
     });
     
