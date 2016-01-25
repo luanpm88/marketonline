@@ -239,6 +239,7 @@ p.controls {
 .widget .label-info { float: none; }
 .widget li.list-group-item {border-radius: 0;border: 1px solid #ddd;}
 .widget li.list-group-item:hover { background-color: rgba(0,0,0,.02); }
+.widget li.list-group-item:hover a.read_more_link { background-color: rgba(0,0,0,.02) !important; }
 .widget .mic-info { color: #888;font-size: 85%; margin-bottom: 5px; }
 .widget .action { margin-top:10px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
