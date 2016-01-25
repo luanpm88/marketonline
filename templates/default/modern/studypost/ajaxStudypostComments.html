@@ -42,7 +42,12 @@
                                                     {if $comment.star}
                                                         <div class="point_rate" rel="{$comment.star}"></div><br />
                                                     {/if}
-                                                    {$comment.content}
+                                                    <div class="comment_content short">
+                                                        <div class="inner_comment_content">
+                                                            {$comment.content}
+                                                        <div>
+                                                        <a href="#more" class="read_more_link">Xem thêm...</a>
+                                                    </div>
                                                 </div>
                                                 
                                             </div>
@@ -89,3 +94,14 @@
                             </table>
                         </form>
                     </div>
+                    
+                    
+    {literal}
+        <script>
+            $(".list_studypost .comment_content.short").each(function() {
+                if($(this).height() + 5 >= $(this).find(".inner_comment_content").height()) {
+                    $(this).removeClass("short");
+                }
+            })
+        </script>
+    {/literal}

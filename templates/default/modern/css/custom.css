@@ -1753,17 +1753,23 @@ width: auto !important;
     position: absolute;
     right: 5px;
 }
-.list_studypost .content.short {
+.list_studypost .content.short, .list_studypost .comment_content.short {
     max-height: 205px;
     overflow: hidden;
 }
-.list_studypost .content {
+.list_studypost .comment_content.short {
+    max-height: 102px;
+}
+.list_studypost .content.short .inner_content, .list_studypost .comment_content.short .inner_comment_content {
+    margin-bottom: 15px;
+}
+.list_studypost .content, .list_studypost .comment_content {
     position: relative;
 }
-.list_studypost .content .read_more_link {
+.list_studypost .content .read_more_link, .list_studypost .comment_content .read_more_link {
     display: none;
 }
-.list_studypost .content.short .read_more_link {
+.list_studypost .content.short .read_more_link, .list_studypost .comment_content.short .read_more_link {
     bottom: -5px;
     display: block;
     position: absolute;
