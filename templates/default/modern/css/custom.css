@@ -1761,7 +1761,7 @@ width: auto !important;
     max-height: 102px;
 }
 .list_studypost .content.short .inner_content, .list_studypost .comment_content.short .inner_comment_content {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 .list_studypost .content, .list_studypost .comment_content {
     position: relative;
