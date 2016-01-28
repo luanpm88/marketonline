@@ -239,6 +239,7 @@ p.controls {
 .widget .label-info { float: none; }
 .widget li.list-group-item {border-radius: 0;border: 1px solid #ddd;}
 .widget li.list-group-item:hover { background-color: rgba(0,0,0,.02); }
+.widget li.list-group-item:hover a.read_more_link { background-color: rgba(0,0,0,.02) !important; }
 .widget .mic-info { color: #888;font-size: 85%; margin-bottom: 5px; }
 .widget .action { margin-top:10px; }
 .widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
@@ -1752,4 +1753,29 @@ width: auto !important;
     margin-top: 3px;
     position: absolute;
     right: 5px;
+}
+.list_studypost .content.short, .list_studypost .comment_content.short {
+    max-height: 475px;
+    overflow: hidden;
+}
+.list_studypost .comment_content.short {
+    max-height: 113px;
+}
+.list_studypost .content.short .inner_content, .list_studypost .comment_content.short .inner_comment_content {
+    margin-bottom: 25px;
+}
+.list_studypost .content, .list_studypost .comment_content {
+    position: relative;
+}
+.list_studypost .content .read_more_link, .list_studypost .comment_content .read_more_link {
+    display: none;
+}
+.list_studypost .content.short .read_more_link, .list_studypost .comment_content.short .read_more_link {
+    background: #fff none repeat scroll 0 0;
+    bottom: -5px;
+    display: block;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    width: 100%;
 }

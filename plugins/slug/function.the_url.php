@@ -642,11 +642,20 @@ function smarty_function_the_url($params){
 						}
 						
 					}
-					if($type) {
+					if($type && !$info_page) {
 						$return = $return."/".$type;
 						if($industry_id) {
 							$return = $return."/".$industry_id."/".stringToURI($industry_name);
 						}
+					}
+					if($catgroup_id && !$info_page) {
+						$return = $return."/vung-mien/".$catgroup_id."/";
+						if($catgroup_name) {
+							$return = $return.stringToURI($catgroup_name);
+						}
+					}
+					if($info_page) {
+						$return = $return."/".$info_page;
 					}
 				}else{
 					$return = URL."index.php?do=area";

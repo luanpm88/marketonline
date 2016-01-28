@@ -52,8 +52,11 @@
                             {/loop}
                         </div>
                     {else}
-                        <div class="content">
-                            {$item.content}
+                        <div class="content short">
+                            <div class="inner_content">
+                                {$item.content}
+                            </div>
+                            <a href="#more" class="read_more_link">Xem thêm...</a>
                         </div>
                     {/if}
                     
@@ -98,9 +101,20 @@
             {literal}
                 <script>
                     loadStudyPostComments({/literal}{$item.id}{literal},0);
+                                          
                 </script>
             {/literal}
             
             
     <!--{/loop}-->
+    
+    {literal}
+        <script>
+            $(".list_studypost .content.short").each(function() {
+                if($(this).height() + 5 >= $(this).find(".inner_content").height()) {
+                    $(this).removeClass("short");
+                }
+            })
+        </script>
+    {/literal}
 <!--{/if}-->

@@ -20,6 +20,13 @@
 	{else}
 	    var AREATYPE_ID = '';
 	{/if}
+	
+	{if $smarty.get.catgroup_id}
+	    var CATGROUP_ID = {$smarty.get.catgroup_id};
+	{else}
+	    var CATGROUP_ID = '';
+	{/if}
+	
     {literal}
     
     $(document).ready(function() {
@@ -166,7 +173,7 @@
 	    {if $area}
 		<a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
 	    {else}
-		{$areatype.name}
+		<a href="{the_url module=areas areatype_id=`$areatype.id`}">{$areatype.name}</a>
 	    {/if}
 	{/if}
 	{if $area}
@@ -175,9 +182,16 @@
 		    {$parent_area.name}
 		</a>
 	    {/if}
-	    <span class="delim">/</span> {$area.name}
+	    <span class="delim">/</span>
+		<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$area.id` title=`$area.name`}">{$area.name}
+		</a>
 	{/if}
-    
+    {if $catgroup}
+		<span class="delim">/</span>
+		<a class="level2" href="{the_url module=areas areatype_id=`$areatype.id` area_id=`$parent_area.id` title=`$parent_area.name` catgroup_id=`$catgroup.id` catgroup_name=`$catgroup.name`}">
+		    {$catgroup.name}
+		</a>
+	{/if}
     </div>
     
 	<h1 class="page-title">Thị trường {if $industry}- {$industry.name}{/if}</h1>
@@ -191,16 +205,20 @@
 
 <div class="row company-container areas-container">
     
-    <!--{include file="`$theme_name`/area/_areas-menu.html"}-->    
-    
-    
-    
+    <!--{include file="`$theme_name`/area/_areas-menuz.html"}-->
+	
+	<!--{include file="`$theme_name`/area/_areas-toptree-catgroup.html"}-->
+	
+	
+		
     
     <div>
-	    
-	    <div class="works-list album area-module company_module starting">
-		
-	    </div>
+	    <div class="ad_banner_item_hover"></div>
+		{if $catgroup}
+			<div class="works-list album area-module company_module starting">
+			
+			</div>
+		{/if}
 	    
 	    <div class="works-list album area-module product_module starting">
 		
@@ -216,14 +234,15 @@
 		
 	    </div>    
 	    
-	    
-	    <div class="works-list album area-module job_module starting">
-		
-	    </div>
-	    
-	    <div class="works-list album area-module school_module starting">
-		
-	    </div>
+		<div class="works-list album area-module job_module starting">
+			
+		</div>
+
+		{if !$catgroup && false}
+			<div class="works-list album area-module school_module starting">
+			
+			</div>
+		{/if}
 
     </div>
     

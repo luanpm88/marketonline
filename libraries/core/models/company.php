@@ -724,6 +724,27 @@ class Companies extends PbModel {
 							." OR (Company.industries LIKE '".$industryid.",%')"
 							." OR (Company.industries LIKE '%,".$industryid.",%'))";
 		}
+		if($params["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$params["catgroup_id"]);
+			
+			$id_arr = array();
+			$sql = "SELECT DISTINCT `member_id` AS mid FROM pb_products WHERE show=1 AND state=1 AND valid_status=1 AND industry_id IN (".$catgroup["related_cat_ids"].")";
+
+			$ids = $this->dbstuff->GetArray($sql);			
+			foreach($ids as $id) {
+				$id_arr[] = $id["mid"];
+			}
+			$sql = "SELECT DISTINCT `member_id` AS mid FROM pb_trades where valid_status=1 AND industry_id IN (".$catgroup["related_cat_ids"].")";
+			$ids = $this->dbstuff->GetArray($sql);			
+			foreach($ids as $id) {
+				$id_arr[] = $id["mid"];
+			}
+			
+			$conditions[] = "Company.member_id IN (".implode(",",$id_arr).")";
+		}
+		
 		
 		$conditions[] = 'Company.area_show=1';
 		

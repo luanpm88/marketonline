@@ -165,7 +165,7 @@
 
 <!--{literal}-->	
 <script type="application/x-javascript">
-    $(document).ready(function() {
+$(document).ready(function() {
 	$('.module-intro-box img').resizecrop({
 	    width:$('.module-intro-box img').width(),
 	    height:$('.module-intro-box img').height()
@@ -212,6 +212,24 @@
 	    $(this).parent().addClass("active");
 	});
 	$('.studyhome-tabs ul.tabsz li a').eq(0).trigger("click");
+	
+	$(".video_map").each(function() {
+		var width = $(this).width();
+		var height = $(this).height();
+		var source = $(this).attr("rel");
+		var thumb = $(this).attr("thumb");
+		
+		var video_tag = '<video poster="'+thumb+'" width="'+width+'" height="'+height+'" controls>'
+		video_tag += '<source src="'+source+'" type="video/mp4">'
+		video_tag += 'Your browser does not support the video tag.'
+		video_tag += '</video>'
+		
+		$(this).after(video_tag)
+		$(this).hide()
+		
+		setTimeout('history.pushState("", document.title, window.location.pathname);', 1000);
     });
+	
+});
 </script>
 <!--{/literal}-->

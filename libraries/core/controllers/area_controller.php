@@ -17,6 +17,7 @@ class Area extends PbController {
 		$this->loadModel("school");
 		$this->loadModel("studygroup");
 		$this->loadModel("industry");
+		$this->loadModel("catgroup");
 	}
 	
 	function getNames()
@@ -224,6 +225,17 @@ class Area extends PbController {
 			setvar("main_ades",$main_ades);
 		}
 		
+		
+		//get catgroup
+		if(isset($_GET["catgroup_id"])){
+			$catgroup_id = $_GET["catgroup_id"];
+			$catgroup = $this->catgroup->read("*",$catgroup_id);
+			setvar("catgroup",$catgroup);
+			
+		}
+		
+		
+		
 		setvar("industries",$this->industry->getCacheIndustry());
 		
 		if($PageTypeName) $ttypename = $PageTypeName." - ";
@@ -234,7 +246,6 @@ class Area extends PbController {
 	function index() {
 		$pb_userinfo = pb_get_member_info();
 		$areatypes = $this->areatype->findAll("*",null,null,"id DESC");
-
 		//get area
 		if(isset($_GET["area_id"])){
 			$area_id = $_GET["area_id"];
@@ -270,8 +281,7 @@ class Area extends PbController {
 			//listing district
 			$districts = $this->area->findAll("*",null,array("parent_id=".$area_id));
 			setvar("districts",$districts);
-		}
-		
+		}		
 		if(isset($_GET["areatype_id"])){
 			$areatype_id = $_GET["areatype_id"];
 			$areatype = $this->areatype->read("*",$areatype_id);
@@ -305,34 +315,47 @@ class Area extends PbController {
 		}
 		setvar("areatypes",$areatypes);
 		
-		////get products by areas
-		//$products = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0));
-		//setvar("products",$products);
-		//
-		////get services by areas
-		//$services = $this->product->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1));
-		//setvar("services",$services);
-		
-		////get trades by areas
-		//$trades = $this->trade->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		//setvar("trades",$trades);
-		
-		////get companies by areas
-		//$companies = $this->company->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		//setvar("companies",$companies);
-		
-		////get jobs by areas
-		//$jobs = $this->job->getByArea(array("area_id"=>$area_id,"areatype_id"=>$areatype_id));
-		//setvar("jobs",$jobs);
-		
 		if(!isset($_GET["areatype_id"]) && !isset($_GET["areatype_id"])) {
 			$main_ades = $this->getMainThreeBanners();
 			setvar("main_ades",$main_ades);
-		}		
+		}
 		
-		setvar("industries",$this->industry->getCacheIndustry());
-		setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
-		render("area/index", 1);
+		//get area
+		if(isset($_GET["catgroup_id"])){
+			$catgroup_id = $_GET["catgroup_id"];
+			$catgroup = $this->catgroup->read("*",$catgroup_id);
+			setvar("catgroup",$catgroup);
+			
+		}
+		
+		
+		if(isset($_GET["info_page"]) && $_GET["info_page"] != "") {
+			if(isset($_GET["page_id"]) && $_GET["page_id"] != "") {
+				$areainfo = $this->areainfo->read("*", $_GET["page_id"]);
+				$member_info = $this->member->getInfoById($areainfo['member_id']);
+				$company_info = $this->company->getInfoByUserId($areainfo['member_id']);
+				setvar("member_info", $member_info);
+				setvar("company_info", $company_info);
+				setvar("info_page", $_GET["info_page"]);
+				setvar("areainfo", $areainfo);
+				setvar("PageTitle", $areainfo["title"]);
+				render("area/info_page_detail", 1);
+			} else {
+				if($_GET["info_page"] == 'thong-bao') {
+					$ptitle = "Thị trường / Thông báo";
+				} else if($_GET["info_page"] == 'gioi-thieu') {
+					$ptitle = "Thị trường / Giới thiệu";
+				}
+				
+				setvar("info_page", $_GET["info_page"]);
+				setvar("PageTitle", $ptitle);
+				render("area/info_page", 1);
+			}
+		} else {
+			setvar("industries",$this->industry->getCacheIndustry());
+			setvar("PageTitle","Thị trường ".$areatype_name.$area_name.", Việt Nam - MarketOnline.vn");
+			render("area/index", 1);
+		}		
 	}
 	
 	function ajaxTradeModule() {
@@ -374,13 +397,18 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
-		
+		if($_GET["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);
+			setvar('catgroup', $catgroup);
+		}
 		
 		setvar("areatype", $areatype);
 		setvar("area", $area);
 		setvar("industry", $industry);
 		setvar("industries_list", $industries_list);
-		$trades = $this->trade->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
+		$trades = $this->trade->getByArea(array("catgroup"=>$catgroup,"industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"type_id"=>$type_id),$offset,$row,$num);
 		$products = $trades["result"];
 		
 		foreach($products as $key => $item)
@@ -461,8 +489,17 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		//get catgroup
+		if(isset($_GET["catgroup_id"])){
+			$catgroup_id = $_GET["catgroup_id"];
+			$catgroup = $this->catgroup->read("*",$catgroup_id);
+			setvar("catgroup",$catgroup);
+		}
+		
 		//get companies by areas
-		$companies = $this->company->getByArea(array("industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		$companies = $this->company->getByArea(array("catgroup_id"=>$catgroup_id,"industry_id"=>$industry_id,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"membergroup_id"=>$membergroup_id),$offset,$row,$num);
+		
+		
 		
 		setvar("view_more", $companies["count"] > ($row*$num));
 		setvar("companies",$companies["result"]);
@@ -512,8 +549,15 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		if($_GET["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);
+			setvar('catgroup', $catgroup);
+		}
+		
 		//get products by areas
-		$products = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
+		$products = $this->product->getByArea(array("catgroup"=>$catgroup,"industries"=>$industries,"industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>0),$offset,$row,$num);
 		setvar("products",$products["result"]);
 		setvar("view_more", $products["count"] > ($row*$num));
 
@@ -571,8 +615,15 @@ class Area extends PbController {
 			$offset = $row*$num*($_GET["p"]-1);			
 		}
 		
+		if($_GET["catgroup_id"]) {
+			uses("catgroup");
+			$catgroup_db = new Catgroups;
+			$catgroup = $catgroup_db->read("*",$_GET["catgroup_id"]);
+			setvar('catgroup', $catgroup);
+		}
+		
 		//get services by areas
-		$services = $this->product->getByArea(array("industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
+		$services = $this->product->getByArea(array("catgroup"=>$catgroup,"industries"=>$industries,"area_id"=>$area_id,"areatype_id"=>$areatype_id,"service"=>1),$offset,$row,$num);
 		setvar("services",$services["result"]);
 		setvar("view_more", $services["count"] > ($row*$num));
 		
@@ -876,6 +927,7 @@ class Area extends PbController {
 				$vals["member_id"] = $pb_userinfo["pb_userid"];				
 				$vals["area_id"] = $_POST["area_id"];
 				$vals["status"] = 0;
+				$vals["type_name"] = 'vtdl';
 				
 				$this->areainfo->save($vals);
 			} else {
@@ -946,6 +998,7 @@ class Area extends PbController {
 				$vals["member_id"] = $pb_userinfo["pb_userid"];				
 				$vals["areatype_id"] = $_POST["areatype_id"];
 				$vals["status"] = 0;
+				$vals["type_name"] = 'vtdl';
 				
 				$this->areatypeinfo->save($vals);
 			} else {

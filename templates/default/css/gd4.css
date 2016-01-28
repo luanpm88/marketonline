@@ -704,7 +704,6 @@ h2.market-header-title {
 }
 .box_right .ad_toggle_h2 {
     margin-right: 20px;
-    margin-top: -48px !important;
 }
 .box_right .wide_1_banners .ad_banner_item {
     margin-top: 0;
@@ -1002,4 +1001,322 @@ li.liback {
 }
 .fancybox-opened {
     z-index: 999999999 !important;
+}
+.groupcat_menu {
+    display: block;
+    float: left;
+    width: 1200px;
+    margin-bottom: 30px;
+}
+.groupcat_menu ul {
+    
+}
+.groupcat_menu ul li {
+    float: left;
+    list-style: outside none none;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    width: 380px;
+}
+.groupcat_menu ul li a {
+    
+}
+.groupcat_menu ul li a h4 {
+    font-family: Segoe UI Light;
+    font-size: 26px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.groupcat_menu ul li a img {
+    width: 100%;
+    height: 200px;
+}
+.groupcat_menu ul li.box {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+.announce_intro_box {
+    float: left;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    width: 1220px;
+}
+.announce_intro_box ul {
+    
+}
+.announce_intro_box ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    float: left;
+    list-style: outside none none;
+    margin-right: 20px;
+    width: 280px;
+}
+.announce_intro_box ul li a {
+    display: block;
+    float: left;
+    line-height: 0;
+    width: 100%;
+}
+.announce_intro_box ul li a h4 {
+    margin: 8px;
+    text-align: center;
+}
+.announce_intro_box ul li a img {
+    height: 120px;
+    margin: 0;
+    width: 100%;
+}
+.top_areas_menu_box {
+    margin-top: -40px;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+.top_areas_menu {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin-bottom: -10px;
+    position: relative;
+    text-align: center;
+    width: 300px;
+}
+.top_areas_menu h2 {
+    background: #fff url("../image/arrow_down.png") no-repeat scroll right 15px / 10px auto;
+    cursor: pointer;
+    font-size: 20px;
+    margin: 0 20px 0 10px;
+    padding: 6px 20px 7px 10px;
+}
+.top_areas_menu h2:hover {
+    opacity: 0.8;
+}
+.top_areas_menu ul.box {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: block;
+    margin-right: -1px;
+    max-height: 350px;
+    overflow: scroll;
+    padding: 5px 0;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    width: 250px;
+    z-index: 100;
+    overflow-x: hidden;
+    width: 101%;
+}
+.top_areas_menu ul {
+    margin: 0;
+}
+.top_areas_menu ul li {
+    list-style: outside none none;
+}
+.top_areas_menu ul li a:hover {
+    background: #018bc8;
+    color: #fff;
+}
+.top_areas_menu ul li a {
+    color: #333;
+    display: block;
+    font-size: 18px;
+    padding: 1px 15px;
+    font-weight: bold;
+}
+.top_areas_menu ul li ul li a {
+    padding-left: 35px;
+    font-weight: normal;
+    font-size: 16px;
+}
+.choose_area_label {
+    display: inline-block;
+    font-size: 16px;
+    padding-right: 5px;
+}
+.info_page_listing_container {
+    margin-top: 20px;
+}
+.info_page_listing_container ul {
+    float: left;
+    padding: 0;
+    width: 101%;
+}
+.info_page_listing_container ul li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    display: block;
+    float: left;
+    font-size: 14px;
+    list-style: outside none none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    width: 585px;
+    position: relative;
+}
+.info_page_listing_container ul li a img {
+    border-right: 1px solid #ddd;
+    float: left;
+    height: 140px;
+    margin: 0;
+    padding: 0;
+    width: 140px;
+}
+.info_page_listing_container ul li a h4 {
+    float: left;
+    line-height: 22px;
+    height: 27px;
+    overflow: hidden;
+    text-align: center;
+    width: 432px;
+}
+.info_page_listing_container ul li p {
+    float: left;
+    padding: 0 10px 10px 10px;
+    width: 432px;
+    margin: 0;
+    line-height: 20px;
+}
+.info_page_listing_container ul li .view_more_button {
+    background: #fff none repeat scroll 0 0;
+    bottom: 5px;
+    display: inline-block;
+    padding: 0 15px;
+    position: absolute;
+    right: 0;
+}
+.intro_page_detail_box {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    float: left;
+    margin: 20px 0;
+    padding: 10px 20px;
+    width: 886px;
+}
+.info_page_listing_container ul li .content_box {
+    height: 118px;
+    overflow: hidden;
+    padding: 2px;
+}
+.intro_page_detail_sidebar {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    float: right;
+    padding: 5px 10px;
+    margin-top: 20px;
+    width: 284px;
+}
+.ad_sidebar_item {
+    margin-bottom: 5px;
+}
+
+.ad_sidebar_item a {
+    
+}
+.ad_sidebar_item h4 {
+    font-size: 16px;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+}
+.ad_sidebar_item img {
+    width: 100%;
+}
+.ad_sidebar_items .ad_sidebar_item {
+    border-top: 1px solid #ddd;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    padding-top: 2px;
+}
+.ad_sidebar_items div .ad_sidebar_item:first-child {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 0;
+}
+.writter_box {
+    border-bottom: 1px solid #ddd;
+    margin-left: -20px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    width: 884px;
+    float: left;
+    margin-bottom: 20px;
+}
+.intro_page_title_h1 {
+    text-align: center;
+}
+.writter_box img {
+    float: left;
+    margin-right: 10px;
+    width: 180px;
+    height: 180px;
+    display: block;
+    border: solid 1px #ddd;
+}
+.writter_box h4 a {
+    font-size: 22px;
+    color: #3b984c;
+    font-weight: 400;
+}
+.writter_box label {
+    display: inline-block;
+    font-family: Segoe UI;
+    font-size: 14px;
+    width: 75px;
+}
+.writter_box p {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+}
+.writter_box .right_info {
+    float: right;
+    width: 674px;
+}
+.addd {
+    position: absolute;
+    z-index: 10000;
+}
+.addd .ad_banner_item {
+    background: rgba(0, 255, 100, 0.6) none repeat scroll 0 0;
+    border: 1px dashed #fff;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    height: 147px;
+    margin-bottom: 66px;
+    margin-top: 27px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    width: 262px;
+    z-index: 90000;
+}
+.addd .ad_banner_item .ticket {
+    font-size: 14px;
+}
+.addd .ad_banner_item .subtitle {
+    font-size: 13px;
+}
+.addd .ad_banner_item .subtitle.right {
+    bottom: 34px;
+}
+.addd .ad_banner_item .ticket {
+    bottom: 5px;
+}
+.addd .ad_banner_item .size {
+    font-size: 13px;
+}
+.ajax_1_wide_banners {
+    padding-right: 20px;
+}
+.ajax_1_wide_banners li {
+    list-style: none;
+}
+.ajax_1_wide_banners li img {
+    list-style: none;
+    width: 100%;
 }

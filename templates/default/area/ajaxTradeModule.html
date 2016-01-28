@@ -24,32 +24,26 @@
 				{/if}
 				
 		</h2>
-
-			<div class="ad_banner_item_hover"></div>
-				<div class="row">
-				  <div class="wide_3_banners">
-								  <div style="display: block; height: 5px; margin-right: 20px;">
-									<div class="ad_toggle_h2"><a href="#add_toggle" class="ad_toggle" target="_blank">Đăng Quảng Cáo</a></div>
-								  </div>
-								  <div class="works-list compage" style="padding: 0" >         
-									  <div class="ad_banner_item product_home_banner" pos="trade_home_top">
-										  Nhấn vào đây
-										  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
-									  </div>
-									  <div class="ad_banner_item product_home_banner" pos="trade_home_top_2">
-										  Nhấn vào đây
-										  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
-									  </div>
-									  <div class="ad_banner_item product_home_banner" pos="trade_home_top_3">
-										  Nhấn vào đây
-										  <br><span class="subtitle">Để đăng ký quảng cáo vị trí này</span>
-									  </div>
-									  
-									  <iframe style="border: medium none;height: 252px;width: 102%;" src="http://marketonline.vn:3000/ad_positions/iframe_3_wide_banners?pos=trade_home_top" style="border: none;"></iframe>
-			  
-								  </div>
-					</div>
+		
+		
+		
+				<div class="t_module_banner_content_3" style="">
+										
 				</div>
+				{literal}
+				<script>
+					$.ajax({
+					url: "http://marketonline.vn:3000/ad_positions/ajax_3_wide_banners?pos=trade_home_top&industry_id=0",
+					}).done(function ( data ) {
+						if( console && console.log ) {
+							$(".t_module_banner_content_3").html(data);
+						}
+					});
+				</script>
+				{/literal}
+		
+
+								
 
 
 		<div class="market-product-module">
@@ -189,7 +183,7 @@
 						{if $smarty.get.p}
 								<br style="clear: both" /><p></p><br /><div class="pagination-list"></div><br style="clear:both" />
 						{else}
-								<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai'}">Xem thêm</a>
+								<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-mai' catgroup_id=`$catgroup.id` catgroup_name=`$catgroup.name`}">Xem thêm</a>
 						{/if}
 				
 				{if $smarty.get.p}
@@ -198,7 +192,18 @@
 				{/if}
 			</div>
 		<!--{else}-->
-			<div><p style="text-align: center; font-size: 18px">Chưa có thương mại phù hợp trong mục này!</p></div>
+				<div class="subtab-area">
+							<ul>
+								<li><a class="{if !$smarty.get.type_id}active{/if} main_a" href="javascript:void(0)">Tất cả</a></li>
+								<li><a class="{if $smarty.get.type_id==14}active{/if}" rel="14" href="javascript:void(0)">Nhu cầu mua</a></li>
+								<li><a class="{if $smarty.get.type_id==9}active{/if}" rel="9" href="javascript:void(0)">Nhu cầu bán</a></li>
+								<li><a class="{if $smarty.get.type_id==10}active{/if}" rel="10" href="javascript:void(0)">Nhà phân phối</a></li>
+								<li><a class="{if $smarty.get.type_id==16}active{/if}" rel="16" href="javascript:void(0)">Tìm đối tác</a></li>
+							</ul>
+				</div>
+				<br style="clear: both" />
+				<br />
+				<div><p style="text-align: center; font-size: 18px">Chưa có thương mại phù hợp trong mục này!</p></div>
 		<!--{/if}-->
 </div>
 		
