@@ -42,10 +42,11 @@
 
 
 
-
-	<div class="row areas-container" style="padding: 10px;{if $show_market_page != "1"};display: none{/if}">
-		<!--{include file="`$theme_name`/area/_areas-menu.html"}-->
-	</div>
+	{if $show_market_map == "1" && $show_market_page == "1"}
+		<div class="row areas-container" style="padding: 10px;">
+			<!--{include file="`$theme_name`/area/_areas-menu.html"}-->
+		</div>
+	{/if}
 
 
 
