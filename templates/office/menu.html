@@ -55,19 +55,19 @@
 							<!--{foreach item=item from=$MEMBER.permissions key=right}-->
 								<!--{if $right=='product'}-->
 									<tr class="MenuItem_{$right}">
-									      <th><img src="{$office_theme_path}images/hr.gif"></th>
+									      <!--<th><img src="{$office_theme_path}images/hr.gif"></th>-->
 									      <td><a href="moderator.php?type={$right}">Sản phẩm</a></td>
 									</tr>								
 								<!--{/if}-->
 								<!--{if $right=='service'}-->
 									<tr class="MenuItem_{$right}">
-									      <th><img src="{$office_theme_path}images/hr.gif"></th>
+									      <!--<th><img src="{$office_theme_path}images/hr.gif"></th>-->
 									      <td><a href="moderator.php?type={$right}">Dịch vụ</a></td>
 									</tr>								
 								<!--{/if}-->
 								<!--{if $right=='trade'}-->
 									<tr class="MenuItem_{$right}">
-									      <th><img src="{$office_theme_path}images/hr.gif"></th>
+									      <!--<th><img src="{$office_theme_path}images/hr.gif"></th>-->
 									      <td><a href="moderator_trade.php?type={$right}">Thương mại</a></td>
 									</tr>								
 								<!--{/if}-->
@@ -103,11 +103,11 @@
 					
 						<table class="menu_nav_content" id="MenuTrade">
 								<tr class="MenuItem1">
-								      <th><img src="{$office_theme_path}images/sell_add.gif"></th>
+								      <!--<th><img src="{$office_theme_path}images/sell_add.gif"></th>-->
 								      <td><a href="offer.php?do=edit">{lang release_supply}</a></td>
 								</tr>
 								<tr class="MenuItem2">
-								      <th><img src="{$office_theme_path}images/buy.gif"></th>
+								      <!--<th><img src="{$office_theme_path}images/buy.gif"></th>-->
 								      <td><a href="offer.php">{lang our_offer}</a></td>
 								</tr>
 								<!--<tr>
@@ -115,7 +115,7 @@
 								      <td><a href="favor.php">{lang our_favorites}</a></td>
 								</tr>-->
 								<tr  class="MenuItem3">
-								      <th><img src="{$office_theme_path}images/sell.gif" width="14" height="14"></th>
+								      <!--<th><img src="{$office_theme_path}images/sell.gif" width="14" height="14"></th>-->
 								      <td><a href="stat.php">{lang buy_statistics}</a></td>
 								</tr>
 							      <!--<tr>
@@ -152,11 +152,11 @@
 				<td align="center">
 				<table class="menu_nav_content" id="MenuProduct">
 					<tr class="MenuItem4">
-					  <th><img src="{$office_theme_path}images/product.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/product.gif"></th>-->
 					  <td><a href="product.php?do=edit">{lang release_products}</a> </td>
 					</tr>
 					<tr class="MenuItem5">
-					  <th><img src="{$office_theme_path}images/product2.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/product2.gif"></th>-->
 					  <td><a href="product.php">{lang our_productse}</a></td>
 					</tr>
 					<!--<tr>
@@ -164,11 +164,11 @@
 					  <td><a href="price.php">{lang my_product_price}</a></td>
 					</tr>-->
 					<tr class="MenuItem24">
-					  <th><img src="{$office_theme_path}images/sort.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/sort.gif"></th>-->
 					  <td><a href="producttype.php">{lang categories_management}</a></td>
 					</tr>
 					<tr class="MenuItem6">
-					  <th><img src="{$office_theme_path}images/brand.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/brand.gif"></th>-->
 					  <td><a href="brand.php">{lang brand_manage}</a></td>
 					</tr>
 					<!--<tr class="MenuItem7">
@@ -208,11 +208,11 @@
 				<td align="center">
 				<table class="menu_nav_content" id="MenuService">
 					<tr class="MenuItem21">
-					  <th><img src="{$office_theme_path}images/product.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/product.gif"></th>-->
 					  <td><a href="product.php?type=service&do=edit">{lang add_service}</a> </td>
 					</tr>
 					<tr class="MenuItem22">
-					  <th><img src="{$office_theme_path}images/product2.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/product2.gif"></th>-->
 					  <td><a href="product.php?type=service">{lang service_list}</a></td>
 					</tr>
 					<!--<tr>
@@ -224,7 +224,7 @@
 					  <td><a href="producttype.php">{lang categories_management}</a></td>
 					</tr>-->
 					<tr class="MenuItem23">
-					  <th><img src="{$office_theme_path}images/brand.gif"></th>
+					  <!--<th><img src="{$office_theme_path}images/brand.gif"></th>-->
 					  <td><a href="brand.php?type=service">{lang brand_manage}</a></td>
 					</tr>
 					<!--<tr class="MenuItem7">
@@ -257,7 +257,7 @@
 					<td align="center">
 						<table class="menu_nav_content" id="MenuAds">
 							<tr class="MenuItem30">
-								<th><img src="{$office_theme_path}images/news.gif" /></th>
+								<!--<th><img src="{$office_theme_path}images/news.gif" /></th>-->
 								<td><a href="http://marketonline.vn:3000" target="_blank">{lang site_advertising}</a></td>
 							</tr>
 							<!--<tr class="MenuItem30_1">
@@ -265,7 +265,7 @@
 								<td><a href="banner.php?do=price_list">Bảng giá</a></td>
 							</tr>-->
 							<tr class="MenuItem30_3">
-								<th><img src="{$office_theme_path}images/personals.gif" /></th>
+								<!--<th><img src="{$office_theme_path}images/personals.gif" /></th>-->
 								<td><a href="email_marketing.php">Kết nối bạn bè</a></td>
 							</tr>
 						</table>
@@ -294,27 +294,27 @@
 					<td align="center">
 					<table class="menu_nav_content" id="MenuCompany" style="">
 						<tr class="MenuItem10"> 
-						  <th><img src="{$office_theme_path}images/company.gif"></th>
+						  <!--<th><img src="{$office_theme_path}images/company.gif"></th>-->
 						  <td><a href="company.php">{lang basic_information} {if $MEMBER.membergroup_id == 2}Cửa hàng{else}{$membertype_name}{/if}</a> </td>
 						</tr>
 						<tr class="MenuItem10_1"> 
-						  <th><img src="{$office_theme_path}images/AddressBook.png"></th>
+						  <!--<th><img src="{$office_theme_path}images/AddressBook.png"></th>-->
 						  <td><a href="companyoffice.php">Chi nhánh</a> </td>
 						</tr>
 						<tr class="MenuItem11"> 
-						  <th><img width="16" height="16" src="{$office_theme_path}images/Release.gif"></th>
+						  <!--<th><img width="16" height="16" src="{$office_theme_path}images/Release.gif"></th>-->
 						  <td><a href="policy.php">{lang policy}</a> </td>
 						</tr>
 						
 						{if $MEMBER.membergroup_id == 1}
 							<tr class="MenuItem20"> 
-							  <th><img src="{$office_theme_path}images/product2.gif"></th>
+							  <!--<th><img src="{$office_theme_path}images/product2.gif"></th>-->
 							  <td><a href="news.php?typeid=9">{lang comnote} {$membertype_name}</a></td>
 							</tr>
 						{/if}
 						
 						<tr class="MenuItem12"> 
-						  <th><img src="{$office_theme_path}images/album.gif"></th>
+						  <!--<th><img src="{$office_theme_path}images/album.gif"></th>-->
 						  <td><a href="album.php">{lang company_album}</a> </td>
 						</tr>
 						<!--<tr> 
@@ -322,15 +322,15 @@
 						  <td><a href="card.php">{lang card_information}</a> </td>
 						</tr>-->
 						<tr class="MenuItem13"> 
-						  <th><img src="{$office_theme_path}images/alert.gif"></th>
+						  <!--<th><img src="{$office_theme_path}images/alert.gif"></th>-->
 						  <td><a href="news.php">{lang company_news}</a></td>
 						</tr>
 						<tr class="MenuItem14">
-						  <th><img src="{$office_theme_path}images/hr.gif" /></th>
+						  <!--<th><img src="{$office_theme_path}images/hr.gif" /></th>-->
 						  <td><a href="job.php">{lang hr}</a></td>
 						<tr> 
 						<tr class="MenuItem15"> 
-						  <th><img src="{$office_theme_path}images/link.gif"></th>
+						  <!--<th><img src="{$office_theme_path}images/link.gif"></th>-->
 						  <td><a href="link.php" title="{lang friendlink}">{lang link_exchange}</a></td>
 						</tr>
 					  </table></td>
@@ -355,11 +355,11 @@
 				<td align="center">
 				<table class="menu_nav_content" id="MenuEmployee" style="">
 					<tr class="MenuItem31">
-					  <th><img src="{$office_theme_path}images/message.gif"/></th>
+					  <!--<th><img src="{$office_theme_path}images/message.gif"/></th>-->
 					  <td><a href="employee.php?do=edit">{lang employee_send}</a></td>
 					</tr>
 					<tr class="MenuItem32">
-					  <th><img src="{$office_theme_path}images/personals.gif" /></th>
+					  <!--<th><img src="{$office_theme_path}images/personals.gif" /></th>-->
 					  <td><a href="employee.php">{lang employee_list}</a></td>
 					</tr>
 					
@@ -386,15 +386,15 @@
 			<td align="center">
 			<table class="menu_nav_content" id="MenuPMS" style="">
 				<tr class="MenuItem17">
-				  <th><img src="{$office_theme_path}images/message.gif"/></th>
+				  <!--<th><img src="{$office_theme_path}images/message.gif"/></th>-->
 				  <td><a href="pms.php?do=send">{lang send_message}</a></td>
 				</tr>
 				<tr class="MenuItem16">
-				  <th><img src="{$office_theme_path}images/message_in.gif" /></th>
+				  <!--<th><img src="{$office_theme_path}images/message_in.gif" /></th>-->
 				  <td><a href="pms.php">{lang sms}</a></td>
 				</tr>
 				<tr class="MenuItem16sent">
-				  <th><img src="{$office_theme_path}images/message_out.gif" /></th>
+				  <!--<th><img src="{$office_theme_path}images/message_out.gif" /></th>-->
 				  <td><a href="pms.php?type=sent">{lang sms_sent}</a></td>
 				</tr>	
 				
@@ -421,16 +421,16 @@
 			<td align="center">
 			<table class="menu_nav_content" id="MenuBasic">
 				<tr class="MenuItem18">
-				  <th><img src="{$office_theme_path}images/personals.gif"></th>
+				  <!--<th><img src="{$office_theme_path}images/personals.gif"></th>-->
 				  <td><a href="personal.php">{lang profile}</a></td>
 				</tr>
 				<tr class="MenuItem19"> 
-				  <th><img src="{$office_theme_path}images/password.gif"></th>
+				  <!--<th><img src="{$office_theme_path}images/password.gif"></th>-->
 				  <td><a href="changepass.php">{lang change_password}</a></td>
 				</tr>
 				<!--{if $pb_userinfo.role=="admin"}-->
 					<tr class="MenuItem19_1"> 
-					  <th><img src="{$office_theme_path}images/invoice.png"></th>
+					  <!--<th><img src="{$office_theme_path}images/invoice.png"></th>-->
 					  <td><a href="task.php">Tiến độ phát triển</a></td>
 					</tr>
 				<!--{/if}-->

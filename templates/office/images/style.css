@@ -3885,3 +3885,17 @@ li.sline {
     color: #fff;
     padding: 4px 0;
 }
+.menu_nav_content td {
+    height: 22px;
+    line-height: 22px;
+    padding: 4px 0;
+}
+.menu_nav_content td {
+    padding-left: 10px;
+}
+.mActive {
+    background: #edf4ef none repeat scroll 0 0;
+}
+#table_images a {
+    background: #6dbf7c;
+}
