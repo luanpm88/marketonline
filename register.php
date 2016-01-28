@@ -225,7 +225,7 @@ setvar("agreement", $_PB_CACHE['setting']['agreement']);
 	$qc2 = $announcement->read("message",32);
 	setvar("qc", $qc["message"]);
 	setvar("qc2", $qc2["message"]);
-	setvar("qc_raw", substr(trim(strip_tags($qc["message"])),12,600));
+	setvar("qc_raw", substr(trim(strip_tags($qc["message"])),0,600));
 
 	
 	if(detectMobile()) {
