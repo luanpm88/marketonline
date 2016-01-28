@@ -1346,3 +1346,6 @@ li.liback {
 #regfrm p {
     margin-bottom: 24px;
 }
+.register_page input[type="text"], .register_page input[type="password"], .register_page input[type="email"] {
+    height: 37px;
+}
