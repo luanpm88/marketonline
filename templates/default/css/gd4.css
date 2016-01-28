@@ -1337,6 +1337,9 @@ li.liback {
 .register_page *, .register_page div, .register_page dl, .register_page dt, .register_page dd, .register_page ul, .register_page ol, .register_page li, .register_page pre, .register_page form, .register_page p, .register_page blockquote, .register_page th, .register_page td {
     font-size: 15px;
 }
-.register_page h2 {
+.register_page h2 a {
     font-size: 24px;
+}
+.register_page .loginbox {
+    width: 42% !important;
 }
