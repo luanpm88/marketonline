@@ -1362,3 +1362,8 @@ li.liback {
 .main_user_select {
     width: auto;
 }
+#annouce_box a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

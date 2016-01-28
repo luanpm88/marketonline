@@ -22,7 +22,10 @@
     </li>
     <!--{pb:offer name="item" companyid=`$COMPANY.id` row=1 typeid=16 memberid=$MEMBER.id}-->
     				<li style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
-						<a class="tooltipz iim ico-corp buyco" href="{$item.url}" title="{$item.title}"><label>{lang supply_corp}:</label> {$item.title|truncate:30}</a>
+						<a class="tooltipz iim ico-corp buyco" href="{$item.url}" title="{$item.title}">
+							<label>{lang supply_corp}:</label>
+							{$item.title}
+						</a>
 						<!--{literal}--><style>
 								.no_corp
 								{
@@ -48,7 +51,7 @@
     </li>
     <!--{pb:offer name="item" companyid=`$COMPANY.id` row=1 typeid=10 memberid=$MEMBER.id}-->
     				<li style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
-				    <a class="tooltipz iim ico-corp ppico" href="{$item.url}" title="{$item.title}"><label>{lang supply_offer_s}:</label> {$item.title|truncate:30}</a>
+				    <a class="tooltipz iim ico-corp ppico" href="{$item.url}" title="{$item.title}"><label>{lang supply_offer_s}:</label> {$item.title}</a>
                                     <!--{literal}--><style>
                                             .no_offer
                                             {
@@ -73,7 +76,7 @@
     </li>
     <!--{pb:offer name="item" companyid=`$COMPANY.id` row=1 typeid=14,9 memberid=$MEMBER.id}-->
     				<li style="border-top:solid 1px #dfdfdf;border-bottom:solid 1px #dfdfdf">
-				    <a class="tooltipz iim ico-corp buyco" href="{$item.url}" title="{$item.title}"><label>{lang release}:</label> {$item.title|truncate:24}</a>
+				    <a class="tooltipz iim ico-corp buyco" href="{$item.url}" title="{$item.title}"><label>{lang release}:</label> {$item.title}</a>
                                     <!--{literal}--><style>
                                             .no_buy
                                             {
@@ -100,7 +103,7 @@
 				
 				
 				<li style="border-bottom:solid 1px #dfdfdf">
-				   <a class="tooltipz ico-corp jobco" href="{$job.url}" title="{$job.title}"><label>{lang job}:</label> {$job.title|truncate:25}</a>
+				   <a class="tooltipz ico-corp jobco" href="{$job.url}" title="{$job.title}"><label>{lang job}:</label> {$job.title}</a>
                                     <!--{literal}--><style>
                                             .no_job
                                             {
@@ -127,7 +130,7 @@
 <!--{companynews companyid=`$COMPANY.id` row=1}-->
 
 <li>
-    <a class="tooltipz ico-corp newsco" href="{$companynews.url}" title="{$companynews.title}"><label>{lang space_news}:</label> {$companynews.title|truncate:25}</a>
+    <a class="tooltipz ico-corp newsco" href="{$companynews.url}" title="{$companynews.title}"><label>{lang space_news}:</label> {$companynews.title}</a>
     <!--{literal}--><style>
         .no_news
         {
