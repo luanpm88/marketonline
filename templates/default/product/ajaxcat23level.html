@@ -29,7 +29,7 @@
         
         <!--{loop $industries item level key}-->
             {if $item.count_children == 0}
-                {$item.count}
+                {if $item.count}
                     <li class="item">
                         <a target="_blank" class="link_item" href="{the_url module=products level=2 industryid=`$item.id` title=`$item.name`}">
                             {$item.name}
