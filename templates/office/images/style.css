@@ -3878,3 +3878,10 @@ li.sline {
 .email_error {
     color: red;
 }
+.title_nav {
+    background: #6dbf7c none repeat scroll 0 0;
+}
+.title_bar {
+    color: #fff;
+    padding: 4px;
+}
