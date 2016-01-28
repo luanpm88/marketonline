@@ -3897,5 +3897,6 @@ li.sline {
     background: #edf4ef none repeat scroll 0 0;
 }
 #table_images a {
-    background: #6dbf7c;
+    background: #edf4ef;
+    color: #333;
 }
