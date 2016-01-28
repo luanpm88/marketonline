@@ -99,7 +99,11 @@ $(document).ready(function() {
 		
 		 
 		
-		//chatbox get new arrival
+		  if ($(window).height() > $('body').height()+$("#darkf").height()) {
+			  //code
+			  $('body').css('min-height', $(window).height()-100);
+			  $('#darkf').css('position', 'fixed');
+		  }
 		
 	  
 	});

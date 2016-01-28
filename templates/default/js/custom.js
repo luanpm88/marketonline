@@ -2350,7 +2350,7 @@
 		);
 		
 		
-		$('#job-search-box .job-search-tab .tab-content select').select2();
+		//$('#job-search-box .job-search-tab .tab-content select').select2();
 		
 		$('.pagination a, .pagination span').each(function( index ) {
 		  if($.isNumeric($(this).html())) $(this).html(parseInt($(this).html()) + 1);
