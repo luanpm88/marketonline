@@ -137,11 +137,11 @@ jQuery(document).ready(function($) {
 			result = false;
 		}
 		
-		if ($('#faxcode').val() ==  '' || $('#faxzone').val() == '' || $('#tel').val() == '') {
-			//$('.fax_area td label').remove();
-			//$('.fax_area td').append('<label for="contact_mobile" generated="true" class="error">Nội dung yêu cầu nhập</label>');
-			result = false;
-		}
+		//if ($('#tel').val() == '') {
+		//	//$('.fax_area td label').remove();
+		//	//$('.fax_area td').append('<label for="contact_mobile" generated="true" class="error">Nội dung yêu cầu nhập</label>');
+		//	result = false;
+		//}
 		
 		if (($('#dataCompanyAreaId3').val() ==  '0' && $('#dataCompanyAreaId1').val() ==  '1') || $('#dataCompanyAreaId1').val() ==  '0') {			
 			result = false;
@@ -196,16 +196,16 @@ jQuery(document).ready(function($) {
 			}
 		});
 		
-		if ($('#faxcode').val() ==  '' || $('#faxzone').val() == '' || $('#fax').val() == '') {
-			$('.fax_area td label').remove();
-			$('.fax_area td').append('<label for="" class="errorz">Nội dung yêu cầu nhập</label>');
-			result = false;
-		}
-		$('#faxcode, #faxzone, #fax').keyup(function(){
-			if ($('#faxcode').val() !=  '' && $('#faxzone').val() != '' && $('#fax').val() != '') {
-				$('.fax_area td label').remove();
-			}
-		});
+		//if ($('#faxcode').val() ==  '' || $('#faxzone').val() == '' || $('#fax').val() == '') {
+		//	$('.fax_area td label').remove();
+		//	$('.fax_area td').append('<label for="" class="errorz">Nội dung yêu cầu nhập</label>');
+		//	result = false;
+		//}
+		//$('#faxcode, #faxzone, #fax').keyup(function(){
+		//	if ($('#faxcode').val() !=  '' && $('#faxzone').val() != '' && $('#fax').val() != '') {
+		//		$('.fax_area td label').remove();
+		//	}
+		//});
 		
 		if (($('#dataCompanyAreaId3').val() ==  '0' && $('#dataCompanyAreaId1').val() ==  '1') || $('#dataCompanyAreaId1').val() ==  '0') {
 			
@@ -419,15 +419,15 @@ jQuery(document).ready(function($) {
 										-
 										  <input name="data[telzone]" type="text" id="telzone" value="{$item.telzone}" size="4" maxlength="4">
 										-
-										<input name="data[tel]" type="text" id="tel" value="{$item.tel}" size="15"> Ví dụ: (84) 08.3846 1716</td>
+										<input name="data[tel]" type="text" id="tel" value="{$item.tel}" size="15"> Ví dụ: (84) 08.6688 6622</td>
 							</tr>
 							<tr class="fax_area">
-										<th>{lang fax_number}<font class="red">*</font></th>
+										<th>{lang fax_number}</th>
 										<td><input name="data[faxcode]" type="text" id="faxcode" value="{$item.faxcode}" size="4" maxlength="4">
 								-
 								<input name="data[faxzone]" type="text" id="faxzone" value="{$item.faxzone}" size="4" maxlength="4">
 								-
-								<input name="data[fax]" type="text" id="fax" value="{$item.fax}" size="15"> Ví dụ: (84) 08.3957 0385</td>
+								<input name="data[fax]" type="text" id="fax" value="{$item.fax}" size="15"> Ví dụ: (84) 08.3947 0385</td>
 							</tr>
 							<tr>
 								<th>{lang business_email_n}<font class="red">*</font> </th>
