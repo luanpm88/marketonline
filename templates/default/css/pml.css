@@ -3183,9 +3183,6 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     padding-left: 68px;
 }
 
-.fb_iframe_widget iframe {
-    width: 342px !important;
-}
 
 .clicked_note_box {
     background: none repeat scroll 0 0 #FFFFFF;
