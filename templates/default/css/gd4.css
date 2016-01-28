@@ -1352,3 +1352,6 @@ li.liback {
 .orderdetail_form input[type="text"], .orderdetail_form input[type="password"], .orderdetail_form input[type="email"] {
     height: 37px;
 }
+#LoggingFrm input[type="text"], #LoggingFrm input[type="password"], #LoggingFrm input[type="email"] {
+    height: 37px;
+}
