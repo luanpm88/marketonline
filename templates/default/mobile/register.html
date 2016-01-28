@@ -143,12 +143,13 @@
                                             <!-- {/if} -->
 
                                                         <p class="registerp2">
-                                                          <input style="float: left; margin: 5px 5px 5px 0;" name="licence_check" id="LicenseCheck" type="checkbox" onclick="if(this.checked)$('#Submit').removeAttr('disabled'); else $('#Submit').attr('disabled','true');" checked="checked" />
-                                                          <label style="float: left;margin-top: 3px;" for="LicenseCheck">{lang see_agree}</label>
+                                                          
+                                                          <label style="float: left;margin-top: 3px;" for="LicenseCheck"><input style="float: left; margin: 5px 5px 5px 0;" name="licence_check" id="LicenseCheck" type="checkbox" onclick="if(this.checked)$('#Submit').removeAttr('disabled'); else $('#Submit').attr('disabled','true');" checked="checked" /> {lang see_agree}</label>
                                                         </p>
                                                         <div class="agree" id="agreements" style="display: none;">{$agreement}</div>
                                                         <p></p>
                                                         <br style="clear: both" />
+                                                        <br />
                                                         <p></p>
                                                         <p class="registerbutton">
                                                           <input class="btn btn-primary" style="width: 100%" type="submit" name="Submit" id="wp-submit" value="{lang register}" class="submit_w67 submit_res" />
