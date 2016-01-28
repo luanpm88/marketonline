@@ -181,9 +181,9 @@ $viewhelper = new PbView();
 $conditions = null;
 $pb_userinfo = pb_get_member_info();
 
-$show_market_page2 = $setts->fields("valued", array("variable = 'show_market_page'"));
+$show_market_page = $setts->fields("valued", array("variable = 'show_market_page'"));
 $show_market_map = $setts->fields("valued", array("variable = 'show_market_map'"));
-setvar("show_market_page2", $show_market_page2["valued"]);
+setvar("show_market_page", $show_market_page["valued"]);
 setvar("show_market_map", $show_market_map["valued"]);
 
 if ($pb_userinfo) {
