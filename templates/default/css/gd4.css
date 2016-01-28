@@ -1343,3 +1343,6 @@ li.liback {
 .register_page .loginbox {
     width: 42% !important;
 }
+#regfrm p {
+    margin-bottom: 22px;
+}
