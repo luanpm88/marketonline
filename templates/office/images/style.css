@@ -3900,3 +3900,7 @@ li.sline {
     background: #edf4ef;
     color: #333;
 }
+
+.new_menu ul li a {
+    background: #ff7043 none repeat scroll 0 0;
+}
