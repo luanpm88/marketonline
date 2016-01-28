@@ -1349,3 +1349,6 @@ li.liback {
 .register_page input[type="text"], .register_page input[type="password"], .register_page input[type="email"] {
     height: 37px;
 }
+.orderdetail_form input[type="text"], .orderdetail_form input[type="password"], .orderdetail_form input[type="email"] {
+    height: 37px;
+}
