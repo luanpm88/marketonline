@@ -2167,3 +2167,8 @@ a.following
 #left-sidebar .sapce_menu_new_style ul li.plevel0 a:first-child {
     line-height: 22px;
 }
+#annouce_box a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
