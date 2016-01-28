@@ -1325,5 +1325,5 @@ li.liback {
     width: 100%;
 }
 .newhome-menus .main-menu ul li a {
-    font-size: 120px;
+    font-size: 120% !important;
 }
