@@ -30,7 +30,7 @@
 					</li>
 					<!--{loop $areatypes type level key}-->
 						<li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
-							<a style="padding-left: 20px;" class="level1" href="/?do=job&type=&indust=0&area=&areatype_id={$type.id}&keyword=">{$type.name}</a>
+							<a style="padding-left: 20px;" class="level1" href="/?do=job&type=&indust=0&area=&areatype_id={$type.id}&keyword=&show_map=1">{$type.name}</a>
 						</li>
 					<!--{/loop}-->
 				<!--{elseif $smarty.get.do == "employee"}-->
@@ -39,7 +39,7 @@
 					</li>
 					<!--{loop $areatypes type level key}-->
 						<li class="level1{if $smarty.get.areatype_id==$type.id} active{/if}">
-							<a style="padding-left: 20px;" class="level1" href="/?do=employee&type=&indust=0&area=&areatype_id={$type.id}&keyword=">{$type.name}</a>
+							<a style="padding-left: 20px;" class="level1" href="/?do=employee&type=&indust=0&area=&areatype_id={$type.id}&keyword=&show_map=1">{$type.name}</a>
 						</li>
 					<!--{/loop}-->
 				<!--{else}--> 
@@ -65,7 +65,7 @@
 							<ul class="city_list">					      
 								<!--{loop $type.areas item level key}-->
 									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}">
-										<a class="level2" href="/?do=job&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
+										<a class="level2" href="/?do=job&type=&indust=0&area={$item.id}&keyword=&show_map=1">{$item.name}</a>
 									</li>
 								<!--{/loop}-->
 							</ul>
@@ -83,7 +83,7 @@
 							<ul class="city_list">					      
 								<!--{loop $type.areas item level key}-->
 									<li class="level2{if $smarty.get.area_id==$item.id} active{/if}">
-										<a class="level2" href="/?do=employee&type=&indust=0&area={$item.id}&keyword=">{$item.name}</a>
+										<a class="level2" href="/?do=employee&type=&indust=0&area={$item.id}&keyword=&show_map=1">{$item.name}</a>
 									</li>
 								<!--{/loop}-->
 							</ul>
