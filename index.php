@@ -203,21 +203,21 @@ if (!empty($_GET['do'])) {
 	
 	$dksd = $announcement->read("message",23);
 	setvar("dksd", $dksd["message"]);
-	setvar("dksd_raw", substr(trim(strip_tags($dksd["message"])),29,1000));
+	setvar("dksd_raw", substr(trim(strip_tags($dksd["message"])),29,600));
 	
 	$qltv = $announcement->read("message",24);
 	setvar("qltv", $qltv["message"]);
-	setvar("qltv_raw", substr(trim(strip_tags($qltv["message"])),40,1000));
+	setvar("qltv_raw", substr(trim(strip_tags($qltv["message"])),40,600));
 	
 	$baomat = $announcement->read("message",25);
 	setvar("baomat", $baomat["message"]);
-	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,1000));
+	setvar("baomat_raw", substr(trim(strip_tags($baomat["message"])),12,600));
 	
 	$qc = $announcement->read("message",31);
 	$qc2 = $announcement->read("message",32);
 	setvar("qc", $qc["message"]);
 	setvar("qc2", $qc2["message"]);
-	setvar("qc_raw", substr(trim(strip_tags($qc["message"])),12,1000));
+	setvar("qc_raw", substr(trim(strip_tags($qc["message"])),12,600));
 	
 	
 	//FOR MOBILE DATA
