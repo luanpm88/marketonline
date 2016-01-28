@@ -1355,3 +1355,7 @@ li.liback {
 #LoggingFrm input[type="text"], #LoggingFrm input[type="password"], #LoggingFrm input[type="email"] {
     height: 37px;
 }
+.fb_boxx {
+    border: 1px solid #ddd;
+    height: 389px;
+}
