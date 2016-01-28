@@ -1367,3 +1367,6 @@ li.liback {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.newhome-menus .tabs-menu ul li.main-title {
+    text-transform: uppercase;
+}
