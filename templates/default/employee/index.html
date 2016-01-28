@@ -36,11 +36,11 @@
 </div>
 
 
-	{if $show_market_map == "1"}
-		<div class="row areas-container" style="padding: 10px;">
-			<!--{include file="`$theme_name`/area/_areas-menu.html"}-->
-		</div>
-	{/if}
+{if $show_market_map == "1" && $smarty.get.show_map == "1"}
+	<div class="row areas-container" style="padding: 10px;">
+		<!--{include file="`$theme_name`/area/_areas-menu.html"}-->
+	</div>
+{/if}
 
 
 <div class="ad_banner_item_hover"></div>
