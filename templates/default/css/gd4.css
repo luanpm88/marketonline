@@ -1359,3 +1359,6 @@ li.liback {
     border: 1px solid #ddd;
     height: 389px;
 }
+.main_user_select {
+    width: auto;
+}
