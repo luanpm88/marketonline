@@ -1411,6 +1411,16 @@ video {
     margin-top: 8px;
     padding: 2px 5px;
 }
+.product_listing ul.products li.product {
+    overflow: hidden;
+}
+.market-product-module .offer_transform ul.products li.product .title_detail {
+    line-height: 24px;
+}
+.market-product-module .offer_transform ul.products li.product .price {
+    line-height: 25px;
+    margin: 0;
+}
 /*.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;
     padding-top: 3px;
