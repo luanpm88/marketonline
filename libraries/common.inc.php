@@ -198,6 +198,11 @@ setvar("show_3_top_trades_banner", $show_3_top_trades_banner["valued"]);
 $show_1_top_trades_banner = $setts->fields("valued", array("variable = 'show_1_top_trades_banner'"));
 setvar("show_1_top_trades_banner", $show_1_top_trades_banner["valued"]);
 
+$website_logo_type = $setts->fields("valued", array("variable = 'website_logo_type'"));
+$website_logo = $member->fields("website_logo", array("id = 1"));
+setvar("website_logo_type", $website_logo_type["valued"]);
+setvar("website_logo", $website_logo["website_logo"]);
+
 if ($pb_userinfo) {
 	$pb_user = $pb_userinfo;
 	$pb_user = pb_addslashes($pb_user);
