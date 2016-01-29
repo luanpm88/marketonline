@@ -1382,6 +1382,8 @@ li.liback {
 }
 video {
     background: #000;
+    margin: 0 auto;
+    display: block;
 }
 /*.home_top_banner_3 {
     height: 268px;
