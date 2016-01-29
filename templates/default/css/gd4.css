@@ -1373,18 +1373,21 @@ li.liback {
 .box_left.more_tree {
     overflow: hidden;
 }
-.newhome-menus .main-menu.more_menus {
+video {
+    background: #000;
+    margin: 0 auto;
+    display: block;
+}
+/*.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;
     padding-top: 3px;
 }
 .newhome-menus .main-menu.more_menus ul li a {
     height: 28px;
 }
-video {
-    background: #000;
-    margin: 0 auto;
-    display: block;
+.home_top_banner_3 {
+    height: 268px;
 }
-/*.home_top_banner_3 {
+.home_top_banner_3_slide li {
     height: 268px;
 }*/

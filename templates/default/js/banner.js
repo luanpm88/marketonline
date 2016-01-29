@@ -57,11 +57,11 @@ $(document).ready(function() {
     
     
     $(".view_more_cat_module").live('click', function(event) {
-      event.preventDefault();
-      $(this).parents().removeClass("no_item");
-      $(this).hide();
-      $(this).parents(".box_left").removeClass("more_tree")
-      $(this).parents(".box_left").css("height", "auto")
+        event.preventDefault();
+        $(this).parents().removeClass("no_item");
+        $(this).hide();
+        $(this).parents(".box_left").removeClass("more_tree")
+        $(this).parents(".box_left").css("height", "auto")
     });
     
 });
