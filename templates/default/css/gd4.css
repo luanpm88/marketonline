@@ -856,22 +856,27 @@ h2.market-header-title {
 .deal_box .deal_content a {
     color: #3b984c;
 }
-#announce_top .deal_label_announce {
-    
+
+
+#header .logo_with_deal a img {
+    margin-top: 142px;
 }
-#announce_top .deal_label_announce li {
+.logo_with_deal #announce_top .deal_label_announce {
+    margin: 0;
+}
+.logo_with_deal #announce_top .deal_label_announce li {
     border: medium none;
 }
-#announce_top .deal_label_announce li a {
+.logo_with_deal #announce_top .deal_label_announce li a {
     background: rgb(237, 86, 27) none repeat scroll 0 0;
     color: #fff;
     display: block;
     font-size: 16px;
-    margin-top: 33px;
+    margin-top: 19px;
     padding: 5px 10px;
     width: 316px;
 }
-#header .logo a img {
+#header .logo_with_deal #announce_top .logo a img {
     margin-top: 145px;
     margin-bottom: 0;
 }
@@ -1420,6 +1425,11 @@ video {
 .market-product-module .offer_transform ul.products li.product .price {
     line-height: 25px;
     margin: 0;
+}
+#header .logo_banner a img {
+    height: 140px;
+    margin-top: 105px;
+    width: 316px;
 }
 /*.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;

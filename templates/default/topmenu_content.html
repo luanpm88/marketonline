@@ -1,22 +1,68 @@
 <section id="header" class="row" role="banner">
-  <div class="four columns logo">
-    <a href="{$SiteUrl}"><img src="{$theme_img_path}image/logo-home.png" alt=""></a>
-    <div id="announce_top">
-	<ul class="deal_label_announce">
-	    <li><a id="thongbao_home" href="#home_deal_box">Quà tặng & Giảm giá hàng ngày</a></li>
-	    <li style="display: none">
-		
-		<!--{if $pb_username!=""}-->
-		    <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatboxNew('1x2', false)">Hỗ trợ trực tuyến</a>
-		<!--{else}-->
-		    <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
-		<!--{/if}-->
-
-		<!--<a href="contact">{lang contact_help}</a>-->
-	    </li>
-	</ul>
-    </div>
-  </div>
+  
+    
+	
+	
+	
+	
+	
+	{if $website_logo_type == "2"}
+	
+	  <div class="four columns logo logo_with_deal">
+						<a href="{$SiteUrl}"><img src="{$theme_img_path}image/logo-home.png" alt=""></a>
+						<div id="announce_top">
+						  <ul class="deal_label_announce">
+							  <li><a id="thongbao_home" href="#home_deal_box">Quà tặng & Giảm giá hàng ngày</a></li>
+							  <li style="display: none">
+							  
+							  <!--{if $pb_username!=""}-->
+								  <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatboxNew('1x2', false)">Hỗ trợ trực tuyến</a>
+							  <!--{else}-->
+								  <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
+							  <!--{/if}-->
+					  
+							  <!--<a href="contact">{lang contact_help}</a>-->
+							  </li>
+						  </ul>
+						</div>
+	  </div>
+	  
+	{elseif $website_logo_type == "1"}
+	  
+	  <div class="four columns logo">
+						<a href="{$SiteUrl}"><img src="{$theme_img_path}image/logo-home.png" alt=""></a>
+						<div id="announce_top">
+						  <ul class="deal_label_announce">
+							  <li><a id="thongbao_home" href="#box_4home_tb">Giới thiệu</a></li>
+							  <li style="">
+							  
+							  <!--{if $pb_username!=""}-->
+								  <a class="" title="Hỗ trợ trực tuyến" href="javascript:void(0)" onclick="getChatboxNew('1x2', false)">Hỗ trợ trực tuyến</a>
+							  <!--{else}-->
+								  <a title="Hỗ trợ trực tuyến" class="comment_but" href="#login-box" onclick="">Hỗ trợ trực tuyến</a>
+							  <!--{/if}-->
+					  
+							  <!--<a href="contact">{lang contact_help}</a>-->
+							  </li>
+						  </ul>
+						</div>
+	  </div>
+	{elseif  $website_logo_type == "3"}
+	  
+		<div class="four columns logo logo_banner">
+			<a href="{$SiteUrl}"><img src="http://marketonline.vn:3000/uploads/pb_member/website_logo/1/thumb_{$website_logo}" /></a>
+		</div>
+	  
+	{/if}
+						
+						
+						
+						
+						
+						
+						
+						
+  
   <nav class="eleven columns" id="topmenu">
 
       <ul id="menu-primary-navigation" class="tiled-menu">
