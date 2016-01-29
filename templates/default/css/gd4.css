@@ -1431,7 +1431,7 @@ video {
     margin-top: 105px;
     width: 316px;
 }
-/*.newhome-menus .main-menu.more_menus {
+.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;
     padding-top: 3px;
 }
@@ -1443,4 +1443,4 @@ video {
 }
 .home_top_banner_3_slide li {
     height: 268px;
-}*/
+}
