@@ -1426,6 +1426,11 @@ video {
     line-height: 25px;
     margin: 0;
 }
+#header .logo_banner a img {
+    height: 140px;
+    margin-top: 105px;
+    width: 316px;
+}
 /*.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;
     padding-top: 3px;
