@@ -62,6 +62,7 @@ $(document).ready(function() {
         $(this).hide();
         $(this).parents(".box_left").removeClass("more_tree")
         $(this).parents(".box_left").css("height", "auto")
+        $(this).addClass("notauto")
     });
     
 });
