@@ -1078,14 +1078,14 @@ li.liback {
     width: 100%;
 }
 .top_areas_menu_box {
-    margin-top: -40px;
+    margin-top: -30px;
     position: absolute;
     text-align: center;
     width: 100%;
 }
 .top_areas_menu {
     background: #fff none repeat scroll 0 0;
-    border: 1px solid #ddd;
+    border: 1px solid #c5a169;
     display: inline-block;
     margin-bottom: -10px;
     position: relative;
@@ -1097,7 +1097,7 @@ li.liback {
     cursor: pointer;
     font-size: 20px;
     margin: 0 20px 0 10px;
-    padding: 6px 20px 7px 10px;
+    padding: 5px 20px 8px 10px;
 }
 .top_areas_menu h2:hover {
     opacity: 0.8;
@@ -1454,4 +1454,16 @@ video {
 }
 .area-module {
     margin-bottom: 50px;
+}
+.areas-container {
+    padding: 20px 10px 10px;
+}
+.choose_area_label {
+    background: #c5a169 none repeat scroll 0 0;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 37px;
+    margin-right: -3px;
+    padding: 0 10px;
 }
