@@ -1380,6 +1380,9 @@ li.liback {
 .newhome-menus .main-menu.more_menus ul li a {
     height: 28px;
 }
+video {
+    background: #aaa;
+}
 /*.home_top_banner_3 {
     height: 268px;
 }*/
