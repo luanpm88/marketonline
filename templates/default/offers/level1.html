@@ -281,7 +281,7 @@
 	  if ($('#aq-block-5').height())
 	    pos_searchlist = $('#aq-block-5').height() + 260;
 	  else
-	    pos_searchlist = {/literal}{if $show_3_top_services_banner == "1"}505{else}255{/if}{literal};
+	    pos_searchlist = {/literal}{if $show_3_top_trades_banner == "1"}505{else}255{/if}{literal};
 	       
 	      //Init level 4
 	       $(".hotnewlist").removeClass("active");
@@ -794,7 +794,7 @@
 <div class="row" style="height: 45px;">
   
         
-      <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: {if $show_3_top_services_banner == "1"}505{else}255{/if}px;">
+      <div id="SearchList" class="connect_searchx" style="padding-left: 10px;position: absolute;top: {if $show_3_top_trades_banner == "1"}505{else}255{/if}px;">
 	    <div  class="follow-scrollz">
       
         <input id="search_list_but" type="submit" value="{lang search}" />
