@@ -66,7 +66,7 @@
 								{literal}
 								<script>
 									$.ajax({
-									url: "http://marketonline.vn:3000/ad_positions/ajax_1_wide_banners?pos=area_service_module_big&industry_id=0&area_id={$area.id}&areatype_id={$areatype.id}",
+									url: "http://marketonline.vn:3000/ad_positions/ajax_1_wide_banners?pos=area_service_module_big&industry_id=0&area_id={/literal}{$area.id}&areatype_id={$areatype.id}{literal}",
 									}).done(function ( data ) {
 										if( console && console.log ) {
 											$(".s_module_banner_content").html(data);
