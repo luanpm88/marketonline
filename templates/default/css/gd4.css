@@ -1393,7 +1393,7 @@ video {
 .empty_module * {
     color: #fff !important;
 }
-.empty_module .market-product-module {
+.empty_module .market-product-module, .empty_module p.no-content {
     margin-bottom: 10px;
 }
 .empty_module .go_box {

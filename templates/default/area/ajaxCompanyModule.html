@@ -1,11 +1,16 @@
-                <div class="areas-module-controls">
+
+				
+
+<div class="<!--{if !$companies}-->empty_module<!--{/if}-->">
+
+<div class="areas-module-controls">
 		    <a target="_blank" href="{the_url module=root-url}virtual-office">Tiêu chuẩn thương hiệu</a>
 		    {if $view_more}
 				<a class="module-more-but" href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='thuong-hieu'}{if $smarty.get.membergroup_id}#{$smarty.get.membergroup_id}{/if}">Xem thêm</a>
 			{/if}
 		    
 		</div>
-		
+
 		<h3 style="margin-bottom: 20px;"><a class="main_a" href="javascript:void(0)">Thương hiệu</a>
 		    <div class="subtab-area">
 			<ul>
@@ -41,8 +46,14 @@
                     </ul>
 		{if $smarty.get.p}<div style="margin-top: 20px" class="pagination-list"></div><br style="clear:both" />{/if}
                 <!--{else}-->
-                    <br><br><br><p class="no-content">Chưa có thương hiệu nào trong mục này!<br />
-						Mời bạn đăng ký thành viên và tham gia thị trường này.</p>
+                    <br><br><br><p class="no-content" style="text-align: center; font-size: 18px">Chưa có thương hiệu nào trong mục này!<br />
+						Mời bạn tham gia thị trường này.
+										{if $pb_username==""}
+												<a class="comment_but job_go_box" href="#login-box">Đăng nhập/Đăng ký</a>
+										{else}
+												
+										{/if}
+					</p>
                 <!--{/if}-->
 		
 		{if $smarty.get.p}
@@ -50,3 +61,4 @@
 		    <div id="pppage" style="display: none">{$smarty.get.p}</div>
 		{/if}
 <br />
+</div>

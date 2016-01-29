@@ -233,10 +233,12 @@
 		
 	    </div>    
 	    
-		<div class="works-list album area-module job_module starting">
-			
-		</div>
-
+		{if !$catgroup}
+			<div class="works-list album area-module job_module starting">
+				
+			</div>
+		{/if}
+		
 		{if !$catgroup && false}
 			<div class="works-list album area-module school_module starting">
 			
