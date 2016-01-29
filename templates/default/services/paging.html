@@ -377,7 +377,7 @@
 	  if ($('#aq-block-5').height())
 	    pos_searchlist = $('#aq-block-5').height() + 440;
 	  else
-	    pos_searchlist = 255;
+	    pos_searchlist = {/literal}{if $show_3_top_services_banner == "1"}505{else}255{/if}{literal};
 	       
 	      {/literal}{if $smarty.get.level == 'search'}{literal}
 		orderby = 'all';
