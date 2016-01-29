@@ -1378,6 +1378,9 @@ video {
     margin: 0 auto;
     display: block;
 }
+.market-product-module .product_listing {
+    height: auto;
+}
 /*.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;
     padding-top: 3px;
