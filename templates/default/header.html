@@ -170,6 +170,19 @@
 
 <script type="application/x-javascript">
     
+    function fixAreaModule() {
+        $(".area-module").each(function() {
+            var box_right = $(this).find(".box_right")
+            var box_left = $(this).find(".box_left")
+            
+            if(box_right.height()>0 && box_right.height() < box_left.height()) {
+              box_left.css("height", box_right.height())
+              box_left.addClass("more_tree")
+              box_left.find(".view_more_cat_module").show()
+            }
+        })
+    }
+    
     function loadMainCategoryMenu()
     {
         $.ajax({
@@ -912,6 +925,8 @@ function goclicky_custom(meh, url, images, title, summary)
                 if(window.location.hash == "#deal") {
                     $("#thongbao_home").trigger("click")
                 }
+                
+                setInterval('fixAreaModule()', 1000);
                 
 	});
 	

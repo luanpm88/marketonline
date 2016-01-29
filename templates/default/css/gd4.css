@@ -1370,3 +1370,6 @@ li.liback {
 .newhome-menus .tabs-menu ul li.main-title {
     text-transform: uppercase;
 }
+.box_left.more_tree {
+    overflow: hidden;
+}
