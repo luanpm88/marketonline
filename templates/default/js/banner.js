@@ -60,6 +60,8 @@ $(document).ready(function() {
       event.preventDefault();
       $(this).parents().removeClass("no_item");
       $(this).hide();
+      $(this).parents(".box_left").removeClass("more_tree")
+      $(this).parents(".box_left").css("height", "auto")
     });
     
 });

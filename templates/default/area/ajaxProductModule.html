@@ -49,9 +49,9 @@
 						</li>
 					<!--{/loop}-->
 				</ul>
-				<!--{if !$products && !$smarty.get.p}-->
-						<a href="#" class="view_more_cat_module">Xem thêm</a>
-				<!--{/if}-->
+				
+				<a href="#" class="view_more_cat_module" style="display: none">Xem thêm</a>
+				
 			</div>
 			<div class="box_right">
 				<div class="wide_1_banners p_module_banner" style="display: none">
@@ -163,6 +163,8 @@
 				{/literal}{if $smarty.get.p}{literal}
 							pagination({/literal}{$count}{literal}, {/literal}{$smarty.get.p}{literal})
 				{/literal}{/if}{literal}
+				
+				fixAreaModule()
 		});
     </script>
 {/literal}

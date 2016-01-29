@@ -1370,3 +1370,16 @@ li.liback {
 .newhome-menus .tabs-menu ul li.main-title {
     text-transform: uppercase;
 }
+.box_left.more_tree {
+    overflow: hidden;
+}
+.newhome-menus .main-menu.more_menus {
+    padding-bottom: 2px;
+    padding-top: 3px;
+}
+.newhome-menus .main-menu.more_menus ul li a {
+    height: 28px;
+}
+/*.home_top_banner_3 {
+    height: 268px;
+}*/

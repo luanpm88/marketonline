@@ -583,3 +583,9 @@ h2.area-title {
 .home-main-product-list ul li:last-child {
     border-right: solid 1px #ddd;
 }
+.top-banners .right-banner {
+    height: 701px;
+}
+.newhome .header {
+    height: 726px;
+}
