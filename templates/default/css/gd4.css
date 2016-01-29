@@ -1445,3 +1445,7 @@ video {
 .home_top_banner_3_slide li {
     height: 268px;
 }
+.ajax_1_wide_banners li img {
+    height: 285px;
+    width: 980px;
+}
