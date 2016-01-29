@@ -589,3 +589,6 @@ h2.area-title {
 .newhome .header {
     height: 726px;
 }
+.menu-content-inner {
+    min-height: 684px;
+}
