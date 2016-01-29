@@ -186,6 +186,18 @@ $show_market_map = $setts->fields("valued", array("variable = 'show_market_map'"
 setvar("show_market_page2", $show_market_page2["valued"]);
 setvar("show_market_map", $show_market_map["valued"]);
 
+$show_3_top_services_banner = $setts->fields("valued", array("variable = 'show_3_top_services_banner'"));
+setvar("show_3_top_services_banner", $show_3_top_services_banner["valued"]);
+
+$show_1_top_services_banner = $setts->fields("valued", array("variable = 'show_1_top_services_banner'"));
+setvar("show_1_top_services_banner", $show_1_top_services_banner["valued"]);
+
+$show_3_top_trades_banner = $setts->fields("valued", array("variable = 'show_3_top_trades_banner'"));
+setvar("show_3_top_trades_banner", $show_3_top_trades_banner["valued"]);
+
+$show_1_top_trades_banner = $setts->fields("valued", array("variable = 'show_1_top_trades_banner'"));
+setvar("show_1_top_trades_banner", $show_1_top_trades_banner["valued"]);
+
 if ($pb_userinfo) {
 	$pb_user = $pb_userinfo;
 	$pb_user = pb_addslashes($pb_user);
