@@ -1381,6 +1381,36 @@ video {
 .market-product-module .product_listing {
     height: auto;
 }
+
+.empty_module {
+    background: #6dbf7c none repeat scroll 0 0;
+    float: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 0 0 10px;
+    width: 100%;
+}
+.empty_module * {
+    color: #fff !important;
+}
+.empty_module .market-product-module {
+    margin-bottom: 10px;
+}
+.empty_module .go_box {
+    background: #fff none repeat scroll 0 0;
+    color: #333 !important;
+    display: inline-block;
+    line-height: 27px;
+    padding: 0 9px;
+    margin-top: 8px;
+}
+.job_employee_boxes .job_go_box {
+    background: #3b984c none repeat scroll 0 0;
+    color: #fff !important;
+    display: inline-block;
+    margin-top: 8px;
+    padding: 2px 5px;
+}
 /*.newhome-menus .main-menu.more_menus {
     padding-bottom: 2px;
     padding-top: 3px;

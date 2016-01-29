@@ -1,3 +1,5 @@
+<div class="<!--{if !$services}-->empty_module<!--{/if}-->">
+		
 		<h2 class="market-header-title">Dịch vụ
 				{if $industry}
 					- {$industry.name}
@@ -33,19 +35,21 @@
 		{/literal}
 		
 		<div class="market-product-module">
-			<div class="box_left <!--{if !$services && !$smarty.get.p}-->no_item<!--{/if}-->">
-				<ul id="menu-features-list" class="menu">
-					<!--{loop $industries_list item0 level_0 key0}-->
-						<li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954">
-								<a href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='dich-vu' industry_id=`$item0.id` industry_name=`$item0.name`}" content="{$item0.name}" rel="1" class="item menu_lvl1 {if $smarty.get.industry_id==$item0.id}active{/if}">
-									{$item0.name} <span></span>
-								</a>
-						</li>
-					<!--{/loop}-->
-				</ul>
-				<a href="#" class="view_more_cat_module" style="display: none">Xem thêm</a>
-			</div>
-			<div class="box_right">
+				<!--{if $services}-->
+						<div class="box_left <!--{if !$services && !$smarty.get.p}-->no_item<!--{/if}-->">
+							<ul id="menu-features-list" class="menu">
+								<!--{loop $industries_list item0 level_0 key0}-->
+									<li id="menu-item-954" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-916 current_page_item menu-item-954">
+											<a href="{the_url title=`$area.name` module=areas area_id=`$smarty.get.area_id` areatype_id=`$smarty.get.areatype_id` type='dich-vu' industry_id=`$item0.id` industry_name=`$item0.name`}" content="{$item0.name}" rel="1" class="item menu_lvl1 {if $smarty.get.industry_id==$item0.id}active{/if}">
+												{$item0.name} <span></span>
+											</a>
+									</li>
+								<!--{/loop}-->
+							</ul>
+							<a href="#" class="view_more_cat_module" style="display: none">Xem thêm</a>
+						</div>
+				<!--{/if}-->
+			<div class="box_right" <!--{if !$services}-->style="width: 100%"<!--{/if}-->>
 				
 				<div class="wide_1_banners s_module_banner" style="display: none">
 					<div style="overflow: hidden;float: left; width: 100%">
@@ -170,12 +174,18 @@
 					
 					<!--{else}-->
 						<p style="text-align: center; font-size: 18px">Chưa có dịch vụ phù hợp trong mục này!<br />
-						Mời bạn đăng ký thành viên và tham gia thị trường này.
+						Mời bạn tham gia thị trường này.
+						{if $pb_username==""}
+								<a class="comment_but go_box" href="#login-box">Đăng nhập/Đăng ký</a>
+						{else}
+								<a class="go_box" target="_blank" href="{the_url module="redirect" url="/virtual-office/product.php?do=edit%26type=service"}">{lang add_service}</a>
+						{/if}
 						</p>
 					<!--{/if}-->
 				</div>				
 			</div>
 		</div>
+</div>
 	
 {literal}
     <script>
