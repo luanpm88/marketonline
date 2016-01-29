@@ -36,7 +36,8 @@
 								<!-- {/loop} -->
 								
 								<!--{if !$jobs}-->
-									<tr><td align="center" colspan="4" style="text-align: center">Không tìm thấy tuyển dụng nào</td></tr>
+									<tr><td align="center" colspan="4" style="text-align: center">Không tìm thấy tuyển dụng nào!<br />
+						Mời bạn đăng ký thành viên và tham gia thị trường này.</td></tr>
 								<!--{/if}-->
 								
 								</tbody></table>
@@ -45,10 +46,12 @@
 							
 						</div>
 					</div>
-					<a style="bottom: 10px;
-    color: #3b984c !important;
-    position: absolute;
-    right: 10px;" class="" href="/?do=job&type=&indust=0&area={$area.id}&keyword=&show_map=1">Xem thêm</a>
+					<!--{if !$jobs}-->
+						<a style="bottom: 10px;
+							color: #3b984c !important;
+							position: absolute;
+							right: 10px;" class="" href="/?do=job&type=&indust=0&area={$area.id}&keyword=&show_map=1">Xem thêm</a>
+					<!--{/if}-->
 				</div>
 				
 			</div>
@@ -84,8 +87,9 @@
 									<!-- {/employee} -->
 									
 									<!--{if !$count}-->
-										<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào<!<br />
-						Mời bạn đăng ký thành viên và tham gia thị trường này./td></tr>
+										<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào!<br />
+						Mời bạn đăng ký thành viên và tham gia thị trường này.
+										</td></tr>
 									<!--{/if}-->
 								  
 								</tbody>
@@ -95,10 +99,12 @@
 						</div>
 					</div>
 				</div>
-				<a style="bottom: 10px;
-    color: #3b984c !important;
-    position: absolute;
-    right: 10px;" class="" href="/?do=employee&type=&indust=0&area={$area.id}&keyword=&show_map=1">Xem thêm</a>
+				<!--{if !$count}-->
+					<a style="bottom: 10px;
+						color: #3b984c !important;
+						position: absolute;
+						right: 10px;" class="" href="/?do=employee&type=&indust=0&area={$area.id}&keyword=&show_map=1">Xem thêm</a>
+				<!--{/if}-->
 		    </div>
 				
 			</div>
