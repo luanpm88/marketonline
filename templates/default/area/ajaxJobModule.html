@@ -36,7 +36,13 @@
 								
 								<!--{if !$jobs}-->
 									<tr><td align="center" colspan="4" style="text-align: center">Không tìm thấy tuyển dụng nào!<br />
-						Mời bạn đăng ký thành viên và tham gia thị trường này.</td></tr>
+										Mời bạn tham gia thị trường này.
+										{if $pb_username==""}
+												<a class="comment_but job_go_box" href="#login-box">Đăng nhập/Đăng ký</a>
+										{else}
+												<a class="job_go_box" target="_blank" href="{the_url module=root-url}virtual-office/job.php?do=edit">Đăng việc làm</a>
+										{/if}
+									</td></tr>
 								<!--{/if}-->
 								
 								</tbody></table>
@@ -59,7 +65,7 @@
 				<div class="module-title">
 					<h2>Danh sách ứng viên</h2>
 					<div class="areas-module-controls">
-						<a target="_blank" href="{the_url module=root-url}virtual-office/employee.php?do=edit">Đăng việc làm</a>
+						<a target="_blank" href="{the_url module=root-url}virtual-office/employee.php?do=edit">Đăng hồ sơ</a>
 					
 					</div>
 				</div>
@@ -87,7 +93,12 @@
 									
 									<!--{if !$count}-->
 										<tr><td align="center" colspan="3" style="text-align: center">Không tìm thấy hồ sơ nào!<br />
-						Mời bạn đăng ký thành viên và tham gia thị trường này.
+											Mời bạn tham gia thị trường này.
+											{if $pb_username==""}
+													<a class="comment_but job_go_box" href="#login-box">Đăng nhập/Đăng ký</a>
+											{else}
+													<a class="job_go_box" target="_blank" href="{the_url module=root-url}virtual-office/employee.php?do=edit">Đăng hồ sơ</a>
+											{/if}
 										</td></tr>
 									<!--{/if}-->
 								  
