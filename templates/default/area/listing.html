@@ -7,6 +7,8 @@
     }
 </style>
 <script type="application/x-javascript">
+	
+	
     
     function pagination(total, p) {
 	    page = p;
@@ -218,7 +220,15 @@
 </div>
   </div>
 
-
+{literal}
+	<script>
+		var hass = location.hash;
+		if (hass == "#14" || hass == "#16") {
+			$(".announce_intro_box").hide();
+			$(".groupcat_menu").hide();
+		}
+	</script>
+{/literal}
 
 <!--{include file="`$theme_name`/footer.html"}-->
 
