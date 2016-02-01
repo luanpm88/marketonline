@@ -592,3 +592,7 @@ h2.area-title {
 .menu-content-inner {
     min-height: 684px;
 }
+.newhome-menus .main-menu ul li:hover ul a {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
