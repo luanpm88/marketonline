@@ -595,4 +595,5 @@ h2.area-title {
 .newhome-menus .main-menu ul li:hover ul a {
     white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
