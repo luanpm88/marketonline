@@ -77,23 +77,23 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 			$conditions[] = "t.industry_id = '".$params['industryid']."'";
 		}
 	}
-	if (isset($params['areaid'])) {
-		if (isset($params['depth'])) {
-			$depth = intval($params['depth']);
-			if ($depth) {
-				global $industry;
-				$ids_s = $industry->getConditionIds($params['areaid']);
-				if (is_array($ids_s)) {
-					$ids_s = array_filter($ids_s);
-					$conditions['area'] = "t.area_id IN (".implode(",", $ids_s).")";
-				}else{
-					$conditions['area'] = "t.area_id='".$ids_s."'";
-				}
-			}
-		}else{
-			$conditions['area'] = "t.area_id = '".$params['areaid']."'";
-		}
-	}
+	//if (isset($params['areaid'])) {
+	//	if (isset($params['depth'])) {
+	//		$depth = intval($params['depth']);
+	//		if ($depth) {
+	//			global $industry;
+	//			$ids_s = $industry->getConditionIds($params['areaid']);
+	//			if (is_array($ids_s)) {
+	//				$ids_s = array_filter($ids_s);
+	//				$conditions['area'] = "t.area_id IN (".implode(",", $ids_s).")";
+	//			}else{
+	//				$conditions['area'] = "t.area_id='".$ids_s."'";
+	//			}
+	//		}
+	//	}else{
+	//		$conditions['area'] = "t.area_id = '".$params['areaid']."'";
+	//	}
+	//}
 	if (!empty($_GET['industryid'])) {
 		global $industry;
 		if (!isset($industry)) {
