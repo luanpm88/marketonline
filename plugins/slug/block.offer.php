@@ -53,30 +53,30 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	//		}
 	//	}
 	//}
-	if (isset($params['industryid'])) {
-		if (isset($params['depth'])) {
-			$depth = intval($params['depth']);
-			if ($depth) {
-				if (class_exists("Industries")) {
-					$industry = new Industries();
-					$industry_controller = new Industry();
-				}else{
-					uses("industry");
-					$industry = new Industries();
-					$industry_controller = new Industry();
-				}
-				$ids_s = $industry->getConditionIds($params['industryid']);
-				if (is_array($ids_s)) {
-					$ids_s = array_filter($ids_s);
-					$conditions['industry'] = "t.industry_id IN (".implode(",", $ids_s).")";
-				}else{
-					$conditions['industry'] = "t.industry_id='".$ids_s."'";
-				}
-			}
-		}else{
-			$conditions[] = "t.industry_id = '".$params['industryid']."'";
-		}
-	}
+	//if (isset($params['industryid'])) {
+	//	if (isset($params['depth'])) {
+	//		$depth = intval($params['depth']);
+	//		if ($depth) {
+	//			if (class_exists("Industries")) {
+	//				$industry = new Industries();
+	//				$industry_controller = new Industry();
+	//			}else{
+	//				uses("industry");
+	//				$industry = new Industries();
+	//				$industry_controller = new Industry();
+	//			}
+	//			$ids_s = $industry->getConditionIds($params['industryid']);
+	//			if (is_array($ids_s)) {
+	//				$ids_s = array_filter($ids_s);
+	//				$conditions['industry'] = "t.industry_id IN (".implode(",", $ids_s).")";
+	//			}else{
+	//				$conditions['industry'] = "t.industry_id='".$ids_s."'";
+	//			}
+	//		}
+	//	}else{
+	//		$conditions[] = "t.industry_id = '".$params['industryid']."'";
+	//	}
+	//}
 	//if (isset($params['areaid'])) {
 	//	if (isset($params['depth'])) {
 	//		$depth = intval($params['depth']);
