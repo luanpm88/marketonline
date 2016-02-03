@@ -127,16 +127,16 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	if (isset($params['country_id'])) $conditions[] = "t.country_id='".$params['country_id']."'";
 	//if(isset($params['expday'])) $conditions[] = "t.expire_time<'".($params['expday']*86400+$trade->timestamp)."'";
 	//if(isset($params['subday'])) $conditions[] = "t.submit_time>'".($trade->timestamp-$params['expireday']*86400)."'";
-	if (isset($params['typeid'])) {
-		if(!empty($params['typeid'])){
-			if (strpos($params['typeid'], ",")>0) {
-				$tmp_ids = explode(",", $params['typeid']);
-				$conditions[] = "t.type_id in ('".implode("','", $tmp_ids)."')";
-			}else{
-				$conditions[] = "t.type_id='".$params['typeid']."'";
-			}
-		}
-	}
+	//if (isset($params['typeid'])) {
+	//	if(!empty($params['typeid'])){
+	//		if (strpos($params['typeid'], ",")>0) {
+	//			$tmp_ids = explode(",", $params['typeid']);
+	//			$conditions[] = "t.type_id in ('".implode("','", $tmp_ids)."')";
+	//		}else{
+	//			$conditions[] = "t.type_id='".$params['typeid']."'";
+	//		}
+	//	}
+	//}
 	if (isset($params['urgent'])) $conditions[] = "t.if_urgent='1'";
 	if (!empty($params['memberid'])) $conditions[] = "t.member_id='".$params['memberid']."'";
 	if (!empty($params['companyid'])) $conditions[] = "t.company_id='".$params['companyid']."'";
