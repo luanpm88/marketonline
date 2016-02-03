@@ -122,9 +122,9 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 			$conditions['area'] = "t.area_id=".intval($_GET['areaid']);
 		}
 	}
-	if (isset($params['exclude'])) $conditions[] = $trade->getExcludeIds($params['exclude']);
-	if (isset($params['include'])) $conditions[] = $trade->getIncludeIds($params['include']);
-	if (isset($params['country_id'])) $conditions[] = "t.country_id='".$params['country_id']."'";
+	//if (isset($params['exclude'])) $conditions[] = $trade->getExcludeIds($params['exclude']);
+	//if (isset($params['include'])) $conditions[] = $trade->getIncludeIds($params['include']);
+	//if (isset($params['country_id'])) $conditions[] = "t.country_id='".$params['country_id']."'";
 	//if(isset($params['expday'])) $conditions[] = "t.expire_time<'".($params['expday']*86400+$trade->timestamp)."'";
 	//if(isset($params['subday'])) $conditions[] = "t.submit_time>'".($trade->timestamp-$params['expireday']*86400)."'";
 	//if (isset($params['typeid'])) {
