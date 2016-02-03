@@ -19,18 +19,18 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	    $trade = new Trades();
 	    $trade_controller = new Trade();
 	}
-	if ($_PB_CACHE['setting']['offer_expire_method']) {
-		switch ($_PB_CACHE['setting']['offer_expire_method']) {
-			case "2":
-				$conditions[] = "t.expire_time>".$trade->timestamp;
-				break;
-			case "3":
-				$conditions[] = "t.expire_time>".$trade->timestamp;
-				break;
-			default:
-				break;
-		}
-	}
+	//if ($_PB_CACHE['setting']['offer_expire_method']) {
+	//	switch ($_PB_CACHE['setting']['offer_expire_method']) {
+	//		case "2":
+	//			$conditions[] = "t.expire_time>".$trade->timestamp;
+	//			break;
+	//		case "3":
+	//			$conditions[] = "t.expire_time>".$trade->timestamp;
+	//			break;
+	//		default:
+	//			break;
+	//	}
+	//}
 	//if (isset($params['type'])) {
 	//	$type = explode(",", $params['type']);
 	//	$type = array_unique($type);
@@ -94,20 +94,20 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 	//		$conditions['area'] = "t.area_id = '".$params['areaid']."'";
 	//	}
 	//}
-	if (!empty($_GET['industryid'])) {
-		global $industry;
-		if (!isset($industry)) {
-			require_once(LIB_PATH. "core/models/industry.php");
-			$industry = new Industries();
-		}
-		$ids_s = $industry->getSubDatas($_GET['industryid']);
-		if (is_array($ids_s)) {
-			$ids_s = array_keys($ids_s);
-			$conditions['industry'] = "t.industry_id IN (".implode(",", $ids_s).")";
-		}else{
-			$conditions['industry'] = "t.industry_id=".intval($_GET['industryid']);
-		}
-	}
+	//if (!empty($_GET['industryid'])) {
+	//	global $industry;
+	//	if (!isset($industry)) {
+	//		require_once(LIB_PATH. "core/models/industry.php");
+	//		$industry = new Industries();
+	//	}
+	//	$ids_s = $industry->getSubDatas($_GET['industryid']);
+	//	if (is_array($ids_s)) {
+	//		$ids_s = array_keys($ids_s);
+	//		$conditions['industry'] = "t.industry_id IN (".implode(",", $ids_s).")";
+	//	}else{
+	//		$conditions['industry'] = "t.industry_id=".intval($_GET['industryid']);
+	//	}
+	//}
 	//if (!empty($_GET['areaid'])) {
 	//	global $area;
 	//	if (!isset($area)) {
