@@ -60,6 +60,10 @@ body {
     background-color: #57BAE8;
     background-image: url('../img/trade_bg.png');
 }
+.sidebar-nav li.sidebar-menu-area .color-point {
+    background-color: #c5a169;
+    background-image: url('../img/TT_bg.png');
+}
 .sidebar-nav li.sidebar-menu-company .color-point {
     background-color: #fe7477;
     background-image: url('../img/brand_bg.png');
