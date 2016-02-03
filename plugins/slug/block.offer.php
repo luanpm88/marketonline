@@ -108,20 +108,20 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 			$conditions['industry'] = "t.industry_id=".intval($_GET['industryid']);
 		}
 	}
-	if (!empty($_GET['areaid'])) {
-		global $area;
-		if (!isset($area)) {
-			require_once(LIB_PATH. "core/models/area.php");
-			$area = new Areas();
-		}
-		$ids_s = $area->getSubDatas($_GET['areaid']);
-		if (is_array($ids_s)) {
-			$ids_s = array_keys($ids_s);
-			$conditions['area'] = "t.area_id IN (".implode(",", $ids_s).")";
-		}else{
-			$conditions['area'] = "t.area_id=".intval($_GET['areaid']);
-		}
-	}
+	//if (!empty($_GET['areaid'])) {
+	//	global $area;
+	//	if (!isset($area)) {
+	//		require_once(LIB_PATH. "core/models/area.php");
+	//		$area = new Areas();
+	//	}
+	//	$ids_s = $area->getSubDatas($_GET['areaid']);
+	//	if (is_array($ids_s)) {
+	//		$ids_s = array_keys($ids_s);
+	//		$conditions['area'] = "t.area_id IN (".implode(",", $ids_s).")";
+	//	}else{
+	//		$conditions['area'] = "t.area_id=".intval($_GET['areaid']);
+	//	}
+	//}
 	//if (isset($params['exclude'])) $conditions[] = $trade->getExcludeIds($params['exclude']);
 	//if (isset($params['include'])) $conditions[] = $trade->getIncludeIds($params['include']);
 	//if (isset($params['country_id'])) $conditions[] = "t.country_id='".$params['country_id']."'";
