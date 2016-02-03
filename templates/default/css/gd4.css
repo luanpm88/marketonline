@@ -1081,7 +1081,7 @@ li.liback {
     width: 100%;
 }
 .top_areas_menu_box {
-    margin-top: -30px;
+    margin-top: -50px;
     position: absolute;
     text-align: center;
     width: 100%;
@@ -1460,6 +1460,7 @@ video {
 }
 .areas-container {
     padding: 20px 10px 10px;
+    margin-top: 20px;
 }
 .choose_area_label {
     background: #c5a169 none repeat scroll 0 0;
