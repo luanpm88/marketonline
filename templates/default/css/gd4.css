@@ -568,7 +568,7 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 }
 .market-product-module .product_listing ul.products li.product_2 {
     float: left;
-    height: 228px;
+    height: 278px;
     margin: 0 9px 9px 0;
     overflow: hidden;
     width: 226px;
@@ -583,11 +583,14 @@ ul.cart_list li::after, ul.product_list_widget li::after {
 .market-product-module ul.products li.product_2 h3 {
     border: 0 none;
     font-size: 16px;
-    height: 42px;
+    height: 30px;
     line-height: 26px;
     overflow: hidden;
     padding: 5px;
     width: auto;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .company-container  .works-list .market-product-module .filterable-grid {
     width: 100%;

@@ -1,7 +1,6 @@
 <!--{include file="`$theme_name`/header.html" page_title="`$_login`"}-->
 
 
-
 <div id="body-wrapper" >
 <div id="body-wrapper-padding">
 <!--[if lt IE 7]>
@@ -142,6 +141,7 @@ $(document).ready(function(){
 	//	if($("#LoginName").val()==''){
 	//	$("#LoginName").val(account_n_email_n_mobile).css("color","#ccc")};
 	//});
+	setInterval('$("#body-wrapper").height($(document).height()-$("#darkf").height()-25)', 500)
 });
 </script>
 <!--{/literal}-->
