@@ -1471,3 +1471,12 @@ video {
     margin-right: -3px;
     padding: 0 10px;
 }
+.trade_module .areas-container .subtab-area {
+    margin-top: 20px !important;
+}
+.area-module ul.products li.product .price {
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
