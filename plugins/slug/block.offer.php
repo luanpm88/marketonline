@@ -31,28 +31,28 @@ function smarty_block_offer($params, $content, &$smarty, &$repeat) {
 				break;
 		}
 	}
-	if (isset($params['type'])) {
-		$type = explode(",", $params['type']);
-		$type = array_unique($type);
-		foreach ($type as $val) {
-			switch ($val) {
-				case 'image':
-					$conditions[] = "t.picture!=''";
-					break;
-				case 'urgent':
-					$conditions[] = "t.if_urgent='1'";
-					break;
-				case 'company':
-					$conditions[] = "t.company_id>0";
-					break;
-				case 'commend':
-					$conditions[] = "t.if_commend>0";
-					break;
-				default:
-					break;
-			}
-		}
-	}
+	//if (isset($params['type'])) {
+	//	$type = explode(",", $params['type']);
+	//	$type = array_unique($type);
+	//	foreach ($type as $val) {
+	//		switch ($val) {
+	//			case 'image':
+	//				$conditions[] = "t.picture!=''";
+	//				break;
+	//			case 'urgent':
+	//				$conditions[] = "t.if_urgent='1'";
+	//				break;
+	//			case 'company':
+	//				$conditions[] = "t.company_id>0";
+	//				break;
+	//			case 'commend':
+	//				$conditions[] = "t.if_commend>0";
+	//				break;
+	//			default:
+	//				break;
+	//		}
+	//	}
+	//}
 	if (isset($params['industryid'])) {
 		if (isset($params['depth'])) {
 			$depth = intval($params['depth']);
