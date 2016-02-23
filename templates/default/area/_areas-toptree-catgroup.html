@@ -1,7 +1,7 @@
 {if true}
 		<div class="top_areas_menu_box" style="">
 			<div class="choose_area_label">Chọn thị trường</div>
-			<div class="top_areas_menu">
+			<div class="top_areas_menu" style="display: none">
 				
 			</div>
 		</div>
@@ -12,6 +12,7 @@
 			}).done(function ( data ) {
 				if( console && console.log ) {
 					$(".top_areas_menu").html(data);
+					$(".top_areas_menu").show();
 				}
 			});
 		</script>
