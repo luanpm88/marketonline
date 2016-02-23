@@ -6166,6 +6166,9 @@ body {
 #job-content .news_all_left_con p {
     white-space: normal;
 }
+#job-content .news_all_left_con {
+    padding-left: 15px;
+}
 .relate_announce
 {
     margin: 10px 0 35px 0;
