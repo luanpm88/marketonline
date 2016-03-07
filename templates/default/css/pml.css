@@ -6160,8 +6160,9 @@ body {
 }
 #job-content p {
     font-size: 14px;
-    white-space: nowrap;
+    overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 #job-content .news_all_left_con p {
     white-space: normal;
