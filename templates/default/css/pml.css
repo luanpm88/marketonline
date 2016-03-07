@@ -13417,3 +13417,8 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.bottom_industry_list ul li.level0.more-item {
+    padding: 25px 0;
+    text-align: left;
+    height: auto;
+}
