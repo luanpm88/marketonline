@@ -1480,3 +1480,6 @@ video {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+#body-wrapper {
+    min-height: 700px;
+}
