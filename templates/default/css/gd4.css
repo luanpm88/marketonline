@@ -1397,6 +1397,7 @@ video {
     margin-bottom: 20px;
     padding: 10px 0 0 10px;
     width: 100%;
+    border: solid 1px #ddd;
 }
 .empty_module * {
     color: #fff !important;
