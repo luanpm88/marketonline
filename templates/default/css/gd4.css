@@ -1483,3 +1483,16 @@ video {
 #body-wrapper {
     min-height: 700px;
 }
+.empty_module .market-product-module, .empty_module p.no-content {
+    background: #fff none repeat scroll 0 0;
+    margin-bottom: 0;
+}
+.empty_module {
+    padding: 0;
+}
+.empty_module h2.market-header-title {
+    padding: 5px 10px 0;
+}
+.empty_module p {
+    color: #333 !important;
+}
