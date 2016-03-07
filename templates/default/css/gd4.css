@@ -1493,6 +1493,6 @@ video {
 .empty_module h2.market-header-title {
     padding: 5px 10px 0;
 }
-.empty_module p {
+.empty_module p, .empty_module a {
     color: #333 !important;
 }
