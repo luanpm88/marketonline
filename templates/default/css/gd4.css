@@ -1499,3 +1499,6 @@ video {
 .empty_module p {
     margin-top: 15px;
 }
+.empty_module h2.market-header-title a {
+    color: #fff !important;
+}
