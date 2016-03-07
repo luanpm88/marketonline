@@ -1502,3 +1502,9 @@ video {
 .empty_module h2.market-header-title a {
     color: #fff !important;
 }
+.empty_module .go_box {
+    background: #ddd none repeat scroll 0 0;
+}
+.empty_module .go_box:hover {
+    background: #eee;
+}
