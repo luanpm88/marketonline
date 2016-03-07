@@ -1496,3 +1496,6 @@ video {
 .empty_module p, .empty_module a {
     color: #333 !important;
 }
+.empty_module p {
+    margin-top: 15px;
+}
