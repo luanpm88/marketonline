@@ -204,7 +204,7 @@
 	  <a target="_blank" href="https://twitter.com/intent/tweet?url={$F_URL}" class="tw" data-original-title="Twitter">Twitter</a>
 	  <a target="_blank" href="https://www.linkedin.com/shareArticle?url={$F_URL}" class="li" data-original-title="LinkedIN">LinkedIN</a>
 	  <a target="_blank" href="https://plus.google.com/share?url={$F_URL}" class="gp" data-original-title="Google +">Google +</a>
-	  <a class="fb" onclick="{if !$FACE}goclicky(this, '{$F_URL}'){else}goclicky_custom(this, '{if $FACE.share_f}{the_url module=space userid=`$pb_company.cache_spacename`}/{$pb_username}_un.htmls{else}{$F_URL}{/if}', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}'){/if}" href="javascript:void(0)">Facebook</a>
+	  <a class="fb" onclick="goclicky_custom(this, '{if $FACE.share_f}{the_url module=space userid=`$pb_company.cache_spacename`}/{$pb_username}_un.htmls{else}{$F_URL}{/if}', '{$FACE.images}', '{$FACE.title}', '{$FACE.summary}')" href="javascript:void(0)">Facebook</a>
 	  
 
       </div>
