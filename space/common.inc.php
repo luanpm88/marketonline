@@ -98,6 +98,7 @@ foreach($banners as $key => $item)
 if(!count($banners)) $banners["noimage"] = $absolute_uri."templates/default/image/bannerCongTy.png";
 
 setvar('banners',$banners);
+setvar('rand_num',rand(0,100));
 
 
 $company->info = pb_lang_split_recursive($company->info);
