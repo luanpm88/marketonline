@@ -78,11 +78,11 @@
 	  <input type="hidden" name="uri" value="{$FURI}" />
 	
 	
-	  <p>{if $banners.1}<img src="{$banners.1}" />{/if}<input type="file" name="upload_banner_1" accept="image/*" /></p>
-	  <p>{if $banners.2}<img src="{$banners.2}" />{/if}<input type="file" name="upload_banner_2" accept="image/*" /></p>
-	  <p>{if $banners.3}<img src="{$banners.3}" />{/if}<input type="file" name="upload_banner_3" accept="image/*" /></p>
-	  <p>{if $banners.4}<img src="{$banners.4}" />{/if}<input type="file" name="upload_banner_4" accept="image/*" /></p>
-	  <p>{if $banners.5}<img src="{$banners.5}" />{/if}<input type="file" name="upload_banner_5" accept="image/*" /></p>
+	  <p>{if $banners.1}<img src="{$banners.1}?v={rand_num}" />{/if}<input type="file" name="upload_banner_1" accept="image/*" /></p>
+	  <p>{if $banners.2}<img src="{$banners.2}?v={rand_num}" />{/if}<input type="file" name="upload_banner_2" accept="image/*" /></p>
+	  <p>{if $banners.3}<img src="{$banners.3}?v={rand_num}" />{/if}<input type="file" name="upload_banner_3" accept="image/*" /></p>
+	  <p>{if $banners.4}<img src="{$banners.4}?v={rand_num}" />{/if}<input type="file" name="upload_banner_4" accept="image/*" /></p>
+	  <p>{if $banners.5}<img src="{$banners.5}?v={rand_num}" />{/if}<input type="file" name="upload_banner_5" accept="image/*" /></p>
 	  
 	  <input type="submit" class="checkout_but" style="padding: 3px 50px; margin-left: 10px;" value="{lang upload}" /><br>
 	</form>
@@ -185,7 +185,7 @@
 				<!--<img style="max-width: none;" src="{$item}">-->
 					
 				{if $item}
-					<li class="item_{$key}"><img src="{$item}.banner.jpg" /></li>
+					<li class="item_{$key}"><img src="{$item}.banner.jpg?v={rand_num}" /></li>
 				{/if}
 					
 				<!--{/loop}-->
