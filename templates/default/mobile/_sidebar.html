@@ -55,7 +55,11 @@
                         {else}
                             <a href="{the_url module="register"}">{lang register_now}</a>
                         {/if}
-                    </li>
+                    </li>                    
+                <!--{else}-->
+					<li>
+						<a href="{the_url module=root-url}logging.php?action=logout">Đăng xuất</a>
+					</li>
                 <!--{/if}-->
             </ul>
         </div>
