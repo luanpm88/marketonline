@@ -31,11 +31,11 @@
 	  <input type="hidden" name="uri" value="{$FURI}" />
 	
 	
-	  <p>{if $banners.1}<img src="{$banners.1}.banner.jpg" />{/if}<input type="file" name="upload_banner_1" accept="image/*" /></p>
-	  <p>{if $banners.2}<img src="{$banners.2}.banner.jpg" />{/if}<input type="file" name="upload_banner_2" accept="image/*" /></p>
-	  <p>{if $banners.3}<img src="{$banners.3}.banner.jpg" />{/if}<input type="file" name="upload_banner_3" accept="image/*" /></p>
-	  <p>{if $banners.4}<img src="{$banners.4}.banner.jpg" />{/if}<input type="file" name="upload_banner_4" accept="image/*" /></p>
-	  <p>{if $banners.5}<img src="{$banners.5}.banner.jpg" />{/if}<input type="file" name="upload_banner_5" accept="image/*" /></p>
+	  <p>{if $banners.1}<img src="{$banners.1}.banner.jpg?v={$rand_num}" />{/if}<input type="file" name="upload_banner_1" accept="image/*" /></p>
+	  <p>{if $banners.2}<img src="{$banners.2}.banner.jpg?v={$rand_num}" />{/if}<input type="file" name="upload_banner_2" accept="image/*" /></p>
+	  <p>{if $banners.3}<img src="{$banners.3}.banner.jpg?v={$rand_num}" />{/if}<input type="file" name="upload_banner_3" accept="image/*" /></p>
+	  <p>{if $banners.4}<img src="{$banners.4}.banner.jpg?v={$rand_num}" />{/if}<input type="file" name="upload_banner_4" accept="image/*" /></p>
+	  <p>{if $banners.5}<img src="{$banners.5}.banner.jpg?v={$rand_num}" />{/if}<input type="file" name="upload_banner_5" accept="image/*" /></p>
 	  
       <br style="clear: both" />
 	  <input type="submit" class="checkout_but pull-right" style="padding: 3px 50px; margin-left: 10px;margin-top: -15px;" value="{lang upload}" /><br>
@@ -89,7 +89,7 @@
                     <!--{loop $banners item level key}-->           
                         
                         {if $item}
-                            <li class="item_{$key} crop-img-space"><img src="{$item}" /></li>
+                            <li class="item_{$key} crop-img-space"><img src="{$item}?v={$rand_num}" /></li>
                         {/if}
                         
                     <!--{/loop}-->
