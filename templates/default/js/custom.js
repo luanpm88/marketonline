@@ -267,26 +267,26 @@
 		url: "index.php?do=area&action="+ajax_function+"&area_id="+AREA_ID+"&areatype_id="+AREATYPE_ID+"&catgroup_id="+CATGROUP_ID+type+pages+industry_s+row_s+num_per_row_s,
 	}).done(function ( data ) {
 	    if( console && console.log ) {
-		if(data != '')
-		{
-		    box.html(data);
-		    box.show();
-		    box.removeClass("area-module-loading");
-		    box.removeClass("starting");
-		    //alert(box.find('.pic span').length);
-		    if (!box.find('.pic span').length) {
-			box.find('.pic img').resizecrop({
-			    width:box.find('.pic img').width(),
-			    height:box.find('.pic img').height()
-			});
-		    }
-		    
-		    //paging
-		    if($(data).filter('#cccount').html()) {
-			//alert($(data).filter('#cccount').html());
-			pagination($(data).filter('#cccount').html(), $(data).filter('#pppage').html())
-		    }
-		}
+			if(data != '')
+			{
+				box.html(data);
+				box.show();
+				//box.removeClass("area-module-loading");
+				//box.removeClass("starting");
+				////alert(box.find('.pic span').length);
+				//if (!box.find('.pic span').length) {
+				//box.find('.pic img').resizecrop({
+				//	width:box.find('.pic img').width(),
+				//	height:box.find('.pic img').height()
+				//});
+				//}
+				//
+				////paging
+				//if($(data).filter('#cccount').html()) {
+				////alert($(data).filter('#cccount').html());
+				//pagination($(data).filter('#cccount').html(), $(data).filter('#pppage').html())
+				//}
+			}
 	    }
 	});
     }
