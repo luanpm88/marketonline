@@ -2289,3 +2289,17 @@ h1.page-title .icon-page.icon-company {
 .shop_top_info .banners ul li:first-child {
     display: block !important;
 }*/
+.footer_tools {
+    padding: 0;
+    margin-bottom: 20px;
+}
+.footer_tools li {
+    list-style: outside none none;
+}
+.footer_tools li a {
+    background: #71c681 none repeat scroll 0 0;
+    border-bottom: 0 solid #ddd;
+    color: #fff;
+    display: block;
+    padding: 5px 10px;
+}
