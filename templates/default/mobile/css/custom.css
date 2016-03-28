@@ -2290,16 +2290,18 @@ h1.page-title .icon-page.icon-company {
     display: block !important;
 }*/
 .footer_tools {
-    padding: 0;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     margin-bottom: 20px;
+    padding: 5px 0;
 }
 .footer_tools li {
     list-style: outside none none;
 }
 .footer_tools li a {
-    background: #71c681 none repeat scroll 0 0;
     border-bottom: 0 solid #ddd;
-    color: #fff;
+    color: #333;
     display: block;
-    padding: 5px 10px;
+    font-size: 16px;
+    padding: 5px 20px;
 }
