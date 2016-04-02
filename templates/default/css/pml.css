@@ -4087,7 +4087,7 @@ div.product div.images div.thumbnails a, #content div.product div.images div.thu
 #chat-frame {
     bottom: 0;
     position: fixed;
-    right: 305px;
+    right: 75px;
     z-index: 200000;
     height: 0;
 }
