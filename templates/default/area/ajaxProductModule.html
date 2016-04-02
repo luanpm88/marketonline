@@ -173,17 +173,17 @@
 		
 {literal}
     <script>
-		//$(document).ready(function() {
-		//		$('.market-product-module .product_listing ul.products li.product img').resizecrop({
-		//				width:224,
-		//				height:190
-		//		});
-		//		
-		//		{/literal}{if $smarty.get.p}{literal}
-		//					pagination({/literal}{$count}{literal}, {/literal}{$smarty.get.p}{literal})
-		//		{/literal}{/if}{literal}
-		//		
-		//		fixAreaModule()
-		//});
+		$(document).ready(function() {
+				$('.market-product-module .product_listing ul.products li.product img').resizecrop({
+						width:224,
+						height:190
+				});
+				
+				{/literal}{if $smarty.get.p}{literal}
+							pagination({/literal}{$count}{literal}, {/literal}{$smarty.get.p}{literal})
+				{/literal}{/if}{literal}
+				
+				fixAreaModule()
+		});
     </script>
 {/literal}
