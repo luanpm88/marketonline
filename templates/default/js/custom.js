@@ -269,8 +269,8 @@
 				if( console && console.log ) {
 					if(data != '')
 					{
-						box.html(data);
-						box.show();
+						//box.html(data);
+						//box.show();
 						//box.removeClass("area-module-loading");
 						//box.removeClass("starting");
 						////alert(box.find('.pic span').length);
