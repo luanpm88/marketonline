@@ -271,21 +271,21 @@
 			{
 				box.html(data);
 				box.show();
-				//box.removeClass("area-module-loading");
-				//box.removeClass("starting");
-				////alert(box.find('.pic span').length);
-				//if (!box.find('.pic span').length) {
-				//box.find('.pic img').resizecrop({
-				//	width:box.find('.pic img').width(),
-				//	height:box.find('.pic img').height()
-				//});
-				//}
-				//
-				////paging
-				//if($(data).filter('#cccount').html()) {
-				////alert($(data).filter('#cccount').html());
-				//pagination($(data).filter('#cccount').html(), $(data).filter('#pppage').html())
-				//}
+				box.removeClass("area-module-loading");
+				box.removeClass("starting");
+				//alert(box.find('.pic span').length);
+				if (!box.find('.pic span').length) {
+				box.find('.pic img').resizecrop({
+					width:box.find('.pic img').width(),
+					height:box.find('.pic img').height()
+				});
+				}
+				
+				//paging
+				if($(data).filter('#cccount').html()) {
+				//alert($(data).filter('#cccount').html());
+				pagination($(data).filter('#cccount').html(), $(data).filter('#pppage').html())
+				}
 			}
 	    }
 	});
