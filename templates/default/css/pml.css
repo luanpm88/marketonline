@@ -9835,8 +9835,8 @@ input[name=redirect]
     max-height: none !important;
 }
 .offer_detail_page {
-    padding-left: 10px;
-    padding-top: 10px;
+    /*padding-left: 10px;
+    padding-top: 10px;*/
 }
 #page-title .breadcrumbs {
 }
@@ -13383,7 +13383,7 @@ element.style {
     color: #333;
 }
 .offer_detail_page {
-    padding-right: 10px;
+    /*padding-right: 10px;*/
 }
 .offer_detail_page .right-offerbox {
     width: 540px;
