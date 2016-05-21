@@ -31,7 +31,16 @@ if (!empty($_GET['id'])) {
 	
 	$tpl_file = "announce";
 	setvar("item",$info);
-	template($tpl_file);
+	
+	// template($tpl_file);
+	
+	if(detectMobile()) {	
+		$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
+		template("m_announce");
+	} else {
+		template($tpl_file);
+	}
+	
 }
 elseif (!empty($_GET['type']))
 {
