@@ -34,7 +34,6 @@ if (!empty($_GET['id'])) {
 	
 	// template($tpl_file);
 	
-	echo "ddd";
 	
 	if(detectMobile()) {	
 		$smarty->template_dir = PHPB2B_ROOT. "templates/default/mobile/office/";
