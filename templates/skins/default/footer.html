@@ -13,7 +13,7 @@
 			{if $MEMBER.checkout}
 				{if $COMPANY.tel}{lang phone}: {$COMPANY.tel}{/if}
 			{/if}
-			{if $COMPANY.fax}-{lang fax}: {$COMPANY.fax}{/if}
+			{if $COMPANY.fax}{if $MEMBER.checkout}-{/if}{lang fax}: {$COMPANY.fax}{/if}
 		    </p>
 		    <p>
 			{if $COMPANY.email}{lang email}: <a href="mailto:{$COMPANY.email}">{$COMPANY.email}</a>{/if}
