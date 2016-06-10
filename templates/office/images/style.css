@@ -377,6 +377,7 @@ label.error { float: none; color: red; padding-left: 1.5em; vertical-align: top;
     color: #333;
 }
 .title_bar:hover {
+    color: #333 !important;
 }
 .title_nav:hover
 {
