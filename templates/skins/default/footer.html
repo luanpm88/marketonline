@@ -10,20 +10,27 @@
 			{lang address}: {$COMPANY.address}
 		    </p>
 		    <p>
-			<!--{if $COMPANY.tel}{lang phone}: {$COMPANY.tel}{/if}-->
+			{if $MEMBER.checkout}
+				{if $COMPANY.tel}{lang phone}: {$COMPANY.tel}{/if}
+			{/if}
 			{if $COMPANY.fax}-{lang fax}: {$COMPANY.fax}{/if}
 		    </p>
 		    <p>
 			{if $COMPANY.email}{lang email}: <a href="mailto:{$COMPANY.email}">{$COMPANY.email}</a>{/if}
-			<!--{if $COMPANY.site_url}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a>{/if}-->
+			{if $MEMBER.checkout}
+				{if $COMPANY.site_url}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a>{/if}
+			{/if}
 		    </p>
         </div>
 	<div class="foot-col2">
 		    <h3>{lang contact}</h3>
 		    <p>{lang person_company_contact}: {$COMPANY.link_man}{if $COMPANY.position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$COMPANY.position}</p>{/if}
-			<!--<p>{lang mobile_number}: {$COMPANY.contact_mobile}</p>-->
+			{if $MEMBER.checkout}
+				<p>{lang mobile_number}: {$COMPANY.contact_mobile}</p>
+			{/if}
 			<p>{lang email}: <a href="mailto:{$COMPANY.contact_email}">{$COMPANY.contact_email}</a></p>
-			<!--{if $COMPANY.facebook || $COMPANY.facebook_personal}
+			{if $MEMBER.checkout}
+				{if $COMPANY.facebook || $COMPANY.facebook_personal}
 				<p>Facebook:
 					{if $COMPANY.facebook}
 						<a rel="nofollow" href="{$COMPANY.facebook}" target="_blank">Fanpage</a>
@@ -33,7 +40,8 @@
 						<a rel="nofollow" href="{$COMPANY.facebook_personal}" target="_blank">Trang cá nhân</a>
 					{/if}
 				</p>
-			{/if}-->
+				{/if}
+			{/if}
 			
 	</div>
 </div>
@@ -57,7 +65,9 @@
 						  </p>
 						  <p>
 						      {if $item.email}{lang email}: <a href="mailto:{$COMPANY.email}">{$item.email}</a>{/if}
-						      <!--{if $item.website}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$item.website}</a>{/if}-->
+						      {if $MEMBER.checkout}
+								{if $item.website}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$item.website}</a>{/if}
+							{/if}
 						      
 						      
 						  </p>
@@ -65,18 +75,22 @@
 				      <div class="foot-col2">
 						  <h3 style="height: 22px;"></h3>
 						  <p>{lang person_company_contact}: {$item.contact_name}{if $item.contact_position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$item.contact_position}</p>{/if}
-						      <!--<p>{lang mobile_number}: {$item.contact_mobile}</p>-->
+						      {if $MEMBER.checkout}
+							<p>{lang mobile_number}: {$item.contact_mobile}</p>
+							{/if}
 						      <p>{lang email}: <a href="mailto:{$item.contact_email}">{$item.contact_email}</a></p>
 						      {if false && $item.facebook || $item.facebook_fanpage}
-							      <!--<p>Facebook:-->
-								      <!--{if $item.facebook_fanpage}
+							      {if $MEMBER.checkout}
+								<p>Facebook:-->
+								      {if $item.facebook_fanpage}
 									      <a rel="nofollow" href="{$item.facebook_fanpage}" target="_blank">Fanpage</a>
-								      {/if}-->
-								      <!--{if $item.facebook}
+								      {/if}
+								      {if $item.facebook}
 									      {if $item.facebook_fanpage} / {/if}
 									      <a rel="nofollow" href="{$item.facebook}" target="_blank">Trang cá nhân</a>
-								      {/if}-->
-							      <!--</p>-->
+								      {/if}
+								</p>
+								 {/if}
 						      {/if}
 						      
 				      </div>

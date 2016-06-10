@@ -88,10 +88,14 @@ $.cookie("latest_browse", data, { expires: 1 });
 				<h3><img src="{$theme_img_path}images/lhighs.gif" />{lang contact}</h3>
 				<p>{lang address}{$item.address}<br /> 
 				   {lang zip}{$item.zipcode}<br /> 
-				   {lang phone}{$item.tel}<br />
+				   {if $MEMBER.checkout}
+						{lang phone}{$item.tel}<br />
+					{/if}
 				   {lang fax}{$item.fax}<br />
-				   {lang website}{lang colon}{$item.site_url}
-				   </p>
+				   {if $MEMBER.checkout}
+						{lang website}{lang colon}{$item.site_url}
+					{/if}
+				</p>
 			</div>
 			<div class="contacttype">
 				<h3><img src="{$theme_img_path}images/lhighs.gif" />{lang others} {lang contact}</h3>
