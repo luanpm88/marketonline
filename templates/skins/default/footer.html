@@ -10,12 +10,12 @@
 			{lang address}: {$COMPANY.address}
 		    </p>
 		    <p>
-			{if $COMPANY.tel}{lang phone}: {$COMPANY.tel}{/if}
+			<!--{if $COMPANY.tel}{lang phone}: {$COMPANY.tel}{/if}-->
 			{if $COMPANY.fax}-{lang fax}: {$COMPANY.fax}{/if}
 		    </p>
 		    <p>
 			{if $COMPANY.email}{lang email}: <a href="mailto:{$COMPANY.email}">{$COMPANY.email}</a>{/if}
-			{if $COMPANY.site_url}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a>{/if}
+			<!--{if $COMPANY.site_url}-{lang company_home}: <a target="_blank" rel="nofollow" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a>{/if}-->
 		    </p>
         </div>
 	<div class="foot-col2">
@@ -65,7 +65,7 @@
 						  <p>{lang person_company_contact}: {$item.contact_name}{if $item.contact_position}&nbsp;&nbsp;/&nbsp;&nbsp;{lang chucvu}: {$item.contact_position}</p>{/if}
 						      <!--<p>{lang mobile_number}: {$item.contact_mobile}</p>-->
 						      <p>{lang email}: <a href="mailto:{$item.contact_email}">{$item.contact_email}</a></p>
-						      {if $item.facebook || $item.facebook_fanpage}
+						      {if false && $item.facebook || $item.facebook_fanpage}
 							      <!--<p>Facebook:-->
 								      <!--{if $item.facebook_fanpage}
 									      <a rel="nofollow" href="{$item.facebook_fanpage}" target="_blank">Fanpage</a>
