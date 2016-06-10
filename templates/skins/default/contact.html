@@ -19,20 +19,21 @@
 
 
 <div class="eleven columns contact_content" id="content">
-
-
-
-                
                 
 <div class="columns logo logoz"><a href="{$Menus.index}"><img src="{$COMPANY.logo}"></a></div>
                 
 		<div class="text left_com_info">
 			<h3>{$COMPANY.name}</h3>
 			<p><label>{lang address}</label> {$COMPANY.address}</p>
-			
+			{if $MEMBER.checkout}
+				{if $COMPANY.phone}<p><label>{lang tel}</label> {$COMPANY.tel}</p>{/if}
+			{/if}
 			{if $COMPANY.fax}<p><label>{lang fax}</label> {$COMPANY.fax}</p>{/if}
 			{if $COMPANY.email}<p><label>{lang email}</label> {$COMPANY.email}</p>{/if}
-			<!--{if $COMPANY.site_url}<p><label>{lang company_home}</label> <a rel="nofollow" target="_blank" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a></p>{/if}			-->
+			
+			{if $MEMBER.checkout}
+				{if $COMPANY.site_url}<p><label>{lang company_home}</label> <a rel="nofollow" target="_blank" href="http://{$COMPANY.site_url_name}">{$COMPANY.site_url_name}</a></p>{/if}
+			{/if}
 		</div>
               
               
@@ -60,20 +61,24 @@
 		</span>
 	    </p>
 	    <p>
-		<!--<span style="">
-		    <label style="">{lang hotline}</label> {$COMPANY.contact_mobile}
-		</span>
-	    </p>
-	    <p>-->
+		{if $MEMBER.checkout}
+			<span style="">
+				<label style="">{lang hotline}</label> {$COMPANY.contact_mobile}
+			</span>
+			</p>
+			<p>
+		{/if}
 		<label>{lang email}</label>
 		<a title="Liên hệ với chúng tôi qua email" onclick="" href="mailto:{$COMPANY.contact_email}" rel="noreferrer">{$COMPANY.contact_email}</a>
 	    </p>
-	    <!--{if $COMPANY.facebookz}
-		<p>
-		    <label>Facebook</label>
-		    <a title="Liên hệ với chúng tôi qua facebook" rel="nofollow" target="_blank" onclick="" href="https://{$COMPANY.facebook}" rel="noreferrer">{$COMPANY.facebook}</a>
-		</p>
-	    {/if}-->
+	    {if $MEMBER.checkout}
+			{if $COMPANY.facebookz}
+			<p>
+				<label>Facebook</label>
+				<a title="Liên hệ với chúng tôi qua facebook" rel="nofollow" target="_blank" onclick="" href="https://{$COMPANY.facebook}" rel="noreferrer">{$COMPANY.facebook}</a>
+			</p>
+			{/if}
+		{/if}
 	    </div>
 	</div>
 	
