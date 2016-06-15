@@ -928,9 +928,13 @@ class Product extends PbController {
 		
 		$info['content'] = cleanContent(stripslashes($info['content']));
 		// $info['content'] = preg_replace('/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i', '', $info['content']);
+		
+		
 		$info['content'] = preg_replace('|https?://www\.[a-z\.0-9]+|i', '', $info['content']);
 		// only www.
 		$info['content'] = preg_replace('|www\.[a-z\.0-9]+|i', '', $info['content']);
+		$info['content'] = preg_replace('/[a-z\.0-9]+\.(vn|com|org|net|se|edu|com\.vn)/i', '', $info['content']);
+		
 		
 		//format html
 		//$info['content'] = strip_tags($info['content'], "<table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4>");
