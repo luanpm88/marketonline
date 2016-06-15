@@ -934,6 +934,8 @@ class Product extends PbController {
 		// only www.
 		$info['content'] = preg_replace('|www\.[a-z\.0-9]+|i', '', $info['content']);
 		$info['content'] = preg_replace('/[a-z\.0-9]+\.(vn|com|org|net|se|edu|com\.vn)/i', '', $info['content']);
+		// remove phone number
+		$info['content'] = preg_replace('/([0-9]+[\- \.]*){9,}/','',$info['content']);
 		
 		
 		//format html
