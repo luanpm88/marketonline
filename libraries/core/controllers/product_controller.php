@@ -926,7 +926,8 @@ class Product extends PbController {
 		//replace content
 		//$info['content'] = $info['content'];
 		
-		$info['content'] = cleanContent(stripslashes($info['content']));		
+		$info['content'] = cleanContent(stripslashes($info['content']));
+		$info['content'] = preg_replace('/\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|$!:,.;]*[A-Z0-9+&@#\/%=~_|$]/i', '', $info['content']);
 		
 		//format html
 		//$info['content'] = strip_tags($info['content'], "<table><th><td><tbody><tfooter><p><br><strong><font><span><img><h2><h3><h4>");
