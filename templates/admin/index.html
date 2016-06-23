@@ -16,7 +16,7 @@ var firstOpen = [];
     <div class="close_float"><img src="{$admin_theme_path}images/close2.gif" /></div>
 </div>
 <div id="head">
-    <div id="logo"><img src="{$admin_theme_path}images/phpb2b_logo.png" /></div>
+    <div id="logo"><img src="/templates/default/image/logo-home.png" /></div>
     <div id="menu"><span>{$_hello|sprintf:"<strong>`$current_adminer`</strong>"} [<a href="login.php?action=dereg" target="_self" title="{lang use_other_account}">{lang off}</a>,<a href="adminer.php?do=profile" title="{lang set_your_personal_info}" target="workspace">{lang account_set}</a>,<a href="../logging.php?action=logout&fr=cp">{lang login_out}</a>]</span>
     <a href="{$SiteUrl}index.php" target="_blank" class="menu_btn1" title="{lang back_to_homepage}">{lang browse_homepage}</a>
     <a href="javascript:;" class="menu_btn1" id="iframe_refresh" title="{lang refresh_the_page}">{lang refresh}</a>
@@ -31,10 +31,7 @@ var firstOpen = [];
                 <dt><a class="ico1" id="submenuTitle" href="javascript:;"></a></dt>
             </dl>
          </div>
-		<div class="copyright">
-			<p>Powered by {lang soft_name} {$smarty.const.PHPB2B_VERSION}</p>
-			<p>&copy; 2007-2012 <a href="http://www.phpb2b.com/" target="_blank">UALINK</a> Inc.</p>
-		</div>
+		
     </div>
     <div id="right">
         <iframe frameborder="0" style="display:none;" width="100%" id="workspace" name="workspace"></iframe>
