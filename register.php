@@ -168,7 +168,7 @@ if(isset($_POST['register']) && $capt_check) {
 		setvar("hash", $hash);
 		setvar("username", $tmp_username);
 		setvar("expire_date", date("d-m-Y",strtotime("+100 day")));
-		$sended = pb_sendmail(array($member->params['data']['member']['email'], $member->params['data']['member']['username']), $tmp_username.", ".L("pls_active_your_account_title", "tpl"), "activite");
+		$sended = pb_sendmail(array($member->params['data']['member']['email'], $member->params['data']['member']['username']), "Marketonline.vn - Kích hoạt tài khoản '".$tmp_username."'", "activite");
 	}
 	if (!empty($_PB_CACHE['setting']['welcome_msg'])) {
 		setvar("user_name", $member->params['data']['member']['username']);

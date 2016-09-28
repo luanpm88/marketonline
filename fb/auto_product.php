@@ -2,11 +2,11 @@
 require_once('sharelib.php'); 
 
 // create array with topics to be posted on Facebook
-$sql = 'SELECT com.cache_spacename, com.shop_name as company_name, product.id, product.service, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
-    .' FROM pb_products product'
-    .' LEFT JOIN pb_companies as com ON com.id = product.company_id'
-    .' WHERE facebook_pubstatus=0'
-    .' LIMIT 1';
+$sql = 	'SELECT com.cache_spacename, com.shop_name as company_name, product.id, product.service, product.facebook_pubstatus, product.name, product.content, product.picture, product.picture1, product.picture2, product.picture3, product.picture4'    
+		.' FROM pb_products product'
+		.' LEFT JOIN pb_companies as com ON com.id = product.company_id'
+		.' WHERE facebook_pubstatus=0'
+		.' LIMIT 1';
 
 $rs = $conn->query($sql);
 if($rs === false) {

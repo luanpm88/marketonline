@@ -112,6 +112,7 @@ foreach($share_topics as $share_topic) {
 		
 	    $result .= ' FAILED... (fanpage: '.$fb_fanpage["name"].')(' . $e->getMessage() . ') : ' . $share_topic['title'] . ' - ' . $share_topic['url'] . $line_break;
 	  }
+	  sleep(90);
 	}
  
       // mark topic as posted (ensure that it will be posted only once)
@@ -120,7 +121,7 @@ foreach($share_topics as $share_topic) {
         trigger_error('Wrong SQL: ' . $sql . ' Error: ' . $conn->error, E_USER_ERROR);
       }
       
-    sleep(90);
+    
   }
  
 }

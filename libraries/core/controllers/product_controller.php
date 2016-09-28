@@ -938,6 +938,7 @@ class Product extends PbController {
 		$info['content'] = str_replace('$$$$$$kkkkkk$$$$$$', 'marketonline.vn', $info['content']);
 		// remove phone number
 		// $info['content'] = preg_replace('/([0-9]+[\- \.]*){9,}(?!\.)/','',$info['content']);
+		$info['content'] = preg_replace('/[023456789][0-9\(\)\s\.]{8}[0-9]+/','',$info['content']);
 		
 		
 		//format html
