@@ -934,7 +934,7 @@ class Product extends PbController {
 		$info['content'] = str_replace('marketonline.vn', '$$$$$$kkkkkk$$$$$$', $info['content']);
 		$info['content'] = preg_replace('|https?://www\.[a-z\.0-9]+|i', '', $info['content']);
         $info['content'] = preg_replace('|www\.(?!marketonline.vn)[a-z\.0-9]+|i', '', $info['content']);
-        $info['content'] = preg_replace('/\s[\/\:a-z\.0-9]+\.(vn|com|org|net|se|edu|com\.vn)/i', '', $info['content']);
+        $info['content'] = preg_replace('/[\s\>][\/\:a-z\.0-9]+\.(vn|com|org|net|se|edu|com\.vn)/i', '', $info['content']);
 		$info['content'] = str_replace('$$$$$$kkkkkk$$$$$$', 'marketonline.vn', $info['content']);
 		// remove phone number
 		// $info['content'] = preg_replace('/([0-9]+[\- \.]*){9,}(?!\.)/','',$info['content']);
