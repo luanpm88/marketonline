@@ -68,7 +68,7 @@
 	
 	if(isset($_POST["keyword"]) && $_POST["keyword"] != "")
        {
-		     $conditions[] = "LOWER(p.name) LIKE '%".strtolower($_POST['keyword'])."%' OR LOWER(p.product_code) LIKE '%".strtolower($_POST['keyword'])."%'";
+		     $conditions[] = "(LOWER(p.name) LIKE '%".strtolower($_POST['keyword'])."%' OR LOWER(p.product_code) LIKE '%".strtolower($_POST['keyword'])."%')";
        }
 	
 	
